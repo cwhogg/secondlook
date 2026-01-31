@@ -98,6 +98,25 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
+      {/* Navigation */}
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
+        <Link href="/" className="text-xl font-bold bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text text-transparent">
+          SecondLook
+        </Link>
+        <div className="flex items-center gap-6">
+          <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-purple-700 transition-colors">
+            Resources
+          </Link>
+          <Link
+            href="/step-1"
+            className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all"
+          >
+            Start Analysis
+          </Link>
+        </div>
+      </nav>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 via-blue-600/5 to-emerald-600/5"></div>

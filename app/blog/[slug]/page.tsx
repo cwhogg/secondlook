@@ -114,7 +114,25 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20">
+
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
+        <Link href="/" className="text-xl font-bold bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text text-transparent">
+          SecondLook
+        </Link>
+        <div className="flex items-center gap-6">
+          <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-purple-700 transition-colors">
+            Resources
+          </Link>
+          <Link
+            href="/step-1"
+            className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all"
+          >
+            Start Analysis
+          </Link>
+        </div>
+      </nav>
+
+      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
         <Link
           href="/blog"
           className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700 transition-colors mb-8"

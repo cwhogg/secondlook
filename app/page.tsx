@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { ArrowRight, Shield, CheckCircle, Lock, Sparkles, Zap, Heart } from "lucide-react"
+import { ArrowRight, Shield, CheckCircle, Lock, Sparkles, Zap, Heart, BookOpen } from "lucide-react"
+import { getAllContent } from "@/lib/content"
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -40,6 +41,54 @@ const jsonLd = {
       logo: "https://secondlook.vercel.app/icon.svg",
     },
   ],
+}
+
+function ResourcesSection() {
+  const posts = getAllContent().slice(0, 3)
+  if (posts.length === 0) return null
+
+  return (
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 via-purple-800 to-blue-800 bg-clip-text text-transparent mb-6">
+          Learn More
+        </h2>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Explore our guides and resources about rare diseases, diagnosis, and navigating your health journey.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <Link
+            key={post.slug}
+            href={`/blog/${post.slug}`}
+            className="group bg-white rounded-2xl shadow-md border border-gray-100 p-6 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col"
+          >
+            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">
+              {post.title}
+            </h3>
+            <p className="text-gray-600 leading-relaxed flex-1">{post.description}</p>
+            <div className="mt-4 flex items-center text-purple-600 font-medium text-sm">
+              <span>Read more</span>
+              <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      <div className="text-center mt-10">
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-2 text-purple-600 hover:text-purple-800 font-semibold transition-colors"
+        >
+          <BookOpen className="h-5 w-5" />
+          <span>View all resources</span>
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </section>
+  )
 }
 
 export default function HomePage() {
@@ -235,6 +284,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Resources Section */}
+      <ResourcesSection />
+
       {/* Final CTA Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center">
@@ -253,40 +305,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Partner Logos */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-gray-100">
-        <div className="text-center mb-12">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-4">Trusted Healthcare Partners</h3>
-          <p className="text-gray-600">We work with leading healthcare organizations to provide comprehensive care</p>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-60">
-          <div className="flex items-center justify-center">
-            <img src="/images/steadymd-logo.jpg" alt="SteadyMD" className="h-12 object-contain" />
-          </div>
-          <div className="flex items-center justify-center">
-            <img src="/images/zus-health-logo.jpg" alt="Zus Health" className="h-12 object-contain" />
-          </div>
-          <div className="flex items-center justify-center">
-            <img src="/images/23andme-logo.png" alt="23andMe" className="h-12 object-contain" />
-          </div>
-          <div className="flex items-center justify-center">
-            <img src="/images/heartbeat-health-logo.jpg" alt="Heartbeat Health" className="h-12 object-contain" />
-          </div>
-          <div className="flex items-center justify-center">
-            <img src="/images/talkiatry-logo.png" alt="Talkiatry" className="h-12 object-contain" />
-          </div>
-          <div className="flex items-center justify-center">
-            <img src="/images/amplifymd-logo.webp" alt="AmplifyMD" className="h-12 object-contain" />
-          </div>
-          <div className="flex items-center justify-center">
-            <img src="/images/oshi-health-logo.jpg" alt="Oshi Health" className="h-12 object-contain" />
-          </div>
-          <div className="flex items-center justify-center">
-            <img src="/images/synapticure-logo.png" alt="Synapticure" className="h-12 object-contain" />
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

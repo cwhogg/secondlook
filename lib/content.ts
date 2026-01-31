@@ -4,7 +4,7 @@ import matter from "gray-matter"
 
 const contentDirectory = path.join(process.cwd(), "content")
 
-export type ContentType = "blog" | "faq" | "comparison"
+export type ContentType = "blog" | "faq" | "comparison" | "landing-page"
 
 export interface ContentMeta {
   slug: string
@@ -66,8 +66,9 @@ export function getAllContent(): ContentPiece[] {
   const blog = getContentFromDirectory("blog", "blog")
   const faq = getContentFromDirectory("faq", "faq")
   const comparison = getContentFromDirectory("comparison", "comparison")
+  const landingPage = getContentFromDirectory("landing-page", "landing-page")
 
-  return [...blog, ...faq, ...comparison]
+  return [...blog, ...faq, ...comparison, ...landingPage]
     .filter((piece) => piece.status === "published" || piece.status === "draft")
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
@@ -77,6 +78,7 @@ export function getContentBySlug(slug: string): ContentPiece | undefined {
     ...getContentFromDirectory("blog", "blog"),
     ...getContentFromDirectory("faq", "faq"),
     ...getContentFromDirectory("comparison", "comparison"),
+    ...getContentFromDirectory("landing-page", "landing-page"),
   ]
   return all.find((piece) => piece.slug === slug)
 }

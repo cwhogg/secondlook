@@ -149,10 +149,12 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                   ? "bg-blue-100 text-blue-700"
                   : piece.type === "faq"
                     ? "bg-emerald-100 text-emerald-700"
-                    : "bg-purple-100 text-purple-700"
+                    : piece.type === "landing-page"
+                      ? "bg-amber-100 text-amber-700"
+                      : "bg-purple-100 text-purple-700"
               }`}
             >
-              {piece.type === "blog" ? "Article" : piece.type === "faq" ? "FAQ" : "Comparison"}
+              {piece.type === "blog" ? "Article" : piece.type === "faq" ? "FAQ" : piece.type === "landing-page" ? "Guide" : "Comparison"}
             </span>
             <time className="text-sm text-gray-400" dateTime={piece.date}>
               {new Date(piece.date).toLocaleDateString("en-US", {

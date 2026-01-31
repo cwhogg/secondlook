@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, BookOpen, HelpCircle, GitCompare } from "lucide-react"
+import { ArrowRight, BookOpen, HelpCircle, GitCompare, FileText } from "lucide-react"
 import { getAllContent, type ContentType } from "@/lib/content"
 
 export const metadata: Metadata = {
@@ -20,6 +20,7 @@ const typeConfig: Record<ContentType, { label: string; color: string; icon: type
   blog: { label: "Article", color: "bg-blue-100 text-blue-700", icon: BookOpen },
   faq: { label: "FAQ", color: "bg-emerald-100 text-emerald-700", icon: HelpCircle },
   comparison: { label: "Comparison", color: "bg-purple-100 text-purple-700", icon: GitCompare },
+  "landing-page": { label: "Guide", color: "bg-amber-100 text-amber-700", icon: FileText },
 }
 
 export default function BlogIndexPage() {

@@ -4,7 +4,7 @@ type: blog-post
 targetKeywords: ["ai symptom checker for complex medical cases 2026", "complex symptom pattern recognition app", "ai diagnostic tools rare diseases", "sophisticated symptom analysis"]
 contentGap: "Current AI symptom checker content focuses on simple cases. Missing is evaluation of tools specifically designed for complex, rare, or multi-system conditions."
 generatedAt: "2026-01-31T22:56:14.791Z"
-ideaName: "SecondLook v4 (new SEO)"
+ideaName: "SecondLook (new SEO)"
 status: draft
 wordCount: 2847
 ---
@@ -84,7 +84,7 @@ What's significant is that Microsoft's success demonstrates the feasibility of A
 
 Several breakthrough AI tools launched in 2025-2026 specifically target complex medical cases:
 
-### SecondLook v4
+### SecondLook
 This advanced diagnostic guidance platform combines professional-grade analytical capabilities with patient-friendly interfaces. Key features include:
 - **Rare disease pattern recognition** trained on medical literature
 - **Longitudinal symptom intelligence** that tracks condition evolution
@@ -242,10 +242,10 @@ For patients trapped in diagnostic odysseys, these tools offer hope—not as rep
 
 ## Getting Started with Advanced Diagnostic AI
 
-If you're dealing with a complex, undiagnosed condition, consider how next-generation AI diagnostic tools might support your journey. **SecondLook v4** offers comprehensive diagnostic guidance specifically designed for patients with complex conditions who've exhausted traditional healthcare pathways.
+If you're dealing with a complex, undiagnosed condition, consider how next-generation AI diagnostic tools might support your journey. **SecondLook** offers comprehensive diagnostic guidance specifically designed for patients with complex conditions who've exhausted traditional healthcare pathways.
 
-Unlike basic symptom checkers, SecondLook v4 provides professional-grade analytical capabilities, rare disease pattern recognition, and tools to optimize communication with physicians. For patients who've been told "we can't figure out what's wrong," it offers a path forward when traditional medicine reaches its limits.
+Unlike basic symptom checkers, SecondLook provides professional-grade analytical capabilities, rare disease pattern recognition, and tools to optimize communication with physicians. For patients who've been told "we can't figure out what's wrong," it offers a path forward when traditional medicine reaches its limits.
 
-[Learn more about how SecondLook v4 can support your diagnostic journey →]
+[Learn more about how SecondLook can support your diagnostic journey →]
 
 *Remember: AI diagnostic tools are designed to enhance, not replace, professional medical care. Always consult with qualified healthcare providers for medical decisions and treatment plans.*

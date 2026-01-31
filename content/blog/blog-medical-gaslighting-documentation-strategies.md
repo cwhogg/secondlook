@@ -4,7 +4,7 @@ type: blog-post
 targetKeywords: ["medical gaslighting documentation strategies", "how to document medical dismissal", "medical advocacy evidence collection", "protecting yourself from medical gaslighting"]
 contentGap: "Existing content is mostly opinion pieces or general advice. Missing are practical documentation frameworks and tools for building evidence-based advocacy cases."
 generatedAt: "2026-01-31T22:58:00.793Z"
-ideaName: "SecondLook v4 (new SEO)"
+ideaName: "SecondLook (new SEO)"
 status: draft
 wordCount: 2847
 ---
@@ -142,7 +142,7 @@ Elite medical centers like Mayo Clinic, Cleveland Clinic, and Johns Hopkins see 
 
 Traditional symptom checkers fail complex cases because they're designed for common conditions. However, new AI-powered tools are emerging specifically for diagnostic odyssey patients.
 
-Modern platforms like SecondLook v4 address gaps left by generic symptom checkers by offering:
+Modern platforms like SecondLook address gaps left by generic symptom checkers by offering:
 
 - **Complex pattern recognition**: AI trained specifically on rare disease presentations
 - **Longitudinal symptom tracking**: Tools that recognize patterns across months or years
@@ -232,7 +232,7 @@ Effective protecting yourself from medical gaslighting requires systematic tools
 
 As healthcare AI evolves, the gap between patient needs and available tools is narrowing. The most promising developments focus not on replacing physicians but on empowering patients with professional-grade analytical capabilities.
 
-SecondLook v4 represents this evolution—a platform designed specifically for patients who've been failed by traditional approaches. By combining longitudinal symptom intelligence, medical record archaeology, and physician communication optimization, it addresses the exact gaps that leave complex patients struggling in diagnostic limbo.
+SecondLook represents this evolution—a platform designed specifically for patients who've been failed by traditional approaches. By combining longitudinal symptom intelligence, medical record archaeology, and physician communication optimization, it addresses the exact gaps that leave complex patients struggling in diagnostic limbo.
 
 Unlike generic symptom checkers that fail at complex presentations, specialized diagnostic guidance platforms understand that rare disease patients need sophisticated tools for navigating multi-year diagnostic journeys.
 
@@ -242,6 +242,6 @@ Medical gaslighting documentation strategies aren't about becoming your own doct
 
 The key is systematic approach: document everything, organize professionally, communicate clearly, and persist strategically. Your symptoms are real, your concerns are valid, and your right to proper medical investigation is non-negotiable.
 
-Ready to build your professional documentation toolkit? SecondLook v4 provides the specialized guidance and organizational tools designed specifically for complex diagnostic journeys. Join thousands of patients who've transformed their medical advocacy from frustrating encounters to productive partnerships with their healthcare providers.
+Ready to build your professional documentation toolkit? SecondLook provides the specialized guidance and organizational tools designed specifically for complex diagnostic journeys. Join thousands of patients who've transformed their medical advocacy from frustrating encounters to productive partnerships with their healthcare providers.
 
 *Start your systematic documentation journey today—because your health story deserves to be heard, understood, and properly investigated.*

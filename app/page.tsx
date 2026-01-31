@@ -1,10 +1,54 @@
-"use client"
 import Link from "next/link"
 import { ArrowRight, Shield, CheckCircle, Lock, Sparkles, Zap, Heart } from "lucide-react"
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      name: "SecondLook",
+      url: "https://secondlook.vercel.app",
+      description:
+        "AI-powered symptom analysis tool that helps identify rare and complex medical conditions that general practitioners might overlook.",
+      applicationCategory: "HealthApplication",
+      operatingSystem: "Web",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+    },
+    {
+      "@type": "MedicalWebPage",
+      name: "SecondLook — AI-Powered Rare Disease Diagnosis Tool",
+      url: "https://secondlook.vercel.app",
+      description:
+        "Analyze your symptoms against thousands of rare and complex conditions. Get a second opinion powered by AI in minutes.",
+      about: {
+        "@type": "MedicalCondition",
+        name: "Rare Diseases",
+      },
+      lastReviewed: new Date().toISOString().split("T")[0],
+      medicalAudience: {
+        "@type": "Patient",
+      },
+    },
+    {
+      "@type": "Organization",
+      name: "SecondLook",
+      url: "https://secondlook.vercel.app",
+      logo: "https://secondlook.vercel.app/icon.svg",
+    },
+  ],
+}
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50/30">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 via-blue-600/5 to-emerald-600/5"></div>

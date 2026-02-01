@@ -54,7 +54,7 @@ export function AnalysisLoading({ progress, currentStep, analysisData }: Analysi
     { id: 1, label: "Processing symptoms", completed: progress > 25 },
     { id: 2, label: "Mapping conditions", completed: progress > 50 },
     { id: 3, label: "Analyzing patterns", completed: progress > 75 },
-    { id: 4, label: "Generating insights", completed: progress >= 100 },
+    { id: 4, label: "Generating diagnoses", completed: progress >= 100 },
   ]
 
   return (

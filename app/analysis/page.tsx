@@ -251,7 +251,7 @@ export default function AnalysisPage() {
 
         await delay(3000)
         setProgress(80)
-        setCurrentStep("Generating insights")
+        setCurrentStep("Generating diagnoses")
 
         const stage4Start = Date.now()
         const response = await apiPromise

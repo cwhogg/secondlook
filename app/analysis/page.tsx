@@ -100,10 +100,10 @@ export default function AnalysisPage() {
 
       console.log("[AnalysisPage] Loading analysis data...")
 
-      // Load data from sessionStorage
-      const step1Data = sessionStorage.getItem("step1Data")
-      const step2Data = sessionStorage.getItem("step2Data")
-      const step3Data = sessionStorage.getItem("step3Data")
+      // Load data from localStorage (where step-1, step-2, step-3 pages save it)
+      const step1Data = localStorage.getItem("step1Data")
+      const step2Data = localStorage.getItem("step2Data")
+      const step3Data = localStorage.getItem("step3Data")
 
       console.log("[AnalysisPage] Analysis data loaded:", {
         hasStep1: !!step1Data,
@@ -144,21 +144,60 @@ export default function AnalysisPage() {
         // Prepare analysis payload
         console.log("[AnalysisPage] ===== STARTING EXPERT ANALYSIS =====")
 
-        // Build symptoms array - include both step2 symptoms and primary concern
+        // Build symptoms array - include mapped symptoms from step 2, or fall back to primary concern
         const symptoms = []
 
-        // Add primary concern as a symptom if it exists
-        if (parsedStep1.primaryConcern) {
-          symptoms.push({
-            text: parsedStep1.primaryConcern,
-            medicalTerm: "Primary concern",
-            severity: parsedStep1.severity || 5,
-          })
+        // Load mapped symptoms from localStorage (persisted by step-2's SymptomMappingSection)
+        const mappedSymptomsData = localStorage.getItem("mappedSymptoms")
+        let mappedSymptoms: any[] = []
+        if (mappedSymptomsData) {
+          try {
+            mappedSymptoms = JSON.parse(mappedSymptomsData)
+          } catch (e) {
+            console.error("[AnalysisPage] Failed to parse mapped symptoms:", e)
+          }
         }
 
-        // Add any mapped symptoms from step 2
-        if (parsedStep2.symptoms && Array.isArray(parsedStep2.symptoms)) {
-          symptoms.push(...parsedStep2.symptoms)
+        // Load symptom patterns from localStorage
+        const symptomPatternsData = localStorage.getItem("symptomPatterns")
+        let symptomPatterns: any = null
+        if (symptomPatternsData) {
+          try {
+            symptomPatterns = JSON.parse(symptomPatternsData)
+          } catch (e) {
+            console.error("[AnalysisPage] Failed to parse symptom patterns:", e)
+          }
+        }
+
+        // Use mapped symptoms if available, otherwise fall back to primary concern
+        if (mappedSymptoms.length > 0) {
+          symptoms.push(
+            ...mappedSymptoms.map((s: any) => ({
+              originalPhrase: s.originalPhrase,
+              originalText: s.originalPhrase,
+              text: s.originalPhrase,
+              medicalTerm: s.medicalTerm,
+              selectedConcept: s.selectedConcept,
+              category: s.category,
+              bodyPart: s.bodyPart,
+              severity: s.severity,
+            })),
+          )
+        } else {
+          // Add primary concern as a symptom if no mapped symptoms available
+          if (parsedStep1.primaryConcern) {
+            symptoms.push({
+              text: parsedStep1.primaryConcern,
+              originalText: parsedStep1.primaryConcern,
+              medicalTerm: "Primary concern",
+              severity: parsedStep1.severity || 5,
+            })
+          }
+
+          // Add any symptoms from step 2 data
+          if (parsedStep2.symptoms && Array.isArray(parsedStep2.symptoms)) {
+            symptoms.push(...parsedStep2.symptoms)
+          }
         }
 
         console.log("[AnalysisPage] Constructing symptoms from available data...")
@@ -183,6 +222,7 @@ export default function AnalysisPage() {
             recentTests: parsedStep3.recentTests || [],
           },
           familyHistory: parsedStep3.familyHistory || [],
+          symptomPatterns: symptomPatterns,
         }
 
         console.log("[AnalysisPage] Analysis payload prepared:", {

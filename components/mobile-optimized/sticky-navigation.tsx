@@ -60,7 +60,7 @@ export function StickyNavigation({
       className={cn(
         "fixed bottom-0 left-0 right-0 z-50 transition-transform duration-300",
         "bg-white border-t border-gray-200 shadow-lg",
-        "safe-area-inset-bottom", // Handle iPhone home indicator
+        "safe-area-bottom", // Handle iPhone home indicator
         isVisible ? "translate-y-0" : "translate-y-full",
         className,
       )}

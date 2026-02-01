@@ -595,29 +595,31 @@ export function SymptomMappingSection({
 
                 {symptom.isEditingCorrection && (
                   <div className="mt-3 p-3 bg-gray-50 border border-gray-200 rounded-lg">
-                    <div className="flex space-x-2">
+                    <div className="flex flex-col sm:flex-row gap-2">
                       <input
                         type="text"
                         placeholder="e.g., migraine headache, chronic fatigue..."
                         value={symptom.userCorrection || ""}
                         onChange={(e) => handleCorrectionChange(index, e.target.value)}
-                        onKeyPress={(e) => e.key === "Enter" && handleCorrectionSave(index)}
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary"
+                        onKeyDown={(e) => e.key === "Enter" && handleCorrectionSave(index)}
+                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary"
                         autoFocus
                       />
+                      <div className="flex gap-2">
                       <button
                         onClick={() => handleCorrectionSave(index)}
                         disabled={!symptom.userCorrection?.trim()}
-                        className="px-3 py-2 bg-green-600 text-white rounded-lg text-sm hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="flex-1 sm:flex-none px-3 py-2 bg-green-600 text-white rounded-lg text-sm hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         Save
                       </button>
                       <button
                         onClick={() => handleCorrectionCancel(index)}
-                        className="px-3 py-2 bg-gray-600 text-white rounded-lg text-sm hover:bg-gray-700"
+                        className="flex-1 sm:flex-none px-3 py-2 bg-gray-600 text-white rounded-lg text-sm hover:bg-gray-700"
                       >
                         Cancel
                       </button>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -762,14 +764,14 @@ export function SymptomMappingSection({
 
       <div className="mt-6 p-4 border border-gray-200 rounded-xl">
         <h4 className="font-medium text-gray-900 mb-3">Add symptoms or details to re-analyze everything:</h4>
-        <div className="flex space-x-3">
+        <div className="flex flex-col sm:flex-row gap-3">
           <input
             type="text"
             placeholder="e.g., joint pain, headaches, difficulty sleeping..."
             value={newSymptom}
             onChange={(e) => setNewSymptom(e.target.value)}
-            onKeyPress={(e) => e.key === "Enter" && analyzeNewSymptom()}
-            className="flex-1 border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary"
+            onKeyDown={(e) => e.key === "Enter" && analyzeNewSymptom()}
+            className="flex-1 border border-gray-300 rounded-xl px-4 py-2 text-base focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary"
           />
           <MedicalButton onClick={analyzeNewSymptom}>Analyze</MedicalButton>
         </div>

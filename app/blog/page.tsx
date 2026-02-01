@@ -32,13 +32,13 @@ export default function BlogIndexPage() {
         <Link href="/" className="text-xl font-bold text-indigo-700">
           SecondLook
         </Link>
-        <div className="flex items-center gap-6">
-          <Link href="/blog" className="text-sm font-medium text-indigo-700">
+        <div className="flex items-center gap-4">
+          <Link href="/blog" className="text-sm font-medium text-indigo-700 py-2 px-1">
             Resources
           </Link>
           <Link
             href="/step-1"
-            className="bg-indigo-700 hover:bg-indigo-800 text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all"
+            className="bg-indigo-700 hover:bg-indigo-800 text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all"
           >
             Start Analysis
           </Link>
@@ -47,7 +47,7 @@ export default function BlogIndexPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6">
             <span className="text-[#1e1b4b]">
               Health Resources
             </span>

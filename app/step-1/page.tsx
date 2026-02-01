@@ -131,12 +131,12 @@ export default function Step1() {
           </div>
 
           {/* Premium Header Section */}
-          <div className="text-center mb-10">
+          <div className="text-center mb-6 sm:mb-10">
             <div className="inline-flex items-center space-x-2 bg-indigo-100 px-4 py-2 rounded-full mb-6">
               <Sparkles className="h-4 w-4 text-indigo-700" />
               <span className="text-sm font-medium text-indigo-700">Step 1 of 3</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               Tell us about your{" "}
               <span className="text-indigo-700">
                 health concerns
@@ -149,11 +149,11 @@ export default function Step1() {
 
           {/* Main Form Container */}
           <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
-            <div className="space-y-12">
+            <div className="space-y-6 sm:space-y-12">
               {/* Section 1: Essential Demographics */}
               <div className="space-y-8">
                 <div className="text-left">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-3">Basic Information</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Basic Information</h2>
                   <p className="text-lg text-gray-600">This helps us consider conditions that affect people like you</p>
                 </div>
 
@@ -224,7 +224,7 @@ export default function Step1() {
               {/* Section 2: Primary Concern */}
               <div className="space-y-6">
                 <div className="text-left">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-3">What's your main health concern?</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">What's your main health concern?</h2>
                   <p className="text-lg text-gray-600">
                     Describe your symptoms in your own words - be as detailed as possible
                   </p>
@@ -250,7 +250,7 @@ export default function Step1() {
                             : "border-gray-200",
                       )}
                     />
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center flex-wrap gap-1">
                       <p className="text-base text-gray-600">
                         Include when symptoms started, how they've changed, and what makes them better or worse
                       </p>
@@ -264,7 +264,7 @@ export default function Step1() {
               {/* Section 3: Patient Hypothesis */}
               <div className="space-y-6">
                 <div className="text-left">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
                     Do you have any thoughts about what this might be?
                   </h2>
                   <p className="text-lg text-gray-600">
@@ -326,7 +326,7 @@ export default function Step1() {
               {/* Section 4: Body Regions */}
               <div className="space-y-6">
                 <div className="text-left">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-3">Which parts of your body are affected?</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Which parts of your body are affected?</h2>
                   <p className="text-lg text-gray-600 mb-2">
                     Select all areas where you're experiencing symptoms - many conditions affect multiple body systems
                   </p>
@@ -342,7 +342,7 @@ export default function Step1() {
               {/* Section 5: Severity */}
               <div className="space-y-6">
                 <div className="text-left">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
                     How much are these symptoms affecting your daily life?
                   </h2>
                   <p className="text-lg text-gray-600">This helps us understand the impact on your quality of life</p>

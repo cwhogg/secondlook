@@ -36,7 +36,7 @@ export function MedicationEntry({ medication, onUpdate, onRemove, onSubmit }: Me
         <button
           type="button"
           onClick={() => onRemove(medication.id)}
-          className="text-gray-400 hover:text-red-500 transition-colors"
+          className="text-gray-400 hover:text-red-500 transition-colors touch-target flex items-center justify-center"
         >
           <X className="h-5 w-5" />
         </button>
@@ -52,7 +52,7 @@ export function MedicationEntry({ medication, onUpdate, onRemove, onSubmit }: Me
               value={medication.name}
               onChange={(e) => onUpdate(medication.id, "name", e.target.value)}
               disabled={medication.submitted}
-              className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary disabled:bg-gray-100 disabled:cursor-not-allowed"
+              className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary disabled:bg-gray-100 disabled:cursor-not-allowed text-base"
             />
             {canSubmit && (
               <MedicalButton onClick={() => onSubmit(medication.id)} size="sm" className="flex items-center space-x-1">
@@ -65,7 +65,7 @@ export function MedicationEntry({ medication, onUpdate, onRemove, onSubmit }: Me
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Type</label>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
             {[
               { id: "prescription", label: "Prescription" },
               { id: "otc", label: "Over-the-counter" },

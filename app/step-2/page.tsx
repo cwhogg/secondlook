@@ -184,7 +184,7 @@ export default function Step2() {
               <Sparkles className="h-4 w-4 text-indigo-700" />
               <span className="text-sm font-medium text-indigo-700">Step 2 of 3</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               We've analyzed your{" "}
               <span className="text-indigo-700">
                 description
@@ -203,7 +203,7 @@ export default function Step2() {
                 <div className="p-2 bg-indigo-700 rounded-xl">
                   <Brain className="h-6 w-6 text-white" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900">AI Symptom Analysis</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900">AI Symptom Analysis</h2>
               </div>
               <SymptomMappingSection
                 chiefComplaint={step1Data.primaryConcern}
@@ -277,7 +277,7 @@ export default function Step2() {
             {/* Timeline Section */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
               <div className="text-left mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-3">When did things start?</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">When did things start?</h2>
                 {errors.mainSymptomStart && <p className="text-red-600 text-sm">{errors.mainSymptomStart}</p>}
               </div>
 
@@ -293,7 +293,7 @@ export default function Step2() {
             {/* Symptom Patterns Section */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
               <div className="text-left mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-3">How would you describe your symptoms?</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">How would you describe your symptoms?</h2>
                 {errors.symptomPattern && <p className="text-red-600 text-sm">{errors.symptomPattern}</p>}
               </div>
 
@@ -306,7 +306,7 @@ export default function Step2() {
             {/* Triggers Section */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
               <div className="text-left mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-3">What makes your symptoms worse?</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">What makes your symptoms worse?</h2>
                 <p className="text-lg text-gray-600">Select all that apply</p>
               </div>
 
@@ -316,7 +316,7 @@ export default function Step2() {
             {/* Associated Symptoms Section */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
               <div className="text-left mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-3">What else have you noticed?</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">What else have you noticed?</h2>
                 <p className="text-lg text-gray-600">
                   Based on the areas you selected, here are common related symptoms
                 </p>
@@ -332,7 +332,7 @@ export default function Step2() {
             {/* Family History Section */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
               <div className="text-left mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-3">Does anyone in your family have:</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Does anyone in your family have:</h2>
               </div>
 
               <FamilyHistorySelector

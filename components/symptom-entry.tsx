@@ -30,7 +30,7 @@ export function SymptomEntryComponent({ symptom, onUpdate, onRemove }: SymptomEn
         <button
           type="button"
           onClick={() => onRemove(symptom.id)}
-          className="text-gray-400 hover:text-red-500 transition-colors"
+          className="text-gray-400 hover:text-red-500 transition-colors touch-target flex items-center justify-center"
         >
           <X className="h-5 w-5" />
         </button>
@@ -44,7 +44,7 @@ export function SymptomEntryComponent({ symptom, onUpdate, onRemove }: SymptomEn
             placeholder="e.g., Joint pain, headaches, rash..."
             value={symptom.description}
             onChange={(e) => onUpdate(symptom.id, "description", e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary text-base"
           />
         </div>
 

@@ -717,7 +717,7 @@ export default function NextStepsPage() {
       </div>
 
       {/* Fixed Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-200 p-3 sm:p-6 safe-area-pb">
+      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-200 p-3 sm:p-6 pb-safe">
         <div className="max-w-4xl mx-auto flex justify-between items-center gap-3">
           <button
             onClick={handleBack}

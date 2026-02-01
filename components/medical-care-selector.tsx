@@ -69,7 +69,7 @@ export function MedicalCareSelector({
           <select
             value={specialistType || ""}
             onChange={(e) => onSpecialistTypeChange(e.target.value)}
-            className="w-full px-3 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary bg-white"
+            className="w-full px-3 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary bg-white text-base"
           >
             <option value="">Select specialist type...</option>
             {specialistTypes.map((type) => (
@@ -85,7 +85,7 @@ export function MedicalCareSelector({
       {value === "emergency" && (
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
           <label className="block text-sm font-medium text-blue-900 mb-3">How many ER visits?</label>
-          <div className="grid grid-cols-5 gap-2">
+          <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
             {[1, 2, 3, 4, 5].map((num) => (
               <button
                 key={num}

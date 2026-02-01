@@ -63,7 +63,7 @@ export function FamilyHistorySelector({ value, onChange, details, onDetailsChang
             onChange={(e) => onDetailsChange(e.target.value)}
             maxLength={100}
             rows={2}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary resize-none"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary resize-none text-base"
           />
           <div className="text-right">
             <span className="text-xs text-gray-500">{details.length}/100 characters</span>

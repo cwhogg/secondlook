@@ -73,7 +73,7 @@ export function SkeletonScreen({ variant = "form", className }: SkeletonScreenPr
           <SkeletonBox className="h-8 w-2/3 bg-white bg-opacity-20" />
           <SkeletonBox className="h-4 w-1/2 bg-white bg-opacity-20" />
         </div>
-        <div className="grid grid-cols-4 gap-4 mt-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="text-center">
               <SkeletonBox className="h-8 w-full bg-white bg-opacity-20 mb-2" />

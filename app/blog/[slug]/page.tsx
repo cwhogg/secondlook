@@ -147,13 +147,13 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         <Link href="/" className="text-xl font-bold text-indigo-700">
           SecondLook
         </Link>
-        <div className="flex items-center gap-6">
-          <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-indigo-700 transition-colors">
+        <div className="flex items-center gap-4">
+          <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-indigo-700 transition-colors py-2 px-1">
             Resources
           </Link>
           <Link
             href="/step-1"
-            className="bg-indigo-700 hover:bg-indigo-800 text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all"
+            className="bg-indigo-700 hover:bg-indigo-800 text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all"
           >
             Start Analysis
           </Link>
@@ -163,7 +163,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
         <Link
           href="/blog"
-          className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700 transition-colors mb-8"
+          className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700 transition-colors mb-8 py-2"
         >
           <ArrowLeft className="h-4 w-4 mr-1" />
           Back to Resources
@@ -192,7 +192,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               })}
             </time>
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight mb-4">
             <span className="text-[#1e1b4b]">
               {piece.title}
             </span>

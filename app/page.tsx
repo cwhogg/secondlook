@@ -50,7 +50,7 @@ function ResourcesSection() {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="text-center mb-10">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#1e1b4b] mb-6">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-[#1e1b4b] mb-6">
           Health Resources &amp; Rare Disease Guides
         </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -104,13 +104,13 @@ export default function HomePage() {
         <Link href="/" className="text-xl font-bold text-indigo-700">
           SecondLook
         </Link>
-        <div className="flex items-center gap-6">
-          <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-indigo-700 transition-colors">
+        <div className="flex items-center gap-4">
+          <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-indigo-700 transition-colors py-2 px-1">
             Resources
           </Link>
           <Link
             href="/step-1"
-            className="bg-indigo-700 hover:bg-indigo-800 text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all"
+            className="bg-indigo-700 hover:bg-indigo-800 text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all"
           >
             Start Analysis
           </Link>
@@ -138,7 +138,7 @@ export default function HomePage() {
           </div>
 
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-8 leading-tight">
               <span className="text-[#1e1b4b]">
                 {"Find Your Rare Diagnosis"}
               </span>
@@ -194,7 +194,7 @@ export default function HomePage() {
             <div className="w-10 h-10 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
               <Shield className="h-8 w-8 text-indigo-700" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Medical-Grade Security</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Medical-Grade Security</h3>
             <p className="text-gray-600 leading-relaxed">
               Your health information is protected with the same security standards used by hospitals and medical
               institutions.
@@ -205,7 +205,7 @@ export default function HomePage() {
             <div className="w-10 h-10 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
               <Zap className="h-8 w-8 text-indigo-700" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Fast Analysis</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Fast Analysis</h3>
             <p className="text-gray-600 leading-relaxed">
               Get comprehensive health insights in under 10 minutes. No waiting for appointments or referrals.
             </p>
@@ -215,7 +215,7 @@ export default function HomePage() {
             <div className="w-10 h-10 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
               <Heart className="h-8 w-8 text-indigo-700" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Doctor-Reviewed AI</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Doctor-Reviewed AI</h3>
             <p className="text-gray-600 leading-relaxed">
               Our AI is trained on peer-reviewed medical literature and overseen by licensed healthcare professionals.
             </p>
@@ -226,7 +226,7 @@ export default function HomePage() {
       {/* How It Works */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="text-center mb-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1e1b4b] mb-6">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-[#1e1b4b] mb-6">
             How SecondLook Works
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -239,7 +239,7 @@ export default function HomePage() {
             <div className="w-14 h-14 bg-indigo-700 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-sm">
               <span className="text-2xl font-bold text-white">1</span>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Share Your Health Story</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Share Your Health Story</h3>
             <p className="text-gray-600 leading-relaxed">
               Tell us about your symptoms, health history, and concerns using our easy questionnaire designed for
               patients.
@@ -250,7 +250,7 @@ export default function HomePage() {
             <div className="w-14 h-14 bg-indigo-700 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-sm">
               <span className="text-2xl font-bold text-white">2</span>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">AI Medical Review</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">AI Medical Review</h3>
             <p className="text-gray-600 leading-relaxed">
               Our medical AI analyzes your information against thousands of conditions, focusing on rare and complex
               diagnoses.
@@ -261,7 +261,7 @@ export default function HomePage() {
             <div className="w-14 h-14 bg-indigo-700 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-sm">
               <span className="text-2xl font-bold text-white">3</span>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Get Your Report</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Get Your Report</h3>
             <p className="text-gray-600 leading-relaxed">
               Receive a detailed analysis with potential conditions to discuss with your healthcare provider.
             </p>
@@ -271,7 +271,7 @@ export default function HomePage() {
             <div className="w-14 h-14 bg-amber-600 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-sm">
               <Sparkles className="h-8 w-8 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Get Recommendations</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Get Recommendations</h3>
             <p className="text-gray-600 leading-relaxed">
               We recommend trusted partners who can fill in gaps and help get to a specific diagnosis.
             </p>

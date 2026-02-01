@@ -79,17 +79,7 @@ export default function ExpertResultsPage() {
 
   return (
     <ExpertAnalysisResults
-      patientHypothesis={analysisMetadata?.patientHypothesis}
-      patientAge={analysisMetadata?.patientAge || "Unknown"}
-      patientSex={analysisMetadata?.patientSex || "Unknown"}
-      analysisTimestamp={analysisMetadata?.timestamp || new Date().toLocaleString()}
-      differentialDiagnoses={analysisResults.differentialDiagnoses}
-      excludedCommonDiagnoses={analysisResults.excludedCommonDiagnoses}
-      dataGaps={analysisResults.dataGaps}
-      recommendedTesting={analysisResults.recommendedTesting}
-      nextSteps={analysisResults.nextSteps}
-      overallAssessment={analysisResults.overallAssessment}
-      patientHypothesisAnalysis={analysisResults.patientHypothesisAnalysis}
+      analysis={analysisResults}
       processingTime={analysisMetadata?.processingTime || 0}
     />
   )

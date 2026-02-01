@@ -125,8 +125,8 @@ export default function AnalysisPage() {
         const parsedStep2: Step2Data = step2Data ? JSON.parse(step2Data) : { symptoms: [] }
         const parsedStep3: Step3Data = step3Data ? JSON.parse(step3Data) : {}
 
-        setCurrentStep("Preparing analysis")
-        setProgress(25)
+        setCurrentStep("Processing symptoms")
+        setProgress(10)
 
         console.log("[AnalysisPage] Auto-starting analysis...")
 
@@ -226,19 +226,35 @@ export default function AnalysisPage() {
           })),
         })
 
-        setProgress(90)
+        const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
-        // Call analysis API
+        // Call analysis API (start in background)
         console.log("[AnalysisPage] Making API call to /api/analyze-patient...")
         const startTime = Date.now()
 
-        const response = await fetch("/api/analyze-patient", {
+        const apiPromise = fetch("/api/analyze-patient", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(analysisPayload),
         })
+
+        // Stage through visual steps with 3s per step
+        await delay(3000)
+        setProgress(30)
+        setCurrentStep("Mapping conditions")
+
+        await delay(3000)
+        setProgress(55)
+        setCurrentStep("Analyzing patterns")
+
+        await delay(3000)
+        setProgress(80)
+        setCurrentStep("Generating insights")
+
+        const stage4Start = Date.now()
+        const response = await apiPromise
 
         console.log("[AnalysisPage] API response received:", {
           status: response.status,
@@ -346,6 +362,12 @@ export default function AnalysisPage() {
           resultsSize: JSON.stringify(analysisResults).length,
           metadataSize: JSON.stringify(analysisMetadata).length,
         })
+
+        // Ensure step 4 spinner shows for at least 3s
+        const stage4Elapsed = Date.now() - stage4Start
+        if (stage4Elapsed < 3000) {
+          await delay(3000 - stage4Elapsed)
+        }
 
         setProgress(100)
         setCurrentStep("Complete")

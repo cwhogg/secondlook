@@ -37,9 +37,59 @@ export default function AnalysisResultsPage() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const data = localStorage.getItem("analysisResults")
+    // Results are stored in sessionStorage by the ExpertAnalysisResults component
+    const data = sessionStorage.getItem("analysisResults")
     if (data) {
-      setAnalysisData(JSON.parse(data))
+      try {
+        const raw = JSON.parse(data)
+
+        // Transform API response format into the shape this page expects
+        if (raw.differentialDiagnoses && !raw.conditions) {
+          const conditions = (raw.differentialDiagnoses || []).map((d: any) => ({
+            name: d.diagnosis || "Unknown condition",
+            confidence: (d.confidenceScore || 0) / 100,
+            severity: d.confidenceScore >= 60 ? "high" : d.confidenceScore >= 30 ? "moderate" : "low",
+            icdCode: d.icd10Code || "N/A",
+            description: d.clinicalReasoning || d.typicalPresentation || "",
+            symptoms: d.supportingEvidence || [],
+            riskFactors: d.contradictoryEvidence || [],
+            recommendations: [
+              d.diagnosticCriteria,
+              d.specialistRequired ? `See specialist: ${d.specialistRequired}` : null,
+            ].filter(Boolean),
+          }))
+
+          const rareCount = (raw.differentialDiagnoses || []).filter((d: any) => d.rareDisease).length
+          const avgConf =
+            conditions.length > 0
+              ? conditions.reduce((sum: number, c: any) => sum + c.confidence, 0) / conditions.length
+              : 0
+
+          const transformed: AnalysisData = {
+            timestamp: new Date().toISOString(),
+            status: "complete",
+            conditions,
+            recommendations: {
+              immediateActions: raw.nextSteps?.immediateActions || [],
+              specialists: raw.nextSteps?.specialistReferrals || [],
+              tests: (raw.recommendedTesting || []).map((t: any) => `${t.testName}: ${t.rationale}`),
+              lifestyle: [],
+            },
+            metadata: {
+              totalConditions: conditions.length,
+              rareDiseasesCount: rareCount,
+              avgConfidence: avgConf,
+              complexConditionsCount: conditions.filter((c: any) => c.confidence < 0.5).length,
+            },
+          }
+          setAnalysisData(transformed)
+        } else {
+          // Already in the expected format
+          setAnalysisData(raw)
+        }
+      } catch (error) {
+        console.error("Error parsing analysis results:", error)
+      }
     }
     setIsLoading(false)
   }, [])

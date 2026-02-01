@@ -125,19 +125,8 @@ export default function AnalysisPage() {
         const parsedStep2: Step2Data = step2Data ? JSON.parse(step2Data) : { symptoms: [] }
         const parsedStep3: Step3Data = step3Data ? JSON.parse(step3Data) : {}
 
-        // Simulate analysis progress
-        setCurrentStep("Processing symptoms")
+        setCurrentStep("Preparing analysis")
         setProgress(25)
-
-        await new Promise((resolve) => setTimeout(resolve, 1000))
-
-        setCurrentStep("Mapping conditions")
-        setProgress(50)
-
-        await new Promise((resolve) => setTimeout(resolve, 1000))
-
-        setCurrentStep("Analyzing patterns")
-        setProgress(75)
 
         console.log("[AnalysisPage] Auto-starting analysis...")
 
@@ -361,11 +350,8 @@ export default function AnalysisPage() {
         setProgress(100)
         setCurrentStep("Complete")
 
-        // Wait a moment then redirect
-        await new Promise((resolve) => setTimeout(resolve, 500))
-
-        console.log("[AnalysisPage] Redirecting to /expert-results")
-        router.push("/expert-results")
+        console.log("[AnalysisPage] Redirecting to /results/analysis")
+        router.push("/results/analysis")
       } catch (error) {
         console.error("[AnalysisPage] Analysis error:", error)
         setError(error instanceof Error ? error.message : "Analysis failed")

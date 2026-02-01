@@ -205,7 +205,7 @@ Overall impression: ${patientData.symptomPatterns.overallImpression || "N/A"}`
 TASK: Provide expert rare disease differential diagnosis analysis.${patientData.symptomPatterns?.patterns?.length > 0 ? " The clinical pattern analysis above should inform but not constrain your differential — use it as additional context alongside the raw symptom data." : ""}`
 
     logAnalysis(requestId, "INFO", "Sending request to OpenAI", {
-      model: "gpt-4-turbo-preview",
+      model: "gpt-4o",
       systemPromptLength: systemPrompt.length,
       userPromptLength: userPrompt.length,
       temperature: 0.2,
@@ -223,7 +223,7 @@ TASK: Provide expert rare disease differential diagnosis analysis.${patientData.
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "gpt-4-turbo-preview",
+          model: "gpt-4o",
           messages: [
             { role: "system", content: systemPrompt },
             { role: "user", content: userPrompt },

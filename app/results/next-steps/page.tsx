@@ -22,6 +22,7 @@ import {
   ScanLine,
 } from "lucide-react"
 import { MedicalButton } from "@/components/medical-button"
+import { FeedbackModal } from "@/components/feedback-modal"
 
 interface AnalysisResults {
   recommendedTesting: Array<{
@@ -41,7 +42,14 @@ interface AnalysisResults {
 export default function NextStepsPage() {
   const [results, setResults] = useState<AnalysisResults | null>(null)
   const [loading, setLoading] = useState(true)
+  const [feedbackModalOpen, setFeedbackModalOpen] = useState(false)
+  const [feedbackFeatureName, setFeedbackFeatureName] = useState("")
   const router = useRouter()
+
+  const openFeedbackModal = (title: string) => {
+    setFeedbackFeatureName(title)
+    setFeedbackModalOpen(true)
+  }
 
   // Safe array accessors with default empty arrays
   const safeRecommendedTesting = results?.recommendedTesting || []
@@ -278,56 +286,70 @@ export default function NextStepsPage() {
           logo: "arrow",
           onClick: () => console.log("Starting personalized questions"),
         }
-      case "medical_history":
+      case "medical_history": {
+        const title = "Retrieve and analyze medical history"
         return {
-          title: "Retrieve and analyze medical history",
+          title,
           price: "$25",
           logo: "medical_records",
-          onClick: () => console.log("Starting medical records retrieval"),
+          onClick: () => openFeedbackModal(title),
         }
-      case "laboratory":
+      }
+      case "laboratory": {
+        const title = testName ? `Get labs, including ${testName}` : "Get labs"
         return {
-          title: testName ? `Get labs, including ${testName}` : "Get labs",
+          title,
           price: "$20",
           logo: "labs",
-          onClick: () => console.log("Starting lab order"),
+          onClick: () => openFeedbackModal(title),
         }
-      case "genetic_testing":
+      }
+      case "genetic_testing": {
+        const title = "Get genetic testing"
         return {
-          title: "Get genetic testing",
+          title,
           price: "$40",
           logo: "genetics",
-          onClick: () => console.log("Starting genetic testing"),
+          onClick: () => openFeedbackModal(title),
         }
-      case "imaging":
+      }
+      case "imaging": {
+        const title = "Get MD order for imaging"
         return {
-          title: "Get MD order for imaging",
+          title,
           price: "$20",
           logo: "imaging",
-          onClick: () => console.log("Starting imaging order"),
+          onClick: () => openFeedbackModal(title),
         }
-      case "specialist_evaluate":
+      }
+      case "specialist_evaluate": {
+        const title = getSpecialistButtonText(specialistType || "")
         return {
-          title: getSpecialistButtonText(specialistType || ""),
+          title,
           price: "$100",
           logo: getSpecialistLogo(specialistType || ""),
-          onClick: () => console.log("Starting specialist consultation booking"),
+          onClick: () => openFeedbackModal(title),
         }
-      case "human_care_navigator":
+      }
+      case "human_care_navigator": {
+        const title = "A human care navigator will help you schedule and keep visits, find sites of care and give advice"
         return {
-          title: "A human care navigator will help you schedule and keep visits, find sites of care and give advice",
+          title,
           price: "$50/mo",
           logo: "nurse",
-          onClick: () => console.log("Starting human care navigator service"),
+          onClick: () => openFeedbackModal(title),
         }
-      case "ai_care_navigator":
+      }
+      case "ai_care_navigator": {
+        const title =
+          "An AI care navigator is available 24/7 for immediate answers to all questions and requests, with same functions as a human"
         return {
-          title:
-            "An AI care navigator is available 24/7 for immediate answers to all questions and requests, with same functions as a human",
+          title,
           price: "$10/mo",
           logo: "robot",
-          onClick: () => console.log("Starting AI care navigator service"),
+          onClick: () => openFeedbackModal(title),
         }
+      }
       default:
         return null
     }
@@ -715,6 +737,12 @@ export default function NextStepsPage() {
           </button>
         </div>
       </div>
+
+      <FeedbackModal
+        open={feedbackModalOpen}
+        onOpenChange={setFeedbackModalOpen}
+        featureName={feedbackFeatureName}
+      />
     </div>
   )
 }

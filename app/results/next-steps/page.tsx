@@ -16,9 +16,12 @@ import {
   Sparkles,
   UserCheck,
   Bot,
+  FileText,
+  TestTubes,
+  Dna,
+  ScanLine,
 } from "lucide-react"
 import { MedicalButton } from "@/components/medical-button"
-import Image from "next/image"
 
 interface AnalysisResults {
   recommendedTesting: Array<{
@@ -266,7 +269,7 @@ export default function NextStepsPage() {
   }
 
   // Function to get action button configuration based on test type
-  const getActionButtonConfig = (testType: string, specialistType?: string) => {
+  const getActionButtonConfig = (testType: string, specialistType?: string, testName?: string) => {
     switch (testType) {
       case "patient_survey":
         return {
@@ -277,31 +280,31 @@ export default function NextStepsPage() {
         }
       case "medical_history":
         return {
-          title: "Get your records via Zus",
+          title: "Retrieve and analyze medical history",
           price: "$25",
-          logo: "zus",
-          onClick: () => console.log("Starting Zus Health records retrieval"),
+          logo: "medical_records",
+          onClick: () => console.log("Starting medical records retrieval"),
         }
       case "laboratory":
         return {
-          title: "Order your labs with SteadyMD",
+          title: testName ? `Get labs, including ${testName}` : "Get labs",
           price: "$20",
-          logo: "steadymd",
-          onClick: () => console.log("Starting SteadyMD lab order"),
+          logo: "labs",
+          onClick: () => console.log("Starting lab order"),
         }
       case "genetic_testing":
         return {
-          title: "Test your genes with 23andMe",
+          title: "Get genetic testing",
           price: "$40",
-          logo: "23andme",
-          onClick: () => console.log("Starting 23andMe genetic testing"),
+          logo: "genetics",
+          onClick: () => console.log("Starting genetic testing"),
         }
       case "imaging":
         return {
-          title: "Order the right scan with SteadyMD",
+          title: "Get MD order for imaging",
           price: "$20",
-          logo: "steadymd",
-          onClick: () => console.log("Starting SteadyMD imaging order"),
+          logo: "imaging",
+          onClick: () => console.log("Starting imaging order"),
         }
       case "specialist_evaluate":
         return {
@@ -366,15 +369,15 @@ export default function NextStepsPage() {
   // Fixed cards that always appear first with action buttons
   const fixedDataCollectionCards = [
     {
-      testName: "Answer personalized questions",
+      testName: "Answer 5 more questions",
       testType: "patient_survey",
-      rationale: "To refine your list of possible diagnoses",
+      rationale: "To get closer to your diagnosis",
       urgency: "routine",
     },
     {
-      testName: "Retrieve your medical history",
+      testName: "Retrieve and analyze your medical history",
       testType: "medical_history",
-      rationale: "To refine your list of possible diagnoses",
+      rationale: "To get closer to your diagnosis",
       urgency: "routine",
     },
   ]
@@ -383,13 +386,18 @@ export default function NextStepsPage() {
   const categoryOrder = ["laboratory", "genetic_testing", "imaging", "specialist_evaluate"]
 
   // Categorize and sort the recommended testing
+  // Normalize specialist_evaluation → specialist_evaluate so they don't create duplicates
   const categorizedTesting = safeRecommendedTesting.reduce(
     (acc, test) => {
-      const category = test.testType || "other"
+      let category = test.testType || "other"
+      // Normalize specialist_evaluation to specialist_evaluate
+      if (category === "specialist_evaluation") {
+        category = "specialist_evaluate"
+      }
       if (!acc[category]) {
         acc[category] = []
       }
-      acc[category].push(test)
+      acc[category].push({ ...test, testType: category })
       return acc
     },
     {} as Record<string, typeof safeRecommendedTesting>,
@@ -434,24 +442,14 @@ export default function NextStepsPage() {
     switch (logoType) {
       case "arrow":
         return <ArrowUpRight className="h-6 w-6 sm:h-8 sm:w-8 text-emerald-600" />
-      case "zus":
-        return (
-          <div className="h-6 w-8 sm:h-8 sm:w-10 relative">
-            <Image src="/images/zus-health-logo.jpg" alt="Zus Health" fill className="object-contain" sizes="40px" />
-          </div>
-        )
-      case "steadymd":
-        return (
-          <div className="h-6 w-8 sm:h-8 sm:w-10 relative">
-            <Image src="/images/steadymd-logo.jpg" alt="SteadyMD" fill className="object-contain" sizes="40px" />
-          </div>
-        )
-      case "23andme":
-        return (
-          <div className="h-6 w-8 sm:h-8 sm:w-10 relative">
-            <Image src="/images/23andme-logo.png" alt="23andMe" fill className="object-contain" sizes="40px" />
-          </div>
-        )
+      case "medical_records":
+        return <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-emerald-600" />
+      case "labs":
+        return <TestTubes className="h-6 w-6 sm:h-8 sm:w-8 text-emerald-600" />
+      case "genetics":
+        return <Dna className="h-6 w-6 sm:h-8 sm:w-8 text-emerald-600" />
+      case "imaging":
+        return <ScanLine className="h-6 w-6 sm:h-8 sm:w-8 text-emerald-600" />
       case "heartbeat":
         return (
           <div className="h-6 w-8 sm:h-8 sm:w-10 relative">
@@ -501,7 +499,7 @@ export default function NextStepsPage() {
 
   // Component to render a data collection card with action button
   const renderDataCollectionCard = (card: any, index: number, keyPrefix: string) => {
-    const actionButtonConfig = getActionButtonConfig(card.testType, card.specialistType)
+    const actionButtonConfig = getActionButtonConfig(card.testType, card.specialistType, card.testName)
 
     return (
       <div
@@ -581,7 +579,7 @@ export default function NextStepsPage() {
             Recommended Data Collection
           </h2>
           <p className="text-emerald-800 mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed">
-            Collecting the information below will help us refine your list of possible diagnoses:
+            Collecting the information below will help you get closer to your diagnosis:
           </p>
           <div className="space-y-4 sm:space-y-6">
             {/* Fixed cards always appear first */}

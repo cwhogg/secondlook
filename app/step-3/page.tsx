@@ -379,9 +379,9 @@ export default function Step3() {
 
   if (!step1Data || !step2Data) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50/30 flex items-center justify-center">
+      <div className="min-h-screen bg-[#faf9fe] flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500 mx-auto"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-700 mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading...</p>
         </div>
       </div>
@@ -392,7 +392,7 @@ export default function Step3() {
 
   return (
     <Layout currentStep={currentStep} totalSteps={totalSteps} breadcrumbItems={breadcrumbItems}>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50/30 py-4 sm:py-8">
+      <div className="min-h-screen bg-[#faf9fe] py-4 sm:py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Fixed Auto-save notification */}
           <div
@@ -400,7 +400,7 @@ export default function Step3() {
               autoSaved ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
             }`}
           >
-            <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl shadow-lg flex items-center space-x-2">
+            <div className="bg-emerald-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl shadow-sm flex items-center space-x-2">
               <CheckCircle className="h-4 w-4" />
               <span className="text-sm font-medium">Progress saved</span>
             </div>
@@ -432,14 +432,14 @@ export default function Step3() {
           )}
 
           {/* Premium Header Section */}
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-100 to-blue-100 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6">
-              <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-purple-600" />
-              <span className="text-xs sm:text-sm font-medium text-purple-700">Step 3 of 3</span>
+          <div className="text-center mb-8 sm:mb-12 lg:mb-10">
+            <div className="inline-flex items-center space-x-2 bg-indigo-100 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6">
+              <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-indigo-700" />
+              <span className="text-xs sm:text-sm font-medium text-indigo-700">Step 3 of 3</span>
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 md:mb-6 leading-tight px-2">
               Almost done - just a few{" "}
-              <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              <span className="text-indigo-700">
                 medical details
               </span>
             </h1>
@@ -451,10 +451,10 @@ export default function Step3() {
           {/* Main Form Container */}
           <div className="max-w-3xl mx-auto space-y-6 sm:space-y-8">
             {/* Medications Section */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 p-5 sm:p-8 md:p-12">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
               <div className="mb-6 sm:mb-8">
                 <div className="flex items-start gap-3 mb-4">
-                  <div className="p-1.5 sm:p-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg sm:rounded-xl flex-shrink-0">
+                  <div className="p-1.5 sm:p-2 bg-indigo-700 rounded-lg sm:rounded-xl flex-shrink-0">
                     <Pill className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -473,10 +473,10 @@ export default function Step3() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
                 <button
                   onClick={() => updateFormData("medicationPath", "none")}
-                  className={`p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border-2 text-center transition-all duration-300 hover:scale-105 active:scale-95 touch-target ${
+                  className={`p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border-2 text-center transition-all duration-300 touch-target ${
                     formData.medicationPath === "none"
-                      ? "border-purple-500 bg-gradient-to-br from-purple-50 to-blue-50 shadow-lg"
-                      : "border-gray-200 bg-white hover:border-purple-300 hover:shadow-md"
+                      ? "border-indigo-700 bg-indigo-50 shadow-md"
+                      : "border-gray-200 bg-white hover:border-indigo-300 hover:shadow-md"
                   }`}
                 >
                   <div className="font-semibold text-base sm:text-lg mb-1.5 sm:mb-2 text-gray-900">None</div>
@@ -485,10 +485,10 @@ export default function Step3() {
 
                 <button
                   onClick={() => updateFormData("medicationPath", "few")}
-                  className={`p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border-2 text-center transition-all duration-300 hover:scale-105 active:scale-95 touch-target ${
+                  className={`p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border-2 text-center transition-all duration-300 touch-target ${
                     formData.medicationPath === "few"
-                      ? "border-purple-500 bg-gradient-to-br from-purple-50 to-blue-50 shadow-lg"
-                      : "border-gray-200 bg-white hover:border-purple-300 hover:shadow-md"
+                      ? "border-indigo-700 bg-indigo-50 shadow-md"
+                      : "border-gray-200 bg-white hover:border-indigo-300 hover:shadow-md"
                   }`}
                 >
                   <div className="font-semibold text-base sm:text-lg mb-1.5 sm:mb-2 text-gray-900">A few</div>
@@ -497,10 +497,10 @@ export default function Step3() {
 
                 <button
                   onClick={() => updateFormData("medicationPath", "many")}
-                  className={`p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border-2 text-center transition-all duration-300 hover:scale-105 active:scale-95 touch-target ${
+                  className={`p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border-2 text-center transition-all duration-300 touch-target ${
                     formData.medicationPath === "many"
-                      ? "border-purple-500 bg-gradient-to-br from-purple-50 to-blue-50 shadow-lg"
-                      : "border-gray-200 bg-white hover:border-purple-300 hover:shadow-md"
+                      ? "border-indigo-700 bg-indigo-50 shadow-md"
+                      : "border-gray-200 bg-white hover:border-indigo-300 hover:shadow-md"
                   }`}
                 >
                   <div className="font-semibold text-base sm:text-lg mb-1.5 sm:mb-2 text-gray-900">Many</div>
@@ -533,7 +533,7 @@ export default function Step3() {
                     {formData.medications.length < 10 && (
                       <button
                         onClick={addMedication}
-                        className="flex items-center justify-center space-x-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl border-2 border-purple-300 text-purple-700 font-semibold hover:border-purple-500 hover:bg-purple-50 transition-all duration-200 text-sm sm:text-base touch-target"
+                        className="flex items-center justify-center space-x-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl border-2 border-indigo-300 text-indigo-700 font-semibold hover:border-indigo-500 hover:bg-indigo-50 transition-all duration-200 text-sm sm:text-base touch-target"
                       >
                         <Plus className="h-4 w-4 sm:h-5 sm:w-5" />
                         <span>Add another</span>
@@ -547,7 +547,7 @@ export default function Step3() {
                         className={`flex items-center justify-center space-x-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl font-semibold transition-all duration-200 sm:ml-auto text-sm sm:text-base touch-target ${
                           isParsing || allMedicationsHaveParsedData
                             ? "bg-gray-200 text-gray-500 cursor-not-allowed"
-                            : "bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg"
+                            : "bg-indigo-700 text-white hover:shadow-md"
                         }`}
                       >
                         {isParsing ? (
@@ -578,7 +578,7 @@ export default function Step3() {
                     onChange={(e) => updateFormData("medicationsBulk", e.target.value)}
                     maxLength={500}
                     rows={8}
-                    className="w-full px-3 sm:px-4 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base md:text-lg resize-none transition-all duration-200"
+                    className="w-full px-3 sm:px-4 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm sm:text-base md:text-lg resize-none transition-all duration-200"
                   />
                   <div className="flex justify-between items-center">
                     <p className="text-xs sm:text-sm md:text-base text-gray-600">List each on a separate line</p>
@@ -589,10 +589,10 @@ export default function Step3() {
             </div>
 
             {/* Medical Care History Section */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 p-5 sm:p-8 md:p-12">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
               <div className="mb-6 sm:mb-8">
                 <div className="flex items-start gap-3 mb-4">
-                  <div className="p-1.5 sm:p-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg sm:rounded-xl flex-shrink-0">
+                  <div className="p-1.5 sm:p-2 bg-indigo-700 rounded-lg sm:rounded-xl flex-shrink-0">
                     <Stethoscope className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -630,10 +630,10 @@ export default function Step3() {
             </div>
 
             {/* Testing History Section */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 p-5 sm:p-8 md:p-12">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
               <div className="mb-6 sm:mb-8">
                 <div className="flex items-start gap-3 mb-4">
-                  <div className="p-1.5 sm:p-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg sm:rounded-xl flex-shrink-0">
+                  <div className="p-1.5 sm:p-2 bg-indigo-700 rounded-lg sm:rounded-xl flex-shrink-0">
                     <FileText className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -655,7 +655,7 @@ export default function Step3() {
             </div>
 
             {/* Hypothesis Review Section */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 p-5 sm:p-8 md:p-12">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
               <div className="flex items-center justify-between mb-6 sm:mb-8">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">Your initial thoughts</h2>
                 <div className="flex items-center space-x-1.5 sm:space-x-2 text-emerald-600">
@@ -665,9 +665,9 @@ export default function Step3() {
               </div>
 
               {step1Data.patientHypothesis && !step1Data.noIdea ? (
-                <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl sm:rounded-2xl p-4 sm:p-6">
-                  <div className="text-xs sm:text-sm text-blue-600 mb-2 font-medium">Earlier you mentioned:</div>
-                  <div className="text-blue-900 font-semibold mb-4 sm:mb-6 text-base sm:text-lg">
+                <div className="bg-indigo-50 border border-[#e5e2f0] rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                  <div className="text-xs sm:text-sm text-indigo-700 mb-2 font-medium">Earlier you mentioned:</div>
+                  <div className="text-indigo-900 font-semibold mb-4 sm:mb-6 text-base sm:text-lg">
                     "{step1Data.patientHypothesis}"
                   </div>
 
@@ -681,7 +681,7 @@ export default function Step3() {
                       onChange={(e) => updateFormData("hypothesisAddition", e.target.value)}
                       maxLength={100}
                       rows={3}
-                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl sm:rounded-2xl focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base resize-none transition-all duration-200"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl sm:rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm sm:text-base resize-none transition-all duration-200"
                     />
                     <div className="text-right">
                       <span className="text-xs sm:text-sm text-gray-500">{formData.hypothesisAddition.length}/100</span>
@@ -698,12 +698,12 @@ export default function Step3() {
             </div>
 
             {/* Review Section */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 p-5 sm:p-8 md:p-12">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
               <div className="flex items-center justify-between mb-6 sm:mb-8">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">Review your information</h2>
                 <button
                   onClick={() => setShowReview(!showReview)}
-                  className="flex items-center space-x-1.5 sm:space-x-2 text-purple-600 hover:text-purple-800 transition-colors font-medium text-sm sm:text-base touch-target"
+                  className="flex items-center space-x-1.5 sm:space-x-2 text-indigo-700 hover:text-indigo-800 transition-colors font-medium text-sm sm:text-base touch-target"
                 >
                   <span>{showReview ? "Hide" : "Show"}</span>
                   {showReview ? (
@@ -726,7 +726,7 @@ export default function Step3() {
               )}
 
               <div className="text-center">
-                <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-emerald-50 to-green-50 text-emerald-800 px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-emerald-200">
+                <div className="inline-flex items-center space-x-2 bg-emerald-50 text-emerald-800 px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-emerald-200">
                   <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" />
                   <span className="font-semibold text-sm sm:text-base">Information Complete</span>
                 </div>
@@ -734,10 +734,10 @@ export default function Step3() {
             </div>
 
             {/* Consent & Analysis Section */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 p-5 sm:p-8 md:p-12">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
               <div className="mb-6 sm:mb-8">
                 <div className="flex items-start gap-3 mb-4">
-                  <div className="p-1.5 sm:p-2 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg sm:rounded-xl flex-shrink-0">
+                  <div className="p-1.5 sm:p-2 bg-indigo-700 rounded-lg sm:rounded-xl flex-shrink-0">
                     <Shield className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -779,9 +779,9 @@ export default function Step3() {
                   <button
                     onClick={handleStartAnalysis}
                     disabled={!isFormValid || isAnalyzing}
-                    className={`group relative px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg transition-all duration-300 flex-1 min-h-[52px] sm:min-h-[60px] touch-target ${
+                    className={`group relative px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 flex-1 min-h-[52px] sm:min-h-[60px] touch-target ${
                       isFormValid && !isAnalyzing
-                        ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
+                        ? "bg-indigo-700 text-white shadow-sm hover:shadow-md"
                         : "bg-gray-200 text-gray-500 cursor-not-allowed"
                     }`}
                   >
@@ -798,7 +798,7 @@ export default function Step3() {
                   <button
                     onClick={handleSaveAndContinueLater}
                     disabled={isAnalyzing}
-                    className="px-4 sm:px-6 py-3 rounded-xl sm:rounded-2xl border-2 border-gray-300 text-gray-700 font-semibold hover:border-purple-300 hover:text-purple-700 transition-all duration-200 flex-1 sm:flex-none text-sm sm:text-base touch-target"
+                    className="px-4 sm:px-6 py-3 rounded-xl sm:rounded-2xl border-2 border-gray-300 text-gray-700 font-semibold hover:border-indigo-300 hover:text-indigo-700 transition-all duration-200 flex-1 sm:flex-none text-sm sm:text-base touch-target"
                   >
                     Save & Continue Later
                   </button>
@@ -810,7 +810,7 @@ export default function Step3() {
 
                 {/* What happens next */}
                 <details className="group">
-                  <summary className="cursor-pointer text-base sm:text-lg font-semibold text-purple-600 hover:text-purple-800 transition-colors touch-target">
+                  <summary className="cursor-pointer text-base sm:text-lg font-semibold text-indigo-700 hover:text-indigo-800 transition-colors touch-target">
                     What happens next?
                   </summary>
                   <div className="mt-3 sm:mt-4 text-sm sm:text-base text-gray-600 space-y-1.5 sm:space-y-2 pl-4">
@@ -828,7 +828,7 @@ export default function Step3() {
               <button
                 onClick={handleBack}
                 disabled={isAnalyzing}
-                className="group flex items-center space-x-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl border-2 border-gray-300 text-gray-700 font-semibold hover:border-purple-300 hover:text-purple-700 transition-all duration-200 w-full sm:w-auto justify-center text-sm sm:text-base touch-target"
+                className="group flex items-center space-x-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl border-2 border-gray-300 text-gray-700 font-semibold hover:border-indigo-300 hover:text-indigo-700 transition-all duration-200 w-full sm:w-auto justify-center text-sm sm:text-base touch-target"
               >
                 <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 group-hover:-translate-x-1 transition-transform" />
                 <span>Back to previous step</span>

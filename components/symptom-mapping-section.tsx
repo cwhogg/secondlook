@@ -60,10 +60,10 @@ export interface SymptomPatternData {
 }
 
 const categoryColors: Record<string, string> = {
-  motor: "bg-blue-100 text-blue-800",
+  motor: "bg-indigo-100 text-indigo-800",
   sensory: "bg-yellow-100 text-yellow-800",
   pain: "bg-red-100 text-red-800",
-  cognitive: "bg-purple-100 text-purple-800",
+  cognitive: "bg-indigo-100 text-indigo-800",
   autonomic: "bg-green-100 text-green-800",
   constitutional: "bg-orange-100 text-orange-800",
 }
@@ -507,15 +507,15 @@ export function SymptomMappingSection({
 
   if (isLoading) {
     return (
-      <div className="mb-8 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+      <div className="mb-8 p-6 bg-indigo-50 border border-[#e5e2f0] rounded-xl">
         <div className="flex items-center space-x-3">
-          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-indigo-700"></div>
           <div>
-            <div className="font-medium text-blue-900">Processing your symptoms...</div>
-            <div className="text-sm text-blue-700">{currentStep}</div>
+            <div className="font-medium text-indigo-900">Processing your symptoms...</div>
+            <div className="text-sm text-indigo-700">{currentStep}</div>
           </div>
         </div>
-        <div className="mt-4 text-xs text-blue-600">
+        <div className="mt-4 text-xs text-indigo-600">
           This involves real-time analysis and medical term mapping - please wait...
         </div>
       </div>
@@ -570,13 +570,13 @@ export function SymptomMappingSection({
                   </div>
                 ) : symptom.selectedConcept ? (
                   <div className="mt-2">
-                    <div className="text-sm text-blue-600">Medical term:</div>
-                    <div className="font-medium text-blue-900">{symptom.selectedConcept.name}</div>
+                    <div className="text-sm text-indigo-700">Medical term:</div>
+                    <div className="font-medium text-indigo-900">{symptom.selectedConcept.name}</div>
                     <div className="text-xs text-gray-500">
                       CUI: {symptom.selectedConcept.cui}
                       {symptom.selectedConcept.semanticType && ` | Type: ${symptom.selectedConcept.semanticType}`}
                       {symptom.searchTermUsed && symptom.searchTermUsed !== symptom.medicalTerm && (
-                        <span className="ml-1 text-blue-500">(matched via: &quot;{symptom.searchTermUsed}&quot;)</span>
+                        <span className="ml-1 text-indigo-500">(matched via: &quot;{symptom.searchTermUsed}&quot;)</span>
                       )}
                     </div>
                   </div>
@@ -657,7 +657,7 @@ export function SymptomMappingSection({
               <div className="flex justify-start">
                 <button
                   onClick={() => handleSuggestDifferentTerm(index)}
-                  className="text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded-lg hover:bg-blue-200 transition-colors"
+                  className="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-lg hover:bg-indigo-200 transition-colors"
                 >
                   Add more detail
                 </button>
@@ -669,33 +669,33 @@ export function SymptomMappingSection({
 
       {/* Clinical Pattern Analysis Section */}
       {isAnalyzingPatterns && (
-        <div className="mt-6 p-4 bg-purple-50 border border-purple-200 rounded-xl">
+        <div className="mt-6 p-4 bg-indigo-50 border border-indigo-200 rounded-xl">
           <div className="flex items-center space-x-3">
-            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-purple-600"></div>
-            <span className="text-sm text-purple-700 font-medium">Analyzing symptom patterns...</span>
+            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-indigo-700"></div>
+            <span className="text-sm text-indigo-700 font-medium">Analyzing symptom patterns...</span>
           </div>
         </div>
       )}
 
       {symptomPatterns && symptomPatterns.patterns.length > 0 && (
-        <div className="mt-6 p-6 bg-purple-50 border border-purple-200 rounded-xl">
-          <h4 className="text-lg font-semibold text-purple-900 mb-2">Clinical Pattern Analysis</h4>
+        <div className="mt-6 p-6 bg-indigo-50 border border-indigo-200 rounded-xl">
+          <h4 className="text-lg font-semibold text-indigo-900 mb-2">Clinical Pattern Analysis</h4>
 
           {symptomPatterns.overallImpression && (
-            <p className="text-sm text-purple-800 mb-4 leading-relaxed">{symptomPatterns.overallImpression}</p>
+            <p className="text-sm text-indigo-800 mb-4 leading-relaxed">{symptomPatterns.overallImpression}</p>
           )}
 
           <div className="space-y-4">
             {symptomPatterns.patterns.map((pattern, pIdx) => (
-              <div key={pIdx} className="bg-white border border-purple-200 rounded-xl p-4">
+              <div key={pIdx} className="bg-white border border-indigo-200 rounded-xl p-4">
                 <div className="flex items-start justify-between mb-2">
                   <div>
-                    <h5 className="font-semibold text-purple-900">{pattern.patternName}</h5>
-                    <span className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700">
+                    <h5 className="font-semibold text-indigo-900">{pattern.patternName}</h5>
+                    <span className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-700">
                       {pattern.clinicalCategory}
                     </span>
                   </div>
-                  <span className="px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                  <span className="px-2 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
                     {Math.round(pattern.confidence * 100)}% confidence
                   </span>
                 </div>
@@ -707,7 +707,7 @@ export function SymptomMappingSection({
                     <div className="text-xs text-gray-500 mb-1">Related symptoms:</div>
                     <div className="flex flex-wrap gap-1">
                       {pattern.symptomIndices.map((si) => (
-                        <span key={si} className="px-2 py-0.5 bg-purple-50 border border-purple-200 rounded text-xs text-purple-700">
+                        <span key={si} className="px-2 py-0.5 bg-indigo-50 border border-indigo-200 rounded text-xs text-indigo-700">
                           {mappedSymptoms[si]?.originalPhrase || `Symptom ${si + 1}`}
                         </span>
                       ))}

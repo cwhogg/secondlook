@@ -137,23 +137,23 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   const related = [...sameType, ...otherType].slice(0, 3)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50/30">
+    <div className="min-h-screen bg-[#faf9fe]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text text-transparent">
+        <Link href="/" className="text-xl font-bold text-indigo-700">
           SecondLook
         </Link>
         <div className="flex items-center gap-6">
-          <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-purple-700 transition-colors">
+          <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-indigo-700 transition-colors">
             Resources
           </Link>
           <Link
             href="/step-1"
-            className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all"
+            className="bg-indigo-700 hover:bg-indigo-800 text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all"
           >
             Start Analysis
           </Link>
@@ -179,7 +179,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                     ? "bg-emerald-100 text-emerald-700"
                     : piece.type === "landing-page"
                       ? "bg-amber-100 text-amber-700"
-                      : "bg-purple-100 text-purple-700"
+                      : "bg-indigo-100 text-indigo-700"
               }`}
             >
               {piece.type === "blog" ? "Article" : piece.type === "faq" ? "FAQ" : piece.type === "landing-page" ? "Guide" : "Comparison"}
@@ -193,7 +193,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             </time>
           </div>
           <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
-            <span className="bg-gradient-to-r from-gray-900 via-purple-800 to-blue-800 bg-clip-text text-transparent">
+            <span className="text-[#1e1b4b]">
               {piece.title}
             </span>
           </h1>
@@ -208,7 +208,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         />
 
         <footer className="mt-16 pt-8 border-t border-gray-200">
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 border border-blue-100">
+          <div className="bg-indigo-50 rounded-xl p-6 border border-[#e5e2f0]">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               Ready to get started?
             </h3>
@@ -217,7 +217,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             </p>
             <Link
               href="/step-1"
-              className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center bg-indigo-700 hover:bg-indigo-800 text-white px-6 py-3 rounded-xl font-semibold shadow-sm hover:shadow-md transition-all duration-200"
             >
               Start My Health Analysis
             </Link>
@@ -233,7 +233,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group bg-white rounded-2xl shadow-md border border-gray-100 p-5 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col"
+                  className="group bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:shadow-xl transition-all duration-300 flex flex-col"
                 >
                   <span
                     className={`self-start inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium mb-3 ${
@@ -243,16 +243,16 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                           ? "bg-emerald-100 text-emerald-700"
                           : post.type === "landing-page"
                             ? "bg-amber-100 text-amber-700"
-                            : "bg-purple-100 text-purple-700"
+                            : "bg-indigo-100 text-indigo-700"
                     }`}
                   >
                     {post.type === "blog" ? "Article" : post.type === "faq" ? "FAQ" : post.type === "landing-page" ? "Guide" : "Comparison"}
                   </span>
-                  <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors leading-snug">
+                  <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-indigo-700 transition-colors leading-snug">
                     {post.title}
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed flex-1 line-clamp-3">{post.description}</p>
-                  <div className="mt-3 flex items-center text-purple-600 font-medium text-sm">
+                  <div className="mt-3 flex items-center text-indigo-700 font-medium text-sm">
                     <span>Read more</span>
                     <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>

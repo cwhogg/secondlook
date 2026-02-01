@@ -72,7 +72,7 @@ export function SeveritySlider({ value, onChange }: SeveritySliderProps) {
           height: 24px;
           width: 24px;
           border-radius: 50%;
-          background: #1e40af;
+          background: #4338ca;
           cursor: pointer;
           border: 2px solid white;
           box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -82,7 +82,7 @@ export function SeveritySlider({ value, onChange }: SeveritySliderProps) {
           height: 24px;
           width: 24px;
           border-radius: 50%;
-          background: #1e40af;
+          background: #4338ca;
           cursor: pointer;
           border: 2px solid white;
           box-shadow: 0 2px 4px rgba(0,0,0,0.2);

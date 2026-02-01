@@ -68,7 +68,7 @@ export function SkeletonScreen({ variant = "form", className }: SkeletonScreenPr
   const renderAnalysisSkeleton = () => (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl p-6 text-white">
+      <div className="bg-indigo-700 rounded-xl p-6 text-white">
         <div className="space-y-3">
           <SkeletonBox className="h-8 w-2/3 bg-white bg-opacity-20" />
           <SkeletonBox className="h-4 w-1/2 bg-white bg-opacity-20" />

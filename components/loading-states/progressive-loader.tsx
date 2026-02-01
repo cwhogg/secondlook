@@ -57,7 +57,7 @@ export function ProgressiveLoader({
       case "completed":
         return <CheckCircle className="h-5 w-5 text-green-600" />
       case "loading":
-        return <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600" />
+        return <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-indigo-700" />
       case "error":
         return <AlertCircle className="h-5 w-5 text-red-600" />
       default:
@@ -88,7 +88,7 @@ export function ProgressiveLoader({
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2">
           <div
-            className="bg-blue-600 h-2 rounded-full transition-all duration-500"
+            className="bg-indigo-700 h-2 rounded-full transition-all duration-500"
             style={{ width: `${overallProgress}%` }}
           />
         </div>
@@ -112,7 +112,7 @@ export function ProgressiveLoader({
                 {step.status === "loading" && (
                   <div className="mt-2">
                     <div className="w-full bg-gray-200 rounded-full h-1">
-                      <div className="bg-blue-600 h-1 rounded-full animate-pulse w-2/3" />
+                      <div className="bg-indigo-700 h-1 rounded-full animate-pulse w-2/3" />
                     </div>
                   </div>
                 )}

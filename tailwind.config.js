@@ -19,6 +19,10 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        serif: ["var(--font-fraunces)", "Georgia", "serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -54,9 +58,9 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
         // Medical app specific colors
-        "medical-primary": "#3b82f6",
-        "medical-secondary": "#8b5cf6",
-        "medical-accent": "#06b6d4",
+        "medical-primary": "#4338ca",
+        "medical-secondary": "#6366f1",
+        "medical-accent": "#d97706",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -76,6 +80,11 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      boxShadow: {
+        "indigo-sm": "0 1px 2px rgba(67,56,202,0.05)",
+        "indigo-md": "0 4px 6px rgba(67,56,202,0.08)",
+        "indigo-lg": "0 10px 15px rgba(67,56,202,0.1)",
       },
     },
   },

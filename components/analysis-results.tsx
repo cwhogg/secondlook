@@ -86,7 +86,7 @@ export function AnalysisResults({
 
   const getConfidenceColor = (confidence: number) => {
     if (confidence >= 80) return "text-green-600 bg-green-50 border-green-200"
-    if (confidence >= 60) return "text-blue-600 bg-blue-50 border-blue-200"
+    if (confidence >= 60) return "text-indigo-600 bg-indigo-50 border-indigo-200"
     return "text-yellow-600 bg-yellow-50 border-yellow-200"
   }
 
@@ -97,7 +97,7 @@ export function AnalysisResults({
       case "urgent":
         return "border-orange-500 bg-orange-50"
       default:
-        return "border-blue-500 bg-blue-50"
+        return "border-indigo-500 bg-indigo-50"
     }
   }
 
@@ -177,7 +177,7 @@ export function AnalysisResults({
               <h2 className="text-lg sm:text-xl font-semibold text-gray-900">About Your Initial Thoughts</h2>
               <button
                 onClick={() => setShowHypothesisResponse(!showHypothesisResponse)}
-                className="text-medical-primary hover:text-blue-800"
+                className="text-medical-primary hover:text-indigo-800"
               >
                 {showHypothesisResponse ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
               </button>
@@ -190,12 +190,12 @@ export function AnalysisResults({
                 </p>
 
                 {hypothesisMatch ? (
-                  <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 sm:p-6">
+                  <div className="bg-indigo-50 border border-[#e5e2f0] rounded-xl p-4 sm:p-6">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
-                      <h3 className="text-base sm:text-lg font-semibold text-blue-900">
+                      <h3 className="text-base sm:text-lg font-semibold text-indigo-900">
                         How likely is {hypothesisMatch.name}?
                       </h3>
-                      <div className="text-2xl sm:text-3xl font-bold text-blue-600">{hypothesisMatch.confidence}%</div>
+                      <div className="text-2xl sm:text-3xl font-bold text-indigo-700">{hypothesisMatch.confidence}%</div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
@@ -267,21 +267,21 @@ export function AnalysisResults({
         )}
 
         {/* Clinical Summary */}
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 sm:p-6">
-          <h2 className="text-lg sm:text-xl font-semibold text-blue-900 mb-4 flex items-center">
+        <div className="bg-indigo-50 border border-[#e5e2f0] rounded-xl p-4 sm:p-6">
+          <h2 className="text-lg sm:text-xl font-semibold text-indigo-900 mb-4 flex items-center">
             <Stethoscope className="h-5 w-5 mr-2" />
             Clinical Summary
           </h2>
-          <p className="text-blue-800 text-base sm:text-lg leading-relaxed mb-4">{clinicalSummary}</p>
+          <p className="text-indigo-800 text-base sm:text-lg leading-relaxed mb-4">{clinicalSummary}</p>
           <div className="flex items-center space-x-2">
-            <span className="text-sm font-medium text-blue-700">Overall Confidence:</span>
-            <div className="flex-1 bg-blue-200 rounded-full h-2 max-w-32">
+            <span className="text-sm font-medium text-indigo-700">Overall Confidence:</span>
+            <div className="flex-1 bg-indigo-200 rounded-full h-2 max-w-32">
               <div
-                className="bg-blue-600 h-2 rounded-full transition-all duration-500"
+                className="bg-indigo-700 h-2 rounded-full transition-all duration-500"
                 style={{ width: `${overallConfidence}%` }}
               />
             </div>
-            <span className="text-sm font-bold text-blue-700">{overallConfidence}%</span>
+            <span className="text-sm font-bold text-indigo-700">{overallConfidence}%</span>
           </div>
         </div>
 
@@ -297,7 +297,7 @@ export function AnalysisResults({
                     <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 mb-2">
                       <h3 className="text-lg sm:text-xl font-semibold text-gray-900">{diagnosis.name}</h3>
                       {diagnosis.isRare && (
-                        <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded-full w-fit">
+                        <span className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full w-fit">
                           Rare Disease
                         </span>
                       )}
@@ -364,7 +364,7 @@ export function AnalysisResults({
                 <div className="border-t border-gray-200 pt-4">
                   <button
                     onClick={() => toggleDiagnosis(index)}
-                    className="flex items-center justify-between w-full text-left text-medical-primary hover:text-blue-800 transition-colors"
+                    className="flex items-center justify-between w-full text-left text-medical-primary hover:text-indigo-800 transition-colors"
                   >
                     <span className="font-medium text-sm sm:text-base">Learn more about this condition</span>
                     {expandedDiagnoses.has(index) ? (
@@ -401,7 +401,7 @@ export function AnalysisResults({
                           href={diagnosis.learnMoreUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center text-sm text-medical-primary hover:text-blue-800"
+                          className="inline-flex items-center text-sm text-medical-primary hover:text-indigo-800"
                         >
                           Learn more from patient resources
                           <ExternalLink className="h-4 w-4 ml-1" />
@@ -431,7 +431,7 @@ export function AnalysisResults({
                         ? "bg-red-100 text-red-800"
                         : gap.importance === "medium"
                           ? "bg-yellow-100 text-yellow-800"
-                          : "bg-blue-100 text-blue-800"
+                          : "bg-indigo-100 text-indigo-800"
                     }`}
                   >
                     {gap.importance.toUpperCase()}
@@ -479,7 +479,7 @@ export function AnalysisResults({
                 <ul className="space-y-1">
                   {nextSteps.questions.map((question, index) => (
                     <li key={index} className="flex items-start text-sm text-gray-700">
-                      <span className="mr-2 text-blue-600">?</span>
+                      <span className="mr-2 text-indigo-700">?</span>
                       <span>{question}</span>
                     </li>
                   ))}

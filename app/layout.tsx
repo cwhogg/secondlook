@@ -1,6 +1,17 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { Inter, Fraunces } from "next/font/google"
 import "./globals.css"
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+})
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+})
 
 const siteUrl = "https://secondlook.vercel.app"
 
@@ -61,7 +72,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${inter.variable} ${fraunces.variable} font-sans`}>{children}</body>
     </html>
   )
 }

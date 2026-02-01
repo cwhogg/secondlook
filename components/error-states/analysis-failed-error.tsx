@@ -80,7 +80,7 @@ export function AnalysisFailedError({
 
           <button
             onClick={onDownloadSummary}
-            className="w-full text-medical-primary hover:text-blue-800 text-center py-3 text-base font-medium transition-colors"
+            className="w-full text-medical-primary hover:text-indigo-800 text-center py-3 text-base font-medium transition-colors"
           >
             <div className="flex items-center justify-center space-x-2">
               <Download className="h-4 w-4" />
@@ -108,19 +108,19 @@ export function AnalysisFailedError({
         </div>
 
         {/* What to do next */}
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-          <h3 className="font-medium text-blue-900 mb-3">What to do next:</h3>
-          <ul className="space-y-2 text-sm text-blue-800">
+        <div className="bg-indigo-50 border border-[#e5e2f0] rounded-xl p-4">
+          <h3 className="font-medium text-indigo-900 mb-3">What to do next:</h3>
+          <ul className="space-y-2 text-sm text-indigo-800">
             <li className="flex items-start space-x-2">
-              <span className="text-blue-600 font-bold mt-0.5">1.</span>
+              <span className="text-indigo-700 font-bold mt-0.5">1.</span>
               <span>Try the analysis again in a few minutes</span>
             </li>
             <li className="flex items-start space-x-2">
-              <span className="text-blue-600 font-bold mt-0.5">2.</span>
+              <span className="text-indigo-700 font-bold mt-0.5">2.</span>
               <span>Download your summary to share with your doctor</span>
             </li>
             <li className="flex items-start space-x-2">
-              <span className="text-blue-600 font-bold mt-0.5">3.</span>
+              <span className="text-indigo-700 font-bold mt-0.5">3.</span>
               <span>Contact our support team if the issue persists</span>
             </li>
           </ul>

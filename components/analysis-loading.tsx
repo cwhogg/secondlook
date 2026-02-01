@@ -58,7 +58,7 @@ export function AnalysisLoading({ progress, currentStep, analysisData }: Analysi
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-[#faf9fe]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
         {/* Breadcrumb Navigation */}
         <BreadcrumbNav
@@ -74,7 +74,7 @@ export function AnalysisLoading({ progress, currentStep, analysisData }: Analysi
         {/* Main Content */}
         <div className="text-center mb-8 sm:mb-12">
           {/* Animated Brain Icon */}
-          <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-6 sm:mb-8 animate-pulse">
+          <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-indigo-700 rounded-full mb-6 sm:mb-8 animate-pulse">
             <Brain className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white" />
           </div>
 
@@ -91,11 +91,11 @@ export function AnalysisLoading({ progress, currentStep, analysisData }: Analysi
         <div className="mb-8 sm:mb-12">
           <div className="flex items-center justify-between mb-2 sm:mb-3 px-2">
             <span className="text-xs sm:text-sm font-medium text-gray-700">{currentStep}</span>
-            <span className="text-xs sm:text-sm font-bold text-blue-600">{progress}%</span>
+            <span className="text-xs sm:text-sm font-bold text-indigo-700">{progress}%</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2 sm:h-3 overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full transition-all duration-500 ease-out"
+              className="h-full bg-indigo-700 rounded-full transition-all duration-500 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -110,14 +110,14 @@ export function AnalysisLoading({ progress, currentStep, analysisData }: Analysi
                 step.completed
                   ? "border-green-500 bg-green-50"
                   : progress > (step.id - 1) * 25
-                    ? "border-blue-500 bg-blue-50"
+                    ? "border-indigo-500 bg-indigo-50"
                     : "border-gray-200 bg-white"
               }`}
             >
               {/* Step Number/Icon */}
               <div
                 className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full mb-2 sm:mb-3 ${
-                  step.completed ? "bg-green-500" : progress > (step.id - 1) * 25 ? "bg-blue-500" : "bg-gray-200"
+                  step.completed ? "bg-green-500" : progress > (step.id - 1) * 25 ? "bg-indigo-700" : "bg-gray-200"
                 }`}
               >
                 {step.completed ? (
@@ -132,7 +132,7 @@ export function AnalysisLoading({ progress, currentStep, analysisData }: Analysi
               {/* Step Label */}
               <span
                 className={`text-xs sm:text-sm text-center font-medium ${
-                  step.completed ? "text-green-700" : progress > (step.id - 1) * 25 ? "text-blue-700" : "text-gray-500"
+                  step.completed ? "text-green-700" : progress > (step.id - 1) * 25 ? "text-indigo-700" : "text-gray-500"
                 }`}
               >
                 {step.label}
@@ -142,11 +142,11 @@ export function AnalysisLoading({ progress, currentStep, analysisData }: Analysi
         </div>
 
         {/* Educational Content */}
-        <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 md:p-10 border border-gray-100">
+        <div className="bg-white rounded-xl shadow-sm p-6 sm:p-8 md:p-10 border border-[#e5e2f0]">
           <div className="flex items-start gap-4 sm:gap-6">
             <div className="flex-shrink-0">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                <Brain className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-blue-600" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-indigo-100 rounded-full flex items-center justify-center">
+                <Brain className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-indigo-700" />
               </div>
             </div>
             <div className="flex-1 min-w-0">
@@ -165,7 +165,7 @@ export function AnalysisLoading({ progress, currentStep, analysisData }: Analysi
               <div
                 key={index}
                 className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
-                  index === educationalTip ? "w-8 sm:w-10 bg-blue-600" : "w-1.5 sm:w-2 bg-gray-300"
+                  index === educationalTip ? "w-8 sm:w-10 bg-indigo-700" : "w-1.5 sm:w-2 bg-gray-300"
                 }`}
               />
             ))}

@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 250 33% 98%;
+    --foreground: 243 73% 20%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 243 73% 20%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 210 100% 56%;
+    --popover-foreground: 243 73% 20%;
+    --primary: 245 58% 51%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 215 25% 27%;
+    --secondary: 239 84% 67%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 220 13% 91%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 142 71% 45%;
+    --muted: 248 30% 91%;
+    --muted-foreground: 249 26% 38%;
+    --accent: 32 95% 44%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 210 100% 56%;
+    --border: 248 30% 91%;
+    --input: 248 30% 91%;
+    --ring: 245 58% 51%;
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 100% 56%;
+    --background: 243 73% 5%;
+    --foreground: 248 30% 91%;
+    --card: 243 73% 5%;
+    --card-foreground: 248 30% 91%;
+    --popover: 243 73% 5%;
+    --popover-foreground: 248 30% 91%;
+    --primary: 245 58% 51%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 215 25% 27%;
+    --secondary: 239 84% 67%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 215 25% 27%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 142 71% 45%;
+    --muted: 245 25% 20%;
+    --muted-foreground: 248 20% 65%;
+    --accent: 32 95% 44%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 215 25% 27%;
-    --input: 215 25% 27%;
-    --ring: 210 100% 56%;
+    --border: 245 25% 20%;
+    --input: 245 25% 20%;
+    --ring: 245 58% 51%;
   }
 }
 
@@ -60,9 +60,8 @@
   }
 
   body {
-    @apply bg-white text-neutral-900 antialiased;
-    font-family:
-      system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    @apply bg-[#faf9fe] text-[#1e1b4b] antialiased;
+    font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
@@ -73,6 +72,7 @@
   h5,
   h6 {
     @apply font-semibold tracking-tight;
+    font-family: var(--font-fraunces), Georgia, serif;
   }
 
   h1 {
@@ -123,7 +123,7 @@
   }
 
   .status-bar-pending {
-    @apply bg-purple-50 text-purple-800 border-l-4 border-purple-500;
+    @apply bg-indigo-50 text-indigo-800 border-l-4 border-indigo-500;
   }
 
   /* Progress Indicators */
@@ -132,7 +132,7 @@
   }
 
   .progress-modern-fill {
-    @apply h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all duration-500 ease-out;
+    @apply h-full bg-indigo-700 rounded-full transition-all duration-500 ease-out;
   }
 
   .progress-steps {
@@ -148,7 +148,7 @@
   }
 
   .progress-step-current {
-    @apply bg-blue-500 text-white shadow-md;
+    @apply bg-indigo-700 text-white shadow-md;
   }
 
   .progress-step-pending {
@@ -165,15 +165,15 @@
 
   /* Modern Cards */
   .card-modern {
-    @apply bg-white rounded-2xl shadow-sm border border-neutral-100 overflow-hidden;
+    @apply bg-white rounded-xl shadow-sm border border-[#e5e2f0] overflow-hidden;
   }
 
   .card-modern-hover {
-    @apply transition-all duration-300 hover:shadow-md hover:border-neutral-200;
+    @apply transition-all duration-300 hover:shadow-md hover:border-[#d5d2e0];
   }
 
   .card-modern-interactive {
-    @apply cursor-pointer active:scale-[0.98] transition-transform duration-150;
+    @apply cursor-pointer transition-shadow duration-150;
   }
 
   /* Modern Buttons */
@@ -182,7 +182,7 @@
   }
 
   .btn-primary {
-    @apply bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500 shadow-sm hover:shadow-md;
+    @apply bg-indigo-700 text-white hover:bg-indigo-800 focus:ring-indigo-500 shadow-sm hover:shadow-md;
   }
 
   .btn-secondary {
@@ -211,7 +211,7 @@
 
   /* Modern Form Elements */
   .input-modern {
-    @apply w-full px-4 py-3 text-base bg-white border border-neutral-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-20 focus:border-blue-500 transition-all duration-200;
+    @apply w-full px-4 py-3 text-base bg-white border border-[#e5e2f0] rounded-xl focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-20 focus:border-indigo-500 transition-all duration-200;
   }
 
   .input-error {
@@ -425,7 +425,7 @@
 }
 
 .mdx-content a {
-  @apply text-purple-600 hover:text-purple-800 underline underline-offset-2 transition-colors;
+  @apply text-indigo-700 hover:text-indigo-900 underline underline-offset-2 transition-colors;
 }
 
 .mdx-content ul {
@@ -441,7 +441,7 @@
 }
 
 .mdx-content blockquote {
-  @apply border-l-4 border-purple-300 bg-purple-50/50 pl-4 py-2 my-4 text-gray-700 italic;
+  @apply border-l-4 border-indigo-300 bg-indigo-50/50 pl-4 py-2 my-4 text-gray-700 italic;
 }
 
 .mdx-content table {
@@ -461,7 +461,7 @@
 }
 
 .mdx-content code {
-  @apply bg-gray-100 text-purple-700 rounded px-1.5 py-0.5 text-sm font-mono;
+  @apply bg-gray-100 text-indigo-700 rounded px-1.5 py-0.5 text-sm font-mono;
 }
 
 .mdx-content pre {
@@ -482,5 +482,5 @@
 
 /* CTA links that are the only child of a paragraph (standalone link lines) */
 .mdx-content p > a:only-child {
-  @apply inline-flex items-center no-underline bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300;
+  @apply inline-flex items-center no-underline bg-indigo-700 hover:bg-indigo-800 text-white px-6 py-3 rounded-lg font-semibold shadow-sm hover:shadow-md transition-all duration-200;
 }

@@ -116,7 +116,7 @@ export default function Step1() {
 
   return (
     <Layout currentStep={currentStep} totalSteps={totalSteps} breadcrumbItems={breadcrumbItems}>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50/30 py-8">
+      <div className="min-h-screen bg-[#faf9fe] py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Fixed Auto-save notification */}
           <div
@@ -124,21 +124,21 @@ export default function Step1() {
               autoSaved ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
             }`}
           >
-            <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 py-3 rounded-2xl shadow-lg flex items-center space-x-2">
+            <div className="bg-emerald-500 text-white px-6 py-3 rounded-xl shadow-sm flex items-center space-x-2">
               <CheckCircle className="h-4 w-4" />
               <span className="text-sm font-medium">Your information is automatically saved</span>
             </div>
           </div>
 
           {/* Premium Header Section */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-100 to-blue-100 px-4 py-2 rounded-full mb-6">
-              <Sparkles className="h-4 w-4 text-purple-600" />
-              <span className="text-sm font-medium text-purple-700">Step 1 of 3</span>
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center space-x-2 bg-indigo-100 px-4 py-2 rounded-full mb-6">
+              <Sparkles className="h-4 w-4 text-indigo-700" />
+              <span className="text-sm font-medium text-indigo-700">Step 1 of 3</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               Tell us about your{" "}
-              <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              <span className="text-indigo-700">
                 health concerns
               </span>
             </h1>
@@ -148,11 +148,11 @@ export default function Step1() {
           </div>
 
           {/* Main Form Container */}
-          <div className="max-w-3xl mx-auto bg-white rounded-3xl shadow-lg border border-gray-100 p-8 md:p-12">
+          <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
             <div className="space-y-12">
               {/* Section 1: Essential Demographics */}
               <div className="space-y-8">
-                <div className="text-center">
+                <div className="text-left">
                   <h2 className="text-2xl font-bold text-gray-900 mb-3">Basic Information</h2>
                   <p className="text-lg text-gray-600">This helps us consider conditions that affect people like you</p>
                 </div>
@@ -170,7 +170,7 @@ export default function Step1() {
                       value={formData.age}
                       onChange={(e) => updateFormData("age", e.target.value)}
                       className={cn(
-                        "w-full px-4 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-purple-500 focus:border-transparent text-lg transition-all duration-200",
+                        "w-full px-4 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-lg transition-all duration-200",
                         errors.age
                           ? "border-red-300 focus:ring-red-500"
                           : formData.age
@@ -201,8 +201,8 @@ export default function Step1() {
                               className={cn(
                                 "w-5 h-5 rounded-full border-2 transition-all duration-200",
                                 formData.biologicalSex === option.toLowerCase()
-                                  ? "border-purple-500 bg-purple-500"
-                                  : "border-gray-300 group-hover:border-purple-300",
+                                  ? "border-indigo-700 bg-indigo-700"
+                                  : "border-gray-300 group-hover:border-indigo-300",
                               )}
                             >
                               {formData.biologicalSex === option.toLowerCase() && (
@@ -210,7 +210,7 @@ export default function Step1() {
                               )}
                             </div>
                           </div>
-                          <span className="text-lg font-medium text-gray-900 group-hover:text-purple-700 transition-colors">
+                          <span className="text-lg font-medium text-gray-900 group-hover:text-indigo-700 transition-colors">
                             {option}
                           </span>
                         </label>
@@ -223,7 +223,7 @@ export default function Step1() {
 
               {/* Section 2: Primary Concern */}
               <div className="space-y-6">
-                <div className="text-center">
+                <div className="text-left">
                   <h2 className="text-2xl font-bold text-gray-900 mb-3">What's your main health concern?</h2>
                   <p className="text-lg text-gray-600">
                     Describe your symptoms in your own words - be as detailed as possible
@@ -242,7 +242,7 @@ export default function Step1() {
                       maxLength={1000}
                       rows={6}
                       className={cn(
-                        "w-full px-4 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-purple-500 focus:border-transparent text-lg resize-none transition-all duration-200",
+                        "w-full px-4 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-lg resize-none transition-all duration-200",
                         errors.primaryConcern
                           ? "border-red-300 focus:ring-red-500"
                           : formData.primaryConcern
@@ -263,7 +263,7 @@ export default function Step1() {
 
               {/* Section 3: Patient Hypothesis */}
               <div className="space-y-6">
-                <div className="text-center">
+                <div className="text-left">
                   <h2 className="text-2xl font-bold text-gray-900 mb-3">
                     Do you have any thoughts about what this might be?
                   </h2>
@@ -273,7 +273,7 @@ export default function Step1() {
                 </div>
 
                 <div className="space-y-6">
-                  <label className="flex items-center space-x-4 cursor-pointer group p-4 rounded-2xl border border-gray-200 hover:border-purple-300 transition-all duration-200">
+                  <label className="flex items-center space-x-4 cursor-pointer group p-4 rounded-2xl border border-gray-200 hover:border-indigo-300 transition-all duration-200">
                     <div className="relative">
                       <input
                         type="checkbox"
@@ -290,14 +290,14 @@ export default function Step1() {
                         className={cn(
                           "w-5 h-5 rounded border-2 transition-all duration-200",
                           formData.noIdea
-                            ? "border-purple-500 bg-purple-500"
-                            : "border-gray-300 group-hover:border-purple-300",
+                            ? "border-indigo-700 bg-indigo-700"
+                            : "border-gray-300 group-hover:border-indigo-300",
                         )}
                       >
                         {formData.noIdea && <CheckCircle className="w-3 h-3 text-white absolute top-0.5 left-0.5" />}
                       </div>
                     </div>
-                    <span className="text-lg font-medium text-gray-900 group-hover:text-purple-700 transition-colors">
+                    <span className="text-lg font-medium text-gray-900 group-hover:text-indigo-700 transition-colors">
                       I'm not sure - I'd like help figuring this out
                     </span>
                   </label>
@@ -310,7 +310,7 @@ export default function Step1() {
                         onChange={(e) => updateFormData("patientHypothesis", e.target.value)}
                         maxLength={200}
                         rows={4}
-                        className="w-full px-4 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-purple-500 focus:border-transparent text-lg resize-none transition-all duration-200"
+                        className="w-full px-4 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-lg resize-none transition-all duration-200"
                       />
                       <div className="flex justify-between items-center">
                         <p className="text-base text-gray-600">
@@ -325,7 +325,7 @@ export default function Step1() {
 
               {/* Section 4: Body Regions */}
               <div className="space-y-6">
-                <div className="text-center">
+                <div className="text-left">
                   <h2 className="text-2xl font-bold text-gray-900 mb-3">Which parts of your body are affected?</h2>
                   <p className="text-lg text-gray-600 mb-2">
                     Select all areas where you're experiencing symptoms - many conditions affect multiple body systems
@@ -341,13 +341,13 @@ export default function Step1() {
 
               {/* Section 5: Severity */}
               <div className="space-y-6">
-                <div className="text-center">
+                <div className="text-left">
                   <h2 className="text-2xl font-bold text-gray-900 mb-3">
                     How much are these symptoms affecting your daily life?
                   </h2>
                   <p className="text-lg text-gray-600">This helps us understand the impact on your quality of life</p>
                 </div>
-                <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-6">
+                <div className="bg-indigo-50 rounded-2xl p-6">
                   <SeveritySlider value={formData.severity} onChange={(value) => updateFormData("severity", value)} />
                 </div>
               </div>
@@ -358,9 +358,9 @@ export default function Step1() {
                   onClick={handleContinue}
                   disabled={!isFormValid}
                   className={cn(
-                    "group relative px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 min-w-[200px]",
+                    "group relative px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 min-w-[200px]",
                     isFormValid
-                      ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
+                      ? "bg-indigo-700 hover:bg-indigo-800 text-white shadow-sm hover:shadow-md"
                       : "bg-gray-200 text-gray-500 cursor-not-allowed",
                   )}
                 >

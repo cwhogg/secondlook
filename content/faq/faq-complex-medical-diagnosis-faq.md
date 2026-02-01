@@ -6,6 +6,7 @@ generatedAt: "2026-01-31T22:55:12.366Z"
 ideaName: "SecondLook (new SEO)"
 status: draft
 wordCount: 2847
+description: "Answers to common questions about navigating complex medical diagnoses, finding specialists, and advocating for yourself when doctors can't help."
 ---
 
 # Complex Medical Cases FAQ: When Traditional Healthcare Fails

@@ -7,6 +7,7 @@ generatedAt: "2026-01-31T22:56:14.791Z"
 ideaName: "SecondLook (new SEO)"
 status: draft
 wordCount: 2847
+description: "2026 guide to AI diagnostic tools built for complex and rare medical conditions. Compare next-generation symptom checkers for difficult cases."
 ---
 
 # AI Symptom Checkers for Complex Medical Cases: 2026 Guide to Next-Generation Diagnostic Tools

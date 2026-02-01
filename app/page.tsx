@@ -51,10 +51,10 @@ function ResourcesSection() {
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="text-center mb-12">
         <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 via-purple-800 to-blue-800 bg-clip-text text-transparent mb-6">
-          Learn More
+          Health Resources &amp; Rare Disease Guides
         </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Explore our guides and resources about rare diseases, diagnosis, and navigating your health journey.
+          Explore our guides on rare disease diagnosis, navigating complex medical cases, and making the most of AI symptom checkers on your health journey.
         </p>
       </div>
 
@@ -164,7 +164,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <p className="text-center text-gray-500 text-sm">Trusted by 50,000+ patients nationwide</p>
+            <p className="text-center text-gray-500 text-sm">Free during early access</p>
           </div>
         </div>
       </section>
@@ -279,28 +279,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Trust Indicators */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div>
-            <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-2">
-              50,000+
-            </div>
-            <p className="text-gray-600">Patients Analyzed</p>
-          </div>
-          <div>
-            <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-2">
-              95%
-            </div>
-            <p className="text-gray-600">Accuracy Rate</p>
-          </div>
-          <div>
-            <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-2">
-              {"<10"}
-            </div>
-            <p className="text-gray-600">Minutes Average</p>
-          </div>
-        </div>
+      {/* Keyword-rich SEO paragraph */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <p className="text-center text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Whether you&apos;re searching for a medical second opinion, exploring an AI symptom checker for rare diseases,
+          or looking for help with a complex diagnosis, SecondLook provides the analytical depth that standard tools lack.
+          Our platform is designed for patients navigating a diagnostic odyssey who need more than generic health advice.
+        </p>
       </section>
 
       {/* Resources Section */}
@@ -311,7 +296,7 @@ export default function HomePage() {
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Ready to explore your health?</h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join thousands of patients who have discovered new insights about their health conditions.
+            Get AI-powered diagnostic insights for complex and rare conditions — free during early access.
           </p>
           <Link
             href="/step-1"

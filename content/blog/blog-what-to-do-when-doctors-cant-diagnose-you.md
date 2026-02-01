@@ -7,6 +7,7 @@ generatedAt: "2026-01-31T22:54:11.062Z"
 ideaName: "SecondLook (new SEO)"
 status: draft
 wordCount: 2847
+description: "A strategic action plan for patients stuck in a diagnostic odyssey. Learn what to do when multiple doctors can't diagnose your symptoms."
 ---
 
 # What to Do When 5 Doctors Can't Diagnose You: A Strategic Action Plan

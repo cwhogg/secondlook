@@ -7,6 +7,7 @@ generatedAt: "2026-01-31T22:58:00.793Z"
 ideaName: "SecondLook (new SEO)"
 status: draft
 wordCount: 2847
+description: "Practical documentation strategies to protect yourself from medical gaslighting. Build evidence-based advocacy for complex conditions."
 ---
 
 # Medical Gaslighting Documentation: How to Protect Yourself with Professional Evidence

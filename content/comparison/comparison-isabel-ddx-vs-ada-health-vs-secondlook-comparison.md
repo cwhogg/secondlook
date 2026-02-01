@@ -7,6 +7,7 @@ generatedAt: "2026-01-31T22:57:10.847Z"
 ideaName: "SecondLook (new SEO)"
 status: draft
 wordCount: 2,247
+description: "Honest comparison of Isabel DDx, Ada Health, and SecondLook for diagnosing complex and rare medical conditions."
 ---
 
 # Isabel DDx vs Ada Health vs SecondLook: Which Diagnostic Tool Works Best for Complex Cases?

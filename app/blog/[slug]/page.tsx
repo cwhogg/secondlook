@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 import { getAllContent, getContentBySlug } from "@/lib/content"
 import { markdownToHtml } from "@/lib/markdown"
 
@@ -18,11 +18,15 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     title: piece.title,
     description: piece.description,
     keywords: piece.targetKeywords,
+    alternates: {
+      canonical: `/blog/${params.slug}`,
+    },
     openGraph: {
       title: piece.title,
       description: piece.description,
       type: "article",
       publishedTime: piece.date,
+      modifiedTime: piece.lastModified,
     },
     twitter: {
       card: "summary_large_image",
@@ -32,7 +36,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   }
 }
 
-function buildJsonLd(piece: { title: string; description: string; date: string; type: string; slug: string; content: string }) {
+function buildJsonLd(piece: { title: string; description: string; date: string; lastModified: string; type: string; slug: string; content: string }) {
   const siteUrl = "https://secondlook.vercel.app"
   const url = `${siteUrl}/blog/${piece.slug}`
 
@@ -83,21 +87,39 @@ function buildJsonLd(piece: { title: string; description: string; date: string; 
 
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
-    headline: piece.title,
-    description: piece.description,
-    url,
-    datePublished: piece.date,
-    dateModified: piece.date,
-    publisher: {
-      "@type": "Organization",
-      name: "SecondLook",
-      url: siteUrl,
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": url,
-    },
+    "@graph": [
+      {
+        "@type": "Article",
+        headline: piece.title,
+        description: piece.description,
+        url,
+        image: `${siteUrl}/blog/${piece.slug}/opengraph-image`,
+        datePublished: piece.date,
+        dateModified: piece.lastModified,
+        author: {
+          "@type": "Organization",
+          name: "SecondLook",
+          url: siteUrl,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "SecondLook",
+          url: siteUrl,
+        },
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": url,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Resources", item: `${siteUrl}/blog` },
+          { "@type": "ListItem", position: 3, name: piece.title },
+        ],
+      },
+    ],
   }
 }
 
@@ -107,6 +129,12 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
   const htmlContent = await markdownToHtml(piece.content)
   const jsonLd = buildJsonLd(piece)
+
+  // Get related resources: same type first, then others, excluding current
+  const allContent = getAllContent().filter((p) => p.slug !== piece.slug)
+  const sameType = allContent.filter((p) => p.type === piece.type)
+  const otherType = allContent.filter((p) => p.type !== piece.type)
+  const related = [...sameType, ...otherType].slice(0, 3)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50/30">
@@ -195,6 +223,44 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             </Link>
           </div>
         </footer>
+
+        {/* Related Resources */}
+        {related.length > 0 && (
+          <section className="mt-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Resources</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {related.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group bg-white rounded-2xl shadow-md border border-gray-100 p-5 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col"
+                >
+                  <span
+                    className={`self-start inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium mb-3 ${
+                      post.type === "blog"
+                        ? "bg-blue-100 text-blue-700"
+                        : post.type === "faq"
+                          ? "bg-emerald-100 text-emerald-700"
+                          : post.type === "landing-page"
+                            ? "bg-amber-100 text-amber-700"
+                            : "bg-purple-100 text-purple-700"
+                    }`}
+                  >
+                    {post.type === "blog" ? "Article" : post.type === "faq" ? "FAQ" : post.type === "landing-page" ? "Guide" : "Comparison"}
+                  </span>
+                  <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors leading-snug">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed flex-1 line-clamp-3">{post.description}</p>
+                  <div className="mt-3 flex items-center text-purple-600 font-medium text-sm">
+                    <span>Read more</span>
+                    <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
       </article>
     </div>
   )

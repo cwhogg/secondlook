@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Layout } from "@/components/layout"
-import { SymptomMappingSection } from "@/components/symptom-mapping-section"
+import { SymptomMappingSection, type SymptomPatternData } from "@/components/symptom-mapping-section"
 import { TimelineSelector } from "@/components/timeline-selector"
 import { SymptomPatternSelector } from "@/components/symptom-pattern-selector"
 import { TriggerSelector } from "@/components/trigger-selector"
@@ -151,6 +151,15 @@ export default function Step2() {
 
   const handleSymptomMappingUpdate = (mappedSymptoms: any[]) => {
     setActualMappedSymptoms(mappedSymptoms)
+    localStorage.setItem("mappedSymptoms", JSON.stringify(mappedSymptoms))
+  }
+
+  const handlePatternUpdate = (patterns: SymptomPatternData | null) => {
+    if (patterns) {
+      localStorage.setItem("symptomPatterns", JSON.stringify(patterns))
+    } else {
+      localStorage.removeItem("symptomPatterns")
+    }
   }
 
   return (
@@ -206,6 +215,7 @@ export default function Step2() {
                 medicalHistory={null}
                 familyHistory={formData.familyHistoryDetails}
                 onMappingUpdate={handleSymptomMappingUpdate}
+                onPatternUpdate={handlePatternUpdate}
               />
             </div>
 

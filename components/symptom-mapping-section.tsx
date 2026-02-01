@@ -15,11 +15,14 @@ interface SymptomMappingSectionProps {
   medicalHistory?: any
   familyHistory?: string
   onMappingUpdate?: (mappedSymptoms: MappedSymptom[]) => void
+  onPatternUpdate?: (patterns: SymptomPatternData | null) => void
 }
 
 interface MappedSymptom {
   originalPhrase: string
   medicalTerm: string
+  alternativeSearchTerms?: string[]
+  category?: string
   severity?: string
   duration?: string
   bodyPart?: string
@@ -31,12 +34,181 @@ interface MappedSymptom {
   feedbackStatus: "none" | "needs_adjustment"
   userCorrection?: string
   isEditingCorrection?: boolean
+  searchTermUsed?: string
 }
 
 interface UMLSConcept {
   name: string
   cui: string
   semanticType?: string
+}
+
+interface SymptomPattern {
+  patternName: string
+  clinicalCategory: string
+  symptomIndices: number[]
+  confidence: number
+  reasoning: string
+  suggestedInvestigations: string[]
+  differentialConsiderations: string[]
+}
+
+export interface SymptomPatternData {
+  patterns: SymptomPattern[]
+  overallImpression: string
+  symptomsThatDontFitPatterns: number[]
+}
+
+const categoryColors: Record<string, string> = {
+  motor: "bg-blue-100 text-blue-800",
+  sensory: "bg-yellow-100 text-yellow-800",
+  pain: "bg-red-100 text-red-800",
+  cognitive: "bg-purple-100 text-purple-800",
+  autonomic: "bg-green-100 text-green-800",
+  constitutional: "bg-orange-100 text-orange-800",
+}
+
+async function searchUMLS(searchTerm: string): Promise<{ concepts: UMLSConcept[]; confidence: number; error?: boolean }> {
+  try {
+    const response = await fetch("/api/umls-search", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ searchTerm }),
+    })
+
+    if (!response.ok) {
+      return { concepts: [], confidence: 0, error: true }
+    }
+
+    const data = await response.json()
+    return {
+      concepts: data.concepts || [],
+      confidence: data.confidence || 0,
+      error: !!data.error,
+    }
+  } catch {
+    return { concepts: [], confidence: 0, error: true }
+  }
+}
+
+async function mapSingleSymptom(symptom: any): Promise<MappedSymptom> {
+  const primaryTerm = symptom.medicalTerm || symptom.originalPhrase
+  const alternativeTerms: string[] = symptom.alternativeSearchTerms || []
+  const originalPhrase = symptom.originalPhrase || symptom.text || "Unknown"
+
+  if (!primaryTerm) {
+    return {
+      originalPhrase,
+      medicalTerm: originalPhrase,
+      alternativeSearchTerms: alternativeTerms,
+      category: symptom.category,
+      severity: symptom.severity,
+      duration: symptom.duration,
+      bodyPart: symptom.bodyPart,
+      umlsConcepts: [],
+      selectedConcept: null,
+      confidence: 0,
+      confirmed: false,
+      mappingError: true,
+      feedbackStatus: "none",
+      userCorrection: "",
+      isEditingCorrection: false,
+      searchTermUsed: undefined,
+    }
+  }
+
+  // 1. Try primary medicalTerm
+  let result = await searchUMLS(primaryTerm)
+  if (result.concepts.length > 0 && !result.error) {
+    return {
+      originalPhrase,
+      medicalTerm: symptom.medicalTerm || originalPhrase,
+      alternativeSearchTerms: alternativeTerms,
+      category: symptom.category,
+      severity: symptom.severity,
+      duration: symptom.duration,
+      bodyPart: symptom.bodyPart,
+      umlsConcepts: result.concepts,
+      selectedConcept: result.concepts[0] || null,
+      confidence: result.confidence,
+      confirmed: false,
+      mappingError: false,
+      feedbackStatus: "none",
+      userCorrection: "",
+      isEditingCorrection: false,
+      searchTermUsed: primaryTerm,
+    }
+  }
+
+  // 2. Try each alternativeSearchTerm in order
+  for (const altTerm of alternativeTerms) {
+    result = await searchUMLS(altTerm)
+    if (result.concepts.length > 0 && !result.error) {
+      return {
+        originalPhrase,
+        medicalTerm: symptom.medicalTerm || originalPhrase,
+        alternativeSearchTerms: alternativeTerms,
+        category: symptom.category,
+        severity: symptom.severity,
+        duration: symptom.duration,
+        bodyPart: symptom.bodyPart,
+        umlsConcepts: result.concepts,
+        selectedConcept: result.concepts[0] || null,
+        confidence: result.confidence,
+        confirmed: false,
+        mappingError: false,
+        feedbackStatus: "none",
+        userCorrection: "",
+        isEditingCorrection: false,
+        searchTermUsed: altTerm,
+      }
+    }
+  }
+
+  // 3. Try originalPhrase as last resort
+  if (originalPhrase !== primaryTerm) {
+    result = await searchUMLS(originalPhrase)
+    if (result.concepts.length > 0 && !result.error) {
+      return {
+        originalPhrase,
+        medicalTerm: symptom.medicalTerm || originalPhrase,
+        alternativeSearchTerms: alternativeTerms,
+        category: symptom.category,
+        severity: symptom.severity,
+        duration: symptom.duration,
+        bodyPart: symptom.bodyPart,
+        umlsConcepts: result.concepts,
+        selectedConcept: result.concepts[0] || null,
+        confidence: result.confidence,
+        confirmed: false,
+        mappingError: false,
+        feedbackStatus: "none",
+        userCorrection: "",
+        isEditingCorrection: false,
+        searchTermUsed: originalPhrase,
+      }
+    }
+  }
+
+  // All attempts failed
+  return {
+    originalPhrase,
+    medicalTerm: symptom.medicalTerm || originalPhrase,
+    alternativeSearchTerms: alternativeTerms,
+    category: symptom.category,
+    severity: symptom.severity,
+    duration: symptom.duration,
+    bodyPart: symptom.bodyPart,
+    umlsConcepts: [],
+    selectedConcept: null,
+    confidence: 0,
+    confirmed: false,
+    mappingError: true,
+    feedbackStatus: "none",
+    userCorrection: "",
+    isEditingCorrection: false,
+    searchTermUsed: undefined,
+  }
 }
 
 export function SymptomMappingSection({
@@ -49,6 +221,7 @@ export function SymptomMappingSection({
   medicalHistory,
   familyHistory,
   onMappingUpdate,
+  onPatternUpdate,
 }: SymptomMappingSectionProps) {
   const [isLoading, setIsLoading] = useState(false)
   const [mappedSymptoms, setMappedSymptoms] = useState<MappedSymptom[]>([])
@@ -57,6 +230,8 @@ export function SymptomMappingSection({
   const [newSymptom, setNewSymptom] = useState("")
   const [feedbackData, setFeedbackData] = useState<{ [key: number]: { status: string; correction?: string } }>({})
   const [cumulativeSymptomText, setCumulativeSymptomText] = useState("")
+  const [symptomPatterns, setSymptomPatterns] = useState<SymptomPatternData | null>(null)
+  const [isAnalyzingPatterns, setIsAnalyzingPatterns] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -71,6 +246,52 @@ export function SymptomMappingSection({
       onMappingUpdate(mappedSymptoms)
     }
   }, [mappedSymptoms, onMappingUpdate])
+
+  useEffect(() => {
+    if (onPatternUpdate) {
+      onPatternUpdate(symptomPatterns)
+    }
+  }, [symptomPatterns, onPatternUpdate])
+
+  // Trigger pattern analysis when we have 2+ mapped symptoms
+  useEffect(() => {
+    if (mappedSymptoms.length >= 2 && !isLoading) {
+      analyzePatterns(mappedSymptoms)
+    }
+  }, [mappedSymptoms])
+
+  const analyzePatterns = async (symptoms: MappedSymptom[]) => {
+    setIsAnalyzingPatterns(true)
+    try {
+      const response = await fetch("/api/analyze-symptom-patterns", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          symptoms: symptoms.map((s, i) => ({
+            index: i,
+            originalPhrase: s.originalPhrase,
+            medicalTerm: s.medicalTerm,
+            category: s.category,
+            bodyPart: s.bodyPart,
+            severity: s.severity,
+            umlsConceptName: s.selectedConcept?.name,
+            umlsCui: s.selectedConcept?.cui,
+          })),
+        }),
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        if (data.patterns) {
+          setSymptomPatterns(data)
+        }
+      }
+    } catch (err) {
+      console.error("Pattern analysis failed:", err)
+    } finally {
+      setIsAnalyzingPatterns(false)
+    }
+  }
 
   const handleSuggestDifferentTerm = (index: number) => {
     const updatedSymptoms = [...mappedSymptoms]
@@ -130,6 +351,7 @@ export function SymptomMappingSection({
   const processSymptoms = async () => {
     setIsLoading(true)
     setError(null)
+    setSymptomPatterns(null)
     setCurrentStep("Parsing your symptom description...")
 
     try {
@@ -171,94 +393,7 @@ export function SymptomMappingSection({
 
       const mappingPromises = parseData.symptoms.map(async (symptom: any, index: number) => {
         setCurrentStep(`Mapping symptom ${index + 1} of ${parseData.symptoms.length}...`)
-
-        try {
-          const searchTerm = symptom.medicalTerm || symptom.originalPhrase
-
-          if (!searchTerm) {
-            console.warn("Symptom missing both medicalTerm and originalPhrase:", symptom)
-            return {
-              originalPhrase: symptom.text || "Unknown symptom",
-              medicalTerm: symptom.text || "Unknown symptom",
-              severity: symptom.severity,
-              duration: symptom.duration,
-              bodyPart: symptom.bodyPart,
-              umlsConcepts: [],
-              selectedConcept: null,
-              confidence: 0,
-              confirmed: false,
-              mappingError: true,
-              feedbackStatus: "none",
-              userCorrection: "",
-              isEditingCorrection: false,
-            }
-          }
-
-          const umlsResponse = await fetch("/api/umls-search", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              searchTerm: searchTerm,
-            }),
-          })
-
-          if (!umlsResponse.ok) {
-            console.warn(`UMLS mapping failed for "${searchTerm}": ${umlsResponse.status}`)
-            return {
-              originalPhrase: symptom.originalPhrase || symptom.text,
-              medicalTerm: symptom.medicalTerm || symptom.text,
-              severity: symptom.severity,
-              duration: symptom.duration,
-              bodyPart: symptom.bodyPart,
-              umlsConcepts: [],
-              selectedConcept: null,
-              confidence: 0,
-              confirmed: false,
-              mappingError: true,
-              feedbackStatus: "none",
-              userCorrection: "",
-              isEditingCorrection: false,
-            }
-          }
-
-          const umlsData = await umlsResponse.json()
-
-          const newMappedSymptom: MappedSymptom = {
-            originalPhrase: symptom.originalPhrase || symptom.text,
-            medicalTerm: symptom.medicalTerm || symptom.text,
-            severity: symptom.severity,
-            duration: symptom.duration,
-            bodyPart: symptom.bodyPart,
-            umlsConcepts: umlsData.concepts || [],
-            selectedConcept: umlsData.concepts?.[0] || null,
-            confidence: umlsData.confidence || 0,
-            confirmed: false,
-            mappingError: umlsData.error ? true : false,
-            feedbackStatus: "none",
-            userCorrection: "",
-            isEditingCorrection: false,
-          }
-          return newMappedSymptom
-        } catch (error) {
-          console.error(`Error mapping symptom "${symptom.medicalTerm || symptom.text}":`, error)
-          return {
-            originalPhrase: symptom.originalPhrase || symptom.text || "Unknown",
-            medicalTerm: symptom.medicalTerm || symptom.text || "Unknown",
-            severity: symptom.severity,
-            duration: symptom.duration,
-            bodyPart: symptom.bodyPart,
-            umlsConcepts: [],
-            selectedConcept: null,
-            confidence: 0,
-            confirmed: false,
-            mappingError: true,
-            feedbackStatus: "none",
-            userCorrection: "",
-            isEditingCorrection: false,
-          }
-        }
+        return mapSingleSymptom(symptom)
       })
 
       const results = await Promise.all(mappingPromises)
@@ -277,32 +412,19 @@ export function SymptomMappingSection({
     const symptom = mappedSymptoms[symptomIndex]
 
     try {
-      const umlsResponse = await fetch("/api/umls-search", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          searchTerm: symptom.medicalTerm,
-        }),
+      const result = await mapSingleSymptom({
+        originalPhrase: symptom.originalPhrase,
+        medicalTerm: symptom.medicalTerm,
+        alternativeSearchTerms: symptom.alternativeSearchTerms,
+        category: symptom.category,
+        severity: symptom.severity,
+        duration: symptom.duration,
+        bodyPart: symptom.bodyPart,
       })
 
-      if (umlsResponse.ok) {
-        const umlsData = await umlsResponse.json()
-
-        const updatedSymptoms = [...mappedSymptoms]
-        updatedSymptoms[symptomIndex] = {
-          ...symptom,
-          umlsConcepts: umlsData.concepts || [],
-          selectedConcept: umlsData.concepts?.[0] || null,
-          confidence: umlsData.confidence || 0,
-          mappingError: umlsData.error ? true : false,
-        }
-
-        setMappedSymptoms(updatedSymptoms)
-      } else {
-        console.error(`Retry mapping failed: ${umlsResponse.status}`)
-      }
+      const updatedSymptoms = [...mappedSymptoms]
+      updatedSymptoms[symptomIndex] = result
+      setMappedSymptoms(updatedSymptoms)
     } catch (error) {
       console.error("Retry mapping failed:", error)
     }
@@ -313,6 +435,7 @@ export function SymptomMappingSection({
 
     setIsLoading(true)
     setError(null)
+    setSymptomPatterns(null)
     setCurrentStep("Re-analyzing all symptoms with new information...")
 
     window.scrollTo({ top: 0, behavior: "smooth" })
@@ -355,93 +478,7 @@ export function SymptomMappingSection({
 
       const mappingPromises = parseData.symptoms.map(async (symptom: any, index: number) => {
         setCurrentStep(`Mapping symptom ${index + 1} of ${parseData.symptoms.length}...`)
-
-        try {
-          const searchTerm = symptom.medicalTerm || symptom.originalPhrase
-
-          if (!searchTerm) {
-            return {
-              originalPhrase: symptom.text || "Unknown symptom",
-              medicalTerm: symptom.text || "Unknown symptom",
-              severity: symptom.severity,
-              duration: symptom.duration,
-              bodyPart: symptom.bodyPart,
-              umlsConcepts: [],
-              selectedConcept: null,
-              confidence: 0,
-              confirmed: false,
-              mappingError: true,
-              feedbackStatus: "none",
-              userCorrection: "",
-              isEditingCorrection: false,
-            }
-          }
-
-          const umlsResponse = await fetch("/api/umls-search", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              searchTerm: searchTerm,
-            }),
-          })
-
-          if (!umlsResponse.ok) {
-            console.warn(`UMLS mapping failed for "${searchTerm}": ${umlsResponse.status}`)
-            return {
-              originalPhrase: symptom.originalPhrase || symptom.text,
-              medicalTerm: symptom.medicalTerm || symptom.text,
-              severity: symptom.severity,
-              duration: symptom.duration,
-              bodyPart: symptom.bodyPart,
-              umlsConcepts: [],
-              selectedConcept: null,
-              confidence: 0,
-              confirmed: false,
-              mappingError: true,
-              feedbackStatus: "none",
-              userCorrection: "",
-              isEditingCorrection: false,
-            }
-          }
-
-          const umlsData = await umlsResponse.json()
-
-          const newMappedSymptom: MappedSymptom = {
-            originalPhrase: symptom.originalPhrase || symptom.text,
-            medicalTerm: symptom.medicalTerm || symptom.text,
-            severity: symptom.severity,
-            duration: symptom.duration,
-            bodyPart: symptom.bodyPart,
-            umlsConcepts: umlsData.concepts || [],
-            selectedConcept: umlsData.concepts?.[0] || null,
-            confidence: umlsData.confidence || 0,
-            confirmed: false,
-            mappingError: umlsData.error ? true : false,
-            feedbackStatus: "none",
-            userCorrection: "",
-            isEditingCorrection: false,
-          }
-          return newMappedSymptom
-        } catch (error) {
-          console.error(`Error mapping symptom "${symptom.medicalTerm || symptom.text}":`, error)
-          return {
-            originalPhrase: symptom.originalPhrase || symptom.text || "Unknown",
-            medicalTerm: symptom.medicalTerm || symptom.text || "Unknown",
-            severity: symptom.severity,
-            duration: symptom.duration,
-            bodyPart: symptom.bodyPart,
-            umlsConcepts: [],
-            selectedConcept: null,
-            confidence: 0,
-            confirmed: false,
-            mappingError: true,
-            feedbackStatus: "none",
-            userCorrection: "",
-            isEditingCorrection: false,
-          }
-        }
+        return mapSingleSymptom(symptom)
       })
 
       const results = await Promise.all(mappingPromises)
@@ -515,6 +552,12 @@ export function SymptomMappingSection({
                 <div className="text-sm text-gray-600">You described:</div>
                 <div className="font-medium text-gray-900">{symptom.originalPhrase}</div>
 
+                {symptom.category && (
+                  <span className={`inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-medium ${categoryColors[symptom.category] || "bg-gray-100 text-gray-800"}`}>
+                    {symptom.category}
+                  </span>
+                )}
+
                 {symptom.mappingError ? (
                   <div className="mt-2 p-2 bg-yellow-100 rounded-lg">
                     <div className="text-sm text-yellow-800">Could not find medical term mapping</div>
@@ -532,6 +575,9 @@ export function SymptomMappingSection({
                     <div className="text-xs text-gray-500">
                       CUI: {symptom.selectedConcept.cui}
                       {symptom.selectedConcept.semanticType && ` | Type: ${symptom.selectedConcept.semanticType}`}
+                      {symptom.searchTermUsed && symptom.searchTermUsed !== symptom.medicalTerm && (
+                        <span className="ml-1 text-blue-500">(matched via: &quot;{symptom.searchTermUsed}&quot;)</span>
+                      )}
                     </div>
                   </div>
                 ) : (
@@ -621,14 +667,93 @@ export function SymptomMappingSection({
         ))}
       </div>
 
+      {/* Clinical Pattern Analysis Section */}
+      {isAnalyzingPatterns && (
+        <div className="mt-6 p-4 bg-purple-50 border border-purple-200 rounded-xl">
+          <div className="flex items-center space-x-3">
+            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-purple-600"></div>
+            <span className="text-sm text-purple-700 font-medium">Analyzing symptom patterns...</span>
+          </div>
+        </div>
+      )}
+
+      {symptomPatterns && symptomPatterns.patterns.length > 0 && (
+        <div className="mt-6 p-6 bg-purple-50 border border-purple-200 rounded-xl">
+          <h4 className="text-lg font-semibold text-purple-900 mb-2">Clinical Pattern Analysis</h4>
+
+          {symptomPatterns.overallImpression && (
+            <p className="text-sm text-purple-800 mb-4 leading-relaxed">{symptomPatterns.overallImpression}</p>
+          )}
+
+          <div className="space-y-4">
+            {symptomPatterns.patterns.map((pattern, pIdx) => (
+              <div key={pIdx} className="bg-white border border-purple-200 rounded-xl p-4">
+                <div className="flex items-start justify-between mb-2">
+                  <div>
+                    <h5 className="font-semibold text-purple-900">{pattern.patternName}</h5>
+                    <span className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700">
+                      {pattern.clinicalCategory}
+                    </span>
+                  </div>
+                  <span className="px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                    {Math.round(pattern.confidence * 100)}% confidence
+                  </span>
+                </div>
+
+                <p className="text-sm text-gray-700 mt-2">{pattern.reasoning}</p>
+
+                {pattern.symptomIndices.length > 0 && (
+                  <div className="mt-3">
+                    <div className="text-xs text-gray-500 mb-1">Related symptoms:</div>
+                    <div className="flex flex-wrap gap-1">
+                      {pattern.symptomIndices.map((si) => (
+                        <span key={si} className="px-2 py-0.5 bg-purple-50 border border-purple-200 rounded text-xs text-purple-700">
+                          {mappedSymptoms[si]?.originalPhrase || `Symptom ${si + 1}`}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {pattern.suggestedInvestigations.length > 0 && (
+                  <div className="mt-3">
+                    <div className="text-xs text-gray-500 mb-1">Suggested investigations:</div>
+                    <div className="flex flex-wrap gap-1">
+                      {pattern.suggestedInvestigations.map((inv, iIdx) => (
+                        <span key={iIdx} className="px-2 py-0.5 bg-blue-50 border border-blue-200 rounded text-xs text-blue-700">
+                          {inv}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {pattern.differentialConsiderations.length > 0 && (
+                  <div className="mt-3">
+                    <div className="text-xs text-gray-500 mb-1">Differential considerations:</div>
+                    <div className="flex flex-wrap gap-1">
+                      {pattern.differentialConsiderations.map((dc, dIdx) => (
+                        <span key={dIdx} className="px-2 py-0.5 bg-yellow-50 border border-yellow-200 rounded text-xs text-yellow-700">
+                          {dc}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {Object.keys(feedbackData).length > 0 && (
         <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-xl">
           <h4 className="font-medium text-gray-900 mb-3">Your suggestions:</h4>
           <div className="space-y-2 text-sm">
             {Object.entries(feedbackData).map(([index, feedback]) => (
               <div key={index} className="flex items-center justify-between">
-                <span className="text-gray-700">"{feedback.originalText}"</span>
-                <span className="text-blue-700">→ {feedback.userCorrection}</span>
+                <span className="text-gray-700">&quot;{feedback.originalText}&quot;</span>
+                <span className="text-blue-700">&rarr; {feedback.userCorrection}</span>
               </div>
             ))}
           </div>

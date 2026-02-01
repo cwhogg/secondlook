@@ -70,6 +70,7 @@ export async function POST(request: NextRequest) {
       hasChiefComplaint: !!patientData.chiefComplaint,
       symptomsCount: patientData.symptoms?.length || 0,
       hasPatientHypothesis: !!patientData.patientHypothesis,
+      hasSymptomPatterns: !!patientData.symptomPatterns,
       requestBodySize: requestBody.length,
       dataKeys: Object.keys(patientData),
     })
@@ -190,7 +191,18 @@ ${patientData.medicalHistory ? `Medical History: ${JSON.stringify(patientData.me
 
 ${patientData.familyHistory ? `Family History: ${patientData.familyHistory}` : ""}
 
-TASK: Provide expert rare disease differential diagnosis analysis.`
+${
+  patientData.symptomPatterns?.patterns?.length > 0
+    ? `Clinical Pattern Analysis (AI-identified symptom clusters):
+${patientData.symptomPatterns.patterns.map((p: any) => `- Pattern: "${p.patternName}" (${p.clinicalCategory}, confidence: ${Math.round(p.confidence * 100)}%)
+  Reasoning: ${p.reasoning}
+  Differential considerations: ${p.differentialConsiderations?.join(", ") || "none"}
+  Suggested investigations: ${p.suggestedInvestigations?.join(", ") || "none"}`).join("\n")}
+Overall impression: ${patientData.symptomPatterns.overallImpression || "N/A"}`
+    : ""
+}
+
+TASK: Provide expert rare disease differential diagnosis analysis.${patientData.symptomPatterns?.patterns?.length > 0 ? " The clinical pattern analysis above should inform but not constrain your differential — use it as additional context alongside the raw symptom data." : ""}`
 
     logAnalysis(requestId, "INFO", "Sending request to OpenAI", {
       model: "gpt-4-turbo-preview",

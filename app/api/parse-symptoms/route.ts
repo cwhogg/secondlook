@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     }
 
     const prompt = `
-You are a medical symptom parser. Extract individual symptoms from the following patient description and map them to their original phrases.
+You are a medical symptom parser specializing in translating patient language into SNOMED CT-compatible medical terminology. You must interpret ALL patient descriptions — including functional limitations, anecdotal reports, and colloquial language — as clinical symptoms.
 
 Patient Information:
 - Age: ${patientAge}
@@ -37,25 +37,47 @@ Extract symptoms and return them as a JSON object with this exact structure:
   "symptoms": [
     {
       "originalPhrase": "exact words/phrase the patient used",
-      "medicalTerm": "appropriate medical terminology",
+      "medicalTerm": "SNOMED CT-compatible medical term",
+      "alternativeSearchTerms": ["synonym 1", "synonym 2", "synonym 3"],
       "severity": "mild/moderate/severe or null",
       "duration": "timeframe or null",
-      "bodyPart": "affected body part or null"
+      "bodyPart": "affected body part or null",
+      "category": "motor|sensory|pain|cognitive|autonomic|constitutional"
     }
   ]
 }
 
-IMPORTANT: 
-- "originalPhrase" should be the exact words the patient used (e.g., "heart feels tight", "out of breath", "tired all the time")
-- "medicalTerm" should be the appropriate medical terminology that can be mapped to UMLS concepts (e.g., "chest tightness", "dyspnea", "fatigue")
-- Focus on medical symptoms only
-- Be specific and use medical terminology for the medicalTerm field
+CRITICAL INTERPRETATION RULES:
+1. FUNCTIONAL DESCRIPTIONS are symptoms. Translate them to clinical terms:
+   - "can't grip things" → medicalTerm: "grip weakness", alternativeSearchTerms: ["reduced grip strength", "hand weakness", "loss of grip"]
+   - "fumbling with keys" → medicalTerm: "impaired fine motor coordination", alternativeSearchTerms: ["loss of manual dexterity", "impaired hand coordination", "clumsiness of hand"]
+   - "fingers don't work right" → medicalTerm: "finger motor dysfunction", alternativeSearchTerms: ["impaired finger dexterity", "finger weakness", "loss of finger coordination"]
+
+2. ANECDOTAL EVIDENCE implies symptoms. Extract the underlying clinical finding:
+   - "dropped a glass three times" → medicalTerm: "involuntary release of objects", alternativeSearchTerms: ["grip weakness", "loss of grip strength", "hand weakness"]
+   - "keep bumping into things" → medicalTerm: "impaired spatial awareness", alternativeSearchTerms: ["clumsiness", "poor coordination", "ataxia"]
+   - "can't button my shirt anymore" → medicalTerm: "impaired fine motor coordination", alternativeSearchTerms: ["loss of manual dexterity", "finger dexterity impairment", "reduced hand function"]
+
+3. COLLOQUIAL LANGUAGE must be mapped to recognized medical terms:
+   - "a persistent cramp" → medicalTerm: "muscle cramp", alternativeSearchTerms: ["muscle spasm", "cramping", "involuntary muscle contraction"]
+   - "feels numb" → medicalTerm: "numbness", alternativeSearchTerms: ["paresthesia", "hypoesthesia", "sensory loss"]
+
+FIELD REQUIREMENTS:
+- "originalPhrase": exact words the patient used
+- "medicalTerm": use SNOMED CT / UMLS-compatible clinical terminology. Prefer terms that exist in medical ontologies (e.g., "muscle cramp" not "crampy feeling")
+- "alternativeSearchTerms": provide 2-3 synonyms or related UMLS-searchable terms, ordered from most to least specific
+- "severity": mild/moderate/severe based on context, or null
+- "duration": timeframe if mentioned, or null
+- "bodyPart": affected body part or null
+- "category": classify as motor, sensory, pain, cognitive, autonomic, or constitutional
+
+Every distinct symptom or functional complaint MUST be extracted as a separate entry. Do not skip descriptions just because they are colloquial or anecdotal.
 `
 
     console.log("📤 Sending request to OpenAI...")
     console.log("Model: gpt-4")
     console.log("Temperature: 0.3")
-    console.log("Max tokens: 1000")
+    console.log("Max tokens: 1500")
     console.log("Prompt length:", prompt.length)
 
     const startTime = Date.now()
@@ -72,7 +94,7 @@ IMPORTANT:
           {
             role: "system",
             content:
-              "You are a medical symptom extraction assistant. Return only valid JSON with originalPhrase and medicalTerm fields.",
+              "You are a medical symptom extraction assistant that specializes in interpreting functional descriptions, anecdotal evidence, and colloquial language as clinical symptoms. Return only valid JSON. Every symptom must include originalPhrase, medicalTerm (SNOMED CT-compatible), alternativeSearchTerms (2-3 synonyms), and category.",
           },
           {
             role: "user",
@@ -80,7 +102,7 @@ IMPORTANT:
           },
         ],
         temperature: 0.3,
-        max_tokens: 1000,
+        max_tokens: 1500,
       }),
     })
 

@@ -246,6 +246,6 @@ If you're dealing with a complex, undiagnosed condition, consider how next-gener
 
 Unlike basic symptom checkers, SecondLook provides professional-grade analytical capabilities, rare disease pattern recognition, and tools to optimize communication with physicians. For patients who've been told "we can't figure out what's wrong," it offers a path forward when traditional medicine reaches its limits.
 
-[Learn more about how SecondLook can support your diagnostic journey →]
+[Learn more about how SecondLook can support your diagnostic journey →](/step-1)
 
 *Remember: AI diagnostic tools are designed to enhance, not replace, professional medical care. Always consult with qualified healthcare providers for medical decisions and treatment plans.*

@@ -234,6 +234,6 @@ The key is shifting from passive patient to active diagnostic partner — equipp
 
 **Ready to transform your diagnostic journey?** SecondLook provides the AI-powered diagnostic guidance and organizational tools specifically designed for complex cases like yours. Join thousands of patients who've moved beyond the limitations of traditional healthcare to find the answers they deserve.
 
-[Start Your Strategic Diagnosis Journey with SecondLook →]
+[Start Your Strategic Diagnosis Journey with SecondLook →](/step-1)
 
 *The content in this article is for informational purposes only and should not replace professional medical advice. Always consult qualified healthcare providers for medical decisions.*

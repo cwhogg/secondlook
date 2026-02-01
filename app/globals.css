@@ -479,3 +479,8 @@
 .mdx-content strong {
   @apply font-semibold text-gray-900;
 }
+
+/* CTA links that are the only child of a paragraph (standalone link lines) */
+.mdx-content p > a:only-child {
+  @apply inline-flex items-center no-underline bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300;
+}

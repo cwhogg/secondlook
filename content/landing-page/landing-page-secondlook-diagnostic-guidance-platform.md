@@ -14,7 +14,7 @@ wordCount: 1847
 
 **Stop the diagnostic odyssey. Start getting answers.**
 
-[Get Your Diagnostic Analysis →]
+[Get Your Diagnostic Analysis →](/step-1)
 
 ---
 
@@ -136,7 +136,7 @@ Every day without a diagnosis is another day of uncertainty, ineffective treatme
 
 This offer is only available to the first 200 complex case patients. After thousands of requests from the rare disease community, we're making SecondLook accessible to those who need it most.
 
-[Start Your Diagnostic Analysis — 3 Months Free →]
+[Start Your Diagnostic Analysis →](/step-1)
 
 *No credit card required for trial • Cancel anytime • HIPAA compliant*
 

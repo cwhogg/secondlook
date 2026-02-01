@@ -4,10 +4,9 @@ type: blog-post
 targetKeywords: ["what to do when 5 doctors can't diagnose you", "diagnostic odyssey support", "undiagnosed medical condition next steps", "when doctors can't help"]
 contentGap: "Current content is generic advice from major health sites. Missing is a systematic, actionable framework specifically for complex cases with professional-grade diagnostic organization tools."
 generatedAt: "2026-01-31T22:54:11.062Z"
-ideaName: "SecondLook (new SEO)"
-status: draft
+ideaName: "SecondLook v4 (new SEO)"
+status: published
 wordCount: 2847
-description: "A strategic action plan for patients stuck in a diagnostic odyssey. Learn what to do when multiple doctors can't diagnose your symptoms."
 ---
 
 # What to Do When 5 Doctors Can't Diagnose You: A Strategic Action Plan
@@ -206,11 +205,11 @@ You have the right to:
 **Consider Care Coordination Services**
 Some companies specialize in helping patients navigate complex medical cases, providing advocacy and coordination services for a fee.
 
-## Building Your Diagnostic Strategy with SecondLook
+## Building Your Diagnostic Strategy with SecondLook v4
 
-Traditional diagnostic approaches often fail complex cases because they rely on individual physician pattern recognition within time-constrained appointments. SecondLook addresses these limitations by providing AI-powered diagnostic guidance specifically designed for patients with complex, undiagnosed conditions.
+Traditional diagnostic approaches often fail complex cases because they rely on individual physician pattern recognition within time-constrained appointments. SecondLook v4 addresses these limitations by providing AI-powered diagnostic guidance specifically designed for patients with complex, undiagnosed conditions.
 
-Unlike general symptom checkers that focus on common conditions, SecondLook combines:
+Unlike general symptom checkers that focus on common conditions, SecondLook v4 combines:
 - Advanced pattern recognition trained on rare disease databases
 - Longitudinal symptom tracking and correlation analysis  
 - Medical record organization and synthesis tools
@@ -233,8 +232,8 @@ Remember that diagnostic odysseys are challenging but not hopeless. Many patient
 
 The key is shifting from passive patient to active diagnostic partner — equipped with professional-grade tools, comprehensive documentation, and strategic access to specialized expertise.
 
-**Ready to transform your diagnostic journey?** SecondLook provides the AI-powered diagnostic guidance and organizational tools specifically designed for complex cases like yours. Join thousands of patients who've moved beyond the limitations of traditional healthcare to find the answers they deserve.
+**Ready to transform your diagnostic journey?** SecondLook v4 provides the AI-powered diagnostic guidance and organizational tools specifically designed for complex cases like yours. Join thousands of patients who've moved beyond the limitations of traditional healthcare to find the answers they deserve.
 
-[Start Your Strategic Diagnosis Journey with SecondLook →](/step-1)
+[Start Your Strategic Diagnosis Journey with SecondLook v4 →]
 
 *The content in this article is for informational purposes only and should not replace professional medical advice. Always consult qualified healthcare providers for medical decisions.*

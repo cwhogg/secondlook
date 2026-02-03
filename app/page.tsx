@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { ArrowRight, Shield, CheckCircle, Lock, Sparkles, Zap, Heart, BookOpen } from "lucide-react"
 import { getAllContent } from "@/lib/content"
 
 const jsonLd = {
@@ -150,11 +151,13 @@ function ResourcesSection() {
 
   return (
     <section className="max-w-[1140px] mx-auto px-8 py-16">
-      <div className="mb-10">
-        <div className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#8b2500] mb-4">Resources</div>
-        <h2 className="font-serif text-[2.2rem] font-normal text-[#1a1a1a] leading-tight">
-          Guides for your diagnostic journey
+      <div className="text-center mb-10">
+        <h2 className="font-serif text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-6">
+          Health Resources &amp; Rare Disease Guides
         </h2>
+        <p className="font-serif-body text-xl text-[#5a5a5a] max-w-3xl mx-auto leading-relaxed">
+          Explore our guides on rare disease diagnosis, navigating complex medical cases, and making the most of AI symptom checkers on your health journey.
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
@@ -171,8 +174,23 @@ function ResourcesSection() {
               {post.title}
             </h3>
             <p className="font-serif-body text-sm leading-relaxed text-[#5a5a5a]">{post.description}</p>
+            <div className="mt-4 flex items-center text-[#8b2500] font-sans text-xs font-medium uppercase tracking-wide">
+              <span>Read more</span>
+              <ArrowRight className="h-3 w-3 ml-1 group-hover:translate-x-1 transition-transform" />
+            </div>
           </Link>
         ))}
+      </div>
+
+      <div className="text-center mt-10">
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-2 text-[#8b2500] hover:text-[#6d1d00] font-sans text-sm font-semibold uppercase tracking-wide transition-colors"
+        >
+          <BookOpen className="h-4 w-4" />
+          <span>View all resources</span>
+          <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
     </section>
   )
@@ -204,7 +222,7 @@ export default function HomePage() {
               href="/step-1"
               className="font-sans text-[0.82rem] font-medium text-[#8b2500] uppercase tracking-[0.03em] pb-[2px] border-b border-[#8b2500] hover:text-[#6d1d00] hover:border-[#6d1d00] transition-colors"
             >
-              Begin Assessment
+              Start Analysis
             </Link>
           </div>
         </div>
@@ -215,29 +233,45 @@ export default function HomePage() {
         <div className="max-w-[1140px] mx-auto px-8 grid grid-cols-1 md:grid-cols-[1fr_0.65fr] gap-12 items-center">
           {/* Text Content */}
           <div className="max-w-[600px]">
-            {/* Eyebrow */}
-            <div className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#8b2500] mb-6 flex items-center gap-3">
-              <span className="inline-block w-7 h-px bg-[#8b2500]" />
-              Rare Disease Diagnostics
+            {/* Trust Badges */}
+            <div className="flex flex-wrap items-center gap-4 mb-8">
+              <div className="flex items-center space-x-2 border border-[#d4c5b0] px-4 py-2">
+                <Shield className="h-4 w-4 text-[#8b2500]" />
+                <span className="font-sans text-xs font-medium text-[#5a5a5a] uppercase tracking-wide">HIPAA Compliant</span>
+              </div>
+              <div className="flex items-center space-x-2 border border-[#d4c5b0] px-4 py-2">
+                <CheckCircle className="h-4 w-4 text-[#8b2500]" />
+                <span className="font-sans text-xs font-medium text-[#5a5a5a] uppercase tracking-wide">MD Reviewed</span>
+              </div>
+              <div className="flex items-center space-x-2 border border-[#d4c5b0] px-4 py-2">
+                <Lock className="h-4 w-4 text-[#c9a96e]" />
+                <span className="font-sans text-xs font-medium text-[#5a5a5a] uppercase tracking-wide">Bank-Level Encryption</span>
+              </div>
             </div>
 
             {/* Headline */}
             <h1 className="font-serif text-[2.6rem] md:text-[3.4rem] font-normal leading-[1.12] text-[#1a1a1a] mb-7 tracking-[-0.01em]">
-              When standard answers <em className="text-[#8b2500]">aren&apos;t enough.</em>
+              Find Your Rare Diagnosis <em className="text-[#8b2500]">in Minutes.</em>
             </h1>
 
             {/* Subline */}
             <p className="font-serif-body text-lg leading-[1.75] text-[#5a5a5a] mb-10 max-w-[480px]">
-              Expert AI analysis for rare and complex conditions. A structured diagnostic tool built for the patients who fall through the cracks of conventional medicine.
+              Our AI analyzes your symptoms against thousands of conditions, focusing on rare and complex diagnoses that might be overlooked by general practitioners.
             </p>
 
             {/* CTA Button */}
             <Link
               href="/step-1"
-              className="inline-block font-sans text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-white bg-[#8b2500] px-9 py-4 hover:bg-[#6d1d00] transition-colors"
+              className="inline-flex items-center gap-2 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-white bg-[#8b2500] px-9 py-4 hover:bg-[#6d1d00] transition-colors"
             >
-              Begin Your Assessment
+              <Sparkles className="h-4 w-4" />
+              <span>Start My Health Analysis</span>
+              <ArrowRight className="h-4 w-4" />
             </Link>
+
+            <p className="mt-5 font-sans text-[0.72rem] text-[#999] tracking-[0.02em]">
+              Free during early access
+            </p>
           </div>
 
           {/* DNA Helix Decoration */}
@@ -252,41 +286,67 @@ export default function HomePage() {
         <GoldDivider wide />
       </div>
 
-      {/* How It Works - Timeline */}
-      <section className="py-16">
-        <div className="max-w-[820px] mx-auto px-8">
-          {/* Section Header */}
-          <div className="mb-14">
-            <div className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#8b2500] mb-4">
-              Methodology
+      {/* Medical Notice */}
+      <section className="py-14">
+        <div className="max-w-[700px] mx-auto px-8">
+          <div className="border border-[#d4c5b0] border-t-2 border-t-[#8b2500] bg-white p-8 md:px-10">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-[#8b2500] flex items-center justify-center flex-shrink-0">
+                <Shield className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h3 className="font-serif text-lg font-medium text-[#1a1a1a] mb-2">Important Medical Notice</h3>
+                <p className="font-serif-body text-[0.9rem] leading-[1.75] text-[#5a5a5a]">
+                  This analysis is for educational purposes and does not replace professional medical advice. Always consult with qualified healthcare providers for medical decisions.
+                </p>
+              </div>
             </div>
-            <h2 className="font-serif text-[2.2rem] font-normal text-[#1a1a1a] leading-tight">
-              A structured path to clarity
-            </h2>
           </div>
+        </div>
+      </section>
 
-          {/* Timeline */}
-          <div className="relative pl-20 before:content-[''] before:absolute before:left-[33px] before:top-1 before:bottom-1 before:w-px before:bg-[#d4c5b0]">
-            <TimelineStep
-              number="I"
-              title="Describe your symptoms"
-              description="Begin with a thorough accounting of symptoms, their onset, duration, and severity. Our guided assessment captures the clinical nuance that standard intake forms miss."
-            />
-            <TimelineStep
-              number="II"
-              title="Medications and clinical history"
-              description="Document current medications, prior treatments, test results, and the full arc of your diagnostic history. Context shapes analysis."
-            />
-            <TimelineStep
-              number="III"
-              title="Family and genetic background"
-              description="Many rare conditions carry hereditary patterns. We ask about family medical history to identify potential genetic links that might otherwise go unnoticed."
-            />
-            <TimelineStep
-              number="IV"
-              title="Receive your analysis"
-              description="Our AI cross-references your complete clinical profile against an extensive knowledge base of rare and complex conditions, delivering prioritized differential diagnoses and recommended next steps."
-            />
+      {/* Features Grid */}
+      <section className="py-[4.5rem]">
+        <div className="max-w-[1140px] mx-auto px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+            {/* Feature 1 */}
+            <div className="py-6 md:px-8 md:border-r border-[#d4c5b0] first:pl-0 border-b md:border-b-0">
+              <div className="w-12 h-12 bg-[#faf6f0] flex items-center justify-center mb-6">
+                <Shield className="h-6 w-6 text-[#8b2500]" />
+              </div>
+              <h3 className="font-serif text-xl font-medium text-[#1a1a1a] mb-3 leading-snug">
+                Medical-Grade Security
+              </h3>
+              <p className="font-serif-body text-sm leading-relaxed text-[#5a5a5a]">
+                Your health information is protected with the same security standards used by hospitals and medical institutions.
+              </p>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="py-6 md:px-8 md:border-r border-[#d4c5b0] border-b md:border-b-0">
+              <div className="w-12 h-12 bg-[#faf6f0] flex items-center justify-center mb-6">
+                <Zap className="h-6 w-6 text-[#c9a96e]" />
+              </div>
+              <h3 className="font-serif text-xl font-medium text-[#1a1a1a] mb-3 leading-snug">
+                Fast Analysis
+              </h3>
+              <p className="font-serif-body text-sm leading-relaxed text-[#5a5a5a]">
+                Get comprehensive health insights in under 10 minutes. No waiting for appointments or referrals.
+              </p>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="py-6 md:px-8 md:pl-8">
+              <div className="w-12 h-12 bg-[#faf6f0] flex items-center justify-center mb-6">
+                <Heart className="h-6 w-6 text-[#8b2500]" />
+              </div>
+              <h3 className="font-serif text-xl font-medium text-[#1a1a1a] mb-3 leading-snug">
+                Doctor-Reviewed AI
+              </h3>
+              <p className="font-serif-body text-sm leading-relaxed text-[#5a5a5a]">
+                Our AI is trained on peer-reviewed medical literature and overseen by licensed healthcare professionals.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -296,106 +356,86 @@ export default function HomePage() {
         <GoldDivider />
       </div>
 
-      {/* Pull Quote */}
-      <section className="bg-[#faf6f0] border-y border-[#d4c5b0] py-20">
-        <div className="max-w-[860px] mx-auto px-8 text-center">
-          <span className="font-serif text-[5rem] text-[#c9a96e] leading-none block -mb-2 opacity-60">&ldquo;</span>
-          <p className="font-serif italic text-[1.75rem] font-normal leading-[1.5] text-[#1a1a1a] mb-6">
-            Designed for the diagnostic odyssey — when you need more than generic health advice.
-          </p>
-          <div className="font-sans text-[0.75rem] font-medium uppercase tracking-[0.14em] text-[#8b2500]">
-            The SecondLook Mission
-          </div>
-        </div>
-      </section>
-
-      {/* Features Grid */}
-      <section className="py-[4.5rem]">
-        <div className="max-w-[1140px] mx-auto px-8">
-          <div className="mb-10">
-            <div className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#8b2500]">
-              Capabilities
-            </div>
+      {/* How It Works - Timeline */}
+      <section className="py-16">
+        <div className="max-w-[820px] mx-auto px-8">
+          {/* Section Header */}
+          <div className="text-center mb-14">
+            <h2 className="font-serif text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4">
+              How SecondLook Works
+            </h2>
+            <p className="font-serif-body text-xl text-[#5a5a5a] max-w-3xl mx-auto leading-relaxed">
+              Our simple 4-step process helps you get expert medical insights quickly and securely.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-            {/* Feature 1 */}
-            <div className="py-6 md:px-8 md:border-r border-[#d4c5b0] first:pl-0">
-              <div className="font-serif text-[2.5rem] font-normal text-[#c9a96e] leading-none mb-4 opacity-70">01</div>
-              <h3 className="font-serif text-lg font-medium text-[#1a1a1a] mb-3 leading-snug">
-                Rare Condition Intelligence
-              </h3>
-              <p className="font-serif-body text-sm leading-relaxed text-[#5a5a5a]">
-                Access analysis informed by thousands of documented rare diseases, genetic conditions, and atypical presentations that general-purpose tools overlook.
-              </p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="py-6 md:px-8 md:border-r border-[#d4c5b0] border-t md:border-t-0">
-              <div className="font-serif text-[2.5rem] font-normal text-[#c9a96e] leading-none mb-4 opacity-70">02</div>
-              <h3 className="font-serif text-lg font-medium text-[#1a1a1a] mb-3 leading-snug">
-                Differential Prioritization
-              </h3>
-              <p className="font-serif-body text-sm leading-relaxed text-[#5a5a5a]">
-                Rather than a simple list, receive a ranked differential with reasoning, weighted by symptom correlation, prevalence data, and clinical plausibility.
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="py-6 md:px-8 md:pl-8 border-t md:border-t-0">
-              <div className="font-serif text-[2.5rem] font-normal text-[#c9a96e] leading-none mb-4 opacity-70">03</div>
-              <h3 className="font-serif text-lg font-medium text-[#1a1a1a] mb-3 leading-snug">
-                Actionable Next Steps
-              </h3>
-              <p className="font-serif-body text-sm leading-relaxed text-[#5a5a5a]">
-                Every analysis concludes with specific, referenced recommendations: specialist referrals, targeted tests, and clinical resources to bring to your care team.
-              </p>
-            </div>
+          {/* Timeline */}
+          <div className="relative pl-20 before:content-[''] before:absolute before:left-[33px] before:top-1 before:bottom-1 before:w-px before:bg-[#d4c5b0]">
+            <TimelineStep
+              number="I"
+              title="Share Your Health Story"
+              description="Tell us about your symptoms, health history, and concerns using our easy questionnaire designed for patients."
+            />
+            <TimelineStep
+              number="II"
+              title="AI Medical Review"
+              description="Our medical AI analyzes your information against thousands of conditions, focusing on rare and complex diagnoses."
+            />
+            <TimelineStep
+              number="III"
+              title="Get Your Report"
+              description="Receive a detailed analysis with potential conditions to discuss with your healthcare provider."
+            />
+            <TimelineStep
+              number="IV"
+              title="Get Recommendations"
+              description="We recommend trusted partners who can fill in gaps and help get to a specific diagnosis."
+            />
           </div>
         </div>
       </section>
 
       {/* Divider */}
-      <div className="py-12">
+      <div className="py-8">
         <GoldDivider wide />
       </div>
 
-      {/* Medical Notice */}
-      <section className="py-14">
-        <div className="max-w-[700px] mx-auto px-8">
-          <div className="border border-[#d4c5b0] border-t-2 border-t-[#8b2500] bg-white p-8 md:px-10">
-            <div className="font-sans text-[0.68rem] font-bold uppercase tracking-[0.16em] text-[#8b2500] mb-3">
-              Clinical Disclaimer
-            </div>
-            <p className="font-serif-body text-[0.85rem] leading-[1.75] text-[#5a5a5a]">
-              <strong className="text-[#1a1a1a] font-semibold">SecondLook is an informational tool and does not provide medical diagnoses.</strong>{' '}
-              The analysis generated by this platform is intended to support, not replace, the clinical judgment of qualified healthcare professionals. Always consult a licensed physician or specialist before making medical decisions.
-            </p>
-          </div>
+      {/* SEO Paragraph */}
+      <section className="py-8">
+        <div className="max-w-[820px] mx-auto px-8">
+          <p className="font-serif-body text-center text-[#5a5a5a] leading-relaxed">
+            Whether you&apos;re searching for a medical second opinion, exploring an AI symptom checker for rare diseases,
+            or looking for help with a complex diagnosis, SecondLook provides the analytical depth that standard tools lack.
+            Our platform is designed for patients navigating a diagnostic odyssey who need more than generic health advice.
+          </p>
         </div>
       </section>
 
       {/* Resources Section */}
       <ResourcesSection />
 
+      {/* Divider */}
+      <div className="py-8">
+        <GoldDivider />
+      </div>
+
       {/* Final CTA Section */}
       <section className="py-[4.5rem] text-center">
         <div className="max-w-[480px] mx-auto px-8">
           <h2 className="font-serif text-[2rem] font-normal text-[#1a1a1a] mb-4 leading-snug">
-            Ready for a second look?
+            Ready to explore your health?
           </h2>
           <p className="font-serif-body text-[1.05rem] text-[#5a5a5a] leading-relaxed mb-9">
-            Three minutes of structured input can surface possibilities that years of searching have missed.
+            Get AI-powered diagnostic insights for complex and rare conditions — free during early access.
           </p>
           <Link
             href="/step-1"
-            className="inline-block font-sans text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-white bg-[#8b2500] px-10 py-4 hover:bg-[#6d1d00] transition-colors"
+            className="inline-flex items-center gap-2 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-white bg-[#8b2500] px-10 py-4 hover:bg-[#6d1d00] transition-colors"
           >
-            Start Your Assessment
+            <Sparkles className="h-4 w-4" />
+            <span>Start My Health Analysis</span>
+            <ArrowRight className="h-4 w-4" />
           </Link>
-          <p className="mt-5 font-sans text-[0.72rem] text-[#999] tracking-[0.02em]">
-            No account required. Your data is never stored.
-          </p>
         </div>
       </section>
 
@@ -439,7 +479,7 @@ export default function HomePage() {
           {/* Bottom Rule & Fine Print */}
           <div className="w-full h-px bg-[#e5ddd3] my-5" />
           <p className="font-serif-body text-[0.72rem] text-[#b0a898] leading-relaxed max-w-[620px]">
-            SecondLook is not a medical device and has not been evaluated by the FDA. Content provided is for informational purposes only and should not be construed as professional medical advice. This tool is designed to complement, not replace, the expertise of licensed healthcare providers.
+            SecondLook provides educational information only and is not a substitute for professional medical advice. Always consult with a qualified healthcare provider for medical concerns.
           </p>
         </div>
       </footer>

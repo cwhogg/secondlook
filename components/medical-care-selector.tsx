@@ -47,7 +47,7 @@ export function MedicalCareSelector({
               type="button"
               onClick={() => onChange(option.id)}
               className={cn(
-                "p-4 rounded-xl border-2 text-left transition-all duration-200",
+                "p-4 rounded-none border-2 text-left transition-all duration-200",
                 "hover:border-medical-primary hover:bg-blue-50",
                 "focus:outline-none focus:ring-2 focus:ring-medical-primary focus:ring-offset-2",
                 isSelected
@@ -64,12 +64,12 @@ export function MedicalCareSelector({
 
       {/* Specialist Type Follow-up */}
       {value === "specialists" && (
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+        <div className="bg-blue-50 border border-blue-200 rounded-none p-4">
           <label className="block text-sm font-medium text-blue-900 mb-3">Which type of specialist?</label>
           <select
             value={specialistType || ""}
             onChange={(e) => onSpecialistTypeChange(e.target.value)}
-            className="w-full px-3 py-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary bg-white text-base"
+            className="w-full px-3 py-2 border border-blue-300 rounded-none focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary bg-white text-base"
           >
             <option value="">Select specialist type...</option>
             {specialistTypes.map((type) => (
@@ -83,7 +83,7 @@ export function MedicalCareSelector({
 
       {/* ER Visits Follow-up */}
       {value === "emergency" && (
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+        <div className="bg-blue-50 border border-blue-200 rounded-none p-4">
           <label className="block text-sm font-medium text-blue-900 mb-3">How many ER visits?</label>
           <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
             {[1, 2, 3, 4, 5].map((num) => (
@@ -92,7 +92,7 @@ export function MedicalCareSelector({
                 type="button"
                 onClick={() => onErVisitsChange(num)}
                 className={cn(
-                  "py-2 px-3 rounded-lg border transition-colors text-center",
+                  "py-2 px-3 rounded-none border transition-colors text-center",
                   erVisits === num
                     ? "border-medical-primary bg-medical-primary text-white"
                     : "border-blue-300 bg-white text-blue-900 hover:border-medical-primary",

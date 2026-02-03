@@ -21,7 +21,7 @@ export function BreadcrumbNav({ items }: BreadcrumbNavProps) {
           {index > 0 && <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400 mx-1 sm:mx-2 flex-shrink-0" />}
           <span
             className={`whitespace-nowrap ${
-              item.current ? "text-indigo-700 font-medium" : "text-gray-500 hover:text-gray-700"
+              item.current ? "text-[#8b2500] font-medium" : "text-gray-500 hover:text-gray-700"
             }`}
           >
             {item.label}

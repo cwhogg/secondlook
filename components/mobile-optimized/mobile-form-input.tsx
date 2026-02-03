@@ -95,7 +95,7 @@ export function MobileFormInput({
   const hasError = !!error
 
   const inputClasses = cn(
-    "w-full px-4 py-4 text-base border-2 rounded-xl transition-all duration-200",
+    "w-full px-4 py-4 text-base border-2 rounded-none transition-all duration-200",
     "focus:outline-none focus:ring-2 focus:ring-medical-primary focus:ring-offset-2",
     "placeholder-transparent", // Hide placeholder when using floating labels
     hasError
@@ -165,7 +165,7 @@ export function MobileFormInput({
             type="button"
             onClick={isListening ? stopVoiceInput : startVoiceInput}
             className={cn(
-              "absolute right-4 top-4 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg transition-colors",
+              "absolute right-4 top-4 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-none transition-colors",
               isListening
                 ? "text-red-600 bg-red-50 hover:bg-red-100"
                 : "text-gray-500 hover:text-gray-700 hover:bg-gray-50",

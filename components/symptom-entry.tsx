@@ -24,7 +24,7 @@ const timingOptions = [
 
 export function SymptomEntryComponent({ symptom, onUpdate, onRemove }: SymptomEntryProps) {
   return (
-    <div className="bg-gray-50 rounded-xl p-4 space-y-4">
+    <div className="bg-gray-50 rounded-none p-4 space-y-4">
       <div className="flex justify-between items-start">
         <h4 className="text-sm font-medium text-gray-900">Additional Symptom</h4>
         <button
@@ -44,7 +44,7 @@ export function SymptomEntryComponent({ symptom, onUpdate, onRemove }: SymptomEn
             placeholder="e.g., Joint pain, headaches, rash..."
             value={symptom.description}
             onChange={(e) => onUpdate(symptom.id, "description", e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary text-base"
+            className="w-full px-3 py-2 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary text-base"
           />
         </div>
 
@@ -57,7 +57,7 @@ export function SymptomEntryComponent({ symptom, onUpdate, onRemove }: SymptomEn
                 type="button"
                 onClick={() => onUpdate(symptom.id, "timing", option.id)}
                 className={cn(
-                  "py-2 px-3 text-sm rounded-lg border transition-colors",
+                  "py-2 px-3 text-sm rounded-none border transition-colors",
                   symptom.timing === option.id
                     ? "border-medical-primary bg-blue-50 text-medical-primary"
                     : "border-gray-200 bg-white text-gray-700 hover:border-gray-300",

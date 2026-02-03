@@ -48,14 +48,14 @@ export function FormValidationError({
       </div>
 
       {/* Progress Indicator */}
-      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+      <div className="bg-blue-50 border border-blue-200 rounded-none p-4">
         <div className="flex items-center justify-between mb-3">
           <span className="text-sm font-medium text-blue-900">Form Progress</span>
           <span className="text-sm text-blue-700">{completionPercentage}% Complete</span>
         </div>
         <div className="w-full bg-blue-200 rounded-full h-2">
           <div
-            className="bg-indigo-700 h-2 rounded-full transition-all duration-500"
+            className="bg-[#8b2500] h-2 rounded-full transition-all duration-500"
             style={{ width: `${completionPercentage}%` }}
           />
         </div>
@@ -67,7 +67,7 @@ export function FormValidationError({
       {/* Error Sections */}
       <div className="space-y-4">
         {Object.entries(groupedErrors).map(([section, sectionErrors]) => (
-          <div key={section} className="bg-red-50 border border-red-200 rounded-xl p-4">
+          <div key={section} className="bg-red-50 border border-red-200 rounded-none p-4">
             <div className="flex items-start justify-between mb-3">
               <div>
                 <h3 className="font-medium text-red-900">{sectionErrors[0].sectionLabel}</h3>
@@ -100,7 +100,7 @@ export function FormValidationError({
 
       {/* Completed Sections */}
       {completedSections.length > 0 && (
-        <div className="bg-green-50 border border-green-200 rounded-xl p-4">
+        <div className="bg-green-50 border border-green-200 rounded-none p-4">
           <h3 className="font-medium text-green-900 mb-3 flex items-center space-x-2">
             <CheckCircle className="h-5 w-5" />
             <span>Completed Sections</span>
@@ -117,19 +117,19 @@ export function FormValidationError({
       )}
 
       {/* Quick Actions */}
-      <div className="bg-gray-50 rounded-xl p-4">
+      <div className="bg-gray-50 rounded-none p-4">
         <h3 className="font-medium text-gray-900 mb-3">Quick Actions</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <button
             onClick={() => onNavigateToSection(Object.keys(groupedErrors)[0])}
-            className="flex items-center justify-center space-x-2 p-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+            className="flex items-center justify-center space-x-2 p-3 bg-white border border-gray-200 rounded-none hover:bg-gray-50 transition-colors"
           >
             <AlertCircle className="h-4 w-4 text-red-600" />
             <span className="text-sm font-medium">Fix First Issue</span>
           </button>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex items-center justify-center space-x-2 p-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+            className="flex items-center justify-center space-x-2 p-3 bg-white border border-gray-200 rounded-none hover:bg-gray-50 transition-colors"
           >
             <ArrowRight className="h-4 w-4 text-gray-600 rotate-[-90deg]" />
             <span className="text-sm font-medium">Go to Top</span>

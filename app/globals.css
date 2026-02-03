@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    --background: 250 33% 98%;
-    --foreground: 243 73% 20%;
+    --background: 30 20% 94%;
+    --foreground: 0 0% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 243 73% 20%;
+    --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 243 73% 20%;
-    --primary: 245 58% 51%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 12 100% 27%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 239 84% 67%;
+    --secondary: 12 100% 21%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 248 30% 91%;
-    --muted-foreground: 249 26% 38%;
-    --accent: 32 95% 44%;
+    --muted: 30 30% 92%;
+    --muted-foreground: 0 0% 35%;
+    --accent: 38 42% 60%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 248 30% 91%;
-    --input: 248 30% 91%;
-    --ring: 245 58% 51%;
-    --radius: 0.75rem;
+    --border: 30 20% 78%;
+    --input: 30 20% 78%;
+    --ring: 12 100% 27%;
+    --radius: 2px;
   }
 
   .dark {
-    --background: 243 73% 5%;
-    --foreground: 248 30% 91%;
-    --card: 243 73% 5%;
-    --card-foreground: 248 30% 91%;
-    --popover: 243 73% 5%;
-    --popover-foreground: 248 30% 91%;
-    --primary: 245 58% 51%;
+    --background: 0 0% 8%;
+    --foreground: 30 20% 92%;
+    --card: 0 0% 8%;
+    --card-foreground: 30 20% 92%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 30 20% 92%;
+    --primary: 12 100% 27%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 239 84% 67%;
+    --secondary: 12 100% 21%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 245 25% 20%;
-    --muted-foreground: 248 20% 65%;
-    --accent: 32 95% 44%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 30 10% 60%;
+    --accent: 38 42% 60%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 245 25% 20%;
-    --input: 245 25% 20%;
-    --ring: 245 58% 51%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 12 100% 27%;
   }
 }
 
@@ -60,8 +60,8 @@
   }
 
   body {
-    @apply bg-[#faf9fe] text-[#1e1b4b] antialiased;
-    font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    @apply bg-[#f5f0eb] text-[#1a1a1a] antialiased;
+    font-family: var(--font-source-serif), Georgia, "Times New Roman", serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
@@ -72,7 +72,7 @@
   h5,
   h6 {
     @apply font-semibold tracking-tight;
-    font-family: var(--font-fraunces), Georgia, serif;
+    font-family: var(--font-playfair), Georgia, serif;
   }
 
   h1 {
@@ -97,6 +97,7 @@
 
   button {
     @apply font-medium;
+    font-family: var(--font-instrument), system-ui, sans-serif;
   }
 }
 
@@ -123,7 +124,7 @@
   }
 
   .status-bar-pending {
-    @apply bg-indigo-50 text-indigo-800 border-l-4 border-indigo-500;
+    @apply bg-[#faf6f0] text-[#8b2500] border-l-4 border-[#8b2500];
   }
 
   /* Progress Indicators */
@@ -132,7 +133,7 @@
   }
 
   .progress-modern-fill {
-    @apply h-full bg-indigo-700 rounded-full transition-all duration-500 ease-out;
+    @apply h-full bg-[#8b2500] rounded-full transition-all duration-500 ease-out;
   }
 
   .progress-steps {
@@ -144,11 +145,11 @@
   }
 
   .progress-step-completed {
-    @apply bg-green-500 text-white shadow-sm;
+    @apply bg-green-500 text-white;
   }
 
   .progress-step-current {
-    @apply bg-indigo-700 text-white shadow-md;
+    @apply bg-[#8b2500] text-white;
   }
 
   .progress-step-pending {
@@ -165,11 +166,11 @@
 
   /* Modern Cards */
   .card-modern {
-    @apply bg-white rounded-xl shadow-sm border border-[#e5e2f0] overflow-hidden;
+    @apply bg-white rounded-none border border-[#d4c5b0] overflow-hidden;
   }
 
   .card-modern-hover {
-    @apply transition-all duration-300 hover:shadow-md hover:border-[#d5d2e0];
+    @apply transition-all duration-300 hover:border-[#b8a896];
   }
 
   .card-modern-interactive {
@@ -178,11 +179,11 @@
 
   /* Modern Buttons */
   .btn-modern {
-    @apply inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-none transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .btn-primary {
-    @apply bg-indigo-700 text-white hover:bg-indigo-800 focus:ring-indigo-500 shadow-sm hover:shadow-md;
+    @apply bg-[#8b2500] text-white hover:bg-[#6d1d00] focus:ring-[#8b2500];
   }
 
   .btn-secondary {
@@ -190,15 +191,15 @@
   }
 
   .btn-success {
-    @apply bg-green-500 text-white hover:bg-green-600 focus:ring-green-500 shadow-sm hover:shadow-md;
+    @apply bg-green-500 text-white hover:bg-green-600 focus:ring-green-500;
   }
 
   .btn-warning {
-    @apply bg-amber-500 text-white hover:bg-amber-600 focus:ring-amber-500 shadow-sm hover:shadow-md;
+    @apply bg-amber-500 text-white hover:bg-amber-600 focus:ring-amber-500;
   }
 
   .btn-error {
-    @apply bg-red-500 text-white hover:bg-red-600 focus:ring-red-500 shadow-sm hover:shadow-md;
+    @apply bg-red-500 text-white hover:bg-red-600 focus:ring-red-500;
   }
 
   .btn-outline {
@@ -211,7 +212,7 @@
 
   /* Modern Form Elements */
   .input-modern {
-    @apply w-full px-4 py-3 text-base bg-white border border-[#e5e2f0] rounded-xl focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-20 focus:border-indigo-500 transition-all duration-200;
+    @apply w-full px-4 py-3 text-base bg-white border border-[#d4c5b0] rounded-none focus:outline-none focus:ring-4 focus:ring-[#8b2500] focus:ring-opacity-20 focus:border-[#8b2500] transition-all duration-200;
   }
 
   .input-error {
@@ -425,7 +426,7 @@
 }
 
 .mdx-content a {
-  @apply text-indigo-700 hover:text-indigo-900 underline underline-offset-2 transition-colors;
+  @apply text-[#8b2500] hover:text-[#6d1d00] underline underline-offset-2 transition-colors;
 }
 
 .mdx-content ul {
@@ -441,7 +442,7 @@
 }
 
 .mdx-content blockquote {
-  @apply border-l-4 border-indigo-300 bg-indigo-50/50 pl-4 py-2 my-4 text-gray-700 italic;
+  @apply border-l-4 border-[#c9a96e] bg-[#faf6f0] pl-4 py-2 my-4 text-gray-700 italic;
 }
 
 .mdx-content .table-wrapper {
@@ -449,7 +450,7 @@
 }
 
 .mdx-content table {
-  @apply min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg;
+  @apply min-w-full divide-y divide-gray-200 border border-gray-200 rounded-none;
 }
 
 .mdx-content thead {
@@ -465,11 +466,11 @@
 }
 
 .mdx-content code {
-  @apply bg-gray-100 text-indigo-700 rounded px-1.5 py-0.5 text-sm font-mono;
+  @apply bg-gray-100 text-[#8b2500] rounded px-1.5 py-0.5 text-sm font-mono;
 }
 
 .mdx-content pre {
-  @apply bg-gray-900 text-gray-100 rounded-xl p-4 overflow-x-auto my-4 text-sm;
+  @apply bg-gray-900 text-gray-100 rounded-none p-4 overflow-x-auto my-4 text-sm;
 }
 
 .mdx-content pre code {
@@ -486,5 +487,23 @@
 
 /* CTA links that are the only child of a paragraph (standalone link lines) */
 .mdx-content p > a:only-child {
-  @apply inline-flex items-center no-underline bg-indigo-700 hover:bg-indigo-800 text-white px-6 py-3 rounded-lg font-semibold shadow-sm hover:shadow-md transition-all duration-200;
+  @apply inline-flex items-center no-underline bg-[#8b2500] hover:bg-[#6d1d00] text-white px-6 py-3 rounded-none font-semibold transition-all duration-200;
+}
+
+/* Editorial Embellishments */
+.editorial-divider {
+  @apply relative my-10 max-w-xl mx-auto flex items-center justify-center gap-6;
+}
+.editorial-divider::before,
+.editorial-divider::after {
+  content: '';
+  @apply flex-1 h-px bg-[#c9a96e];
+}
+.editorial-divider .diamond {
+  @apply w-2 h-2 bg-[#c9a96e] rotate-45 flex-shrink-0;
+}
+
+.section-label {
+  font-family: var(--font-instrument), system-ui, sans-serif;
+  @apply text-xs font-semibold uppercase tracking-[0.18em] text-[#8b2500] mb-3;
 }

@@ -54,7 +54,7 @@ export function SymptomPatternSelector({ value, onChange }: SymptomPatternSelect
             type="button"
             onClick={() => onChange(pattern.id)}
             className={cn(
-              "p-4 rounded-xl border-2 text-left transition-all duration-200 min-h-[120px]",
+              "p-4 rounded-none border-2 text-left transition-all duration-200 min-h-[120px]",
               "hover:border-medical-primary hover:bg-blue-50",
               "focus:outline-none focus:ring-2 focus:ring-medical-primary focus:ring-offset-2",
               isSelected

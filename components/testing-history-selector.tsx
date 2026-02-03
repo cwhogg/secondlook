@@ -37,7 +37,7 @@ export function TestingHistorySelector({ value, onChange }: TestingHistorySelect
         return (
           <label key={option.id} className="cursor-pointer">
             <div
-              className={`p-4 rounded-xl border-2 transition-all duration-200 ${
+              className={`p-4 rounded-none border-2 transition-all duration-200 ${
                 isSelected
                   ? "border-medical-primary bg-blue-50 text-medical-primary"
                   : "border-gray-200 bg-white text-gray-700 hover:border-gray-300"

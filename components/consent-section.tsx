@@ -102,10 +102,10 @@ export function ConsentSection({
         </div>
       </div>
 
-      <div className="bg-indigo-50 border border-[#e5e2f0] rounded-lg p-4">
+      <div className="bg-[#faf6f0] border border-[#d4c5b0] rounded-none p-4">
         <div className="flex items-start space-x-3">
-          <Shield className="h-5 w-5 text-indigo-700 mt-0.5 flex-shrink-0" />
-          <div className="text-sm text-indigo-800">
+          <Shield className="h-5 w-5 text-[#8b2500] mt-0.5 flex-shrink-0" />
+          <div className="text-sm text-[#6d1d00]">
             <p className="font-medium mb-1">Your Privacy is Protected</p>
             <p>
               Your medical information is processed securely and is not stored permanently. This analysis is

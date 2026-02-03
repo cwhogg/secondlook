@@ -34,7 +34,7 @@ export function ReviewSummary({ step1Data, step2Data, step3Data, mappedSymptoms 
   }
 
   return (
-    <div className="space-y-6 bg-gray-50 rounded-xl p-6">
+    <div className="space-y-6 bg-gray-50 rounded-none p-6">
       {/* Demographics */}
       <div>
         <h3 className="font-medium text-gray-900 mb-2">Demographics</h3>

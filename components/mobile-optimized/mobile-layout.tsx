@@ -40,7 +40,7 @@ export function MobileLayout({
       {/* Main Header */}
       <header className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-indigo-700 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-[#8b2500] rounded-none flex items-center justify-center">
             <span className="text-white font-bold text-sm">S</span>
           </div>
           <h1 className="text-lg font-semibold text-gray-900">{title}</h1>
@@ -63,7 +63,7 @@ export function MobileLayout({
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div
-              className="bg-indigo-700 h-2 rounded-full transition-all duration-300"
+              className="bg-[#8b2500] h-2 rounded-full transition-all duration-300"
               style={{ width: `${(currentStep / totalSteps) * 100}%` }}
             />
           </div>

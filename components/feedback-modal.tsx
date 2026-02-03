@@ -83,7 +83,7 @@ export function FeedbackModal({ open, onOpenChange, featureName }: FeedbackModal
       <Dialog open={open} onOpenChange={(v) => { onOpenChange(v); if (!v) resetForm() }}>
         <DialogContent className="sm:max-w-md">
           <div className="text-center py-8">
-            <p className="text-xl font-semibold text-indigo-700">Thanks for your feedback!</p>
+            <p className="text-xl font-semibold text-[#8b2500]">Thanks for your feedback!</p>
           </div>
         </DialogContent>
       </Dialog>
@@ -113,18 +113,18 @@ export function FeedbackModal({ open, onOpenChange, featureName }: FeedbackModal
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
               disabled={emailSubmitted}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 disabled:bg-gray-50 disabled:text-gray-500"
+              className="w-full rounded-none border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#8b2500] focus:border-[#8b2500] disabled:bg-gray-50 disabled:text-gray-500"
             />
           </div>
 
           {emailSubmitted ? (
-            <p className="text-sm text-indigo-600 font-medium">Email submitted — thank you!</p>
+            <p className="text-sm text-[#8b2500] font-medium">Email submitted — thank you!</p>
           ) : (
             <button
               type="button"
               onClick={handleEmailSubmit}
               disabled={submittingEmail || !email}
-              className="w-full py-2.5 bg-indigo-700 text-white rounded-lg font-medium text-sm hover:bg-indigo-800 transition-all disabled:opacity-50"
+              className="w-full py-2.5 bg-[#8b2500] text-white rounded-none font-medium text-sm hover:bg-[#6d1d00] transition-all disabled:opacity-50"
             >
               {submittingEmail ? "Submitting..." : "Submit Email"}
             </button>
@@ -146,7 +146,7 @@ export function FeedbackModal({ open, onOpenChange, featureName }: FeedbackModal
                 value={journeyLength}
                 onChange={(e) => setJourneyLength(e.target.value)}
                 placeholder="e.g. 6"
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full rounded-none border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#8b2500] focus:border-[#8b2500]"
               />
             </div>
 
@@ -159,9 +159,9 @@ export function FeedbackModal({ open, onOpenChange, featureName }: FeedbackModal
                     key={value}
                     type="button"
                     onClick={() => setHelpfulness(value)}
-                    className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
+                    className={`flex-1 py-2 rounded-none text-sm font-medium transition-all ${
                       helpfulness === value
-                        ? "bg-indigo-700 text-white shadow-md"
+                        ? "bg-[#8b2500] text-white shadow-md"
                         : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                     }`}
                   >
@@ -186,7 +186,7 @@ export function FeedbackModal({ open, onOpenChange, featureName }: FeedbackModal
                 onChange={(e) => setImprovements(e.target.value)}
                 rows={3}
                 placeholder="Your thoughts..."
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none"
+                className="w-full rounded-none border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#8b2500] focus:border-[#8b2500] resize-none"
               />
             </div>
 
@@ -195,7 +195,7 @@ export function FeedbackModal({ open, onOpenChange, featureName }: FeedbackModal
               type="button"
               onClick={handleFeedbackSubmit}
               disabled={submittingFeedback}
-              className="w-full py-2.5 bg-indigo-700 text-white rounded-lg font-medium text-sm hover:bg-indigo-800 transition-all disabled:opacity-50"
+              className="w-full py-2.5 bg-[#8b2500] text-white rounded-none font-medium text-sm hover:bg-[#6d1d00] transition-all disabled:opacity-50"
             >
               {submittingFeedback ? "Submitting..." : "Submit Feedback"}
             </button>

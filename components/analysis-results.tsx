@@ -86,7 +86,7 @@ export function AnalysisResults({
 
   const getConfidenceColor = (confidence: number) => {
     if (confidence >= 80) return "text-green-600 bg-green-50 border-green-200"
-    if (confidence >= 60) return "text-indigo-600 bg-indigo-50 border-indigo-200"
+    if (confidence >= 60) return "text-[#8b2500] bg-[#faf6f0] border-[#d4c5b0]"
     return "text-yellow-600 bg-yellow-50 border-yellow-200"
   }
 
@@ -97,7 +97,7 @@ export function AnalysisResults({
       case "urgent":
         return "border-orange-500 bg-orange-50"
       default:
-        return "border-indigo-500 bg-indigo-50"
+        return "border-[#8b2500] bg-[#faf6f0]"
     }
   }
 
@@ -119,7 +119,7 @@ export function AnalysisResults({
     <div className="min-h-screen bg-gray-50 py-4 sm:py-8">
       <div className="max-w-4xl mx-auto px-4 space-y-6 sm:space-y-8 pb-24 sm:pb-8">
         {/* Header Section */}
-        <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
+        <div className="bg-white rounded-none shadow-sm p-4 sm:p-6">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4 sm:mb-6">
             <div>
               <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-2">Your Health Analysis Complete</h1>
@@ -158,7 +158,7 @@ export function AnalysisResults({
           </div>
 
           {/* Medical Disclaimer */}
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 sm:p-4">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-none p-3 sm:p-4">
             <div className="flex items-start space-x-3">
               <AlertTriangle className="h-5 w-5 text-yellow-600 mt-0.5 flex-shrink-0" />
               <div className="text-sm text-yellow-800">
@@ -172,12 +172,12 @@ export function AnalysisResults({
 
         {/* Patient Hypothesis Response */}
         {patientHypothesis && (
-          <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
+          <div className="bg-white rounded-none shadow-sm p-4 sm:p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg sm:text-xl font-semibold text-gray-900">About Your Initial Thoughts</h2>
               <button
                 onClick={() => setShowHypothesisResponse(!showHypothesisResponse)}
-                className="text-medical-primary hover:text-indigo-800"
+                className="text-medical-primary hover:text-[#6d1d00]"
               >
                 {showHypothesisResponse ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
               </button>
@@ -190,12 +190,12 @@ export function AnalysisResults({
                 </p>
 
                 {hypothesisMatch ? (
-                  <div className="bg-indigo-50 border border-[#e5e2f0] rounded-xl p-4 sm:p-6">
+                  <div className="bg-[#faf6f0] border border-[#d4c5b0] rounded-none p-4 sm:p-6">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
-                      <h3 className="text-base sm:text-lg font-semibold text-indigo-900">
+                      <h3 className="text-base sm:text-lg font-semibold text-[#1a1a1a]">
                         How likely is {hypothesisMatch.name}?
                       </h3>
-                      <div className="text-2xl sm:text-3xl font-bold text-indigo-700">{hypothesisMatch.confidence}%</div>
+                      <div className="text-2xl sm:text-3xl font-bold text-[#8b2500]">{hypothesisMatch.confidence}%</div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
@@ -232,7 +232,7 @@ export function AnalysisResults({
                       )}
                     </div>
 
-                    <div className="mt-4 p-3 sm:p-4 bg-white rounded-lg">
+                    <div className="mt-4 p-3 sm:p-4 bg-white rounded-none">
                       <h4 className="font-medium text-gray-900 mb-2 text-sm sm:text-base">
                         What a doctor would do to check for this
                       </h4>
@@ -254,7 +254,7 @@ export function AnalysisResults({
                     </div>
                   </div>
                 ) : (
-                  <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 sm:p-6">
+                  <div className="bg-gray-50 border border-gray-200 rounded-none p-4 sm:p-6">
                     <p className="text-gray-600 text-sm sm:text-base">
                       We didn't find strong evidence for {patientHypothesis} based on your symptoms, but we've
                       identified other possibilities below that might be worth exploring with a healthcare provider.
@@ -267,21 +267,21 @@ export function AnalysisResults({
         )}
 
         {/* Clinical Summary */}
-        <div className="bg-indigo-50 border border-[#e5e2f0] rounded-xl p-4 sm:p-6">
-          <h2 className="text-lg sm:text-xl font-semibold text-indigo-900 mb-4 flex items-center">
+        <div className="bg-[#faf6f0] border border-[#d4c5b0] rounded-none p-4 sm:p-6">
+          <h2 className="text-lg sm:text-xl font-semibold text-[#1a1a1a] mb-4 flex items-center">
             <Stethoscope className="h-5 w-5 mr-2" />
             Clinical Summary
           </h2>
-          <p className="text-indigo-800 text-base sm:text-lg leading-relaxed mb-4">{clinicalSummary}</p>
+          <p className="text-[#6d1d00] text-base sm:text-lg leading-relaxed mb-4">{clinicalSummary}</p>
           <div className="flex items-center space-x-2">
-            <span className="text-sm font-medium text-indigo-700">Overall Confidence:</span>
-            <div className="flex-1 bg-indigo-200 rounded-full h-2 max-w-32">
+            <span className="text-sm font-medium text-[#8b2500]">Overall Confidence:</span>
+            <div className="flex-1 bg-[#d4c5b0] rounded-full h-2 max-w-32">
               <div
-                className="bg-indigo-700 h-2 rounded-full transition-all duration-500"
+                className="bg-[#8b2500] h-2 rounded-full transition-all duration-500"
                 style={{ width: `${overallConfidence}%` }}
               />
             </div>
-            <span className="text-sm font-bold text-indigo-700">{overallConfidence}%</span>
+            <span className="text-sm font-bold text-[#8b2500]">{overallConfidence}%</span>
           </div>
         </div>
 
@@ -290,14 +290,14 @@ export function AnalysisResults({
           <h2 className="text-xl sm:text-2xl font-semibold text-gray-900">Possible Diagnoses</h2>
 
           {diagnoses.map((diagnosis, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-200">
+            <div key={index} className="bg-white rounded-none shadow-sm border border-gray-200">
               <div className="p-4 sm:p-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
                   <div className="flex-1">
                     <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 mb-2">
                       <h3 className="text-lg sm:text-xl font-semibold text-gray-900">{diagnosis.name}</h3>
                       {diagnosis.isRare && (
-                        <span className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full w-fit">
+                        <span className="px-2 py-1 bg-[#faf6f0] text-[#6d1d00] text-xs font-medium rounded-full w-fit">
                           Rare Disease
                         </span>
                       )}
@@ -364,7 +364,7 @@ export function AnalysisResults({
                 <div className="border-t border-gray-200 pt-4">
                   <button
                     onClick={() => toggleDiagnosis(index)}
-                    className="flex items-center justify-between w-full text-left text-medical-primary hover:text-indigo-800 transition-colors"
+                    className="flex items-center justify-between w-full text-left text-medical-primary hover:text-[#6d1d00] transition-colors"
                   >
                     <span className="font-medium text-sm sm:text-base">Learn more about this condition</span>
                     {expandedDiagnoses.has(index) ? (
@@ -376,7 +376,7 @@ export function AnalysisResults({
 
                   {expandedDiagnoses.has(index) && (
                     <div className="mt-4 space-y-4">
-                      <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
+                      <div className="bg-gray-50 rounded-none p-3 sm:p-4">
                         <h5 className="font-medium text-gray-900 mb-2 text-sm sm:text-base">Clinical Explanation</h5>
                         <p className="text-sm text-gray-600">{diagnosis.clinicalExplanation}</p>
                       </div>
@@ -401,7 +401,7 @@ export function AnalysisResults({
                           href={diagnosis.learnMoreUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center text-sm text-medical-primary hover:text-indigo-800"
+                          className="inline-flex items-center text-sm text-medical-primary hover:text-[#6d1d00]"
                         >
                           Learn more from patient resources
                           <ExternalLink className="h-4 w-4 ml-1" />
@@ -417,7 +417,7 @@ export function AnalysisResults({
 
         {/* Information Gaps */}
         {informationGaps.length > 0 && (
-          <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 sm:p-6">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-none p-4 sm:p-6">
             <h2 className="text-lg sm:text-xl font-semibold text-yellow-900 mb-4 flex items-center">
               <Info className="h-5 w-5 mr-2" />
               Information That Could Improve This Analysis
@@ -431,7 +431,7 @@ export function AnalysisResults({
                         ? "bg-red-100 text-red-800"
                         : gap.importance === "medium"
                           ? "bg-yellow-100 text-yellow-800"
-                          : "bg-indigo-100 text-indigo-800"
+                          : "bg-[#faf6f0] text-[#6d1d00]"
                     }`}
                   >
                     {gap.importance.toUpperCase()}
@@ -447,7 +447,7 @@ export function AnalysisResults({
         )}
 
         {/* Next Steps */}
-        <div className={`rounded-xl p-4 sm:p-6 border-2 ${getUrgencyStyle(nextSteps.urgency)}`}>
+        <div className={`rounded-none p-4 sm:p-6 border-2 ${getUrgencyStyle(nextSteps.urgency)}`}>
           <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 flex items-center">
             <TrendingUp className="h-5 w-5 mr-2" />
             Recommended Next Steps
@@ -479,7 +479,7 @@ export function AnalysisResults({
                 <ul className="space-y-1">
                   {nextSteps.questions.map((question, index) => (
                     <li key={index} className="flex items-start text-sm text-gray-700">
-                      <span className="mr-2 text-indigo-700">?</span>
+                      <span className="mr-2 text-[#8b2500]">?</span>
                       <span>{question}</span>
                     </li>
                   ))}
@@ -501,7 +501,7 @@ export function AnalysisResults({
           </div>
 
           {/* Urgency Indicator */}
-          <div className="mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg bg-white">
+          <div className="mt-4 sm:mt-6 p-3 sm:p-4 rounded-none bg-white">
             <div className="flex items-center space-x-2">
               <Clock className="h-5 w-5 text-gray-600" />
               <span className="font-medium text-gray-900 text-sm sm:text-base">
@@ -516,7 +516,7 @@ export function AnalysisResults({
         </div>
 
         {/* Additional Options */}
-        <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 text-center">
+        <div className="bg-white rounded-none shadow-sm p-4 sm:p-6 text-center">
           <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">Want more specific analysis?</h3>
           <p className="text-gray-600 mb-6 text-sm sm:text-base">Answer additional questions to refine your results</p>
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">

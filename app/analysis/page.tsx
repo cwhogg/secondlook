@@ -387,13 +387,13 @@ export default function AnalysisPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#faf9fe] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#f5f0eb] flex items-center justify-center p-4">
         <div className="text-center max-w-md">
           <div className="text-red-600 text-xl font-semibold mb-4">Analysis Failed</div>
           <p className="text-gray-600 mb-6">{error}</p>
           <button
             onClick={() => router.push("/step-1")}
-            className="px-6 py-3 bg-indigo-700 text-white rounded-lg hover:bg-indigo-800"
+            className="px-6 py-3 bg-[#8b2500] text-white rounded-none hover:bg-[#6d1d00]"
           >
             Start Over
           </button>

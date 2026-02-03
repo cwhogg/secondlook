@@ -50,7 +50,7 @@ function ResourcesSection() {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="text-center mb-10">
-        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-[#1e1b4b] mb-6">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
           Health Resources &amp; Rare Disease Guides
         </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -63,13 +63,13 @@ function ResourcesSection() {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group bg-white rounded-xl shadow-sm border border-[#e5e2f0] p-5 md:p-6 hover:shadow-md transition-all duration-300 flex flex-col"
+            className="group bg-white rounded-none border border-[#d4c5b0] p-5 md:p-6 hover:shadow-md transition-all duration-300 flex flex-col"
           >
-            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-700 transition-colors">
+            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#8b2500] transition-colors">
               {post.title}
             </h3>
             <p className="text-gray-600 leading-relaxed flex-1">{post.description}</p>
-            <div className="mt-4 flex items-center text-indigo-700 font-medium text-sm">
+            <div className="mt-4 flex items-center text-[#8b2500] font-medium text-sm">
               <span>Read more</span>
               <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -80,7 +80,7 @@ function ResourcesSection() {
       <div className="text-center mt-10">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-indigo-700 hover:text-indigo-800 font-semibold transition-colors"
+          className="inline-flex items-center gap-2 text-[#8b2500] hover:text-[#6d1d00] font-semibold transition-colors"
         >
           <BookOpen className="h-5 w-5" />
           <span>View all resources</span>
@@ -93,7 +93,7 @@ function ResourcesSection() {
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#faf9fe]">
+    <div className="min-h-screen bg-[#f5f0eb]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -101,16 +101,16 @@ export default function HomePage() {
 
       {/* Navigation */}
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold text-indigo-700">
+        <Link href="/" className="text-xl font-bold text-[#8b2500]">
           SecondLook
         </Link>
         <div className="flex items-center gap-4">
-          <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-indigo-700 transition-colors py-2 px-1">
+          <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-[#8b2500] transition-colors py-2 px-1">
             Resources
           </Link>
           <Link
             href="/step-1"
-            className="bg-indigo-700 hover:bg-indigo-800 text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-sm hover:shadow-md transition-all"
+            className="bg-[#8b2500] hover:bg-[#6d1d00] text-white px-5 py-2.5 rounded-none text-sm font-semibold hover:shadow-md transition-all"
           >
             Start Analysis
           </Link>
@@ -123,15 +123,15 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           {/* Trust Badges */}
           <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
-            <div className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm border border-gray-100">
-              <Shield className="h-4 w-4 text-indigo-700" />
+            <div className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-gray-100">
+              <Shield className="h-4 w-4 text-[#8b2500]" />
               <span className="text-sm font-medium text-gray-700">HIPAA Compliant</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm border border-gray-100">
-              <CheckCircle className="h-4 w-4 text-indigo-700" />
+            <div className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-gray-100">
+              <CheckCircle className="h-4 w-4 text-[#8b2500]" />
               <span className="text-sm font-medium text-gray-700">MD Reviewed</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm border border-gray-100">
+            <div className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-gray-100">
               <Lock className="h-4 w-4 text-amber-600" />
               <span className="text-sm font-medium text-gray-700">Bank-Level Encryption</span>
             </div>
@@ -139,11 +139,11 @@ export default function HomePage() {
 
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-8 leading-tight">
-              <span className="text-[#1e1b4b]">
+              <span className="text-[#1a1a1a]">
                 {"Find Your Rare Diagnosis"}
               </span>
               <br />
-              <span className="text-indigo-700">
+              <span className="text-[#8b2500]">
                  in Minutes.
               </span>
             </h1>
@@ -156,7 +156,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
               <Link
                 href="/step-1"
-                className="group bg-indigo-700 hover:bg-indigo-800 text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-sm hover:shadow-md transition-all duration-200 flex items-center space-x-2"
+                className="group bg-[#8b2500] hover:bg-[#6d1d00] text-white px-8 py-4 rounded-none font-semibold text-lg hover:shadow-md transition-all duration-200 flex items-center space-x-2"
               >
                 <Sparkles className="h-5 w-5" />
                 <span>Start My Health Analysis</span>
@@ -171,9 +171,9 @@ export default function HomePage() {
 
       {/* Medical Notice */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="bg-indigo-50 rounded-2xl p-6 border border-[#e5e2f0]">
+        <div className="bg-[#faf6f0] rounded-none p-6 border border-[#d4c5b0]">
           <div className="flex items-start space-x-4">
-            <div className="w-12 h-12 bg-indigo-700 rounded-xl flex items-center justify-center flex-shrink-0">
+            <div className="w-12 h-12 bg-[#8b2500] rounded-none flex items-center justify-center flex-shrink-0">
               <Shield className="h-6 w-6 text-white" />
             </div>
             <div>
@@ -190,9 +190,9 @@ export default function HomePage() {
       {/* Features Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white rounded-xl shadow-sm border border-[#e5e2f0] p-5 md:p-6 transition-all duration-300">
-            <div className="w-10 h-10 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
-              <Shield className="h-8 w-8 text-indigo-700" />
+          <div className="bg-white rounded-none border border-[#d4c5b0] p-5 md:p-6 transition-all duration-300">
+            <div className="w-10 h-10 bg-[#faf6f0] rounded-none flex items-center justify-center mb-6">
+              <Shield className="h-8 w-8 text-[#8b2500]" />
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Medical-Grade Security</h3>
             <p className="text-gray-600 leading-relaxed">
@@ -201,9 +201,9 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-[#e5e2f0] p-5 md:p-6 transition-all duration-300">
-            <div className="w-10 h-10 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
-              <Zap className="h-8 w-8 text-indigo-700" />
+          <div className="bg-white rounded-none border border-[#d4c5b0] p-5 md:p-6 transition-all duration-300">
+            <div className="w-10 h-10 bg-[#faf6f0] rounded-none flex items-center justify-center mb-6">
+              <Zap className="h-8 w-8 text-[#8b2500]" />
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Fast Analysis</h3>
             <p className="text-gray-600 leading-relaxed">
@@ -211,9 +211,9 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-[#e5e2f0] p-5 md:p-6 transition-all duration-300">
-            <div className="w-10 h-10 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
-              <Heart className="h-8 w-8 text-indigo-700" />
+          <div className="bg-white rounded-none border border-[#d4c5b0] p-5 md:p-6 transition-all duration-300">
+            <div className="w-10 h-10 bg-[#faf6f0] rounded-none flex items-center justify-center mb-6">
+              <Heart className="h-8 w-8 text-[#8b2500]" />
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Doctor-Reviewed AI</h3>
             <p className="text-gray-600 leading-relaxed">
@@ -226,7 +226,7 @@ export default function HomePage() {
       {/* How It Works */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-[#1e1b4b] mb-6">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
             How SecondLook Works
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -236,7 +236,7 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="text-center">
-            <div className="w-14 h-14 bg-indigo-700 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+            <div className="w-14 h-14 bg-[#8b2500] rounded-none flex items-center justify-center mx-auto mb-6">
               <span className="text-2xl font-bold text-white">1</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Share Your Health Story</h3>
@@ -247,7 +247,7 @@ export default function HomePage() {
           </div>
 
           <div className="text-center">
-            <div className="w-14 h-14 bg-indigo-700 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+            <div className="w-14 h-14 bg-[#8b2500] rounded-none flex items-center justify-center mx-auto mb-6">
               <span className="text-2xl font-bold text-white">2</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">AI Medical Review</h3>
@@ -258,7 +258,7 @@ export default function HomePage() {
           </div>
 
           <div className="text-center">
-            <div className="w-14 h-14 bg-indigo-700 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+            <div className="w-14 h-14 bg-[#8b2500] rounded-none flex items-center justify-center mx-auto mb-6">
               <span className="text-2xl font-bold text-white">3</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Get Your Report</h3>
@@ -268,7 +268,7 @@ export default function HomePage() {
           </div>
 
           <div className="text-center">
-            <div className="w-14 h-14 bg-amber-600 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+            <div className="w-14 h-14 bg-amber-600 rounded-none flex items-center justify-center mx-auto mb-6">
               <Sparkles className="h-8 w-8 text-white" />
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Get Recommendations</h3>
@@ -300,7 +300,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/step-1"
-            className="group bg-indigo-700 hover:bg-indigo-800 text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-sm hover:shadow-md transition-all duration-200 inline-flex items-center space-x-2"
+            className="group bg-[#8b2500] hover:bg-[#6d1d00] text-white px-8 py-4 rounded-none font-semibold text-lg hover:shadow-md transition-all duration-200 inline-flex items-center space-x-2"
           >
             <Sparkles className="h-5 w-5" />
             <span>Start My Health Analysis</span>

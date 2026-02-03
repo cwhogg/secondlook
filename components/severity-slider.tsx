@@ -34,7 +34,7 @@ export function SeveritySlider({ value, onChange }: SeveritySliderProps) {
           onMouseUp={() => setIsDragging(false)}
           onTouchStart={() => setIsDragging(true)}
           onTouchEnd={() => setIsDragging(false)}
-          className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb"
+          className="w-full h-3 bg-gray-200 rounded-none appearance-none cursor-pointer slider-thumb"
           style={{
             background: `linear-gradient(to right, #22c55e 0%, #22c55e 30%, #eab308 30%, #eab308 60%, #ef4444 60%, #ef4444 100%)`,
           }}
@@ -47,7 +47,7 @@ export function SeveritySlider({ value, onChange }: SeveritySliderProps) {
           }`}
           style={{ left: `${((value - 1) / 9) * 100}%` }}
         >
-          <div className="bg-gray-900 text-white px-3 py-1 rounded-lg text-sm font-semibold">{value}</div>
+          <div className="bg-gray-900 text-white px-3 py-1 rounded-none text-sm font-semibold">{value}</div>
           <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900 mx-auto"></div>
         </div>
       </div>
@@ -72,7 +72,7 @@ export function SeveritySlider({ value, onChange }: SeveritySliderProps) {
           height: 24px;
           width: 24px;
           border-radius: 50%;
-          background: #4338ca;
+          background: #8b2500;
           cursor: pointer;
           border: 2px solid white;
           box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -82,7 +82,7 @@ export function SeveritySlider({ value, onChange }: SeveritySliderProps) {
           height: 24px;
           width: 24px;
           border-radius: 50%;
-          background: #4338ca;
+          background: #8b2500;
           cursor: pointer;
           border: 2px solid white;
           box-shadow: 0 2px 4px rgba(0,0,0,0.2);

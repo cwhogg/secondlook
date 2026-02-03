@@ -41,15 +41,15 @@ export function BodyRegionSelector({ value, onChange }: BodyRegionSelectorProps)
               onClick={() => handleToggle(region.id)}
               className={cn(
                 "group relative p-6 rounded-2xl border-2 text-left transition-all duration-300 min-h-[140px]",
-                "focus:outline-none focus:ring-4 focus:ring-indigo-500/20",
+                "focus:outline-none focus:ring-4 focus:ring-[#8b2500]/20",
                 isSelected
-                  ? "border-indigo-700 bg-indigo-50 shadow-sm"
-                  : "border-gray-200 bg-white hover:border-indigo-300 hover:shadow-md",
+                  ? "border-[#8b2500] bg-[#faf6f0]"
+                  : "border-gray-200 bg-white hover:border-[#d4c5b0]",
               )}
             >
               {/* Selection indicator */}
               {isSelected && (
-                <div className="absolute top-3 right-3 w-6 h-6 bg-indigo-700 rounded-full flex items-center justify-center shadow-sm">
+                <div className="absolute top-3 right-3 w-6 h-6 bg-[#8b2500] rounded-full flex items-center justify-center">
                   <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path
                       fillRule="evenodd"
@@ -65,8 +65,8 @@ export function BodyRegionSelector({ value, onChange }: BodyRegionSelectorProps)
                   className={cn(
                     "p-3 rounded-2xl transition-all duration-300",
                     isSelected
-                      ? "bg-indigo-700 text-white shadow-sm"
-                      : "bg-gray-100 text-gray-600 group-hover:bg-indigo-100 group-hover:text-indigo-600",
+                      ? "bg-[#8b2500] text-white"
+                      : "bg-gray-100 text-gray-600 group-hover:bg-[#faf6f0] group-hover:text-[#8b2500]",
                   )}
                 >
                   <Icon className="h-6 w-6" />
@@ -75,7 +75,7 @@ export function BodyRegionSelector({ value, onChange }: BodyRegionSelectorProps)
                   <div
                     className={cn(
                       "font-semibold text-base mb-1 transition-colors",
-                      isSelected ? "text-indigo-700" : "text-gray-900 group-hover:text-indigo-700",
+                      isSelected ? "text-[#8b2500]" : "text-gray-900 group-hover:text-[#8b2500]",
                     )}
                   >
                     {region.label}
@@ -90,7 +90,7 @@ export function BodyRegionSelector({ value, onChange }: BodyRegionSelectorProps)
 
       {/* Selection summary */}
       {value.length > 0 && (
-        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+        <div className="bg-emerald-50 border border-emerald-200 rounded-none p-4">
           <p className="text-emerald-800">
             <span className="font-semibold">Selected areas ({value.length}):</span>{" "}
             {value

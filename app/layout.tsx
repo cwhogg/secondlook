@@ -1,16 +1,21 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Fraunces } from "next/font/google"
+import { Playfair_Display, Source_Serif_4, Instrument_Sans } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-playfair",
 })
 
-const fraunces = Fraunces({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-source-serif",
+})
+
+const instrumentSans = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--font-instrument",
 })
 
 const siteUrl = "https://secondlook.vercel.app"
@@ -78,7 +83,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${fraunces.variable} font-sans`}>{children}</body>
+      <body className={`${playfair.variable} ${sourceSerif.variable} ${instrumentSans.variable} font-serif-body`}>{children}</body>
     </html>
   )
 }

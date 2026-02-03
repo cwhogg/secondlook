@@ -11,7 +11,7 @@ interface MedicalCardProps {
 
 export function MedicalCard({ title, description, children, className }: MedicalCardProps) {
   return (
-    <Card className={cn("rounded-xl shadow-sm border-gray-100 bg-white", className)}>
+    <Card className={cn("rounded-none shadow-sm border-gray-100 bg-white", className)}>
       {(title || description) && (
         <CardHeader className="pb-4 px-4 sm:px-6 pt-6">
           {title && (

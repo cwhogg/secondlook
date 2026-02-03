@@ -43,7 +43,7 @@ export function CollapsibleSection({
   }
 
   return (
-    <div className={cn("border rounded-xl overflow-hidden", getStatusColor(), className)}>
+    <div className={cn("border rounded-none overflow-hidden", getStatusColor(), className)}>
       {/* Header */}
       <button
         onClick={() => setIsOpen(!isOpen)}

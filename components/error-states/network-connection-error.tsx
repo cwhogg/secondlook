@@ -85,7 +85,7 @@ export function NetworkConnectionError({
 
         {/* Connection Status */}
         <div
-          className={`border rounded-xl p-4 ${
+          className={`border rounded-none p-4 ${
             isOnline ? "bg-yellow-50 border-yellow-200" : "bg-red-50 border-red-200"
           }`}
         >
@@ -101,7 +101,7 @@ export function NetworkConnectionError({
         </div>
 
         {/* Progress Saved Confirmation */}
-        <div className="bg-green-50 border border-green-200 rounded-xl p-4">
+        <div className="bg-green-50 border border-green-200 rounded-none p-4">
           <div className="flex items-center space-x-3">
             <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
             <div>
@@ -141,7 +141,7 @@ export function NetworkConnectionError({
         </div>
 
         {/* Auto-retry Toggle */}
-        <div className="flex items-center justify-between p-4 bg-gray-100 rounded-xl">
+        <div className="flex items-center justify-between p-4 bg-gray-100 rounded-none">
           <div>
             <p className="font-medium text-gray-900">Auto-retry</p>
             <p className="text-sm text-gray-600">Automatically retry when connection improves</p>
@@ -153,13 +153,13 @@ export function NetworkConnectionError({
               onChange={(e) => setAutoRetryEnabled(e.target.checked)}
               className="sr-only peer"
             />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-700"></div>
+            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#8b2500]"></div>
           </label>
         </div>
 
         {/* Offline Mode Indicator */}
         {!isOnline && (
-          <div className="bg-gray-100 border border-gray-200 rounded-xl p-4">
+          <div className="bg-gray-100 border border-gray-200 rounded-none p-4">
             <div className="flex items-center space-x-3 mb-3">
               <Clock className="h-5 w-5 text-gray-600" />
               <span className="font-medium text-gray-900">Offline Mode</span>

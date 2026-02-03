@@ -43,7 +43,7 @@ export function HighContrastMode({ className }: HighContrastModeProps) {
     <button
       onClick={toggleHighContrast}
       className={cn(
-        "flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors",
+        "flex items-center space-x-2 px-3 py-2 rounded-none transition-colors",
         "text-sm font-medium",
         "hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-medical-primary focus:ring-offset-2",
         "min-w-[44px] min-h-[44px]",

@@ -30,7 +30,7 @@ export function MedicationEntry({ medication, onUpdate, onRemove, onSubmit }: Me
   const canSubmit = medication.name.trim().length > 0 && !medication.submitted
 
   return (
-    <div className="bg-gray-50 rounded-xl p-4 space-y-4">
+    <div className="bg-gray-50 rounded-none p-4 space-y-4">
       <div className="flex justify-between items-start">
         <h4 className="text-sm font-medium text-gray-900">Medication</h4>
         <button
@@ -52,7 +52,7 @@ export function MedicationEntry({ medication, onUpdate, onRemove, onSubmit }: Me
               value={medication.name}
               onChange={(e) => onUpdate(medication.id, "name", e.target.value)}
               disabled={medication.submitted}
-              className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary disabled:bg-gray-100 disabled:cursor-not-allowed text-base"
+              className="flex-1 px-3 py-2 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary disabled:bg-gray-100 disabled:cursor-not-allowed text-base"
             />
             {canSubmit && (
               <MedicalButton onClick={() => onSubmit(medication.id)} size="sm" className="flex items-center space-x-1">
@@ -89,7 +89,7 @@ export function MedicationEntry({ medication, onUpdate, onRemove, onSubmit }: Me
 
         {/* Show parsed information if available */}
         {medication.submitted && medication.parsed && (
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+          <div className="bg-blue-50 border border-blue-200 rounded-none p-3">
             <div className="text-sm">
               <div className="font-medium text-blue-900 mb-2">Parsed Information:</div>
               <div className="space-y-1 text-blue-800">

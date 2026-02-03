@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 import Image from "next/image"
 import {
   TrendingUp,
@@ -366,9 +367,9 @@ export default function NextStepsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#faf9fe] flex items-center justify-center">
+      <div className="min-h-screen bg-[#f5f0eb] flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-700 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#8b2500] mx-auto"></div>
           <p className="mt-6 text-gray-600 text-lg">Loading next steps...</p>
         </div>
       </div>
@@ -377,7 +378,7 @@ export default function NextStepsPage() {
 
   if (!results) {
     return (
-      <div className="min-h-screen bg-[#faf9fe] flex items-center justify-center">
+      <div className="min-h-screen bg-[#f5f0eb] flex items-center justify-center">
         <div className="text-center">
           <div className="text-red-600 mb-6 text-lg">No analysis results found</div>
           <MedicalButton onClick={() => router.push("/step-1")} className="flex items-center space-x-2">
@@ -464,15 +465,15 @@ export default function NextStepsPage() {
   const renderLogo = (logoType: string) => {
     switch (logoType) {
       case "arrow":
-        return <ArrowUpRight className="h-6 w-6 sm:h-8 sm:w-8 text-indigo-700" />
+        return <ArrowUpRight className="h-6 w-6 sm:h-8 sm:w-8 text-[#8b2500]" />
       case "medical_records":
-        return <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-indigo-700" />
+        return <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-[#8b2500]" />
       case "labs":
-        return <TestTubes className="h-6 w-6 sm:h-8 sm:w-8 text-indigo-700" />
+        return <TestTubes className="h-6 w-6 sm:h-8 sm:w-8 text-[#8b2500]" />
       case "genetics":
-        return <Dna className="h-6 w-6 sm:h-8 sm:w-8 text-indigo-700" />
+        return <Dna className="h-6 w-6 sm:h-8 sm:w-8 text-[#8b2500]" />
       case "imaging":
-        return <ScanLine className="h-6 w-6 sm:h-8 sm:w-8 text-indigo-700" />
+        return <ScanLine className="h-6 w-6 sm:h-8 sm:w-8 text-[#8b2500]" />
       case "heartbeat":
         return (
           <div className="h-6 w-8 sm:h-8 sm:w-10 relative">
@@ -510,11 +511,11 @@ export default function NextStepsPage() {
           </div>
         )
       case "nurse":
-        return <UserCheck className="h-6 w-6 sm:h-8 sm:w-8 text-indigo-700" />
+        return <UserCheck className="h-6 w-6 sm:h-8 sm:w-8 text-[#8b2500]" />
       case "robot":
-        return <Bot className="h-6 w-6 sm:h-8 sm:w-8 text-indigo-700" />
+        return <Bot className="h-6 w-6 sm:h-8 sm:w-8 text-[#8b2500]" />
       case "stethoscope":
-        return <Stethoscope className="h-6 w-6 sm:h-8 sm:w-8 text-indigo-700" />
+        return <Stethoscope className="h-6 w-6 sm:h-8 sm:w-8 text-[#8b2500]" />
       default:
         return <div className="h-6 w-6 sm:h-8 sm:w-8 bg-gray-300 rounded-md"></div>
     }
@@ -527,7 +528,7 @@ export default function NextStepsPage() {
     return (
       <div
         key={`${keyPrefix}-${index}`}
-        className="bg-white rounded-2xl sm:rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200"
+        className="bg-white rounded-none sm:rounded-none p-4 sm:p-6 border border-gray-100 transition-all duration-200"
       >
         <div className="space-y-4">
           {/* Card Content */}
@@ -543,11 +544,11 @@ export default function NextStepsPage() {
           {actionButtonConfig && (
             <button
               onClick={actionButtonConfig.onClick}
-              className="w-full bg-indigo-50 border-2 border-indigo-700 rounded-xl sm:rounded-2xl hover:bg-indigo-100 transition-all duration-200 p-3 sm:p-4 group shadow-md"
+              className="w-full bg-[#faf6f0] border-2 border-[#8b2500] rounded-none sm:rounded-none hover:bg-[#faf6f0] transition-all duration-200 p-3 sm:p-4 group"
             >
               <div className="flex items-center justify-between gap-3">
                 {/* Logo Section */}
-                <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg sm:rounded-xl shadow-sm">
+                <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-none sm:rounded-none">
                   {renderLogo(actionButtonConfig.logo)}
                 </div>
 
@@ -560,7 +561,7 @@ export default function NextStepsPage() {
 
                 {/* Price Section */}
                 <div className="flex-shrink-0">
-                  <div className="text-indigo-700 font-bold text-xl sm:text-2xl">{actionButtonConfig.price}</div>
+                  <div className="text-[#8b2500] font-bold text-xl sm:text-2xl">{actionButtonConfig.price}</div>
                 </div>
               </div>
             </button>
@@ -571,21 +572,26 @@ export default function NextStepsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#faf9fe]">
+    <div className="min-h-screen bg-[#f5f0eb]">
       <div className="max-w-6xl mx-auto px-4 py-4 sm:py-8 space-y-6 sm:space-y-8 pb-24 sm:pb-32">
         {/* Premium Header Section */}
-        <div className="bg-indigo-700 rounded-2xl sm:rounded-xl shadow-xl p-4 sm:p-8 text-white relative overflow-hidden">
+        <div className="bg-[#8b2500] rounded-none sm:rounded-none p-4 sm:p-8 text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-transparent"></div>
           <div className="relative z-10">
+            <div className="mb-3">
+              <Link href="/" className="text-white/80 hover:text-white text-sm font-medium transition-colors">
+                SecondLook
+              </Link>
+            </div>
             <div className="flex items-center space-x-3 sm:space-x-4 mb-3 sm:mb-4">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-xl sm:rounded-2xl flex items-center justify-center">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-none sm:rounded-none flex items-center justify-center">
                 <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
               </div>
               <div>
                 <h1 className="text-2xl sm:text-4xl font-bold text-white">
                   Get Recommendations
                 </h1>
-                <p className="text-indigo-200 text-sm sm:text-lg">
+                <p className="text-[#c9a96e] text-sm sm:text-lg">
                   We recommend trusted partners who can fill in gaps and help get to a specific diagnosis
                 </p>
               </div>
@@ -594,14 +600,14 @@ export default function NextStepsPage() {
         </div>
 
         {/* Recommended Testing */}
-        <div className="bg-indigo-50 border border-[#e5e2f0] rounded-2xl sm:rounded-xl p-4 sm:p-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-indigo-900 mb-4 sm:mb-6 flex items-center">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-indigo-700 rounded-xl sm:rounded-2xl flex items-center justify-center mr-3 sm:mr-4">
+        <div className="bg-[#faf6f0] border border-[#d4c5b0] rounded-none sm:rounded-none p-4 sm:p-8">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#1a1a1a] mb-4 sm:mb-6 flex items-center">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#8b2500] rounded-none sm:rounded-none flex items-center justify-center mr-3 sm:mr-4">
               <ClipboardList className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
             </div>
             Recommended Data Collection
           </h2>
-          <p className="text-indigo-800 mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed">
+          <p className="text-[#6d1d00] mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed">
             Collecting the information below will help you get closer to your diagnosis:
           </p>
           <div className="space-y-4 sm:space-y-6">
@@ -614,28 +620,28 @@ export default function NextStepsPage() {
         </div>
 
         {/* Next Steps */}
-        <div className="bg-indigo-50 border border-[#e5e2f0] rounded-2xl sm:rounded-xl p-4 sm:p-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-indigo-900 mb-4 sm:mb-6 flex items-center">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-indigo-700 rounded-xl sm:rounded-2xl flex items-center justify-center mr-3 sm:mr-4">
+        <div className="bg-[#faf6f0] border border-[#d4c5b0] rounded-none sm:rounded-none p-4 sm:p-8">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#1a1a1a] mb-4 sm:mb-6 flex items-center">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#8b2500] rounded-none sm:rounded-none flex items-center justify-center mr-3 sm:mr-4">
               <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
             </div>
             Your Next Steps
           </h2>
-          <p className="text-indigo-800 mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed">
+          <p className="text-[#6d1d00] mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed">
             Here's what we recommend you do next:
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             <div className="space-y-6 sm:space-y-8">
               <div>
-                <h3 className="font-bold text-indigo-900 mb-4 sm:mb-6 text-lg sm:text-xl">Take Action Now</h3>
+                <h3 className="font-bold text-[#1a1a1a] mb-4 sm:mb-6 text-lg sm:text-xl">Take Action Now</h3>
                 <ul className="space-y-3 sm:space-y-4">
                   {safeNextSteps.immediateActions.map((action, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-3 sm:gap-4 text-indigo-800 bg-white p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-[#e5e2f0]"
+                      className="flex items-start gap-3 sm:gap-4 text-[#6d1d00] bg-white p-3 sm:p-4 rounded-none sm:rounded-none border border-[#d4c5b0]"
                     >
-                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-indigo-700 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#8b2500] rounded-none sm:rounded-none flex items-center justify-center flex-shrink-0">
                         <Zap className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
                       </div>
                       <span className="leading-relaxed text-sm sm:text-base">{action}</span>
@@ -645,14 +651,14 @@ export default function NextStepsPage() {
               </div>
 
               <div>
-                <h3 className="font-bold text-indigo-900 mb-4 sm:mb-6 text-lg sm:text-xl">See These Specialists</h3>
+                <h3 className="font-bold text-[#1a1a1a] mb-4 sm:mb-6 text-lg sm:text-xl">See These Specialists</h3>
                 <ul className="space-y-3 sm:space-y-4">
                   {safeNextSteps.specialistReferrals.map((referral, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-3 sm:gap-4 text-indigo-800 bg-white p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-[#e5e2f0]"
+                      className="flex items-start gap-3 sm:gap-4 text-[#6d1d00] bg-white p-3 sm:p-4 rounded-none sm:rounded-none border border-[#d4c5b0]"
                     >
-                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-indigo-700 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#8b2500] rounded-none sm:rounded-none flex items-center justify-center flex-shrink-0">
                         <Stethoscope className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
                       </div>
                       <span className="leading-relaxed text-sm sm:text-base">{referral}</span>
@@ -664,9 +670,9 @@ export default function NextStepsPage() {
 
             <div className="space-y-6 sm:space-y-8">
               <div>
-                <h3 className="font-bold text-indigo-900 mb-4 sm:mb-6 text-lg sm:text-xl">Follow-up Timeline</h3>
-                <div className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-[#e5e2f0]">
-                  <p className="text-indigo-800 leading-relaxed text-base sm:text-lg">{safeNextSteps.followUpTiming}</p>
+                <h3 className="font-bold text-[#1a1a1a] mb-4 sm:mb-6 text-lg sm:text-xl">Follow-up Timeline</h3>
+                <div className="bg-white p-4 sm:p-6 rounded-none sm:rounded-none border border-[#d4c5b0]">
+                  <p className="text-[#6d1d00] leading-relaxed text-base sm:text-lg">{safeNextSteps.followUpTiming}</p>
                 </div>
               </div>
 
@@ -678,9 +684,9 @@ export default function NextStepsPage() {
                   {safeNextSteps.redFlags.map((flag, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-3 sm:gap-4 text-red-800 bg-red-50 p-3 sm:p-4 rounded-xl sm:rounded-2xl"
+                      className="flex items-start gap-3 sm:gap-4 text-red-800 bg-red-50 p-3 sm:p-4 rounded-none sm:rounded-none"
                     >
-                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-red-500 to-red-600 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-red-500 to-red-600 rounded-none sm:rounded-none flex items-center justify-center flex-shrink-0">
                         <AlertTriangle className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
                       </div>
                       <span className="leading-relaxed text-sm sm:text-base">{flag}</span>
@@ -693,8 +699,8 @@ export default function NextStepsPage() {
         </div>
 
         {/* Action Buttons */}
-        <div className="bg-white rounded-2xl sm:rounded-xl shadow-sm border border-gray-100 p-6 sm:p-12 text-center">
-          <div className="w-12 h-12 sm:w-16 sm:h-16 bg-indigo-700 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+        <div className="bg-white rounded-none sm:rounded-none border border-gray-100 p-6 sm:p-12 text-center">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#8b2500] rounded-none sm:rounded-none flex items-center justify-center mx-auto mb-4 sm:mb-6">
             <Sparkles className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
           </div>
           <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">What's Next?</h3>
@@ -702,13 +708,13 @@ export default function NextStepsPage() {
             Continue your health journey with additional analysis or start fresh
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
-            <button className="flex items-center justify-center gap-3 px-6 sm:px-10 py-3 sm:py-4 bg-indigo-700 text-white rounded-xl sm:rounded-2xl hover:bg-indigo-800 transition-all duration-200 font-semibold text-base sm:text-lg shadow-sm hover:shadow-md">
+            <button className="flex items-center justify-center gap-3 px-6 sm:px-10 py-3 sm:py-4 bg-[#8b2500] text-white rounded-none sm:rounded-none hover:bg-[#6d1d00] transition-all duration-200 font-semibold text-base sm:text-lg">
               <BookOpen className="h-5 w-5 sm:h-6 sm:w-6" />
               Get Detailed Report
             </button>
             <button
               onClick={handleStartNew}
-              className="flex items-center justify-center gap-3 px-6 sm:px-10 py-3 sm:py-4 bg-white border-2 border-gray-300 text-gray-700 rounded-xl sm:rounded-2xl hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 font-semibold text-base sm:text-lg"
+              className="flex items-center justify-center gap-3 px-6 sm:px-10 py-3 sm:py-4 bg-white border-2 border-gray-300 text-gray-700 rounded-none sm:rounded-none hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 font-semibold text-base sm:text-lg"
             >
               Start New Analysis
             </button>
@@ -721,7 +727,7 @@ export default function NextStepsPage() {
         <div className="max-w-4xl mx-auto flex justify-between items-center gap-3">
           <button
             onClick={handleBack}
-            className="flex items-center gap-2 sm:gap-3 px-3 sm:px-6 py-2 sm:py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-xl sm:rounded-2xl hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 font-medium text-sm sm:text-base"
+            className="flex items-center gap-2 sm:gap-3 px-3 sm:px-6 py-2 sm:py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-none sm:rounded-none hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 font-medium text-sm sm:text-base"
           >
             <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
             <span className="hidden sm:inline">Back to previous step</span>
@@ -730,7 +736,7 @@ export default function NextStepsPage() {
 
           <button
             onClick={handleStartNew}
-            className="flex items-center gap-2 sm:gap-3 px-4 sm:px-8 py-2 sm:py-3 bg-indigo-700 text-white rounded-xl sm:rounded-2xl hover:bg-indigo-800 transition-all duration-200 font-medium shadow-sm hover:shadow-md text-sm sm:text-base"
+            className="flex items-center gap-2 sm:gap-3 px-4 sm:px-8 py-2 sm:py-3 bg-[#8b2500] text-white rounded-none sm:rounded-none hover:bg-[#6d1d00] transition-all duration-200 font-medium text-sm sm:text-base"
           >
             <span className="hidden sm:inline">Start New Analysis</span>
             <span className="sm:hidden">Start New</span>

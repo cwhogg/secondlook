@@ -38,7 +38,7 @@ export function TouchFriendlyButton({
   }
 
   const baseClasses = cn(
-    "font-medium rounded-xl transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-medical-primary",
+    "font-medium rounded-none transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-medical-primary",
     "transform", // Touch feedback
     "select-none", // Prevent text selection on touch
     fullWidth && "w-full",
@@ -46,10 +46,10 @@ export function TouchFriendlyButton({
   )
 
   const variantClasses = {
-    primary: "bg-medical-primary hover:bg-indigo-800 text-white shadow-sm hover:shadow-md active:shadow-sm",
-    secondary: "bg-medical-secondary hover:bg-indigo-700 text-white shadow-sm hover:shadow-md active:shadow-sm",
+    primary: "bg-medical-primary hover:bg-[#6d1d00] text-white shadow-sm hover:shadow-md active:shadow-sm",
+    secondary: "bg-medical-secondary hover:bg-[#8b2500] text-white shadow-sm hover:shadow-md active:shadow-sm",
     outline: "border-2 border-medical-primary text-medical-primary hover:bg-medical-primary hover:text-white bg-white",
-    ghost: "text-medical-primary hover:bg-indigo-50 active:bg-indigo-100",
+    ghost: "text-medical-primary hover:bg-[#faf6f0] active:bg-[#faf6f0]",
   }
 
   const sizeClasses = {

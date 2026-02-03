@@ -26,7 +26,7 @@ export function DurationSelector({ value, onChange }: DurationSelectorProps) {
             type="button"
             onClick={() => onChange(duration.id)}
             className={cn(
-              "py-3 px-4 rounded-xl border-2 font-medium transition-all duration-200",
+              "py-3 px-4 rounded-none border-2 font-medium transition-all duration-200",
               "hover:border-medical-primary hover:bg-blue-50",
               "focus:outline-none focus:ring-2 focus:ring-medical-primary focus:ring-offset-2",
               isSelected

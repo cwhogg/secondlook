@@ -55,9 +55,9 @@ export default function ExpertResultsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#faf9fe] flex items-center justify-center">
+      <div className="min-h-screen bg-[#f5f0eb] flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-700 mx-auto"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#8b2500] mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading expert analysis results...</p>
         </div>
       </div>
@@ -66,10 +66,10 @@ export default function ExpertResultsPage() {
 
   if (!analysisResults) {
     return (
-      <div className="min-h-screen bg-[#faf9fe] flex items-center justify-center">
+      <div className="min-h-screen bg-[#f5f0eb] flex items-center justify-center">
         <div className="text-center">
           <div className="text-red-600 mb-4">No analysis results found</div>
-          <button onClick={() => router.push("/step-1")} className="text-indigo-700 hover:text-indigo-800">
+          <button onClick={() => router.push("/step-1")} className="text-[#8b2500] hover:text-[#6d1d00]">
             Start new analysis
           </button>
         </div>

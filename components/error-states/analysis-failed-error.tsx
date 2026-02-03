@@ -49,7 +49,7 @@ export function AnalysisFailedError({
         </div>
 
         {/* Reassurance Card */}
-        <div className="bg-green-50 border border-green-200 rounded-xl p-4">
+        <div className="bg-green-50 border border-green-200 rounded-none p-4">
           <div className="flex items-center space-x-3">
             <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
             <div>
@@ -80,7 +80,7 @@ export function AnalysisFailedError({
 
           <button
             onClick={onDownloadSummary}
-            className="w-full text-medical-primary hover:text-indigo-800 text-center py-3 text-base font-medium transition-colors"
+            className="w-full text-medical-primary hover:text-[#6d1d00] text-center py-3 text-base font-medium transition-colors"
           >
             <div className="flex items-center justify-center space-x-2">
               <Download className="h-4 w-4" />
@@ -90,7 +90,7 @@ export function AnalysisFailedError({
         </div>
 
         {/* Error Reference */}
-        <div className="bg-gray-100 rounded-xl p-4">
+        <div className="bg-gray-100 rounded-none p-4">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-700">Error Reference Code:</span>
             <button
@@ -108,19 +108,19 @@ export function AnalysisFailedError({
         </div>
 
         {/* What to do next */}
-        <div className="bg-indigo-50 border border-[#e5e2f0] rounded-xl p-4">
-          <h3 className="font-medium text-indigo-900 mb-3">What to do next:</h3>
-          <ul className="space-y-2 text-sm text-indigo-800">
+        <div className="bg-[#faf6f0] border border-[#d4c5b0] rounded-none p-4">
+          <h3 className="font-medium text-[#1a1a1a] mb-3">What to do next:</h3>
+          <ul className="space-y-2 text-sm text-[#6d1d00]">
             <li className="flex items-start space-x-2">
-              <span className="text-indigo-700 font-bold mt-0.5">1.</span>
+              <span className="text-[#8b2500] font-bold mt-0.5">1.</span>
               <span>Try the analysis again in a few minutes</span>
             </li>
             <li className="flex items-start space-x-2">
-              <span className="text-indigo-700 font-bold mt-0.5">2.</span>
+              <span className="text-[#8b2500] font-bold mt-0.5">2.</span>
               <span>Download your summary to share with your doctor</span>
             </li>
             <li className="flex items-start space-x-2">
-              <span className="text-indigo-700 font-bold mt-0.5">3.</span>
+              <span className="text-[#8b2500] font-bold mt-0.5">3.</span>
               <span>Contact our support team if the issue persists</span>
             </li>
           </ul>
@@ -131,7 +131,7 @@ export function AnalysisFailedError({
           <summary className="cursor-pointer text-sm text-gray-600 hover:text-gray-800 transition-colors">
             Technical details
           </summary>
-          <div className="mt-2 p-3 bg-gray-50 rounded-lg text-xs text-gray-600 font-mono">
+          <div className="mt-2 p-3 bg-gray-50 rounded-none text-xs text-gray-600 font-mono">
             <div>Error: {errorMessage}</div>
             <div>Timestamp: {new Date().toISOString()}</div>
             <div>User Agent: {navigator.userAgent.substring(0, 50)}...</div>

@@ -97,14 +97,14 @@ export function ExpertAnalysisResults({ analysis, processingTime }: ExpertAnalys
 
   const getConfidenceColor = (confidence: number) => {
     if (confidence >= 80) return "text-green-600"
-    if (confidence >= 60) return "text-indigo-600"
+    if (confidence >= 60) return "text-[#8b2500]"
     if (confidence >= 40) return "text-yellow-600"
     return "text-red-600"
   }
 
   const getConfidenceBg = (confidence: number) => {
     if (confidence >= 80) return "bg-green-100"
-    if (confidence >= 60) return "bg-indigo-100"
+    if (confidence >= 60) return "bg-[#faf6f0]"
     if (confidence >= 40) return "bg-yellow-100"
     return "bg-red-100"
   }
@@ -116,7 +116,7 @@ export function ExpertAnalysisResults({ analysis, processingTime }: ExpertAnalys
       case "medium":
         return "bg-yellow-100 text-yellow-800"
       case "low":
-        return "bg-indigo-100 text-indigo-800"
+        return "bg-[#faf6f0] text-[#6d1d00]"
       default:
         return "bg-gray-100 text-gray-800"
     }
@@ -127,7 +127,7 @@ export function ExpertAnalysisResults({ analysis, processingTime }: ExpertAnalys
       case "urgent":
         return "bg-red-100 text-red-800"
       case "routine":
-        return "bg-indigo-100 text-indigo-800"
+        return "bg-[#faf6f0] text-[#6d1d00]"
       case "when_available":
         return "bg-gray-100 text-gray-800"
       default:
@@ -191,7 +191,7 @@ export function ExpertAnalysisResults({ analysis, processingTime }: ExpertAnalys
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="text-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-700 mx-auto"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#8b2500] mx-auto"></div>
         <p className="mt-4 text-gray-600">Redirecting to your results...</p>
       </div>
     </div>

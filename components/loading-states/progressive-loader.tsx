@@ -57,7 +57,7 @@ export function ProgressiveLoader({
       case "completed":
         return <CheckCircle className="h-5 w-5 text-green-600" />
       case "loading":
-        return <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-indigo-700" />
+        return <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#8b2500]" />
       case "error":
         return <AlertCircle className="h-5 w-5 text-red-600" />
       default:
@@ -81,14 +81,14 @@ export function ProgressiveLoader({
   return (
     <div className={cn("space-y-4", className)}>
       {/* Overall Progress */}
-      <div className="bg-white rounded-xl p-4 border border-gray-200">
+      <div className="bg-white rounded-none p-4 border border-gray-200">
         <div className="flex items-center justify-between mb-3">
           <span className="text-sm font-medium text-gray-900">Overall Progress</span>
           <span className="text-sm text-gray-600">{Math.round(overallProgress)}%</span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2">
           <div
-            className="bg-indigo-700 h-2 rounded-full transition-all duration-500"
+            className="bg-[#8b2500] h-2 rounded-full transition-all duration-500"
             style={{ width: `${overallProgress}%` }}
           />
         </div>
@@ -98,7 +98,7 @@ export function ProgressiveLoader({
       {/* Step List */}
       <div className="space-y-3">
         {steps.map((step, index) => (
-          <div key={step.id} className={cn("border rounded-xl p-4 transition-all duration-200", getStepColor(step))}>
+          <div key={step.id} className={cn("border rounded-none p-4 transition-all duration-200", getStepColor(step))}>
             <div className="flex items-start space-x-3">
               <div className="flex-shrink-0 mt-0.5">{getStepIcon(step)}</div>
               <div className="flex-1 min-w-0">
@@ -112,7 +112,7 @@ export function ProgressiveLoader({
                 {step.status === "loading" && (
                   <div className="mt-2">
                     <div className="w-full bg-gray-200 rounded-full h-1">
-                      <div className="bg-indigo-700 h-1 rounded-full animate-pulse w-2/3" />
+                      <div className="bg-[#8b2500] h-1 rounded-full animate-pulse w-2/3" />
                     </div>
                   </div>
                 )}

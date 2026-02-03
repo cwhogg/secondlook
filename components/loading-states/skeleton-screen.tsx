@@ -24,17 +24,17 @@ export function SkeletonScreen({ variant = "form", className }: SkeletonScreenPr
       {[1, 2, 3].map((i) => (
         <div key={i} className="space-y-2">
           <SkeletonBox className="h-4 w-1/4" />
-          <SkeletonBox className="h-12 w-full rounded-xl" />
+          <SkeletonBox className="h-12 w-full rounded-none" />
         </div>
       ))}
 
       {/* Button */}
-      <SkeletonBox className="h-12 w-full rounded-xl" />
+      <SkeletonBox className="h-12 w-full rounded-none" />
     </div>
   )
 
   const renderCardSkeleton = () => (
-    <div className="bg-white rounded-xl p-6 space-y-4">
+    <div className="bg-white rounded-none p-6 space-y-4">
       <div className="flex items-center space-x-3">
         <SkeletonBox className="h-12 w-12 rounded-full" />
         <div className="space-y-2 flex-1">
@@ -44,8 +44,8 @@ export function SkeletonScreen({ variant = "form", className }: SkeletonScreenPr
       </div>
       <SkeletonBox className="h-20 w-full" />
       <div className="flex space-x-2">
-        <SkeletonBox className="h-8 w-20 rounded-lg" />
-        <SkeletonBox className="h-8 w-24 rounded-lg" />
+        <SkeletonBox className="h-8 w-20 rounded-none" />
+        <SkeletonBox className="h-8 w-24 rounded-none" />
       </div>
     </div>
   )
@@ -53,7 +53,7 @@ export function SkeletonScreen({ variant = "form", className }: SkeletonScreenPr
   const renderListSkeleton = () => (
     <div className="space-y-3">
       {[1, 2, 3, 4, 5].map((i) => (
-        <div key={i} className="flex items-center space-x-3 p-4 bg-white rounded-xl">
+        <div key={i} className="flex items-center space-x-3 p-4 bg-white rounded-none">
           <SkeletonBox className="h-10 w-10 rounded-full" />
           <div className="space-y-2 flex-1">
             <SkeletonBox className="h-4 w-3/4" />
@@ -68,7 +68,7 @@ export function SkeletonScreen({ variant = "form", className }: SkeletonScreenPr
   const renderAnalysisSkeleton = () => (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-indigo-700 rounded-xl p-6 text-white">
+      <div className="bg-[#8b2500] rounded-none p-6 text-white">
         <div className="space-y-3">
           <SkeletonBox className="h-8 w-2/3 bg-white bg-opacity-20" />
           <SkeletonBox className="h-4 w-1/2 bg-white bg-opacity-20" />
@@ -85,7 +85,7 @@ export function SkeletonScreen({ variant = "form", className }: SkeletonScreenPr
 
       {/* Content Cards */}
       {[1, 2, 3].map((i) => (
-        <div key={i} className="bg-white rounded-xl p-6 space-y-4">
+        <div key={i} className="bg-white rounded-none p-6 space-y-4">
           <div className="flex items-center justify-between">
             <SkeletonBox className="h-6 w-1/3" />
             <SkeletonBox className="h-8 w-16 rounded-full" />

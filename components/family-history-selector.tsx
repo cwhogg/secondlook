@@ -38,7 +38,7 @@ export function FamilyHistorySelector({ value, onChange, details, onDetailsChang
               type="button"
               onClick={() => handleToggle(option)}
               className={cn(
-                "p-4 rounded-xl border-2 text-left transition-all duration-200 min-h-[80px]",
+                "p-4 rounded-none border-2 text-left transition-all duration-200 min-h-[80px]",
                 "hover:border-medical-primary hover:bg-blue-50",
                 "focus:outline-none focus:ring-2 focus:ring-medical-primary focus:ring-offset-2",
                 isSelected
@@ -63,7 +63,7 @@ export function FamilyHistorySelector({ value, onChange, details, onDetailsChang
             onChange={(e) => onDetailsChange(e.target.value)}
             maxLength={100}
             rows={2}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary resize-none text-base"
+            className="w-full px-3 py-2 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-medical-primary focus:border-medical-primary resize-none text-base"
           />
           <div className="text-right">
             <span className="text-xs text-gray-500">{details.length}/100 characters</span>

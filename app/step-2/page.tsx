@@ -140,9 +140,9 @@ export default function Step2() {
 
   if (!step1Data) {
     return (
-      <div className="min-h-screen bg-[#faf9fe] flex items-center justify-center">
+      <div className="min-h-screen bg-[#f5f0eb] flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-700 mx-auto"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#8b2500] mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading...</p>
         </div>
       </div>
@@ -164,7 +164,7 @@ export default function Step2() {
 
   return (
     <Layout currentStep={currentStep} totalSteps={totalSteps} breadcrumbItems={breadcrumbItems}>
-      <div className="min-h-screen bg-[#faf9fe] py-8">
+      <div className="min-h-screen bg-[#f5f0eb] py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Fixed Auto-save notification */}
           <div
@@ -172,7 +172,7 @@ export default function Step2() {
               autoSaved ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
             }`}
           >
-            <div className="bg-emerald-500 text-white px-6 py-3 rounded-xl shadow-sm flex items-center space-x-2">
+            <div className="bg-emerald-500 text-white px-6 py-3 rounded-none flex items-center space-x-2">
               <CheckCircle className="h-4 w-4" />
               <span className="text-sm font-medium">Your information is automatically saved</span>
             </div>
@@ -180,13 +180,13 @@ export default function Step2() {
 
           {/* Premium Header Section */}
           <div className="text-left mb-10">
-            <div className="inline-flex items-center space-x-2 bg-indigo-100 px-4 py-2 rounded-full mb-6">
-              <Sparkles className="h-4 w-4 text-indigo-700" />
-              <span className="text-sm font-medium text-indigo-700">Step 2 of 3</span>
+            <div className="inline-flex items-center space-x-2 bg-[#faf6f0] px-4 py-2 rounded-full mb-6">
+              <Sparkles className="h-4 w-4 text-[#8b2500]" />
+              <span className="text-sm font-medium text-[#8b2500]">Step 2 of 3</span>
             </div>
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               We've analyzed your{" "}
-              <span className="text-indigo-700">
+              <span className="text-[#8b2500]">
                 description
               </span>
             </h1>
@@ -198,9 +198,9 @@ export default function Step2() {
           {/* Main Form Container */}
           <div className="max-w-3xl mx-auto space-y-8">
             {/* AI Analysis Section */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
+            <div className="bg-white rounded-none border border-gray-100 p-5 md:p-6">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="p-2 bg-indigo-700 rounded-xl">
+                <div className="p-2 bg-[#8b2500] rounded-none">
                   <Brain className="h-6 w-6 text-white" />
                 </div>
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900">AI Symptom Analysis</h2>
@@ -220,7 +220,7 @@ export default function Step2() {
             </div>
 
             {/* Summary Card */}
-            <div className="bg-indigo-50 rounded-xl border border-[#e5e2f0] p-5 md:p-6">
+            <div className="bg-[#faf6f0] rounded-none border border-[#d4c5b0] p-5 md:p-6">
               <h3 className="text-xl font-bold text-gray-900 mb-4">Your information so far:</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-base">
                 <div>
@@ -234,10 +234,10 @@ export default function Step2() {
                   <p className="text-gray-600 mt-1 leading-relaxed">{step1Data.primaryConcern}</p>
 
                   {actualMappedSymptoms.length > 0 && (
-                    <div className="mt-3 p-3 bg-white rounded-xl border border-[#e5e2f0]">
+                    <div className="mt-3 p-3 bg-white rounded-none border border-[#d4c5b0]">
                       <span className="font-semibold text-gray-700 text-sm">Medical terms identified:</span>
                       <div className="mt-1">
-                        <span className="text-sm text-indigo-700 font-medium">
+                        <span className="text-sm text-[#8b2500] font-medium">
                           {actualMappedSymptoms
                             .filter((symptom) => symptom.selectedConcept && !symptom.mappingError)
                             .map((symptom) => symptom.userCorrection || symptom.selectedConcept?.name)
@@ -275,7 +275,7 @@ export default function Step2() {
             </div>
 
             {/* Timeline Section */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
+            <div className="bg-white rounded-none border border-gray-100 p-5 md:p-6">
               <div className="text-left mb-8">
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">When did things start?</h2>
                 {errors.mainSymptomStart && <p className="text-red-600 text-sm">{errors.mainSymptomStart}</p>}
@@ -291,7 +291,7 @@ export default function Step2() {
             </div>
 
             {/* Symptom Patterns Section */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
+            <div className="bg-white rounded-none border border-gray-100 p-5 md:p-6">
               <div className="text-left mb-8">
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">How would you describe your symptoms?</h2>
                 {errors.symptomPattern && <p className="text-red-600 text-sm">{errors.symptomPattern}</p>}
@@ -304,7 +304,7 @@ export default function Step2() {
             </div>
 
             {/* Triggers Section */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
+            <div className="bg-white rounded-none border border-gray-100 p-5 md:p-6">
               <div className="text-left mb-8">
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">What makes your symptoms worse?</h2>
                 <p className="text-lg text-gray-600">Select all that apply</p>
@@ -314,7 +314,7 @@ export default function Step2() {
             </div>
 
             {/* Associated Symptoms Section */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
+            <div className="bg-white rounded-none border border-gray-100 p-5 md:p-6">
               <div className="text-left mb-8">
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">What else have you noticed?</h2>
                 <p className="text-lg text-gray-600">
@@ -330,7 +330,7 @@ export default function Step2() {
             </div>
 
             {/* Family History Section */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 md:p-6">
+            <div className="bg-white rounded-none border border-gray-100 p-5 md:p-6">
               <div className="text-left mb-8">
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Does anyone in your family have:</h2>
               </div>
@@ -347,7 +347,7 @@ export default function Step2() {
             <div className="flex flex-col sm:flex-row justify-between items-center gap-6 pt-8">
               <button
                 onClick={handleBack}
-                className="group flex items-center space-x-2 px-6 py-3 rounded-lg border-2 border-gray-300 text-gray-700 font-semibold hover:border-indigo-300 hover:text-indigo-700 transition-all duration-200 w-full sm:w-auto"
+                className="group flex items-center space-x-2 px-6 py-3 rounded-none border-2 border-gray-300 text-gray-700 font-semibold hover:border-[#d4c5b0] hover:text-[#8b2500] transition-all duration-200 w-full sm:w-auto"
               >
                 <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
                 <span>Back</span>
@@ -356,9 +356,9 @@ export default function Step2() {
               <button
                 onClick={handleContinue}
                 disabled={!isFormValid}
-                className={`group relative px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 w-full sm:w-auto min-w-[200px] ${
+                className={`group relative px-8 py-4 rounded-none font-semibold text-lg transition-all duration-300 w-full sm:w-auto min-w-[200px] ${
                   isFormValid
-                    ? "bg-indigo-700 hover:bg-indigo-800 text-white shadow-sm hover:shadow-md"
+                    ? "bg-[#8b2500] hover:bg-[#6d1d00] text-white"
                     : "bg-gray-200 text-gray-500 cursor-not-allowed"
                 }`}
               >

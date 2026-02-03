@@ -61,7 +61,7 @@ export function AssociatedSymptoms({ bodyRegions, value, onChange }: AssociatedS
       </div>
 
       {value.length > 0 && (
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+        <div className="bg-blue-50 border border-blue-200 rounded-none p-3">
           <p className="text-sm text-blue-800">
             <span className="font-medium">Selected symptoms ({value.length}):</span> {value.join(", ")}
           </p>

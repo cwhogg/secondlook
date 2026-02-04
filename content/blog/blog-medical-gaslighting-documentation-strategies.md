@@ -3,7 +3,7 @@ title: "Medical Gaslighting Documentation: How to Protect Yourself with Professi
 type: blog-post
 targetKeywords: ["medical gaslighting documentation strategies", "how to document medical dismissal", "medical advocacy evidence collection", "protecting yourself from medical gaslighting"]
 contentGap: "Existing content is mostly opinion pieces or general advice. Missing are practical documentation frameworks and tools for building evidence-based advocacy cases."
-generatedAt: "2026-01-31T22:58:00.793Z"
+date: "2026-01-24T10:00:00.000Z"
 ideaName: "SecondLook (new SEO)"
 status: draft
 wordCount: 2847

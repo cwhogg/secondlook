@@ -3,7 +3,7 @@ title: "POTS Diagnosis FAQ: Postural Orthostatic Tachycardia Syndrome Recognitio
 description: "Comprehensive guide to POTS diagnosis criteria, symptoms, testing protocols, and diagnostic workup for postural orthostatic tachycardia syndrome."
 type: faq
 targetKeywords: ["POTS diagnosis criteria", "postural orthostatic tachycardia syndrome symptoms", "POTS testing protocol", "dysautonomia diagnostic workup"]
-generatedAt: "2026-02-02T04:58:31.478Z"
+date: "2026-01-28T10:00:00.000Z"
 ideaName: "SecondLook v4 (new SEO)"
 status: published
 wordCount: 2847

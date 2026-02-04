@@ -3,7 +3,7 @@ title: "Isabel DDx vs Ada Health vs SecondLook: Diagnostic Tools for Complex Cas
 type: comparison
 targetKeywords: ["best diagnostic app complex cases", "isabel ddx vs ada health", "diagnostic tools for rare diseases", "medical diagnosis software comparison"]
 contentGap: "Missing honest comparison content for diagnostic tools targeting complex/rare conditions"
-generatedAt: "2026-01-31T22:57:10.847Z"
+date: "2026-01-22T10:00:00.000Z"
 ideaName: "SecondLook (new SEO)"
 status: draft
 wordCount: 2,247

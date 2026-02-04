@@ -3,7 +3,7 @@ title: "AI Symptom Checkers for Complex Medical Cases: 2026 Guide to Next-Genera
 type: blog-post
 targetKeywords: ["ai symptom checker for complex medical cases 2026", "complex symptom pattern recognition app", "ai diagnostic tools rare diseases", "sophisticated symptom analysis"]
 contentGap: "Current AI symptom checker content focuses on simple cases. Missing is evaluation of tools specifically designed for complex, rare, or multi-system conditions."
-generatedAt: "2026-01-31T22:56:14.791Z"
+date: "2026-01-20T10:00:00.000Z"
 ideaName: "SecondLook (new SEO)"
 status: draft
 wordCount: 2847

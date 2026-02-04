@@ -3,7 +3,7 @@ title: "What to Do When 5 Doctors Can't Diagnose You: A Strategic Action Plan"
 type: blog-post
 targetKeywords: ["what to do when 5 doctors can't diagnose you", "diagnostic odyssey support", "undiagnosed medical condition next steps", "when doctors can't help"]
 contentGap: "Current content is generic advice from major health sites. Missing is a systematic, actionable framework specifically for complex cases with professional-grade diagnostic organization tools."
-generatedAt: "2026-01-31T22:54:11.062Z"
+date: "2026-01-16T10:00:00.000Z"
 ideaName: "SecondLook v4 (new SEO)"
 status: published
 wordCount: 2847

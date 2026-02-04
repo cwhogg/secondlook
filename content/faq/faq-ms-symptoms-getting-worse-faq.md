@@ -2,7 +2,7 @@
 title: "MS Diagnosis FAQ: Common Questions When Symptoms Worsen"
 type: faq
 targetKeywords: ["why do my MS symptoms keep getting worse", "MS symptoms worsening", "multiple sclerosis flare ups", "MS symptoms progression"]
-generatedAt: "2026-01-31T20:57:46.093Z"
+date: "2026-01-14T10:00:00.000Z"
 ideaName: "SecondLook v5 (MS Specific)"
 status: published
 wordCount: 2847

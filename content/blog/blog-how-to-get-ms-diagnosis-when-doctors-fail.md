@@ -3,7 +3,7 @@ title: "When Doctors Can't Diagnose Multiple Sclerosis: 7 Steps to Get Answers"
 type: blog-post
 targetKeywords: ["how to get diagnosed with multiple sclerosis when doctors fail", "MS diagnosis when doctors miss signs", "getting MS diagnosis after failed attempts"]
 contentGap: "Limited specialized coverage for patients who've already seen multiple doctors without getting MS diagnosis"
-generatedAt: "2026-01-31T20:56:43.734Z"
+date: "2026-01-12T10:00:00.000Z"
 ideaName: "SecondLook v5 (MS Specific)"
 status: published
 wordCount: 2847

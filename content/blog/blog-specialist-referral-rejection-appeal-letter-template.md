@@ -4,7 +4,7 @@ description: "Get free specialist referral denial appeal letter templates plus y
 type: blog-post
 targetKeywords: ["specialist referral rejection appeal letter template", "insurance referral denial appeal", "patient rights specialist access", "how to appeal denied referral"]
 contentGap: "Addresses transactional low-competition keyword for frustrated patients facing access barriers"
-generatedAt: "2026-02-02T05:01:39.358Z"
+date: "2026-02-01T10:00:00.000Z"
 ideaName: "SecondLook v4 (new SEO)"
 status: published
 wordCount: 2847

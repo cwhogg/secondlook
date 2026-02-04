@@ -2,7 +2,7 @@
 title: "SecondLook: AI-Powered Diagnostic Guidance for Complex Medical Cases"
 type: landing-page
 targetKeywords: ["diagnostic guidance platform", "ai medical diagnosis complex cases", "diagnostic odyssey support tool", "sophisticated symptom analysis"]
-generatedAt: "2026-01-31T23:28:15.191Z"
+date: "2026-01-26T10:00:00.000Z"
 ideaName: "SecondLook (new SEO)"
 status: draft
 wordCount: 1847

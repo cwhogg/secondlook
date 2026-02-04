@@ -4,7 +4,7 @@ description: "Free downloadable differential diagnosis worksheet for patients. L
 type: blog-post
 targetKeywords: ["differential diagnosis worksheet for patients", "medical investigation template", "patient diagnostic checklist", "how to research your own medical condition safely"]
 contentGap: "Targets transactional 'worksheet' keyword with low competition - patients want actionable templates they can download and use"
-generatedAt: "2026-02-02T05:00:43.037Z"
+date: "2026-01-30T10:00:00.000Z"
 ideaName: "SecondLook v4 (new SEO)"
 status: published
 wordCount: 2847

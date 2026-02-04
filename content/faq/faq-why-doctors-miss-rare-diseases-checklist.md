@@ -3,7 +3,7 @@ title: "Why Doctors Miss Rare Diseases: Patient Checklist & Red Flags Guide"
 description: "Essential checklist for patients facing diagnostic challenges. Learn why doctors miss rare diseases and red flags that signal you need specialized care."
 type: faq
 targetKeywords: ["why doctors miss rare diseases checklist", "rare disease red flags", "zebra medical conditions self advocacy guide", "diagnostic bias patterns"]
-generatedAt: "2026-02-02T05:41:42.603Z"
+date: "2026-02-03T10:00:00.000Z"
 ideaName: "SecondLook v4 (new SEO)"
 status: published
 wordCount: 2847

@@ -2,7 +2,7 @@
 title: "Complex Medical Cases FAQ: When Traditional Healthcare Fails"
 type: faq
 targetKeywords: ["what to do if doctors can't diagnose you", "where to go when no one can diagnose you", "hardest medical conditions to diagnose", "doctors won't help with medical issues"]
-generatedAt: "2026-01-31T22:55:12.366Z"
+date: "2026-01-18T10:00:00.000Z"
 ideaName: "SecondLook v4 (new SEO)"
 status: published
 wordCount: 2847

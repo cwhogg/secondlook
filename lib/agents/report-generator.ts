@@ -144,7 +144,8 @@ export class ReportGenerator extends BaseAgent {
           .map((c) => `  ${c.met ? '[MET]' : '[NOT MET]'} ${c.criterion}: ${c.evidence}`)
           .join('\n');
 
-        return `${i + 1}. ${h.diagnosis} (evidence score: ${h.evidenceScore}, confidence: ${h.confidenceScore})
+        const evalLabel = h.knowledgeBaseMatch ? 'criteria-grounded' : 'reasoning-evaluated';
+        return `${i + 1}. ${h.diagnosis} (evidence score: ${h.evidenceScore}, confidence: ${h.confidenceScore}, evaluation: ${evalLabel})
    Specialist: ${h.sourceAgent}
    Reasoning: ${h.clinicalReasoning}
    Supporting: ${h.supportingEvidence.map((e) => `${e.finding} (${e.strength})`).join('; ')}

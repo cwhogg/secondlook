@@ -6,6 +6,7 @@ import { SynthesisAgent } from '../agents/synthesizer';
 import { ReportGenerator } from '../agents/report-generator';
 import { AgentOutput } from '../agents/types';
 import { BudgetTracker } from './budget';
+import { getDiseaseCount } from '../knowledge';
 
 export interface PipelineProgress {
   stage: string;
@@ -127,7 +128,7 @@ export class DiagnosticPipeline {
         model: evaluationResult.model,
         agentName: evaluationResult.agentName,
         inputSummary: `${evaluationResult.hypotheses.length} hypotheses to evaluate`,
-        outputSummary: `Evidence scores: ${evaluationResult.hypotheses.map((h) => `${h.diagnosis}: ${h.evidenceScore}`).join(', ')}`,
+        outputSummary: `Criteria review complete: ${evaluationResult.hypotheses.filter((h) => h.knowledgeBaseMatch).length} KB-matched, ${evaluationResult.hypotheses.filter((h) => !h.knowledgeBaseMatch).length} reasoning-evaluated`,
       });
 
       this.checkBudget();
@@ -137,7 +138,7 @@ export class DiagnosticPipeline {
         stage: 'synthesis',
         stageNumber: 4,
         totalStages: 5,
-        detail: 'Reconciling specialist opinions and ranking by evidence strength',
+        detail: 'Senior diagnostician reviewing all evidence and assigning probabilities',
         percentage: 75,
       });
 
@@ -155,7 +156,7 @@ export class DiagnosticPipeline {
         model: synthesisResult.model,
         agentName: synthesisResult.agentName,
         inputSummary: `${evaluationResult.hypotheses.length} evaluated hypotheses from ${specialistResults.length} specialists`,
-        outputSummary: `Top diagnosis: ${synthesisResult.hypotheses[0]?.diagnosis || 'none'} (score: ${synthesisResult.hypotheses[0]?.evidenceScore || 0})`,
+        outputSummary: `Top diagnosis: ${synthesisResult.hypotheses[0]?.diagnosis || 'none'} (probability: ${synthesisResult.hypotheses[0]?.confidenceScore || 0}%)`,
       });
 
       this.checkBudget();
@@ -213,13 +214,19 @@ export class DiagnosticPipeline {
         overallAssessment: reportData.overallAssessment || synthesisResult.reasoning,
         patientHypothesisAnalysis: reportData.patientHypothesisAnalysis || undefined,
         pipelineMetadata: {
-          pipelineVersion: '2.0.0',
+          pipelineVersion: '2.1.0',
           stages,
           totalDurationMs: Date.now() - pipelineStart,
           totalTokensUsed: budgetSummary.totalTokens,
           totalCostEstimate: this.budgetTracker.estimatedCostDollars(),
           knowledgeBaseVersion: '1.0.0',
           diseasesConsidered: triageResult.candidateDiseases.length,
+          knowledgeBaseCoverage: {
+            totalProfiledDiseases: getDiseaseCount(),
+            criteriaGroundedCount: reportResult.hypotheses.filter((h) => h.knowledgeBaseMatch).length,
+            reasoningEvaluatedCount: reportResult.hypotheses.filter((h) => !h.knowledgeBaseMatch).length,
+            disclaimer: `This analysis was evaluated against a knowledge base of ${getDiseaseCount()} profiled diseases out of an estimated 7,000-10,000 known rare diseases. Diagnoses marked as "reasoning-evaluated" were assessed using specialist clinical knowledge rather than structured diagnostic criteria from our database.`,
+          },
         },
       };
 

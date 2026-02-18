@@ -79,16 +79,16 @@ export class TriageAgent extends BaseAgent {
       specialists.forEach((s) => specialtySet.add(s));
     }
 
-    // Always include general-internist for multi-system cases
-    if (bodySystems.length >= 3) {
-      specialtySet.add('general-internist');
-    }
+    // Always include general-internist as the un-anchored counterweight agent.
+    // It receives NO KB profiles and reasons purely from training data, providing
+    // a check against the other specialists' KB anchoring bias.
+    specialtySet.add('general-internist');
 
-    // Ensure at least 2 and at most 4 specialists
-    const relevantSpecialties = Array.from(specialtySet).slice(0, 4);
-    if (relevantSpecialties.length < 2) {
-      relevantSpecialties.push('general-internist');
-    }
+    // Take up to 4 domain specialists + always include general-internist
+    const domainSpecialists = Array.from(specialtySet)
+      .filter((s) => s !== 'general-internist')
+      .slice(0, 3); // max 3 domain specialists
+    const relevantSpecialties = [...domainSpecialists, 'general-internist' as SpecialistType];
 
     // Retrieve candidate diseases from knowledge base
     const candidateDiseases = findMatchingDiseases(

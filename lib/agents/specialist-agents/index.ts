@@ -94,7 +94,8 @@ const SPECIALIST_PROMPTS: Record<SpecialistType, { title: string; expertise: str
 - Systemic manifestations of rare diseases
 - Complex cases with overlapping conditions
 - Periodic fever syndromes and autoinflammatory conditions
-- Drug-related and environmental causes of complex presentations`,
+- Drug-related and environmental causes of complex presentations
+- Identifying diagnoses that domain specialists may overlook due to tunnel vision`,
   },
 };
 
@@ -105,32 +106,64 @@ class SpecialistAgent extends BaseAgent {
 
   constructor(specialistType: SpecialistType) {
     const { title, expertise } = SPECIALIST_PROMPTS[specialistType];
+    const isGeneralInternist = specialistType === 'general-internist';
 
-    super({
-      name: `specialist-${specialistType}`,
-      model: 'gpt-4o',
-      temperature: 0.3,
-      maxTokens: 4000,
-      systemPrompt: `You are Dr. ${specialistType.charAt(0).toUpperCase() + specialistType.slice(1)}, a ${title} with 25+ years of experience specializing in complex and rare diseases. Your areas of deep expertise include:
+    const domainSpecialistPrompt = `You are Dr. ${specialistType.charAt(0).toUpperCase() + specialistType.slice(1)}, a ${title} with 25+ years of experience specializing in complex and rare diseases. Your areas of deep expertise include:
 
 ${expertise}
 
 You are reviewing a patient case as part of a multi-specialist diagnostic consultation. You have been provided with disease profiles from a curated knowledge base that match this patient's presentation.
 
 YOUR DIAGNOSTIC APPROACH:
-1. Consider ONLY conditions within or adjacent to your area of expertise
+1. Consider conditions within or adjacent to your area of expertise
 2. For each hypothesis, map EVERY piece of supporting evidence to a SPECIFIC patient symptom
-3. Reference diagnostic criteria from the provided disease profiles — state which criteria are met
+3. Where disease profiles are provided from our knowledge base, reference their diagnostic criteria
 4. Honestly note contradictory evidence and information gaps
 5. Consider mimics, overlapping conditions, and atypical presentations
 6. Think about what is COMMONLY MISSED by generalists in your specialty area
+
+CRITICAL: You are NOT limited to the diseases shown in the knowledge base profiles below. Our knowledge base covers ~150 diseases out of 7,000-10,000 known rare diseases. If the patient's presentation suggests a condition NOT in the provided profiles, you MUST still propose it. A disease being absent from our database says nothing about its likelihood — it only means we lack structured criteria for it. Use your clinical training and expertise for any condition you consider relevant.
 
 OUTPUT RULES:
 - Generate 2-4 diagnostic hypotheses ranked by likelihood
 - Each hypothesis MUST include specific evidence mapping
 - Do NOT suggest common diagnoses that any GP would consider
 - Focus on rare/complex conditions that require specialist evaluation
-- Be precise — vague reasoning undermines clinical credibility`,
+- Be precise — vague reasoning undermines clinical credibility
+- For diagnoses NOT in the provided knowledge base profiles, provide your own assessment of which diagnostic criteria or clinical features support the diagnosis`;
+
+    const generalInternistPrompt = `You are Dr. Internist, a ${title} with 25+ years of experience. You are the senior diagnostician on this case — the one who asks "what is everyone else missing?"
+
+Your areas of deep expertise include:
+
+${expertise}
+
+You are reviewing a patient case as part of a multi-specialist diagnostic consultation. Other domain specialists (neurologist, rheumatologist, cardiologist, etc.) are also reviewing this case. They have access to a curated knowledge base of ~150 rare disease profiles. YOUR role is different:
+
+YOU ARE THE UN-ANCHORED DIAGNOSTICIAN. You are intentionally NOT given structured disease profiles from the knowledge base. This is by design. The other specialists may anchor too heavily on the ~150 diseases in our database. There are 7,000-10,000 known rare diseases. Your job is to think broadly and consider diagnoses the other specialists might miss because they were focused on their domain or anchored to the knowledge base.
+
+YOUR DIAGNOSTIC APPROACH:
+1. Think across ALL specialties and body systems — you are not confined to one domain
+2. Consider diseases that fall between specialties or are easily misattributed
+3. Think about atypical presentations of both common and rare diseases
+4. Consider diagnoses that require connecting symptoms across multiple organ systems
+5. Ask "what if the obvious specialty framing is wrong?" — e.g., what if neurological symptoms are actually metabolic?
+6. For each hypothesis, map EVERY piece of supporting evidence to a SPECIFIC patient symptom
+
+OUTPUT RULES:
+- Generate 2-4 diagnostic hypotheses ranked by likelihood
+- Each hypothesis MUST include specific evidence mapping
+- Prioritize diagnoses that domain specialists are likely to MISS
+- Consider rare diseases, overlap syndromes, and atypical presentations
+- Be precise — vague reasoning undermines clinical credibility
+- Provide your own assessment of which diagnostic criteria or clinical features support each diagnosis`;
+
+    super({
+      name: `specialist-${specialistType}`,
+      model: 'gpt-4o',
+      temperature: isGeneralInternist ? 0.4 : 0.3, // slightly higher temp for broader thinking
+      maxTokens: 4000,
+      systemPrompt: isGeneralInternist ? generalInternistPrompt : domainSpecialistPrompt,
     });
 
     this.specialistType = specialistType;
@@ -236,6 +269,8 @@ OUTPUT RULES:
         fulfillmentPercentage: 0,
       },
       sourceAgent: this.name,
+      evaluationType: 'reasoning-evaluated' as const, // will be upgraded to 'criteria-grounded' by evidence evaluator if KB match found
+      knowledgeBaseMatch: false, // will be set by evidence evaluator
     }));
 
     return {
@@ -262,19 +297,23 @@ OUTPUT RULES:
       })
       .join('\n');
 
-    // Include relevant disease profiles from KB
-    const diseaseProfiles = candidateDiseases.slice(0, 10).map((dm) => {
-      const d = dm.disease;
-      const criteriaStr = d.diagnosticCriteria.criteria
-        .map((c) => `  - [${c.category}${c.requiredForDiagnosis ? ', REQUIRED' : ''}] ${c.description}`)
-        .join('\n');
+    // Include relevant disease profiles from KB (but NOT for general-internist)
+    const isGeneralInternist = this.specialistType === 'general-internist';
+    let kbSection = '';
 
-      const keySymptoms = [
-        ...d.symptoms.pathognomonic.map((s) => `  - [pathognomonic, ${s.frequency}%] ${s.symptomName}`),
-        ...d.symptoms.common.map((s) => `  - [common, ${s.frequency}%] ${s.symptomName}`),
-      ].join('\n');
+    if (!isGeneralInternist && candidateDiseases.length > 0) {
+      const diseaseProfiles = candidateDiseases.slice(0, 10).map((dm) => {
+        const d = dm.disease;
+        const criteriaStr = d.diagnosticCriteria.criteria
+          .map((c) => `  - [${c.category}${c.requiredForDiagnosis ? ', REQUIRED' : ''}] ${c.description}`)
+          .join('\n');
 
-      return `
+        const keySymptoms = [
+          ...d.symptoms.pathognomonic.map((s) => `  - [pathognomonic, ${s.frequency}%] ${s.symptomName}`),
+          ...d.symptoms.common.map((s) => `  - [common, ${s.frequency}%] ${s.symptomName}`),
+        ].join('\n');
+
+        return `
 ### ${d.name} (${d.id})
 Prevalence: ${d.prevalence.estimate} (${d.prevalence.classification})
 Onset: age ${d.demographics.typicalOnsetAge.min}-${d.demographics.typicalOnsetAge.max}, ${d.demographics.sexPredilection}
@@ -289,7 +328,28 @@ ${criteriaStr}
 ${d.diagnosticCriteria.minimumForDiagnosis ? `Minimum for diagnosis: ${d.diagnosticCriteria.minimumForDiagnosis}` : ''}
 
 Red flags: ${d.redFlags.join(', ')}`;
-    }).join('\n---');
+      }).join('\n---');
+
+      kbSection = `
+===== KNOWLEDGE BASE: CANDIDATE DISEASES =====
+The following diseases from our curated knowledge base (~150 of ~7,000+ rare diseases) match this patient's symptoms.
+Reference these profiles where relevant, but also consider diseases NOT listed here.
+${diseaseProfiles}`;
+    } else if (isGeneralInternist) {
+      kbSection = `
+===== NOTE =====
+You are intentionally not provided with knowledge base disease profiles. Other specialists on this case have been given profiles from our database of ~150 rare diseases. Your role is to think independently and consider what they might miss.`;
+    }
+
+    const taskSection = isGeneralInternist
+      ? `===== YOUR TASK =====
+As the senior diagnostician, generate your differential diagnosis hypotheses.
+Think broadly. Consider what domain specialists anchored to a small disease database might overlook.
+Map evidence to specific patient symptoms.`
+      : `===== YOUR TASK =====
+As a ${SPECIALIST_PROMPTS[this.specialistType].title}, generate your differential diagnosis hypotheses.
+Reference the disease profiles above where relevant, but also consider conditions not in the database.
+Map evidence to specific patient symptoms.`;
 
     return `PATIENT PRESENTATION:
 
@@ -311,15 +371,9 @@ ${patientCase.symptomPatterns?.patterns?.length ? `
 Clinical Pattern Analysis:
 ${patientCase.symptomPatterns.patterns.map((p) => `- "${p.patternName}" (${p.clinicalCategory}, confidence: ${Math.round(p.confidence * 100)}%) — ${p.reasoning}`).join('\n')}
 Overall impression: ${patientCase.symptomPatterns.overallImpression}` : ''}
+${kbSection}
 
-===== KNOWLEDGE BASE: CANDIDATE DISEASES =====
-The following diseases from our curated knowledge base match this patient's symptoms.
-Use these profiles to ground your analysis — reference specific diagnostic criteria.
-${diseaseProfiles || '\n(No close matches found in knowledge base)'}
-
-===== YOUR TASK =====
-As a ${SPECIALIST_PROMPTS[this.specialistType].title}, generate your differential diagnosis hypotheses.
-Reference the disease profiles above where relevant. Map evidence to specific patient symptoms.`;
+${taskSection}`;
   }
 }
 

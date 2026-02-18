@@ -108,6 +108,8 @@ export interface DiagnosisHypothesis {
   specialistRequired: string;
   diagnosticCriteria: CriteriaFulfillment;
   sourceAgent: string; // which specialist agent proposed this
+  evaluationType: 'criteria-grounded' | 'reasoning-evaluated'; // whether KB criteria were available
+  knowledgeBaseMatch: boolean; // whether this disease exists in the KB
 }
 
 export interface DataGap {
@@ -151,6 +153,12 @@ export interface PipelineMetadata {
   totalCostEstimate: number;
   knowledgeBaseVersion: string;
   diseasesConsidered: number;
+  knowledgeBaseCoverage: {
+    totalProfiledDiseases: number;
+    criteriaGroundedCount: number; // how many final diagnoses had KB criteria
+    reasoningEvaluatedCount: number; // how many were scored on reasoning alone
+    disclaimer: string;
+  };
 }
 
 export interface AnalysisResult {

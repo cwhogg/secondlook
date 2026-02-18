@@ -41,7 +41,7 @@ export class SynthesisAgent extends BaseAgent {
   constructor() {
     super({
       name: 'synthesizer',
-      model: 'gpt-4o',
+      model: 'gpt-4.1',
       temperature: 0.2,
       maxTokens: 4000,
       systemPrompt: SYNTHESIS_PROMPT,

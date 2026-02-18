@@ -160,7 +160,7 @@ OUTPUT RULES:
 
     super({
       name: `specialist-${specialistType}`,
-      model: 'gpt-4o',
+      model: 'gpt-4.1',
       temperature: isGeneralInternist ? 0.4 : 0.3, // slightly higher temp for broader thinking
       maxTokens: 4000,
       systemPrompt: isGeneralInternist ? generalInternistPrompt : domainSpecialistPrompt,

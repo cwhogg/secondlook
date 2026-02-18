@@ -47,12 +47,12 @@ export class DiagnosticPipeline {
       const triageAgent = new TriageAgent();
       const triageResult = await triageAgent.execute({ patientCase });
 
-      this.budgetTracker.addUsage('gpt-4o-mini', triageResult.tokensUsed);
+      this.budgetTracker.addUsage('gpt-4.1-nano', triageResult.tokensUsed);
       stages.push({
         stageName: 'triage',
         durationMs: triageResult.durationMs,
         tokensUsed: triageResult.tokensUsed,
-        model: 'gpt-4o-mini',
+        model: 'gpt-4.1-nano',
         agentName: 'triage-agent',
         inputSummary: `${patientCase.symptoms.length} symptoms, ${patientCase.demographics.age}yo ${patientCase.demographics.sex}`,
         outputSummary: `Systems: ${triageResult.bodySystems.join(', ')}. Specialists: ${triageResult.relevantSpecialties.join(', ')}. ${triageResult.candidateDiseases.length} candidate diseases.`,

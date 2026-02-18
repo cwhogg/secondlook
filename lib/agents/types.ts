@@ -5,7 +5,7 @@ import { DiseaseMatch } from '../types/knowledge-base';
 
 export interface AgentConfig {
   name: string;
-  model: 'gpt-4o' | 'gpt-4o-mini';
+  model: 'gpt-4.1' | 'gpt-4.1-mini' | 'gpt-4.1-nano' | 'gpt-4o' | 'gpt-4o-mini';
   temperature: number;
   maxTokens: number;
   systemPrompt: string;

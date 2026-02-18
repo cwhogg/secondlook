@@ -40,7 +40,7 @@ export class EvidenceEvaluator extends BaseAgent {
   constructor() {
     super({
       name: 'evidence-evaluator',
-      model: 'gpt-4o',
+      model: 'gpt-4.1',
       temperature: 0.1,
       maxTokens: 6000, // increased to handle two-track evaluation
       systemPrompt: EVIDENCE_EVALUATOR_PROMPT,

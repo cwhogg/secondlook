@@ -1,0 +1,102 @@
+{
+  "id": "hashimoto-thyroiditis",
+  "name": "Hashimoto Thyroiditis",
+  "aliases": ["Hashimoto's Thyroiditis", "Chronic Lymphocytic Thyroiditis", "Autoimmune Thyroiditis", "Hashimoto's Disease"],
+  "icd10Codes": ["E06.3"],
+  "omimId": "140300",
+  "orphanetId": "98720",
+  "prevalence": {
+    "estimate": "1-2% clinical; up to 10-12% subclinical/antibody positive",
+    "range": "1,000-12,000 per 100,000",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 30, "max": 60, "peak": 45 },
+    "sexPredilection": "female",
+    "ethnicAssociations": ["All ethnicities; most common cause of hypothyroidism in iodine-sufficient areas"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ATA/ETA Clinical Guidelines for Hashimoto Thyroiditis",
+    "criteria": [
+      { "id": "ht-1", "description": "Elevated TSH (hypothyroidism or subclinical hypothyroidism)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "ht-2", "description": "Positive anti-TPO (thyroid peroxidase) antibodies", "category": "major", "requiredForDiagnosis": false },
+      { "id": "ht-3", "description": "Positive anti-thyroglobulin antibodies", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "ht-4", "description": "Thyroid ultrasound showing diffuse hypoechogenicity and heterogeneity", "category": "supportive", "requiredForDiagnosis": false },
+      { "id": "ht-5", "description": "FNA or histology showing lymphocytic infiltration with germinal centers and Hurthle cell change", "category": "major", "requiredForDiagnosis": false }
+    ],
+    "minimumForDiagnosis": "Hypothyroidism (elevated TSH) plus positive anti-TPO or anti-thyroglobulin antibodies. Ultrasound findings supportive but not required.",
+    "notes": "Can present initially with transient thyrotoxicosis (hashitoxicosis) before progressing to hypothyroidism. Euthyroid Hashimoto's (positive antibodies with normal thyroid function) exists and may progress."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      { "symptomName": "Non-tender diffuse goiter with firm rubbery texture", "snomedCode": "3716002", "frequency": 0.60, "bodySystem": "Endocrine", "notes": "Gradually developing; may eventually atrophy in late disease" }
+    ],
+    "common": [
+      { "symptomName": "Fatigue", "snomedCode": "84229001", "frequency": 0.80, "bodySystem": "Constitutional" },
+      { "symptomName": "Weight gain", "snomedCode": "8943002", "frequency": 0.60, "bodySystem": "Constitutional" },
+      { "symptomName": "Cold intolerance", "snomedCode": "255427004", "frequency": 0.60, "bodySystem": "Constitutional" },
+      { "symptomName": "Constipation", "snomedCode": "14760008", "frequency": 0.50, "bodySystem": "Gastrointestinal" },
+      { "symptomName": "Dry skin", "snomedCode": "16386004", "frequency": 0.55, "bodySystem": "Dermatologic" }
+    ],
+    "occasional": [
+      { "symptomName": "Hair loss (diffuse)", "snomedCode": "278040002", "frequency": 0.30, "bodySystem": "Dermatologic" },
+      { "symptomName": "Menorrhagia or menstrual irregularities", "snomedCode": "386692008", "frequency": 0.30, "bodySystem": "Gynecologic" },
+      { "symptomName": "Depression", "snomedCode": "35489007", "frequency": 0.30, "bodySystem": "Psychiatric" },
+      { "symptomName": "Cognitive impairment (brain fog)", "snomedCode": "386806002", "frequency": 0.25, "bodySystem": "Neurological" },
+      { "symptomName": "Myalgia and joint stiffness", "snomedCode": "68962001", "frequency": 0.30, "bodySystem": "Musculoskeletal" }
+    ],
+    "rare": [
+      { "symptomName": "Hashimoto encephalopathy (SREAT)", "frequency": 0.01, "bodySystem": "Neurological", "notes": "Steroid-responsive encephalopathy associated with autoimmune thyroiditis; seizures, myoclonus, cognitive decline" },
+      { "symptomName": "Myxedema coma", "snomedCode": "230637003", "frequency": 0.01, "bodySystem": "Constitutional", "notes": "Life-threatening; hypothermia, altered consciousness, cardiovascular collapse" },
+      { "symptomName": "Thyroid lymphoma (MALT)", "snomedCode": "118617000", "frequency": 0.01, "bodySystem": "Endocrine/Oncologic", "notes": "Rapidly enlarging goiter; increased risk compared to general population" },
+      { "symptomName": "Pericardial effusion", "snomedCode": "373945007", "frequency": 0.05, "bodySystem": "Cardiovascular" }
+    ]
+  },
+  "systemsAffected": ["Endocrine", "Cardiovascular", "Neurological", "Dermatologic", "Gastrointestinal", "Musculoskeletal", "Reproductive"],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated TSH (primary hypothyroidism)",
+      "Low free T4 (overt hypothyroidism) or normal free T4 (subclinical hypothyroidism)",
+      "Anti-TPO antibodies positive (>90%)",
+      "Anti-thyroglobulin antibodies positive (60-80%)",
+      "Elevated total cholesterol and LDL",
+      "Elevated CK (myopathy in severe hypothyroidism)",
+      "Macrocytic anemia (associated vitamin B12 deficiency/pernicious anemia)"
+    ],
+    "imaging": [
+      "Thyroid ultrasound: diffuse hypoechogenicity, heterogeneous echotexture, micronodularity, increased vascularity (early), decreased vascularity (late/atrophic)",
+      "Thyroid uptake scan: decreased uptake (in hypothyroid phase); heterogeneous uptake"
+    ],
+    "genetic": [
+      "HLA-DR3 and HLA-DR5 associations",
+      "CTLA-4 gene variants",
+      "PTPN22 gene variants",
+      "Thyroglobulin gene polymorphisms"
+    ],
+    "other": [
+      "FNA cytology: lymphocytic infiltrate with germinal centers, Hurthle (oncocytic) cell change, atrophic follicles",
+      "Histology: dense lymphoplasmacytic infiltrate, follicular destruction, fibrosis"
+    ]
+  },
+  "differentialDiagnoses": [
+    { "diseaseId": "graves-disease", "distinguishingFeatures": ["Hyperthyroidism", "TSH receptor antibodies", "Diffuse increased uptake on thyroid scan", "Ophthalmopathy"] },
+    { "diseaseId": "subacute-thyroiditis", "distinguishingFeatures": ["Painful tender thyroid", "Preceding viral illness", "Elevated ESR", "Self-limited course"] },
+    { "diseaseId": "iodine-deficiency", "distinguishingFeatures": ["Endemic area", "Negative thyroid antibodies", "Dietary history"] },
+    { "diseaseId": "drug-induced-hypothyroidism", "distinguishingFeatures": ["Temporal relationship (amiodarone, lithium, checkpoint inhibitors)", "May resolve with drug withdrawal"] }
+  ],
+  "redFlags": [
+    "Rapidly enlarging thyroid nodule (concern for thyroid lymphoma or carcinoma)",
+    "Severe hypothyroidism with altered consciousness (myxedema coma)",
+    "Compressive symptoms (dysphagia, stridor) from large goiter",
+    "Signs of associated autoimmune conditions (type 1 diabetes, Addison disease)",
+    "Pregnancy with uncontrolled hypothyroidism"
+  ],
+  "specialistType": ["Endocrinology"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Garber JR, et al. Clinical practice guidelines for hypothyroidism in adults: cosponsored by the American Association of Clinical Endocrinologists and the American Thyroid Association. Thyroid. 2012;22(12):1200-1235.",
+    "Pearce EN, et al. Clinical practice. Hashimoto's thyroiditis. N Engl J Med. 2003;348(26):2646-2655.",
+    "Caturegli P, et al. Hashimoto thyroiditis: clinical and diagnostic criteria. Autoimmun Rev. 2014;13(4-5):391-397."
+  ],
+  "confidenceInData": "medium"
+}

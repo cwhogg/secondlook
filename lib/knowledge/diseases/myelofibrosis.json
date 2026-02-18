@@ -1,0 +1,278 @@
+{
+  "id": "myelofibrosis",
+  "name": "Primary Myelofibrosis",
+  "aliases": [
+    "PMF",
+    "Agnogenic Myeloid Metaplasia",
+    "Idiopathic Myelofibrosis",
+    "Chronic Idiopathic Myelofibrosis",
+    "Myelofibrosis with Myeloid Metaplasia"
+  ],
+  "icd10Codes": ["D47.4", "D75.81"],
+  "omimId": "254450",
+  "orphanetId": "824",
+  "prevalence": {
+    "estimate": "4-6 per 100,000",
+    "range": "0.004%-0.006%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 50, "max": 80, "peak": 67 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO 2022 Diagnostic Criteria for Primary Myelofibrosis",
+    "criteria": [
+      {
+        "id": "mf-c1",
+        "description": "Megakaryocyte proliferation and atypia, accompanied by reticulin and/or collagen fibrosis grade >= 2 (overt PMF) or grade 0-1 (pre-fibrotic PMF)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mf-c2",
+        "description": "Not meeting WHO criteria for ET, PV, BCR-ABL1+ CML, MDS, or other myeloid neoplasm",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mf-c3",
+        "description": "Presence of JAK2, CALR, or MPL mutation, or other clonal marker",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mf-c4",
+        "description": "Anemia not attributable to comorbid condition",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mf-c5",
+        "description": "Leukocytosis >= 11,000/µL",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mf-c6",
+        "description": "Palpable splenomegaly",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mf-c7",
+        "description": "Elevated LDH above institutional normal",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mf-c8",
+        "description": "Leukoerythroblastosis",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All 3 major criteria plus at least 1 minor criterion (for overt PMF); all 3 major criteria plus at least 1 minor criterion (for pre-fibrotic PMF)",
+    "notes": "Pre-fibrotic PMF has a better prognosis than overt PMF. DIPSS and MIPSS70 scores used for risk stratification."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Massive splenomegaly",
+        "snomedCode": "16294009",
+        "frequency": 0.85,
+        "bodySystem": "hematologic",
+        "notes": "Spleen may extend to pelvis; due to extramedullary hematopoiesis"
+      },
+      {
+        "symptomName": "Leukoerythroblastic blood smear with teardrop cells (dacrocytes)",
+        "snomedCode": "250273006",
+        "frequency": 0.8,
+        "bodySystem": "hematologic",
+        "notes": "Teardrop-shaped red cells plus nucleated RBCs and immature myeloid cells"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue and weakness",
+        "snomedCode": "84229001",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anemia",
+        "snomedCode": "271737000",
+        "frequency": 0.7,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Night sweats",
+        "snomedCode": "42984000",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.5,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Early satiety and abdominal discomfort",
+        "snomedCode": "422587007",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to massive splenomegaly"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Bone pain",
+        "snomedCode": "12584003",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pruritus",
+        "snomedCode": "418290006",
+        "frequency": 0.25,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "snomedCode": "80515008",
+        "frequency": 0.4,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Gout",
+        "snomedCode": "90560007",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bleeding complications",
+        "snomedCode": "131148009",
+        "frequency": 0.2,
+        "bodySystem": "hematologic"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Portal hypertension",
+        "snomedCode": "34742003",
+        "frequency": 0.1,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Extramedullary hematopoiesis causing spinal cord compression",
+        "snomedCode": "30380007",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pulmonary hypertension",
+        "snomedCode": "70995007",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Transformation to acute myeloid leukemia",
+        "snomedCode": "91861009",
+        "frequency": 0.1,
+        "bodySystem": "hematologic",
+        "notes": "Blast transformation occurs in 10-20% over disease course"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematologic",
+    "constitutional",
+    "gastrointestinal",
+    "hepatic",
+    "musculoskeletal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Leukoerythroblastic blood smear with teardrop cells (dacrocytes)",
+      "Anemia (variable severity)",
+      "Variable white cell count (may be elevated or decreased)",
+      "Variable platelet count (may be elevated or decreased)",
+      "Elevated LDH",
+      "Elevated uric acid",
+      "JAK2 V617F (~60%), CALR (~25%), or MPL (~7%) mutation"
+    ],
+    "imaging": [
+      "Abdominal imaging showing massive splenomegaly and often hepatomegaly",
+      "Bone scan or MRI may show osteosclerosis",
+      "CT/MRI for extramedullary hematopoiesis sites"
+    ],
+    "genetic": [
+      "JAK2 V617F in ~60% of cases",
+      "CALR mutations in ~25%",
+      "MPL mutations in ~7%",
+      "Triple-negative in ~8%",
+      "Additional high-molecular-risk mutations: ASXL1, EZH2, SRSF2, IDH1/2, U2AF1"
+    ],
+    "other": [
+      "Bone marrow biopsy showing reticulin and/or collagen fibrosis (grade 2-3)",
+      "Atypical megakaryocytes with cloud-like or balloon-like nuclei",
+      "Dry tap on bone marrow aspiration common"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "polycythemia-vera",
+      "distinguishingFeatures": [
+        "PV presents with elevated hemoglobin/hematocrit",
+        "Post-PV myelofibrosis develops after documented PV",
+        "Different bone marrow morphology initially"
+      ]
+    },
+    {
+      "diseaseId": "essential-thrombocythemia",
+      "distinguishingFeatures": [
+        "ET presents with isolated thrombocytosis",
+        "Minimal or no fibrosis on marrow biopsy",
+        "Post-ET myelofibrosis develops after documented ET"
+      ]
+    },
+    {
+      "diseaseId": "chronic-myeloid-leukemia",
+      "distinguishingFeatures": [
+        "CML is BCR-ABL1 positive",
+        "Marked leukocytosis with left shift and basophilia",
+        "Philadelphia chromosome present"
+      ]
+    },
+    {
+      "diseaseId": "myelodysplastic-syndrome-with-fibrosis",
+      "distinguishingFeatures": [
+        "MDS shows dysplasia in hematopoietic lineages",
+        "Different cytogenetic abnormalities",
+        "No driver mutations (JAK2, CALR, MPL) typically"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Transformation to acute myeloid leukemia (blast crisis)",
+    "Severe transfusion-dependent anemia",
+    "Massive splenomegaly causing splenic infarction or rupture",
+    "Portal hypertension with variceal bleeding",
+    "Extramedullary hematopoiesis causing organ compression"
+  ],
+  "specialistType": [
+    "Hematologist/Oncologist",
+    "Transplant Hematologist (for allogeneic stem cell transplant evaluation)"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Arber DA, et al. The 2016 revision to the World Health Organization classification of myeloid neoplasms and acute leukemia. Blood. 2016;127(20):2391-2405.",
+    "Tefferi A. Primary myelofibrosis: 2021 update on diagnosis, risk-stratification and management. Am J Hematol. 2021;96(1):145-162.",
+    "Barbui T, et al. Philadelphia chromosome-negative classical myeloproliferative neoplasms: revised management recommendations from European LeukemiaNet. Leukemia. 2018;32(5):1057-1069.",
+    "Guglielmelli P, et al. MIPSS70: Mutation-Enhanced International Prognostic Score System for transplantation-age patients with primary myelofibrosis. J Clin Oncol. 2018;36(4):310-318."
+  ],
+  "confidenceInData": "medium"
+}

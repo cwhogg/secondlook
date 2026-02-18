@@ -1,0 +1,221 @@
+{
+  "id": "pure-autonomic-failure",
+  "name": "Pure Autonomic Failure",
+  "aliases": [
+    "PAF",
+    "Bradbury-Eggleston syndrome",
+    "Idiopathic orthostatic hypotension"
+  ],
+  "icd10Codes": ["G90.3"],
+  "orphanetId": "ORPHA441",
+  "prevalence": {
+    "estimate": "Estimated <1 per 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 40, "max": 70, "peak": 55 },
+    "sexPredilection": "slight-male"
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "paf-1",
+        "description": "Chronic orthostatic hypotension (>=20/10 mmHg drop within 3 min standing) with associated symptoms",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "paf-2",
+        "description": "Absence of central neurological features (no parkinsonism, no cerebellar ataxia, no cognitive decline suggestive of DLB)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "paf-3",
+        "description": "Evidence of peripheral autonomic denervation (low supine norepinephrine levels)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "paf-4",
+        "description": "Abnormal cardiac MIBG uptake (reduced)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "paf-5",
+        "description": "No identifiable secondary cause of autonomic failure",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Chronic orthostatic hypotension with generalized autonomic failure in the absence of central neurological features or secondary causes",
+    "notes": "PAF is an alpha-synucleinopathy; ~15-30% may phenoconvert to MSA, PD, or DLB over years. Requires longitudinal follow-up."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Severe orthostatic hypotension with isolated autonomic failure and no motor or cerebellar signs",
+        "frequency": 1.0,
+        "bodySystem": "cardiovascular",
+        "notes": "Defining characteristic is autonomic failure without CNS involvement"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Orthostatic hypotension",
+        "snomedCode": "28651003",
+        "frequency": 1.0,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lightheadedness on standing",
+        "snomedCode": "386705008",
+        "frequency": 0.95,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Supine hypertension",
+        "snomedCode": "38341003",
+        "frequency": 0.70,
+        "bodySystem": "cardiovascular",
+        "notes": "Paradoxical hypertension when lying down"
+      },
+      {
+        "symptomName": "Syncope or near-syncope",
+        "snomedCode": "271594007",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Anhidrosis or hypohidrosis",
+        "snomedCode": "69311009",
+        "frequency": 0.60,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Urinary retention or incontinence",
+        "snomedCode": "165232002",
+        "frequency": 0.45,
+        "bodySystem": "genitourinary"
+      },
+      {
+        "symptomName": "Erectile dysfunction (males)",
+        "snomedCode": "860914002",
+        "frequency": 0.50,
+        "bodySystem": "genitourinary"
+      },
+      {
+        "symptomName": "Constipation",
+        "snomedCode": "14760008",
+        "frequency": 0.50,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Postprandial hypotension",
+        "snomedCode": "234171009",
+        "frequency": 0.40,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.45,
+        "bodySystem": "general"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "REM sleep behavior disorder",
+        "snomedCode": "230150003",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "May herald phenoconversion to MSA or DLB"
+      },
+      {
+        "symptomName": "Anosmia",
+        "snomedCode": "44169009",
+        "frequency": 0.10,
+        "bodySystem": "neurological",
+        "notes": "May suggest alpha-synuclein pathology"
+      },
+      {
+        "symptomName": "Neck coat-hanger pain",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "notes": "Ischemic pain in neck/shoulders from hypoperfusion on standing"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "genitourinary",
+    "gastrointestinal",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low supine plasma norepinephrine (<100 pg/mL)",
+      "Absent or blunted norepinephrine rise on standing",
+      "Normal routine blood work"
+    ],
+    "imaging": [
+      "Reduced cardiac MIBG uptake (postganglionic sympathetic denervation)",
+      "Normal brain MRI (no pontine, cerebellar, or putaminal atrophy)"
+    ],
+    "genetic": [
+      "No established genetic cause",
+      "Alpha-synuclein pathology on autopsy"
+    ],
+    "other": [
+      "Autonomic function testing: severe adrenergic, sudomotor, and cardiovagal failure",
+      "QSART: absent or reduced sweat output",
+      "Thermoregulatory sweat test: widespread anhidrosis",
+      "Valsalva maneuver: absent phase IV overshoot"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "multiple-system-atrophy",
+      "distinguishingFeatures": [
+        "MSA has cerebellar or parkinsonian motor features",
+        "MSA has central (preganglionic) pattern with normal cardiac MIBG",
+        "PAF has peripheral (postganglionic) pattern with reduced MIBG"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-autonomic-ganglionopathy",
+      "distinguishingFeatures": [
+        "AAG often has subacute onset and may have ganglionic AChR antibodies",
+        "AAG may respond to immunotherapy"
+      ]
+    },
+    {
+      "diseaseId": "diabetic-autonomic-neuropathy",
+      "distinguishingFeatures": [
+        "Diabetic neuropathy has concurrent diabetes mellitus",
+        "Diabetic neuropathy usually has coexisting peripheral neuropathy"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Development of parkinsonian features (may indicate phenoconversion to MSA or PD)",
+    "Cerebellar ataxia onset (suggests MSA)",
+    "Cognitive decline (suggests Lewy body dementia phenoconversion)",
+    "REM sleep behavior disorder (risk factor for phenoconversion)",
+    "Rapidly worsening autonomic failure"
+  ],
+  "specialistType": [
+    "Autonomic neurologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Kaufmann H, et al. Natural history of pure autonomic failure: A United States prospective cohort. Ann Neurol. 2017;81(2):287-297.",
+    "Goldstein DS, et al. Pure autonomic failure: Insights from clinical research. Clin Auton Res. 2020;30(3):187-193.",
+    "Singer W, et al. Pure autonomic failure: Predictors of conversion to clinical CNS involvement. Neurology. 2017;88(12):1129-1136."
+  ],
+  "confidenceInData": "medium"
+}

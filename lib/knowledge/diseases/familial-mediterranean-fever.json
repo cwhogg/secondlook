@@ -1,0 +1,226 @@
+{
+  "id": "familial-mediterranean-fever",
+  "name": "Familial Mediterranean Fever",
+  "aliases": [
+    "FMF",
+    "Familial Paroxysmal Polyserositis",
+    "Periodic Peritonitis",
+    "Recurrent Polyserositis"
+  ],
+  "icd10Codes": ["E85.0", "M04.1"],
+  "omimId": "249100",
+  "orphanetId": "342",
+  "prevalence": {
+    "estimate": "1 in 200 to 1 in 1,000 in affected populations; 1 in 100,000 in non-Mediterranean populations",
+    "range": "0.1%-0.5% in affected populations",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 2, "max": 20, "peak": 10 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": ["Turkish", "Armenian", "Sephardic Jewish", "Arab", "North African"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Tel-Hashomer Criteria / Eurofever/PRINTO Classification Criteria (2019)",
+    "criteria": [
+      {
+        "id": "fmf-maj1",
+        "description": "Recurrent febrile episodes with serositis (peritonitis, pleuritis, pericarditis) lasting 1-3 days",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fmf-maj2",
+        "description": "AA amyloidosis without predisposing disease",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fmf-maj3",
+        "description": "Favorable response to colchicine",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fmf-min1",
+        "description": "Recurrent febrile episodes alone",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fmf-min2",
+        "description": "Erysipelas-like erythema",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fmf-min3",
+        "description": "FMF in a first-degree relative",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fmf-sup1",
+        "description": "Pathogenic MEFV gene mutations (especially M694V, M680I, V726A homozygous or compound heterozygous)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Tel-Hashomer: >= 2 major criteria, OR 1 major + 2 minor. Eurofever (2019): presence of confirmatory MEFV mutations plus compatible clinical features, OR clinical criteria in absence of genotyping.",
+    "notes": "Autosomal recessive inheritance (MEFV gene). M694V homozygosity associated with severe disease and higher amyloidosis risk. Colchicine response strongly supports diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent episodes of fever with peritonitis lasting 1-3 days",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal",
+        "notes": "Severe abdominal pain mimicking acute abdomen; self-limited in 1-3 days"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fever (38.5-40°C)",
+        "snomedCode": "386661006",
+        "frequency": 0.95,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Severe abdominal pain (sterile peritonitis)",
+        "snomedCode": "21522001",
+        "frequency": 0.90,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pleuritis (unilateral chest pain)",
+        "frequency": 0.45,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Monoarthritis (acute, large joint, typically knee or ankle)",
+        "snomedCode": "57676002",
+        "frequency": 0.50,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Erysipelas-like erythema (lower leg)",
+        "frequency": 0.25,
+        "bodySystem": "integumentary",
+        "notes": "Well-demarcated erythema on shin/foot, resembles cellulitis but sterile"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Myalgia during attacks",
+        "snomedCode": "68962001",
+        "frequency": 0.30,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Scrotal swelling/orchitis",
+        "frequency": 0.05,
+        "bodySystem": "genitourinary",
+        "notes": "In males; vaginalitis of tunica vaginalis"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "AA amyloidosis (renal)",
+        "frequency": 0.10,
+        "bodySystem": "renal",
+        "notes": "Most feared complication; prevented by colchicine. Presents as proteinuria/nephrotic syndrome."
+      },
+      {
+        "symptomName": "Protracted febrile myalgia",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal",
+        "notes": "Prolonged episode of severe myalgia lasting weeks"
+      },
+      {
+        "symptomName": "Aseptic meningitis",
+        "frequency": 0.01,
+        "bodySystem": "neurologic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "musculoskeletal",
+    "respiratory",
+    "integumentary",
+    "renal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated ESR, CRP, SAA during attacks (normalize between episodes)",
+      "Leukocytosis with neutrophilia during attacks",
+      "Fibrinogen elevated during attacks",
+      "Proteinuria if AA amyloidosis has developed",
+      "Elevated SAA between attacks predicts amyloidosis risk"
+    ],
+    "imaging": [
+      "Abdominal imaging during attacks: free fluid, peritoneal thickening (often leads to unnecessary surgery)",
+      "Chest X-ray: small pleural effusion during pleuritic attacks",
+      "Echocardiography if pericarditis suspected"
+    ],
+    "genetic": [
+      "MEFV gene mutations on chromosome 16p13.3",
+      "Common pathogenic variants: M694V, M680I, V726A, M694I, E148Q",
+      "Autosomal recessive (some heterozygotes may be symptomatic)",
+      "M694V homozygosity: most severe phenotype, highest amyloidosis risk"
+    ],
+    "other": [
+      "Colchicine therapeutic trial: dramatic reduction in attack frequency strongly supports diagnosis",
+      "Genetic testing: identifies ~70-80% of cases (some have unidentified mutations)",
+      "Rectal or abdominal fat biopsy if amyloidosis suspected"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "tumor-necrosis-factor-receptor-associated-periodic-syndrome",
+      "distinguishingFeatures": [
+        "TRAPS has longer attack duration (1-4 weeks vs 1-3 days in FMF)",
+        "TRAPS confirmed by TNFRSF1A mutations",
+        "TRAPS may have periorbital edema and migratory rash"
+      ]
+    },
+    {
+      "diseaseId": "adult-onset-still-disease",
+      "distinguishingFeatures": [
+        "AOSD has quotidian fever, salmon rash, markedly elevated ferritin",
+        "AOSD is not episodic with full resolution between episodes"
+      ]
+    },
+    {
+      "diseaseId": "appendicitis",
+      "distinguishingFeatures": [
+        "Appendicitis is a single acute episode, not recurrent",
+        "Appendicitis has progressive course without spontaneous resolution"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Proteinuria in FMF patient (screen for AA amyloidosis)",
+    "Attacks mimicking acute abdomen leading to unnecessary surgery",
+    "Failure to respond to colchicine (consider alternative diagnosis or non-compliance)",
+    "Chronic arthritis (suggests more severe phenotype, consider biologic therapy)"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Medical Geneticist",
+    "Pediatric Rheumatologist",
+    "Nephrologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Livneh A, et al. Criteria for the diagnosis of familial Mediterranean fever. Arthritis Rheum. 1997;40(10):1879-1885.",
+    "Gattorno M, et al. Classification criteria for autoinflammatory recurrent fevers. Ann Rheum Dis. 2019;78(8):1025-1032.",
+    "Ozen S, et al. EULAR recommendations for the management of familial Mediterranean fever. Ann Rheum Dis. 2016;75(4):644-651."
+  ],
+  "confidenceInData": "medium"
+}

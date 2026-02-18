@@ -1,0 +1,237 @@
+{
+  "id": "familial-dysautonomia",
+  "name": "Familial Dysautonomia",
+  "aliases": [
+    "Riley-Day syndrome",
+    "Hereditary sensory and autonomic neuropathy type III",
+    "HSAN III",
+    "FD"
+  ],
+  "icd10Codes": ["G90.1"],
+  "omimId": "223900",
+  "orphanetId": "ORPHA1764",
+  "prevalence": {
+    "estimate": "1 per 3,600 live births in Ashkenazi Jewish population; extremely rare outside this group",
+    "range": "Carrier frequency ~1:30 in Ashkenazi Jews",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 0, "peak": 0 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": ["Ashkenazi Jewish"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and genetic criteria for Familial Dysautonomia",
+    "criteria": [
+      {
+        "id": "fd-1",
+        "description": "Absence of fungiform papillae on the tongue",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fd-2",
+        "description": "Absence of overflow tears (alacrima)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fd-3",
+        "description": "Depressed or absent deep tendon reflexes",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fd-4",
+        "description": "Absence of axon flare after intradermal histamine injection",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fd-5",
+        "description": "Miosis after conjunctival instillation of dilute methacholine (0.0625%)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fd-6",
+        "description": "Homozygous or compound heterozygous pathogenic variants in ELP1 (IKBKAP) gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Genetic confirmation with biallelic pathogenic ELP1 variants; clinical features support diagnosis",
+    "notes": "The major founder mutation (IVS20+6T>C) accounts for >99.5% of alleles in Ashkenazi Jewish patients."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Alacrima (absence of emotional tears) from birth",
+        "snomedCode": "246921003",
+        "frequency": 0.98,
+        "bodySystem": "ophthalmologic",
+        "notes": "One of the earliest and most consistent findings"
+      },
+      {
+        "symptomName": "Absent fungiform papillae on the tongue",
+        "frequency": 0.99,
+        "bodySystem": "gastrointestinal",
+        "notes": "Smooth tongue appearance is virtually pathognomonic"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Autonomic crises (episodic hypertension, tachycardia, diaphoresis, vomiting)",
+        "frequency": 0.80,
+        "bodySystem": "autonomic",
+        "notes": "Can be triggered by emotional or physical stress"
+      },
+      {
+        "symptomName": "Feeding difficulty and dysphagia from infancy",
+        "snomedCode": "40739000",
+        "frequency": 0.90,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Reduced pain and temperature sensitivity",
+        "snomedCode": "44077006",
+        "frequency": 0.95,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Orthostatic hypotension",
+        "snomedCode": "28651003",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Absent deep tendon reflexes",
+        "snomedCode": "37280007",
+        "frequency": 0.90,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Scoliosis",
+        "snomedCode": "298382003",
+        "frequency": 0.50,
+        "bodySystem": "musculoskeletal",
+        "notes": "Progressive, often requiring surgical correction"
+      },
+      {
+        "symptomName": "Recurrent aspiration pneumonia",
+        "snomedCode": "422588002",
+        "frequency": 0.40,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Episodic vomiting (cyclical vomiting-like crises)",
+        "snomedCode": "249497008",
+        "frequency": 0.50,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Corneal ulceration (neuropathic keratopathy)",
+        "snomedCode": "95730006",
+        "frequency": 0.35,
+        "bodySystem": "ophthalmologic"
+      },
+      {
+        "symptomName": "Gait unsteadiness / ataxia",
+        "snomedCode": "25136009",
+        "frequency": 0.45,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Renal failure",
+        "snomedCode": "42399005",
+        "frequency": 0.15,
+        "bodySystem": "renal",
+        "notes": "Chronic kidney disease develops in some adults"
+      },
+      {
+        "symptomName": "Seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.10,
+        "bodySystem": "neurological",
+        "notes": "May occur during autonomic crises with severe hypertension"
+      },
+      {
+        "symptomName": "Painless fractures (from insensitivity to pain)",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "autonomic",
+    "neurological",
+    "gastrointestinal",
+    "ophthalmologic",
+    "cardiovascular",
+    "musculoskeletal",
+    "respiratory",
+    "renal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Genetic testing: ELP1 (IKBKAP) gene mutations (IVS20+6T>C founder mutation)",
+      "Plasma catecholamines: exaggerated norepinephrine/dopamine ratio during crises"
+    ],
+    "imaging": [
+      "MRI brain: may show optic nerve atrophy",
+      "Spine imaging: scoliosis assessment"
+    ],
+    "genetic": [
+      "Autosomal recessive inheritance",
+      "ELP1 (IKBKAP) gene on chromosome 9q31",
+      "Major Ashkenazi Jewish founder mutation: IVS20+6T>C (splice site)",
+      "Second known mutation: R696P (very rare)"
+    ],
+    "other": [
+      "Absent axon flare response to intradermal histamine",
+      "Pupillary supersensitivity to dilute methacholine (denervation supersensitivity)",
+      "Autonomic testing: severe cardiovagal, adrenergic, and sudomotor dysfunction"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hereditary-sensory-neuropathy-type-2",
+      "distinguishingFeatures": [
+        "HSAN II does not have autonomic crises",
+        "HSAN II has different genetic basis (various genes)",
+        "Familial dysautonomia has alacrima and absent fungiform papillae"
+      ]
+    },
+    {
+      "diseaseId": "congenital-insensitivity-to-pain",
+      "distinguishingFeatures": [
+        "CIP (HSAN IV/V) lack the prominent autonomic features of FD",
+        "CIP has different genetic basis (NTRK1, NGF mutations)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Aspiration pneumonia (major cause of morbidity and mortality)",
+    "Severe autonomic crisis with BP >180/110 in a child",
+    "Progressive renal insufficiency",
+    "Corneal ulceration from absent corneal reflex",
+    "Sudden unexplained death (autonomic instability)"
+  ],
+  "specialistType": [
+    "Pediatric neurologist",
+    "Autonomic neurologist",
+    "Medical geneticist",
+    "Gastroenterologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Axelrod FB. Familial dysautonomia. Muscle Nerve. 2004;29(3):352-363.",
+    "Norcliffe-Kaufmann L, et al. Familial dysautonomia: history, genotype, phenotype and translational research. Prog Neurobiol. 2017;152:131-148.",
+    "Palma JA, et al. Current treatments in familial dysautonomia. Expert Opin Pharmacother. 2014;15(18):2653-2671."
+  ],
+  "confidenceInData": "medium"
+}

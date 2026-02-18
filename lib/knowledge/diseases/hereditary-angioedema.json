@@ -1,0 +1,244 @@
+{
+  "id": "hereditary-angioedema",
+  "name": "Hereditary Angioedema",
+  "aliases": [
+    "HAE",
+    "C1-Inhibitor Deficiency",
+    "C1-INH Deficiency",
+    "Hereditary Angioneurotic Edema",
+    "Quincke Edema (historical)"
+  ],
+  "icd10Codes": ["D84.1"],
+  "omimId": "106100",
+  "orphanetId": "91378",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "range": "1 in 10,000 to 1 in 150,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 2, "max": 30, "peak": 10 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "No strong ethnic predilection"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WAO/EAACI Guidelines for Hereditary Angioedema",
+    "criteria": [
+      {
+        "id": "hae-c1",
+        "description": "Recurrent episodes of angioedema without urticaria, lasting >12 hours",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hae-c2",
+        "description": "Low C4 level (screening test; low during and often between attacks)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hae-c3",
+        "description": "Low C1-INH antigenic level (Type I HAE, ~85% of cases)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hae-c4",
+        "description": "Low C1-INH functional level with normal or elevated antigenic level (Type II HAE, ~15% of cases)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hae-c5",
+        "description": "Family history of HAE (positive in ~75% of cases)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hae-c6",
+        "description": "SERPING1 gene mutation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Compatible clinical history plus low C4 confirmed by low C1-INH antigenic or functional level on two separate occasions (at least 1 month apart)",
+    "notes": "HAE Type III (HAE with normal C1-INH) is rare and may involve Factor XII (Hageman factor), plasminogen, or angiopoietin-1 mutations. C1q is normal in HAE (low in acquired angioedema)."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent non-pruritic, non-urticarial angioedema",
+        "snomedCode": "41291007",
+        "frequency": 0.98,
+        "bodySystem": "integumentary",
+        "notes": "Key distinction: NO urticaria (hives) and NO itching; edema is non-pitting"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Peripheral extremity swelling (hands, feet, arms, legs)",
+        "snomedCode": "299037003",
+        "frequency": 0.75,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Facial swelling (lips, eyelids)",
+        "snomedCode": "699295002",
+        "frequency": 0.7,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Abdominal attacks (severe cramping pain, nausea, vomiting)",
+        "snomedCode": "21522001",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Can mimic acute abdomen; may cause unnecessary surgery if undiagnosed"
+      },
+      {
+        "symptomName": "Genital swelling",
+        "snomedCode": "248490000",
+        "frequency": 0.3,
+        "bodySystem": "genitourinary"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Laryngeal edema",
+        "snomedCode": "30756001",
+        "frequency": 0.25,
+        "bodySystem": "respiratory",
+        "notes": "Life-threatening; can cause asphyxiation; leading cause of HAE-related death"
+      },
+      {
+        "symptomName": "Erythema marginatum prodrome",
+        "snomedCode": "247467003",
+        "frequency": 0.25,
+        "bodySystem": "integumentary",
+        "notes": "Non-raised, non-pruritic serpiginous erythema preceding an attack by hours"
+      },
+      {
+        "symptomName": "Diarrhea during abdominal attacks",
+        "snomedCode": "62315008",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fatigue and malaise (prodromal or post-attack)",
+        "snomedCode": "84229001",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Headache from brain edema",
+        "snomedCode": "25064002",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Urinary retention from urogenital edema",
+        "snomedCode": "267064002",
+        "frequency": 0.05,
+        "bodySystem": "genitourinary"
+      },
+      {
+        "symptomName": "Pleural effusion during attack",
+        "snomedCode": "60046008",
+        "frequency": 0.03,
+        "bodySystem": "pulmonary"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "integumentary",
+    "gastrointestinal",
+    "respiratory",
+    "genitourinary"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low C4 level (best screening test; low during and usually between attacks)",
+      "Low C1-INH antigenic level (Type I)",
+      "Low C1-INH functional level (Types I and II)",
+      "Normal C1q level (distinguishes from acquired angioedema where C1q is low)",
+      "Normal C3 level",
+      "Tryptase normal (distinguishes from mast cell-mediated angioedema)"
+    ],
+    "imaging": [
+      "CT abdomen during abdominal attack may show bowel wall edema and ascites",
+      "Laryngoscopy during throat attacks shows supraglottic edema"
+    ],
+    "genetic": [
+      "SERPING1 gene mutations (Types I and II)",
+      "F12 (Factor XII) mutations in some Type III HAE",
+      "PLG (plasminogen) mutations in some Type III",
+      "ANGPT1 mutations in some Type III",
+      "Autosomal dominant inheritance; ~25% de novo mutations"
+    ],
+    "other": [
+      "Attack diary documenting trigger factors, duration, and location of swelling",
+      "No response to antihistamines, epinephrine, or corticosteroids (distinguishes from allergic angioedema)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "allergic-angioedema",
+      "distinguishingFeatures": [
+        "Usually accompanied by urticaria (hives)",
+        "Responds to antihistamines and epinephrine",
+        "IgE-mediated; positive allergy testing",
+        "Normal C4 and C1-INH levels"
+      ]
+    },
+    {
+      "diseaseId": "ace-inhibitor-angioedema",
+      "distinguishingFeatures": [
+        "Temporal relationship with ACE inhibitor use",
+        "Bradykinin-mediated but acquired",
+        "Normal C4 and C1-INH levels",
+        "Resolves after drug discontinuation"
+      ]
+    },
+    {
+      "diseaseId": "acquired-angioedema",
+      "distinguishingFeatures": [
+        "Onset typically after age 40",
+        "Low C1q level (unlike HAE where C1q is normal)",
+        "Associated with lymphoproliferative disorders or autoimmune disease",
+        "No family history"
+      ]
+    },
+    {
+      "diseaseId": "idiopathic-angioedema",
+      "distinguishingFeatures": [
+        "Normal complement levels",
+        "May respond to antihistamines",
+        "Diagnosis of exclusion"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Laryngeal edema with stridor or voice change (airway emergency)",
+    "Severe abdominal attack mimicking surgical abdomen",
+    "Attacks triggered by dental procedures, intubation, or surgery",
+    "Worsening of attacks with estrogen-containing contraceptives or HRT",
+    "No response to standard allergy treatments (antihistamines, epinephrine, steroids)"
+  ],
+  "specialistType": [
+    "Allergist/Immunologist",
+    "Medical Geneticist",
+    "Emergency Medicine Physician",
+    "Otolaryngologist (for airway management)"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Maurer M, et al. The international WAO/EAACI guideline for the management of hereditary angioedema - The 2021 revision and update. Allergy. 2022;77(7):1961-1990.",
+    "Zuraw BL. Hereditary angioedema. N Engl J Med. 2008;359(10):1027-1036.",
+    "Betschel S, et al. The International/Canadian Hereditary Angioedema Guideline. Allergy Asthma Clin Immunol. 2019;15:72.",
+    "Bork K, et al. Hereditary angioedema with normal C1-INH with versus without specific F12 gene mutations. Allergy. 2009;64(10):1427-1430."
+  ],
+  "confidenceInData": "medium"
+}

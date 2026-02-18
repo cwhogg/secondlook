@@ -1,0 +1,217 @@
+{
+  "id": "neurocardiogenic-syncope",
+  "name": "Neurocardiogenic Syncope",
+  "aliases": [
+    "Vasovagal syncope",
+    "NCS",
+    "VVS",
+    "Reflex syncope",
+    "Neurally mediated syncope",
+    "Common faint"
+  ],
+  "icd10Codes": ["R55", "G90.01"],
+  "prevalence": {
+    "estimate": "Up to 40% of population experiences at least one episode",
+    "range": "15-39% lifetime incidence",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 10, "max": 70, "peak": 20 },
+    "sexPredilection": "slight-female"
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "European Society of Cardiology 2018 Guidelines for Syncope",
+    "criteria": [
+      {
+        "id": "ncs-1",
+        "description": "Transient loss of consciousness with rapid onset, short duration, and spontaneous complete recovery",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ncs-2",
+        "description": "Triggered by prolonged standing, emotional stress, pain, or heat exposure",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ncs-3",
+        "description": "Associated prodromal symptoms: lightheadedness, warmth, diaphoresis, nausea, pallor, visual dimming",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ncs-4",
+        "description": "Positive head-up tilt table test reproducing symptoms with hypotension and/or bradycardia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ncs-5",
+        "description": "Absence of structural heart disease or other causes of syncope on initial evaluation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Clinical history consistent with reflex syncope with identifiable trigger and prodrome; tilt table test supportive but not required",
+    "notes": "Often a clinical diagnosis based on history. Tilt table testing has moderate sensitivity (~60-70%) and specificity."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Transient loss of consciousness preceded by prodrome and triggered by orthostatic stress or vagal stimulus",
+        "frequency": 1.0,
+        "bodySystem": "neurological",
+        "notes": "The hallmark presentation; loss of consciousness is brief (seconds to <1 min)"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Lightheadedness / presyncope",
+        "snomedCode": "386705008",
+        "frequency": 0.90,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Diaphoresis (sweating) before episode",
+        "snomedCode": "52613005",
+        "frequency": 0.80,
+        "bodySystem": "autonomic"
+      },
+      {
+        "symptomName": "Nausea",
+        "snomedCode": "422587007",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pallor",
+        "snomedCode": "398979000",
+        "frequency": 0.80,
+        "bodySystem": "vascular"
+      },
+      {
+        "symptomName": "Visual dimming or graying out",
+        "snomedCode": "246636008",
+        "frequency": 0.70,
+        "bodySystem": "ophthalmologic"
+      },
+      {
+        "symptomName": "Feeling of warmth",
+        "snomedCode": "276522001",
+        "frequency": 0.65,
+        "bodySystem": "general"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Post-syncopal fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.50,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Brief tonic-clonic movements during syncope",
+        "snomedCode": "91175000",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Can mimic epileptic seizure; convulsive syncope"
+      },
+      {
+        "symptomName": "Abdominal discomfort before episode",
+        "snomedCode": "21522001",
+        "frequency": 0.30,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Tinnitus",
+        "snomedCode": "60862001",
+        "frequency": 0.25,
+        "bodySystem": "otologic"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Urinary incontinence during episode",
+        "snomedCode": "165232002",
+        "frequency": 0.05,
+        "bodySystem": "genitourinary"
+      },
+      {
+        "symptomName": "Prolonged asystole (>3 seconds) during episode",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular",
+        "notes": "Cardioinhibitory subtype"
+      },
+      {
+        "symptomName": "Injury from fall during syncope",
+        "frequency": 0.10,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "autonomic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Generally normal routine blood work",
+      "Normal cardiac biomarkers"
+    ],
+    "imaging": [
+      "Normal echocardiogram",
+      "Normal brain imaging"
+    ],
+    "genetic": [],
+    "other": [
+      "Positive head-up tilt table test (hypotension ± bradycardia with symptom reproduction)",
+      "Normal ECG (rules out arrhythmic causes)",
+      "Implantable loop recorder may document asystole in recurrent cases"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "postural-orthostatic-tachycardia-syndrome",
+      "distinguishingFeatures": [
+        "POTS features chronic orthostatic tachycardia without frank syncope in most cases",
+        "NCS is episodic with hypotension/bradycardia at the time of LOC"
+      ]
+    },
+    {
+      "diseaseId": "orthostatic-hypotension-neurogenic",
+      "distinguishingFeatures": [
+        "Neurogenic OH has sustained BP drop on standing without the reflex bradycardia",
+        "NCS is paroxysmal with identifiable triggers"
+      ]
+    },
+    {
+      "diseaseId": "cardiac-arrhythmia",
+      "distinguishingFeatures": [
+        "Arrhythmic syncope typically has abrupt onset without prodrome",
+        "May have abnormal ECG at baseline"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Syncope during exertion (suggests cardiac etiology)",
+    "Syncope while supine",
+    "Family history of sudden cardiac death",
+    "Abnormal ECG findings",
+    "No prodromal symptoms before loss of consciousness",
+    "New onset in older adults (>60) without prior history"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Autonomic neurologist",
+    "Electrophysiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Brignole M, et al. 2018 ESC Guidelines for the diagnosis and management of syncope. Eur Heart J. 2018;39(21):1883-1948.",
+    "Sheldon RS, et al. 2015 Heart Rhythm Society Expert Consensus Statement on the Diagnosis and Treatment of Postural Tachycardia Syndrome, Inappropriate Sinus Tachycardia, and Vasovagal Syncope. Heart Rhythm. 2015;12(6):e41-e63.",
+    "Raj SR. Postural tachycardia syndrome (POTS). Circulation. 2013;127(23):2336-2342."
+  ],
+  "confidenceInData": "medium"
+}

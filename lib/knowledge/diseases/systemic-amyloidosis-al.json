@@ -1,0 +1,257 @@
+{
+  "id": "systemic-amyloidosis-al",
+  "name": "Systemic AL Amyloidosis",
+  "aliases": [
+    "Primary Systemic Amyloidosis",
+    "Immunoglobulin Light Chain Amyloidosis",
+    "AL Amyloidosis",
+    "Light Chain Amyloidosis"
+  ],
+  "icd10Codes": ["E85.81", "E85.9"],
+  "omimId": "254500",
+  "orphanetId": "85443",
+  "prevalence": {
+    "estimate": "9-14 per million per year (incidence)",
+    "range": "0.0009%-0.0014%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 40, "max": 80, "peak": 63 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "International Amyloidosis Society Consensus Criteria",
+    "criteria": [
+      {
+        "id": "al-c1",
+        "description": "Tissue biopsy showing amyloid deposits (Congo red stain with apple-green birefringence under polarized light)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "al-c2",
+        "description": "Typing of amyloid deposits as light chain origin (mass spectrometry, immunoelectron microscopy, or immunohistochemistry)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "al-c3",
+        "description": "Evidence of plasma cell dyscrasia (monoclonal protein in serum/urine, abnormal free light chain ratio, or clonal plasma cells in marrow)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "al-c4",
+        "description": "Evidence of amyloid-related organ dysfunction",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Tissue-proven amyloid (Congo red positive), typed as AL, plus evidence of underlying plasma cell clone",
+    "notes": "Amyloid typing is critical; misclassification of amyloid type leads to incorrect treatment. Mass spectrometry-based proteomics is the gold standard for typing. Fat pad aspiration is ~80% sensitive."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Periorbital purpura (raccoon eyes)",
+        "snomedCode": "302227002",
+        "frequency": 0.15,
+        "bodySystem": "integumentary",
+        "notes": "Pathognomonic for AL amyloidosis; purpura around eyes after minor straining"
+      },
+      {
+        "symptomName": "Macroglossia",
+        "snomedCode": "4698002",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Enlarged tongue with indentations from teeth; classic but not common"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue and weight loss",
+        "snomedCode": "84229001",
+        "frequency": 0.8,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Nephrotic syndrome (proteinuria, edema)",
+        "snomedCode": "44785005",
+        "frequency": 0.5,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "snomedCode": "102572006",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "snomedCode": "60845006",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular",
+        "notes": "From restrictive cardiomyopathy"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "snomedCode": "42658009",
+        "frequency": 0.35,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Orthostatic hypotension",
+        "snomedCode": "28651003",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "From autonomic neuropathy"
+      },
+      {
+        "symptomName": "Carpal tunnel syndrome (bilateral)",
+        "snomedCode": "57406009",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Diarrhea or constipation (GI dysmotility)",
+        "snomedCode": "62315008",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "snomedCode": "80515008",
+        "frequency": 0.3,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Easy bruising",
+        "snomedCode": "302227002",
+        "frequency": 0.3,
+        "bodySystem": "hematologic",
+        "notes": "Factor X deficiency from adsorption to amyloid fibrils"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Jaw claudication from vascular amyloid",
+        "frequency": 0.05,
+        "bodySystem": "vascular"
+      },
+      {
+        "symptomName": "Nail dystrophy",
+        "snomedCode": "367570008",
+        "frequency": 0.05,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Arthropathy (shoulder pad sign)",
+        "snomedCode": "399269003",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal",
+        "notes": "Bilateral shoulder enlargement from amyloid infiltration"
+      },
+      {
+        "symptomName": "Submandibular gland enlargement",
+        "frequency": 0.04,
+        "bodySystem": "head-and-neck"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "renal",
+    "neurological",
+    "gastrointestinal",
+    "hepatic",
+    "integumentary",
+    "hematologic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Monoclonal protein on serum/urine immunofixation",
+      "Abnormal serum free light chain ratio",
+      "Elevated NT-proBNP and troponin (cardiac involvement)",
+      "Proteinuria (often nephrotic range >3.5 g/day)",
+      "Elevated alkaline phosphatase (hepatic involvement)",
+      "Elevated serum creatinine (renal involvement)"
+    ],
+    "imaging": [
+      "Echocardiography showing increased wall thickness, diastolic dysfunction, granular sparkling myocardium",
+      "Cardiac MRI with late gadolinium enhancement (subendocardial diffuse pattern) and elevated native T1",
+      "Nuclear scintigraphy (99mTc-PYP) typically negative or mildly positive (unlike ATTR amyloidosis)",
+      "Abdominal imaging may show hepatomegaly"
+    ],
+    "genetic": [
+      "Germline testing to exclude hereditary (ATTR, AFib, ALys, AApoAI) amyloidosis",
+      "No causative germline mutation in AL amyloidosis (it is an acquired clonal disorder)"
+    ],
+    "other": [
+      "Fat pad aspiration with Congo red stain (~80% sensitivity)",
+      "Organ biopsy (kidney, heart, liver) with Congo red showing apple-green birefringence",
+      "Mass spectrometry-based amyloid typing (gold standard)",
+      "Bone marrow biopsy showing clonal plasma cells (usually <10%)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "attr-amyloidosis",
+      "distinguishingFeatures": [
+        "ATTR is transthyretin-derived, not light chain",
+        "Strongly positive 99mTc-PYP scintigraphy",
+        "TTR gene mutation in hereditary form; wild-type in senile",
+        "Different treatment approach"
+      ]
+    },
+    {
+      "diseaseId": "multiple-myeloma",
+      "distinguishingFeatures": [
+        "Myeloma has >10% clonal plasma cells and CRAB criteria",
+        "Can coexist with AL amyloidosis",
+        "Lytic bone lesions in myeloma",
+        "Higher paraprotein levels typically"
+      ]
+    },
+    {
+      "diseaseId": "hypertrophic-cardiomyopathy",
+      "distinguishingFeatures": [
+        "HCM has asymmetric septal hypertrophy",
+        "Sarcomeric gene mutations",
+        "No systemic amyloid features",
+        "Different cardiac MRI pattern"
+      ]
+    },
+    {
+      "diseaseId": "diabetic-nephropathy",
+      "distinguishingFeatures": [
+        "History of diabetes mellitus",
+        "No monoclonal protein",
+        "Kidney biopsy shows diabetic changes, not amyloid"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive heart failure with concentric wall thickening (cardiac amyloidosis)",
+    "Unexplained nephrotic syndrome with monoclonal protein",
+    "Periorbital purpura or macroglossia (nearly diagnostic)",
+    "Multi-organ dysfunction in setting of plasma cell dyscrasia",
+    "Bilateral carpal tunnel syndrome preceding cardiac or renal symptoms"
+  ],
+  "specialistType": [
+    "Hematologist/Oncologist",
+    "Cardiologist (amyloid specialist)",
+    "Nephrologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Merlini G, et al. Systemic immunoglobulin light chain amyloidosis. Nat Rev Dis Primers. 2018;4(1):38.",
+    "Gertz MA, et al. Immunoglobulin light chain amyloidosis: 2020 update on diagnosis, prognosis, and treatment. Am J Hematol. 2020;95(7):848-860.",
+    "Gillmore JD, et al. Guidelines on the diagnosis and investigation of AL amyloidosis. Br J Haematol. 2015;168(2):207-218.",
+    "Palladini G, Milani P, Merlini G. Management of AL amyloidosis in 2020. Blood. 2020;136(23):2620-2627."
+  ],
+  "confidenceInData": "medium"
+}

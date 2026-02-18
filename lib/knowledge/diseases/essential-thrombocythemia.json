@@ -1,0 +1,249 @@
+{
+  "id": "essential-thrombocythemia",
+  "name": "Essential Thrombocythemia",
+  "aliases": [
+    "ET",
+    "Essential Thrombocytosis",
+    "Primary Thrombocythemia",
+    "Primary Thrombocytosis"
+  ],
+  "icd10Codes": ["D47.3"],
+  "omimId": "187950",
+  "orphanetId": "3318",
+  "prevalence": {
+    "estimate": "38-57 per 100,000",
+    "range": "0.04%-0.06%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 80, "peak": 60 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO 2022 Diagnostic Criteria for Essential Thrombocythemia",
+    "criteria": [
+      {
+        "id": "et-c1",
+        "description": "Platelet count >= 450,000/µL",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "et-c2",
+        "description": "Bone marrow biopsy showing proliferation mainly of the megakaryocyte lineage with increased numbers of enlarged, mature megakaryocytes with hyperlobulated nuclei; no significant increase in granulopoiesis or erythropoiesis and very rarely minor increase in reticulin fibers",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "et-c3",
+        "description": "Not meeting WHO criteria for BCR-ABL1+ CML, PV, PMF, MDS, or other myeloid neoplasm",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "et-c4",
+        "description": "Presence of JAK2, CALR, or MPL mutation",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "et-c5",
+        "description": "Presence of a clonal marker or absence of evidence for reactive thrombocytosis",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All 4 major criteria, OR first 3 major criteria plus the minor criterion",
+    "notes": "JAK2 V617F found in ~55% of ET, CALR mutations in ~25%, MPL mutations in ~3%. Triple-negative ET (~15%) requires exclusion of reactive causes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Erythromelalgia",
+        "snomedCode": "37151006",
+        "frequency": 0.25,
+        "bodySystem": "vascular",
+        "notes": "Burning pain, redness, and warmth of extremities; responds dramatically to aspirin"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Headache",
+        "snomedCode": "25064002",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Visual disturbances (transient)",
+        "snomedCode": "63102001",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Lightheadedness and dizziness",
+        "snomedCode": "404640003",
+        "frequency": 0.4,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Digital ischemia or paresthesias",
+        "snomedCode": "91019004",
+        "frequency": 0.3,
+        "bodySystem": "vascular"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Venous thromboembolism",
+        "snomedCode": "111293003",
+        "frequency": 0.2,
+        "bodySystem": "vascular"
+      },
+      {
+        "symptomName": "Arterial thrombosis (stroke, MI, peripheral)",
+        "snomedCode": "439127006",
+        "frequency": 0.15,
+        "bodySystem": "vascular"
+      },
+      {
+        "symptomName": "Splenomegaly (mild)",
+        "snomedCode": "16294009",
+        "frequency": 0.3,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Night sweats",
+        "snomedCode": "42984000",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pruritus",
+        "snomedCode": "418290006",
+        "frequency": 0.15,
+        "bodySystem": "integumentary"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hemorrhage (mucocutaneous, GI)",
+        "snomedCode": "131148009",
+        "frequency": 0.08,
+        "bodySystem": "hematologic",
+        "notes": "Paradoxical bleeding especially with extreme thrombocytosis (>1,000,000/µL) due to acquired von Willebrand syndrome"
+      },
+      {
+        "symptomName": "Transformation to myelofibrosis",
+        "snomedCode": "307651005",
+        "frequency": 0.08,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Transformation to acute myeloid leukemia",
+        "snomedCode": "91861009",
+        "frequency": 0.02,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Transient ischemic attack",
+        "snomedCode": "266257000",
+        "frequency": 0.1,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematologic",
+    "vascular",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Platelet count persistently >= 450,000/µL (often >600,000/µL)",
+      "JAK2 V617F mutation (~55% of cases)",
+      "CALR mutation (~25% of cases)",
+      "MPL mutation (~3% of cases)",
+      "Normal hemoglobin and hematocrit (distinguishes from PV)",
+      "Elevated LDH may be present",
+      "Acquired von Willebrand factor deficiency at very high platelet counts (ristocetin cofactor activity reduced)"
+    ],
+    "imaging": [
+      "Abdominal ultrasound may show mild splenomegaly",
+      "Imaging as needed for thrombotic complications"
+    ],
+    "genetic": [
+      "JAK2 V617F (exon 14) in ~55%",
+      "CALR exon 9 mutations in ~25% (type 1 deletion, type 2 insertion most common)",
+      "MPL W515L/K mutations in ~3%",
+      "Triple-negative in ~15%",
+      "Acquired somatic mutations"
+    ],
+    "other": [
+      "Bone marrow biopsy showing characteristic large megakaryocytes with hyperlobulated 'staghorn' nuclei",
+      "Minimal or no reticulin fibrosis",
+      "Philadelphia chromosome / BCR-ABL1 negative (mandatory exclusion)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "reactive-thrombocytosis",
+      "distinguishingFeatures": [
+        "Identifiable cause (infection, inflammation, iron deficiency, post-surgery)",
+        "No driver mutations (JAK2, CALR, MPL)",
+        "Elevated inflammatory markers (CRP, ESR)",
+        "Platelets usually <1,000,000/µL"
+      ]
+    },
+    {
+      "diseaseId": "polycythemia-vera",
+      "distinguishingFeatures": [
+        "PV has elevated hemoglobin/hematocrit as primary feature",
+        "Low EPO in PV",
+        "Different bone marrow morphology (panmyelosis)"
+      ]
+    },
+    {
+      "diseaseId": "myelofibrosis",
+      "distinguishingFeatures": [
+        "Significant reticulin/collagen fibrosis on bone marrow biopsy",
+        "Leukoerythroblastic blood smear with teardrop cells",
+        "Massive splenomegaly",
+        "Constitutional symptoms more prominent"
+      ]
+    },
+    {
+      "diseaseId": "chronic-myeloid-leukemia",
+      "distinguishingFeatures": [
+        "BCR-ABL1 fusion gene / Philadelphia chromosome positive",
+        "Marked leukocytosis with left shift",
+        "Basophilia often present"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Major thrombotic event (stroke, MI, DVT/PE, splanchnic vein thrombosis)",
+    "Extreme thrombocytosis (>1,500,000/µL) with paradoxical bleeding",
+    "Transformation to myelofibrosis (progressive splenomegaly, cytopenias)",
+    "Transformation to acute leukemia",
+    "First trimester pregnancy loss (recurrent)"
+  ],
+  "specialistType": [
+    "Hematologist/Oncologist",
+    "Vascular Medicine Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Arber DA, et al. The 2016 revision to the World Health Organization classification of myeloid neoplasms and acute leukemia. Blood. 2016;127(20):2391-2405.",
+    "Tefferi A, Barbui T. Polycythemia vera and essential thrombocythemia: 2021 update on diagnosis, risk-stratification and management. Am J Hematol. 2020;95(12):1599-1613.",
+    "Barbui T, et al. Philadelphia chromosome-negative classical myeloproliferative neoplasms: revised management recommendations from European LeukemiaNet. Leukemia. 2018;32(5):1057-1069.",
+    "Harrison CN, et al. Guideline for investigation and management of adults and children presenting with a thrombocytosis. Br J Haematol. 2010;149(3):352-375."
+  ],
+  "confidenceInData": "medium"
+}

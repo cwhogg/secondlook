@@ -1,0 +1,219 @@
+{
+  "id": "achalasia",
+  "name": "Achalasia",
+  "aliases": [
+    "Esophageal Achalasia",
+    "Cardiospasm",
+    "Achalasia Cardia",
+    "Megaesophagus"
+  ],
+  "icd10Codes": ["K22.0"],
+  "omimId": "200400",
+  "orphanetId": "930",
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "range": "0.007%-0.013%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 60, "peak": 40 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Chicago Classification v4.0 (High-Resolution Manometry Criteria)",
+    "criteria": [
+      {
+        "id": "ach-maj1",
+        "description": "Elevated integrated relaxation pressure (IRP) > 15 mmHg",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ach-maj2",
+        "description": "Absent normal peristalsis (100% failed or spastic contractions)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ach-min1",
+        "description": "Type I: absent contractility (no esophageal pressurization)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ach-min2",
+        "description": "Type II: panesophageal pressurization in >= 20% of swallows",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ach-min3",
+        "description": "Type III: premature (spastic) contractions in >= 20% of swallows",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ach-sup1",
+        "description": "Timed barium esophagram showing esophageal dilation with bird-beak narrowing at GEJ",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Elevated IRP and absent normal peristalsis on high-resolution manometry. Pseudoachalasia (malignancy) must be excluded.",
+    "notes": "Chicago Classification v4.0 further subdivides into Types I, II, III based on contractile pattern. Type II has best treatment response."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Dysphagia to both solids and liquids",
+        "snomedCode": "40739000",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal",
+        "notes": "Simultaneous onset for both solids and liquids is characteristic"
+      },
+      {
+        "symptomName": "Regurgitation of undigested food",
+        "snomedCode": "249497008",
+        "frequency": 0.80,
+        "bodySystem": "gastrointestinal",
+        "notes": "Bland, non-acidic regurgitation of retained food/saliva"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.60,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Chest pain/retrosternal pain",
+        "snomedCode": "29857009",
+        "frequency": 0.50,
+        "bodySystem": "gastrointestinal",
+        "notes": "More common in Type III (spastic) achalasia"
+      },
+      {
+        "symptomName": "Heartburn",
+        "snomedCode": "16331000",
+        "frequency": 0.40,
+        "bodySystem": "gastrointestinal",
+        "notes": "From stasis rather than true acid reflux"
+      },
+      {
+        "symptomName": "Nocturnal cough",
+        "snomedCode": "11833005",
+        "frequency": 0.35,
+        "bodySystem": "respiratory",
+        "notes": "Due to aspiration of retained esophageal contents"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Recurrent aspiration pneumonia",
+        "snomedCode": "422588002",
+        "frequency": 0.15,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hiccups",
+        "snomedCode": "65958008",
+        "frequency": 0.20,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Halitosis",
+        "snomedCode": "79879001",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "From decomposition of retained food"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Esophageal squamous cell carcinoma",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "notes": "Long-standing untreated achalasia carries increased cancer risk"
+      },
+      {
+        "symptomName": "Esophageal perforation",
+        "frequency": 0.02,
+        "bodySystem": "gastrointestinal",
+        "notes": "Rare complication of massive esophageal dilation"
+      },
+      {
+        "symptomName": "Airway compression from megaesophagus",
+        "frequency": 0.02,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Generally unremarkable routine labs",
+      "Anti-myenteric neuronal antibodies may be present (research use)"
+    ],
+    "imaging": [
+      "Timed barium esophagram: dilated esophagus with bird-beak tapering at GEJ",
+      "Chest X-ray may show absent gastric air bubble, widened mediastinum, air-fluid level",
+      "CT chest may show dilated esophagus with retained food/fluid"
+    ],
+    "genetic": [
+      "Association with HLA-DQw1 alleles",
+      "Rare familial cases linked to Allgrove syndrome (AAAS gene, triple-A syndrome)"
+    ],
+    "other": [
+      "High-resolution manometry is the gold standard diagnostic test",
+      "Upper endoscopy: dilated esophagus with retained food, puckered GEJ, resistance at cardia",
+      "Endoscopic ultrasound to exclude pseudoachalasia from submucosal tumors"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "eosinophilic-esophagitis",
+      "distinguishingFeatures": [
+        "EoE typically causes dysphagia to solids primarily",
+        "EoE shows eosinophilic infiltrate on biopsy",
+        "EoE has normal LES relaxation on manometry"
+      ]
+    },
+    {
+      "diseaseId": "esophageal-cancer",
+      "distinguishingFeatures": [
+        "Pseudoachalasia from GEJ tumor: older age, rapid onset, marked weight loss",
+        "CT/EUS shows mass at GEJ in pseudoachalasia"
+      ]
+    },
+    {
+      "diseaseId": "chagas-disease",
+      "distinguishingFeatures": [
+        "Chagas disease is endemic to Central/South America",
+        "Positive Trypanosoma cruzi serology in Chagas"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid onset of dysphagia (< 6 months) in patient > 55 years (rule out pseudoachalasia from malignancy)",
+    "Marked weight loss disproportionate to dysphagia severity",
+    "Recurrent aspiration pneumonia",
+    "Signs of esophageal perforation"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Thoracic Surgeon",
+    "Motility Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Yadlapati R, et al. Esophageal motility disorders on high-resolution manometry: Chicago Classification version 4.0. Neurogastroenterol Motil. 2021;33(1):e14058.",
+    "Vaezi MF, et al. ACG Clinical Guideline: Diagnosis and Management of Achalasia. Am J Gastroenterol. 2020;115(9):1393-1411.",
+    "Oude Nijhuis RAB, et al. European Guideline on Achalasia: UEG and ESNM recommendations. United European Gastroenterol J. 2020;8(1):13-33."
+  ],
+  "confidenceInData": "medium"
+}

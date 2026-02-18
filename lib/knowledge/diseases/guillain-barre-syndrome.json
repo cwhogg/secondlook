@@ -1,0 +1,253 @@
+{
+  "id": "guillain-barre-syndrome",
+  "name": "Guillain-Barre Syndrome",
+  "aliases": [
+    "GBS",
+    "Acute inflammatory demyelinating polyneuropathy",
+    "AIDP",
+    "Landry-Guillain-Barre-Strohl syndrome",
+    "Acute polyradiculoneuropathy"
+  ],
+  "icd10Codes": ["G61.0"],
+  "omimId": "139393",
+  "orphanetId": "2103",
+  "prevalence": {
+    "estimate": "1-2 per 100,000 per year",
+    "range": "0.8-1.9 per 100,000 per year",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 1, "max": 90, "peak": 50 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Affects all ethnicities",
+      "Axonal variants (AMAN, AMSAN) more common in East Asia and Central/South America",
+      "AIDP most common variant in North America and Europe"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Brighton Criteria / NINDS Criteria",
+    "criteria": [
+      {
+        "id": "gbs-1",
+        "description": "Progressive bilateral weakness of limbs",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "gbs-2",
+        "description": "Hyporeflexia or areflexia in weak limbs",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "gbs-3",
+        "description": "Monophasic illness reaching nadir within 4 weeks (usually 2 weeks)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "gbs-4",
+        "description": "CSF albuminocytologic dissociation (elevated protein with normal cell count)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "gbs-5",
+        "description": "Electrodiagnostic features of demyelinating or axonal neuropathy",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "gbs-6",
+        "description": "Preceding infection or triggering event 1-6 weeks before onset",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Progressive bilateral limb weakness plus hyporeflexia/areflexia. Supportive features include CSF findings and electrodiagnostics.",
+    "notes": "Variants include Miller Fisher syndrome (ophthalmoplegia, ataxia, areflexia), AMAN (pure motor axonal), AMSAN (motor-sensory axonal), pharyngeal-cervical-brachial variant, and Bickerstaff brainstem encephalitis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Ascending symmetric weakness",
+        "snomedCode": "249937002",
+        "frequency": 0.90,
+        "bodySystem": "neurological",
+        "notes": "Begins in legs, ascends to arms, then potentially bulbar and respiratory muscles"
+      },
+      {
+        "symptomName": "Areflexia",
+        "snomedCode": "37280007",
+        "frequency": 0.90,
+        "bodySystem": "neurological",
+        "notes": "Diffuse loss of deep tendon reflexes"
+      },
+      {
+        "symptomName": "Rapid progression reaching nadir within 4 weeks",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "notes": "Most reach nadir within 2 weeks"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Paresthesias in hands and feet",
+        "snomedCode": "91019004",
+        "frequency": 0.70,
+        "bodySystem": "neurological",
+        "notes": "Often the first symptom reported"
+      },
+      {
+        "symptomName": "Back and limb pain",
+        "snomedCode": "161891005",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "notes": "Nerve root pain; can be severe and precede weakness"
+      },
+      {
+        "symptomName": "Facial weakness",
+        "snomedCode": "95667003",
+        "frequency": 0.50,
+        "bodySystem": "neurological",
+        "notes": "Bilateral facial palsy common"
+      },
+      {
+        "symptomName": "Difficulty walking",
+        "snomedCode": "228158008",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Autonomic dysfunction",
+        "snomedCode": "72167002",
+        "frequency": 0.60,
+        "bodySystem": "autonomic",
+        "notes": "Tachycardia, blood pressure fluctuations, urinary retention, ileus"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Respiratory failure",
+        "snomedCode": "409622000",
+        "frequency": 0.25,
+        "bodySystem": "respiratory",
+        "notes": "~25% require mechanical ventilation"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "snomedCode": "40739000",
+        "frequency": 0.35,
+        "bodySystem": "neurological",
+        "notes": "Bulbar involvement"
+      },
+      {
+        "symptomName": "Ophthalmoplegia",
+        "snomedCode": "16110005",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological",
+        "notes": "Characteristic of Miller Fisher variant"
+      },
+      {
+        "symptomName": "Ataxia",
+        "snomedCode": "20262006",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Characteristic of Miller Fisher variant"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Papilledema",
+        "snomedCode": "423341008",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological",
+        "notes": "From markedly elevated CSF protein"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "snomedCode": "81308009",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Bickerstaff brainstem encephalitis overlap"
+      },
+      {
+        "symptomName": "Hearing loss",
+        "snomedCode": "15188001",
+        "frequency": 0.03,
+        "bodySystem": "otological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "peripheral nervous system",
+    "autonomic nervous system",
+    "respiratory system",
+    "cranial nerves"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF albuminocytologic dissociation: elevated protein (>45 mg/dL) with normal WBC (<10 cells/uL)",
+      "CSF protein may be normal in first week",
+      "Anti-ganglioside antibodies: anti-GQ1b in Miller Fisher syndrome, anti-GM1 in AMAN",
+      "Preceding C. jejuni, CMV, EBV, or Zika virus serology may be positive"
+    ],
+    "imaging": [
+      "MRI spine may show nerve root enhancement with gadolinium",
+      "Cauda equina enhancement on MRI"
+    ],
+    "genetic": [
+      "No specific genetic cause",
+      "Rare familial clustering reported"
+    ],
+    "other": [
+      "Nerve conduction studies: prolonged distal latencies, slowed conduction velocities, conduction block (AIDP) or reduced amplitudes (AMAN/AMSAN)",
+      "F-wave absence or prolongation",
+      "Serial forced vital capacity monitoring critical (<20 mL/kg suggests need for intubation)",
+      "Negative inspiratory force monitoring"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chronic-inflammatory-demyelinating-polyneuropathy",
+      "distinguishingFeatures": [
+        "CIDP progresses beyond 8 weeks; GBS peaks within 4 weeks",
+        "CIDP has chronic relapsing course",
+        "CIDP responds to corticosteroids; GBS does not"
+      ]
+    },
+    {
+      "diseaseId": "myasthenia-gravis",
+      "distinguishingFeatures": [
+        "MG has fatigable weakness without areflexia",
+        "MG has normal nerve conduction studies",
+        "MG has decremental response on repetitive stimulation"
+      ]
+    },
+    {
+      "diseaseId": "transverse-myelitis",
+      "distinguishingFeatures": [
+        "Transverse myelitis has upper motor neuron signs",
+        "Transverse myelitis has sensory level",
+        "Spinal cord lesion on MRI in transverse myelitis"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Respiratory failure requiring intubation in ~25% of patients - monitor FVC and NIF serially",
+    "Autonomic instability can cause fatal cardiac arrhythmias",
+    "CSF pleocytosis (>50 cells) should prompt consideration of HIV, Lyme, CMV polyradiculitis, or leptomeningeal disease",
+    "Progression beyond 4 weeks suggests CIDP rather than GBS",
+    "Persistent areflexia without improvement after 4-6 weeks indicates poor prognosis",
+    "Bowel/bladder involvement early and prominently suggests spinal cord lesion rather than GBS"
+  ],
+  "specialistType": ["neurologist", "neuromuscular specialist", "intensivist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Shahrizaila N, et al. Guillain-Barre syndrome. Lancet. 2021;397(10280):1214-1228.",
+    "Willison HJ, et al. Guillain-Barre syndrome. Lancet. 2016;388(10045):717-727.",
+    "Fokke C, et al. Diagnosis of Guillain-Barre syndrome and validation of Brighton criteria. Brain. 2014;137(Pt 1):33-43."
+  ],
+  "confidenceInData": "medium"
+}

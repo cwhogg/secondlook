@@ -1,0 +1,275 @@
+{
+  "id": "fabry-disease",
+  "name": "Fabry Disease",
+  "aliases": [
+    "Anderson-Fabry Disease",
+    "Alpha-Galactosidase A Deficiency",
+    "GLA Deficiency",
+    "Angiokeratoma Corporis Diffusum",
+    "Fabry's Disease"
+  ],
+  "icd10Codes": ["E75.21"],
+  "omimId": "301500",
+  "orphanetId": "324",
+  "prevalence": {
+    "estimate": "1 in 40,000 to 1 in 117,000 (classic); up to 1 in 3,000 including late-onset variants",
+    "range": "0.0009%-0.033%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 4, "max": 50, "peak": 10 },
+    "sexPredilection": "male",
+    "ethnicAssociations": ["Pan-ethnic", "Higher late-onset variant frequency noted in Taiwanese and Italian newborn screening"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Expert consensus diagnostic criteria for Fabry disease",
+    "criteria": [
+      {
+        "id": "fab-c1",
+        "description": "Deficient alpha-galactosidase A enzyme activity in plasma or leukocytes (males: <1% of normal; diagnostic)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fab-c2",
+        "description": "Pathogenic variant identified in GLA gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "fab-c3",
+        "description": "Elevated plasma or urinary globotriaosylsphingosine (lyso-Gb3)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fab-c4",
+        "description": "Elevated plasma or urinary globotriaosylceramide (Gb3)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fab-c5",
+        "description": "Characteristic clinical features (acroparesthesias, angiokeratomas, cornea verticillata, renal, cardiac, or cerebrovascular involvement)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fab-c6",
+        "description": "Tissue biopsy showing globotriaosylceramide inclusions (lamellar bodies on electron microscopy)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Males: deficient alpha-galactosidase A activity plus GLA mutation. Females: GLA mutation required (enzyme activity may be normal due to random X-inactivation); clinical features and elevated lyso-Gb3 are supportive.",
+    "notes": "X-linked inheritance. Heterozygous females can be significantly affected. Late-onset cardiac and renal variants exist with residual enzyme activity and predominantly single-organ involvement. Newborn screening is available in some regions."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Cornea verticillata (vortex keratopathy)",
+        "snomedCode": "95727004",
+        "frequency": 0.7,
+        "bodySystem": "ophthalmologic",
+        "notes": "Whorl-like corneal deposits seen on slit-lamp; also seen with amiodarone use (drug history important)"
+      },
+      {
+        "symptomName": "Angiokeratomas (clustered dark red-purple papules)",
+        "snomedCode": "400177003",
+        "frequency": 0.65,
+        "bodySystem": "integumentary",
+        "notes": "Bathing trunk distribution (periumbilical, inguinal, buttocks, scrotum); develop in childhood-adolescence"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Acroparesthesias (burning pain in hands and feet)",
+        "snomedCode": "91019004",
+        "frequency": 0.8,
+        "bodySystem": "neurological",
+        "notes": "Often the earliest symptom in classic males; small fiber neuropathy. Triggered by heat, exercise, fever."
+      },
+      {
+        "symptomName": "Hypohidrosis or anhidrosis (reduced or absent sweating)",
+        "snomedCode": "52613005",
+        "frequency": 0.7,
+        "bodySystem": "integumentary",
+        "notes": "Leads to heat intolerance and exercise intolerance"
+      },
+      {
+        "symptomName": "Gastrointestinal symptoms (abdominal pain, diarrhea, nausea)",
+        "snomedCode": "21522001",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Proteinuria progressing to chronic kidney disease",
+        "snomedCode": "236423003",
+        "frequency": 0.6,
+        "bodySystem": "renal",
+        "notes": "Progressive; may lead to end-stage renal disease in 3rd-5th decade in classic males"
+      },
+      {
+        "symptomName": "Left ventricular hypertrophy",
+        "snomedCode": "55827005",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "notes": "May mimic hypertrophic cardiomyopathy; especially prominent in late-onset cardiac variant"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Stroke or transient ischemic attack",
+        "snomedCode": "230690007",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Both ischemic and hemorrhagic; mean age ~40 in males"
+      },
+      {
+        "symptomName": "Hearing loss (sensorineural, often high-frequency)",
+        "snomedCode": "60700002",
+        "frequency": 0.3,
+        "bodySystem": "otologic"
+      },
+      {
+        "symptomName": "Tinnitus",
+        "snomedCode": "60862001",
+        "frequency": 0.3,
+        "bodySystem": "otologic"
+      },
+      {
+        "symptomName": "Cardiac arrhythmias (short PR, AV block, AF)",
+        "snomedCode": "698247007",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lymphedema",
+        "snomedCode": "234097001",
+        "frequency": 0.2,
+        "bodySystem": "integumentary"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden cardiac death",
+        "snomedCode": "95281009",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Heart failure",
+        "snomedCode": "84114007",
+        "frequency": 0.1,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Dolichoectasia of basilar artery",
+        "frequency": 0.1,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pulmonary involvement (obstructive airway disease)",
+        "snomedCode": "13645005",
+        "frequency": 0.08,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "cardiovascular",
+    "neurological",
+    "integumentary",
+    "ophthalmologic",
+    "gastrointestinal",
+    "otologic",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Deficient alpha-galactosidase A enzyme activity in plasma or leukocytes (males)",
+      "Elevated plasma globotriaosylsphingosine (lyso-Gb3) - most sensitive biomarker",
+      "Elevated plasma and urinary globotriaosylceramide (Gb3)",
+      "Proteinuria and elevated creatinine (renal involvement)",
+      "Note: enzyme activity may be normal in heterozygous females"
+    ],
+    "imaging": [
+      "Echocardiography showing concentric LVH (often mimics HCM)",
+      "Cardiac MRI with late gadolinium enhancement (posterolateral wall; T1 mapping shows low native T1 in early disease)",
+      "MRI brain showing white matter lesions and silent infarcts",
+      "Renal ultrasound showing increased cortical echogenicity",
+      "MRA showing dolichoectasia of vertebrobasilar system"
+    ],
+    "genetic": [
+      "X-linked inheritance (GLA gene on Xq22.1)",
+      "Over 1,000 pathogenic GLA variants identified",
+      "Hemizygous males fully affected; heterozygous females variably affected",
+      "Late-onset mutations (e.g., N215S, IVS4+919G>A) cause predominantly cardiac variant",
+      "De novo mutations account for ~5% of cases"
+    ],
+    "other": [
+      "Slit-lamp examination for cornea verticillata",
+      "Renal biopsy showing zebra bodies (lamellar inclusions) on electron microscopy",
+      "Skin biopsy showing Gb3 deposits in vascular endothelium",
+      "Small fiber neuropathy on quantitative sensory testing or skin biopsy (intraepidermal nerve fiber density)",
+      "ECG showing short PR interval, LVH criteria"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hypertrophic-cardiomyopathy",
+      "distinguishingFeatures": [
+        "HCM typically has asymmetric septal hypertrophy (Fabry is concentric)",
+        "HCM has sarcomere gene mutations (MYH7, MYBPC3)",
+        "Low T1 mapping values on cardiac MRI suggest Fabry over HCM"
+      ]
+    },
+    {
+      "diseaseId": "gaucher-disease",
+      "distinguishingFeatures": [
+        "Gaucher is autosomal recessive with glucocerebrosidase deficiency",
+        "Gaucher features hepatosplenomegaly and bone disease predominantly",
+        "Different storage material and enzyme deficiency"
+      ]
+    },
+    {
+      "diseaseId": "rheumatic-fever",
+      "distinguishingFeatures": [
+        "Acroparesthesias in children may be misdiagnosed as growing pains or rheumatic disease",
+        "Normal inflammatory markers in Fabry",
+        "Fabry has additional systemic features over time"
+      ]
+    },
+    {
+      "diseaseId": "amyloidosis-cardiac",
+      "distinguishingFeatures": [
+        "Cardiac amyloidosis shows high T1 mapping (Fabry shows low T1)",
+        "Amyloidosis has elevated free light chains or TTR mutation",
+        "Different LGE pattern (subendocardial in amyloid vs posterolateral in Fabry)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Young-onset stroke or TIA (<55 years) without traditional risk factors - screen for Fabry",
+    "Unexplained LVH especially with short PR interval - consider Fabry cardiac variant",
+    "Progressive proteinuria in young patient without diabetes or hypertension",
+    "Cryptogenic stroke with white matter lesions in young adult",
+    "Family history of renal failure, cardiomyopathy, or early stroke in X-linked pattern"
+  ],
+  "specialistType": [
+    "Medical Geneticist",
+    "Nephrologist",
+    "Cardiologist",
+    "Neurologist",
+    "Metabolic Disease Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Germain DP. Fabry disease. Orphanet J Rare Dis. 2010;5:30.",
+    "Ortiz A, et al. Fabry disease revisited: Management and treatment recommendations for adult patients. Mol Genet Metab. 2018;123(4):416-427.",
+    "Mehta A, et al. Fabry disease: a review of current management strategies. QJM. 2010;103(9):641-59.",
+    "Desnick RJ, Brady R, Barranger J, et al. Fabry disease, an under-recognized multisystemic disorder: expert recommendations for diagnosis, management, and enzyme replacement therapy. Ann Intern Med. 2003;138(4):338-46."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,277 @@
+{
+  "id": "scleroderma-systemic",
+  "name": "Systemic Sclerosis (Scleroderma)",
+  "aliases": [
+    "SSc",
+    "Systemic Scleroderma",
+    "Progressive Systemic Sclerosis",
+    "CREST Syndrome (limited cutaneous subset)"
+  ],
+  "icd10Codes": ["M34.0", "M34.1", "M34.2", "M34.81", "M34.89", "M34.9"],
+  "omimId": "181750",
+  "orphanetId": "90291",
+  "prevalence": {
+    "estimate": "1 in 5,000 to 1 in 10,000",
+    "range": "0.01%-0.02%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 25, "max": 55, "peak": 45 },
+    "sexPredilection": "female",
+    "ethnicAssociations": [
+      "Higher incidence and more severe disease in Black Americans",
+      "Choctaw Native Americans have highest prevalence reported worldwide",
+      "More common in women (F:M approximately 4:1 to 9:1)"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "2013 ACR/EULAR Classification Criteria for Systemic Sclerosis",
+    "criteria": [
+      {
+        "id": "ssc-c1",
+        "description": "Skin thickening of the fingers of both hands extending proximal to the MCPs (sufficient criterion, score 9)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ssc-c2",
+        "description": "Skin thickening of the fingers: puffy fingers (score 2) or sclerodactyly distal to MCPs (score 4)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ssc-c3",
+        "description": "Fingertip lesions: digital tip ulcers (score 2) or fingertip pitting scars (score 3)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ssc-c4",
+        "description": "Telangiectasia (score 2)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ssc-c5",
+        "description": "Abnormal nailfold capillaries (score 2)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ssc-c6",
+        "description": "Pulmonary arterial hypertension and/or interstitial lung disease (score 2)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ssc-c7",
+        "description": "Raynaud's phenomenon (score 3)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ssc-c8",
+        "description": "SSc-related autoantibodies: anti-centromere, anti-Scl-70 (anti-topoisomerase I), or anti-RNA polymerase III (score 3)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Total score >= 9 classifies as SSc. Skin thickening proximal to MCPs is a sufficient criterion alone (9 points). Otherwise, sum individual item scores (higher of sub-items counts).",
+    "notes": "Two major subsets: limited cutaneous SSc (lcSSc, skin involvement distal to elbows/knees, face) and diffuse cutaneous SSc (dcSSc, proximal skin involvement). CREST = Calcinosis, Raynaud's, Esophageal dysmotility, Sclerodactyly, Telangiectasia."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive skin thickening and fibrosis",
+        "snomedCode": "201049004",
+        "frequency": 0.95,
+        "bodySystem": "integumentary",
+        "notes": "Begins in fingers; may progress proximally in diffuse type"
+      },
+      {
+        "symptomName": "Raynaud's phenomenon",
+        "snomedCode": "266261006",
+        "frequency": 0.95,
+        "bodySystem": "cardiovascular",
+        "notes": "Often the first symptom; may precede other manifestations by years"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Sclerodactyly (skin tightening of fingers)",
+        "frequency": 0.9,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Esophageal dysmotility / GERD",
+        "snomedCode": "40739000",
+        "frequency": 0.8,
+        "bodySystem": "gastrointestinal",
+        "notes": "Reduced distal esophageal peristalsis and lower esophageal sphincter tone"
+      },
+      {
+        "symptomName": "Telangiectasia",
+        "snomedCode": "247479008",
+        "frequency": 0.7,
+        "bodySystem": "integumentary",
+        "notes": "Face, lips, hands, mucosa"
+      },
+      {
+        "symptomName": "Digital pitting scars or ulcers",
+        "snomedCode": "238792006",
+        "frequency": 0.6,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Interstitial lung disease",
+        "snomedCode": "233703007",
+        "frequency": 0.5,
+        "bodySystem": "respiratory",
+        "notes": "NSIP pattern most common; more frequent in dcSSc with anti-Scl-70"
+      },
+      {
+        "symptomName": "Arthralgias and joint stiffness",
+        "snomedCode": "57676002",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Pulmonary arterial hypertension",
+        "snomedCode": "70995007",
+        "frequency": 0.15,
+        "bodySystem": "respiratory",
+        "notes": "More common in lcSSc with anti-centromere; leading cause of death"
+      },
+      {
+        "symptomName": "Calcinosis cutis",
+        "snomedCode": "201119003",
+        "frequency": 0.25,
+        "bodySystem": "integumentary",
+        "notes": "Subcutaneous calcium deposits; painful and prone to infection"
+      },
+      {
+        "symptomName": "Myocardial fibrosis / cardiac involvement",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Joint contractures (flexion contractures of fingers)",
+        "frequency": 0.35,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Tendon friction rubs",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal",
+        "notes": "Palpable crepitus over tendons; associated with diffuse disease"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Scleroderma renal crisis",
+        "snomedCode": "236499007",
+        "frequency": 0.1,
+        "bodySystem": "renal",
+        "notes": "Acute hypertension, AKI, MAHA; more common in dcSSc and anti-RNA polymerase III"
+      },
+      {
+        "symptomName": "Gastric antral vascular ectasia (GAVE / watermelon stomach)",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Trigeminal neuropathy",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "integumentary",
+    "cardiovascular",
+    "respiratory",
+    "gastrointestinal",
+    "musculoskeletal",
+    "renal",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "ANA positive (>95%, often nucleolar or centromere pattern)",
+      "Anti-centromere antibodies (lcSSc/CREST)",
+      "Anti-Scl-70 / anti-topoisomerase I (dcSSc, associated with ILD)",
+      "Anti-RNA polymerase III (dcSSc, associated with renal crisis and cancer risk)",
+      "Elevated ESR; may have elevated CRP",
+      "BNP/NT-proBNP for PAH screening"
+    ],
+    "imaging": [
+      "High-resolution CT chest: ground-glass opacities, fibrosis (NSIP or UIP pattern)",
+      "Echocardiography: estimated RVSP for PAH screening",
+      "Barium swallow / esophageal manometry: dysmotility",
+      "Nailfold capillaroscopy: dilated capillaries, avascular areas, microhemorrhages",
+      "Hand radiographs: calcinosis, acro-osteolysis, soft tissue atrophy"
+    ],
+    "genetic": [
+      "No single causative gene; polygenic susceptibility",
+      "HLA-DRB1 associations vary by antibody subtype",
+      "IRF5, STAT4, CD247, and other immune-related polymorphisms"
+    ],
+    "other": [
+      "Modified Rodnan Skin Score (mRSS) for skin involvement",
+      "Pulmonary function tests: reduced FVC and DLCO",
+      "6-minute walk test for functional assessment",
+      "Annual screening for PAH (echocardiography + PFTs + biomarkers)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "mixed-connective-tissue-disease",
+      "distinguishingFeatures": [
+        "MCTD has high-titer anti-U1 RNP antibodies",
+        "MCTD has features of SLE, SSc, and myositis overlapping",
+        "MCTD generally has milder skin fibrosis"
+      ]
+    },
+    {
+      "diseaseId": "dermatomyositis",
+      "distinguishingFeatures": [
+        "DM has proximal muscle weakness as primary feature",
+        "DM has heliotrope rash and Gottron's papules",
+        "DM has elevated CK"
+      ]
+    },
+    {
+      "diseaseId": "ehlers-danlos-hypermobile",
+      "distinguishingFeatures": [
+        "hEDS has skin laxity not skin tightening",
+        "hEDS has joint hypermobility not contractures",
+        "hEDS has normal autoimmune markers"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid skin thickening progression (risk for renal crisis in dcSSc)",
+    "New hypertension or rising creatinine (scleroderma renal crisis - emergency)",
+    "Progressive dyspnea (ILD progression or new PAH)",
+    "Anti-RNA polymerase III positivity (cancer screening recommended)",
+    "New pericardial effusion or arrhythmia (cardiac involvement)"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Pulmonologist",
+    "Cardiologist",
+    "Gastroenterologist",
+    "Nephrologist",
+    "Dermatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "van den Hoogen F, et al. 2013 classification criteria for systemic sclerosis: an American College of Rheumatology/European League Against Rheumatism collaborative initiative. Arthritis Rheum. 2013;65(11):2737-47.",
+    "Denton CP, Khanna D. Systemic sclerosis. Lancet. 2017;390(10103):1685-99.",
+    "Allanore Y, et al. Systemic sclerosis. Nat Rev Dis Primers. 2015;1:15002.",
+    "Kowal-Bielecka O, et al. Update of EULAR recommendations for the treatment of systemic sclerosis. Ann Rheum Dis. 2017;76(8):1327-39."
+  ],
+  "confidenceInData": "medium"
+}

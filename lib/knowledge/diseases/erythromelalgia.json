@@ -1,0 +1,207 @@
+{
+  "id": "erythromelalgia",
+  "name": "Erythromelalgia",
+  "aliases": [
+    "Erythermalgia",
+    "Mitchell Disease",
+    "Primary Erythromelalgia",
+    "Burning Feet Syndrome"
+  ],
+  "icd10Codes": ["I73.81"],
+  "omimId": "133020",
+  "orphanetId": "90026",
+  "prevalence": {
+    "estimate": "1.3 per 100,000",
+    "range": "0.0005%-0.002%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 5, "max": 70, "peak": 40 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "em-maj1",
+        "description": "Burning pain in extremities (typically feet, sometimes hands)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "em-maj2",
+        "description": "Erythema (redness) of affected areas during episodes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "em-maj3",
+        "description": "Increased temperature of affected skin during episodes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "em-min1",
+        "description": "Symptoms triggered or exacerbated by heat or exercise",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "em-min2",
+        "description": "Symptoms relieved by cooling (immersion in cold water, cold packs)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Clinical triad of intermittent burning pain, erythema, and warmth of the extremities, typically triggered by heat and relieved by cooling. Primary vs secondary forms must be distinguished.",
+    "notes": "Primary (idiopathic or genetic) vs secondary (myeloproliferative disorders, especially polycythemia vera and essential thrombocythemia; neuropathies; medications). SCN9A mutations cause inherited form."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Episodic burning pain with erythema and warmth of extremities",
+        "frequency": 1.0,
+        "bodySystem": "cardiovascular",
+        "notes": "The clinical triad is defining: burning pain + redness + heat, typically affecting feet"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Burning pain in feet",
+        "frequency": 0.90,
+        "bodySystem": "neurologic",
+        "notes": "Feet more commonly affected than hands; bilateral in most cases"
+      },
+      {
+        "symptomName": "Erythema of affected extremities",
+        "frequency": 0.95,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Heat-triggered symptom exacerbation",
+        "frequency": 0.90,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Relief with cooling",
+        "frequency": 0.85,
+        "bodySystem": "general",
+        "notes": "Patients may immerse feet in ice water for relief, risking frostbite"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Swelling of affected areas",
+        "snomedCode": "271809000",
+        "frequency": 0.35,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Sleep disturbance from nocturnal symptoms",
+        "frequency": 0.45,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Hand involvement",
+        "frequency": 0.30,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.40,
+        "bodySystem": "general"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Skin ulceration from excessive cold immersion",
+        "frequency": 0.05,
+        "bodySystem": "integumentary",
+        "notes": "Patients seeking relief may cause cold injury"
+      },
+      {
+        "symptomName": "Ear/face involvement",
+        "frequency": 0.05,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Secondary ischemic tissue damage",
+        "frequency": 0.03,
+        "bodySystem": "integumentary"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurologic",
+    "integumentary"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CBC with differential: evaluate for myeloproliferative disorders (elevated platelets, RBC, WBC)",
+      "JAK2 V617F mutation testing if myeloproliferative disorder suspected",
+      "Routine labs typically normal in primary erythromelalgia"
+    ],
+    "imaging": [
+      "No specific diagnostic imaging",
+      "Infrared thermography may demonstrate temperature elevation during episodes",
+      "MRA/Doppler if vascular insufficiency suspected"
+    ],
+    "genetic": [
+      "SCN9A gene mutations (Nav1.7 sodium channel): autosomal dominant inherited erythromelalgia",
+      "SCN9A gain-of-function mutations lower threshold for pain neuron firing",
+      "Genetic testing recommended in early-onset or familial cases"
+    ],
+    "other": [
+      "Skin biopsy: may show reduced intraepidermal nerve fiber density",
+      "Provocative testing: warming the extremity reproduces symptoms",
+      "Aspirin challenge: dramatic response to aspirin suggests secondary (myeloproliferative) form",
+      "Bone marrow biopsy if myeloproliferative disorder suspected"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "raynaud-phenomenon-primary",
+      "distinguishingFeatures": [
+        "Raynaud is triggered by cold, not heat",
+        "Raynaud causes pallor/cyanosis rather than erythema/warmth"
+      ]
+    },
+    {
+      "diseaseId": "peripheral-neuropathy",
+      "distinguishingFeatures": [
+        "Neuropathy pain is constant rather than episodic",
+        "Neuropathy has nerve conduction abnormalities",
+        "Neuropathy lacks the erythema/warmth component"
+      ]
+    },
+    {
+      "diseaseId": "cellulitis",
+      "distinguishingFeatures": [
+        "Cellulitis has progressive rather than episodic course",
+        "Cellulitis has fever and leukocytosis",
+        "Cellulitis does not improve with cooling"
+      ]
+    }
+  ],
+  "redFlags": [
+    "New-onset erythromelalgia in adults (screen for myeloproliferative neoplasms)",
+    "Elevated platelet count or polycythemia (consider essential thrombocythemia or PV)",
+    "Tissue damage from excessive cooling behaviors",
+    "Severe refractory pain unresponsive to treatment"
+  ],
+  "specialistType": [
+    "Dermatologist",
+    "Neurologist",
+    "Vascular Medicine Specialist",
+    "Pain Medicine Specialist",
+    "Hematologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Davis MD, et al. Erythromelalgia: clinical features, diagnosis, and treatment. Mayo Clin Proc. 2000;75(6):587-601.",
+    "Dib-Hajj SD, et al. Gain-of-function mutation in Nav1.7 in familial erythromelalgia induces bursting of sensory neurons. Brain. 2005;128(Pt 8):1847-1854.",
+    "Mann N, et al. Erythromelalgia: a practical approach. J Am Acad Dermatol. 2019;81(5):1157-1167."
+  ],
+  "confidenceInData": "medium"
+}

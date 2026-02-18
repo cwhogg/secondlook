@@ -1,0 +1,249 @@
+{
+  "id": "idiopathic-intracranial-hypertension",
+  "name": "Idiopathic Intracranial Hypertension",
+  "aliases": [
+    "IIH",
+    "Pseudotumor cerebri",
+    "Benign intracranial hypertension"
+  ],
+  "icd10Codes": ["G93.2"],
+  "orphanetId": "238624",
+  "prevalence": {
+    "estimate": "1-2 per 100,000 general population; up to 20 per 100,000 in obese women of childbearing age",
+    "range": "0.5-2 per 100,000 overall",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 15, "max": 45, "peak": 30 },
+    "sexPredilection": "female",
+    "ethnicAssociations": [
+      "Higher incidence in obese women of reproductive age",
+      "Affects all ethnicities",
+      "May be more common in Black women"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Modified Dandy Criteria / Friedman Criteria (2013)",
+    "criteria": [
+      {
+        "id": "iih-1",
+        "description": "Papilledema on fundoscopic examination",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "iih-2",
+        "description": "Normal neurological examination except for cranial nerve abnormalities (typically CN VI palsy)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "iih-3",
+        "description": "Normal brain parenchyma on MRI (with and without gadolinium, including MRV)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "iih-4",
+        "description": "Elevated lumbar puncture opening pressure (>25 cmH2O in adults, >28 cmH2O in children)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "iih-5",
+        "description": "Normal CSF composition",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "iih-6",
+        "description": "MRI signs: empty sella, optic nerve sheath distension, flattened posterior globe, transverse venous sinus stenosis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Papilledema, normal neurological exam (except CN VI), normal brain imaging, elevated opening pressure, and normal CSF composition. IIH without papilledema (IIHWOP) is possible but requires additional criteria.",
+    "notes": "Must exclude secondary causes of raised intracranial pressure: venous sinus thrombosis, medications (tetracyclines, vitamin A, growth hormone), and systemic diseases."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Papilledema",
+        "snomedCode": "423341008",
+        "frequency": 0.95,
+        "bodySystem": "ophthalmological",
+        "notes": "Cardinal sign; bilateral but may be asymmetric"
+      },
+      {
+        "symptomName": "Transient visual obscurations",
+        "snomedCode": "246636008",
+        "frequency": 0.70,
+        "bodySystem": "ophthalmological",
+        "notes": "Brief episodes (seconds) of vision dimming or graying out, often positional"
+      },
+      {
+        "symptomName": "Sixth cranial nerve palsy",
+        "snomedCode": "57838006",
+        "frequency": 0.35,
+        "bodySystem": "neurological",
+        "notes": "False localizing sign of raised intracranial pressure; causes lateral rectus weakness and diplopia"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Headache",
+        "snomedCode": "25064002",
+        "frequency": 0.90,
+        "bodySystem": "neurological",
+        "notes": "Often daily, throbbing, worse with Valsalva; may be migraine-like"
+      },
+      {
+        "symptomName": "Pulsatile tinnitus",
+        "snomedCode": "60862001",
+        "frequency": 0.60,
+        "bodySystem": "otological",
+        "notes": "Whooshing sound synchronous with heartbeat; often unilateral"
+      },
+      {
+        "symptomName": "Visual field loss",
+        "snomedCode": "12184005",
+        "frequency": 0.50,
+        "bodySystem": "ophthalmological",
+        "notes": "Enlarged blind spot initially; progressive constriction with severe disease"
+      },
+      {
+        "symptomName": "Diplopia",
+        "snomedCode": "24982008",
+        "frequency": 0.35,
+        "bodySystem": "ophthalmological",
+        "notes": "From sixth cranial nerve palsy (false localizing sign of raised ICP)"
+      },
+      {
+        "symptomName": "Neck and back pain",
+        "snomedCode": "161891005",
+        "frequency": 0.40,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Photophobia",
+        "snomedCode": "409668002",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Retrobulbar pain",
+        "snomedCode": "246669009",
+        "frequency": 0.30,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nausea",
+        "snomedCode": "422587007",
+        "frequency": 0.30,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cognitive difficulties",
+        "snomedCode": "386806002",
+        "frequency": 0.20,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Progressive vision loss to blindness",
+        "snomedCode": "397540003",
+        "frequency": 0.10,
+        "bodySystem": "ophthalmological",
+        "notes": "Fulminant IIH can cause rapid visual loss"
+      },
+      {
+        "symptomName": "Facial nerve palsy",
+        "snomedCode": "280816001",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "CSF rhinorrhea",
+        "snomedCode": "237096004",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Spontaneous CSF leak from chronically elevated pressure"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "central nervous system",
+    "visual system",
+    "cranial nerves"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated CSF opening pressure on lumbar puncture (>25 cmH2O in adults)",
+      "Normal CSF cell count, protein, and glucose",
+      "Metabolic screening to exclude secondary causes"
+    ],
+    "imaging": [
+      "MRI brain: empty sella turcica",
+      "MRI: flattening of posterior globe",
+      "MRI: distension of perioptic subarachnoid space",
+      "MRI: tortuous optic nerves",
+      "MRV: bilateral transverse sinus stenosis (common but may be secondary to raised pressure)",
+      "Normal brain parenchyma (no mass, hydrocephalus, or venous thrombosis)"
+    ],
+    "genetic": [
+      "No established genetic cause",
+      "Familial cases rarely reported"
+    ],
+    "other": [
+      "Formal perimetry (Humphrey visual fields) showing enlarged blind spots and peripheral field constriction",
+      "OCT showing peripapillary RNFL thickening (acute) or thinning (chronic atrophy)",
+      "Fundus photography for papilledema grading (Frisen scale)",
+      "Visual acuity testing"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chiari-malformation",
+      "distinguishingFeatures": [
+        "Chiari has tonsillar herniation on MRI",
+        "Chiari headache is occipital and Valsalva-induced",
+        "Chiari does not have elevated CSF pressure"
+      ]
+    },
+    {
+      "diseaseId": "cerebral-venous-sinus-thrombosis",
+      "distinguishingFeatures": [
+        "CVST shows venous filling defect on MRV/CTV",
+        "CVST may have parenchymal lesions",
+        "CVST has identifiable prothrombotic risk factors"
+      ]
+    },
+    {
+      "diseaseId": "normal-pressure-hydrocephalus",
+      "distinguishingFeatures": [
+        "NPH has ventriculomegaly on imaging",
+        "NPH presents with gait, cognitive, and urinary triad",
+        "NPH has normal or low opening pressure"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Fulminant IIH with rapid vision loss requires urgent surgical intervention (optic nerve sheath fenestration or shunting)",
+    "Progressive visual field loss despite maximal medical therapy indicates treatment failure",
+    "Atypical demographics (male, thin, elderly) should prompt aggressive search for secondary causes",
+    "CSF abnormalities (pleocytosis, elevated protein) exclude IIH and suggest alternative diagnosis",
+    "Medication review essential: tetracyclines, vitamin A/retinoids, growth hormone can cause secondary intracranial hypertension",
+    "IIH without papilledema is a diagnosis of exclusion requiring extensive workup"
+  ],
+  "specialistType": ["neurologist", "neuro-ophthalmologist", "neurosurgeon"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Friedman DI, et al. Revised diagnostic criteria for the pseudotumor cerebri syndrome in adults and children. Neurology. 2013;81(13):1159-1165.",
+    "Mollan SP, et al. Idiopathic intracranial hypertension: consensus guidelines on management. J Neurol Neurosurg Psychiatry. 2018;89(10):1088-1100.",
+    "Markey KA, et al. Idiopathic intracranial hypertension: the evolving landscape. Nat Rev Neurol. 2024."
+  ],
+  "confidenceInData": "medium"
+}

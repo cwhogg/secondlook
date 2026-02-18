@@ -1,0 +1,253 @@
+{
+  "id": "systemic-mastocytosis",
+  "name": "Systemic Mastocytosis",
+  "aliases": [
+    "SM",
+    "Systemic mast cell disease",
+    "Indolent systemic mastocytosis (ISM)",
+    "Smoldering systemic mastocytosis (SSM)",
+    "Advanced systemic mastocytosis (AdvSM)",
+    "Aggressive systemic mastocytosis (ASM)"
+  ],
+  "icd10Codes": ["C96.21", "C96.29", "D47.02"],
+  "omimId": "154800",
+  "orphanetId": "ORPHA2467",
+  "prevalence": {
+    "estimate": "1 per 10,000 to 1 per 20,000",
+    "range": "5-10 per 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 70, "peak": 45 },
+    "sexPredilection": "equal"
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO 2022 Classification / ICC Criteria for Systemic Mastocytosis",
+    "criteria": [
+      {
+        "id": "sm-major",
+        "description": "Multifocal dense infiltrates of mast cells (>=15 mast cells in aggregates) on bone marrow biopsy and/or other extracutaneous organ(s)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sm-minor-1",
+        "description": ">25% of mast cells in bone marrow or other extracutaneous organ are spindle-shaped or have atypical morphology",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sm-minor-2",
+        "description": "KIT D816V point mutation or other activating KIT mutation in bone marrow, blood, or other extracutaneous organ",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sm-minor-3",
+        "description": "Mast cells in bone marrow or blood co-express CD25 and/or CD2 in addition to normal mast cell markers",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sm-minor-4",
+        "description": "Serum baseline tryptase persistently >20 ng/mL (does not apply if there is an associated hematologic neoplasm)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "1 major + 1 minor criterion, OR 3 minor criteria",
+    "notes": "Further subclassified into indolent SM (ISM), smoldering SM (SSM), aggressive SM (ASM), SM with associated hematologic neoplasm (SM-AHN), and mast cell leukemia. ISM is by far the most common subtype."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Urticaria pigmentosa / maculopapular cutaneous mastocytosis with systemic involvement",
+        "snomedCode": "200873009",
+        "frequency": 0.60,
+        "bodySystem": "dermatological",
+        "notes": "Darier sign positive: urtication upon stroking a skin lesion"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Flushing",
+        "snomedCode": "271807003",
+        "frequency": 0.70,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pruritus",
+        "snomedCode": "418290006",
+        "frequency": 0.65,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "snomedCode": "21522001",
+        "frequency": 0.60,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "snomedCode": "62315008",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anaphylaxis (especially to Hymenoptera stings)",
+        "snomedCode": "39579001",
+        "frequency": 0.30,
+        "bodySystem": "immunologic",
+        "notes": "Up to 50% of adults with SM who are stung experience severe anaphylaxis"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.60,
+        "bodySystem": "general"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Tachycardia",
+        "snomedCode": "3424008",
+        "frequency": 0.35,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hypotension or syncope during mediator release",
+        "snomedCode": "45007003",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Osteoporosis or pathologic fractures",
+        "snomedCode": "64859006",
+        "frequency": 0.30,
+        "bodySystem": "musculoskeletal",
+        "notes": "Most common cause of morbidity in ISM"
+      },
+      {
+        "symptomName": "Headache",
+        "snomedCode": "25064002",
+        "frequency": 0.30,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Musculoskeletal pain",
+        "snomedCode": "106028002",
+        "frequency": 0.35,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hepatosplenomegaly (advanced SM)",
+        "snomedCode": "36760000",
+        "frequency": 0.15,
+        "bodySystem": "hepatic",
+        "notes": "More common in advanced/aggressive subtypes"
+      },
+      {
+        "symptomName": "Cytopenias (advanced SM)",
+        "snomedCode": "127034005",
+        "frequency": 0.10,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Ascites (advanced SM)",
+        "snomedCode": "389026000",
+        "frequency": 0.05,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Malabsorption with weight loss (advanced SM)",
+        "snomedCode": "32230006",
+        "frequency": 0.08,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "gastrointestinal",
+    "hematologic",
+    "musculoskeletal",
+    "cardiovascular",
+    "immunologic",
+    "hepatic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Serum baseline tryptase persistently >20 ng/mL",
+      "KIT D816V mutation in peripheral blood or bone marrow (>90% of cases)",
+      "CBC: may show eosinophilia; cytopenias in advanced disease",
+      "Alkaline phosphatase and LDH may be elevated in advanced disease"
+    ],
+    "imaging": [
+      "DEXA scan: osteoporosis or osteopenia",
+      "CT abdomen: hepatosplenomegaly and lymphadenopathy in advanced disease",
+      "Bone scan: osteosclerotic or osteolytic lesions in some cases"
+    ],
+    "genetic": [
+      "KIT D816V somatic activating mutation (>90% of cases)",
+      "Other KIT mutations at codon 816 or elsewhere (rare)",
+      "Additional mutations (TET2, SRSF2, ASXL1, RUNX1) in advanced SM"
+    ],
+    "other": [
+      "Bone marrow biopsy: multifocal mast cell aggregates, spindle-shaped mast cells, aberrant CD25/CD2 expression",
+      "Skin biopsy: increased dermal mast cells in cutaneous lesions",
+      "GI endoscopy with biopsy: increased mucosal mast cells"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "mast-cell-activation-syndrome",
+      "distinguishingFeatures": [
+        "MCAS lacks clonal mast cell markers (no KIT D816V, no aberrant CD25)",
+        "MCAS has normal bone marrow mast cell morphology and number",
+        "SM has baseline tryptase >20 ng/mL and clonal markers"
+      ]
+    },
+    {
+      "diseaseId": "cutaneous-mastocytosis",
+      "distinguishingFeatures": [
+        "Cutaneous mastocytosis is limited to skin involvement",
+        "SM has extracutaneous (usually bone marrow) involvement"
+      ]
+    },
+    {
+      "diseaseId": "hereditary-alpha-tryptasemia",
+      "distinguishingFeatures": [
+        "HaT has elevated tryptase from extra gene copies, not from clonal mast cells",
+        "HaT lacks KIT mutation and abnormal mast cell aggregates"
+      ]
+    },
+    {
+      "diseaseId": "carcinoid-syndrome",
+      "distinguishingFeatures": [
+        "Carcinoid has elevated 5-HIAA, not tryptase",
+        "Carcinoid has a neuroendocrine tumor on imaging"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Unexplained anaphylaxis (especially to Hymenoptera stings in adults)",
+    "Persistently elevated baseline serum tryptase >20 ng/mL",
+    "Organomegaly or cytopenias suggesting advanced disease",
+    "Unexplained osteoporosis in a young or middle-aged patient",
+    "Weight loss or B-symptoms (suggests aggressive SM or SM-AHN)"
+  ],
+  "specialistType": [
+    "Hematologist/Oncologist",
+    "Allergist/Immunologist",
+    "Dermatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Valent P, et al. Updated diagnostic criteria and classification of mast cell disorders: a consensus proposal. Hemasphere. 2021;5(11):e646.",
+    "Pardanani A. Systemic mastocytosis in adults: 2021 update on diagnosis, risk stratification and management. Am J Hematol. 2021;96(4):508-525.",
+    "Gotlib J, et al. International Working Group-Myeloproliferative Neoplasms Research and Treatment (IWG-MRT) & European Competence Network on Mastocytosis (ECNM) consensus response criteria in advanced systemic mastocytosis. Blood. 2013;121(13):2393-2401."
+  ],
+  "confidenceInData": "medium"
+}

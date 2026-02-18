@@ -1,0 +1,206 @@
+{
+  "id": "hereditary-pancreatitis",
+  "name": "Hereditary Pancreatitis",
+  "aliases": [
+    "Familial Pancreatitis",
+    "PRSS1-Related Pancreatitis",
+    "Autosomal Dominant Hereditary Pancreatitis"
+  ],
+  "icd10Codes": ["K85.1", "K86.1"],
+  "omimId": "167800",
+  "orphanetId": "676",
+  "prevalence": {
+    "estimate": "0.3 per 100,000",
+    "range": "0.0002%-0.0005%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 2, "max": 20, "peak": 10 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "hp-maj1",
+        "description": "Recurrent acute pancreatitis (2 or more episodes) with onset before age 20",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hp-maj2",
+        "description": "Pathogenic variant in PRSS1 gene (most common: R122H, N29I)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hp-maj3",
+        "description": "Family history of pancreatitis in 2 or more first-degree relatives across 2 generations",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hp-min1",
+        "description": "Chronic pancreatitis developing at young age (< 25 years)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hp-min2",
+        "description": "Pathogenic variants in SPINK1, CFTR, or CTRC genes",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Either (1) pathogenic PRSS1 mutation, or (2) family history of pancreatitis in >= 2 first-degree relatives in >= 2 generations with early-onset recurrent pancreatitis. Genetic testing confirms diagnosis.",
+    "notes": "PRSS1 mutations account for ~80% of genetically confirmed hereditary pancreatitis. SPINK1, CFTR, CTRC mutations may contribute as susceptibility factors."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent episodes of acute pancreatitis beginning in childhood",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal",
+        "notes": "First attack often before age 10; recurrences throughout life"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Severe epigastric pain radiating to back",
+        "snomedCode": "235862006",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal",
+        "notes": "Classic pancreatitis pain pattern"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "snomedCode": "422587007",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Chronic abdominal pain",
+        "snomedCode": "21522001",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "notes": "Develops as chronic pancreatitis establishes"
+      },
+      {
+        "symptomName": "Steatorrhea (exocrine insufficiency)",
+        "snomedCode": "271820007",
+        "frequency": 0.50,
+        "bodySystem": "gastrointestinal",
+        "notes": "Develops with progressive chronic pancreatitis"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.40,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Diabetes mellitus (type 3c)",
+        "frequency": 0.35,
+        "bodySystem": "endocrine",
+        "notes": "Pancreatogenic diabetes from progressive gland destruction"
+      },
+      {
+        "symptomName": "Jaundice (from bile duct stricture)",
+        "snomedCode": "18165001",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pancreatic pseudocyst",
+        "frequency": 0.10,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pancreatic ductal adenocarcinoma",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Lifetime risk ~40% by age 70; dramatically elevated compared to general population"
+      },
+      {
+        "symptomName": "Splenic vein thrombosis",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum lipase/amylase during acute attacks",
+      "Fecal elastase-1 low (< 200 mcg/g) in chronic pancreatitis with exocrine insufficiency",
+      "HbA1c elevated if pancreatogenic diabetes develops",
+      "Elevated IgG4 should be checked to exclude autoimmune pancreatitis"
+    ],
+    "imaging": [
+      "CT abdomen: pancreatic calcifications, ductal dilation, parenchymal atrophy in chronic disease",
+      "MRCP: ductal irregularities, strictures, stones",
+      "EUS: parenchymal and ductal changes of chronic pancreatitis"
+    ],
+    "genetic": [
+      "PRSS1 gene mutations: R122H (most common), N29I, A16V (autosomal dominant, ~80% penetrance)",
+      "SPINK1 gene mutations: N34S (recessive susceptibility factor)",
+      "CFTR gene mutations: may act as modifier/susceptibility gene",
+      "CTRC gene mutations: loss-of-function variants"
+    ],
+    "other": [
+      "Secretin-stimulated MRCP for early chronic pancreatitis",
+      "Endoscopic ultrasound with Rosemont criteria for chronic pancreatitis",
+      "Pancreatic cancer screening recommended starting age 40 (or 20 years after first attack)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "alcoholic-pancreatitis",
+      "distinguishingFeatures": [
+        "Alcoholic pancreatitis has significant alcohol use history",
+        "Onset typically in adulthood (30s-40s)"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-pancreatitis",
+      "distinguishingFeatures": [
+        "Autoimmune pancreatitis has elevated IgG4",
+        "Responds to corticosteroids",
+        "Imaging shows diffusely enlarged 'sausage-shaped' pancreas"
+      ]
+    },
+    {
+      "diseaseId": "cystic-fibrosis",
+      "distinguishingFeatures": [
+        "CF has pulmonary disease, elevated sweat chloride",
+        "CF confirmed by CFTR mutation analysis and sweat test"
+      ]
+    }
+  ],
+  "redFlags": [
+    "New-onset diabetes, weight loss, or jaundice in chronic pancreatitis (screen for pancreatic cancer)",
+    "Severe necrotizing pancreatitis requiring ICU care",
+    "Development of pancreatic mass lesion on surveillance imaging",
+    "Rapid progression of exocrine insufficiency"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Pancreatic Surgeon",
+    "Medical Geneticist",
+    "Endocrinologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Whitcomb DC, et al. Hereditary pancreatitis is caused by a mutation in the cationic trypsinogen gene. Nat Genet. 1996;14(2):141-145.",
+    "Rebours V, et al. The natural history of hereditary pancreatitis: a national series. Gut. 2009;58(1):97-103.",
+    "Shelton C, et al. Hereditary Pancreatitis. GeneReviews. 2023."
+  ],
+  "confidenceInData": "medium"
+}

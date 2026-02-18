@@ -1,0 +1,240 @@
+{
+  "id": "multiple-system-atrophy",
+  "name": "Multiple System Atrophy",
+  "aliases": [
+    "MSA",
+    "Shy-Drager syndrome",
+    "Striatonigral degeneration",
+    "Sporadic olivopontocerebellar atrophy",
+    "MSA-P (parkinsonian subtype)",
+    "MSA-C (cerebellar subtype)"
+  ],
+  "icd10Codes": ["G90.3", "G23.2", "G23.3"],
+  "omimId": "146500",
+  "orphanetId": "ORPHA102",
+  "prevalence": {
+    "estimate": "3-5 per 100,000",
+    "range": "1.9-4.9 per 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 50, "max": 70, "peak": 57 },
+    "sexPredilection": "slight-male"
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Movement Disorder Society Criteria for MSA (2022 Revision)",
+    "criteria": [
+      {
+        "id": "msa-1",
+        "description": "Autonomic failure: orthostatic hypotension (>=20/10 mmHg within 3 min standing) or urogenital dysfunction (urinary incontinence or erectile dysfunction in males)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "msa-2",
+        "description": "Parkinsonism poorly responsive to levodopa (MSA-P subtype)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "msa-3",
+        "description": "Cerebellar ataxia with gait and limb ataxia, cerebellar dysarthria, cerebellar oculomotor dysfunction (MSA-C subtype)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "msa-4",
+        "description": "Rapid disease progression",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "msa-5",
+        "description": "MRI showing putaminal atrophy, hot cross bun sign, or cerebellar/pontine atrophy",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "msa-6",
+        "description": "Stridor or inspiratory sighs",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Autonomic failure plus poorly levodopa-responsive parkinsonism OR cerebellar ataxia. Clinically established MSA requires additional supportive features.",
+    "notes": "Definite diagnosis requires neuropathological confirmation with alpha-synuclein-positive glial cytoplasmic inclusions."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Combined severe autonomic failure with parkinsonism or cerebellar ataxia",
+        "frequency": 1.0,
+        "bodySystem": "neurological",
+        "notes": "The combination is the hallmark; individual features are not pathognomonic alone"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Orthostatic hypotension",
+        "snomedCode": "28651003",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Urinary incontinence or retention",
+        "snomedCode": "165232002",
+        "frequency": 0.80,
+        "bodySystem": "genitourinary"
+      },
+      {
+        "symptomName": "Erectile dysfunction (males)",
+        "snomedCode": "860914002",
+        "frequency": 0.85,
+        "bodySystem": "genitourinary",
+        "notes": "Often earliest autonomic symptom in males"
+      },
+      {
+        "symptomName": "Parkinsonism (rigidity, bradykinesia)",
+        "snomedCode": "49049000",
+        "frequency": 0.80,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cerebellar gait ataxia",
+        "snomedCode": "25136009",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "snomedCode": "8011004",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "REM sleep behavior disorder",
+        "snomedCode": "230150003",
+        "frequency": 0.50,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Stridor (laryngeal)",
+        "snomedCode": "70407001",
+        "frequency": 0.30,
+        "bodySystem": "respiratory",
+        "notes": "Can cause sudden death"
+      },
+      {
+        "symptomName": "Constipation",
+        "snomedCode": "14760008",
+        "frequency": 0.45,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cold hands and feet",
+        "snomedCode": "225549006",
+        "frequency": 0.35,
+        "bodySystem": "vascular"
+      },
+      {
+        "symptomName": "Postprandial hypotension",
+        "snomedCode": "234171009",
+        "frequency": 0.40,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Contractures of hands or feet",
+        "snomedCode": "55033002",
+        "frequency": 0.10,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pisa syndrome (lateral truncal flexion)",
+        "frequency": 0.08,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Myoclonus",
+        "snomedCode": "17450006",
+        "frequency": 0.10,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "cardiovascular",
+    "genitourinary",
+    "gastrointestinal",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "No specific blood biomarkers; normal routine labs",
+      "Alpha-synuclein seed amplification assay (SAA) may be positive in CSF"
+    ],
+    "imaging": [
+      "MRI: putaminal atrophy with slit-like hyperintensity on T2 (MSA-P)",
+      "MRI: hot cross bun sign in pons (MSA-C)",
+      "MRI: cerebellar and pontine atrophy (MSA-C)",
+      "FDG-PET: hypometabolism in putamen, cerebellum, brainstem",
+      "Cardiac MIBG: may be normal (unlike Parkinson disease)"
+    ],
+    "genetic": [
+      "COQ2 mutations reported in familial MSA (rare)",
+      "Generally considered a sporadic disease"
+    ],
+    "other": [
+      "Autonomic function testing: severe cardiovascular and sudomotor failure",
+      "Urodynamic studies: detrusor hyperreflexia, open bladder neck",
+      "EMG: possible denervation of external urethral sphincter (Onuf nucleus)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "parkinson-disease",
+      "distinguishingFeatures": [
+        "Parkinson disease typically responds well to levodopa",
+        "MSA has earlier and more severe autonomic failure",
+        "Cardiac MIBG is abnormal in PD but often normal in MSA"
+      ]
+    },
+    {
+      "diseaseId": "pure-autonomic-failure",
+      "distinguishingFeatures": [
+        "PAF lacks cerebellar or parkinsonian motor features",
+        "PAF has a more benign course"
+      ]
+    },
+    {
+      "diseaseId": "progressive-supranuclear-palsy",
+      "distinguishingFeatures": [
+        "PSP has supranuclear vertical gaze palsy",
+        "PSP typically has axial rigidity and backward falls"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of parkinsonism poorly responsive to levodopa",
+    "Early and severe autonomic failure within first few years of motor onset",
+    "Stridor or nocturnal laryngeal spasm (risk of sudden death)",
+    "Early wheelchair dependence (within 5 years)",
+    "Supine hypertension with orthostatic hypotension"
+  ],
+  "specialistType": [
+    "Movement disorder neurologist",
+    "Autonomic neurologist",
+    "Urologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Gilman S, et al. Second consensus statement on the diagnosis of multiple system atrophy. Neurology. 2008;71(9):670-676.",
+    "Wenning GK, et al. The Movement Disorder Society Criteria for the Diagnosis of Multiple System Atrophy. Mov Disord. 2022;37(6):1131-1148.",
+    "Fanciulli A, Wenning GK. Multiple-system atrophy. N Engl J Med. 2015;372(3):249-263."
+  ],
+  "confidenceInData": "medium"
+}

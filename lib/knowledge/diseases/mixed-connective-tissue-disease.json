@@ -1,0 +1,259 @@
+{
+  "id": "mixed-connective-tissue-disease",
+  "name": "Mixed Connective Tissue Disease",
+  "aliases": [
+    "MCTD",
+    "Sharp Syndrome",
+    "Overlap Syndrome"
+  ],
+  "icd10Codes": ["M35.1"],
+  "omimId": "604184",
+  "orphanetId": "809",
+  "prevalence": {
+    "estimate": "1 in 10,000 to 1 in 100,000",
+    "range": "0.001%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 15, "max": 50, "peak": 30 },
+    "sexPredilection": "female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Alarcon-Segovia Criteria (most commonly used); also Kasukawa and Sharp criteria",
+    "criteria": [
+      {
+        "id": "mctd-c1",
+        "description": "High titer anti-U1 RNP antibodies (>= 1:1600 by hemagglutination)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mctd-c2",
+        "description": "Hand edema (puffy or swollen hands)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mctd-c3",
+        "description": "Synovitis (inflammatory arthritis)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mctd-c4",
+        "description": "Myositis (clinical or laboratory evidence)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mctd-c5",
+        "description": "Raynaud's phenomenon",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mctd-c6",
+        "description": "Acrosclerosis (scleroderma limited to digits)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Alarcon-Segovia criteria: Positive anti-U1 RNP (>= 1:1600) PLUS >= 3 of 5 clinical features (hand edema, synovitis, myositis, Raynaud's, acrosclerosis). At least one of synovitis or myositis must be present.",
+    "notes": "MCTD is sometimes considered an overlap between SLE, systemic sclerosis, and polymyositis. Some experts debate whether it is a distinct entity. Over time, patients may evolve to a more defined CTD."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Raynaud's phenomenon with high-titer anti-U1 RNP antibodies",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular",
+        "notes": "Nearly universal; often the earliest symptom"
+      },
+      {
+        "symptomName": "Puffy or swollen hands ('sausage fingers')",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal",
+        "notes": "Diffuse hand swelling, not localized joint swelling"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Raynaud's phenomenon",
+        "snomedCode": "266261006",
+        "frequency": 0.95,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Inflammatory polyarthritis / arthralgias",
+        "snomedCode": "3723001",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Swollen hands (puffy fingers)",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.8,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myalgia or proximal muscle weakness",
+        "snomedCode": "68962001",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Sclerodactyly (skin thickening of fingers)",
+        "snomedCode": "201049004",
+        "frequency": 0.5,
+        "bodySystem": "integumentary"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Esophageal dysmotility",
+        "snomedCode": "40739000",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "notes": "Especially distal esophagus; similar to scleroderma pattern"
+      },
+      {
+        "symptomName": "Pulmonary hypertension",
+        "snomedCode": "70995007",
+        "frequency": 0.2,
+        "bodySystem": "respiratory",
+        "notes": "Most serious complication; leading cause of death in MCTD"
+      },
+      {
+        "symptomName": "Pleuritis / pericarditis (serositis)",
+        "snomedCode": "196026004",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Malar rash or photosensitivity",
+        "frequency": 0.25,
+        "bodySystem": "integumentary",
+        "notes": "Lupus-like features"
+      },
+      {
+        "symptomName": "Interstitial lung disease",
+        "snomedCode": "233703007",
+        "frequency": 0.25,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Trigeminal neuropathy",
+        "snomedCode": "31681005",
+        "frequency": 0.1,
+        "bodySystem": "neurological",
+        "notes": "Relatively characteristic of MCTD among CTDs"
+      },
+      {
+        "symptomName": "Glomerulonephritis",
+        "snomedCode": "36171008",
+        "frequency": 0.1,
+        "bodySystem": "renal",
+        "notes": "Less common than in SLE; usually membranous pattern"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "snomedCode": "302215000",
+        "frequency": 0.1,
+        "bodySystem": "hematologic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "cardiovascular",
+    "respiratory",
+    "integumentary",
+    "gastrointestinal",
+    "neurological",
+    "renal",
+    "hematologic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "High-titer anti-U1 RNP antibodies (defining serologic feature)",
+      "Positive ANA (speckled pattern)",
+      "Anti-dsDNA usually negative or low titer",
+      "Anti-Sm typically negative",
+      "Elevated CK if myositis present",
+      "Elevated ESR and CRP during active disease",
+      "Hypergammaglobulinemia common"
+    ],
+    "imaging": [
+      "Chest CT: ground-glass opacities or fibrosis if ILD present",
+      "Echocardiography: screening for pulmonary hypertension (elevated RVSP)",
+      "Right heart catheterization for confirmed pulmonary hypertension",
+      "Hand radiographs may show erosive or non-erosive arthropathy",
+      "Esophageal manometry: distal esophageal dysmotility"
+    ],
+    "genetic": [
+      "HLA-DR4 association reported",
+      "No specific single-gene cause; polygenic susceptibility"
+    ],
+    "other": [
+      "Pulmonary function tests (reduced DLCO in pulmonary hypertension/ILD)",
+      "Nailfold capillaroscopy may show dilated or dropout capillaries",
+      "EMG/nerve conduction if myositis or neuropathy suspected"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "scleroderma-systemic",
+      "distinguishingFeatures": [
+        "SSc has diffuse or limited skin thickening beyond fingers",
+        "SSc has anti-Scl-70 or anti-centromere antibodies",
+        "MCTD has high-titer anti-U1 RNP as defining feature"
+      ]
+    },
+    {
+      "diseaseId": "dermatomyositis",
+      "distinguishingFeatures": [
+        "DM has characteristic skin rashes (heliotrope, Gottron's)",
+        "DM has more prominent proximal weakness",
+        "DM has anti-Mi-2, anti-MDA5, anti-TIF1-gamma antibodies"
+      ]
+    },
+    {
+      "diseaseId": "fibromyalgia",
+      "distinguishingFeatures": [
+        "FM has normal autoimmune markers",
+        "FM lacks Raynaud's and swollen hands",
+        "FM has no objective inflammatory findings"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive dyspnea on exertion (pulmonary hypertension - leading cause of death)",
+    "Declining DLCO on pulmonary function tests",
+    "Renal involvement (proteinuria, rising creatinine)",
+    "Evolution of features toward a more defined CTD (SLE, SSc, polymyositis)",
+    "Scleroderma renal crisis features (hypertension, AKI)"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Pulmonologist",
+    "Cardiologist",
+    "Gastroenterologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Sharp GC, et al. Mixed connective tissue disease--an apparently distinct rheumatic disease syndrome associated with a specific antibody to an extractable nuclear antigen (ENA). Am J Med. 1972;52(2):148-59.",
+    "Alarcon-Segovia D, Villarreal M. Classification and diagnostic criteria for mixed connective tissue disease. In: Kasukawa R, Sharp GC, eds. Mixed Connective Tissue Disease and Antinuclear Antibodies. 1987:33-40.",
+    "Tani C, et al. Mixed connective tissue disease: a critical appraisal. Autoimmun Rev. 2019;18(12):102448.",
+    "Gunnarsson R, et al. Mixed connective tissue disease. Best Pract Res Clin Rheumatol. 2016;30(1):95-111."
+  ],
+  "confidenceInData": "medium"
+}

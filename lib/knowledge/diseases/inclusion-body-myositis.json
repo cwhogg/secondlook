@@ -1,0 +1,245 @@
+{
+  "id": "inclusion-body-myositis",
+  "name": "Inclusion Body Myositis",
+  "aliases": [
+    "IBM",
+    "Sporadic inclusion body myositis",
+    "sIBM"
+  ],
+  "icd10Codes": ["G72.41"],
+  "omimId": "147421",
+  "orphanetId": "611",
+  "prevalence": {
+    "estimate": "1-7 per 100,000 in age >50",
+    "range": "4.7-14.9 per 100,000 in over 45 age group",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 45, "max": 80, "peak": 60 },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "Higher prevalence in Caucasian populations",
+      "Most common inflammatory myopathy in patients over 50",
+      "Less commonly reported in Asian populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ENMC 2011 Clinically Defined / Lloyd et al. 2014 Criteria",
+    "criteria": [
+      {
+        "id": "ibm-1",
+        "description": "Duration of weakness >12 months",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ibm-2",
+        "description": "Age at onset >45 years",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ibm-3",
+        "description": "Finger flexor weakness (FDP) greater than or equal to shoulder abduction weakness",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ibm-4",
+        "description": "Quadriceps weakness greater than or equal to hip flexor weakness",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ibm-5",
+        "description": "Muscle biopsy with endomysial inflammatory infiltrate, rimmed vacuoles, protein aggregates, or mitochondrial pathology",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ibm-6",
+        "description": "Positive anti-cN1A (anti-cytosolic 5'-nucleotidase 1A) antibodies",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Clinicopathologically defined: characteristic clinical pattern (finger flexor and quadriceps weakness) plus pathognomonic biopsy features. Clinically defined: characteristic weakness pattern in age >45 with duration >12 months.",
+    "notes": "IBM is commonly misdiagnosed as polymyositis. Key difference: IBM does not respond to immunosuppressive therapy. Anti-cN1A antibodies have ~60-70% sensitivity and ~90% specificity."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Deep finger flexor weakness (FDP)",
+        "snomedCode": "249937002",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "notes": "Asymmetric finger flexor weakness; difficulty gripping; the most distinguishing clinical feature"
+      },
+      {
+        "symptomName": "Quadriceps weakness and atrophy",
+        "snomedCode": "249937002",
+        "frequency": 0.90,
+        "bodySystem": "musculoskeletal",
+        "notes": "Knee buckling, difficulty rising from chairs, falls; often asymmetric"
+      },
+      {
+        "symptomName": "Asymmetric weakness pattern",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "notes": "Side-to-side asymmetry distinguishes from other myopathies"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Difficulty with grip (opening jars, turning keys)",
+        "frequency": 0.80,
+        "bodySystem": "musculoskeletal",
+        "notes": "From finger flexor weakness; early functional impairment"
+      },
+      {
+        "symptomName": "Frequent falls",
+        "snomedCode": "217082002",
+        "frequency": 0.70,
+        "bodySystem": "neurological",
+        "notes": "From quadriceps weakness causing knee buckling"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "snomedCode": "40739000",
+        "frequency": 0.50,
+        "bodySystem": "gastrointestinal",
+        "notes": "Present in ~40-60%; may require cricopharyngeal myotomy"
+      },
+      {
+        "symptomName": "Foot drop",
+        "snomedCode": "428291002",
+        "frequency": 0.40,
+        "bodySystem": "neurological",
+        "notes": "From anterior compartment weakness"
+      },
+      {
+        "symptomName": "Wrist flexor weakness",
+        "frequency": 0.50,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Facial weakness",
+        "snomedCode": "95667003",
+        "frequency": 0.20,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "snomedCode": "409622000",
+        "frequency": 0.15,
+        "bodySystem": "respiratory",
+        "notes": "Late-stage complication"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.20,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Neck flexor weakness",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "notes": "Head drop in advanced disease"
+      },
+      {
+        "symptomName": "Camptocormia (bent spine)",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Aspiration pneumonia",
+        "snomedCode": "422588002",
+        "frequency": 0.10,
+        "bodySystem": "respiratory",
+        "notes": "From dysphagia; major complication"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "skeletal muscle",
+    "pharyngeal muscles",
+    "respiratory muscles"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CK mildly to moderately elevated (typically 1-12x normal; often <10x ULN)",
+      "Anti-cN1A (anti-cytosolic 5'-nucleotidase 1A) antibodies (~60-70% sensitivity)",
+      "ESR and CRP usually normal",
+      "ANA may be positive (nonspecific)"
+    ],
+    "imaging": [
+      "MRI muscle: fatty infiltration and atrophy of quadriceps, forearm flexors",
+      "MRI: asymmetric pattern of muscle involvement",
+      "MRI: relative sparing of rectus femoris compared to vastus muscles",
+      "Ultrasound: increased echogenicity in affected muscles"
+    ],
+    "genetic": [
+      "No causative gene for sporadic IBM",
+      "HLA-DRB1*03:01 and HLA-DRB1*01:01 associations",
+      "Hereditary IBM (hIBM/GNE myopathy) is a separate entity caused by GNE gene mutations",
+      "SQSTM1, VCP mutations cause IBM-like pathology in familial cases"
+    ],
+    "other": [
+      "EMG: mixed myopathic and neurogenic features (short- and long-duration MUPs)",
+      "Muscle biopsy: endomysial inflammatory infiltrate (CD8+ T cells invading non-necrotic fibers)",
+      "Muscle biopsy: rimmed vacuoles with basophilic granular inclusions",
+      "Muscle biopsy: congophilic amyloid deposits, p62 and TDP-43 aggregates",
+      "Muscle biopsy: mitochondrial abnormalities (COX-negative fibers)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "myasthenia-gravis",
+      "distinguishingFeatures": [
+        "MG has fatigable weakness without atrophy",
+        "MG responds to acetylcholinesterase inhibitors",
+        "MG has positive AChR or MuSK antibodies",
+        "MG does not have elevated CK"
+      ]
+    },
+    {
+      "diseaseId": "amyotrophic-lateral-sclerosis",
+      "distinguishingFeatures": [
+        "ALS has upper motor neuron signs (spasticity, hyperreflexia)",
+        "ALS has widespread fasciculations",
+        "ALS has more rapid progression",
+        "ALS EMG shows active denervation without myopathic features"
+      ]
+    },
+    {
+      "diseaseId": "polymyositis",
+      "distinguishingFeatures": [
+        "Polymyositis has proximal symmetric weakness",
+        "Polymyositis responds to immunosuppressive therapy",
+        "Polymyositis has higher CK elevation",
+        "IBM is frequently misdiagnosed as treatment-refractory polymyositis"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Treatment-resistant polymyositis should prompt reconsideration as IBM",
+    "IBM does NOT respond to conventional immunosuppressive therapy (steroids, methotrexate, IVIg)",
+    "Dysphagia can cause aspiration pneumonia and significant morbidity",
+    "Average 10-15 year disease course to wheelchair dependence",
+    "Anti-cN1A antibodies are also found in Sjogren syndrome and SLE; clinical context essential",
+    "Hereditary inclusion body myopathy (GNE myopathy) spares quadriceps, unlike sporadic IBM"
+  ],
+  "specialistType": ["neurologist", "neuromuscular specialist", "rheumatologist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Rose MR; ENMC IBM Working Group. 188th ENMC International Workshop: Inclusion Body Myositis. Neuromuscul Disord. 2013;23(12):1044-1055.",
+    "Greenberg SA. Inclusion body myositis: clinical features and pathogenesis. Nat Rev Rheumatol. 2019;15(5):257-272.",
+    "Lloyd TE, et al. Evaluation and construction of diagnostic criteria for inclusion body myositis. Neurology. 2014;83(5):426-433."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,203 @@
+{
+  "id": "selective-iga-deficiency",
+  "name": "Selective IgA Deficiency",
+  "aliases": [
+    "SIgAD",
+    "IgA Deficiency",
+    "Immunoglobulin A Deficiency"
+  ],
+  "icd10Codes": ["D80.2"],
+  "omimId": "137100",
+  "orphanetId": "869",
+  "prevalence": {
+    "estimate": "1 in 300 to 1 in 700 in Caucasian populations",
+    "range": "0.14%-0.33%",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 20, "peak": 5 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Most common in Caucasian populations",
+      "Rare in Asian populations (1 in 5,000-18,000 in Japan)"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ESID Diagnostic Criteria for Selective IgA Deficiency",
+    "criteria": [
+      {
+        "id": "siga-c1",
+        "description": "Serum IgA level <7 mg/dL (0.07 g/L) in a patient older than 4 years",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "siga-c2",
+        "description": "Normal serum levels of IgG and IgM",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "siga-c3",
+        "description": "Exclusion of other causes of hypogammaglobulinemia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "siga-c4",
+        "description": "Normal antibody responses to vaccines",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Undetectable serum IgA (<7 mg/dL) with normal IgG and IgM in a patient >4 years old, after exclusion of secondary causes",
+    "notes": "Partial IgA deficiency (IgA detectable but >2 SD below mean) is more common but less clinically significant. Most patients are asymptomatic and discovered incidentally. ~10% may progress to CVID."
+  },
+  "symptoms": {
+    "pathognomonic": [],
+    "common": [
+      {
+        "symptomName": "Asymptomatic (majority of patients)",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Most individuals with selective IgA deficiency are clinically silent"
+      },
+      {
+        "symptomName": "Recurrent upper respiratory infections",
+        "snomedCode": "54150009",
+        "frequency": 0.3,
+        "bodySystem": "pulmonary"
+      },
+      {
+        "symptomName": "Recurrent sinusitis",
+        "snomedCode": "36971009",
+        "frequency": 0.25,
+        "bodySystem": "ear-nose-throat"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Recurrent gastrointestinal infections",
+        "snomedCode": "50465008",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Giardia and other enteric pathogens"
+      },
+      {
+        "symptomName": "Allergic diseases (asthma, allergic rhinitis, eczema)",
+        "snomedCode": "195967001",
+        "frequency": 0.2,
+        "bodySystem": "immunologic"
+      },
+      {
+        "symptomName": "Autoimmune diseases (celiac, thyroiditis, SLE, RA)",
+        "snomedCode": "85828009",
+        "frequency": 0.15,
+        "bodySystem": "immunologic",
+        "notes": "10-15 fold increased risk of celiac disease"
+      },
+      {
+        "symptomName": "Chronic diarrhea",
+        "snomedCode": "62315008",
+        "frequency": 0.1,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Anaphylactic transfusion reaction (anti-IgA antibodies)",
+        "snomedCode": "35595004",
+        "frequency": 0.03,
+        "bodySystem": "immunologic",
+        "notes": "Severe anaphylaxis to blood products containing IgA; occurs in patients who develop anti-IgA antibodies"
+      },
+      {
+        "symptomName": "Progression to CVID",
+        "frequency": 0.05,
+        "bodySystem": "immunologic",
+        "notes": "~5-10% may evolve to CVID over years"
+      },
+      {
+        "symptomName": "Nodular lymphoid hyperplasia of GI tract",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "immunologic",
+    "pulmonary",
+    "gastrointestinal",
+    "ear-nose-throat"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Undetectable serum IgA (<7 mg/dL)",
+      "Normal serum IgG and IgM levels",
+      "Normal specific antibody responses to vaccines (usually)",
+      "Anti-IgA antibodies may be present (class-specific or subclass-specific)",
+      "Screen for celiac disease (anti-tissue transglutaminase IgG, since IgA-based tests will be false negative)"
+    ],
+    "imaging": [
+      "Usually no imaging abnormalities",
+      "CT sinuses if chronic sinusitis",
+      "CT chest if recurrent lower respiratory infections"
+    ],
+    "genetic": [
+      "HLA associations: HLA-A1, HLA-B8, HLA-DR3 haplotype",
+      "Shared genetic susceptibility with CVID (same family)",
+      "TNFRSF13B (TACI) variants in some families",
+      "Usually sporadic; occasionally autosomal dominant or recessive inheritance"
+    ],
+    "other": [
+      "IgA typing should be repeated to confirm persistence",
+      "Anti-IgA antibody testing before blood transfusions",
+      "Celiac disease screening recommended"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "common-variable-immunodeficiency",
+      "distinguishingFeatures": [
+        "CVID has low IgG plus low IgA and/or IgM",
+        "Poor vaccine responses in CVID",
+        "More symptomatic with recurrent serious infections"
+      ]
+    },
+    {
+      "diseaseId": "transient-hypogammaglobulinemia-of-infancy",
+      "distinguishingFeatures": [
+        "Resolves by age 2-4 years",
+        "All immunoglobulins may be low",
+        "Normal B cell numbers and function"
+      ]
+    },
+    {
+      "diseaseId": "drug-induced-iga-deficiency",
+      "distinguishingFeatures": [
+        "Temporal association with medications (phenytoin, sulfasalazine, gold)",
+        "May reverse after drug discontinuation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Anaphylactic reaction to blood transfusion (anti-IgA antibody mediated)",
+    "Development of progressive hypogammaglobulinemia suggesting evolution to CVID",
+    "Recurrent severe sinopulmonary infections with bronchiectasis",
+    "Coexistent celiac disease (should be screened for)",
+    "Multiple autoimmune diseases developing"
+  ],
+  "specialistType": [
+    "Allergist/Immunologist",
+    "Gastroenterologist (for celiac disease screening)",
+    "Transfusion Medicine Specialist (for safe blood product selection)"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Yel L. Selective IgA deficiency. J Clin Immunol. 2010;30(1):10-16.",
+    "Bonilla FA, et al. Practice parameter for the diagnosis and management of primary immunodeficiency. J Allergy Clin Immunol. 2015;136(5):1186-1205.",
+    "Aghamohammadi A, et al. IgA deficiency: correlation between clinical and immunological phenotypes. J Clin Immunol. 2009;29(1):130-136.",
+    "Latiff AH, Kerr MA. The clinical significance of immunoglobulin A deficiency. Ann Clin Biochem. 2007;44(Pt 2):131-139."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,260 @@
+{
+  "id": "turner-syndrome",
+  "name": "Turner Syndrome",
+  "aliases": [
+    "45,X Syndrome",
+    "Monosomy X",
+    "Gonadal Dysgenesis (45,X)",
+    "Ullrich-Turner Syndrome"
+  ],
+  "icd10Codes": ["Q96.0", "Q96.1", "Q96.2", "Q96.3", "Q96.4", "Q96.8", "Q96.9"],
+  "omimId": "163950",
+  "orphanetId": "881",
+  "prevalence": {
+    "estimate": "1 in 2,000 to 1 in 2,500 live female births",
+    "range": "0.04%-0.05%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 16, "peak": 0 },
+    "sexPredilection": "female",
+    "ethnicAssociations": [
+      "No strong ethnic predilection",
+      "Occurs across all ethnicities"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Karyotype-confirmed Turner Syndrome",
+    "criteria": [
+      {
+        "id": "ts-c1",
+        "description": "Female phenotype with complete or partial absence of one X chromosome on karyotype analysis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ts-c2",
+        "description": "Short stature (height <5th percentile or >2 SD below mean)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ts-c3",
+        "description": "Primary ovarian insufficiency (elevated FSH, absent or delayed puberty)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ts-c4",
+        "description": "Lymphedema (congenital or recurrent)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ts-c5",
+        "description": "Congenital heart defect (especially bicuspid aortic valve, coarctation of the aorta)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Karyotype showing 45,X or variant (mosaicism 45,X/46,XX; isochromosome Xq; ring X; partial X deletion) in a phenotypic female",
+    "notes": "~50% have classic 45,X; ~30% are mosaic; ~20% have structural X abnormalities. Prenatal diagnosis by amniocentesis or CVS is increasing. Phenotype varies widely, especially in mosaic cases."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Short stature in females with streak gonads",
+        "snomedCode": "237837007",
+        "frequency": 0.95,
+        "bodySystem": "endocrine",
+        "notes": "Average adult height ~147 cm (4'10\") without GH treatment"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Short stature",
+        "snomedCode": "237837007",
+        "frequency": 0.95,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Primary ovarian insufficiency (absent or incomplete puberty)",
+        "snomedCode": "237788002",
+        "frequency": 0.85,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Infertility",
+        "snomedCode": "6738008",
+        "frequency": 0.95,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Webbed neck (pterygium colli)",
+        "snomedCode": "89091005",
+        "frequency": 0.4,
+        "bodySystem": "craniofacial"
+      },
+      {
+        "symptomName": "Shield chest with widely spaced nipples",
+        "snomedCode": "271732002",
+        "frequency": 0.5,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Bicuspid aortic valve",
+        "snomedCode": "4067001",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Coarctation of the aorta",
+        "snomedCode": "7305005",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lymphedema of hands and feet (especially neonatal)",
+        "snomedCode": "234097001",
+        "frequency": 0.35,
+        "bodySystem": "lymphatic"
+      },
+      {
+        "symptomName": "Horseshoe kidney or renal anomalies",
+        "snomedCode": "41931001",
+        "frequency": 0.3,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Recurrent otitis media and hearing loss",
+        "snomedCode": "65363002",
+        "frequency": 0.35,
+        "bodySystem": "ear-nose-throat"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Aortic dissection",
+        "snomedCode": "308546005",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular",
+        "notes": "Leading cause of premature death in Turner syndrome; lifelong cardiovascular surveillance required"
+      },
+      {
+        "symptomName": "Hypothyroidism (Hashimoto thyroiditis)",
+        "snomedCode": "40930008",
+        "frequency": 0.15,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Type 2 diabetes mellitus",
+        "snomedCode": "44054006",
+        "frequency": 0.1,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Celiac disease",
+        "snomedCode": "396331005",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Inflammatory bowel disease",
+        "snomedCode": "24526004",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "endocrine",
+    "cardiovascular",
+    "reproductive",
+    "renal",
+    "musculoskeletal",
+    "craniofacial",
+    "lymphatic",
+    "ear-nose-throat"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated FSH and LH (hypergonadotropic hypogonadism)",
+      "Low estradiol",
+      "Thyroid function tests (annual screening for hypothyroidism)",
+      "Fasting glucose and lipid panel (metabolic surveillance)",
+      "Liver function tests (elevated in some patients)"
+    ],
+    "imaging": [
+      "Echocardiography and cardiac MRI (bicuspid aortic valve, coarctation, aortic dilation)",
+      "Renal ultrasound (horseshoe kidney, duplicated collecting system)",
+      "Bone age X-ray (delayed)",
+      "Pelvic ultrasound (streak gonads)",
+      "Aortic imaging with MRI at regular intervals throughout life"
+    ],
+    "genetic": [
+      "Karyotype: 45,X (classic, ~50%)",
+      "Mosaicism: 45,X/46,XX (~30%)",
+      "Structural X abnormalities: isochromosome Xq, ring X, partial deletions (~20%)",
+      "SHOX gene haploinsufficiency accounts for short stature",
+      "Y chromosome material should be checked (risk of gonadoblastoma if present)"
+    ],
+    "other": [
+      "Audiometry (sensorineural and/or conductive hearing loss)",
+      "Bone density assessment (osteoporosis risk)",
+      "Neuropsychological assessment (nonverbal learning difficulties, visuospatial processing)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "noonan-syndrome",
+      "distinguishingFeatures": [
+        "Noonan syndrome has normal karyotype",
+        "Affects both sexes",
+        "RAS-MAPK pathway gene mutations (PTPN11, RAF1, etc.)",
+        "Pulmonary stenosis more common than left-sided heart defects"
+      ]
+    },
+    {
+      "diseaseId": "constitutional-growth-delay",
+      "distinguishingFeatures": [
+        "Normal karyotype",
+        "Delayed bone age with catch-up growth",
+        "No dysmorphic features",
+        "Normal puberty (just delayed)"
+      ]
+    },
+    {
+      "diseaseId": "premature-ovarian-insufficiency",
+      "distinguishingFeatures": [
+        "Normal karyotype",
+        "Normal height",
+        "Various etiologies (autoimmune, FMR1 premutation, iatrogenic)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Aortic root dilation requiring surgical intervention",
+    "Aortic dissection (medical emergency, especially in pregnancy)",
+    "Severe hypertension",
+    "Y chromosome material on karyotype (gonadoblastoma risk; prophylactic gonadectomy indicated)",
+    "Pregnancy (very high cardiovascular risk; requires specialized monitoring)"
+  ],
+  "specialistType": [
+    "Medical Geneticist",
+    "Pediatric Endocrinologist",
+    "Cardiologist",
+    "Reproductive Endocrinologist",
+    "Otolaryngologist",
+    "Nephrologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Gravholt CH, et al. Turner syndrome: mechanisms and management. Nat Rev Endocrinol. 2019;15(10):601-614.",
+    "Gravholt CH, et al. Clinical practice guidelines for the care of girls and women with Turner syndrome. Eur J Endocrinol. 2017;177(3):G1-G70.",
+    "Bondy CA, Turner Syndrome Study Group. Care of girls and women with Turner syndrome: a guideline of the Turner Syndrome Study Group. J Clin Endocrinol Metab. 2007;92(1):10-25.",
+    "Sybert VP, McCauley E. Turner's syndrome. N Engl J Med. 2004;351(12):1227-1238."
+  ],
+  "confidenceInData": "medium"
+}

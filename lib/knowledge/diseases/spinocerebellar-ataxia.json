@@ -1,0 +1,258 @@
+{
+  "id": "spinocerebellar-ataxia",
+  "name": "Spinocerebellar Ataxia",
+  "aliases": [
+    "SCA",
+    "Autosomal dominant cerebellar ataxia",
+    "ADCA"
+  ],
+  "icd10Codes": ["G11.2", "G11.1", "G11.8"],
+  "omimId": "164400",
+  "orphanetId": "99",
+  "prevalence": {
+    "estimate": "1-5 per 100,000",
+    "range": "1-5 per 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 10, "max": 70, "peak": 35 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "SCA3 (Machado-Joseph disease) most common worldwide; particularly prevalent in Portuguese/Azorean, Brazilian, and Chinese populations",
+      "SCA2 common in Cuba (Holguin province)",
+      "SCA1 relatively common in Italian, South African populations",
+      "SCA6 common in Japan",
+      "SCA7 common in Scandinavian and South African populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Genetic Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "sca-1",
+        "description": "Progressive cerebellar ataxia (gait and/or limb ataxia)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sca-2",
+        "description": "Autosomal dominant inheritance pattern (affected parent)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sca-3",
+        "description": "Identification of pathogenic repeat expansion or mutation in a known SCA gene",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sca-4",
+        "description": "Cerebellar atrophy on MRI",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sca-5",
+        "description": "Exclusion of acquired causes of cerebellar ataxia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Progressive cerebellar ataxia with autosomal dominant family history or confirmed genetic mutation. Over 50 SCA types identified. Genetic testing is definitive.",
+    "notes": "Most common polyglutamine SCAs: SCA1, 2, 3, 6, 7, 17 (CAG repeat expansions). SCA3/MJD is most common worldwide. SCA6 is pure cerebellar and slowly progressive. SCA7 uniquely involves retinal degeneration. Anticipation (earlier onset in successive generations) common in polyglutamine SCAs."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive cerebellar gait ataxia",
+        "snomedCode": "85102008",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "notes": "Wide-based, unsteady gait; the defining feature of all SCAs"
+      },
+      {
+        "symptomName": "Limb ataxia with dysmetria",
+        "snomedCode": "85102008",
+        "frequency": 0.90,
+        "bodySystem": "neurological",
+        "notes": "Intention tremor, finger-to-nose inaccuracy, heel-to-shin ataxia"
+      },
+      {
+        "symptomName": "Cerebellar dysarthria",
+        "snomedCode": "8011004",
+        "frequency": 0.80,
+        "bodySystem": "neurological",
+        "notes": "Scanning, staccato speech"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Nystagmus and oculomotor abnormalities",
+        "snomedCode": "563001",
+        "frequency": 0.70,
+        "bodySystem": "neurological",
+        "notes": "Gaze-evoked nystagmus, saccade abnormalities; slow saccades characteristic of SCA2"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "snomedCode": "40739000",
+        "frequency": 0.50,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Postural instability and falls",
+        "snomedCode": "282299006",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Upper limb incoordination",
+        "frequency": 0.80,
+        "bodySystem": "neurological",
+        "notes": "Difficulty with fine motor tasks, handwriting deterioration"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Peripheral neuropathy",
+        "snomedCode": "302226006",
+        "frequency": 0.40,
+        "bodySystem": "neurological",
+        "notes": "Common in SCA1, SCA2, SCA3"
+      },
+      {
+        "symptomName": "Pyramidal signs (spasticity, hyperreflexia)",
+        "snomedCode": "36649002",
+        "frequency": 0.35,
+        "bodySystem": "neurological",
+        "notes": "Particularly SCA1, SCA3"
+      },
+      {
+        "symptomName": "Extrapyramidal features (dystonia, parkinsonism)",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "SCA2 and SCA3 can present with parkinsonism; SCA17 with chorea"
+      },
+      {
+        "symptomName": "Cognitive decline",
+        "snomedCode": "386806002",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "More prominent in SCA17 and SCA2"
+      },
+      {
+        "symptomName": "Retinal degeneration",
+        "snomedCode": "95695004",
+        "frequency": 0.10,
+        "bodySystem": "ophthalmological",
+        "notes": "Pathognomonic feature of SCA7 (cone-rod dystrophy)"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Bulging eyes (lid retraction and external ophthalmoplegia)",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological",
+        "notes": "Characteristic of SCA3 (Machado-Joseph disease)"
+      },
+      {
+        "symptomName": "Fasciculations and amyotrophy",
+        "frequency": 0.10,
+        "bodySystem": "neurological",
+        "notes": "Lower motor neuron involvement in SCA3"
+      },
+      {
+        "symptomName": "Seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Reported in SCA10, SCA17"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cerebellum",
+    "brainstem",
+    "spinal cord",
+    "peripheral nervous system",
+    "basal ganglia (some subtypes)"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Routine blood tests normal (used to exclude acquired causes)",
+      "Anti-GAD antibodies to exclude autoimmune cerebellar ataxia",
+      "Vitamin E, B12 levels to exclude nutritional causes",
+      "Thyroid function tests",
+      "Alpha-fetoprotein (elevated in ataxia-telangiectasia)"
+    ],
+    "imaging": [
+      "MRI brain: cerebellar atrophy (vermis and hemispheres)",
+      "Pontine atrophy (especially SCA1, SCA2, SCA3, SCA7)",
+      "'Hot cross bun sign' in pons (SCA2, MSA-C differential)",
+      "Spinal cord atrophy in some subtypes",
+      "SCA6: relatively pure cerebellar atrophy without brainstem involvement"
+    ],
+    "genetic": [
+      "SCA1 (ATXN1): CAG repeat; normal <39, pathogenic 39-83",
+      "SCA2 (ATXN2): CAG repeat; normal <31, pathogenic 33-500",
+      "SCA3/MJD (ATXN3): CAG repeat; normal <44, pathogenic 60-87",
+      "SCA6 (CACNA1A): CAG repeat; normal <18, pathogenic 20-33",
+      "SCA7 (ATXN7): CAG repeat; normal <19, pathogenic 37-460",
+      "SCA10 (ATXN10): ATTCT repeat expansion",
+      "SCA17 (TBP): CAG repeat expansion",
+      "Over 50 SCA subtypes identified; many with known genes"
+    ],
+    "other": [
+      "Nerve conduction studies: axonal sensory neuropathy in some subtypes (SCA1, 2, 3)",
+      "Visual evoked potentials abnormal in SCA7",
+      "Electroretinography abnormal in SCA7 (cone-rod dystrophy)",
+      "SARA (Scale for Assessment and Rating of Ataxia) for disease monitoring"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "friedreich-ataxia",
+      "distinguishingFeatures": [
+        "FA is autosomal recessive, not dominant",
+        "FA has areflexia and sensory neuropathy",
+        "FA has cardiomyopathy",
+        "FA has earlier onset (typically <25 years)"
+      ]
+    },
+    {
+      "diseaseId": "multiple-system-atrophy-cerebellar",
+      "distinguishingFeatures": [
+        "MSA-C has prominent autonomic failure",
+        "MSA-C is sporadic without family history",
+        "MSA-C progresses more rapidly",
+        "MSA-C MRI shows hot cross bun sign and middle cerebellar peduncle changes"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-cerebellar-ataxia",
+      "distinguishingFeatures": [
+        "Autoimmune ataxia has subacute onset",
+        "Has anti-GAD, anti-Yo, or other antibodies",
+        "May respond to immunotherapy",
+        "No family history of ataxia"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive ataxia (weeks to months) suggests acquired cause (autoimmune, paraneoplastic, toxic) rather than SCA",
+    "Visual loss in ataxia patient should prompt SCA7 testing and ophthalmological evaluation",
+    "Anticipation (earlier onset in children) is characteristic of polyglutamine repeat disorders",
+    "Levodopa-responsive parkinsonism with ataxia may indicate SCA2 or SCA3",
+    "Absence of family history does not exclude SCA (de novo mutations, non-paternity, late onset in parent)",
+    "SCA6 can be episodic initially, mimicking episodic ataxia"
+  ],
+  "specialistType": ["neurologist", "geneticist", "neuro-ophthalmologist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Klockgether T, et al. Spinocerebellar ataxia. Nat Rev Dis Primers. 2019;5(1):24.",
+    "Ashizawa T, et al. Spinocerebellar ataxias: prospects and challenges for therapy development. Nat Rev Neurol. 2018;14(10):590-605.",
+    "Durr A. Autosomal dominant cerebellar ataxias: polyglutamine expansions and beyond. Lancet Neurol. 2010;9(9):885-894."
+  ],
+  "confidenceInData": "medium"
+}

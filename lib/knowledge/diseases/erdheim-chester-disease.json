@@ -1,0 +1,220 @@
+{
+  "id": "erdheim-chester-disease",
+  "name": "Erdheim-Chester Disease",
+  "aliases": [
+    "ECD",
+    "Non-Langerhans Cell Histiocytosis",
+    "Polyostotic Sclerosing Histiocytosis"
+  ],
+  "icd10Codes": ["C96.1"],
+  "omimId": "602400",
+  "orphanetId": "35687",
+  "prevalence": {
+    "estimate": "Fewer than 1,000 cases reported worldwide",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 40, "max": 70, "peak": 55 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "ecd-maj1",
+        "description": "Histological confirmation: foamy histiocytes (lipid-laden macrophages) positive for CD68 and CD163, negative for CD1a and langerin",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ecd-maj2",
+        "description": "Bilateral symmetric osteosclerosis of long bone diaphyses/metaphyses on imaging",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ecd-min1",
+        "description": "BRAF V600E mutation or other MAPK pathway mutation in lesional tissue",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ecd-min2",
+        "description": "Characteristic perinephric/periaortic soft tissue infiltration ('coated aorta' or 'hairy kidney')",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ecd-sup1",
+        "description": "Exophthalmos, xanthelasma, or retro-orbital infiltration",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histological confirmation with appropriate immunophenotype (CD68+, CD1a-) combined with compatible clinical and radiographic features. BRAF testing should be performed in all cases.",
+    "notes": "Classified as a neoplastic histiocytic disorder (WHO 2016 revision). BRAF V600E mutation present in ~55-70% of cases. May overlap with LCH ('mixed histiocytosis')."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Bilateral symmetric long bone pain",
+        "frequency": 0.80,
+        "bodySystem": "musculoskeletal",
+        "notes": "Most common presenting symptom; lower extremities, especially knees"
+      },
+      {
+        "symptomName": "Bilateral symmetric osteosclerosis of long bone diaphyses on imaging",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal",
+        "notes": "Virtually pathognomonic when present; symmetric cortical thickening on X-ray/CT"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Diabetes insipidus",
+        "frequency": 0.30,
+        "bodySystem": "endocrine",
+        "notes": "From pituitary/hypothalamic infiltration; polyuria, polydipsia"
+      },
+      {
+        "symptomName": "Exophthalmos (bilateral)",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmologic",
+        "notes": "From retro-orbital infiltration"
+      },
+      {
+        "symptomName": "Perirenal fibrosis ('hairy kidney' on CT)",
+        "frequency": 0.30,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.55,
+        "bodySystem": "general"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Periaortic fibrosis ('coated aorta')",
+        "frequency": 0.20,
+        "bodySystem": "cardiovascular",
+        "notes": "May cause renovascular hypertension"
+      },
+      {
+        "symptomName": "Xanthelasma",
+        "frequency": 0.20,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Dyspnea from pulmonary involvement",
+        "frequency": 0.20,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cerebellar ataxia/neurological symptoms",
+        "frequency": 0.15,
+        "bodySystem": "neurologic"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiac infiltration (pericardial, myocardial, valvular)",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "Can cause pericardial tamponade; pseudotumor of right atrium"
+      },
+      {
+        "symptomName": "Retroperitoneal fibrosis with ureteral obstruction",
+        "frequency": 0.10,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "CNS mass lesions",
+        "frequency": 0.10,
+        "bodySystem": "neurologic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "endocrine",
+    "renal",
+    "cardiovascular",
+    "ophthalmologic",
+    "neurologic",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated ESR and CRP",
+      "BRAF V600E mutation positive in 55-70% (blood or tissue)",
+      "Other MAPK pathway mutations (MAP2K1, KRAS, NRAS) in BRAF-wild-type cases",
+      "Mild anemia, elevated LDH may be present"
+    ],
+    "imaging": [
+      "X-ray/CT: bilateral symmetric osteosclerotic lesions of long bone diaphyses (virtually diagnostic)",
+      "Tc-99m bone scan: symmetric increased uptake in long bones",
+      "CT abdomen: perinephric soft tissue ('hairy kidney'), circumferential periaortic sheathing ('coated aorta')",
+      "PET-CT: FDG-avid osseous and extraosseous lesions",
+      "MRI brain: thickened pituitary stalk, retro-orbital masses, parenchymal lesions"
+    ],
+    "genetic": [
+      "BRAF V600E somatic mutation (55-70%)",
+      "MAP2K1 mutations (~20% of BRAF-negative)",
+      "Other MAPK pathway: KRAS, NRAS, ARAF, PIK3CA",
+      "Not inherited; somatic mutations in myeloid precursors"
+    ],
+    "other": [
+      "Biopsy: foamy histiocytes, Touton giant cells, fibrosis",
+      "Immunohistochemistry: CD68+, CD163+, factor XIIIa+, CD1a-, langerin-",
+      "Echocardiography: pericardial effusion, pseudotumor",
+      "Targeted therapy with vemurafenib/cobimetinib for BRAF/MEK-mutated cases"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "langerhans-cell-histiocytosis",
+      "distinguishingFeatures": [
+        "LCH is CD1a+ and langerin+; ECD is CD1a-",
+        "LCH causes lytic bone lesions; ECD causes sclerotic lesions",
+        "LCH more common in children; ECD more common in adults"
+      ]
+    },
+    {
+      "diseaseId": "rosai-dorfman-disease",
+      "distinguishingFeatures": [
+        "RDD shows emperipolesis on histology",
+        "RDD is S100+, CD68+",
+        "RDD primarily involves lymph nodes"
+      ]
+    },
+    {
+      "diseaseId": "retroperitoneal-fibrosis",
+      "distinguishingFeatures": [
+        "Idiopathic retroperitoneal fibrosis lacks bone involvement",
+        "IgG4-related disease may mimic but has elevated IgG4 and plasmacytic infiltrate"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Cardiac involvement (pericardial tamponade, infiltrative cardiomyopathy)",
+    "CNS involvement (seizures, cognitive decline, cerebellar ataxia)",
+    "Bilateral ureteral obstruction with renal failure",
+    "Severe exophthalmos threatening vision"
+  ],
+  "specialistType": [
+    "Hematologist/Oncologist",
+    "Rheumatologist",
+    "Endocrinologist",
+    "Neurologist",
+    "Cardiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Diamond EL, et al. Consensus guidelines for the diagnosis and clinical management of Erdheim-Chester disease. Blood. 2014;124(4):483-492.",
+    "Haroche J, et al. High prevalence of BRAF V600E mutations in Erdheim-Chester disease but not in other non-Langerhans cell histiocytoses. Blood. 2012;120(13):2700-2703.",
+    "Goyal G, et al. Erdheim-Chester disease: consensus recommendations for evaluation, diagnosis, and treatment in the molecular era. Blood. 2020;135(22):1929-1945."
+  ],
+  "confidenceInData": "medium"
+}

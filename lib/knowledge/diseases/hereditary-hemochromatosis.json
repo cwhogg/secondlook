@@ -1,0 +1,265 @@
+{
+  "id": "hereditary-hemochromatosis",
+  "name": "Hereditary Hemochromatosis",
+  "aliases": [
+    "HFE Hemochromatosis",
+    "Iron Overload Disease",
+    "Bronze Diabetes",
+    "Classical Hemochromatosis",
+    "HH"
+  ],
+  "icd10Codes": ["E83.110", "E83.111", "E83.118", "E83.119"],
+  "omimId": "235200",
+  "orphanetId": "139498",
+  "prevalence": {
+    "estimate": "1 in 200 to 1 in 500 in Northern European populations",
+    "range": "0.2%-0.5%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 30, "max": 60, "peak": 45 },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "Northern European",
+      "Celtic/Irish",
+      "Scandinavian",
+      "British"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "AASLD Practice Guidelines for Hemochromatosis",
+    "criteria": [
+      {
+        "id": "hh-c1",
+        "description": "Elevated transferrin saturation (>45%)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hh-c2",
+        "description": "Elevated serum ferritin (>300 ng/mL in men, >200 ng/mL in women)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hh-c3",
+        "description": "Homozygosity for HFE C282Y mutation",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hh-c4",
+        "description": "Hepatic iron concentration >80 µmol/g dry weight on liver biopsy",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hh-c5",
+        "description": "Hepatic iron index >1.9",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hh-c6",
+        "description": "MRI showing hepatic iron overload (T2* or R2* sequences)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hh-c7",
+        "description": "Evidence of iron deposition in target organs",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Elevated transferrin saturation plus either HFE C282Y homozygosity or hepatic iron overload on biopsy/MRI",
+    "notes": "Non-HFE hemochromatosis (Types 2-4) involves different genes. Phenotypic expression varies; not all C282Y homozygotes develop clinical disease."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Bronze skin pigmentation",
+        "snomedCode": "271767006",
+        "frequency": 0.7,
+        "bodySystem": "integumentary",
+        "notes": "Generalized slate-gray or bronze discoloration due to iron and melanin deposition"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue and lethargy",
+        "snomedCode": "84229001",
+        "frequency": 0.85,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arthralgia (especially metacarpophalangeal joints)",
+        "snomedCode": "57676002",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "notes": "2nd and 3rd MCP joints classically affected; 'iron fist' sign"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "snomedCode": "80515008",
+        "frequency": 0.7,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Elevated liver enzymes",
+        "snomedCode": "166603001",
+        "frequency": 0.65,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Erectile dysfunction",
+        "snomedCode": "860914002",
+        "frequency": 0.5,
+        "bodySystem": "endocrine",
+        "notes": "Due to hypogonadotropic hypogonadism from pituitary iron deposition"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Diabetes mellitus",
+        "snomedCode": "73211009",
+        "frequency": 0.4,
+        "bodySystem": "endocrine",
+        "notes": "Due to pancreatic iron deposition; part of 'bronze diabetes'"
+      },
+      {
+        "symptomName": "Cardiomyopathy",
+        "snomedCode": "85898001",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Dilated or restrictive cardiomyopathy from myocardial iron deposition"
+      },
+      {
+        "symptomName": "Cardiac arrhythmias",
+        "snomedCode": "698247007",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "snomedCode": "21522001",
+        "frequency": 0.35,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Loss of libido",
+        "snomedCode": "248095000",
+        "frequency": 0.4,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hepatocellular carcinoma",
+        "snomedCode": "25370001",
+        "frequency": 0.1,
+        "bodySystem": "hepatic",
+        "notes": "Risk greatly increased in those with cirrhosis"
+      },
+      {
+        "symptomName": "Hypothyroidism",
+        "snomedCode": "40930008",
+        "frequency": 0.08,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Adrenal insufficiency",
+        "snomedCode": "386584007",
+        "frequency": 0.05,
+        "bodySystem": "endocrine"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hepatic",
+    "endocrine",
+    "cardiovascular",
+    "musculoskeletal",
+    "integumentary",
+    "hematologic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated transferrin saturation (>45%, often >60%)",
+      "Elevated serum ferritin (often >1000 ng/mL in symptomatic disease)",
+      "Elevated liver transaminases (AST, ALT)",
+      "Elevated fasting glucose or HbA1c",
+      "Low testosterone and gonadotropins in males"
+    ],
+    "imaging": [
+      "MRI liver with T2*/R2* sequences showing hepatic iron overload",
+      "MRI cardiac T2* may show myocardial iron deposition",
+      "Radiographs may show chondrocalcinosis in joints"
+    ],
+    "genetic": [
+      "HFE gene testing: C282Y homozygosity (most common, ~85-90% of cases)",
+      "C282Y/H63D compound heterozygosity (mild phenotype)",
+      "Non-HFE mutations: HJV, HAMP, TFR2, SLC40A1 in non-classical forms"
+    ],
+    "other": [
+      "Liver biopsy with Perls Prussian blue stain showing parenchymal iron deposition",
+      "Quantitative phlebotomy response (mobilizable iron stores)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "secondary-iron-overload",
+      "distinguishingFeatures": [
+        "History of chronic transfusions or ineffective erythropoiesis",
+        "Negative HFE genetic testing",
+        "Iron overload secondary to thalassemia, sideroblastic anemia, or MDS"
+      ]
+    },
+    {
+      "diseaseId": "alcoholic-liver-disease",
+      "distinguishingFeatures": [
+        "History of significant alcohol use",
+        "Ferritin may be elevated but transferrin saturation typically <45%",
+        "Liver biopsy shows steatosis and Mallory bodies"
+      ]
+    },
+    {
+      "diseaseId": "non-alcoholic-fatty-liver-disease",
+      "distinguishingFeatures": [
+        "Metabolic syndrome features present",
+        "Mild ferritin elevation but transferrin saturation usually normal",
+        "Liver biopsy shows steatosis without significant parenchymal iron"
+      ]
+    },
+    {
+      "diseaseId": "wilson-disease",
+      "distinguishingFeatures": [
+        "Wilson disease presents with copper overload, not iron",
+        "Low ceruloplasmin, elevated urine copper",
+        "Kayser-Fleischer rings on slit lamp exam"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Hepatic cirrhosis with risk of hepatocellular carcinoma",
+    "Acute heart failure or life-threatening arrhythmias from cardiac iron overload",
+    "Rapidly progressive liver failure",
+    "Severe hypogonadism with infertility",
+    "New-onset diabetes in a patient with liver disease and skin hyperpigmentation"
+  ],
+  "specialistType": [
+    "Hepatologist",
+    "Hematologist",
+    "Medical Geneticist",
+    "Endocrinologist",
+    "Cardiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Bacon BR, et al. Diagnosis and management of hemochromatosis: 2011 Practice Guideline by AASLD. Hepatology. 2011;54(1):328-343.",
+    "European Association for the Study of the Liver. EASL Clinical Practice Guidelines for HFE Hemochromatosis. J Hepatol. 2010;53(1):3-22.",
+    "Powell LW, et al. Haemochromatosis. Lancet. 2016;388(10045):706-716.",
+    "Barton JC, Edwards CQ. HFE Hemochromatosis. GeneReviews. Updated 2018."
+  ],
+  "confidenceInData": "medium"
+}

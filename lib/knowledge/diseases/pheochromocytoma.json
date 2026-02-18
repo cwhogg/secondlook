@@ -1,0 +1,269 @@
+{
+  "id": "pheochromocytoma",
+  "name": "Pheochromocytoma",
+  "aliases": [
+    "Pheo",
+    "Adrenal Paraganglioma",
+    "Chromaffin Cell Tumor",
+    "Catecholamine-Secreting Tumor"
+  ],
+  "icd10Codes": ["D35.0", "C74.1"],
+  "omimId": "171300",
+  "orphanetId": "29072",
+  "prevalence": {
+    "estimate": "1 in 100,000 to 1 in 500,000 per year (incidence)",
+    "range": "0.0002%-0.001%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 60, "peak": 40 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Endocrine Society Clinical Practice Guidelines for Pheochromocytoma/Paraganglioma",
+    "criteria": [
+      {
+        "id": "pheo-c1",
+        "description": "Elevated plasma free metanephrines (metanephrine and/or normetanephrine) >2x upper limit of normal",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pheo-c2",
+        "description": "Adrenal mass identified on cross-sectional imaging (CT or MRI)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pheo-c3",
+        "description": "Histopathological confirmation of chromaffin cell tumor after surgical resection",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pheo-c4",
+        "description": "Positive functional imaging (MIBG scan, 68Ga-DOTATATE PET/CT, or 18F-FDG PET)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pheo-c5",
+        "description": "Elevated 24-hour urinary fractionated metanephrines and catecholamines",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pheo-c6",
+        "description": "Classic triad of episodic headache, sweating, and tachycardia with hypertension",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Biochemical evidence of catecholamine excess (elevated plasma metanephrines) plus anatomic localization by imaging. Definitive diagnosis by histopathology after resection.",
+    "notes": "Up to 40% of pheochromocytomas are associated with germline mutations. The 'rule of 10s' (10% bilateral, 10% extra-adrenal, 10% malignant, 10% familial) is now considered outdated as hereditary rates are closer to 30-40%."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Classic triad: episodic headache, sweating, and palpitations with hypertension",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular",
+        "notes": "Full triad present in ~50%; individual symptoms more common"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Paroxysmal or sustained hypertension",
+        "snomedCode": "38341003",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular",
+        "notes": "Can be paroxysmal, sustained, or both; orthostatic hypotension also possible"
+      },
+      {
+        "symptomName": "Episodic headache",
+        "snomedCode": "25064002",
+        "frequency": 0.8,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Diaphoresis (excessive sweating)",
+        "snomedCode": "52613005",
+        "frequency": 0.75,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Palpitations / tachycardia",
+        "snomedCode": "80313002",
+        "frequency": 0.7,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Anxiety and sense of impending doom",
+        "snomedCode": "48694002",
+        "frequency": 0.6,
+        "bodySystem": "neuropsychiatric"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Pallor during paroxysms",
+        "snomedCode": "398979000",
+        "frequency": 0.4,
+        "bodySystem": "integumentary",
+        "notes": "Due to catecholamine-mediated vasoconstriction; flushing is rare"
+      },
+      {
+        "symptomName": "Tremor",
+        "snomedCode": "26079004",
+        "frequency": 0.35,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "snomedCode": "422400008",
+        "frequency": 0.35,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Orthostatic hypotension",
+        "snomedCode": "28651003",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Paradoxical finding due to chronic catecholamine-induced volume contraction"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Catecholamine-induced cardiomyopathy",
+        "snomedCode": "195021004",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular",
+        "notes": "Takotsubo-like or dilated cardiomyopathy"
+      },
+      {
+        "symptomName": "Hyperglycemia / new-onset diabetes",
+        "snomedCode": "80394007",
+        "frequency": 0.1,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Hypertensive crisis / hypertensive emergency",
+        "snomedCode": "706882009",
+        "frequency": 0.1,
+        "bodySystem": "cardiovascular",
+        "notes": "Can be triggered by surgery, anesthesia, or certain medications"
+      },
+      {
+        "symptomName": "Stroke or myocardial infarction",
+        "snomedCode": "22298006",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Constipation or ileus",
+        "snomedCode": "14760008",
+        "frequency": 0.1,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "endocrine",
+    "neurological",
+    "neuropsychiatric",
+    "gastrointestinal",
+    "integumentary"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated plasma free metanephrines (sensitivity >97%)",
+      "Elevated 24-hour urinary fractionated metanephrines and catecholamines",
+      "Elevated plasma or urinary normetanephrine (norepinephrine-secreting) or metanephrine (epinephrine-secreting)",
+      "Chromogranin A elevation (nonspecific marker)",
+      "Hyperglycemia or impaired glucose tolerance"
+    ],
+    "imaging": [
+      "CT abdomen with contrast showing adrenal mass (typically >3 cm, heterogeneous, >10 HU)",
+      "MRI showing characteristic T2 hyperintensity ('light bulb sign')",
+      "123I-MIBG scintigraphy for functional localization",
+      "68Ga-DOTATATE PET/CT (superior sensitivity for metastatic disease)",
+      "18F-FDG PET/CT for SDH-related or metastatic pheochromocytoma"
+    ],
+    "genetic": [
+      "Up to 30-40% have germline mutations",
+      "Susceptibility genes: RET (MEN2), VHL, SDHB/C/D, NF1, TMEM127, MAX, FH",
+      "SDHB mutations associated with higher malignancy risk",
+      "Genetic testing recommended for all patients"
+    ],
+    "other": [
+      "Clonidine suppression test if biochemical results equivocal",
+      "Histopathology: Zellballen pattern, positive chromogranin and synaptophysin staining",
+      "PASS (Pheochromocytoma of the Adrenal Gland Scaled Score) for malignancy risk assessment"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "essential-hypertension",
+      "distinguishingFeatures": [
+        "Essential hypertension lacks paroxysmal symptoms",
+        "No biochemical catecholamine excess",
+        "No adrenal mass on imaging"
+      ]
+    },
+    {
+      "diseaseId": "carcinoid-syndrome",
+      "distinguishingFeatures": [
+        "Carcinoid features flushing rather than pallor",
+        "Carcinoid has elevated 5-HIAA",
+        "Carcinoid rarely causes severe hypertension"
+      ]
+    },
+    {
+      "diseaseId": "anxiety-disorder",
+      "distinguishingFeatures": [
+        "Anxiety disorder lacks sustained hypertension",
+        "Normal catecholamine and metanephrine levels",
+        "No adrenal mass"
+      ]
+    },
+    {
+      "diseaseId": "thyrotoxicosis",
+      "distinguishingFeatures": [
+        "Thyrotoxicosis has suppressed TSH and elevated free T4",
+        "Thyrotoxicosis features weight loss with increased appetite",
+        "Heat intolerance more prominent in thyrotoxicosis"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Hypertensive crisis during surgery or anesthesia (undiagnosed pheochromocytoma)",
+    "Paradoxical hypertensive response to beta-blockers (unopposed alpha stimulation)",
+    "SDHB mutation carrier (high risk of malignant disease)",
+    "Large tumor (>5 cm) or extra-adrenal location (higher malignancy risk)",
+    "Catecholamine-induced cardiomyopathy or pulmonary edema",
+    "Family history of MEN2, VHL, NF1, or hereditary paraganglioma syndromes"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Endocrine Surgeon",
+    "Medical Geneticist",
+    "Cardiologist",
+    "Nuclear Medicine Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Lenders JW, et al. Pheochromocytoma and paraganglioma: an Endocrine Society clinical practice guideline. J Clin Endocrinol Metab. 2014;99(6):1915-42.",
+    "Neumann HPH, et al. Pheochromocytoma and Paraganglioma. N Engl J Med. 2019;381(6):552-565.",
+    "Eisenhofer G, et al. Biochemical diagnosis of pheochromocytoma. Best Pract Res Clin Endocrinol Metab. 2003;17(1):53-73.",
+    "Fishbein L, Nathanson KL. Pheochromocytoma and paraganglioma: understanding the complexities of the genetic background. Cancer Genet. 2012;205(1-2):1-11."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,245 @@
+{
+  "id": "hyperaldosteronism-primary",
+  "name": "Primary Hyperaldosteronism",
+  "aliases": [
+    "Conn Syndrome",
+    "Conn's Syndrome",
+    "Primary Aldosteronism",
+    "PA",
+    "Aldosterone-Producing Adenoma",
+    "Bilateral Adrenal Hyperplasia"
+  ],
+  "icd10Codes": ["E26.0", "E26.09"],
+  "omimId": "103900",
+  "orphanetId": "235936",
+  "prevalence": {
+    "estimate": "5-10% of hypertensive patients; 1 in 1,000 general population",
+    "range": "0.05%-0.1%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 30, "max": 60, "peak": 45 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": ["African American (higher prevalence among hypertensive patients)"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Endocrine Society Clinical Practice Guidelines for Primary Aldosteronism",
+    "criteria": [
+      {
+        "id": "pa-c1",
+        "description": "Elevated aldosterone-to-renin ratio (ARR) >30 ng/dL per ng/mL/h (or equivalent units) as screening test",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pa-c2",
+        "description": "Confirmatory test positive: failure to suppress aldosterone after saline infusion test, oral sodium loading, fludrocortisone suppression test, or captopril challenge test",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pa-c3",
+        "description": "Subtype differentiation by adrenal CT and/or adrenal venous sampling (AVS)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pa-c4",
+        "description": "Suppressed or undetectable plasma renin activity (PRA) or direct renin concentration",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pa-c5",
+        "description": "Hypokalemia (spontaneous or diuretic-induced)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Positive ARR screening followed by confirmatory suppression testing demonstrating autonomous aldosterone production",
+    "notes": "Most patients with primary aldosteronism are normokalemic. Hypokalemia is present in only ~30% of cases. Subtypes include aldosterone-producing adenoma (APA, ~35%), bilateral adrenal hyperplasia (BAH, ~60%), and rare forms (unilateral hyperplasia, adrenal carcinoma, familial hyperaldosteronism)."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Resistant hypertension with hypokalemia",
+        "snomedCode": "38341003",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Classic presentation but hypokalemia present in only ~30%; resistant HTN is the most common indication for screening"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hypertension (often moderate to severe, resistant to treatment)",
+        "snomedCode": "38341003",
+        "frequency": 0.95,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.5,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "snomedCode": "25064002",
+        "frequency": 0.5,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nocturia / polyuria",
+        "snomedCode": "56574000",
+        "frequency": 0.45,
+        "bodySystem": "renal",
+        "notes": "Due to hypokalemia-induced nephrogenic diabetes insipidus"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Muscle weakness or cramps",
+        "snomedCode": "26544005",
+        "frequency": 0.35,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to hypokalemia"
+      },
+      {
+        "symptomName": "Palpitations",
+        "snomedCode": "80313002",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Constipation",
+        "snomedCode": "14760008",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to hypokalemia-induced ileus"
+      },
+      {
+        "symptomName": "Paresthesias",
+        "snomedCode": "91019004",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Polydipsia",
+        "snomedCode": "17173007",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiac arrhythmias (from severe hypokalemia)",
+        "snomedCode": "698247007",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Rhabdomyolysis (from severe hypokalemia)",
+        "snomedCode": "240131006",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Paralysis (hypokalemic periodic paralysis-like episodes)",
+        "snomedCode": "88092000",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "renal",
+    "endocrine",
+    "musculoskeletal",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated aldosterone-to-renin ratio (ARR) as screening test",
+      "Elevated plasma aldosterone concentration (PAC)",
+      "Suppressed plasma renin activity (PRA) or direct renin concentration",
+      "Hypokalemia (spontaneous or diuretic-provoked) in ~30%",
+      "Metabolic alkalosis",
+      "Failure of aldosterone suppression on confirmatory testing"
+    ],
+    "imaging": [
+      "CT adrenals: may show unilateral adenoma (usually <2 cm) or bilateral adrenal hyperplasia",
+      "CT may be normal in microadenomas",
+      "Adrenal venous sampling (AVS) is gold standard for lateralization",
+      "Echocardiography may show LVH disproportionate to degree of hypertension"
+    ],
+    "genetic": [
+      "Familial hyperaldosteronism type I (glucocorticoid-remediable aldosteronism): CYP11B1/CYP11B2 chimeric gene",
+      "Familial hyperaldosteronism type II: CLCN2 mutations",
+      "Familial hyperaldosteronism type III: KCNJ5 mutations",
+      "Somatic KCNJ5 mutations found in ~40% of aldosterone-producing adenomas",
+      "ATP1A1, ATP2B3, CACNA1D somatic mutations also identified"
+    ],
+    "other": [
+      "Adrenal venous sampling (AVS) for subtype differentiation before surgical decision",
+      "Saline infusion test (250 mL/h x 4 hours; PAC >10 ng/dL confirms PA)",
+      "ECG may show signs of hypokalemia (U waves, ST depression, prolonged QT)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "essential-hypertension",
+      "distinguishingFeatures": [
+        "Essential hypertension has normal ARR",
+        "Normal potassium in essential hypertension",
+        "Responds to standard antihypertensive therapy"
+      ]
+    },
+    {
+      "diseaseId": "cushing-syndrome",
+      "distinguishingFeatures": [
+        "Cushing has elevated cortisol with characteristic phenotype",
+        "Cushing may cause hypokalemia but from different mechanism",
+        "Moon facies, striae, and proximal weakness in Cushing"
+      ]
+    },
+    {
+      "diseaseId": "renovascular-hypertension",
+      "distinguishingFeatures": [
+        "Renovascular hypertension has elevated renin (secondary hyperaldosteronism)",
+        "Renal artery stenosis on imaging",
+        "ARR typically not elevated (both renin and aldosterone high)"
+      ]
+    },
+    {
+      "diseaseId": "liddle-syndrome",
+      "distinguishingFeatures": [
+        "Liddle syndrome has low aldosterone and low renin",
+        "Genetic disorder of ENaC channel",
+        "Responds to amiloride, not spironolactone"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe hypokalemia (<2.5 mEq/L) with cardiac arrhythmias",
+    "Adrenal mass >4 cm (concern for adrenocortical carcinoma)",
+    "Young-onset hypertension (<20 years) suggesting familial hyperaldosteronism",
+    "Flash pulmonary edema with bilateral renal artery stenosis mimicking PA",
+    "Concurrent adrenal incidentaloma requiring functional workup"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Hypertension Specialist",
+    "Endocrine Surgeon",
+    "Interventional Radiologist (for AVS)",
+    "Cardiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Funder JW, et al. The Management of Primary Aldosteronism: Case Detection, Diagnosis, and Treatment: An Endocrine Society Clinical Practice Guideline. J Clin Endocrinol Metab. 2016;101(5):1889-916.",
+    "Young WF. Primary aldosteronism: renaissance of a syndrome. Clin Endocrinol (Oxf). 2007;66(5):607-18.",
+    "Monticone S, et al. Prevalence and Clinical Manifestations of Primary Aldosteronism Encountered in Primary Care Practice. J Am Coll Cardiol. 2017;69(14):1811-1820.",
+    "Stowasser M. Update in primary aldosteronism. J Clin Endocrinol Metab. 2015;100(1):1-10."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,225 @@
+{
+  "id": "idiopathic-anaphylaxis",
+  "name": "Idiopathic Anaphylaxis",
+  "aliases": [
+    "IA",
+    "Idiopathic anaphylaxis - generalized",
+    "Idiopathic anaphylaxis - angioedema",
+    "Unexplained anaphylaxis"
+  ],
+  "icd10Codes": ["T78.2", "T78.09"],
+  "prevalence": {
+    "estimate": "Estimated 20,000-50,000 cases in the United States",
+    "range": "Annual incidence of anaphylaxis is 50-112 per 100,000; idiopathic accounts for ~20-30% of anaphylaxis cases",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 10, "max": 60, "peak": 35 },
+    "sexPredilection": "female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Greenberger Criteria for Idiopathic Anaphylaxis",
+    "criteria": [
+      {
+        "id": "ia-1",
+        "description": "Fulfills clinical criteria for anaphylaxis (acute onset involving skin/mucosal tissue AND respiratory compromise and/or hypotension, OR involvement of two or more organ systems after exposure to likely allergen)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ia-2",
+        "description": "No identifiable trigger despite thorough evaluation including allergy testing, food diary, and medication review",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ia-3",
+        "description": "Exclusion of clonal mast cell disorder (normal baseline tryptase, negative KIT D816V, normal bone marrow if indicated)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ia-4",
+        "description": "Acute serum tryptase elevated during episode (>11.4 ng/mL or >20% + 2 ng/mL above baseline)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ia-5",
+        "description": "Recurrent episodes (frequent = >=6 episodes per year or >=2 in 2 months; infrequent = fewer)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Clinical anaphylaxis without identifiable trigger after thorough allergic evaluation and exclusion of mast cell clonal disease",
+    "notes": "Classified as frequent (>=6/year or >=2 within 2 months) or infrequent. Many initially diagnosed as idiopathic are later reclassified when a trigger is found. Must also exclude hereditary angioedema, carcinoid, pheochromocytoma, and other mimics."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent episodes meeting anaphylaxis criteria without identifiable trigger",
+        "frequency": 1.0,
+        "bodySystem": "immunologic",
+        "notes": "Defining feature: anaphylaxis of unknown cause"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Urticaria and angioedema during episodes",
+        "snomedCode": "126485001",
+        "frequency": 0.90,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hypotension / cardiovascular collapse",
+        "snomedCode": "45007003",
+        "frequency": 0.70,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Dyspnea / bronchospasm",
+        "snomedCode": "267036007",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Flushing",
+        "snomedCode": "271807003",
+        "frequency": 0.75,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pruritus",
+        "snomedCode": "418290006",
+        "frequency": 0.80,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Abdominal pain, nausea, vomiting, or diarrhea",
+        "snomedCode": "21522001",
+        "frequency": 0.50,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Laryngeal edema / throat tightness",
+        "snomedCode": "84229001",
+        "frequency": 0.40,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Syncope or presyncope",
+        "snomedCode": "271594007",
+        "frequency": 0.35,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tachycardia",
+        "snomedCode": "3424008",
+        "frequency": 0.45,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiac arrest",
+        "snomedCode": "410429000",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Seizure (from cerebral hypoperfusion)",
+        "snomedCode": "91175000",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Disseminated intravascular coagulation",
+        "snomedCode": "67406007",
+        "frequency": 0.01,
+        "bodySystem": "hematologic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "immunologic",
+    "dermatological",
+    "cardiovascular",
+    "respiratory",
+    "gastrointestinal",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Acute serum tryptase elevated during episode (draw within 15 min to 3 hours of onset)",
+      "Baseline serum tryptase normal (distinguishes from mastocytosis)",
+      "24-hour urine histamine metabolites may be elevated during episodes",
+      "Negative specific IgE testing to common allergens",
+      "Normal C4 and C1-inhibitor levels (excludes hereditary angioedema)"
+    ],
+    "imaging": [
+      "Generally normal between episodes",
+      "CT chest/abdomen if carcinoid or other tumor suspected"
+    ],
+    "genetic": [
+      "Consider TPSAB1 copy number testing (hereditary alpha-tryptasemia may predispose)",
+      "No specific genetic cause identified"
+    ],
+    "other": [
+      "Comprehensive allergy evaluation: skin prick testing, specific IgE panels, food challenge if indicated",
+      "Bone marrow biopsy if baseline tryptase elevated or frequent severe episodes (exclude mastocytosis)",
+      "Drug provocation testing if medication trigger suspected"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "mast-cell-activation-syndrome",
+      "distinguishingFeatures": [
+        "MCAS has chronic episodic multisystem symptoms, not just acute anaphylaxis",
+        "Idiopathic anaphylaxis is defined by discrete anaphylactic episodes"
+      ]
+    },
+    {
+      "diseaseId": "systemic-mastocytosis",
+      "distinguishingFeatures": [
+        "SM has elevated baseline tryptase, KIT D816V, and bone marrow abnormalities",
+        "Idiopathic anaphylaxis has normal baseline tryptase and bone marrow"
+      ]
+    },
+    {
+      "diseaseId": "hereditary-angioedema",
+      "distinguishingFeatures": [
+        "HAE has low C4 and low C1-inhibitor (Type I) or dysfunctional C1-inhibitor (Type II)",
+        "HAE does not typically cause urticaria or hypotension"
+      ]
+    },
+    {
+      "diseaseId": "food-allergy",
+      "distinguishingFeatures": [
+        "Food allergy has identifiable trigger on skin prick/specific IgE testing",
+        "Idiopathic anaphylaxis occurs without identifiable food trigger"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Frequent episodes (>=6/year) requiring prophylactic treatment",
+    "Episodes with cardiovascular collapse or cardiac arrest",
+    "Laryngeal edema requiring intubation",
+    "Baseline tryptase elevation (must exclude mastocytosis)",
+    "Progressive increase in episode severity or frequency"
+  ],
+  "specialistType": [
+    "Allergist/Immunologist",
+    "Emergency medicine physician",
+    "Hematologist (if mast cell disorder suspected)"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Greenberger PA, et al. Idiopathic anaphylaxis. Immunol Allergy Clin North Am. 2015;35(2):349-362.",
+    "Ditto AM, et al. Idiopathic anaphylaxis: a series of 335 cases. Ann Allergy Asthma Immunol. 1996;77(4):285-291.",
+    "Akin C. Mast cell activation syndromes. J Allergy Clin Immunol. 2017;140(2):349-355."
+  ],
+  "confidenceInData": "medium"
+}

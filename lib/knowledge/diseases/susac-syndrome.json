@@ -1,0 +1,209 @@
+{
+  "id": "susac-syndrome",
+  "name": "Susac Syndrome",
+  "aliases": [
+    "Retinocochleocerebral Vasculopathy",
+    "SICRET Syndrome (Small Vessel Occlusive Disease)",
+    "Susac's Syndrome"
+  ],
+  "icd10Codes": ["I67.7"],
+  "omimId": "614272",
+  "orphanetId": "838",
+  "prevalence": {
+    "estimate": "Fewer than 500 cases reported worldwide",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 50, "peak": 30 },
+    "sexPredilection": "female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Proposed Diagnostic Criteria for Susac Syndrome (Kleffner 2016)",
+    "criteria": [
+      {
+        "id": "sus-maj1",
+        "description": "Encephalopathy (cognitive/behavioral changes, confusion, memory loss, psychosis)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sus-maj2",
+        "description": "Branch retinal artery occlusion (BRAO) on fluorescein angiography",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sus-maj3",
+        "description": "Sensorineural hearing loss (often low-to-mid frequency)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sus-min1",
+        "description": "Corpus callosum lesions on MRI ('snowball' pattern, central callosal involvement)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sus-min2",
+        "description": "Arteriolar wall hyperfluorescence on fluorescein angiography (even without frank BRAO)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Complete triad (encephalopathy + BRAO + SNHL) is diagnostic. Incomplete forms recognized with 2 of 3 features. Characteristic MRI findings (central corpus callosum 'snowball' lesions) are highly supportive. All three components may not appear simultaneously.",
+    "notes": "Often initially misdiagnosed as MS. Corpus callosum involvement in Susac is central/callosal body (not calloso-septal as in MS). Self-limited but may cause permanent damage if untreated. Anti-endothelial cell antibodies may be present."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Clinical triad: encephalopathy + retinal artery occlusion + hearing loss",
+        "frequency": 0.85,
+        "bodySystem": "neurologic",
+        "notes": "Complete triad present in ~85% eventually; only ~13% present with all three simultaneously"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Encephalopathy (confusion, personality change, cognitive decline)",
+        "frequency": 0.90,
+        "bodySystem": "neurologic",
+        "notes": "Often the first and most prominent feature; may include paranoia, psychosis"
+      },
+      {
+        "symptomName": "Sensorineural hearing loss",
+        "snomedCode": "60700002",
+        "frequency": 0.80,
+        "bodySystem": "neurologic",
+        "notes": "Low-to-mid frequency loss; may be unilateral initially then bilateral"
+      },
+      {
+        "symptomName": "Visual field defects/scotomata from BRAO",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmologic",
+        "notes": "Patients may not report visual changes; fluorescein angiography essential"
+      },
+      {
+        "symptomName": "Headache",
+        "snomedCode": "25064002",
+        "frequency": 0.70,
+        "bodySystem": "neurologic"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Tinnitus",
+        "snomedCode": "60862001",
+        "frequency": 0.40,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Vertigo",
+        "snomedCode": "399153001",
+        "frequency": 0.30,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Gait ataxia",
+        "frequency": 0.25,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.20,
+        "bodySystem": "neurologic"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.05,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Myalgia/arthralgia",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Skin livedo reticularis",
+        "frequency": 0.05,
+        "bodySystem": "integumentary"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurologic",
+    "ophthalmologic",
+    "auditory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF: elevated protein, mild lymphocytic pleocytosis (50% of cases)",
+      "Anti-endothelial cell antibodies (research; not routinely available)",
+      "ESR may be mildly elevated",
+      "Routine labs often normal"
+    ],
+    "imaging": [
+      "MRI brain: central corpus callosum 'snowball' lesions (highly characteristic); may also involve periventricular white matter, deep gray matter, cerebellum",
+      "MRI with contrast: leptomeningeal enhancement may be present",
+      "Fluorescein angiography: branch retinal artery occlusions (BRAO), arteriolar wall hyperfluorescence",
+      "OCT: inner retinal thinning from prior BRAOs"
+    ],
+    "genetic": [
+      "No established genetic cause",
+      "HLA associations not consistently demonstrated"
+    ],
+    "other": [
+      "Audiometry: low-to-mid frequency sensorineural hearing loss (distinguishes from presbycusis)",
+      "Fluorescein angiography is critical (retinal changes may be subclinical)",
+      "Visual field testing: scotomata corresponding to BRAO",
+      "Retinal biopsy (rarely done): arteriolar endotheliopathy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "multiple-sclerosis",
+      "distinguishingFeatures": [
+        "MS lesions are calloso-septal (undersurface), not central callosal",
+        "MS does not cause BRAO or hearing loss typically",
+        "MS has oligoclonal bands in CSF (Susac usually does not)"
+      ]
+    },
+    {
+      "diseaseId": "systemic-lupus-erythematosus",
+      "distinguishingFeatures": [
+        "SLE has positive ANA, anti-dsDNA, multi-organ involvement",
+        "SLE CNS involvement differs in imaging pattern"
+      ]
+    },
+    {
+      "diseaseId": "cogan-syndrome",
+      "distinguishingFeatures": [
+        "Cogan syndrome has interstitial keratitis (not BRAO)",
+        "Cogan syndrome lacks encephalopathy/corpus callosum lesions"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Acute encephalopathy with personality change and confusion (may mimic psychiatric illness)",
+    "Rapidly progressive hearing loss (may be irreversible without early treatment)",
+    "Multiple BRAOs causing cumulative visual field loss",
+    "Severe corpus callosum involvement predicting poor neurological outcome"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Ophthalmologist (retina specialist)",
+    "Otolaryngologist/Audiologist",
+    "Rheumatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Kleffner I, et al. Diagnostic criteria for Susac syndrome. J Neurol Neurosurg Psychiatry. 2016;87(12):1287-1295.",
+    "Susac JO. Susac's syndrome. AJNR Am J Neuroradiol. 2004;25(3):351-352.",
+    "Dorr J, et al. Characteristics of Susac syndrome: a review of all reported cases. Nat Rev Neurol. 2013;9(6):307-316."
+  ],
+  "confidenceInData": "medium"
+}

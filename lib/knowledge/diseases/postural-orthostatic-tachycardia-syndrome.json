@@ -1,0 +1,235 @@
+{
+  "id": "postural-orthostatic-tachycardia-syndrome",
+  "name": "Postural Orthostatic Tachycardia Syndrome",
+  "aliases": [
+    "POTS",
+    "Postural tachycardia syndrome",
+    "Chronic orthostatic intolerance"
+  ],
+  "icd10Codes": ["I49.8", "G90.3"],
+  "prevalence": {
+    "estimate": "1-3 per 1,000",
+    "range": "170 per 100,000 to 300 per 100,000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 15, "max": 50, "peak": 25 },
+    "sexPredilection": "female",
+    "ethnicAssociations": ["Caucasian"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Heart Rhythm Society Expert Consensus Statement 2015",
+    "criteria": [
+      {
+        "id": "pots-1",
+        "description": "Sustained heart rate increase of >=30 bpm (or >=40 bpm in adolescents 12-19) within 10 minutes of standing or head-up tilt, in the absence of orthostatic hypotension (BP drop >20/10 mmHg)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pots-2",
+        "description": "Symptoms of orthostatic intolerance present for at least 3-6 months",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pots-3",
+        "description": "Absence of other conditions that could explain tachycardia (dehydration, medications, prolonged bed rest, anemia, thyroid dysfunction)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pots-4",
+        "description": "Standing heart rate frequently exceeds 120 bpm",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pots-5",
+        "description": "Symptoms worsen with standing and improve with recumbency",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria must be met",
+    "notes": "Head-up tilt table test or active standing test is the standard diagnostic method. 24-hour Holter monitoring may support diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Excessive heart rate increase on standing (>=30 bpm)",
+        "snomedCode": "11092001",
+        "frequency": 1.0,
+        "bodySystem": "cardiovascular",
+        "notes": "Defining feature; must be reproducible"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Lightheadedness on standing",
+        "snomedCode": "386705008",
+        "frequency": 0.90,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Palpitations",
+        "snomedCode": "80313002",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "snomedCode": "413121006",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.90,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Pre-syncope",
+        "snomedCode": "272030005",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain fog / cognitive impairment",
+        "snomedCode": "736322003",
+        "frequency": 0.80,
+        "bodySystem": "neurological",
+        "notes": "Difficulty concentrating, memory issues"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Syncope",
+        "snomedCode": "271594007",
+        "frequency": 0.30,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nausea",
+        "snomedCode": "422587007",
+        "frequency": 0.50,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Tremulousness",
+        "snomedCode": "26079004",
+        "frequency": 0.40,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Chest pain",
+        "snomedCode": "29857009",
+        "frequency": 0.35,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Acrocyanosis of dependent extremities",
+        "snomedCode": "54197001",
+        "frequency": 0.40,
+        "bodySystem": "vascular",
+        "notes": "Purplish discoloration of lower legs on standing"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Bladder dysfunction",
+        "snomedCode": "40492006",
+        "frequency": 0.15,
+        "bodySystem": "genitourinary"
+      },
+      {
+        "symptomName": "Gastroparesis",
+        "snomedCode": "235675006",
+        "frequency": 0.10,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pupillary abnormalities",
+        "snomedCode": "12416001",
+        "frequency": 0.10,
+        "bodySystem": "ophthalmologic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "gastrointestinal",
+    "genitourinary",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated standing norepinephrine (>600 pg/mL in hyperadrenergic subtype)",
+      "Low blood volume on DAXOR blood volume testing",
+      "Possible ganglionic AChR antibodies (autoimmune subtype)"
+    ],
+    "imaging": [
+      "QSART may show abnormal sweat responses",
+      "Thermoregulatory sweat test abnormalities in neuropathic subtype"
+    ],
+    "genetic": [
+      "NET gene (SLC6A2) mutations in rare familial cases",
+      "Associated with hypermobile Ehlers-Danlos Syndrome"
+    ],
+    "other": [
+      "Head-up tilt table test: HR increase >=30 bpm within 10 min",
+      "Active standing test with continuous HR/BP monitoring",
+      "Valsalva maneuver may show abnormal blood pressure responses"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "inappropriate-sinus-tachycardia",
+      "distinguishingFeatures": [
+        "IST has elevated resting heart rate (>100 bpm) not just on standing",
+        "IST lacks the marked orthostatic HR increment seen in POTS"
+      ]
+    },
+    {
+      "diseaseId": "neurocardiogenic-syncope",
+      "distinguishingFeatures": [
+        "NCS features bradycardia and hypotension at the time of syncope",
+        "POTS features tachycardia without significant blood pressure drop"
+      ]
+    },
+    {
+      "diseaseId": "orthostatic-hypotension-neurogenic",
+      "distinguishingFeatures": [
+        "Neurogenic OH has a sustained BP drop >20/10 mmHg on standing",
+        "POTS does not have sustained orthostatic hypotension"
+      ]
+    },
+    {
+      "diseaseId": "mast-cell-activation-syndrome",
+      "distinguishingFeatures": [
+        "MCAS may cause flushing and tachycardia but has elevated tryptase during episodes",
+        "MCAS has prominent allergic-type symptoms"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Syncope with injury",
+    "Rapidly progressive autonomic symptoms suggesting autoimmune or paraneoplastic cause",
+    "New onset after viral illness may suggest post-infectious autoimmune etiology",
+    "Weight loss or night sweats suggesting malignancy"
+  ],
+  "specialistType": [
+    "Autonomic neurologist",
+    "Cardiologist (electrophysiologist)",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Sheldon RS, et al. 2015 Heart Rhythm Society Expert Consensus Statement on the Diagnosis and Treatment of Postural Tachycardia Syndrome. Heart Rhythm. 2015;12(6):e41-e63.",
+    "Vernino S, et al. Postural Orthostatic Tachycardia Syndrome (POTS): State of the Science and Clinical Care from a 2019 National Institutes of Health Expert Consensus Meeting. Auton Neurosci. 2021;235:102828.",
+    "Raj SR, et al. Long-COVID postural tachycardia syndrome: an American Autonomic Society statement. Clin Auton Res. 2021;31(3):365-368."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,261 @@
+{
+  "id": "friedreich-ataxia",
+  "name": "Friedreich Ataxia",
+  "aliases": [
+    "FRDA",
+    "FA",
+    "Friedreich's ataxia"
+  ],
+  "icd10Codes": ["G11.11"],
+  "omimId": "229300",
+  "orphanetId": "95",
+  "prevalence": {
+    "estimate": "1-2 per 50,000",
+    "range": "1 in 20,000 to 1 in 50,000 in European populations",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 5, "max": 25, "peak": 12 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Most common in populations of European descent",
+      "Carrier frequency ~1 in 100 in Europeans",
+      "Very rare in East Asian, Sub-Saharan African, and Native American populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Genetic Criteria",
+    "criteria": [
+      {
+        "id": "fa-1",
+        "description": "Progressive gait and limb ataxia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "fa-2",
+        "description": "Absent lower limb deep tendon reflexes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "fa-3",
+        "description": "Onset before age 25 (classic form)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fa-4",
+        "description": "Homozygous GAA trinucleotide repeat expansion in FXN gene (typically 66-1700 repeats; normal <33)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fa-5",
+        "description": "Axonal sensory neuropathy on nerve conduction studies",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fa-6",
+        "description": "Dysarthria",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Progressive ataxia with areflexia and confirmatory homozygous GAA expansion in FXN gene. ~96% are homozygous for GAA expansion; ~4% are compound heterozygous (GAA expansion + point mutation).",
+    "notes": "Late-onset Friedreich ataxia (LOFA, onset >25 years) and very late-onset (VLOFA, onset >40 years) are recognized with slower progression. GAA repeat length inversely correlates with onset age. Frataxin protein deficiency causes mitochondrial iron accumulation."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive gait ataxia with areflexia",
+        "snomedCode": "20262006",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "notes": "Combination of ataxia with absent reflexes is highly characteristic; distinguishes from other ataxias"
+      },
+      {
+        "symptomName": "Hypertrophic cardiomyopathy",
+        "snomedCode": "45227007",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Present in ~60-75%; major cause of morbidity and mortality"
+      },
+      {
+        "symptomName": "Friedreich foot (pes cavus with hammer toes)",
+        "snomedCode": "205083008",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "notes": "High-arched feet with toe deformities"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Limb ataxia",
+        "snomedCode": "85102008",
+        "frequency": 0.90,
+        "bodySystem": "neurological",
+        "notes": "Dysmetria, dysdiadochokinesia"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "snomedCode": "8011004",
+        "frequency": 0.80,
+        "bodySystem": "neurological",
+        "notes": "Scanning, explosive speech; progressive"
+      },
+      {
+        "symptomName": "Loss of vibration and proprioception",
+        "snomedCode": "44077006",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Dorsal column sensory loss"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "snomedCode": "298382003",
+        "frequency": 0.60,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Extensor plantar responses (Babinski sign)",
+        "snomedCode": "246586000",
+        "frequency": 0.80,
+        "bodySystem": "neurological",
+        "notes": "Combined UMN (Babinski) and LMN (areflexia) signs"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Diabetes mellitus",
+        "snomedCode": "73211009",
+        "frequency": 0.30,
+        "bodySystem": "endocrine",
+        "notes": "Impaired glucose tolerance in ~30%; frank diabetes in ~10-15%"
+      },
+      {
+        "symptomName": "Visual impairment",
+        "snomedCode": "397540003",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological",
+        "notes": "Optic atrophy"
+      },
+      {
+        "symptomName": "Hearing loss",
+        "snomedCode": "15188001",
+        "frequency": 0.20,
+        "bodySystem": "otological",
+        "notes": "Sensorineural hearing loss; auditory neuropathy"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "snomedCode": "40739000",
+        "frequency": 0.30,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiac arrhythmias",
+        "snomedCode": "698247007",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "Atrial fibrillation; can cause sudden death"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "snomedCode": "563001",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Less prominent than in other cerebellar ataxias"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "snomedCode": "386806002",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Generally preserved cognition; mild executive dysfunction reported"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "central nervous system",
+    "peripheral nervous system",
+    "cardiovascular system",
+    "musculoskeletal system",
+    "endocrine system"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Genetic testing: homozygous GAA repeat expansion in FXN gene (diagnostic)",
+      "Frataxin protein levels reduced (research)",
+      "Fasting glucose and HbA1c for diabetes screening",
+      "Normal CK levels"
+    ],
+    "imaging": [
+      "MRI brain: cerebellar atrophy (mild; less prominent than other cerebellar ataxias)",
+      "MRI spine: spinal cord atrophy (cervical cord thinning)",
+      "Echocardiography: concentric hypertrophic cardiomyopathy",
+      "Cardiac MRI: myocardial fibrosis, iron deposition"
+    ],
+    "genetic": [
+      "FXN gene (chromosome 9q21): homozygous GAA trinucleotide repeat expansion",
+      "Normal: <33 GAA repeats; premutation: 34-65; pathogenic: 66-1700+",
+      "Inverse correlation between GAA repeat length and onset age",
+      "~96% homozygous GAA expansion; ~4% compound heterozygous (GAA + point mutation)",
+      "Autosomal recessive inheritance"
+    ],
+    "other": [
+      "Nerve conduction studies: absent or severely reduced sensory nerve action potentials (axonal sensory neuropathy)",
+      "Motor nerve conduction generally preserved",
+      "ECG: T-wave inversions, ventricular hypertrophy",
+      "Echocardiography: concentric left ventricular hypertrophy",
+      "Annual cardiac monitoring recommended"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "spinocerebellar-ataxia",
+      "distinguishingFeatures": [
+        "SCAs are typically autosomal dominant",
+        "SCAs usually have preserved or brisk reflexes",
+        "SCAs do not have sensory neuropathy as prominently",
+        "SCAs usually lack cardiomyopathy"
+      ]
+    },
+    {
+      "diseaseId": "hereditary-spastic-paraplegia",
+      "distinguishingFeatures": [
+        "HSP has spasticity as predominant feature, not ataxia",
+        "HSP has hyperreflexia throughout",
+        "HSP does not have sensory neuropathy or cardiomyopathy"
+      ]
+    },
+    {
+      "diseaseId": "ataxia-with-vitamin-E-deficiency",
+      "distinguishingFeatures": [
+        "AVED has low serum vitamin E levels",
+        "AVED is treatable with vitamin E supplementation",
+        "Clinically very similar to FA; must be excluded"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Cardiomyopathy is the leading cause of death - annual echocardiography mandatory",
+    "Cardiac arrhythmias can cause sudden death; ECG monitoring recommended",
+    "Omaveloxolone (Skyclarys) FDA-approved 2023 for FA age 16+; first approved therapy",
+    "Diabetes screening should be performed annually",
+    "Scoliosis may require surgical intervention if progressive",
+    "Absence of GAA expansion should prompt testing for other ataxias (SCA, AT, AVED, AOA)"
+  ],
+  "specialistType": ["neurologist", "cardiologist", "geneticist", "rehabilitation specialist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Pandolfo M. Friedreich ataxia: the clinical picture. J Neurol. 2009;256(Suppl 1):3-8.",
+    "Cook A, Giunti P. Friedreich's ataxia: clinical features, pathogenesis and management. Br Med Bull. 2017;124(1):19-30.",
+    "Lynch DR, et al. Safety, pharmacodynamics, and potential benefit of omaveloxolone in Friedreich ataxia. Ann Clin Transl Neurol. 2019;6(1):15-26.",
+    "Delatycki MB, Bidichandani SI. Friedreich ataxia - pathogenesis and implications for therapies. Neurobiol Dis. 2019;132:104606."
+  ],
+  "confidenceInData": "medium"
+}

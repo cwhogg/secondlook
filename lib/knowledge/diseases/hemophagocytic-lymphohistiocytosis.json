@@ -1,0 +1,275 @@
+{
+  "id": "hemophagocytic-lymphohistiocytosis",
+  "name": "Hemophagocytic Lymphohistiocytosis",
+  "aliases": [
+    "HLH",
+    "Hemophagocytic Syndrome",
+    "Macrophage Activation Syndrome",
+    "Familial Hemophagocytic Lymphohistiocytosis",
+    "FHL"
+  ],
+  "icd10Codes": ["D76.1", "D76.2"],
+  "omimId": "267700",
+  "orphanetId": "540",
+  "prevalence": {
+    "estimate": "1 in 50,000 to 1 in 100,000 live births (familial); acquired forms more common",
+    "range": "0.001%-0.002%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 70, "peak": 2 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "No strong ethnic predilection",
+      "Consanguineous populations (familial forms)"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "HLH-2004 Diagnostic Criteria (Histiocyte Society)",
+    "criteria": [
+      {
+        "id": "hlh-c1",
+        "description": "Fever >= 38.5°C",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hlh-c2",
+        "description": "Splenomegaly",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hlh-c3",
+        "description": "Cytopenias affecting >= 2 of 3 lineages (hemoglobin <9 g/dL, platelets <100,000/µL, neutrophils <1,000/µL)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hlh-c4",
+        "description": "Hypertriglyceridemia (fasting triglycerides >= 265 mg/dL) and/or hypofibrinogenemia (fibrinogen <= 150 mg/dL)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hlh-c5",
+        "description": "Hemophagocytosis in bone marrow, spleen, or lymph nodes",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hlh-c6",
+        "description": "Low or absent NK cell activity",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hlh-c7",
+        "description": "Ferritin >= 500 ng/mL",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hlh-c8",
+        "description": "Elevated soluble CD25 (soluble IL-2 receptor >= 2,400 U/mL)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Five of 8 criteria must be fulfilled, OR a molecular diagnosis consistent with HLH (PRF1, UNC13D, STX11, STXBP2, RAB27A, etc.)",
+    "notes": "HScore is an alternative scoring system. Ferritin >10,000 ng/mL has high specificity for HLH. MAS is the rheumatologic variant associated with autoimmune diseases."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hemophagocytosis on bone marrow biopsy",
+        "snomedCode": "127070004",
+        "frequency": 0.85,
+        "bodySystem": "hematologic",
+        "notes": "Macrophages engulfing blood cells; may be absent early in disease"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "High persistent fever",
+        "snomedCode": "386661006",
+        "frequency": 0.95,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "snomedCode": "16294009",
+        "frequency": 0.85,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Cytopenias (bi- or pancytopenia)",
+        "snomedCode": "127034005",
+        "frequency": 0.9,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "snomedCode": "80515008",
+        "frequency": 0.7,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Markedly elevated ferritin",
+        "frequency": 0.93,
+        "bodySystem": "hematologic",
+        "notes": "Often >10,000 ng/mL; can exceed 100,000 ng/mL"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Liver dysfunction / transaminitis",
+        "snomedCode": "235856003",
+        "frequency": 0.45,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Skin rash (maculopapular or petechial)",
+        "snomedCode": "271807003",
+        "frequency": 0.35,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "snomedCode": "30746006",
+        "frequency": 0.4,
+        "bodySystem": "lymphatic"
+      },
+      {
+        "symptomName": "CNS involvement (seizures, altered consciousness, meningismus)",
+        "snomedCode": "40917007",
+        "frequency": 0.35,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Coagulopathy / DIC",
+        "snomedCode": "67406007",
+        "frequency": 0.35,
+        "bodySystem": "hematologic"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Multi-organ failure",
+        "snomedCode": "57653000",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Jaundice and acute liver failure",
+        "snomedCode": "235884005",
+        "frequency": 0.1,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Pulmonary infiltrates / ARDS",
+        "snomedCode": "67782005",
+        "frequency": 0.1,
+        "bodySystem": "pulmonary"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematologic",
+    "hepatic",
+    "neurological",
+    "lymphatic",
+    "pulmonary",
+    "integumentary",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Ferritin markedly elevated (often >10,000 ng/mL; >10,000 has ~90% sensitivity for HLH)",
+      "Elevated soluble IL-2 receptor (sCD25)",
+      "Hypertriglyceridemia",
+      "Hypofibrinogenemia",
+      "Elevated LDH and transaminases",
+      "Pancytopenia or bicytopenia",
+      "Elevated D-dimer and evidence of DIC",
+      "Low or absent NK cell cytotoxic function"
+    ],
+    "imaging": [
+      "Abdominal imaging showing hepatosplenomegaly",
+      "Brain MRI may show leptomeningeal enhancement or parenchymal lesions in CNS-HLH",
+      "Chest imaging may show pulmonary infiltrates"
+    ],
+    "genetic": [
+      "PRF1 (perforin) mutations - FHL type 2 (most common familial form)",
+      "UNC13D (Munc13-4) mutations - FHL type 3",
+      "STX11 mutations - FHL type 4",
+      "STXBP2 mutations - FHL type 5",
+      "RAB27A mutations (Griscelli syndrome type 2)",
+      "SH2D1A or XIAP mutations (X-linked lymphoproliferative disease)"
+    ],
+    "other": [
+      "Bone marrow biopsy showing hemophagocytosis",
+      "HScore calculation (probability of HLH)",
+      "Perforin expression by flow cytometry on NK cells"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "sepsis",
+      "distinguishingFeatures": [
+        "Sepsis has identifiable infectious source",
+        "Ferritin elevated but usually not to HLH levels",
+        "Blood cultures or source identification",
+        "Responds to antibiotics"
+      ]
+    },
+    {
+      "diseaseId": "lymphoma",
+      "distinguishingFeatures": [
+        "Lymphoma can trigger secondary HLH",
+        "Tissue biopsy shows malignant lymphoid cells",
+        "HLH may coexist with lymphoma (important to evaluate)"
+      ]
+    },
+    {
+      "diseaseId": "systemic-lupus-erythematosus",
+      "distinguishingFeatures": [
+        "SLE has specific autoantibodies (ANA, anti-dsDNA)",
+        "MAS can occur in SLE as secondary HLH",
+        "Complement levels typically low in SLE"
+      ]
+    },
+    {
+      "diseaseId": "adult-onset-stills-disease",
+      "distinguishingFeatures": [
+        "Quotidian fever pattern",
+        "Evanescent salmon-colored rash",
+        "Very high ferritin but glycosylated fraction <20%",
+        "Can trigger secondary MAS/HLH"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Ferritin >10,000 ng/mL with cytopenias and fever",
+    "Rapidly progressive multi-organ failure",
+    "CNS involvement with altered consciousness",
+    "DIC with severe coagulopathy",
+    "Failure to respond to broad-spectrum antibiotics in a sepsis-like presentation",
+    "Known immunodeficiency or family history of infantile death"
+  ],
+  "specialistType": [
+    "Hematologist/Oncologist",
+    "Pediatric Hematologist",
+    "Immunologist",
+    "Rheumatologist (for MAS)",
+    "Intensivist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Henter JI, et al. HLH-2004: Diagnostic and therapeutic guidelines for hemophagocytic lymphohistiocytosis. Pediatr Blood Cancer. 2007;48(2):124-131.",
+    "Jordan MB, et al. How I treat hemophagocytic lymphohistiocytosis. Blood. 2011;118(15):4041-4052.",
+    "Fardet L, et al. Development and validation of the HScore, a score for the diagnosis of reactive hemophagocytic syndrome. Arthritis Rheumatol. 2014;66(9):2613-2620.",
+    "Al-Samkari H, Berliner N. Hemophagocytic Lymphohistiocytosis. Annu Rev Pathol. 2018;13:27-49."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,285 @@
+{
+  "id": "hypoparathyroidism",
+  "name": "Hypoparathyroidism",
+  "aliases": [
+    "HypoPT",
+    "Parathyroid Insufficiency",
+    "Parathyroid Hormone Deficiency",
+    "PTH Deficiency"
+  ],
+  "icd10Codes": ["E20.0", "E20.1", "E20.8", "E20.9", "E89.2"],
+  "omimId": "146200",
+  "orphanetId": "181405",
+  "prevalence": {
+    "estimate": "1 in 2,500 to 1 in 10,000",
+    "range": "0.01%-0.04%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 80, "peak": 45 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "European Society of Endocrinology Clinical Guidelines for Chronic Hypoparathyroidism",
+    "criteria": [
+      {
+        "id": "hypo-c1",
+        "description": "Low serum calcium (albumin-corrected total calcium or ionized calcium below normal range)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hypo-c2",
+        "description": "Inappropriately low or undetectable serum PTH level",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hypo-c3",
+        "description": "Elevated serum phosphate",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hypo-c4",
+        "description": "Low urinary calcium excretion (in untreated state)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hypo-c5",
+        "description": "Low or low-normal 1,25-dihydroxyvitamin D",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hypo-c6",
+        "description": "History of neck surgery (most common etiology) or known genetic/autoimmune cause",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Hypocalcemia with inappropriately low or absent PTH on at least two occasions, separated by at least 2 weeks, after exclusion of magnesium deficiency",
+    "notes": "Most common cause is post-surgical (after thyroidectomy or parathyroidectomy; ~75% of cases). Autoimmune, genetic (DiGeorge, HDR syndrome, autosomal dominant hypocalcemia), and idiopathic causes make up the remainder."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chvostek sign (facial muscle twitching on tapping facial nerve)",
+        "snomedCode": "249966004",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Sensitivity ~70%; also positive in ~10% of normocalcemic individuals"
+      },
+      {
+        "symptomName": "Trousseau sign (carpal spasm with blood pressure cuff inflation)",
+        "snomedCode": "249967008",
+        "frequency": 0.9,
+        "bodySystem": "neurological",
+        "notes": "More specific than Chvostek sign; inflate cuff 20 mmHg above systolic for 3 minutes"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Perioral and acral paresthesias (numbness/tingling)",
+        "snomedCode": "91019004",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Fingers, toes, and circumoral region most affected"
+      },
+      {
+        "symptomName": "Muscle cramps and spasms",
+        "snomedCode": "55300003",
+        "frequency": 0.8,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Carpopedal spasm (tetany)",
+        "snomedCode": "29944001",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "notes": "Flexion of wrist and MCP joints with adduction of thumb"
+      },
+      {
+        "symptomName": "Anxiety and irritability",
+        "snomedCode": "48694002",
+        "frequency": 0.5,
+        "bodySystem": "neuropsychiatric"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Due to severe hypocalcemia; may be presenting feature"
+      },
+      {
+        "symptomName": "Laryngospasm / stridor",
+        "snomedCode": "41497008",
+        "frequency": 0.15,
+        "bodySystem": "respiratory",
+        "notes": "Life-threatening; due to tetany of laryngeal muscles"
+      },
+      {
+        "symptomName": "Cognitive impairment ('brain fog')",
+        "snomedCode": "386806002",
+        "frequency": 0.4,
+        "bodySystem": "neuropsychiatric"
+      },
+      {
+        "symptomName": "Depression",
+        "snomedCode": "35489007",
+        "frequency": 0.35,
+        "bodySystem": "neuropsychiatric"
+      },
+      {
+        "symptomName": "Dry skin, coarse hair, brittle nails",
+        "snomedCode": "16386004",
+        "frequency": 0.4,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Dental abnormalities (enamel hypoplasia, delayed eruption)",
+        "snomedCode": "37320007",
+        "frequency": 0.25,
+        "bodySystem": "dental",
+        "notes": "More common in childhood-onset disease"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Basal ganglia calcification",
+        "snomedCode": "23919000",
+        "frequency": 0.1,
+        "bodySystem": "neurological",
+        "notes": "Can cause extrapyramidal movement disorders; often incidental on imaging"
+      },
+      {
+        "symptomName": "Cataracts (posterior subcapsular)",
+        "snomedCode": "193570009",
+        "frequency": 0.1,
+        "bodySystem": "ophthalmologic",
+        "notes": "Due to chronic hypocalcemia; may be bilateral"
+      },
+      {
+        "symptomName": "Dilated cardiomyopathy / heart failure",
+        "snomedCode": "195021004",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Reversible with calcium normalization"
+      },
+      {
+        "symptomName": "Nephrocalcinosis / renal calculi",
+        "snomedCode": "95570007",
+        "frequency": 0.08,
+        "bodySystem": "renal",
+        "notes": "Complication of overtreatment with calcium and vitamin D"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "musculoskeletal",
+    "cardiovascular",
+    "renal",
+    "integumentary",
+    "ophthalmologic",
+    "neuropsychiatric",
+    "dental"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low serum calcium (total and/or ionized)",
+      "Low or inappropriately normal PTH",
+      "Elevated serum phosphate",
+      "Low 1,25-dihydroxyvitamin D (calcitriol)",
+      "Normal 25-hydroxyvitamin D (unless concurrent deficiency)",
+      "Low urinary calcium in untreated state; elevated with treatment",
+      "Normal magnesium (must exclude hypomagnesemia as cause)"
+    ],
+    "imaging": [
+      "CT head may show basal ganglia calcifications (Fahr syndrome pattern)",
+      "Renal ultrasound for nephrocalcinosis or renal stones (treatment complication)",
+      "DEXA scan may show increased bone density (reduced bone resorption from low PTH)"
+    ],
+    "genetic": [
+      "CaSR gain-of-function mutations (autosomal dominant hypocalcemia types 1 and 2)",
+      "TBX1 / 22q11.2 deletion (DiGeorge syndrome)",
+      "GATA3 mutations (HDR syndrome: hypoparathyroidism, deafness, renal anomalies)",
+      "AIRE mutations (autoimmune polyendocrine syndrome type 1 / APS-1)",
+      "GCM2 mutations (isolated autosomal recessive or dominant hypoparathyroidism)",
+      "PTH gene mutations (rare)"
+    ],
+    "other": [
+      "ECG: prolonged QTc interval due to hypocalcemia",
+      "Chvostek and Trousseau signs on physical examination",
+      "Hearing assessment if HDR syndrome suspected",
+      "Assessment for other autoimmune endocrinopathies if autoimmune etiology"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pseudohypoparathyroidism",
+      "distinguishingFeatures": [
+        "Pseudohypoparathyroidism has elevated PTH (PTH resistance)",
+        "Albright hereditary osteodystrophy phenotype in PHP type 1a",
+        "GNAS mutations in pseudohypoparathyroidism"
+      ]
+    },
+    {
+      "diseaseId": "vitamin-d-deficiency",
+      "distinguishingFeatures": [
+        "Vitamin D deficiency has elevated PTH (secondary hyperparathyroidism)",
+        "Low 25-hydroxyvitamin D level",
+        "Low phosphate (not elevated)"
+      ]
+    },
+    {
+      "diseaseId": "hypomagnesemia",
+      "distinguishingFeatures": [
+        "Hypomagnesemia impairs PTH secretion and action",
+        "Low serum magnesium diagnostic",
+        "Calcium normalizes only after magnesium repletion"
+      ]
+    },
+    {
+      "diseaseId": "hungry-bone-syndrome",
+      "distinguishingFeatures": [
+        "Occurs post-parathyroidectomy for severe hyperparathyroidism",
+        "Characterized by rapid influx of calcium into bone",
+        "PTH may be low-normal but appropriate for the context"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe symptomatic hypocalcemia with tetany, seizures, or laryngospasm (medical emergency)",
+    "Prolonged QTc interval on ECG (risk of arrhythmia)",
+    "Nephrocalcinosis or declining renal function from overtreatment",
+    "Airway compromise from post-surgical hypoparathyroidism",
+    "DiGeorge syndrome phenotype in neonates (cardiac defects, immune deficiency, facial dysmorphism)"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Nephrologist",
+    "Medical Geneticist",
+    "Otolaryngologist (post-surgical cases)",
+    "Ophthalmologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Bollerslev J, et al. European Society of Endocrinology Clinical Guideline: Treatment of chronic hypoparathyroidism in adults. Eur J Endocrinol. 2015;173(2):G1-20.",
+    "Shoback DM, et al. Presentation of Hypoparathyroidism: Etiologies and Clinical Features. J Clin Endocrinol Metab. 2016;101(6):2300-12.",
+    "Brandi ML, et al. Management of Hypoparathyroidism: Summary Statement and Guidelines. J Clin Endocrinol Metab. 2016;101(6):2273-83.",
+    "Clarke BL, et al. Epidemiology and Diagnosis of Hypoparathyroidism. J Clin Endocrinol Metab. 2016;101(6):2284-99."
+  ],
+  "confidenceInData": "medium"
+}

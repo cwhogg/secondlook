@@ -1,0 +1,215 @@
+{
+  "id": "systemic-amyloidosis-aa",
+  "name": "AA Amyloidosis",
+  "aliases": [
+    "Secondary Amyloidosis",
+    "Reactive Amyloidosis",
+    "Serum Amyloid A Amyloidosis",
+    "Inflammatory Amyloidosis"
+  ],
+  "icd10Codes": ["E85.0"],
+  "omimId": "104750",
+  "orphanetId": "85445",
+  "prevalence": {
+    "estimate": "1 to 5 per 100,000",
+    "range": "0.001%-0.005%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 30, "max": 70, "peak": 50 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": ["Turkish", "Middle Eastern", "Mediterranean (FMF-associated)"]
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "aa-maj1",
+        "description": "Tissue biopsy positive for amyloid (Congo red staining with apple-green birefringence under polarized light)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "aa-maj2",
+        "description": "Amyloid typing confirming AA protein (immunohistochemistry, mass spectrometry, or immunoelectron microscopy)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "aa-min1",
+        "description": "Underlying chronic inflammatory condition (RA, IBD, chronic infections, FMF, etc.)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aa-min2",
+        "description": "Elevated serum amyloid A (SAA) levels",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aa-sup1",
+        "description": "Proteinuria/nephrotic syndrome as presenting feature",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Tissue biopsy showing Congo red positive amyloid deposits with AA protein confirmation by typing. Underlying inflammatory condition present in most but not all cases.",
+    "notes": "Most common form of systemic amyloidosis worldwide, though AL amyloidosis is more common in Western countries. Kidney is the most commonly affected organ."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Proteinuria progressing to nephrotic syndrome",
+        "snomedCode": "236379000",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "notes": "Most common presenting manifestation; typically non-selective proteinuria"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Peripheral edema",
+        "snomedCode": "271809000",
+        "frequency": 0.70,
+        "bodySystem": "renal",
+        "notes": "Due to nephrotic syndrome"
+      },
+      {
+        "symptomName": "Fatigue and malaise",
+        "snomedCode": "84229001",
+        "frequency": 0.65,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Renal insufficiency progressing to ESRD",
+        "frequency": 0.60,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Diarrhea (GI amyloid deposition)",
+        "snomedCode": "62315008",
+        "frequency": 0.30,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hepatomegaly",
+        "snomedCode": "80515008",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "snomedCode": "16294009",
+        "frequency": 0.15,
+        "bodySystem": "lymphatic"
+      },
+      {
+        "symptomName": "Goiter (thyroid amyloid deposition)",
+        "frequency": 0.10,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.30,
+        "bodySystem": "general"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Adrenal insufficiency",
+        "frequency": 0.05,
+        "bodySystem": "endocrine",
+        "notes": "From bilateral adrenal amyloid deposition"
+      },
+      {
+        "symptomName": "GI bleeding or malabsorption",
+        "frequency": 0.08,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cardiac involvement (rare in AA, unlike AL)",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular",
+        "notes": "Cardiac involvement is uncommon in AA, distinguishing it from AL amyloidosis"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "gastrointestinal",
+    "hepatic",
+    "endocrine",
+    "lymphatic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Proteinuria (often nephrotic-range > 3.5 g/day)",
+      "Elevated serum amyloid A (SAA) protein",
+      "Elevated ESR and CRP (reflecting underlying inflammation)",
+      "Hypoalbuminemia (nephrotic syndrome)",
+      "Elevated serum creatinine (renal impairment)",
+      "Congo red stain with apple-green birefringence on biopsy"
+    ],
+    "imaging": [
+      "Renal ultrasound: normal or enlarged kidneys initially; small kidneys in advanced disease",
+      "SAP (serum amyloid P component) scintigraphy: demonstrates amyloid deposits in organs (available in specialized centers)",
+      "Echocardiography usually normal (unlike AL amyloidosis)"
+    ],
+    "genetic": [
+      "SAA1 gene polymorphisms affect risk (SAA1.1 allele associated with increased risk)",
+      "Underlying genetic conditions: MEFV gene (FMF), TNFRSF1A (TRAPS) may predispose"
+    ],
+    "other": [
+      "Abdominal fat pad aspiration: least invasive biopsy (sensitivity ~70-80%)",
+      "Renal biopsy: gold standard for renal amyloidosis; mesangial and vascular deposits",
+      "Rectal biopsy: alternative biopsy site",
+      "Mass spectrometry for definitive amyloid typing (laser microdissection/mass spec)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "al-amyloidosis",
+      "distinguishingFeatures": [
+        "AL amyloidosis has monoclonal light chains on serum/urine",
+        "AL more commonly causes cardiac involvement and macroglossia",
+        "Amyloid typing distinguishes AA from AL protein"
+      ]
+    },
+    {
+      "diseaseId": "diabetic-nephropathy",
+      "distinguishingFeatures": [
+        "Diabetic nephropathy occurs in context of long-standing diabetes",
+        "Different histological pattern on renal biopsy"
+      ]
+    },
+    {
+      "diseaseId": "membranous-nephropathy",
+      "distinguishingFeatures": [
+        "Membranous nephropathy has subepithelial immune deposits",
+        "Anti-PLA2R antibodies positive in primary membranous"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive renal failure",
+    "Nephrotic syndrome in patient with chronic inflammatory disease",
+    "GI hemorrhage from mucosal amyloid deposits",
+    "Adrenal crisis from bilateral adrenal infiltration"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Rheumatologist",
+    "Hematologist",
+    "Amyloidosis Center Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Lachmann HJ, et al. Natural history and outcome in systemic AA amyloidosis. N Engl J Med. 2007;356(23):2361-2371.",
+    "Papa R, Bhatt DL. AA amyloidosis. Lancet. 2023;402(10409):1253-1267.",
+    "Wechalekar AD, et al. Systemic amyloidosis. Lancet. 2016;387(10038):2641-2654."
+  ],
+  "confidenceInData": "medium"
+}

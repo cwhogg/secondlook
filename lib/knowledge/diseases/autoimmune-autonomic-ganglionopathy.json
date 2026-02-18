@@ -1,0 +1,212 @@
+{
+  "id": "autoimmune-autonomic-ganglionopathy",
+  "name": "Autoimmune Autonomic Ganglionopathy",
+  "aliases": [
+    "AAG",
+    "Autoimmune autonomic neuropathy",
+    "Acute pandysautonomia",
+    "Idiopathic autonomic neuropathy"
+  ],
+  "icd10Codes": ["G90.09", "G99.0"],
+  "orphanetId": "ORPHA100",
+  "prevalence": {
+    "estimate": "<1 per 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 70, "peak": 50 },
+    "sexPredilection": "slight-female"
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "aag-1",
+        "description": "Subacute or acute onset of widespread autonomic failure (orthostatic hypotension, gastrointestinal dysmotility, anhidrosis, urinary retention)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "aag-2",
+        "description": "Positive ganglionic acetylcholine receptor (gAChR) antibodies",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aag-3",
+        "description": "No alternative explanation for autonomic failure",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "aag-4",
+        "description": "Response to immunotherapy (IVIG, plasma exchange, or immunosuppression)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aag-5",
+        "description": "Sicca symptoms (dry eyes, dry mouth)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Subacute/acute onset pandysautonomia with positive gAChR antibodies; seronegative forms exist and are diagnosed by clinical criteria and exclusion",
+    "notes": "gAChR antibodies are found in ~50% of cases. Seronegative AAG can still respond to immunotherapy. Antibody levels correlate with disease severity."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Subacute onset pandysautonomia (combined orthostatic hypotension, GI dysmotility, sicca, and pupillary dysfunction)",
+        "frequency": 0.90,
+        "bodySystem": "autonomic",
+        "notes": "The combination and subacute onset are distinctive; gAChR antibodies confirm when present"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Severe orthostatic hypotension",
+        "snomedCode": "28651003",
+        "frequency": 0.90,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Gastrointestinal dysmotility (gastroparesis, constipation, ileus)",
+        "snomedCode": "235675006",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anhidrosis",
+        "snomedCode": "69311009",
+        "frequency": 0.70,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Urinary retention",
+        "snomedCode": "267064002",
+        "frequency": 0.70,
+        "bodySystem": "genitourinary"
+      },
+      {
+        "symptomName": "Dry eyes and dry mouth (sicca)",
+        "snomedCode": "87715008",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmologic"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Tonic pupil (Adie-like pupil)",
+        "snomedCode": "70759006",
+        "frequency": 0.40,
+        "bodySystem": "ophthalmologic"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.50,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Erectile dysfunction (males)",
+        "snomedCode": "860914002",
+        "frequency": 0.45,
+        "bodySystem": "genitourinary"
+      },
+      {
+        "symptomName": "Cognitive impairment (brain fog)",
+        "snomedCode": "736322003",
+        "frequency": 0.30,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sensory neuropathy",
+        "snomedCode": "302226006",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Suggests overlap with autoimmune encephalitis"
+      },
+      {
+        "symptomName": "Photosensitivity",
+        "frequency": 0.10,
+        "bodySystem": "ophthalmologic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "autonomic",
+    "cardiovascular",
+    "gastrointestinal",
+    "genitourinary",
+    "ophthalmologic",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Ganglionic acetylcholine receptor (gAChR) antibodies positive (~50% of cases)",
+      "Antibody titers correlate with severity (>0.20 nmol/L suggestive, >1.0 nmol/L highly specific)",
+      "May have other autoimmune markers (ANA, thyroid antibodies)"
+    ],
+    "imaging": [
+      "Normal brain MRI",
+      "CT abdomen may show dilated bowel loops in severe GI dysmotility"
+    ],
+    "genetic": [
+      "No known genetic predisposition"
+    ],
+    "other": [
+      "Autonomic reflex testing: severe combined sympathetic, parasympathetic, and sudomotor failure",
+      "Thermoregulatory sweat test: diffuse anhidrosis",
+      "QSART: absent or markedly reduced sweat output"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pure-autonomic-failure",
+      "distinguishingFeatures": [
+        "PAF has gradual onset over years, not subacute",
+        "PAF is a synucleinopathy, not autoimmune",
+        "PAF does not respond to immunotherapy"
+      ]
+    },
+    {
+      "diseaseId": "multiple-system-atrophy",
+      "distinguishingFeatures": [
+        "MSA has prominent motor features (parkinsonism or cerebellar ataxia)",
+        "MSA is not antibody-mediated"
+      ]
+    },
+    {
+      "diseaseId": "diabetic-autonomic-neuropathy",
+      "distinguishingFeatures": [
+        "Diabetic neuropathy develops gradually with longstanding diabetes",
+        "AAG has subacute onset regardless of diabetes status"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Subacute onset of severe pandysautonomia (consider paraneoplastic cause)",
+    "Associated malignancy (especially small cell lung cancer) should be excluded",
+    "Concurrent sensory neuropathy or encephalopathy (expand antibody testing)",
+    "Failure to respond to immunotherapy (reconsider diagnosis)"
+  ],
+  "specialistType": [
+    "Autonomic neurologist",
+    "Neuroimmunologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Vernino S, et al. Autoimmune autonomic ganglionopathy. Handb Clin Neurol. 2022;186:205-218.",
+    "Golden EP, et al. Autoimmune autonomic neuropathies and ganglionopathies: epidemiology, pathophysiology, and therapeutic advances. Clin Auton Res. 2019;29(3):277-288.",
+    "Nakane S, et al. Autoimmune autonomic ganglionopathy: an update on diagnosis and treatment. Expert Rev Neurother. 2019;19(10):953-965."
+  ],
+  "confidenceInData": "medium"
+}

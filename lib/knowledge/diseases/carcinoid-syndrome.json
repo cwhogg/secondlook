@@ -1,0 +1,249 @@
+{
+  "id": "carcinoid-syndrome",
+  "name": "Carcinoid Syndrome",
+  "aliases": [
+    "Carcinoid",
+    "Serotonin-Secreting Tumor Syndrome",
+    "Neuroendocrine Tumor Syndrome",
+    "Argentaffinoma Syndrome"
+  ],
+  "icd10Codes": ["E34.0"],
+  "omimId": "114900",
+  "orphanetId": "100093",
+  "prevalence": {
+    "estimate": "1 in 50,000 to 1 in 100,000",
+    "range": "0.001%-0.002%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 40, "max": 70, "peak": 55 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": ["African American (slightly higher incidence of GI carcinoids)"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and biochemical criteria for carcinoid syndrome",
+    "criteria": [
+      {
+        "id": "cs-c1",
+        "description": "Elevated 24-hour urinary 5-hydroxyindoleacetic acid (5-HIAA)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cs-c2",
+        "description": "Histologically confirmed neuroendocrine tumor (NET)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cs-c3",
+        "description": "Characteristic clinical features (flushing, diarrhea, wheezing)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cs-c4",
+        "description": "Elevated serum chromogranin A",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cs-c5",
+        "description": "Hepatic metastases (syndrome typically develops only after hepatic metastasis for GI carcinoids)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cs-c6",
+        "description": "Positive somatostatin receptor scintigraphy (OctreoScan) or 68Ga-DOTATATE PET",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Clinical symptoms of carcinoid syndrome plus elevated 5-HIAA, with histologically confirmed neuroendocrine tumor",
+    "notes": "Carcinoid syndrome occurs in <10% of patients with carcinoid tumors, usually requiring hepatic metastases to bypass first-pass hepatic metabolism of serotonin."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Episodic flushing (cutaneous vasodilation)",
+        "snomedCode": "271807003",
+        "frequency": 0.9,
+        "bodySystem": "integumentary",
+        "notes": "Typically face and upper trunk; can be triggered by alcohol, stress, exercise"
+      },
+      {
+        "symptomName": "Secretory diarrhea",
+        "snomedCode": "62315008",
+        "frequency": 0.8,
+        "bodySystem": "gastrointestinal",
+        "notes": "Watery, non-bloody; due to serotonin-mediated increased gut motility"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abdominal cramping",
+        "snomedCode": "21522001",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Bronchospasm / wheezing",
+        "snomedCode": "56018004",
+        "frequency": 0.4,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Telangiectasias (chronic facial)",
+        "snomedCode": "247479008",
+        "frequency": 0.45,
+        "bodySystem": "integumentary",
+        "notes": "Develop over time from chronic flushing episodes"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.5,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Carcinoid heart disease (right-sided valvular fibrosis)",
+        "snomedCode": "92059005",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Tricuspid regurgitation and pulmonary stenosis; due to serotonin-mediated endocardial fibrosis"
+      },
+      {
+        "symptomName": "Pellagra-like syndrome (niacin deficiency)",
+        "snomedCode": "70090004",
+        "frequency": 0.15,
+        "bodySystem": "integumentary",
+        "notes": "Due to tryptophan diversion to serotonin synthesis"
+      },
+      {
+        "symptomName": "Hypotension during flushing episodes",
+        "snomedCode": "45007003",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "snomedCode": "271809000",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Carcinoid crisis (life-threatening flushing, hypotension, bronchospasm)",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Can occur during anesthesia or tumor manipulation; medical emergency"
+      },
+      {
+        "symptomName": "Left-sided carcinoid heart disease",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Seen with bronchial carcinoids or patent foramen ovale"
+      },
+      {
+        "symptomName": "Mesenteric fibrosis with bowel obstruction",
+        "snomedCode": "81060008",
+        "frequency": 0.08,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "integumentary",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated 24-hour urinary 5-HIAA (>95% specificity)",
+      "Elevated serum chromogranin A (nonspecific but useful for monitoring)",
+      "Elevated whole blood serotonin (5-HT)",
+      "Elevated plasma 5-HIAA",
+      "NT-proBNP elevation if carcinoid heart disease present"
+    ],
+    "imaging": [
+      "CT abdomen/pelvis showing primary tumor (most commonly ileal) and hepatic metastases",
+      "68Ga-DOTATATE PET/CT (highest sensitivity for somatostatin receptor-positive NETs)",
+      "111In-octreotide scintigraphy (OctreoScan)",
+      "Echocardiography for carcinoid heart disease screening (tricuspid and pulmonary valve thickening)",
+      "MRI liver for hepatic metastases characterization"
+    ],
+    "genetic": [
+      "Generally sporadic; familial cases rare",
+      "MEN1 gene mutations in some gastric and pancreatic NETs",
+      "CDKN1B mutations in MEN4-associated NETs",
+      "Germline testing not routinely recommended unless syndromic features present"
+    ],
+    "other": [
+      "Tumor biopsy with chromogranin A, synaptophysin, Ki-67 staining",
+      "WHO grading based on Ki-67 index and mitotic rate",
+      "Provocative tests (pentagastrin stimulation) rarely used now"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pheochromocytoma",
+      "distinguishingFeatures": [
+        "Pheochromocytoma features pallor rather than flushing",
+        "Pheochromocytoma has elevated catecholamines/metanephrines, not 5-HIAA",
+        "Pheochromocytoma causes significant hypertension"
+      ]
+    },
+    {
+      "diseaseId": "systemic-mastocytosis",
+      "distinguishingFeatures": [
+        "Mastocytosis has elevated serum tryptase",
+        "Mastocytosis features urticaria pigmentosa",
+        "Bone marrow biopsy diagnostic for mastocytosis"
+      ]
+    },
+    {
+      "diseaseId": "menopause",
+      "distinguishingFeatures": [
+        "Menopausal flushing has normal 5-HIAA",
+        "Menopausal flushing associated with elevated FSH/LH",
+        "No diarrhea or wheezing in menopause"
+      ]
+    },
+    {
+      "diseaseId": "medullary-thyroid-carcinoma",
+      "distinguishingFeatures": [
+        "MTC has elevated calcitonin",
+        "MTC presents as thyroid nodule",
+        "MTC associated with RET mutations (MEN2)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Carcinoid crisis during surgery or anesthesia (treat with IV octreotide)",
+    "Progressive right-sided heart failure (carcinoid heart disease)",
+    "Rapidly progressive symptoms suggesting high-grade neuroendocrine carcinoma",
+    "Mesenteric fibrosis causing bowel ischemia or obstruction",
+    "Severe pellagra-like dermatitis indicating advanced tryptophan depletion"
+  ],
+  "specialistType": [
+    "Medical Oncologist",
+    "Gastroenterologist",
+    "Endocrinologist",
+    "Surgical Oncologist",
+    "Cardiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Halperin DM, et al. Frequency of carcinoid syndrome at neuroendocrine tumour diagnosis. Lancet Oncol. 2017;18(4):525-534.",
+    "Modlin IM, et al. Current status of gastrointestinal carcinoids. Gastroenterology. 2005;128(6):1717-51.",
+    "Rubin de Celis Ferrari AC, et al. Carcinoid syndrome: update on the pathophysiology and treatment. Clinics. 2018;73(suppl 1):e490s.",
+    "Davar J, et al. Diagnosing and managing carcinoid heart disease. Cardiology. 2017;137(3):146-156."
+  ],
+  "confidenceInData": "medium"
+}

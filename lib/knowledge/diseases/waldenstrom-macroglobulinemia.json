@@ -1,0 +1,256 @@
+{
+  "id": "waldenstrom-macroglobulinemia",
+  "name": "Waldenstrom Macroglobulinemia",
+  "aliases": [
+    "WM",
+    "Lymphoplasmacytic Lymphoma with IgM Monoclonal Gammopathy",
+    "Waldenstroem's Macroglobulinaemia",
+    "LPL/WM"
+  ],
+  "icd10Codes": ["C88.0"],
+  "omimId": "153600",
+  "orphanetId": "33226",
+  "prevalence": {
+    "estimate": "3-5 per million per year (incidence)",
+    "range": "0.0003%-0.0005%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 50, "max": 80, "peak": 67 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Caucasian predominance",
+      "Rare in African and Asian populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "2nd International Workshop on Waldenstrom's Macroglobulinemia Consensus Criteria",
+    "criteria": [
+      {
+        "id": "wm-c1",
+        "description": "IgM monoclonal gammopathy of any concentration",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "wm-c2",
+        "description": "Bone marrow infiltration by small lymphocytes showing plasmacytoid or plasma cell differentiation (lymphoplasmacytic lymphoma)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "wm-c3",
+        "description": "MYD88 L265P mutation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "wm-c4",
+        "description": "CXCR4 mutations",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "wm-c5",
+        "description": "Intertrabecular pattern of marrow infiltration",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "IgM monoclonal protein plus bone marrow involvement by lymphoplasmacytic lymphoma",
+    "notes": "MYD88 L265P mutation found in >90% of WM cases and helps distinguish from other IgM-secreting lymphomas. Not all patients with IgM MGUS progress to WM."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hyperviscosity syndrome",
+        "snomedCode": "50529006",
+        "frequency": 0.2,
+        "bodySystem": "hematologic",
+        "notes": "Visual disturbances, headache, bleeding, confusion due to elevated IgM causing blood viscosity increase"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue and weakness",
+        "snomedCode": "84229001",
+        "frequency": 0.8,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anemia symptoms",
+        "snomedCode": "271737000",
+        "frequency": 0.7,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "snomedCode": "42658009",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "notes": "Anti-MAG neuropathy; symmetric distal sensorimotor neuropathy"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.35,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Night sweats",
+        "snomedCode": "42984000",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Lymphadenopathy",
+        "snomedCode": "30746006",
+        "frequency": 0.25,
+        "bodySystem": "lymphatic"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "snomedCode": "36760000",
+        "frequency": 0.3,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Epistaxis and mucosal bleeding",
+        "snomedCode": "12441001",
+        "frequency": 0.2,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Blurred vision",
+        "snomedCode": "111516008",
+        "frequency": 0.2,
+        "bodySystem": "ophthalmologic"
+      },
+      {
+        "symptomName": "Raynaud phenomenon and cold agglutinin disease",
+        "snomedCode": "266261006",
+        "frequency": 0.15,
+        "bodySystem": "vascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "AL amyloidosis",
+        "snomedCode": "17602002",
+        "frequency": 0.07,
+        "bodySystem": "multisystem"
+      },
+      {
+        "symptomName": "Cryoglobulinemia (type I or II)",
+        "snomedCode": "55913000",
+        "frequency": 0.08,
+        "bodySystem": "immunologic"
+      },
+      {
+        "symptomName": "Bing-Neel syndrome (CNS involvement)",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Direct CNS infiltration by lymphoplasmacytic cells"
+      },
+      {
+        "symptomName": "Schnitzler syndrome",
+        "frequency": 0.02,
+        "bodySystem": "integumentary",
+        "notes": "Chronic urticarial rash with IgM gammopathy"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematologic",
+    "neurological",
+    "ophthalmologic",
+    "lymphatic",
+    "hepatic",
+    "immunologic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "IgM monoclonal protein on serum protein electrophoresis and immunofixation",
+      "Elevated serum viscosity (if symptomatic hyperviscosity)",
+      "Anemia (dilutional and/or from marrow infiltration)",
+      "Elevated beta-2 microglobulin",
+      "Cold agglutinins may be present",
+      "Cryoglobulins may be present"
+    ],
+    "imaging": [
+      "CT showing lymphadenopathy, hepatosplenomegaly",
+      "PET/CT may show mild FDG uptake (lower than aggressive lymphoma)",
+      "Fundoscopic exam showing dilated retinal veins, hemorrhages (hyperviscosity)"
+    ],
+    "genetic": [
+      "MYD88 L265P mutation (>90% of cases)",
+      "CXCR4 WHIM-like mutations (~30-40%)",
+      "Deletion 6q (~30%)",
+      "No specific chromosomal translocation characteristic"
+    ],
+    "other": [
+      "Bone marrow biopsy showing lymphoplasmacytic infiltration",
+      "Flow cytometry: CD19+, CD20+, CD22+, surface IgM+; CD5-, CD10-, CD23 variable",
+      "Serum viscosity measurement (normal <1.8 cP; symptomatic usually >4 cP)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "igm-mgus",
+      "distinguishingFeatures": [
+        "IgM MGUS has no bone marrow infiltration",
+        "IgM <3 g/dL",
+        "No symptoms related to IgM",
+        "Annual monitoring recommended"
+      ]
+    },
+    {
+      "diseaseId": "marginal-zone-lymphoma",
+      "distinguishingFeatures": [
+        "MZL is typically MYD88 wild-type",
+        "Different immunophenotype",
+        "May secrete IgM but usually lower levels"
+      ]
+    },
+    {
+      "diseaseId": "multiple-myeloma-igm",
+      "distinguishingFeatures": [
+        "IgM myeloma is extremely rare",
+        "Lytic bone lesions present",
+        "CD138+ plasma cells predominate",
+        "MYD88 typically wild-type"
+      ]
+    },
+    {
+      "diseaseId": "chronic-lymphocytic-leukemia",
+      "distinguishingFeatures": [
+        "CLL is CD5+ and CD23+",
+        "Lymphocytosis in peripheral blood",
+        "Different morphology (small mature lymphocytes)",
+        "IgM paraprotein uncommon"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Symptomatic hyperviscosity (visual changes, confusion, bleeding) - medical emergency requiring plasmapheresis",
+    "Severe cold agglutinin hemolytic anemia",
+    "Bing-Neel syndrome (CNS infiltration)",
+    "Rapid rise in IgM level suggesting disease transformation",
+    "Transformation to diffuse large B-cell lymphoma (Richter-like)"
+  ],
+  "specialistType": [
+    "Hematologist/Oncologist",
+    "Neurologist",
+    "Ophthalmologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Owen RG, et al. Clinicopathological definition of Waldenstrom's macroglobulinemia: consensus panel recommendations from the Second International Workshop on Waldenstrom's Macroglobulinemia. Semin Oncol. 2003;30(2):110-115.",
+    "Kastritis E, et al. Waldenström's macroglobulinaemia: ESMO Clinical Practice Guidelines. Ann Oncol. 2018;29(suppl 4):iv41-iv50.",
+    "Treon SP. How I treat Waldenström macroglobulinemia. Blood. 2015;126(6):721-732.",
+    "Gertz MA. Waldenström macroglobulinemia: 2021 update on diagnosis, risk stratification, and management. Am J Hematol. 2021;96(2):258-269."
+  ],
+  "confidenceInData": "medium"
+}

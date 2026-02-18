@@ -1,0 +1,105 @@
+{
+  "id": "inflammatory-bowel-disease-ulcerative-colitis",
+  "name": "Ulcerative Colitis",
+  "aliases": ["UC", "Ulcerative Colitis", "Idiopathic Proctocolitis"],
+  "icd10Codes": ["K51.0", "K51.2", "K51.3", "K51.5", "K51.8", "K51.9"],
+  "omimId": "191390",
+  "orphanetId": "771",
+  "prevalence": {
+    "estimate": "100-250 per 100,000",
+    "range": "100-250 per 100,000 in Western countries",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 15, "max": 40, "peak": 30 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": ["Ashkenazi Jewish", "Northern European/North American", "Increasing in developing countries"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ACG/ECCO Guidelines for Diagnosis of Ulcerative Colitis",
+    "criteria": [
+      { "id": "uc-1", "description": "Bloody diarrhea for >= 4 weeks duration", "category": "major", "requiredForDiagnosis": false },
+      { "id": "uc-2", "description": "Endoscopic findings: continuous inflammation starting from rectum, extending proximally without skip lesions; erythema, loss of vascular pattern, friability, erosions, ulcers", "category": "major", "requiredForDiagnosis": false },
+      { "id": "uc-3", "description": "Histologic findings: mucosal and submucosal chronic inflammation, crypt abscesses, crypt architectural distortion, goblet cell depletion", "category": "major", "requiredForDiagnosis": false },
+      { "id": "uc-4", "description": "Exclusion of infectious colitis (C. difficile, CMV, enteric pathogens)", "category": "major", "requiredForDiagnosis": true },
+      { "id": "uc-5", "description": "No small bowel involvement (except backwash ileitis in pancolitis)", "category": "supportive", "requiredForDiagnosis": false }
+    ],
+    "minimumForDiagnosis": "Clinical presentation plus endoscopic and histologic findings consistent with UC; exclusion of infectious causes",
+    "notes": "Montreal classification: E1 (ulcerative proctitis), E2 (left-sided/distal), E3 (extensive/pancolitis). Severity: S0 (clinical remission), S1 (mild), S2 (moderate), S3 (severe). Truelove and Witts criteria used for acute severe colitis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      { "symptomName": "Continuous colonic inflammation starting at rectum on endoscopy", "frequency": 0.95, "bodySystem": "Gastrointestinal", "notes": "Key distinguishing feature from Crohn's; no skip lesions" },
+      { "symptomName": "Crypt abscesses and architectural distortion on biopsy", "frequency": 0.70, "bodySystem": "Gastrointestinal" }
+    ],
+    "common": [
+      { "symptomName": "Bloody diarrhea", "snomedCode": "95545007", "frequency": 0.90, "bodySystem": "Gastrointestinal" },
+      { "symptomName": "Rectal bleeding (hematochezia)", "snomedCode": "12063002", "frequency": 0.85, "bodySystem": "Gastrointestinal" },
+      { "symptomName": "Urgency and tenesmus", "snomedCode": "75088002", "frequency": 0.70, "bodySystem": "Gastrointestinal" },
+      { "symptomName": "Abdominal cramping (left-sided predominant)", "snomedCode": "21522001", "frequency": 0.60, "bodySystem": "Gastrointestinal" },
+      { "symptomName": "Mucus in stool", "snomedCode": "43478001", "frequency": 0.50, "bodySystem": "Gastrointestinal" }
+    ],
+    "occasional": [
+      { "symptomName": "Fatigue", "snomedCode": "84229001", "frequency": 0.40, "bodySystem": "Constitutional" },
+      { "symptomName": "Arthritis (peripheral or axial spondyloarthropathy)", "snomedCode": "57676002", "frequency": 0.20, "bodySystem": "Musculoskeletal" },
+      { "symptomName": "Erythema nodosum", "snomedCode": "32861005", "frequency": 0.10, "bodySystem": "Dermatologic" },
+      { "symptomName": "Uveitis/episcleritis", "snomedCode": "128473001", "frequency": 0.05, "bodySystem": "Ocular" },
+      { "symptomName": "Primary sclerosing cholangitis", "snomedCode": "197441003", "frequency": 0.05, "bodySystem": "Hepatobiliary" }
+    ],
+    "rare": [
+      { "symptomName": "Toxic megacolon", "snomedCode": "27496005", "frequency": 0.03, "bodySystem": "Gastrointestinal", "notes": "Acute colonic dilatation >6 cm with systemic toxicity; surgical emergency" },
+      { "symptomName": "Pyoderma gangrenosum", "snomedCode": "55464003", "frequency": 0.02, "bodySystem": "Dermatologic" },
+      { "symptomName": "Colorectal carcinoma", "snomedCode": "363406005", "frequency": 0.05, "bodySystem": "Gastrointestinal/Oncologic", "notes": "Risk increases with disease extent and duration (>8 years pancolitis)" },
+      { "symptomName": "Venous thromboembolism", "snomedCode": "111293003", "frequency": 0.03, "bodySystem": "Vascular", "notes": "Increased risk during flares" },
+      { "symptomName": "Autoimmune hemolytic anemia", "snomedCode": "61261009", "frequency": 0.01, "bodySystem": "Hematologic" }
+    ]
+  },
+  "systemsAffected": ["Gastrointestinal", "Musculoskeletal", "Dermatologic", "Ocular", "Hepatobiliary", "Hematologic"],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated CRP and ESR (markers of inflammation)",
+      "Elevated fecal calprotectin (sensitive marker of colonic inflammation)",
+      "Iron deficiency anemia (chronic blood loss)",
+      "Hypoalbuminemia (severe disease)",
+      "pANCA positive (60-70%)",
+      "ASCA usually negative (helps distinguish from Crohn's)",
+      "Stool cultures and C. difficile toxin negative"
+    ],
+    "imaging": [
+      "Abdominal X-ray: loss of haustral markings (lead pipe colon), colonic dilatation in toxic megacolon",
+      "CT abdomen: continuous colonic wall thickening, pericolonic fat stranding, rectal involvement",
+      "Colonoscopy with biopsies: erythema, granularity, friability, erosions, pseudopolyps (in chronic disease)"
+    ],
+    "genetic": [
+      "HLA-DRB1*0103 association (severe disease)",
+      "IL23R gene variants",
+      "Over 200 susceptibility loci identified",
+      "Overlap with Crohn's disease genetic loci"
+    ],
+    "other": [
+      "Colonoscopy with step biopsies: continuous mucosal inflammation from rectum, crypt distortion, basal plasmacytosis",
+      "Dysplasia surveillance: recommended after 8 years of extensive colitis"
+    ]
+  },
+  "differentialDiagnoses": [
+    { "diseaseId": "inflammatory-bowel-disease-crohn", "distinguishingFeatures": ["Skip lesions", "Transmural inflammation", "Granulomas", "Perianal disease", "Small bowel involvement"] },
+    { "diseaseId": "infectious-colitis", "distinguishingFeatures": ["Acute onset", "Positive stool cultures", "Travel history", "Self-limited course"] },
+    { "diseaseId": "ischemic-colitis", "distinguishingFeatures": ["Older age", "Cardiovascular risk factors", "Watershed distribution (splenic flexure)", "Acute onset with bloody diarrhea"] },
+    { "diseaseId": "microscopic-colitis", "distinguishingFeatures": ["Normal colonoscopic appearance", "Collagenous or lymphocytic colitis on biopsy", "Watery non-bloody diarrhea"] }
+  ],
+  "redFlags": [
+    ">=6 bloody stools/day with systemic toxicity (acute severe colitis - Truelove & Witts criteria)",
+    "Colonic dilatation >6 cm on X-ray (toxic megacolon)",
+    "Signs of perforation (rebound, guarding, free air)",
+    "Failure to respond to IV corticosteroids within 72 hours (rescue therapy or surgery needed)",
+    "Dysplasia detected on surveillance colonoscopy"
+  ],
+  "specialistType": ["Gastroenterology", "Colorectal Surgery"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Rubin DT, et al. ACG Clinical Guideline: Ulcerative Colitis in Adults. Am J Gastroenterol. 2019;114(3):384-413.",
+    "Raine T, et al. ECCO Guidelines on Therapeutics in Ulcerative Colitis: Medical Treatment. J Crohns Colitis. 2022;16(1):2-17.",
+    "Ungaro R, et al. Ulcerative colitis. Lancet. 2017;389(10080):1756-1770."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,104 @@
+{
+  "id": "iga-vasculitis",
+  "name": "IgA Vasculitis",
+  "aliases": ["Henoch-Schonlein Purpura", "HSP", "IgA Vasculitis (Henoch-Schonlein)", "Anaphylactoid Purpura"],
+  "icd10Codes": ["D69.0"],
+  "omimId": "600807",
+  "orphanetId": "761",
+  "prevalence": {
+    "estimate": "10-20 per 100,000 in children; 1-2 per 100,000 in adults",
+    "range": "1-20 per 100,000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 3, "max": 10, "peak": 6 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": ["Asian populations (higher incidence)", "Caucasian"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "EULAR/PRINTO/PRES 2010 Classification Criteria for IgA Vasculitis",
+    "criteria": [
+      { "id": "igav-1", "description": "Palpable purpura (mandatory criterion) with lower limb predominance, not related to thrombocytopenia", "category": "major", "requiredForDiagnosis": true },
+      { "id": "igav-2", "description": "Diffuse abdominal pain (acute onset)", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "igav-3", "description": "Biopsy showing predominant IgA deposition (skin or kidney)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "igav-4", "description": "Arthritis or arthralgia (acute onset)", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "igav-5", "description": "Renal involvement: proteinuria >0.3 g/24h or albumin/creatinine ratio >30 mmol/mg, or hematuria or red cell casts", "category": "minor", "requiredForDiagnosis": false }
+    ],
+    "minimumForDiagnosis": "Palpable purpura plus at least one of the four additional criteria",
+    "notes": "More severe in adults than children. Adult-onset IgA vasculitis has higher rates of renal involvement and worse renal prognosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      { "symptomName": "Palpable purpura (lower extremities and buttocks)", "snomedCode": "20143000", "frequency": 0.95, "bodySystem": "Dermatologic", "notes": "Non-thrombocytopenic; gravity-dependent distribution; mandatory for diagnosis" },
+      { "symptomName": "IgA deposits on skin or renal biopsy", "frequency": 0.80, "bodySystem": "Histopathologic" }
+    ],
+    "common": [
+      { "symptomName": "Arthritis/arthralgia (knees, ankles)", "snomedCode": "57676002", "frequency": 0.75, "bodySystem": "Musculoskeletal", "notes": "Non-destructive; periarticular swelling" },
+      { "symptomName": "Colicky abdominal pain", "snomedCode": "21522001", "frequency": 0.65, "bodySystem": "Gastrointestinal" },
+      { "symptomName": "Hematuria (microscopic or gross)", "snomedCode": "34436003", "frequency": 0.40, "bodySystem": "Renal" },
+      { "symptomName": "Proteinuria", "snomedCode": "29738008", "frequency": 0.35, "bodySystem": "Renal" },
+      { "symptomName": "Nausea and vomiting", "snomedCode": "422587007", "frequency": 0.35, "bodySystem": "Gastrointestinal" }
+    ],
+    "occasional": [
+      { "symptomName": "Gastrointestinal bleeding (melena, hematochezia)", "snomedCode": "74474003", "frequency": 0.20, "bodySystem": "Gastrointestinal" },
+      { "symptomName": "Intussusception", "snomedCode": "19063002", "frequency": 0.05, "bodySystem": "Gastrointestinal", "notes": "Especially in children; usually ileocolic" },
+      { "symptomName": "Testicular/scrotal involvement (orchitis)", "snomedCode": "274718006", "frequency": 0.10, "bodySystem": "Urogenital", "notes": "Acute scrotum in boys; can mimic testicular torsion" },
+      { "symptomName": "Subcutaneous edema (scalp, periorbital in young children)", "snomedCode": "65124004", "frequency": 0.15, "bodySystem": "Dermatologic" }
+    ],
+    "rare": [
+      { "symptomName": "Nephrotic syndrome", "snomedCode": "52254009", "frequency": 0.05, "bodySystem": "Renal" },
+      { "symptomName": "Rapidly progressive glomerulonephritis", "snomedCode": "36171008", "frequency": 0.03, "bodySystem": "Renal" },
+      { "symptomName": "Pulmonary hemorrhage", "snomedCode": "233608003", "frequency": 0.02, "bodySystem": "Pulmonary" },
+      { "symptomName": "Seizures/CNS vasculitis", "snomedCode": "91175000", "frequency": 0.02, "bodySystem": "Neurological" },
+      { "symptomName": "Pancreatitis", "snomedCode": "75694006", "frequency": 0.02, "bodySystem": "Gastrointestinal" }
+    ]
+  },
+  "systemsAffected": ["Dermatologic", "Musculoskeletal", "Gastrointestinal", "Renal", "Urogenital"],
+  "keyFindings": {
+    "laboratory": [
+      "Normal platelet count (distinguishes from thrombocytopenic purpura)",
+      "Elevated serum IgA (30-50%)",
+      "Elevated ESR and CRP",
+      "Normal coagulation studies",
+      "Urinalysis: hematuria, proteinuria, RBC casts",
+      "Elevated serum creatinine in severe nephritis",
+      "Fecal occult blood positive"
+    ],
+    "imaging": [
+      "Abdominal ultrasound: bowel wall thickening, intussusception",
+      "CT abdomen: bowel wall edema, mesenteric lymphadenopathy",
+      "Testicular ultrasound: increased flow (epididymo-orchitis vs. torsion)"
+    ],
+    "genetic": [
+      "HLA-DRB1*01 association",
+      "HLA-B35 association reported",
+      "Complement factor H-related gene variants"
+    ],
+    "other": [
+      "Skin biopsy: leukocytoclastic vasculitis with IgA deposition on immunofluorescence",
+      "Renal biopsy: mesangial IgA deposition (similar to IgA nephropathy), crescents in severe cases"
+    ]
+  },
+  "differentialDiagnoses": [
+    { "diseaseId": "immune-thrombocytopenic-purpura", "distinguishingFeatures": ["Low platelet count", "Non-palpable petechiae", "No abdominal/joint symptoms"] },
+    { "diseaseId": "microscopic-polyangiitis", "distinguishingFeatures": ["ANCA positive", "Pauci-immune GN (no IgA)", "Adults", "Pulmonary-renal syndrome"] },
+    { "diseaseId": "cryoglobulinemic-vasculitis", "distinguishingFeatures": ["Cryoglobulins present", "HCV association", "Complement consumption", "Peripheral neuropathy"] },
+    { "diseaseId": "meningococcemia", "distinguishingFeatures": ["Rapidly progressive", "Fever and meningismus", "Blood cultures positive", "Purpura fulminans"] }
+  ],
+  "redFlags": [
+    "Progressive renal insufficiency (especially in adults)",
+    "Nephrotic-range proteinuria",
+    "Massive GI hemorrhage",
+    "Signs of intussusception (colicky pain, currant jelly stool)",
+    "Acute scrotum (must exclude testicular torsion)",
+    "Recurrence beyond 6 months (consider renal monitoring)"
+  ],
+  "specialistType": ["Pediatric Rheumatology", "Rheumatology", "Nephrology", "Pediatrics"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Ozen S, et al. EULAR/PRINTO/PRES criteria for Henoch-Schonlein purpura, childhood polyarteritis nodosa, childhood Wegener granulomatosis and childhood Takayasu arteritis. Ann Rheum Dis. 2010;69(5):798-806.",
+    "Audemard-Verger A, et al. IgA vasculitis (Henoch-Schonlein purpura) in adults: Diagnostic and therapeutic aspects. Autoimmun Rev. 2015;14(7):579-585.",
+    "Pillebout E, et al. Henoch-Schonlein Purpura in Adults: Outcome and Prognostic Factors. J Am Soc Nephrol. 2002;13(5):1271-1278."
+  ],
+  "confidenceInData": "medium"
+}

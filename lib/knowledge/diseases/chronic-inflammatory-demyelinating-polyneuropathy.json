@@ -1,0 +1,238 @@
+{
+  "id": "chronic-inflammatory-demyelinating-polyneuropathy",
+  "name": "Chronic Inflammatory Demyelinating Polyneuropathy",
+  "aliases": [
+    "CIDP",
+    "Chronic inflammatory demyelinating polyradiculoneuropathy"
+  ],
+  "icd10Codes": ["G61.81"],
+  "omimId": "139393",
+  "orphanetId": "2932",
+  "prevalence": {
+    "estimate": "2-9 per 100,000",
+    "range": "1-9 per 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 30, "max": 70, "peak": 50 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Affects all ethnicities",
+      "No strong ethnic predilection documented"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "EAN/PNS 2021 CIDP Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "cidp-1",
+        "description": "Progressive or relapsing symmetric proximal and distal weakness and sensory dysfunction of all extremities developing over at least 8 weeks",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cidp-2",
+        "description": "Absent or reduced deep tendon reflexes in all limbs",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cidp-3",
+        "description": "Electrodiagnostic evidence of demyelination in motor nerves (prolonged distal latencies, slowed conduction velocities, conduction block, temporal dispersion)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cidp-4",
+        "description": "CSF protein elevation (albuminocytologic dissociation)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cidp-5",
+        "description": "MRI showing nerve root/plexus hypertrophy and/or enhancement",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cidp-6",
+        "description": "Nerve biopsy showing demyelination/remyelination",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Clinical criteria plus electrodiagnostic evidence of demyelination in at least 2 motor nerves. Supportive criteria strengthen the diagnosis.",
+    "notes": "Atypical CIDP variants include distal (DADS), multifocal (Lewis-Sumner/MADSAM), focal, motor-predominant, and sensory-predominant forms. Anti-NF155, anti-CNTN1, and anti-Caspr1 antibodies define autoimmune nodopathies."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Symmetric proximal and distal limb weakness",
+        "snomedCode": "249937002",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Proximal involvement distinguishes from most other neuropathies"
+      },
+      {
+        "symptomName": "Progressive areflexia",
+        "snomedCode": "37280007",
+        "frequency": 0.90,
+        "bodySystem": "neurological",
+        "notes": "Generalized hyporeflexia or areflexia"
+      },
+      {
+        "symptomName": "Chronic progressive or relapsing-remitting course over >8 weeks",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "notes": "Distinguishes from acute GBS (which peaks within 4 weeks)"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Distal sensory loss",
+        "snomedCode": "279079003",
+        "frequency": 0.70,
+        "bodySystem": "neurological",
+        "notes": "Large fiber modalities: vibration, proprioception"
+      },
+      {
+        "symptomName": "Gait instability",
+        "snomedCode": "22631008",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Due to combined weakness and sensory ataxia"
+      },
+      {
+        "symptomName": "Paresthesias",
+        "snomedCode": "91019004",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "notes": "Tingling, numbness in hands and feet"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.60,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Difficulty with fine motor tasks",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "notes": "Buttoning, writing, handling small objects"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Neuropathic pain",
+        "snomedCode": "247398009",
+        "frequency": 0.30,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tremor",
+        "snomedCode": "26079004",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Action tremor from demyelination of proprioceptive fibers"
+      },
+      {
+        "symptomName": "Cranial nerve involvement",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Facial weakness, bulbar symptoms less common than in GBS"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Respiratory insufficiency",
+        "snomedCode": "409622000",
+        "frequency": 0.05,
+        "bodySystem": "respiratory",
+        "notes": "Much less common than in GBS"
+      },
+      {
+        "symptomName": "Papilledema",
+        "snomedCode": "423341008",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological",
+        "notes": "From elevated CSF protein"
+      },
+      {
+        "symptomName": "Autonomic dysfunction",
+        "snomedCode": "72167002",
+        "frequency": 0.08,
+        "bodySystem": "autonomic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "peripheral nervous system",
+    "motor system",
+    "sensory system",
+    "musculoskeletal system"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated CSF protein (typically >45 mg/dL) with normal cell count",
+      "Anti-NF155, anti-CNTN1, anti-Caspr1 antibodies in nodopathy subset",
+      "Paraprotein screening (SPEP, immunofixation) to exclude paraprotein-associated neuropathy"
+    ],
+    "imaging": [
+      "MRI of brachial/lumbosacral plexus showing nerve root hypertrophy and enhancement",
+      "Ultrasound showing nerve enlargement (cross-sectional area increase)"
+    ],
+    "genetic": [
+      "No causative genetic factors for typical CIDP",
+      "Genetic testing may be needed to exclude hereditary demyelinating neuropathies (CMT1)"
+    ],
+    "other": [
+      "Nerve conduction studies showing demyelinating features: prolonged distal latencies, slowed conduction velocities, conduction block, temporal dispersion, prolonged F-wave latencies",
+      "Sural nerve biopsy showing onion-bulb formation and segmental demyelination (rarely needed)",
+      "Response to immunotherapy (IVIg, corticosteroids, or plasma exchange) supports diagnosis"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "guillain-barre-syndrome",
+      "distinguishingFeatures": [
+        "GBS reaches nadir within 4 weeks; CIDP progresses beyond 8 weeks",
+        "GBS is typically monophasic; CIDP is chronic/relapsing",
+        "GBS often has preceding infection"
+      ]
+    },
+    {
+      "diseaseId": "hereditary-neuropathy-CMT1",
+      "distinguishingFeatures": [
+        "CMT has family history and lifelong slowly progressive course",
+        "CMT has uniformly slow conduction velocities without conduction block",
+        "CMT does not respond to immunotherapy"
+      ]
+    },
+    {
+      "diseaseId": "multifocal-motor-neuropathy",
+      "distinguishingFeatures": [
+        "MMN is purely motor without sensory involvement",
+        "MMN has asymmetric limb weakness",
+        "MMN has anti-GM1 antibodies",
+        "MMN does not respond to corticosteroids"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Failure to respond to standard immunotherapy should prompt reconsideration of diagnosis",
+    "Purely motor presentation may indicate multifocal motor neuropathy",
+    "Uniform conduction slowing without conduction block suggests hereditary neuropathy",
+    "Monoclonal gammopathy must be excluded (MGUS, POEMS, lymphoma)",
+    "Rapid progression resembling GBS but evolving beyond 8 weeks",
+    "Young patients with anti-NF155 antibodies have distinct phenotype with tremor and ataxia"
+  ],
+  "specialistType": ["neurologist", "neuromuscular specialist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Van den Bergh PYK, et al. European Academy of Neurology/Peripheral Nerve Society guideline on diagnosis and treatment of chronic inflammatory demyelinating polyradiculoneuropathy. Eur J Neurol. 2021;28(11):3556-3583.",
+    "Lehmann HC, et al. Chronic inflammatory demyelinating polyneuropathy: update on diagnosis, immunopathogenesis and treatment. J Neurol Neurosurg Psychiatry. 2019;90(9):981-987.",
+    "Querol L, et al. Antibodies against peripheral nerve antigens in chronic inflammatory demyelinating polyradiculoneuropathy. Sci Rep. 2023."
+  ],
+  "confidenceInData": "medium"
+}

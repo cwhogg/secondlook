@@ -1,0 +1,218 @@
+{
+  "id": "cutaneous-mastocytosis",
+  "name": "Cutaneous Mastocytosis",
+  "aliases": [
+    "CM",
+    "Urticaria pigmentosa",
+    "UP",
+    "Maculopapular cutaneous mastocytosis",
+    "MPCM",
+    "Diffuse cutaneous mastocytosis",
+    "Mastocytoma of skin"
+  ],
+  "icd10Codes": ["Q82.2", "D47.01"],
+  "omimId": "154800",
+  "orphanetId": "ORPHA66646",
+  "prevalence": {
+    "estimate": "1 per 10,000 in children (most common form); rarer in adults as isolated cutaneous disease",
+    "range": "Pediatric: 5-10 per 10,000; Adult isolated CM: <1 per 10,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 5, "peak": 1 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Mastocytosis / ECNM Criteria",
+    "criteria": [
+      {
+        "id": "cm-1",
+        "description": "Typical skin lesions: maculopapular (urticaria pigmentosa), diffuse cutaneous, or mastocytoma",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cm-2",
+        "description": "Positive Darier sign (urtication and wheal formation upon rubbing or stroking the lesion)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cm-3",
+        "description": "Skin biopsy confirming increased mast cell infiltration in the dermis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cm-4",
+        "description": "Absence of criteria for systemic mastocytosis (no bone marrow involvement, normal baseline tryptase or <20 ng/mL in children)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cm-5",
+        "description": "KIT mutation analysis (KIT D816V typically absent in pediatric CM; may be present in adult CM)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Typical skin lesions with histological confirmation of increased dermal mast cells, without evidence of systemic disease",
+    "notes": "Pediatric CM often resolves spontaneously by adolescence. Adult CM should prompt bone marrow biopsy to exclude systemic mastocytosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Urticaria pigmentosa lesions with positive Darier sign",
+        "snomedCode": "200873009",
+        "frequency": 0.95,
+        "bodySystem": "dermatological",
+        "notes": "Brownish-red macules/papules that urticate when rubbed"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Pruritus at lesion sites",
+        "snomedCode": "418290006",
+        "frequency": 0.85,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Flushing",
+        "snomedCode": "271807003",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Blistering of lesions (in infants and young children)",
+        "snomedCode": "247464001",
+        "frequency": 0.40,
+        "bodySystem": "dermatological",
+        "notes": "More common in very young children; resolves with age"
+      },
+      {
+        "symptomName": "Dermographism",
+        "snomedCode": "402602004",
+        "frequency": 0.45,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Abdominal pain",
+        "snomedCode": "21522001",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "snomedCode": "62315008",
+        "frequency": 0.20,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Tachycardia during flushing episodes",
+        "snomedCode": "3424008",
+        "frequency": 0.20,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Headache",
+        "snomedCode": "25064002",
+        "frequency": 0.20,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Anaphylaxis (more common in diffuse CM)",
+        "snomedCode": "39579001",
+        "frequency": 0.05,
+        "bodySystem": "immunologic",
+        "notes": "Risk higher in diffuse cutaneous mastocytosis with large mast cell burden"
+      },
+      {
+        "symptomName": "Hypotension",
+        "snomedCode": "45007003",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly in diffuse CM",
+        "snomedCode": "36760000",
+        "frequency": 0.03,
+        "bodySystem": "hepatic",
+        "notes": "Rare; raises concern for systemic disease"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "gastrointestinal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Serum tryptase: usually normal or mildly elevated in CM; >20 ng/mL suggests systemic disease",
+      "CBC: usually normal",
+      "Complete metabolic panel: usually normal"
+    ],
+    "imaging": [
+      "No specific imaging findings for isolated CM",
+      "DEXA scan if adult with persistent disease (assess for osteoporosis)"
+    ],
+    "genetic": [
+      "KIT mutations in skin lesions (non-D816V mutations more common in pediatric CM)",
+      "KIT D816V may be present in adult CM (evaluate for systemic disease)",
+      "Pediatric CM is usually non-clonal or has non-D816V KIT mutations"
+    ],
+    "other": [
+      "Skin biopsy: increased mast cells in papillary dermis, often in perivascular distribution",
+      "Darier sign: urtication on mechanical irritation of a lesion",
+      "Bone marrow biopsy recommended in adults to exclude systemic mastocytosis"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "systemic-mastocytosis",
+      "distinguishingFeatures": [
+        "SM has bone marrow involvement with mast cell aggregates and KIT D816V",
+        "CM is limited to skin without systemic criteria met"
+      ]
+    },
+    {
+      "diseaseId": "chronic-urticaria",
+      "distinguishingFeatures": [
+        "Chronic urticaria has transient wheals that resolve within 24 hours",
+        "CM has fixed pigmented lesions that persist"
+      ]
+    },
+    {
+      "diseaseId": "insect-bite-reaction",
+      "distinguishingFeatures": [
+        "Insect bites are transient and distributed differently",
+        "CM lesions are persistent and positive for Darier sign"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Adult-onset cutaneous mastocytosis (must exclude systemic disease with bone marrow biopsy)",
+    "Serum tryptase >20 ng/mL (suggests systemic involvement)",
+    "Severe or extensive blistering in infants (risk of mediator-related symptoms)",
+    "Anaphylaxis episodes (consider systemic disease or high mast cell burden)",
+    "Organomegaly or cytopenias (suggests systemic mastocytosis)"
+  ],
+  "specialistType": [
+    "Dermatologist",
+    "Allergist/Immunologist",
+    "Pediatric dermatologist (for children)",
+    "Hematologist (if systemic disease suspected)"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Hartmann K, et al. Cutaneous manifestations in patients with mastocytosis: consensus report of the European Competence Network on Mastocytosis. J Allergy Clin Immunol. 2016;137(1):35-45.",
+    "Valent P, et al. Mastocytosis: 2016 updated WHO classification and novel emerging treatment concepts. Blood. 2017;129(11):1420-1427.",
+    "Carter MC, et al. Pediatric mastocytosis. Immunol Allergy Clin North Am. 2014;34(2):363-381."
+  ],
+  "confidenceInData": "medium"
+}

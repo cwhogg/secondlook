@@ -1,0 +1,223 @@
+{
+  "id": "diabetic-autonomic-neuropathy",
+  "name": "Diabetic Autonomic Neuropathy",
+  "aliases": [
+    "DAN",
+    "Diabetic cardiovascular autonomic neuropathy",
+    "CAN"
+  ],
+  "icd10Codes": ["G99.0", "E11.43", "E10.43"],
+  "prevalence": {
+    "estimate": "20-73% of diabetic patients depending on diagnostic criteria and disease duration",
+    "range": "Cardiovascular autonomic neuropathy in 20% of unselected diabetics, up to 65% in long-standing disease",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 30, "max": 70, "peak": 55 },
+    "sexPredilection": "equal"
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Toronto Consensus Panel on Diabetic Neuropathy / ADA Guidelines",
+    "criteria": [
+      {
+        "id": "dan-1",
+        "description": "Established diagnosis of diabetes mellitus (Type 1 or Type 2)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "dan-2",
+        "description": "Abnormal heart rate variability testing (reduced R-R interval variation on deep breathing, Valsalva ratio, or 30:15 ratio on standing)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dan-3",
+        "description": "Orthostatic hypotension (>=20/10 mmHg drop on standing)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dan-4",
+        "description": "Symptoms of autonomic dysfunction in at least one organ system (cardiovascular, GI, genitourinary, sudomotor)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dan-5",
+        "description": "Exclusion of other causes of autonomic neuropathy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Diabetes mellitus plus at least one abnormal cardiovascular autonomic reflex test; two or more abnormal tests recommended for definite CAN",
+    "notes": "Screening recommended at diagnosis in Type 2 DM and 5 years after diagnosis in Type 1 DM. CAN is an independent risk factor for cardiovascular mortality."
+  },
+  "symptoms": {
+    "pathognomonic": [],
+    "common": [
+      {
+        "symptomName": "Resting tachycardia (fixed heart rate >100 bpm)",
+        "snomedCode": "3424008",
+        "frequency": 0.60,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to vagal denervation; heart rate may become fixed later"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "snomedCode": "413121006",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Orthostatic hypotension",
+        "snomedCode": "28651003",
+        "frequency": 0.30,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Gastroparesis (delayed gastric emptying)",
+        "snomedCode": "235675006",
+        "frequency": 0.40,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Erectile dysfunction (males)",
+        "snomedCode": "860914002",
+        "frequency": 0.50,
+        "bodySystem": "genitourinary"
+      },
+      {
+        "symptomName": "Constipation or diarrhea (diabetic enteropathy)",
+        "snomedCode": "14760008",
+        "frequency": 0.45,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hypoglycemia unawareness",
+        "snomedCode": "421725003",
+        "frequency": 0.25,
+        "bodySystem": "endocrine",
+        "notes": "Loss of sympathetic warning symptoms during hypoglycemia"
+      },
+      {
+        "symptomName": "Urinary retention or neurogenic bladder",
+        "snomedCode": "267064002",
+        "frequency": 0.30,
+        "bodySystem": "genitourinary"
+      },
+      {
+        "symptomName": "Anhidrosis of feet with compensatory truncal sweating",
+        "snomedCode": "69311009",
+        "frequency": 0.35,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Gustatory sweating",
+        "frequency": 0.15,
+        "bodySystem": "dermatological",
+        "notes": "Facial sweating triggered by eating"
+      },
+      {
+        "symptomName": "Silent myocardial ischemia",
+        "frequency": 0.20,
+        "bodySystem": "cardiovascular",
+        "notes": "Absence of angina during ischemic events due to afferent denervation"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden cardiac death (QT prolongation)",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pupillary abnormalities (small, poorly reactive pupils)",
+        "snomedCode": "12416001",
+        "frequency": 0.10,
+        "bodySystem": "ophthalmologic"
+      },
+      {
+        "symptomName": "Nocturnal diarrhea",
+        "snomedCode": "62315008",
+        "frequency": 0.10,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "gastrointestinal",
+    "genitourinary",
+    "dermatological",
+    "endocrine",
+    "ophthalmologic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "HbA1c elevated (reflecting poor glycemic control)",
+      "Fasting glucose or OGTT confirming diabetes",
+      "Urine microalbumin (concurrent diabetic nephropathy)"
+    ],
+    "imaging": [
+      "Gastric emptying study: delayed (confirms gastroparesis)",
+      "Cardiac MIBG: may show reduced uptake (postganglionic denervation)",
+      "Echocardiogram: may show diastolic dysfunction"
+    ],
+    "genetic": [
+      "No specific genetic markers for DAN",
+      "Genetic risk factors for diabetes (HLA for T1DM, TCF7L2 for T2DM)"
+    ],
+    "other": [
+      "Cardiovascular autonomic reflex tests (Ewing battery): abnormal HR variability on deep breathing, abnormal Valsalva ratio, abnormal 30:15 ratio",
+      "QSART: reduced sweat output distally",
+      "Sudoscan: reduced electrochemical skin conductance in feet",
+      "QT interval prolongation on ECG"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pure-autonomic-failure",
+      "distinguishingFeatures": [
+        "PAF occurs without diabetes",
+        "PAF has more severe and isolated autonomic failure"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-autonomic-ganglionopathy",
+      "distinguishingFeatures": [
+        "AAG has subacute onset and may have gAChR antibodies",
+        "DAN is gradual over years with long-standing diabetes"
+      ]
+    },
+    {
+      "diseaseId": "amyloid-neuropathy",
+      "distinguishingFeatures": [
+        "Amyloidosis has multisystem deposits and characteristic biopsy findings",
+        "Amyloid neuropathy may have more severe small fiber involvement"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Silent myocardial ischemia (cardiac events without chest pain)",
+    "Hypoglycemia unawareness (risk of severe hypoglycemic events)",
+    "QT prolongation (risk of cardiac arrhythmia)",
+    "Severe gastroparesis with recurrent hospitalizations",
+    "Sudden unexplained cardiovascular death risk"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Neurologist",
+    "Cardiologist",
+    "Gastroenterologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Pop-Busui R, et al. Diabetic neuropathy: a position statement by the American Diabetes Association. Diabetes Care. 2017;40(1):136-154.",
+    "Vinik AI, et al. Diabetic autonomic neuropathy. Diabetes Care. 2003;26(5):1553-1579.",
+    "Spallone V, et al. Cardiovascular autonomic neuropathy in diabetes: clinical impact, assessment, diagnosis, and management. Diabetes Metab Res Rev. 2011;27(7):639-653."
+  ],
+  "confidenceInData": "medium"
+}

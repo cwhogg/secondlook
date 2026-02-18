@@ -1,0 +1,250 @@
+{
+  "id": "klinefelter-syndrome",
+  "name": "Klinefelter Syndrome",
+  "aliases": [
+    "47,XXY Syndrome",
+    "XXY Syndrome",
+    "Klinefelter's Syndrome"
+  ],
+  "icd10Codes": ["Q98.0", "Q98.1", "Q98.4"],
+  "omimId": "300200",
+  "orphanetId": "484",
+  "prevalence": {
+    "estimate": "1 in 600 to 1 in 1,000 live male births",
+    "range": "0.1%-0.17%",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 40, "peak": 14 },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "No strong ethnic predilection"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Karyotype-confirmed Klinefelter Syndrome",
+    "criteria": [
+      {
+        "id": "ks-c1",
+        "description": "Male phenotype with at least one extra X chromosome on karyotype (47,XXY or variant)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ks-c2",
+        "description": "Small firm testes (typically <4 mL in adulthood)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ks-c3",
+        "description": "Hypergonadotropic hypogonadism (elevated FSH/LH, low testosterone)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ks-c4",
+        "description": "Azoospermia or severe oligospermia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ks-c5",
+        "description": "Tall stature with eunuchoid body proportions (long limbs relative to trunk)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Karyotype demonstrating 47,XXY (classic, ~80%) or mosaic (46,XY/47,XXY) or higher-order X aneuploidies (48,XXXY; 49,XXXXY)",
+    "notes": "Only ~25% of cases are diagnosed during the individual's lifetime; most remain undiagnosed. Increasing prenatal detection via NIPT. Mosaic forms (46,XY/47,XXY) may have milder phenotypes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Small, firm testes (<4 mL bilateral) with azoospermia",
+        "snomedCode": "204878002",
+        "frequency": 0.95,
+        "bodySystem": "reproductive",
+        "notes": "Near-universal after puberty; due to seminiferous tubule dysgenesis"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Tall stature with long legs",
+        "snomedCode": "24700007",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Infertility",
+        "snomedCode": "6738008",
+        "frequency": 0.95,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Gynecomastia",
+        "snomedCode": "4754008",
+        "frequency": 0.5,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Reduced facial and body hair",
+        "snomedCode": "247543009",
+        "frequency": 0.6,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Fatigue and low energy",
+        "snomedCode": "84229001",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Learning difficulties (language-based)",
+        "snomedCode": "3446000",
+        "frequency": 0.35,
+        "bodySystem": "neurological",
+        "notes": "Verbal and reading difficulties; IQ typically in low-normal range"
+      },
+      {
+        "symptomName": "Behavioral and psychosocial difficulties",
+        "snomedCode": "277843001",
+        "frequency": 0.3,
+        "bodySystem": "neuropsychiatric"
+      },
+      {
+        "symptomName": "Osteoporosis",
+        "snomedCode": "64859006",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal",
+        "notes": "From testosterone deficiency"
+      },
+      {
+        "symptomName": "Metabolic syndrome (obesity, insulin resistance)",
+        "snomedCode": "237602007",
+        "frequency": 0.3,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Decreased libido and erectile dysfunction",
+        "snomedCode": "248095000",
+        "frequency": 0.4,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Breast cancer (male)",
+        "snomedCode": "254838004",
+        "frequency": 0.03,
+        "bodySystem": "endocrine",
+        "notes": "20-fold increased risk compared to 46,XY males"
+      },
+      {
+        "symptomName": "Venous thromboembolism",
+        "snomedCode": "111293003",
+        "frequency": 0.05,
+        "bodySystem": "vascular"
+      },
+      {
+        "symptomName": "Autoimmune diseases (SLE, rheumatoid arthritis)",
+        "snomedCode": "85828009",
+        "frequency": 0.05,
+        "bodySystem": "immunologic"
+      },
+      {
+        "symptomName": "Mediastinal germ cell tumors",
+        "snomedCode": "371971001",
+        "frequency": 0.01,
+        "bodySystem": "oncologic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "reproductive",
+    "endocrine",
+    "musculoskeletal",
+    "neurological",
+    "neuropsychiatric",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated FSH (marked) and LH",
+      "Low total and free testosterone",
+      "Elevated estradiol relative to testosterone",
+      "Semen analysis: azoospermia or severe oligospermia",
+      "Low inhibin B",
+      "Elevated SHBG"
+    ],
+    "imaging": [
+      "Testicular ultrasound showing small testes",
+      "DEXA scan for bone density assessment",
+      "Breast imaging if gynecomastia is prominent or suspicious"
+    ],
+    "genetic": [
+      "Karyotype: 47,XXY (~80% of cases)",
+      "Mosaic: 46,XY/47,XXY (~10-20%)",
+      "Higher-order aneuploidies: 48,XXXY; 48,XXYY; 49,XXXXY (more severe phenotypes)",
+      "Non-disjunction during parental meiosis (maternal or paternal)"
+    ],
+    "other": [
+      "Neuropsychological assessment for learning difficulties",
+      "Metabolic screening (glucose tolerance, lipid panel)",
+      "Bone age X-ray in childhood"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "kallmann-syndrome",
+      "distinguishingFeatures": [
+        "Hypogonadotropic (not hypergonadotropic) hypogonadism",
+        "Anosmia or hyposmia (defining feature)",
+        "Normal karyotype (46,XY)",
+        "Normal testicular size or mildly reduced"
+      ]
+    },
+    {
+      "diseaseId": "marfan-syndrome",
+      "distinguishingFeatures": [
+        "Tall stature with arachnodactyly",
+        "Ectopia lentis and aortic root dilation",
+        "FBN1 mutations",
+        "Normal testes and fertility typically"
+      ]
+    },
+    {
+      "diseaseId": "secondary-hypogonadism",
+      "distinguishingFeatures": [
+        "Low FSH/LH (hypogonadotropic)",
+        "Normal karyotype",
+        "Pituitary or hypothalamic cause",
+        "Potentially reversible"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Male breast cancer (increased surveillance recommended)",
+    "Venous thromboembolism risk",
+    "Severe osteoporosis with fractures from untreated hypogonadism",
+    "Significant psychosocial distress and depression",
+    "Mediastinal germ cell tumor in a young male with gynecomastia"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Medical Geneticist",
+    "Reproductive Endocrinologist/Urologist",
+    "Developmental Pediatrician",
+    "Psychologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Gravholt CH, et al. Klinefelter syndrome: integrating genetics, neuropsychology, and endocrinology. Endocr Rev. 2018;39(4):389-423.",
+    "Bondy CA, et al. Clinical practice guideline: care of the adult with Klinefelter syndrome. J Clin Endocrinol Metab. 2010;95(8):4017-4036.",
+    "Lanfranco F, et al. Klinefelter's syndrome. Lancet. 2004;364(9430):273-283.",
+    "Visootsak J, Graham JM Jr. Klinefelter syndrome and other sex chromosomal aneuploidies. Orphanet J Rare Dis. 2006;1:42."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,283 @@
+{
+  "id": "acute-intermittent-porphyria",
+  "name": "Acute Intermittent Porphyria",
+  "aliases": [
+    "AIP",
+    "Porphyria, Acute Intermittent",
+    "Swedish Porphyria",
+    "Pyrroloporphyria",
+    "HMBS Deficiency"
+  ],
+  "icd10Codes": ["E80.21"],
+  "omimId": "176000",
+  "orphanetId": "79276",
+  "prevalence": {
+    "estimate": "1 in 10,000 to 1 in 20,000",
+    "range": "0.005%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 15, "max": 45, "peak": 30 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": ["Northern European", "Swedish", "British"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and biochemical criteria for acute porphyrias",
+    "criteria": [
+      {
+        "id": "aip-c1",
+        "description": "Markedly elevated urinary porphobilinogen (PBG) during acute attack (>10x upper limit of normal)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "aip-c2",
+        "description": "Elevated urinary aminolevulinic acid (ALA)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aip-c3",
+        "description": "Reduced erythrocyte hydroxymethylbilane synthase (HMBS) activity (~50% of normal)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aip-c4",
+        "description": "Pathogenic variant identified in HMBS gene",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aip-c5",
+        "description": "Characteristic neurovisceral symptoms (abdominal pain, neuropathy, psychiatric manifestations)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aip-c6",
+        "description": "Dark or reddish-brown urine that darkens on standing",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aip-c7",
+        "description": "Normal fecal porphyrins (distinguishes from variegate porphyria and hereditary coproporphyria)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Elevated urinary PBG during symptomatic episode, confirmed by HMBS enzyme assay or HMBS genetic testing",
+    "notes": "Up to 90% of individuals with HMBS mutations remain clinically latent. Attacks are typically provoked by drugs, hormones, fasting, or stress."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Severe colicky abdominal pain without peritoneal signs",
+        "snomedCode": "21522001",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal",
+        "notes": "Most common presenting symptom; pain is diffuse, poorly localized"
+      },
+      {
+        "symptomName": "Port wine or dark red-brown urine",
+        "snomedCode": "281866005",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "notes": "Urine darkens upon standing due to PBG polymerization"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Nausea and vomiting",
+        "snomedCode": "422400008",
+        "frequency": 0.8,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Tachycardia",
+        "snomedCode": "3424008",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hypertension",
+        "snomedCode": "38341003",
+        "frequency": 0.7,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Constipation",
+        "snomedCode": "14760008",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anxiety and restlessness",
+        "snomedCode": "48694002",
+        "frequency": 0.65,
+        "bodySystem": "neuropsychiatric"
+      },
+      {
+        "symptomName": "Limb pain",
+        "snomedCode": "10601006",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Motor neuropathy / muscle weakness",
+        "snomedCode": "26544005",
+        "frequency": 0.45,
+        "bodySystem": "neurological",
+        "notes": "Predominantly motor; can progress to quadriparesis"
+      },
+      {
+        "symptomName": "Seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Often due to hyponatremia from SIADH"
+      },
+      {
+        "symptomName": "Hyponatremia",
+        "snomedCode": "89627008",
+        "frequency": 0.35,
+        "bodySystem": "endocrine",
+        "notes": "Due to SIADH"
+      },
+      {
+        "symptomName": "Psychiatric symptoms (hallucinations, confusion, psychosis)",
+        "snomedCode": "69322001",
+        "frequency": 0.3,
+        "bodySystem": "neuropsychiatric"
+      },
+      {
+        "symptomName": "Insomnia",
+        "snomedCode": "193462001",
+        "frequency": 0.35,
+        "bodySystem": "neuropsychiatric"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Respiratory paralysis",
+        "snomedCode": "87317003",
+        "frequency": 0.05,
+        "bodySystem": "respiratory",
+        "notes": "Life-threatening; requires mechanical ventilation"
+      },
+      {
+        "symptomName": "Posterior reversible encephalopathy syndrome (PRES)",
+        "snomedCode": "439127006",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Chronic renal insufficiency",
+        "snomedCode": "723190009",
+        "frequency": 0.08,
+        "bodySystem": "renal",
+        "notes": "Associated with chronic disease; long-term complication"
+      },
+      {
+        "symptomName": "Hepatocellular carcinoma",
+        "snomedCode": "25370001",
+        "frequency": 0.03,
+        "bodySystem": "hepatic",
+        "notes": "Long-term risk in recurrent AIP; screening recommended after age 50"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "gastrointestinal",
+    "cardiovascular",
+    "neuropsychiatric",
+    "renal",
+    "hepatic",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Markedly elevated urinary porphobilinogen (PBG) during attack",
+      "Elevated urinary aminolevulinic acid (ALA)",
+      "Reduced erythrocyte HMBS enzyme activity (~50% of normal)",
+      "Hyponatremia (from SIADH)",
+      "Normal fecal porphyrins (unlike HCP and VP)"
+    ],
+    "imaging": [
+      "Abdominal imaging typically unremarkable despite severe pain",
+      "MRI brain may show posterior reversible encephalopathy syndrome in severe cases",
+      "Hepatic MRI or ultrasound for HCC screening in chronic patients"
+    ],
+    "genetic": [
+      "Autosomal dominant inheritance",
+      "Pathogenic variants in HMBS gene (chromosome 11q23.3)",
+      "Over 400 mutations identified",
+      "Low clinical penetrance (~10-20%)"
+    ],
+    "other": [
+      "Watson-Schwartz test (qualitative urine PBG screening)",
+      "Urine fluorescence under Wood's lamp",
+      "Nerve conduction studies showing predominantly motor axonal neuropathy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hereditary-coproporphyria",
+      "distinguishingFeatures": [
+        "HCP has elevated fecal coproporphyrin III",
+        "HCP may have cutaneous photosensitivity",
+        "HCP involves CPOX gene mutation"
+      ]
+    },
+    {
+      "diseaseId": "porphyria-cutanea-tarda",
+      "distinguishingFeatures": [
+        "PCT presents with skin blistering, not neurovisceral attacks",
+        "PCT has elevated urinary uroporphyrins, not PBG",
+        "PCT does not cause abdominal pain attacks"
+      ]
+    },
+    {
+      "diseaseId": "lead-poisoning",
+      "distinguishingFeatures": [
+        "Lead poisoning has elevated blood lead levels",
+        "ALA elevated but PBG normal in lead poisoning",
+        "Basophilic stippling on blood smear in lead poisoning"
+      ]
+    },
+    {
+      "diseaseId": "acute-abdomen",
+      "distinguishingFeatures": [
+        "Surgical causes show peritoneal signs",
+        "Imaging findings present in surgical abdomen",
+        "No autonomic dysfunction in typical surgical abdomen"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive motor weakness suggesting ascending neuropathy (risk of respiratory failure)",
+    "Seizures (often indicate severe hyponatremia)",
+    "Severe hyponatremia (<120 mEq/L)",
+    "Bulbar weakness or respiratory compromise",
+    "Inappropriate administration of porphyrinogenic drugs"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Hepatologist",
+    "Medical Geneticist",
+    "Neurologist",
+    "Porphyria Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Bissell DM, et al. Porphyria. N Engl J Med. 2017;377(9):862-872.",
+    "Anderson KE, et al. Recommendations for the diagnosis and treatment of the acute porphyrias. Ann Intern Med. 2005;142(6):439-50.",
+    "Puy H, Gouya L, Deybach JC. Porphyrias. Lancet. 2010;375(9718):924-37.",
+    "Balwani M, Desnick RJ. The porphyrias: advances in diagnosis and treatment. Blood. 2012;120(23):4496-504."
+  ],
+  "confidenceInData": "medium"
+}

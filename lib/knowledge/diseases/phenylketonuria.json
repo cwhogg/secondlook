@@ -1,0 +1,251 @@
+{
+  "id": "phenylketonuria",
+  "name": "Phenylketonuria",
+  "aliases": [
+    "PKU",
+    "Phenylalanine Hydroxylase Deficiency",
+    "PAH Deficiency",
+    "Folling Disease",
+    "Hyperphenylalaninemia"
+  ],
+  "icd10Codes": ["E70.0", "E70.1"],
+  "omimId": "261600",
+  "orphanetId": "716",
+  "prevalence": {
+    "estimate": "1 in 10,000 to 1 in 15,000",
+    "range": "0.007%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 1, "peak": 0 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": ["Irish", "Turkish", "Northern European", "East Asian"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ACMG ACT Sheet and Confirmatory Algorithm for PKU",
+    "criteria": [
+      {
+        "id": "pku-c1",
+        "description": "Elevated blood phenylalanine (>120 micromol/L or >2 mg/dL) on newborn screening",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pku-c2",
+        "description": "Confirmatory plasma amino acid analysis showing elevated phenylalanine with normal or low tyrosine",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pku-c3",
+        "description": "Elevated phenylalanine-to-tyrosine ratio (>3)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pku-c4",
+        "description": "Pathogenic variants identified in PAH gene (biallelic)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pku-c5",
+        "description": "Normal biopterin metabolism (to exclude BH4 deficiency)",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pku-c6",
+        "description": "Classification by severity: classic PKU (>1200 micromol/L), moderate (900-1200), mild (600-900), mild HPA (120-600)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Persistently elevated blood phenylalanine >120 micromol/L with normal biopterin cofactor metabolism, confirmed by plasma amino acid analysis",
+    "notes": "Universal newborn screening detects PKU before symptoms develop. Without treatment, classic PKU leads to severe intellectual disability. BH4 cofactor deficiency must be excluded as it requires different treatment."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Elevated blood phenylalanine on newborn screening",
+        "frequency": 1.0,
+        "bodySystem": "metabolic",
+        "notes": "Biochemical rather than clinical; detected before symptoms in screened populations"
+      },
+      {
+        "symptomName": "Musty or mousy body odor (untreated)",
+        "snomedCode": "271808008",
+        "frequency": 0.8,
+        "bodySystem": "integumentary",
+        "notes": "Due to phenylacetic acid in sweat and urine; only in untreated or poorly controlled patients"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Intellectual disability (untreated)",
+        "snomedCode": "91138005",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "notes": "Severe if untreated; IQ loss of 50+ points; prevented by early dietary treatment"
+      },
+      {
+        "symptomName": "Fair skin, hair, and eyes (relative to family)",
+        "snomedCode": "45250003",
+        "frequency": 0.7,
+        "bodySystem": "integumentary",
+        "notes": "Due to inhibition of melanin synthesis by excess phenylalanine"
+      },
+      {
+        "symptomName": "Seizures (untreated)",
+        "snomedCode": "91175000",
+        "frequency": 0.5,
+        "bodySystem": "neurological",
+        "notes": "Infantile spasms or generalized seizures in untreated classic PKU"
+      },
+      {
+        "symptomName": "Behavioral problems (hyperactivity, aggression)",
+        "snomedCode": "248036002",
+        "frequency": 0.6,
+        "bodySystem": "neuropsychiatric",
+        "notes": "In untreated or poorly controlled patients"
+      },
+      {
+        "symptomName": "Eczema / eczematous rash",
+        "snomedCode": "43116000",
+        "frequency": 0.4,
+        "bodySystem": "integumentary"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Microcephaly (untreated)",
+        "snomedCode": "431265005",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tremor and spasticity (untreated)",
+        "snomedCode": "26079004",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Executive function deficits (even with treatment)",
+        "snomedCode": "386806002",
+        "frequency": 0.35,
+        "bodySystem": "neuropsychiatric",
+        "notes": "Subtle cognitive effects may persist despite early treatment"
+      },
+      {
+        "symptomName": "Anxiety and depression (adolescent/adult PKU)",
+        "snomedCode": "197480006",
+        "frequency": 0.3,
+        "bodySystem": "neuropsychiatric"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "White matter abnormalities on MRI",
+        "snomedCode": "373916003",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Periventricular white matter changes; may be seen even in treated adults with poor dietary control"
+      },
+      {
+        "symptomName": "Maternal PKU syndrome (in offspring of untreated pregnant women with PKU)",
+        "frequency": 0.1,
+        "bodySystem": "reproductive",
+        "notes": "Congenital heart defects, microcephaly, IUGR in offspring of poorly controlled maternal PKU"
+      },
+      {
+        "symptomName": "Osteopenia / osteoporosis",
+        "snomedCode": "64859006",
+        "frequency": 0.1,
+        "bodySystem": "musculoskeletal",
+        "notes": "Reported in adult PKU patients; multifactorial etiology"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "neuropsychiatric",
+    "integumentary",
+    "metabolic",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated blood phenylalanine (>120 micromol/L; classic PKU >1200 micromol/L)",
+      "Elevated phenylalanine-to-tyrosine ratio (>3)",
+      "Low or normal plasma tyrosine",
+      "Normal biopterin cofactor studies (to exclude BH4 deficiency)",
+      "Elevated urinary phenylpyruvic acid, phenylacetic acid, phenyllactic acid (untreated)"
+    ],
+    "imaging": [
+      "MRI brain may show periventricular white matter T2 hyperintensities in poorly controlled patients",
+      "MRI findings reversible with improved metabolic control"
+    ],
+    "genetic": [
+      "Autosomal recessive inheritance",
+      "Biallelic pathogenic variants in PAH gene (chromosome 12q23.2)",
+      "Over 1,000 mutations identified in PAH",
+      "Genotype-phenotype correlation helps predict severity",
+      "BH4 responsiveness correlates with specific PAH genotypes"
+    ],
+    "other": [
+      "Newborn screening by tandem mass spectrometry (MS/MS)",
+      "BH4 loading test to assess cofactor responsiveness",
+      "Regular blood phenylalanine monitoring for dietary management",
+      "Neuropsychological testing for cognitive assessment"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "bh4-deficiency",
+      "distinguishingFeatures": [
+        "BH4 deficiency has abnormal biopterin metabolism studies",
+        "BH4 deficiency causes neurotransmitter deficiency (dopamine, serotonin)",
+        "Requires neurotransmitter replacement therapy in addition to dietary management",
+        "Different genetic etiology (GCH1, PTS, QDPR, PCBD genes)"
+      ]
+    },
+    {
+      "diseaseId": "maple-syrup-urine-disease",
+      "distinguishingFeatures": [
+        "MSUD has elevated branched-chain amino acids (leucine, isoleucine, valine)",
+        "MSUD has sweet/maple syrup odor, not musty odor",
+        "Different amino acid profile on plasma analysis"
+      ]
+    },
+    {
+      "diseaseId": "tyrosinemia",
+      "distinguishingFeatures": [
+        "Tyrosinemia has elevated tyrosine (not phenylalanine)",
+        "Tyrosinemia features liver dysfunction",
+        "Different amino acid profile"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Untreated or late-diagnosed PKU with severe intellectual disability",
+    "Maternal PKU: uncontrolled phenylalanine during pregnancy causing fetal damage",
+    "Loss of dietary control in adolescents/adults leading to cognitive decline",
+    "Concurrent BH4 deficiency (requires different treatment approach)",
+    "Phenylalanine >600 micromol/L in treated patients (suboptimal control)"
+  ],
+  "specialistType": [
+    "Metabolic Disease Specialist",
+    "Medical Geneticist",
+    "Pediatric Neurologist",
+    "Metabolic Dietitian",
+    "Developmental Pediatrician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Vockley J, et al. Phenylalanine hydroxylase deficiency: diagnosis and management guideline. Genet Med. 2014;16(2):188-200.",
+    "van Wegberg AMJ, et al. The complete European guidelines on phenylketonuria: diagnosis and treatment. Orphanet J Rare Dis. 2017;12(1):162.",
+    "Blau N, et al. Phenylketonuria. Lancet. 2010;376(9750):1417-27.",
+    "Camp KM, et al. Phenylketonuria Scientific Review Conference: State of the science and future research needs. Mol Genet Metab. 2014;112(2):87-122."
+  ],
+  "confidenceInData": "medium"
+}

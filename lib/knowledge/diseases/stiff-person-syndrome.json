@@ -1,0 +1,228 @@
+{
+  "id": "stiff-person-syndrome",
+  "name": "Stiff Person Syndrome",
+  "aliases": [
+    "SPS",
+    "Stiff-man syndrome",
+    "Moersch-Woltman syndrome",
+    "Stiff person spectrum disorder"
+  ],
+  "icd10Codes": ["G25.82"],
+  "omimId": "184850",
+  "orphanetId": "3198",
+  "prevalence": {
+    "estimate": "1-2 per million",
+    "range": "1-2 per million",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 60, "peak": 40 },
+    "sexPredilection": "female",
+    "ethnicAssociations": [
+      "Affects all ethnicities",
+      "No strong ethnic predilection"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Dalakas Clinical and Serological Criteria",
+    "criteria": [
+      {
+        "id": "sps-1",
+        "description": "Stiffness in axial muscles (trunk, paraspinal) with prominent lumbar hyperlordosis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sps-2",
+        "description": "Superimposed episodic spasms triggered by sensory stimuli, emotional stress, or startle",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sps-3",
+        "description": "Positive anti-GAD65 antibodies (high titers, typically >2,000 IU/mL)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sps-4",
+        "description": "Continuous motor unit activity on EMG in affected muscles that resolves with diazepam",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sps-5",
+        "description": "Absence of alternative explanation (structural, neurodegenerative, psychogenic)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Axial stiffness with episodic spasms plus high-titer anti-GAD65 antibodies or positive anti-amphiphysin antibodies. EMG confirmation supportive.",
+    "notes": "Spectrum includes classic SPS, stiff limb syndrome (focal variant), progressive encephalomyelitis with rigidity and myoclonus (PERM). Anti-amphiphysin antibodies are paraneoplastic (breast cancer). Anti-glycine receptor antibodies associated with PERM."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Truncal stiffness with lumbar hyperlordosis",
+        "snomedCode": "16046003",
+        "frequency": 0.90,
+        "bodySystem": "musculoskeletal",
+        "notes": "Board-like rigidity of paraspinal muscles; exaggerated lumbar lordosis"
+      },
+      {
+        "symptomName": "Stimulus-triggered painful spasms",
+        "snomedCode": "45352006",
+        "frequency": 0.90,
+        "bodySystem": "neurological",
+        "notes": "Triggered by sudden noise, touch, or emotional stress; can cause falls"
+      },
+      {
+        "symptomName": "Exaggerated startle response",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Hyperekplexia; whole-body stiffening in response to unexpected stimuli"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Gait difficulty",
+        "snomedCode": "228158008",
+        "frequency": 0.80,
+        "bodySystem": "neurological",
+        "notes": "Stiff, slow gait; difficulty turning; robot-like walking"
+      },
+      {
+        "symptomName": "Anxiety and task-specific phobias",
+        "snomedCode": "48694002",
+        "frequency": 0.70,
+        "bodySystem": "psychiatric",
+        "notes": "Agoraphobia-like symptoms; fear of falling; anticipatory anxiety worsens spasms"
+      },
+      {
+        "symptomName": "Falls",
+        "snomedCode": "217082002",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "notes": "Falls 'like a statue' without protective reflexes"
+      },
+      {
+        "symptomName": "Lower extremity stiffness",
+        "frequency": 0.70,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Episodic autonomic dysfunction during spasms",
+        "snomedCode": "72167002",
+        "frequency": 0.30,
+        "bodySystem": "autonomic",
+        "notes": "Tachycardia, hypertension, diaphoresis during severe spasms"
+      },
+      {
+        "symptomName": "Concurrent autoimmune conditions",
+        "frequency": 0.30,
+        "bodySystem": "endocrine",
+        "notes": "Type 1 diabetes mellitus (~30-40% of GAD-positive SPS patients)"
+      },
+      {
+        "symptomName": "Upper limb stiffness",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Nystagmus and brainstem signs",
+        "frequency": 0.10,
+        "bodySystem": "neurological",
+        "notes": "More common in PERM variant (progressive encephalomyelitis with rigidity and myoclonus)"
+      },
+      {
+        "symptomName": "Respiratory muscle spasms",
+        "frequency": 0.10,
+        "bodySystem": "respiratory",
+        "notes": "Can be life-threatening; status spasticus"
+      },
+      {
+        "symptomName": "Sphincter dysfunction",
+        "frequency": 0.08,
+        "bodySystem": "urological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "central nervous system",
+    "motor system",
+    "autonomic nervous system",
+    "musculoskeletal system"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Anti-GAD65 antibodies at high titers (typically >2,000 IU/mL; often >10,000)",
+      "Anti-amphiphysin antibodies (paraneoplastic; associated with breast cancer)",
+      "Anti-glycine receptor antibodies (PERM variant)",
+      "Anti-DPPX antibodies (SPS variant with GI symptoms)",
+      "Elevated GAD antibodies in CSF (intrathecal synthesis)",
+      "Screen for associated autoimmunity: type 1 diabetes, thyroid disease, pernicious anemia"
+    ],
+    "imaging": [
+      "Brain and spine MRI typically normal in classic SPS",
+      "MRI may show signal changes in PERM variant",
+      "CT chest/abdomen/pelvis for paraneoplastic screening (amphiphysin-positive)"
+    ],
+    "genetic": [
+      "No specific genetic cause identified",
+      "HLA associations with autoimmune predisposition"
+    ],
+    "other": [
+      "EMG showing continuous motor unit activity in paraspinal and abdominal muscles at rest",
+      "EMG activity resolves or improves with IV diazepam",
+      "No voluntary suppression possible of continuous motor activity",
+      "Paraneoplastic panel if amphiphysin or atypical presentation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "multiple-sclerosis",
+      "distinguishingFeatures": [
+        "MS spasticity follows anatomical UMN distribution",
+        "MS has demyelinating lesions on MRI",
+        "MS does not have continuous motor unit activity on EMG"
+      ]
+    },
+    {
+      "diseaseId": "functional-neurological-disorder",
+      "distinguishingFeatures": [
+        "FND has inconsistent and incongruent findings",
+        "FND does not have elevated GAD antibodies",
+        "FND does not show continuous EMG activity",
+        "SPS is commonly misdiagnosed as FND"
+      ]
+    },
+    {
+      "diseaseId": "hereditary-spastic-paraplegia",
+      "distinguishingFeatures": [
+        "HSP has progressive pure spasticity without spasms",
+        "HSP has genetic basis",
+        "HSP does not have anti-GAD or anti-amphiphysin antibodies"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Anti-amphiphysin antibodies require aggressive cancer screening (especially breast cancer)",
+    "Status spasticus (continuous severe spasms) is a medical emergency requiring ICU care",
+    "SPS is commonly misdiagnosed as anxiety, conversion disorder, or fibromyalgia - average diagnostic delay is years",
+    "Concurrent type 1 diabetes should prompt GAD antibody testing at high titers",
+    "Progressive encephalomyelitis with rigidity and myoclonus (PERM) variant has brainstem involvement and worse prognosis",
+    "Glycine receptor antibodies suggest PERM and require different treatment approach"
+  ],
+  "specialistType": ["neurologist", "neuroimmunologist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Dalakas MC. Stiff-person syndrome and GAD antibody-spectrum disorders: GABAergic neuronal excitability, immunopathogenesis and update on antibody therapies. Neurotherapeutics. 2022;19(3):832-847.",
+    "Baizabal-Carvallo JF, Jankovic J. Stiff-person syndrome: insights into a complex autoimmune disorder. J Neurol Neurosurg Psychiatry. 2015;86(8):840-848.",
+    "McKeon A, et al. Stiff-man syndrome and variants. Arch Neurol. 2012;69(2):230-238."
+  ],
+  "confidenceInData": "medium"
+}

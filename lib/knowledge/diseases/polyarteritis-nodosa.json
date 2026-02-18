@@ -1,0 +1,107 @@
+{
+  "id": "polyarteritis-nodosa",
+  "name": "Polyarteritis Nodosa",
+  "aliases": ["PAN", "Classic Polyarteritis Nodosa", "Periarteritis Nodosa"],
+  "icd10Codes": ["M30.0"],
+  "omimId": "615688",
+  "orphanetId": "767",
+  "prevalence": {
+    "estimate": "2-9 per 100,000",
+    "range": "2-9 per 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 40, "max": 60, "peak": 50 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": ["No strong ethnic predilection"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "1990 ACR Classification Criteria for Polyarteritis Nodosa (with 2012 Chapel Hill revisions)",
+    "criteria": [
+      { "id": "pan-1", "description": "Weight loss >= 4 kg (not due to dieting)", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "pan-2", "description": "Livedo reticularis", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "pan-3", "description": "Testicular pain or tenderness", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "pan-4", "description": "Myalgias, weakness, or leg tenderness", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "pan-5", "description": "Mononeuropathy or polyneuropathy", "category": "major", "requiredForDiagnosis": false },
+      { "id": "pan-6", "description": "Diastolic blood pressure > 90 mmHg (new onset)", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "pan-7", "description": "Elevated BUN (>40 mg/dL) or creatinine (>1.5 mg/dL)", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "pan-8", "description": "Hepatitis B surface antigen or antibody positivity", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "pan-9", "description": "Arteriographic abnormalities (aneurysms or occlusions of visceral arteries)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "pan-10", "description": "Biopsy of small/medium artery showing PMNs in arterial wall", "category": "major", "requiredForDiagnosis": false }
+    ],
+    "minimumForDiagnosis": "3 or more of 10 criteria (sensitivity 82%, specificity 87%)",
+    "notes": "Must exclude ANCA-associated vasculitis. The 2012 Chapel Hill Consensus Conference reaffirmed PAN as a medium-vessel vasculitis without glomerulonephritis or vasculitis in arterioles, capillaries, or venules. ANCA should be negative."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      { "symptomName": "Microaneurysms on visceral angiography", "frequency": 0.60, "bodySystem": "Vascular", "notes": "Multiple aneurysms of mesenteric, renal, or hepatic arteries; rosary-bead appearance" },
+      { "symptomName": "Necrotizing arteritis of medium-sized arteries on biopsy", "frequency": 0.50, "bodySystem": "Histopathologic" }
+    ],
+    "common": [
+      { "symptomName": "Constitutional symptoms (fever, weight loss, malaise)", "snomedCode": "386661006", "frequency": 0.80, "bodySystem": "Constitutional" },
+      { "symptomName": "Mononeuritis multiplex", "snomedCode": "128189008", "frequency": 0.60, "bodySystem": "Neurological", "notes": "Foot drop, wrist drop from vasa nervorum vasculitis" },
+      { "symptomName": "Arthralgia or myalgia", "snomedCode": "57676002", "frequency": 0.60, "bodySystem": "Musculoskeletal" },
+      { "symptomName": "Abdominal pain", "snomedCode": "21522001", "frequency": 0.50, "bodySystem": "Gastrointestinal", "notes": "Mesenteric ischemia from arterial vasculitis" },
+      { "symptomName": "Hypertension (new onset)", "snomedCode": "38341003", "frequency": 0.40, "bodySystem": "Cardiovascular", "notes": "From renal artery involvement" }
+    ],
+    "occasional": [
+      { "symptomName": "Livedo reticularis", "snomedCode": "238790005", "frequency": 0.25, "bodySystem": "Dermatologic" },
+      { "symptomName": "Skin nodules and ulcerations", "snomedCode": "271807003", "frequency": 0.25, "bodySystem": "Dermatologic" },
+      { "symptomName": "Testicular pain", "snomedCode": "10601006", "frequency": 0.20, "bodySystem": "Urogenital", "notes": "From testicular artery vasculitis" },
+      { "symptomName": "Renal insufficiency", "snomedCode": "723190009", "frequency": 0.30, "bodySystem": "Renal", "notes": "From renal artery stenosis/infarction, NOT glomerulonephritis" },
+      { "symptomName": "Gastrointestinal bleeding", "snomedCode": "74474003", "frequency": 0.15, "bodySystem": "Gastrointestinal" }
+    ],
+    "rare": [
+      { "symptomName": "Bowel perforation", "snomedCode": "66939001", "frequency": 0.05, "bodySystem": "Gastrointestinal", "notes": "Surgical emergency from mesenteric vasculitis" },
+      { "symptomName": "Stroke", "snomedCode": "230690007", "frequency": 0.05, "bodySystem": "Neurological" },
+      { "symptomName": "Coronary arteritis", "frequency": 0.03, "bodySystem": "Cardiovascular" },
+      { "symptomName": "Ruptured visceral aneurysm", "frequency": 0.03, "bodySystem": "Vascular", "notes": "Life-threatening hemorrhage" }
+    ]
+  },
+  "systemsAffected": ["Neurological", "Renal", "Gastrointestinal", "Musculoskeletal", "Dermatologic", "Cardiovascular", "Urogenital"],
+  "keyFindings": {
+    "laboratory": [
+      "ANCA negative (important to distinguish from MPA/GPA)",
+      "Elevated ESR and CRP",
+      "Leukocytosis (neutrophilia)",
+      "Anemia of chronic disease",
+      "Hepatitis B surface antigen positive (~10% of cases historically)",
+      "Elevated creatinine (from renal artery involvement)",
+      "No glomerulonephritis on urinalysis (distinguishes from ANCA vasculitis)"
+    ],
+    "imaging": [
+      "Mesenteric/renal angiography: multiple microaneurysms and segmental stenoses",
+      "CT angiography: visceral artery aneurysms and occlusions",
+      "CT abdomen: renal infarcts, mesenteric ischemia"
+    ],
+    "genetic": [
+      "DADA2 (ADA2 deficiency) in childhood-onset PAN-like disease",
+      "CECR1 mutations in monogenic forms"
+    ],
+    "other": [
+      "Medium-vessel biopsy (sural nerve, skin): fibrinoid necrotizing arteritis of muscular arteries",
+      "Testicular biopsy: necrotizing vasculitis of medium arteries"
+    ]
+  },
+  "differentialDiagnoses": [
+    { "diseaseId": "microscopic-polyangiitis", "distinguishingFeatures": ["ANCA positive", "Glomerulonephritis present", "Small vessel involvement", "Capillaritis"] },
+    { "diseaseId": "granulomatosis-with-polyangiitis", "distinguishingFeatures": ["PR3-ANCA positive", "Granulomatous inflammation", "ENT involvement", "Pulmonary cavitating nodules"] },
+    { "diseaseId": "cholesterol-embolism-syndrome", "distinguishingFeatures": ["Recent vascular procedure", "Blue toe syndrome", "Renal crystals on biopsy", "Eosinophilia"] },
+    { "diseaseId": "fibromuscular-dysplasia", "distinguishingFeatures": ["String-of-beads on angiography", "Young women", "No systemic inflammation", "Renal artery predominant"] }
+  ],
+  "redFlags": [
+    "Acute abdomen suggesting mesenteric ischemia or bowel perforation",
+    "Sudden onset severe hypertension (renal artery involvement)",
+    "Acute mononeuritis multiplex with motor deficit",
+    "Signs of visceral aneurysm rupture",
+    "Progressive renal failure from bilateral renal artery stenosis"
+  ],
+  "specialistType": ["Rheumatology", "Vascular Medicine", "Gastroenterology", "Nephrology"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Lightfoot RW Jr, et al. The American College of Rheumatology 1990 criteria for the classification of polyarteritis nodosa. Arthritis Rheum. 1990;33(8):1088-1093.",
+    "Jennette JC, et al. 2012 Revised International Chapel Hill Consensus Conference Nomenclature of Vasculitides. Arthritis Rheum. 2013;65(1):1-11.",
+    "De Virgilio A, et al. Polyarteritis nodosa: A contemporary overview. Autoimmun Rev. 2016;15(6):564-570."
+  ],
+  "confidenceInData": "medium"
+}

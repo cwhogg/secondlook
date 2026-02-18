@@ -1,0 +1,235 @@
+{
+  "id": "whipple-disease",
+  "name": "Whipple Disease",
+  "aliases": [
+    "Intestinal Lipodystrophy",
+    "Whipple's Disease",
+    "Tropheryma whipplei Infection"
+  ],
+  "icd10Codes": ["K90.81"],
+  "omimId": "604581",
+  "orphanetId": "3452",
+  "prevalence": {
+    "estimate": "Less than 1 per 1,000,000",
+    "range": "< 0.0001%",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 30, "max": 70, "peak": 50 },
+    "sexPredilection": "male",
+    "ethnicAssociations": ["Caucasian"]
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "whip-maj1",
+        "description": "Positive PAS (periodic acid-Schiff) staining of foamy macrophages in small intestinal biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "whip-maj2",
+        "description": "Positive Tropheryma whipplei PCR from tissue or body fluid",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "whip-min1",
+        "description": "Clinical features: diarrhea, weight loss, arthralgias, lymphadenopathy",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "whip-min2",
+        "description": "Electron microscopy showing characteristic bacilli in macrophages",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "whip-sup1",
+        "description": "Immunohistochemistry positive for T. whipplei",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "PAS-positive macrophages in small intestinal biopsy is the classic diagnostic finding. PCR confirmation of T. whipplei is increasingly used. For extraintestinal disease, PCR from affected tissue/fluid.",
+    "notes": "Arthralgias may precede GI symptoms by years to decades. Immunocompromised patients may have atypical presentations."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chronic diarrhea with malabsorption",
+        "snomedCode": "62315008",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Steatorrhea and weight loss from fat malabsorption"
+      },
+      {
+        "symptomName": "Migratory, non-deforming polyarthralgia",
+        "snomedCode": "57676002",
+        "frequency": 0.80,
+        "bodySystem": "musculoskeletal",
+        "notes": "Often the earliest symptom; may precede GI symptoms by 5-10 years"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.90,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "snomedCode": "21522001",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "snomedCode": "30746006",
+        "frequency": 0.50,
+        "bodySystem": "lymphatic"
+      },
+      {
+        "symptomName": "Low-grade fever",
+        "snomedCode": "386661006",
+        "frequency": 0.45,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Fatigue and malaise",
+        "snomedCode": "84229001",
+        "frequency": 0.60,
+        "bodySystem": "general"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hyperpigmentation of skin",
+        "snomedCode": "49765009",
+        "frequency": 0.30,
+        "bodySystem": "integumentary",
+        "notes": "Diffuse gray-brown skin darkening, especially sun-exposed areas"
+      },
+      {
+        "symptomName": "Cardiac involvement (endocarditis, pericarditis)",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Culture-negative endocarditis is a recognized presentation"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "snomedCode": "271809000",
+        "frequency": 0.20,
+        "bodySystem": "general",
+        "notes": "Due to hypoalbuminemia from malabsorption"
+      },
+      {
+        "symptomName": "Pleuritic chest pain",
+        "frequency": 0.15,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Oculomasticatory myorhythmia",
+        "frequency": 0.05,
+        "bodySystem": "neurologic",
+        "notes": "Pathognomonic for CNS Whipple disease when present; convergent nystagmus with synchronous jaw movements"
+      },
+      {
+        "symptomName": "Cognitive decline/dementia",
+        "snomedCode": "386806002",
+        "frequency": 0.10,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Supranuclear ophthalmoplegia",
+        "frequency": 0.08,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.05,
+        "bodySystem": "neurologic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "musculoskeletal",
+    "neurologic",
+    "cardiovascular",
+    "lymphatic",
+    "integumentary"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "PAS-positive, diastase-resistant macrophages in duodenal biopsies (hallmark)",
+      "Anemia (iron and/or folate deficiency from malabsorption)",
+      "Hypoalbuminemia",
+      "Elevated ESR and CRP",
+      "T. whipplei PCR positive in tissue, stool, saliva, or CSF"
+    ],
+    "imaging": [
+      "CT abdomen: mesenteric/retroperitoneal lymphadenopathy, often with low-density centers",
+      "MRI brain: focal lesions in hypothalamus, periventricular regions in CNS disease",
+      "Small bowel imaging may show thickened mucosal folds"
+    ],
+    "genetic": [
+      "HLA-B27 association reported in some studies",
+      "Possible immunogenetic susceptibility involving defective Th1 response"
+    ],
+    "other": [
+      "Upper endoscopy: pale, shaggy duodenal mucosa with whitish-yellow patches (lymphatic obstruction)",
+      "CSF analysis recommended in all cases (PCR for T. whipplei) to assess for CNS involvement",
+      "Electron microscopy: rod-shaped bacilli within macrophages"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "celiac-disease",
+      "distinguishingFeatures": [
+        "Celiac has villous atrophy but no PAS-positive macrophages",
+        "Celiac responds to gluten-free diet",
+        "Positive anti-tTG/anti-endomysial antibodies in celiac"
+      ]
+    },
+    {
+      "diseaseId": "mycobacterium-avium-complex",
+      "distinguishingFeatures": [
+        "MAC is acid-fast positive, PAS-positive",
+        "MAC occurs in severely immunocompromised (AIDS)",
+        "Differentiated by AFB staining and culture"
+      ]
+    },
+    {
+      "diseaseId": "sarcoidosis",
+      "distinguishingFeatures": [
+        "Sarcoidosis shows non-caseating granulomas, not PAS-positive macrophages",
+        "Sarcoidosis has elevated ACE levels"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Neurological symptoms (oculomasticatory myorhythmia, cognitive changes, seizures) suggesting CNS involvement",
+    "Culture-negative endocarditis with systemic symptoms",
+    "Relapse of symptoms during or after treatment (especially neurological relapse)",
+    "Severe malnutrition requiring parenteral support"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Infectious Disease Specialist",
+    "Neurologist",
+    "Cardiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Dolmans RA, et al. Clinical manifestations, treatment, and diagnosis of Tropheryma whipplei infections. Clin Microbiol Rev. 2017;30(2):529-555.",
+    "Fenollar F, et al. Whipple's disease. N Engl J Med. 2007;356(1):55-66.",
+    "Schneider T, et al. Whipple's disease: new aspects of pathogenesis and treatment. Lancet Infect Dis. 2008;8(3):179-190."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,227 @@
+{
+  "id": "orthostatic-hypotension-neurogenic",
+  "name": "Neurogenic Orthostatic Hypotension",
+  "aliases": [
+    "nOH",
+    "Neurogenic OH",
+    "Autonomic orthostatic hypotension",
+    "Chronic orthostatic hypotension due to autonomic failure"
+  ],
+  "icd10Codes": ["I95.1", "G90.3"],
+  "prevalence": {
+    "estimate": "Varies by underlying cause; present in 30-80% of patients with synucleinopathies and other neurodegenerative autonomic disorders",
+    "range": "Neurogenic OH prevalence increases with age; ~5-30% of elderly depending on population studied",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 40, "max": 80, "peak": 65 },
+    "sexPredilection": "slight-male"
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "American Autonomic Society / Consensus Statement on Neurogenic Orthostatic Hypotension",
+    "criteria": [
+      {
+        "id": "noh-1",
+        "description": "Sustained reduction of systolic blood pressure >=20 mmHg or diastolic >=10 mmHg within 3 minutes of standing or head-up tilt to at least 60 degrees",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "noh-2",
+        "description": "Insufficient compensatory heart rate increase (<15 bpm, or HR/SBP ratio <0.5 bpm/mmHg)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "noh-3",
+        "description": "Evidence of underlying autonomic nervous system disease (neurodegenerative, autoimmune, or peripheral neuropathy)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "noh-4",
+        "description": "Supine hypertension (systolic BP >=140 mmHg or diastolic >=90 mmHg)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "noh-5",
+        "description": "Symptoms referable to cerebral hypoperfusion on standing",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Orthostatic hypotension (>=20/10 mmHg drop) with blunted heart rate response, in the setting of a known or demonstrable autonomic neuropathy",
+    "notes": "Distinguished from non-neurogenic OH (caused by dehydration, medications, hemorrhage) by the blunted compensatory heart rate response. The neurogenic etiology indicates failure of the sympathetic noradrenergic system."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Sustained blood pressure drop on standing with inadequate compensatory heart rate increase",
+        "frequency": 1.0,
+        "bodySystem": "cardiovascular",
+        "notes": "The blunted HR response distinguishes neurogenic from non-neurogenic OH"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Lightheadedness or dizziness on standing",
+        "snomedCode": "386705008",
+        "frequency": 0.90,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Syncope or presyncope on standing",
+        "snomedCode": "271594007",
+        "frequency": 0.60,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Visual dimming or blurring on standing",
+        "snomedCode": "246636008",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmologic"
+      },
+      {
+        "symptomName": "Weakness on standing",
+        "snomedCode": "13791008",
+        "frequency": 0.65,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Neck coat-hanger pain",
+        "frequency": 0.40,
+        "bodySystem": "musculoskeletal",
+        "notes": "Suboccipital and paracervical ache from hypoperfusion of postural muscles"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.70,
+        "bodySystem": "general"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Postprandial hypotension",
+        "snomedCode": "234171009",
+        "frequency": 0.45,
+        "bodySystem": "cardiovascular",
+        "notes": "BP drops further after eating due to splanchnic vasodilation"
+      },
+      {
+        "symptomName": "Supine hypertension",
+        "snomedCode": "38341003",
+        "frequency": 0.50,
+        "bodySystem": "cardiovascular",
+        "notes": "Paradoxical; complicates treatment"
+      },
+      {
+        "symptomName": "Cognitive impairment on standing",
+        "snomedCode": "736322003",
+        "frequency": 0.35,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Falls",
+        "snomedCode": "217082002",
+        "frequency": 0.40,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Angina on standing (demand ischemia)",
+        "snomedCode": "194828000",
+        "frequency": 0.10,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Transient ischemic attack symptoms on standing",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Acute kidney injury from recurrent severe hypotension",
+        "frequency": 0.05,
+        "bodySystem": "renal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "musculoskeletal",
+    "renal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Supine and standing plasma norepinephrine: blunted or absent rise on standing (in postganglionic lesions, supine NE is low <100 pg/mL; in preganglionic, supine NE may be normal but fails to rise appropriately)",
+      "Screen for secondary causes: HbA1c, B12, TSH, serum protein electrophoresis"
+    ],
+    "imaging": [
+      "Cardiac MIBG: reduced in postganglionic (PAF, PD) vs. normal in preganglionic (MSA)",
+      "Brain MRI: may show findings of underlying neurodegenerative disease"
+    ],
+    "genetic": [
+      "Dopamine beta-hydroxylase deficiency: rare genetic cause (DBH gene mutations)",
+      "Genetics typically related to underlying disease (e.g., familial dysautonomia)"
+    ],
+    "other": [
+      "Active standing test or head-up tilt: sustained BP drop with blunted HR response",
+      "Valsalva maneuver: absent late phase II recovery and absent phase IV overshoot",
+      "QSART/thermoregulatory sweat test: may show sudomotor failure",
+      "24-hour ambulatory BP monitoring: characteristic nocturnal non-dipping or reverse dipping"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "postural-orthostatic-tachycardia-syndrome",
+      "distinguishingFeatures": [
+        "POTS has excessive HR increase (>=30 bpm) without sustained BP drop",
+        "nOH has sustained BP drop with blunted HR response"
+      ]
+    },
+    {
+      "diseaseId": "neurocardiogenic-syncope",
+      "distinguishingFeatures": [
+        "NCS is episodic with reflex bradycardia/hypotension triggered by specific stimuli",
+        "nOH is chronic with consistent BP drop on every standing"
+      ]
+    },
+    {
+      "diseaseId": "non-neurogenic-orthostatic-hypotension",
+      "distinguishingFeatures": [
+        "Non-neurogenic OH has appropriate compensatory tachycardia (HR rise >15 bpm)",
+        "Non-neurogenic causes include dehydration, hemorrhage, medications"
+      ]
+    },
+    {
+      "diseaseId": "multiple-system-atrophy",
+      "distinguishingFeatures": [
+        "MSA has nOH as a feature but also has motor features (parkinsonism or cerebellar ataxia)",
+        "Isolated nOH without motor features may be PAF or early phenotype"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Falls with injury from orthostatic syncope",
+    "Supine hypertension >180/110 mmHg (end-organ damage risk)",
+    "Rapid progression of autonomic failure (consider autoimmune or paraneoplastic cause)",
+    "New-onset severe nOH after starting or changing medications",
+    "Associated with progressive neurological deficits (evaluate for MSA, PD, DLB)"
+  ],
+  "specialistType": [
+    "Autonomic neurologist",
+    "Neurologist",
+    "Cardiologist",
+    "Geriatrician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Gibbons CH, et al. The recommendations of a consensus panel for the screening, diagnosis, and treatment of neurogenic orthostatic hypotension and associated supine hypertension. J Neurol. 2017;264(8):1567-1582.",
+    "Freeman R, et al. Consensus statement on the definition of orthostatic hypotension, neurally mediated syncope and the postural tachycardia syndrome. Clin Auton Res. 2011;21(2):69-72.",
+    "Palma JA, Kaufmann H. Management of orthostatic hypotension. Continuum (Minneap Minn). 2020;26(1):154-177."
+  ],
+  "confidenceInData": "medium"
+}

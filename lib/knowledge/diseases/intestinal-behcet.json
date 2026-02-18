@@ -1,0 +1,225 @@
+{
+  "id": "intestinal-behcet",
+  "name": "Intestinal Behcet Disease",
+  "aliases": [
+    "Behcet Disease with GI Involvement",
+    "Entero-Behcet",
+    "GI Behcet Syndrome",
+    "Behcet Intestinal Ulcers"
+  ],
+  "icd10Codes": ["M35.2"],
+  "omimId": "109650",
+  "orphanetId": "117",
+  "prevalence": {
+    "estimate": "3-50% of Behcet disease patients (BD prevalence varies: 1/10,000 in Turkey to 1/300,000 in Western countries)",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 50, "peak": 35 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": ["Turkish", "Middle Eastern", "Japanese", "Korean", "East Asian"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "International Study Group Criteria for Behcet Disease with GI Involvement",
+    "criteria": [
+      {
+        "id": "ib-maj1",
+        "description": "Recurrent oral aphthous ulcers (>= 3 episodes in 12 months)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ib-maj2",
+        "description": "Typical intestinal ulcerations (deep, oval/round, discrete ulcers, often in ileocecal region)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ib-min1",
+        "description": "Genital ulcers (recurrent)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ib-min2",
+        "description": "Eye lesions (anterior/posterior uveitis, retinal vasculitis)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ib-min3",
+        "description": "Skin lesions (erythema nodosum, papulopustular lesions, pseudofolliculitis)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ib-min4",
+        "description": "Positive pathergy test",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Recurrent oral ulceration plus characteristic intestinal ulcerations on endoscopy, in the context of other Behcet manifestations. Must exclude Crohn's disease and other causes of intestinal ulceration.",
+    "notes": "Intestinal involvement occurs in 3-25% of Behcet patients (higher in East Asia). Ileocecal region is most commonly affected. Deep ulcers carry perforation risk."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Deep ileocecal ulceration",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "notes": "Typically round/oval, deep, discrete ulcers with sharp borders in ileocecal region"
+      },
+      {
+        "symptomName": "Recurrent oral aphthous ulcers",
+        "snomedCode": "26284000",
+        "frequency": 0.97,
+        "bodySystem": "gastrointestinal",
+        "notes": "Required criterion for Behcet diagnosis"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abdominal pain (right lower quadrant)",
+        "snomedCode": "21522001",
+        "frequency": 0.80,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Diarrhea (may be bloody)",
+        "snomedCode": "62315008",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Genital ulcers",
+        "snomedCode": "95338004",
+        "frequency": 0.70,
+        "bodySystem": "genitourinary"
+      },
+      {
+        "symptomName": "Fever",
+        "snomedCode": "386661006",
+        "frequency": 0.45,
+        "bodySystem": "general"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hematochezia/GI bleeding",
+        "snomedCode": "12063002",
+        "frequency": 0.35,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Eye inflammation (uveitis)",
+        "snomedCode": "128473001",
+        "frequency": 0.40,
+        "bodySystem": "ophthalmologic"
+      },
+      {
+        "symptomName": "Skin lesions (erythema nodosum, papulopustular)",
+        "frequency": 0.50,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.30,
+        "bodySystem": "general"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Intestinal perforation",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Life-threatening; deep ulcers penetrating through bowel wall"
+      },
+      {
+        "symptomName": "Intestinal fistula formation",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Massive GI hemorrhage",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "ophthalmologic",
+    "integumentary",
+    "musculoskeletal",
+    "vascular",
+    "neurologic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated ESR and CRP during flares",
+      "No specific serologic marker (unlike IBD: p-ANCA/ASCA typically negative)",
+      "Positive pathergy test in ~50% (more common in Middle Eastern/Asian patients)",
+      "HLA-B51 positive in ~60% (varies by ethnicity)"
+    ],
+    "imaging": [
+      "CT enterography: mural thickening, ulcerations predominantly in ileocecal region",
+      "CT may show complications: perforation, fistula, abscess"
+    ],
+    "genetic": [
+      "HLA-B51 is strongest genetic risk factor",
+      "IL-10, IL-23R, ERAP1 gene polymorphisms associated"
+    ],
+    "other": [
+      "Colonoscopy: deep, round/oval, well-demarcated ulcers (fewer in number than Crohn's, with less cobblestoning)",
+      "Pathergy test: papular/pustular response at needle prick site at 24-48 hours",
+      "Biopsy: nonspecific inflammation; vasculitis may be seen but not always"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "crohn-disease",
+      "distinguishingFeatures": [
+        "Crohn's has longitudinal ulcers, cobblestoning, skip lesions throughout GI tract",
+        "Crohn's more commonly has ASCA positivity",
+        "Crohn's has granulomas on biopsy; Behcet typically does not",
+        "Behcet has oral/genital ulcers and uveitis"
+      ]
+    },
+    {
+      "diseaseId": "tuberculosis-intestinal",
+      "distinguishingFeatures": [
+        "TB has transverse ulcers, caseating granulomas",
+        "Positive TB testing (Quantiferon, PPD)"
+      ]
+    },
+    {
+      "diseaseId": "nsaid-enteropathy",
+      "distinguishingFeatures": [
+        "NSAID ulcers resolve with drug withdrawal",
+        "No systemic Behcet features"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Acute abdomen suggesting intestinal perforation",
+    "Massive GI hemorrhage",
+    "Severe visual changes suggesting posterior uveitis (risk of blindness)",
+    "Neurological symptoms suggesting neuro-Behcet (CNS vasculitis)",
+    "Deep venous thrombosis or arterial aneurysm (vascular Behcet)"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Gastroenterologist",
+    "Ophthalmologist",
+    "Dermatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Hatemi G, et al. Behcet's syndrome: a critical digest of the recent literature. Clin Exp Rheumatol. 2017;35(108):3-14.",
+    "Cheon JH, et al. Development, validation, and responsiveness of a novel disease activity index for intestinal Behcet's disease. Inflamm Bowel Dis. 2011;17(2):605-613.",
+    "Yazici H, et al. Behcet syndrome: a contemporary view. Nat Rev Dis Primers. 2018;4:18039."
+  ],
+  "confidenceInData": "medium"
+}

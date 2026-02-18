@@ -1,0 +1,248 @@
+{
+  "id": "polycythemia-vera",
+  "name": "Polycythemia Vera",
+  "aliases": [
+    "PV",
+    "Primary Polycythemia",
+    "Osler-Vaquez Disease",
+    "Polycythaemia Vera"
+  ],
+  "icd10Codes": ["D45"],
+  "omimId": "263300",
+  "orphanetId": "729",
+  "prevalence": {
+    "estimate": "44-57 per 100,000",
+    "range": "0.04%-0.06%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 40, "max": 80, "peak": 60 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Higher prevalence in Ashkenazi Jewish populations",
+      "More common in European descent"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO 2022 Diagnostic Criteria for Polycythemia Vera",
+    "criteria": [
+      {
+        "id": "pv-c1",
+        "description": "Hemoglobin >16.5 g/dL in men or >16.0 g/dL in women, OR hematocrit >49% in men or >48% in women, OR increased red cell mass",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pv-c2",
+        "description": "Bone marrow biopsy showing hypercellularity with trilineage growth (panmyelosis) with prominent erythroid, granulocytic, and megakaryocytic proliferation with pleomorphic mature megakaryocytes",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pv-c3",
+        "description": "Presence of JAK2 V617F or JAK2 exon 12 mutation",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pv-c4",
+        "description": "Subnormal serum erythropoietin level",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All 3 major criteria, OR first 2 major criteria plus the minor criterion",
+    "notes": "JAK2 V617F is found in ~95% of PV cases. JAK2 exon 12 mutations account for most remaining cases. Criterion 2 (bone marrow biopsy) may not be required if hemoglobin is >18.5 g/dL in men or >16.5 g/dL in women with JAK2 mutation and low EPO."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Aquagenic pruritus",
+        "snomedCode": "238575004",
+        "frequency": 0.5,
+        "bodySystem": "integumentary",
+        "notes": "Intense itching after contact with warm water; highly characteristic of PV"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Headache",
+        "snomedCode": "25064002",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Facial plethora (ruddy complexion)",
+        "snomedCode": "248763004",
+        "frequency": 0.7,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.8,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dizziness and visual disturbances",
+        "snomedCode": "404640003",
+        "frequency": 0.5,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "snomedCode": "16294009",
+        "frequency": 0.6,
+        "bodySystem": "hematologic"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Erythromelalgia (burning pain in hands/feet)",
+        "snomedCode": "37151006",
+        "frequency": 0.3,
+        "bodySystem": "vascular",
+        "notes": "Burning pain, redness, and warmth of extremities; responds to aspirin"
+      },
+      {
+        "symptomName": "Thrombosis (arterial or venous)",
+        "snomedCode": "439127006",
+        "frequency": 0.3,
+        "bodySystem": "vascular"
+      },
+      {
+        "symptomName": "Gout",
+        "snomedCode": "90560007",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal",
+        "notes": "From hyperuricemia due to increased cell turnover"
+      },
+      {
+        "symptomName": "Night sweats",
+        "snomedCode": "42984000",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "snomedCode": "82385007",
+        "frequency": 0.05,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Hemorrhage (paradoxical, especially with very high platelet counts)",
+        "snomedCode": "131148009",
+        "frequency": 0.08,
+        "bodySystem": "hematologic",
+        "notes": "Acquired von Willebrand disease at very high platelet counts"
+      },
+      {
+        "symptomName": "Transformation to myelofibrosis (post-PV MF)",
+        "snomedCode": "307651005",
+        "frequency": 0.1,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Transformation to acute myeloid leukemia",
+        "snomedCode": "91861009",
+        "frequency": 0.05,
+        "bodySystem": "hematologic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematologic",
+    "vascular",
+    "neurological",
+    "integumentary",
+    "hepatic",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated hemoglobin and hematocrit",
+      "JAK2 V617F mutation positive (~95%) or JAK2 exon 12 mutation",
+      "Low serum erythropoietin (EPO)",
+      "Leukocytosis and thrombocytosis may be present",
+      "Elevated LDH",
+      "Hyperuricemia",
+      "Elevated vitamin B12 level"
+    ],
+    "imaging": [
+      "Abdominal ultrasound showing splenomegaly",
+      "Doppler ultrasound if thrombosis suspected",
+      "CT/MRI for hepatic vein thrombosis (Budd-Chiari)"
+    ],
+    "genetic": [
+      "JAK2 V617F point mutation in exon 14 (~95% of cases)",
+      "JAK2 exon 12 mutations (2-3% of cases)",
+      "Acquired somatic mutation in hematopoietic stem cells"
+    ],
+    "other": [
+      "Bone marrow biopsy showing panmyelosis with pleomorphic megakaryocytes",
+      "Reduced iron stores on marrow biopsy (from increased erythropoiesis)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "secondary-polycythemia",
+      "distinguishingFeatures": [
+        "Elevated EPO level (vs. low in PV)",
+        "JAK2 mutation negative",
+        "Identifiable cause (chronic hypoxia, EPO-producing tumor, smoking)"
+      ]
+    },
+    {
+      "diseaseId": "essential-thrombocythemia",
+      "distinguishingFeatures": [
+        "ET primarily shows isolated thrombocytosis",
+        "Hemoglobin typically normal",
+        "Different bone marrow morphology (large mature megakaryocytes)"
+      ]
+    },
+    {
+      "diseaseId": "myelofibrosis",
+      "distinguishingFeatures": [
+        "Myelofibrosis shows reticulin/collagen fibrosis on bone marrow biopsy",
+        "Leukoerythroblastic blood smear with teardrop cells",
+        "Massive splenomegaly more common"
+      ]
+    },
+    {
+      "diseaseId": "relative-polycythemia",
+      "distinguishingFeatures": [
+        "Due to dehydration or plasma volume contraction",
+        "Normal red cell mass measurement",
+        "JAK2 negative",
+        "Normal EPO"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Major thrombotic event (stroke, MI, DVT/PE, Budd-Chiari)",
+    "Transformation to myelofibrosis with worsening cytopenias and massive splenomegaly",
+    "Transformation to acute myeloid leukemia",
+    "Severe uncontrolled pruritus significantly impacting quality of life",
+    "Paradoxical bleeding with extreme thrombocytosis (acquired von Willebrand)"
+  ],
+  "specialistType": [
+    "Hematologist/Oncologist",
+    "Vascular Medicine Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Arber DA, et al. The 2016 revision to the World Health Organization classification of myeloid neoplasms and acute leukemia. Blood. 2016;127(20):2391-2405.",
+    "Tefferi A, Barbui T. Polycythemia vera and essential thrombocythemia: 2021 update on diagnosis, risk-stratification and management. Am J Hematol. 2020;95(12):1599-1613.",
+    "Barbui T, et al. Philadelphia chromosome-negative classical myeloproliferative neoplasms: revised management recommendations from European LeukemiaNet. Leukemia. 2018;32(5):1057-1069.",
+    "Spivak JL. Polycythemia Vera. Curr Treat Options Oncol. 2018;19(2):12."
+  ],
+  "confidenceInData": "medium"
+}

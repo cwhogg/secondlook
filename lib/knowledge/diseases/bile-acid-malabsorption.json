@@ -1,0 +1,198 @@
+{
+  "id": "bile-acid-malabsorption",
+  "name": "Bile Acid Malabsorption",
+  "aliases": [
+    "BAM",
+    "Bile Acid Diarrhea",
+    "Bile Salt Malabsorption",
+    "Cholerheic Diarrhea",
+    "Idiopathic Bile Acid Malabsorption"
+  ],
+  "icd10Codes": ["K91.2", "E88.89"],
+  "prevalence": {
+    "estimate": "Up to 1% of general population; up to 25-33% of IBS-D patients",
+    "range": "0.5%-1.0%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 70, "peak": 40 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "bam-maj1",
+        "description": "Chronic watery diarrhea (typically > 4 weeks)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bam-maj2",
+        "description": "Objective evidence of bile acid malabsorption (SeHCAT retention < 15%, elevated serum C4, elevated fecal bile acids, or positive bile acid sequestrant trial)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bam-min1",
+        "description": "Response to bile acid sequestrant therapy (cholestyramine, colesevelam)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bam-min2",
+        "description": "Elevated serum 7-alpha-hydroxy-4-cholesten-3-one (C4) levels",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bam-sup1",
+        "description": "History of ileal resection, Crohn's disease affecting ileum, cholecystectomy, or radiation enteritis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Chronic diarrhea with objective evidence of bile acid malabsorption or clinical response to bile acid sequestrant trial.",
+    "notes": "Type 1: ileal disease/resection. Type 2: idiopathic (primary; defective FGF19 regulation). Type 3: secondary to other GI conditions (cholecystectomy, celiac, SIBO, post-radiation)."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chronic watery diarrhea",
+        "snomedCode": "62315008",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal",
+        "notes": "Often explosive, urgency-predominant; worse after fatty meals"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fecal urgency",
+        "snomedCode": "75088002",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal cramping",
+        "snomedCode": "73063007",
+        "frequency": 0.70,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Bloating",
+        "snomedCode": "248490005",
+        "frequency": 0.60,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fecal incontinence",
+        "snomedCode": "72042002",
+        "frequency": 0.35,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to urgency and watery stool consistency"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Nocturnal diarrhea",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Excessive flatulence",
+        "snomedCode": "267060006",
+        "frequency": 0.40,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Steatorrhea (in severe cases)",
+        "snomedCode": "271820007",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "When bile acid pool is severely depleted"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Fat-soluble vitamin deficiency (A, D, E, K)",
+        "frequency": 0.08,
+        "bodySystem": "general",
+        "notes": "In severe, long-standing cases with significant bile acid loss"
+      },
+      {
+        "symptomName": "Gallstone formation",
+        "snomedCode": "235919008",
+        "frequency": 0.10,
+        "bodySystem": "gastrointestinal",
+        "notes": "From depleted bile acid pool altering bile composition"
+      },
+      {
+        "symptomName": "Perianal irritation/excoriation",
+        "frequency": 0.15,
+        "bodySystem": "integumentary",
+        "notes": "From bile acid irritation of perianal skin"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum 7-alpha-hydroxy-4-cholesten-3-one (C4) (> 52 ng/mL suggests BAM)",
+      "SeHCAT retention test: < 15% at 7 days (mild: 10-15%, moderate: 5-10%, severe: < 5%)",
+      "Elevated fecal bile acids (48-hour collection > 2,337 micromol/48h)"
+    ],
+    "imaging": [
+      "CT or MRI enterography to evaluate ileal disease (if Type 1 suspected)",
+      "No specific imaging findings for BAM itself"
+    ],
+    "genetic": [
+      "Variants in SLC10A2 (ileal bile acid transporter ASBT) in rare familial cases",
+      "FGF19 regulatory pathway alterations in Type 2 (idiopathic) BAM"
+    ],
+    "other": [
+      "Therapeutic trial of cholestyramine or colesevelam is commonly used as a diagnostic test",
+      "SeHCAT test is gold standard but not available in all countries (e.g., not available in USA)",
+      "Fasting serum C4 is most practical blood test where available"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "irritable-bowel-syndrome-diarrhea",
+      "distinguishingFeatures": [
+        "IBS-D lacks objective evidence of bile acid malabsorption on testing",
+        "Significant overlap: 25-33% of IBS-D patients may have BAM"
+      ]
+    },
+    {
+      "diseaseId": "microscopic-colitis",
+      "distinguishingFeatures": [
+        "Microscopic colitis diagnosed by colonic biopsies showing collagenous or lymphocytic pattern",
+        "Microscopic colitis responds to budesonide rather than bile acid sequestrants"
+      ]
+    },
+    {
+      "diseaseId": "celiac-disease",
+      "distinguishingFeatures": [
+        "Celiac disease confirmed by serology (anti-tTG) and duodenal biopsies",
+        "Celiac disease has villous atrophy and responds to gluten-free diet"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Bloody diarrhea (suggests alternative diagnosis such as IBD)",
+    "Significant weight loss (consider malignancy or severe malabsorption syndrome)",
+    "Nocturnal diarrhea with systemic symptoms (consider organic etiology beyond BAM)"
+  ],
+  "specialistType": [
+    "Gastroenterologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Walters JR, et al. A new mechanism for bile acid diarrhea: defective feedback inhibition of bile acid biosynthesis. Clin Gastroenterol Hepatol. 2009;7(11):1189-1194.",
+    "Wedlake L, et al. Systematic review: the prevalence of idiopathic bile acid malabsorption as diagnosed by SeHCAT scanning in patients with diarrhoea-predominant irritable bowel syndrome. Aliment Pharmacol Ther. 2009;30(7):707-717.",
+    "Vijayvargiya P, et al. Bile acid deficiency in a subgroup of patients with irritable bowel syndrome with constipation based on biomarkers in serum and fecal samples. Clin Gastroenterol Hepatol. 2018;16(4):522-527."
+  ],
+  "confidenceInData": "medium"
+}

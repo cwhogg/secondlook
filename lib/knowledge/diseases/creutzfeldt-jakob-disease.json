@@ -1,0 +1,250 @@
+{
+  "id": "creutzfeldt-jakob-disease",
+  "name": "Creutzfeldt-Jakob Disease",
+  "aliases": [
+    "CJD",
+    "Prion disease",
+    "Spongiform encephalopathy",
+    "sCJD (sporadic)",
+    "Jakob-Creutzfeldt disease"
+  ],
+  "icd10Codes": ["A81.0", "A81.00", "A81.01", "A81.09"],
+  "omimId": "123400",
+  "orphanetId": "204",
+  "prevalence": {
+    "estimate": "1-2 per million per year",
+    "range": "1-1.5 per million per year",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 45, "max": 75, "peak": 65 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Affects all ethnicities",
+      "Genetic CJD (E200K mutation) more common in Libyan Jews and Slovakian populations",
+      "Variant CJD predominantly reported in UK"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "CDC Diagnostic Criteria for Sporadic CJD (Updated 2018)",
+    "criteria": [
+      {
+        "id": "cjd-1",
+        "description": "Rapidly progressive dementia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cjd-2",
+        "description": "At least two of: myoclonus, visual/cerebellar signs, pyramidal/extrapyramidal signs, akinetic mutism",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cjd-3",
+        "description": "Positive RT-QuIC assay in CSF or other tissues",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cjd-4",
+        "description": "Typical EEG: periodic sharp wave complexes (PSWCs)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cjd-5",
+        "description": "Elevated CSF 14-3-3 protein with clinical duration to death <2 years",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cjd-6",
+        "description": "MRI DWI/FLAIR showing high signal in caudate/putamen or at least 2 cortical regions",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Probable sCJD: progressive dementia with at least 2 clinical features AND positive RT-QuIC or 1 of (typical EEG, positive 14-3-3, typical MRI). Definite CJD requires neuropathological confirmation.",
+    "notes": "RT-QuIC has >95% sensitivity and ~99% specificity, making it the most useful antemortem diagnostic test. Forms include sporadic (85%), genetic (10-15%), and acquired (iatrogenic, variant) CJD."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Rapidly progressive dementia",
+        "snomedCode": "386806002",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "notes": "Weeks to months course; from normal cognition to severe dementia"
+      },
+      {
+        "symptomName": "Stimulus-sensitive myoclonus",
+        "snomedCode": "17450006",
+        "frequency": 0.80,
+        "bodySystem": "neurological",
+        "notes": "Startle myoclonus; may be triggered by noise or touch"
+      },
+      {
+        "symptomName": "Akinetic mutism",
+        "snomedCode": "33536004",
+        "frequency": 0.60,
+        "bodySystem": "neurological",
+        "notes": "Terminal stage; unresponsive but appears awake"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Cerebellar ataxia",
+        "snomedCode": "85102008",
+        "frequency": 0.70,
+        "bodySystem": "neurological",
+        "notes": "May be presenting symptom in some subtypes (MV2, VV2)"
+      },
+      {
+        "symptomName": "Visual disturbances",
+        "snomedCode": "63102001",
+        "frequency": 0.50,
+        "bodySystem": "ophthalmological",
+        "notes": "Cortical blindness (Heidenhain variant); visual hallucinations"
+      },
+      {
+        "symptomName": "Behavioral and psychiatric changes",
+        "frequency": 0.60,
+        "bodySystem": "psychiatric",
+        "notes": "Anxiety, depression, withdrawal, personality change early in course"
+      },
+      {
+        "symptomName": "Pyramidal signs",
+        "snomedCode": "36649002",
+        "frequency": 0.50,
+        "bodySystem": "neurological",
+        "notes": "Spasticity, hyperreflexia, extensor plantar responses"
+      },
+      {
+        "symptomName": "Extrapyramidal signs",
+        "frequency": 0.45,
+        "bodySystem": "neurological",
+        "notes": "Rigidity, dystonia, parkinsonism"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.20,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Insomnia",
+        "snomedCode": "193462001",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Prominent in fatal familial insomnia variant"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "snomedCode": "302226006",
+        "frequency": 0.10,
+        "bodySystem": "neurological",
+        "notes": "Rare; more common in some genetic subtypes"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Autonomic dysfunction",
+        "snomedCode": "72167002",
+        "frequency": 0.10,
+        "bodySystem": "autonomic"
+      },
+      {
+        "symptomName": "Supranuclear gaze palsy",
+        "snomedCode": "65770001",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Lower motor neuron signs",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Can mimic ALS in rare presentations"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "central nervous system",
+    "cerebral cortex",
+    "basal ganglia",
+    "cerebellum",
+    "brainstem"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF RT-QuIC (real-time quaking-induced conversion): >95% sensitivity and ~99% specificity",
+      "CSF 14-3-3 protein elevation (sensitive but not specific)",
+      "CSF total tau markedly elevated (typically >1150 pg/mL)",
+      "CSF neuron-specific enolase elevation",
+      "Normal CSF cell count and glucose"
+    ],
+    "imaging": [
+      "MRI DWI: cortical ribboning (high signal in cortical ribbon pattern)",
+      "MRI DWI/FLAIR: high signal in caudate and putamen",
+      "MRI: progressive cortical and subcortical atrophy",
+      "Variant CJD: pulvinar sign (high signal in posterior thalamus)"
+    ],
+    "genetic": [
+      "PRNP gene sequencing for genetic/familial forms",
+      "Common mutations: E200K, D178N, V210I",
+      "PRNP codon 129 polymorphism affects disease phenotype and susceptibility",
+      "D178N + codon 129M = fatal familial insomnia; D178N + codon 129V = genetic CJD"
+    ],
+    "other": [
+      "EEG: periodic sharp wave complexes (PSWCs) at 1-2 Hz (more common in later stages and sCJD MM1 subtype)",
+      "Neuropathology (definitive diagnosis): spongiform change, neuronal loss, gliosis, PrPSc immunostaining",
+      "Prion protein immunohistochemistry or Western blot on brain tissue"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "autoimmune-encephalitis",
+      "distinguishingFeatures": [
+        "AE may have identifiable antibodies (NMDA-R, LGI1, CASPR2)",
+        "AE often responds to immunotherapy",
+        "AE typically has CSF pleocytosis",
+        "AE MRI pattern differs (medial temporal, not cortical ribboning)"
+      ]
+    },
+    {
+      "diseaseId": "alzheimer-disease-rapidly-progressive",
+      "distinguishingFeatures": [
+        "Alzheimer's typically progresses over years, not weeks to months",
+        "Alzheimer's has amyloid PET positivity and tau biomarker abnormalities",
+        "CJD has cortical ribboning on DWI MRI"
+      ]
+    },
+    {
+      "diseaseId": "hashimoto-encephalopathy",
+      "distinguishingFeatures": [
+        "Hashimoto's has elevated anti-TPO antibodies",
+        "Hashimoto's responds to steroids",
+        "Hashimoto's MRI is typically less striking",
+        "Hashimoto's does not have RT-QuIC positivity"
+      ]
+    }
+  ],
+  "redFlags": [
+    "CJD is invariably fatal; median survival 5-6 months for sporadic CJD",
+    "Rapidly progressive dementia in months demands urgent CJD workup",
+    "Treatable mimics (autoimmune encephalitis, infectious encephalitis) must be excluded promptly",
+    "Positive RT-QuIC essentially confirms prion disease and should guide goals of care discussions",
+    "Special infection control precautions required for surgical instruments and tissue handling",
+    "Variant CJD should be considered in younger patients with psychiatric presentation and painful dysesthesias"
+  ],
+  "specialistType": ["neurologist", "neuroradiologist", "neuropathologist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Hermann P, et al. Biomarkers and diagnostic guidelines for sporadic Creutzfeldt-Jakob disease. Lancet Neurol. 2021;20(3):235-246.",
+    "Zerr I, et al. Updated clinical diagnostic criteria for sporadic Creutzfeldt-Jakob disease. Brain. 2009;132(Pt 10):2659-2668.",
+    "Watson N, et al. The importance of ongoing international surveillance for Creutzfeldt-Jakob disease. Nat Rev Neurol. 2021;17(6):362-379."
+  ],
+  "confidenceInData": "medium"
+}

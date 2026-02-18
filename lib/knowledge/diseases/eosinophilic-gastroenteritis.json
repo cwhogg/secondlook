@@ -1,0 +1,214 @@
+{
+  "id": "eosinophilic-gastroenteritis",
+  "name": "Eosinophilic Gastroenteritis",
+  "aliases": [
+    "EGE",
+    "Eosinophilic Gastritis",
+    "Eosinophilic Enteritis",
+    "Eosinophilic Gastrointestinal Disease"
+  ],
+  "icd10Codes": ["K52.81"],
+  "orphanetId": "2070",
+  "prevalence": {
+    "estimate": "1 to 30 per 100,000",
+    "range": "0.001%-0.03%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 50, "peak": 40 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Talley Criteria (Modified)",
+    "criteria": [
+      {
+        "id": "ege-maj1",
+        "description": "GI symptoms (abdominal pain, nausea, vomiting, diarrhea, bloating, weight loss)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ege-maj2",
+        "description": "Eosinophilic infiltration of one or more areas of the GI tract on biopsy (>= 20 eos/hpf in stomach; >= 20 eos/hpf in small bowel)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ege-maj3",
+        "description": "Exclusion of other causes of tissue eosinophilia (parasites, IBD, malignancy, hypereosinophilic syndrome, drug reaction)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ege-min1",
+        "description": "Peripheral eosinophilia",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ege-sup1",
+        "description": "Personal or family history of atopy/allergic disease",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "GI symptoms with histological demonstration of eosinophilic infiltration of the GI tract (stomach and/or intestine) after exclusion of other causes of eosinophilia.",
+    "notes": "Three subtypes based on layer involved: mucosal (most common), muscular (obstruction), and serosal (ascites). Serosal form often has eosinophilic ascites."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Abdominal pain with peripheral eosinophilia and GI eosinophilic infiltration",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "The combination is highly characteristic but not pathognomonic alone"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abdominal pain/cramping",
+        "snomedCode": "21522001",
+        "frequency": 0.90,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "snomedCode": "422587007",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "snomedCode": "62315008",
+        "frequency": 0.60,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Bloating",
+        "snomedCode": "248490005",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.45,
+        "bodySystem": "general"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Early satiety",
+        "snomedCode": "422868009",
+        "frequency": 0.30,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Dysphagia (if esophageal involvement)",
+        "snomedCode": "40739000",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "GI bleeding (occult or overt)",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Protein-losing enteropathy",
+        "frequency": 0.10,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Eosinophilic ascites (serosal type)",
+        "frequency": 0.10,
+        "bodySystem": "gastrointestinal",
+        "notes": "Ascitic fluid rich in eosinophils; serosal subtype"
+      },
+      {
+        "symptomName": "Intestinal obstruction (muscular type)",
+        "frequency": 0.08,
+        "bodySystem": "gastrointestinal",
+        "notes": "From eosinophilic infiltration of muscularis causing thickening and stenosis"
+      },
+      {
+        "symptomName": "Intestinal perforation",
+        "frequency": 0.02,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "immunologic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Peripheral eosinophilia (present in ~80% of cases)",
+      "Elevated serum IgE",
+      "Hypoalbuminemia (if protein-losing enteropathy)",
+      "Iron deficiency anemia (if mucosal involvement with bleeding)",
+      "Stool studies negative for parasites"
+    ],
+    "imaging": [
+      "CT abdomen: thickened gastric/bowel wall, ascites (serosal type), possible obstruction",
+      "CT enterography: mucosal enhancement, fold thickening, luminal narrowing",
+      "Small bowel follow-through: thickened folds, nodularity, narrowing"
+    ],
+    "genetic": [
+      "No established single-gene cause",
+      "Eotaxin (CCL11, CCL24, CCL26) polymorphisms implicated in susceptibility"
+    ],
+    "other": [
+      "Upper endoscopy/colonoscopy with biopsies: mucosal erythema, nodularity, ulceration",
+      "Multiple biopsies from affected areas needed (patchy distribution)",
+      "Eosinophilic ascites: paracentesis shows > 500 eosinophils/microL (serosal type)",
+      "Full-thickness biopsy may be needed for muscular/serosal subtypes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "eosinophilic-esophagitis",
+      "distinguishingFeatures": [
+        "EoE is limited to the esophagus",
+        "EoE presents primarily with dysphagia and food impaction"
+      ]
+    },
+    {
+      "diseaseId": "hypereosinophilic-syndrome",
+      "distinguishingFeatures": [
+        "HES has persistent eosinophilia > 1500/microL for > 6 months",
+        "HES involves multiple organs (cardiac, pulmonary, dermatologic) beyond GI"
+      ]
+    },
+    {
+      "diseaseId": "parasitic-infection",
+      "distinguishingFeatures": [
+        "Parasitic infections confirmed by stool ova/parasite or serology",
+        "Travel history and epidemiologic exposure"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Signs of intestinal obstruction (muscular subtype)",
+    "Massive ascites with respiratory compromise (serosal subtype)",
+    "Persistent eosinophilia > 1500 with multi-organ involvement (rule out HES)",
+    "GI perforation",
+    "Severe malabsorption with protein-losing enteropathy"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Allergist/Immunologist",
+    "Hematologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Talley NJ, et al. Eosinophilic gastroenteritis: a clinicopathological study of patients with disease of the mucosa, muscle layer, and subserosal tissues. Gut. 1990;31(1):54-58.",
+    "Zhang L, et al. Eosinophilic gastroenteritis: clinical profiles and therapeutic outcomes. BMC Gastroenterol. 2014;14:14.",
+    "Pineton de Chambrun G, et al. Eosinophilic gastroenteritis. Clin Res Hepatol Gastroenterol. 2011;35(4):253-256."
+  ],
+  "confidenceInData": "medium"
+}

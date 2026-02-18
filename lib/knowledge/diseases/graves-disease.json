@@ -1,0 +1,108 @@
+{
+  "id": "graves-disease",
+  "name": "Graves Disease",
+  "aliases": ["Graves' Disease", "Basedow Disease", "Diffuse Toxic Goiter", "Parry Disease"],
+  "icd10Codes": ["E05.0", "E05.00", "E05.01"],
+  "omimId": "275000",
+  "orphanetId": "525",
+  "prevalence": {
+    "estimate": "100-200 per 100,000",
+    "range": "100-200 per 100,000",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 50, "peak": 35 },
+    "sexPredilection": "female",
+    "ethnicAssociations": ["All ethnicities affected; most common cause of hyperthyroidism in iodine-sufficient regions"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ATA/AACE Clinical Guidelines for Hyperthyroidism and Graves Disease",
+    "criteria": [
+      { "id": "gd-1", "description": "Suppressed TSH with elevated free T4 and/or free T3 (thyrotoxicosis)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "gd-2", "description": "Positive TSH receptor antibodies (TRAb/TSI)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "gd-3", "description": "Diffuse increased radioiodine uptake on thyroid scan", "category": "major", "requiredForDiagnosis": false },
+      { "id": "gd-4", "description": "Diffuse goiter on examination", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "gd-5", "description": "Graves ophthalmopathy (proptosis, lid retraction, periorbital edema)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "gd-6", "description": "Thyroid bruit on auscultation", "category": "supportive", "requiredForDiagnosis": false }
+    ],
+    "minimumForDiagnosis": "Clinical thyrotoxicosis (suppressed TSH, elevated free T4/T3) plus positive TRAb or diffuse increased uptake on thyroid scan",
+    "notes": "In the presence of typical Graves ophthalmopathy with thyrotoxicosis, the diagnosis can be made clinically without further testing."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      { "symptomName": "Graves ophthalmopathy (exophthalmos, lid retraction)", "snomedCode": "353295004", "frequency": 0.30, "bodySystem": "Ocular", "notes": "Proptosis, periorbital edema, lid lag, restrictive extraocular myopathy; pathognomonic for Graves" },
+      { "symptomName": "Pretibial myxedema (thyroid dermopathy)", "snomedCode": "56092002", "frequency": 0.03, "bodySystem": "Dermatologic", "notes": "Non-pitting, waxy, indurated plaques on anterior tibia; almost always with ophthalmopathy" },
+      { "symptomName": "Thyroid acropachy", "snomedCode": "84570009", "frequency": 0.01, "bodySystem": "Musculoskeletal", "notes": "Digital clubbing, periosteal new bone formation; rarest manifestation" }
+    ],
+    "common": [
+      { "symptomName": "Heat intolerance and excessive sweating", "snomedCode": "45530001", "frequency": 0.70, "bodySystem": "Constitutional" },
+      { "symptomName": "Palpitations and tachycardia", "snomedCode": "80313002", "frequency": 0.75, "bodySystem": "Cardiovascular" },
+      { "symptomName": "Weight loss despite increased appetite", "snomedCode": "89362005", "frequency": 0.60, "bodySystem": "Constitutional" },
+      { "symptomName": "Tremor (fine)", "snomedCode": "26079004", "frequency": 0.65, "bodySystem": "Neurological" },
+      { "symptomName": "Anxiety and irritability", "snomedCode": "48694002", "frequency": 0.60, "bodySystem": "Psychiatric" },
+      { "symptomName": "Diffuse goiter", "snomedCode": "3716002", "frequency": 0.70, "bodySystem": "Endocrine" }
+    ],
+    "occasional": [
+      { "symptomName": "Diarrhea and increased bowel frequency", "snomedCode": "62315008", "frequency": 0.25, "bodySystem": "Gastrointestinal" },
+      { "symptomName": "Atrial fibrillation", "snomedCode": "49436004", "frequency": 0.15, "bodySystem": "Cardiovascular", "notes": "More common in elderly patients" },
+      { "symptomName": "Proximal muscle weakness", "snomedCode": "26544005", "frequency": 0.30, "bodySystem": "Musculoskeletal" },
+      { "symptomName": "Oligomenorrhea or amenorrhea", "snomedCode": "52073004", "frequency": 0.20, "bodySystem": "Gynecologic" },
+      { "symptomName": "Hair thinning", "snomedCode": "278040002", "frequency": 0.25, "bodySystem": "Dermatologic" }
+    ],
+    "rare": [
+      { "symptomName": "Thyroid storm", "snomedCode": "29983006", "frequency": 0.02, "bodySystem": "Multi-system", "notes": "Life-threatening; fever, tachycardia, altered mental status, GI symptoms; precipitated by surgery, infection, iodine load" },
+      { "symptomName": "Periodic paralysis (thyrotoxic)", "snomedCode": "83339001", "frequency": 0.02, "bodySystem": "Neurological", "notes": "More common in Asian males; hypokalemia with acute flaccid paralysis" },
+      { "symptomName": "Heart failure (high-output)", "snomedCode": "84114007", "frequency": 0.03, "bodySystem": "Cardiovascular" },
+      { "symptomName": "Optic neuropathy (compressive from ophthalmopathy)", "snomedCode": "230509001", "frequency": 0.02, "bodySystem": "Ocular", "notes": "Vision-threatening emergency requiring urgent decompression" }
+    ]
+  },
+  "systemsAffected": ["Endocrine", "Cardiovascular", "Ocular", "Neurological", "Musculoskeletal", "Dermatologic", "Gastrointestinal", "Psychiatric"],
+  "keyFindings": {
+    "laboratory": [
+      "Suppressed TSH (<0.1 mIU/L)",
+      "Elevated free T4 and/or free T3",
+      "TSH receptor antibodies (TRAb) positive (>95%)",
+      "Anti-TPO antibodies positive (60-80%)",
+      "Anti-thyroglobulin antibodies positive (50%)",
+      "Elevated SHBG",
+      "Mild hypercalcemia",
+      "Elevated alkaline phosphatase (bone turnover)"
+    ],
+    "imaging": [
+      "Radioiodine uptake scan: diffuse, homogeneously increased uptake (20-60%, vs. normal 10-30%)",
+      "Thyroid ultrasound: diffuse enlargement, increased vascularity (thyroid inferno), hypoechoic parenchyma",
+      "CT/MRI orbits (ophthalmopathy): enlarged extraocular muscles (especially inferior and medial recti), orbital fat expansion, proptosis"
+    ],
+    "genetic": [
+      "HLA-DR3 (DRB1*0301) association",
+      "CTLA-4 gene variants",
+      "PTPN22 gene variants",
+      "TSHR gene polymorphisms"
+    ],
+    "other": [
+      "Clinical assessment of ophthalmopathy using CAS (Clinical Activity Score) and NOSPECS classification",
+      "Orbital imaging for suspected compressive optic neuropathy"
+    ]
+  },
+  "differentialDiagnoses": [
+    { "diseaseId": "hashimoto-thyroiditis", "distinguishingFeatures": ["Hypothyroidism", "Elevated TSH", "No ophthalmopathy (usually)", "Hashitoxicosis phase may transiently mimic Graves"] },
+    { "diseaseId": "toxic-multinodular-goiter", "distinguishingFeatures": ["Nodular goiter", "Older patients", "Patchy uptake on scan", "TRAb negative"] },
+    { "diseaseId": "subacute-thyroiditis", "distinguishingFeatures": ["Painful tender thyroid", "Low radioiodine uptake", "Elevated ESR", "Self-limited"] },
+    { "diseaseId": "factitious-thyrotoxicosis", "distinguishingFeatures": ["Exogenous thyroid hormone intake", "Low thyroglobulin", "Near-zero radioiodine uptake", "No goiter"] }
+  ],
+  "redFlags": [
+    "Signs of thyroid storm (fever >40C, tachycardia >140, altered mental status, seizures)",
+    "Compressive optic neuropathy (vision loss, color desaturation, afferent pupillary defect)",
+    "New atrial fibrillation or heart failure in thyrotoxic patient",
+    "Agranulocytosis from antithyroid drugs (fever, sore throat - urgent CBC needed)",
+    "Rapidly worsening ophthalmopathy"
+  ],
+  "specialistType": ["Endocrinology", "Ophthalmology", "Nuclear Medicine"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Ross DS, et al. 2016 American Thyroid Association Guidelines for Diagnosis and Management of Hyperthyroidism and Other Causes of Thyrotoxicosis. Thyroid. 2016;26(10):1343-1421.",
+    "Smith TJ, Hegedus L. Graves' Disease. N Engl J Med. 2016;375(16):1552-1565.",
+    "Bartalena L, et al. The 2021 European Group on Graves' Orbitopathy (EUGOGO) Clinical Practice Guidelines for the Medical Management of Graves' Orbitopathy. Eur J Endocrinol. 2021;185(4):G43-G67."
+  ],
+  "confidenceInData": "medium"
+}

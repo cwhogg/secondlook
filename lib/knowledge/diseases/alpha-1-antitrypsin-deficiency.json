@@ -1,0 +1,246 @@
+{
+  "id": "alpha-1-antitrypsin-deficiency",
+  "name": "Alpha-1 Antitrypsin Deficiency",
+  "aliases": [
+    "A1AT Deficiency",
+    "Alpha-1 Proteinase Inhibitor Deficiency",
+    "AAT Deficiency",
+    "Alpha-1",
+    "Laurell-Eriksson Syndrome"
+  ],
+  "icd10Codes": ["E88.01"],
+  "omimId": "613490",
+  "orphanetId": "60",
+  "prevalence": {
+    "estimate": "1 in 2,500 to 1 in 5,000 in Northern European populations",
+    "range": "0.02%-0.04%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 25, "max": 60, "peak": 40 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Northern European",
+      "Scandinavian",
+      "Iberian Peninsula (Pi*S allele)",
+      "Rare in Asian and African populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ATS/ERS Statement on Alpha-1 Antitrypsin Deficiency",
+    "criteria": [
+      {
+        "id": "a1at-c1",
+        "description": "Serum alpha-1 antitrypsin level <11 µM (or <57 mg/dL)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "a1at-c2",
+        "description": "Identification of deficient Pi phenotype (Pi*ZZ, Pi*SZ, or rare null alleles)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "a1at-c3",
+        "description": "Early-onset emphysema (typically before age 45 in smokers)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "a1at-c4",
+        "description": "Basilar-predominant panacinar emphysema on CT",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "a1at-c5",
+        "description": "Unexplained liver disease or cirrhosis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "a1at-c6",
+        "description": "Necrotizing panniculitis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Low serum AAT level confirmed with Pi typing or genotyping showing deficient alleles",
+    "notes": "AAT is an acute-phase reactant; levels may be falsely normal during inflammation. Genotyping is confirmatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Basilar-predominant panacinar emphysema",
+        "frequency": 0.8,
+        "bodySystem": "pulmonary",
+        "notes": "Distinctive pattern contrasting with apical-predominant emphysema of smoking"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Progressive dyspnea",
+        "snomedCode": "267036007",
+        "frequency": 0.85,
+        "bodySystem": "pulmonary"
+      },
+      {
+        "symptomName": "Chronic cough",
+        "snomedCode": "68154008",
+        "frequency": 0.7,
+        "bodySystem": "pulmonary"
+      },
+      {
+        "symptomName": "Wheezing",
+        "snomedCode": "56018004",
+        "frequency": 0.6,
+        "bodySystem": "pulmonary"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "snomedCode": "413839001",
+        "frequency": 0.7,
+        "bodySystem": "pulmonary"
+      },
+      {
+        "symptomName": "Recurrent lower respiratory tract infections",
+        "snomedCode": "195708003",
+        "frequency": 0.5,
+        "bodySystem": "pulmonary"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hepatomegaly",
+        "snomedCode": "80515008",
+        "frequency": 0.3,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Elevated liver enzymes",
+        "snomedCode": "166603001",
+        "frequency": 0.35,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Neonatal cholestasis",
+        "snomedCode": "206481001",
+        "frequency": 0.12,
+        "bodySystem": "hepatic",
+        "notes": "Occurs in ~10-15% of Pi*ZZ neonates"
+      },
+      {
+        "symptomName": "Bronchiectasis",
+        "snomedCode": "12295008",
+        "frequency": 0.3,
+        "bodySystem": "pulmonary"
+      },
+      {
+        "symptomName": "Cirrhosis",
+        "snomedCode": "19943007",
+        "frequency": 0.25,
+        "bodySystem": "hepatic"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Necrotizing panniculitis",
+        "snomedCode": "238859005",
+        "frequency": 0.05,
+        "bodySystem": "integumentary",
+        "notes": "Painful subcutaneous nodules that may ulcerate; highly suggestive of AAT deficiency"
+      },
+      {
+        "symptomName": "Granulomatosis with polyangiitis (c-ANCA vasculitis)",
+        "snomedCode": "195353004",
+        "frequency": 0.04,
+        "bodySystem": "immunologic"
+      },
+      {
+        "symptomName": "Hepatocellular carcinoma",
+        "snomedCode": "25370001",
+        "frequency": 0.05,
+        "bodySystem": "hepatic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "pulmonary",
+    "hepatic",
+    "integumentary",
+    "immunologic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low serum alpha-1 antitrypsin level (<11 µM or <57 mg/dL)",
+      "Obstructive pattern on pulmonary function tests (reduced FEV1/FVC)",
+      "Elevated liver enzymes if hepatic involvement",
+      "PAS-positive, diastase-resistant globules on liver biopsy"
+    ],
+    "imaging": [
+      "CT chest showing basilar-predominant panacinar emphysema",
+      "Possible bronchiectasis on CT",
+      "Hepatic imaging may show cirrhosis or hepatocellular carcinoma"
+    ],
+    "genetic": [
+      "SERPINA1 gene testing: Pi*ZZ homozygosity most common severe form",
+      "Pi*SZ compound heterozygosity: moderate deficiency",
+      "Rare null alleles: most severe deficiency (Pi*Null/Null)",
+      "Autosomal codominant inheritance"
+    ],
+    "other": [
+      "Pi typing by isoelectric focusing",
+      "Serum protein electrophoresis showing absent or reduced alpha-1 globulin peak"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "copd-smoking-related",
+      "distinguishingFeatures": [
+        "Smoking-related COPD typically apical-predominant emphysema",
+        "Normal AAT levels",
+        "Later onset typically >55 years",
+        "Strong smoking history"
+      ]
+    },
+    {
+      "diseaseId": "asthma",
+      "distinguishingFeatures": [
+        "Asthma is reversible airflow obstruction",
+        "Normal AAT levels",
+        "Eosinophilic inflammation predominates",
+        "No emphysema on imaging"
+      ]
+    },
+    {
+      "diseaseId": "cryptogenic-cirrhosis",
+      "distinguishingFeatures": [
+        "Normal AAT levels and Pi typing",
+        "No pulmonary involvement",
+        "Liver biopsy lacks PAS-positive globules"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Early-onset emphysema (before age 45) especially in non-smokers",
+    "Basilar emphysema pattern on imaging",
+    "Unexplained liver disease in children or adults",
+    "Family history of early COPD or liver disease",
+    "Necrotizing panniculitis of unknown cause"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Hepatologist",
+    "Medical Geneticist",
+    "Allergist/Immunologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "American Thoracic Society/European Respiratory Society Statement: Standards for the diagnosis and management of individuals with alpha-1 antitrypsin deficiency. Am J Respir Crit Care Med. 2003;168(7):818-900.",
+    "Stoller JK, Aboussouan LS. Alpha1-antitrypsin deficiency. Lancet. 2005;365(9478):2225-2236.",
+    "Strnad P, et al. Alpha1-Antitrypsin Deficiency. N Engl J Med. 2020;382(15):1443-1455.",
+    "de Serres FJ. Worldwide racial and ethnic distribution of alpha1-antitrypsin deficiency. Chest. 2002;122(5):1818-1829."
+  ],
+  "confidenceInData": "medium"
+}

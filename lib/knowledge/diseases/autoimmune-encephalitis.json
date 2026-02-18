@@ -1,0 +1,244 @@
+{
+  "id": "autoimmune-encephalitis",
+  "name": "Autoimmune Encephalitis",
+  "aliases": [
+    "AE",
+    "Antibody-mediated encephalitis",
+    "Anti-NMDA receptor encephalitis",
+    "Limbic encephalitis"
+  ],
+  "icd10Codes": ["G04.81"],
+  "orphanetId": "217253",
+  "prevalence": {
+    "estimate": "5-13 per 100,000",
+    "range": "Estimated similar to infectious encephalitis",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 1, "max": 80, "peak": 25 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "Affects all ethnicities",
+      "Anti-NMDAR encephalitis has female predominance (~80%)",
+      "Anti-LGI1 encephalitis has male predominance and affects older adults"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Graus et al. 2016 Clinical Approach to Diagnosis of Autoimmune Encephalitis",
+    "criteria": [
+      {
+        "id": "ae-1",
+        "description": "Subacute onset (rapid progression over <3 months) of working memory deficits, altered mental status, or psychiatric symptoms",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ae-2",
+        "description": "At least one of: new focal CNS findings, seizures, CSF pleocytosis, MRI features suggestive of encephalitis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ae-3",
+        "description": "Reasonable exclusion of alternative causes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ae-4",
+        "description": "Specific neural antibody detected (NMDA-R, LGI1, CASPR2, AMPA-R, GABA-B-R, etc.)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ae-5",
+        "description": "Response to immunotherapy trial",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Subacute onset of cognitive/psychiatric symptoms with at least one supportive feature (seizures, CSF pleocytosis, MRI changes, focal findings) and exclusion of alternative causes. Specific antibody detection provides definite diagnosis.",
+    "notes": "Major subtypes: anti-NMDAR (most common, young women, ovarian teratoma), anti-LGI1 (older men, faciobrachial dystonic seizures, hyponatremia), anti-CASPR2 (Morvan syndrome, neuromyotonia), anti-GABA-B (seizures, limbic encephalitis). Seronegative AE exists."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Subacute cognitive decline with psychiatric features",
+        "snomedCode": "386806002",
+        "frequency": 0.90,
+        "bodySystem": "neurological",
+        "notes": "Developing over days to weeks; confusion, memory impairment, personality change"
+      },
+      {
+        "symptomName": "Faciobrachial dystonic seizures",
+        "frequency": 0.70,
+        "bodySystem": "neurological",
+        "notes": "Pathognomonic for anti-LGI1 encephalitis; brief unilateral arm and face jerking"
+      },
+      {
+        "symptomName": "Orofacial-limb dyskinesias",
+        "frequency": 0.60,
+        "bodySystem": "neurological",
+        "notes": "Characteristic of anti-NMDAR encephalitis; lip smacking, jaw movements, choreoathetosis"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "New-onset seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychiatric symptoms",
+        "frequency": 0.80,
+        "bodySystem": "psychiatric",
+        "notes": "Psychosis, agitation, hallucinations, paranoia, catatonia; often initial presentation"
+      },
+      {
+        "symptomName": "Memory impairment",
+        "snomedCode": "386807006",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Particularly short-term memory; characteristic of limbic involvement"
+      },
+      {
+        "symptomName": "Movement disorders",
+        "frequency": 0.50,
+        "bodySystem": "neurological",
+        "notes": "Chorea, dystonia, myoclonus, orofacial dyskinesias"
+      },
+      {
+        "symptomName": "Decreased level of consciousness",
+        "snomedCode": "3006004",
+        "frequency": 0.50,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Autonomic instability",
+        "snomedCode": "72167002",
+        "frequency": 0.35,
+        "bodySystem": "autonomic",
+        "notes": "Tachycardia, blood pressure fluctuations, central hypoventilation in anti-NMDAR"
+      },
+      {
+        "symptomName": "Hyponatremia",
+        "snomedCode": "89627008",
+        "frequency": 0.25,
+        "bodySystem": "metabolic",
+        "notes": "Characteristic of anti-LGI1 encephalitis (SIADH)"
+      },
+      {
+        "symptomName": "Sleep disturbance",
+        "snomedCode": "39898005",
+        "frequency": 0.40,
+        "bodySystem": "neurological",
+        "notes": "Insomnia or hypersomnia; severe sleep disruption in anti-IgLON5"
+      },
+      {
+        "symptomName": "Speech dysfunction",
+        "snomedCode": "29164008",
+        "frequency": 0.40,
+        "bodySystem": "neurological",
+        "notes": "Reduced speech output progressing to mutism in anti-NMDAR"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Central hypoventilation",
+        "frequency": 0.15,
+        "bodySystem": "respiratory",
+        "notes": "Anti-NMDAR encephalitis; may require mechanical ventilation"
+      },
+      {
+        "symptomName": "Peripheral nerve hyperexcitability",
+        "frequency": 0.10,
+        "bodySystem": "neurological",
+        "notes": "Morvan syndrome with anti-CASPR2: neuromyotonia, insomnia, autonomic dysfunction"
+      },
+      {
+        "symptomName": "Opsoclonus-myoclonus",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "central nervous system",
+    "limbic system",
+    "autonomic nervous system",
+    "psychiatric/behavioral"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Serum and CSF neural antibody panels: NMDA-R, LGI1, CASPR2, AMPA-R, GABA-B-R, GABA-A-R, DPPX, IgLON5",
+      "CSF: lymphocytic pleocytosis (common in anti-NMDAR), elevated protein",
+      "CSF may be normal in anti-LGI1 encephalitis",
+      "Serum sodium (hyponatremia in anti-LGI1)",
+      "Paraneoplastic antibody panel for intracellular antigens (Hu, CV2, Ma2, amphiphysin)"
+    ],
+    "imaging": [
+      "MRI FLAIR/T2: medial temporal lobe hyperintensity (limbic encephalitis pattern)",
+      "MRI may be normal in up to 50% of anti-NMDAR encephalitis",
+      "FDG-PET may show temporal lobe hypermetabolism or extratemporal abnormalities",
+      "CT/MRI/ultrasound for tumor screening (ovarian teratoma, thymoma, lung cancer)"
+    ],
+    "genetic": [
+      "No specific genetic cause for autoimmune encephalitis",
+      "HLA associations reported for some subtypes"
+    ],
+    "other": [
+      "EEG: diffuse or focal slowing, extreme delta brush pattern (anti-NMDAR), epileptiform discharges",
+      "Tumor screening: pelvic MRI/ultrasound (ovarian teratoma in anti-NMDAR), CT chest/abdomen (lung, thymus)",
+      "CSF antibody testing generally more sensitive than serum for cell-surface antibodies",
+      "Neuropsychological testing for cognitive assessment"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "creutzfeldt-jakob-disease",
+      "distinguishingFeatures": [
+        "CJD has cortical ribboning on DWI MRI",
+        "CJD has positive RT-QuIC",
+        "CJD progresses more rapidly with myoclonus and akinetic mutism",
+        "CJD does not respond to immunotherapy"
+      ]
+    },
+    {
+      "diseaseId": "multiple-sclerosis",
+      "distinguishingFeatures": [
+        "MS has dissemination in space and time",
+        "MS has white matter lesions not limbic encephalitis pattern",
+        "MS has oligoclonal bands"
+      ]
+    },
+    {
+      "diseaseId": "herpes-simplex-encephalitis",
+      "distinguishingFeatures": [
+        "HSE has acute onset with fever",
+        "HSE has hemorrhagic temporal lobe lesions",
+        "HSE has positive HSV PCR in CSF",
+        "Post-HSE autoimmune encephalitis can occur weeks later"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Young woman with new-onset psychosis should be evaluated for anti-NMDAR encephalitis before attributing to primary psychiatric disease",
+    "Autonomic instability and central hypoventilation in anti-NMDAR requires ICU management",
+    "Ovarian teratoma must be screened for in all female patients with anti-NMDAR encephalitis",
+    "Post-herpes simplex encephalitis: anti-NMDAR encephalitis can develop weeks after viral infection",
+    "Faciobrachial dystonic seizures are often drug-resistant but respond to immunotherapy (anti-LGI1)",
+    "Intracellular antibodies (Hu, Ma2, CV2) indicate paraneoplastic etiology with aggressive tumor search needed",
+    "Early immunotherapy improves outcomes - do not delay treatment while waiting for antibody results"
+  ],
+  "specialistType": ["neurologist", "neuroimmunologist", "psychiatrist", "oncologist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Graus F, et al. A clinical approach to diagnosis of autoimmune encephalitis. Lancet Neurol. 2016;15(4):391-404.",
+    "Dalmau J, et al. Autoimmune Encephalitis. N Engl J Med. 2018;378(9):840-851.",
+    "Titulaer MJ, et al. Treatment and prognostic factors for long-term outcome in patients with anti-NMDA receptor encephalitis. Lancet Neurol. 2013;12(2):157-165."
+  ],
+  "confidenceInData": "medium"
+}

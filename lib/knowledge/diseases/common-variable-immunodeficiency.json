@@ -1,0 +1,260 @@
+{
+  "id": "common-variable-immunodeficiency",
+  "name": "Common Variable Immunodeficiency",
+  "aliases": [
+    "CVID",
+    "Common Variable Immune Deficiency",
+    "Hypogammaglobulinemia",
+    "Adult-Onset Hypogammaglobulinemia"
+  ],
+  "icd10Codes": ["D83.0", "D83.1", "D83.2", "D83.8", "D83.9"],
+  "omimId": "607594",
+  "orphanetId": "1572",
+  "prevalence": {
+    "estimate": "1 in 25,000 to 1 in 50,000",
+    "range": "0.002%-0.004%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 10, "max": 40, "peak": 25 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Most common in Caucasian populations",
+      "Rare in Asian and African populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ESID/PAGID Revised Diagnostic Criteria for CVID",
+    "criteria": [
+      {
+        "id": "cvid-c1",
+        "description": "Marked decrease of IgG (at least 2 SD below mean for age) with low IgA and/or low IgM",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cvid-c2",
+        "description": "Onset of immunodeficiency after age 4 years (to exclude congenital agammaglobulinemia)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cvid-c3",
+        "description": "Absent isohemagglutinins and/or poor response to vaccines",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cvid-c4",
+        "description": "Exclusion of other defined causes of hypogammaglobulinemia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cvid-c5",
+        "description": "Recurrent sinopulmonary infections",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cvid-c6",
+        "description": "Autoimmune cytopenias",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All four major criteria must be met. CVID is a diagnosis of exclusion after ruling out secondary causes and monogenic immune deficiencies.",
+    "notes": "CVID is the most common symptomatic primary immunodeficiency in adults. Diagnostic delay averages 4-9 years from symptom onset. A subset of patients have identified monogenic defects (TNFRSF13B/TACI, ICOS, BAFFR, etc.)."
+  },
+  "symptoms": {
+    "pathognomonic": [],
+    "common": [
+      {
+        "symptomName": "Recurrent sinopulmonary infections (sinusitis, bronchitis, pneumonia)",
+        "snomedCode": "195708003",
+        "frequency": 0.9,
+        "bodySystem": "pulmonary"
+      },
+      {
+        "symptomName": "Recurrent otitis media",
+        "snomedCode": "65363002",
+        "frequency": 0.5,
+        "bodySystem": "ear-nose-throat"
+      },
+      {
+        "symptomName": "Chronic diarrhea and malabsorption",
+        "snomedCode": "62315008",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "notes": "Often from Giardia, norovirus, or nodular lymphoid hyperplasia"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Bronchiectasis",
+        "snomedCode": "12295008",
+        "frequency": 0.35,
+        "bodySystem": "pulmonary",
+        "notes": "Develops from recurrent/chronic pulmonary infections"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Autoimmune cytopenias (ITP, AIHA)",
+        "snomedCode": "13172003",
+        "frequency": 0.25,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "snomedCode": "16294009",
+        "frequency": 0.3,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "snomedCode": "30746006",
+        "frequency": 0.25,
+        "bodySystem": "lymphatic"
+      },
+      {
+        "symptomName": "Non-caseating granulomas (lung, liver, spleen, lymph nodes)",
+        "snomedCode": "86170006",
+        "frequency": 0.2,
+        "bodySystem": "multisystem",
+        "notes": "Granulomatous-lymphocytic interstitial lung disease (GLILD)"
+      },
+      {
+        "symptomName": "Autoimmune thyroid disease",
+        "snomedCode": "73286009",
+        "frequency": 0.15,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Lymphoma (especially non-Hodgkin)",
+        "snomedCode": "115244002",
+        "frequency": 0.08,
+        "bodySystem": "hematologic",
+        "notes": "5-10 fold increased risk of lymphoma"
+      },
+      {
+        "symptomName": "Gastric cancer",
+        "snomedCode": "126824007",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pernicious anemia",
+        "snomedCode": "84027009",
+        "frequency": 0.08,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Hepatic granulomatous disease",
+        "snomedCode": "58612006",
+        "frequency": 0.05,
+        "bodySystem": "hepatic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "immunologic",
+    "pulmonary",
+    "gastrointestinal",
+    "hematologic",
+    "lymphatic",
+    "hepatic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low serum IgG (typically <500 mg/dL, often <300 mg/dL)",
+      "Low IgA and/or IgM",
+      "Poor antibody response to protein and polysaccharide vaccines",
+      "Absent or low isohemagglutinins",
+      "Abnormal B cell subsets on flow cytometry (reduced switched memory B cells)",
+      "May have associated cytopenias, elevated inflammatory markers"
+    ],
+    "imaging": [
+      "CT chest showing bronchiectasis, interstitial lung disease, or granulomatous disease",
+      "CT showing splenomegaly and/or lymphadenopathy",
+      "CT abdomen may show nodular lymphoid hyperplasia in GI tract"
+    ],
+    "genetic": [
+      "TNFRSF13B (TACI) mutations (~8-10% of CVID)",
+      "ICOS deficiency (rare)",
+      "BAFFR mutations (rare)",
+      "NFKB1, NFKB2, PIK3CD, CTLA4, LRBA mutations in CVID-like phenotypes",
+      "Most cases are sporadic; ~10-25% have family history"
+    ],
+    "other": [
+      "Vaccine challenge: measure specific antibody titers before and 4-6 weeks after immunization",
+      "B cell flow cytometry panel (important for classification)",
+      "GI endoscopy may show villous atrophy, nodular lymphoid hyperplasia",
+      "Liver biopsy if hepatic granulomatous disease suspected"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "selective-iga-deficiency",
+      "distinguishingFeatures": [
+        "Only IgA is deficient; IgG and IgM normal",
+        "Most patients are asymptomatic",
+        "Can progress to CVID (rare)"
+      ]
+    },
+    {
+      "diseaseId": "x-linked-agammaglobulinemia",
+      "distinguishingFeatures": [
+        "Presents in infancy (after maternal antibody wanes)",
+        "Very low or absent B cells",
+        "BTK gene mutation",
+        "Males only"
+      ]
+    },
+    {
+      "diseaseId": "secondary-hypogammaglobulinemia",
+      "distinguishingFeatures": [
+        "Drug-induced (rituximab, anti-epileptics, immunosuppressants)",
+        "Associated with nephrotic syndrome (urinary protein loss)",
+        "Associated with lymphoproliferative disorders"
+      ]
+    },
+    {
+      "diseaseId": "sarcoidosis",
+      "distinguishingFeatures": [
+        "Normal immunoglobulin levels",
+        "Elevated ACE level",
+        "Bilateral hilar lymphadenopathy characteristic",
+        "Hypergammaglobulinemia common (opposite of CVID)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Recurrent pneumonia leading to bronchiectasis and progressive lung damage",
+    "Development of lymphoma (increased surveillance needed)",
+    "Granulomatous-lymphocytic interstitial lung disease (GLILD) with progressive respiratory failure",
+    "Severe autoimmune cytopenias refractory to treatment",
+    "Chronic enteropathy with malabsorption and weight loss"
+  ],
+  "specialistType": [
+    "Allergist/Immunologist",
+    "Pulmonologist",
+    "Hematologist",
+    "Gastroenterologist",
+    "Infectious Disease Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Bonilla FA, et al. Practice parameter for the diagnosis and management of primary immunodeficiency. J Allergy Clin Immunol. 2015;136(5):1186-1205.e78.",
+    "Cunningham-Rundles C. Common variable immune deficiency: case studies. Blood. 2019;134(21):1787-1795.",
+    "Chapel H, et al. Common variable immunodeficiency disorders: division into distinct clinical phenotypes. Blood. 2008;112(2):277-286.",
+    "Gathmann B, et al. Clinical picture and treatment of 2212 patients with common variable immunodeficiency. J Allergy Clin Immunol. 2014;134(1):116-126."
+  ],
+  "confidenceInData": "medium"
+}

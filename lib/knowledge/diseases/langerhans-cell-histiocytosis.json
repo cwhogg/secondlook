@@ -1,0 +1,223 @@
+{
+  "id": "langerhans-cell-histiocytosis",
+  "name": "Langerhans Cell Histiocytosis",
+  "aliases": [
+    "LCH",
+    "Histiocytosis X",
+    "Eosinophilic Granuloma",
+    "Hand-Schuller-Christian Disease",
+    "Letterer-Siwe Disease"
+  ],
+  "icd10Codes": ["C96.0", "C96.5", "C96.6"],
+  "omimId": "604856",
+  "orphanetId": "389",
+  "prevalence": {
+    "estimate": "1 to 9 per 1,000,000 in children; rarer in adults",
+    "range": "0.0001%-0.0009%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 1, "max": 15, "peak": 3 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Histiocyte Society Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "lch-maj1",
+        "description": "Histological identification of Langerhans cells in lesional tissue (characteristic morphology with grooved/folded nuclei)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "lch-maj2",
+        "description": "Positive immunohistochemistry for CD1a and/or CD207 (langerin) on lesional cells",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "lch-min1",
+        "description": "Birbeck granules on electron microscopy (pentalaminar rod-shaped or racket-shaped structures)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "lch-min2",
+        "description": "BRAF V600E mutation in lesional tissue (~50-60% of cases)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "lch-sup1",
+        "description": "Compatible clinical and radiographic features (lytic bone lesions, skin rash, diabetes insipidus)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Definitive diagnosis requires biopsy with positive CD1a and/or langerin (CD207) staining. Presumptive diagnosis may be made with compatible clinical/imaging plus characteristic morphology.",
+    "notes": "Classified as single-system (SS) vs multi-system (MS), and risk organ involvement (liver, spleen, bone marrow). Now considered a neoplastic/clonal disorder of myeloid lineage, not purely inflammatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Lytic bone lesions (skull, long bones, ribs, pelvis)",
+        "frequency": 0.80,
+        "bodySystem": "musculoskeletal",
+        "notes": "Most common presentation; well-circumscribed punched-out lytic lesions on imaging"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Bone pain or swelling over lesion",
+        "snomedCode": "12584003",
+        "frequency": 0.70,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Skin rash (seborrheic dermatitis-like, crusted papules)",
+        "frequency": 0.50,
+        "bodySystem": "integumentary",
+        "notes": "Scalp most common; resembles seborrheic dermatitis or eczema. Petechial/purpuric in infants."
+      },
+      {
+        "symptomName": "Otitis media/externa (chronic, refractory)",
+        "frequency": 0.25,
+        "bodySystem": "neurologic",
+        "notes": "From temporal bone involvement"
+      },
+      {
+        "symptomName": "Diabetes insipidus",
+        "frequency": 0.25,
+        "bodySystem": "endocrine",
+        "notes": "From pituitary stalk infiltration; polyuria and polydipsia"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Lymphadenopathy",
+        "snomedCode": "30746006",
+        "frequency": 0.20,
+        "bodySystem": "lymphatic"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Indicates risk organ involvement; poor prognostic sign"
+      },
+      {
+        "symptomName": "Cough and dyspnea (pulmonary LCH)",
+        "frequency": 0.15,
+        "bodySystem": "respiratory",
+        "notes": "Pulmonary LCH in adults strongly associated with smoking"
+      },
+      {
+        "symptomName": "Gingival/oral mucosal lesions with tooth loss",
+        "frequency": 0.10,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cerebellar neurodegeneration",
+        "frequency": 0.05,
+        "bodySystem": "neurologic",
+        "notes": "Late complication; progressive ataxia, dysarthria, cognitive decline"
+      },
+      {
+        "symptomName": "Liver failure (sclerosing cholangitis pattern)",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cytopenias from bone marrow involvement",
+        "frequency": 0.05,
+        "bodySystem": "hematologic",
+        "notes": "Indicates risk organ involvement; requires aggressive treatment"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "integumentary",
+    "endocrine",
+    "respiratory",
+    "hepatic",
+    "hematologic",
+    "neurologic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CBC may show cytopenias if bone marrow involved",
+      "Elevated ESR, LDH",
+      "Liver function tests: elevated ALP, GGT if hepatic involvement",
+      "Urine specific gravity/osmolality: low if diabetes insipidus present",
+      "BRAF V600E mutation in lesional tissue (~55%) or cell-free DNA"
+    ],
+    "imaging": [
+      "Skeletal survey/X-rays: punched-out lytic bone lesions without sclerotic rim",
+      "CT chest: cysts and nodules in upper/middle lung zones (pulmonary LCH)",
+      "MRI brain/pituitary: pituitary stalk thickening, loss of posterior pituitary bright spot",
+      "PET-CT: FDG-avid bone and soft tissue lesions; useful for staging and response assessment"
+    ],
+    "genetic": [
+      "BRAF V600E somatic mutation in 50-60% of cases",
+      "MAP2K1 mutations in ~25% of BRAF-wild-type cases",
+      "MAPK pathway activation is central to pathogenesis"
+    ],
+    "other": [
+      "Biopsy with CD1a and langerin (CD207) immunohistochemistry: diagnostic gold standard",
+      "Electron microscopy: Birbeck granules (tennis-racket shaped; pathognomonic but not required)",
+      "Water deprivation test for suspected diabetes insipidus",
+      "Pulmonary function tests in pulmonary LCH"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "erdheim-chester-disease",
+      "distinguishingFeatures": [
+        "ECD involves non-Langerhans histiocytes (CD68+, CD1a-)",
+        "ECD has bilateral symmetric osteosclerosis of long bone diaphyses",
+        "Both may have BRAF V600E mutations"
+      ]
+    },
+    {
+      "diseaseId": "ewing-sarcoma",
+      "distinguishingFeatures": [
+        "Ewing sarcoma has onion-skin periosteal reaction",
+        "Ewing shows small round blue cell tumor on biopsy",
+        "EWSR1 translocation present in Ewing"
+      ]
+    },
+    {
+      "diseaseId": "osteomyelitis",
+      "distinguishingFeatures": [
+        "Osteomyelitis has fever, elevated WBC/CRP",
+        "Osteomyelitis confirmed by culture",
+        "Different imaging pattern with periosteal reaction"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Risk organ involvement (liver, spleen, bone marrow) in children - requires urgent intensive chemotherapy",
+    "Diabetes insipidus (may be irreversible even with treatment)",
+    "CNS neurodegenerative changes (progressive, may not respond to chemotherapy)",
+    "Pulmonary cysts with pneumothorax risk",
+    "Multi-system disease in infants (historically high mortality)"
+  ],
+  "specialistType": [
+    "Pediatric Oncologist/Hematologist",
+    "Oncologist",
+    "Endocrinologist",
+    "Pulmonologist",
+    "Dermatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Allen CE, et al. Langerhans-cell histiocytosis. N Engl J Med. 2018;379(9):856-868.",
+    "Rodriguez-Galindo C, Allen CE. Langerhans cell histiocytosis. Blood. 2020;135(16):1319-1331.",
+    "Badalian-Very G, et al. Recurrent BRAF mutations in Langerhans cell histiocytosis. Blood. 2010;116(11):1919-1923."
+  ],
+  "confidenceInData": "medium"
+}

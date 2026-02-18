@@ -1,0 +1,271 @@
+{
+  "id": "angelman-syndrome",
+  "name": "Angelman Syndrome",
+  "aliases": [
+    "AS",
+    "Happy Puppet Syndrome (historical, deprecated)"
+  ],
+  "icd10Codes": ["Q93.51"],
+  "omimId": "105830",
+  "orphanetId": "72",
+  "prevalence": {
+    "estimate": "1 in 12,000 to 1 in 20,000",
+    "range": "0.005%-0.008%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 3, "peak": 1 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "No strong ethnic predilection"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Williams et al. Consensus Criteria for Angelman Syndrome (2006 Update)",
+    "criteria": [
+      {
+        "id": "as-c1",
+        "description": "Severe developmental delay / intellectual disability with minimal or no speech",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "as-c2",
+        "description": "Movement or balance disorder (ataxia, tremulous movement of limbs)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "as-c3",
+        "description": "Behavioral uniqueness: frequent laughter/smiling, apparent happy demeanor, excitability with hand-flapping",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "as-c4",
+        "description": "Speech impairment with minimal or no use of words; receptive language better than expressive",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "as-c5",
+        "description": "Seizures (onset usually <3 years of age)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-c6",
+        "description": "Characteristic EEG pattern (large-amplitude slow-spike waves)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-c7",
+        "description": "Microcephaly (deceleration of head growth by age 2)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-c8",
+        "description": "Loss of maternal UBE3A expression confirmed by genetic testing",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Clinical features (all 4 major clinical criteria) confirmed by genetic testing showing loss of maternal UBE3A expression. Genetic test is confirmatory but clinical diagnosis is primary.",
+    "notes": "Four genetic mechanisms: maternal deletion of 15q11-q13 (~70%), paternal UPD (~3-5%), imprinting defect (~3-5%), UBE3A mutation (~10-15%). ~10% have no identifiable molecular mechanism. Deletion class tends to have more severe phenotype."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Frequent unprovoked laughter and happy demeanor",
+        "frequency": 0.95,
+        "bodySystem": "neuropsychiatric",
+        "notes": "Easily provoked and sustained laughter; apparent happy affect is highly characteristic"
+      },
+      {
+        "symptomName": "Severe intellectual disability with absent or minimal speech",
+        "snomedCode": "3446000",
+        "frequency": 0.98,
+        "bodySystem": "neurological",
+        "notes": "Most individuals use fewer than 5-6 words; nonverbal communication relatively preserved"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.8,
+        "bodySystem": "neurological",
+        "notes": "Multiple seizure types; often difficult to control; onset typically <3 years"
+      },
+      {
+        "symptomName": "Ataxic gait (wide-based, jerky)",
+        "snomedCode": "25136009",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Microcephaly (acquired, by age 2)",
+        "snomedCode": "431265009",
+        "frequency": 0.7,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hand-flapping and excitable behavior",
+        "snomedCode": "84757009",
+        "frequency": 0.85,
+        "bodySystem": "neuropsychiatric"
+      },
+      {
+        "symptomName": "Sleep disturbances (decreased need for sleep)",
+        "snomedCode": "39898005",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "snomedCode": "78164000",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hypopigmentation (in deletion subtype)",
+        "snomedCode": "23006000",
+        "frequency": 0.3,
+        "bodySystem": "integumentary",
+        "notes": "Lighter hair, skin, and eyes than family members; due to OCA2 gene in deleted region"
+      },
+      {
+        "symptomName": "Strabismus",
+        "snomedCode": "22066006",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmologic"
+      },
+      {
+        "symptomName": "Tongue thrusting and drooling",
+        "snomedCode": "288959006",
+        "frequency": 0.5,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Fascination with water",
+        "frequency": 0.4,
+        "bodySystem": "neuropsychiatric"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Scoliosis",
+        "snomedCode": "298382003",
+        "frequency": 0.1,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Obesity in older children/adults",
+        "snomedCode": "414916001",
+        "frequency": 0.1,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Status epilepticus",
+        "snomedCode": "230456007",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "neuropsychiatric",
+    "musculoskeletal",
+    "ophthalmologic",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Routine laboratory studies are typically normal",
+      "EEG showing characteristic pattern: high-amplitude 2-3 Hz slow waves, often most prominent posteriorly",
+      "Rhythmic theta activity (4-6 Hz) over frontal regions"
+    ],
+    "imaging": [
+      "Brain MRI typically normal or nonspecific (mild cortical atrophy or cerebellar changes in some)",
+      "MRI may show myelination delay in infancy"
+    ],
+    "genetic": [
+      "DNA methylation analysis at 15q11-q13 (first-line test; detects deletions, UPD, and some imprinting defects)",
+      "Maternal deletion of 15q11-q13 (~70%, detected by FISH/microarray)",
+      "Paternal uniparental disomy 15 (~3-5%)",
+      "Imprinting center defect (~3-5%)",
+      "UBE3A gene mutation (~10-15%, requires gene sequencing)",
+      "~10% clinically diagnosed but no molecular abnormality found"
+    ],
+    "other": [
+      "Developmental assessment showing severe delays",
+      "Behavioral assessment",
+      "Video-EEG monitoring for seizure characterization"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "prader-willi-syndrome",
+      "distinguishingFeatures": [
+        "PWS involves paternal 15q11-q13 (not maternal)",
+        "Hyperphagia and obesity are hallmarks of PWS",
+        "Hypotonia in infancy but no seizures typically",
+        "Different behavioral phenotype (stubbornness rather than happy demeanor)"
+      ]
+    },
+    {
+      "diseaseId": "rett-syndrome",
+      "distinguishingFeatures": [
+        "Rett shows regression after period of normal development",
+        "Hand-wringing stereotypies (different from hand-flapping)",
+        "MECP2 mutations",
+        "Almost exclusively female"
+      ]
+    },
+    {
+      "diseaseId": "pitt-hopkins-syndrome",
+      "distinguishingFeatures": [
+        "TCF4 mutations",
+        "Episodic hyperventilation",
+        "Distinctive facial features (deep-set eyes, wide mouth)",
+        "Overlap in happy affect and absent speech"
+      ]
+    },
+    {
+      "diseaseId": "mowat-wilson-syndrome",
+      "distinguishingFeatures": [
+        "ZEB2 mutations",
+        "Hirschsprung disease frequently associated",
+        "Distinctive facial features",
+        "Also has happy demeanor but different pattern"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Refractory seizures requiring aggressive anticonvulsant management",
+    "Status epilepticus (medical emergency)",
+    "Severe sleep disturbance impacting quality of life",
+    "Progressive scoliosis requiring surgical intervention",
+    "Recurrence risk counseling critical (depends on genetic mechanism)"
+  ],
+  "specialistType": [
+    "Medical Geneticist",
+    "Pediatric Neurologist",
+    "Developmental Pediatrician",
+    "Physical and Occupational Therapist",
+    "Speech-Language Pathologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Williams CA, et al. Angelman syndrome 2005: updated consensus for diagnostic criteria. Am J Med Genet A. 2006;140(5):413-418.",
+    "Buiting K, et al. Angelman syndrome - insights into a rare neurogenetic disorder. Nat Rev Neurol. 2016;12(10):584-593.",
+    "Dagli AI, et al. Angelman Syndrome. GeneReviews. Updated 2021.",
+    "Margolis SS, et al. Angelman syndrome. Neurotherapeutics. 2015;12(3):641-650."
+  ],
+  "confidenceInData": "medium"
+}

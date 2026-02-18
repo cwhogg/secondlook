@@ -1,0 +1,267 @@
+{
+  "id": "myotonic-dystrophy",
+  "name": "Myotonic Dystrophy",
+  "aliases": [
+    "DM",
+    "DM1",
+    "DM2",
+    "Steinert disease",
+    "Dystrophia myotonica",
+    "PROMM (proximal myotonic myopathy, DM2)"
+  ],
+  "icd10Codes": ["G71.11", "G71.12", "G71.19"],
+  "omimId": "160900",
+  "orphanetId": "273",
+  "prevalence": {
+    "estimate": "1 in 8,000 (DM1); 1 in 20,000 (DM2)",
+    "range": "DM1: 1 in 3,000 to 1 in 8,000 depending on population",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 60, "peak": 25 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "DM1 affects all ethnicities; most common muscular dystrophy in adults of European descent",
+      "DM1 extremely high prevalence in Saguenay-Lac-Saint-Jean region of Quebec (founder effect)",
+      "DM2 primarily affects populations of European descent",
+      "DM2 very rare in other ethnicities"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Genetic Criteria",
+    "criteria": [
+      {
+        "id": "dm-1",
+        "description": "Clinical myotonia (delayed relaxation after muscle contraction)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dm-2",
+        "description": "Progressive distal weakness and wasting (DM1) or proximal weakness (DM2)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dm-3",
+        "description": "Multisystem involvement (cataracts, cardiac, endocrine, CNS)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dm-4",
+        "description": "CTG repeat expansion in DMPK gene (DM1) or CCTG repeat expansion in CNBP/ZNF9 gene (DM2)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "dm-5",
+        "description": "EMG showing myotonic discharges",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Genetic confirmation with CTG repeat expansion in DMPK (DM1) or CCTG expansion in CNBP (DM2). Clinical features support testing but genetic test is definitive.",
+    "notes": "DM1 CTG repeats: normal 5-34, premutation 35-49, pathogenic 50-~4000+. DM1 shows anticipation with maternal transmission causing congenital form. DM2 does not have congenital form and is generally milder. Congenital DM1 presents with hypotonia and respiratory failure in neonates."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Myotonia (grip myotonia and percussion myotonia)",
+        "snomedCode": "26950007",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Inability to relax muscles after contraction; handshake difficulty; 'warm-up' phenomenon"
+      },
+      {
+        "symptomName": "Distal muscle weakness and wasting (DM1)",
+        "snomedCode": "249937002",
+        "frequency": 0.80,
+        "bodySystem": "musculoskeletal",
+        "notes": "Hand grip weakness, foot drop; characteristic distal pattern (DM1); DM2 is proximal"
+      },
+      {
+        "symptomName": "Characteristic facies",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "notes": "Temporalis and masseter wasting, ptosis, long thin face, frontal balding (hatchet face in DM1)"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Cataracts (posterior subcapsular iridescent cataracts)",
+        "snomedCode": "95722004",
+        "frequency": 0.80,
+        "bodySystem": "ophthalmological",
+        "notes": "Christmas tree or multicolored cataracts on slit lamp; can appear before other symptoms"
+      },
+      {
+        "symptomName": "Cardiac conduction abnormalities",
+        "snomedCode": "698247007",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "First-degree AV block, bundle branch block, atrial flutter/fibrillation; sudden cardiac death risk"
+      },
+      {
+        "symptomName": "Excessive daytime sleepiness",
+        "snomedCode": "77692006",
+        "frequency": 0.70,
+        "bodySystem": "neurological",
+        "notes": "Central hypersomnolence, not just from respiratory failure"
+      },
+      {
+        "symptomName": "Frontal balding",
+        "snomedCode": "278040002",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "notes": "In both males and females; DM1"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "snomedCode": "40739000",
+        "frequency": 0.50,
+        "bodySystem": "gastrointestinal",
+        "notes": "From pharyngeal muscle weakness and myotonia"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Insulin resistance and diabetes",
+        "snomedCode": "73211009",
+        "frequency": 0.25,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cognitive impairment and apathy",
+        "snomedCode": "386806002",
+        "frequency": 0.30,
+        "bodySystem": "neurological",
+        "notes": "Executive dysfunction, reduced initiative; more prominent in DM1"
+      },
+      {
+        "symptomName": "Gastrointestinal dysmotility",
+        "snomedCode": "235595009",
+        "frequency": 0.35,
+        "bodySystem": "gastrointestinal",
+        "notes": "Dysphagia, constipation, pseudo-obstruction, gallstones"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "snomedCode": "409622000",
+        "frequency": 0.30,
+        "bodySystem": "respiratory",
+        "notes": "Diaphragmatic and respiratory muscle weakness"
+      },
+      {
+        "symptomName": "Testicular atrophy and infertility",
+        "snomedCode": "17732005",
+        "frequency": 0.20,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Congenital myotonic dystrophy (neonatal presentation)",
+        "frequency": 0.10,
+        "bodySystem": "neurological",
+        "notes": "Only in DM1; neonatal hypotonia, respiratory failure, feeding difficulty; intellectual disability"
+      },
+      {
+        "symptomName": "Pilomatricomas (skin tumors)",
+        "frequency": 0.05,
+        "bodySystem": "dermatological",
+        "notes": "Multiple calcifying epitheliomas; associated with DM1"
+      },
+      {
+        "symptomName": "Elevated liver enzymes",
+        "frequency": 0.15,
+        "bodySystem": "hepatic",
+        "notes": "Gamma-GT elevation common"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "skeletal muscle",
+    "cardiac muscle",
+    "smooth muscle",
+    "central nervous system",
+    "endocrine system",
+    "visual system",
+    "respiratory system",
+    "gastrointestinal system"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CK mildly elevated or normal",
+      "Fasting glucose and HbA1c for diabetes screening",
+      "Thyroid function tests",
+      "Liver function tests (gamma-GT often elevated)",
+      "Testosterone levels in males",
+      "Immunoglobulin levels (IgG often reduced)"
+    ],
+    "imaging": [
+      "MRI brain: white matter lesions, temporal lobe atrophy (DM1)",
+      "Cardiac MRI: myocardial fibrosis",
+      "Slit lamp examination: posterior subcapsular iridescent cataracts"
+    ],
+    "genetic": [
+      "DM1: CTG trinucleotide repeat expansion in DMPK gene (chromosome 19q13.3); normal <34, pathogenic 50-4000+",
+      "DM2: CCTG tetranucleotide repeat expansion in CNBP/ZNF9 gene (chromosome 3q21.3); normal <26, pathogenic 75-11000+",
+      "Autosomal dominant inheritance with anticipation (DM1)",
+      "Congenital form almost exclusively maternally transmitted (DM1)",
+      "DM2 does not show significant anticipation or congenital form"
+    ],
+    "other": [
+      "EMG: myotonic discharges (waxing and waning motor unit 'dive bomber' sound)",
+      "EMG: myopathic motor unit potentials",
+      "ECG: PR prolongation, QRS widening, atrial arrhythmias",
+      "Holter monitoring and electrophysiology study for cardiac evaluation",
+      "Pulmonary function tests: restrictive pattern",
+      "Sleep study for central and obstructive sleep apnea"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "myasthenia-gravis",
+      "distinguishingFeatures": [
+        "MG has fatigable weakness, not myotonia",
+        "MG has ptosis that worsens with sustained upgaze",
+        "MG has normal EMG (no myotonic discharges)",
+        "MG has positive AChR or MuSK antibodies"
+      ]
+    },
+    {
+      "diseaseId": "inclusion-body-myositis",
+      "distinguishingFeatures": [
+        "IBM affects older adults with finger flexor weakness",
+        "IBM does not have myotonia",
+        "IBM has markedly elevated CK",
+        "IBM has characteristic muscle biopsy findings"
+      ]
+    },
+    {
+      "diseaseId": "myotonia-congenita",
+      "distinguishingFeatures": [
+        "Myotonia congenita has myotonia without dystrophy (progressive weakness)",
+        "Myotonia congenita does not have systemic features",
+        "Myotonia congenita has mutations in CLCN1 (chloride channel)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden cardiac death from arrhythmias is a major risk; annual ECG and periodic Holter monitoring mandatory",
+    "Anesthetic risk: exaggerated sensitivity to sedatives, opioids, and neuromuscular blocking agents",
+    "Respiratory failure may develop insidiously; monitor FVC regularly",
+    "Congenital DM1 in neonates: floppy infant with respiratory failure; mother may be undiagnosed",
+    "Pregnancy complications: preterm labor, polyhydramnios, postpartum hemorrhage",
+    "Cognitive and behavioral features may be underrecognized and impact adherence"
+  ],
+  "specialistType": ["neurologist", "neuromuscular specialist", "cardiologist", "geneticist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Johnson NE, et al. Evidence-based management of myotonic dystrophy type 1. Neurology. 2021;96(2):e1-e14.",
+    "Meola G, Cardani R. Myotonic dystrophies: an update on clinical aspects, genetic, pathology, and molecular pathomechanisms. Biochim Biophys Acta. 2015;1852(4):594-606.",
+    "Turner C, Hilton-Jones D. Myotonic dystrophy: diagnosis, management and new therapies. Curr Opin Neurol. 2014;27(5):599-606."
+  ],
+  "confidenceInData": "medium"
+}

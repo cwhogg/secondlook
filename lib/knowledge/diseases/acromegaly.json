@@ -1,0 +1,279 @@
+{
+  "id": "acromegaly",
+  "name": "Acromegaly",
+  "aliases": [
+    "Growth Hormone Excess",
+    "Somatotroph Adenoma",
+    "Marie Disease",
+    "GH-Secreting Pituitary Adenoma"
+  ],
+  "icd10Codes": ["E22.0"],
+  "omimId": "102200",
+  "orphanetId": "963",
+  "prevalence": {
+    "estimate": "1 in 15,000 to 1 in 25,000",
+    "range": "0.004%-0.007%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 30, "max": 60, "peak": 45 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Endocrine Society Clinical Practice Guidelines for Acromegaly",
+    "criteria": [
+      {
+        "id": "acro-c1",
+        "description": "Elevated serum insulin-like growth factor 1 (IGF-1) above age- and sex-adjusted normal range",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "acro-c2",
+        "description": "Failure of GH suppression to <1 ng/mL (or <0.4 ng/mL with sensitive assay) during 75g oral glucose tolerance test (OGTT)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "acro-c3",
+        "description": "Pituitary adenoma identified on MRI",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "acro-c4",
+        "description": "Characteristic clinical features (acral enlargement, coarsened facial features, soft tissue swelling)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "acro-c5",
+        "description": "Random GH >1 ng/mL (screening, not diagnostic alone)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Elevated IGF-1 plus failure of GH suppression on OGTT. If IGF-1 elevated and clinical features obvious, OGTT may be omitted in some guidelines.",
+    "notes": "Average diagnostic delay is 7-10 years from symptom onset. Over 95% of cases are caused by a GH-secreting pituitary adenoma (somatotropinoma)."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive acral enlargement (hands, feet)",
+        "snomedCode": "74964007",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal",
+        "notes": "Increased ring size, shoe size over time; patients may not notice gradual change"
+      },
+      {
+        "symptomName": "Coarsened facial features (frontal bossing, prognathism, enlarged nose and lips)",
+        "snomedCode": "248310000",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Excessive sweating (hyperhidrosis)",
+        "snomedCode": "52613005",
+        "frequency": 0.75,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Headache",
+        "snomedCode": "25064002",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arthralgia / joint pain",
+        "snomedCode": "57676002",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Carpal tunnel syndrome",
+        "snomedCode": "57406009",
+        "frequency": 0.5,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Sleep apnea (obstructive)",
+        "snomedCode": "78275009",
+        "frequency": 0.6,
+        "bodySystem": "respiratory",
+        "notes": "Due to macroglossia and soft tissue hypertrophy of upper airway"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Visual field defects (bitemporal hemianopsia)",
+        "snomedCode": "12184005",
+        "frequency": 0.35,
+        "bodySystem": "ophthalmologic",
+        "notes": "Due to optic chiasm compression by macroadenoma"
+      },
+      {
+        "symptomName": "Glucose intolerance or diabetes mellitus",
+        "snomedCode": "73211009",
+        "frequency": 0.4,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Hypertension",
+        "snomedCode": "38341003",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Menstrual irregularity / galactorrhea",
+        "snomedCode": "14302001",
+        "frequency": 0.35,
+        "bodySystem": "reproductive",
+        "notes": "Due to GH/prolactin co-secretion or stalk effect"
+      },
+      {
+        "symptomName": "Macroglossia",
+        "snomedCode": "79617003",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Skin tags",
+        "snomedCode": "48603009",
+        "frequency": 0.45,
+        "bodySystem": "integumentary"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Acromegalic cardiomyopathy",
+        "snomedCode": "195021004",
+        "frequency": 0.1,
+        "bodySystem": "cardiovascular",
+        "notes": "Biventricular hypertrophy and diastolic dysfunction"
+      },
+      {
+        "symptomName": "Cranial nerve palsies (III, IV, VI)",
+        "snomedCode": "73013002",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Due to cavernous sinus invasion by large adenomas"
+      },
+      {
+        "symptomName": "Colorectal polyps or colorectal cancer",
+        "snomedCode": "68496003",
+        "frequency": 0.08,
+        "bodySystem": "gastrointestinal",
+        "notes": "Increased risk; colonoscopy screening recommended"
+      },
+      {
+        "symptomName": "Spinal stenosis",
+        "snomedCode": "76107001",
+        "frequency": 0.08,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "endocrine",
+    "musculoskeletal",
+    "cardiovascular",
+    "neurological",
+    "respiratory",
+    "integumentary",
+    "ophthalmologic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum IGF-1 above age-/sex-matched normal range",
+      "Failure of GH suppression to <1 ng/mL on 75g OGTT",
+      "Random GH levels >1 ng/mL (pulsatile secretion complicates interpretation)",
+      "Elevated fasting glucose or HbA1c",
+      "Possible hyperprolactinemia (co-secretion in mammosomatotroph adenomas)"
+    ],
+    "imaging": [
+      "Pituitary MRI with gadolinium showing adenoma (macroadenoma in ~70%)",
+      "Skull X-ray showing enlarged sella turcica, thickened calvarium (historical)",
+      "Hand X-ray showing tufting of distal phalanges, widened joint spaces",
+      "Echocardiography for cardiomyopathy assessment",
+      "Sleep study (polysomnography) for obstructive sleep apnea"
+    ],
+    "genetic": [
+      "Most cases sporadic",
+      "AIP mutations in familial isolated pituitary adenoma (FIPA), especially in younger patients",
+      "MEN1 mutations (multiple endocrine neoplasia type 1)",
+      "Carney complex (PRKAR1A mutations)",
+      "McCune-Albright syndrome (GNAS1 mutations) in rare cases",
+      "GPR101 duplications in X-linked acrogigantism (X-LAG)"
+    ],
+    "other": [
+      "Visual field testing (Goldmann or Humphrey perimetry)",
+      "Colonoscopy screening for colorectal polyps at diagnosis",
+      "Assessment of pituitary function (other axes: thyroid, adrenal, gonadal)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "gigantism",
+      "distinguishingFeatures": [
+        "Gigantism occurs before epiphyseal closure (pediatric)",
+        "Gigantism causes excessive linear growth rather than acral changes",
+        "Same pathophysiology but different presentation due to open growth plates"
+      ]
+    },
+    {
+      "diseaseId": "pachydermoperiostosis",
+      "distinguishingFeatures": [
+        "Pachydermoperiostosis has normal IGF-1 and GH",
+        "Digital clubbing more prominent",
+        "Periosteal hypertrophy on X-ray"
+      ]
+    },
+    {
+      "diseaseId": "hypothyroidism",
+      "distinguishingFeatures": [
+        "Hypothyroidism has coarse features but no true acral enlargement",
+        "TSH elevated, free T4 low in hypothyroidism",
+        "Myxedema rather than soft tissue hypertrophy"
+      ]
+    },
+    {
+      "diseaseId": "pagets-disease-bone",
+      "distinguishingFeatures": [
+        "Paget's has elevated alkaline phosphatase",
+        "Paget's shows characteristic bone scan findings",
+        "Paget's involves specific bones rather than diffuse enlargement"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Visual field loss suggesting chiasmal compression (needs urgent surgical evaluation)",
+    "Pituitary apoplexy (acute headache, vision loss, meningismus)",
+    "Onset in children/adolescents (consider gigantism; evaluate for AIP/MEN1/X-LAG mutations)",
+    "Acromegalic cardiomyopathy with heart failure",
+    "Rapid symptom progression suggesting aggressive or malignant pituitary tumor"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Neurosurgeon (pituitary)",
+    "Ophthalmologist",
+    "Cardiologist",
+    "Medical Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Katznelson L, et al. Acromegaly: an Endocrine Society clinical practice guideline. J Clin Endocrinol Metab. 2014;99(11):3933-51.",
+    "Melmed S. Acromegaly pathogenesis and treatment. J Clin Invest. 2009;119(11):3189-202.",
+    "Colao A, et al. Acromegaly. Lancet. 2019;394(10207):1341-1353.",
+    "Fleseriu M, et al. Acromegaly: pathogenesis, diagnosis, and management. Lancet Diabetes Endocrinol. 2022;10(11):804-826."
+  ],
+  "confidenceInData": "medium"
+}

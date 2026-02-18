@@ -1,0 +1,252 @@
+{
+  "id": "sarcoidosis",
+  "name": "Sarcoidosis",
+  "aliases": [
+    "Besnier-Boeck-Schaumann Disease",
+    "Sarcoid",
+    "Systemic Granulomatosis"
+  ],
+  "icd10Codes": ["D86.0", "D86.1", "D86.2", "D86.3", "D86.8", "D86.9"],
+  "omimId": "181000",
+  "orphanetId": "797",
+  "prevalence": {
+    "estimate": "10 to 40 per 100,000",
+    "range": "0.01%-0.04%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 60, "peak": 35 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": ["African American", "Scandinavian", "Irish", "Northern European"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ATS/ERS/WASOG Statement on Sarcoidosis (2020 Update)",
+    "criteria": [
+      {
+        "id": "sarc-maj1",
+        "description": "Compatible clinical and radiographic presentation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sarc-maj2",
+        "description": "Histological demonstration of non-caseating granulomas",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sarc-maj3",
+        "description": "Exclusion of other causes of granulomatous disease (infections, malignancy, drug reactions)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sarc-min1",
+        "description": "Lofgren syndrome: bilateral hilar lymphadenopathy, erythema nodosum, fever, polyarthralgia (clinical diagnosis without biopsy)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sarc-min2",
+        "description": "Heerfordt syndrome: parotid enlargement, uveitis, facial nerve palsy, fever",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Compatible clinical/radiographic presentation plus histological evidence of non-caseating granulomas plus exclusion of alternative diagnoses. Lofgren and Heerfordt syndromes may be diagnosed clinically.",
+    "notes": "Pulmonary involvement in >90% of cases. Staging: Stage 0 (normal CXR), I (bilateral hilar lymphadenopathy), II (BHL + pulmonary infiltrates), III (pulmonary infiltrates without BHL), IV (pulmonary fibrosis)."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Bilateral hilar lymphadenopathy on chest imaging",
+        "frequency": 0.70,
+        "bodySystem": "respiratory",
+        "notes": "Found in ~50% at presentation; up to 90% at some point in disease course"
+      },
+      {
+        "symptomName": "Non-caseating granulomas on biopsy",
+        "frequency": 0.95,
+        "bodySystem": "general",
+        "notes": "Hallmark histological finding; not specific to sarcoidosis alone"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Dry cough",
+        "snomedCode": "11833005",
+        "frequency": 0.70,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.80,
+        "bodySystem": "general",
+        "notes": "Often the most debilitating and persistent symptom"
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "snomedCode": "267036007",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Arthralgias",
+        "snomedCode": "57676002",
+        "frequency": 0.40,
+        "bodySystem": "musculoskeletal",
+        "notes": "Particularly bilateral ankle arthritis in Lofgren syndrome"
+      },
+      {
+        "symptomName": "Erythema nodosum",
+        "snomedCode": "32861005",
+        "frequency": 0.30,
+        "bodySystem": "integumentary"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Anterior uveitis (eye pain, redness, photophobia)",
+        "snomedCode": "410692006",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmologic"
+      },
+      {
+        "symptomName": "Lupus pernio (violaceous plaques on nose, cheeks, ears)",
+        "frequency": 0.10,
+        "bodySystem": "integumentary",
+        "notes": "Indicates chronic, severe sarcoidosis"
+      },
+      {
+        "symptomName": "Hepatomegaly or abnormal liver enzymes",
+        "frequency": 0.20,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Peripheral lymphadenopathy",
+        "snomedCode": "30746006",
+        "frequency": 0.30,
+        "bodySystem": "lymphatic"
+      },
+      {
+        "symptomName": "Fever and night sweats",
+        "snomedCode": "386661006",
+        "frequency": 0.25,
+        "bodySystem": "general"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiac sarcoidosis (arrhythmias, heart block, cardiomyopathy)",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Clinically apparent in ~5%; subclinical in up to 25%. Leading cause of sarcoidosis mortality."
+      },
+      {
+        "symptomName": "Neurosarcoidosis (cranial neuropathies, meningitis, myelopathy)",
+        "frequency": 0.05,
+        "bodySystem": "neurologic",
+        "notes": "Facial nerve palsy most common cranial neuropathy"
+      },
+      {
+        "symptomName": "Hypercalcemia/hypercalciuria",
+        "frequency": 0.10,
+        "bodySystem": "endocrine",
+        "notes": "From granuloma production of 1,25-dihydroxyvitamin D"
+      },
+      {
+        "symptomName": "Nephrolithiasis/nephrocalcinosis",
+        "frequency": 0.05,
+        "bodySystem": "renal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "lymphatic",
+    "integumentary",
+    "ophthalmologic",
+    "musculoskeletal",
+    "cardiovascular",
+    "neurologic",
+    "hepatic",
+    "renal",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum ACE (angiotensin-converting enzyme) in ~60% (not specific)",
+      "Elevated serum calcium (hypercalcemia in ~10%, hypercalciuria in ~30%)",
+      "Elevated 1,25-dihydroxyvitamin D",
+      "Elevated ESR/CRP",
+      "Elevated serum IL-2 receptor (soluble IL-2R/sIL-2R)",
+      "Elevated alkaline phosphatase if hepatic involvement"
+    ],
+    "imaging": [
+      "Chest X-ray: bilateral hilar lymphadenopathy (Scadding stages I-IV)",
+      "CT chest: mediastinal/hilar lymphadenopathy, perilymphatic nodules, fibrosis",
+      "PET-CT: FDG-avid lymph nodes and organ involvement; useful for cardiac sarcoidosis",
+      "Cardiac MRI: late gadolinium enhancement for cardiac involvement"
+    ],
+    "genetic": [
+      "HLA-DRB1*03 associated with Lofgren syndrome (good prognosis)",
+      "HLA-DRB1*15 associated with chronic disease",
+      "BTNL2 gene polymorphisms"
+    ],
+    "other": [
+      "Bronchoscopy with BAL: CD4/CD8 ratio > 3.5 supportive",
+      "Transbronchial biopsy or EBUS-TBNA for tissue diagnosis",
+      "Pulmonary function tests: restrictive pattern, decreased DLCO",
+      "Kveim test (historical; no longer used)",
+      "ECG and Holter monitor for cardiac screening"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "tuberculosis",
+      "distinguishingFeatures": [
+        "TB granulomas are caseating",
+        "TB has positive AFB stain/culture/PCR",
+        "Positive tuberculin skin test or Quantiferon in TB"
+      ]
+    },
+    {
+      "diseaseId": "lymphoma",
+      "distinguishingFeatures": [
+        "Lymphoma has atypical lymphoid cells on biopsy",
+        "Lymphoma typically has asymmetric lymphadenopathy",
+        "B-symptoms more prominent in lymphoma"
+      ]
+    },
+    {
+      "diseaseId": "hypersensitivity-pneumonitis",
+      "distinguishingFeatures": [
+        "HP has identifiable antigen exposure history",
+        "HP shows upper/mid-lung predominance on CT",
+        "BAL shows lymphocytosis with low CD4/CD8 ratio"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Cardiac symptoms (syncope, palpitations, new heart block) - cardiac sarcoidosis can cause sudden death",
+    "Neurological deficits suggesting neurosarcoidosis",
+    "Rapidly progressive dyspnea or stage IV pulmonary fibrosis",
+    "Severe hypercalcemia with renal impairment",
+    "Lupus pernio (marker of chronic, multisystem disease)"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Rheumatologist",
+    "Ophthalmologist",
+    "Cardiologist",
+    "Dermatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Crouser ED, et al. Diagnosis and Detection of Sarcoidosis. An Official ATS Clinical Practice Guideline. Am J Respir Crit Care Med. 2020;201(8):e26-e51.",
+    "Baughman RP, et al. ERS clinical practice guidelines on treatment of sarcoidosis. Eur Respir J. 2021;58(6):2004079.",
+    "Valeyre D, et al. Sarcoidosis. Lancet. 2014;383(9923):1155-1167."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,231 @@
+{
+  "id": "trigeminal-neuralgia",
+  "name": "Trigeminal Neuralgia",
+  "aliases": [
+    "TN",
+    "Tic douloureux",
+    "Trigeminal neuralgia type 1",
+    "Trigeminal neuralgia type 2",
+    "Fothergill disease"
+  ],
+  "icd10Codes": ["G50.0"],
+  "omimId": "190400",
+  "orphanetId": "221091",
+  "prevalence": {
+    "estimate": "12-29 per 100,000",
+    "range": "4-29 per 100,000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 40, "max": 80, "peak": 60 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "Affects all ethnicities",
+      "No strong ethnic predilection"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ICHD-3 (International Classification of Headache Disorders, 3rd Edition) / IASP Criteria",
+    "criteria": [
+      {
+        "id": "tn-1",
+        "description": "Recurrent paroxysms of unilateral facial pain in the distribution of one or more branches of the trigeminal nerve, lasting fractions of a second to 2 minutes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "tn-2",
+        "description": "Pain has at least one of: intense, sharp, superficial, stabbing; or precipitated by innocuous stimuli (trigger zones/factors)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "tn-3",
+        "description": "Pain is stereotyped in the individual patient",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "tn-4",
+        "description": "No clinically evident neurological deficit (for classical TN)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "tn-5",
+        "description": "MRI demonstrates neurovascular compression at trigeminal root entry zone with morphological changes (for classical TN with neurovascular compression)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Recurrent unilateral paroxysms of facial pain in trigeminal distribution with characteristic quality and triggers, not better accounted for by another diagnosis.",
+    "notes": "Three categories: classical (neurovascular compression), secondary (MS, tumor, etc.), and idiopathic (no cause identified). V2 (maxillary) and V3 (mandibular) divisions most commonly affected. V1 (ophthalmic) alone is less common and should prompt evaluation for secondary causes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Electric shock-like unilateral facial pain in trigeminal distribution",
+        "snomedCode": "31681005",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "notes": "Sudden, severe, brief stabbing/electric shock pain; described as worst pain ever experienced"
+      },
+      {
+        "symptomName": "Trigger zones causing pain with innocuous stimuli",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Light touch to face, chewing, talking, brushing teeth, wind on face can trigger paroxysms"
+      },
+      {
+        "symptomName": "Refractory period between paroxysms",
+        "frequency": 0.70,
+        "bodySystem": "neurological",
+        "notes": "Brief pain-free interval after each paroxysm during which triggers cannot provoke attack"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Pain in V2 (maxillary) and/or V3 (mandibular) distribution",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Cheek, jaw, teeth, gums, lips most commonly affected"
+      },
+      {
+        "symptomName": "Paroxysmal pain lasting seconds to 2 minutes",
+        "frequency": 0.90,
+        "bodySystem": "neurological",
+        "notes": "Individual paroxysms brief but may occur in salvos"
+      },
+      {
+        "symptomName": "Weight loss from avoidance of eating",
+        "snomedCode": "89362005",
+        "frequency": 0.30,
+        "bodySystem": "constitutional",
+        "notes": "Patients avoid chewing to prevent triggering pain"
+      },
+      {
+        "symptomName": "Pain-free remission periods",
+        "frequency": 0.60,
+        "bodySystem": "neurological",
+        "notes": "Spontaneous remissions lasting weeks to months; tend to shorten over time"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Continuous background aching pain (TN type 2)",
+        "frequency": 0.30,
+        "bodySystem": "neurological",
+        "notes": "Constant dull ache between paroxysms; concomitant continuous pain in ICHD-3"
+      },
+      {
+        "symptomName": "Lacrimation or rhinorrhea during attacks",
+        "frequency": 0.20,
+        "bodySystem": "autonomic",
+        "notes": "Mild autonomic features may accompany severe paroxysms"
+      },
+      {
+        "symptomName": "Facial flushing during attacks",
+        "frequency": 0.15,
+        "bodySystem": "autonomic"
+      },
+      {
+        "symptomName": "Depression and anxiety",
+        "snomedCode": "35489007",
+        "frequency": 0.40,
+        "bodySystem": "psychiatric",
+        "notes": "Significant psychological comorbidity from chronic pain"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Bilateral trigeminal neuralgia",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Should raise suspicion for MS or other secondary cause"
+      },
+      {
+        "symptomName": "Sensory deficit in trigeminal distribution",
+        "frequency": 0.10,
+        "bodySystem": "neurological",
+        "notes": "Suggests secondary TN (tumor, MS); classical TN has no deficit"
+      },
+      {
+        "symptomName": "Suicidal ideation",
+        "frequency": 0.08,
+        "bodySystem": "psychiatric",
+        "notes": "Historically called 'the suicide disease' due to pain severity"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "trigeminal nerve (CN V)",
+    "central nervous system",
+    "psychological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "No specific laboratory findings",
+      "Blood tests to exclude systemic causes if clinically indicated"
+    ],
+    "imaging": [
+      "MRI brain with dedicated trigeminal nerve protocol (CISS/FIESTA sequences)",
+      "MRI: neurovascular compression at trigeminal root entry zone (superior cerebellar artery most common offender)",
+      "MRI: morphological changes of trigeminal nerve (atrophy, displacement) at compression site",
+      "MRI: exclude secondary causes (cerebellopontine angle tumor, MS plaque, AVM)"
+    ],
+    "genetic": [
+      "Rare familial cases reported (autosomal dominant with incomplete penetrance)",
+      "No established causative genes for most cases"
+    ],
+    "other": [
+      "Response to carbamazepine or oxcarbazepine is diagnostically supportive (positive predictive value >70%)",
+      "Trigeminal reflexes (blink reflex) may show abnormalities",
+      "Neurological examination: typically normal in classical TN; deficits suggest secondary cause"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "multiple-sclerosis",
+      "distinguishingFeatures": [
+        "MS-associated TN often affects younger patients (<40)",
+        "MS-associated TN may be bilateral",
+        "MS has other neurological signs and MRI white matter lesions",
+        "MS-associated TN caused by pontine demyelinating plaque"
+      ]
+    },
+    {
+      "diseaseId": "trigeminal-neuropathy",
+      "distinguishingFeatures": [
+        "Trigeminal neuropathy has persistent (not paroxysmal) pain",
+        "Trigeminal neuropathy has sensory loss on exam",
+        "Often associated with connective tissue disease or tumor infiltration"
+      ]
+    },
+    {
+      "diseaseId": "cluster-headache",
+      "distinguishingFeatures": [
+        "Cluster headache has prominent autonomic features (tearing, nasal congestion, ptosis)",
+        "Cluster headache attacks last 15-180 minutes (much longer than TN)",
+        "Cluster headache affects V1 distribution primarily",
+        "Cluster headache has circadian periodicity"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Onset before age 40 should prompt evaluation for MS or structural lesion",
+    "Bilateral trigeminal neuralgia suggests MS or other secondary cause",
+    "Sensory deficit on examination indicates secondary trigeminal neuralgia requiring MRI",
+    "Isolated V1 (ophthalmic) involvement is atypical and warrants imaging",
+    "Progressive symptoms without remission periods suggest secondary cause or malignancy",
+    "Carbamazepine and oxcarbazepine are first-line; failure to respond should prompt reconsideration of diagnosis"
+  ],
+  "specialistType": ["neurologist", "neurosurgeon", "pain specialist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Cruccu G, et al. Trigeminal neuralgia: new classification and diagnostic grading for practice and research. Neurology. 2016;87(2):220-228.",
+    "Bendtsen L, et al. European Academy of Neurology guideline on trigeminal neuralgia. Eur J Neurol. 2019;26(6):831-849.",
+    "Headache Classification Committee of the International Headache Society. The International Classification of Headache Disorders, 3rd edition. Cephalalgia. 2018;38(1):1-211.",
+    "Maarbjerg S, et al. Trigeminal neuralgia - diagnosis and treatment. Cephalalgia. 2017;37(7):648-657."
+  ],
+  "confidenceInData": "medium"
+}

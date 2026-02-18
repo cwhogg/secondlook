@@ -1,0 +1,280 @@
+{
+  "id": "dermatomyositis",
+  "name": "Dermatomyositis",
+  "aliases": [
+    "DM",
+    "Inflammatory Myopathy with Skin Involvement",
+    "Idiopathic Inflammatory Myopathy (DM subtype)"
+  ],
+  "icd10Codes": ["M33.10", "M33.11", "M33.12", "M33.13", "M33.19", "M33.90"],
+  "omimId": "125370",
+  "orphanetId": "221",
+  "prevalence": {
+    "estimate": "1 in 50,000 to 1 in 100,000",
+    "range": "0.001%-0.002%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 5, "max": 70, "peak": 50 },
+    "sexPredilection": "female",
+    "ethnicAssociations": [
+      "Juvenile DM peaks age 5-15",
+      "Adult DM peaks age 40-60",
+      "Anti-MDA5 DM more common in Asian populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "2017 EULAR/ACR Classification Criteria for Idiopathic Inflammatory Myopathies (Lundberg criteria)",
+    "criteria": [
+      {
+        "id": "dm-c1",
+        "description": "Heliotrope rash (violaceous erythema of eyelids)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dm-c2",
+        "description": "Gottron's papules (raised erythematous or violaceous papules over extensor surfaces of joints)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dm-c3",
+        "description": "Gottron's sign (erythema over extensor surfaces without papules)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dm-c4",
+        "description": "Symmetric proximal muscle weakness (upper and/or lower limbs, progressive)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dm-c5",
+        "description": "Elevated serum CK or LDH or AST or aldolase",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dm-c6",
+        "description": "Myopathic changes on EMG",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dm-c7",
+        "description": "Muscle biopsy showing perifascicular atrophy, perivascular inflammation, and/or MAC deposition on capillaries",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dm-c8",
+        "description": "MRI showing muscle edema on STIR sequences",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dm-c9",
+        "description": "Myositis-specific antibodies (anti-Mi-2, anti-MDA5, anti-TIF1-gamma, anti-NXP2, anti-SAE)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "EULAR/ACR probability-based scoring system. Presence of skin rash (heliotrope, Gottron's) with or without classic muscle disease. Score >= 55% without biopsy or >= 90% with biopsy classifies as probable/definite IIM. Subclassification to DM requires characteristic skin findings.",
+    "notes": "Clinically amyopathic dermatomyositis (CADM) has characteristic skin findings but no significant muscle disease. Anti-MDA5 CADM is associated with rapidly progressive ILD."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Heliotrope rash",
+        "snomedCode": "72528005",
+        "frequency": 0.6,
+        "bodySystem": "integumentary",
+        "notes": "Violaceous or lilac-colored erythema and edema of upper eyelids"
+      },
+      {
+        "symptomName": "Gottron's papules",
+        "snomedCode": "402736002",
+        "frequency": 0.7,
+        "bodySystem": "integumentary",
+        "notes": "Flat-topped violaceous papules over MCPs, PIPs, DIPs, elbows, knees"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Symmetric proximal muscle weakness",
+        "snomedCode": "26544005",
+        "frequency": 0.8,
+        "bodySystem": "musculoskeletal",
+        "notes": "Difficulty climbing stairs, rising from chairs, lifting arms overhead"
+      },
+      {
+        "symptomName": "Gottron's sign (macular erythema over extensor surfaces)",
+        "frequency": 0.65,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Elevated serum CK",
+        "frequency": 0.8,
+        "bodySystem": "musculoskeletal",
+        "notes": "Can be 10-50x upper limit of normal in classic DM; may be normal in CADM"
+      },
+      {
+        "symptomName": "Periungual erythema and nailfold capillary changes",
+        "frequency": 0.6,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.75,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "V-sign (erythema of anterior neck and upper chest) and shawl sign (upper back)",
+        "frequency": 0.5,
+        "bodySystem": "integumentary"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Dysphagia",
+        "snomedCode": "40739000",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to pharyngeal/esophageal muscle involvement; risk for aspiration"
+      },
+      {
+        "symptomName": "Interstitial lung disease",
+        "snomedCode": "233703007",
+        "frequency": 0.3,
+        "bodySystem": "respiratory",
+        "notes": "Anti-MDA5 associated with rapidly progressive ILD; anti-Jo-1 with chronic ILD"
+      },
+      {
+        "symptomName": "Arthralgias / non-erosive arthritis",
+        "snomedCode": "57676002",
+        "frequency": 0.35,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Calcinosis (especially juvenile DM)",
+        "snomedCode": "201119003",
+        "frequency": 0.2,
+        "bodySystem": "integumentary",
+        "notes": "Subcutaneous calcium deposits; much more common in juvenile DM"
+      },
+      {
+        "symptomName": "Mechanic's hands (hyperkeratotic cracking of fingers)",
+        "frequency": 0.2,
+        "bodySystem": "integumentary",
+        "notes": "Associated with anti-synthetase antibodies"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Malignancy (paraneoplastic DM)",
+        "frequency": 0.15,
+        "bodySystem": "multi-system",
+        "notes": "Associated with ovarian, lung, GI, breast cancers; risk highest with anti-TIF1-gamma and anti-NXP2"
+      },
+      {
+        "symptomName": "Cardiac involvement (myocarditis, conduction defects)",
+        "frequency": 0.1,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Rapidly progressive ILD (anti-MDA5)",
+        "frequency": 0.05,
+        "bodySystem": "respiratory",
+        "notes": "Can be fatal; often with minimal muscle disease"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "integumentary",
+    "musculoskeletal",
+    "respiratory",
+    "gastrointestinal",
+    "cardiovascular",
+    "multi-system"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated CK (10-50x ULN in classic DM; may be normal in CADM)",
+      "Elevated aldolase, LDH, AST, ALT",
+      "ANA positive in ~60-80%",
+      "Myositis-specific antibodies: anti-Mi-2, anti-MDA5, anti-TIF1-gamma, anti-NXP2, anti-SAE",
+      "Anti-synthetase antibodies (anti-Jo-1, anti-PL-7, anti-PL-12) in antisynthetase syndrome overlap",
+      "ESR and CRP may be mildly elevated"
+    ],
+    "imaging": [
+      "MRI of thighs/arms: muscle edema on STIR/T2 sequences",
+      "High-resolution CT chest for ILD screening",
+      "PET/CT for occult malignancy screening in adults",
+      "Chest X-ray for baseline pulmonary assessment"
+    ],
+    "genetic": [
+      "HLA-DRB1*0301 association",
+      "No single-gene cause; complex immune-mediated pathogenesis",
+      "Genetic susceptibility interacting with environmental triggers"
+    ],
+    "other": [
+      "Muscle biopsy: perifascicular atrophy (hallmark), perivascular CD4+ lymphocytes, MAC deposits on capillaries",
+      "EMG: myopathic pattern (short, small polyphasic units, increased insertional activity)",
+      "Pulmonary function tests: baseline and monitoring",
+      "Age-appropriate cancer screening (particularly in adults with anti-TIF1-gamma or anti-NXP2)",
+      "Nailfold capillaroscopy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "mixed-connective-tissue-disease",
+      "distinguishingFeatures": [
+        "MCTD has high-titer anti-U1 RNP",
+        "MCTD has Raynaud's and puffy hands as prominent features",
+        "MCTD has overlap features of SLE and SSc in addition to myositis"
+      ]
+    },
+    {
+      "diseaseId": "scleroderma-systemic",
+      "distinguishingFeatures": [
+        "SSc has skin fibrosis and tightening (not erythema/papules)",
+        "SSc has anti-Scl-70 or anti-centromere antibodies",
+        "SSc has progressive skin involvement"
+      ]
+    },
+    {
+      "diseaseId": "fibromyalgia",
+      "distinguishingFeatures": [
+        "FM has normal CK and no objective weakness",
+        "FM has no skin rash",
+        "FM has pain without demonstrable inflammation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive respiratory failure (anti-MDA5 associated ILD - high mortality)",
+    "Severe dysphagia with aspiration risk",
+    "New malignancy symptoms in adult-onset DM (cancer screening mandatory)",
+    "Anti-TIF1-gamma positivity in adults (strong malignancy association)",
+    "Cardiac symptoms (myocarditis can be occult and life-threatening)",
+    "Treatment-resistant disease or clinical deterioration"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Dermatologist",
+    "Pulmonologist",
+    "Neurologist/Neuromuscular Specialist",
+    "Oncologist (for malignancy screening)"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Lundberg IE, et al. 2017 European League Against Rheumatism/American College of Rheumatology classification criteria for adult and juvenile idiopathic inflammatory myopathies. Ann Rheum Dis. 2017;76(12):1955-64.",
+    "Dalakas MC. Inflammatory muscle diseases. N Engl J Med. 2015;372(18):1734-47.",
+    "Betteridge Z, McHugh N. Myositis-specific autoantibodies: an important tool to support diagnosis of myositis. J Intern Med. 2016;280(1):8-23.",
+    "Selva-O'Callaghan A, et al. Classification and management of adult inflammatory myopathies. Lancet Neurol. 2018;17(9):816-28."
+  ],
+  "confidenceInData": "medium"
+}

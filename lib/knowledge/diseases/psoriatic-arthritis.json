@@ -1,0 +1,259 @@
+{
+  "id": "psoriatic-arthritis",
+  "name": "Psoriatic Arthritis",
+  "aliases": [
+    "PsA",
+    "Arthritis Psoriatica",
+    "Psoriatic Arthropathy"
+  ],
+  "icd10Codes": ["L40.50", "L40.51", "L40.52", "L40.53", "L40.54", "L40.59"],
+  "omimId": "607507",
+  "orphanetId": "32048",
+  "prevalence": {
+    "estimate": "0.05% to 0.25% of the general population; 6-42% of psoriasis patients",
+    "range": "0.05%-0.25%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 25, "max": 55, "peak": 40 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Parallels psoriasis prevalence: more common in Northern European populations",
+      "Less common in Asian and African populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "CASPAR Criteria (Classification Criteria for Psoriatic Arthritis, 2006)",
+    "criteria": [
+      {
+        "id": "psa-c1",
+        "description": "Established inflammatory articular disease (joint, spine, or entheseal)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "psa-c2",
+        "description": "Current psoriasis (scores 2 points)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "psa-c3",
+        "description": "Personal history of psoriasis (if no current psoriasis; scores 1 point)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "psa-c4",
+        "description": "Family history of psoriasis (if no personal history; scores 1 point)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "psa-c5",
+        "description": "Typical psoriatic nail dystrophy (pitting, onycholysis, hyperkeratosis; scores 1 point)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "psa-c6",
+        "description": "Negative rheumatoid factor (scores 1 point)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "psa-c7",
+        "description": "Current dactylitis or history of dactylitis (scores 1 point)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "psa-c8",
+        "description": "Radiographic evidence of juxta-articular new bone formation on hand/foot X-ray (scores 1 point)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Inflammatory articular disease PLUS >= 3 points from the CASPAR criteria categories. Sensitivity 91.4%, specificity 98.7%.",
+    "notes": "Psoriasis may precede arthritis by years; in ~15% of cases arthritis precedes psoriasis onset."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Dactylitis ('sausage digits')",
+        "snomedCode": "77636002",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "notes": "Diffuse swelling of an entire digit; highly characteristic of PsA among arthritides"
+      },
+      {
+        "symptomName": "Psoriatic nail changes with concurrent joint inflammation",
+        "frequency": 0.6,
+        "bodySystem": "integumentary",
+        "notes": "Nail pitting, onycholysis, subungual hyperkeratosis associated with DIP joint disease"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Peripheral joint inflammation (often asymmetric oligoarthritis)",
+        "snomedCode": "3723001",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Psoriatic skin plaques",
+        "snomedCode": "9014002",
+        "frequency": 0.85,
+        "bodySystem": "integumentary",
+        "notes": "Usually precedes arthritis; check hidden areas (scalp, navel, gluteal cleft)"
+      },
+      {
+        "symptomName": "Enthesitis (plantar fasciitis, Achilles tendonitis)",
+        "snomedCode": "359643005",
+        "frequency": 0.5,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Morning stiffness in joints (> 30 minutes)",
+        "snomedCode": "84445001",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "DIP joint involvement",
+        "frequency": 0.5,
+        "bodySystem": "musculoskeletal",
+        "notes": "DIP joint predominant pattern relatively specific to PsA"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Axial/spinal involvement (spondylitis)",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal",
+        "notes": "Often asymmetric sacroiliitis; may have bulky non-marginal syndesmophytes"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anterior uveitis",
+        "snomedCode": "65323003",
+        "frequency": 0.1,
+        "bodySystem": "ophthalmologic"
+      },
+      {
+        "symptomName": "Arthritis mutilans (severe destructive arthropathy)",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal",
+        "notes": "Rare but devastating; telescoping digits (opera glass hand)"
+      },
+      {
+        "symptomName": "Nail pitting and onycholysis without joint disease",
+        "frequency": 0.4,
+        "bodySystem": "integumentary"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Aortic regurgitation",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Inflammatory bowel disease (co-occurrence)",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Amyloidosis (secondary)",
+        "frequency": 0.01,
+        "bodySystem": "multi-system",
+        "notes": "Extremely rare; associated with longstanding uncontrolled inflammation"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "integumentary",
+    "ophthalmologic",
+    "cardiovascular",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Rheumatoid factor typically negative (in ~85-90%)",
+      "Anti-CCP typically negative",
+      "Elevated ESR and CRP during active disease",
+      "Elevated uric acid in some patients (can mimic gout)",
+      "HLA-B27 positive in 20-50% (especially with axial involvement)"
+    ],
+    "imaging": [
+      "Radiographs: Pencil-in-cup deformity, juxta-articular new bone formation (periostitis), asymmetric joint space narrowing",
+      "DIP joint erosions (characteristic)",
+      "Asymmetric sacroiliitis on pelvic radiograph or MRI",
+      "Ultrasound: Enthesitis with power Doppler signal",
+      "MRI: Bone marrow edema, enthesitis, synovitis, dactylitis"
+    ],
+    "genetic": [
+      "HLA-B27 associated with axial PsA",
+      "HLA-C*06:02 associated with psoriasis",
+      "IL-23R, TNIP1, and other psoriasis susceptibility loci"
+    ],
+    "other": [
+      "CASPAR classification criteria scoring",
+      "DAPSA (Disease Activity in Psoriatic Arthritis) score",
+      "MDA (Minimal Disease Activity) criteria for treatment targets"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "ankylosing-spondylitis",
+      "distinguishingFeatures": [
+        "AS has symmetric sacroiliitis and marginal syndesmophytes",
+        "AS lacks psoriatic skin disease",
+        "AS more strongly HLA-B27 associated"
+      ]
+    },
+    {
+      "diseaseId": "reactive-arthritis",
+      "distinguishingFeatures": [
+        "ReA follows infection (urogenital or enteric)",
+        "ReA typically self-limited",
+        "ReA lacks psoriatic skin plaques (though keratoderma blennorrhagica can mimic)"
+      ]
+    },
+    {
+      "diseaseId": "ehlers-danlos-hypermobile",
+      "distinguishingFeatures": [
+        "hEDS has hypermobility not inflammatory arthritis",
+        "hEDS lacks psoriasis and nail changes",
+        "hEDS has normal inflammatory markers"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive joint destruction (arthritis mutilans pattern)",
+    "Severe, widespread skin disease unresponsive to treatment",
+    "New eye symptoms (uveitis requiring urgent ophthalmology)",
+    "Significant cardiovascular symptoms (aortitis)",
+    "Constitutional symptoms (fever, weight loss) suggesting overlap or complication"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Dermatologist",
+    "Ophthalmologist",
+    "Physical Medicine and Rehabilitation"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Taylor W, et al. Classification criteria for psoriatic arthritis: development of new criteria from a large international study. Arthritis Rheum. 2006;54(8):2665-73.",
+    "Ritchlin CT, Colbert RA, Gladman DD. Psoriatic arthritis. N Engl J Med. 2017;376(10):957-70.",
+    "Coates LC, et al. Group for Research and Assessment of Psoriasis and Psoriatic Arthritis (GRAPPA): updated treatment recommendations 2021. Nat Rev Rheumatol. 2022;18(8):465-79.",
+    "Gladman DD, et al. Psoriatic arthritis: epidemiology, clinical features, course, and outcome. Ann Rheum Dis. 2005;64(Suppl 2):ii14-17."
+  ],
+  "confidenceInData": "medium"
+}

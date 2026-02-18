@@ -1,0 +1,196 @@
+{
+  "id": "intestinal-pseudo-obstruction",
+  "name": "Intestinal Pseudo-Obstruction",
+  "aliases": [
+    "Acute Intestinal Pseudo-Obstruction",
+    "Ogilvie Syndrome",
+    "Acute Colonic Pseudo-Obstruction",
+    "ACPO"
+  ],
+  "icd10Codes": ["K59.89"],
+  "prevalence": {
+    "estimate": "Approximately 100 per 100,000 hospitalized patients",
+    "range": "0.05%-0.1%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 50, "max": 85, "peak": 70 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "ipo-maj1",
+        "description": "Signs and symptoms of intestinal obstruction (distension, pain, nausea/vomiting, constipation)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ipo-maj2",
+        "description": "Radiographic evidence of dilated bowel (colonic diameter > 6 cm or cecal diameter > 9 cm)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ipo-maj3",
+        "description": "Absence of mechanical obstruction (confirmed by CT or contrast enema)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ipo-sup1",
+        "description": "Identifiable precipitating factor (surgery, illness, medications, electrolyte disturbance)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Clinical features of obstruction with radiographic bowel dilation in the absence of mechanical obstruction.",
+    "notes": "Acute colonic pseudo-obstruction (Ogilvie syndrome) is the most common form. Distinguished from chronic intestinal pseudo-obstruction (CIPO), which is a separate entity."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive abdominal distension",
+        "snomedCode": "60728008",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal",
+        "notes": "Often massive; typically develops over 3-7 days"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abdominal pain (diffuse, colicky)",
+        "snomedCode": "21522001",
+        "frequency": 0.80,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "snomedCode": "422587007",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Constipation or obstipation",
+        "snomedCode": "14760008",
+        "frequency": 0.70,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased or absent bowel sounds",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Tympanic abdomen on percussion",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Paradoxical diarrhea",
+        "frequency": 0.20,
+        "bodySystem": "gastrointestinal",
+        "notes": "Overflow diarrhea around fecal impaction"
+      },
+      {
+        "symptomName": "Low-grade fever",
+        "snomedCode": "386661006",
+        "frequency": 0.25,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Inability to pass flatus",
+        "frequency": 0.40,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cecal perforation",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "notes": "Risk increases when cecal diameter >12 cm or duration >6 days"
+      },
+      {
+        "symptomName": "Peritonitis",
+        "snomedCode": "48661000",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "notes": "Consequence of perforation; mortality up to 40%"
+      },
+      {
+        "symptomName": "Bowel ischemia/necrosis",
+        "frequency": 0.02,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Electrolyte panel: check for hypokalemia, hypomagnesemia, hypocalcemia",
+      "CBC: leukocytosis may suggest ischemia or perforation",
+      "Metabolic panel: assess for hypothyroidism, uremia"
+    ],
+    "imaging": [
+      "Abdominal X-ray: colonic dilation, often right > left, without transition point",
+      "CT abdomen/pelvis with contrast: excludes mechanical obstruction, assesses cecal diameter and wall integrity",
+      "Water-soluble contrast enema: diagnostic and potentially therapeutic"
+    ],
+    "genetic": [
+      "No genetic associations for acute form (Ogilvie syndrome)"
+    ],
+    "other": [
+      "Colonoscopic decompression if neostigmine fails or is contraindicated",
+      "Cecostomy tube placement for refractory cases",
+      "Neostigmine test/treatment: rapid decompression suggests cholinergic mechanism"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "mechanical-bowel-obstruction",
+      "distinguishingFeatures": [
+        "Mechanical obstruction shows a transition point on CT",
+        "Mechanical obstruction has different air-fluid level patterns"
+      ]
+    },
+    {
+      "diseaseId": "chronic-intestinal-pseudo-obstruction",
+      "distinguishingFeatures": [
+        "CIPO is chronic/recurrent with episodes over months-years",
+        "CIPO often has small bowel predominance"
+      ]
+    },
+    {
+      "diseaseId": "toxic-megacolon",
+      "distinguishingFeatures": [
+        "Toxic megacolon presents with systemic toxicity, fever, tachycardia",
+        "Usually occurs in context of C. difficile infection or IBD"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Cecal diameter > 12 cm (high perforation risk)",
+    "Duration of dilation > 6 days",
+    "Signs of peritonitis (rebound tenderness, rigidity)",
+    "Fever and leukocytosis suggesting ischemia or perforation",
+    "Free air on imaging indicating perforation"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "General Surgeon",
+    "Critical Care Physician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Vanek VW, Al-Salti M. Acute pseudo-obstruction of the colon (Ogilvie's syndrome): an analysis of 400 cases. Dis Colon Rectum. 1986;29(3):203-210.",
+    "Saunders MD, Kimmey MB. Systematic review: acute colonic pseudo-obstruction. Aliment Pharmacol Ther. 2005;22(10):917-925.",
+    "Ross SW, et al. Acute colonic pseudo-obstruction: defining the epidemiology, treatment, and adverse outcomes of Ogilvie's syndrome. Am Surg. 2016;82(2):102-111."
+  ],
+  "confidenceInData": "medium"
+}

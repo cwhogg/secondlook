@@ -1,0 +1,242 @@
+{
+  "id": "small-fiber-neuropathy",
+  "name": "Small Fiber Neuropathy",
+  "aliases": [
+    "SFN",
+    "Small fiber peripheral neuropathy",
+    "Thin fiber neuropathy"
+  ],
+  "icd10Codes": ["G90.09", "G62.9"],
+  "prevalence": {
+    "estimate": "50-130 per 100,000",
+    "range": "13-53 per 100,000 (confirmed cases)",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 70, "peak": 50 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "Affects all ethnicities",
+      "Fabry disease-associated SFN more common in certain populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Devigili et al. 2008 / Updated Consensus Criteria",
+    "criteria": [
+      {
+        "id": "sfn-1",
+        "description": "Clinical symptoms consistent with small fiber involvement: burning pain, allodynia, thermal sensitivity changes in length-dependent distribution",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sfn-2",
+        "description": "Reduced intraepidermal nerve fiber density (IENFD) on skin punch biopsy below age- and sex-adjusted normative values",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sfn-3",
+        "description": "Abnormal quantitative sensory testing (QST) for thermal thresholds",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sfn-4",
+        "description": "Normal nerve conduction studies (large fiber function preserved)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sfn-5",
+        "description": "Abnormal sudomotor function testing (QSART, Sudoscan)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Clinical symptoms plus reduced IENFD on skin biopsy OR abnormal QST, with normal nerve conduction studies",
+    "notes": "Skin punch biopsy with IENFD quantification is the gold standard diagnostic test. Many patients have idiopathic SFN (~50%). Treatable causes include diabetes, Sjogren syndrome, sarcoidosis, Fabry disease, amyloidosis, and sodium channel mutations."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Burning pain in feet",
+        "snomedCode": "36349006",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Often described as 'feet on fire'; length-dependent pattern starting distally"
+      },
+      {
+        "symptomName": "Allodynia",
+        "snomedCode": "247404004",
+        "frequency": 0.60,
+        "bodySystem": "neurological",
+        "notes": "Pain from normally non-painful stimuli such as bedsheets touching feet"
+      },
+      {
+        "symptomName": "Impaired thermal sensation",
+        "snomedCode": "44077006",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Reduced ability to detect warm and cool temperatures"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Tingling and numbness in extremities",
+        "snomedCode": "91019004",
+        "frequency": 0.80,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dry eyes and dry mouth",
+        "snomedCode": "87715008",
+        "frequency": 0.40,
+        "bodySystem": "autonomic",
+        "notes": "Autonomic small fiber involvement"
+      },
+      {
+        "symptomName": "Autonomic symptoms",
+        "snomedCode": "72167002",
+        "frequency": 0.50,
+        "bodySystem": "autonomic",
+        "notes": "Sweating abnormalities, GI dysmotility, orthostatic intolerance"
+      },
+      {
+        "symptomName": "Sharp/lancinating pain",
+        "snomedCode": "55145008",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "notes": "Electric shock-like pains"
+      },
+      {
+        "symptomName": "Restless legs",
+        "snomedCode": "32914008",
+        "frequency": 0.30,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Orthostatic hypotension",
+        "snomedCode": "28651003",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Gastrointestinal dysmotility",
+        "snomedCode": "235595009",
+        "frequency": 0.30,
+        "bodySystem": "gastrointestinal",
+        "notes": "Early satiety, constipation, diarrhea, gastroparesis"
+      },
+      {
+        "symptomName": "Erectile dysfunction",
+        "snomedCode": "860914002",
+        "frequency": 0.20,
+        "bodySystem": "urogenital"
+      },
+      {
+        "symptomName": "Palpitations",
+        "snomedCode": "80313002",
+        "frequency": 0.20,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Fixed pain in non-length-dependent distribution",
+        "frequency": 0.10,
+        "bodySystem": "neurological",
+        "notes": "Non-length-dependent SFN pattern; consider ganglionopathy"
+      },
+      {
+        "symptomName": "Widespread body pain",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Can overlap with fibromyalgia phenotype"
+      },
+      {
+        "symptomName": "Urinary retention",
+        "snomedCode": "267064002",
+        "frequency": 0.10,
+        "bodySystem": "urological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "peripheral nervous system (small fibers)",
+    "autonomic nervous system",
+    "sensory system"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Fasting glucose and HbA1c (diabetes/prediabetes screen)",
+      "ESR, CRP, ANA, SS-A/SS-B antibodies (autoimmune screen)",
+      "Serum protein electrophoresis and immunofixation",
+      "Vitamin B12, methylmalonic acid, folate levels",
+      "Alpha-galactosidase A activity (Fabry disease screen)",
+      "ACE level, chest X-ray (sarcoidosis screen)",
+      "Celiac antibodies (anti-tTG IgA)",
+      "SCN9A, SCN10A, SCN11A genetic testing for sodium channelopathies"
+    ],
+    "imaging": [],
+    "genetic": [
+      "SCN9A (Nav1.7) gain-of-function mutations in inherited erythromelalgia and SFN",
+      "SCN10A (Nav1.8) mutations associated with painful SFN",
+      "SCN11A (Nav1.9) mutations",
+      "GLA gene mutations for Fabry disease",
+      "TTR gene mutations for hereditary transthyretin amyloidosis"
+    ],
+    "other": [
+      "Skin punch biopsy with intraepidermal nerve fiber density (IENFD) quantification - gold standard",
+      "Quantitative sensory testing (QST) for thermal detection thresholds",
+      "Quantitative sudomotor axon reflex test (QSART)",
+      "Sudoscan for sudomotor function",
+      "Normal nerve conduction studies and EMG (by definition)",
+      "Corneal confocal microscopy (research tool)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "fibromyalgia",
+      "distinguishingFeatures": [
+        "Fibromyalgia has widespread pain with tender points",
+        "Fibromyalgia has normal skin biopsy IENFD (though some overlap)",
+        "Fibromyalgia diagnosed clinically without objective nerve fiber loss"
+      ]
+    },
+    {
+      "diseaseId": "chronic-inflammatory-demyelinating-polyneuropathy",
+      "distinguishingFeatures": [
+        "CIDP affects large fibers with abnormal NCS",
+        "CIDP has weakness and areflexia",
+        "CIDP has demyelinating pattern on electrodiagnostics"
+      ]
+    },
+    {
+      "diseaseId": "diabetic-neuropathy",
+      "distinguishingFeatures": [
+        "Diabetic neuropathy may include large fiber involvement",
+        "Diabetes is a cause of SFN, not a differential",
+        "HbA1c and glucose tolerance test help identify"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Non-length-dependent pattern should prompt evaluation for ganglionopathy or Sjogren syndrome",
+    "Young patient with SFN should be screened for Fabry disease",
+    "Rapid progression or significant autonomic failure suggests amyloidosis",
+    "Family history of SFN suggests sodium channelopathy or Fabry disease",
+    "Weight loss and autonomic dysfunction raise concern for amyloidosis",
+    "SFN in setting of monoclonal gammopathy requires further hematologic workup"
+  ],
+  "specialistType": ["neurologist", "neuromuscular specialist", "pain specialist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Devigili G, et al. The diagnostic criteria for small fibre neuropathy: from symptoms to neuropathology. Brain. 2008;131(Pt 7):1912-1925.",
+    "Terkelsen AJ, et al. The diagnostic challenge of small fibre neuropathy: clinical presentations, evaluations, and causes. Lancet Neurol. 2017;16(11):934-944.",
+    "Themistocleous AC, et al. The Pain in Neuropathy Study (PiNS): a cross-sectional observational study determining the somatosensory phenotype of painful and painless diabetic neuropathy. Pain. 2016;157(5):1132-1145."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,102 @@
+{
+  "id": "autoimmune-pancreatitis",
+  "name": "Autoimmune Pancreatitis",
+  "aliases": ["AIP", "Lymphoplasmacytic Sclerosing Pancreatitis", "IgG4-Related Pancreatitis (Type 1)", "Idiopathic Duct-Centric Pancreatitis (Type 2)"],
+  "icd10Codes": ["K85.3", "K86.1"],
+  "omimId": "",
+  "orphanetId": "280286",
+  "prevalence": {
+    "estimate": "0.7-2 per 100,000",
+    "range": "0.7-2 per 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 50, "max": 70, "peak": 60 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": ["East Asian (Japan, Korea - higher recognition)", "All ethnic groups"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "International Consensus Diagnostic Criteria (ICDC) for Autoimmune Pancreatitis 2011",
+    "criteria": [
+      { "id": "aip-1", "description": "Parenchymal imaging: diffuse enlargement with delayed enhancement (sausage-shaped pancreas), or focal/segmental enlargement", "category": "major", "requiredForDiagnosis": false },
+      { "id": "aip-2", "description": "Ductal imaging: long (>1/3 length) or multiple strictures without upstream dilatation", "category": "major", "requiredForDiagnosis": false },
+      { "id": "aip-3", "description": "Serology: elevated serum IgG4 >= 2x upper limit of normal (Type 1)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "aip-4", "description": "Other organ involvement (OOI): bile duct, retroperitoneal fibrosis, salivary/lacrimal gland, renal", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "aip-5", "description": "Histology: lymphoplasmacytic infiltrate with storiform fibrosis and obliterative phlebitis, >10 IgG4+ cells/HPF (Type 1)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "aip-6", "description": "Histology: granulocytic epithelial lesion (GEL) in pancreatic ducts (Type 2)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "aip-7", "description": "Response to steroid therapy (Rt)", "category": "supportive", "requiredForDiagnosis": false }
+    ],
+    "minimumForDiagnosis": "Combination of imaging, serology, other organ involvement, histology, and steroid response; classified as definite or probable Type 1 or Type 2 based on ICDC algorithm",
+    "notes": "Type 1 is part of IgG4-related disease spectrum. Type 2 (IDCP) is associated with IBD (~20%), younger age, and GELs. Critical to distinguish from pancreatic cancer."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      { "symptomName": "Sausage-shaped diffusely enlarged pancreas on imaging", "frequency": 0.40, "bodySystem": "Pancreatic", "notes": "Diffuse enlargement with loss of lobular contour and capsule-like rim; highly suggestive" },
+      { "symptomName": "Obstructive jaundice without discrete mass with elevated IgG4", "frequency": 0.60, "bodySystem": "Hepatobiliary", "notes": "Mimics pancreatic cancer; distinguishing feature is response to steroids" }
+    ],
+    "common": [
+      { "symptomName": "Obstructive jaundice", "snomedCode": "84568007", "frequency": 0.65, "bodySystem": "Hepatobiliary", "notes": "Painless or mildly painful; from bile duct stricture" },
+      { "symptomName": "Abdominal pain (mild to moderate)", "snomedCode": "21522001", "frequency": 0.40, "bodySystem": "Gastrointestinal", "notes": "Often less severe than in regular pancreatitis" },
+      { "symptomName": "Weight loss", "snomedCode": "89362005", "frequency": 0.40, "bodySystem": "Constitutional" },
+      { "symptomName": "New-onset diabetes mellitus", "snomedCode": "73211009", "frequency": 0.40, "bodySystem": "Endocrine", "notes": "Can improve with steroid treatment" }
+    ],
+    "occasional": [
+      { "symptomName": "Salivary/lacrimal gland swelling (Type 1)", "snomedCode": "274740004", "frequency": 0.20, "bodySystem": "ENT", "notes": "Part of IgG4-related disease" },
+      { "symptomName": "Retroperitoneal fibrosis (Type 1)", "snomedCode": "197808006", "frequency": 0.10, "bodySystem": "Retroperitoneal" },
+      { "symptomName": "Exocrine pancreatic insufficiency (steatorrhea)", "snomedCode": "47367009", "frequency": 0.25, "bodySystem": "Gastrointestinal" },
+      { "symptomName": "Renal involvement (tubulointerstitial nephritis)", "snomedCode": "36171008", "frequency": 0.10, "bodySystem": "Renal" }
+    ],
+    "rare": [
+      { "symptomName": "Acute pancreatitis", "snomedCode": "197456007", "frequency": 0.10, "bodySystem": "Pancreatic" },
+      { "symptomName": "Lung involvement (inflammatory pseudotumor)", "frequency": 0.05, "bodySystem": "Pulmonary" },
+      { "symptomName": "Pericarditis or periaortitis", "frequency": 0.03, "bodySystem": "Cardiovascular" }
+    ]
+  },
+  "systemsAffected": ["Pancreatic", "Hepatobiliary", "Endocrine", "Salivary/Lacrimal", "Renal", "Retroperitoneal"],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum IgG4 (>135 mg/dL; >2x ULN highly suggestive for Type 1)",
+      "Elevated total IgG",
+      "Elevated serum bilirubin and ALP (biliary obstruction)",
+      "CA 19-9 mildly elevated (can overlap with pancreatic cancer levels)",
+      "Elevated serum lipase/amylase (less common than in alcoholic/gallstone pancreatitis)",
+      "Elevated IgE",
+      "Peripheral eosinophilia (mild)"
+    ],
+    "imaging": [
+      "CT/MRI: diffuse pancreatic enlargement (sausage-shaped) with delayed enhancement and capsule-like rim",
+      "MRCP/EUS: diffuse or focal pancreatic duct narrowing without upstream dilatation",
+      "PET-CT: FDG avid pancreas (must distinguish from cancer)",
+      "CT: bile duct wall thickening, renal lesions, retroperitoneal fibrosis"
+    ],
+    "genetic": [
+      "HLA-DRB1*0405 association (Type 1, Japanese population)",
+      "CTLA-4 gene variants reported"
+    ],
+    "other": [
+      "EUS-guided biopsy/FNA: lymphoplasmacytic infiltrate, storiform fibrosis, obliterative phlebitis, increased IgG4+ plasma cells (Type 1); GEL (Type 2)",
+      "Steroid trial: rapid improvement in symptoms and imaging supports diagnosis"
+    ]
+  },
+  "differentialDiagnoses": [
+    { "diseaseId": "pancreatic-adenocarcinoma", "distinguishingFeatures": ["Discrete mass lesion", "Upstream pancreatic duct dilatation", "Vascular invasion", "CA 19-9 markedly elevated", "No steroid response"] },
+    { "diseaseId": "primary-sclerosing-cholangitis", "distinguishingFeatures": ["IBD association", "Multifocal intrahepatic strictures", "AMA negative", "Normal IgG4"] },
+    { "diseaseId": "igg4-related-disease", "distinguishingFeatures": ["AIP Type 1 is part of IgG4-RD spectrum", "Multi-organ involvement", "Same disease process"] },
+    { "diseaseId": "chronic-pancreatitis", "distinguishingFeatures": ["Alcohol/smoking history", "Calcifications", "Irreversible changes", "No steroid response"] }
+  ],
+  "redFlags": [
+    "Clinical presentation indistinguishable from pancreatic cancer (must exclude malignancy before steroid trial)",
+    "Failure to respond to steroids within 2 weeks (reconsider diagnosis)",
+    "Recurrence after steroid taper (common; may need maintenance immunosuppression)",
+    "Development of pancreatic exocrine insufficiency",
+    "Rising CA 19-9 after initial improvement"
+  ],
+  "specialistType": ["Gastroenterology", "Pancreatology", "Rheumatology"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Shimosegawa T, et al. International consensus diagnostic criteria for autoimmune pancreatitis: guidelines of the International Association of Pancreatology. Pancreas. 2011;40(3):352-358.",
+    "Hart PA, et al. Recent Advances in Autoimmune Pancreatitis. Gastroenterology. 2015;149(1):39-51.",
+    "Okazaki K, et al. International consensus for the treatment of autoimmune pancreatitis. Pancreatology. 2017;17(1):1-6."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,102 @@
+{
+  "id": "microscopic-polyangiitis",
+  "name": "Microscopic Polyangiitis",
+  "aliases": ["MPA", "Microscopic Polyarteritis"],
+  "icd10Codes": ["M31.7"],
+  "omimId": "615688",
+  "orphanetId": "727",
+  "prevalence": {
+    "estimate": "1-3 per 100,000",
+    "range": "1-3 per 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 50, "max": 70, "peak": 60 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": ["More common in East Asian populations relative to GPA", "Caucasian"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "2022 ACR/EULAR Classification Criteria for MPA",
+    "criteria": [
+      { "id": "mpa-1", "description": "MPO-ANCA (p-ANCA) positivity", "category": "major", "requiredForDiagnosis": false },
+      { "id": "mpa-2", "description": "Pauci-immune glomerulonephritis on biopsy", "category": "major", "requiredForDiagnosis": false },
+      { "id": "mpa-3", "description": "Pulmonary fibrosis or interstitial lung disease on imaging", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "mpa-4", "description": "Absence of nasal/paranasal sinus involvement (negative predictor for GPA)", "category": "supportive", "requiredForDiagnosis": false },
+      { "id": "mpa-5", "description": "Peripheral neuropathy or mononeuritis multiplex", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "mpa-6", "description": "Palpable purpura or skin vasculitis on biopsy", "category": "minor", "requiredForDiagnosis": false }
+    ],
+    "minimumForDiagnosis": "Diagnosis of small-vessel vasculitis plus weighted score meeting MPA classification threshold",
+    "notes": "MPA is distinguished from GPA by the absence of granulomatous inflammation. PR3-ANCA positivity weighs against MPA classification."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      { "symptomName": "Pauci-immune rapidly progressive glomerulonephritis", "snomedCode": "36171008", "frequency": 0.80, "bodySystem": "Renal", "notes": "Crescentic necrotizing GN without immune complex deposits" },
+      { "symptomName": "Diffuse alveolar hemorrhage", "snomedCode": "233608003", "frequency": 0.25, "bodySystem": "Pulmonary", "notes": "Can present as pulmonary-renal syndrome" }
+    ],
+    "common": [
+      { "symptomName": "Renal insufficiency (progressive)", "snomedCode": "723190009", "frequency": 0.80, "bodySystem": "Renal" },
+      { "symptomName": "Constitutional symptoms (fatigue, fever, weight loss)", "snomedCode": "84229001", "frequency": 0.70, "bodySystem": "Constitutional" },
+      { "symptomName": "Arthralgia/myalgia", "snomedCode": "57676002", "frequency": 0.50, "bodySystem": "Musculoskeletal" },
+      { "symptomName": "Palpable purpura", "snomedCode": "20143000", "frequency": 0.40, "bodySystem": "Dermatologic" },
+      { "symptomName": "Peripheral neuropathy", "snomedCode": "42658009", "frequency": 0.30, "bodySystem": "Neurological" }
+    ],
+    "occasional": [
+      { "symptomName": "Hemoptysis", "snomedCode": "66857006", "frequency": 0.25, "bodySystem": "Pulmonary" },
+      { "symptomName": "Interstitial lung disease", "snomedCode": "233703007", "frequency": 0.20, "bodySystem": "Pulmonary", "notes": "UIP pattern associated with MPO-ANCA" },
+      { "symptomName": "Mononeuritis multiplex", "snomedCode": "128189008", "frequency": 0.20, "bodySystem": "Neurological" },
+      { "symptomName": "Scleritis", "snomedCode": "78370002", "frequency": 0.10, "bodySystem": "Ocular" },
+      { "symptomName": "Gastrointestinal bleeding", "snomedCode": "74474003", "frequency": 0.10, "bodySystem": "Gastrointestinal" }
+    ],
+    "rare": [
+      { "symptomName": "Cardiac involvement (pericarditis, myocarditis)", "snomedCode": "3238004", "frequency": 0.05, "bodySystem": "Cardiovascular" },
+      { "symptomName": "CNS vasculitis", "snomedCode": "195353004", "frequency": 0.03, "bodySystem": "Neurological" },
+      { "symptomName": "Pancreatitis", "snomedCode": "75694006", "frequency": 0.02, "bodySystem": "Gastrointestinal" }
+    ]
+  },
+  "systemsAffected": ["Renal", "Pulmonary", "Dermatologic", "Neurological", "Musculoskeletal", "Gastrointestinal", "Ocular"],
+  "keyFindings": {
+    "laboratory": [
+      "MPO-ANCA (p-ANCA) positive (60-70%)",
+      "Elevated serum creatinine with active urine sediment",
+      "Proteinuria and hematuria with RBC casts",
+      "Elevated ESR and CRP",
+      "Anemia (often from renal failure or hemorrhage)",
+      "PR3-ANCA can be positive in ~20%"
+    ],
+    "imaging": [
+      "Chest CT: ground-glass opacities (alveolar hemorrhage), interstitial fibrosis (UIP or NSIP pattern)",
+      "Chest X-ray: bilateral alveolar infiltrates in DAH",
+      "Renal ultrasound: normal or slightly enlarged kidneys initially"
+    ],
+    "genetic": [
+      "HLA-DQ association",
+      "SERPINA1 gene variants"
+    ],
+    "other": [
+      "Renal biopsy: pauci-immune necrotizing and crescentic glomerulonephritis",
+      "Lung biopsy: capillaritis without granulomas",
+      "Skin biopsy: leukocytoclastic vasculitis"
+    ]
+  },
+  "differentialDiagnoses": [
+    { "diseaseId": "granulomatosis-with-polyangiitis", "distinguishingFeatures": ["Granulomatous inflammation on biopsy", "ENT involvement (sinusitis, saddle nose)", "PR3-ANCA predominant", "Cavitating pulmonary nodules"] },
+    { "diseaseId": "anti-gbm-disease", "distinguishingFeatures": ["Anti-GBM antibodies", "Linear IgG on renal biopsy", "Can coexist with MPA (double-positive)"] },
+    { "diseaseId": "polyarteritis-nodosa", "distinguishingFeatures": ["Medium vessel involvement", "Microaneurysms on angiography", "ANCA negative", "No glomerulonephritis"] },
+    { "diseaseId": "iga-vasculitis", "distinguishingFeatures": ["IgA deposits on biopsy", "Younger patients", "Palpable purpura with abdominal pain"] }
+  ],
+  "redFlags": [
+    "Rapidly rising creatinine with active urine sediment",
+    "Hemoptysis with falling hemoglobin (diffuse alveolar hemorrhage)",
+    "Pulmonary-renal syndrome",
+    "Acute respiratory failure requiring intubation",
+    "Oliguria/anuria suggesting rapidly progressive GN"
+  ],
+  "specialistType": ["Rheumatology", "Nephrology", "Pulmonology"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Suppiah R, et al. 2022 American College of Rheumatology/European Alliance of Associations for Rheumatology Classification Criteria for Microscopic Polyangiitis. Arthritis Rheumatol. 2022;74(3):400-406.",
+    "Guillevin L, et al. Microscopic polyangiitis: clinical and laboratory findings in eighty-five patients. Arthritis Rheum. 1999;42(3):421-430.",
+    "Yates M, et al. EULAR/ERA-EDTA recommendations for the management of ANCA-associated vasculitis. Ann Rheum Dis. 2016;75(9):1583-1594."
+  ],
+  "confidenceInData": "medium"
+}

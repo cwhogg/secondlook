@@ -1,0 +1,311 @@
+{
+  "id": "ankylosing-spondylitis",
+  "name": "Ankylosing Spondylitis",
+  "aliases": [
+    "AS",
+    "Axial Spondyloarthritis (radiographic)",
+    "Bechterew's Disease",
+    "Marie-Strumpell Disease"
+  ],
+  "icd10Codes": ["M45.0", "M45.1", "M45.2", "M45.3", "M45.4", "M45.5", "M45.6", "M45.7", "M45.8", "M45.9"],
+  "omimId": "106300",
+  "orphanetId": "449",
+  "prevalence": {
+    "estimate": "0.1% to 0.5% of the general population",
+    "range": "0.1%-0.5%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 15, "max": 45, "peak": 25 },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "Higher prevalence in populations with high HLA-B27 frequency",
+      "More common in Northern European and some Native American populations",
+      "Lower prevalence in Sub-Saharan African and Japanese populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Modified New York Criteria (1984) and ASAS Classification Criteria for Axial SpA (2009)",
+    "criteria": [
+      {
+        "id": "as-c1",
+        "description": "Low back pain and stiffness > 3 months, improved by exercise and not relieved by rest",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-c2",
+        "description": "Limitation of lumbar spine motion in sagittal and frontal planes",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-c3",
+        "description": "Limitation of chest expansion relative to age and sex",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-c4",
+        "description": "Bilateral sacroiliitis grade >= 2 or unilateral sacroiliitis grade 3-4 on radiograph",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "as-asas1",
+        "description": "Sacroiliitis on imaging (radiograph or MRI) plus >= 1 SpA feature",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-asas2",
+        "description": "HLA-B27 positive plus >= 2 SpA features",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-s1",
+        "description": "Inflammatory back pain (per ASAS criteria)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-s2",
+        "description": "Arthritis (peripheral)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-s3",
+        "description": "Enthesitis (heel)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-s4",
+        "description": "Anterior uveitis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-s5",
+        "description": "Dactylitis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-s6",
+        "description": "Psoriasis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-s7",
+        "description": "Crohn's disease or ulcerative colitis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-s8",
+        "description": "Good response to NSAIDs",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-s9",
+        "description": "Family history of SpA",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "as-s10",
+        "description": "Elevated CRP",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Modified New York: >= 1 clinical criterion + radiographic sacroiliitis. ASAS axial SpA: Sacroiliitis on imaging + >= 1 SpA feature, OR HLA-B27 + >= 2 SpA features.",
+    "notes": "Diagnosis of radiographic axial SpA (ankylosing spondylitis) requires definite sacroiliitis on plain radiograph. Pre-radiographic disease may be classified as non-radiographic axial SpA."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Inflammatory back pain",
+        "snomedCode": "279039007",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal",
+        "notes": "Insidious onset, age < 40, morning stiffness > 30 min, improves with exercise, not relieved by rest"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Sacroiliac joint pain and tenderness",
+        "snomedCode": "202498004",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal",
+        "notes": "Often alternating buttock pain"
+      },
+      {
+        "symptomName": "Morning stiffness > 30 minutes",
+        "snomedCode": "84445001",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Progressive spinal stiffness / reduced lumbar mobility",
+        "frequency": 0.8,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Enthesitis (Achilles, plantar fascia)",
+        "snomedCode": "359643005",
+        "frequency": 0.5,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Anterior uveitis / iritis",
+        "snomedCode": "65323003",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmologic",
+        "notes": "Acute, unilateral, recurrent; 30-40% lifetime prevalence"
+      },
+      {
+        "symptomName": "Peripheral arthritis (hips, shoulders, knees)",
+        "snomedCode": "3723001",
+        "frequency": 0.35,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Chest pain / costochondral involvement",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal",
+        "notes": "Reduced chest expansion"
+      },
+      {
+        "symptomName": "Dactylitis (sausage digits)",
+        "snomedCode": "77636002",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Inflammatory bowel disease symptoms",
+        "frequency": 0.1,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Aortic regurgitation",
+        "snomedCode": "60234000",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Aortitis and aortic root dilation in long-standing disease"
+      },
+      {
+        "symptomName": "Cardiac conduction abnormalities",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Apical pulmonary fibrosis",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "notes": "Very rare; late manifestation"
+      },
+      {
+        "symptomName": "Cauda equina syndrome",
+        "snomedCode": "192970008",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "notes": "Very rare complication of long-standing disease"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "ophthalmologic",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "HLA-B27 positive in ~90-95% of patients with AS",
+      "Elevated CRP and ESR (may be normal in some patients)",
+      "Rheumatoid factor negative",
+      "ANA negative"
+    ],
+    "imaging": [
+      "Sacroiliac joint radiographs: bilateral sacroiliitis with sclerosis, erosion, and eventual fusion",
+      "MRI sacroiliac joints: bone marrow edema on STIR sequences (early/active disease)",
+      "Spinal radiographs: syndesmophytes, squaring of vertebral bodies, 'bamboo spine' in advanced disease",
+      "Chest X-ray: reduced chest expansion"
+    ],
+    "genetic": [
+      "HLA-B27 (present in ~90-95% of AS patients; ~8% of general population)",
+      "ERAP1, IL-23R, and other susceptibility loci identified by GWAS",
+      "Polygenic susceptibility model"
+    ],
+    "other": [
+      "Modified Schober test for lumbar flexion",
+      "Chest expansion measurement",
+      "BASFI and BASDAI clinical scores for disease activity and function"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "psoriatic-arthritis",
+      "distinguishingFeatures": [
+        "PsA has psoriatic skin and nail changes",
+        "PsA has asymmetric sacroiliitis and peripheral predominance",
+        "PsA features dactylitis more prominently"
+      ]
+    },
+    {
+      "diseaseId": "reactive-arthritis",
+      "distinguishingFeatures": [
+        "ReA triggered by preceding infection (urogenital or enteric)",
+        "ReA is typically self-limited",
+        "ReA features conjunctivitis more than uveitis"
+      ]
+    },
+    {
+      "diseaseId": "fibromyalgia",
+      "distinguishingFeatures": [
+        "FM has normal inflammatory markers and imaging",
+        "FM pain is widespread rather than axial-predominant",
+        "FM has no sacroiliitis on imaging"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Acute eye pain and redness (anterior uveitis - urgent ophthalmology referral)",
+    "Spinal fracture after minor trauma (osteoporotic or stress fracture in fused spine)",
+    "New neurological symptoms (cauda equina syndrome or spinal cord compression)",
+    "Significant constitutional symptoms (fever, weight loss - exclude infection or malignancy)",
+    "Rapidly progressive kyphosis or inability to look forward"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Ophthalmologist",
+    "Physical Medicine and Rehabilitation",
+    "Physiotherapist",
+    "Orthopedic/Spine Surgeon"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "van der Linden S, Valkenburg HA, Cats A. Assessment of the Spondylarthritides. Ann Rheum Dis. 1984;43(3):359-67.",
+    "Rudwaleit M, et al. The development of Assessment of SpondyloArthritis international Society classification criteria for axial spondyloarthritis. Ann Rheum Dis. 2009;68(6):777-83.",
+    "Sieper J, Poddubnyy D. Axial spondyloarthritis. Lancet. 2017;390(10089):73-84.",
+    "Taurog JD, Chhabra A, Colbert RA. Ankylosing spondylitis and axial spondyloarthritis. N Engl J Med. 2016;374(26):2563-74."
+  ],
+  "confidenceInData": "medium"
+}

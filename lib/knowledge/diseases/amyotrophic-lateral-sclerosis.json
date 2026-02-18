@@ -1,0 +1,256 @@
+{
+  "id": "amyotrophic-lateral-sclerosis",
+  "name": "Amyotrophic Lateral Sclerosis",
+  "aliases": [
+    "ALS",
+    "Lou Gehrig disease",
+    "Motor neuron disease",
+    "MND"
+  ],
+  "icd10Codes": ["G12.21"],
+  "omimId": "105400",
+  "orphanetId": "803",
+  "prevalence": {
+    "estimate": "5-7 per 100,000",
+    "range": "4-8 per 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 40, "max": 75, "peak": 60 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Higher incidence in Caucasian populations",
+      "Particularly high incidence in Western Pacific (Guam, Kii Peninsula) - historical",
+      "Slightly lower incidence in African, Asian, and Hispanic populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Gold Coast Criteria (2019) / Revised El Escorial Criteria",
+    "criteria": [
+      {
+        "id": "als-1",
+        "description": "Progressive motor impairment documented by history or clinical examination with evidence of upper motor neuron (UMN) and lower motor neuron (LMN) dysfunction in at least one body region, OR LMN dysfunction in at least two body regions",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "als-2",
+        "description": "Absence of alternative explanation for the clinical presentation based on investigations",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "als-3",
+        "description": "EMG evidence of active and chronic denervation in clinically affected and unaffected regions",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "als-4",
+        "description": "Progressive spread of symptoms within a region or to other regions",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "als-5",
+        "description": "Neuroimaging to exclude structural mimics",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Gold Coast Criteria: Progressive motor impairment with UMN and LMN signs in one region OR LMN signs in two regions, plus exclusion of alternative diagnoses.",
+    "notes": "Body regions: bulbar, cervical, thoracic, lumbosacral. The Gold Coast criteria simplify and improve sensitivity over El Escorial criteria. Familial ALS (~10%) and C9orf72-associated ALS may have atypical presentations."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Combined upper and lower motor neuron signs in the same limb",
+        "frequency": 0.80,
+        "bodySystem": "neurological",
+        "notes": "Simultaneous spasticity/hyperreflexia (UMN) and atrophy/fasciculations (LMN)"
+      },
+      {
+        "symptomName": "Split hand sign",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "notes": "Preferential wasting of thenar and first dorsal interosseous over hypothenar; relatively specific to ALS"
+      },
+      {
+        "symptomName": "Tongue fasciculations with atrophy",
+        "snomedCode": "249966004",
+        "frequency": 0.50,
+        "bodySystem": "neurological",
+        "notes": "LMN bulbar involvement; highly suggestive"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Progressive asymmetric limb weakness",
+        "snomedCode": "249937002",
+        "frequency": 0.70,
+        "bodySystem": "neurological",
+        "notes": "Often starts in one limb and spreads contiguously"
+      },
+      {
+        "symptomName": "Muscle atrophy",
+        "snomedCode": "88092000",
+        "frequency": 0.80,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fasciculations",
+        "snomedCode": "82470000",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Widespread fasciculations in the context of weakness"
+      },
+      {
+        "symptomName": "Hyperreflexia and spasticity",
+        "snomedCode": "36649002",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "notes": "Upper motor neuron signs"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "snomedCode": "8011004",
+        "frequency": 0.50,
+        "bodySystem": "neurological",
+        "notes": "Bulbar onset in ~25% of patients"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Dysphagia",
+        "snomedCode": "40739000",
+        "frequency": 0.40,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pseudobulbar affect",
+        "snomedCode": "703213009",
+        "frequency": 0.30,
+        "bodySystem": "neurological",
+        "notes": "Involuntary laughing or crying; UMN bulbar sign"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "snomedCode": "409622000",
+        "frequency": 0.30,
+        "bodySystem": "respiratory",
+        "notes": "May be presenting symptom in rare cases"
+      },
+      {
+        "symptomName": "Frontotemporal cognitive/behavioral changes",
+        "frequency": 0.35,
+        "bodySystem": "neurological",
+        "notes": "Up to 50% have some cognitive involvement; ~15% meet FTD criteria"
+      },
+      {
+        "symptomName": "Muscle cramps",
+        "snomedCode": "55300003",
+        "frequency": 0.50,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sensory symptoms",
+        "snomedCode": "279079003",
+        "frequency": 0.10,
+        "bodySystem": "neurological",
+        "notes": "Mild sensory complaints present in minority; prominent sensory loss argues against ALS"
+      },
+      {
+        "symptomName": "Extrapyramidal features",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Parkinsonism in ALS-parkinsonism-dementia complex"
+      },
+      {
+        "symptomName": "Autonomic dysfunction",
+        "snomedCode": "72167002",
+        "frequency": 0.05,
+        "bodySystem": "autonomic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "upper motor neurons",
+    "lower motor neurons",
+    "bulbar muscles",
+    "respiratory muscles",
+    "frontotemporal cortex (subset)"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CK may be mildly to moderately elevated (typically <10x normal)",
+      "Normal CSF (used to exclude mimics)",
+      "GM1 antibody testing to exclude multifocal motor neuropathy",
+      "Serum protein electrophoresis to exclude paraprotein-associated motor neuron disease"
+    ],
+    "imaging": [
+      "MRI brain and spine to exclude structural mimics (cervical myelopathy, tumors)",
+      "Corticospinal tract hyperintensity on FLAIR MRI (supportive but insensitive)",
+      "FDG-PET may show frontal/temporal hypometabolism in ALS-FTD"
+    ],
+    "genetic": [
+      "C9orf72 hexanucleotide repeat expansion (most common genetic cause; ~40% of familial ALS, ~7% sporadic)",
+      "SOD1 mutations (~20% of familial ALS; tofersen FDA-approved for SOD1-ALS)",
+      "TARDBP (TDP-43), FUS, UBQLN2, VCP, and other rare genes",
+      "Genetic counseling recommended for all ALS patients"
+    ],
+    "other": [
+      "EMG showing active denervation (fibrillations, positive sharp waves) and chronic reinnervation (large MUPs) in multiple regions",
+      "Nerve conduction studies: normal sensory potentials; motor amplitudes may be reduced",
+      "Transcranial magnetic stimulation may show prolonged central motor conduction time",
+      "Pulmonary function tests: reduced FVC (prognostic marker)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "myasthenia-gravis",
+      "distinguishingFeatures": [
+        "MG has fatigable weakness without atrophy or fasciculations",
+        "MG has normal reflexes",
+        "MG has abnormal repetitive nerve stimulation",
+        "MG has no EMG denervation"
+      ]
+    },
+    {
+      "diseaseId": "chronic-inflammatory-demyelinating-polyneuropathy",
+      "distinguishingFeatures": [
+        "CIDP has demyelinating features on NCS",
+        "CIDP has sensory involvement",
+        "CIDP has areflexia (vs hyperreflexia in ALS)",
+        "CIDP responds to immunotherapy"
+      ]
+    },
+    {
+      "diseaseId": "inclusion-body-myositis",
+      "distinguishingFeatures": [
+        "IBM has distal finger flexor and quadriceps weakness pattern",
+        "IBM has elevated CK",
+        "IBM lacks upper motor neuron signs",
+        "IBM has characteristic muscle biopsy findings"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive weakness with respiratory failure requires urgent evaluation",
+    "Prominent sensory loss, sphincter involvement, or eye movement abnormalities argue against ALS",
+    "Treatable ALS mimics must be excluded: cervical myelopathy, multifocal motor neuropathy, Kennedy disease",
+    "Cognitive screening important - up to 50% have frontotemporal dysfunction",
+    "SOD1 genetic testing should be offered (FDA-approved targeted therapy available)",
+    "C9orf72 testing important for genetic counseling and clinical trials"
+  ],
+  "specialistType": ["neurologist", "neuromuscular specialist", "pulmonologist", "palliative care specialist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Shefner JM, et al. A proposal for new diagnostic criteria for ALS. Clin Neurophysiol. 2020;131(8):1975-1978.",
+    "Brown RH, Al-Chalabi A. Amyotrophic Lateral Sclerosis. N Engl J Med. 2017;377(2):162-172.",
+    "Feldman EL, et al. Amyotrophic lateral sclerosis. Lancet. 2022;400(10360):1363-1380.",
+    "Miller TM, et al. Trial of Antisense Oligonucleotide Tofersen for SOD1 ALS. N Engl J Med. 2022;387(12):1099-1110."
+  ],
+  "confidenceInData": "medium"
+}

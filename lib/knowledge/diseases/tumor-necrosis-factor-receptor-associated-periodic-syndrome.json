@@ -1,0 +1,226 @@
+{
+  "id": "tumor-necrosis-factor-receptor-associated-periodic-syndrome",
+  "name": "Tumor Necrosis Factor Receptor-Associated Periodic Syndrome",
+  "aliases": [
+    "TRAPS",
+    "TNF Receptor-Associated Periodic Syndrome",
+    "Familial Hibernian Fever",
+    "TNFRSF1A-Associated Autoinflammatory Disease"
+  ],
+  "icd10Codes": ["M04.1"],
+  "omimId": "142680",
+  "orphanetId": "32960",
+  "prevalence": {
+    "estimate": "Approximately 1 per 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 2, "max": 30, "peak": 10 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": ["Irish/Scottish (original description)", "Northern European", "any ethnicity"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Eurofever/PRINTO Classification Criteria (2019)",
+    "criteria": [
+      {
+        "id": "traps-maj1",
+        "description": "Recurrent febrile episodes lasting >= 7 days (typically 1-4 weeks)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "traps-maj2",
+        "description": "Confirmed pathogenic TNFRSF1A mutation",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "traps-min1",
+        "description": "Migratory myalgia/rash (centrifugal spreading erythematous patches)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "traps-min2",
+        "description": "Periorbital edema",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "traps-min3",
+        "description": "Family history of recurrent febrile episodes",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "traps-min4",
+        "description": "Abdominal pain, pleuritis, arthralgia during episodes",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Eurofever criteria: TNFRSF1A pathogenic mutation plus compatible clinical features. Clinical suspicion based on recurrent febrile episodes >7 days duration with migratory rash, periorbital edema, and myalgia.",
+    "notes": "Autosomal dominant inheritance. Attacks typically last 1-4 weeks (longer than FMF). R92Q and P46L are low-penetrance variants with uncertain pathogenicity."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Prolonged febrile episodes lasting 1-4 weeks",
+        "frequency": 0.95,
+        "bodySystem": "general",
+        "notes": "Duration distinguishes TRAPS from FMF (1-3 days) and HIDS (3-7 days)"
+      },
+      {
+        "symptomName": "Migratory erythematous rash overlying myalgia",
+        "frequency": 0.65,
+        "bodySystem": "integumentary",
+        "notes": "Rash and myalgia migrate centrifugally from proximal to distal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Severe myalgia (migratory)",
+        "snomedCode": "68962001",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "snomedCode": "21522001",
+        "frequency": 0.80,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Periorbital edema",
+        "frequency": 0.60,
+        "bodySystem": "ophthalmologic",
+        "notes": "Distinctive feature; unilateral or bilateral"
+      },
+      {
+        "symptomName": "Arthralgias/arthritis (large joints)",
+        "snomedCode": "57676002",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Pleuritic chest pain",
+        "frequency": 0.35,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Conjunctivitis",
+        "snomedCode": "9826008",
+        "frequency": 0.40,
+        "bodySystem": "ophthalmologic"
+      },
+      {
+        "symptomName": "Testicular pain",
+        "frequency": 0.10,
+        "bodySystem": "genitourinary"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "snomedCode": "30746006",
+        "frequency": 0.25,
+        "bodySystem": "lymphatic"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "AA amyloidosis",
+        "frequency": 0.10,
+        "bodySystem": "renal",
+        "notes": "Occurs in ~10% of patients with pathogenic mutations; presents as proteinuria"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Fasciitis",
+        "frequency": 0.08,
+        "bodySystem": "musculoskeletal",
+        "notes": "Monocytic fasciitis underlying the migratory myalgia"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "general",
+    "musculoskeletal",
+    "gastrointestinal",
+    "integumentary",
+    "ophthalmologic",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated ESR, CRP, SAA during attacks",
+      "Leukocytosis during attacks",
+      "Elevated ferritin during attacks",
+      "Low soluble TNF receptor 1 levels (impaired shedding) - specialized test",
+      "Proteinuria if AA amyloidosis present"
+    ],
+    "imaging": [
+      "MRI of affected muscle: fascial edema/enhancement during attacks",
+      "No specific imaging findings"
+    ],
+    "genetic": [
+      "TNFRSF1A gene mutations on chromosome 12p13.31",
+      "Common pathogenic variants: C33Y, T50M, C88R (cysteine mutations are higher pathogenicity)",
+      "R92Q and P46L are low-penetrance/uncertain significance variants",
+      "Autosomal dominant inheritance with variable penetrance"
+    ],
+    "other": [
+      "Skin/muscle biopsy during attack: monocytic/lymphocytic perivascular infiltrate",
+      "Response to anti-IL-1 therapy (anakinra, canakinumab) supports diagnosis",
+      "Poor response to colchicine (unlike FMF)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "familial-mediterranean-fever",
+      "distinguishingFeatures": [
+        "FMF attacks are shorter (1-3 days vs 1-4 weeks in TRAPS)",
+        "FMF responds to colchicine; TRAPS does not",
+        "FMF confirmed by MEFV mutations"
+      ]
+    },
+    {
+      "diseaseId": "hyperimmunoglobulin-d-syndrome",
+      "distinguishingFeatures": [
+        "HIDS has elevated IgD levels",
+        "HIDS attacks last 3-7 days",
+        "HIDS confirmed by MVK mutations"
+      ]
+    },
+    {
+      "diseaseId": "adult-onset-still-disease",
+      "distinguishingFeatures": [
+        "AOSD has quotidian fever, salmon rash, markedly elevated ferritin",
+        "AOSD lacks migratory myalgia pattern"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Proteinuria developing in TRAPS patient (AA amyloidosis risk ~10%)",
+    "Failure to respond to corticosteroids (may need IL-1 blockade)",
+    "Very prolonged attacks (> 6 weeks) suggesting alternative diagnosis",
+    "New diagnosis of cysteine-residue mutation (higher amyloidosis risk)"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Medical Geneticist",
+    "Pediatric Rheumatologist",
+    "Autoinflammatory Disease Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Lachmann HJ, et al. Clinical and subclinical inflammation in patients with familial Mediterranean fever and in heterozygous carriers of MEFV mutations. Rheumatology. 2006;45(6):746-750.",
+    "Gattorno M, et al. Classification criteria for autoinflammatory recurrent fevers. Ann Rheum Dis. 2019;78(8):1025-1032.",
+    "Cudrici C, et al. Revisiting TNF Receptor-Associated Periodic Syndrome (TRAPS): Current Perspectives. Int J Mol Sci. 2020;21(9):3263."
+  ],
+  "confidenceInData": "medium"
+}

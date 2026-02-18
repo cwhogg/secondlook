@@ -1,0 +1,220 @@
+{
+  "id": "complex-regional-pain-syndrome",
+  "name": "Complex Regional Pain Syndrome",
+  "aliases": [
+    "CRPS",
+    "Reflex Sympathetic Dystrophy",
+    "RSD",
+    "Causalgia",
+    "Sudeck Atrophy",
+    "Algoneurodystrophy"
+  ],
+  "icd10Codes": ["G90.50", "G90.51", "G90.52", "G90.59"],
+  "orphanetId": "83452",
+  "prevalence": {
+    "estimate": "5 to 26 per 100,000",
+    "range": "0.005%-0.026%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 30, "max": 60, "peak": 45 },
+    "sexPredilection": "female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Budapest Clinical Diagnostic Criteria for CRPS (IASP 2012)",
+    "criteria": [
+      {
+        "id": "crps-maj1",
+        "description": "Continuing pain disproportionate to any inciting event",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "crps-min1",
+        "description": "Sensory: reports of hyperesthesia and/or allodynia",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "crps-min2",
+        "description": "Vasomotor: reports of temperature asymmetry and/or skin color changes",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "crps-min3",
+        "description": "Sudomotor/edema: reports of edema and/or sweating changes",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "crps-min4",
+        "description": "Motor/trophic: reports of decreased range of motion and/or motor dysfunction and/or trophic changes (hair, nail, skin)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Continuing pain disproportionate to event. Must report symptoms in at least 3 of 4 categories (sensory, vasomotor, sudomotor/edema, motor/trophic) AND display signs at time of evaluation in at least 2 of 4 categories. No other diagnosis better explains the findings.",
+    "notes": "Type I (no definable nerve injury, formerly RSD) vs Type II (with definable nerve injury, formerly causalgia). Budapest criteria have ~99% specificity."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Pain disproportionate to inciting event with allodynia and hyperalgesia",
+        "frequency": 0.95,
+        "bodySystem": "neurologic",
+        "notes": "Burning, throbbing pain typically in a limb; allodynia to light touch is characteristic"
+      },
+      {
+        "symptomName": "Temperature and color asymmetry of affected limb",
+        "frequency": 0.80,
+        "bodySystem": "cardiovascular",
+        "notes": "Affected limb may be warmer (acute) or cooler (chronic) than contralateral"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Edema of affected limb",
+        "snomedCode": "271809000",
+        "frequency": 0.80,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Skin color changes (red, blue, pale, mottled)",
+        "frequency": 0.85,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Sweating abnormalities (hyperhidrosis or anhidrosis)",
+        "frequency": 0.55,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Decreased range of motion",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Stiffness of affected limb",
+        "snomedCode": "84445001",
+        "frequency": 0.70,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Trophic changes (abnormal hair/nail growth, skin atrophy)",
+        "frequency": 0.40,
+        "bodySystem": "integumentary",
+        "notes": "More common in chronic CRPS"
+      },
+      {
+        "symptomName": "Tremor of affected limb",
+        "snomedCode": "26079004",
+        "frequency": 0.25,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Dystonia",
+        "snomedCode": "15802004",
+        "frequency": 0.15,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Weakness",
+        "snomedCode": "26544005",
+        "frequency": 0.50,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Spread to other limbs",
+        "frequency": 0.08,
+        "bodySystem": "neurologic",
+        "notes": "Contralateral or ipsilateral spread"
+      },
+      {
+        "symptomName": "Osteoporosis of affected limb (Sudeck atrophy)",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fixed dystonic posture (clenched fist, equinovarus foot)",
+        "frequency": 0.05,
+        "bodySystem": "neurologic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurologic",
+    "musculoskeletal",
+    "cardiovascular",
+    "integumentary"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "No specific diagnostic laboratory test",
+      "Routine labs normal; used to exclude inflammatory or infectious causes",
+      "Inflammatory markers (CRP, ESR) typically normal"
+    ],
+    "imaging": [
+      "Triple-phase bone scan: increased uptake in affected limb (sensitivity ~50%)",
+      "X-ray: patchy osteopenia/demineralization of affected limb (Sudeck atrophy)",
+      "MRI: bone marrow edema, soft tissue edema, skin thickening in affected region"
+    ],
+    "genetic": [
+      "HLA associations reported (HLA-DQ1, HLA-B62) but not diagnostic",
+      "No single causative gene identified"
+    ],
+    "other": [
+      "Quantitative sensory testing (QST): demonstrates allodynia and hyperalgesia",
+      "Infrared thermography: temperature asymmetry > 1°C between limbs",
+      "Sudomotor testing (QSART): demonstrates sweating asymmetry",
+      "Budapest clinical criteria are primary diagnostic tool (no single confirmatory test)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "peripheral-neuropathy",
+      "distinguishingFeatures": [
+        "Peripheral neuropathy has nerve conduction abnormalities",
+        "Neuropathy typically follows nerve distribution patterns"
+      ]
+    },
+    {
+      "diseaseId": "deep-vein-thrombosis",
+      "distinguishingFeatures": [
+        "DVT confirmed by venous duplex ultrasound",
+        "DVT has unilateral leg swelling without color/temperature asymmetry pattern of CRPS"
+      ]
+    },
+    {
+      "diseaseId": "raynaud-phenomenon-primary",
+      "distinguishingFeatures": [
+        "Raynaud has episodic digital color changes triggered by cold",
+        "Raynaud lacks persistent pain and motor/trophic changes"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Spreading CRPS to other limbs suggesting central sensitization",
+    "Fixed dystonic postures (difficult to treat, poor prognosis)",
+    "Severe osteoporosis with pathological fracture risk",
+    "Psychological decompensation (high rates of depression, anxiety, suicidal ideation)"
+  ],
+  "specialistType": [
+    "Pain Medicine Specialist",
+    "Neurologist",
+    "Physical Medicine and Rehabilitation",
+    "Anesthesiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Harden RN, et al. Validation of proposed diagnostic criteria (the 'Budapest Criteria') for Complex Regional Pain Syndrome. Pain. 2010;150(2):268-274.",
+    "Bruehl S. Complex regional pain syndrome. BMJ. 2015;351:h2730.",
+    "Goebel A, et al. Complex regional pain syndrome in adults: UK guidelines for diagnosis, referral and management. J Pain Res. 2021;14:1-18."
+  ],
+  "confidenceInData": "medium"
+}

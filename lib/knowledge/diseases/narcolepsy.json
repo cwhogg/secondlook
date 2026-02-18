@@ -1,0 +1,248 @@
+{
+  "id": "narcolepsy",
+  "name": "Narcolepsy",
+  "aliases": [
+    "Narcolepsy type 1",
+    "Narcolepsy type 2",
+    "Narcolepsy with cataplexy (NT1)",
+    "Narcolepsy without cataplexy (NT2)",
+    "Gelineau syndrome"
+  ],
+  "icd10Codes": ["G47.411", "G47.419", "G47.421", "G47.429"],
+  "omimId": "161400",
+  "orphanetId": "2073",
+  "prevalence": {
+    "estimate": "25-50 per 100,000",
+    "range": "25-50 per 100,000 (NT1); NT2 less well defined",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 5, "max": 35, "peak": 15 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Higher prevalence in Japan (~160 per 100,000)",
+      "Lower prevalence in Israel",
+      "Affects all ethnicities worldwide",
+      "Bimodal onset peak: ~15 years and ~35 years"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ICSD-3 (International Classification of Sleep Disorders, 3rd Edition)",
+    "criteria": [
+      {
+        "id": "narc-1",
+        "description": "Excessive daytime sleepiness (EDS) occurring daily for at least 3 months",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "narc-2",
+        "description": "Cataplexy (definite cataplexy with emotionally triggered episodes of sudden bilateral loss of muscle tone with preserved consciousness) - for NT1",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "narc-3",
+        "description": "CSF hypocretin-1 (orexin A) level <=110 pg/mL or <1/3 of normal mean - for NT1",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "narc-4",
+        "description": "MSLT showing mean sleep latency <=8 minutes with 2 or more sleep-onset REM periods (SOREMPs)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "narc-5",
+        "description": "A SOREMP on the preceding nocturnal polysomnogram can replace one MSLT SOREMP",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "NT1: EDS >3 months plus either (a) definite cataplexy AND MSLT criteria, or (b) low CSF hypocretin-1. NT2: EDS >3 months plus MSLT criteria without cataplexy and without low hypocretin.",
+    "notes": "NT1 is caused by loss of hypocretin (orexin)-producing neurons, likely autoimmune. NT2 lacks cataplexy and has normal/uncertain hypocretin levels; it may evolve into NT1. Average diagnostic delay is 8-15 years."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Cataplexy",
+        "snomedCode": "3751003",
+        "frequency": 0.70,
+        "bodySystem": "neurological",
+        "notes": "Sudden bilateral loss of muscle tone triggered by strong emotions (laughter, surprise); pathognomonic for NT1; consciousness preserved"
+      },
+      {
+        "symptomName": "Excessive daytime sleepiness",
+        "snomedCode": "77692006",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "notes": "Irresistible sleep attacks; refreshing naps (typically <30 min)"
+      },
+      {
+        "symptomName": "Sleep-onset REM periods",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "REM intrusion within 15 minutes of sleep onset on MSLT"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Disrupted nighttime sleep",
+        "snomedCode": "39898005",
+        "frequency": 0.70,
+        "bodySystem": "neurological",
+        "notes": "Fragmented sleep with frequent awakenings despite EDS"
+      },
+      {
+        "symptomName": "Sleep paralysis",
+        "snomedCode": "73930006",
+        "frequency": 0.50,
+        "bodySystem": "neurological",
+        "notes": "Inability to move at sleep-wake transitions; may be terrifying"
+      },
+      {
+        "symptomName": "Hypnagogic/hypnopompic hallucinations",
+        "snomedCode": "25826002",
+        "frequency": 0.50,
+        "bodySystem": "neurological",
+        "notes": "Vivid, often frightening visual or auditory hallucinations at sleep-wake transitions"
+      },
+      {
+        "symptomName": "Automatic behaviors",
+        "frequency": 0.40,
+        "bodySystem": "neurological",
+        "notes": "Continuation of activities in semi-conscious state (writing nonsense, driving detours)"
+      },
+      {
+        "symptomName": "Difficulty concentrating",
+        "snomedCode": "76039002",
+        "frequency": 0.60,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Weight gain/obesity",
+        "snomedCode": "238131007",
+        "frequency": 0.30,
+        "bodySystem": "metabolic",
+        "notes": "Especially in childhood-onset NT1; related to orexin deficiency"
+      },
+      {
+        "symptomName": "Status cataplecticus",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Prolonged or recurrent cataplexy; may occur with sudden withdrawal of anticataplectics"
+      },
+      {
+        "symptomName": "REM sleep behavior disorder",
+        "snomedCode": "67233009",
+        "frequency": 0.20,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Depressive symptoms",
+        "snomedCode": "35489007",
+        "frequency": 0.30,
+        "bodySystem": "psychiatric"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Precocious puberty",
+        "frequency": 0.05,
+        "bodySystem": "endocrine",
+        "notes": "In childhood-onset NT1; from hypothalamic involvement"
+      },
+      {
+        "symptomName": "Psychosis-like symptoms",
+        "frequency": 0.05,
+        "bodySystem": "psychiatric",
+        "notes": "Hypnagogic hallucinations may be misinterpreted as psychotic symptoms"
+      },
+      {
+        "symptomName": "Cataplexy as sole presentation in children",
+        "frequency": 0.10,
+        "bodySystem": "neurological",
+        "notes": "In children, cataplexy may present as hypotonic facies or tongue protrusion rather than classic falls"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "central nervous system",
+    "sleep-wake regulation system",
+    "hypothalamus",
+    "metabolic system"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF hypocretin-1 (orexin A) <=110 pg/mL diagnostic for NT1 (>99% specific)",
+      "CSF hypocretin-1 normal or intermediate in NT2",
+      "HLA-DQB1*06:02 present in >98% of NT1 (but also in ~25% of general population)",
+      "HLA typing supportive but not diagnostic alone"
+    ],
+    "imaging": [
+      "Brain MRI typically normal (used to exclude structural causes)",
+      "Research MRI: hypothalamic volume loss in NT1",
+      "MRI may show hypothalamic/brainstem lesion in secondary narcolepsy"
+    ],
+    "genetic": [
+      "HLA-DQB1*06:02 allele (strongest genetic risk factor; >98% of NT1 patients)",
+      "HLA-DQB1*03:01 as secondary risk factor",
+      "T-cell receptor alpha locus polymorphisms",
+      "Rare autosomal dominant mutations (prepro-orexin gene extremely rare)"
+    ],
+    "other": [
+      "MSLT: mean sleep latency <=8 minutes with >=2 SOREMPs (preceding PSG SOREMP can count as one)",
+      "Overnight polysomnography: to exclude other sleep disorders and document SOREMP",
+      "Actigraphy: to confirm adequate sleep time before MSLT",
+      "Sleep diary for 1-2 weeks before MSLT to document adequate sleep"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "idiopathic-hypersomnia",
+      "distinguishingFeatures": [
+        "Idiopathic hypersomnia has prolonged, non-refreshing naps",
+        "Idiopathic hypersomnia lacks cataplexy",
+        "Idiopathic hypersomnia has <2 SOREMPs on MSLT",
+        "Idiopathic hypersomnia has sleep drunkenness (severe sleep inertia)"
+      ]
+    },
+    {
+      "diseaseId": "obstructive-sleep-apnea",
+      "distinguishingFeatures": [
+        "OSA has apneic events on PSG (AHI >5)",
+        "OSA has snoring and witnessed apneas",
+        "OSA EDS improves with CPAP treatment",
+        "OSA can coexist with narcolepsy"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-encephalitis",
+      "distinguishingFeatures": [
+        "AE has cognitive decline and psychiatric symptoms",
+        "AE has specific neural antibodies",
+        "Anti-IgLON5 disease can cause parasomnia and hypersomnolence"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Acute onset narcolepsy with cataplexy should raise concern for secondary cause (hypothalamic lesion, autoimmune encephalitis)",
+    "Average diagnostic delay of 8-15 years; high index of suspicion needed",
+    "Cataplexy in children may present atypically as facial hypotonia, not classic falls",
+    "Abrupt withdrawal of anticataplectic medications can trigger status cataplecticus",
+    "Narcolepsy significantly increases risk of motor vehicle accidents; driving counseling essential",
+    "H1N1 influenza and Pandemrix vaccination associated with narcolepsy onset in genetically susceptible individuals"
+  ],
+  "specialistType": ["sleep medicine specialist", "neurologist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Bassetti CLA, et al. Narcolepsy - clinical spectrum, aetiopathophysiology, diagnosis and treatment. Nat Rev Neurol. 2019;15(9):519-539.",
+    "Mahoney CE, et al. The neurobiological basis of narcolepsy. Nat Rev Neurosci. 2019;20(2):83-93.",
+    "American Academy of Sleep Medicine. International Classification of Sleep Disorders. 3rd ed. Darien, IL: AASM; 2014.",
+    "Liblau RS, et al. Hypocretin (orexin) biology and the pathophysiology of narcolepsy with cataplexy. Lancet Neurol. 2015;14(3):318-328."
+  ],
+  "confidenceInData": "medium"
+}

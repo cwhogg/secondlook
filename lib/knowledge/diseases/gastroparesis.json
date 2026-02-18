@@ -1,0 +1,211 @@
+{
+  "id": "gastroparesis",
+  "name": "Gastroparesis",
+  "aliases": [
+    "Delayed Gastric Emptying",
+    "Gastric Stasis",
+    "Gastroparesis Syndrome"
+  ],
+  "icd10Codes": ["K31.84"],
+  "prevalence": {
+    "estimate": "1 in 2,500 to 1 in 4,000",
+    "range": "0.025%-0.04%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 60, "peak": 40 },
+    "sexPredilection": "female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ACG Clinical Guideline: Gastroparesis (2013)",
+    "criteria": [
+      {
+        "id": "gp-maj1",
+        "description": "Upper GI symptoms suggestive of gastric retention (nausea, vomiting, early satiety, postprandial fullness, bloating)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "gp-maj2",
+        "description": "Objective evidence of delayed gastric emptying (scintigraphy: > 10% retention at 4 hours)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "gp-maj3",
+        "description": "Absence of mechanical gastric outlet obstruction (confirmed by upper endoscopy or imaging)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "gp-sup1",
+        "description": "Identified etiology (diabetic, post-surgical, idiopathic)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "gp-sup2",
+        "description": "Wireless motility capsule showing delayed gastric emptying",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Symptoms of delayed gastric emptying, objective documentation of delayed emptying on gastric scintigraphy (>10% retention at 4 hours using standardized meal), and exclusion of mechanical obstruction.",
+    "notes": "Diabetic gastroparesis accounts for ~33% of cases; idiopathic ~36%; post-surgical ~13%. Medications affecting motility must be stopped before testing."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Nausea",
+        "snomedCode": "422587007",
+        "frequency": 0.92,
+        "bodySystem": "gastrointestinal",
+        "notes": "Most common symptom; often persistent and debilitating"
+      },
+      {
+        "symptomName": "Vomiting of undigested food hours after eating",
+        "snomedCode": "422400008",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "notes": "Vomitus contains recognizable food eaten hours earlier"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Early satiety",
+        "snomedCode": "422868009",
+        "frequency": 0.80,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Postprandial fullness/bloating",
+        "snomedCode": "248490005",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain/discomfort",
+        "snomedCode": "21522001",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Epigastric predominant; correlates poorly with emptying rate"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.50,
+        "bodySystem": "general"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Gastroesophageal reflux",
+        "snomedCode": "235595009",
+        "frequency": 0.40,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Erratic blood glucose control (in diabetics)",
+        "frequency": 0.35,
+        "bodySystem": "endocrine",
+        "notes": "Unpredictable absorption of nutrients leads to glycemic variability"
+      },
+      {
+        "symptomName": "Visible upper abdominal distension",
+        "frequency": 0.30,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Bezoar formation",
+        "snomedCode": "31474005",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Retained food may form phytobezoars"
+      },
+      {
+        "symptomName": "Malnutrition/cachexia",
+        "snomedCode": "248325000",
+        "frequency": 0.08,
+        "bodySystem": "general",
+        "notes": "Severe cases may require enteral or parenteral nutrition"
+      },
+      {
+        "symptomName": "Aspiration pneumonia",
+        "snomedCode": "422588002",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "endocrine",
+    "general"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "HbA1c elevated in diabetic gastroparesis",
+      "Nutritional deficiencies (iron, vitamin D, B12) in severe cases",
+      "Electrolyte abnormalities from protracted vomiting"
+    ],
+    "imaging": [
+      "4-hour gastric emptying scintigraphy (gold standard): >10% retention at 4 hours is abnormal",
+      "CT abdomen to exclude mechanical obstruction",
+      "Upper GI series may show retained food/barium in stomach"
+    ],
+    "genetic": [
+      "No established single-gene cause for most cases",
+      "SCN5A sodium channel variants identified in some idiopathic cases"
+    ],
+    "other": [
+      "Upper endoscopy: retained food in fasting stomach, no mechanical obstruction",
+      "Wireless motility capsule (SmartPill) as alternative to scintigraphy",
+      "Gastric electrical activity testing (electrogastrography) may show dysrhythmias"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "superior-mesenteric-artery-syndrome",
+      "distinguishingFeatures": [
+        "SMA syndrome causes duodenal rather than gastric obstruction",
+        "CT angiography shows narrowed aortomesenteric angle in SMA syndrome"
+      ]
+    },
+    {
+      "diseaseId": "chronic-intestinal-pseudo-obstruction",
+      "distinguishingFeatures": [
+        "CIPO involves diffuse intestinal dysmotility beyond stomach",
+        "CIPO shows dilated bowel loops on imaging"
+      ]
+    },
+    {
+      "diseaseId": "cyclic-vomiting-syndrome",
+      "distinguishingFeatures": [
+        "CVS has episodic pattern with symptom-free intervals",
+        "Gastric emptying is typically normal between episodes in CVS"
+      ]
+    }
+  ],
+  "redFlags": [
+    "New-onset gastroparesis in patient > 55 years (exclude malignancy)",
+    "Severe dehydration or electrolyte imbalance from intractable vomiting",
+    "Bezoar formation causing complete gastric outlet obstruction",
+    "Recurrent diabetic ketoacidosis from erratic glucose control"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Motility Specialist",
+    "Endocrinologist",
+    "Dietitian"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Camilleri M, et al. ACG Clinical Guideline: Gastroparesis. Am J Gastroenterol. 2013;108(1):18-37.",
+    "Parkman HP, et al. American Gastroenterological Association technical review on the diagnosis and treatment of gastroparesis. Gastroenterology. 2004;127(5):1592-1622.",
+    "Lacy BE, et al. AGA Clinical Practice Update on Management of Medically Refractory Gastroparesis. Gastroenterology. 2022;162(6):1762-1774."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,102 @@
+{
+  "id": "primary-biliary-cholangitis",
+  "name": "Primary Biliary Cholangitis",
+  "aliases": ["PBC", "Primary Biliary Cirrhosis", "Chronic Non-suppurative Destructive Cholangitis"],
+  "icd10Codes": ["K74.3"],
+  "omimId": "109720",
+  "orphanetId": "186",
+  "prevalence": {
+    "estimate": "20-40 per 100,000",
+    "range": "20-40 per 100,000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 30, "max": 65, "peak": 50 },
+    "sexPredilection": "female",
+    "ethnicAssociations": ["Northern European", "All ethnic groups affected"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "AASLD/EASL Diagnostic Criteria for PBC",
+    "criteria": [
+      { "id": "pbc-1", "description": "Elevated alkaline phosphatase (ALP) and/or GGT indicating cholestasis", "category": "major", "requiredForDiagnosis": false },
+      { "id": "pbc-2", "description": "Positive anti-mitochondrial antibody (AMA) >= 1:40 or AMA-M2 positive", "category": "major", "requiredForDiagnosis": false },
+      { "id": "pbc-3", "description": "Liver biopsy showing non-suppurative destructive cholangitis (florid duct lesion) and granulomatous destruction of interlobular bile ducts", "category": "major", "requiredForDiagnosis": false },
+      { "id": "pbc-4", "description": "PBC-specific ANA (anti-sp100, anti-gp210) in AMA-negative patients", "category": "supportive", "requiredForDiagnosis": false }
+    ],
+    "minimumForDiagnosis": "At least 2 of 3: cholestatic biochemistry, positive AMA (or PBC-specific ANA), and compatible liver histology",
+    "notes": "Diagnosis can often be made without liver biopsy if AMA is positive and cholestatic liver enzymes are present. AMA-negative PBC (~5%) may have PBC-specific ANA (anti-sp100, anti-gp210)."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      { "symptomName": "Florid duct lesion on liver biopsy", "frequency": 0.40, "bodySystem": "Hepatic", "notes": "Granulomatous destruction of interlobular bile ducts; pathognomonic but not always seen" },
+      { "symptomName": "AMA-M2 antibody positivity with cholestasis", "frequency": 0.95, "bodySystem": "Laboratory", "notes": "Highly specific for PBC (>95% specificity)" }
+    ],
+    "common": [
+      { "symptomName": "Fatigue", "snomedCode": "84229001", "frequency": 0.80, "bodySystem": "Constitutional", "notes": "Most common symptom; poorly correlated with disease severity" },
+      { "symptomName": "Pruritus", "snomedCode": "418290006", "frequency": 0.60, "bodySystem": "Dermatologic", "notes": "Can be severe and debilitating; often worse at night" },
+      { "symptomName": "Sicca symptoms (dry eyes, dry mouth)", "snomedCode": "87715008", "frequency": 0.40, "bodySystem": "Oral/Ocular", "notes": "Secondary Sjogren overlap common" },
+      { "symptomName": "Right upper quadrant discomfort", "snomedCode": "21522001", "frequency": 0.25, "bodySystem": "Hepatic" }
+    ],
+    "occasional": [
+      { "symptomName": "Jaundice", "snomedCode": "18165001", "frequency": 0.20, "bodySystem": "Hepatic", "notes": "Late manifestation indicating progressive disease" },
+      { "symptomName": "Xanthomas and xanthelasma", "snomedCode": "36811006", "frequency": 0.15, "bodySystem": "Dermatologic", "notes": "Hypercholesterolemia from cholestasis" },
+      { "symptomName": "Hepatomegaly", "snomedCode": "80515008", "frequency": 0.25, "bodySystem": "Hepatic" },
+      { "symptomName": "Hyperpigmentation", "snomedCode": "49765009", "frequency": 0.20, "bodySystem": "Dermatologic" },
+      { "symptomName": "Osteoporosis/osteopenia", "snomedCode": "64859006", "frequency": 0.30, "bodySystem": "Musculoskeletal", "notes": "Metabolic bone disease from cholestasis-related vitamin D malabsorption" }
+    ],
+    "rare": [
+      { "symptomName": "Portal hypertension (varices, ascites)", "snomedCode": "34742003", "frequency": 0.10, "bodySystem": "Hepatic", "notes": "Indicates advanced cirrhosis; can occur before cirrhosis (nodular regenerative hyperplasia)" },
+      { "symptomName": "Hepatocellular carcinoma", "snomedCode": "25370001", "frequency": 0.03, "bodySystem": "Hepatic/Oncologic" },
+      { "symptomName": "Fat-soluble vitamin deficiency (A, D, E, K)", "frequency": 0.10, "bodySystem": "Nutritional" },
+      { "symptomName": "Steatorrhea", "snomedCode": "267063001", "frequency": 0.05, "bodySystem": "Gastrointestinal" }
+    ]
+  },
+  "systemsAffected": ["Hepatic", "Dermatologic", "Musculoskeletal", "Oral/Ocular", "Gastrointestinal"],
+  "keyFindings": {
+    "laboratory": [
+      "AMA positive (>95%; anti-M2 component most specific)",
+      "Elevated ALP (cholestatic pattern)",
+      "Elevated GGT",
+      "Elevated IgM (polyclonal)",
+      "Elevated total cholesterol (especially with advanced cholestasis)",
+      "ALT/AST mildly elevated",
+      "Bilirubin elevated in advanced disease (prognostic marker)",
+      "PBC-specific ANA: anti-sp100 (nuclear dots), anti-gp210 (nuclear membrane)"
+    ],
+    "imaging": [
+      "Ultrasound: normal or hepatomegaly; excludes biliary obstruction",
+      "MRCP: normal intrahepatic and extrahepatic bile ducts (distinguishes from PSC)",
+      "Transient elastography: liver stiffness for fibrosis staging",
+      "DEXA scan: osteoporosis screening"
+    ],
+    "genetic": [
+      "HLA-DRB1*08 association",
+      "IL-12A and IL-12RB2 gene variants",
+      "IRF5-TNPO3 association"
+    ],
+    "other": [
+      "Liver biopsy: florid duct lesion (granulomatous cholangitis), portal inflammation, ductopenia, fibrosis staging (Ludwig stages I-IV or Scheuer stages)"
+    ]
+  },
+  "differentialDiagnoses": [
+    { "diseaseId": "primary-sclerosing-cholangitis", "distinguishingFeatures": ["Characteristic bile duct changes on MRCP (beading/strictures)", "IBD association", "Male predominance", "AMA negative"] },
+    { "diseaseId": "autoimmune-hepatitis", "distinguishingFeatures": ["Hepatocellular enzyme pattern", "ANA/SMA positive", "Interface hepatitis on biopsy", "Can overlap with PBC"] },
+    { "diseaseId": "drug-induced-cholestasis", "distinguishingFeatures": ["Temporal drug relationship", "AMA negative", "Resolution after drug withdrawal"] },
+    { "diseaseId": "sarcoidosis", "distinguishingFeatures": ["Non-caseating granulomas", "Bilateral hilar lymphadenopathy", "Multi-organ involvement", "Elevated ACE"] }
+  ],
+  "redFlags": [
+    "Rising bilirubin (indicates progressive disease/need for transplant evaluation)",
+    "Development of portal hypertension/variceal bleeding",
+    "Intractable pruritus unresponsive to therapy",
+    "Inadequate response to UDCA (ALP >1.67x ULN after 12 months of therapy)",
+    "Overlap features with autoimmune hepatitis (elevated ALT, high IgG)"
+  ],
+  "specialistType": ["Hepatology", "Gastroenterology"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Lindor KD, et al. Primary Biliary Cholangitis: 2018 Practice Guidance from the American Association for the Study of Liver Diseases. Hepatology. 2019;69(1):394-419.",
+    "European Association for the Study of the Liver. EASL Clinical Practice Guidelines: The diagnosis and management of patients with primary biliary cholangitis. J Hepatol. 2017;67(1):145-172.",
+    "Lleo A, et al. Primary biliary cholangitis. Lancet. 2020;396(10266):1915-1926."
+  ],
+  "confidenceInData": "medium"
+}

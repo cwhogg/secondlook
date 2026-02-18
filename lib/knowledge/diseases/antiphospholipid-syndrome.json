@@ -1,0 +1,110 @@
+{
+  "id": "antiphospholipid-syndrome",
+  "name": "Antiphospholipid Syndrome",
+  "aliases": ["APS", "Hughes Syndrome", "Antiphospholipid Antibody Syndrome", "APLS"],
+  "icd10Codes": ["D68.61", "D68.62"],
+  "omimId": "107320",
+  "orphanetId": "399",
+  "prevalence": {
+    "estimate": "40-50 per 100,000",
+    "range": "40-50 per 100,000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 50, "peak": 35 },
+    "sexPredilection": "female",
+    "ethnicAssociations": ["No strong ethnic predilection"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "2023 ACR/EULAR Classification Criteria for Antiphospholipid Syndrome",
+    "criteria": [
+      { "id": "aps-1", "description": "At least one positive aPL test (lupus anticoagulant, anticardiolipin IgG/IgM, anti-beta2-glycoprotein I IgG/IgM) on two or more occasions at least 12 weeks apart", "category": "major", "requiredForDiagnosis": true },
+      { "id": "aps-2", "description": "Venous thromboembolism (DVT, PE, or other venous thrombosis)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "aps-3", "description": "Arterial thrombosis (stroke, MI, peripheral arterial thrombosis)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "aps-4", "description": "Pregnancy morbidity: unexplained fetal death >= 10 weeks gestation", "category": "major", "requiredForDiagnosis": false },
+      { "id": "aps-5", "description": "Pregnancy morbidity: premature birth < 34 weeks due to eclampsia, preeclampsia, or placental insufficiency", "category": "major", "requiredForDiagnosis": false },
+      { "id": "aps-6", "description": "Pregnancy morbidity: >= 3 consecutive unexplained miscarriages < 10 weeks gestation", "category": "major", "requiredForDiagnosis": false },
+      { "id": "aps-7", "description": "Microvascular involvement (livedo racemosa, nephropathy, cardiac valve disease)", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "aps-8", "description": "Thrombocytopenia (platelet count 20,000-130,000/mm3)", "category": "supportive", "requiredForDiagnosis": false }
+    ],
+    "minimumForDiagnosis": "Positive aPL entry criterion (score >= 3) plus at least one clinical domain with score >= 3; total combined score >= 7",
+    "notes": "The 2023 criteria use a weighted scoring system. aPL positivity must be confirmed on two occasions at least 12 weeks apart. Catastrophic APS (CAPS) is a severe variant with multi-organ thrombosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      { "symptomName": "Recurrent venous thromboembolism", "snomedCode": "111293003", "frequency": 0.55, "bodySystem": "Vascular", "notes": "DVT most common; also cerebral venous sinus, portal, hepatic veins" },
+      { "symptomName": "Recurrent pregnancy loss", "snomedCode": "267197006", "frequency": 0.40, "bodySystem": "Obstetric", "notes": "Especially unexplained fetal death after 10 weeks" },
+      { "symptomName": "Livedo reticularis/racemosa", "snomedCode": "238790005", "frequency": 0.25, "bodySystem": "Dermatologic", "notes": "Persistent violaceous net-like pattern" }
+    ],
+    "common": [
+      { "symptomName": "Deep vein thrombosis", "snomedCode": "128053003", "frequency": 0.40, "bodySystem": "Vascular" },
+      { "symptomName": "Pulmonary embolism", "snomedCode": "59282003", "frequency": 0.25, "bodySystem": "Pulmonary" },
+      { "symptomName": "Stroke or transient ischemic attack", "snomedCode": "230690007", "frequency": 0.20, "bodySystem": "Neurological" },
+      { "symptomName": "Thrombocytopenia", "snomedCode": "302215000", "frequency": 0.30, "bodySystem": "Hematologic" },
+      { "symptomName": "Migraine headaches", "snomedCode": "37796009", "frequency": 0.30, "bodySystem": "Neurological" }
+    ],
+    "occasional": [
+      { "symptomName": "Cardiac valve thickening/vegetations", "snomedCode": "368009", "frequency": 0.15, "bodySystem": "Cardiovascular", "notes": "Libman-Sacks endocarditis" },
+      { "symptomName": "APS nephropathy", "snomedCode": "236499007", "frequency": 0.10, "bodySystem": "Renal", "notes": "Thrombotic microangiopathy of renal vessels" },
+      { "symptomName": "Hemolytic anemia", "snomedCode": "61261009", "frequency": 0.10, "bodySystem": "Hematologic" },
+      { "symptomName": "Chorea", "snomedCode": "271700006", "frequency": 0.05, "bodySystem": "Neurological" },
+      { "symptomName": "Digital gangrene", "snomedCode": "297169001", "frequency": 0.05, "bodySystem": "Vascular" }
+    ],
+    "rare": [
+      { "symptomName": "Catastrophic APS (multi-organ thrombosis)", "snomedCode": "723301006", "frequency": 0.01, "bodySystem": "Multi-system", "notes": "Life-threatening; rapid multi-organ failure from widespread thrombotic microangiopathy" },
+      { "symptomName": "Adrenal hemorrhagic infarction", "snomedCode": "52280004", "frequency": 0.02, "bodySystem": "Endocrine" },
+      { "symptomName": "Budd-Chiari syndrome", "snomedCode": "82385007", "frequency": 0.02, "bodySystem": "Hepatic" },
+      { "symptomName": "Avascular necrosis of bone", "snomedCode": "399097000", "frequency": 0.03, "bodySystem": "Musculoskeletal" }
+    ]
+  },
+  "systemsAffected": ["Vascular", "Neurological", "Obstetric", "Hematologic", "Cardiovascular", "Renal", "Dermatologic", "Pulmonary"],
+  "keyFindings": {
+    "laboratory": [
+      "Lupus anticoagulant positive (most predictive of thrombosis)",
+      "Anticardiolipin antibodies IgG/IgM (moderate-high titer)",
+      "Anti-beta2-glycoprotein I antibodies IgG/IgM",
+      "Triple aPL positivity (highest thrombotic risk)",
+      "Prolonged aPTT (due to lupus anticoagulant)",
+      "Thrombocytopenia",
+      "Direct Coombs test positive",
+      "False positive VDRL/RPR"
+    ],
+    "imaging": [
+      "Doppler ultrasound: venous thrombosis",
+      "CT angiography: pulmonary embolism or arterial thrombosis",
+      "MRI brain: cerebral infarcts in young patients",
+      "Echocardiography: valve thickening, vegetations (Libman-Sacks)",
+      "Renal biopsy: thrombotic microangiopathy"
+    ],
+    "genetic": [
+      "No established monogenic cause",
+      "HLA-DR7 association reported",
+      "Possible associations with complement gene variants"
+    ],
+    "other": [
+      "Skin biopsy: non-inflammatory thrombotic vasculopathy",
+      "Placental pathology: infarction, decidual vasculopathy"
+    ]
+  },
+  "differentialDiagnoses": [
+    { "diseaseId": "systemic-lupus-erythematosus", "distinguishingFeatures": ["Multi-organ autoimmune inflammation", "ANA and anti-dsDNA positive", "Can coexist (secondary APS)"] },
+    { "diseaseId": "heparin-induced-thrombocytopenia", "distinguishingFeatures": ["Temporal relationship with heparin", "Anti-PF4 antibodies", "No aPL positivity"] },
+    { "diseaseId": "thrombotic-thrombocytopenic-purpura", "distinguishingFeatures": ["ADAMTS13 deficiency", "Schistocytes on smear", "Fever, neurologic changes, renal failure"] },
+    { "diseaseId": "factor-v-leiden", "distinguishingFeatures": ["Genetic thrombophilia", "No autoantibodies", "Family history of VTE"] }
+  ],
+  "redFlags": [
+    "Multi-organ thrombosis developing over days (catastrophic APS)",
+    "Thrombosis despite adequate anticoagulation",
+    "New neurological deficits in young patient",
+    "Rapid decline in platelet count with new thrombosis",
+    "Adrenal crisis suggesting adrenal infarction"
+  ],
+  "specialistType": ["Rheumatology", "Hematology", "Obstetrics (High-Risk)"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Barbhaiya M, et al. 2023 ACR/EULAR Antiphospholipid Syndrome Classification Criteria. Arthritis Rheumatol. 2023;75(10):1687-1702.",
+    "Tektonidou MG, et al. EULAR recommendations for the management of antiphospholipid syndrome in adults. Ann Rheum Dis. 2019;78(10):1296-1304.",
+    "Cervera R, et al. Antiphospholipid syndrome: clinical and immunologic manifestations and patterns of disease expression in a cohort of 1,000 patients. Arthritis Rheum. 2002;46(4):1019-1027."
+  ],
+  "confidenceInData": "medium"
+}

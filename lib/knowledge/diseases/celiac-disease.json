@@ -1,0 +1,108 @@
+{
+  "id": "celiac-disease",
+  "name": "Celiac Disease",
+  "aliases": ["Coeliac Disease", "Celiac Sprue", "Gluten-Sensitive Enteropathy", "Non-Tropical Sprue"],
+  "icd10Codes": ["K90.0"],
+  "omimId": "212750",
+  "orphanetId": "555",
+  "prevalence": {
+    "estimate": "1 in 100 (1%)",
+    "range": "0.5-2% globally",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 1, "max": 70, "peak": 40 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": ["Northern European (highest prevalence)", "Middle Eastern (Sahrawi population)", "All ethnicities can be affected"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ACG Guidelines / ESPGHAN 2020 Criteria for Celiac Disease",
+    "criteria": [
+      { "id": "cd-1", "description": "Positive tissue transglutaminase IgA (tTG-IgA) antibody (>10x upper limit of normal in ESPGHAN pediatric criteria allows biopsy-free diagnosis)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "cd-2", "description": "Positive endomysial antibody (EMA-IgA)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "cd-3", "description": "Positive deamidated gliadin peptide antibodies (DGP-IgG) - especially useful in IgA-deficient patients", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "cd-4", "description": "Duodenal biopsy showing villous atrophy (Marsh 3), crypt hyperplasia, and increased intraepithelial lymphocytes", "category": "major", "requiredForDiagnosis": false },
+      { "id": "cd-5", "description": "Clinical and serologic improvement on gluten-free diet", "category": "supportive", "requiredForDiagnosis": false },
+      { "id": "cd-6", "description": "HLA-DQ2 or HLA-DQ8 positivity (nearly 100% of celiac patients carry one or both)", "category": "supportive", "requiredForDiagnosis": false }
+    ],
+    "minimumForDiagnosis": "Positive serology (tTG-IgA) plus confirmatory duodenal biopsy (Marsh 3) in adults; in children, tTG-IgA >10x ULN plus positive EMA on separate sample can be biopsy-free",
+    "notes": "Patient must be on a gluten-containing diet at time of testing. IgA-deficient patients (2-3% of celiac patients) need IgG-based testing. Negative HLA-DQ2/DQ8 essentially excludes celiac disease."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      { "symptomName": "Villous atrophy with crypt hyperplasia on duodenal biopsy (Marsh 3)", "frequency": 0.85, "bodySystem": "Gastrointestinal", "notes": "Must be on gluten-containing diet; at least 4-6 biopsies from duodenum including bulb" },
+      { "symptomName": "Dermatitis herpetiformis", "snomedCode": "111196000", "frequency": 0.10, "bodySystem": "Dermatologic", "notes": "Intensely pruritic papulovesicular rash on extensor surfaces; granular IgA deposits at dermal papillae; pathognomonic for celiac disease" }
+    ],
+    "common": [
+      { "symptomName": "Chronic diarrhea", "snomedCode": "236071009", "frequency": 0.50, "bodySystem": "Gastrointestinal" },
+      { "symptomName": "Bloating and abdominal distension", "snomedCode": "248490000", "frequency": 0.60, "bodySystem": "Gastrointestinal" },
+      { "symptomName": "Iron deficiency anemia", "snomedCode": "87522002", "frequency": 0.50, "bodySystem": "Hematologic", "notes": "Most common extraintestinal presentation" },
+      { "symptomName": "Fatigue", "snomedCode": "84229001", "frequency": 0.60, "bodySystem": "Constitutional" },
+      { "symptomName": "Weight loss", "snomedCode": "89362005", "frequency": 0.30, "bodySystem": "Constitutional" }
+    ],
+    "occasional": [
+      { "symptomName": "Osteoporosis/osteopenia", "snomedCode": "64859006", "frequency": 0.25, "bodySystem": "Musculoskeletal" },
+      { "symptomName": "Elevated liver transaminases (cryptogenic)", "snomedCode": "166603001", "frequency": 0.20, "bodySystem": "Hepatic" },
+      { "symptomName": "Peripheral neuropathy", "snomedCode": "42658009", "frequency": 0.10, "bodySystem": "Neurological" },
+      { "symptomName": "Recurrent aphthous stomatitis", "snomedCode": "26284000", "frequency": 0.15, "bodySystem": "Oral" },
+      { "symptomName": "Infertility and recurrent miscarriages", "snomedCode": "6738008", "frequency": 0.10, "bodySystem": "Reproductive" }
+    ],
+    "rare": [
+      { "symptomName": "Cerebellar ataxia (gluten ataxia)", "snomedCode": "85102008", "frequency": 0.03, "bodySystem": "Neurological" },
+      { "symptomName": "Enteropathy-associated T-cell lymphoma (EATL)", "snomedCode": "404138008", "frequency": 0.01, "bodySystem": "Gastrointestinal/Oncologic", "notes": "Associated with refractory celiac disease type II" },
+      { "symptomName": "Dental enamel defects", "snomedCode": "37031009", "frequency": 0.10, "bodySystem": "Oral" },
+      { "symptomName": "Cardiomyopathy (dilated)", "snomedCode": "195021004", "frequency": 0.02, "bodySystem": "Cardiovascular" },
+      { "symptomName": "Refractory celiac disease/ulcerative jejunitis", "frequency": 0.02, "bodySystem": "Gastrointestinal" }
+    ]
+  },
+  "systemsAffected": ["Gastrointestinal", "Hematologic", "Musculoskeletal", "Neurological", "Dermatologic", "Reproductive", "Hepatic", "Oral"],
+  "keyFindings": {
+    "laboratory": [
+      "tTG-IgA positive (sensitivity 93-96%, specificity 96-98%)",
+      "EMA-IgA positive (highly specific)",
+      "DGP-IgG positive (useful in IgA deficiency)",
+      "Total IgA level (to exclude IgA deficiency)",
+      "Iron deficiency anemia (low ferritin, low iron, elevated TIBC)",
+      "Folate and/or vitamin B12 deficiency",
+      "Vitamin D deficiency",
+      "Elevated liver transaminases (up to 20%)",
+      "Low calcium, low zinc"
+    ],
+    "imaging": [
+      "CT/MRI enterography: small bowel wall thickening, jejunal fold reversal (jejunization of ileum), mesenteric lymphadenopathy",
+      "DEXA scan: osteopenia or osteoporosis",
+      "Video capsule endoscopy: villous atrophy, scalloping of duodenal folds"
+    ],
+    "genetic": [
+      "HLA-DQ2.5 (DQA1*05:01/DQB1*02:01) present in ~90% of celiac patients",
+      "HLA-DQ8 (DQA1*03/DQB1*03:02) present in remaining ~5-10%",
+      "Absence of HLA-DQ2 and HLA-DQ8 has >99% negative predictive value"
+    ],
+    "other": [
+      "Upper endoscopy with duodenal biopsies: villous atrophy (Marsh-Oberhuber classification), crypt hyperplasia, increased IELs (>25/100 enterocytes)",
+      "Skin biopsy (dermatitis herpetiformis): granular IgA deposits at dermal papillae on direct immunofluorescence"
+    ]
+  },
+  "differentialDiagnoses": [
+    { "diseaseId": "irritable-bowel-syndrome", "distinguishingFeatures": ["Normal serology and biopsy", "No malabsorption markers", "Fluctuating symptoms without weight loss"] },
+    { "diseaseId": "inflammatory-bowel-disease-crohn", "distinguishingFeatures": ["Transmural inflammation", "Skip lesions", "Can affect any part of GI tract", "Granulomas on biopsy"] },
+    { "diseaseId": "tropical-sprue", "distinguishingFeatures": ["History of travel to endemic area", "B12 deficiency prominent", "Responds to antibiotics", "Negative celiac serology"] },
+    { "diseaseId": "whipple-disease", "distinguishingFeatures": ["PAS-positive macrophages on biopsy", "Tropheryma whipplei PCR positive", "Arthritis, neurologic, cardiac involvement"] },
+    { "diseaseId": "common-variable-immunodeficiency", "distinguishingFeatures": ["Low immunoglobulins", "Recurrent infections", "Nodular lymphoid hyperplasia", "No response to GFD"] }
+  ],
+  "redFlags": [
+    "Failure to improve on strict gluten-free diet after 6-12 months (consider refractory celiac disease)",
+    "Recurrent symptoms after initial improvement (dietary non-adherence vs. refractory disease)",
+    "New alarm symptoms (significant weight loss, GI bleeding) suggesting lymphoma",
+    "Unexplained iron deficiency anemia refractory to supplementation",
+    "Dermatitis herpetiformis not responding to dapsone and GFD"
+  ],
+  "specialistType": ["Gastroenterology", "Nutrition/Dietetics", "Dermatology"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Rubio-Tapia A, et al. ACG Clinical Guidelines: Diagnosis and Management of Celiac Disease. Am J Gastroenterol. 2023;118(1):59-76.",
+    "Husby S, et al. European Society Paediatric Gastroenterology, Hepatology and Nutrition Guidelines for Diagnosing Coeliac Disease 2020. J Pediatr Gastroenterol Nutr. 2020;70(1):141-156.",
+    "Lebwohl B, et al. Celiac disease. Lancet. 2018;391(10115):70-81."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,234 @@
+{
+  "id": "cryopyrin-associated-periodic-syndrome",
+  "name": "Cryopyrin-Associated Periodic Syndrome",
+  "aliases": [
+    "CAPS",
+    "NLRP3-Associated Autoinflammatory Disease",
+    "Familial Cold Autoinflammatory Syndrome (FCAS)",
+    "Muckle-Wells Syndrome (MWS)",
+    "Neonatal-Onset Multisystem Inflammatory Disease (NOMID)",
+    "Chronic Infantile Neurologic Cutaneous and Articular Syndrome (CINCA)"
+  ],
+  "icd10Codes": ["M04.2"],
+  "omimId": "120100",
+  "orphanetId": "208650",
+  "prevalence": {
+    "estimate": "1 to 3 per 1,000,000",
+    "range": "0.0001%-0.0003%",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 10, "peak": 0 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Eurofever/PRINTO Classification Criteria (2019)",
+    "criteria": [
+      {
+        "id": "caps-maj1",
+        "description": "Recurrent episodes of systemic inflammation with urticarial-like rash",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "caps-maj2",
+        "description": "Confirmed pathogenic NLRP3 (CIAS1) gene mutation",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "caps-min1",
+        "description": "Cold or environmental trigger (FCAS)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "caps-min2",
+        "description": "Sensorineural hearing loss (MWS/NOMID)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "caps-min3",
+        "description": "Chronic aseptic meningitis (NOMID/CINCA)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "caps-min4",
+        "description": "Skeletal dysplasia/overgrowth of epiphyses (NOMID/CINCA)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "NLRP3 pathogenic mutation with compatible clinical features. Clinical diagnosis may be made with typical presentation including urticarial rash, fever, and musculoskeletal/neurologic involvement. Somatic mosaicism accounts for ~30% of NOMID cases without germline mutations.",
+    "notes": "CAPS is a spectrum from mild (FCAS: cold-triggered) to moderate (MWS: hearing loss, amyloidosis risk) to severe (NOMID/CINCA: CNS inflammation, skeletal dysplasia). All result from NLRP3 gain-of-function."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Urticarial-like rash (neutrophilic urticaria, non-pruritic)",
+        "frequency": 0.95,
+        "bodySystem": "integumentary",
+        "notes": "Migratory, non-pruritic, neutrophilic on biopsy; not true urticaria"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Recurrent/daily fevers",
+        "snomedCode": "386661006",
+        "frequency": 0.90,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Arthralgias/arthritis",
+        "snomedCode": "57676002",
+        "frequency": 0.80,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Conjunctivitis",
+        "snomedCode": "9826008",
+        "frequency": 0.70,
+        "bodySystem": "ophthalmologic"
+      },
+      {
+        "symptomName": "Fatigue/malaise",
+        "snomedCode": "84229001",
+        "frequency": 0.75,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Cold-triggered episodes (FCAS)",
+        "frequency": 0.90,
+        "bodySystem": "general",
+        "notes": "Specific to FCAS subtype; episodes 4-6 hours after cold exposure"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Sensorineural hearing loss",
+        "snomedCode": "60700002",
+        "frequency": 0.50,
+        "bodySystem": "neurologic",
+        "notes": "Progressive; characteristic of MWS and NOMID"
+      },
+      {
+        "symptomName": "Headache (from chronic meningitis in NOMID)",
+        "snomedCode": "25064002",
+        "frequency": 0.40,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Myalgia",
+        "snomedCode": "68962001",
+        "frequency": 0.40,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "AA amyloidosis (MWS)",
+        "frequency": 0.25,
+        "bodySystem": "renal",
+        "notes": "Risk ~25% in MWS; highest among CAPS subtypes"
+      },
+      {
+        "symptomName": "Papilledema and visual impairment (NOMID)",
+        "frequency": 0.30,
+        "bodySystem": "ophthalmologic",
+        "notes": "From chronic intracranial pressure elevation in NOMID"
+      },
+      {
+        "symptomName": "Bony overgrowth of patellae and long bone epiphyses (NOMID)",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal",
+        "notes": "Specific to NOMID/CINCA"
+      },
+      {
+        "symptomName": "Cognitive impairment (NOMID)",
+        "frequency": 0.15,
+        "bodySystem": "neurologic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "integumentary",
+    "musculoskeletal",
+    "neurologic",
+    "ophthalmologic",
+    "general",
+    "renal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated ESR, CRP, SAA (often persistently elevated, especially in NOMID)",
+      "Leukocytosis with neutrophilia",
+      "Elevated ferritin",
+      "CSF pleocytosis (neutrophilic) in NOMID",
+      "Proteinuria if AA amyloidosis develops"
+    ],
+    "imaging": [
+      "MRI brain: leptomeningeal enhancement, cochlear enhancement in NOMID",
+      "X-rays: epiphyseal overgrowth, patellar enlargement in NOMID",
+      "CT inner ear: cochlear changes in hearing loss"
+    ],
+    "genetic": [
+      "NLRP3 (CIAS1) gene mutations on chromosome 1q44",
+      "Over 200 pathogenic variants described",
+      "Autosomal dominant (many de novo, especially NOMID)",
+      "Somatic mosaicism in ~30% of NOMID patients (standard sequencing may miss)"
+    ],
+    "other": [
+      "Skin biopsy of rash: neutrophilic infiltrate (neutrophilic urticaria), not mast cell-mediated",
+      "Audiometry: progressive sensorineural hearing loss",
+      "Ophthalmologic exam: papilledema, optic disc edema in NOMID",
+      "Dramatic response to IL-1 blockade (anakinra, canakinumab, rilonacept) is virtually diagnostic"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hyperimmunoglobulin-d-syndrome",
+      "distinguishingFeatures": [
+        "HIDS has elevated IgD, prominent lymphadenopathy, GI symptoms",
+        "HIDS confirmed by MVK mutations"
+      ]
+    },
+    {
+      "diseaseId": "schnitzler-syndrome",
+      "distinguishingFeatures": [
+        "Schnitzler syndrome has monoclonal IgM gammopathy",
+        "Schnitzler onset typically after age 40"
+      ]
+    },
+    {
+      "diseaseId": "systemic-juvenile-idiopathic-arthritis",
+      "distinguishingFeatures": [
+        "sJIA has quotidian fever with salmon rash, markedly elevated ferritin",
+        "sJIA lacks NLRP3 mutations"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Chronic meningitis with papilledema (NOMID - risk of vision loss)",
+    "Progressive hearing loss (may be irreversible if not treated early)",
+    "Proteinuria in MWS patient (AA amyloidosis)",
+    "Neonatal presentation with daily rash and persistent inflammation (NOMID)",
+    "Skeletal abnormalities in children"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Pediatric Rheumatologist",
+    "Medical Geneticist",
+    "Neurologist",
+    "Audiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Kuemmerle-Deschner JB, et al. Cryopyrin-associated periodic syndrome: an update on diagnosis and treatment response. Pediatr Rheumatol. 2017;15:65.",
+    "Gattorno M, et al. Classification criteria for autoinflammatory recurrent fevers. Ann Rheum Dis. 2019;78(8):1025-1032.",
+    "Goldbach-Mansky R, et al. Neonatal-onset multisystem inflammatory disease responsive to interleukin-1beta inhibition. N Engl J Med. 2006;355(6):581-592."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,214 @@
+{
+  "id": "eosinophilic-esophagitis",
+  "name": "Eosinophilic Esophagitis",
+  "aliases": [
+    "EoE",
+    "Allergic Esophagitis",
+    "Eosinophilic Oesophagitis"
+  ],
+  "icd10Codes": ["K20.0"],
+  "prevalence": {
+    "estimate": "1 in 2,000",
+    "range": "0.03%-0.07%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 5, "max": 50, "peak": 30 },
+    "sexPredilection": "male",
+    "ethnicAssociations": ["Caucasian"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Updated International Consensus Diagnostic Criteria for Eosinophilic Esophagitis (2018)",
+    "criteria": [
+      {
+        "id": "eoe-maj1",
+        "description": "Symptoms of esophageal dysfunction (dysphagia, food impaction, heartburn, chest pain)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "eoe-maj2",
+        "description": "Esophageal biopsies showing >= 15 eosinophils per high-power field",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "eoe-min1",
+        "description": "Mucosal eosinophilia isolated to the esophagus (not present in stomach/duodenum)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "eoe-min2",
+        "description": "Endoscopic features (rings, furrows, exudates, edema, strictures)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "eoe-sup1",
+        "description": "Personal or family history of atopy (asthma, eczema, allergic rhinitis)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Both major criteria required: symptoms of esophageal dysfunction AND >= 15 eos/hpf on esophageal biopsies. Secondary causes of esophageal eosinophilia should be excluded.",
+    "notes": "PPI-responsive esophageal eosinophilia is now considered part of the EoE spectrum and not a separate entity."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Dysphagia to solids",
+        "snomedCode": "30233002",
+        "frequency": 0.90,
+        "bodySystem": "gastrointestinal",
+        "notes": "Most common presenting symptom in adults"
+      },
+      {
+        "symptomName": "Food impaction",
+        "snomedCode": "235657003",
+        "frequency": 0.50,
+        "bodySystem": "gastrointestinal",
+        "notes": "Food bolus obstruction requiring emergency endoscopic removal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Heartburn/chest pain",
+        "snomedCode": "16331000",
+        "frequency": 0.60,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Food avoidance behaviors",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "notes": "Slow eating, excessive chewing, avoiding certain textures"
+      },
+      {
+        "symptomName": "Regurgitation",
+        "snomedCode": "249497008",
+        "frequency": 0.40,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Epigastric/upper abdominal pain",
+        "snomedCode": "235862006",
+        "frequency": 0.40,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Nausea",
+        "snomedCode": "422587007",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "snomedCode": "422400008",
+        "frequency": 0.20,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Feeding difficulties in children",
+        "frequency": 0.35,
+        "bodySystem": "gastrointestinal",
+        "notes": "More common presentation in pediatric population"
+      },
+      {
+        "symptomName": "Failure to thrive (pediatric)",
+        "snomedCode": "36440009",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Esophageal perforation (spontaneous)",
+        "frequency": 0.01,
+        "bodySystem": "gastrointestinal",
+        "notes": "Boerhaave-like presentation; rare but life-threatening"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.10,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Globus sensation",
+        "snomedCode": "103002002",
+        "frequency": 0.10,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "immunologic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Peripheral eosinophilia in ~50% of patients",
+      "Elevated serum IgE in ~70% of patients",
+      "Elevated food-specific IgE levels"
+    ],
+    "imaging": [
+      "Barium swallow may show ringed esophagus (feline esophagus), strictures, or narrow-caliber esophagus",
+      "EndoFLIP may demonstrate reduced esophageal distensibility"
+    ],
+    "genetic": [
+      "Polymorphisms in TSLP gene associated with increased risk",
+      "Variants in eotaxin-3 (CCL26) locus linked to susceptibility",
+      "CAPN14 gene variants associated with disease"
+    ],
+    "other": [
+      "Endoscopy: linear furrows, white exudates/plaques, concentric rings (trachealization), edema, strictures",
+      "EoE Endoscopic Reference Score (EREFS) for standardized grading",
+      "Biopsies should be taken from proximal and distal esophagus (at least 6 biopsies)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "gastroesophageal-reflux-disease",
+      "distinguishingFeatures": [
+        "GERD responds well to PPIs with complete eosinophil resolution",
+        "GERD eosinophilia is typically distal only",
+        "GERD lacks endoscopic features of rings/furrows"
+      ]
+    },
+    {
+      "diseaseId": "eosinophilic-gastroenteritis",
+      "distinguishingFeatures": [
+        "EGE involves stomach/intestinal eosinophilia beyond esophagus",
+        "EGE may present with ascites or intestinal obstruction"
+      ]
+    },
+    {
+      "diseaseId": "achalasia",
+      "distinguishingFeatures": [
+        "Achalasia shows aperistalsis on manometry",
+        "Achalasia causes dysphagia to both solids and liquids equally"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Acute food impaction requiring emergency endoscopy",
+    "Signs of esophageal perforation (severe chest pain, subcutaneous emphysema)",
+    "Significant weight loss or failure to thrive in children",
+    "Rapidly progressive dysphagia suggesting stricture formation"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Allergist/Immunologist",
+    "Pediatric Gastroenterologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Dellon ES, et al. Updated International Consensus Diagnostic Criteria for Eosinophilic Esophagitis. Gastroenterology. 2018;155(4):1022-1033.",
+    "Lucendo AJ, et al. Guidelines on eosinophilic esophagitis: evidence-based statements and recommendations. United European Gastroenterol J. 2017;5(3):335-358.",
+    "Hirano I, et al. AGA Institute and the Joint Task Force on Allergy-Immunology Practice Parameters Clinical Guidelines for the Management of Eosinophilic Esophagitis. Gastroenterology. 2020;158(6):1776-1786."
+  ],
+  "confidenceInData": "medium"
+}

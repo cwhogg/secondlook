@@ -1,0 +1,209 @@
+{
+  "id": "microscopic-colitis",
+  "name": "Microscopic Colitis",
+  "aliases": [
+    "Collagenous Colitis",
+    "Lymphocytic Colitis",
+    "MC"
+  ],
+  "icd10Codes": ["K52.89"],
+  "prevalence": {
+    "estimate": "1 in 500 to 1 in 1,000",
+    "range": "0.1%-0.2%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 50, "max": 80, "peak": 65 },
+    "sexPredilection": "female",
+    "ethnicAssociations": ["Northern European", "Caucasian"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "European Microscopic Colitis Group Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "mc-maj1",
+        "description": "Chronic or recurrent non-bloody watery diarrhea",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mc-maj2",
+        "description": "Normal or near-normal colonoscopic appearance",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mc-maj3",
+        "description": "Characteristic histological findings on colonic biopsies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mc-min1",
+        "description": "Collagenous type: thickened subepithelial collagen band >= 10 micrometers",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mc-min2",
+        "description": "Lymphocytic type: increased intraepithelial lymphocytes >= 20 per 100 epithelial cells",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Chronic watery diarrhea with normal/near-normal colonoscopy and characteristic histological findings. Biopsies must be taken from multiple colonic segments including right colon.",
+    "notes": "Collagenous and lymphocytic colitis are subtypes. Incomplete microscopic colitis is a recognized variant. Drug-induced forms are increasingly recognized."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chronic non-bloody watery diarrhea",
+        "snomedCode": "62315008",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal",
+        "notes": "Typically 4-9 watery stools per day; up to 15+ in severe cases"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fecal urgency",
+        "snomedCode": "75088002",
+        "frequency": 0.70,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal cramping/pain",
+        "snomedCode": "73063007",
+        "frequency": 0.60,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nocturnal diarrhea",
+        "frequency": 0.50,
+        "bodySystem": "gastrointestinal",
+        "notes": "Distinguishes from functional diarrhea"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.45,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Fecal incontinence",
+        "snomedCode": "72042002",
+        "frequency": 0.40,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Bloating",
+        "snomedCode": "248490005",
+        "frequency": 0.30,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.35,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Arthralgias",
+        "snomedCode": "57676002",
+        "frequency": 0.20,
+        "bodySystem": "musculoskeletal",
+        "notes": "Autoimmune association"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Dehydration",
+        "snomedCode": "34095006",
+        "frequency": 0.08,
+        "bodySystem": "general",
+        "notes": "In severe cases with high-volume diarrhea"
+      },
+      {
+        "symptomName": "Electrolyte abnormalities",
+        "frequency": 0.05,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Mucosal tears on colonoscopy",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Particularly in collagenous colitis due to mucosal fragility"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "immunologic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "ESR and CRP may be mildly elevated",
+      "Fecal calprotectin may be mildly elevated (usually < 200 mcg/g)",
+      "Autoimmune markers: ANA, anti-thyroid antibodies may be positive (autoimmune association)"
+    ],
+    "imaging": [
+      "Colonoscopy typically appears normal (hence 'microscopic')",
+      "Subtle changes may include edema, erythema, or mucosal lacerations",
+      "CT colonography is not diagnostic; histology is essential"
+    ],
+    "genetic": [
+      "Association with HLA-DQ2 and HLA-DQ8 (overlap with celiac disease)",
+      "No single causative gene identified"
+    ],
+    "other": [
+      "Colonic biopsies are essential (from right, transverse, and left colon)",
+      "Collagenous type: subepithelial collagen band >= 10 micrometers, surface epithelial damage",
+      "Lymphocytic type: >= 20 IELs per 100 epithelial cells without thickened collagen band",
+      "Drug history important: PPIs, NSAIDs, SSRIs, acarbose commonly implicated"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "irritable-bowel-syndrome-diarrhea",
+      "distinguishingFeatures": [
+        "IBS-D has normal colonic histology",
+        "IBS-D typically does not have nocturnal diarrhea"
+      ]
+    },
+    {
+      "diseaseId": "bile-acid-malabsorption",
+      "distinguishingFeatures": [
+        "BAM responds to bile acid sequestrants",
+        "BAM has elevated C4 or positive SeHCAT",
+        "BAM has normal colonic histology"
+      ]
+    },
+    {
+      "diseaseId": "celiac-disease",
+      "distinguishingFeatures": [
+        "Celiac disease has duodenal villous atrophy",
+        "Positive anti-tTG/anti-endomysial antibodies in celiac",
+        "Note: celiac and MC can coexist"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Bloody diarrhea (suggests alternative diagnosis such as IBD or ischemic colitis)",
+    "Severe dehydration requiring hospitalization",
+    "Failure to respond to budesonide (consider alternative diagnosis or refractory disease)",
+    "Development of colonic mucosal tears during colonoscopy"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Miehlke S, et al. European guidelines on microscopic colitis: UEG and EMCG statements and recommendations. United European Gastroenterol J. 2021;9(1):13-37.",
+    "Nguyen GC, et al. American Gastroenterological Association Institute Guideline on the Medical Management of Microscopic Colitis. Gastroenterology. 2016;150(1):242-246.",
+    "Pardi DS. Diagnosis and Management of Microscopic Colitis. Am J Gastroenterol. 2017;112(1):78-85."
+  ],
+  "confidenceInData": "medium"
+}

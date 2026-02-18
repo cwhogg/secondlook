@@ -1,0 +1,202 @@
+{
+  "id": "superior-mesenteric-artery-syndrome",
+  "name": "Superior Mesenteric Artery Syndrome",
+  "aliases": [
+    "SMA Syndrome",
+    "Wilkie Syndrome",
+    "Cast Syndrome",
+    "Arteriomesenteric Duodenal Compression"
+  ],
+  "icd10Codes": ["K31.5"],
+  "orphanetId": "97277",
+  "prevalence": {
+    "estimate": "0.013% to 0.3%",
+    "range": "0.013%-0.3%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 10, "max": 40, "peak": 20 },
+    "sexPredilection": "female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "sma-maj1",
+        "description": "Symptoms of proximal intestinal obstruction (postprandial epigastric pain, nausea, vomiting, weight loss)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sma-maj2",
+        "description": "Imaging evidence of duodenal compression between SMA and aorta (aortomesenteric angle < 25 degrees or aortomesenteric distance < 8 mm on CT/MRI)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sma-min1",
+        "description": "Dilation of first and second portions of duodenum with abrupt cutoff at third portion",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sma-min2",
+        "description": "Relief of symptoms with positional changes (left lateral decubitus or prone)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sma-sup1",
+        "description": "Predisposing factor: rapid weight loss, spinal surgery/casting, high insertion of ligament of Treitz",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Compatible symptoms plus imaging showing reduced aortomesenteric angle (<25 degrees) or distance (<8 mm) with duodenal compression. Other causes of duodenal obstruction must be excluded.",
+    "notes": "Often a diagnosis of exclusion. May coexist with nutcracker syndrome (left renal vein compression by the same mechanism)."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Postprandial epigastric pain and fullness",
+        "snomedCode": "235862006",
+        "frequency": 0.90,
+        "bodySystem": "gastrointestinal",
+        "notes": "Relieved by prone or left lateral decubitus position"
+      },
+      {
+        "symptomName": "Bilious vomiting",
+        "snomedCode": "422400008",
+        "frequency": 0.80,
+        "bodySystem": "gastrointestinal",
+        "notes": "Bile-stained vomiting due to duodenal obstruction"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Nausea",
+        "snomedCode": "422587007",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.75,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Early satiety",
+        "snomedCode": "422868009",
+        "frequency": 0.60,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal distension",
+        "snomedCode": "60728008",
+        "frequency": 0.50,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Eructation (belching)",
+        "snomedCode": "249489001",
+        "frequency": 0.30,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Food avoidance (sitophobia)",
+        "frequency": 0.35,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Flank pain (if nutcracker syndrome coexists)",
+        "frequency": 0.15,
+        "bodySystem": "renal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Acute gastric dilation with risk of necrosis",
+        "frequency": 0.02,
+        "bodySystem": "gastrointestinal",
+        "notes": "Life-threatening complication requiring emergent decompression"
+      },
+      {
+        "symptomName": "Aspiration pneumonia",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hematuria (if nutcracker syndrome present)",
+        "frequency": 0.05,
+        "bodySystem": "renal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "renal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Electrolyte abnormalities from protracted vomiting (hypokalemic, hypochloremic metabolic alkalosis)",
+      "Nutritional deficiencies in chronic cases"
+    ],
+    "imaging": [
+      "CT angiography: aortomesenteric angle < 25° (normal 38-65°) and distance < 8 mm (normal 10-28 mm)",
+      "Upper GI series: abrupt vertical cutoff in third portion of duodenum with proximal dilation",
+      "MRA can demonstrate the same findings as CTA without radiation"
+    ],
+    "genetic": [
+      "No known genetic association"
+    ],
+    "other": [
+      "Upper endoscopy to exclude intrinsic duodenal obstruction",
+      "Hypotonic duodenography may show extrinsic compression",
+      "Positional relief (Hayes maneuver: left lateral decubitus) supports diagnosis"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "gastroparesis",
+      "distinguishingFeatures": [
+        "Gastroparesis shows delayed gastric emptying on scintigraphy",
+        "No duodenal compression on imaging in gastroparesis"
+      ]
+    },
+    {
+      "diseaseId": "median-arcuate-ligament-syndrome",
+      "distinguishingFeatures": [
+        "MALS involves celiac artery compression, not duodenal",
+        "MALS shows celiac artery stenosis on CTA"
+      ]
+    },
+    {
+      "diseaseId": "chronic-intestinal-pseudo-obstruction",
+      "distinguishingFeatures": [
+        "CIPO involves diffuse intestinal dysmotility",
+        "CIPO lacks the specific SMA-aorta angle narrowing"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Acute massive gastric dilation (risk of gastric necrosis/perforation)",
+    "Severe electrolyte derangements from intractable vomiting",
+    "Progressive malnutrition despite conservative management",
+    "Concurrent left renal vein compression (nutcracker syndrome)"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "General/Pediatric Surgeon",
+    "Dietitian"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Welsch T, et al. Recalling superior mesenteric artery syndrome. Dig Surg. 2007;24(3):149-156.",
+    "Merrett ND, et al. Superior mesenteric artery syndrome: diagnosis and treatment strategies. J Gastrointest Surg. 2009;13(2):287-292.",
+    "Scovell S, et al. Superior mesenteric artery syndrome. UpToDate. 2024."
+  ],
+  "confidenceInData": "medium"
+}

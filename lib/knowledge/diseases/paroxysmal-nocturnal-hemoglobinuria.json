@@ -1,0 +1,247 @@
+{
+  "id": "paroxysmal-nocturnal-hemoglobinuria",
+  "name": "Paroxysmal Nocturnal Hemoglobinuria",
+  "aliases": [
+    "PNH",
+    "Marchiafava-Micheli Syndrome"
+  ],
+  "icd10Codes": ["D59.5"],
+  "omimId": "300818",
+  "orphanetId": "447",
+  "prevalence": {
+    "estimate": "1 in 100,000 to 1 in 1,000,000",
+    "range": "0.0001%-0.001%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 50, "peak": 35 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "No strong ethnic predilection",
+      "Slightly more common in Southeast Asia"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ICCS/ISLH Consensus Guidelines for PNH Flow Cytometry",
+    "criteria": [
+      {
+        "id": "pnh-c1",
+        "description": "Flow cytometry demonstrating GPI-anchored protein deficiency on granulocytes and/or monocytes (CD55, CD59, FLAER)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pnh-c2",
+        "description": "Evidence of intravascular hemolysis (elevated LDH)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pnh-c3",
+        "description": "PIGA gene somatic mutation in hematopoietic stem cells",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pnh-c4",
+        "description": "Hemoglobinuria (dark or red-brown urine)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pnh-c5",
+        "description": "History of thrombosis at unusual sites",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Flow cytometry showing a discrete population of GPI-anchor-deficient cells on at least two cell lineages",
+    "notes": "PNH clone size varies; subclinical PNH clones are found in aplastic anemia and MDS. Classical PNH, PNH with bone marrow failure, and subclinical PNH are recognized subtypes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Dark morning urine (hemoglobinuria)",
+        "snomedCode": "53014005",
+        "frequency": 0.5,
+        "bodySystem": "renal",
+        "notes": "Classical but not universal; dark urine due to intravascular hemolysis, worse overnight"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue and weakness",
+        "snomedCode": "84229001",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anemia",
+        "snomedCode": "271737000",
+        "frequency": 0.85,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "snomedCode": "60845006",
+        "frequency": 0.6,
+        "bodySystem": "pulmonary"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "snomedCode": "21522001",
+        "frequency": 0.5,
+        "bodySystem": "gastrointestinal",
+        "notes": "Smooth muscle dystonia from nitric oxide scavenging by free hemoglobin"
+      },
+      {
+        "symptomName": "Dysphagia and esophageal spasm",
+        "snomedCode": "40739000",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Venous thromboembolism (including unusual sites)",
+        "snomedCode": "111293003",
+        "frequency": 0.35,
+        "bodySystem": "vascular",
+        "notes": "Hepatic vein (Budd-Chiari), cerebral, dermal, mesenteric veins"
+      },
+      {
+        "symptomName": "Erectile dysfunction",
+        "snomedCode": "860914002",
+        "frequency": 0.3,
+        "bodySystem": "genitourinary"
+      },
+      {
+        "symptomName": "Jaundice",
+        "snomedCode": "18165001",
+        "frequency": 0.3,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Headache",
+        "snomedCode": "25064002",
+        "frequency": 0.35,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Bone marrow failure / cytopenias",
+        "snomedCode": "127034005",
+        "frequency": 0.3,
+        "bodySystem": "hematologic"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "snomedCode": "82385007",
+        "frequency": 0.1,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Pulmonary hypertension",
+        "snomedCode": "70995007",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Renal failure (chronic)",
+        "snomedCode": "46177005",
+        "frequency": 0.08,
+        "bodySystem": "renal",
+        "notes": "From chronic hemosiderin deposition in kidney"
+      },
+      {
+        "symptomName": "Acute myeloid leukemia transformation",
+        "snomedCode": "91861009",
+        "frequency": 0.03,
+        "bodySystem": "hematologic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematologic",
+    "vascular",
+    "renal",
+    "gastrointestinal",
+    "hepatic",
+    "pulmonary",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Flow cytometry: GPI-anchor-deficient populations (FLAER, CD55, CD59) on granulocytes, monocytes, and red cells",
+      "Elevated LDH (often markedly elevated, 1.5-10x normal)",
+      "Low or absent haptoglobin",
+      "Elevated indirect bilirubin",
+      "Elevated reticulocyte count",
+      "Hemoglobinuria and hemosiderinuria",
+      "May have concurrent pancytopenia (PNH/aplastic anemia overlap)"
+    ],
+    "imaging": [
+      "Doppler ultrasound or CT venography for thrombosis evaluation",
+      "MRI showing hepatic or renal hemosiderin deposition",
+      "CT or MRI for Budd-Chiari syndrome if suspected"
+    ],
+    "genetic": [
+      "PIGA gene somatic mutation (X-linked; acquired, not inherited)",
+      "Clonal expansion of GPI-deficient hematopoietic stem cells"
+    ],
+    "other": [
+      "Ham test (acidified serum lysis test) - historical, replaced by flow cytometry",
+      "Sucrose lysis test - historical",
+      "Bone marrow biopsy may show hypoplasia in PNH/aplastic anemia overlap"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "aplastic-anemia",
+      "distinguishingFeatures": [
+        "Aplastic anemia has pancytopenia with hypocellular marrow",
+        "Small PNH clones may coexist in aplastic anemia",
+        "No significant hemolysis in pure aplastic anemia"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-hemolytic-anemia",
+      "distinguishingFeatures": [
+        "Positive direct antiglobulin test",
+        "No GPI-anchor-deficient population on flow cytometry",
+        "Primarily extravascular hemolysis"
+      ]
+    },
+    {
+      "diseaseId": "thrombotic-thrombocytopenic-purpura",
+      "distinguishingFeatures": [
+        "Microangiopathic hemolytic anemia with schistocytes",
+        "Severe thrombocytopenia",
+        "ADAMTS13 deficiency",
+        "No GPI-anchor deficiency"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Thrombosis at unusual sites (hepatic, cerebral, mesenteric veins)",
+    "Budd-Chiari syndrome in young patients",
+    "Severe hemolytic crises with renal impairment",
+    "Development of severe bone marrow failure",
+    "Transformation to myelodysplastic syndrome or acute leukemia"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Vascular Medicine Specialist",
+    "Hepatologist",
+    "Nephrologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Brodsky RA. Paroxysmal nocturnal hemoglobinuria. Blood. 2014;124(18):2804-2811.",
+    "Hill A, et al. Under the spotlight: the role of complement in PNH. Blood. 2017;129(12):1570-1577.",
+    "Parker CJ. Update on the diagnosis and management of paroxysmal nocturnal hemoglobinuria. Hematology Am Soc Hematol Educ Program. 2016;2016(1):208-216.",
+    "Borowitz MJ, et al. Guidelines for the diagnosis and monitoring of paroxysmal nocturnal hemoglobinuria and related disorders by flow cytometry. Cytometry B Clin Cytom. 2010;78(4):211-230."
+  ],
+  "confidenceInData": "medium"
+}

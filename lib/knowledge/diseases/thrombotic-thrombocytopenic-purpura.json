@@ -1,0 +1,270 @@
+{
+  "id": "thrombotic-thrombocytopenic-purpura",
+  "name": "Thrombotic Thrombocytopenic Purpura",
+  "aliases": [
+    "TTP",
+    "Moschcowitz Disease",
+    "Moschcowitz Syndrome",
+    "ADAMTS13 Deficiency"
+  ],
+  "icd10Codes": ["M31.1"],
+  "omimId": "274150",
+  "orphanetId": "54057",
+  "prevalence": {
+    "estimate": "3 to 11 per million per year (incidence)",
+    "range": "0.00003%-0.0011%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 60, "peak": 40 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "African American (3-fold higher risk)",
+      "No strong ethnic restriction otherwise"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "International Society on Thrombosis and Haemostasis (ISTH) Guidelines",
+    "criteria": [
+      {
+        "id": "ttp-c1",
+        "description": "Microangiopathic hemolytic anemia (schistocytes, elevated LDH, low haptoglobin)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ttp-c2",
+        "description": "Thrombocytopenia (often severe, <30,000/µL)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ttp-c3",
+        "description": "Severely deficient ADAMTS13 activity (<10%)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ttp-c4",
+        "description": "ADAMTS13 inhibitor (autoantibody) detected",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ttp-c5",
+        "description": "Neurological symptoms (confusion, focal deficits, seizures)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ttp-c6",
+        "description": "Renal involvement (mild; elevated creatinine)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ttp-c7",
+        "description": "Fever",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "MAHA plus thrombocytopenia; ADAMTS13 activity <10% confirms diagnosis. Treatment should not be delayed pending ADAMTS13 results.",
+    "notes": "Classic pentad (MAHA, thrombocytopenia, neurological symptoms, renal failure, fever) is seen in minority of cases. PLASMIC score helps predict ADAMTS13 deficiency."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Microangiopathic hemolytic anemia with schistocytes",
+        "snomedCode": "111587005",
+        "frequency": 0.98,
+        "bodySystem": "hematologic",
+        "notes": "Schistocytes on peripheral smear with evidence of hemolysis"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Severe thrombocytopenia",
+        "snomedCode": "415116008",
+        "frequency": 0.95,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Fatigue and weakness",
+        "snomedCode": "84229001",
+        "frequency": 0.85,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Petechiae and purpura",
+        "snomedCode": "423716004",
+        "frequency": 0.7,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Neurological symptoms (confusion, headache)",
+        "snomedCode": "40917007",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Jaundice",
+        "snomedCode": "18165001",
+        "frequency": 0.5,
+        "bodySystem": "hepatic"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fever",
+        "snomedCode": "386661006",
+        "frequency": 0.35,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "snomedCode": "21522001",
+        "frequency": 0.35,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Focal neurological deficits",
+        "snomedCode": "267082004",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.2,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Renal impairment (mild)",
+        "snomedCode": "723190009",
+        "frequency": 0.25,
+        "bodySystem": "renal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Stroke",
+        "snomedCode": "230690007",
+        "frequency": 0.1,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Myocardial ischemia",
+        "snomedCode": "414795007",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatitis",
+        "snomedCode": "75694006",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Coma",
+        "snomedCode": "371632003",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematologic",
+    "neurological",
+    "renal",
+    "cardiovascular",
+    "gastrointestinal",
+    "integumentary"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "ADAMTS13 activity <10% (severely deficient)",
+      "ADAMTS13 inhibitor (autoantibody) positive in acquired TTP",
+      "Schistocytes on peripheral blood smear",
+      "Markedly elevated LDH",
+      "Low or absent haptoglobin",
+      "Severe thrombocytopenia (often <30,000/µL)",
+      "Elevated indirect bilirubin",
+      "Negative direct antiglobulin test",
+      "Normal or mildly elevated creatinine",
+      "Normal coagulation studies (PT/INR, PTT) - distinguishes from DIC"
+    ],
+    "imaging": [
+      "Brain MRI may show ischemic changes in neurological involvement",
+      "CT head to exclude hemorrhage in patients with altered mental status"
+    ],
+    "genetic": [
+      "ADAMTS13 gene mutations in congenital TTP (Upshaw-Schulman syndrome)",
+      "Autosomal recessive inheritance for congenital form",
+      "Acquired form is autoimmune (anti-ADAMTS13 antibodies)"
+    ],
+    "other": [
+      "PLASMIC score to predict likelihood of severe ADAMTS13 deficiency",
+      "Gingival biopsy or skin biopsy may show microthrombi (rarely performed)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hemolytic-uremic-syndrome",
+      "distinguishingFeatures": [
+        "HUS has predominant renal failure (severe)",
+        "Often preceded by diarrheal illness (Shiga toxin)",
+        "ADAMTS13 activity typically normal in HUS",
+        "More common in children"
+      ]
+    },
+    {
+      "diseaseId": "disseminated-intravascular-coagulation",
+      "distinguishingFeatures": [
+        "DIC has prolonged PT/INR and PTT",
+        "Low fibrinogen and elevated D-dimer",
+        "Usually associated with sepsis, malignancy, or obstetric emergencies",
+        "Schistocytes less prominent than in TTP"
+      ]
+    },
+    {
+      "diseaseId": "hellp-syndrome",
+      "distinguishingFeatures": [
+        "Occurs in pregnancy (third trimester or postpartum)",
+        "Hemolysis, elevated liver enzymes, low platelets",
+        "Resolves with delivery"
+      ]
+    },
+    {
+      "diseaseId": "evans-syndrome",
+      "distinguishingFeatures": [
+        "Autoimmune hemolytic anemia plus immune thrombocytopenia",
+        "Positive direct antiglobulin test",
+        "No schistocytes",
+        "ADAMTS13 normal"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive neurological symptoms (stroke, seizures, coma)",
+    "Severe thrombocytopenia with active bleeding",
+    "Cardiac ischemia or troponin elevation",
+    "Relapsing episodes (up to 30-50% relapse rate in acquired TTP)",
+    "Delay in initiating plasma exchange is life-threatening"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Transfusion Medicine Specialist",
+    "Intensivist",
+    "Neurologist",
+    "Nephrologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Joly BS, et al. Thrombotic thrombocytopenic purpura. Blood. 2017;129(21):2836-2846.",
+    "Scully M, et al. Guidelines on the diagnosis and management of thrombotic thrombocytopenic purpura. Br J Haematol. 2012;158(3):323-335.",
+    "Zheng XL, et al. ISTH guidelines for treatment of thrombotic thrombocytopenic purpura. J Thromb Haemost. 2020;18(10):2496-2502.",
+    "Bendapudi PK, et al. Derivation and external validation of the PLASMIC score for rapid assessment of adults with thrombotic microangiopathies. Lancet Haematol. 2017;4(4):e157-e164."
+  ],
+  "confidenceInData": "medium"
+}

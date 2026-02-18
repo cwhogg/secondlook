@@ -1,0 +1,205 @@
+{
+  "id": "hereditary-alpha-tryptasemia",
+  "name": "Hereditary Alpha-Tryptasemia",
+  "aliases": [
+    "HaT",
+    "Hereditary alpha tryptasemia syndrome",
+    "HaTS",
+    "TPSAB1 duplication/triplication"
+  ],
+  "icd10Codes": ["D89.40"],
+  "prevalence": {
+    "estimate": "4-6% of the general population carry extra TPSAB1 copies",
+    "range": "3-6% prevalence of at least one extra copy",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 80, "peak": 30 },
+    "sexPredilection": "equal"
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "hat-1",
+        "description": "Elevated baseline serum tryptase (typically >8 ng/mL, often >11.4 ng/mL) on at least two occasions",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hat-2",
+        "description": "Increased TPSAB1 gene copy number confirmed by droplet digital PCR or equivalent assay",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hat-3",
+        "description": "Autosomal dominant inheritance pattern (first-degree relatives may also have elevated tryptase)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hat-4",
+        "description": "Exclusion of systemic mastocytosis and other clonal mast cell disorders",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Elevated baseline serum tryptase confirmed by genetic testing showing increased TPSAB1 copy number, with exclusion of clonal mast cell disease",
+    "notes": "Many carriers are asymptomatic. Symptoms, when present, may overlap with MCAS and are thought to be modified by the gene dosage (more copies = higher tryptase and potentially more symptoms). HaT can coexist with and worsen other mast cell disorders."
+  },
+  "symptoms": {
+    "pathognomonic": [],
+    "common": [
+      {
+        "symptomName": "Elevated baseline serum tryptase",
+        "frequency": 1.0,
+        "bodySystem": "laboratory",
+        "notes": "By definition; this is the biochemical hallmark, though not strictly a symptom"
+      },
+      {
+        "symptomName": "Flushing",
+        "snomedCode": "271807003",
+        "frequency": 0.40,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Chronic GI symptoms (bloating, abdominal pain, IBS-like)",
+        "snomedCode": "21522001",
+        "frequency": 0.45,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pruritus",
+        "snomedCode": "418290006",
+        "frequency": 0.35,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Autonomic dysfunction (tachycardia, lightheadedness)",
+        "frequency": 0.35,
+        "bodySystem": "autonomic"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Retained primary dentition",
+        "frequency": 0.25,
+        "bodySystem": "dental",
+        "notes": "Described in HaT cohorts"
+      },
+      {
+        "symptomName": "Joint hypermobility",
+        "snomedCode": "298185000",
+        "frequency": 0.30,
+        "bodySystem": "musculoskeletal",
+        "notes": "Connective tissue features overlap with EDS phenotype"
+      },
+      {
+        "symptomName": "Chronic pain",
+        "snomedCode": "82423001",
+        "frequency": 0.30,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Anaphylaxis or severe allergic reactions",
+        "snomedCode": "39579001",
+        "frequency": 0.15,
+        "bodySystem": "immunologic",
+        "notes": "Risk increased when combined with other mast cell disorders"
+      },
+      {
+        "symptomName": "Urticaria",
+        "snomedCode": "126485001",
+        "frequency": 0.20,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sleep disruption",
+        "snomedCode": "53888004",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Congenital skeletal anomalies",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Vibratory urticaria",
+        "frequency": 0.05,
+        "bodySystem": "dermatological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "autonomic",
+    "immunologic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Baseline serum tryptase elevated (typically >8 ng/mL; increases ~2.5 ng/mL per extra TPSAB1 copy)",
+      "Total and mature tryptase ratio may be altered",
+      "Normal CBC and other routine labs"
+    ],
+    "imaging": [
+      "No specific imaging findings"
+    ],
+    "genetic": [
+      "Increased copy number of TPSAB1 gene (encoding alpha-tryptase) on chromosome 16p13.3",
+      "Detected by droplet digital PCR (ddPCR) targeting TPSAB1",
+      "Autosomal dominant inheritance with variable expressivity",
+      "Gene dosage effect: more copies correlate with higher tryptase levels"
+    ],
+    "other": [
+      "Bone marrow biopsy: normal (no mast cell aggregates, no KIT D816V, no aberrant CD25) - important to distinguish from mastocytosis",
+      "Family screening: first-degree relatives often have elevated tryptase"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "systemic-mastocytosis",
+      "distinguishingFeatures": [
+        "SM has KIT D816V mutation and abnormal mast cell aggregates on bone marrow",
+        "HaT has elevated tryptase from gene duplication, not clonal mast cells",
+        "HaT and SM can coexist"
+      ]
+    },
+    {
+      "diseaseId": "mast-cell-activation-syndrome",
+      "distinguishingFeatures": [
+        "MCAS has episodic mediator release symptoms with acute tryptase rise",
+        "HaT has constitutively elevated baseline tryptase",
+        "HaT may predispose to or coexist with MCAS"
+      ]
+    },
+    {
+      "diseaseId": "chronic-kidney-disease",
+      "distinguishingFeatures": [
+        "CKD can elevate tryptase due to reduced clearance",
+        "HaT has normal renal function with genetic confirmation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Baseline tryptase >20 ng/mL (even with HaT confirmed, should exclude coexisting mastocytosis)",
+    "Severe or recurrent anaphylaxis (HaT may amplify risk in context of other mast cell disease)",
+    "Onset of new B-symptoms or organomegaly (consider hematologic neoplasm)"
+  ],
+  "specialistType": [
+    "Allergist/Immunologist",
+    "Medical geneticist",
+    "Hematologist (if concern for coexisting mastocytosis)"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Lyons JJ, et al. Elevated basal serum tryptase identifies a multisystem disorder associated with increased TPSAB1 copy number. Nat Genet. 2016;48(12):1564-1569.",
+    "Lyons JJ. Hereditary alpha tryptasemia: genotyping and associated clinical features. Immunol Allergy Clin North Am. 2018;38(3):483-495.",
+    "Greiner G, et al. Hereditary alpha tryptasemia is a valid genetic biomarker for severe mediator-related symptoms in mastocytosis. Blood. 2021;137(2):238-247."
+  ],
+  "confidenceInData": "medium"
+}

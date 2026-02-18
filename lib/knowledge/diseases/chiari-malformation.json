@@ -1,0 +1,238 @@
+{
+  "id": "chiari-malformation",
+  "name": "Chiari Malformation Type I",
+  "aliases": [
+    "Chiari I malformation",
+    "Arnold-Chiari malformation type I",
+    "Cerebellar tonsillar ectopia",
+    "CM-I"
+  ],
+  "icd10Codes": ["Q07.0"],
+  "omimId": "118420",
+  "orphanetId": "268882",
+  "prevalence": {
+    "estimate": "0.5-3.5% on MRI (many asymptomatic)",
+    "range": "Symptomatic: ~1 per 1,000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 10, "max": 50, "peak": 30 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "Affects all ethnicities",
+      "No strong ethnic predilection"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Radiographic and Clinical Criteria",
+    "criteria": [
+      {
+        "id": "cm-1",
+        "description": "Cerebellar tonsillar herniation >5mm below the foramen magnum on sagittal MRI",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cm-2",
+        "description": "Compatible clinical symptoms (occipital headache, neurological deficits)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cm-3",
+        "description": "Tonsillar herniation 3-5mm with associated syringomyelia or CSF flow obstruction",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cm-4",
+        "description": "Abnormal CSF flow dynamics on cine MRI at craniovertebral junction",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Tonsillar herniation >5mm on MRI. 3-5mm herniation may be significant if symptomatic with supportive findings. Clinical correlation essential as many cases are asymptomatic.",
+    "notes": "Chiari type II involves myelomeningocele and is typically diagnosed in infancy. Chiari 0.5 or Chiari 0 may have symptoms without meeting 5mm threshold."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Cough/Valsalva-induced occipital headache",
+        "snomedCode": "25064002",
+        "frequency": 0.70,
+        "bodySystem": "neurological",
+        "notes": "Suboccipital headache provoked by coughing, straining, sneezing, or exertion; most characteristic symptom"
+      },
+      {
+        "symptomName": "Syringomyelia-associated cape-like sensory loss",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Dissociated sensory loss (loss of pain/temperature with preserved touch) in a cape distribution"
+      },
+      {
+        "symptomName": "Downbeat nystagmus",
+        "snomedCode": "81756001",
+        "frequency": 0.20,
+        "bodySystem": "neurological",
+        "notes": "Downbeating nystagmus worse on lateral and downward gaze; characteristic of craniovertebral junction pathology"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Occipital and posterior neck pain",
+        "snomedCode": "25064002",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dizziness and imbalance",
+        "snomedCode": "404640003",
+        "frequency": 0.50,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Numbness and tingling in hands",
+        "snomedCode": "91019004",
+        "frequency": 0.45,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "snomedCode": "40739000",
+        "frequency": 0.30,
+        "bodySystem": "neurological",
+        "notes": "From lower brainstem compression"
+      },
+      {
+        "symptomName": "Visual disturbances",
+        "snomedCode": "63102001",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological",
+        "notes": "Blurred vision, diplopia, photophobia"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Sleep apnea",
+        "snomedCode": "73430006",
+        "frequency": 0.25,
+        "bodySystem": "respiratory",
+        "notes": "Central sleep apnea from brainstem compression"
+      },
+      {
+        "symptomName": "Tinnitus",
+        "snomedCode": "60862001",
+        "frequency": 0.20,
+        "bodySystem": "otological"
+      },
+      {
+        "symptomName": "Upper extremity weakness",
+        "snomedCode": "249937002",
+        "frequency": 0.20,
+        "bodySystem": "neurological",
+        "notes": "Often from associated syringomyelia"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "snomedCode": "298382003",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "notes": "May be presenting sign, especially in children"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Vocal cord paralysis",
+        "snomedCode": "8608003",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Lower cranial nerve compression"
+      },
+      {
+        "symptomName": "Syncope",
+        "snomedCode": "271594007",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Drop attacks",
+        "snomedCode": "1912002",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "central nervous system",
+    "brainstem",
+    "cerebellum",
+    "spinal cord",
+    "cranial nerves"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "No specific laboratory findings",
+      "CSF studies if lumbar puncture performed (usually not indicated; risk of tonsillar herniation)"
+    ],
+    "imaging": [
+      "Sagittal MRI showing cerebellar tonsillar herniation >5mm below foramen magnum",
+      "Syringomyelia (present in 30-70% of symptomatic cases)",
+      "Cine MRI showing altered CSF flow at craniovertebral junction",
+      "Small posterior fossa volume",
+      "Basilar invagination or atlantoaxial instability (associated conditions)",
+      "MRI entire spine to evaluate for syrinx"
+    ],
+    "genetic": [
+      "Some familial clustering suggesting genetic predisposition",
+      "Associated with connective tissue disorders (Ehlers-Danlos syndrome)",
+      "No single causative gene identified for typical CM-I"
+    ],
+    "other": [
+      "Sleep study to evaluate for central sleep apnea",
+      "Brainstem auditory evoked potentials may be abnormal",
+      "Somatosensory evoked potentials may show cervical cord dysfunction"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "idiopathic-intracranial-hypertension",
+      "distinguishingFeatures": [
+        "IIH has papilledema and elevated opening pressure",
+        "IIH may cause secondary tonsillar herniation",
+        "IIH responds to CSF pressure lowering"
+      ]
+    },
+    {
+      "diseaseId": "multiple-sclerosis",
+      "distinguishingFeatures": [
+        "MS has demyelinating lesions on brain MRI",
+        "MS has oligoclonal bands in CSF",
+        "MS has dissemination in time and space"
+      ]
+    },
+    {
+      "diseaseId": "cervical-spondylotic-myelopathy",
+      "distinguishingFeatures": [
+        "Cervical spondylosis shows disc/osteophyte compression on MRI",
+        "Chiari shows tonsillar herniation",
+        "Both can cause myelopathic symptoms"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive neurological deficits (myelopathy, brainstem dysfunction) warrant surgical evaluation",
+    "Central sleep apnea requires polysomnography and may indicate brainstem compression",
+    "Growing syringomyelia indicates ongoing CSF flow obstruction",
+    "Scoliosis in children should prompt MRI to evaluate for Chiari/syrinx",
+    "Lumbar puncture should generally be avoided without prior imaging due to herniation risk",
+    "Associated Ehlers-Danlos syndrome or craniocervical instability may complicate surgical planning"
+  ],
+  "specialistType": ["neurosurgeon", "neurologist", "neuroradiologist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Milhorat TH, et al. Chiari I malformation redefined: clinical and radiographic findings for 364 symptomatic patients. Neurosurgery. 1999;44(5):1005-1017.",
+    "Arnautovic A, et al. Chiari malformation Type I: a comprehensive review. Neurosurg Focus. 2015;38(4):E2.",
+    "Langridge B, et al. Chiari malformation type 1: A systematic review of natural history and conservative management. World Neurosurg. 2017;104:213-219."
+  ],
+  "confidenceInData": "medium"
+}

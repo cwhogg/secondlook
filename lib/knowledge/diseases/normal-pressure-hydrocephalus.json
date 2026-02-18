@@ -1,0 +1,233 @@
+{
+  "id": "normal-pressure-hydrocephalus",
+  "name": "Normal Pressure Hydrocephalus",
+  "aliases": [
+    "NPH",
+    "iNPH",
+    "Idiopathic normal pressure hydrocephalus",
+    "Hakim-Adams syndrome"
+  ],
+  "icd10Codes": ["G91.2"],
+  "orphanetId": "36557",
+  "prevalence": {
+    "estimate": "1-6 per 100,000 overall; up to 6% in dementia populations",
+    "range": "0.2-6 per 100,000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 60, "max": 85, "peak": 70 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Affects all ethnicities",
+      "Higher recognition rates in developed countries with access to imaging"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Japanese iNPH Guidelines / International Guidelines (2005 Updated)",
+    "criteria": [
+      {
+        "id": "nph-1",
+        "description": "Gait disturbance: broad-based, short-stepped, magnetic gait with difficulty turning",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "nph-2",
+        "description": "Ventriculomegaly on imaging (Evans index >0.3) not entirely attributable to cerebral atrophy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "nph-3",
+        "description": "Cognitive impairment: subcortical pattern with psychomotor slowing, impaired attention, and executive dysfunction",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "nph-4",
+        "description": "Urinary incontinence (or urgency)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "nph-5",
+        "description": "CSF opening pressure in normal range (70-245 mmH2O)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "nph-6",
+        "description": "Clinical improvement after CSF removal (tap test or extended lumbar drainage)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Gait disturbance (required) plus ventriculomegaly, with at least one additional feature (cognitive decline or urinary symptoms). Positive response to CSF removal strongly supports diagnosis.",
+    "notes": "The classic triad of gait disturbance, cognitive decline, and urinary incontinence (wet, wacky, wobbly) is present in only ~50-60% of patients. Gait disturbance is the most responsive to shunting."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Magnetic gait",
+        "snomedCode": "250043000",
+        "frequency": 0.90,
+        "bodySystem": "neurological",
+        "notes": "Broad-based, short-stepped, feet appear 'glued to floor'; gait apraxia"
+      },
+      {
+        "symptomName": "Classic triad: gait, cognitive, urinary symptoms",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "notes": "Complete triad in only ~50-60%; gait most common and earliest"
+      },
+      {
+        "symptomName": "Disproportionate ventriculomegaly on imaging",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "notes": "Evans index >0.3 with tight high-convexity sulci (DESH pattern); ventriculomegaly out of proportion to cortical atrophy"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Gait instability and frequent falls",
+        "snomedCode": "22631008",
+        "frequency": 0.90,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive slowing (bradyphrenia)",
+        "snomedCode": "386806002",
+        "frequency": 0.70,
+        "bodySystem": "neurological",
+        "notes": "Subcortical pattern: psychomotor slowing, inattention, executive dysfunction"
+      },
+      {
+        "symptomName": "Urinary urgency and incontinence",
+        "snomedCode": "165232002",
+        "frequency": 0.60,
+        "bodySystem": "urological",
+        "notes": "Initially urgency; frank incontinence in later stages"
+      },
+      {
+        "symptomName": "Balance impairment",
+        "snomedCode": "282299006",
+        "frequency": 0.80,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Apathy",
+        "snomedCode": "20602000",
+        "frequency": 0.40,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Parkinsonian features",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Bradykinesia, rigidity; can mimic Parkinson disease"
+      },
+      {
+        "symptomName": "Headache",
+        "snomedCode": "25064002",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Fecal incontinence",
+        "snomedCode": "72042002",
+        "frequency": 0.10,
+        "bodySystem": "gastrointestinal",
+        "notes": "Late-stage finding"
+      },
+      {
+        "symptomName": "Visual disturbances",
+        "snomedCode": "63102001",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "central nervous system",
+    "motor system",
+    "cognitive system",
+    "urinary system"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF opening pressure in normal range (70-245 mmH2O) on lumbar puncture",
+      "Normal CSF composition",
+      "Large-volume lumbar puncture (tap test): removal of 30-50 mL CSF with gait assessment before and after"
+    ],
+    "imaging": [
+      "CT/MRI: Ventriculomegaly with Evans index >0.3",
+      "DESH (disproportionately enlarged subarachnoid-space hydrocephalus) pattern: enlarged ventricles with tight high-convexity sulci",
+      "Callosal angle <90 degrees on coronal MRI",
+      "Periventricular white matter changes (transependymal CSF migration)",
+      "Flow void sign at cerebral aqueduct on MRI"
+    ],
+    "genetic": [
+      "No established genetic cause for idiopathic NPH",
+      "Secondary NPH may follow SAH, meningitis, or trauma"
+    ],
+    "other": [
+      "Tap test (large-volume CSF removal): >10% improvement in gait speed is positive",
+      "Extended lumbar drainage (72 hours): more sensitive than single tap test",
+      "CSF infusion test: elevated resistance to CSF outflow",
+      "Gait analysis with timed up-and-go test before and after CSF removal"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "alzheimer-disease",
+      "distinguishingFeatures": [
+        "Alzheimer's has cortical cognitive pattern (amnesia, language, visuospatial)",
+        "Alzheimer's has brain atrophy proportionate to ventricular enlargement",
+        "Alzheimer's does not improve with CSF removal",
+        "Alzheimer's has amyloid/tau biomarker abnormalities"
+      ]
+    },
+    {
+      "diseaseId": "parkinson-disease",
+      "distinguishingFeatures": [
+        "Parkinson's has resting tremor, rigidity, and response to levodopa",
+        "Parkinson's gait is narrow-based with shuffling (vs broad-based in NPH)",
+        "Parkinson's does not have ventriculomegaly disproportionate to atrophy"
+      ]
+    },
+    {
+      "diseaseId": "idiopathic-intracranial-hypertension",
+      "distinguishingFeatures": [
+        "IIH has elevated opening pressure and papilledema",
+        "IIH affects young obese women",
+        "IIH does not cause ventriculomegaly"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive dementia should raise concern for CJD or autoimmune encephalitis rather than NPH",
+    "Prominent cortical features (aphasia, agnosia, apraxia) suggest neurodegenerative rather than NPH",
+    "Papilledema should not be present in NPH; its presence suggests alternative diagnosis",
+    "Failure to improve after adequate CSF removal questions the diagnosis",
+    "NPH and Alzheimer disease commonly coexist in elderly patients",
+    "Secondary causes (prior SAH, meningitis, surgery) should be identified as they affect prognosis"
+  ],
+  "specialistType": ["neurologist", "neurosurgeon"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Relkin N, et al. Diagnosing idiopathic normal-pressure hydrocephalus. Neurosurgery. 2005;57(3 Suppl):S4-16.",
+    "Nakajima M, et al. Guidelines for Management of Idiopathic Normal Pressure Hydrocephalus (Third Edition). Neurol Med Chir (Tokyo). 2021;61(2):63-97.",
+    "Williams MA, Malm J. Diagnosis and Treatment of Idiopathic Normal Pressure Hydrocephalus. Continuum (Minneap Minn). 2016;22(2):579-599."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,274 @@
+{
+  "id": "gaucher-disease",
+  "name": "Gaucher Disease",
+  "aliases": [
+    "Gaucher's Disease",
+    "Glucocerebrosidase Deficiency",
+    "Glucosylceramidase Deficiency",
+    "GBA1 Deficiency",
+    "Acid Beta-Glucosidase Deficiency"
+  ],
+  "icd10Codes": ["E75.22"],
+  "omimId": "230800",
+  "orphanetId": "355",
+  "prevalence": {
+    "estimate": "1 in 40,000 to 1 in 60,000 (general); 1 in 800 in Ashkenazi Jewish population",
+    "range": "0.0017%-0.0025%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 60, "peak": 20 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": ["Ashkenazi Jewish (1 in 800)", "Norrbottnian Swedish (type III)"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Expert consensus guidelines for Gaucher disease diagnosis",
+    "criteria": [
+      {
+        "id": "gd-c1",
+        "description": "Deficient acid beta-glucosidase (glucocerebrosidase) activity in leukocytes or fibroblasts (<15% of normal)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "gd-c2",
+        "description": "Biallelic pathogenic variants in GBA1 gene",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "gd-c3",
+        "description": "Elevated biomarkers: chitotriosidase, CCL18/PARC, glucosylsphingosine (lyso-Gb1)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "gd-c4",
+        "description": "Gaucher cells on bone marrow biopsy (lipid-laden macrophages with crinkled tissue paper appearance)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "gd-c5",
+        "description": "Hepatosplenomegaly with cytopenia(s) on clinical examination and laboratory evaluation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Deficient glucocerebrosidase enzyme activity, confirmed by GBA1 genetic testing. Enzyme assay is the gold standard.",
+    "notes": "Type 1 (non-neuronopathic, ~94%) is most common and does not involve the CNS. Type 2 (acute neuronopathic) is fatal in infancy. Type 3 (chronic neuronopathic) has variable neurological involvement. GBA1 mutations are a strong risk factor for Parkinson disease."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Gaucher cells on bone marrow biopsy",
+        "frequency": 0.95,
+        "bodySystem": "hematologic",
+        "notes": "Lipid-laden macrophages with characteristic 'crinkled tissue paper' or 'wrinkled silk' cytoplasm; not entirely specific as pseudo-Gaucher cells can occur in other conditions"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Splenomegaly (often massive)",
+        "snomedCode": "16294009",
+        "frequency": 0.9,
+        "bodySystem": "hematologic",
+        "notes": "Spleen may enlarge 5-75x normal; most consistent finding in type 1"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "snomedCode": "80515008",
+        "frequency": 0.8,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "snomedCode": "302215000",
+        "frequency": 0.8,
+        "bodySystem": "hematologic",
+        "notes": "Due to hypersplenism and marrow infiltration"
+      },
+      {
+        "symptomName": "Anemia",
+        "snomedCode": "271737000",
+        "frequency": 0.7,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Bone pain (bone crises)",
+        "snomedCode": "12584003",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal",
+        "notes": "Acute bone crises mimic osteomyelitis; chronic bone pain also common"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Avascular necrosis (femoral head most common)",
+        "snomedCode": "87642003",
+        "frequency": 0.35,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pathologic fractures",
+        "snomedCode": "443165006",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Erlenmeyer flask deformity of distal femur",
+        "snomedCode": "298388006",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "notes": "Failure of normal cortical bone remodeling"
+      },
+      {
+        "symptomName": "Easy bruising and bleeding",
+        "snomedCode": "302227002",
+        "frequency": 0.45,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Growth retardation (in children)",
+        "snomedCode": "276611004",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pulmonary hypertension",
+        "snomedCode": "70995007",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Parkinsonism (GBA1-associated)",
+        "snomedCode": "32798002",
+        "frequency": 0.08,
+        "bodySystem": "neurological",
+        "notes": "GBA1 heterozygotes and homozygotes have increased Parkinson disease risk"
+      },
+      {
+        "symptomName": "Hepatic fibrosis or cirrhosis",
+        "snomedCode": "19943007",
+        "frequency": 0.05,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Oculomotor apraxia (type 3 Gaucher)",
+        "snomedCode": "246765005",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Hallmark of type 3; horizontal supranuclear gaze palsy"
+      },
+      {
+        "symptomName": "Myoclonic seizures (types 2 and 3)",
+        "snomedCode": "91175000",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematologic",
+    "hepatic",
+    "musculoskeletal",
+    "neurological",
+    "respiratory",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Deficient acid beta-glucosidase (glucocerebrosidase) enzyme activity (<15% of normal)",
+      "Markedly elevated plasma glucosylsphingosine (lyso-Gb1) - sensitive and specific biomarker",
+      "Elevated serum chitotriosidase (6-null genotype in ~6% of population limits utility)",
+      "Elevated CCL18/PARC (alternative to chitotriosidase)",
+      "Elevated serum ferritin, elevated ACE level (nonspecific)",
+      "Thrombocytopenia and anemia on CBC"
+    ],
+    "imaging": [
+      "MRI of femurs and spine showing bone marrow infiltration (T1 low signal, T2 variable)",
+      "X-ray showing Erlenmeyer flask deformity of distal femur",
+      "MRI or ultrasound showing hepatosplenomegaly with volumetric measurements",
+      "DEXA scan showing osteopenia or osteoporosis",
+      "MRI showing avascular necrosis or bone infarcts"
+    ],
+    "genetic": [
+      "Autosomal recessive inheritance",
+      "Biallelic pathogenic variants in GBA1 gene (chromosome 1q22)",
+      "N370S (N409S) most common mutation in type 1 (precludes type 2/3 if homozygous)",
+      "L444P (L483P) associated with more severe disease and neuronopathic forms",
+      "84GG insertion common in Ashkenazi Jewish population",
+      "GBA1 carrier status is strongest genetic risk factor for Parkinson disease"
+    ],
+    "other": [
+      "Bone marrow biopsy showing Gaucher cells (supportive but not required; avoid pseudo-Gaucher cells)",
+      "Dried blood spot testing for enzyme activity (screening)",
+      "Bone density assessment (DEXA and quantitative CT)",
+      "Chitotriosidase null genotype testing (CHIT1 24-bp duplication)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "niemann-pick-disease",
+      "distinguishingFeatures": [
+        "Niemann-Pick has foamy storage cells rather than crinkled tissue paper cells",
+        "Niemann-Pick type A/B involves acid sphingomyelinase deficiency",
+        "Cherry red spot present in Niemann-Pick type A"
+      ]
+    },
+    {
+      "diseaseId": "leukemia",
+      "distinguishingFeatures": [
+        "Leukemia shows blast cells on peripheral smear and bone marrow",
+        "Leukemia may cause similar hepatosplenomegaly and cytopenias",
+        "Normal enzyme activity in leukemia"
+      ]
+    },
+    {
+      "diseaseId": "fabry-disease",
+      "distinguishingFeatures": [
+        "Fabry involves alpha-galactosidase A deficiency",
+        "Fabry features acroparesthesias and angiokeratomas",
+        "Fabry is X-linked, not autosomal recessive"
+      ]
+    },
+    {
+      "diseaseId": "idiopathic-thrombocytopenic-purpura",
+      "distinguishingFeatures": [
+        "ITP has isolated thrombocytopenia without hepatosplenomegaly",
+        "Normal enzyme activity and biomarkers in ITP",
+        "Antiplatelet antibodies present in ITP"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Type 2 (acute neuronopathic) presentation in infancy with bulbar signs and rapid deterioration",
+    "Massive splenomegaly with risk of splenic rupture",
+    "Acute bone crisis mimicking osteomyelitis (requires differentiation)",
+    "Pulmonary hypertension (serious complication, may not respond to ERT alone)",
+    "Development of Parkinson disease symptoms in Gaucher patients or carriers"
+  ],
+  "specialistType": [
+    "Metabolic Disease Specialist",
+    "Medical Geneticist",
+    "Hematologist",
+    "Orthopedic Surgeon",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Biegstraaten M, et al. Management goals for type 1 Gaucher disease: An expert consensus document. Blood Cells Mol Dis. 2018;68:203-208.",
+    "Pastores GM, Hughes DA. Gaucher Disease. In: Adam MP, et al., eds. GeneReviews. University of Washington, Seattle; 2000 [Updated 2018].",
+    "Grabowski GA, et al. Gaucher disease types 1 and 3: Phenotypic characterization of large populations from the ICGG Gaucher Registry. Am J Hematol. 2015;90 Suppl 1:S12-8.",
+    "Sidransky E, et al. Multicenter analysis of glucocerebrosidase mutations in Parkinson's disease. N Engl J Med. 2009;361(17):1651-61."
+  ],
+  "confidenceInData": "medium"
+}

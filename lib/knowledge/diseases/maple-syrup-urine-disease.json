@@ -1,0 +1,256 @@
+{
+  "id": "maple-syrup-urine-disease",
+  "name": "Maple Syrup Urine Disease",
+  "aliases": [
+    "MSUD",
+    "Branched-Chain Ketoaciduria",
+    "Branched-Chain Alpha-Ketoacid Dehydrogenase Deficiency",
+    "BCKD Deficiency"
+  ],
+  "icd10Codes": ["E71.0"],
+  "omimId": "248600",
+  "orphanetId": "511",
+  "prevalence": {
+    "estimate": "1 in 185,000 (general); 1 in 380 in Old Order Mennonite communities",
+    "range": "0.00054%",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 1, "peak": 0 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": ["Old Order Mennonite", "Ashkenazi Jewish (intermediate MSUD)"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ACMG ACT Sheet and biochemical criteria for MSUD",
+    "criteria": [
+      {
+        "id": "msud-c1",
+        "description": "Elevated plasma branched-chain amino acids (leucine, isoleucine, valine) on newborn screening or plasma amino acid analysis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "msud-c2",
+        "description": "Presence of alloisoleucine in plasma (pathognomonic)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "msud-c3",
+        "description": "Elevated urinary branched-chain alpha-ketoacids (alpha-ketoisocaproic acid, alpha-keto-beta-methylvaleric acid, alpha-ketoisovaleric acid)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "msud-c4",
+        "description": "Reduced BCKD enzyme activity in fibroblasts or leukocytes",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "msud-c5",
+        "description": "Biallelic pathogenic variants in BCKDHA, BCKDHB, or DBT genes",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "msud-c6",
+        "description": "Maple syrup or burnt sugar odor of urine, earwax, or sweat",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Elevated branched-chain amino acids with presence of alloisoleucine in plasma, confirmed by enzyme assay or genetic testing",
+    "notes": "Classic MSUD presents in the first week of life with encephalopathy. Intermediate, intermittent, and thiamine-responsive forms have later onset and milder presentation. Early detection via newborn screening is critical."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Maple syrup / burnt sugar odor of body fluids",
+        "frequency": 0.9,
+        "bodySystem": "metabolic",
+        "notes": "Present in urine, sweat, earwax; due to branched-chain alpha-ketoacids (particularly sotolone)"
+      },
+      {
+        "symptomName": "Plasma alloisoleucine elevation",
+        "frequency": 1.0,
+        "bodySystem": "metabolic",
+        "notes": "Pathognomonic biochemical marker; not found in other conditions"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Poor feeding / feeding intolerance (neonatal)",
+        "snomedCode": "78164000",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal",
+        "notes": "Typically within first 2-3 days of life in classic form"
+      },
+      {
+        "symptomName": "Lethargy progressing to coma",
+        "snomedCode": "214264003",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Encephalopathy with alternating hypertonia/hypotonia",
+        "snomedCode": "81308009",
+        "frequency": 0.8,
+        "bodySystem": "neurological",
+        "notes": "Abnormal muscle tone with opisthotonus and bicycling movements"
+      },
+      {
+        "symptomName": "Vomiting",
+        "snomedCode": "422400008",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Metabolic acidosis with ketosis",
+        "snomedCode": "59455009",
+        "frequency": 0.8,
+        "bodySystem": "metabolic"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.4,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cerebral edema",
+        "snomedCode": "2032001",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Due to leucine neurotoxicity; potentially fatal"
+      },
+      {
+        "symptomName": "Hypoglycemia",
+        "snomedCode": "302866003",
+        "frequency": 0.35,
+        "bodySystem": "metabolic"
+      },
+      {
+        "symptomName": "Pancreatitis (during metabolic crises)",
+        "snomedCode": "75694006",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Movement disorder / dystonia (chronic)",
+        "snomedCode": "15802004",
+        "frequency": 0.1,
+        "bodySystem": "neurological",
+        "notes": "In patients with suboptimal metabolic control or brain injury from acute crises"
+      },
+      {
+        "symptomName": "Intellectual disability (if treatment delayed)",
+        "snomedCode": "91138005",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Prevented by early newborn screening and treatment"
+      },
+      {
+        "symptomName": "Pseudotumor cerebri",
+        "snomedCode": "68267002",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "metabolic",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Markedly elevated plasma leucine (often >2000 micromol/L in classic form)",
+      "Elevated plasma isoleucine and valine",
+      "Presence of alloisoleucine in plasma (pathognomonic)",
+      "Elevated urinary branched-chain alpha-ketoacids",
+      "Metabolic acidosis with elevated anion gap",
+      "Ketonuria",
+      "Positive 2,4-dinitrophenylhydrazine (DNPH) urine test"
+    ],
+    "imaging": [
+      "MRI brain: diffusion restriction in myelinated areas during acute crisis (globus pallidus, cerebral peduncles, posterior limb of internal capsule)",
+      "MRI showing white matter edema (diffuse cerebral edema) in severe crises",
+      "CT may show cerebral edema in acute presentation"
+    ],
+    "genetic": [
+      "Autosomal recessive inheritance",
+      "BCKDHA gene mutations (E1alpha subunit; type IA)",
+      "BCKDHB gene mutations (E1beta subunit; type IB, most common)",
+      "DBT gene mutations (E2 subunit; type II)",
+      "DLD gene mutations (E3 subunit; shared with pyruvate dehydrogenase and alpha-ketoglutarate dehydrogenase)",
+      "Homozygous BCKDHA c.1312T>A (Y438N) founder mutation in Mennonite population"
+    ],
+    "other": [
+      "Newborn screening by tandem mass spectrometry (leucine/isoleucine elevation)",
+      "BCKD enzyme activity assay in cultured fibroblasts or leukocytes",
+      "Bedside urine DNPH test for screening",
+      "Thiamine responsiveness testing in intermediate or mild forms"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "organic-acidemias",
+      "distinguishingFeatures": [
+        "Organic acidemias have different amino acid and organic acid profiles",
+        "Propionic and methylmalonic acidemia have elevated propionylcarnitine",
+        "Different urine organic acid profiles"
+      ]
+    },
+    {
+      "diseaseId": "neonatal-sepsis",
+      "distinguishingFeatures": [
+        "Sepsis has positive blood cultures and elevated inflammatory markers",
+        "Normal amino acid profile in sepsis",
+        "MSUD may mimic sepsis in neonatal period"
+      ]
+    },
+    {
+      "diseaseId": "urea-cycle-defects",
+      "distinguishingFeatures": [
+        "Urea cycle defects have hyperammonemia as primary finding",
+        "Normal branched-chain amino acids in urea cycle defects",
+        "Respiratory alkalosis rather than metabolic acidosis"
+      ]
+    },
+    {
+      "diseaseId": "phenylketonuria",
+      "distinguishingFeatures": [
+        "PKU has elevated phenylalanine, not branched-chain amino acids",
+        "PKU does not cause acute neonatal encephalopathy",
+        "Different amino acid pattern on screening"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Neonatal encephalopathy with maple syrup odor (emergency: begin leucine-free formula immediately)",
+    "Plasma leucine >1500 micromol/L (high risk for cerebral edema and permanent brain injury)",
+    "Metabolic decompensation during intercurrent illness or fasting in known MSUD patients",
+    "Cerebral edema requiring ICU management",
+    "Pancreatitis during metabolic crisis"
+  ],
+  "specialistType": [
+    "Metabolic Disease Specialist",
+    "Medical Geneticist",
+    "Neonatologist",
+    "Metabolic Dietitian",
+    "Pediatric Neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Strauss KA, et al. Maple Syrup Urine Disease. In: Adam MP, et al., eds. GeneReviews. University of Washington, Seattle; 2006 [Updated 2020].",
+    "Frazier DM, et al. Nutrition management guideline for maple syrup urine disease. Mol Genet Metab. 2014;112(3):210-7.",
+    "Blackburn PR, et al. Maple syrup urine disease: mechanisms and management. Appl Clin Genet. 2017;10:57-66.",
+    "Morton DH, et al. Diagnosis and treatment of maple syrup disease: a study of 36 patients. Pediatrics. 2002;109(6):999-1008."
+  ],
+  "confidenceInData": "medium"
+}

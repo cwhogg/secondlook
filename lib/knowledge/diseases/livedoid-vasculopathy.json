@@ -1,0 +1,195 @@
+{
+  "id": "livedoid-vasculopathy",
+  "name": "Livedoid Vasculopathy",
+  "aliases": [
+    "Livedo Vasculitis",
+    "Atrophie Blanche",
+    "Segmental Hyalinizing Vasculitis",
+    "PURPLE (Painful Purpuric Ulcers with Reticular Pattern on the Lower Extremities)"
+  ],
+  "icd10Codes": ["L95.0"],
+  "orphanetId": "542643",
+  "prevalence": {
+    "estimate": "Unknown; estimated 1 per 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 15, "max": 50, "peak": 30 },
+    "sexPredilection": "female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "lv-maj1",
+        "description": "Recurrent, painful, punched-out ulcers on the lower extremities (ankles, feet)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "lv-maj2",
+        "description": "Healing with ivory-white stellate scars (atrophie blanche)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "lv-maj3",
+        "description": "Skin biopsy showing hyalinization and thrombosis of dermal vessels without primary vasculitis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "lv-min1",
+        "description": "Livedo reticularis surrounding ulcers",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "lv-min2",
+        "description": "Evidence of hypercoagulable state (thrombophilia markers positive)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Recurrent painful lower extremity ulcers healing with atrophie blanche plus histopathological evidence of thrombotic vasculopathy (fibrin thrombi in dermal vessels, hyalinization of vessel walls) without significant perivascular inflammatory infiltrate.",
+    "notes": "Livedoid vasculopathy is a thrombotic vasculopathy, NOT a vasculitis despite the historical name. It is a disorder of cutaneous microvascular thrombosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Ivory-white stellate scars (atrophie blanche) on lower legs",
+        "frequency": 0.95,
+        "bodySystem": "integumentary",
+        "notes": "Porcelain-white, stellate scars with peripheral hyperpigmentation and telangiectasia"
+      },
+      {
+        "symptomName": "Painful, recurrent punched-out ulcers on ankles/feet",
+        "frequency": 0.90,
+        "bodySystem": "integumentary",
+        "notes": "Small, extremely painful ulcers; pain disproportionate to size"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Livedo reticularis of lower extremities",
+        "frequency": 0.70,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Severe pain in affected areas",
+        "frequency": 0.90,
+        "bodySystem": "neurologic",
+        "notes": "Pain often disproportionate to ulcer size"
+      },
+      {
+        "symptomName": "Purpuric papules/macules preceding ulceration",
+        "frequency": 0.65,
+        "bodySystem": "integumentary"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Petechiae of lower extremities",
+        "frequency": 0.30,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Seasonal exacerbation (worse in summer/heat)",
+        "frequency": 0.40,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Ankle/foot edema",
+        "frequency": 0.25,
+        "bodySystem": "general"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Peripheral neuropathy in affected area",
+        "frequency": 0.10,
+        "bodySystem": "neurologic",
+        "notes": "Mononeuritis multiplex from vasa nervorum thrombosis"
+      },
+      {
+        "symptomName": "Secondary infection of ulcers",
+        "frequency": 0.08,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Non-lower extremity involvement (rare)",
+        "frequency": 0.02,
+        "bodySystem": "integumentary"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "integumentary",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Thrombophilia workup: Factor V Leiden, prothrombin G20210A, protein C/S deficiency, antithrombin III",
+      "Antiphospholipid antibodies (anticardiolipin, lupus anticoagulant, anti-beta2-glycoprotein I)",
+      "Homocysteine levels",
+      "CBC, coagulation studies typically normal"
+    ],
+    "imaging": [
+      "Doppler ultrasound to exclude venous insufficiency",
+      "No specific imaging diagnostic findings"
+    ],
+    "genetic": [
+      "Factor V Leiden mutation may be present",
+      "Prothrombin G20210A mutation may be present",
+      "MTHFR polymorphisms (if hyperhomocysteinemia)",
+      "PAI-1 polymorphisms"
+    ],
+    "other": [
+      "Skin biopsy: fibrin thrombi in dermal vessels, hyalinization of vessel walls, minimal perivascular inflammation",
+      "Direct immunofluorescence: fibrin deposition in vessel walls",
+      "Wound culture to exclude superinfection"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "antiphospholipid-syndrome",
+      "distinguishingFeatures": [
+        "APS has positive antiphospholipid antibodies",
+        "APS may have systemic thrombotic events (DVT, PE, stroke)"
+      ]
+    },
+    {
+      "diseaseId": "venous-stasis-ulcers",
+      "distinguishingFeatures": [
+        "Venous stasis ulcers are larger, less painful, medial malleolus",
+        "Venous insufficiency on Doppler ultrasound"
+      ]
+    },
+    {
+      "diseaseId": "polyarteritis-nodosa-cutaneous",
+      "distinguishingFeatures": [
+        "Cutaneous PAN has livedo with subcutaneous nodules",
+        "PAN biopsy shows necrotizing vasculitis of medium vessels"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly expanding ulcers suggesting secondary infection or alternative diagnosis",
+    "Systemic thrombotic events suggesting antiphospholipid syndrome",
+    "Ulcer non-healing despite appropriate anticoagulation therapy",
+    "Development of peripheral neuropathy"
+  ],
+  "specialistType": [
+    "Dermatologist",
+    "Rheumatologist",
+    "Hematologist",
+    "Vascular Medicine Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Micieli R, Alavi A. Treatment for Livedoid Vasculopathy: A Systematic Review. JAMA Dermatol. 2018;154(2):193-202.",
+    "Criado PR, et al. Livedoid vasculopathy: an intriguing cutaneous disease. An Bras Dermatol. 2011;86(5):961-977.",
+    "Alavi A, et al. Livedoid vasculopathy: a comprehensive review. Orphanet J Rare Dis. 2022;17:111."
+  ],
+  "confidenceInData": "medium"
+}

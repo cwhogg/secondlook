@@ -1,0 +1,246 @@
+{
+  "id": "castleman-disease",
+  "name": "Castleman Disease",
+  "aliases": [
+    "Castleman's Disease",
+    "Angiofollicular Lymph Node Hyperplasia",
+    "Giant Lymph Node Hyperplasia",
+    "Unicentric Castleman Disease (UCD)",
+    "Multicentric Castleman Disease (MCD)",
+    "Idiopathic Multicentric Castleman Disease (iMCD)"
+  ],
+  "icd10Codes": ["D47.Z2"],
+  "omimId": "148000",
+  "orphanetId": "160",
+  "prevalence": {
+    "estimate": "UCD: 15-19 per million; iMCD: 5 per million",
+    "range": "0.0005%-0.002%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 60, "peak": 40 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Fajgenbaum Diagnostic Criteria for iMCD (2017)",
+    "criteria": [
+      {
+        "id": "cd-maj1",
+        "description": "Histopathological lymph node features consistent with Castleman disease (hyaline-vascular, plasmacytic, or mixed type)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cd-maj2",
+        "description": "Multicentric lymphadenopathy (>= 2 nodal stations for MCD)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cd-min1",
+        "description": "Elevated CRP (>10 mg/L) or ESR (>15 mm/hr)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cd-min2",
+        "description": "Anemia (Hb < 12.5 g/dL in men, < 11.5 in women)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cd-min3",
+        "description": "Thrombocytopenia or thrombocytosis",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cd-min4",
+        "description": "Hypoalbuminemia (< 3.5 g/dL)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cd-min5",
+        "description": "Renal dysfunction (eGFR < 60) or proteinuria",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cd-min6",
+        "description": "Polyclonal hypergammaglobulinemia",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "For iMCD: Both major criteria (histopathology + multicentricity) plus >= 2 of 11 minor criteria (6 laboratory + 5 clinical) from the full Fajgenbaum criteria. HHV-8 and other mimicking disorders must be excluded.",
+    "notes": "Three main forms: UCD (localized, usually curable by resection), HHV-8-associated MCD (HIV+ patients), and iMCD (IL-6 driven). TAFRO syndrome is a subtype of iMCD."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Lymphadenopathy (localized in UCD; generalized in MCD)",
+        "snomedCode": "30746006",
+        "frequency": 0.95,
+        "bodySystem": "lymphatic",
+        "notes": "UCD: single enlarged lymph node station. MCD: multiple stations."
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue/malaise",
+        "snomedCode": "84229001",
+        "frequency": 0.75,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Fever",
+        "snomedCode": "386661006",
+        "frequency": 0.60,
+        "bodySystem": "general",
+        "notes": "More common in MCD; may be absent in UCD"
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.45,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.50,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly (MCD)",
+        "frequency": 0.40,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Peripheral edema/anasarca",
+        "snomedCode": "271809000",
+        "frequency": 0.30,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Pleural effusion/ascites (TAFRO)",
+        "frequency": 0.25,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Skin rash (cherry hemangiomas, violaceous papules)",
+        "frequency": 0.15,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Neuropathy",
+        "frequency": 0.10,
+        "bodySystem": "neurologic"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Renal failure (TAFRO subtype)",
+        "frequency": 0.10,
+        "bodySystem": "renal",
+        "notes": "TAFRO: Thrombocytopenia, Anasarca, Fever, Reticulin fibrosis, Organomegaly"
+      },
+      {
+        "symptomName": "POEMS syndrome overlap",
+        "frequency": 0.05,
+        "bodySystem": "neurologic",
+        "notes": "Polyneuropathy, Organomegaly, Endocrinopathy, Monoclonal protein, Skin changes"
+      },
+      {
+        "symptomName": "Paraneoplastic pemphigus (UCD)",
+        "frequency": 0.02,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Progression to lymphoma",
+        "frequency": 0.05,
+        "bodySystem": "lymphatic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "lymphatic",
+    "hematologic",
+    "renal",
+    "hepatic",
+    "respiratory",
+    "general"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated IL-6 (key cytokine driver in iMCD)",
+      "Elevated CRP and ESR",
+      "Anemia of chronic disease",
+      "Thrombocytopenia (TAFRO) or thrombocytosis",
+      "Hypoalbuminemia",
+      "Polyclonal hypergammaglobulinemia",
+      "Elevated VEGF",
+      "HHV-8 PCR/LANA immunostaining to classify (positive = HHV-8 MCD; negative = iMCD)"
+    ],
+    "imaging": [
+      "CT: localized lymphadenopathy (UCD) or generalized (MCD); may show hepatosplenomegaly, effusions",
+      "PET-CT: FDG-avid lymph nodes",
+      "UCD: single large enhancing mass, often mediastinal or abdominal"
+    ],
+    "genetic": [
+      "No hereditary genetic cause identified",
+      "Clonal cytogenetic abnormalities described in some UCD cases"
+    ],
+    "other": [
+      "Lymph node biopsy is essential: hyaline-vascular type (UCD), plasmacytic type (MCD), or mixed",
+      "HHV-8 LANA staining on biopsy",
+      "Bone marrow biopsy: reticulin fibrosis (TAFRO subtype)",
+      "Exclude lymphoma, autoimmune diseases, and IgG4-related disease"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "lymphoma",
+      "distinguishingFeatures": [
+        "Lymphoma has monoclonal lymphoid population on flow cytometry/biopsy",
+        "Lymphoma has specific histological subtypes (DLBCL, follicular, etc.)"
+      ]
+    },
+    {
+      "diseaseId": "sarcoidosis",
+      "distinguishingFeatures": [
+        "Sarcoidosis has non-caseating granulomas on biopsy",
+        "Sarcoidosis has elevated ACE, bilateral hilar lymphadenopathy"
+      ]
+    },
+    {
+      "diseaseId": "igg4-related-disease",
+      "distinguishingFeatures": [
+        "IgG4-RD has elevated serum IgG4 and IgG4+ plasma cells on biopsy",
+        "IgG4-RD has storiform fibrosis pattern"
+      ]
+    }
+  ],
+  "redFlags": [
+    "TAFRO syndrome (thrombocytopenia, anasarca, renal failure - can be rapidly fatal)",
+    "Rapid clinical deterioration with cytopenias and multiorgan failure",
+    "Development of lymphoma (especially in HHV-8 MCD)",
+    "Kaposi sarcoma (HHV-8 associated MCD + HIV)"
+  ],
+  "specialistType": [
+    "Hematologist/Oncologist",
+    "Rheumatologist",
+    "Surgeon (for UCD resection)",
+    "Infectious Disease (HHV-8/HIV-associated)"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Fajgenbaum DC, et al. International, evidence-based consensus diagnostic criteria for HHV-8-negative/idiopathic multicentric Castleman disease. Blood. 2017;129(12):1646-1657.",
+    "Dispenzieri A, Fajgenbaum DC. Overview of Castleman disease. Blood. 2020;135(16):1353-1364.",
+    "van Rhee F, et al. International, evidence-based consensus treatment guidelines for idiopathic multicentric Castleman disease. Blood. 2018;132(20):2115-2124."
+  ],
+  "confidenceInData": "medium"
+}

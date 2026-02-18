@@ -1,0 +1,296 @@
+{
+  "id": "cushing-syndrome",
+  "name": "Cushing Syndrome",
+  "aliases": [
+    "Hypercortisolism",
+    "Cushing's Syndrome",
+    "Cushing's Disease (pituitary-specific)",
+    "ACTH-Dependent Cushing Syndrome",
+    "Endogenous Hypercortisolism"
+  ],
+  "icd10Codes": ["E24.0", "E24.2", "E24.8", "E24.9"],
+  "omimId": "219090",
+  "orphanetId": "553",
+  "prevalence": {
+    "estimate": "1 in 26,000 to 1 in 100,000",
+    "range": "0.001%-0.004%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 60, "peak": 40 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Endocrine Society Clinical Practice Guidelines for Cushing Syndrome",
+    "criteria": [
+      {
+        "id": "cush-c1",
+        "description": "Elevated 24-hour urinary free cortisol (at least 2 measurements >3x upper limit of normal)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cush-c2",
+        "description": "Failure to suppress cortisol on overnight 1 mg dexamethasone suppression test (cortisol >1.8 mcg/dL)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cush-c3",
+        "description": "Elevated late-night salivary cortisol (at least 2 measurements above normal)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cush-c4",
+        "description": "Loss of normal cortisol diurnal rhythm",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cush-c5",
+        "description": "ACTH level used to differentiate ACTH-dependent from ACTH-independent causes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cush-c6",
+        "description": "High-dose dexamethasone suppression test or CRH stimulation test for ACTH-dependent differential",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cush-c7",
+        "description": "Characteristic clinical features (central obesity, striae, proximal myopathy, easy bruising)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "At least two abnormal first-line screening tests (24h UFC, late-night salivary cortisol, or 1 mg DST) confirming hypercortisolism, after exclusion of exogenous glucocorticoid use",
+    "notes": "Cushing's disease specifically refers to pituitary ACTH-secreting adenoma (~70% of endogenous cases). Ectopic ACTH (~10-15%) and adrenal tumors (~15-20%) are other causes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Wide (>1 cm) violaceous/purple striae",
+        "snomedCode": "201066001",
+        "frequency": 0.6,
+        "bodySystem": "integumentary",
+        "notes": "Highly specific for Cushing syndrome; typically on abdomen, thighs, breasts"
+      },
+      {
+        "symptomName": "Proximal muscle weakness with preserved distal strength",
+        "snomedCode": "26544005",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal",
+        "notes": "Difficulty rising from chair or climbing stairs"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Central/truncal obesity with peripheral wasting",
+        "snomedCode": "248313003",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Moon facies (facial plethora and rounding)",
+        "snomedCode": "248319004",
+        "frequency": 0.8,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Dorsocervical fat pad (buffalo hump)",
+        "snomedCode": "248311001",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hypertension",
+        "snomedCode": "38341003",
+        "frequency": 0.8,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Easy bruising",
+        "snomedCode": "302227002",
+        "frequency": 0.7,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Glucose intolerance or diabetes mellitus",
+        "snomedCode": "73211009",
+        "frequency": 0.6,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Depression or emotional lability",
+        "snomedCode": "35489007",
+        "frequency": 0.5,
+        "bodySystem": "neuropsychiatric"
+      },
+      {
+        "symptomName": "Hirsutism (in women)",
+        "snomedCode": "399979006",
+        "frequency": 0.45,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Menstrual irregularity or amenorrhea",
+        "snomedCode": "14302001",
+        "frequency": 0.45,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Osteoporosis or pathologic fractures",
+        "snomedCode": "64859006",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Thin skin with poor wound healing",
+        "snomedCode": "271771009",
+        "frequency": 0.45,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Recurrent infections",
+        "snomedCode": "40733004",
+        "frequency": 0.35,
+        "bodySystem": "immunologic"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Psychosis (steroid psychosis)",
+        "snomedCode": "69322001",
+        "frequency": 0.08,
+        "bodySystem": "neuropsychiatric"
+      },
+      {
+        "symptomName": "Nephrolithiasis",
+        "snomedCode": "95570007",
+        "frequency": 0.1,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hypokalemic alkalosis (ectopic ACTH)",
+        "snomedCode": "43339004",
+        "frequency": 0.1,
+        "bodySystem": "endocrine",
+        "notes": "More common with ectopic ACTH secretion; very high cortisol levels overwhelm 11-beta-HSD2"
+      },
+      {
+        "symptomName": "Hyperpigmentation (ectopic ACTH)",
+        "snomedCode": "49765009",
+        "frequency": 0.08,
+        "bodySystem": "integumentary",
+        "notes": "Due to very high ACTH stimulating melanocortin receptors; seen with ectopic ACTH"
+      },
+      {
+        "symptomName": "Venous thromboembolism",
+        "snomedCode": "111293003",
+        "frequency": 0.1,
+        "bodySystem": "hematologic"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "endocrine",
+    "cardiovascular",
+    "musculoskeletal",
+    "integumentary",
+    "neuropsychiatric",
+    "metabolic",
+    "immunologic",
+    "reproductive"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated 24-hour urinary free cortisol (UFC)",
+      "Failure to suppress on 1 mg overnight dexamethasone suppression test",
+      "Elevated late-night salivary cortisol",
+      "ACTH level: suppressed (<5 pg/mL) in adrenal causes; normal/elevated in ACTH-dependent causes",
+      "Hyperglycemia, dyslipidemia, hypokalemia (especially ectopic ACTH)"
+    ],
+    "imaging": [
+      "Pituitary MRI with gadolinium for Cushing's disease (may show microadenoma)",
+      "CT adrenals for ACTH-independent causes (adrenal adenoma or carcinoma)",
+      "CT chest/abdomen for ectopic ACTH source (bronchial carcinoid, SCLC, thymic carcinoid)",
+      "68Ga-DOTATATE PET/CT for occult ectopic ACTH source",
+      "DEXA scan showing osteopenia/osteoporosis"
+    ],
+    "genetic": [
+      "Sporadic in most cases",
+      "MEN1 mutations in some pituitary adenoma cases",
+      "PRKAR1A mutations in Carney complex (primary pigmented nodular adrenocortical disease)",
+      "ARMC5 mutations in bilateral macronodular adrenal hyperplasia",
+      "USP8 mutations identified in some corticotroph adenomas"
+    ],
+    "other": [
+      "Bilateral inferior petrosal sinus sampling (BIPSS) to distinguish pituitary from ectopic ACTH",
+      "CRH stimulation test",
+      "High-dose dexamethasone suppression test",
+      "Bone densitometry (DEXA scan)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "metabolic-syndrome",
+      "distinguishingFeatures": [
+        "Metabolic syndrome lacks purple striae and proximal myopathy",
+        "Normal cortisol dynamics in metabolic syndrome",
+        "No muscle wasting in metabolic syndrome"
+      ]
+    },
+    {
+      "diseaseId": "polycystic-ovary-syndrome",
+      "distinguishingFeatures": [
+        "PCOS has elevated androgens with normal cortisol",
+        "PCOS has normal dexamethasone suppression",
+        "PCOS lacks purple striae and proximal weakness"
+      ]
+    },
+    {
+      "diseaseId": "depression-pseudo-cushing",
+      "distinguishingFeatures": [
+        "Pseudo-Cushing has mild cortisol elevation",
+        "Pseudo-Cushing responds to CRH-dexamethasone combination test",
+        "Lacks progressive physical stigmata of true Cushing"
+      ]
+    },
+    {
+      "diseaseId": "alcoholic-pseudo-cushing",
+      "distinguishingFeatures": [
+        "History of heavy alcohol use",
+        "Cortisol normalizes with alcohol cessation",
+        "Liver disease markers typically present"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Ectopic ACTH with severe hypokalemia and rapid onset (consider malignancy such as SCLC)",
+    "Very high cortisol levels with hyperpigmentation (suggests ectopic ACTH)",
+    "Adrenal mass >4 cm with rapid cortisol excess (concern for adrenocortical carcinoma)",
+    "Venous thromboembolism or opportunistic infections in untreated Cushing",
+    "Acute adrenal crisis after abrupt withdrawal of exogenous glucocorticoids or post-surgical hypocortisolism"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Neurosurgeon (pituitary)",
+    "Endocrine Surgeon",
+    "Medical Oncologist",
+    "Interventional Neuroradiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Nieman LK, et al. The diagnosis of Cushing's syndrome: an Endocrine Society clinical practice guideline. J Clin Endocrinol Metab. 2008;93(5):1526-40.",
+    "Lacroix A, et al. Cushing's syndrome. Lancet. 2015;386(9996):913-27.",
+    "Newell-Price J, et al. Cushing's syndrome. Lancet. 2006;367(9522):1605-17.",
+    "Fleseriu M, et al. Consensus on diagnosis and management of Cushing's disease. Lancet Diabetes Endocrinol. 2021;9(12):847-875."
+  ],
+  "confidenceInData": "medium"
+}

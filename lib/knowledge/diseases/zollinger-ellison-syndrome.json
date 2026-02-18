@@ -1,0 +1,219 @@
+{
+  "id": "zollinger-ellison-syndrome",
+  "name": "Zollinger-Ellison Syndrome",
+  "aliases": [
+    "ZES",
+    "Gastrinoma Syndrome",
+    "Gastrin-Secreting Tumor Syndrome"
+  ],
+  "icd10Codes": ["E16.4"],
+  "omimId": "131100",
+  "orphanetId": "913",
+  "prevalence": {
+    "estimate": "0.5 to 4 per 1,000,000 per year",
+    "range": "0.00005%-0.0004%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 60, "peak": 45 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "zes-maj1",
+        "description": "Fasting serum gastrin > 10 times upper limit of normal (> 1000 pg/mL) with gastric pH < 2",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "zes-maj2",
+        "description": "Positive secretin stimulation test (gastrin increase > 120 pg/mL after IV secretin)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "zes-maj3",
+        "description": "Imaging identification of gastrinoma (CT, MRI, EUS, or somatostatin receptor scintigraphy)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "zes-min1",
+        "description": "Recurrent/refractory peptic ulcer disease",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "zes-min2",
+        "description": "Diarrhea with hypergastrinemia",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "zes-sup1",
+        "description": "Association with MEN1 syndrome (present in 20-30% of ZES cases)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Fasting hypergastrinemia with gastric acid hypersecretion (pH < 2) plus either positive secretin stimulation test or localization of gastrinoma on imaging. PPIs must be held before testing.",
+    "notes": "60-90% of gastrinomas are malignant. 70-80% are in the gastrinoma triangle (duodenum > pancreas). 20-30% are associated with MEN1."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent/refractory peptic ulcers",
+        "snomedCode": "13200003",
+        "frequency": 0.90,
+        "bodySystem": "gastrointestinal",
+        "notes": "Ulcers often in atypical locations (distal duodenum, jejunum), multiple, or refractory to standard therapy"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Epigastric/abdominal pain",
+        "snomedCode": "235862006",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Chronic diarrhea",
+        "snomedCode": "62315008",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Secretory diarrhea from gastric acid hypersecretion; may be sole presenting symptom in 10-20%"
+      },
+      {
+        "symptomName": "Heartburn/GERD symptoms",
+        "snomedCode": "16331000",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nausea",
+        "snomedCode": "422587007",
+        "frequency": 0.45,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.40,
+        "bodySystem": "general"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Steatorrhea",
+        "snomedCode": "271820007",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Acid inactivation of pancreatic lipase"
+      },
+      {
+        "symptomName": "Upper GI bleeding (melena/hematemesis)",
+        "snomedCode": "74474003",
+        "frequency": 0.20,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Esophageal stricture from severe GERD",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Gastric/esophageal perforation",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hepatic metastases causing right upper quadrant pain",
+        "frequency": 0.10,
+        "bodySystem": "gastrointestinal",
+        "notes": "Liver metastases present in 25% at diagnosis"
+      },
+      {
+        "symptomName": "Features of MEN1 (hyperparathyroidism, pituitary tumors)",
+        "frequency": 0.25,
+        "bodySystem": "endocrine",
+        "notes": "Present in 20-30% of ZES patients"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Fasting serum gastrin markedly elevated (often > 1000 pg/mL; normal < 100)",
+      "Gastric pH < 2 (confirms acid hypersecretion; rules out achlorhydria as cause of hypergastrinemia)",
+      "Positive secretin stimulation test (gastrin rise > 120 pg/mL)",
+      "Chromogranin A elevated",
+      "Serum calcium and PTH to screen for MEN1-associated hyperparathyroidism"
+    ],
+    "imaging": [
+      "CT/MRI abdomen: may demonstrate pancreatic or duodenal mass; liver metastases",
+      "Somatostatin receptor scintigraphy (OctreoScan): sensitivity ~80% for localization",
+      "Ga-68 DOTATATE PET/CT: superior sensitivity for gastrinoma localization",
+      "EUS: high sensitivity for small pancreatic and duodenal gastrinomas"
+    ],
+    "genetic": [
+      "MEN1 gene mutations (chromosome 11q13) in MEN1-associated cases (20-30%)",
+      "Genetic testing for MEN1 recommended in all ZES patients"
+    ],
+    "other": [
+      "Gastric pH measurement (must be < 2 while off PPIs to interpret gastrin levels)",
+      "Basal acid output > 15 mEq/h (or > 5 mEq/h in post-vagotomy patients)",
+      "Upper endoscopy: prominent gastric folds, multiple ulcers, ulcers beyond first duodenum"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "peptic-ulcer-disease",
+      "distinguishingFeatures": [
+        "Typical PUD has normal gastrin levels",
+        "PUD responds to standard PPI therapy",
+        "Usually single ulcer in typical location"
+      ]
+    },
+    {
+      "diseaseId": "ppi-induced-hypergastrinemia",
+      "distinguishingFeatures": [
+        "PPI use causes compensatory hypergastrinemia with high gastric pH",
+        "Gastrin normalizes after PPI withdrawal"
+      ]
+    },
+    {
+      "diseaseId": "gastric-carcinoid",
+      "distinguishingFeatures": [
+        "G-cell hyperplasia from chronic atrophic gastritis has high pH",
+        "Different endoscopic and histological appearance"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Multiple ulcers in atypical locations (post-bulbar, jejunal)",
+    "Peptic ulcer disease refractory to standard PPI therapy",
+    "Diarrhea that resolves with PPI therapy (suggests acid-mediated mechanism)",
+    "Family history of MEN1 features (hyperparathyroidism, pituitary tumors)",
+    "Hepatic metastases at presentation"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Endocrinologist",
+    "Surgical Oncologist",
+    "Medical Oncologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Jensen RT, et al. Zollinger-Ellison syndrome: current concepts and management. Ann Surg. 2023;277(2):197-215.",
+    "Ito T, et al. Pancreatic neuroendocrine tumors: clinical features, diagnosis and medical treatment advances. Best Pract Res Clin Gastroenterol. 2012;26(6):737-753.",
+    "Zollinger RM, Ellison EH. Primary peptic ulceration of the jejunum associated with islet cell tumors of the pancreas. Ann Surg. 1955;142(4):709-723."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,264 @@
+{
+  "id": "reactive-arthritis",
+  "name": "Reactive Arthritis",
+  "aliases": [
+    "ReA",
+    "Reiter's Syndrome (historical, deprecated)",
+    "Post-infectious Arthritis",
+    "Sexually Acquired Reactive Arthritis (SARA)"
+  ],
+  "icd10Codes": ["M02.30", "M02.31", "M02.32", "M02.33", "M02.34", "M02.35", "M02.36", "M02.37", "M02.38", "M02.39"],
+  "orphanetId": "29207",
+  "prevalence": {
+    "estimate": "30-40 per 100,000 (incidence); point prevalence approximately 1 in 3,000",
+    "range": "0.03%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 18, "max": 45, "peak": 30 },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "More common in populations with high HLA-B27 prevalence",
+      "Post-chlamydial form more common in males; post-enteric form equal sex distribution"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No universally accepted formal criteria; clinical diagnosis based on temporal association with preceding infection",
+    "criteria": [
+      {
+        "id": "rea-c1",
+        "description": "Asymmetric oligoarthritis (predominantly lower limbs)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "rea-c2",
+        "description": "Preceding symptomatic infection (urogenital or enteric) 1-4 weeks before arthritis onset",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "rea-c3",
+        "description": "Laboratory evidence of preceding triggering infection (culture, serology, PCR)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "rea-s1",
+        "description": "Conjunctivitis or anterior uveitis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "rea-s2",
+        "description": "Urethritis or cervicitis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "rea-s3",
+        "description": "Enthesitis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "rea-s4",
+        "description": "Dactylitis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "rea-s5",
+        "description": "Mucocutaneous lesions (keratoderma blennorrhagica, circinate balanitis, oral ulcers)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "rea-s6",
+        "description": "HLA-B27 positivity",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Typical asymmetric oligoarthritis with evidence of or history of preceding infection (urogenital or enteric) within 1-4 weeks. Exclusion of other causes of arthritis.",
+    "notes": "Common triggering organisms: Chlamydia trachomatis, Salmonella, Shigella, Yersinia, Campylobacter. The classic triad of arthritis + urethritis + conjunctivitis occurs in only a minority of patients."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Asymmetric oligoarthritis following infection (typically lower extremity)",
+        "snomedCode": "67224007",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal",
+        "notes": "Knees, ankles, and feet most commonly affected; onset 1-4 weeks post-infection"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Enthesitis (Achilles tendon, plantar fascia)",
+        "snomedCode": "359643005",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Conjunctivitis",
+        "snomedCode": "9826008",
+        "frequency": 0.5,
+        "bodySystem": "ophthalmologic",
+        "notes": "Usually mild, bilateral, sterile"
+      },
+      {
+        "symptomName": "Urethritis",
+        "snomedCode": "31822004",
+        "frequency": 0.5,
+        "bodySystem": "genitourinary",
+        "notes": "May be initial trigger or part of reactive process"
+      },
+      {
+        "symptomName": "Low back pain / sacroiliitis",
+        "snomedCode": "202498004",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Dactylitis",
+        "snomedCode": "77636002",
+        "frequency": 0.35,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Keratoderma blennorrhagica",
+        "snomedCode": "200956001",
+        "frequency": 0.15,
+        "bodySystem": "integumentary",
+        "notes": "Hyperkeratotic skin lesions on palms and soles; can mimic pustular psoriasis"
+      },
+      {
+        "symptomName": "Circinate balanitis",
+        "snomedCode": "44882003",
+        "frequency": 0.2,
+        "bodySystem": "genitourinary",
+        "notes": "Painless shallow erosions on glans penis"
+      },
+      {
+        "symptomName": "Oral ulcers (painless)",
+        "snomedCode": "26284000",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nail changes (thickening, ridging, onycholysis)",
+        "frequency": 0.15,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Anterior uveitis",
+        "snomedCode": "65323003",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmologic",
+        "notes": "More common in chronic/recurrent disease and HLA-B27+ patients"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiac conduction defects",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Aortic regurgitation",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular",
+        "notes": "Very rare; seen in chronic cases"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "ophthalmologic",
+    "genitourinary",
+    "integumentary",
+    "gastrointestinal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated ESR and CRP during acute phase",
+      "HLA-B27 positive in 50-80% of patients (predicts severity and chronicity)",
+      "Rheumatoid factor negative",
+      "Synovial fluid: inflammatory (WBC 2,000-50,000), culture negative",
+      "Urethral swab or first-void urine NAAT for Chlamydia trachomatis",
+      "Stool culture for enteric pathogens (Salmonella, Shigella, Yersinia, Campylobacter)"
+    ],
+    "imaging": [
+      "Radiographs often normal early in disease",
+      "Entheseal calcification (Achilles, plantar fascia) in chronic cases",
+      "Sacroiliac joint imaging may show asymmetric sacroiliitis",
+      "MRI: bone marrow edema at entheses and sacroiliac joints",
+      "Ultrasound: enthesitis, joint effusion, synovitis"
+    ],
+    "genetic": [
+      "HLA-B27 associated with increased risk and severity",
+      "Not a single-gene disorder; polygenic susceptibility"
+    ],
+    "other": [
+      "Careful sexual and travel/food history for triggering infection",
+      "Joint aspiration to exclude septic arthritis and crystal arthropathy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "psoriatic-arthritis",
+      "distinguishingFeatures": [
+        "PsA has psoriatic skin plaques (not keratoderma blennorrhagica)",
+        "PsA is chronic and progressive",
+        "PsA lacks preceding infectious trigger"
+      ]
+    },
+    {
+      "diseaseId": "ankylosing-spondylitis",
+      "distinguishingFeatures": [
+        "AS has insidious onset without infectious trigger",
+        "AS has symmetric sacroiliitis",
+        "AS is chronic and progressive from onset"
+      ]
+    },
+    {
+      "diseaseId": "ehlers-danlos-hypermobile",
+      "distinguishingFeatures": [
+        "hEDS has generalized hypermobility without inflammatory arthritis",
+        "hEDS has normal inflammatory markers",
+        "hEDS is chronic, not post-infectious"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Purulent joint effusion (exclude septic arthritis)",
+    "Acute monoarthritis with crystals on polarized microscopy (gout/pseudogout)",
+    "Severe uveitis (urgent ophthalmology referral)",
+    "Chronic recurrent course (>6 months) suggesting evolution to chronic SpA",
+    "HIV risk factors (reactive arthritis can be severe and treatment-resistant in HIV)"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Infectious Disease (for pathogen identification)",
+    "Ophthalmologist",
+    "Dermatologist",
+    "Urologist/Gynecologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Selmi C, Gershwin ME. Diagnosis and classification of reactive arthritis. Autoimmun Rev. 2014;13(4-5):546-9.",
+    "Carter JD, Hudson AP. Reactive arthritis: clinical aspects and medical management. Rheum Dis Clin North Am. 2009;35(1):21-44.",
+    "Hannu T. Reactive arthritis. Best Pract Res Clin Rheumatol. 2011;25(3):347-57.",
+    "Schmitt SK. Reactive arthritis. Infect Dis Clin North Am. 2017;31(2):265-77."
+  ],
+  "confidenceInData": "medium"
+}

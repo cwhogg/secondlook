@@ -1,0 +1,247 @@
+{
+  "id": "myasthenia-gravis",
+  "name": "Myasthenia Gravis",
+  "aliases": [
+    "MG",
+    "Myasthenia gravis autoimmune"
+  ],
+  "icd10Codes": ["G70.0", "G70.00", "G70.01"],
+  "omimId": "254200",
+  "orphanetId": "589",
+  "prevalence": {
+    "estimate": "15-30 per 100,000",
+    "range": "10-40 per 100,000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 80 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "Affects all ethnicities",
+      "Female predominance in early-onset (<50 years)",
+      "Male predominance or equal in late-onset (>50 years)"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "MGFA Clinical Classification",
+    "criteria": [
+      {
+        "id": "mg-1",
+        "description": "Fluctuating weakness of voluntary muscles that worsens with activity and improves with rest",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mg-2",
+        "description": "Positive acetylcholine receptor (AChR) antibodies",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mg-3",
+        "description": "Positive muscle-specific kinase (MuSK) antibodies",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mg-4",
+        "description": "Decremental response (>10%) on repetitive nerve stimulation at 2-3 Hz",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mg-5",
+        "description": "Increased jitter on single-fiber EMG",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mg-6",
+        "description": "Positive response to acetylcholinesterase inhibitor (edrophonium/ice pack test)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Clinical picture of fatigable weakness plus at least one confirmatory test (antibodies, RNS, or SFEMG)",
+    "notes": "Seronegative MG (~10-15%) lacks AChR and MuSK antibodies but has compatible clinical and electrophysiological findings. LRP4 antibodies may be present in some seronegative patients."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Fatigable ptosis",
+        "snomedCode": "11934000",
+        "frequency": 0.85,
+        "bodySystem": "ophthalmological",
+        "notes": "Worsens with sustained upgaze; most common presenting sign"
+      },
+      {
+        "symptomName": "Fatigable diplopia",
+        "snomedCode": "24982008",
+        "frequency": 0.80,
+        "bodySystem": "ophthalmological",
+        "notes": "Fluctuating and variable; does not conform to single nerve palsy pattern"
+      },
+      {
+        "symptomName": "Fatigable weakness worsening with repetitive use",
+        "snomedCode": "26544005",
+        "frequency": 0.90,
+        "bodySystem": "musculoskeletal",
+        "notes": "Cardinal feature: weakness worsens with activity, improves with rest"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Bulbar weakness (dysarthria and dysphagia)",
+        "snomedCode": "288959006",
+        "frequency": 0.60,
+        "bodySystem": "neurological",
+        "notes": "Nasal speech, difficulty chewing, liquids may come out of nose"
+      },
+      {
+        "symptomName": "Proximal limb weakness",
+        "snomedCode": "249938007",
+        "frequency": 0.50,
+        "bodySystem": "musculoskeletal",
+        "notes": "Arms typically affected before legs"
+      },
+      {
+        "symptomName": "Facial weakness",
+        "snomedCode": "95667003",
+        "frequency": 0.50,
+        "bodySystem": "neurological",
+        "notes": "Snarling smile, difficulty whistling"
+      },
+      {
+        "symptomName": "Neck flexor weakness",
+        "snomedCode": "249937002",
+        "frequency": 0.45,
+        "bodySystem": "musculoskeletal",
+        "notes": "Head drop sign"
+      },
+      {
+        "symptomName": "Voice fatigue",
+        "snomedCode": "44564008",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "notes": "Voice becomes progressively weaker during conversation"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Respiratory weakness",
+        "snomedCode": "409622000",
+        "frequency": 0.20,
+        "bodySystem": "respiratory",
+        "notes": "Dyspnea on exertion; can progress to myasthenic crisis"
+      },
+      {
+        "symptomName": "Jaw fatigue with chewing",
+        "snomedCode": "298378000",
+        "frequency": 0.35,
+        "bodySystem": "neurological",
+        "notes": "Jaw may hang open after prolonged chewing"
+      },
+      {
+        "symptomName": "Difficulty holding head up",
+        "frequency": 0.30,
+        "bodySystem": "musculoskeletal",
+        "notes": "Dropped head syndrome"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Isolated limb weakness without ocular symptoms",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal",
+        "notes": "Uncommon presentation; usually ocular symptoms develop"
+      },
+      {
+        "symptomName": "Myasthenic crisis (respiratory failure)",
+        "snomedCode": "91637004",
+        "frequency": 0.15,
+        "bodySystem": "respiratory",
+        "notes": "Life-threatening; requires ICU admission and ventilatory support"
+      },
+      {
+        "symptomName": "Tongue atrophy",
+        "frequency": 0.10,
+        "bodySystem": "neurological",
+        "notes": "More common in MuSK-positive MG"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neuromuscular junction",
+    "ocular muscles",
+    "bulbar muscles",
+    "limb muscles",
+    "respiratory muscles"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "AChR (acetylcholine receptor) antibodies positive in ~85% of generalized MG",
+      "MuSK antibodies positive in ~5-8% of generalized MG",
+      "LRP4 antibodies in some seronegative patients",
+      "Anti-striated muscle (titin) antibodies associated with thymoma"
+    ],
+    "imaging": [
+      "CT or MRI chest to evaluate for thymoma (present in ~10-15%)",
+      "Thymic hyperplasia common in early-onset AChR-positive MG"
+    ],
+    "genetic": [
+      "HLA-B8, DR3 association with early-onset MG",
+      "Congenital myasthenic syndromes have distinct genetic causes (not autoimmune)"
+    ],
+    "other": [
+      "Repetitive nerve stimulation showing >10% decremental response at 2-3 Hz",
+      "Single-fiber EMG showing increased jitter (most sensitive test, >95%)",
+      "Ice pack test: improvement of ptosis with ice application for 2 minutes",
+      "Forced vital capacity monitoring for respiratory involvement"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "amyotrophic-lateral-sclerosis",
+      "distinguishingFeatures": [
+        "ALS has upper motor neuron signs (spasticity, hyperreflexia)",
+        "ALS weakness is progressive, not fluctuating",
+        "ALS does not affect ocular muscles",
+        "ALS has EMG showing denervation, not NMJ dysfunction"
+      ]
+    },
+    {
+      "diseaseId": "guillain-barre-syndrome",
+      "distinguishingFeatures": [
+        "GBS has ascending weakness, typically monophasic",
+        "GBS has areflexia",
+        "GBS has albuminocytologic dissociation in CSF",
+        "GBS does not have fatigable weakness pattern"
+      ]
+    },
+    {
+      "diseaseId": "inclusion-body-myositis",
+      "distinguishingFeatures": [
+        "IBM has distal finger flexor and quadriceps weakness",
+        "IBM weakness is progressive, not fatigable",
+        "IBM has elevated CK levels",
+        "IBM has characteristic muscle biopsy findings"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Acute respiratory decompensation (myasthenic crisis) is a medical emergency",
+    "New onset or worsening weakness after starting aminoglycosides, beta-blockers, or magnesium",
+    "Thymoma must be excluded with chest imaging in all MG patients",
+    "MuSK-positive MG may not respond to pyridostigmine and can worsen",
+    "Rapid deterioration after recent infection or surgery",
+    "Negative AChR and MuSK antibodies should prompt consideration of congenital myasthenic syndromes in young patients"
+  ],
+  "specialistType": ["neurologist", "neuromuscular specialist", "thoracic surgeon"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Gilhus NE, et al. Myasthenia gravis. Nat Rev Dis Primers. 2019;5(1):30.",
+    "Sanders DB, et al. International consensus guidance for management of myasthenia gravis. Neurology. 2016;87(4):419-425.",
+    "Dresser L, et al. Myasthenia Gravis: Epidemiology, Pathophysiology and Clinical Manifestations. J Clin Med. 2021;10(11):2235."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,107 @@
+{
+  "id": "addison-disease",
+  "name": "Addison Disease",
+  "aliases": ["Addison's Disease", "Primary Adrenal Insufficiency", "Autoimmune Adrenalitis", "Primary Adrenocortical Insufficiency"],
+  "icd10Codes": ["E27.1", "E27.2"],
+  "omimId": "240200",
+  "orphanetId": "85138",
+  "prevalence": {
+    "estimate": "10-14 per 100,000",
+    "range": "10-14 per 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 50, "peak": 35 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": ["All ethnicities; autoimmune form more common in European populations"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Endocrine Society Clinical Practice Guideline for Primary Adrenal Insufficiency",
+    "criteria": [
+      { "id": "ad-1", "description": "Low morning serum cortisol (<3 mcg/dL strongly suggestive; 3-15 mcg/dL requires further testing)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "ad-2", "description": "Elevated ACTH (>2x upper limit of normal)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "ad-3", "description": "Subnormal cortisol response to ACTH stimulation test (peak cortisol <18 mcg/dL after 250 mcg cosyntropin)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "ad-4", "description": "Positive 21-hydroxylase antibodies (anti-adrenal antibodies)", "category": "major", "requiredForDiagnosis": false },
+      { "id": "ad-5", "description": "Low serum aldosterone with elevated plasma renin activity (mineralocorticoid deficiency)", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "ad-6", "description": "Low DHEA-S", "category": "supportive", "requiredForDiagnosis": false }
+    ],
+    "minimumForDiagnosis": "Biochemical confirmation: low cortisol (morning or stimulated) with elevated ACTH. 21-hydroxylase antibodies confirm autoimmune etiology.",
+    "notes": "Autoimmune adrenalitis is the most common cause in developed countries (~80%). Must exclude infectious (TB, HIV), infiltrative, hemorrhagic, and metastatic causes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      { "symptomName": "Hyperpigmentation (generalized and mucosal)", "snomedCode": "49765009", "frequency": 0.90, "bodySystem": "Dermatologic", "notes": "ACTH-driven melanocyte stimulation; affects skin creases, buccal mucosa, areolae, scars; distinguishes primary from secondary AI" },
+      { "symptomName": "Salt craving", "snomedCode": "102863006", "frequency": 0.60, "bodySystem": "Constitutional", "notes": "Due to aldosterone deficiency and sodium wasting" }
+    ],
+    "common": [
+      { "symptomName": "Fatigue and weakness (progressive)", "snomedCode": "84229001", "frequency": 0.95, "bodySystem": "Constitutional" },
+      { "symptomName": "Weight loss and anorexia", "snomedCode": "89362005", "frequency": 0.70, "bodySystem": "Constitutional" },
+      { "symptomName": "Orthostatic hypotension", "snomedCode": "28651003", "frequency": 0.70, "bodySystem": "Cardiovascular" },
+      { "symptomName": "Nausea and vomiting", "snomedCode": "422587007", "frequency": 0.50, "bodySystem": "Gastrointestinal" },
+      { "symptomName": "Abdominal pain", "snomedCode": "21522001", "frequency": 0.30, "bodySystem": "Gastrointestinal" }
+    ],
+    "occasional": [
+      { "symptomName": "Myalgia and arthralgia", "snomedCode": "68962001", "frequency": 0.25, "bodySystem": "Musculoskeletal" },
+      { "symptomName": "Depression and irritability", "snomedCode": "35489007", "frequency": 0.25, "bodySystem": "Psychiatric" },
+      { "symptomName": "Vitiligo (associated autoimmune)", "snomedCode": "56727007", "frequency": 0.15, "bodySystem": "Dermatologic" },
+      { "symptomName": "Amenorrhea or decreased libido", "snomedCode": "14302001", "frequency": 0.20, "bodySystem": "Reproductive" },
+      { "symptomName": "Loss of axillary and pubic hair (women)", "snomedCode": "278040002", "frequency": 0.20, "bodySystem": "Dermatologic", "notes": "From DHEA deficiency" }
+    ],
+    "rare": [
+      { "symptomName": "Adrenal crisis", "snomedCode": "24930006", "frequency": 0.05, "bodySystem": "Multi-system", "notes": "Life-threatening; precipitated by stress, infection, surgery; shock, altered consciousness, severe hypotension" },
+      { "symptomName": "Hypoglycemia", "snomedCode": "302866003", "frequency": 0.10, "bodySystem": "Endocrine", "notes": "More common in children" },
+      { "symptomName": "Psychosis (adrenal crisis)", "snomedCode": "69322001", "frequency": 0.02, "bodySystem": "Psychiatric" },
+      { "symptomName": "Seizures (from hypoglycemia or hyponatremia)", "snomedCode": "91175000", "frequency": 0.03, "bodySystem": "Neurological" }
+    ]
+  },
+  "systemsAffected": ["Endocrine", "Cardiovascular", "Gastrointestinal", "Dermatologic", "Neurological", "Musculoskeletal", "Reproductive"],
+  "keyFindings": {
+    "laboratory": [
+      "Low morning cortisol (<3 mcg/dL diagnostic; 3-15 mcg/dL indeterminate)",
+      "Elevated ACTH (often >100 pg/mL)",
+      "Subnormal ACTH stimulation test (peak cortisol <18 mcg/dL)",
+      "Hyponatremia (cortisol and aldosterone deficiency)",
+      "Hyperkalemia (aldosterone deficiency)",
+      "Low aldosterone with elevated plasma renin activity",
+      "21-hydroxylase antibodies positive (~90% of autoimmune AI)",
+      "Mild hypercalcemia",
+      "Eosinophilia",
+      "Low DHEA-S",
+      "Normocytic anemia"
+    ],
+    "imaging": [
+      "CT adrenal glands: small atrophic adrenals (autoimmune); enlarged/calcified (TB, hemorrhage, infiltrative)",
+      "Chest X-ray: to exclude TB"
+    ],
+    "genetic": [
+      "HLA-DR3 and HLA-DR4 associations",
+      "CTLA-4 gene variants",
+      "AIRE gene mutations (in autoimmune polyglandular syndrome type 1)",
+      "CIITA gene variants"
+    ],
+    "other": [
+      "Associated autoimmune conditions screen: thyroid function, vitamin B12, glucose/HbA1c, celiac antibodies, gonadal function"
+    ]
+  },
+  "differentialDiagnoses": [
+    { "diseaseId": "secondary-adrenal-insufficiency", "distinguishingFeatures": ["No hyperpigmentation", "No hyperkalemia (aldosterone preserved)", "Low ACTH", "Often from chronic exogenous glucocorticoid use"] },
+    { "diseaseId": "type-1-diabetes", "distinguishingFeatures": ["Hyperglycemia rather than hypoglycemia", "Anti-GAD/anti-IA2 antibodies", "Can coexist (APS type 2)"] },
+    { "diseaseId": "anorexia-nervosa", "distinguishingFeatures": ["Low body weight", "Body image distortion", "Normal ACTH stimulation test", "Normal electrolytes typically"] },
+    { "diseaseId": "chronic-fatigue-syndrome", "distinguishingFeatures": ["Normal cortisol and ACTH", "Normal electrolytes", "No hyperpigmentation", "Diagnosis of exclusion"] }
+  ],
+  "redFlags": [
+    "Adrenal crisis: severe hypotension, shock, acute abdomen, altered consciousness (emergency - IV hydrocortisone STAT)",
+    "Severe hyponatremia (<120 mEq/L)",
+    "Hypoglycemia with altered consciousness",
+    "Concurrent illness in known Addison patient without stress-dose steroids",
+    "Associated autoimmune conditions suggesting polyglandular syndrome"
+  ],
+  "specialistType": ["Endocrinology"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Bornstein SR, et al. Diagnosis and Treatment of Primary Adrenal Insufficiency: An Endocrine Society Clinical Practice Guideline. J Clin Endocrinol Metab. 2016;101(2):364-389.",
+    "Husebye ES, et al. Adrenal insufficiency. Lancet. 2021;397(10274):613-629.",
+    "Betterle C, et al. Autoimmune adrenal insufficiency and autoimmune polyendocrine syndromes: autoantibodies, autoantigens, and their applicability in diagnosis and disease prediction. Endocr Rev. 2002;23(3):327-364."
+  ],
+  "confidenceInData": "medium"
+}

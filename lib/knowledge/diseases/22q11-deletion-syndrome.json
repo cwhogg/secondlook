@@ -1,0 +1,260 @@
+{
+  "id": "22q11-deletion-syndrome",
+  "name": "22q11.2 Deletion Syndrome",
+  "aliases": [
+    "DiGeorge Syndrome",
+    "Velocardiofacial Syndrome",
+    "VCFS",
+    "Shprintzen Syndrome",
+    "Conotruncal Anomaly Face Syndrome",
+    "CATCH22"
+  ],
+  "icd10Codes": ["D82.1", "Q93.81"],
+  "omimId": "188400",
+  "orphanetId": "567",
+  "prevalence": {
+    "estimate": "1 in 4,000 to 1 in 6,000 live births",
+    "range": "0.017%-0.025%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 5, "peak": 0 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "No strong ethnic predilection",
+      "Occurs across all ethnicities"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical diagnosis confirmed by genetic testing",
+    "criteria": [
+      {
+        "id": "dg-c1",
+        "description": "Hemizygous deletion of chromosome 22q11.2 detected by FISH, MLPA, chromosomal microarray, or other molecular method",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "dg-c2",
+        "description": "Conotruncal cardiac defect (tetralogy of Fallot, interrupted aortic arch, truncus arteriosus, VSD)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dg-c3",
+        "description": "Palatal abnormalities (velopharyngeal insufficiency, cleft palate, submucous cleft)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dg-c4",
+        "description": "Characteristic facial features (long face, hooded eyelids, bulbous nasal tip, small ears)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dg-c5",
+        "description": "Hypocalcemia from hypoparathyroidism",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dg-c6",
+        "description": "Thymic hypoplasia/aplasia with T-cell immunodeficiency",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Detection of 22q11.2 deletion by molecular genetics. Clinical suspicion based on typical features triggers testing.",
+    "notes": "Most common microdeletion syndrome in humans. ~90% have a ~3 Mb deletion; ~8% have a ~1.5 Mb deletion. TBX1 is the critical gene. ~90-95% are de novo; ~5-10% inherited from an affected parent."
+  },
+  "symptoms": {
+    "pathognomonic": [],
+    "common": [
+      {
+        "symptomName": "Congenital heart defects",
+        "snomedCode": "13213009",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Tetralogy of Fallot (20%), VSD, interrupted aortic arch type B, truncus arteriosus"
+      },
+      {
+        "symptomName": "Characteristic facial features",
+        "frequency": 0.8,
+        "bodySystem": "craniofacial",
+        "notes": "Long face, hooded eyelids, broad nasal bridge, bulbous nasal tip, small low-set ears"
+      },
+      {
+        "symptomName": "Palatal abnormalities (VPI, cleft palate)",
+        "snomedCode": "87979003",
+        "frequency": 0.7,
+        "bodySystem": "craniofacial"
+      },
+      {
+        "symptomName": "Speech and language delay",
+        "snomedCode": "229721007",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Learning difficulties",
+        "snomedCode": "3446000",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Average IQ ~70-85; range varies widely"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hypocalcemia (neonatal or intermittent)",
+        "snomedCode": "5291005",
+        "frequency": 0.45,
+        "bodySystem": "endocrine",
+        "notes": "From hypoparathyroidism; may present as neonatal seizures"
+      },
+      {
+        "symptomName": "Immunodeficiency (T-cell deficiency)",
+        "snomedCode": "234532001",
+        "frequency": 0.5,
+        "bodySystem": "immunologic",
+        "notes": "Ranges from mild T-cell lymphopenia to severe combined immunodeficiency (complete DiGeorge, rare)"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "snomedCode": "78164000",
+        "frequency": 0.45,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Renal anomalies",
+        "snomedCode": "41931001",
+        "frequency": 0.3,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Anxiety disorders",
+        "snomedCode": "197480006",
+        "frequency": 0.35,
+        "bodySystem": "neuropsychiatric"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Schizophrenia / psychotic disorder",
+        "snomedCode": "58214004",
+        "frequency": 0.1,
+        "bodySystem": "neuropsychiatric",
+        "notes": "~25-fold increased risk compared to general population; onset typically late adolescence/young adulthood"
+      },
+      {
+        "symptomName": "Autoimmune disorders (JIA, ITP, autoimmune thyroid disease)",
+        "snomedCode": "85828009",
+        "frequency": 0.08,
+        "bodySystem": "immunologic"
+      },
+      {
+        "symptomName": "Growth hormone deficiency / short stature",
+        "snomedCode": "237837007",
+        "frequency": 0.1,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Skeletal anomalies (vertebral, limb)",
+        "snomedCode": "43029002",
+        "frequency": 0.08,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "immunologic",
+    "endocrine",
+    "craniofacial",
+    "neurological",
+    "neuropsychiatric",
+    "renal",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low serum calcium and elevated phosphorus (hypoparathyroidism)",
+      "Low intact PTH level",
+      "Low T-cell counts (especially CD4+ naive T cells)",
+      "Absent or reduced T-cell receptor excision circles (TRECs) on newborn screening",
+      "Low absolute lymphocyte count in neonates"
+    ],
+    "imaging": [
+      "Echocardiography showing conotruncal cardiac defects",
+      "Renal ultrasound may show structural anomalies",
+      "Chest X-ray may show absent thymic shadow in neonates",
+      "Brain MRI may show polymicrogyria or white matter abnormalities"
+    ],
+    "genetic": [
+      "22q11.2 deletion detected by chromosomal microarray (preferred first-line test)",
+      "FISH for 22q11.2 deletion",
+      "MLPA",
+      "~90-95% de novo; ~5-10% inherited (autosomal dominant)",
+      "TBX1 is the critical haploinsufficient gene"
+    ],
+    "other": [
+      "Formal speech and language assessment",
+      "Neuropsychological testing",
+      "Immune function panel (lymphocyte subsets, mitogen stimulation)",
+      "Parathyroid hormone and calcium monitoring"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "charge-syndrome",
+      "distinguishingFeatures": [
+        "CHARGE has coloboma and choanal atresia",
+        "CHD7 gene mutations",
+        "Different facial features",
+        "Semicircular canal hypoplasia"
+      ]
+    },
+    {
+      "diseaseId": "smith-magenis-syndrome",
+      "distinguishingFeatures": [
+        "17p11.2 deletion (RAI1 gene)",
+        "Different behavioral phenotype (self-hugging, sleep disturbance)",
+        "Different facial features",
+        "Less cardiac involvement"
+      ]
+    },
+    {
+      "diseaseId": "alagille-syndrome",
+      "distinguishingFeatures": [
+        "Bile duct paucity with cholestasis",
+        "JAG1 mutations",
+        "Peripheral pulmonary stenosis rather than conotruncal defects",
+        "Butterfly vertebrae"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Neonatal hypocalcemic seizures",
+    "Severe T-cell immunodeficiency (complete DiGeorge - medical emergency)",
+    "Complex congenital heart disease requiring surgical repair",
+    "Development of psychotic symptoms in adolescence/young adulthood",
+    "Recurrent infections suggesting immune compromise"
+  ],
+  "specialistType": [
+    "Medical Geneticist",
+    "Pediatric Cardiologist",
+    "Pediatric Immunologist",
+    "Pediatric Endocrinologist",
+    "Speech-Language Pathologist",
+    "Psychiatrist",
+    "Developmental Pediatrician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "McDonald-McGinn DM, et al. 22q11.2 deletion syndrome. Nat Rev Dis Primers. 2015;1:15071.",
+    "Bassett AS, et al. Practical guidelines for managing patients with 22q11.2 deletion syndrome. J Pediatr. 2011;159(2):332-339.e1.",
+    "Sullivan KE. Chromosome 22q11.2 deletion syndrome and DiGeorge syndrome. Immunol Rev. 2019;287(1):186-201.",
+    "Schneider M, et al. Psychiatric disorders from childhood to adulthood in 22q11.2 deletion syndrome. Am J Psychiatry. 2014;171(6):627-639."
+  ],
+  "confidenceInData": "medium"
+}

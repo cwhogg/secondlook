@@ -1,0 +1,109 @@
+{
+  "id": "giant-cell-arteritis",
+  "name": "Giant Cell Arteritis",
+  "aliases": ["GCA", "Temporal Arteritis", "Cranial Arteritis", "Horton Disease"],
+  "icd10Codes": ["M31.5", "M31.6"],
+  "omimId": "187360",
+  "orphanetId": "397",
+  "prevalence": {
+    "estimate": "15-30 per 100,000 in population over 50",
+    "range": "15-30 per 100,000 (age >50)",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 50, "max": 85, "peak": 72 },
+    "sexPredilection": "female",
+    "ethnicAssociations": ["Northern European/Scandinavian descent", "Caucasian"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "2022 ACR/EULAR Classification Criteria for Giant Cell Arteritis",
+    "criteria": [
+      { "id": "gca-1", "description": "Age at disease onset >= 50 years", "category": "major", "requiredForDiagnosis": true },
+      { "id": "gca-2", "description": "New onset localized headache", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "gca-3", "description": "Temporal artery abnormality (tenderness, decreased pulsation)", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "gca-4", "description": "ESR >= 50 mm/h", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "gca-5", "description": "Temporal artery biopsy showing vasculitis with mononuclear cell infiltration or granulomatous inflammation with multinucleated giant cells", "category": "major", "requiredForDiagnosis": false },
+      { "id": "gca-6", "description": "Jaw or tongue claudication", "category": "major", "requiredForDiagnosis": false },
+      { "id": "gca-7", "description": "Sudden visual loss or visual disturbance", "category": "major", "requiredForDiagnosis": false },
+      { "id": "gca-8", "description": "Morning stiffness in shoulders and/or hips (polymyalgia rheumatica overlap)", "category": "minor", "requiredForDiagnosis": false },
+      { "id": "gca-9", "description": "Positive temporal artery halo sign on ultrasound", "category": "major", "requiredForDiagnosis": false },
+      { "id": "gca-10", "description": "Large vessel involvement on imaging (aortitis, large artery stenosis)", "category": "major", "requiredForDiagnosis": false }
+    ],
+    "minimumForDiagnosis": "Age >= 50 years plus total weighted score >= 6 from the classification criteria",
+    "notes": "Temporal artery biopsy remains the gold standard. Ultrasound halo sign is increasingly used as first-line diagnostic test. Large-vessel GCA (aortitis) can occur without cranial symptoms."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      { "symptomName": "Jaw claudication", "snomedCode": "274730004", "frequency": 0.40, "bodySystem": "ENT/Vascular", "notes": "Pain with chewing due to maxillary artery vasculitis; highly specific for GCA" },
+      { "symptomName": "Scalp tenderness over temporal artery", "snomedCode": "162301005", "frequency": 0.50, "bodySystem": "Neurological/Vascular" },
+      { "symptomName": "Temporal artery thickening/nodularity with absent pulse", "frequency": 0.30, "bodySystem": "Vascular" }
+    ],
+    "common": [
+      { "symptomName": "New-onset headache (temporal)", "snomedCode": "25064002", "frequency": 0.70, "bodySystem": "Neurological" },
+      { "symptomName": "Polymyalgia rheumatica symptoms (shoulder/hip girdle stiffness)", "snomedCode": "65323003", "frequency": 0.50, "bodySystem": "Musculoskeletal" },
+      { "symptomName": "Constitutional symptoms (fatigue, weight loss, fever)", "snomedCode": "386661006", "frequency": 0.50, "bodySystem": "Constitutional" },
+      { "symptomName": "Visual disturbances (amaurosis fugax, diplopia)", "snomedCode": "314921000", "frequency": 0.30, "bodySystem": "Ocular" },
+      { "symptomName": "Elevated ESR/CRP", "frequency": 0.95, "bodySystem": "Laboratory" }
+    ],
+    "occasional": [
+      { "symptomName": "Anterior ischemic optic neuropathy (AION)", "snomedCode": "230509001", "frequency": 0.15, "bodySystem": "Ocular", "notes": "Most common cause of permanent vision loss; ophthalmologic emergency" },
+      { "symptomName": "Tongue claudication", "frequency": 0.10, "bodySystem": "ENT" },
+      { "symptomName": "Upper limb claudication", "snomedCode": "63491006", "frequency": 0.10, "bodySystem": "Vascular", "notes": "From subclavian/axillary involvement in large-vessel GCA" },
+      { "symptomName": "Aortic aneurysm", "snomedCode": "67362008", "frequency": 0.10, "bodySystem": "Cardiovascular", "notes": "Thoracic aorta most common; risk persists after treatment" },
+      { "symptomName": "Cough or sore throat", "snomedCode": "49727002", "frequency": 0.10, "bodySystem": "ENT" }
+    ],
+    "rare": [
+      { "symptomName": "Aortic dissection", "snomedCode": "308546005", "frequency": 0.03, "bodySystem": "Cardiovascular" },
+      { "symptomName": "Stroke (vertebrobasilar or carotid)", "snomedCode": "230690007", "frequency": 0.05, "bodySystem": "Neurological" },
+      { "symptomName": "Scalp necrosis", "frequency": 0.02, "bodySystem": "Dermatologic" },
+      { "symptomName": "Tongue necrosis", "frequency": 0.01, "bodySystem": "ENT" }
+    ]
+  },
+  "systemsAffected": ["Vascular", "Ocular", "Musculoskeletal", "Neurological", "Cardiovascular"],
+  "keyFindings": {
+    "laboratory": [
+      "ESR markedly elevated (often >50, frequently >100 mm/h)",
+      "CRP markedly elevated",
+      "Normocytic anemia",
+      "Thrombocytosis",
+      "Elevated alkaline phosphatase",
+      "Elevated fibrinogen",
+      "IL-6 elevated"
+    ],
+    "imaging": [
+      "Temporal artery ultrasound: halo sign (dark hypoechoic ring)",
+      "CTA/MRA: mural thickening and enhancement of aorta and branches",
+      "PET-CT: FDG uptake in large vessels (aortitis)",
+      "MRI of temporal arteries: mural enhancement and thickening"
+    ],
+    "genetic": [
+      "HLA-DRB1*04 association",
+      "HLA-DRB1*0401 (particularly strong)"
+    ],
+    "other": [
+      "Temporal artery biopsy: transmural granulomatous inflammation with giant cells, intimal hyperplasia, fragmentation of internal elastic lamina",
+      "Biopsy should be >= 1 cm, bilateral if initial is negative (skip lesions occur)"
+    ]
+  },
+  "differentialDiagnoses": [
+    { "diseaseId": "takayasu-arteritis", "distinguishingFeatures": ["Age < 50 years", "Asian female predilection", "Pulse deficits in upper extremities", "Aortic arch predominant"] },
+    { "diseaseId": "polymyalgia-rheumatica", "distinguishingFeatures": ["No cranial symptoms", "No vision loss risk", "Shoulder/hip stiffness predominant", "Often coexists with GCA"] },
+    { "diseaseId": "non-arteritic-anterior-ischemic-optic-neuropathy", "distinguishingFeatures": ["Normal inflammatory markers", "Younger patients possible", "No systemic symptoms"] },
+    { "diseaseId": "primary-cns-vasculitis", "distinguishingFeatures": ["Younger patients", "CNS symptoms predominate", "Normal ESR/CRP", "Abnormal cerebral angiography"] }
+  ],
+  "redFlags": [
+    "Sudden vision loss or amaurosis fugax (ophthalmologic emergency)",
+    "New headache in patient over 50 with elevated ESR",
+    "Jaw claudication with systemic inflammation",
+    "Asymmetric blood pressure or absent pulses suggesting aortitis",
+    "Chest/back pain in patient with known GCA (aortic dissection risk)"
+  ],
+  "specialistType": ["Rheumatology", "Ophthalmology", "Vascular Surgery"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Ponte C, et al. 2022 American College of Rheumatology/EULAR Classification Criteria for Giant Cell Arteritis. Arthritis Rheumatol. 2022;74(12):1881-1889.",
+    "Hellmich B, et al. 2018 Update of the EULAR recommendations for the management of large vessel vasculitis. Ann Rheum Dis. 2020;79(1):19-30.",
+    "Dejaco C, et al. Giant cell arteritis and polymyalgia rheumatica: current challenges and opportunities. Nat Rev Rheumatol. 2017;13(10):578-592."
+  ],
+  "confidenceInData": "medium"
+}

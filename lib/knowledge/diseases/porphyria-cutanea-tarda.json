@@ -1,0 +1,249 @@
+{
+  "id": "porphyria-cutanea-tarda",
+  "name": "Porphyria Cutanea Tarda",
+  "aliases": [
+    "PCT",
+    "Symptomatic Porphyria",
+    "Uroporphyrinogen Decarboxylase Deficiency",
+    "UROD Deficiency"
+  ],
+  "icd10Codes": ["E80.1"],
+  "omimId": "176100",
+  "orphanetId": "101330",
+  "prevalence": {
+    "estimate": "1 in 10,000 to 1 in 25,000",
+    "range": "0.004%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 30, "max": 70, "peak": 50 },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and biochemical criteria for porphyria cutanea tarda",
+    "criteria": [
+      {
+        "id": "pct-c1",
+        "description": "Elevated urinary uroporphyrins and heptacarboxylporphyrins with characteristic predominance of uroporphyrin",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pct-c2",
+        "description": "Elevated plasma porphyrins with characteristic fluorescence emission peak at ~619 nm",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pct-c3",
+        "description": "Elevated isocoproporphyrins in feces (pathognomonic for UROD deficiency)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pct-c4",
+        "description": "Characteristic skin lesions on sun-exposed areas (blisters, erosions, milia, scarring, hypertrichosis)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pct-c5",
+        "description": "Reduced hepatic UROD enzyme activity (<20% of normal)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pct-c6",
+        "description": "Presence of susceptibility factors (hepatitis C, alcohol, estrogen, iron overload, HIV)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Characteristic skin findings plus elevated urinary uroporphyrins with isocoproporphyrins in feces. Type II (familial) confirmed by UROD gene mutation.",
+    "notes": "Type I (sporadic, ~75-80%) has no UROD mutation; Type II (familial, ~20%) has autosomal dominant UROD mutation; Type III (familial, rare) clusters in families without UROD mutation."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Skin fragility and blistering on sun-exposed areas",
+        "snomedCode": "400210000",
+        "frequency": 0.95,
+        "bodySystem": "integumentary",
+        "notes": "Dorsal hands, forearms, face, ears most commonly affected"
+      },
+      {
+        "symptomName": "Milia formation after blister healing",
+        "snomedCode": "72298008",
+        "frequency": 0.8,
+        "bodySystem": "integumentary"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hypertrichosis (especially facial)",
+        "snomedCode": "399979006",
+        "frequency": 0.75,
+        "bodySystem": "integumentary",
+        "notes": "Particularly periorbital and temporal regions"
+      },
+      {
+        "symptomName": "Hyperpigmentation",
+        "snomedCode": "49765009",
+        "frequency": 0.7,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Erosions and crusting on dorsal hands",
+        "snomedCode": "399963005",
+        "frequency": 0.85,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Scarring and sclerodermoid changes",
+        "snomedCode": "275322007",
+        "frequency": 0.6,
+        "bodySystem": "integumentary"
+      },
+      {
+        "symptomName": "Photosensitivity",
+        "snomedCode": "90128006",
+        "frequency": 0.9,
+        "bodySystem": "integumentary"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hepatomegaly",
+        "snomedCode": "80515008",
+        "frequency": 0.35,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Elevated liver transaminases",
+        "snomedCode": "166603001",
+        "frequency": 0.4,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Scleroderma-like skin thickening",
+        "snomedCode": "201036003",
+        "frequency": 0.25,
+        "bodySystem": "integumentary",
+        "notes": "Can mimic systemic sclerosis; called pseudoscleroderma"
+      },
+      {
+        "symptomName": "Alopecia (scarring)",
+        "snomedCode": "278040002",
+        "frequency": 0.2,
+        "bodySystem": "integumentary"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hepatocellular carcinoma",
+        "snomedCode": "25370001",
+        "frequency": 0.05,
+        "bodySystem": "hepatic",
+        "notes": "Long-term risk, especially with concurrent hepatitis C"
+      },
+      {
+        "symptomName": "Cirrhosis",
+        "snomedCode": "19943007",
+        "frequency": 0.08,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Onycholysis",
+        "snomedCode": "75031009",
+        "frequency": 0.1,
+        "bodySystem": "integumentary"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "integumentary",
+    "hepatic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Markedly elevated urinary uroporphyrins and heptacarboxylporphyrins",
+      "Elevated fecal isocoproporphyrins (pathognomonic)",
+      "Elevated plasma porphyrins with fluorescence peak ~619 nm",
+      "Elevated serum ferritin and transferrin saturation (iron overload)",
+      "Hepatitis C serology often positive",
+      "Normal urinary PBG and ALA (unlike acute porphyrias)"
+    ],
+    "imaging": [
+      "Liver ultrasound may show hepatomegaly or steatosis",
+      "MRI liver for iron quantification if iron overload suspected",
+      "Hepatic imaging for HCC surveillance in chronic cases"
+    ],
+    "genetic": [
+      "UROD gene mutation present in Type II (familial) PCT",
+      "HFE gene mutations (C282Y, H63D) common as susceptibility factors",
+      "Autosomal dominant inheritance for Type II"
+    ],
+    "other": [
+      "Wood's lamp examination of urine shows coral-red fluorescence",
+      "Skin biopsy shows subepidermal blister with festooning of dermal papillae",
+      "PAS-positive thickening of dermal vessel walls"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "variegate-porphyria",
+      "distinguishingFeatures": [
+        "VP has both cutaneous and neurovisceral symptoms",
+        "VP shows elevated fecal protoporphyrin and coproporphyrin",
+        "VP has plasma fluorescence peak at ~626 nm",
+        "VP involves PPOX gene mutation"
+      ]
+    },
+    {
+      "diseaseId": "hereditary-coproporphyria",
+      "distinguishingFeatures": [
+        "HCP has elevated fecal coproporphyrin III predominantly",
+        "HCP may have acute neurovisceral attacks",
+        "HCP involves CPOX gene mutation"
+      ]
+    },
+    {
+      "diseaseId": "pseudoporphyria",
+      "distinguishingFeatures": [
+        "Pseudoporphyria has normal porphyrin levels",
+        "Often drug-induced (NSAIDs, furosemide)",
+        "Clinically indistinguishable skin lesions but no biochemical abnormalities"
+      ]
+    },
+    {
+      "diseaseId": "epidermolysis-bullosa-acquisita",
+      "distinguishingFeatures": [
+        "EBA has anti-type VII collagen antibodies",
+        "Porphyrin levels normal in EBA",
+        "EBA is autoimmune in etiology"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Coexisting hepatitis C infection requiring treatment coordination",
+    "Significant iron overload (ferritin >1000 ng/mL)",
+    "Evidence of hepatic cirrhosis or hepatocellular carcinoma",
+    "Concurrent HIV infection complicating management",
+    "Severe sclerodermoid changes suggesting advanced disease"
+  ],
+  "specialistType": [
+    "Dermatologist",
+    "Hepatologist",
+    "Hematologist",
+    "Porphyria Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Frank J, Poblete-Gutierrez P. Porphyria cutanea tarda—when skin meets liver. Best Pract Res Clin Gastroenterol. 2010;24(5):735-45.",
+    "Puy H, Gouya L, Deybach JC. Porphyrias. Lancet. 2010;375(9718):924-37.",
+    "Balwani M, Desnick RJ. The porphyrias: advances in diagnosis and treatment. Blood. 2012;120(23):4496-504.",
+    "Ryan Caballes F, et al. Hepatitis C, porphyria cutanea tarda and liver iron: an update. Liver Int. 2012;32(6):880-93."
+  ],
+  "confidenceInData": "medium"
+}

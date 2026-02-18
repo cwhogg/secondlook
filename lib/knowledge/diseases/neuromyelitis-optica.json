@@ -1,0 +1,251 @@
+{
+  "id": "neuromyelitis-optica",
+  "name": "Neuromyelitis Optica Spectrum Disorder",
+  "aliases": [
+    "NMOSD",
+    "NMO",
+    "Devic disease",
+    "Devic syndrome",
+    "Neuromyelitis optica spectrum disorder"
+  ],
+  "icd10Codes": ["G36.0"],
+  "omimId": "206570",
+  "orphanetId": "71211",
+  "prevalence": {
+    "estimate": "1-5 per 100,000",
+    "range": "0.5-10 per 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 60, "peak": 40 },
+    "sexPredilection": "female",
+    "ethnicAssociations": [
+      "Higher prevalence in East Asian populations",
+      "Higher prevalence in African and Afro-Caribbean populations",
+      "Lower prevalence in Caucasian populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "2015 International Panel for NMO Diagnosis (IPND) Criteria",
+    "criteria": [
+      {
+        "id": "nmo-1",
+        "description": "At least one core clinical characteristic: optic neuritis, acute myelitis, area postrema syndrome, brainstem syndrome, symptomatic narcolepsy/diencephalic syndrome, or symptomatic cerebral syndrome",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "nmo-2",
+        "description": "Positive AQP4-IgG serology (for AQP4-IgG seropositive NMOSD)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "nmo-3",
+        "description": "For seronegative NMOSD: at least 2 core clinical characteristics with specific additional MRI requirements and dissemination in space",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "nmo-4",
+        "description": "Exclusion of alternative diagnoses",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "nmo-5",
+        "description": "MOG-IgG antibody positivity (identifies MOG antibody-associated disease subset)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "AQP4-IgG positive: at least 1 core clinical characteristic plus positive AQP4-IgG. AQP4-IgG negative: at least 2 core clinical characteristics with additional MRI criteria.",
+    "notes": "MOG-IgG associated disease is increasingly recognized as a separate entity from AQP4-positive NMOSD."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Longitudinally extensive transverse myelitis",
+        "snomedCode": "16631009",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Extending over 3 or more vertebral segments; central cord involvement"
+      },
+      {
+        "symptomName": "Severe bilateral optic neuritis",
+        "snomedCode": "66760008",
+        "frequency": 0.70,
+        "bodySystem": "ophthalmological",
+        "notes": "Often bilateral and more severe than MS-associated optic neuritis"
+      },
+      {
+        "symptomName": "Area postrema syndrome",
+        "snomedCode": "422587007",
+        "frequency": 0.40,
+        "bodySystem": "neurological",
+        "notes": "Intractable hiccups, nausea, and vomiting; highly characteristic"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Visual loss",
+        "snomedCode": "397540003",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological",
+        "notes": "Can be severe and permanent; often worse than MS"
+      },
+      {
+        "symptomName": "Paraplegia or tetraplegia",
+        "snomedCode": "60389000",
+        "frequency": 0.60,
+        "bodySystem": "neurological",
+        "notes": "Resulting from transverse myelitis attacks"
+      },
+      {
+        "symptomName": "Neuropathic pain",
+        "snomedCode": "247398009",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "notes": "Tonic spasms and radicular pain common"
+      },
+      {
+        "symptomName": "Bladder dysfunction",
+        "snomedCode": "129596005",
+        "frequency": 0.60,
+        "bodySystem": "urological"
+      },
+      {
+        "symptomName": "Intractable hiccups",
+        "snomedCode": "65958008",
+        "frequency": 0.30,
+        "bodySystem": "neurological",
+        "notes": "Hallmark of area postrema involvement"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Brainstem symptoms",
+        "frequency": 0.30,
+        "bodySystem": "neurological",
+        "notes": "Diplopia, vertigo, facial weakness"
+      },
+      {
+        "symptomName": "Excessive daytime sleepiness",
+        "snomedCode": "77692006",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "From diencephalic/hypothalamic involvement"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "snomedCode": "409622000",
+        "frequency": 0.15,
+        "bodySystem": "respiratory",
+        "notes": "From cervical myelitis or brainstem involvement"
+      },
+      {
+        "symptomName": "Pruritus",
+        "snomedCode": "418290006",
+        "frequency": 0.20,
+        "bodySystem": "dermatological",
+        "notes": "Can be severe and intractable"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Encephalopathy",
+        "snomedCode": "81308009",
+        "frequency": 0.10,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hearing loss",
+        "snomedCode": "15188001",
+        "frequency": 0.05,
+        "bodySystem": "otological"
+      },
+      {
+        "symptomName": "Syndrome of inappropriate ADH secretion",
+        "snomedCode": "19471005",
+        "frequency": 0.08,
+        "bodySystem": "endocrine",
+        "notes": "From hypothalamic involvement"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "central nervous system",
+    "visual system",
+    "spinal cord",
+    "brainstem",
+    "urinary system"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "AQP4-IgG (aquaporin-4) antibodies positive (present in ~75-80% of NMOSD)",
+      "MOG-IgG antibodies (identifies a related but distinct subset)",
+      "CSF pleocytosis often >50 cells/uL with neutrophilic predominance",
+      "CSF oligoclonal bands less common than MS (~15-30%)",
+      "Elevated CSF GFAP levels during attacks"
+    ],
+    "imaging": [
+      "Longitudinally extensive transverse myelitis (>3 vertebral segments) on spinal MRI",
+      "Central cord lesion (H-shaped or holocord) pattern",
+      "Area postrema/dorsal medulla lesions",
+      "Long optic nerve lesions (>50% of nerve length) or chiasmal involvement",
+      "Brain MRI may be normal or show non-MS pattern lesions",
+      "Periependymal lesions around third and fourth ventricles"
+    ],
+    "genetic": [
+      "HLA-DRB1*03 association reported",
+      "No single causative gene; complex genetic susceptibility"
+    ],
+    "other": [
+      "Visual evoked potentials may show absent or severely delayed responses",
+      "Optical coherence tomography showing severe retinal nerve fiber layer thinning"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "multiple-sclerosis",
+      "distinguishingFeatures": [
+        "MS typically has shorter spinal cord lesions (<2 segments)",
+        "MS has periventricular ovoid lesions (Dawson fingers)",
+        "MS has oligoclonal bands in >95% vs ~20% in NMOSD",
+        "MS has less severe attacks with better recovery"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-encephalitis",
+      "distinguishingFeatures": [
+        "AE primarily affects cortex with psychiatric features",
+        "AE has specific neural antibodies (NMDA-R, LGI1, etc.)",
+        "AE does not typically cause optic neuritis or myelitis"
+      ]
+    },
+    {
+      "diseaseId": "sarcoidosis",
+      "distinguishingFeatures": [
+        "Sarcoidosis involves systemic organs (lungs, lymph nodes, skin)",
+        "Sarcoidosis has non-caseating granulomas",
+        "Elevated serum ACE levels in sarcoidosis"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Respiratory failure during myelitis attack requires urgent intervention",
+    "Severe visual loss to no light perception suggests NMOSD over MS",
+    "Failure to respond to MS disease-modifying therapies",
+    "Some MS drugs (interferons, natalizumab) can worsen NMOSD",
+    "Intractable hiccups or vomiting lasting >48 hours should prompt NMOSD workup",
+    "Complete transverse myelitis more suggestive of NMOSD than MS"
+  ],
+  "specialistType": ["neurologist", "neuroimmunologist", "neuro-ophthalmologist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Wingerchuk DM, et al. International consensus diagnostic criteria for neuromyelitis optica spectrum disorders. Neurology. 2015;85(2):177-189.",
+    "Pittock SJ, et al. Neuromyelitis optica spectrum disorder. Lancet. 2023;401(10374):336-349.",
+    "Jarius S, et al. Neuromyelitis optica. Nat Rev Dis Primers. 2020;6(1):85."
+  ],
+  "confidenceInData": "medium"
+}

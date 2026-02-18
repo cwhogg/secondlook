@@ -1,0 +1,254 @@
+{
+  "id": "multiple-sclerosis",
+  "name": "Multiple Sclerosis",
+  "aliases": [
+    "MS",
+    "Disseminated sclerosis",
+    "Encephalomyelitis disseminata"
+  ],
+  "icd10Codes": ["G35"],
+  "omimId": "126200",
+  "orphanetId": "802",
+  "prevalence": {
+    "estimate": "1 in 1,000",
+    "range": "50-300 per 100,000 depending on latitude",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 20, "max": 50, "peak": 30 },
+    "sexPredilection": "female",
+    "ethnicAssociations": [
+      "Higher prevalence in Northern European descent",
+      "Lower prevalence in East Asian and Sub-Saharan African populations",
+      "Increasing prevalence with latitude"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "2017 Revised McDonald Criteria",
+    "criteria": [
+      {
+        "id": "ms-mc-1",
+        "description": "Dissemination in space: lesions in at least 2 of 4 CNS regions (periventricular, cortical/juxtacortical, infratentorial, spinal cord)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ms-mc-2",
+        "description": "Dissemination in time: simultaneous gadolinium-enhancing and non-enhancing lesions OR new T2/gadolinium-enhancing lesion on follow-up MRI",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ms-mc-3",
+        "description": "At least one clinical attack (relapse) with objective clinical evidence",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ms-mc-4",
+        "description": "CSF-specific oligoclonal bands present",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ms-mc-5",
+        "description": "Visual evoked potential delay consistent with demyelination",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Dissemination in space AND time demonstrated clinically, by MRI, or combination; or CSF oligoclonal bands plus dissemination in space with 1 clinical attack",
+    "notes": "Must exclude alternative diagnoses. Primary progressive MS requires 1 year of progression plus 2 of 3: DIS in brain, DIS in spinal cord, or positive CSF."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Lhermitte sign",
+        "snomedCode": "41503000",
+        "frequency": 0.40,
+        "bodySystem": "neurological",
+        "notes": "Electric-like sensation running down the spine upon neck flexion; highly suggestive but not exclusive to MS"
+      },
+      {
+        "symptomName": "Internuclear ophthalmoplegia",
+        "snomedCode": "57806002",
+        "frequency": 0.35,
+        "bodySystem": "neurological",
+        "notes": "Bilateral INO in young adults is highly suggestive of MS"
+      },
+      {
+        "symptomName": "Uhthoff phenomenon",
+        "snomedCode": "45261009",
+        "frequency": 0.60,
+        "bodySystem": "neurological",
+        "notes": "Worsening of symptoms with heat exposure or exercise"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Optic neuritis",
+        "snomedCode": "66760008",
+        "frequency": 0.70,
+        "bodySystem": "ophthalmological",
+        "notes": "Unilateral painful vision loss; presenting symptom in ~25% of cases"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.80,
+        "bodySystem": "constitutional",
+        "notes": "Most common symptom; often disproportionate to physical activity"
+      },
+      {
+        "symptomName": "Sensory disturbances",
+        "snomedCode": "279079003",
+        "frequency": 0.70,
+        "bodySystem": "neurological",
+        "notes": "Numbness, tingling, paresthesias in limbs or trunk"
+      },
+      {
+        "symptomName": "Spasticity",
+        "snomedCode": "397790002",
+        "frequency": 0.60,
+        "bodySystem": "musculoskeletal",
+        "notes": "Typically affects lower extremities"
+      },
+      {
+        "symptomName": "Urinary dysfunction",
+        "snomedCode": "129596005",
+        "frequency": 0.65,
+        "bodySystem": "urological",
+        "notes": "Urgency, frequency, hesitancy, or incontinence"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Trigeminal neuralgia",
+        "snomedCode": "31681005",
+        "frequency": 0.20,
+        "bodySystem": "neurological",
+        "notes": "Bilateral trigeminal neuralgia in a young person is suggestive of MS"
+      },
+      {
+        "symptomName": "Cerebellar ataxia",
+        "snomedCode": "85102008",
+        "frequency": 0.30,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "snomedCode": "386806002",
+        "frequency": 0.40,
+        "bodySystem": "neurological",
+        "notes": "Affects processing speed, executive function, and memory"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "snomedCode": "563001",
+        "frequency": 0.30,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Intention tremor",
+        "snomedCode": "84757009",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hearing loss",
+        "snomedCode": "15188001",
+        "frequency": 0.06,
+        "bodySystem": "otological"
+      },
+      {
+        "symptomName": "Paroxysmal dystonia",
+        "snomedCode": "15802004",
+        "frequency": 0.04,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "central nervous system",
+    "visual system",
+    "urinary system",
+    "musculoskeletal system",
+    "cognitive/psychiatric"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF oligoclonal bands (present in >95% of MS patients)",
+      "Elevated CSF IgG index",
+      "Elevated CSF kappa free light chains",
+      "Normal or mildly elevated CSF white cell count (<50 cells/uL)"
+    ],
+    "imaging": [
+      "Periventricular ovoid white matter lesions (Dawson fingers) on T2/FLAIR MRI",
+      "Gadolinium-enhancing lesions indicating active inflammation",
+      "Spinal cord lesions (typically partial, <2 vertebral segments)",
+      "Cortical/juxtacortical lesions",
+      "Infratentorial lesions",
+      "T1 hypointense black holes indicating axonal loss"
+    ],
+    "genetic": [
+      "HLA-DRB1*15:01 allele association (strongest genetic risk factor)",
+      "Over 200 common genetic variants identified by GWAS"
+    ],
+    "other": [
+      "Visual evoked potentials showing delayed P100 latency",
+      "Optical coherence tomography showing retinal nerve fiber layer thinning"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "neuromyelitis-optica",
+      "distinguishingFeatures": [
+        "NMO has AQP4-IgG or MOG-IgG antibodies",
+        "NMO has longitudinally extensive transverse myelitis (>3 segments)",
+        "NMO typically spares brain early in course",
+        "NMO has severe bilateral optic neuritis"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-encephalitis",
+      "distinguishingFeatures": [
+        "AE presents with acute/subacute cognitive decline and psychiatric symptoms",
+        "AE typically has identifiable neural antibodies",
+        "AE does not show dissemination in space typical of MS"
+      ]
+    },
+    {
+      "diseaseId": "small-vessel-disease",
+      "distinguishingFeatures": [
+        "Small vessel disease occurs in older patients with vascular risk factors",
+        "Lesions are subcortical and not typically periventricular or ovoid",
+        "No gadolinium enhancement or oligoclonal bands"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Onset before age 10 or after age 60 should prompt consideration of alternative diagnoses",
+    "Persistent gadolinium enhancement >3 months suggests alternative diagnosis",
+    "CSF pleocytosis >50 cells/uL suggests alternative diagnosis",
+    "Simultaneous bilateral optic neuritis suggests NMO rather than MS",
+    "Progressive course from onset without relapses in a young patient requires careful exclusion of mimics",
+    "Longitudinally extensive transverse myelitis (>3 segments) suggests NMO"
+  ],
+  "specialistType": ["neurologist", "neuroimmunologist", "neuro-ophthalmologist"],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Thompson AJ, et al. Diagnosis of multiple sclerosis: 2017 revisions of the McDonald criteria. Lancet Neurol. 2018;17(2):162-173.",
+    "Filippi M, et al. Multiple sclerosis. Nat Rev Dis Primers. 2018;4(1):43.",
+    "Reich DS, et al. Multiple Sclerosis. N Engl J Med. 2018;378(2):169-180.",
+    "Compston A, Coles A. Multiple sclerosis. Lancet. 2008;372(9648):1502-1517."
+  ],
+  "confidenceInData": "medium"
+}

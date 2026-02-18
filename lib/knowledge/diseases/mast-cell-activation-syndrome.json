@@ -1,0 +1,237 @@
+{
+  "id": "mast-cell-activation-syndrome",
+  "name": "Mast Cell Activation Syndrome",
+  "aliases": [
+    "MCAS",
+    "Mast cell activation disorder",
+    "MCAD",
+    "Idiopathic mast cell activation syndrome"
+  ],
+  "icd10Codes": ["D89.40", "D89.41", "D89.42", "D89.43", "D89.49"],
+  "prevalence": {
+    "estimate": "Disputed; estimated 1-17% depending on diagnostic criteria used",
+    "range": "Conservative estimates ~1 per 10,000; broader criteria suggest much higher",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 10, "max": 60, "peak": 35 },
+    "sexPredilection": "female"
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Consensus-2 Criteria (Valent et al. 2020) and Afrin/Molderings criteria",
+    "criteria": [
+      {
+        "id": "mcas-1",
+        "description": "Episodic symptoms consistent with mast cell mediator release affecting two or more organ systems (skin, GI, cardiovascular, respiratory, neurological)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mcas-2",
+        "description": "Elevated serum tryptase during a symptomatic episode: increase of at least 20% + 2 ng/mL above the patient's baseline, or other mast cell mediators elevated (urinary histamine metabolites, prostaglandin D2, leukotriene E4)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mcas-3",
+        "description": "Response to medications targeting mast cell mediators (H1/H2 antihistamines, mast cell stabilizers, leukotriene inhibitors)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mcas-4",
+        "description": "Exclusion of other conditions that could explain the symptoms",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mcas-5",
+        "description": "KIT D816V mutation absent (distinguishes from systemic mastocytosis)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All four major criteria must be met per consensus criteria. Afrin/Molderings criteria are broader and accept response to mast cell-directed therapy as supportive evidence even without documented mediator elevation.",
+    "notes": "Significant controversy exists regarding diagnostic criteria. Consensus-2 criteria (Valent) require biochemical evidence of mast cell mediator release. Afrin/Molderings criteria are broader. The two approaches yield very different prevalence estimates."
+  },
+  "symptoms": {
+    "pathognomonic": [],
+    "common": [
+      {
+        "symptomName": "Flushing",
+        "snomedCode": "271807003",
+        "frequency": 0.80,
+        "bodySystem": "dermatological",
+        "notes": "Episodic facial and truncal flushing"
+      },
+      {
+        "symptomName": "Urticaria (hives)",
+        "snomedCode": "126485001",
+        "frequency": 0.65,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Abdominal pain and cramping",
+        "snomedCode": "21522001",
+        "frequency": 0.70,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "snomedCode": "62315008",
+        "frequency": 0.60,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Tachycardia",
+        "snomedCode": "3424008",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lightheadedness or presyncope",
+        "snomedCode": "386705008",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Angioedema",
+        "snomedCode": "41291007",
+        "frequency": 0.35,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Wheezing or bronchospasm",
+        "snomedCode": "56018004",
+        "frequency": 0.30,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pruritus without rash",
+        "snomedCode": "418290006",
+        "frequency": 0.45,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hypotension during episodes",
+        "snomedCode": "45007003",
+        "frequency": 0.30,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Brain fog / cognitive dysfunction",
+        "snomedCode": "736322003",
+        "frequency": 0.40,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nausea",
+        "snomedCode": "422587007",
+        "frequency": 0.50,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Anaphylaxis",
+        "snomedCode": "39579001",
+        "frequency": 0.15,
+        "bodySystem": "immunologic"
+      },
+      {
+        "symptomName": "Osteoporosis or osteopenia",
+        "snomedCode": "64859006",
+        "frequency": 0.10,
+        "bodySystem": "musculoskeletal",
+        "notes": "From chronic mediator release effects on bone"
+      },
+      {
+        "symptomName": "Interstitial cystitis-like symptoms",
+        "snomedCode": "111411008",
+        "frequency": 0.10,
+        "bodySystem": "genitourinary"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "neurological",
+    "immunologic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Serum tryptase: elevated during episode (>=20% + 2 ng/mL above baseline)",
+      "24-hour urine N-methylhistamine (histamine metabolite) elevated",
+      "24-hour urine prostaglandin D2 or 11-beta-prostaglandin F2-alpha elevated",
+      "24-hour urine leukotriene E4 elevated",
+      "Plasma heparin or chromogranin A may be elevated"
+    ],
+    "imaging": [
+      "Generally normal imaging",
+      "DEXA scan may show reduced bone density in chronic cases"
+    ],
+    "genetic": [
+      "KIT D816V mutation absent (distinguishes from mastocytosis)",
+      "Hereditary alpha-tryptasemia (TPSAB1 extra copies) may coexist"
+    ],
+    "other": [
+      "Bone marrow biopsy: normal or near-normal mast cell morphology and number (distinguishes from mastocytosis)",
+      "Skin biopsy during flushing may show mast cell degranulation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "systemic-mastocytosis",
+      "distinguishingFeatures": [
+        "Systemic mastocytosis has KIT D816V mutation in most cases",
+        "Systemic mastocytosis has abnormal mast cell aggregates on bone marrow biopsy",
+        "Baseline tryptase is persistently >20 ng/mL in mastocytosis"
+      ]
+    },
+    {
+      "diseaseId": "hereditary-alpha-tryptasemia",
+      "distinguishingFeatures": [
+        "HaT has elevated baseline tryptase due to extra TPSAB1 gene copies",
+        "HaT is a genetic condition, not an episodic mast cell activation disorder",
+        "HaT and MCAS may coexist"
+      ]
+    },
+    {
+      "diseaseId": "idiopathic-anaphylaxis",
+      "distinguishingFeatures": [
+        "Idiopathic anaphylaxis presents with acute anaphylactic episodes",
+        "MCAS is broader with chronic episodic multisystem symptoms"
+      ]
+    },
+    {
+      "diseaseId": "carcinoid-syndrome",
+      "distinguishingFeatures": [
+        "Carcinoid has elevated 5-HIAA in urine",
+        "Carcinoid flushing is typically dry, MCAS flushing may have urticaria"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Anaphylaxis without identifiable trigger (consider mast cell disorder workup)",
+    "Persistently elevated baseline tryptase >20 ng/mL (evaluate for systemic mastocytosis)",
+    "Bone marrow findings suggestive of clonal mast cell disease",
+    "Osteoporosis in a young patient with mast cell symptoms"
+  ],
+  "specialistType": [
+    "Allergist/Immunologist",
+    "Hematologist",
+    "Gastroenterologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Valent P, et al. Proposed diagnostic algorithm for patients with suspected mast cell activation syndrome. J Allergy Clin Immunol Pract. 2019;7(4):1125-1133.",
+    "Afrin LB, et al. Diagnosis of mast cell activation syndrome: a global 'consensus-2'. Diagnosis (Berl). 2021;8(2):137-152.",
+    "Weiler CR, et al. AAAAI Mast Cell Disorders Committee Work Group Report: Mast cell activation syndrome (MCAS) diagnosis and management. J Allergy Clin Immunol. 2019;144(4):883-896."
+  ],
+  "confidenceInData": "medium"
+}

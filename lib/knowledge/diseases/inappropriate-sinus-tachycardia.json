@@ -1,0 +1,220 @@
+{
+  "id": "inappropriate-sinus-tachycardia",
+  "name": "Inappropriate Sinus Tachycardia",
+  "aliases": [
+    "IST",
+    "Nonparoxysmal sinus tachycardia",
+    "Chronic inappropriate sinus tachycardia"
+  ],
+  "icd10Codes": ["I47.1", "R00.0"],
+  "prevalence": {
+    "estimate": "Exact prevalence unknown; estimated ~1% of population",
+    "range": "Rare as a clinical diagnosis despite potentially being underrecognized",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 15, "max": 50, "peak": 30 },
+    "sexPredilection": "female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "HRS Expert Consensus Statement 2015",
+    "criteria": [
+      {
+        "id": "ist-1",
+        "description": "Resting sinus heart rate >100 bpm (or mean 24-hour heart rate >90 bpm on Holter) that is not attributable to an identifiable cause",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ist-2",
+        "description": "P-wave morphology and axis consistent with sinus node origin on 12-lead ECG",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ist-3",
+        "description": "Exclusion of secondary causes of sinus tachycardia (anemia, hyperthyroidism, dehydration, infection, pheochromocytoma, drugs, pain, anxiety)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ist-4",
+        "description": "Symptoms associated with tachycardia (palpitations, lightheadedness, exercise intolerance)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ist-5",
+        "description": "Exaggerated heart rate response to minimal physical activity or emotional stress",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Persistent resting sinus tachycardia >100 bpm with P-wave morphology from sinus node, after exclusion of all secondary causes",
+    "notes": "IST is a diagnosis of exclusion. Must distinguish from POTS (IST has elevated resting HR, not just orthostatic HR increase). Some overlap exists and the conditions may coexist."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Persistent resting sinus tachycardia >100 bpm without identifiable cause",
+        "frequency": 1.0,
+        "bodySystem": "cardiovascular",
+        "notes": "Defining feature; HR often 100-150 bpm at rest"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Palpitations",
+        "snomedCode": "80313002",
+        "frequency": 0.90,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "snomedCode": "413121006",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lightheadedness",
+        "snomedCode": "386705008",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.70,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "snomedCode": "267036007",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Chest pain or discomfort",
+        "snomedCode": "29857009",
+        "frequency": 0.40,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pre-syncope",
+        "snomedCode": "272030005",
+        "frequency": 0.30,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Anxiety (may be both a cause and consequence)",
+        "snomedCode": "48694002",
+        "frequency": 0.35,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Diaphoresis",
+        "snomedCode": "52613005",
+        "frequency": 0.25,
+        "bodySystem": "autonomic"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Syncope",
+        "snomedCode": "271594007",
+        "frequency": 0.10,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tachycardia-induced cardiomyopathy",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Very rare; from chronic sustained tachycardia"
+      },
+      {
+        "symptomName": "Sleep disturbance from nocturnal tachycardia",
+        "snomedCode": "53888004",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal thyroid function tests (excludes hyperthyroidism)",
+      "Normal CBC (excludes anemia)",
+      "Normal BMP (excludes electrolyte abnormalities, dehydration)",
+      "Normal plasma/urine metanephrines (excludes pheochromocytoma)"
+    ],
+    "imaging": [
+      "Echocardiogram: usually normal (excludes structural heart disease)",
+      "Chest X-ray: normal"
+    ],
+    "genetic": [
+      "No established genetic cause",
+      "Possible gain-of-function mutations in HCN4 channel in rare familial cases"
+    ],
+    "other": [
+      "12-lead ECG: sinus tachycardia with normal P-wave axis and morphology",
+      "24-hour Holter: mean HR >90 bpm, elevated resting HR, exaggerated response to activity",
+      "Electrophysiology study: may show enhanced sinus node automaticity",
+      "Autonomic testing: may show enhanced sympathetic tone or reduced vagal tone"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "postural-orthostatic-tachycardia-syndrome",
+      "distinguishingFeatures": [
+        "POTS has tachycardia primarily on standing (>=30 bpm increase), not at rest",
+        "IST has persistent resting tachycardia >100 bpm regardless of posture"
+      ]
+    },
+    {
+      "diseaseId": "anxiety-disorder",
+      "distinguishingFeatures": [
+        "Anxiety may cause situational tachycardia but not persistent resting elevation",
+        "IST persists even during calm states and sleep"
+      ]
+    },
+    {
+      "diseaseId": "hyperthyroidism",
+      "distinguishingFeatures": [
+        "Hyperthyroidism has abnormal thyroid function tests",
+        "IST has normal thyroid function"
+      ]
+    },
+    {
+      "diseaseId": "atrial-tachycardia",
+      "distinguishingFeatures": [
+        "Focal atrial tachycardia has non-sinus P-wave morphology",
+        "IST has P-wave morphology identical to sinus rhythm"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Resting heart rate consistently >150 bpm (evaluate for other arrhythmias)",
+    "Structural heart disease on echocardiogram",
+    "Signs of tachycardia-induced cardiomyopathy (declining EF)",
+    "Associated with weight loss, tremor, or heat intolerance (thyroid evaluation)",
+    "Episodic rather than persistent (consider paroxysmal SVT)"
+  ],
+  "specialistType": [
+    "Cardiologist (electrophysiologist)",
+    "Autonomic neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Sheldon RS, et al. 2015 Heart Rhythm Society Expert Consensus Statement on the Diagnosis and Treatment of Postural Tachycardia Syndrome, Inappropriate Sinus Tachycardia, and Vasovagal Syncope. Heart Rhythm. 2015;12(6):e41-e63.",
+    "Olshansky B, et al. Inappropriate sinus tachycardia. J Am Coll Cardiol. 2013;61(8):793-801.",
+    "Ptaszynski P, et al. Inappropriate sinus tachycardia: current evidence and management. Europace. 2022;24(8):1227-1236."
+  ],
+  "confidenceInData": "medium"
+}

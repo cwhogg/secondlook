@@ -1,0 +1,232 @@
+{
+  "id": "relapsing-polychondritis",
+  "name": "Relapsing Polychondritis",
+  "aliases": [
+    "RP",
+    "Atrophic Polychondritis",
+    "Systemic Chondromalacia",
+    "Meyenburg-Altherr-Uehlinger Syndrome"
+  ],
+  "icd10Codes": ["M94.1"],
+  "omimId": "156550",
+  "orphanetId": "728",
+  "prevalence": {
+    "estimate": "3.5 per 1,000,000",
+    "range": "0.0002%-0.0004%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 40, "max": 60, "peak": 50 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "McAdam Criteria (Modified by Damiani and Levine)",
+    "criteria": [
+      {
+        "id": "rp-maj1",
+        "description": "Bilateral auricular chondritis",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "rp-maj2",
+        "description": "Non-erosive inflammatory polyarthritis",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "rp-maj3",
+        "description": "Nasal chondritis",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "rp-maj4",
+        "description": "Ocular inflammation (conjunctivitis, keratitis, scleritis, episcleritis, uveitis)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "rp-maj5",
+        "description": "Respiratory tract chondritis (laryngeal and/or tracheal cartilages)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "rp-maj6",
+        "description": "Cochlear and/or vestibular dysfunction (neurosensory hearing loss, tinnitus, vertigo)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "rp-sup1",
+        "description": "Histological confirmation of chondritis in biopsy specimen",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "McAdam: 3 or more of the 6 clinical features. Damiani modification: 1 clinical feature + histological confirmation, OR 2 clinical features responding to steroids. Biopsy not always required.",
+    "notes": "30% of patients have another autoimmune condition (vasculitis, RA, SLE, MDS). MAGIC syndrome: RP + Behcet disease. VEXAS syndrome should be excluded in males with MDS features."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Auricular chondritis (red, swollen, painful ear pinna sparing lobe)",
+        "frequency": 0.90,
+        "bodySystem": "musculoskeletal",
+        "notes": "Most common presenting feature; ear lobe spared (no cartilage). Eventually causes floppy/cauliflower ear."
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Non-erosive polyarthritis",
+        "snomedCode": "69896004",
+        "frequency": 0.70,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Nasal chondritis with saddle nose deformity",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "notes": "Nasal bridge pain and swelling; progressive collapse leads to saddle nose"
+      },
+      {
+        "symptomName": "Ocular inflammation (scleritis, episcleritis, uveitis)",
+        "frequency": 0.50,
+        "bodySystem": "ophthalmologic"
+      },
+      {
+        "symptomName": "Laryngotracheal involvement (hoarseness, stridor, cough)",
+        "frequency": 0.50,
+        "bodySystem": "respiratory",
+        "notes": "Can be life-threatening; tracheal collapse or subglottic stenosis"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Sensorineural hearing loss",
+        "snomedCode": "60700002",
+        "frequency": 0.30,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Vertigo and tinnitus",
+        "snomedCode": "399153001",
+        "frequency": 0.25,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Costochondritis (rib/chest pain)",
+        "frequency": 0.35,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Skin lesions (nodules, purpura, livedo reticularis)",
+        "frequency": 0.20,
+        "bodySystem": "integumentary"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Aortic valve regurgitation (aortic root dilation)",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "From destruction of aortic root cartilage/connective tissue"
+      },
+      {
+        "symptomName": "Large vessel vasculitis (aortitis)",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "CNS vasculitis (meningoencephalitis)",
+        "frequency": 0.03,
+        "bodySystem": "neurologic"
+      },
+      {
+        "symptomName": "Renal involvement (glomerulonephritis)",
+        "frequency": 0.05,
+        "bodySystem": "renal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "respiratory",
+    "ophthalmologic",
+    "cardiovascular",
+    "neurologic",
+    "integumentary"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated ESR and CRP during flares",
+      "Anemia of chronic disease",
+      "Anti-type II collagen antibodies (present in ~30-50%; not routinely available)",
+      "Anti-matrilin-1 antibodies (research)",
+      "CBC to screen for MDS/VEXAS"
+    ],
+    "imaging": [
+      "CT airway: tracheal/bronchial wall thickening, narrowing, calcification",
+      "Dynamic CT or MRI: tracheobronchomalacia on expiratory imaging",
+      "PET-CT: FDG uptake in inflamed cartilage",
+      "Echocardiography: aortic root dilation, valve regurgitation"
+    ],
+    "genetic": [
+      "HLA-DR4 association",
+      "UBA1 gene mutation testing to exclude VEXAS syndrome (somatic mutation in males)"
+    ],
+    "other": [
+      "Pulmonary function tests: fixed upper airway obstruction pattern, flow-volume loop flattening",
+      "Audiometry: sensorineural hearing loss",
+      "Cartilage biopsy: loss of basophilic staining, perichondrial inflammation, chondrocyte depletion",
+      "Bronchoscopy: airway inflammation, collapse, stenosis (but carries airway compromise risk)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "granulomatosis-with-polyangiitis",
+      "distinguishingFeatures": [
+        "GPA has saddle nose but also sinus/lung/kidney involvement",
+        "GPA has positive PR3-ANCA",
+        "GPA biopsy shows granulomatous vasculitis"
+      ]
+    },
+    {
+      "diseaseId": "rheumatoid-arthritis",
+      "distinguishingFeatures": [
+        "RA has erosive arthritis, positive RF/anti-CCP",
+        "RA does not affect cartilage of ear/nose"
+      ]
+    },
+    {
+      "diseaseId": "iga-vasculitis",
+      "distinguishingFeatures": [
+        "IgA vasculitis (HSP) has palpable purpura, nephritis, GI symptoms",
+        "IgA vasculitis biopsy shows IgA deposits"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Stridor or progressive dyspnea (life-threatening airway compromise)",
+    "Sudden hearing loss (requires urgent treatment)",
+    "New cardiac murmur (aortic regurgitation from aortitis)",
+    "Tracheal collapse risk during anesthesia/intubation",
+    "Features of VEXAS syndrome (MDS, thrombosis, macrocytosis in males)"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Pulmonologist",
+    "Ophthalmologist",
+    "Otolaryngologist",
+    "Cardiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "McAdam LP, et al. Relapsing polychondritis: prospective study of 23 patients and a review of the literature. Medicine (Baltimore). 1976;55(3):193-215.",
+    "Borgia F, et al. Relapsing polychondritis: an updated review. Biomedicines. 2018;6(3):84.",
+    "Kingdon J, et al. Relapsing polychondritis: a clinical review for rheumatologists. Rheumatology (Oxford). 2018;57(9):1525-1532."
+  ],
+  "confidenceInData": "medium"
+}

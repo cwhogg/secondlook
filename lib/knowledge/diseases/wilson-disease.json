@@ -1,0 +1,283 @@
+{
+  "id": "wilson-disease",
+  "name": "Wilson Disease",
+  "aliases": [
+    "Hepatolenticular Degeneration",
+    "Wilson's Disease",
+    "Copper Storage Disease",
+    "Progressive Lenticular Degeneration"
+  ],
+  "icd10Codes": ["E83.01"],
+  "omimId": "277900",
+  "orphanetId": "905",
+  "prevalence": {
+    "estimate": "1 in 30,000",
+    "range": "1 in 10,000 to 1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 3, "max": 55, "peak": 17 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Higher prevalence in Sardinia",
+      "Higher prevalence in Japan",
+      "Higher prevalence in Costa Rica",
+      "Consanguineous populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Leipzig Scoring System for Wilson Disease (8th International Meeting on Wilson Disease, 2001)",
+    "criteria": [
+      {
+        "id": "wd-c1",
+        "description": "Kayser-Fleischer rings on slit-lamp examination",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "wd-c2",
+        "description": "Low serum ceruloplasmin (<20 mg/dL)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "wd-c3",
+        "description": "Elevated 24-hour urine copper (>40 µg/day; >100 µg/day highly suggestive)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "wd-c4",
+        "description": "Elevated hepatic copper content (>250 µg/g dry weight)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "wd-c5",
+        "description": "Pathogenic mutations in ATP7B gene (biallelic)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "wd-c6",
+        "description": "Neuropsychiatric symptoms consistent with Wilson disease",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "wd-c7",
+        "description": "Coombs-negative hemolytic anemia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Leipzig score >= 4 based on combined clinical, biochemical, and genetic findings",
+    "notes": "No single test is sufficient for diagnosis. A combination of clinical features, biochemistry, and genetics is typically required. Up to 50% of hepatic presentations lack Kayser-Fleischer rings."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Kayser-Fleischer rings",
+        "snomedCode": "44867004",
+        "frequency": 0.95,
+        "bodySystem": "ophthalmologic",
+        "notes": "Golden-brown copper deposits in Descemet's membrane; present in ~95% of neurologic presentations, ~50% of hepatic presentations"
+      },
+      {
+        "symptomName": "Sunflower cataracts",
+        "snomedCode": "95722004",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmologic",
+        "notes": "Copper deposition in lens; pathognomonic but uncommon"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hepatic dysfunction (hepatitis, cirrhosis)",
+        "snomedCode": "235856003",
+        "frequency": 0.8,
+        "bodySystem": "hepatic"
+      },
+      {
+        "symptomName": "Tremor (wing-beating or postural)",
+        "snomedCode": "26079004",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "notes": "Wing-beating tremor is characteristic"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "snomedCode": "8011004",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dystonia",
+        "snomedCode": "15802004",
+        "frequency": 0.5,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychiatric symptoms (personality changes, depression, psychosis)",
+        "snomedCode": "74732009",
+        "frequency": 0.5,
+        "bodySystem": "neuropsychiatric"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Coombs-negative hemolytic anemia",
+        "snomedCode": "838378001",
+        "frequency": 0.35,
+        "bodySystem": "hematologic",
+        "notes": "Can be the presenting feature; acute hemolysis may precipitate liver failure"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "snomedCode": "40739000",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Parkinsonism",
+        "snomedCode": "49049000",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Renal tubular dysfunction (Fanconi syndrome)",
+        "snomedCode": "236466005",
+        "frequency": 0.2,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Amenorrhea or infertility",
+        "snomedCode": "14302001",
+        "frequency": 0.2,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Acute liver failure (Wilsonian crisis)",
+        "snomedCode": "235884005",
+        "frequency": 0.1,
+        "bodySystem": "hepatic",
+        "notes": "Fulminant hepatic failure with concurrent hemolysis; often fatal without transplant"
+      },
+      {
+        "symptomName": "Cardiomyopathy",
+        "snomedCode": "85898001",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Arthropathy",
+        "snomedCode": "399269003",
+        "frequency": 0.1,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.06,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hepatic",
+    "neurological",
+    "neuropsychiatric",
+    "ophthalmologic",
+    "hematologic",
+    "renal",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low serum ceruloplasmin (<20 mg/dL)",
+      "Elevated 24-hour urine copper (>40 µg/day)",
+      "Elevated free (non-ceruloplasmin-bound) serum copper",
+      "Elevated liver transaminases",
+      "Coombs-negative hemolytic anemia with low alkaline phosphatase in acute presentation",
+      "Low serum alkaline phosphatase-to-total bilirubin ratio in fulminant presentation"
+    ],
+    "imaging": [
+      "Brain MRI showing T2 hyperintensity in basal ganglia (especially putamen)",
+      "Face of the giant panda sign on midbrain MRI",
+      "Hepatic MRI or CT may show cirrhotic changes",
+      "Abdominal ultrasound showing hepatomegaly, cirrhosis, or splenomegaly"
+    ],
+    "genetic": [
+      "ATP7B gene sequencing: biallelic pathogenic variants confirm diagnosis",
+      "Over 500 pathogenic variants described; H1069Q most common in European populations",
+      "Autosomal recessive inheritance"
+    ],
+    "other": [
+      "Slit-lamp examination for Kayser-Fleischer rings",
+      "Liver biopsy with quantitative copper measurement (>250 µg/g dry weight)",
+      "Penicillamine challenge test (elevated urine copper after loading dose)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hereditary-hemochromatosis",
+      "distinguishingFeatures": [
+        "Iron overload rather than copper overload",
+        "Elevated transferrin saturation and ferritin",
+        "HFE gene mutations",
+        "No Kayser-Fleischer rings"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-hepatitis",
+      "distinguishingFeatures": [
+        "Positive autoantibodies (ANA, anti-smooth muscle)",
+        "Elevated IgG levels",
+        "Normal ceruloplasmin and copper studies",
+        "Responds to immunosuppressive therapy"
+      ]
+    },
+    {
+      "diseaseId": "huntington-disease",
+      "distinguishingFeatures": [
+        "Chorea rather than dystonia predominates",
+        "HTT gene CAG repeat expansion",
+        "No hepatic involvement",
+        "Autosomal dominant inheritance"
+      ]
+    },
+    {
+      "diseaseId": "early-onset-parkinson-disease",
+      "distinguishingFeatures": [
+        "Asymmetric onset with rest tremor",
+        "No hepatic involvement",
+        "Normal copper studies",
+        "Responds well to levodopa"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Acute liver failure combined with Coombs-negative hemolytic anemia (Wilsonian crisis)",
+    "Young patient with cirrhosis of unknown etiology",
+    "Unexplained neuropsychiatric deterioration in a young person",
+    "Low alkaline phosphatase in setting of acute liver failure",
+    "Rapid neurological deterioration after initiation of chelation therapy"
+  ],
+  "specialistType": [
+    "Hepatologist",
+    "Neurologist",
+    "Medical Geneticist",
+    "Ophthalmologist",
+    "Psychiatrist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "European Association for the Study of the Liver. EASL Clinical Practice Guidelines: Wilson's disease. J Hepatol. 2012;56(3):671-685.",
+    "Roberts EA, Schilsky ML. Diagnosis and treatment of Wilson disease: an update. Hepatology. 2008;47(6):2089-2111.",
+    "Ferenci P, et al. Diagnosis and phenotypic classification of Wilson disease. Liver Int. 2003;23(3):139-142.",
+    "Bandmann O, et al. Wilson's disease and other neurological copper disorders. Lancet Neurol. 2015;14(1):103-113."
+  ],
+  "confidenceInData": "medium"
+}

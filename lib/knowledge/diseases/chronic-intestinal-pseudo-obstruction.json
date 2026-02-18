@@ -1,0 +1,215 @@
+{
+  "id": "chronic-intestinal-pseudo-obstruction",
+  "name": "Chronic Intestinal Pseudo-Obstruction",
+  "aliases": [
+    "CIPO",
+    "Chronic Idiopathic Intestinal Pseudo-Obstruction",
+    "Enteric Neuropathy",
+    "Enteric Myopathy",
+    "Hollow Visceral Myopathy"
+  ],
+  "icd10Codes": ["K59.89"],
+  "omimId": "155310",
+  "orphanetId": "2978",
+  "prevalence": {
+    "estimate": "0.21 to 0.24 per 100,000",
+    "range": "0.0002%-0.0003%",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 60, "peak": 20 },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "cipo-maj1",
+        "description": "Recurrent or chronic signs and symptoms of intestinal obstruction (distension, pain, nausea/vomiting, constipation)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cipo-maj2",
+        "description": "Radiographic evidence of dilated bowel with air-fluid levels during episodes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cipo-maj3",
+        "description": "Absence of mechanical obstruction (confirmed by comprehensive imaging and/or laparotomy)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cipo-min1",
+        "description": "Abnormal GI motility testing (manometry showing neuropathic or myopathic patterns)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cipo-min2",
+        "description": "Involvement of other hollow viscera (urinary bladder dysfunction, esophageal dysmotility)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Chronic or recurrent symptoms of intestinal obstruction with radiographic evidence of dilated bowel in the absence of any mechanical cause. Duration typically > 6 months.",
+    "notes": "Classified as neuropathic (enteric nervous system dysfunction) or myopathic (smooth muscle dysfunction). May be primary (idiopathic/genetic) or secondary (autoimmune, paraneoplastic, metabolic, drug-induced)."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent episodes of intestinal obstruction without mechanical cause",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal",
+        "notes": "Episodes of pseudo-obstruction with dilated bowel on imaging but no structural blockage"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chronic abdominal distension",
+        "snomedCode": "60728008",
+        "frequency": 0.90,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "snomedCode": "21522001",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "snomedCode": "422587007",
+        "frequency": 0.80,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Constipation (severe, refractory)",
+        "snomedCode": "14760008",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Weight loss and malnutrition",
+        "snomedCode": "89362005",
+        "frequency": 0.70,
+        "bodySystem": "general"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Small intestinal bacterial overgrowth (SIBO)",
+        "frequency": 0.40,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to stasis; causes bloating, diarrhea, malabsorption"
+      },
+      {
+        "symptomName": "Urinary symptoms (bladder involvement)",
+        "frequency": 0.25,
+        "bodySystem": "genitourinary",
+        "notes": "Bladder distension, urinary retention in hollow visceral myopathy"
+      },
+      {
+        "symptomName": "Dysphagia (esophageal involvement)",
+        "snomedCode": "40739000",
+        "frequency": 0.30,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Steatorrhea from severe malabsorption",
+        "snomedCode": "271820007",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Sepsis from bacterial translocation",
+        "frequency": 0.05,
+        "bodySystem": "general",
+        "notes": "Life-threatening complication from chronic bowel dilation"
+      },
+      {
+        "symptomName": "D-lactic acidosis from SIBO",
+        "frequency": 0.03,
+        "bodySystem": "general"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "genitourinary",
+    "general"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Nutritional deficiencies (iron, B12, folate, fat-soluble vitamins)",
+      "Hypoalbuminemia from malnutrition/malabsorption",
+      "Anti-neuronal antibodies (anti-Hu/ANNA-1) if paraneoplastic",
+      "Glucose hydrogen breath test positive for SIBO",
+      "Elevated D-lactate in rare cases"
+    ],
+    "imaging": [
+      "Abdominal X-ray: dilated small bowel loops with air-fluid levels during episodes",
+      "CT abdomen: dilated bowel without mechanical transition point, possible pneumatosis",
+      "Upper GI/small bowel follow-through: dilated loops with delayed transit"
+    ],
+    "genetic": [
+      "ACTG2 gene mutations (visceral myopathy; autosomal dominant)",
+      "FLNA gene mutations (filamin A; X-linked)",
+      "MYH11 gene mutations (smooth muscle myosin heavy chain)",
+      "SOX10, TYMP/POLG mutations (mitochondrial neurogastrointestinal encephalomyopathy/MNGIE)"
+    ],
+    "other": [
+      "Antroduodenal manometry: neuropathic pattern (uncoordinated contractions) or myopathic pattern (low-amplitude contractions)",
+      "Full-thickness intestinal biopsy: definitive for classification (neuropathic vs myopathic)",
+      "Wireless motility capsule to assess regional transit",
+      "Scintigraphic whole-gut transit study"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "intestinal-pseudo-obstruction",
+      "distinguishingFeatures": [
+        "Acute pseudo-obstruction (Ogilvie) is a single/acute episode in hospitalized patients",
+        "Acute form has identifiable precipitant and resolves"
+      ]
+    },
+    {
+      "diseaseId": "gastroparesis",
+      "distinguishingFeatures": [
+        "Gastroparesis is limited to gastric dysmotility",
+        "Normal small bowel transit in gastroparesis"
+      ]
+    },
+    {
+      "diseaseId": "mechanical-bowel-obstruction",
+      "distinguishingFeatures": [
+        "Mechanical obstruction has identifiable transition point on imaging",
+        "Surgical adhesions, tumors, or hernias causing obstruction"
+      ]
+    }
+  ],
+  "redFlags": [
+    "New-onset pseudo-obstruction in adult > 40 years (screen for paraneoplastic cause/occult malignancy)",
+    "Anti-neuronal antibodies suggesting paraneoplastic syndrome",
+    "Severe malnutrition requiring parenteral nutrition",
+    "Signs of bowel ischemia or perforation during pseudo-obstruction episode",
+    "Central or peripheral neuropathy with GI dysmotility (consider MNGIE)"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Motility Specialist",
+    "Medical Geneticist",
+    "Nutritionist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Antonucci A, et al. Chronic intestinal pseudo-obstruction. World J Gastroenterol. 2008;14(19):2953-2961.",
+    "Di Nardo G, et al. Review article: molecular, pathological and therapeutic features of human enteric neuropathies. Aliment Pharmacol Ther. 2008;28(1):25-42.",
+    "Iida H, et al. Chronic intestinal pseudo-obstruction: a systematic review and meta-analysis. J Clin Gastroenterol. 2023;57(3):243-252."
+  ],
+  "confidenceInData": "medium"
+}

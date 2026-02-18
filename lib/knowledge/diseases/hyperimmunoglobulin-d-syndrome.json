@@ -1,0 +1,220 @@
+{
+  "id": "hyperimmunoglobulin-d-syndrome",
+  "name": "Hyperimmunoglobulin D Syndrome",
+  "aliases": [
+    "HIDS",
+    "Mevalonate Kinase Deficiency",
+    "MKD",
+    "Dutch-Type Periodic Fever",
+    "Hyper-IgD Syndrome"
+  ],
+  "icd10Codes": ["E88.09", "M04.1"],
+  "omimId": "260920",
+  "orphanetId": "343",
+  "prevalence": {
+    "estimate": "Less than 1 per 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 0, "max": 5, "peak": 1 },
+    "sexPredilection": "equal",
+    "ethnicAssociations": ["Dutch", "Northern European", "French"]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Eurofever/PRINTO Classification Criteria (2019)",
+    "criteria": [
+      {
+        "id": "hids-maj1",
+        "description": "Recurrent febrile episodes (typically 3-7 days) starting before age 2",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hids-maj2",
+        "description": "Confirmed pathogenic MVK gene mutations",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hids-min1",
+        "description": "Elevated serum IgD > 100 IU/mL (present in ~80%)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hids-min2",
+        "description": "Elevated urinary mevalonic acid during attacks",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hids-min3",
+        "description": "Cervical lymphadenopathy during attacks",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hids-min4",
+        "description": "GI symptoms (vomiting, diarrhea, abdominal pain) during attacks",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Clinical picture of recurrent febrile episodes with elevated IgD and/or mevalonic aciduria, confirmed by MVK gene mutations. Eurofever criteria require genetic confirmation plus compatible features.",
+    "notes": "MKD is a spectrum: HIDS is milder, mevalonic aciduria (MA) is severe with neurological involvement. MVK enzyme activity: HIDS has 1-10% residual activity; MA has <1%."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent febrile episodes lasting 3-7 days with prominent cervical lymphadenopathy",
+        "frequency": 0.90,
+        "bodySystem": "general",
+        "notes": "Attacks often triggered by vaccinations, infections, or stress"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "High fever (39-41°C)",
+        "snomedCode": "386661006",
+        "frequency": 0.95,
+        "bodySystem": "general"
+      },
+      {
+        "symptomName": "Cervical lymphadenopathy",
+        "snomedCode": "30746006",
+        "frequency": 0.85,
+        "bodySystem": "lymphatic"
+      },
+      {
+        "symptomName": "Abdominal pain with vomiting and diarrhea",
+        "snomedCode": "21522001",
+        "frequency": 0.80,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Arthralgias/arthritis (large joints)",
+        "snomedCode": "57676002",
+        "frequency": 0.70,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Skin rash (maculopapular, urticarial, or erythema nodosum-like)",
+        "frequency": 0.65,
+        "bodySystem": "integumentary"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.35,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Oral ulcers",
+        "frequency": 0.30,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Headache",
+        "snomedCode": "25064002",
+        "frequency": 0.30,
+        "bodySystem": "neurologic"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "AA amyloidosis",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "notes": "Much lower risk than FMF or TRAPS (~3%)"
+      },
+      {
+        "symptomName": "Macrophage activation syndrome",
+        "frequency": 0.02,
+        "bodySystem": "hematologic"
+      },
+      {
+        "symptomName": "Adhesive peritonitis",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "general",
+    "lymphatic",
+    "gastrointestinal",
+    "musculoskeletal",
+    "integumentary"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum IgD > 100 IU/mL (present in ~80%; not specific; IgD can be elevated in other autoinflammatory diseases)",
+      "Elevated serum IgA",
+      "Elevated urinary mevalonic acid during attacks",
+      "Elevated ESR, CRP, SAA during attacks",
+      "Leukocytosis during attacks"
+    ],
+    "imaging": [
+      "No specific diagnostic imaging findings",
+      "Abdominal imaging may show hepatosplenomegaly, lymphadenopathy during attacks"
+    ],
+    "genetic": [
+      "MVK gene mutations on chromosome 12q24",
+      "Most common mutation: V377I (associated with HIDS phenotype)",
+      "Other variants: I268T, H20P",
+      "Autosomal recessive inheritance",
+      "MVK enzyme activity 1-10% residual in HIDS; <1% in mevalonic aciduria"
+    ],
+    "other": [
+      "MVK enzyme activity assay in lymphocytes or fibroblasts",
+      "Mevalonic acid in urine (collected during attack)",
+      "Genetic testing is the gold standard for diagnosis"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "familial-mediterranean-fever",
+      "distinguishingFeatures": [
+        "FMF attacks are shorter (1-3 days) without prominent lymphadenopathy",
+        "FMF responds to colchicine",
+        "FMF confirmed by MEFV mutations"
+      ]
+    },
+    {
+      "diseaseId": "tumor-necrosis-factor-receptor-associated-periodic-syndrome",
+      "distinguishingFeatures": [
+        "TRAPS attacks are longer (1-4 weeks)",
+        "TRAPS has periorbital edema and migratory myalgia",
+        "TRAPS confirmed by TNFRSF1A mutations"
+      ]
+    },
+    {
+      "diseaseId": "cryopyrin-associated-periodic-syndrome",
+      "distinguishingFeatures": [
+        "CAPS has urticarial rash, not maculopapular",
+        "CAPS may have cold-triggered episodes",
+        "CAPS confirmed by NLRP3 mutations"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Neurological features (ataxia, developmental delay) suggesting severe mevalonic aciduria phenotype",
+    "Proteinuria (screen for AA amyloidosis)",
+    "Vaccine-triggered severe attack",
+    "Failure to thrive in infancy"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Pediatric Rheumatologist",
+    "Medical Geneticist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "van der Hilst JC, et al. Long-term follow-up, clinical features, and quality of life in a series of 103 patients with hyperimmunoglobulinemia D syndrome. Medicine (Baltimore). 2008;87(6):301-310.",
+    "Gattorno M, et al. Classification criteria for autoinflammatory recurrent fevers. Ann Rheum Dis. 2019;78(8):1025-1032.",
+    "Houten SM, et al. Biochemical and genetic aspects of mevalonate kinase and its deficiency. Biochim Biophys Acta. 2003;1637(3):190-200."
+  ],
+  "confidenceInData": "medium"
+}

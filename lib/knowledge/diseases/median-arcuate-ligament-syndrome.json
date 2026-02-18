@@ -1,0 +1,199 @@
+{
+  "id": "median-arcuate-ligament-syndrome",
+  "name": "Median Arcuate Ligament Syndrome",
+  "aliases": [
+    "MALS",
+    "Celiac Artery Compression Syndrome",
+    "Dunbar Syndrome",
+    "Celiac Axis Compression"
+  ],
+  "icd10Codes": ["I77.4"],
+  "orphanetId": "562540",
+  "prevalence": {
+    "estimate": "Estimated 2 per 100,000",
+    "range": "0.001%-0.002%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": { "min": 15, "max": 50, "peak": 30 },
+    "sexPredilection": "female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "criteria": [
+      {
+        "id": "mals-maj1",
+        "description": "Postprandial abdominal pain (epigastric), often with nausea and weight loss",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mals-maj2",
+        "description": "Imaging evidence of celiac artery compression by the median arcuate ligament (CTA or MRA)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mals-min1",
+        "description": "Celiac artery peak systolic velocity > 200 cm/s on duplex ultrasound with expiration",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mals-min2",
+        "description": "Epigastric bruit on auscultation",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mals-sup1",
+        "description": "Exclusion of other causes of chronic abdominal pain (gastroparesis, PUD, pancreatitis)",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Clinical triad of postprandial pain, weight loss, and epigastric bruit with radiographic confirmation of celiac artery compression. Diagnosis of exclusion after other causes are ruled out.",
+    "notes": "Celiac artery compression is seen incidentally in up to 10-25% of asymptomatic individuals; clinical correlation is essential."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Postprandial epigastric pain",
+        "snomedCode": "235862006",
+        "frequency": 0.90,
+        "bodySystem": "gastrointestinal",
+        "notes": "Pain typically occurs 15-30 minutes after eating"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.75,
+        "bodySystem": "general",
+        "notes": "Due to food avoidance (sitophobia)"
+      },
+      {
+        "symptomName": "Nausea",
+        "snomedCode": "422587007",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "snomedCode": "422400008",
+        "frequency": 0.40,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Epigastric bruit",
+        "frequency": 0.50,
+        "bodySystem": "cardiovascular",
+        "notes": "Bruit may change with respiration; louder on expiration"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Exercise-related abdominal pain",
+        "frequency": 0.30,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "snomedCode": "62315008",
+        "frequency": 0.20,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Bloating",
+        "snomedCode": "248490005",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Gastroparesis (secondary)",
+        "frequency": 0.10,
+        "bodySystem": "gastrointestinal",
+        "notes": "From celiac ganglion compression affecting gastric innervation"
+      },
+      {
+        "symptomName": "Upper GI bleeding",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "notes": "Rare; from ischemic gastric or duodenal ulceration"
+      },
+      {
+        "symptomName": "Acute mesenteric ischemia",
+        "frequency": 0.01,
+        "bodySystem": "gastrointestinal",
+        "notes": "Extremely rare; if concomitant SMA/IMA disease"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Routine laboratory tests are typically normal",
+      "May show nutritional deficiencies from chronic malnutrition"
+    ],
+    "imaging": [
+      "CTA: hook-shaped or hooked appearance of proximal celiac artery with post-stenotic dilation",
+      "Duplex ultrasound: celiac artery peak systolic velocity >200 cm/s during expiration",
+      "MRA: celiac artery compression by median arcuate ligament",
+      "Conventional angiography with respiratory maneuvers (gold standard historically)"
+    ],
+    "genetic": [
+      "No known genetic association"
+    ],
+    "other": [
+      "Celiac plexus block may predict surgical response",
+      "Gastric emptying study may show concomitant gastroparesis",
+      "Tonometry or visible light spectroscopy to detect mucosal ischemia (research)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "gastroparesis",
+      "distinguishingFeatures": [
+        "Gastroparesis confirmed by scintigraphy showing delayed emptying",
+        "Gastroparesis lacks celiac artery compression on imaging"
+      ]
+    },
+    {
+      "diseaseId": "chronic-mesenteric-ischemia",
+      "distinguishingFeatures": [
+        "Chronic mesenteric ischemia typically involves SMA/IMA atherosclerosis",
+        "Older patient population with cardiovascular risk factors"
+      ]
+    },
+    {
+      "diseaseId": "superior-mesenteric-artery-syndrome",
+      "distinguishingFeatures": [
+        "SMA syndrome shows duodenal compression on imaging",
+        "SMA syndrome often associated with thin body habitus or rapid weight loss"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe weight loss suggesting possible malignancy",
+    "Signs of acute mesenteric ischemia (severe sudden pain, peritonitis)",
+    "Failure to improve after surgical release (consider alternative diagnosis)"
+  ],
+  "specialistType": [
+    "Vascular Surgeon",
+    "Gastroenterologist",
+    "Interventional Radiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Kim EN, et al. Median arcuate ligament syndrome: a review. Ann Vasc Surg. 2013;27(1):113-122.",
+    "Dunbar JD, et al. Compression of the celiac trunk and abdominal angina. Am J Roentgenol Radium Ther Nucl Med. 1965;95(3):731-744.",
+    "Patel B, et al. Median Arcuate Ligament Syndrome. StatPearls. 2024."
+  ],
+  "confidenceInData": "medium"
+}

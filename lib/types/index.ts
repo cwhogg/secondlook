@@ -1,4 +1,5 @@
 export type { BodySystem, SymptomFrequency, DiagnosticCriterion, DiseaseProfile, SymptomMatch, DiseaseMatch } from './knowledge-base';
+export type { PipelineProgress, ProgressCallback } from './pipeline';
 
 // ===== PATIENT DATA TYPES =====
 

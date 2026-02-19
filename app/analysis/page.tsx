@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { AnalysisLoading } from "@/components/analysis-loading"
+import type { PipelineProgress } from "@/lib/types/pipeline"
 
 interface Step1Data {
   age: string
@@ -42,56 +43,13 @@ interface Step3Data {
   recentTests?: string[]
 }
 
-interface AnalysisResults {
-  differentialDiagnoses: Array<{
-    diagnosis: string
-    icd10Code: string
-    confidenceScore: number
-    rareDisease: boolean
-    prevalence: string
-    supportingEvidence: string[]
-    contradictoryEvidence: string[]
-    clinicalReasoning: string
-    typicalPresentation: string
-    specialistRequired: string
-    diagnosticCriteria: string
-  }>
-  excludedCommonDiagnoses: Array<{
-    diagnosis: string
-    reasonExcluded: string
-  }>
-  dataGaps: Array<{
-    gapType: string
-    description: string
-    priority: string
-    estimatedImpact: string
-  }>
-  recommendedTesting: Array<{
-    testType: string
-    testName: string
-    rationale: string
-    urgency: string
-  }>
-  nextSteps: {
-    immediateActions: string[]
-    specialistReferrals: string[]
-    followUpTiming: string
-    redFlags: string[]
-  }
-  overallAssessment: string
-  patientHypothesisAnalysis?: {
-    likelihood: number
-    reasoning: string
-    alternativeExplanation: string
-  }
-}
-
 export default function AnalysisPage() {
   const router = useRouter()
   const [progress, setProgress] = useState(0)
-  const [currentStep, setCurrentStep] = useState("")
+  const [pipelineEvents, setPipelineEvents] = useState<PipelineProgress[]>([])
   const [analysisStarted, setAnalysisStarted] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const abortControllerRef = useRef<AbortController | null>(null)
 
   useEffect(() => {
     const startAnalysis = async () => {
@@ -125,16 +83,10 @@ export default function AnalysisPage() {
         const parsedStep2: Step2Data = step2Data ? JSON.parse(step2Data) : { symptoms: [] }
         const parsedStep3: Step3Data = step3Data ? JSON.parse(step3Data) : {}
 
-        setCurrentStep("Processing symptoms")
-        setProgress(10)
-
         console.log("[AnalysisPage] Auto-starting analysis...")
 
-        // Prepare analysis payload
-        console.log("[AnalysisPage] ===== STARTING EXPERT ANALYSIS =====")
-
         // Build symptoms array - include mapped symptoms from step 2, or fall back to primary concern
-        const symptoms = []
+        const symptoms: any[] = []
 
         // Load mapped symptoms from localStorage (persisted by step-2's SymptomMappingSection)
         const mappedSymptomsData = localStorage.getItem("mappedSymptoms")
@@ -189,7 +141,6 @@ export default function AnalysisPage() {
           }
         }
 
-        console.log("[AnalysisPage] Constructing symptoms from available data...")
         console.log("[AnalysisPage] Constructed symptoms:", symptoms.length)
 
         const analysisPayload = {
@@ -214,175 +165,133 @@ export default function AnalysisPage() {
           symptomPatterns: symptomPatterns,
         }
 
-        console.log("[AnalysisPage] Analysis payload prepared:", {
-          demographics: analysisPayload.demographics,
-          chiefComplaintLength: analysisPayload.chiefComplaint.description.length,
-          symptomsCount: symptoms.length,
-          hasPatientHypothesis: !!analysisPayload.patientHypothesis,
-          payloadSize: JSON.stringify(analysisPayload).length,
-          symptomsPreview: symptoms.slice(0, 3).map((s) => ({
-            text: s.text.substring(0, 30) + "...",
-            term: s.medicalTerm,
-          })),
-        })
-
-        const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
-
-        // Call analysis API (start in background)
-        console.log("[AnalysisPage] Making API call to /api/analyze-patient...")
+        console.log("[AnalysisPage] Sending to v2 pipeline SSE...")
         const startTime = Date.now()
 
-        const apiPromise = fetch("/api/analyze-patient", {
+        // Use v2 SSE endpoint
+        const abortController = new AbortController()
+        abortControllerRef.current = abortController
+
+        const response = await fetch("/api/analyze-patient-v2", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(analysisPayload),
-        })
-
-        // Stage through visual steps with 3s per step
-        await delay(3000)
-        setProgress(30)
-        setCurrentStep("Mapping conditions")
-
-        await delay(3000)
-        setProgress(55)
-        setCurrentStep("Analyzing patterns")
-
-        await delay(3000)
-        setProgress(80)
-        setCurrentStep("Generating diagnoses")
-
-        const stage4Start = Date.now()
-        const response = await apiPromise
-
-        console.log("[AnalysisPage] API response received:", {
-          status: response.status,
-          ok: response.ok,
-          statusText: response.statusText,
-          headers: Object.fromEntries(response.headers.entries()),
-        })
-
-        const responseText = await response.text()
-        console.log("[AnalysisPage] Response text received:", {
-          length: responseText.length,
-          preview: responseText.substring(0, 200) + "...",
+          signal: abortController.signal,
         })
 
         if (!response.ok) {
-          console.error("[AnalysisPage] Analysis API error:", {
-            status: response.status,
-            statusText: response.statusText,
-            responsePreview: responseText.substring(0, 500),
-          })
-          throw new Error(`Analysis failed: ${response.statusText}`)
+          const errorBody = await response.text()
+          let errorMessage = `Analysis failed: ${response.statusText}`
+          try {
+            const parsed = JSON.parse(errorBody)
+            if (parsed.error) errorMessage = parsed.error
+            if (parsed.retryAfter) errorMessage += ` (retry in ${parsed.retryAfter}s)`
+          } catch {
+            // use default message
+          }
+          throw new Error(errorMessage)
         }
 
-        const result = JSON.parse(responseText)
-        const processingTime = Date.now() - startTime
+        // Read SSE stream
+        const reader = response.body!.getReader()
+        const decoder = new TextDecoder()
+        let buffer = ""
 
-        console.log("[AnalysisPage] Analysis completed:", {
-          success: result.success,
-          requestId: result.requestId,
-          processingTime: processingTime,
-          totalTime: result.timing?.totalTime,
-          diagnosesCount: result.analysis?.differentialDiagnoses?.length,
-          hasAnalysis: !!result.analysis,
-          analysisKeys: result.analysis ? Object.keys(result.analysis) : [],
-        })
+        while (true) {
+          const { done, value } = await reader.read()
+          if (done) break
 
-        if (!result.success || !result.analysis) {
-          console.error("[AnalysisPage] Invalid analysis result:", {
-            hasSuccess: !!result.success,
-            hasAnalysis: !!result.analysis,
-            resultKeys: Object.keys(result),
-          })
-          throw new Error("Invalid analysis result")
+          buffer += decoder.decode(value, { stream: true })
+          const lines = buffer.split("\n\n")
+          buffer = lines.pop() || ""
+
+          for (const chunk of lines) {
+            const dataLine = chunk.trim()
+            if (!dataLine.startsWith("data: ")) continue
+
+            const jsonStr = dataLine.slice(6)
+            let event: any
+            try {
+              event = JSON.parse(jsonStr)
+            } catch {
+              console.warn("[AnalysisPage] Failed to parse SSE event:", jsonStr)
+              continue
+            }
+
+            if (event.type === "progress") {
+              const progressEvent: PipelineProgress = {
+                stage: event.stage,
+                stageNumber: event.stageNumber,
+                totalStages: event.totalStages,
+                percentage: event.percentage,
+                detail: event.detail,
+                data: event.data,
+              } as PipelineProgress
+
+              setPipelineEvents((prev) => [...prev, progressEvent])
+              setProgress(event.percentage)
+              console.log(`[AnalysisPage] Stage: ${event.stage} (${event.percentage}%) — ${event.detail}`)
+            } else if (event.type === "result") {
+              const processingTime = Date.now() - startTime
+              console.log("[AnalysisPage] Pipeline complete:", {
+                processingTime,
+                diagnosesCount: event.analysis?.differentialDiagnoses?.length,
+              })
+
+              if (!event.success || !event.analysis) {
+                throw new Error("Invalid analysis result from pipeline")
+              }
+
+              // Store results in sessionStorage
+              const analysisResults = {
+                differentialDiagnoses: event.analysis.differentialDiagnoses || [],
+                excludedCommonDiagnoses: event.analysis.excludedCommonDiagnoses || [],
+                dataGaps: event.analysis.dataGaps || [],
+                recommendedTesting: event.analysis.recommendedTesting || [],
+                nextSteps: event.analysis.nextSteps || {},
+                overallAssessment: event.analysis.overallAssessment || "",
+                patientHypothesisAnalysis: event.analysis.patientHypothesisAnalysis || null,
+                pipelineMetadata: event.analysis.pipelineMetadata || null,
+              }
+
+              const analysisMetadata = {
+                timestamp: new Date().toLocaleString(),
+                processingTime,
+                patientAge: parsedStep1.age,
+                patientSex: parsedStep1.biologicalSex,
+                patientHypothesis: parsedStep1.patientHypothesis,
+              }
+
+              sessionStorage.setItem("analysisResults", JSON.stringify(analysisResults))
+              sessionStorage.setItem("analysisMetadata", JSON.stringify(analysisMetadata))
+
+              console.log("[AnalysisPage] Redirecting to /results/analysis")
+              router.push("/results/analysis")
+              return
+            } else if (event.type === "error") {
+              throw new Error(event.error || "Pipeline error")
+            }
+          }
         }
 
-        // Log detailed analysis structure
-        console.log("[AnalysisPage] Analysis structure:", {
-          differentialDiagnoses: {
-            exists: !!result.analysis.differentialDiagnoses,
-            isArray: Array.isArray(result.analysis.differentialDiagnoses),
-            length: result.analysis.differentialDiagnoses?.length,
-          },
-          excludedCommonDiagnoses: {
-            exists: !!result.analysis.excludedCommonDiagnoses,
-            isArray: Array.isArray(result.analysis.excludedCommonDiagnoses),
-            length: result.analysis.excludedCommonDiagnoses?.length,
-          },
-          dataGaps: {
-            exists: !!result.analysis.dataGaps,
-            isArray: Array.isArray(result.analysis.dataGaps),
-            length: result.analysis.dataGaps?.length,
-          },
-          recommendedTesting: {
-            exists: !!result.analysis.recommendedTesting,
-            isArray: Array.isArray(result.analysis.recommendedTesting),
-            length: result.analysis.recommendedTesting?.length,
-          },
-          nextSteps: {
-            exists: !!result.analysis.nextSteps,
-            type: typeof result.analysis.nextSteps,
-          },
-          overallAssessment: {
-            exists: !!result.analysis.overallAssessment,
-            type: typeof result.analysis.overallAssessment,
-          },
-        })
-
-        // Store results in sessionStorage with the correct key name
-        const analysisResults = {
-          differentialDiagnoses: result.analysis.differentialDiagnoses || [],
-          excludedCommonDiagnoses: result.analysis.excludedCommonDiagnoses || [],
-          dataGaps: result.analysis.dataGaps || [],
-          recommendedTesting: result.analysis.recommendedTesting || [],
-          nextSteps: result.analysis.nextSteps || {},
-          overallAssessment: result.analysis.overallAssessment || "",
-          patientHypothesisAnalysis: result.analysis.patientHypothesisAnalysis || null,
+        // If we reach here without a result event, something went wrong
+        throw new Error("Analysis stream ended without a result")
+      } catch (err) {
+        if (err instanceof DOMException && err.name === "AbortError") {
+          console.log("[AnalysisPage] Analysis aborted")
+          return
         }
-
-        const analysisMetadata = {
-          timestamp: new Date().toLocaleString(),
-          processingTime: processingTime,
-          patientAge: parsedStep1.age,
-          patientSex: parsedStep1.biologicalSex,
-          patientHypothesis: parsedStep1.patientHypothesis,
-        }
-
-        // Store with keys that expert-results expects
-        sessionStorage.setItem("analysisResults", JSON.stringify(analysisResults))
-        sessionStorage.setItem("analysisMetadata", JSON.stringify(analysisMetadata))
-
-        console.log("[AnalysisPage] Analysis completed successfully")
-        console.log("[AnalysisPage] Stored in sessionStorage:", {
-          analysisResultsKey: "analysisResults",
-          analysisMetadataKey: "analysisMetadata",
-          resultsSize: JSON.stringify(analysisResults).length,
-          metadataSize: JSON.stringify(analysisMetadata).length,
-        })
-
-        // Ensure step 4 spinner shows for at least 3s
-        const stage4Elapsed = Date.now() - stage4Start
-        if (stage4Elapsed < 3000) {
-          await delay(3000 - stage4Elapsed)
-        }
-
-        setProgress(100)
-        setCurrentStep("Complete")
-
-        console.log("[AnalysisPage] Redirecting to /results/analysis")
-        router.push("/results/analysis")
-      } catch (error) {
-        console.error("[AnalysisPage] Analysis error:", error)
-        setError(error instanceof Error ? error.message : "Analysis failed")
+        console.error("[AnalysisPage] Analysis error:", err)
+        setError(err instanceof Error ? err.message : "Analysis failed")
         setProgress(0)
-        setCurrentStep("Error")
       }
     }
 
     startAnalysis()
+
+    return () => {
+      abortControllerRef.current?.abort()
+    }
   }, [router, analysisStarted])
 
   if (error) {
@@ -402,5 +311,5 @@ export default function AnalysisPage() {
     )
   }
 
-  return <AnalysisLoading progress={progress} currentStep={currentStep} />
+  return <AnalysisLoading progress={progress} pipelineEvents={pipelineEvents} />
 }

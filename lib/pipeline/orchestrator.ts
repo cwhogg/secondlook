@@ -7,16 +7,9 @@ import { ReportGenerator } from '../agents/report-generator';
 import { AgentOutput } from '../agents/types';
 import { BudgetTracker } from './budget';
 import { getDiseaseCount } from '../knowledge';
+import { PipelineProgress, ProgressCallback } from '../types/pipeline';
 
-export interface PipelineProgress {
-  stage: string;
-  stageNumber: number;
-  totalStages: number;
-  detail: string;
-  percentage: number;
-}
-
-export type ProgressCallback = (progress: PipelineProgress) => void;
+export type { PipelineProgress, ProgressCallback };
 
 export class DiagnosticPipeline {
   private budgetTracker: BudgetTracker;
@@ -36,16 +29,22 @@ export class DiagnosticPipeline {
 
     try {
       // ===== STAGE 1: TRIAGE =====
+      const triageAgent = new TriageAgent();
+      const triageResult = await triageAgent.execute({ patientCase });
+
       onProgress?.({
         stage: 'triage',
         stageNumber: 1,
         totalStages: 5,
         detail: 'Classifying symptoms and retrieving candidate conditions from knowledge base',
-        percentage: 5,
+        percentage: 15,
+        data: {
+          bodySystems: triageResult.bodySystems,
+          acuityLevel: triageResult.acuityLevel,
+          specialties: triageResult.relevantSpecialties,
+          candidateCount: triageResult.candidateDiseases.length,
+        },
       });
-
-      const triageAgent = new TriageAgent();
-      const triageResult = await triageAgent.execute({ patientCase });
 
       this.budgetTracker.addUsage('gpt-4.1-nano', triageResult.tokensUsed);
       stages.push({
@@ -67,6 +66,7 @@ export class DiagnosticPipeline {
         totalStages: 5,
         detail: `Consulting ${triageResult.relevantSpecialties.length} specialist agents in parallel`,
         percentage: 20,
+        data: { specialties: triageResult.relevantSpecialties },
       });
 
       const specialistPromises = triageResult.relevantSpecialties.map((specialty) => {
@@ -102,6 +102,16 @@ export class DiagnosticPipeline {
         totalStages: 5,
         detail: `${specialistResults.reduce((sum, sr) => sum + sr.hypotheses.length, 0)} hypotheses generated from ${specialistResults.length} specialists`,
         percentage: 50,
+        data: {
+          results: specialistResults.map((sr) => ({
+            agentName: sr.agentName,
+            specialty: sr.agentName.replace('-agent', ''),
+            hypotheses: sr.hypotheses.map((h) => ({
+              diagnosis: h.diagnosis,
+              confidenceScore: h.confidenceScore,
+            })),
+          })),
+        },
       });
 
       // ===== STAGE 3: EVIDENCE EVALUATION =====
@@ -111,6 +121,9 @@ export class DiagnosticPipeline {
         totalStages: 5,
         detail: 'Evaluating hypotheses against diagnostic criteria from knowledge base',
         percentage: 55,
+        data: {
+          hypothesesCount: specialistResults.reduce((sum, sr) => sum + sr.hypotheses.length, 0),
+        },
       });
 
       const evaluator = new EvidenceEvaluator();
@@ -131,6 +144,19 @@ export class DiagnosticPipeline {
         outputSummary: `Criteria review complete: ${evaluationResult.hypotheses.filter((h) => h.knowledgeBaseMatch).length} KB-matched, ${evaluationResult.hypotheses.filter((h) => !h.knowledgeBaseMatch).length} reasoning-evaluated`,
       });
 
+      onProgress?.({
+        stage: 'evidence-complete',
+        stageNumber: 3,
+        totalStages: 5,
+        detail: `${evaluationResult.hypotheses.length} hypotheses evaluated against diagnostic criteria`,
+        percentage: 65,
+        data: {
+          evaluatedCount: evaluationResult.hypotheses.length,
+          kbMatchedCount: evaluationResult.hypotheses.filter((h) => h.knowledgeBaseMatch).length,
+          reasoningEvaluatedCount: evaluationResult.hypotheses.filter((h) => !h.knowledgeBaseMatch).length,
+        },
+      });
+
       this.checkBudget();
 
       // ===== STAGE 4: SYNTHESIS =====
@@ -139,7 +165,8 @@ export class DiagnosticPipeline {
         stageNumber: 4,
         totalStages: 5,
         detail: 'Senior diagnostician reviewing all evidence and assigning probabilities',
-        percentage: 75,
+        percentage: 70,
+        data: null,
       });
 
       const synthesizer = new SynthesisAgent();
@@ -159,6 +186,22 @@ export class DiagnosticPipeline {
         outputSummary: `Top diagnosis: ${synthesisResult.hypotheses[0]?.diagnosis || 'none'} (probability: ${synthesisResult.hypotheses[0]?.confidenceScore || 0}%)`,
       });
 
+      const synthesisData_ = (synthesisResult as any).synthesisData || {};
+      onProgress?.({
+        stage: 'synthesis-complete',
+        stageNumber: 4,
+        totalStages: 5,
+        detail: `Final ranking complete — ${synthesisResult.hypotheses.length} diagnoses ranked by evidence`,
+        percentage: 85,
+        data: {
+          topDiagnoses: synthesisResult.hypotheses.slice(0, 5).map((h) => ({
+            diagnosis: h.diagnosis,
+            probabilityScore: h.confidenceScore,
+          })),
+          consensusLevel: synthesisData_.consensusLevel || 'moderate',
+        },
+      });
+
       this.checkBudget();
 
       // ===== STAGE 5: REPORT GENERATION =====
@@ -168,6 +211,7 @@ export class DiagnosticPipeline {
         totalStages: 5,
         detail: 'Generating your detailed diagnostic report',
         percentage: 90,
+        data: null,
       });
 
       const reportGenerator = new ReportGenerator();
@@ -194,6 +238,7 @@ export class DiagnosticPipeline {
         totalStages: 5,
         detail: 'Analysis complete',
         percentage: 100,
+        data: null,
       });
 
       const reportData = (reportResult as any).reportData || {};

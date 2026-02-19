@@ -47,14 +47,14 @@ export default function AnalysisPage() {
   const router = useRouter()
   const [progress, setProgress] = useState(0)
   const [pipelineEvents, setPipelineEvents] = useState<PipelineProgress[]>([])
-  const [analysisStarted, setAnalysisStarted] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const abortControllerRef = useRef<AbortController | null>(null)
+  const hasStartedRef = useRef(false)
 
   useEffect(() => {
     const startAnalysis = async () => {
-      if (analysisStarted) return
-      setAnalysisStarted(true)
+      if (hasStartedRef.current) return
+      hasStartedRef.current = true
 
       console.log("[AnalysisPage] Loading analysis data...")
 
@@ -292,7 +292,8 @@ export default function AnalysisPage() {
     return () => {
       abortControllerRef.current?.abort()
     }
-  }, [router, analysisStarted])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (error) {
     return (

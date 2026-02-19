@@ -218,7 +218,22 @@ export default function AnalysisPage() {
               continue
             }
 
-            if (event.type === "progress") {
+            if (event.type === "log") {
+              const label = `%c[${event.agent}] ${event.phase}`
+              if (event.phase === "ERROR") {
+                console.error(label, "color: red; font-weight: bold", "\n" + event.message)
+              } else if (event.phase === "RESPONSE_BODY") {
+                console.groupCollapsed(label, "color: #2563eb; font-weight: bold")
+                console.log(event.message)
+                console.groupEnd()
+              } else if (event.phase === "SYSTEM_PROMPT" || event.phase === "USER_PROMPT") {
+                console.groupCollapsed(label, "color: #8b2500; font-weight: bold")
+                console.log(event.message)
+                console.groupEnd()
+              } else {
+                console.log(label, "color: #666; font-weight: bold", event.message)
+              }
+            } else if (event.type === "progress") {
               const progressEvent: PipelineProgress = {
                 stage: event.stage,
                 stageNumber: event.stageNumber,

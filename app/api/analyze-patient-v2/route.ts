@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server';
 import { DiagnosticPipeline } from '@/lib/pipeline/orchestrator';
+import { BaseAgent } from '@/lib/agents/base-agent';
 import { z } from 'zod';
 
 // Input validation schema
@@ -133,6 +134,11 @@ export async function POST(request: NextRequest) {
       };
 
       try {
+        // Wire agent logs to SSE so they appear in the browser console
+        BaseAgent.onLog = (agent, phase, message) => {
+          sendEvent({ type: 'log', requestId, agent, phase, message });
+        };
+
         const pipeline = new DiagnosticPipeline(100); // $1.00 budget cap
 
         const result = await pipeline.execute(patientCase as any, (progress) => {
@@ -159,6 +165,7 @@ export async function POST(request: NextRequest) {
           processingTime: Date.now() - startTime,
         });
       } finally {
+        BaseAgent.onLog = null;
         controller.close();
       }
     },

@@ -1,5 +1,7 @@
 import { AgentConfig } from './types';
 
+export type LogCallback = (agent: string, phase: string, message: string) => void;
+
 export interface LLMCallResult {
   content: any;
   tokensUsed: number;
@@ -9,6 +11,9 @@ export interface LLMCallResult {
 
 export abstract class BaseAgent {
   protected config: AgentConfig;
+
+  /** Set this before pipeline execution to receive logs via SSE */
+  static onLog: LogCallback | null = null;
 
   constructor(config: AgentConfig) {
     this.config = config;
@@ -20,6 +25,11 @@ export abstract class BaseAgent {
 
   get model(): string {
     return this.config.model;
+  }
+
+  private log(phase: string, message: string): void {
+    console.log(`[${this.config.name}] ${phase}: ${message}`);
+    BaseAgent.onLog?.(this.config.name, phase, message);
   }
 
   /**
@@ -46,14 +56,10 @@ export abstract class BaseAgent {
       max_tokens: this.config.maxTokens,
     };
 
-    console.log(`\n${'='.repeat(80)}`);
-    console.log(`[${this.config.name}] REQUEST (callWithTools) — model: ${this.config.model}`);
-    console.log(`${'='.repeat(80)}`);
-    console.log(`[${this.config.name}] SYSTEM PROMPT:\n${this.config.systemPrompt}`);
-    console.log(`[${this.config.name}] USER PROMPT:\n${userPrompt}`);
-    console.log(`[${this.config.name}] TOOLS: ${JSON.stringify(tools.map((t: any) => t.function?.name || t.name || 'unknown'))}`);
-    console.log(`[${this.config.name}] TOOL_CHOICE: ${JSON.stringify(toolChoice)}`);
-    console.log(`${'='.repeat(80)}`);
+    this.log('REQUEST', `callWithTools — model: ${this.config.model}`);
+    this.log('SYSTEM_PROMPT', this.config.systemPrompt);
+    this.log('USER_PROMPT', userPrompt);
+    this.log('TOOLS', JSON.stringify(tools.map((t: any) => t.function?.name || t.name || 'unknown')));
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -66,19 +72,16 @@ export abstract class BaseAgent {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error(`[${this.config.name}] ERROR ${response.status}:\n${errorText}`);
+      this.log('ERROR', `${response.status}: ${errorText}`);
       throw new Error(`OpenAI API error ${response.status}: ${errorText.substring(0, 500)}`);
     }
 
     const data = await response.json();
     const durationMs = Date.now() - startTime;
 
-    console.log(`\n${'='.repeat(80)}`);
-    console.log(`[${this.config.name}] RESPONSE — ${durationMs}ms, ${data.usage?.total_tokens || '?'} tokens`);
-    console.log(`${'='.repeat(80)}`);
-    console.log(`[${this.config.name}] RAW RESPONSE:\n${JSON.stringify(data.choices[0]?.message, null, 2)}`);
-    console.log(`[${this.config.name}] USAGE: ${JSON.stringify(data.usage)}`);
-    console.log(`${'='.repeat(80)}\n`);
+    this.log('RESPONSE', `${durationMs}ms, ${data.usage?.total_tokens || '?'} tokens`);
+    this.log('RESPONSE_BODY', JSON.stringify(data.choices[0]?.message, null, 2));
+    this.log('USAGE', JSON.stringify(data.usage));
 
     const toolCall = data.choices[0]?.message?.tool_calls?.[0];
     if (!toolCall?.function?.arguments) {
@@ -119,12 +122,9 @@ export abstract class BaseAgent {
       response_format: { type: 'json_object' },
     };
 
-    console.log(`\n${'='.repeat(80)}`);
-    console.log(`[${this.config.name}] REQUEST (callPlain) — model: ${this.config.model}`);
-    console.log(`${'='.repeat(80)}`);
-    console.log(`[${this.config.name}] SYSTEM PROMPT:\n${this.config.systemPrompt}`);
-    console.log(`[${this.config.name}] USER PROMPT:\n${userPrompt}`);
-    console.log(`${'='.repeat(80)}`);
+    this.log('REQUEST', `callPlain — model: ${this.config.model}`);
+    this.log('SYSTEM_PROMPT', this.config.systemPrompt);
+    this.log('USER_PROMPT', userPrompt);
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -137,7 +137,7 @@ export abstract class BaseAgent {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error(`[${this.config.name}] ERROR ${response.status}:\n${errorText}`);
+      this.log('ERROR', `${response.status}: ${errorText}`);
       throw new Error(`OpenAI API error ${response.status}: ${errorText.substring(0, 500)}`);
     }
 
@@ -145,12 +145,9 @@ export abstract class BaseAgent {
     const durationMs = Date.now() - startTime;
     const rawContent = data.choices[0]?.message?.content;
 
-    console.log(`\n${'='.repeat(80)}`);
-    console.log(`[${this.config.name}] RESPONSE — ${durationMs}ms, ${data.usage?.total_tokens || '?'} tokens`);
-    console.log(`${'='.repeat(80)}`);
-    console.log(`[${this.config.name}] RAW RESPONSE:\n${rawContent}`);
-    console.log(`[${this.config.name}] USAGE: ${JSON.stringify(data.usage)}`);
-    console.log(`${'='.repeat(80)}\n`);
+    this.log('RESPONSE', `${durationMs}ms, ${data.usage?.total_tokens || '?'} tokens`);
+    this.log('RESPONSE_BODY', rawContent);
+    this.log('USAGE', JSON.stringify(data.usage));
 
     let content: any;
     try {

@@ -142,24 +142,24 @@ function SpecialistsData({
   return (
     <div className="mt-3 space-y-3">
       {results.map((specialist) => (
-        <div key={specialist.agentName} className="border border-[#d4c5b0] bg-white p-3">
+        <div key={specialist.agentName} className="border border-[#d4c5b0] bg-white p-3 overflow-hidden">
           <div className="text-xs font-semibold text-gray-700 mb-2">
             {formatSpecialtyName(specialist.agentName)}
           </div>
           <div className="space-y-1.5">
             {specialist.hypotheses.slice(0, 3).map((h, i) => (
-              <div key={i} className="flex items-center gap-2">
-                <div className="flex-1 min-w-0">
-                  <div className="text-xs text-gray-700 truncate">{h.diagnosis}</div>
+              <div key={i} className="flex items-center gap-2 overflow-hidden">
+                <div className="flex-1 min-w-0 overflow-hidden">
+                  <div className="text-xs text-gray-700 truncate" title={h.diagnosis}>{h.diagnosis}</div>
                 </div>
-                <div className="flex items-center gap-1.5 flex-shrink-0">
-                  <div className="w-16 h-1.5 bg-gray-100 overflow-hidden">
+                <div className="flex items-center gap-1.5 flex-shrink-0 w-[85px]">
+                  <div className="w-12 h-1.5 bg-gray-100 overflow-hidden flex-shrink-0">
                     <div
                       className="h-full bg-[#8b2500] transition-all duration-500"
                       style={{ width: `${Math.min(h.confidenceScore, 100)}%` }}
                     />
                   </div>
-                  <span className="text-[10px] text-gray-500 w-7 text-right tabular-nums">
+                  <span className="text-[10px] text-gray-500 w-7 text-right tabular-nums flex-shrink-0">
                     {h.confidenceScore}%
                   </span>
                 </div>

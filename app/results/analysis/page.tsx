@@ -52,10 +52,18 @@ export default function AnalysisResultsPage() {
             severity: d.confidenceScore >= 60 ? "high" : d.confidenceScore >= 30 ? "moderate" : "low",
             icdCode: d.icd10Code || "N/A",
             description: d.clinicalReasoning || d.typicalPresentation || "",
-            symptoms: d.supportingEvidence || [],
-            riskFactors: d.contradictoryEvidence || [],
+            symptoms: (d.supportingEvidence || []).map((e: any) =>
+              typeof e === "string" ? e : e.finding || e.patientSymptom || JSON.stringify(e)
+            ),
+            riskFactors: (d.contradictoryEvidence || []).map((e: any) =>
+              typeof e === "string" ? e : e.finding || e.patientSymptom || JSON.stringify(e)
+            ),
             recommendations: [
-              d.diagnosticCriteria,
+              typeof d.diagnosticCriteria === "string"
+                ? d.diagnosticCriteria
+                : d.diagnosticCriteria?.criteriaName
+                  ? `${d.diagnosticCriteria.criteriaName}: ${d.diagnosticCriteria.metCriteria}/${d.diagnosticCriteria.totalCriteria} criteria met (${d.diagnosticCriteria.fulfillmentPercentage}%)`
+                  : null,
               d.specialistRequired ? `See specialist: ${d.specialistRequired}` : null,
             ].filter(Boolean),
           }))

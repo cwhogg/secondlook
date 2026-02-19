@@ -1,0 +1,211 @@
+{
+  "id": "hypersensitivity-vasculitis",
+  "name": "Hypersensitivity Vasculitis",
+  "aliases": [
+    "Leukocytoclastic Vasculitis",
+    "Cutaneous Small Vessel Vasculitis"
+  ],
+  "icd10Codes": [
+    "L95.0"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 70,
+      "peak": 40
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "American College of Rheumatology 1990 Criteria for Hypersensitivity Vasculitis",
+    "criteria": [
+      {
+        "id": "palpable-purpura",
+        "description": "Presence of palpable purpura",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "age-onset",
+        "description": "Age >16 years at disease onset",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "histopathology",
+        "description": "Biopsy showing neutrophils around arterioles or venules",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "drug-or-infection-trigger",
+        "description": "History of drug exposure or infection preceding onset",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "absence-of-arthritis",
+        "description": "No evidence of systemic vasculitis or other autoimmune disease",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of palpable purpura and compatible histopathology with exclusion of other vasculitides",
+    "notes": "Diagnosis is clinical supported by biopsy; exclusion of systemic vasculitis is essential."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Palpable purpura",
+        "frequency": 0.9,
+        "bodySystem": "dermatological",
+        "notes": "Typically located on lower extremities"
+      },
+      {
+        "symptomName": "Leukocytoclastic vasculitis on skin biopsy",
+        "frequency": 0.85,
+        "bodySystem": "dermatological",
+        "notes": "Histopathologic hallmark"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Cutaneous erythema",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Often surrounding purpuric lesions"
+      },
+      {
+        "symptomName": "Pruritus",
+        "frequency": 0.7,
+        "bodySystem": "dermatological",
+        "notes": "May accompany skin lesions"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "notes": "Mild joint pain without arthritis"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "notes": "Low-grade fever common"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "notes": "Muscle aches may occur"
+      },
+      {
+        "symptomName": "Edema of affected limbs",
+        "frequency": 0.3,
+        "bodySystem": "dermatological",
+        "notes": "Localized swelling near lesions"
+      },
+      {
+        "symptomName": "Malaise",
+        "frequency": 0.25,
+        "bodySystem": "constitutional",
+        "notes": "General feeling of discomfort"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Rare systemic involvement"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.08,
+        "bodySystem": "renal",
+        "notes": "Indicates renal involvement"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Rare systemic manifestation"
+      },
+      {
+        "symptomName": "Pulmonary hemorrhage",
+        "frequency": 0.02,
+        "bodySystem": "respiratory",
+        "notes": "Very rare but serious complication"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "musculoskeletal",
+    "constitutional",
+    "gastrointestinal",
+    "renal",
+    "neurological",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated ESR and CRP",
+      "Mild leukocytosis",
+      "Normal or mildly elevated serum creatinine",
+      "Negative ANCA"
+    ],
+    "imaging": [
+      "Usually not required; imaging to exclude systemic vasculitis if suspected"
+    ],
+    "genetic": [
+      "No known genetic markers"
+    ],
+    "other": [
+      "Skin biopsy showing neutrophilic infiltration and leukocytoclasia",
+      "Direct immunofluorescence may show IgA, IgM, or C3 deposits"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "henoch-schonlein-purpura",
+      "distinguishingFeatures": [
+        "IgA deposition on biopsy",
+        "More common in children",
+        "Frequent renal involvement"
+      ]
+    },
+    {
+      "diseaseId": "granulomatosis-with-polyangiitis",
+      "distinguishingFeatures": [
+        "Positive c-ANCA",
+        "Upper and lower respiratory tract involvement",
+        "Necrotizing granulomatous inflammation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive renal failure",
+    "Pulmonary hemorrhage or respiratory distress",
+    "Neurological deficits suggestive of systemic vasculitis"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Dermatologist",
+    "Nephrologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Jennette JC, Falk RJ, Bacon PA, et al. 2012 Revised International Chapel Hill Consensus Conference Nomenclature of Vasculitides. Arthritis Rheum. 2013 Jan;65(1):1-11.",
+    "American College of Rheumatology 1990 Criteria for the Classification of Hypersensitivity Vasculitis.",
+    "Sunderkötter C, Sindrilaru A, Luger TA. Leukocytoclastic vasculitis. J Dtsch Dermatol Ges. 2018 Sep;16(9):1103-1116."
+  ],
+  "confidenceInData": "medium"
+}

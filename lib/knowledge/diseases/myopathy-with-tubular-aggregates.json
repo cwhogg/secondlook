@@ -1,0 +1,197 @@
+{
+  "id": "myopathy-with-tubular-aggregates",
+  "name": "Myopathy with Tubular Aggregates",
+  "aliases": [
+    "Tubular Aggregate Myopathy",
+    "TAM"
+  ],
+  "icd10Codes": [
+    "G72.8"
+  ],
+  "omimId": "618088",
+  "orphanetId": "ORPHA:395",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 60,
+      "peak": 30
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No formal consensus criteria established",
+    "criteria": [
+      {
+        "id": "muscle-biopsy-tubular-aggregates",
+        "description": "Presence of tubular aggregates on muscle biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-muscle-weakness",
+        "description": "Progressive proximal muscle weakness",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "electromyography-myopathic-changes",
+        "description": "Electromyography showing myopathic changes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic variants in genes associated with tubular aggregate myopathy (e.g., STIM1, ORAI1)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of tubular aggregates on muscle biopsy plus clinical evidence of muscle weakness",
+    "notes": "Genetic testing can support diagnosis but is not mandatory; diagnosis relies primarily on biopsy and clinical features."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Tubular aggregates on muscle biopsy",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Progressive proximal muscle weakness",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Muscle cramps",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigability",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild distal muscle weakness",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mild joint stiffness",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated serum creatine kinase",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild dysphagia",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Respiratory muscle weakness",
+        "frequency": 0.08,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cardiac conduction abnormalities",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "constitutional",
+    "respiratory",
+    "cardiovascular",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Mildly elevated serum creatine kinase (CK) levels"
+    ],
+    "imaging": [
+      "Muscle MRI showing selective muscle involvement and fatty replacement"
+    ],
+    "genetic": [
+      "Pathogenic variants in STIM1, ORAI1, or related genes"
+    ],
+    "other": [
+      "Muscle biopsy demonstrating tubular aggregates on histological and electron microscopy examination",
+      "Electromyography showing myopathic changes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "nemaline-myopathy",
+      "distinguishingFeatures": [
+        "Presence of nemaline rods on muscle biopsy instead of tubular aggregates",
+        "Earlier onset in many cases",
+        "Different genetic mutations (e.g., NEB, ACTA1)"
+      ]
+    },
+    {
+      "diseaseId": "central-core-disease",
+      "distinguishingFeatures": [
+        "Muscle biopsy shows central cores rather than tubular aggregates",
+        "Often associated with RYR1 mutations",
+        "May have malignant hyperthermia susceptibility"
+      ]
+    },
+    {
+      "diseaseId": "inclusion-body-myopathy",
+      "distinguishingFeatures": [
+        "Presence of rimmed vacuoles and inclusion bodies on biopsy",
+        "Typically adult onset with distal weakness",
+        "Different genetic causes (e.g., GNE mutations)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive muscle weakness",
+    "Respiratory insufficiency",
+    "Cardiac arrhythmias or conduction defects"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neuromuscular specialist",
+    "Clinical geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Jungbluth H, et al. Tubular Aggregate Myopathy: Clinical and Genetic Features. Neuromuscul Disord. 2018.",
+    "Lornage X, et al. Tubular Aggregate Myopathy: A Review of Clinical and Molecular Features. Orphanet J Rare Dis. 2020.",
+    "OMIM Entry #618088 - Tubular Aggregate Myopathy"
+  ],
+  "confidenceInData": "medium"
+}

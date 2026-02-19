@@ -1,8 +1,17 @@
 {
   "id": "systemic-lupus-erythematosus",
   "name": "Systemic Lupus Erythematosus",
-  "aliases": ["SLE", "Lupus", "Disseminated Lupus Erythematosus"],
-  "icd10Codes": ["M32.0", "M32.1", "M32.8", "M32.9"],
+  "aliases": [
+    "SLE",
+    "Lupus",
+    "Disseminated Lupus Erythematosus"
+  ],
+  "icd10Codes": [
+    "M32.0",
+    "M32.1",
+    "M32.8",
+    "M32.9"
+  ],
   "omimId": "152700",
   "orphanetId": "536",
   "prevalence": {
@@ -11,62 +20,255 @@
     "classification": "uncommon"
   },
   "demographics": {
-    "typicalOnsetAge": { "min": 15, "max": 45, "peak": 30 },
+    "typicalOnsetAge": {
+      "min": 15,
+      "max": 45,
+      "peak": 30
+    },
     "sexPredilection": "female",
-    "ethnicAssociations": ["African American", "Hispanic", "Asian", "Native American"]
+    "ethnicAssociations": [
+      "African American",
+      "Hispanic",
+      "Asian",
+      "Native American"
+    ]
   },
   "diagnosticCriteria": {
     "formalCriteriaName": "2019 EULAR/ACR Classification Criteria for SLE",
     "criteria": [
-      { "id": "sle-1", "description": "Positive ANA (antinuclear antibody) at titer >= 1:80 on HEp-2 cells", "category": "major", "requiredForDiagnosis": true },
-      { "id": "sle-2", "description": "Anti-dsDNA antibody positivity", "category": "major", "requiredForDiagnosis": false },
-      { "id": "sle-3", "description": "Anti-Smith antibody positivity", "category": "major", "requiredForDiagnosis": false },
-      { "id": "sle-4", "description": "Low complement (C3 and/or C4)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "sle-5", "description": "Direct Coombs test positive in absence of hemolytic anemia", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "sle-6", "description": "Acute cutaneous lupus (malar rash, photosensitivity, bullous lupus, maculopapular rash)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "sle-7", "description": "Chronic cutaneous lupus (discoid rash, lupus panniculitis)", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "sle-8", "description": "Oral or nasal ulcers", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "sle-9", "description": "Non-scarring alopecia", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "sle-10", "description": "Joint involvement (synovitis or tenderness in >=2 joints with morning stiffness >=30 min)", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "sle-11", "description": "Serositis (pleuritis or pericarditis)", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "sle-12", "description": "Renal involvement (proteinuria >0.5 g/24h or Class II-V lupus nephritis on biopsy)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "sle-13", "description": "Neuropsychiatric involvement (seizures, psychosis, delirium)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "sle-14", "description": "Hemolytic anemia", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "sle-15", "description": "Leukopenia (<4000/mm3) or lymphopenia (<1000/mm3)", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "sle-16", "description": "Thrombocytopenia (<100,000/mm3)", "category": "minor", "requiredForDiagnosis": false }
+      {
+        "id": "sle-1",
+        "description": "Positive ANA (antinuclear antibody) at titer >= 1:80 on HEp-2 cells",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sle-2",
+        "description": "Anti-dsDNA antibody positivity",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sle-3",
+        "description": "Anti-Smith antibody positivity",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sle-4",
+        "description": "Low complement (C3 and/or C4)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sle-5",
+        "description": "Direct Coombs test positive in absence of hemolytic anemia",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sle-6",
+        "description": "Acute cutaneous lupus (malar rash, photosensitivity, bullous lupus, maculopapular rash)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sle-7",
+        "description": "Chronic cutaneous lupus (discoid rash, lupus panniculitis)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sle-8",
+        "description": "Oral or nasal ulcers",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sle-9",
+        "description": "Non-scarring alopecia",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sle-10",
+        "description": "Joint involvement (synovitis or tenderness in >=2 joints with morning stiffness >=30 min)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sle-11",
+        "description": "Serositis (pleuritis or pericarditis)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sle-12",
+        "description": "Renal involvement (proteinuria >0.5 g/24h or Class II-V lupus nephritis on biopsy)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sle-13",
+        "description": "Neuropsychiatric involvement (seizures, psychosis, delirium)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sle-14",
+        "description": "Hemolytic anemia",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sle-15",
+        "description": "Leukopenia (<4000/mm3) or lymphopenia (<1000/mm3)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "sle-16",
+        "description": "Thrombocytopenia (<100,000/mm3)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
     ],
     "minimumForDiagnosis": "Positive ANA entry criterion plus total score >= 10 from clinical and immunological domains",
     "notes": "The 2019 EULAR/ACR criteria use a weighted scoring system across 7 clinical and 3 immunological domains. ANA >= 1:80 is the entry criterion."
   },
   "symptoms": {
     "pathognomonic": [
-      { "symptomName": "Malar (butterfly) rash", "snomedCode": "200938002", "frequency": 0.50, "bodySystem": "Dermatologic", "notes": "Spares nasolabial folds; photosensitive" },
-      { "symptomName": "Discoid lupus rash", "snomedCode": "200936003", "frequency": 0.25, "bodySystem": "Dermatologic", "notes": "Scarring, atrophic lesions with follicular plugging" },
-      { "symptomName": "Lupus nephritis (class III-V)", "snomedCode": "68815009", "frequency": 0.40, "bodySystem": "Renal", "notes": "Manifests as proteinuria, hematuria, or nephrotic syndrome" }
+      {
+        "symptomName": "Malar (butterfly) rash",
+        "snomedCode": "200938002",
+        "frequency": 0.5,
+        "bodySystem": "dermatological",
+        "notes": "Spares nasolabial folds; photosensitive"
+      },
+      {
+        "symptomName": "Discoid lupus rash",
+        "snomedCode": "200936003",
+        "frequency": 0.25,
+        "bodySystem": "dermatological",
+        "notes": "Scarring, atrophic lesions with follicular plugging"
+      },
+      {
+        "symptomName": "Lupus nephritis (class III-V)",
+        "snomedCode": "68815009",
+        "frequency": 0.4,
+        "bodySystem": "renal",
+        "notes": "Manifests as proteinuria, hematuria, or nephrotic syndrome"
+      }
     ],
     "common": [
-      { "symptomName": "Arthralgia and arthritis", "snomedCode": "57676002", "frequency": 0.90, "bodySystem": "Musculoskeletal", "notes": "Typically non-erosive, symmetric, involving small joints" },
-      { "symptomName": "Fatigue", "snomedCode": "84229001", "frequency": 0.80, "bodySystem": "Constitutional" },
-      { "symptomName": "Photosensitivity", "snomedCode": "90128006", "frequency": 0.70, "bodySystem": "Dermatologic" },
-      { "symptomName": "Fever", "snomedCode": "386661006", "frequency": 0.50, "bodySystem": "Constitutional" },
-      { "symptomName": "Oral ulcers", "snomedCode": "26284000", "frequency": 0.45, "bodySystem": "Oral/Mucosal" }
+      {
+        "symptomName": "Arthralgia and arthritis",
+        "snomedCode": "57676002",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal",
+        "notes": "Typically non-erosive, symmetric, involving small joints"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.8,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Photosensitivity",
+        "snomedCode": "90128006",
+        "frequency": 0.7,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Fever",
+        "snomedCode": "386661006",
+        "frequency": 0.5,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Oral ulcers",
+        "snomedCode": "26284000",
+        "frequency": 0.45,
+        "bodySystem": "gastrointestinal"
+      }
     ],
     "occasional": [
-      { "symptomName": "Pleuritis", "snomedCode": "196075003", "frequency": 0.30, "bodySystem": "Pulmonary" },
-      { "symptomName": "Pericarditis", "snomedCode": "3238004", "frequency": 0.25, "bodySystem": "Cardiovascular" },
-      { "symptomName": "Non-scarring alopecia", "snomedCode": "278040002", "frequency": 0.40, "bodySystem": "Dermatologic" },
-      { "symptomName": "Raynaud phenomenon", "snomedCode": "266261006", "frequency": 0.30, "bodySystem": "Vascular" },
-      { "symptomName": "Lymphadenopathy", "snomedCode": "30746006", "frequency": 0.25, "bodySystem": "Lymphatic" }
+      {
+        "symptomName": "Pleuritis",
+        "snomedCode": "196075003",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "snomedCode": "3238004",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Non-scarring alopecia",
+        "snomedCode": "278040002",
+        "frequency": 0.4,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "snomedCode": "266261006",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "snomedCode": "30746006",
+        "frequency": 0.25,
+        "bodySystem": "immunological"
+      }
     ],
     "rare": [
-      { "symptomName": "Seizures", "snomedCode": "91175000", "frequency": 0.10, "bodySystem": "Neurological" },
-      { "symptomName": "Psychosis", "snomedCode": "69322001", "frequency": 0.05, "bodySystem": "Neurological" },
-      { "symptomName": "Pulmonary hemorrhage", "snomedCode": "233608003", "frequency": 0.02, "bodySystem": "Pulmonary" },
-      { "symptomName": "Mesenteric vasculitis", "snomedCode": "95572001", "frequency": 0.02, "bodySystem": "Gastrointestinal" },
-      { "symptomName": "Libman-Sacks endocarditis", "snomedCode": "36138009", "frequency": 0.05, "bodySystem": "Cardiovascular" }
+      {
+        "symptomName": "Seizures",
+        "snomedCode": "91175000",
+        "frequency": 0.1,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychosis",
+        "snomedCode": "69322001",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pulmonary hemorrhage",
+        "snomedCode": "233608003",
+        "frequency": 0.02,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Mesenteric vasculitis",
+        "snomedCode": "95572001",
+        "frequency": 0.02,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Libman-Sacks endocarditis",
+        "snomedCode": "36138009",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      }
     ]
   },
-  "systemsAffected": ["Musculoskeletal", "Dermatologic", "Renal", "Hematologic", "Cardiovascular", "Pulmonary", "Neurological", "Gastrointestinal", "Ocular"],
+  "systemsAffected": [
+    "musculoskeletal",
+    "dermatological",
+    "renal",
+    "hematological",
+    "cardiovascular",
+    "respiratory",
+    "neurological",
+    "gastrointestinal",
+    "ophthalmological"
+  ],
   "keyFindings": {
     "laboratory": [
       "ANA positive (>95% sensitivity)",
@@ -96,11 +298,45 @@
     ]
   },
   "differentialDiagnoses": [
-    { "diseaseId": "sjogren-syndrome", "distinguishingFeatures": ["Sicca symptoms predominate in Sjogren", "Anti-Ro/La more prominent", "Less renal involvement"] },
-    { "diseaseId": "rheumatoid-arthritis", "distinguishingFeatures": ["Erosive arthritis in RA", "No malar rash", "RF and anti-CCP positive"] },
-    { "diseaseId": "antiphospholipid-syndrome", "distinguishingFeatures": ["Thrombosis predominates", "Lupus anticoagulant/aCL/anti-beta2GP1", "Can coexist with SLE"] },
-    { "diseaseId": "mixed-connective-tissue-disease", "distinguishingFeatures": ["High titer anti-U1 RNP", "Overlapping features of SLE, scleroderma, polymyositis"] },
-    { "diseaseId": "drug-induced-lupus", "distinguishingFeatures": ["Temporal relationship with offending drug", "Anti-histone antibodies", "Resolves on drug withdrawal"] }
+    {
+      "diseaseId": "sjogren-syndrome",
+      "distinguishingFeatures": [
+        "Sicca symptoms predominate in Sjogren",
+        "Anti-Ro/La more prominent",
+        "Less renal involvement"
+      ]
+    },
+    {
+      "diseaseId": "rheumatoid-arthritis",
+      "distinguishingFeatures": [
+        "Erosive arthritis in RA",
+        "No malar rash",
+        "RF and anti-CCP positive"
+      ]
+    },
+    {
+      "diseaseId": "antiphospholipid-syndrome",
+      "distinguishingFeatures": [
+        "Thrombosis predominates",
+        "Lupus anticoagulant/aCL/anti-beta2GP1",
+        "Can coexist with SLE"
+      ]
+    },
+    {
+      "diseaseId": "mixed-connective-tissue-disease",
+      "distinguishingFeatures": [
+        "High titer anti-U1 RNP",
+        "Overlapping features of SLE, scleroderma, polymyositis"
+      ]
+    },
+    {
+      "diseaseId": "drug-induced-lupus",
+      "distinguishingFeatures": [
+        "Temporal relationship with offending drug",
+        "Anti-histone antibodies",
+        "Resolves on drug withdrawal"
+      ]
+    }
   ],
   "redFlags": [
     "Rapidly progressive glomerulonephritis",
@@ -110,7 +346,12 @@
     "Hemolytic anemia with reticulocytosis",
     "Acute abdominal pain suggesting mesenteric vasculitis"
   ],
-  "specialistType": ["Rheumatology", "Nephrology", "Dermatology", "Hematology"],
+  "specialistType": [
+    "Rheumatology",
+    "Nephrology",
+    "Dermatology",
+    "Hematology"
+  ],
   "lastUpdated": "2026-02-17",
   "references": [
     "Aringer M, et al. 2019 European League Against Rheumatism/American College of Rheumatology Classification Criteria for Systemic Lupus Erythematosus. Arthritis Rheumatol. 2019;71(9):1400-1412.",

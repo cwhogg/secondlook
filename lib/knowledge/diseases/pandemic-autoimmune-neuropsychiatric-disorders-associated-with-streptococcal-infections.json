@@ -1,0 +1,225 @@
+{
+  "id": "pandemic-autoimmune-neuropsychiatric-disorders-associated-with-streptococcal-infections",
+  "name": "Pediatric Autoimmune Neuropsychiatric Disorders Associated with Streptococcal Infections",
+  "aliases": [
+    "PANDAS",
+    "Pediatric Autoimmune Neuropsychiatric Syndrome"
+  ],
+  "icd10Codes": [
+    "F95.2",
+    "F42"
+  ],
+  "omimId": "607515",
+  "orphanetId": "92014",
+  "prevalence": {
+    "estimate": "1 in 2000 children",
+    "range": "0.05%-0.1%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 3,
+      "max": 12,
+      "peak": 7
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Swedo Criteria for PANDAS",
+    "criteria": [
+      {
+        "id": "sudden-onset-ocd-or-tics",
+        "description": "Presence of obsessive-compulsive disorder and/or tic disorder with abrupt onset",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pediatric-onset",
+        "description": "Onset of symptoms between age 3 and puberty",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "temporal-association-strep",
+        "description": "Temporal association between symptom onset/exacerbations and group A beta-hemolytic streptococcal infection",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "neurological-abnormalities",
+        "description": "Presence of neurological abnormalities such as motor hyperactivity or choreiform movements",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "episodic-course",
+        "description": "Episodic course of symptom severity with sudden exacerbations and remissions",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria must be met: abrupt onset of OCD/tics, pediatric onset, and temporal association with streptococcal infection.",
+    "notes": "Diagnosis is clinical; laboratory confirmation of streptococcal infection supports diagnosis but is not definitive."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Sudden onset obsessive-compulsive symptoms",
+        "frequency": 0.85,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Sudden onset motor and/or vocal tics",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Choreiform movements",
+        "frequency": 0.7,
+        "bodySystem": "neurological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.65,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Emotional lability",
+        "frequency": 0.6,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Hyperactivity",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Sleep disturbances",
+        "frequency": 0.58,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Separation anxiety",
+        "frequency": 0.5,
+        "bodySystem": "psychiatric"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Mood swings",
+        "frequency": 0.4,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Urinary frequency or urgency",
+        "frequency": 0.3,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Joint pain or arthritis",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Behavioral regression",
+        "frequency": 0.2,
+        "bodySystem": "psychiatric"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cardiac involvement (e.g., carditis)",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Rash (erythema marginatum)",
+        "frequency": 0.02,
+        "bodySystem": "dermatological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "psychiatric",
+    "musculoskeletal",
+    "cardiovascular",
+    "constitutional",
+    "reproductive",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated anti-streptolysin O (ASO) titers",
+      "Elevated anti-DNase B antibodies",
+      "Throat culture positive for group A beta-hemolytic streptococcus"
+    ],
+    "imaging": [
+      "Brain MRI typically normal; may show nonspecific basal ganglia changes"
+    ],
+    "genetic": [
+      "No specific genetic markers identified; possible familial predisposition"
+    ],
+    "other": [
+      "Neuropsychological testing may reveal executive dysfunction",
+      "Response to immunomodulatory therapy supports diagnosis"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "tourette-syndrome",
+      "distinguishingFeatures": [
+        "Gradual onset of tics rather than abrupt",
+        "No temporal association with streptococcal infection",
+        "Chronic course without episodic exacerbations"
+      ]
+    },
+    {
+      "diseaseId": "obsessive-compulsive-disorder",
+      "distinguishingFeatures": [
+        "Insidious onset of symptoms",
+        "No preceding streptococcal infection",
+        "Lack of neurological abnormalities such as choreiform movements"
+      ]
+    },
+    {
+      "diseaseId": "rheumatic-fever",
+      "distinguishingFeatures": [
+        "Presence of carditis, arthritis, erythema marginatum",
+        "Elevated inflammatory markers",
+        "Systemic symptoms such as fever and malaise"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid neurological deterioration",
+    "New onset seizures",
+    "Signs of carditis or heart failure"
+  ],
+  "specialistType": [
+    "Pediatric Neurologist",
+    "Child and Adolescent Psychiatrist",
+    "Rheumatologist",
+    "Infectious Disease Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Swedo SE, Leonard HL, Garvey M, et al. Pediatric autoimmune neuropsychiatric disorders associated with streptococcal infections: clinical description of the first 50 cases. Am J Psychiatry. 1998;155(2):264-271.",
+    "Murphy TK, Kurlan R, Leckman JF. The immunobiology of Tourette's disorder, pediatric autoimmune neuropsychiatric disorders associated with streptococcal infections, and related disorders: a way forward. J Child Adolesc Psychopharmacol. 2010;20(4):317-331.",
+    "Singer HS. PANDAS: current status and directions for research. Mol Psychiatry. 2017;22(1):24-25."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,207 @@
+{
+  "id": "congenital-neutropenia-with-elane-mutation",
+  "name": "Congenital Neutropenia with ELANE Mutation",
+  "aliases": [
+    "Severe Congenital Neutropenia (SCN) due to ELANE mutation",
+    "ELANE-associated Congenital Neutropenia"
+  ],
+  "icd10Codes": [
+    "D70.1"
+  ],
+  "omimId": "202700",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 200,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 5,
+      "peak": 1
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Severe Congenital Neutropenia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "neutropenia",
+        "description": "Persistent severe neutropenia with absolute neutrophil count (ANC) < 500/µL",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "elane-mutation",
+        "description": "Identification of pathogenic mutation in the ELANE gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "recurrent-infections",
+        "description": "History of recurrent bacterial infections starting in infancy or early childhood",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bone-marrow",
+        "description": "Bone marrow examination showing maturation arrest of myeloid lineage at promyelocyte/myelocyte stage",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Persistent severe neutropenia (ANC < 500/µL) plus pathogenic ELANE mutation and recurrent infections",
+    "notes": "Diagnosis requires exclusion of other causes of neutropenia and may include bone marrow biopsy for confirmation."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Severe chronic neutropenia",
+        "frequency": 0.95,
+        "bodySystem": "hematological",
+        "notes": "Absolute neutrophil count consistently below 500/µL"
+      },
+      {
+        "symptomName": "Recurrent bacterial infections",
+        "frequency": 0.9,
+        "bodySystem": "immunological",
+        "notes": "Predominantly affecting skin, respiratory tract, and oral mucosa"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Oral mucosal ulcers",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "notes": "Painful ulcers often present due to neutropenia"
+      },
+      {
+        "symptomName": "Fever episodes",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Associated with infections"
+      },
+      {
+        "symptomName": "Skin abscesses",
+        "frequency": 0.65,
+        "bodySystem": "dermatological",
+        "notes": "Common sites include face and extremities"
+      },
+      {
+        "symptomName": "Delayed wound healing",
+        "frequency": 0.6,
+        "bodySystem": "dermatological",
+        "notes": "Due to impaired neutrophil function"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.4,
+        "bodySystem": "immunological",
+        "notes": "Reactive enlargement during infections"
+      },
+      {
+        "symptomName": "Otitis media",
+        "frequency": 0.3,
+        "bodySystem": "otolaryngological",
+        "notes": "Middle ear infections secondary to neutropenia"
+      },
+      {
+        "symptomName": "Pneumonia",
+        "frequency": 0.25,
+        "bodySystem": "respiratory",
+        "notes": "Bacterial pneumonia episodes"
+      },
+      {
+        "symptomName": "Gingivitis",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal",
+        "notes": "Inflammation of gums"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Progression to myelodysplastic syndrome or acute myeloid leukemia",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "notes": "Occurs in a minority of patients over time"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.04,
+        "bodySystem": "hematological",
+        "notes": "May occur secondary to chronic infection or hematologic complications"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal",
+        "notes": "Joint pain occasionally reported"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "dermatological",
+    "gastrointestinal",
+    "respiratory",
+    "otolaryngological",
+    "constitutional",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Persistent severe neutropenia (ANC < 500/µL)",
+      "Bone marrow showing myeloid maturation arrest",
+      "Elevated inflammatory markers during infections"
+    ],
+    "imaging": [
+      "Chest X-ray may show pneumonia during infections",
+      "Ultrasound for abscess evaluation"
+    ],
+    "genetic": [
+      "Pathogenic mutation in ELANE gene confirmed by molecular genetic testing"
+    ],
+    "other": [
+      "Clinical history of recurrent bacterial infections starting in infancy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "cyclic-neutropenia",
+      "distinguishingFeatures": [
+        "Periodic oscillations in neutrophil counts with ~21-day cycles",
+        "Less severe infections compared to congenital neutropenia"
+      ]
+    },
+    {
+      "diseaseId": "shwachman-diamond-syndrome",
+      "distinguishingFeatures": [
+        "Exocrine pancreatic insufficiency",
+        "Skeletal abnormalities",
+        "Neutropenia with additional hematologic and systemic features"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe recurrent bacterial infections in infancy",
+    "Persistent severe neutropenia (ANC < 500/µL)",
+    "Signs of progression to leukemia or myelodysplastic syndrome"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Immunologist",
+    "Geneticist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Dale DC, et al. Severe congenital neutropenia. Hematology Am Soc Hematol Educ Program. 2004.",
+    "Horwitz MS, et al. ELANE mutations in severe congenital neutropenia. Blood. 2007.",
+    "Newburger PE, Dale DC. Evaluation and management of patients with isolated neutropenia. Semin Hematol. 2013."
+  ],
+  "confidenceInData": "medium"
+}

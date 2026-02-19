@@ -1,0 +1,218 @@
+{
+  "id": "primary-carnitine-deficiency",
+  "name": "Primary Carnitine Deficiency",
+  "aliases": [
+    "Systemic Primary Carnitine Deficiency",
+    "Carnitine Uptake Defect"
+  ],
+  "icd10Codes": [
+    "E71.3"
+  ],
+  "omimId": "212140",
+  "orphanetId": "ORPHA:989",
+  "prevalence": {
+    "estimate": "1 in 40,000 to 1 in 120,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 20,
+      "peak": 2
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Diagnostic Criteria for Primary Carnitine Deficiency",
+    "criteria": [
+      {
+        "id": "low-plasma-carnitine",
+        "description": "Persistently low plasma free carnitine levels",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-confirmation",
+        "description": "Identification of pathogenic variants in the SLC22A5 gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Presence of clinical symptoms such as hypoketotic hypoglycemia, muscle weakness, or cardiomyopathy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "impaired-carnitine-transport",
+        "description": "Demonstration of defective carnitine transport in fibroblasts or lymphocytes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "response-to-carnitine-supplementation",
+        "description": "Clinical and biochemical improvement with carnitine supplementation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of low plasma carnitine, clinical features consistent with the disorder, and genetic confirmation of SLC22A5 mutations",
+    "notes": "Newborn screening may detect low carnitine levels; confirmatory testing is essential."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hypoketotic hypoglycemia",
+        "frequency": 0.85,
+        "bodySystem": "endocrine",
+        "notes": "Characteristic metabolic finding during fasting or illness"
+      },
+      {
+        "symptomName": "Cardiomyopathy (dilated or hypertrophic)",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Severe muscle weakness and hypotonia",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue and exercise intolerance",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Elevated liver transaminases",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hypoglycemic seizures",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Developmental delay",
+        "frequency": 0.5,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Arrhythmias",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated creatine kinase",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Rhabdomyolysis",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Sudden cardiac death",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.07,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "cardiovascular",
+    "endocrine",
+    "neurological",
+    "gastrointestinal",
+    "constitutional",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low plasma free carnitine concentration",
+      "Hypoketotic hypoglycemia during metabolic crisis",
+      "Elevated liver transaminases",
+      "Elevated creatine kinase"
+    ],
+    "imaging": [
+      "Echocardiogram showing dilated or hypertrophic cardiomyopathy",
+      "MRI brain may show nonspecific changes in severe cases"
+    ],
+    "genetic": [
+      "Pathogenic variants in SLC22A5 gene encoding OCTN2 carnitine transporter"
+    ],
+    "other": [
+      "Reduced carnitine uptake in cultured fibroblasts or lymphocytes",
+      "Positive response to oral carnitine supplementation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "medium-chain-acyl-coa-dehydrogenase-deficiency",
+      "distinguishingFeatures": [
+        "Normal plasma carnitine levels",
+        "Deficiency in MCAD enzyme activity",
+        "Different genetic mutations (ACADM gene)"
+      ]
+    },
+    {
+      "diseaseId": "multiple-acyl-coa-dehydrogenase-deficiency",
+      "distinguishingFeatures": [
+        "Elevated multiple acylcarnitines on metabolic screening",
+        "Riboflavin-responsive in some cases",
+        "Different genetic causes (ETFA, ETFB, ETFDH genes)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Hypoketotic hypoglycemia in infancy or early childhood",
+    "Unexplained cardiomyopathy with muscle weakness",
+    "Severe metabolic decompensation triggered by fasting or illness"
+  ],
+  "specialistType": [
+    "Metabolic specialist",
+    "Cardiologist",
+    "Neurologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Stanley CA. Carnitine deficiency disorders in children. Ann N Y Acad Sci. 2004 Jun;1033:42-51.",
+    "Longo N, Frigeni M, Pasquali M. Carnitine transport and fatty acid oxidation. Biochim Biophys Acta. 2016 Oct;1863(10):2422-2435.",
+    "Orphanet: Primary Carnitine Deficiency. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=989"
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,212 @@
+{
+  "id": "leber-hereditary-optic-neuropathy",
+  "name": "Leber Hereditary Optic Neuropathy",
+  "aliases": [
+    "LHON",
+    "Leber's Hereditary Optic Neuropathy"
+  ],
+  "icd10Codes": [
+    "H47.2"
+  ],
+  "omimId": "535000",
+  "orphanetId": "ORPHA238",
+  "prevalence": {
+    "estimate": "1 in 30,000 to 1 in 50,000",
+    "range": "0.002% - 0.003%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 50,
+      "peak": 25
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "European",
+      "Asian",
+      "African"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "LHON Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "genetic-confirmation",
+        "description": "Presence of one of the primary mitochondrial DNA mutations (m.11778G>A, m.3460G>A, m.14484T>C)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "acute-vision-loss",
+        "description": "Acute or subacute painless central vision loss in one or both eyes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "optic-nerve-atrophy",
+        "description": "Optic nerve atrophy or pallor observed on fundoscopic examination",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Family history of maternal inheritance of optic neuropathy",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "visual-field-defects",
+        "description": "Central or cecocentral scotomas on visual field testing",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of a primary mitochondrial DNA mutation plus acute or subacute central vision loss with optic nerve atrophy",
+    "notes": "Genetic testing is essential for definitive diagnosis; clinical presentation may vary."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Painless acute or subacute central vision loss",
+        "frequency": 0.95,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Bilateral optic nerve pallor or atrophy",
+        "frequency": 0.85,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Central or cecocentral scotoma",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Dyschromatopsia (color vision defects)",
+        "frequency": 0.7,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Visual acuity reduction to 20/200 or worse",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Subclinical involvement of unaffected eye",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological",
+        "notes": "Detected by electrophysiological testing"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Mild peripheral neuropathy",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cardiac conduction defects",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Tremor",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.1,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Myopathy",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Multiple sclerosis-like illness",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Optic disc swelling in acute phase",
+        "frequency": 0.07,
+        "bodySystem": "ophthalmological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "ophthalmological",
+    "neurological",
+    "cardiovascular",
+    "musculoskeletal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Detection of primary mitochondrial DNA mutations (m.11778G>A, m.3460G>A, m.14484T>C) via genetic testing"
+    ],
+    "imaging": [
+      "Optical coherence tomography (OCT) showing retinal nerve fiber layer thinning",
+      "MRI brain usually normal but may show optic nerve changes"
+    ],
+    "genetic": [
+      "Mitochondrial DNA point mutations in MT-ND1, MT-ND4, or MT-ND6 genes"
+    ],
+    "other": [
+      "Visual evoked potentials (VEP) showing delayed latency",
+      "Fundoscopy revealing optic nerve pallor or atrophy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "optic-neuritis",
+      "distinguishingFeatures": [
+        "Painful vision loss",
+        "Usually unilateral",
+        "Associated with demyelinating disease (e.g. multiple sclerosis)",
+        "MRI brain lesions typical"
+      ]
+    },
+    {
+      "diseaseId": "dominant-optic-atrophy",
+      "distinguishingFeatures": [
+        "Gradual onset of vision loss",
+        "Autosomal dominant inheritance",
+        "Temporal optic nerve pallor",
+        "No mitochondrial DNA mutations"
+      ]
+    },
+    {
+      "diseaseId": "nutritional-optic-neuropathy",
+      "distinguishingFeatures": [
+        "History of malnutrition or vitamin deficiency",
+        "Improvement with vitamin supplementation",
+        "Bilateral vision loss but reversible"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid bilateral central vision loss without pain",
+    "Family history of maternal inheritance of vision loss",
+    "Presence of primary mitochondrial DNA mutations"
+  ],
+  "specialistType": [
+    "Ophthalmologist",
+    "Neurologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Newman NJ. Leber Hereditary Optic Neuropathy. GeneReviews® [Internet]. 2020.",
+    "Yu-Wai-Man P, et al. Leber hereditary optic neuropathy: clinical features, diagnosis, and management. Eye (Lond). 2011.",
+    "Carelli V, et al. Leber hereditary optic neuropathy: mitochondrial mutations and clinical features. Expert Rev Mol Med. 2004."
+  ],
+  "confidenceInData": "medium"
+}

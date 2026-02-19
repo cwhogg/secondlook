@@ -1,8 +1,15 @@
 {
   "id": "sjogren-syndrome",
   "name": "Sjogren Syndrome",
-  "aliases": ["Sjogren's Syndrome", "Sjogren's Disease", "Primary Sjogren Syndrome", "Sicca Syndrome"],
-  "icd10Codes": ["M35.0"],
+  "aliases": [
+    "Sjogren's Syndrome",
+    "Sjogren's Disease",
+    "Primary Sjogren Syndrome",
+    "Sicca Syndrome"
+  ],
+  "icd10Codes": [
+    "M35.0"
+  ],
   "omimId": "270150",
   "orphanetId": "289390",
   "prevalence": {
@@ -11,51 +18,187 @@
     "classification": "uncommon"
   },
   "demographics": {
-    "typicalOnsetAge": { "min": 30, "max": 60, "peak": 50 },
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 60,
+      "peak": 50
+    },
     "sexPredilection": "female",
-    "ethnicAssociations": ["No strong ethnic predilection; slightly higher in European populations"]
+    "ethnicAssociations": [
+      "No strong ethnic predilection; slightly higher in European populations"
+    ]
   },
   "diagnosticCriteria": {
     "formalCriteriaName": "2016 ACR/EULAR Classification Criteria for Primary Sjogren Syndrome",
     "criteria": [
-      { "id": "ss-1", "description": "Labial salivary gland biopsy with focal lymphocytic sialadenitis and focus score >= 1 foci/4 mm2 (weight: 3)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "ss-2", "description": "Anti-SSA/Ro positive (weight: 3)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "ss-3", "description": "Ocular staining score >= 5 (or van Bijsterveld score >= 4) in at least one eye (weight: 1)", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "ss-4", "description": "Schirmer test <= 5 mm/5 min in at least one eye (weight: 1)", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "ss-5", "description": "Unstimulated salivary flow rate <= 0.1 mL/min (weight: 1)", "category": "minor", "requiredForDiagnosis": false }
+      {
+        "id": "ss-1",
+        "description": "Labial salivary gland biopsy with focal lymphocytic sialadenitis and focus score >= 1 foci/4 mm2 (weight: 3)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ss-2",
+        "description": "Anti-SSA/Ro positive (weight: 3)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ss-3",
+        "description": "Ocular staining score >= 5 (or van Bijsterveld score >= 4) in at least one eye (weight: 1)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ss-4",
+        "description": "Schirmer test <= 5 mm/5 min in at least one eye (weight: 1)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ss-5",
+        "description": "Unstimulated salivary flow rate <= 0.1 mL/min (weight: 1)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
     ],
     "minimumForDiagnosis": "Total score >= 4 from the weighted criteria items; at least one symptom of ocular or oral dryness as entry criterion",
     "notes": "Exclusions include history of head/neck radiation, active hepatitis C, AIDS, sarcoidosis, amyloidosis, graft-versus-host disease, and IgG4-related disease."
   },
   "symptoms": {
     "pathognomonic": [
-      { "symptomName": "Xerophthalmia (dry eyes)", "snomedCode": "193570009", "frequency": 0.95, "bodySystem": "Ocular", "notes": "Keratoconjunctivitis sicca; gritty or sandy sensation" },
-      { "symptomName": "Xerostomia (dry mouth)", "snomedCode": "87715008", "frequency": 0.90, "bodySystem": "Oral", "notes": "Difficulty swallowing dry foods; increased dental caries" },
-      { "symptomName": "Parotid gland enlargement", "snomedCode": "274740004", "frequency": 0.30, "bodySystem": "Oral", "notes": "Bilateral, recurrent; must exclude lymphoma" }
+      {
+        "symptomName": "Xerophthalmia (dry eyes)",
+        "snomedCode": "193570009",
+        "frequency": 0.95,
+        "bodySystem": "ophthalmological",
+        "notes": "Keratoconjunctivitis sicca; gritty or sandy sensation"
+      },
+      {
+        "symptomName": "Xerostomia (dry mouth)",
+        "snomedCode": "87715008",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal",
+        "notes": "Difficulty swallowing dry foods; increased dental caries"
+      },
+      {
+        "symptomName": "Parotid gland enlargement",
+        "snomedCode": "274740004",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "notes": "Bilateral, recurrent; must exclude lymphoma"
+      }
     ],
     "common": [
-      { "symptomName": "Fatigue", "snomedCode": "84229001", "frequency": 0.70, "bodySystem": "Constitutional" },
-      { "symptomName": "Arthralgia", "snomedCode": "57676002", "frequency": 0.60, "bodySystem": "Musculoskeletal", "notes": "Typically non-erosive polyarthralgia" },
-      { "symptomName": "Vaginal dryness", "snomedCode": "249409003", "frequency": 0.55, "bodySystem": "Gynecologic" },
-      { "symptomName": "Skin dryness", "snomedCode": "16386004", "frequency": 0.50, "bodySystem": "Dermatologic" },
-      { "symptomName": "Dental caries (accelerated)", "snomedCode": "80967001", "frequency": 0.50, "bodySystem": "Oral" }
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "snomedCode": "57676002",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "notes": "Typically non-erosive polyarthralgia"
+      },
+      {
+        "symptomName": "Vaginal dryness",
+        "snomedCode": "249409003",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skin dryness",
+        "snomedCode": "16386004",
+        "frequency": 0.5,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Dental caries (accelerated)",
+        "snomedCode": "80967001",
+        "frequency": 0.5,
+        "bodySystem": "gastrointestinal"
+      }
     ],
     "occasional": [
-      { "symptomName": "Raynaud phenomenon", "snomedCode": "266261006", "frequency": 0.25, "bodySystem": "Vascular" },
-      { "symptomName": "Palpable purpura", "snomedCode": "20143000", "frequency": 0.15, "bodySystem": "Dermatologic", "notes": "Cutaneous vasculitis" },
-      { "symptomName": "Interstitial lung disease", "snomedCode": "233703007", "frequency": 0.10, "bodySystem": "Pulmonary" },
-      { "symptomName": "Renal tubular acidosis", "snomedCode": "236461000", "frequency": 0.10, "bodySystem": "Renal" },
-      { "symptomName": "Peripheral neuropathy", "snomedCode": "42658009", "frequency": 0.15, "bodySystem": "Neurological" }
+      {
+        "symptomName": "Raynaud phenomenon",
+        "snomedCode": "266261006",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Palpable purpura",
+        "snomedCode": "20143000",
+        "frequency": 0.15,
+        "bodySystem": "dermatological",
+        "notes": "Cutaneous vasculitis"
+      },
+      {
+        "symptomName": "Interstitial lung disease",
+        "snomedCode": "233703007",
+        "frequency": 0.1,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Renal tubular acidosis",
+        "snomedCode": "236461000",
+        "frequency": 0.1,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "snomedCode": "42658009",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
     ],
     "rare": [
-      { "symptomName": "Non-Hodgkin lymphoma (MALT)", "snomedCode": "118617000", "frequency": 0.05, "bodySystem": "Hematologic/Oncologic", "notes": "5-10% lifetime risk; primarily marginal zone B-cell lymphoma" },
-      { "symptomName": "Glomerulonephritis", "snomedCode": "36171008", "frequency": 0.05, "bodySystem": "Renal" },
-      { "symptomName": "CNS vasculitis", "snomedCode": "195353004", "frequency": 0.02, "bodySystem": "Neurological" },
-      { "symptomName": "Autoimmune hepatitis overlap", "snomedCode": "235890007", "frequency": 0.05, "bodySystem": "Hepatic" },
-      { "symptomName": "Cryoglobulinemic vasculitis", "snomedCode": "239935001", "frequency": 0.05, "bodySystem": "Vascular" }
+      {
+        "symptomName": "Non-Hodgkin lymphoma (MALT)",
+        "snomedCode": "118617000",
+        "frequency": 0.05,
+        "bodySystem": "constitutional",
+        "notes": "5-10% lifetime risk; primarily marginal zone B-cell lymphoma"
+      },
+      {
+        "symptomName": "Glomerulonephritis",
+        "snomedCode": "36171008",
+        "frequency": 0.05,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "CNS vasculitis",
+        "snomedCode": "195353004",
+        "frequency": 0.02,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Autoimmune hepatitis overlap",
+        "snomedCode": "235890007",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cryoglobulinemic vasculitis",
+        "snomedCode": "239935001",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      }
     ]
   },
-  "systemsAffected": ["Ocular", "Oral", "Musculoskeletal", "Pulmonary", "Renal", "Neurological", "Dermatologic", "Hematologic", "Gynecologic"],
+  "systemsAffected": [
+    "ophthalmological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "respiratory",
+    "renal",
+    "neurological",
+    "dermatological",
+    "hematological"
+  ],
   "keyFindings": {
     "laboratory": [
       "Anti-SSA/Ro antibodies (60-75%)",
@@ -87,11 +230,47 @@
     ]
   },
   "differentialDiagnoses": [
-    { "diseaseId": "systemic-lupus-erythematosus", "distinguishingFeatures": ["Malar rash", "Lupus nephritis", "Anti-dsDNA antibodies", "Multi-organ involvement beyond sicca"] },
-    { "diseaseId": "igg4-related-disease", "distinguishingFeatures": ["Elevated serum IgG4", "Dense lymphoplasmacytic infiltrate with storiform fibrosis", "Multi-organ fibrosis"] },
-    { "diseaseId": "sarcoidosis", "distinguishingFeatures": ["Non-caseating granulomas", "Bilateral hilar lymphadenopathy", "Elevated ACE level"] },
-    { "diseaseId": "rheumatoid-arthritis", "distinguishingFeatures": ["Erosive arthritis", "Anti-CCP antibodies", "Joint destruction"] },
-    { "diseaseId": "hepatitis-c", "distinguishingFeatures": ["HCV antibody positive", "Elevated liver enzymes", "Risk factors for viral hepatitis"] }
+    {
+      "diseaseId": "systemic-lupus-erythematosus",
+      "distinguishingFeatures": [
+        "Malar rash",
+        "Lupus nephritis",
+        "Anti-dsDNA antibodies",
+        "Multi-organ involvement beyond sicca"
+      ]
+    },
+    {
+      "diseaseId": "igg4-related-disease",
+      "distinguishingFeatures": [
+        "Elevated serum IgG4",
+        "Dense lymphoplasmacytic infiltrate with storiform fibrosis",
+        "Multi-organ fibrosis"
+      ]
+    },
+    {
+      "diseaseId": "sarcoidosis",
+      "distinguishingFeatures": [
+        "Non-caseating granulomas",
+        "Bilateral hilar lymphadenopathy",
+        "Elevated ACE level"
+      ]
+    },
+    {
+      "diseaseId": "rheumatoid-arthritis",
+      "distinguishingFeatures": [
+        "Erosive arthritis",
+        "Anti-CCP antibodies",
+        "Joint destruction"
+      ]
+    },
+    {
+      "diseaseId": "hepatitis-c",
+      "distinguishingFeatures": [
+        "HCV antibody positive",
+        "Elevated liver enzymes",
+        "Risk factors for viral hepatitis"
+      ]
+    }
   ],
   "redFlags": [
     "Persistent unilateral parotid swelling (concern for lymphoma)",
@@ -101,7 +280,11 @@
     "Monoclonal gammopathy on serum protein electrophoresis",
     "Progressive renal insufficiency"
   ],
-  "specialistType": ["Rheumatology", "Ophthalmology", "Oral Medicine/Dentistry"],
+  "specialistType": [
+    "Rheumatology",
+    "Ophthalmology",
+    "Oral Medicine/Dentistry"
+  ],
   "lastUpdated": "2026-02-17",
   "references": [
     "Shiboski CH, et al. 2016 American College of Rheumatology/European League Against Rheumatism Classification Criteria for Primary Sjogren's Syndrome. Arthritis Rheumatol. 2017;69(1):35-45.",

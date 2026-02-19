@@ -1,0 +1,229 @@
+{
+  "id": "thrombotic-microangiopathies",
+  "name": "Thrombotic Microangiopathies",
+  "aliases": [
+    "TMA",
+    "Microangiopathic Hemolytic Anemia Syndromes"
+  ],
+  "icd10Codes": [
+    "M31.1",
+    "D59.3"
+  ],
+  "omimId": "274150",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.001-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "TMA Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "microangiopathic-hemolytic-anemia",
+        "description": "Presence of microangiopathic hemolytic anemia evidenced by schistocytes on peripheral blood smear",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "thrombocytopenia",
+        "description": "Thrombocytopenia with platelet count <150,000/µL without other apparent cause",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "organ-ischemia",
+        "description": "Evidence of organ ischemia or injury, particularly renal impairment or neurological symptoms",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "normal-coagulation-tests",
+        "description": "Normal coagulation studies to exclude disseminated intravascular coagulation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "elevated-lactate-dehydrogenase",
+        "description": "Elevated serum lactate dehydrogenase (LDH) indicating hemolysis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of microangiopathic hemolytic anemia, thrombocytopenia, and evidence of organ ischemia",
+    "notes": "Diagnosis requires exclusion of other causes of hemolytic anemia and thrombocytopenia."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Microangiopathic hemolytic anemia",
+        "frequency": 0.85,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.8,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Acute kidney injury",
+        "frequency": 0.75,
+        "bodySystem": "renal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Neurological manifestations (confusion, headache, seizures)",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Oliguria or decreased urine output",
+        "frequency": 0.58,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.5,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Gastrointestinal symptoms (abdominal pain, nausea, vomiting)",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Petechiae or purpura",
+        "frequency": 0.25,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Visual disturbances",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.1,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Myocardial ischemia",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pulmonary edema",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "renal",
+    "neurological",
+    "cardiovascular",
+    "gastrointestinal",
+    "dermatological",
+    "constitutional",
+    "ophthalmological",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Schistocytes on peripheral blood smear",
+      "Elevated lactate dehydrogenase (LDH)",
+      "Low haptoglobin",
+      "Thrombocytopenia",
+      "Elevated creatinine and blood urea nitrogen (BUN)",
+      "Normal coagulation profile"
+    ],
+    "imaging": [
+      "Renal ultrasound may show normal or enlarged kidneys",
+      "Brain MRI may reveal ischemic lesions in severe neurological involvement"
+    ],
+    "genetic": [
+      "Mutations in complement regulatory genes (e.g., CFH, CFI) in atypical hemolytic uremic syndrome (aHUS)"
+    ],
+    "other": [
+      "ADAMTS13 activity assay to differentiate thrombotic thrombocytopenic purpura (TTP) from other TMAs"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "disseminated-intravascular-coagulation",
+      "distinguishingFeatures": [
+        "Abnormal coagulation tests (prolonged PT, aPTT)",
+        "Widespread bleeding tendency",
+        "Underlying sepsis or trauma"
+      ]
+    },
+    {
+      "diseaseId": "immune-thrombocytopenic-purpura",
+      "distinguishingFeatures": [
+        "Isolated thrombocytopenia without hemolytic anemia",
+        "Absence of schistocytes",
+        "Normal renal function"
+      ]
+    },
+    {
+      "diseaseId": "hemolytic-uremic-syndrome",
+      "distinguishingFeatures": [
+        "Often preceded by diarrheal illness (especially E. coli O157:H7)",
+        "Predominantly affects children",
+        "Less neurological involvement compared to TTP"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive renal failure",
+    "Neurological deterioration (seizures, coma)",
+    "Severe thrombocytopenia with bleeding"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Nephrologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "George JN. Thrombotic microangiopathies. N Engl J Med. 2006;354(18):1927-1935.",
+    "Nester CM, et al. Thrombotic microangiopathies: pathophysiology, diagnosis, and treatment. Blood. 2015;125(22):3327-3336.",
+    "Orphanet: Thrombotic microangiopathies. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=791"
+  ],
+  "confidenceInData": "medium"
+}

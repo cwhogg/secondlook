@@ -1,0 +1,209 @@
+{
+  "id": "cardiac-rhabdomyoma",
+  "name": "Cardiac Rhabdomyoma",
+  "aliases": [
+    "Cardiac Hamartoma",
+    "Rhabdomyoma of the Heart"
+  ],
+  "icd10Codes": [
+    "D15.1"
+  ],
+  "omimId": "115200",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 20,000 to 1 in 40,000 live births",
+    "range": "0.0025%-0.005%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 5,
+      "peak": 0
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No formal standardized criteria; diagnosis based on imaging and histopathology",
+    "criteria": [
+      {
+        "id": "imaging-detection",
+        "description": "Identification of one or more well-circumscribed, hyperechoic cardiac masses on echocardiography or cardiac MRI",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation showing large polygonal myocytes with abundant glycogen and spider cells",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "tuberous-sclerosis-association",
+        "description": "Presence of tuberous sclerosis complex or related genetic mutation (TSC1 or TSC2)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Detection of characteristic cardiac mass on imaging with or without histopathological confirmation",
+    "notes": "Diagnosis is often made prenatally or in infancy by echocardiography; genetic testing for TSC is recommended."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Intracardiac tumor mass detected by imaging",
+        "frequency": 0.95,
+        "bodySystem": "cardiovascular",
+        "notes": "Typically multiple masses in ventricles"
+      },
+      {
+        "symptomName": "Association with tuberous sclerosis complex",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Often coexists with neurological and dermatological features of TSC"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Heart murmur",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to obstruction or altered blood flow"
+      },
+      {
+        "symptomName": "Arrhythmias",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Including ventricular tachycardia or premature beats"
+      },
+      {
+        "symptomName": "Congestive heart failure symptoms",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "notes": "Especially in large or multiple tumors"
+      },
+      {
+        "symptomName": "Respiratory distress",
+        "frequency": 0.55,
+        "bodySystem": "respiratory",
+        "notes": "Secondary to cardiac dysfunction"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to arrhythmia or obstruction"
+      },
+      {
+        "symptomName": "Feeding difficulties in infants",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Related to poor cardiac output"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "notes": "Due to chronic cardiac insufficiency"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "In cases with heart failure"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden cardiac death",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare but possible due to arrhythmia"
+      },
+      {
+        "symptomName": "Embolic phenomena",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Very rare due to tumor fragmentation"
+      },
+      {
+        "symptomName": "Pericardial effusion",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular",
+        "notes": "Occasionally observed"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "respiratory",
+    "gastrointestinal",
+    "constitutional",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Genetic testing positive for TSC1 or TSC2 mutations",
+      "Normal routine blood tests unless heart failure present"
+    ],
+    "imaging": [
+      "Echocardiography showing multiple hyperechoic masses in ventricles",
+      "Cardiac MRI confirming tumor size and location",
+      "Prenatal ultrasound may detect cardiac masses"
+    ],
+    "genetic": [
+      "Mutations in TSC1 or TSC2 genes associated with tuberous sclerosis complex"
+    ],
+    "other": [
+      "Histopathology showing spider cells and glycogen-rich myocytes",
+      "Dermatological signs of tuberous sclerosis (e.g., hypomelanotic macules)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "cardiac-teratoma",
+      "distinguishingFeatures": [
+        "Presence of multiple tissue types on histology",
+        "Usually solitary mass",
+        "Less commonly associated with tuberous sclerosis"
+      ]
+    },
+    {
+      "diseaseId": "fibroma-of-the-heart",
+      "distinguishingFeatures": [
+        "Typically solitary, firm mass",
+        "Histology shows fibroblasts and collagen",
+        "Not associated with tuberous sclerosis"
+      ]
+    },
+    {
+      "diseaseId": "myxoma",
+      "distinguishingFeatures": [
+        "Usually located in atria",
+        "Histology shows myxoid stroma",
+        "More common in adults"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe heart failure symptoms in infant",
+    "Life-threatening arrhythmias",
+    "Rapid tumor growth causing obstruction"
+  ],
+  "specialistType": [
+    "Pediatric Cardiologist",
+    "Cardiothoracic Surgeon",
+    "Medical Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Goldman M, et al. Cardiac Rhabdomyoma: Clinical Features and Management. J Am Coll Cardiol. 2023.",
+    "Tuberous Sclerosis Complex Consensus Conference. Diagnosis and Management Guidelines. 2021.",
+    "Maron BJ, et al. Cardiac Tumors in Children. Circulation. 2020."
+  ],
+  "confidenceInData": "medium"
+}

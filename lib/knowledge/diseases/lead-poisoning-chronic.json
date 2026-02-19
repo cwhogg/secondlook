@@ -1,0 +1,215 @@
+{
+  "id": "lead-poisoning-chronic",
+  "name": "Chronic Lead Poisoning",
+  "aliases": [
+    "Plumbism",
+    "Saturnism"
+  ],
+  "icd10Codes": [
+    "T56.1"
+  ],
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 40
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "CDC Lead Poisoning Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "elevated-blood-lead",
+        "description": "Blood lead level ≥ 5 µg/dL",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "basophilic-stippling",
+        "description": "Presence of basophilic stippling in peripheral blood smear",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "clinical-symptoms",
+        "description": "Neurological, hematological, or renal symptoms consistent with lead toxicity",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exposure-history",
+        "description": "Documented history of chronic lead exposure",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Elevated blood lead level plus clinical symptoms consistent with lead toxicity",
+    "notes": "Diagnosis is supported by exposure history and laboratory findings such as basophilic stippling."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Basophilic stippling of erythrocytes",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Characteristic finding on peripheral blood smear"
+      },
+      {
+        "symptomName": "Lead lines (Burtonian lines) on gingiva",
+        "frequency": 0.7,
+        "bodySystem": "dermatological",
+        "notes": "Blue-black lines along the gingival margin"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Peripheral neuropathy with wrist or foot drop",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "notes": "Motor neuropathy affecting distal limbs"
+      },
+      {
+        "symptomName": "Abdominal colic and pain",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "notes": "Severe intermittent abdominal pain"
+      },
+      {
+        "symptomName": "Anemia (microcytic hypochromic)",
+        "frequency": 0.6,
+        "bodySystem": "hematological",
+        "notes": "Due to impaired heme synthesis"
+      },
+      {
+        "symptomName": "Fatigue and malaise",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "notes": "Generalized weakness and tiredness"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Elevated blood pressure associated with chronic exposure"
+      },
+      {
+        "symptomName": "Cognitive impairment and memory loss",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Subtle neurocognitive deficits"
+      },
+      {
+        "symptomName": "Renal tubular dysfunction",
+        "frequency": 0.2,
+        "bodySystem": "renal",
+        "notes": "Manifested by aminoaciduria or glycosuria"
+      },
+      {
+        "symptomName": "Constipation",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Common gastrointestinal symptom"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Encephalopathy with seizures",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Severe CNS involvement in advanced cases"
+      },
+      {
+        "symptomName": "Lead-induced gout",
+        "frequency": 0.04,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to impaired uric acid excretion"
+      },
+      {
+        "symptomName": "Optic neuropathy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological",
+        "notes": "Visual disturbances from nerve damage"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "hematological",
+    "renal",
+    "gastrointestinal",
+    "dermatological",
+    "cardiovascular",
+    "musculoskeletal",
+    "ophthalmological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated blood lead levels (≥5 µg/dL)",
+      "Basophilic stippling on peripheral blood smear",
+      "Microcytic hypochromic anemia",
+      "Elevated free erythrocyte protoporphyrin"
+    ],
+    "imaging": [
+      "Radiopaque lead lines on long bones (in children)",
+      "Brain MRI may show nonspecific white matter changes in severe cases"
+    ],
+    "genetic": [],
+    "other": [
+      "History of chronic environmental or occupational lead exposure",
+      "Burtonian lines on gingiva"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "iron-deficiency-anemia",
+      "distinguishingFeatures": [
+        "No basophilic stippling",
+        "Normal blood lead levels",
+        "Different exposure history"
+      ]
+    },
+    {
+      "diseaseId": "porphyria",
+      "distinguishingFeatures": [
+        "Elevated porphyrins without lead exposure",
+        "Different clinical presentation",
+        "No basophilic stippling"
+      ]
+    },
+    {
+      "diseaseId": "chronic kidney disease",
+      "distinguishingFeatures": [
+        "No elevated blood lead levels",
+        "Different etiology of renal dysfunction",
+        "Absence of neurological symptoms typical of lead poisoning"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive encephalopathy",
+    "Severe abdominal colic with paralytic ileus",
+    "Acute motor neuropathy with wrist or foot drop"
+  ],
+  "specialistType": [
+    "Toxicologist",
+    "Neurologist",
+    "Hematologist",
+    "Nephrologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Centers for Disease Control and Prevention. Lead Poisoning Prevention. https://www.cdc.gov/nceh/lead/",
+    "Agency for Toxic Substances and Disease Registry (ATSDR). Toxicological Profile for Lead. 2020.",
+    "Goldfrank's Toxicologic Emergencies, 12th Edition, 2021."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,195 @@
+{
+  "id": "spontaneous-coronary-artery-dissection",
+  "name": "Spontaneous Coronary Artery Dissection",
+  "aliases": [
+    "SCAD",
+    "Spontaneous Coronary Dissection"
+  ],
+  "icd10Codes": [
+    "I25.42"
+  ],
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 60,
+      "peak": 42
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "SCAD Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "angiographic-evidence",
+        "description": "Coronary angiography demonstrating non-traumatic coronary artery wall dissection or intramural hematoma",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-atherosclerosis",
+        "description": "No evidence of atherosclerotic coronary artery disease on imaging",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Presentation with acute coronary syndrome symptoms such as chest pain or myocardial infarction",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-trauma",
+        "description": "Exclusion of traumatic or iatrogenic causes of coronary artery dissection",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Angiographic evidence of coronary artery dissection without atherosclerosis and exclusion of traumatic or iatrogenic causes in a patient presenting with acute coronary syndrome",
+    "notes": "Diagnosis is primarily based on coronary angiography; intravascular imaging (OCT or IVUS) may aid in confirmation."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Acute chest pain consistent with myocardial ischemia",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Electrocardiographic changes indicative of acute coronary syndrome",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Elevated cardiac biomarkers (troponin elevation)",
+        "frequency": 0.8,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.6,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Nausea",
+        "frequency": 0.52,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Radiating chest pain to left arm or jaw",
+        "frequency": 0.7,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Syncope or presyncope",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Back pain",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Anxiety related to acute event",
+        "frequency": 0.15,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Ventricular arrhythmias",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Cardiogenic shock",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Sudden cardiac death",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "respiratory",
+    "gastrointestinal",
+    "musculoskeletal",
+    "psychiatric",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated cardiac troponin levels",
+      "Elevated creatine kinase-MB (CK-MB)"
+    ],
+    "imaging": [
+      "Coronary angiography showing coronary artery dissection or intramural hematoma",
+      "Intravascular ultrasound (IVUS) or optical coherence tomography (OCT) confirming arterial wall separation",
+      "Echocardiography may show regional wall motion abnormalities"
+    ],
+    "genetic": [
+      "Association with connective tissue disorders (e.g., fibromuscular dysplasia) in some cases"
+    ],
+    "other": [
+      "Exclusion of atherosclerotic disease and traumatic causes is essential"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "atherosclerotic-coronary-artery-disease",
+      "distinguishingFeatures": [
+        "Presence of atherosclerotic plaques on imaging",
+        "Gradual onset of symptoms",
+        "Risk factors such as hyperlipidemia, diabetes, smoking"
+      ]
+    },
+    {
+      "diseaseId": "coronary-artery-embolism",
+      "distinguishingFeatures": [
+        "Embolic source identified (e.g., atrial fibrillation)",
+        "Absence of arterial wall dissection on angiography",
+        "Sudden occlusion without arterial wall abnormalities"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset severe chest pain",
+    "Signs of acute myocardial infarction",
+    "Hemodynamic instability or cardiogenic shock"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Interventional Cardiologist",
+    "Cardiothoracic Surgeon"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Saw J. Spontaneous coronary artery dissection. Can J Cardiol. 2013;29(9):1027-1033.",
+    "Tweet MS, Hayes SN, Pitta SR, et al. Clinical features, management, and prognosis of spontaneous coronary artery dissection. Circulation. 2012;126(5):579-588.",
+    "Hayes SN, Kim ESH, Saw J, et al. Spontaneous Coronary Artery Dissection: Current State of the Science: A Scientific Statement From the American Heart Association. Circulation. 2018;137(19):e523-e557."
+  ],
+  "confidenceInData": "medium"
+}

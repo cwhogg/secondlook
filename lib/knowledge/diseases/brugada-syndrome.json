@@ -1,0 +1,214 @@
+{
+  "id": "brugada-syndrome",
+  "name": "Brugada Syndrome",
+  "aliases": [
+    "Sudden Unexplained Nocturnal Death Syndrome",
+    "Brugada ECG Pattern"
+  ],
+  "icd10Codes": [
+    "I49.8"
+  ],
+  "omimId": "601144",
+  "orphanetId": "988",
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "range": "0.01%-0.1%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 50,
+      "peak": 40
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "Southeast Asian",
+      "Mediterranean"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Consensus Diagnostic Criteria for Brugada Syndrome",
+    "criteria": [
+      {
+        "id": "ecg-type1",
+        "description": "Coved-type ST-segment elevation ≥2 mm in ≥1 right precordial lead (V1-V3) either spontaneously or after provocative drug testing",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-history",
+        "description": "History of ventricular fibrillation, polymorphic ventricular tachycardia, or sudden cardiac arrest",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Family history of sudden cardiac death at <45 years or confirmed Brugada syndrome",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "inducible-arrhythmia",
+        "description": "Inducibility of ventricular arrhythmias during electrophysiological study",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "syncope",
+        "description": "Unexplained syncope suspected to be arrhythmic",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of type 1 ECG pattern either spontaneously or after sodium channel blocker challenge plus at least one clinical criterion (e.g., documented ventricular fibrillation, family history, or syncope)",
+    "notes": "Drug challenge with sodium channel blockers (e.g., ajmaline, flecainide) may be used to unmask ECG abnormalities."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Coved-type ST-segment elevation in right precordial leads",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Characteristic ECG pattern diagnostic of Brugada syndrome"
+      },
+      {
+        "symptomName": "Ventricular fibrillation",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Life-threatening arrhythmia leading to sudden cardiac arrest"
+      },
+      {
+        "symptomName": "Polymorphic ventricular tachycardia",
+        "frequency": 0.7,
+        "bodySystem": "cardiovascular",
+        "notes": "Precursor arrhythmia to ventricular fibrillation"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Syncope due to arrhythmia",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Transient loss of consciousness from ventricular arrhythmias"
+      },
+      {
+        "symptomName": "Nocturnal agonal respiration",
+        "frequency": 0.6,
+        "bodySystem": "respiratory",
+        "notes": "Abnormal breathing during sleep often preceding sudden death"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "Awareness of abnormal heartbeats"
+      },
+      {
+        "symptomName": "Family history of sudden cardiac death",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular",
+        "notes": "Suggestive of inherited arrhythmia syndrome"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Atrial fibrillation",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Occasional supraventricular arrhythmia in Brugada patients"
+      },
+      {
+        "symptomName": "Chest discomfort",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Non-specific symptom possibly related to arrhythmia"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "notes": "Generalized tiredness possibly related to arrhythmia episodes"
+      },
+      {
+        "symptomName": "Nocturnal seizures",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "May be misdiagnosed; likely arrhythmia-induced syncope"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden cardiac arrest without prior symptoms",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular",
+        "notes": "First manifestation in some patients"
+      },
+      {
+        "symptomName": "Bradycardia",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Slow heart rate occasionally observed"
+      },
+      {
+        "symptomName": "Atrioventricular conduction block",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare conduction abnormalities in some patients"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "respiratory",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [],
+    "imaging": [
+      "Characteristic type 1 Brugada ECG pattern in right precordial leads (V1-V3)"
+    ],
+    "genetic": [
+      "Mutations in SCN5A gene and other sodium channel-related genes"
+    ],
+    "other": [
+      "Provocation test with sodium channel blockers (ajmaline, flecainide) to unmask ECG abnormalities"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "arrhythmogenic-right-ventricular-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Structural abnormalities of right ventricle on imaging",
+        "Fibrofatty replacement of myocardium",
+        "Different ECG patterns (epsilon waves)"
+      ]
+    },
+    {
+      "diseaseId": "early-repolarization-syndrome",
+      "distinguishingFeatures": [
+        "ST elevation predominantly in inferior and lateral leads",
+        "Benign clinical course in most cases",
+        "Absence of ventricular arrhythmias typical of Brugada syndrome"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden cardiac arrest or unexplained syncope",
+    "Spontaneous type 1 Brugada ECG pattern",
+    "Family history of sudden cardiac death under age 45"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Electrophysiologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Antzelevitch C, et al. Brugada syndrome: report of the second consensus conference. Circulation. 2005.",
+    "Priori SG, et al. 2013 HRS/EHRA/APHRS expert consensus statement on the diagnosis and management of patients with inherited primary arrhythmia syndromes. Heart Rhythm. 2013.",
+    "Brugada P, Brugada J. Right bundle branch block, persistent ST segment elevation and sudden cardiac death: a distinct clinical and electrocardiographic syndrome. J Am Coll Cardiol. 1992."
+  ],
+  "confidenceInData": "medium"
+}

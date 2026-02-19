@@ -1,0 +1,204 @@
+{
+  "id": "medullary-cystic-kidney-disease",
+  "name": "Medullary Cystic Kidney Disease",
+  "aliases": [
+    "Medullary Cystic Kidney Disease Type 1",
+    "Nephronophthisis Medullary Cystic Kidney Disease Complex"
+  ],
+  "icd10Codes": [
+    "Q61.3"
+  ],
+  "omimId": "174000",
+  "orphanetId": "ORPHA:284",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 50,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Medullary Cystic Kidney Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "family-history",
+        "description": "Presence of autosomal dominant family history of progressive renal disease",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "renal-medullary-cysts",
+        "description": "Identification of cysts localized to the renal medulla on imaging studies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "progressive-renal-failure",
+        "description": "Evidence of progressive chronic kidney disease leading to end-stage renal failure",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-enlarged-kidneys",
+        "description": "Kidneys are typically normal sized or small, distinguishing from polycystic kidney disease",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "tubulointerstitial-nephritis",
+        "description": "Histological evidence of tubulointerstitial fibrosis and tubular atrophy on biopsy",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of autosomal dominant family history, medullary cysts on imaging, and progressive renal failure",
+    "notes": "Genetic testing for mutations in MUC1 or UMOD genes can support diagnosis"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Medullary renal cysts",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "notes": "Cysts localized specifically to the renal medulla"
+      },
+      {
+        "symptomName": "Progressive chronic kidney disease",
+        "frequency": 0.9,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Polyuria and nocturia due to impaired concentrating ability",
+        "frequency": 0.75,
+        "bodySystem": "renal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Anemia secondary to chronic kidney disease",
+        "frequency": 0.7,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Fatigue and malaise",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Electrolyte imbalances (e.g. hyperkalemia)",
+        "frequency": 0.55,
+        "bodySystem": "endocrine",
+        "notes": "Due to impaired renal tubular function"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Urinary tract infections",
+        "frequency": 0.3,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Renal pain or flank discomfort",
+        "frequency": 0.25,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Growth retardation in pediatric cases",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperuricemia and gout",
+        "frequency": 0.2,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Renal cyst infection or abscess formation",
+        "frequency": 0.05,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Secondary hyperparathyroidism",
+        "frequency": 0.07,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Nephrolithiasis",
+        "frequency": 0.04,
+        "bodySystem": "renal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "hematological",
+    "cardiovascular",
+    "endocrine",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum creatinine and blood urea nitrogen indicating renal failure",
+      "Anemia of chronic disease",
+      "Electrolyte abnormalities such as hyperkalemia and metabolic acidosis"
+    ],
+    "imaging": [
+      "Ultrasound or MRI showing multiple small cysts confined to the renal medulla",
+      "Normal or small kidney size without cortical cysts"
+    ],
+    "genetic": [
+      "Mutations in MUC1 gene",
+      "Mutations in UMOD gene"
+    ],
+    "other": [
+      "Renal biopsy showing tubulointerstitial fibrosis and tubular atrophy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "autosomal-dominant-polycystic-kidney-disease",
+      "distinguishingFeatures": [
+        "Enlarged kidneys with cysts throughout cortex and medulla",
+        "Hypertension and hematuria more common early",
+        "Mutations in PKD1 or PKD2 genes"
+      ]
+    },
+    {
+      "diseaseId": "nephronophthisis",
+      "distinguishingFeatures": [
+        "Autosomal recessive inheritance",
+        "Onset in childhood or adolescence",
+        "Medullary cysts with more prominent tubular basement membrane disruption"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression to end-stage renal disease",
+    "Family history of early-onset renal failure",
+    "Severe electrolyte disturbances refractory to treatment"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Hildebrandt F, et al. Medullary cystic kidney disease: clinical and molecular aspects. Kidney Int. 2017.",
+    "Olinger E, et al. Genetic basis of medullary cystic kidney disease. Nat Rev Nephrol. 2019.",
+    "Orphanet: Medullary cystic kidney disease. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=284"
+  ],
+  "confidenceInData": "medium"
+}

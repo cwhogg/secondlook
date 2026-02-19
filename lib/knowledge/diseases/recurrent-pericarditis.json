@@ -1,0 +1,218 @@
+{
+  "id": "recurrent-pericarditis",
+  "name": "Recurrent Pericarditis",
+  "aliases": [
+    "Repeated Pericardial Inflammation",
+    "Chronic Pericarditis"
+  ],
+  "icd10Codes": [
+    "I30.9"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 60,
+      "peak": 30
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "European Society of Cardiology Diagnostic Criteria for Recurrent Pericarditis",
+    "criteria": [
+      {
+        "id": "chest-pain",
+        "description": "Typical pericarditic chest pain",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pericardial-friction-rub",
+        "description": "Pericardial friction rub on auscultation",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ecg-changes",
+        "description": "New widespread ST elevation or PR depression on ECG",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pericardial-effusion",
+        "description": "New or worsening pericardial effusion on imaging",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "elevated-inflammatory-markers",
+        "description": "Elevated C-reactive protein or ESR",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "At least two major criteria or one major plus one minor criterion during recurrent episodes",
+    "notes": "Diagnosis requires exclusion of other causes of chest pain and pericardial disease."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Pericarditic chest pain",
+        "frequency": 0.95,
+        "bodySystem": "cardiovascular",
+        "notes": "Sharp, pleuritic chest pain improved by sitting up and leaning forward"
+      },
+      {
+        "symptomName": "Pericardial friction rub",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Scratchy or squeaking sound heard on auscultation"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.7,
+        "bodySystem": "respiratory",
+        "notes": "Shortness of breath due to pericardial effusion or inflammation"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Low-grade fever associated with inflammation"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Generalized tiredness"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "Awareness of irregular or rapid heartbeat"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Pericardial effusion",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular",
+        "notes": "Fluid accumulation around the heart detected by imaging"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.3,
+        "bodySystem": "respiratory",
+        "notes": "Nonproductive cough due to irritation"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal",
+        "notes": "Joint pain sometimes associated with systemic inflammation"
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "notes": "Sweating episodes during sleep"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiac tamponade",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Life-threatening compression of the heart due to fluid accumulation"
+      },
+      {
+        "symptomName": "Constrictive pericarditis",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Fibrosis and thickening of pericardium causing impaired cardiac filling"
+      },
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "notes": "Transient loss of consciousness due to decreased cardiac output"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "respiratory",
+    "constitutional",
+    "musculoskeletal",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated C-reactive protein (CRP)",
+      "Elevated erythrocyte sedimentation rate (ESR)",
+      "Leukocytosis during acute episodes"
+    ],
+    "imaging": [
+      "Echocardiogram showing pericardial effusion",
+      "ECG with widespread ST elevation and PR depression",
+      "Chest X-ray may show enlarged cardiac silhouette"
+    ],
+    "genetic": [
+      "Associated with mutations in MEFV gene in familial Mediterranean fever-related cases"
+    ],
+    "other": [
+      "Pericardial fluid analysis may show inflammatory cells",
+      "Response to anti-inflammatory therapy supports diagnosis"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "acute-myocardial-infarction",
+      "distinguishingFeatures": [
+        "Elevated cardiac enzymes",
+        "Regional wall motion abnormalities on echocardiogram",
+        "Typical ischemic ECG changes"
+      ]
+    },
+    {
+      "diseaseId": "pulmonary-embolism",
+      "distinguishingFeatures": [
+        "Sudden onset dyspnea and hypoxia",
+        "CT pulmonary angiography showing emboli",
+        "D-dimer elevation"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-connective-tissue-disease",
+      "distinguishingFeatures": [
+        "Presence of systemic symptoms and autoantibodies",
+        "Multisystem involvement",
+        "Chronic course with other organ manifestations"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Signs of cardiac tamponade (hypotension, muffled heart sounds, jugular venous distension)",
+    "Persistent high fever and leukocytosis suggesting infection",
+    "Progressive constrictive pericarditis with heart failure symptoms"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Rheumatologist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Adler Y, et al. 2015 ESC Guidelines for the diagnosis and management of pericardial diseases. Eur Heart J. 2015 Nov 7;36(42):2921-2964.",
+    "Imazio M, et al. Recurrent pericarditis: new and emerging therapeutic options. Ther Adv Chronic Dis. 2017;8(11):183-193.",
+    "Maisch B, et al. Pericarditis. Lancet. 2004;363(9410):717-727."
+  ],
+  "confidenceInData": "medium"
+}

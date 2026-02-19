@@ -1,0 +1,195 @@
+{
+  "id": "primary-hyperoxaluria-type-2",
+  "name": "Primary Hyperoxaluria Type 2",
+  "aliases": [
+    "PH2",
+    "Glyoxylate Reductase Deficiency"
+  ],
+  "icd10Codes": [
+    "E72.8"
+  ],
+  "omimId": "260000",
+  "orphanetId": "ORPHA:98765",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 10
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Primary Hyperoxaluria Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "genetic-confirmation",
+        "description": "Identification of biallelic pathogenic variants in the GRHPR gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "urinary-oxalate-elevation",
+        "description": "Elevated urinary oxalate excretion above age-adjusted reference ranges",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "enzyme-activity-deficiency",
+        "description": "Demonstration of deficient glyoxylate reductase/hydroxypyruvate reductase enzyme activity in liver biopsy or fibroblasts",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "nephrolithiasis-history",
+        "description": "History of recurrent calcium oxalate nephrolithiasis or nephrocalcinosis",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of biallelic pathogenic GRHPR variants plus elevated urinary oxalate excretion",
+    "notes": "Enzyme activity testing and clinical history support diagnosis but are not mandatory if genetic confirmation is present."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent calcium oxalate nephrolithiasis",
+        "frequency": 0.85,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Nephrocalcinosis detected on imaging",
+        "frequency": 0.75,
+        "bodySystem": "renal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.65,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Flank pain",
+        "frequency": 0.6,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Urinary tract infections",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Progressive renal impairment",
+        "frequency": 0.5,
+        "bodySystem": "renal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Polyuria",
+        "frequency": 0.3,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Nephrogenic systemic fibrosis",
+        "frequency": 0.15,
+        "bodySystem": "dermatological",
+        "notes": "Rarely reported in advanced renal failure"
+      },
+      {
+        "symptomName": "Bone pain",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to secondary hyperparathyroidism in chronic kidney disease"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Systemic oxalosis with cardiac involvement",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Retinal oxalate deposits",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Neuropathy secondary to systemic oxalosis",
+        "frequency": 0.02,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "musculoskeletal",
+    "cardiovascular",
+    "dermatological",
+    "ophthalmological",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated urinary oxalate excretion",
+      "Elevated plasma oxalate levels in advanced disease",
+      "Normal or mildly elevated glycolate levels (differentiates from PH1)"
+    ],
+    "imaging": [
+      "Renal ultrasound showing nephrocalcinosis and nephrolithiasis",
+      "CT scan confirming calcium oxalate stones"
+    ],
+    "genetic": [
+      "Biallelic pathogenic variants in GRHPR gene"
+    ],
+    "other": [
+      "Reduced glyoxylate reductase/hydroxypyruvate reductase enzyme activity"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "primary-hyperoxaluria-type-1",
+      "distinguishingFeatures": [
+        "AGXT gene mutations",
+        "Elevated urinary glycolate levels",
+        "Earlier onset and more severe clinical course"
+      ]
+    },
+    {
+      "diseaseId": "secondary-hyperoxaluria",
+      "distinguishingFeatures": [
+        "History of enteric disease or high dietary oxalate intake",
+        "Absence of GRHPR mutations",
+        "Normal enzyme activity"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive renal failure",
+    "Early onset recurrent nephrolithiasis in childhood",
+    "Systemic oxalosis manifestations (cardiac, neurological, ophthalmological involvement)"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Geneticist",
+    "Metabolic disease specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Hoppe B, et al. Primary hyperoxaluria type 2: clinical features and outcome. Kidney Int. 2010;77(10):910-917.",
+    "Williams EL, et al. Primary hyperoxaluria type 2: a rare cause of nephrolithiasis and renal failure. Clin J Am Soc Nephrol. 2012;7(6):1009-1015.",
+    "Orphanet: Primary hyperoxaluria type 2. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=98765"
+  ],
+  "confidenceInData": "medium"
+}

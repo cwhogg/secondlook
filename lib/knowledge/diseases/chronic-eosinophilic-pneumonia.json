@@ -1,0 +1,214 @@
+{
+  "id": "chronic-eosinophilic-pneumonia",
+  "name": "Chronic Eosinophilic Pneumonia",
+  "aliases": [
+    "Carrington's Disease",
+    "Chronic Eosinophilic Lung Disease"
+  ],
+  "icd10Codes": [
+    "J82"
+  ],
+  "omimId": "606689",
+  "orphanetId": "238",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 60,
+      "peak": 45
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Carrington Criteria",
+    "criteria": [
+      {
+        "id": "eosinophilia",
+        "description": "Peripheral blood eosinophilia > 1000 cells/µL or bronchoalveolar lavage eosinophilia > 40%",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pulmonary-infiltrates",
+        "description": "Characteristic peripheral or upper lobe predominant pulmonary infiltrates on chest imaging",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-other-causes",
+        "description": "Exclusion of other causes of eosinophilic lung disease such as infections, drugs, or malignancy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Subacute onset of respiratory symptoms lasting more than 2 weeks",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "response-to-steroids",
+        "description": "Rapid clinical and radiological improvement with corticosteroid therapy",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of all three major criteria: eosinophilia, characteristic pulmonary infiltrates, and exclusion of other causes",
+    "notes": "Bronchoalveolar lavage eosinophilia is often more sensitive than peripheral blood eosinophilia."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Peripheral blood eosinophilia",
+        "frequency": 0.85,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Peripheral pulmonary infiltrates on imaging",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Bronchoalveolar lavage eosinophilia",
+        "frequency": 0.8,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Progressive dyspnea",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Nonproductive cough",
+        "frequency": 0.7,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.4,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Wheezing",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hypoxemia",
+        "frequency": 0.07,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pleural effusion",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "hematological",
+    "constitutional",
+    "musculoskeletal",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Peripheral eosinophilia > 1000 cells/µL",
+      "Elevated serum IgE levels",
+      "Increased eosinophils in bronchoalveolar lavage fluid (>40%)"
+    ],
+    "imaging": [
+      "Chest X-ray showing peripheral, upper lobe predominant infiltrates",
+      "High-resolution CT scan demonstrating patchy peripheral consolidations"
+    ],
+    "genetic": [],
+    "other": [
+      "Rapid clinical and radiological response to corticosteroids",
+      "Absence of infectious or neoplastic causes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "acute-eosinophilic-pneumonia",
+      "distinguishingFeatures": [
+        "Acute onset with rapid progression",
+        "Absence of peripheral eosinophilia early in disease",
+        "Diffuse rather than peripheral infiltrates"
+      ]
+    },
+    {
+      "diseaseId": "hypereosinophilic-syndrome",
+      "distinguishingFeatures": [
+        "Multi-organ involvement beyond lungs",
+        "Persistent eosinophilia > 1500 cells/µL for >6 months",
+        "Possible cardiac and neurological complications"
+      ]
+    },
+    {
+      "diseaseId": "eosinophilic-granulomatosis-with-polyangiitis",
+      "distinguishingFeatures": [
+        "Systemic vasculitis symptoms",
+        "Presence of ANCA antibodies",
+        "Asthma and granulomatous inflammation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid respiratory deterioration",
+    "Development of hypoxemic respiratory failure",
+    "Failure to respond to corticosteroid therapy"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Allergist/Immunologist",
+    "Rheumatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Carrington CB, Addington WW, Goff AM, et al. Chronic eosinophilic pneumonia. N Engl J Med. 1969;280(7):787-798.",
+    "Cottin V, Cordier JF. Eosinophilic pneumonias. Allergy. 2005;60(7):841-857.",
+    "Marchand E, Cordier JF. Idiopathic chronic eosinophilic pneumonia. Semin Respir Crit Care Med. 2006;27(2):134-141."
+  ],
+  "confidenceInData": "medium"
+}

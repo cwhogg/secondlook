@@ -1,0 +1,183 @@
+{
+  "id": "short-bowel-syndrome",
+  "name": "Short Bowel Syndrome",
+  "aliases": [
+    "Short Gut Syndrome",
+    "Intestinal Failure due to Resection"
+  ],
+  "icd10Codes": [
+    "K91.2"
+  ],
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 40
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical Diagnostic Criteria for Short Bowel Syndrome",
+    "criteria": [
+      {
+        "id": "criterion-1",
+        "description": "History of extensive small intestine resection resulting in less than 200 cm of functional small bowel",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "criterion-2",
+        "description": "Evidence of malabsorption including nutrient deficiencies and steatorrhea",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "criterion-3",
+        "description": "Dependence on parenteral nutrition for maintenance of hydration and nutrition",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of history of extensive small bowel resection with clinical and laboratory evidence of malabsorption",
+    "notes": "Diagnosis is clinical and supported by imaging and nutritional assessment"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chronic diarrhea due to malabsorption",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Steatorrhea (fatty stools)",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Weight loss and malnutrition",
+        "frequency": 0.8,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Electrolyte imbalances (e.g., hypokalemia, hyponatremia)",
+        "frequency": 0.7,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Fatigue and weakness",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal cramping and bloating",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Vitamin and mineral deficiencies (e.g., vitamin B12, iron, calcium)",
+        "frequency": 0.45,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Dehydration due to fluid loss",
+        "frequency": 0.3,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Gallstones",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Kidney stones",
+        "frequency": 0.15,
+        "bodySystem": "renal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Liver dysfunction and cholestasis",
+        "frequency": 0.08,
+        "bodySystem": "gastrointestinal",
+        "notes": "Though hepatic is not in the valid body systems, this is a known complication; omitted from systemsAffected"
+      },
+      {
+        "symptomName": "Small intestinal bacterial overgrowth (SIBO)",
+        "frequency": 0.07,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Osteomalacia due to vitamin D deficiency",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "constitutional",
+    "endocrine",
+    "hematological",
+    "renal",
+    "immunological",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low serum levels of vitamins (B12, A, D, E, K)",
+      "Electrolyte abnormalities (hypokalemia, hyponatremia, hypomagnesemia)",
+      "Anemia due to iron or B12 deficiency"
+    ],
+    "imaging": [
+      "Abdominal CT or MRI showing shortened small intestine",
+      "Small bowel follow-through demonstrating reduced length and dilated segments"
+    ],
+    "genetic": [],
+    "other": [
+      "Dependence on parenteral nutrition",
+      "Evidence of malabsorption on stool studies (e.g., increased fecal fat)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "celiac-disease",
+      "distinguishingFeatures": [
+        "Positive serologic markers (anti-tTG antibodies)",
+        "Histologic villous atrophy without history of bowel resection"
+      ]
+    },
+    {
+      "diseaseId": "chronic-pancreatitis",
+      "distinguishingFeatures": [
+        "Pancreatic enzyme insufficiency",
+        "Imaging showing pancreatic calcifications or ductal changes"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe dehydration and electrolyte imbalance",
+    "Dependence on total parenteral nutrition",
+    "Signs of liver failure or cholestasis"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Nutritionist",
+    "Surgeon"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "O'Keefe SJ. Short bowel syndrome: pathophysiology and clinical management. J Gastroenterol Hepatol. 2006.",
+    "Pironi L, et al. ESPEN guidelines on chronic intestinal failure in adults. Clin Nutr. 2018.",
+    "Nightingale JMD. Intestinal failure. Best Pract Res Clin Gastroenterol. 2006."
+  ],
+  "confidenceInData": "medium"
+}

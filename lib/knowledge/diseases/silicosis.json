@@ -1,0 +1,184 @@
+{
+  "id": "silicosis",
+  "name": "Silicosis",
+  "aliases": [
+    "Crystalline silica pneumoconiosis",
+    "Potter's rot"
+  ],
+  "icd10Codes": [
+    "J62.8"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 40
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Silicosis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "exposure-history",
+        "description": "History of significant occupational exposure to crystalline silica dust",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "radiologic-findings",
+        "description": "Chest imaging showing bilateral nodular opacities predominantly in upper lung zones",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pulmonary-function",
+        "description": "Evidence of restrictive or mixed ventilatory defect on pulmonary function tests",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-of-other-causes",
+        "description": "Exclusion of other causes of pneumoconiosis and granulomatous lung disease",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Presence of significant silica exposure history plus characteristic radiologic findings and exclusion of other causes",
+    "notes": "Lung biopsy is rarely required but may be used in atypical cases."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive exertional dyspnea",
+        "frequency": 0.85,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chronic dry cough",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chest tightness",
+        "frequency": 0.6,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Bibasilar crackles on auscultation",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.5,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Clubbing of fingers",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Wheezing",
+        "frequency": 0.2,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Low-grade fever",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cor pulmonale",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Spontaneous pneumothorax",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pulmonary hypertension",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "cardiovascular",
+    "musculoskeletal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal or mild hypoxemia on arterial blood gas",
+      "Elevated inflammatory markers are uncommon"
+    ],
+    "imaging": [
+      "Chest X-ray showing small rounded opacities predominantly in upper lobes",
+      "High-resolution CT scan demonstrating nodules, conglomerate masses, and progressive massive fibrosis"
+    ],
+    "genetic": [],
+    "other": [
+      "Pulmonary function tests showing restrictive or mixed ventilatory defect",
+      "Bronchoalveolar lavage may show increased silica particles"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "coal-workers-pneumoconiosis",
+      "distinguishingFeatures": [
+        "Exposure to coal dust rather than silica",
+        "More diffuse lung involvement with less nodularity"
+      ]
+    },
+    {
+      "diseaseId": "sarcoidosis",
+      "distinguishingFeatures": [
+        "Non-caseating granulomas on biopsy",
+        "Multisystem involvement including lymphadenopathy and skin lesions"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of respiratory symptoms",
+    "Development of cor pulmonale",
+    "Hemoptysis or spontaneous pneumothorax"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Occupational medicine specialist",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "American Thoracic Society Statement: Diagnosis and Initial Management of Nonmalignant Diseases Related to Asbestos",
+    "Hnizdo E, Vallyathan V. Chronic obstructive pulmonary disease due to occupational exposure to silica dust: a review of epidemiological and pathological evidence. Occup Environ Med. 2003",
+    "Silicosis. WHO Environmental Health Criteria 203, 1997"
+  ],
+  "confidenceInData": "medium"
+}

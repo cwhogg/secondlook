@@ -1,8 +1,14 @@
 {
   "id": "autoimmune-hepatitis",
   "name": "Autoimmune Hepatitis",
-  "aliases": ["AIH", "Lupoid Hepatitis", "Autoimmune Chronic Active Hepatitis"],
-  "icd10Codes": ["K75.4"],
+  "aliases": [
+    "AIH",
+    "Lupoid Hepatitis",
+    "Autoimmune Chronic Active Hepatitis"
+  ],
+  "icd10Codes": [
+    "K75.4"
+  ],
   "omimId": "613011",
   "orphanetId": "2137",
   "prevalence": {
@@ -11,48 +17,164 @@
     "classification": "uncommon"
   },
   "demographics": {
-    "typicalOnsetAge": { "min": 10, "max": 60, "peak": 40 },
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 60,
+      "peak": 40
+    },
     "sexPredilection": "female",
-    "ethnicAssociations": ["Northern European (higher prevalence)", "All ethnic groups affected"]
+    "ethnicAssociations": [
+      "Northern European (higher prevalence)",
+      "All ethnic groups affected"
+    ]
   },
   "diagnosticCriteria": {
     "formalCriteriaName": "Simplified International Autoimmune Hepatitis Group (IAIHG) Criteria 2008",
     "criteria": [
-      { "id": "aih-1", "description": "ANA or SMA >= 1:40 (1 point), >= 1:80 or anti-LKM1 >= 1:40 (2 points)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "aih-2", "description": "Elevated IgG above upper limit of normal (1 point), >= 1.1x ULN (2 points)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "aih-3", "description": "Liver histology compatible with AIH: interface hepatitis (1 point), typical of AIH (2 points)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "aih-4", "description": "Absence of viral hepatitis (2 points)", "category": "major", "requiredForDiagnosis": true },
-      { "id": "aih-5", "description": "Anti-SLA/LP positive (highly specific for AIH)", "category": "major", "requiredForDiagnosis": false }
+      {
+        "id": "aih-1",
+        "description": "ANA or SMA >= 1:40 (1 point), >= 1:80 or anti-LKM1 >= 1:40 (2 points)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aih-2",
+        "description": "Elevated IgG above upper limit of normal (1 point), >= 1.1x ULN (2 points)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aih-3",
+        "description": "Liver histology compatible with AIH: interface hepatitis (1 point), typical of AIH (2 points)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aih-4",
+        "description": "Absence of viral hepatitis (2 points)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "aih-5",
+        "description": "Anti-SLA/LP positive (highly specific for AIH)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
     ],
     "minimumForDiagnosis": "Score >= 6 (probable AIH) or >= 7 (definite AIH) on simplified criteria",
     "notes": "Type 1 AIH: ANA and/or SMA positive; most common form. Type 2 AIH: anti-LKM1 and/or anti-LC1 positive; more common in children. Anti-SLA/LP is the most specific antibody for AIH."
   },
   "symptoms": {
     "pathognomonic": [
-      { "symptomName": "Interface hepatitis on liver biopsy with plasma cell infiltration", "frequency": 0.85, "bodySystem": "Hepatic", "notes": "Histologic hallmark; plasma cell-rich infiltrate at the portal-parenchymal interface" }
+      {
+        "symptomName": "Interface hepatitis on liver biopsy with plasma cell infiltration",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Histologic hallmark; plasma cell-rich infiltrate at the portal-parenchymal interface"
+      }
     ],
     "common": [
-      { "symptomName": "Fatigue", "snomedCode": "84229001", "frequency": 0.85, "bodySystem": "Constitutional" },
-      { "symptomName": "Jaundice", "snomedCode": "18165001", "frequency": 0.50, "bodySystem": "Hepatic" },
-      { "symptomName": "Abdominal discomfort (right upper quadrant)", "snomedCode": "21522001", "frequency": 0.45, "bodySystem": "Gastrointestinal" },
-      { "symptomName": "Arthralgia", "snomedCode": "57676002", "frequency": 0.40, "bodySystem": "Musculoskeletal" },
-      { "symptomName": "Malaise and anorexia", "snomedCode": "367391008", "frequency": 0.50, "bodySystem": "Constitutional" }
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.85,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Jaundice",
+        "snomedCode": "18165001",
+        "frequency": 0.5,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal discomfort (right upper quadrant)",
+        "snomedCode": "21522001",
+        "frequency": 0.45,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "snomedCode": "57676002",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Malaise and anorexia",
+        "snomedCode": "367391008",
+        "frequency": 0.5,
+        "bodySystem": "constitutional"
+      }
     ],
     "occasional": [
-      { "symptomName": "Hepatomegaly", "snomedCode": "80515008", "frequency": 0.30, "bodySystem": "Hepatic" },
-      { "symptomName": "Skin rash (maculopapular)", "snomedCode": "271807003", "frequency": 0.15, "bodySystem": "Dermatologic" },
-      { "symptomName": "Amenorrhea", "snomedCode": "14302001", "frequency": 0.20, "bodySystem": "Gynecologic" },
-      { "symptomName": "Acne", "snomedCode": "11381005", "frequency": 0.10, "bodySystem": "Dermatologic" },
-      { "symptomName": "Spider angiomata", "snomedCode": "247446006", "frequency": 0.20, "bodySystem": "Dermatologic", "notes": "Sign of chronic liver disease/cirrhosis" }
+      {
+        "symptomName": "Hepatomegaly",
+        "snomedCode": "80515008",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Skin rash (maculopapular)",
+        "snomedCode": "271807003",
+        "frequency": 0.15,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Amenorrhea",
+        "snomedCode": "14302001",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Acne",
+        "snomedCode": "11381005",
+        "frequency": 0.1,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Spider angiomata",
+        "snomedCode": "247446006",
+        "frequency": 0.2,
+        "bodySystem": "dermatological",
+        "notes": "Sign of chronic liver disease/cirrhosis"
+      }
     ],
     "rare": [
-      { "symptomName": "Acute liver failure (fulminant presentation)", "snomedCode": "197270009", "frequency": 0.05, "bodySystem": "Hepatic", "notes": "More common in Type 2 AIH and children" },
-      { "symptomName": "Ascites", "snomedCode": "389026000", "frequency": 0.10, "bodySystem": "Hepatic", "notes": "Indicates advanced fibrosis/cirrhosis" },
-      { "symptomName": "Variceal bleeding", "snomedCode": "195448009", "frequency": 0.05, "bodySystem": "Gastrointestinal", "notes": "Presentation with portal hypertension" },
-      { "symptomName": "Overlap syndrome features (PBC or PSC overlap)", "frequency": 0.10, "bodySystem": "Hepatic" }
+      {
+        "symptomName": "Acute liver failure (fulminant presentation)",
+        "snomedCode": "197270009",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "More common in Type 2 AIH and children"
+      },
+      {
+        "symptomName": "Ascites",
+        "snomedCode": "389026000",
+        "frequency": 0.1,
+        "bodySystem": "gastrointestinal",
+        "notes": "Indicates advanced fibrosis/cirrhosis"
+      },
+      {
+        "symptomName": "Variceal bleeding",
+        "snomedCode": "195448009",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Presentation with portal hypertension"
+      },
+      {
+        "symptomName": "Overlap syndrome features (PBC or PSC overlap)",
+        "frequency": 0.1,
+        "bodySystem": "gastrointestinal"
+      }
     ]
   },
-  "systemsAffected": ["Hepatic", "Musculoskeletal", "Dermatologic", "Hematologic", "Endocrine"],
+  "systemsAffected": [
+    "gastrointestinal",
+    "musculoskeletal",
+    "dermatological",
+    "hematological",
+    "endocrine"
+  ],
   "keyFindings": {
     "laboratory": [
       "Elevated ALT and AST (often markedly elevated; hepatocellular pattern)",
@@ -81,11 +203,49 @@
     ]
   },
   "differentialDiagnoses": [
-    { "diseaseId": "primary-biliary-cholangitis", "distinguishingFeatures": ["Anti-mitochondrial antibody positive", "Cholestatic pattern (elevated ALP/GGT)", "Bile duct destruction on biopsy", "Pruritus predominant"] },
-    { "diseaseId": "primary-sclerosing-cholangitis", "distinguishingFeatures": ["Beading of bile ducts on MRCP", "IBD association", "Cholestatic biochemistry", "Periductal fibrosis (onion skinning)"] },
-    { "diseaseId": "drug-induced-liver-injury", "distinguishingFeatures": ["Temporal relationship with drug exposure", "Resolution on drug withdrawal", "No autoantibodies typically"] },
-    { "diseaseId": "wilson-disease", "distinguishingFeatures": ["Low ceruloplasmin", "High urinary copper", "Kayser-Fleischer rings", "Young age of onset"] },
-    { "diseaseId": "viral-hepatitis", "distinguishingFeatures": ["Positive viral serology (HBsAg, anti-HCV)", "Epidemiologic risk factors", "Viral load detectable"] }
+    {
+      "diseaseId": "primary-biliary-cholangitis",
+      "distinguishingFeatures": [
+        "Anti-mitochondrial antibody positive",
+        "Cholestatic pattern (elevated ALP/GGT)",
+        "Bile duct destruction on biopsy",
+        "Pruritus predominant"
+      ]
+    },
+    {
+      "diseaseId": "primary-sclerosing-cholangitis",
+      "distinguishingFeatures": [
+        "Beading of bile ducts on MRCP",
+        "IBD association",
+        "Cholestatic biochemistry",
+        "Periductal fibrosis (onion skinning)"
+      ]
+    },
+    {
+      "diseaseId": "drug-induced-liver-injury",
+      "distinguishingFeatures": [
+        "Temporal relationship with drug exposure",
+        "Resolution on drug withdrawal",
+        "No autoantibodies typically"
+      ]
+    },
+    {
+      "diseaseId": "wilson-disease",
+      "distinguishingFeatures": [
+        "Low ceruloplasmin",
+        "High urinary copper",
+        "Kayser-Fleischer rings",
+        "Young age of onset"
+      ]
+    },
+    {
+      "diseaseId": "viral-hepatitis",
+      "distinguishingFeatures": [
+        "Positive viral serology (HBsAg, anti-HCV)",
+        "Epidemiologic risk factors",
+        "Viral load detectable"
+      ]
+    }
   ],
   "redFlags": [
     "Acute liver failure with encephalopathy and coagulopathy",
@@ -94,7 +254,10 @@
     "Failure to respond to corticosteroid therapy (consider overlap or alternative diagnosis)",
     "Development of hepatocellular carcinoma in cirrhotic patients"
   ],
-  "specialistType": ["Hepatology", "Gastroenterology"],
+  "specialistType": [
+    "Hepatology",
+    "Gastroenterology"
+  ],
   "lastUpdated": "2026-02-17",
   "references": [
     "Hennes EM, et al. Simplified criteria for the diagnosis of autoimmune hepatitis. Hepatology. 2008;48(1):169-176.",

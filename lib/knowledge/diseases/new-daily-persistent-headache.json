@@ -1,0 +1,198 @@
+{
+  "id": "new-daily-persistent-headache",
+  "name": "New Daily Persistent Headache",
+  "aliases": [
+    "NDPH",
+    "Persistent Daily Headache"
+  ],
+  "icd10Codes": [
+    "G44.86"
+  ],
+  "prevalence": {
+    "estimate": "1 in 1,000",
+    "range": "0.1%-0.3%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 50,
+      "peak": 30
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "International Classification of Headache Disorders (ICHD-3) Criteria for New Daily Persistent Headache",
+    "criteria": [
+      {
+        "id": "onset",
+        "description": "Distinct and clearly remembered onset of headache, with pain becoming continuous and unremitting within 24 hours",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "duration",
+        "description": "Headache present daily and unremitting for more than 3 months",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion",
+        "description": "No evidence of secondary headache disorder after appropriate investigations",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "headacheCharacteristics",
+        "description": "Headache may be bilateral or unilateral, pressing or tightening in quality, mild to moderate intensity",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "associatedSymptoms",
+        "description": "May have associated photophobia, phonophobia, or mild nausea without vomiting",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria must be met: sudden onset with continuous daily headache within 24 hours, duration >3 months, and exclusion of secondary causes",
+    "notes": "Diagnosis requires careful exclusion of secondary causes such as infection, vascular disorders, or neoplasm."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Sudden onset of daily unremitting headache",
+        "frequency": 0.95,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Continuous headache present every day without remission",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Bilateral pressing or tightening headache quality",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mild to moderate headache intensity",
+        "frequency": 0.7,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Phonophobia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Mild nausea without vomiting",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Unilateral headache location",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Neck stiffness or discomfort",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mild photophobia worsening with headache intensity",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Aura-like neurological symptoms",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Allodynia or scalp tenderness",
+        "frequency": 0.02,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological",
+    "gastrointestinal",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal routine blood tests; no specific biomarkers"
+    ],
+    "imaging": [
+      "Normal brain MRI and MR angiography to exclude secondary causes"
+    ],
+    "genetic": [],
+    "other": [
+      "Normal cerebrospinal fluid analysis if performed"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chronic-tension-type-headache",
+      "distinguishingFeatures": [
+        "Gradual onset rather than sudden",
+        "Headache fluctuates in intensity",
+        "Less commonly daily from onset"
+      ]
+    },
+    {
+      "diseaseId": "chronic-migraine",
+      "distinguishingFeatures": [
+        "History of episodic migraine evolving over time",
+        "Presence of migraine aura or typical migraine features",
+        "Headache frequency increasing gradually"
+      ]
+    },
+    {
+      "diseaseId": "secondary-headache-disorder",
+      "distinguishingFeatures": [
+        "Presence of red flags such as neurological deficits",
+        "Abnormal imaging or laboratory findings",
+        "Systemic symptoms like fever or weight loss"
+      ]
+    }
+  ],
+  "redFlags": [
+    "New neurological deficits",
+    "Systemic symptoms such as fever or weight loss",
+    "Sudden severe headache with 'thunderclap' onset"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Headache Specialist",
+    "Pain Management Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "International Classification of Headache Disorders, 3rd edition (ICHD-3), 2018",
+    "Silberstein SD. New daily persistent headache: clinical features and treatment. Neurology. 2000",
+    "May A, Schulte LH. Chronic daily headache: pathophysiology and treatment. Lancet Neurol. 2016"
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,210 @@
+{
+  "id": "hereditary-fructose-intolerance",
+  "name": "Hereditary Fructose Intolerance",
+  "aliases": [
+    "HFI",
+    "Fructose-1-phosphate aldolase deficiency"
+  ],
+  "icd10Codes": [
+    "E74.3"
+  ],
+  "omimId": "229600",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 20,000 to 1 in 30,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 2,
+      "peak": 0.5
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and biochemical diagnosis of Hereditary Fructose Intolerance",
+    "criteria": [
+      {
+        "id": "fructose-intolerance-symptoms",
+        "description": "Symptoms triggered by ingestion of fructose, sucrose, or sorbitol including vomiting and hypoglycemia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "aldolase-b-deficiency",
+        "description": "Demonstration of aldolase B enzyme deficiency in liver biopsy or erythrocytes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in the ALDOB gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "fructose-tolerance-test",
+        "description": "Positive fructose tolerance test showing hypoglycemia and metabolic abnormalities",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "liver-function-abnormalities",
+        "description": "Elevated liver enzymes and hepatomegaly after fructose ingestion",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of characteristic symptoms after fructose ingestion plus either aldolase B deficiency or pathogenic ALDOB mutations",
+    "notes": "Fructose tolerance test is rarely performed due to risk of severe hypoglycemia."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Postprandial hypoglycemia following fructose ingestion",
+        "frequency": 0.85,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Severe vomiting triggered by fructose-containing foods",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hepatomegaly with liver tenderness after fructose exposure",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Failure to thrive in infancy",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Jaundice following fructose ingestion",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain and distension",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Lethargy and irritability",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypoglycemic seizures",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Renal tubular dysfunction",
+        "frequency": 0.3,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Coagulopathy due to liver dysfunction",
+        "frequency": 0.25,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hepatic failure",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Encephalopathy secondary to hypoglycemia",
+        "frequency": 0.07,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pancreatitis",
+        "frequency": 0.02,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "endocrine",
+    "neurological",
+    "renal",
+    "hematological",
+    "musculoskeletal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Hypoglycemia with metabolic acidosis after fructose ingestion",
+      "Elevated liver transaminases (AST, ALT)",
+      "Elevated serum uric acid",
+      "Reduced aldolase B enzyme activity"
+    ],
+    "imaging": [
+      "Hepatomegaly on abdominal ultrasound",
+      "Fatty infiltration of liver in advanced cases"
+    ],
+    "genetic": [
+      "Pathogenic mutations in ALDOB gene (e.g. p.A150P, p.A175D)"
+    ],
+    "other": [
+      "Positive fructose tolerance test causing symptomatic hypoglycemia (rarely performed)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "fructose-1-6-bisphosphatase-deficiency",
+      "distinguishingFeatures": [
+        "Hypoglycemia without fructose-specific symptoms",
+        "Lack of vomiting after fructose ingestion",
+        "Different enzyme deficiency confirmed by genetic testing"
+      ]
+    },
+    {
+      "diseaseId": "galactosemia",
+      "distinguishingFeatures": [
+        "Symptoms triggered by galactose ingestion rather than fructose",
+        "Presence of cataracts and E. coli sepsis in neonates",
+        "Elevated galactose-1-phosphate in blood"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe hypoglycemia after fructose ingestion",
+    "Progressive liver dysfunction with hepatomegaly",
+    "Failure to thrive in infancy with vomiting and lethargy"
+  ],
+  "specialistType": [
+    "Metabolic specialist",
+    "Pediatric hepatologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Fructose intolerance and related disorders. Saudubray JM, et al. In: Inborn Metabolic Diseases, 6th ed. 2016.",
+    "OMIM Entry - #229600 - HEREDITARY FRUCTOSE INTOLERANCE",
+    "Orphanet: Hereditary Fructose Intolerance"
+  ],
+  "confidenceInData": "medium"
+}

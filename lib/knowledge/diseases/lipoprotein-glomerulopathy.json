@@ -1,0 +1,206 @@
+{
+  "id": "lipoprotein-glomerulopathy",
+  "name": "Lipoprotein Glomerulopathy",
+  "aliases": [
+    "LPG",
+    "Lipoprotein Thrombi Glomerulopathy"
+  ],
+  "icd10Codes": [
+    "N04.8"
+  ],
+  "omimId": "610983",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 50,
+      "peak": 30
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "East Asian (notably Japanese and Chinese)"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Lipoprotein Glomerulopathy Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "lipoprotein-thrombi",
+        "description": "Presence of lipoprotein thrombi in glomerular capillaries on renal biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "nephrotic-syndrome",
+        "description": "Clinical presentation with nephrotic syndrome including proteinuria and edema",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "apoE-mutation",
+        "description": "Detection of pathogenic mutations in the apolipoprotein E (APOE) gene",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "lipid-profile",
+        "description": "Abnormal lipid profile with elevated plasma lipoproteins",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of lipoprotein thrombi in glomerular capillaries plus clinical nephrotic syndrome",
+    "notes": "Genetic testing for APOE mutations supports diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Lipoprotein thrombi in glomerular capillaries",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "notes": "Identified on renal biopsy"
+      },
+      {
+        "symptomName": "Nephrotic syndrome",
+        "frequency": 0.9,
+        "bodySystem": "renal",
+        "notes": "Characterized by heavy proteinuria, hypoalbuminemia, and edema"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Proteinuria",
+        "frequency": 0.85,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Edema",
+        "frequency": 0.75,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hyperlipidemia",
+        "frequency": 0.7,
+        "bodySystem": "endocrine",
+        "notes": "Elevated plasma lipoprotein levels"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Microscopic hematuria",
+        "frequency": 0.4,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild renal insufficiency",
+        "frequency": 0.25,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hypercoagulability",
+        "frequency": 0.15,
+        "bodySystem": "hematological",
+        "notes": "Due to altered lipid metabolism"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Nephrotic syndrome relapse",
+        "frequency": 0.08,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Renal failure progression",
+        "frequency": 0.05,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Peripheral edema with pleural effusion",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "cardiovascular",
+    "endocrine",
+    "hematological",
+    "constitutional",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Heavy proteinuria (>3.5 g/day)",
+      "Hypoalbuminemia",
+      "Elevated plasma lipoprotein levels",
+      "Microscopic hematuria"
+    ],
+    "imaging": [
+      "Renal ultrasound typically normal or shows mild enlargement",
+      "No specific imaging findings for lipoprotein thrombi"
+    ],
+    "genetic": [
+      "Pathogenic mutations in APOE gene (e.g., APOE Kyoto, APOE Sendai variants)"
+    ],
+    "other": [
+      "Renal biopsy showing lipoprotein thrombi within glomerular capillaries on light microscopy and electron microscopy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "membranous-nephropathy",
+      "distinguishingFeatures": [
+        "Subepithelial immune deposits on biopsy",
+        "Absence of lipoprotein thrombi",
+        "Positive anti-PLA2R antibodies in primary cases"
+      ]
+    },
+    {
+      "diseaseId": "focal-segmental-glomerulosclerosis",
+      "distinguishingFeatures": [
+        "Segmental sclerosis on biopsy",
+        "No lipoprotein thrombi",
+        "Often associated with secondary causes"
+      ]
+    },
+    {
+      "diseaseId": "lipid-nephrosis",
+      "distinguishingFeatures": [
+        "Lipid droplets in podocytes rather than thrombi in capillaries",
+        "Different histopathological pattern"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive nephrotic syndrome",
+    "Unexplained heavy proteinuria with lipoprotein abnormalities",
+    "Renal biopsy revealing lipoprotein thrombi"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Clinical Geneticist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Saito T, et al. Lipoprotein glomerulopathy: a new type of glomerular disease. Kidney Int. 1989.",
+    "Fukuda A, et al. Apolipoprotein E mutations in lipoprotein glomerulopathy. Kidney Int. 1999.",
+    "Orphanet: Lipoprotein glomerulopathy. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=395"
+  ],
+  "confidenceInData": "medium"
+}

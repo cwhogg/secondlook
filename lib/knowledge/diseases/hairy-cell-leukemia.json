@@ -1,0 +1,212 @@
+{
+  "id": "hairy-cell-leukemia",
+  "name": "Hairy Cell Leukemia",
+  "aliases": [
+    "HCL",
+    "Leukemic Reticuloendotheliosis"
+  ],
+  "icd10Codes": [
+    "C91.4"
+  ],
+  "omimId": "245900",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Consensus Diagnostic Criteria for Hairy Cell Leukemia",
+    "criteria": [
+      {
+        "id": "morphology",
+        "description": "Presence of characteristic 'hairy' cytoplasmic projections on peripheral blood smear or bone marrow aspirate",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunophenotyping",
+        "description": "Expression of CD19, CD20, CD22, CD11c, CD25, CD103, and annexin A1 on leukemic cells by flow cytometry or immunohistochemistry",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bone-marrow-fibrosis",
+        "description": "Bone marrow biopsy showing reticulin fibrosis and infiltration by hairy cells",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "braf-v600e-mutation",
+        "description": "Detection of BRAF V600E mutation in leukemic cells",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of characteristic hairy cells on morphology plus confirmatory immunophenotyping and bone marrow biopsy findings",
+    "notes": "BRAF V600E mutation testing supports diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Pancytopenia",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Due to bone marrow infiltration and fibrosis"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.8,
+        "bodySystem": "hematological",
+        "notes": "Often massive and painless"
+      },
+      {
+        "symptomName": "Hairy cells in peripheral blood smear",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Characteristic cytoplasmic projections"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Due to anemia and systemic illness"
+      },
+      {
+        "symptomName": "Infections",
+        "frequency": 0.65,
+        "bodySystem": "immunological",
+        "notes": "Secondary to neutropenia and monocytopenia"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Unintentional and progressive"
+      },
+      {
+        "symptomName": "Abdominal discomfort or fullness",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to splenomegaly"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Bleeding tendency",
+        "frequency": 0.3,
+        "bodySystem": "hematological",
+        "notes": "Due to thrombocytopenia"
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.25,
+        "bodySystem": "constitutional",
+        "notes": "B symptoms"
+      },
+      {
+        "symptomName": "Bone pain",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to marrow involvement"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.15,
+        "bodySystem": "hematological",
+        "notes": "Less common than in other leukemias"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.08,
+        "bodySystem": "hematological",
+        "notes": "Less frequent than splenomegaly"
+      },
+      {
+        "symptomName": "Neurological symptoms",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Rarely due to CNS involvement or paraneoplastic phenomena"
+      },
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.03,
+        "bodySystem": "dermatological",
+        "notes": "Rare cutaneous manifestations"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "constitutional",
+    "immunological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "neurological",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Pancytopenia with monocytopenia",
+      "Presence of hairy cells on peripheral blood smear",
+      "Elevated serum soluble interleukin-2 receptor (sIL-2R) levels"
+    ],
+    "imaging": [
+      "Splenomegaly on abdominal ultrasound or CT scan",
+      "Occasional hepatomegaly"
+    ],
+    "genetic": [
+      "BRAF V600E mutation detected in majority of cases"
+    ],
+    "other": [
+      "Bone marrow biopsy showing reticulin fibrosis and hairy cell infiltration",
+      "Flow cytometry immunophenotyping positive for CD11c, CD25, CD103, and annexin A1"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chronic-lymphocytic-leukemia",
+      "distinguishingFeatures": [
+        "Lymphocytosis without characteristic hairy cells",
+        "Different immunophenotype (CD5+, CD23+)",
+        "Less prominent splenomegaly"
+      ]
+    },
+    {
+      "diseaseId": "splenic-marginal-zone-lymphoma",
+      "distinguishingFeatures": [
+        "Splenomegaly with villous lymphocytes rather than hairy cells",
+        "Different immunophenotype (CD11c+, CD25-)",
+        "Absence of BRAF V600E mutation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe pancytopenia with recurrent infections",
+    "Massive splenomegaly causing abdominal discomfort or early satiety",
+    "Rapid clinical deterioration or transformation to aggressive lymphoma"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Oncologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Swerdlow SH, Campo E, Harris NL, et al. WHO Classification of Tumours of Haematopoietic and Lymphoid Tissues. IARC; 2017.",
+    "Grever MR, Abdel-Wahab O. Hairy Cell Leukemia: 2020 Update on Diagnosis, Risk Stratification, and Treatment. Am J Hematol. 2020.",
+    "Tiacci E, Trifonov V, Schiavoni G, et al. BRAF Mutations in Hairy-Cell Leukemia. N Engl J Med. 2011."
+  ],
+  "confidenceInData": "medium"
+}

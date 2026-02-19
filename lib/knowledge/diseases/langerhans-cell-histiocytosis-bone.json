@@ -1,0 +1,212 @@
+{
+  "id": "langerhans-cell-histiocytosis-bone",
+  "name": "Langerhans Cell Histiocytosis Bone",
+  "aliases": [
+    "LCH Bone Disease",
+    "Eosinophilic Granuloma of Bone"
+  ],
+  "icd10Codes": [
+    "C96.2"
+  ],
+  "omimId": "151370",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 200,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 15,
+      "peak": 3
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Langerhans Cell Histiocytosis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Presence of clonal Langerhans cells with characteristic Birbeck granules on electron microscopy or CD1a/S100 positivity on immunohistochemistry",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "radiologic-bone-lesions",
+        "description": "Radiographic evidence of lytic bone lesions with well-defined punched-out appearance",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Localized bone pain or swelling consistent with LCH bone involvement",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathologic confirmation of Langerhans cells plus radiologic evidence of bone lesions",
+    "notes": "Diagnosis requires biopsy with immunohistochemical confirmation; clinical and radiologic findings support diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Lytic bone lesions with well-demarcated borders",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "notes": "Characteristic radiographic finding"
+      },
+      {
+        "symptomName": "Clonal proliferation of Langerhans cells confirmed by CD1a and Langerin positivity",
+        "frequency": 0.9,
+        "bodySystem": "immunological",
+        "notes": "Diagnostic histopathological hallmark"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Localized bone pain",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "notes": "Often the presenting symptom"
+      },
+      {
+        "symptomName": "Swelling over affected bone",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to underlying lesion and inflammation"
+      },
+      {
+        "symptomName": "Tenderness on palpation of lesion site",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal",
+        "notes": ""
+      },
+      {
+        "symptomName": "Pathological fractures",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to bone weakening"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fever",
+        "frequency": 0.3,
+        "bodySystem": "constitutional",
+        "notes": "May occur with systemic involvement"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.25,
+        "bodySystem": "constitutional",
+        "notes": ""
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "notes": "More common in multisystem disease"
+      },
+      {
+        "symptomName": "Soft tissue swelling adjacent to bone lesion",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "notes": "Inflammatory reaction"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Neurological deficits due to skull base involvement",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Occurs in extensive cranial disease"
+      },
+      {
+        "symptomName": "Diabetes insipidus from pituitary infiltration",
+        "frequency": 0.04,
+        "bodySystem": "endocrine",
+        "notes": "Rare in isolated bone disease but possible in multisystem LCH"
+      },
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.03,
+        "bodySystem": "dermatological",
+        "notes": "May accompany systemic involvement"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "immunological",
+    "constitutional",
+    "neurological",
+    "endocrine",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated inflammatory markers (ESR, CRP) in some cases",
+      "Normal or mildly elevated white blood cell count",
+      "No specific serologic markers"
+    ],
+    "imaging": [
+      "X-ray showing lytic, punched-out bone lesions",
+      "CT/MRI for extent and soft tissue involvement",
+      "Bone scintigraphy may show multiple lesions"
+    ],
+    "genetic": [
+      "Somatic mutations in BRAF V600E in ~50% of cases",
+      "MAP2K1 mutations in some cases"
+    ],
+    "other": [
+      "Histopathology showing Langerhans cells with Birbeck granules on electron microscopy",
+      "Immunohistochemistry positive for CD1a, Langerin (CD207), and S100"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "osteomyelitis",
+      "distinguishingFeatures": [
+        "Infectious etiology with systemic signs of infection",
+        "Positive cultures or response to antibiotics",
+        "Lack of clonal Langerhans cells on biopsy"
+      ]
+    },
+    {
+      "diseaseId": "metastatic-bone-disease",
+      "distinguishingFeatures": [
+        "History of primary malignancy",
+        "Different radiologic pattern (often mixed lytic and sclerotic)",
+        "Absence of Langerhans cells on histology"
+      ]
+    },
+    {
+      "diseaseId": "multiple-myeloma",
+      "distinguishingFeatures": [
+        "Presence of monoclonal protein in serum or urine",
+        "Older age group",
+        "Plasma cells on bone marrow biopsy"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive bone destruction",
+    "Neurological symptoms indicating CNS involvement",
+    "Pathological fractures causing functional impairment"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Oncologist",
+    "Orthopedic Surgeon",
+    "Pathologist",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Aricò M, et al. Langerhans cell histiocytosis in adults. Eur J Cancer. 2003.",
+    "Allen CE, et al. Langerhans-cell histiocytosis. N Engl J Med. 2018.",
+    "Badalian-Very G, et al. Recurrent BRAF mutations in Langerhans cell histiocytosis. Blood. 2010."
+  ],
+  "confidenceInData": "medium"
+}

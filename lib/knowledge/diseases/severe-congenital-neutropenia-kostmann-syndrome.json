@@ -1,0 +1,220 @@
+{
+  "id": "severe-congenital-neutropenia-kostmann-syndrome",
+  "name": "Severe Congenital Neutropenia (Kostmann Syndrome)",
+  "aliases": [
+    "Kostmann Syndrome",
+    "Severe Congenital Neutropenia"
+  ],
+  "icd10Codes": [
+    "D70.1"
+  ],
+  "omimId": "202700",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 200,000 to 1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 12,
+      "peak": 0
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Severe Congenital Neutropenia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "profound-neutropenia",
+        "description": "Absolute neutrophil count (ANC) consistently below 500 cells/µL",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "early-onset-bacterial-infections",
+        "description": "Recurrent severe bacterial infections starting in infancy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bone-marrow-maturation-arrest",
+        "description": "Bone marrow examination showing maturation arrest at the promyelocyte/myelocyte stage",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in ELANE or related genes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of profound neutropenia (ANC <500/µL), recurrent severe bacterial infections from infancy, and bone marrow maturation arrest",
+    "notes": "Genetic testing supports diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Profound neutropenia (ANC <500 cells/µL)",
+        "frequency": 0.95,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Recurrent severe bacterial infections in infancy",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Bone marrow maturation arrest at promyelocyte/myelocyte stage",
+        "frequency": 0.85,
+        "bodySystem": "hematological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Oral mucosal ulcerations",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Otitis media",
+        "frequency": 0.7,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Pneumonia",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Skin abscesses",
+        "frequency": 0.6,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Fever episodes",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Lymphadenitis",
+        "frequency": 0.4,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Sepsis",
+        "frequency": 0.35,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Delayed growth and development",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Periodontitis",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.2,
+        "bodySystem": "hematological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Leukemic transformation",
+        "frequency": 0.08,
+        "bodySystem": "hematological",
+        "notes": "Occurs as progression to myelodysplastic syndrome or acute myeloid leukemia"
+      },
+      {
+        "symptomName": "Autoimmune manifestations",
+        "frequency": 0.05,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Neurological complications secondary to infections",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "gastrointestinal",
+    "respiratory",
+    "dermatological",
+    "constitutional",
+    "otolaryngological",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Persistent severe neutropenia (ANC <500 cells/µL)",
+      "Elevated inflammatory markers during infections",
+      "Bone marrow biopsy showing maturation arrest at promyelocyte/myelocyte stage"
+    ],
+    "imaging": [
+      "Chest X-ray showing pneumonia or lung abscesses",
+      "Ultrasound for hepatosplenomegaly"
+    ],
+    "genetic": [
+      "Mutations in ELANE gene (most common)",
+      "Mutations in HAX1, G6PC3, or other related genes"
+    ],
+    "other": [
+      "Recurrent severe bacterial infections starting in infancy",
+      "Poor response to conventional antibiotic therapy without neutrophil recovery"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "cyclic-neutropenia",
+      "distinguishingFeatures": [
+        "Periodic oscillations in neutrophil counts every 21 days",
+        "Less severe infections",
+        "Usually milder clinical course"
+      ]
+    },
+    {
+      "diseaseId": "myelodysplastic-syndrome",
+      "distinguishingFeatures": [
+        "Occurs typically in older patients",
+        "Dysplastic changes in multiple cell lines",
+        "Variable neutropenia with other cytopenias"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-neutropenia",
+      "distinguishingFeatures": [
+        "Presence of anti-neutrophil antibodies",
+        "Often transient or associated with other autoimmune diseases",
+        "Variable severity of neutropenia"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Profound neutropenia with ANC <500 cells/µL persisting beyond neonatal period",
+    "Recurrent severe bacterial infections including sepsis and pneumonia",
+    "Failure to thrive or delayed growth in infancy"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Immunologist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Dale DC, Bolyard AA, Aprikyan AA, et al. Severe congenital neutropenia: clinical features, molecular pathogenesis, and treatment. Hematology Am Soc Hematol Educ Program. 2003;2003(1):36-45.",
+    "Horwitz MS, Corey SJ, Grimes HL, et al. Severe congenital neutropenia. Hematology Am Soc Hematol Educ Program. 2007:58-64.",
+    "Beck DB, Ferrer G, Sikora KA, et al. ELANE mutations in severe congenital neutropenia and cyclic neutropenia. Blood. 2017;130(10):1122-1131."
+  ],
+  "confidenceInData": "medium"
+}

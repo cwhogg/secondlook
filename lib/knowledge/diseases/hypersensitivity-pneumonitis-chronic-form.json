@@ -1,0 +1,200 @@
+{
+  "id": "hypersensitivity-pneumonitis-chronic-form",
+  "name": "Hypersensitivity Pneumonitis Chronic Form",
+  "aliases": [
+    "Chronic Hypersensitivity Pneumonitis",
+    "Chronic Extrinsic Allergic Alveolitis"
+  ],
+  "icd10Codes": [
+    "J67.9"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ATS/JRS/ALAT Clinical Practice Guideline for Hypersensitivity Pneumonitis",
+    "criteria": [
+      {
+        "id": "exposure-history",
+        "description": "Documented exposure to known inciting antigen",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-pattern",
+        "description": "High-resolution CT showing fibrotic interstitial lung disease with features suggestive of hypersensitivity pneumonitis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bronchoalveolar-lavage",
+        "description": "Lymphocytosis in bronchoalveolar lavage fluid (>20%)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "histopathology",
+        "description": "Lung biopsy showing interstitial fibrosis with poorly formed granulomas and chronic inflammation",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pulmonary-function-tests",
+        "description": "Restrictive pattern with reduced diffusing capacity for carbon monoxide (DLCO)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of documented antigen exposure plus compatible imaging findings; supportive bronchoalveolar lavage or histopathology findings increase diagnostic confidence",
+    "notes": "Diagnosis is often clinical and supported by multidisciplinary discussion including radiology and pathology."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive exertional dyspnea",
+        "frequency": 0.85,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chronic nonproductive cough",
+        "frequency": 0.8,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Inspiratory crackles on lung auscultation",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Clubbing of fingers",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Low-grade fever",
+        "frequency": 0.5,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Chest discomfort",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Wheezing",
+        "frequency": 0.2,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Digital cyanosis",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pulmonary hypertension symptoms (e.g. syncope)",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "musculoskeletal",
+    "constitutional",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum precipitating antibodies against specific antigens",
+      "Bronchoalveolar lavage lymphocytosis (>20%)",
+      "Mildly elevated inflammatory markers (ESR, CRP)"
+    ],
+    "imaging": [
+      "High-resolution CT showing reticular opacities, honeycombing, and ground-glass attenuation",
+      "Traction bronchiectasis",
+      "Upper and mid lung zone predominance of fibrosis"
+    ],
+    "genetic": [],
+    "other": [
+      "Histopathology demonstrating interstitial fibrosis with poorly formed non-necrotizing granulomas",
+      "Pulmonary function tests showing restrictive ventilatory defect and reduced DLCO"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "idiopathic-pulmonary-fibrosis",
+      "distinguishingFeatures": [
+        "Absence of known antigen exposure",
+        "Usual interstitial pneumonia pattern on imaging",
+        "Lack of granulomas on biopsy"
+      ]
+    },
+    {
+      "diseaseId": "sarcoidosis",
+      "distinguishingFeatures": [
+        "Presence of well-formed non-caseating granulomas",
+        "Multisystem involvement including lymphadenopathy",
+        "Elevated serum angiotensin-converting enzyme (ACE) levels"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of respiratory failure",
+    "Development of pulmonary hypertension",
+    "Hemoptysis or significant weight loss"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Immunologist",
+    "Radiologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "American Thoracic Society/Japanese Respiratory Society/Latin American Thoracic Society Clinical Practice Guideline on Hypersensitivity Pneumonitis, 2020",
+    "Cottin V, et al. Chronic Hypersensitivity Pneumonitis. Am J Respir Crit Care Med. 2018",
+    "Selman M, et al. Hypersensitivity Pneumonitis: Insights in Diagnosis and Pathobiology. Am J Respir Crit Care Med. 2012"
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,212 @@
+{
+  "id": "glucose-6-phosphate-dehydrogenase-deficiency",
+  "name": "Glucose-6-Phosphate Dehydrogenase Deficiency",
+  "aliases": [
+    "G6PD Deficiency",
+    "Favism"
+  ],
+  "icd10Codes": [
+    "D55.0"
+  ],
+  "omimId": "305900",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 20,000",
+    "range": "0.1-5%",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 5
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "Mediterranean",
+      "African",
+      "Middle Eastern",
+      "Southeast Asian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Diagnostic Criteria for G6PD Deficiency",
+    "criteria": [
+      {
+        "id": "enzyme-activity",
+        "description": "Reduced G6PD enzyme activity in red blood cells",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hemolytic-anemia",
+        "description": "Episodic hemolytic anemia triggered by oxidative stress (e.g., infections, drugs, fava beans)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic G6PD gene variants",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "blood-smear",
+        "description": "Presence of Heinz bodies and bite cells on peripheral blood smear",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Reduced G6PD enzyme activity plus clinical evidence of hemolytic anemia",
+    "notes": "Genetic testing supports diagnosis but is not mandatory; enzyme activity testing may be falsely normal during acute hemolysis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Episodic acute hemolytic anemia",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Triggered by oxidative stressors such as infections, certain drugs, or ingestion of fava beans"
+      },
+      {
+        "symptomName": "Jaundice during hemolytic episodes",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Due to increased bilirubin from red cell breakdown"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue and pallor",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Resulting from anemia"
+      },
+      {
+        "symptomName": "Dark urine (hemoglobinuria)",
+        "frequency": 0.65,
+        "bodySystem": "renal",
+        "notes": "Due to hemoglobin released from lysed red blood cells"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.6,
+        "bodySystem": "hematological",
+        "notes": "Occasionally present due to increased red cell destruction"
+      },
+      {
+        "symptomName": "Tachycardia",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to anemia"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Neonatal hyperbilirubinemia",
+        "frequency": 0.4,
+        "bodySystem": "hematological",
+        "notes": "May cause jaundice in newborns"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "notes": "During hemolytic crises"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Associated with anemia"
+      },
+      {
+        "symptomName": "Dizziness",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Due to reduced oxygen delivery"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Acute renal failure",
+        "frequency": 0.05,
+        "bodySystem": "renal",
+        "notes": "Secondary to severe hemoglobinuria"
+      },
+      {
+        "symptomName": "Severe neonatal kernicterus",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Due to extreme hyperbilirubinemia"
+      },
+      {
+        "symptomName": "Chronic hemolytic anemia",
+        "frequency": 0.02,
+        "bodySystem": "hematological",
+        "notes": "In some variants with continuous hemolysis"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "renal",
+    "neurological",
+    "cardiovascular",
+    "gastrointestinal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low G6PD enzyme activity in red blood cells",
+      "Elevated indirect bilirubin",
+      "Reticulocytosis",
+      "Presence of Heinz bodies and bite cells on peripheral smear",
+      "Elevated lactate dehydrogenase (LDH)"
+    ],
+    "imaging": [
+      "Splenomegaly on abdominal ultrasound (occasionally)"
+    ],
+    "genetic": [
+      "Pathogenic variants in the G6PD gene on X chromosome"
+    ],
+    "other": [
+      "Positive family history consistent with X-linked inheritance"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hereditary-spherocytosis",
+      "distinguishingFeatures": [
+        "Spherocytes on blood smear",
+        "Positive osmotic fragility test",
+        "No G6PD enzyme deficiency"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-hemolytic-anemia",
+      "distinguishingFeatures": [
+        "Positive direct antiglobulin (Coombs) test",
+        "Presence of autoantibodies",
+        "No G6PD deficiency"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe acute hemolytic anemia with rapid hemoglobin drop",
+    "Acute renal failure during hemolytic crisis",
+    "Neonatal jaundice with risk of kernicterus"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Pediatrician",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Beutler E. G6PD deficiency. Blood. 1994;84(11):3613-3636.",
+    "Luzzatto L, Ally M, Notaro R. Glucose-6-phosphate dehydrogenase deficiency. Blood. 2020;136(11):1225-1240.",
+    "World Health Organization. Glucose-6-phosphate dehydrogenase deficiency. WHO Working Group. Bull World Health Organ. 1989;67(6):601-611."
+  ],
+  "confidenceInData": "medium"
+}

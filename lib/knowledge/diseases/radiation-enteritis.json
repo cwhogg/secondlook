@@ -1,0 +1,203 @@
+{
+  "id": "radiation-enteritis",
+  "name": "Radiation Enteritis",
+  "aliases": [
+    "Chronic Radiation Enteritis",
+    "Radiation-Induced Enteritis"
+  ],
+  "icd10Codes": [
+    "K52.2"
+  ],
+  "prevalence": {
+    "estimate": "1 in 1,000 patients receiving abdominal or pelvic radiation",
+    "range": "5-20%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 80,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Radiation Enteritis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "history-radiation",
+        "description": "History of prior abdominal or pelvic radiation therapy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-symptoms",
+        "description": "Presence of chronic gastrointestinal symptoms such as abdominal pain, diarrhea, or malabsorption",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "endoscopic-findings",
+        "description": "Endoscopic evidence of mucosal inflammation, ulceration, or strictures in irradiated bowel segments",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-findings",
+        "description": "Radiologic findings consistent with bowel wall thickening, strictures, or fistulas on CT or MRI",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-other-causes",
+        "description": "Exclusion of other causes of enteritis such as infection or inflammatory bowel disease",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "History of radiation exposure plus at least two major criteria including clinical symptoms and endoscopic or imaging findings",
+    "notes": "Diagnosis is clinical and supported by imaging and endoscopy; biopsy may be used to exclude other etiologies."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chronic abdominal pain localized to irradiated bowel segments",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Persistent diarrhea with malabsorption",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Bloating and abdominal distension",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Weight loss due to malnutrition",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Intermittent nausea and vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Rectal bleeding or hematochezia",
+        "frequency": 0.5,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Bowel obstruction symptoms including cramping and constipation",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fistula formation between bowel and adjacent organs",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fever due to secondary infection",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue related to chronic disease state",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Perforation of the bowel",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Sepsis secondary to bowel perforation or fistula",
+        "frequency": 0.03,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Severe electrolyte imbalances due to malabsorption",
+        "frequency": 0.02,
+        "bodySystem": "endocrine"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "constitutional",
+    "immunological",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Anemia due to chronic blood loss",
+      "Hypoalbuminemia indicating malnutrition",
+      "Electrolyte disturbances in severe cases"
+    ],
+    "imaging": [
+      "CT scan showing bowel wall thickening and strictures",
+      "MRI demonstrating fibrosis and inflammation of bowel segments",
+      "Contrast studies revealing strictures or fistulas"
+    ],
+    "genetic": [],
+    "other": [
+      "Endoscopic visualization of mucosal ulceration, telangiectasia, and fibrosis",
+      "Histopathology showing chronic inflammation, fibrosis, and vascular changes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "crohns-disease",
+      "distinguishingFeatures": [
+        "Transmural inflammation with skip lesions",
+        "Granulomas on biopsy",
+        "No history of radiation exposure"
+      ]
+    },
+    {
+      "diseaseId": "infectious-enteritis",
+      "distinguishingFeatures": [
+        "Acute onset with infectious symptoms",
+        "Positive stool cultures or PCR for pathogens",
+        "Rapid resolution with antimicrobial therapy"
+      ]
+    },
+    {
+      "diseaseId": "ischemic-enteritis",
+      "distinguishingFeatures": [
+        "History of vascular disease",
+        "Segmental bowel ischemia on imaging",
+        "Sudden onset abdominal pain"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe abdominal pain with signs of peritonitis",
+    "Signs of bowel obstruction or perforation",
+    "Unexplained severe rectal bleeding"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Radiation Oncologist",
+    "Colorectal Surgeon"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Andreyev HJN. Gastrointestinal complications of pelvic radiotherapy: are they of any importance? Gut. 2005;54(8):1051-1054.",
+    "Hauer-Jensen M, Denham JW, Andreyev HJN. Radiation enteropathy—pathogenesis, treatment and prevention. Nat Rev Gastroenterol Hepatol. 2014;11(8):470-479.",
+    "Panes J, Bouhnik Y, Reinisch W, et al. Management of radiation enteritis: a systematic review. J Crohns Colitis. 2020;14(6):741-753."
+  ],
+  "confidenceInData": "medium"
+}

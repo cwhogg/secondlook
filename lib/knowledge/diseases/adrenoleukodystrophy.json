@@ -1,0 +1,220 @@
+{
+  "id": "adrenoleukodystrophy",
+  "name": "Adrenoleukodystrophy",
+  "aliases": [
+    "ALD",
+    "X-linked adrenoleukodystrophy"
+  ],
+  "icd10Codes": [
+    "E71.4"
+  ],
+  "omimId": "300100",
+  "orphanetId": "37",
+  "prevalence": {
+    "estimate": "1 in 20,000 to 50,000 males",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 3,
+      "max": 40,
+      "peak": 7
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Diagnostic criteria for X-linked adrenoleukodystrophy",
+    "criteria": [
+      {
+        "id": "vlcfas-elevation",
+        "description": "Elevated plasma very long-chain fatty acids (VLCFAs)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Pathogenic mutation in the ABCD1 gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "brain-mri",
+        "description": "Characteristic demyelinating lesions on brain MRI",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "adrenal-insufficiency",
+        "description": "Clinical or biochemical evidence of adrenal insufficiency",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of elevated VLCFAs and pathogenic ABCD1 mutation with supportive brain MRI findings",
+    "notes": "Diagnosis may be confirmed by genetic testing and biochemical assays; adrenal insufficiency supports diagnosis but is not mandatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive cerebral demyelination",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Adrenal insufficiency (Addison disease)",
+        "frequency": 0.75,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Elevated plasma very long-chain fatty acids",
+        "frequency": 0.95,
+        "bodySystem": "endocrine",
+        "notes": "Metabolic abnormality detected in laboratory testing"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Cognitive decline",
+        "frequency": 0.7,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Behavioral changes",
+        "frequency": 0.65,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.5,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Vision loss",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hearing impairment",
+        "frequency": 0.3,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiomyopathy",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Gastrointestinal dysmotility",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hypogonadism",
+        "frequency": 0.02,
+        "bodySystem": "endocrine"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "endocrine",
+    "psychiatric",
+    "ophthalmological",
+    "otolaryngological",
+    "musculoskeletal",
+    "cardiovascular",
+    "gastrointestinal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated plasma very long-chain fatty acids (C26:0, C24:0)",
+      "Adrenal hormone profile consistent with adrenal insufficiency",
+      "Abnormal ACTH stimulation test"
+    ],
+    "imaging": [
+      "MRI showing symmetric demyelination of parieto-occipital white matter",
+      "Contrast enhancement at lesion margins in active disease"
+    ],
+    "genetic": [
+      "Pathogenic variants in ABCD1 gene on X chromosome"
+    ],
+    "other": [
+      "Histopathology showing demyelination and inflammatory infiltrates",
+      "Nerve conduction studies showing peripheral neuropathy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "metachromatic-leukodystrophy",
+      "distinguishingFeatures": [
+        "Arylsulfatase A deficiency",
+        "Different pattern of white matter involvement on MRI",
+        "Absence of elevated VLCFAs"
+      ]
+    },
+    {
+      "diseaseId": "adrenomyeloneuropathy",
+      "distinguishingFeatures": [
+        "Adult-onset variant of ALD with predominant spinal cord involvement",
+        "Slower progression",
+        "Less prominent cerebral demyelination"
+      ]
+    },
+    {
+      "diseaseId": "multiple-sclerosis",
+      "distinguishingFeatures": [
+        "Relapsing-remitting course",
+        "Oligoclonal bands in CSF",
+        "MRI lesions with periventricular distribution but different pattern"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive neurological decline in a young male",
+    "Signs of adrenal crisis or unexplained adrenal insufficiency",
+    "Characteristic demyelinating lesions on brain MRI"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Endocrinologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Moser HW, et al. X-linked adrenoleukodystrophy. Nat Rev Dis Primers. 2020;6(1):16.",
+    "Kemp S, et al. ABCD1 mutations and the X-linked adrenoleukodystrophy phenotype. Hum Mutat. 2016;37(5):516-527.",
+    "Berger J, et al. Adrenoleukodystrophy: pathogenesis, diagnosis, and therapy. JAMA Neurol. 2014;71(3):329-335."
+  ],
+  "confidenceInData": "medium"
+}

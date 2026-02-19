@@ -1,8 +1,26 @@
 {
   "id": "type-1-diabetes",
   "name": "Type 1 Diabetes Mellitus",
-  "aliases": ["T1DM", "Type 1 Diabetes", "Insulin-Dependent Diabetes Mellitus", "IDDM", "Juvenile Diabetes", "Autoimmune Diabetes"],
-  "icd10Codes": ["E10.0", "E10.1", "E10.2", "E10.3", "E10.4", "E10.5", "E10.6", "E10.65", "E10.8", "E10.9"],
+  "aliases": [
+    "T1DM",
+    "Type 1 Diabetes",
+    "Insulin-Dependent Diabetes Mellitus",
+    "IDDM",
+    "Juvenile Diabetes",
+    "Autoimmune Diabetes"
+  ],
+  "icd10Codes": [
+    "E10.0",
+    "E10.1",
+    "E10.2",
+    "E10.3",
+    "E10.4",
+    "E10.5",
+    "E10.6",
+    "E10.65",
+    "E10.8",
+    "E10.9"
+  ],
   "omimId": "222100",
   "orphanetId": "233",
   "prevalence": {
@@ -11,49 +29,169 @@
     "classification": "common"
   },
   "demographics": {
-    "typicalOnsetAge": { "min": 4, "max": 40, "peak": 13 },
+    "typicalOnsetAge": {
+      "min": 4,
+      "max": 40,
+      "peak": 13
+    },
     "sexPredilection": "equal",
-    "ethnicAssociations": ["Finnish and Sardinian (highest incidence)", "Northern European", "All ethnicities; lowest in East Asian populations"]
+    "ethnicAssociations": [
+      "Finnish and Sardinian (highest incidence)",
+      "Northern European",
+      "All ethnicities; lowest in East Asian populations"
+    ]
   },
   "diagnosticCriteria": {
     "formalCriteriaName": "ADA Diagnostic Criteria for Type 1 Diabetes",
     "criteria": [
-      { "id": "t1d-1", "description": "Fasting plasma glucose >= 126 mg/dL (7.0 mmol/L)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "t1d-2", "description": "2-hour plasma glucose >= 200 mg/dL (11.1 mmol/L) during OGTT", "category": "major", "requiredForDiagnosis": false },
-      { "id": "t1d-3", "description": "HbA1c >= 6.5%", "category": "major", "requiredForDiagnosis": false },
-      { "id": "t1d-4", "description": "Random plasma glucose >= 200 mg/dL (11.1 mmol/L) with classic hyperglycemic symptoms", "category": "major", "requiredForDiagnosis": false },
-      { "id": "t1d-5", "description": "Positive islet autoantibodies: anti-GAD65, anti-IA2, anti-ZnT8, anti-insulin (IAA), or anti-ICA", "category": "major", "requiredForDiagnosis": false },
-      { "id": "t1d-6", "description": "Low or absent C-peptide indicating absolute insulin deficiency", "category": "major", "requiredForDiagnosis": false }
+      {
+        "id": "t1d-1",
+        "description": "Fasting plasma glucose >= 126 mg/dL (7.0 mmol/L)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "t1d-2",
+        "description": "2-hour plasma glucose >= 200 mg/dL (11.1 mmol/L) during OGTT",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "t1d-3",
+        "description": "HbA1c >= 6.5%",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "t1d-4",
+        "description": "Random plasma glucose >= 200 mg/dL (11.1 mmol/L) with classic hyperglycemic symptoms",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "t1d-5",
+        "description": "Positive islet autoantibodies: anti-GAD65, anti-IA2, anti-ZnT8, anti-insulin (IAA), or anti-ICA",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "t1d-6",
+        "description": "Low or absent C-peptide indicating absolute insulin deficiency",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
     ],
     "minimumForDiagnosis": "Hyperglycemia meeting ADA criteria plus evidence of autoimmune beta-cell destruction (islet autoantibodies) and/or clinical presentation consistent with T1D (acute onset, ketosis-prone, insulin-dependent)",
     "notes": "ADA staging: Stage 1 (2+ autoantibodies, normoglycemia), Stage 2 (2+ autoantibodies, dysglycemia), Stage 3 (clinical diabetes). LADA (latent autoimmune diabetes in adults) presents later with slower progression."
   },
   "symptoms": {
     "pathognomonic": [
-      { "symptomName": "Diabetic ketoacidosis at presentation", "snomedCode": "420422005", "frequency": 0.30, "bodySystem": "Endocrine/Metabolic", "notes": "DKA as initial presentation in ~30% of new diagnoses; characterized by hyperglycemia, ketonemia, metabolic acidosis" },
-      { "symptomName": "Rapid onset of insulin-dependent hyperglycemia with ketosis", "frequency": 0.80, "bodySystem": "Endocrine" }
+      {
+        "symptomName": "Diabetic ketoacidosis at presentation",
+        "snomedCode": "420422005",
+        "frequency": 0.3,
+        "bodySystem": "endocrine",
+        "notes": "DKA as initial presentation in ~30% of new diagnoses; characterized by hyperglycemia, ketonemia, metabolic acidosis"
+      },
+      {
+        "symptomName": "Rapid onset of insulin-dependent hyperglycemia with ketosis",
+        "frequency": 0.8,
+        "bodySystem": "endocrine"
+      }
     ],
     "common": [
-      { "symptomName": "Polyuria", "snomedCode": "28442001", "frequency": 0.80, "bodySystem": "Renal/Endocrine" },
-      { "symptomName": "Polydipsia", "snomedCode": "17173007", "frequency": 0.80, "bodySystem": "Constitutional" },
-      { "symptomName": "Unintentional weight loss", "snomedCode": "89362005", "frequency": 0.60, "bodySystem": "Constitutional" },
-      { "symptomName": "Fatigue", "snomedCode": "84229001", "frequency": 0.70, "bodySystem": "Constitutional" },
-      { "symptomName": "Polyphagia", "snomedCode": "38868003", "frequency": 0.40, "bodySystem": "Constitutional" }
+      {
+        "symptomName": "Polyuria",
+        "snomedCode": "28442001",
+        "frequency": 0.8,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Polydipsia",
+        "snomedCode": "17173007",
+        "frequency": 0.8,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Unintentional weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Polyphagia",
+        "snomedCode": "38868003",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      }
     ],
     "occasional": [
-      { "symptomName": "Blurred vision", "snomedCode": "111516008", "frequency": 0.20, "bodySystem": "Ocular" },
-      { "symptomName": "Recurrent infections (candidiasis, UTI)", "snomedCode": "78048006", "frequency": 0.15, "bodySystem": "Infectious" },
-      { "symptomName": "Nausea and vomiting (DKA)", "snomedCode": "422587007", "frequency": 0.25, "bodySystem": "Gastrointestinal" },
-      { "symptomName": "Abdominal pain (DKA)", "snomedCode": "21522001", "frequency": 0.20, "bodySystem": "Gastrointestinal" },
-      { "symptomName": "Enuresis in children (new onset)", "snomedCode": "8009008", "frequency": 0.30, "bodySystem": "Renal" }
+      {
+        "symptomName": "Blurred vision",
+        "snomedCode": "111516008",
+        "frequency": 0.2,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Recurrent infections (candidiasis, UTI)",
+        "snomedCode": "78048006",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Nausea and vomiting (DKA)",
+        "snomedCode": "422587007",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain (DKA)",
+        "snomedCode": "21522001",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Enuresis in children (new onset)",
+        "snomedCode": "8009008",
+        "frequency": 0.3,
+        "bodySystem": "renal"
+      }
     ],
     "rare": [
-      { "symptomName": "Cerebral edema (DKA complication in children)", "snomedCode": "2032001", "frequency": 0.01, "bodySystem": "Neurological", "notes": "Rare but potentially fatal; occurs during DKA treatment" },
-      { "symptomName": "Honeymoon phase (transient remission)", "frequency": 0.30, "bodySystem": "Endocrine", "notes": "Partial remission with decreased insulin requirements; typically lasts weeks to months after diagnosis" },
-      { "symptomName": "Kussmaul breathing (DKA)", "snomedCode": "51615001", "frequency": 0.15, "bodySystem": "Pulmonary" }
+      {
+        "symptomName": "Cerebral edema (DKA complication in children)",
+        "snomedCode": "2032001",
+        "frequency": 0.01,
+        "bodySystem": "neurological",
+        "notes": "Rare but potentially fatal; occurs during DKA treatment"
+      },
+      {
+        "symptomName": "Honeymoon phase (transient remission)",
+        "frequency": 0.3,
+        "bodySystem": "endocrine",
+        "notes": "Partial remission with decreased insulin requirements; typically lasts weeks to months after diagnosis"
+      },
+      {
+        "symptomName": "Kussmaul breathing (DKA)",
+        "snomedCode": "51615001",
+        "frequency": 0.15,
+        "bodySystem": "respiratory"
+      }
     ]
   },
-  "systemsAffected": ["Endocrine", "Cardiovascular", "Renal", "Neurological", "Ocular", "Vascular"],
+  "systemsAffected": [
+    "endocrine",
+    "cardiovascular",
+    "renal",
+    "neurological",
+    "ophthalmological"
+  ],
   "keyFindings": {
     "laboratory": [
       "Hyperglycemia (fasting >=126, random >=200 mg/dL)",
@@ -85,10 +223,42 @@
     ]
   },
   "differentialDiagnoses": [
-    { "diseaseId": "type-2-diabetes", "distinguishingFeatures": ["Obesity/metabolic syndrome", "Family history", "Insulin resistance rather than deficiency", "Negative autoantibodies", "C-peptide often elevated"] },
-    { "diseaseId": "maturity-onset-diabetes-of-the-young", "distinguishingFeatures": ["Autosomal dominant inheritance", "Negative autoantibodies", "Specific gene mutations (GCK, HNF1A)", "Mild fasting hyperglycemia (GCK-MODY)"] },
-    { "diseaseId": "latent-autoimmune-diabetes-in-adults", "distinguishingFeatures": ["Adult onset (>30 years)", "Slower progression to insulin dependence", "Positive autoantibodies (especially GAD65)", "Initially may not require insulin"] },
-    { "diseaseId": "secondary-diabetes", "distinguishingFeatures": ["Identifiable cause (pancreatitis, Cushing's, medications)", "No islet autoantibodies", "Clinical context"] }
+    {
+      "diseaseId": "type-2-diabetes",
+      "distinguishingFeatures": [
+        "Obesity/metabolic syndrome",
+        "Family history",
+        "Insulin resistance rather than deficiency",
+        "Negative autoantibodies",
+        "C-peptide often elevated"
+      ]
+    },
+    {
+      "diseaseId": "maturity-onset-diabetes-of-the-young",
+      "distinguishingFeatures": [
+        "Autosomal dominant inheritance",
+        "Negative autoantibodies",
+        "Specific gene mutations (GCK, HNF1A)",
+        "Mild fasting hyperglycemia (GCK-MODY)"
+      ]
+    },
+    {
+      "diseaseId": "latent-autoimmune-diabetes-in-adults",
+      "distinguishingFeatures": [
+        "Adult onset (>30 years)",
+        "Slower progression to insulin dependence",
+        "Positive autoantibodies (especially GAD65)",
+        "Initially may not require insulin"
+      ]
+    },
+    {
+      "diseaseId": "secondary-diabetes",
+      "distinguishingFeatures": [
+        "Identifiable cause (pancreatitis, Cushing's, medications)",
+        "No islet autoantibodies",
+        "Clinical context"
+      ]
+    }
   ],
   "redFlags": [
     "DKA at presentation (pH <7.3, bicarbonate <18, ketones elevated)",
@@ -97,7 +267,11 @@
     "Severe hypoglycemia with loss of consciousness",
     "Signs of associated autoimmune conditions (thyroid disease, celiac, Addison's)"
   ],
-  "specialistType": ["Endocrinology", "Pediatric Endocrinology", "Diabetology"],
+  "specialistType": [
+    "Endocrinology",
+    "Pediatric Endocrinology",
+    "Diabetology"
+  ],
   "lastUpdated": "2026-02-17",
   "references": [
     "American Diabetes Association Professional Practice Committee. Classification and Diagnosis of Diabetes: Standards of Care in Diabetes-2024. Diabetes Care. 2024;47(Supplement_1):S20-S42.",

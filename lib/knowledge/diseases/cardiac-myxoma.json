@@ -1,0 +1,190 @@
+{
+  "id": "cardiac-myxoma",
+  "name": "Cardiac Myxoma",
+  "aliases": [
+    "Atrial Myxoma",
+    "Primary Cardiac Myxoma"
+  ],
+  "icd10Codes": [
+    "D15.1"
+  ],
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 30
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Echocardiographic Diagnostic Criteria for Cardiac Myxoma",
+    "criteria": [
+      {
+        "id": "echocardiographic-visualization",
+        "description": "Visualization of an intracardiac mass, typically in the left atrium, on echocardiography",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathological-confirmation",
+        "description": "Histopathological confirmation of myxoma tissue after surgical excision",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-symptoms",
+        "description": "Presence of obstructive cardiac symptoms or embolic phenomena consistent with myxoma",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Echocardiographic visualization of an intracardiac mass plus histopathological confirmation",
+    "notes": "Diagnosis is often confirmed post-surgically; echocardiography is the primary diagnostic tool."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Positional exertional dyspnea",
+        "frequency": 0.85,
+        "bodySystem": "respiratory",
+        "notes": "Symptoms worsen with changes in body position due to tumor mobility"
+      },
+      {
+        "symptomName": "Tumor plop (early diastolic sound)",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Characteristic auscultatory finding"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Embolic stroke or transient ischemic attack",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "notes": "Due to tumor emboli"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.5,
+        "bodySystem": "neurological",
+        "notes": "Due to obstruction or embolic events"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fever",
+        "frequency": 0.3,
+        "bodySystem": "constitutional",
+        "notes": "May be due to cytokine release"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.2,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Peripheral embolic phenomena (e.g., digital ischemia)",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden cardiac death",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Secondary to cerebral embolism"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.02,
+        "bodySystem": "musculoskeletal",
+        "notes": "Paraneoplastic phenomenon"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "respiratory",
+    "constitutional",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated ESR and CRP due to inflammatory cytokine release",
+      "Anemia of chronic disease"
+    ],
+    "imaging": [
+      "Echocardiography showing a pedunculated mass in the left atrium",
+      "Cardiac MRI demonstrating tumor size and attachment",
+      "Chest X-ray may show cardiomegaly"
+    ],
+    "genetic": [
+      "Rare familial cases associated with Carney complex (PRKAR1A gene mutations)"
+    ],
+    "other": [
+      "Histopathology showing myxoid stroma with scattered cells"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "atrial-thrombus",
+      "distinguishingFeatures": [
+        "Lack of pedunculated mobile mass on echocardiography",
+        "Associated with atrial fibrillation or low flow states",
+        "No histopathological myxoma tissue"
+      ]
+    },
+    {
+      "diseaseId": "papillary-fibroelastoma",
+      "distinguishingFeatures": [
+        "Smaller size, often on valves",
+        "Different echocardiographic appearance",
+        "Histology distinct from myxoma"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset of embolic stroke symptoms",
+    "Severe positional dyspnea or syncope",
+    "New cardiac murmur with systemic embolism"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Cardiothoracic Surgeon",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Mayo Clinic Proceedings, Cardiac Myxoma: Clinical and Echocardiographic Features, 2020",
+    "UpToDate: Primary Cardiac Tumors, 2024",
+    "Braunwald's Heart Disease, 11th Edition, 2019"
+  ],
+  "confidenceInData": "medium"
+}

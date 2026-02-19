@@ -1,0 +1,213 @@
+{
+  "id": "pulmonary-arteriovenous-malformations",
+  "name": "Pulmonary Arteriovenous Malformations",
+  "aliases": [
+    "Pulmonary AVMs",
+    "Pulmonary Arteriovenous Fistulas"
+  ],
+  "icd10Codes": [
+    "Q27.2"
+  ],
+  "omimId": "175780",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "range": "0.002%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Curaçao Criteria (for Hereditary Hemorrhagic Telangiectasia-related PAVMs)",
+    "criteria": [
+      {
+        "id": "radiologic-evidence",
+        "description": "Presence of one or more pulmonary arteriovenous malformations confirmed by contrast-enhanced chest CT or pulmonary angiography",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hypoxemia",
+        "description": "Evidence of hypoxemia or right-to-left shunting demonstrated by arterial blood gas analysis or contrast echocardiography",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Associated clinical features such as dyspnea, cyanosis, or clubbing",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Family history of hereditary hemorrhagic telangiectasia or PAVMs",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Radiologic evidence of PAVMs plus either hypoxemia or clinical features consistent with right-to-left shunting",
+    "notes": "Diagnosis is often supported by genetic testing if hereditary hemorrhagic telangiectasia is suspected."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Digital clubbing",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "notes": "Indicative of chronic hypoxemia"
+      },
+      {
+        "symptomName": "Cyanosis",
+        "frequency": 0.85,
+        "bodySystem": "constitutional",
+        "notes": "Central cyanosis due to right-to-left shunting"
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.8,
+        "bodySystem": "respiratory",
+        "notes": "Common presenting symptom"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.6,
+        "bodySystem": "respiratory",
+        "notes": "May indicate rupture or bleeding from PAVMs"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Due to chronic hypoxemia"
+      },
+      {
+        "symptomName": "Platypnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory",
+        "notes": "Dyspnea worsens in upright position"
+      },
+      {
+        "symptomName": "Orthodeoxia",
+        "frequency": 0.5,
+        "bodySystem": "respiratory",
+        "notes": "Oxygen desaturation in upright posture"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Neurological deficits due to paradoxical emboli",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Stroke or brain abscess secondary to right-to-left shunting"
+      },
+      {
+        "symptomName": "Epistaxis",
+        "frequency": 0.2,
+        "bodySystem": "otolaryngological",
+        "notes": "Common in hereditary hemorrhagic telangiectasia-associated cases"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to hypoxemia-induced cardiac strain"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.1,
+        "bodySystem": "cardiovascular",
+        "notes": "May occur with PAVM rupture or high-output cardiac failure"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "High-output cardiac failure",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to large or multiple PAVMs"
+      },
+      {
+        "symptomName": "Brain abscess",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Complication from paradoxical embolism"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "notes": "Secondary to cerebral ischemia or abscess"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "cardiovascular",
+    "neurological",
+    "musculoskeletal",
+    "constitutional",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Arterial blood gas showing hypoxemia with normal or low PaCO2",
+      "Contrast echocardiography demonstrating right-to-left shunt"
+    ],
+    "imaging": [
+      "Contrast-enhanced chest CT showing direct pulmonary artery to vein connections",
+      "Pulmonary angiography confirming arteriovenous malformations"
+    ],
+    "genetic": [
+      "Mutations in ENG, ACVRL1, or SMAD4 genes in hereditary hemorrhagic telangiectasia-associated cases"
+    ],
+    "other": [
+      "Bubble contrast echocardiography positive for intrapulmonary shunting",
+      "Physical exam findings such as digital clubbing and cyanosis"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hereditary-hemorrhagic-telangiectasia",
+      "distinguishingFeatures": [
+        "Presence of mucocutaneous telangiectasias",
+        "Recurrent epistaxis",
+        "Family history of autosomal dominant inheritance"
+      ]
+    },
+    {
+      "diseaseId": "pulmonary-embolism",
+      "distinguishingFeatures": [
+        "Acute onset dyspnea and chest pain",
+        "Absence of direct artery-to-vein malformations on imaging",
+        "Elevated D-dimer and evidence of thrombus"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset hemoptysis",
+    "Neurological symptoms suggestive of stroke or brain abscess",
+    "Severe hypoxemia refractory to oxygen therapy"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Interventional Radiologist",
+    "Cardiologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Shovlin CL. Pulmonary arteriovenous malformations. Am J Respir Crit Care Med. 2014;190(11):1217-1228.",
+    "Curaçao Criteria for diagnosis of hereditary hemorrhagic telangiectasia. Am J Med Genet. 1999;83(1):1-7.",
+    "Faughnan ME, et al. Pulmonary arteriovenous malformations: diagnosis and treatment. Chest. 2011;140(3):1033-1044."
+  ],
+  "confidenceInData": "medium"
+}

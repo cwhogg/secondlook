@@ -1,0 +1,210 @@
+{
+  "id": "danon-disease",
+  "name": "Danon Disease",
+  "aliases": [
+    "LAMP2 Deficiency",
+    "Danon Cardiomyopathy"
+  ],
+  "icd10Codes": [
+    "E75.4"
+  ],
+  "omimId": "300257",
+  "orphanetId": "ORPHA:98830",
+  "prevalence": {
+    "estimate": "1 in 500,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 40,
+      "peak": 20
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Danon Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "hypertrophic-cardiomyopathy",
+        "description": "Presence of hypertrophic cardiomyopathy confirmed by imaging",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "LAMP2-mutation",
+        "description": "Identification of pathogenic mutation in the LAMP2 gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "skeletal-myopathy",
+        "description": "Clinical or biopsy evidence of skeletal muscle involvement",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "intellectual-disability",
+        "description": "Presence of intellectual disability or cognitive impairment",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cardiac-conduction-defects",
+        "description": "Electrocardiographic evidence of conduction abnormalities",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Hypertrophic cardiomyopathy plus pathogenic LAMP2 mutation",
+    "notes": "Muscle biopsy showing autophagic vacuoles with sarcolemmal features supports diagnosis"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hypertrophic cardiomyopathy",
+        "frequency": 0.95,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "LAMP2 gene mutation",
+        "frequency": 1,
+        "bodySystem": "constitutional",
+        "notes": "Genetic hallmark of Danon disease"
+      },
+      {
+        "symptomName": "Autophagic vacuoles with sarcolemmal features in muscle biopsy",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Skeletal myopathy with proximal muscle weakness",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cardiac conduction defects including Wolff-Parkinson-White syndrome",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild intellectual disability",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Arrhythmias including ventricular tachycardia",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.35,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild learning difficulties",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Respiratory muscle weakness",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Dilated cardiomyopathy in late stages",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hearing loss",
+        "frequency": 0.02,
+        "bodySystem": "otolaryngological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "musculoskeletal",
+    "neurological",
+    "constitutional",
+    "gastrointestinal",
+    "respiratory",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum creatine kinase (CK)",
+      "Elevated liver enzymes in some cases"
+    ],
+    "imaging": [
+      "Echocardiogram showing hypertrophic cardiomyopathy",
+      "Cardiac MRI demonstrating myocardial fibrosis"
+    ],
+    "genetic": [
+      "Pathogenic variants in LAMP2 gene"
+    ],
+    "other": [
+      "Muscle biopsy showing autophagic vacuoles with sarcolemmal features"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hypertrophic-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Absence of LAMP2 mutation",
+        "Lack of skeletal myopathy and intellectual disability"
+      ]
+    },
+    {
+      "diseaseId": "pompe-disease",
+      "distinguishingFeatures": [
+        "Acid alpha-glucosidase deficiency",
+        "Predominant glycogen accumulation without LAMP2 mutation"
+      ]
+    },
+    {
+      "diseaseId": "fabry-disease",
+      "distinguishingFeatures": [
+        "Alpha-galactosidase A deficiency",
+        "Characteristic angiokeratomas and neuropathic pain"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Early onset hypertrophic cardiomyopathy in a young male",
+    "Conduction abnormalities including Wolff-Parkinson-White syndrome",
+    "Skeletal muscle weakness combined with cognitive impairment"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Neurologist",
+    "Geneticist",
+    "Metabolic specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Nishino I, Fu J, Tanji K, et al. Primary LAMP-2 deficiency causes X-linked vacuolar cardiomyopathy and myopathy (Danon disease). Nature. 2000;406(6798):906-910.",
+    "Marin-Garcia J, Goldenthal MJ. Danon disease: a unique autophagic vacuolar myopathy. Cardiovasc Pathol. 2002;11(3):169-176.",
+    "Boucek D, et al. Danon disease: clinical features, evaluation, and management. Heart Fail Rev. 2011;16(3):271-279."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,220 @@
+{
+  "id": "familial-hemiplegic-migraine-type-2",
+  "name": "Familial Hemiplegic Migraine Type 2",
+  "aliases": [
+    "FHM2",
+    "Familial Hemiplegic Migraine ATP1A2-related"
+  ],
+  "icd10Codes": [
+    "G43.8"
+  ],
+  "omimId": "602481",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 50,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "International Classification of Headache Disorders (ICHD-3) Criteria for Familial Hemiplegic Migraine",
+    "criteria": [
+      {
+        "id": "family-history",
+        "description": "At least one first- or second-degree relative with hemiplegic migraine",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "motor-aura",
+        "description": "Presence of motor weakness (hemiparesis) during aura",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mutation-atp1a2",
+        "description": "Identification of pathogenic mutation in ATP1A2 gene",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "migraine-headache",
+        "description": "Migraine headache fulfilling ICHD criteria with aura",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-other-causes",
+        "description": "Exclusion of other causes of hemiparesis and migraine-like symptoms",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of migraine with motor aura (hemiparesis) and family history of hemiplegic migraine; genetic testing supportive but not mandatory",
+    "notes": "Genetic testing for ATP1A2 mutations confirms diagnosis but clinical criteria remain primary."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hemiparesis during migraine aura",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Transient unilateral motor weakness"
+      },
+      {
+        "symptomName": "Aura with visual disturbances",
+        "frequency": 0.8,
+        "bodySystem": "ophthalmological",
+        "notes": "Scintillating scotoma, visual field defects"
+      },
+      {
+        "symptomName": "Prolonged aura lasting more than 60 minutes",
+        "frequency": 0.7,
+        "bodySystem": "neurological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Unilateral throbbing headache",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Phonophobia",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Sensory aura (paresthesia)",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.4,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Confusion or altered consciousness",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Transient aphasia",
+        "frequency": 0.2,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Permanent neurological deficits",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Rarely, attacks may cause lasting damage"
+      },
+      {
+        "symptomName": "Coma",
+        "frequency": 0.02,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Fever during attacks",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological",
+    "gastrointestinal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal routine blood tests",
+      "CSF analysis usually normal during attacks"
+    ],
+    "imaging": [
+      "Brain MRI typically normal",
+      "Occasional transient cortical edema during attacks on MRI"
+    ],
+    "genetic": [
+      "Pathogenic mutations in ATP1A2 gene on chromosome 1q23"
+    ],
+    "other": [
+      "Electroencephalogram (EEG) may show slowing during attacks"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "sporadic-hemiplegic-migraine",
+      "distinguishingFeatures": [
+        "No family history",
+        "Similar clinical presentation but sporadic occurrence"
+      ]
+    },
+    {
+      "diseaseId": "stroke",
+      "distinguishingFeatures": [
+        "Sudden onset permanent neurological deficits",
+        "Imaging evidence of infarction",
+        "Absence of typical migraine aura features"
+      ]
+    },
+    {
+      "diseaseId": "transient-ischemic-attack",
+      "distinguishingFeatures": [
+        "Brief neurological deficits without headache",
+        "Vascular risk factors present",
+        "No prolonged aura symptoms"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset of focal neurological deficit without headache",
+    "Progressive neurological deterioration",
+    "Signs of infection or fever during neurological symptoms"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Geneticist",
+    "Headache specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "International Classification of Headache Disorders, 3rd edition (ICHD-3), 2018",
+    "Ophoff RA et al. Familial hemiplegic migraine and episodic ataxia type-2 are caused by mutations in the Ca2+ channel gene CACNL1A4. Cell. 1996.",
+    "De Fusco M et al. Haploinsufficiency of ATP1A2 encoding the Na+/K+ pump alpha2 subunit associated with familial hemiplegic migraine type 2. Nat Genet. 2003."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,226 @@
+{
+  "id": "evans-syndrome",
+  "name": "Evans Syndrome",
+  "aliases": [
+    "Autoimmune Hemolytic Anemia with Immune Thrombocytopenia",
+    "Autoimmune Cytopenia Syndrome"
+  ],
+  "icd10Codes": [
+    "D69.3",
+    "D59.1"
+  ],
+  "omimId": "606214",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 30
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Evans Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "autoimmune-hemolytic-anemia",
+        "description": "Presence of autoimmune hemolytic anemia confirmed by positive direct antiglobulin (Coombs) test",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immune-thrombocytopenia",
+        "description": "Immune thrombocytopenia with platelet count <100,000/µL and exclusion of other causes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-secondary-causes",
+        "description": "Exclusion of secondary causes such as systemic lupus erythematosus, lymphoproliferative disorders, or infections",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sequential-or-simultaneous-cytopenias",
+        "description": "Simultaneous or sequential occurrence of autoimmune hemolytic anemia and immune thrombocytopenia",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bone-marrow-examination",
+        "description": "Bone marrow examination showing normal or increased megakaryocytes without evidence of malignancy",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of autoimmune hemolytic anemia and immune thrombocytopenia with exclusion of secondary causes",
+    "notes": "Diagnosis is clinical and supported by laboratory findings; other autoimmune cytopenias may be present."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Autoimmune hemolytic anemia",
+        "frequency": 0.95,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Immune thrombocytopenia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Positive direct antiglobulin (Coombs) test",
+        "frequency": 0.85,
+        "bodySystem": "hematological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue due to anemia",
+        "frequency": 0.75,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Petechiae and purpura",
+        "frequency": 0.7,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Jaundice from hemolysis",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mucosal bleeding",
+        "frequency": 0.6,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.4,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.3,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Epistaxis",
+        "frequency": 0.25,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Abdominal pain due to splenic infarction or enlargement",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Transient neurological symptoms secondary to anemia",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Autoimmune neutropenia",
+        "frequency": 0.08,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Severe bleeding episodes",
+        "frequency": 0.05,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Secondary autoimmune disorders (e.g., lupus erythematosus)",
+        "frequency": 0.03,
+        "bodySystem": "immunological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "constitutional",
+    "dermatological",
+    "renal",
+    "gastrointestinal",
+    "neurological",
+    "otolaryngological",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive direct antiglobulin (Coombs) test",
+      "Anemia with reticulocytosis",
+      "Thrombocytopenia",
+      "Elevated lactate dehydrogenase (LDH)",
+      "Elevated indirect bilirubin",
+      "Low haptoglobin"
+    ],
+    "imaging": [
+      "Splenomegaly on abdominal ultrasound or CT"
+    ],
+    "genetic": [
+      "No specific genetic mutation identified; may be associated with immune dysregulation genes"
+    ],
+    "other": [
+      "Bone marrow biopsy showing normal or increased megakaryocytes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "systemic-lupus-erythematosus",
+      "distinguishingFeatures": [
+        "Presence of systemic symptoms (rash, arthritis)",
+        "Positive ANA and other lupus-specific antibodies",
+        "Multisystem involvement beyond hematological"
+      ]
+    },
+    {
+      "diseaseId": "primary-immune-thrombocytopenia",
+      "distinguishingFeatures": [
+        "Isolated thrombocytopenia without hemolytic anemia",
+        "Negative Coombs test",
+        "No evidence of autoimmune hemolysis"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-hemolytic-anemia",
+      "distinguishingFeatures": [
+        "Isolated autoimmune hemolytic anemia without thrombocytopenia",
+        "No immune thrombocytopenia",
+        "May have underlying lymphoproliferative disorder"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe bleeding or hemorrhage",
+    "Rapidly progressive anemia or thrombocytopenia",
+    "Signs of secondary autoimmune or lymphoproliferative disorders"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Immunologist",
+    "Rheumatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Michel M, Chanet V, Dechartres A, et al. The spectrum of Evans syndrome in adults: new insight into the disease based on the analysis of 68 cases. Blood. 2009;114(15):3167-3172.",
+    "Moyo VM, Bussel JB. Evans syndrome: diagnosis and management. Hematology Am Soc Hematol Educ Program. 2017;2017(1):565-571.",
+    "Orphanet: Evans syndrome. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=791"
+  ],
+  "confidenceInData": "medium"
+}

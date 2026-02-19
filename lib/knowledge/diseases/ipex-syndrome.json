@@ -1,0 +1,217 @@
+{
+  "id": "ipex-syndrome",
+  "name": "Immune Dysregulation, Polyendocrinopathy, Enteropathy, X-linked Syndrome",
+  "aliases": [
+    "IPEX Syndrome",
+    "X-linked Autoimmune Polyendocrinopathy Syndrome"
+  ],
+  "icd10Codes": [
+    "D89.8"
+  ],
+  "omimId": "304790",
+  "orphanetId": "795",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 2,
+      "peak": 0.5
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "IPEX Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "foxp3-mutation",
+        "description": "Presence of pathogenic FOXP3 gene mutation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "enteropathy",
+        "description": "Severe early-onset enteropathy with chronic diarrhea",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "polyendocrinopathy",
+        "description": "Autoimmune endocrinopathies such as type 1 diabetes mellitus or thyroiditis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immune-dysregulation",
+        "description": "Evidence of immune dysregulation including elevated IgE and eosinophilia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "dermatologic-manifestations",
+        "description": "Eczematous dermatitis or other autoimmune skin manifestations",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Pathogenic FOXP3 mutation plus presence of enteropathy and at least one autoimmune endocrinopathy",
+    "notes": "Diagnosis is confirmed by genetic testing and clinical presentation; immunological studies support diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Severe early-onset enteropathy with chronic diarrhea",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Autoimmune type 1 diabetes mellitus",
+        "frequency": 0.85,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Eczematous dermatitis",
+        "frequency": 0.75,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Autoimmune thyroiditis",
+        "frequency": 0.65,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Elevated serum IgE levels",
+        "frequency": 0.7,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Eosinophilia",
+        "frequency": 0.6,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.8,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chronic infections",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Autoimmune hemolytic anemia",
+        "frequency": 0.3,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Nephritis",
+        "frequency": 0.2,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hepatitis",
+        "frequency": 0.1,
+        "bodySystem": "constitutional",
+        "notes": "Autoimmune hepatitis reported in some cases"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Neurological manifestations including seizures",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pancreatitis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pulmonary infections",
+        "frequency": 0.07,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "endocrine",
+    "dermatological",
+    "immunological",
+    "hematological",
+    "renal",
+    "musculoskeletal",
+    "neurological",
+    "respiratory",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum IgE",
+      "Peripheral eosinophilia",
+      "Autoantibodies (e.g., anti-islet cell antibodies)",
+      "Elevated inflammatory markers"
+    ],
+    "imaging": [
+      "Intestinal biopsy showing villous atrophy and lymphocytic infiltration",
+      "Possible organomegaly on abdominal ultrasound"
+    ],
+    "genetic": [
+      "Pathogenic mutation in FOXP3 gene on X chromosome"
+    ],
+    "other": [
+      "Immunophenotyping showing reduced regulatory T cells (Tregs)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "autoimmune-polyendocrinopathy-candidiasis-ectodermal-dystrophy",
+      "distinguishingFeatures": [
+        "Presence of chronic mucocutaneous candidiasis",
+        "Mutations in AIRE gene",
+        "Later onset compared to IPEX"
+      ]
+    },
+    {
+      "diseaseId": "severe-combined-immunodeficiency",
+      "distinguishingFeatures": [
+        "Profound T and B cell immunodeficiency",
+        "Absence of autoimmune endocrinopathies",
+        "Different genetic mutations (e.g., IL2RG)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe early-onset intractable diarrhea",
+    "Refractory autoimmune endocrinopathies in male infants",
+    "Eczematous dermatitis with immune dysregulation"
+  ],
+  "specialistType": [
+    "Immunologist",
+    "Endocrinologist",
+    "Gastroenterologist",
+    "Geneticist",
+    "Dermatologist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Wildin RS et al. X-linked neonatal diabetes mellitus, enteropathy and endocrinopathy syndrome is the human equivalent of scurfy mice. Nat Genet. 2001.",
+    "Bacchetta R et al. Immune dysregulation, polyendocrinopathy, enteropathy, X-linked syndrome: a paradigm of immunodeficiency with autoimmunity. Front Immunol. 2018.",
+    "Barzaghi F et al. FOXP3 mutations and IPEX syndrome: clinical and molecular features. J Clin Immunol. 2012."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,8 +1,15 @@
 {
   "id": "igg4-related-disease",
   "name": "IgG4-Related Disease",
-  "aliases": ["IgG4-RD", "IgG4-Related Systemic Disease", "Hyper-IgG4 Disease", "IgG4-Related Sclerosing Disease"],
-  "icd10Codes": ["D89.89"],
+  "aliases": [
+    "IgG4-RD",
+    "IgG4-Related Systemic Disease",
+    "Hyper-IgG4 Disease",
+    "IgG4-Related Sclerosing Disease"
+  ],
+  "icd10Codes": [
+    "D89.89"
+  ],
   "omimId": "",
   "orphanetId": "449432",
   "prevalence": {
@@ -11,52 +18,188 @@
     "classification": "rare"
   },
   "demographics": {
-    "typicalOnsetAge": { "min": 50, "max": 70, "peak": 60 },
+    "typicalOnsetAge": {
+      "min": 50,
+      "max": 70,
+      "peak": 60
+    },
     "sexPredilection": "slight-male",
-    "ethnicAssociations": ["East Asian (Japan, initially described)", "All ethnic groups affected"]
+    "ethnicAssociations": [
+      "East Asian (Japan, initially described)",
+      "All ethnic groups affected"
+    ]
   },
   "diagnosticCriteria": {
     "formalCriteriaName": "2019 ACR/EULAR Classification Criteria for IgG4-Related Disease",
     "criteria": [
-      { "id": "igg4-1", "description": "Characteristic organ involvement (pancreas, biliary tree, salivary glands, lacrimal glands, retroperitoneum, aorta, kidneys, lungs)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "igg4-2", "description": "Elevated serum IgG4 (>135 mg/dL)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "igg4-3", "description": "Histopathology: dense lymphoplasmacytic infiltrate with increased IgG4+ plasma cells (>10/HPF) and IgG4:IgG ratio >40%", "category": "major", "requiredForDiagnosis": false },
-      { "id": "igg4-4", "description": "Storiform fibrosis on biopsy", "category": "major", "requiredForDiagnosis": false },
-      { "id": "igg4-5", "description": "Obliterative phlebitis on biopsy", "category": "major", "requiredForDiagnosis": false },
-      { "id": "igg4-6", "description": "Response to glucocorticoid therapy", "category": "supportive", "requiredForDiagnosis": false },
-      { "id": "igg4-7", "description": "Exclusion criteria: known malignancy, infection, or other autoimmune disease that better explains findings", "category": "major", "requiredForDiagnosis": true }
+      {
+        "id": "igg4-1",
+        "description": "Characteristic organ involvement (pancreas, biliary tree, salivary glands, lacrimal glands, retroperitoneum, aorta, kidneys, lungs)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "igg4-2",
+        "description": "Elevated serum IgG4 (>135 mg/dL)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "igg4-3",
+        "description": "Histopathology: dense lymphoplasmacytic infiltrate with increased IgG4+ plasma cells (>10/HPF) and IgG4:IgG ratio >40%",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "igg4-4",
+        "description": "Storiform fibrosis on biopsy",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "igg4-5",
+        "description": "Obliterative phlebitis on biopsy",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "igg4-6",
+        "description": "Response to glucocorticoid therapy",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "igg4-7",
+        "description": "Exclusion criteria: known malignancy, infection, or other autoimmune disease that better explains findings",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
     ],
     "minimumForDiagnosis": "Entry criterion (characteristic clinical/radiologic involvement of typical organ) plus total inclusion/exclusion criteria score meeting classification threshold",
     "notes": "The 2019 ACR/EULAR criteria use a three-step process: (1) entry criteria (organ involvement), (2) exclusion criteria (must be absent), (3) inclusion criteria with weighted scoring across 8 domains. Serum IgG4 is elevated in only 50-70% of cases."
   },
   "symptoms": {
     "pathognomonic": [
-      { "symptomName": "Tumefactive (mass-forming) lesions in multiple organs simultaneously", "frequency": 0.60, "bodySystem": "Multi-system", "notes": "Characteristic pattern of organ enlargement or mass formation" },
-      { "symptomName": "Storiform fibrosis with obliterative phlebitis on biopsy", "frequency": 0.70, "bodySystem": "Histopathologic", "notes": "Histologic hallmark; matted, swirling fibrosis pattern" }
+      {
+        "symptomName": "Tumefactive (mass-forming) lesions in multiple organs simultaneously",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Characteristic pattern of organ enlargement or mass formation"
+      },
+      {
+        "symptomName": "Storiform fibrosis with obliterative phlebitis on biopsy",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Histologic hallmark; matted, swirling fibrosis pattern"
+      }
     ],
     "common": [
-      { "symptomName": "Painless salivary/lacrimal gland swelling", "snomedCode": "274740004", "frequency": 0.40, "bodySystem": "ENT/Ocular", "notes": "Formerly called Mikulicz disease; bilateral parotid, submandibular, or lacrimal gland enlargement" },
-      { "symptomName": "Autoimmune pancreatitis (Type 1)", "snomedCode": "197456007", "frequency": 0.35, "bodySystem": "Pancreatic", "notes": "Obstructive jaundice; sausage-shaped pancreas" },
-      { "symptomName": "Orbital disease (proptosis, orbital mass)", "snomedCode": "18146001", "frequency": 0.25, "bodySystem": "Ocular" },
-      { "symptomName": "Retroperitoneal fibrosis", "snomedCode": "197808006", "frequency": 0.20, "bodySystem": "Retroperitoneal", "notes": "Ureteral obstruction, hydronephrosis" },
-      { "symptomName": "Constitutional symptoms (mild fatigue, weight loss)", "snomedCode": "84229001", "frequency": 0.30, "bodySystem": "Constitutional" }
+      {
+        "symptomName": "Painless salivary/lacrimal gland swelling",
+        "snomedCode": "274740004",
+        "frequency": 0.4,
+        "bodySystem": "constitutional",
+        "notes": "Formerly called Mikulicz disease; bilateral parotid, submandibular, or lacrimal gland enlargement"
+      },
+      {
+        "symptomName": "Autoimmune pancreatitis (Type 1)",
+        "snomedCode": "197456007",
+        "frequency": 0.35,
+        "bodySystem": "gastrointestinal",
+        "notes": "Obstructive jaundice; sausage-shaped pancreas"
+      },
+      {
+        "symptomName": "Orbital disease (proptosis, orbital mass)",
+        "snomedCode": "18146001",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Retroperitoneal fibrosis",
+        "snomedCode": "197808006",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "notes": "Ureteral obstruction, hydronephrosis"
+      },
+      {
+        "symptomName": "Constitutional symptoms (mild fatigue, weight loss)",
+        "snomedCode": "84229001",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      }
     ],
     "occasional": [
-      { "symptomName": "Sclerosing cholangitis (IgG4-SC)", "snomedCode": "197441003", "frequency": 0.20, "bodySystem": "Hepatobiliary", "notes": "Can mimic primary sclerosing cholangitis or cholangiocarcinoma" },
-      { "symptomName": "Tubulointerstitial nephritis", "snomedCode": "36171008", "frequency": 0.15, "bodySystem": "Renal" },
-      { "symptomName": "Periaortitis/aortitis", "frequency": 0.15, "bodySystem": "Cardiovascular" },
-      { "symptomName": "Lymphadenopathy", "snomedCode": "30746006", "frequency": 0.30, "bodySystem": "Lymphatic" },
-      { "symptomName": "Pulmonary nodules or interstitial lung disease", "snomedCode": "233703007", "frequency": 0.10, "bodySystem": "Pulmonary" }
+      {
+        "symptomName": "Sclerosing cholangitis (IgG4-SC)",
+        "snomedCode": "197441003",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal",
+        "notes": "Can mimic primary sclerosing cholangitis or cholangiocarcinoma"
+      },
+      {
+        "symptomName": "Tubulointerstitial nephritis",
+        "snomedCode": "36171008",
+        "frequency": 0.15,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Periaortitis/aortitis",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "snomedCode": "30746006",
+        "frequency": 0.3,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Pulmonary nodules or interstitial lung disease",
+        "snomedCode": "233703007",
+        "frequency": 0.1,
+        "bodySystem": "respiratory"
+      }
     ],
     "rare": [
-      { "symptomName": "Hypertrophic pachymeningitis", "snomedCode": "45170000", "frequency": 0.05, "bodySystem": "Neurological" },
-      { "symptomName": "Thyroid involvement (Riedel thyroiditis)", "snomedCode": "20917003", "frequency": 0.05, "bodySystem": "Endocrine" },
-      { "symptomName": "Pericarditis or constrictive pericarditis", "snomedCode": "3238004", "frequency": 0.03, "bodySystem": "Cardiovascular" },
-      { "symptomName": "Prostatitis (IgG4-related)", "frequency": 0.05, "bodySystem": "Urogenital" },
-      { "symptomName": "Mediastinal fibrosis", "frequency": 0.03, "bodySystem": "Pulmonary/Mediastinal" }
+      {
+        "symptomName": "Hypertrophic pachymeningitis",
+        "snomedCode": "45170000",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Thyroid involvement (Riedel thyroiditis)",
+        "snomedCode": "20917003",
+        "frequency": 0.05,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Pericarditis or constrictive pericarditis",
+        "snomedCode": "3238004",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Prostatitis (IgG4-related)",
+        "frequency": 0.05,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mediastinal fibrosis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      }
     ]
   },
-  "systemsAffected": ["Pancreatic", "Hepatobiliary", "Salivary/Lacrimal", "Ocular", "Retroperitoneal", "Renal", "Pulmonary", "Cardiovascular", "Neurological", "Lymphatic"],
+  "systemsAffected": [
+    "gastrointestinal",
+    "ophthalmological",
+    "renal",
+    "respiratory",
+    "cardiovascular",
+    "neurological",
+    "immunological"
+  ],
   "keyFindings": {
     "laboratory": [
       "Elevated serum IgG4 (>135 mg/dL; present in 50-70%)",
@@ -85,11 +228,51 @@
     ]
   },
   "differentialDiagnoses": [
-    { "diseaseId": "sjogren-syndrome", "distinguishingFeatures": ["Anti-Ro/La antibodies", "Sicca symptoms predominant", "Lymphocytic infiltrate without storiform fibrosis", "No elevated IgG4"] },
-    { "diseaseId": "primary-sclerosing-cholangitis", "distinguishingFeatures": ["IBD association", "Intrahepatic duct involvement", "No IgG4 elevation", "Does not respond to steroids"] },
-    { "diseaseId": "granulomatosis-with-polyangiitis", "distinguishingFeatures": ["PR3-ANCA positive", "Necrotizing granulomas", "ENT destruction", "Pulmonary cavitating nodules"] },
-    { "diseaseId": "lymphoma", "distinguishingFeatures": ["Monoclonal lymphoid population", "Atypical cells on biopsy", "Flow cytometry abnormalities", "B symptoms more prominent"] },
-    { "diseaseId": "multicentric-castleman-disease", "distinguishingFeatures": ["IL-6 driven", "Multicentric lymphadenopathy", "HHV-8 association", "Different histology"] }
+    {
+      "diseaseId": "sjogren-syndrome",
+      "distinguishingFeatures": [
+        "Anti-Ro/La antibodies",
+        "Sicca symptoms predominant",
+        "Lymphocytic infiltrate without storiform fibrosis",
+        "No elevated IgG4"
+      ]
+    },
+    {
+      "diseaseId": "primary-sclerosing-cholangitis",
+      "distinguishingFeatures": [
+        "IBD association",
+        "Intrahepatic duct involvement",
+        "No IgG4 elevation",
+        "Does not respond to steroids"
+      ]
+    },
+    {
+      "diseaseId": "granulomatosis-with-polyangiitis",
+      "distinguishingFeatures": [
+        "PR3-ANCA positive",
+        "Necrotizing granulomas",
+        "ENT destruction",
+        "Pulmonary cavitating nodules"
+      ]
+    },
+    {
+      "diseaseId": "lymphoma",
+      "distinguishingFeatures": [
+        "Monoclonal lymphoid population",
+        "Atypical cells on biopsy",
+        "Flow cytometry abnormalities",
+        "B symptoms more prominent"
+      ]
+    },
+    {
+      "diseaseId": "multicentric-castleman-disease",
+      "distinguishingFeatures": [
+        "IL-6 driven",
+        "Multicentric lymphadenopathy",
+        "HHV-8 association",
+        "Different histology"
+      ]
+    }
   ],
   "redFlags": [
     "Mass lesion mimicking malignancy (must exclude cancer, especially pancreatic/biliary)",
@@ -99,7 +282,12 @@
     "Failure to respond to glucocorticoids (reconsider diagnosis)",
     "Progressive renal insufficiency from tubulointerstitial nephritis"
   ],
-  "specialistType": ["Rheumatology", "Gastroenterology", "Ophthalmology", "Internal Medicine"],
+  "specialistType": [
+    "Rheumatology",
+    "Gastroenterology",
+    "Ophthalmology",
+    "Internal Medicine"
+  ],
   "lastUpdated": "2026-02-17",
   "references": [
     "Wallace ZS, et al. The 2019 American College of Rheumatology/European League Against Rheumatism Classification Criteria for IgG4-Related Disease. Arthritis Rheumatol. 2020;72(1):7-19.",

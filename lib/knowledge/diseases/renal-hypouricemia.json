@@ -1,0 +1,223 @@
+{
+  "id": "renal-hypouricemia",
+  "name": "Renal Hypouricemia",
+  "aliases": [
+    "Inherited Renal Hypouricemia",
+    "Exercise-Induced Renal Hypouricemia"
+  ],
+  "icd10Codes": [
+    "E88.0"
+  ],
+  "omimId": "220150",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 20
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "East Asian",
+      "Japanese",
+      "Korean"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Renal Hypouricemia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "low-serum-uric-acid",
+        "description": "Serum uric acid concentration below 2.0 mg/dL",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "increased-renal-uric-acid-excretion",
+        "description": "Elevated fractional excretion of uric acid (>10%) indicating renal urate wasting",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exercise-induced-acute-kidney-injury",
+        "description": "History of exercise-induced acute kidney injury or renal colic",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-confirmation",
+        "description": "Identification of pathogenic mutations in SLC22A12 (URAT1) or SLC2A9 genes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of low serum uric acid and increased renal uric acid excretion; genetic confirmation or clinical history supportive",
+    "notes": "Genetic testing is confirmatory but not mandatory for diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hypouricemia (serum uric acid <2.0 mg/dL)",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "notes": "Consistent biochemical hallmark"
+      },
+      {
+        "symptomName": "Exercise-induced acute kidney injury",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "notes": "Often triggered by strenuous exercise"
+      },
+      {
+        "symptomName": "Increased fractional excretion of uric acid",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "notes": "Indicative of renal urate wasting"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Renal colic",
+        "frequency": 0.65,
+        "bodySystem": "renal",
+        "notes": "May be due to uric acid nephrolithiasis"
+      },
+      {
+        "symptomName": "Fatigue post-exercise",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Related to renal injury episodes"
+      },
+      {
+        "symptomName": "Mild proteinuria",
+        "frequency": 0.55,
+        "bodySystem": "renal",
+        "notes": "Transient during acute kidney injury episodes"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.58,
+        "bodySystem": "renal",
+        "notes": "Microscopic or gross during renal injury"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Uric acid nephrolithiasis",
+        "frequency": 0.3,
+        "bodySystem": "renal",
+        "notes": "Formation of uric acid kidney stones"
+      },
+      {
+        "symptomName": "Muscle cramps during or after exercise",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal",
+        "notes": "Possibly related to renal injury"
+      },
+      {
+        "symptomName": "Mild hypertension",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "Reported in some cases"
+      },
+      {
+        "symptomName": "Transient oliguria during acute episodes",
+        "frequency": 0.4,
+        "bodySystem": "renal",
+        "notes": "Reduced urine output during kidney injury"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Chronic kidney disease progression",
+        "frequency": 0.05,
+        "bodySystem": "renal",
+        "notes": "Rare long-term complication"
+      },
+      {
+        "symptomName": "Rhabdomyolysis",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal",
+        "notes": "Rarely reported in severe exercise-induced injury"
+      },
+      {
+        "symptomName": "Acute tubular necrosis",
+        "frequency": 0.07,
+        "bodySystem": "renal",
+        "notes": "Histopathological finding in severe cases"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "musculoskeletal",
+    "cardiovascular",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Serum uric acid <2.0 mg/dL",
+      "Elevated fractional excretion of uric acid (>10%)",
+      "Transient elevation of serum creatinine during acute kidney injury"
+    ],
+    "imaging": [
+      "Renal ultrasound may show nephrolithiasis",
+      "No specific imaging abnormalities outside acute injury episodes"
+    ],
+    "genetic": [
+      "Pathogenic variants in SLC22A12 (URAT1 gene)",
+      "Pathogenic variants in SLC2A9 gene"
+    ],
+    "other": [
+      "History of exercise-induced acute kidney injury",
+      "Family history of hypouricemia or renal injury"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "gout",
+      "distinguishingFeatures": [
+        "Hyperuricemia rather than hypouricemia",
+        "Presence of urate crystal arthritis",
+        "No increased renal uric acid excretion"
+      ]
+    },
+    {
+      "diseaseId": "xanthinuria",
+      "distinguishingFeatures": [
+        "Low serum uric acid due to xanthine oxidase deficiency",
+        "Presence of xanthine stones rather than uric acid stones",
+        "Normal or low fractional excretion of uric acid"
+      ]
+    },
+    {
+      "diseaseId": "fanconi-syndrome",
+      "distinguishingFeatures": [
+        "Generalized proximal tubular dysfunction",
+        "Multiple electrolyte abnormalities",
+        "Glycosuria and aminoaciduria present"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset of acute kidney injury after exercise",
+    "Severe flank pain with hematuria",
+    "Rapidly rising serum creatinine in young patient with hypouricemia"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Geneticist",
+    "Internal Medicine Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Ichida K, Hosoyamada M, et al. Renal hypouricemia: molecular mechanisms and clinical significance. Clin Exp Nephrol. 2012.",
+    "Enomoto A, Kimura H, et al. Molecular identification of a renal urate anion exchanger that regulates blood urate levels. Nature. 2002.",
+    "Matsuo H, Takada T, et al. Mutations in glucose transporter 9 gene SLC2A9 cause renal hypouricemia. Am J Hum Genet. 2008."
+  ],
+  "confidenceInData": "medium"
+}

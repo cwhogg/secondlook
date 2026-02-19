@@ -1,0 +1,217 @@
+{
+  "id": "chronic-q-fever",
+  "name": "Chronic Q Fever",
+  "aliases": [
+    "Persistent Q Fever",
+    "Q Fever Endocarditis"
+  ],
+  "icd10Codes": [
+    "A78"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 45
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Duke Criteria Modified for Q Fever",
+    "criteria": [
+      {
+        "id": "serology",
+        "description": "High phase I IgG antibody titer against Coxiella burnetii (≥1:800)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "echocardiography",
+        "description": "Echocardiographic evidence of endocarditis or vascular infection",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Compatible clinical features such as prolonged fever, vascular infection, or endocarditis",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "molecular-detection",
+        "description": "Detection of Coxiella burnetii DNA by PCR in blood or tissue",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of two major criteria or one major plus three minor criteria",
+    "notes": "Diagnosis often requires integration of serology, imaging, and clinical features due to nonspecific presentation."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "High phase I IgG antibody titer against Coxiella burnetii",
+        "frequency": 0.85,
+        "bodySystem": "immunological",
+        "notes": "Serological hallmark of chronic infection"
+      },
+      {
+        "symptomName": "Culture-negative endocarditis",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Characteristic presentation in chronic Q fever"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Prolonged low-grade fever",
+        "frequency": 0.75,
+        "bodySystem": "constitutional",
+        "notes": "Often intermittent"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Persistent and debilitating"
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": ""
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Unintentional"
+      },
+      {
+        "symptomName": "Vascular infection or aneurysm formation",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "Particularly in patients with vascular grafts"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "notes": "Mild to moderate enlargement"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.35,
+        "bodySystem": "hematological",
+        "notes": ""
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal",
+        "notes": "Joint pain without arthritis"
+      },
+      {
+        "symptomName": "Elevated liver enzymes",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Mild transaminase elevation"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": ""
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Neurological manifestations (e.g., meningitis, encephalitis)",
+        "frequency": 0.08,
+        "bodySystem": "neurological",
+        "notes": "Rare but serious complications"
+      },
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.05,
+        "bodySystem": "dermatological",
+        "notes": "Non-specific"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.04,
+        "bodySystem": "cardiovascular",
+        "notes": ""
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "constitutional",
+    "immunological",
+    "gastrointestinal",
+    "hematological",
+    "neurological",
+    "musculoskeletal",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated phase I IgG antibody titers against Coxiella burnetii",
+      "PCR detection of Coxiella burnetii DNA in blood or tissue",
+      "Mild elevation of liver transaminases",
+      "Anemia of chronic disease"
+    ],
+    "imaging": [
+      "Echocardiography showing vegetations or valvular abnormalities",
+      "CT or MRI revealing vascular aneurysms or infected grafts"
+    ],
+    "genetic": [],
+    "other": [
+      "Negative blood cultures despite clinical endocarditis",
+      "Histopathology showing granulomatous inflammation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "infective-endocarditis",
+      "distinguishingFeatures": [
+        "Positive blood cultures in typical bacterial endocarditis",
+        "Different serological profile",
+        "More acute presentation"
+      ]
+    },
+    {
+      "diseaseId": "tuberculous-endocarditis",
+      "distinguishingFeatures": [
+        "Mycobacterial detection on culture or PCR",
+        "Caseating granulomas on histology",
+        "Different epidemiology"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Persistent fever despite antibiotic therapy",
+    "Culture-negative endocarditis with valvular dysfunction",
+    "Development of vascular aneurysms or graft infections"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Cardiologist",
+    "Microbiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Maurin M, Raoult D. Q fever. Clin Microbiol Rev. 1999 Apr;12(2):518-53.",
+    "Anderson A, Bijlmer H, Fournier PE, et al. Diagnosis and management of Q fever—United States, 2013: recommendations from CDC and the Q Fever Working Group. MMWR Recomm Rep. 2013;62(RR-03):1-30.",
+    "Raoult D, Marrie T, Mege J. Natural history and pathophysiology of Q fever. Lancet Infect Dis. 2005 Apr;5(4):219-26."
+  ],
+  "confidenceInData": "medium"
+}

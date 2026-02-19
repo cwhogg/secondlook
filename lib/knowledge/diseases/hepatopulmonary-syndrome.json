@@ -1,0 +1,202 @@
+{
+  "id": "hepatopulmonary-syndrome",
+  "name": "Hepatopulmonary Syndrome",
+  "aliases": [
+    "HPS",
+    "Liver-induced pulmonary vascular dilatation syndrome"
+  ],
+  "icd10Codes": [
+    "K76.81"
+  ],
+  "prevalence": {
+    "estimate": "1 in 10,000 to 1 in 30,000",
+    "range": "10-30% in patients with liver cirrhosis",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Hepatopulmonary Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "liver-disease",
+        "description": "Presence of chronic liver disease or portal hypertension",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "intrapulmonary-vascular-dilatation",
+        "description": "Evidence of intrapulmonary vascular dilatations demonstrated by contrast-enhanced echocardiography or lung perfusion scan",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "arterial-hypoxemia",
+        "description": "Arterial oxygenation abnormalities with an increased alveolar-arterial oxygen gradient (A-a gradient >15 mmHg) or PaO2 <80 mmHg",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-primary-pulmonary-disease",
+        "description": "Exclusion of intrinsic cardiopulmonary disease causing hypoxemia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of chronic liver disease, intrapulmonary vascular dilatations, and arterial hypoxemia",
+    "notes": "Contrast-enhanced echocardiography is the gold standard for detecting intrapulmonary shunting."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Platypnea (positional dyspnea)",
+        "frequency": 0.75,
+        "bodySystem": "respiratory",
+        "notes": "Dyspnea worsens in the upright position"
+      },
+      {
+        "symptomName": "Orthodeoxia (positional arterial desaturation)",
+        "frequency": 0.7,
+        "bodySystem": "respiratory",
+        "notes": "Oxygen desaturation upon sitting or standing"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Exertional dyspnea",
+        "frequency": 0.85,
+        "bodySystem": "respiratory",
+        "notes": "Shortness of breath on physical activity"
+      },
+      {
+        "symptomName": "Cyanosis",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Bluish discoloration of skin and mucous membranes"
+      },
+      {
+        "symptomName": "Digital clubbing",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "notes": "Bulbous enlargement of distal phalanges"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "notes": "Generalized tiredness"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Awareness of irregular or rapid heartbeat"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Swelling of lower extremities"
+      },
+      {
+        "symptomName": "Orthopnea",
+        "frequency": 0.15,
+        "bodySystem": "respiratory",
+        "notes": "Dyspnea when lying flat"
+      },
+      {
+        "symptomName": "Mild cough",
+        "frequency": 0.4,
+        "bodySystem": "respiratory",
+        "notes": "Nonproductive cough"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.05,
+        "bodySystem": "respiratory",
+        "notes": "Coughing up blood"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular",
+        "notes": "Non-specific chest discomfort"
+      },
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "notes": "Transient loss of consciousness"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "cardiovascular",
+    "musculoskeletal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated alveolar-arterial oxygen gradient",
+      "Hypoxemia on arterial blood gas analysis",
+      "Normal or mildly elevated liver function tests depending on underlying liver disease"
+    ],
+    "imaging": [
+      "Contrast-enhanced transthoracic echocardiography showing delayed appearance of microbubbles in left heart",
+      "Lung perfusion scan demonstrating intrapulmonary shunting",
+      "Chest X-ray often normal or nonspecific"
+    ],
+    "genetic": [],
+    "other": [
+      "Pulse oximetry showing orthodeoxia",
+      "Pulmonary function tests usually normal or mildly reduced diffusion capacity"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "portopulmonary-hypertension",
+      "distinguishingFeatures": [
+        "Pulmonary arterial hypertension with elevated pulmonary artery pressures",
+        "No intrapulmonary vascular dilatations on contrast echocardiography",
+        "Absence of orthodeoxia and platypnea"
+      ]
+    },
+    {
+      "diseaseId": "intracardiac-shunt",
+      "distinguishingFeatures": [
+        "Immediate appearance of microbubbles in left heart on contrast echocardiography",
+        "No liver disease required",
+        "No positional hypoxemia"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe hypoxemia refractory to oxygen therapy",
+    "Rapid progression of dyspnea and cyanosis",
+    "Development of respiratory failure"
+  ],
+  "specialistType": [
+    "Hepatologist",
+    "Pulmonologist",
+    "Cardiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Rodrigues S, et al. Hepatopulmonary syndrome: pathophysiology and clinical features. Eur Respir Rev. 2017.",
+    "Krowka MJ, et al. Hepatopulmonary syndrome: clinical observations and review of the literature. Chest. 1993.",
+    "Schiffer E, et al. Diagnosis and management of hepatopulmonary syndrome. Clin Liver Dis. 2019."
+  ],
+  "confidenceInData": "medium"
+}

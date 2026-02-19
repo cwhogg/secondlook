@@ -1,0 +1,216 @@
+{
+  "id": "mcardle-disease",
+  "name": "Glycogen Storage Disease Type V (McArdle Disease)",
+  "aliases": [
+    "McArdle Disease",
+    "Myophosphorylase Deficiency"
+  ],
+  "icd10Codes": [
+    "E74.3"
+  ],
+  "omimId": "232600",
+  "orphanetId": "795",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.0005%-0.001%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 40,
+      "peak": 10
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "McArdle Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "exercise-intolerance",
+        "description": "History of exercise intolerance with premature fatigue and muscle cramps",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "myophosphorylase-deficiency",
+        "description": "Demonstration of myophosphorylase deficiency in muscle biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in the PYGM gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "second-wind-phenomenon",
+        "description": "Presence of second-wind phenomenon during exercise testing",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "elevated-creatine-kinase",
+        "description": "Elevated serum creatine kinase levels at rest or after exercise",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of exercise intolerance plus either myophosphorylase deficiency on muscle biopsy or pathogenic PYGM mutations",
+    "notes": "Second-wind phenomenon and elevated CK levels support diagnosis but are not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Exercise intolerance with premature fatigue",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal",
+        "notes": "Typically triggered by isometric or dynamic exercise"
+      },
+      {
+        "symptomName": "Second-wind phenomenon",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "notes": "Improvement in exercise tolerance after brief rest"
+      },
+      {
+        "symptomName": "Muscle cramps during or immediately after exercise",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Myoglobinuria (dark urine) after intense exercise",
+        "frequency": 0.65,
+        "bodySystem": "renal",
+        "notes": "Due to rhabdomyolysis"
+      },
+      {
+        "symptomName": "Muscle weakness post-exercise",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue disproportionate to exertion",
+        "frequency": 0.58,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated serum creatine kinase levels",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Muscle stiffness",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Muscle swelling after exercise",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Exercise-induced muscle pain",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mild fixed muscle weakness",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Rhabdomyolysis with acute renal failure",
+        "frequency": 0.05,
+        "bodySystem": "renal",
+        "notes": "Severe complication"
+      },
+      {
+        "symptomName": "Cardiac arrhythmias",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Rarely reported"
+      },
+      {
+        "symptomName": "Respiratory muscle involvement",
+        "frequency": 0.02,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "renal",
+    "hematological",
+    "cardiovascular",
+    "respiratory",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum creatine kinase (CK) levels at rest and post-exercise",
+      "Myoglobinuria following intense exercise"
+    ],
+    "imaging": [
+      "Muscle MRI may show edema or fatty replacement in advanced cases"
+    ],
+    "genetic": [
+      "Pathogenic mutations in PYGM gene causing myophosphorylase deficiency"
+    ],
+    "other": [
+      "Muscle biopsy demonstrating absent or markedly reduced myophosphorylase activity",
+      "Forearm ischemic exercise test showing flat lactate response with exaggerated ammonia rise"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pompe-disease",
+      "distinguishingFeatures": [
+        "Acid maltase deficiency",
+        "Progressive muscle weakness including respiratory muscles",
+        "Cardiomyopathy common"
+      ]
+    },
+    {
+      "diseaseId": "tarui-disease",
+      "distinguishingFeatures": [
+        "Phosphofructokinase deficiency",
+        "Exercise intolerance with hemolysis",
+        "Lactate levels may be low during exercise"
+      ]
+    },
+    {
+      "diseaseId": "mitochondrial-myopathy",
+      "distinguishingFeatures": [
+        "Multisystem involvement",
+        "Elevated lactate at rest and after exercise",
+        "Muscle biopsy with ragged red fibers"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rhabdomyolysis with dark urine and risk of acute renal failure",
+    "Severe muscle pain and swelling after minimal exertion",
+    "Progressive fixed muscle weakness"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Metabolic Specialist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "DiMauro S, et al. McArdle Disease. In: GeneReviews® [Internet]. University of Washington, Seattle; 2020.",
+    "Haller RG, et al. McArdle Disease: Clinical, Biochemical, and Molecular Genetic Features. Muscle Nerve. 2017.",
+    "Orphanet: McArdle Disease. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=795"
+  ],
+  "confidenceInData": "medium"
+}

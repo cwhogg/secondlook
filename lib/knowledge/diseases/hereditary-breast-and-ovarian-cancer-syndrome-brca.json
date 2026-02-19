@@ -1,0 +1,211 @@
+{
+  "id": "hereditary-breast-and-ovarian-cancer-syndrome-brca",
+  "name": "Hereditary Breast and Ovarian Cancer Syndrome (BRCA1/BRCA2)",
+  "aliases": [
+    "HBOC Syndrome",
+    "BRCA1/BRCA2-associated Hereditary Cancer Syndrome"
+  ],
+  "icd10Codes": [
+    "Z15.01",
+    "Z15.09"
+  ],
+  "omimId": "604370",
+  "orphanetId": "565",
+  "prevalence": {
+    "estimate": "1 in 400 to 1 in 800",
+    "range": "0.125%-0.25%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 40
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "Ashkenazi Jewish",
+      "Icelandic",
+      "French Canadian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "National Comprehensive Cancer Network (NCCN) BRCA Testing Criteria",
+    "criteria": [
+      {
+        "id": "family-history-breast-cancer",
+        "description": "Multiple family members with breast cancer diagnosed before age 50",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "personal-history-ovarian-cancer",
+        "description": "Personal history of ovarian, fallopian tube, or primary peritoneal cancer",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "early-onset-breast-cancer",
+        "description": "Breast cancer diagnosed before age 45",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "male-breast-cancer",
+        "description": "Male breast cancer in the individual or family",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "known-brca-pathogenic-variant",
+        "description": "Identification of pathogenic BRCA1 or BRCA2 variant by genetic testing",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Identification of a pathogenic BRCA1 or BRCA2 variant by genetic testing, or meeting multiple major clinical criteria such as early-onset breast cancer and family history of ovarian cancer",
+    "notes": "Genetic testing is the definitive diagnostic method; clinical criteria guide testing eligibility."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Early-onset breast carcinoma",
+        "frequency": 0.85,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "High-grade serous ovarian carcinoma",
+        "frequency": 0.75,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Male breast carcinoma",
+        "frequency": 0.7,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Bilateral breast cancer",
+        "frequency": 0.65,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Fallopian tube carcinoma",
+        "frequency": 0.6,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Pancreatic adenocarcinoma",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Prostate carcinoma (aggressive forms)",
+        "frequency": 0.52,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Peritoneal carcinoma",
+        "frequency": 0.3,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Melanoma",
+        "frequency": 0.25,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Fallopian tube cancer-related abdominal pain",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fatigue related to cancer",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Male prostate cancer with BRCA2 mutation",
+        "frequency": 0.08,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Breast cancer in males under 50",
+        "frequency": 0.05,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Neurological symptoms secondary to paraneoplastic syndromes",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "reproductive",
+    "gastrointestinal",
+    "dermatological",
+    "constitutional",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated CA-125 in ovarian cancer",
+      "Abnormal tumor markers depending on cancer type"
+    ],
+    "imaging": [
+      "Mammography showing suspicious breast lesions",
+      "Pelvic ultrasound or MRI detecting ovarian masses",
+      "CT scan for staging pancreatic or other cancers"
+    ],
+    "genetic": [
+      "Pathogenic variants in BRCA1 gene",
+      "Pathogenic variants in BRCA2 gene"
+    ],
+    "other": [
+      "Family history of breast, ovarian, pancreatic, or prostate cancer",
+      "Histopathology showing high-grade serous carcinoma in ovaries"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "li-fraumeni-syndrome",
+      "distinguishingFeatures": [
+        "TP53 mutation instead of BRCA mutations",
+        "Broader spectrum of cancers including sarcomas and brain tumors",
+        "Earlier onset of diverse malignancies"
+      ]
+    },
+    {
+      "diseaseId": "cowden-syndrome",
+      "distinguishingFeatures": [
+        "PTEN mutation",
+        "Presence of multiple hamartomas and mucocutaneous lesions",
+        "Increased risk of breast cancer but also thyroid and endometrial cancers"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Breast cancer diagnosed before age 45",
+    "Multiple family members with breast or ovarian cancer",
+    "Male breast cancer in the family"
+  ],
+  "specialistType": [
+    "Medical Oncologist",
+    "Genetic Counselor",
+    "Gynecologic Oncologist",
+    "Breast Surgeon"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "NCCN Clinical Practice Guidelines in Oncology: Genetic/Familial High-Risk Assessment: Breast, Ovarian, and Pancreatic, Version 3.2024",
+    "Miki Y, Swensen J, Shattuck-Eidens D, et al. A strong candidate for the breast and ovarian cancer susceptibility gene BRCA1. Science. 1994.",
+    "King MC, Marks JH, Mandell JB. Breast and ovarian cancer risks due to inherited mutations in BRCA1 and BRCA2. Science. 2003."
+  ],
+  "confidenceInData": "medium"
+}

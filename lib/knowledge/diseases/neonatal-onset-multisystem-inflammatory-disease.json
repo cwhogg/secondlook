@@ -1,0 +1,214 @@
+{
+  "id": "neonatal-onset-multisystem-inflammatory-disease",
+  "name": "Neonatal Onset Multisystem Inflammatory Disease",
+  "aliases": [
+    "NOMID",
+    "Chronic Infantile Neurologic Cutaneous Articular Syndrome (CINCA)"
+  ],
+  "icd10Codes": [
+    "M04.1"
+  ],
+  "omimId": "607115",
+  "orphanetId": "2841",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 12,
+      "peak": 1
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "NOMID Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "chronic-infantile-onset",
+        "description": "Onset of symptoms within the first 6 months of life",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "urticarial-rash",
+        "description": "Non-pruritic, migratory urticarial rash",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "chronic-neurologic-inflammation",
+        "description": "Chronic aseptic meningitis or other CNS inflammation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "arthropathy",
+        "description": "Chronic arthropathy or joint swelling",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "elevated-inflammatory-markers",
+        "description": "Persistently elevated acute phase reactants (e.g. ESR, CRP)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of all three major criteria (early onset, urticarial rash, chronic neurologic inflammation)",
+    "notes": "Genetic testing for NLRP3 mutations supports diagnosis but is not mandatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chronic aseptic meningitis",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Non-pruritic urticarial rash",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Early-onset systemic inflammation with fever",
+        "frequency": 0.95,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Arthropathy with joint swelling",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Chronic fatigue and malaise",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sensorineural hearing loss",
+        "frequency": 0.65,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Growth retardation",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Papilledema",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Chronic anemia",
+        "frequency": 0.3,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Epiphyseal overgrowth",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Uveitis",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Amyloidosis",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "notes": "Secondary amyloidosis due to chronic inflammation"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "dermatological",
+    "musculoskeletal",
+    "constitutional",
+    "otolaryngological",
+    "ophthalmological",
+    "hematological",
+    "cardiovascular",
+    "renal",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated ESR and CRP",
+      "Leukocytosis with neutrophilia",
+      "Elevated serum amyloid A"
+    ],
+    "imaging": [
+      "MRI brain showing leptomeningeal enhancement",
+      "X-ray showing epiphyseal overgrowth and joint deformities"
+    ],
+    "genetic": [
+      "Gain-of-function mutations in NLRP3 gene"
+    ],
+    "other": [
+      "CSF pleocytosis with sterile inflammation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "familial-cold-autoinflammatory-syndrome",
+      "distinguishingFeatures": [
+        "Symptoms triggered by cold exposure",
+        "Less severe CNS involvement",
+        "Later onset"
+      ]
+    },
+    {
+      "diseaseId": "muckle-wells-syndrome",
+      "distinguishingFeatures": [
+        "Onset typically after infancy",
+        "Sensorineural hearing loss prominent",
+        "Amyloidosis common but CNS symptoms less severe"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive neurologic deterioration",
+    "Persistent high-grade fever unresponsive to antibiotics",
+    "Rapid onset sensorineural hearing loss"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Neurologist",
+    "Immunologist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Goldbach-Mansky R. Neonatal-onset multisystem inflammatory disease and the cryopyrinopathies. Rheum Dis Clin North Am. 2006;32(3): 567-606.",
+    "Hoffman HM, et al. Mutation of a new gene encoding a putative pyrin-like protein causes familial cold autoinflammatory syndrome and Muckle-Wells syndrome. Nat Genet. 2001;29(3):301-305.",
+    "Sibley CH, et al. The phenotype and genotype of neonatal-onset multisystem inflammatory disease. Arthritis Rheum. 2012;64(3): 895-905."
+  ],
+  "confidenceInData": "medium"
+}

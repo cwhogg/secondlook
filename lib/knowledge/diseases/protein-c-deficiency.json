@@ -1,0 +1,221 @@
+{
+  "id": "protein-c-deficiency",
+  "name": "Protein C Deficiency",
+  "aliases": [
+    "Activated Protein C Resistance",
+    "Inherited Protein C Deficiency"
+  ],
+  "icd10Codes": [
+    "D68.51"
+  ],
+  "omimId": "176860",
+  "orphanetId": "ORPHA:987",
+  "prevalence": {
+    "estimate": "1 in 20,000 to 1 in 40,000",
+    "range": "0.0025%-0.005%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 60,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Caucasian",
+      "European descent"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Protein C Deficiency Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clinical-thrombosis",
+        "description": "History of venous thromboembolism (VTE) or thrombosis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "protein-c-activity",
+        "description": "Reduced protein C activity level below normal reference range",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of thrombophilia or protein C deficiency",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of PROC gene mutation",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of reduced protein C activity with clinical thrombosis or confirmed PROC gene mutation",
+    "notes": "Testing should be performed off anticoagulation therapy and after acute thrombosis resolution to avoid false results."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent venous thromboembolism",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Includes deep vein thrombosis and pulmonary embolism"
+      },
+      {
+        "symptomName": "Purpura fulminans in neonates",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Severe neonatal presentation of homozygous deficiency"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Deep vein thrombosis",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Most frequent thrombotic event"
+      },
+      {
+        "symptomName": "Pulmonary embolism",
+        "frequency": 0.65,
+        "bodySystem": "respiratory",
+        "notes": "Secondary to venous thrombosis"
+      },
+      {
+        "symptomName": "Skin necrosis at warfarin initiation",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "notes": "Warfarin-induced skin necrosis due to protein C depletion"
+      },
+      {
+        "symptomName": "Superficial thrombophlebitis",
+        "frequency": 0.6,
+        "bodySystem": "hematological",
+        "notes": "Inflammation and thrombosis of superficial veins"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Arterial thrombosis",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Less common than venous thrombosis"
+      },
+      {
+        "symptomName": "Recurrent miscarriage",
+        "frequency": 0.25,
+        "bodySystem": "reproductive",
+        "notes": "Associated with thrombophilia in pregnancy"
+      },
+      {
+        "symptomName": "Transient ischemic attacks",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Rare cerebral ischemic events"
+      },
+      {
+        "symptomName": "Leg swelling and pain",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "notes": "Symptoms related to deep vein thrombosis"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Neonatal purpura fulminans with disseminated intravascular coagulation",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "notes": "Severe homozygous deficiency presentation"
+      },
+      {
+        "symptomName": "Chronic venous insufficiency",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular",
+        "notes": "Long-term complication of recurrent thrombosis"
+      },
+      {
+        "symptomName": "Cerebral venous sinus thrombosis",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Rare but serious thrombotic event"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "cardiovascular",
+    "dermatological",
+    "respiratory",
+    "neurological",
+    "reproductive",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Reduced protein C activity and antigen levels",
+      "Normal or elevated D-dimer during acute thrombosis",
+      "Prolonged clotting times may be absent"
+    ],
+    "imaging": [
+      "Ultrasound Doppler showing venous thrombosis",
+      "CT pulmonary angiography for pulmonary embolism",
+      "MRI/MRV for cerebral venous sinus thrombosis"
+    ],
+    "genetic": [
+      "Mutations in PROC gene on chromosome 2",
+      "Heterozygous or homozygous variants affecting protein C function"
+    ],
+    "other": [
+      "Family history of thrombophilia",
+      "Warfarin-induced skin necrosis on anticoagulation initiation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "factor-v-leiden-thrombophilia",
+      "distinguishingFeatures": [
+        "Presence of Factor V Leiden mutation",
+        "Activated protein C resistance assay positive",
+        "Normal protein C activity"
+      ]
+    },
+    {
+      "diseaseId": "antithrombin-deficiency",
+      "distinguishingFeatures": [
+        "Reduced antithrombin activity",
+        "Normal protein C levels",
+        "Similar thrombotic risk but different anticoagulant protein affected"
+      ]
+    },
+    {
+      "diseaseId": "protein-s-deficiency",
+      "distinguishingFeatures": [
+        "Reduced protein S antigen or activity",
+        "Normal protein C levels",
+        "Similar clinical presentation but distinct protein deficiency"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Recurrent unprovoked venous thromboembolism at young age",
+    "Neonatal purpura fulminans or severe skin necrosis",
+    "Warfarin-induced skin necrosis shortly after anticoagulation initiation"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Geneticist",
+    "Vascular Medicine Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Mannucci PM, et al. Protein C deficiency and thrombosis. Blood. 2013.",
+    "Orpha.net. Protein C Deficiency. Orphanet Report Series. 2020.",
+    "American Society of Hematology guidelines on thrombophilia testing. 2021."
+  ],
+  "confidenceInData": "medium"
+}

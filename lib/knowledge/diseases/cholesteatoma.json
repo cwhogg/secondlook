@@ -1,0 +1,185 @@
+{
+  "id": "cholesteatoma",
+  "name": "Cholesteatoma",
+  "aliases": [
+    "Middle ear cholesteatoma",
+    "Epidermoid cyst of middle ear"
+  ],
+  "icd10Codes": [
+    "H71"
+  ],
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 30
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Radiological Diagnostic Criteria for Cholesteatoma",
+    "criteria": [
+      {
+        "id": "otoscopic-visualization",
+        "description": "Presence of a pearly white mass in the middle ear or attic on otoscopic examination",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-confirmation",
+        "description": "CT or MRI evidence of soft tissue mass with bone erosion in the middle ear or mastoid",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "chronic-otorrhea",
+        "description": "History of persistent or recurrent foul-smelling ear discharge",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hearing-loss",
+        "description": "Conductive hearing loss confirmed by audiometry",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of otoscopic visualization of characteristic mass plus imaging confirmation of bone erosion",
+    "notes": "Definitive diagnosis often requires surgical exploration and histopathological confirmation."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Pearly white middle ear mass",
+        "frequency": 0.85,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Bone erosion of ossicles or mastoid",
+        "frequency": 0.75,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chronic foul-smelling otorrhea",
+        "frequency": 0.8,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Conductive hearing loss",
+        "frequency": 0.75,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Ear fullness or pressure sensation",
+        "frequency": 0.65,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Tinnitus",
+        "frequency": 0.6,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Vertigo or imbalance",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Due to labyrinthine fistula or inner ear involvement"
+      },
+      {
+        "symptomName": "Facial nerve weakness or paralysis",
+        "frequency": 0.2,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Postauricular swelling or abscess",
+        "frequency": 0.15,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.1,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Meningitis",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Complication from intracranial extension"
+      },
+      {
+        "symptomName": "Brain abscess",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Labyrinthitis",
+        "frequency": 0.07,
+        "bodySystem": "otolaryngological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "otolaryngological",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated inflammatory markers in case of secondary infection",
+      "Culture of ear discharge may show mixed flora"
+    ],
+    "imaging": [
+      "CT temporal bone showing soft tissue mass with bone erosion",
+      "MRI diffusion-weighted imaging showing restricted diffusion in cholesteatoma"
+    ],
+    "genetic": [],
+    "other": [
+      "Histopathology showing keratinizing squamous epithelium with keratin debris"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chronic-suppurative-otitis-media",
+      "distinguishingFeatures": [
+        "Lack of characteristic pearly white mass",
+        "Less aggressive bone erosion",
+        "Usually no keratin debris"
+      ]
+    },
+    {
+      "diseaseId": "middle-ear-tumors",
+      "distinguishingFeatures": [
+        "Different imaging characteristics",
+        "Absence of keratinizing squamous epithelium",
+        "May present with rapid growth or systemic symptoms"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of hearing loss",
+    "Facial nerve paralysis",
+    "Signs of intracranial infection (e.g., meningitis, brain abscess)"
+  ],
+  "specialistType": [
+    "Otolaryngologist",
+    "Neurotologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Jackler RK, et al. Cholesteatoma: Pathogenesis, clinical features, and diagnosis. Otolaryngol Clin North Am. 2019.",
+    "Sanna M, et al. Management of cholesteatoma. Otolaryngol Clin North Am. 2018.",
+    "American Academy of Otolaryngology–Head and Neck Surgery Foundation Clinical Practice Guideline: Cholesteatoma. 2020."
+  ],
+  "confidenceInData": "medium"
+}

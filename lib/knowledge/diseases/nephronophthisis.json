@@ -1,0 +1,213 @@
+{
+  "id": "nephronophthisis",
+  "name": "Nephronophthisis",
+  "aliases": [
+    "Juvenile nephronophthisis",
+    "Medullary cystic kidney disease type 1"
+  ],
+  "icd10Codes": [
+    "Q61.3"
+  ],
+  "omimId": "256100",
+  "orphanetId": "263",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 18,
+      "peak": 13
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Nephronophthisis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "chronic-tubulointerstitial-nephritis",
+        "description": "Evidence of chronic tubulointerstitial nephritis on renal biopsy or clinical findings",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "medullary-cysts",
+        "description": "Presence of corticomedullary cysts on renal ultrasound or MRI",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history consistent with autosomal recessive inheritance",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-confirmation",
+        "description": "Identification of pathogenic mutations in NPHP genes",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of chronic tubulointerstitial nephritis and medullary cysts with or without genetic confirmation",
+    "notes": "Genetic testing is recommended to confirm diagnosis and subtype."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Polyuria and polydipsia due to impaired urinary concentrating ability",
+        "frequency": 0.85,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Progressive chronic kidney disease leading to end-stage renal failure",
+        "frequency": 0.9,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Medullary corticomedullary cysts detected on imaging",
+        "frequency": 0.75,
+        "bodySystem": "renal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Anemia secondary to chronic kidney disease",
+        "frequency": 0.7,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Growth retardation or failure to thrive",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypertension in later stages",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Fatigue related to renal insufficiency",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Retinitis pigmentosa or other retinal dystrophies (in syndromic forms)",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological",
+        "notes": "Seen in Senior-Løken syndrome variant"
+      },
+      {
+        "symptomName": "Liver fibrosis or hepatic involvement",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal",
+        "notes": "Associated with some genetic subtypes"
+      },
+      {
+        "symptomName": "Skeletal abnormalities such as polydactyly",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "notes": "In syndromic forms like Joubert syndrome"
+      },
+      {
+        "symptomName": "Urinary tract infections",
+        "frequency": 0.4,
+        "bodySystem": "renal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Neurological abnormalities including cerebellar ataxia",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "In syndromic variants such as Joubert syndrome"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cardiomyopathy",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular",
+        "notes": "Rarely reported in syndromic cases"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "hematological",
+    "cardiovascular",
+    "ophthalmological",
+    "gastrointestinal",
+    "neurological",
+    "musculoskeletal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum creatinine and blood urea nitrogen indicating renal failure",
+      "Anemia with normocytic normochromic pattern",
+      "Urinalysis showing isosthenuria and mild proteinuria"
+    ],
+    "imaging": [
+      "Ultrasound showing corticomedullary cysts and increased echogenicity",
+      "MRI may reveal cystic changes and associated brain abnormalities in syndromic forms"
+    ],
+    "genetic": [
+      "Mutations in NPHP1, NPHP2 (INVS), NPHP3, and other NPHP genes",
+      "Autosomal recessive inheritance pattern"
+    ],
+    "other": [
+      "Renal biopsy showing tubulointerstitial fibrosis and tubular basement membrane disruption"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "autosomal-dominant-tubulointerstitial-kidney-disease",
+      "distinguishingFeatures": [
+        "Autosomal dominant inheritance",
+        "Later onset of symptoms",
+        "Absence of medullary cysts"
+      ]
+    },
+    {
+      "diseaseId": "medullary-cystic-kidney-disease",
+      "distinguishingFeatures": [
+        "Adult onset",
+        "Dominant inheritance",
+        "More prominent cystic changes in medulla"
+      ]
+    },
+    {
+      "diseaseId": "polycystic-kidney-disease",
+      "distinguishingFeatures": [
+        "Multiple large cysts throughout kidney cortex and medulla",
+        "Dominant or recessive inheritance depending on type",
+        "Hypertension and hematuria more common"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression to end-stage renal disease in childhood",
+    "Family history of early-onset renal failure",
+    "Presence of extrarenal manifestations such as retinal dystrophy or liver fibrosis"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Geneticist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Hildebrandt F, et al. Nephronophthisis: disease mechanisms of a ciliopathy. J Am Soc Nephrol. 2009;20(1):23-35.",
+    "Wolf MT, Hildebrandt F. Nephronophthisis. Pediatr Nephrol. 2011;26(2):181-94.",
+    "Orphanet: Nephronophthisis. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=263"
+  ],
+  "confidenceInData": "medium"
+}

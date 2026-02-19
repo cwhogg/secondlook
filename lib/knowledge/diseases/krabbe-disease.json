@@ -1,0 +1,200 @@
+{
+  "id": "krabbe-disease",
+  "name": "Krabbe Disease",
+  "aliases": [
+    "Globoid Cell Leukodystrophy",
+    "Galactocerebrosidase Deficiency"
+  ],
+  "icd10Codes": [
+    "E75.23"
+  ],
+  "omimId": "245200",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 36,
+      "peak": 6
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Northern European",
+      "Caribbean"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Krabbe Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "enzyme-deficiency",
+        "description": "Deficient galactocerebrosidase enzyme activity in leukocytes or fibroblasts",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Progressive neurological deterioration including irritability, spasticity, and developmental regression",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "neuroimaging",
+        "description": "MRI showing demyelination predominantly in the cerebral white matter and corticospinal tracts",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic variants in the GALC gene",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of deficient galactocerebrosidase enzyme activity plus compatible clinical presentation and supportive neuroimaging findings",
+    "notes": "Newborn screening and genetic testing are increasingly used for early diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Developmental regression",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Irritability and feeding difficulties",
+        "frequency": 0.75,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hypertonia",
+        "frequency": 0.7,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hearing loss",
+        "frequency": 0.4,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.35,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Feeding intolerance",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Developmental delay without regression",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Macrocephaly",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Respiratory distress",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Autonomic dysfunction",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological",
+    "musculoskeletal",
+    "gastrointestinal",
+    "respiratory",
+    "constitutional",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low galactocerebrosidase enzyme activity in leukocytes or fibroblasts",
+      "Elevated psychosine levels in blood or dried blood spots"
+    ],
+    "imaging": [
+      "MRI showing diffuse cerebral white matter demyelination",
+      "Thickening of the optic nerve and corticospinal tract involvement"
+    ],
+    "genetic": [
+      "Pathogenic variants in the GALC gene confirmed by molecular genetic testing"
+    ],
+    "other": [
+      "Presence of globoid cells on nerve biopsy (rarely performed)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "metachromatic-leukodystrophy",
+      "distinguishingFeatures": [
+        "Arylsulfatase A deficiency",
+        "Later onset and slower progression",
+        "Different pattern of demyelination on MRI"
+      ]
+    },
+    {
+      "diseaseId": "adrenoleukodystrophy",
+      "distinguishingFeatures": [
+        "X-linked inheritance",
+        "Elevated very long chain fatty acids",
+        "Adrenal insufficiency"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive neurological decline in infancy",
+    "Severe feeding difficulties and irritability",
+    "Early onset spasticity with developmental regression"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Geneticist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Wenger DA, Rafi MA, Luzi P. Krabbe disease: genetic aspects and progress toward therapy. Mol Genet Metab. 2016.",
+    "Orphanet: Krabbe disease. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=284",
+    "ICD-10-CM Diagnosis Code E75.23: Globoid cell leukodystrophy"
+  ],
+  "confidenceInData": "medium"
+}

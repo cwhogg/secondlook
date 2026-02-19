@@ -1,0 +1,216 @@
+{
+  "id": "spinal-muscular-atrophy-type-1",
+  "name": "Spinal Muscular Atrophy Type 1",
+  "aliases": [
+    "Werdnig-Hoffmann disease",
+    "SMA Type 1"
+  ],
+  "icd10Codes": [
+    "G12.0"
+  ],
+  "omimId": "253300",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 10,000 live births",
+    "range": "0.005%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 6,
+      "peak": 3
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Consensus Diagnostic Criteria for SMA",
+    "criteria": [
+      {
+        "id": "clinical-presentation",
+        "description": "Onset of severe hypotonia and muscle weakness before 6 months of age",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-confirmation",
+        "description": "Homozygous deletion or mutation of SMN1 gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "electrophysiology",
+        "description": "Electromyography showing denervation and reduced motor unit potentials",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "muscle-biopsy",
+        "description": "Muscle biopsy showing grouped atrophy of anterior horn cell denervation",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of clinical presentation consistent with SMA type 1 plus genetic confirmation of SMN1 mutation",
+    "notes": "Electrophysiology and muscle biopsy support diagnosis but are not mandatory if genetic testing is confirmatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Severe hypotonia",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal",
+        "notes": "Floppy infant syndrome"
+      },
+      {
+        "symptomName": "Progressive symmetrical proximal muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Absent deep tendon reflexes",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Poor head control",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Respiratory distress due to intercostal muscle weakness",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Feeding difficulties",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Tongue fasciculations",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Bell-shaped chest deformity",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Joint contractures",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Poor weight gain",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sleep-disordered breathing",
+        "frequency": 0.15,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiac arrhythmias",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Aspiration pneumonia",
+        "frequency": 0.07,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Gastroesophageal reflux",
+        "frequency": 0.06,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "musculoskeletal",
+    "respiratory",
+    "gastrointestinal",
+    "cardiovascular",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal routine blood tests",
+      "Elevated creatine kinase (mildly elevated or normal)"
+    ],
+    "imaging": [
+      "Chest X-ray showing bell-shaped chest and atelectasis",
+      "Spinal X-ray may show scoliosis"
+    ],
+    "genetic": [
+      "Homozygous deletion or mutation of SMN1 gene on chromosome 5q13"
+    ],
+    "other": [
+      "Electromyography showing denervation and reduced motor unit potentials",
+      "Muscle biopsy demonstrating grouped atrophy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "congenital-myopathies",
+      "distinguishingFeatures": [
+        "Muscle biopsy shows structural abnormalities rather than denervation",
+        "Genetic mutations differ from SMN1"
+      ]
+    },
+    {
+      "diseaseId": "congenital-bilateral-hip-dislocation",
+      "distinguishingFeatures": [
+        "Primarily orthopedic with no motor neuron involvement",
+        "Normal EMG and genetic testing"
+      ]
+    },
+    {
+      "diseaseId": "myasthenia-gravis-infantile",
+      "distinguishingFeatures": [
+        "Fluctuating weakness with fatigability",
+        "Positive acetylcholine receptor antibodies",
+        "Response to anticholinesterase therapy"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Onset of severe hypotonia before 6 months of age",
+    "Progressive respiratory failure",
+    "Absence of deep tendon reflexes"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Geneticist",
+    "Pediatrician",
+    "Pulmonologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Mercuri E, Finkel RS, Muntoni F, et al. Diagnosis and management of spinal muscular atrophy: Part 1: Recommendations for diagnosis, rehabilitation, orthopedic and nutritional care. Neuromuscul Disord. 2018;28(2):103-115.",
+    "Prior TW, Swoboda KJ, Scott CB, et al. A prospective study of spinal muscular atrophy carrier screening and prenatal diagnosis. Genet Med. 2010;12(8):512-520.",
+    "Lunn MR, Wang CH. Spinal muscular atrophy. Lancet. 2008;371(9630):2120-2133."
+  ],
+  "confidenceInData": "medium"
+}

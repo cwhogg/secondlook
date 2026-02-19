@@ -1,0 +1,225 @@
+{
+  "id": "chronic-recurrent-multifocal-osteomyelitis-crmo",
+  "name": "Chronic Recurrent Multifocal Osteomyelitis",
+  "aliases": [
+    "CRMO",
+    "Chronic Nonbacterial Osteomyelitis (CNO)"
+  ],
+  "icd10Codes": [
+    "M86.3"
+  ],
+  "omimId": "605089",
+  "orphanetId": "2380",
+  "prevalence": {
+    "estimate": "1 in 200,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 4,
+      "max": 16,
+      "peak": 10
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Jansson Criteria for CRMO",
+    "criteria": [
+      {
+        "id": "multifocal-lesions",
+        "description": "Presence of multifocal bone lesions on imaging",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sterile-bone-biopsy",
+        "description": "Sterile bone biopsy showing chronic inflammation without infection",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "recurrent-pain",
+        "description": "Recurrent episodes of bone pain lasting weeks to months",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-pathogenic-organisms",
+        "description": "Negative microbiological cultures from bone biopsy",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "elevated-inflammatory-markers",
+        "description": "Mild to moderate elevation of ESR or CRP",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "associated-skin-manifestations",
+        "description": "Presence of associated dermatological conditions such as psoriasis or palmoplantar pustulosis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of multifocal bone lesions, sterile bone biopsy showing chronic inflammation, and recurrent bone pain",
+    "notes": "Diagnosis is clinical and supported by imaging and biopsy; exclusion of infectious osteomyelitis is essential."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent multifocal bone pain",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "notes": "Typically affects long bones, clavicle, and vertebrae"
+      },
+      {
+        "symptomName": "Sterile bone inflammation confirmed by biopsy",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Localized bone swelling",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mild fever",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate (ESR)",
+        "frequency": 0.7,
+        "bodySystem": "hematological",
+        "notes": "Reflects systemic inflammation"
+      },
+      {
+        "symptomName": "Elevated C-reactive protein (CRP)",
+        "frequency": 0.7,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Associated skin lesions (e.g., psoriasis, palmoplantar pustulosis)",
+        "frequency": 0.6,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Limited range of motion in affected joints",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Vertebral involvement causing back pain",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mild anemia of chronic disease",
+        "frequency": 0.15,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Low-grade night sweats",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pathological fractures",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Spinal deformities due to vertebral involvement",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Peripheral arthritis",
+        "frequency": 0.07,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "hematological",
+    "dermatological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Mild to moderate elevation of ESR and CRP",
+      "Negative blood cultures",
+      "Sterile bone biopsy with chronic inflammatory infiltrate"
+    ],
+    "imaging": [
+      "MRI showing multifocal bone marrow edema and osteitis",
+      "X-rays demonstrating lytic and sclerotic bone lesions",
+      "Bone scintigraphy revealing multiple active lesions"
+    ],
+    "genetic": [
+      "Association with mutations in LPIN2, FBLIM1, and other autoinflammatory genes in some cases"
+    ],
+    "other": [
+      "Exclusion of infectious osteomyelitis and malignancy is critical",
+      "Response to NSAIDs and immunomodulatory therapy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "infectious-osteomyelitis",
+      "distinguishingFeatures": [
+        "Positive microbiological cultures",
+        "Presence of systemic infection signs",
+        "Response to antibiotics"
+      ]
+    },
+    {
+      "diseaseId": "juvenile-idiopathic-arthritis",
+      "distinguishingFeatures": [
+        "Joint involvement predominates over bone lesions",
+        "Presence of synovitis",
+        "Autoimmune markers may be positive"
+      ]
+    },
+    {
+      "diseaseId": "malignant-bone-tumors",
+      "distinguishingFeatures": [
+        "Aggressive bone destruction on imaging",
+        "Presence of systemic symptoms like weight loss",
+        "Histopathology showing malignant cells"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Persistent high fever with systemic toxicity",
+    "Rapidly progressive bone destruction",
+    "Neurological deficits from spinal involvement"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Orthopedic Surgeon",
+    "Pediatrician",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Jansson AF, et al. Chronic recurrent multifocal osteomyelitis: clinical presentation and diagnostic criteria. J Rheumatol. 2007.",
+    "Ferguson PJ, et al. Autoinflammatory bone disorders. Curr Opin Rheumatol. 2014.",
+    "Wipff J, et al. Chronic recurrent multifocal osteomyelitis. Orphanet J Rare Dis. 2015."
+  ],
+  "confidenceInData": "medium"
+}

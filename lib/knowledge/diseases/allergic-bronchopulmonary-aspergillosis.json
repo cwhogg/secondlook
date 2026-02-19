@@ -1,0 +1,217 @@
+{
+  "id": "allergic-bronchopulmonary-aspergillosis",
+  "name": "Allergic Bronchopulmonary Aspergillosis",
+  "aliases": [
+    "ABPA",
+    "Allergic Bronchopulmonary Aspergillosis Syndrome"
+  ],
+  "icd10Codes": [
+    "B44.81"
+  ],
+  "prevalence": {
+    "estimate": "1 in 20,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 50,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Rosenberg-Patterson Criteria",
+    "criteria": [
+      {
+        "id": "asthma",
+        "description": "History of asthma or recurrent wheezing",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immediate-hypersensitivity",
+        "description": "Immediate cutaneous reactivity to Aspergillus antigen",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "elevated-serum-igg",
+        "description": "Elevated serum IgE levels (>1000 IU/mL)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "serum-aspergillus-igg",
+        "description": "Elevated serum IgG antibodies to Aspergillus fumigatus",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pulmonary-infiltrates",
+        "description": "Transient or fixed pulmonary infiltrates on imaging",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "central-bronchiectasis",
+        "description": "Central bronchiectasis on high-resolution CT",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Presence of asthma, immediate hypersensitivity to Aspergillus antigen, elevated serum IgE, and central bronchiectasis",
+    "notes": "Diagnosis is clinical supported by immunologic and radiologic findings"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Central bronchiectasis",
+        "frequency": 0.85,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Elevated serum IgE levels",
+        "frequency": 0.95,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Immediate hypersensitivity reaction to Aspergillus antigen",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Recurrent wheezing",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cough with sputum production",
+        "frequency": 0.7,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Mucus plugging",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Shortness of breath",
+        "frequency": 0.6,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.2,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Wheezing not responsive to bronchodilators",
+        "frequency": 0.15,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Bronchial obstruction causing atelectasis",
+        "frequency": 0.08,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pulmonary fibrosis",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cor pulmonale secondary to chronic lung disease",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "immunological",
+    "constitutional",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated total serum IgE (>1000 IU/mL)",
+      "Positive Aspergillus-specific IgE and IgG antibodies",
+      "Peripheral eosinophilia"
+    ],
+    "imaging": [
+      "Central bronchiectasis on high-resolution CT",
+      "Transient pulmonary infiltrates on chest X-ray",
+      "Mucus plugging visible on CT"
+    ],
+    "genetic": [],
+    "other": [
+      "Positive immediate skin test to Aspergillus antigen",
+      "Sputum culture may grow Aspergillus species"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chronic-asthma",
+      "distinguishingFeatures": [
+        "Absence of central bronchiectasis",
+        "Normal serum IgE levels",
+        "No hypersensitivity to Aspergillus antigen"
+      ]
+    },
+    {
+      "diseaseId": "chronic-obstructive-pulmonary-disease",
+      "distinguishingFeatures": [
+        "Smoking history",
+        "No elevated Aspergillus-specific IgE or IgG",
+        "Different radiologic pattern without central bronchiectasis"
+      ]
+    },
+    {
+      "diseaseId": "cystic-fibrosis",
+      "distinguishingFeatures": [
+        "Genetic testing positive for CFTR mutations",
+        "Pancreatic insufficiency",
+        "Diffuse bronchiectasis rather than central"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of bronchiectasis",
+    "Recurrent hemoptysis",
+    "Development of pulmonary fibrosis or respiratory failure"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Allergist/Immunologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Rosenberg M, Patterson R. The diagnosis of allergic bronchopulmonary aspergillosis. J Allergy Clin Immunol. 1977.",
+    "Agarwal R. Allergic bronchopulmonary aspergillosis. Chest. 2009.",
+    "Greenberger PA. Allergic bronchopulmonary aspergillosis. J Allergy Clin Immunol. 2002."
+  ],
+  "confidenceInData": "medium"
+}

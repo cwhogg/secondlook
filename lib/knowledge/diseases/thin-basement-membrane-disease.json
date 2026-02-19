@@ -1,0 +1,197 @@
+{
+  "id": "thin-basement-membrane-disease",
+  "name": "Thin Basement Membrane Disease",
+  "aliases": [
+    "Benign Familial Hematuria",
+    "Thin Glomerular Basement Membrane Nephropathy"
+  ],
+  "icd10Codes": [
+    "N02.0"
+  ],
+  "omimId": "161200",
+  "orphanetId": "ORPHA:289",
+  "prevalence": {
+    "estimate": "1 in 1,000",
+    "range": "0.1%-0.5%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Thin Basement Membrane Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "persistent-hematuria",
+        "description": "Persistent microscopic hematuria without significant proteinuria",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "gbm-thinning",
+        "description": "Electron microscopy showing thinning of the glomerular basement membrane (<250 nm)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of persistent hematuria or benign familial hematuria",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "absence-of-alport-features",
+        "description": "No clinical or histological features suggestive of Alport syndrome",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Presence of persistent microscopic hematuria plus electron microscopic confirmation of GBM thinning, with exclusion of Alport syndrome",
+    "notes": "Diagnosis requires exclusion of other causes of hematuria and GBM abnormalities."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Persistent microscopic hematuria",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "notes": "Typically asymptomatic and detected incidentally"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Recurrent gross hematuria",
+        "frequency": 0.6,
+        "bodySystem": "renal",
+        "notes": "May occur especially after upper respiratory infections"
+      },
+      {
+        "symptomName": "Mild proteinuria",
+        "frequency": 0.55,
+        "bodySystem": "renal",
+        "notes": "Usually less than 500 mg/day"
+      },
+      {
+        "symptomName": "Normal renal function",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "notes": "Renal function typically preserved"
+      },
+      {
+        "symptomName": "Family history of hematuria",
+        "frequency": 0.7,
+        "bodySystem": "renal",
+        "notes": "Often autosomal dominant inheritance pattern"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Transient episodes of flank pain",
+        "frequency": 0.3,
+        "bodySystem": "renal",
+        "notes": "May be associated with hematuria episodes"
+      },
+      {
+        "symptomName": "Mild hypertension",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular",
+        "notes": "Rarely develops in adulthood"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "notes": "Non-specific symptom"
+      },
+      {
+        "symptomName": "Urinary frequency",
+        "frequency": 0.1,
+        "bodySystem": "renal",
+        "notes": "Occasionally reported"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Progression to chronic kidney disease",
+        "frequency": 0.05,
+        "bodySystem": "renal",
+        "notes": "Very rare, usually in presence of other renal pathology"
+      },
+      {
+        "symptomName": "Hypertensive nephropathy",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare complication"
+      },
+      {
+        "symptomName": "Sensorineural hearing loss",
+        "frequency": 0.02,
+        "bodySystem": "otolaryngological",
+        "notes": "Rare, helps differentiate from Alport syndrome"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "cardiovascular",
+    "constitutional",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Persistent microscopic hematuria on urinalysis",
+      "Normal or mildly elevated proteinuria",
+      "Normal renal function tests"
+    ],
+    "imaging": [
+      "Renal ultrasound typically normal"
+    ],
+    "genetic": [
+      "Mutations in COL4A3 or COL4A4 genes in some familial cases"
+    ],
+    "other": [
+      "Electron microscopy showing uniform thinning of the glomerular basement membrane (<250 nm)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "alport-syndrome",
+      "distinguishingFeatures": [
+        "Progressive renal failure",
+        "Sensorineural hearing loss",
+        "Ocular abnormalities",
+        "Thickening and lamellation of GBM on electron microscopy"
+      ]
+    },
+    {
+      "diseaseId": "igA-nephropathy",
+      "distinguishingFeatures": [
+        "Episodic gross hematuria often concurrent with upper respiratory infections",
+        "Mesangial IgA deposits on immunofluorescence",
+        "Variable proteinuria and renal impairment"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive proteinuria exceeding 1 g/day",
+    "Declining renal function",
+    "Presence of sensorineural hearing loss or ocular abnormalities"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Kashtan CE. Thin basement membrane nephropathy. Kidney Int. 1999;56(5):1627-1638.",
+    "Savige J, et al. Thin basement membrane nephropathy. Kidney Int. 2003;64(4):1169-1178.",
+    "National Organization for Rare Disorders (NORD). Thin Basement Membrane Disease."
+  ],
+  "confidenceInData": "medium"
+}

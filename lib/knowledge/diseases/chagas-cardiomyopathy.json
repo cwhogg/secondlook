@@ -1,0 +1,205 @@
+{
+  "id": "chagas-cardiomyopathy",
+  "name": "Chagas Cardiomyopathy",
+  "aliases": [
+    "Chronic Chagas Heart Disease",
+    "Chagas Disease Cardiomyopathy"
+  ],
+  "icd10Codes": [
+    "I42.2"
+  ],
+  "omimId": "613978",
+  "orphanetId": "795",
+  "prevalence": {
+    "estimate": "1 in 1000 in endemic areas",
+    "range": "0.1%-2%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 60,
+      "peak": 40
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Latin American populations",
+      "Indigenous groups in endemic regions"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Brazilian Consensus on Chagas Disease Diagnosis",
+    "criteria": [
+      {
+        "id": "serology-positive",
+        "description": "Positive serological tests for Trypanosoma cruzi infection",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "echocardiographic-abnormalities",
+        "description": "Echocardiographic evidence of dilated cardiomyopathy with segmental wall motion abnormalities",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ecg-abnormalities",
+        "description": "Electrocardiographic abnormalities including right bundle branch block, left anterior fascicular block, or arrhythmias",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-other-causes",
+        "description": "Exclusion of other causes of cardiomyopathy",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Positive serology plus at least two major cardiac abnormalities (echocardiographic and ECG findings) with exclusion of other causes",
+    "notes": "Diagnosis relies heavily on serology and cardiac imaging; biopsy is rarely performed."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Segmental ventricular wall motion abnormalities",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Detected by echocardiography"
+      },
+      {
+        "symptomName": "Right bundle branch block with left anterior fascicular block",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Characteristic ECG pattern"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Heart failure symptoms (dyspnea, fatigue, edema)",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to dilated cardiomyopathy"
+      },
+      {
+        "symptomName": "Ventricular arrhythmias",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Includes premature ventricular contractions and ventricular tachycardia"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "notes": "Often related to arrhythmias"
+      },
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to arrhythmias or conduction disturbances"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Thromboembolic events",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to ventricular aneurysms or atrial fibrillation"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Non-ischemic in nature"
+      },
+      {
+        "symptomName": "Conduction blocks other than RBBB and LAFB",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular",
+        "notes": "Including atrioventricular blocks"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to impaired cardiac function"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden cardiac death",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular",
+        "notes": "Often due to fatal arrhythmias"
+      },
+      {
+        "symptomName": "Aneurysm formation of the left ventricular apex",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Detected by imaging"
+      },
+      {
+        "symptomName": "Stroke secondary to cardioembolism",
+        "frequency": 0.04,
+        "bodySystem": "neurological",
+        "notes": "Due to emboli from cardiac thrombi"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive serology for Trypanosoma cruzi (ELISA, IFA, or hemagglutination tests)",
+      "Elevated brain natriuretic peptide (BNP) in heart failure"
+    ],
+    "imaging": [
+      "Echocardiography showing dilated cardiomyopathy with segmental wall motion abnormalities and apical aneurysm",
+      "Chest X-ray showing cardiomegaly",
+      "Cardiac MRI demonstrating fibrosis and ventricular aneurysms"
+    ],
+    "genetic": [
+      "No direct genetic mutations; disease caused by parasitic infection"
+    ],
+    "other": [
+      "Electrocardiogram with conduction abnormalities and arrhythmias",
+      "Holter monitoring revealing ventricular arrhythmias"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "idiopathic-dilated-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Absence of Trypanosoma cruzi seropositivity",
+        "No typical ECG conduction blocks seen in Chagas",
+        "Lack of apical aneurysm"
+      ]
+    },
+    {
+      "diseaseId": "ischemic-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Presence of coronary artery disease on angiography",
+        "Regional wall motion abnormalities correspond to coronary territories",
+        "Typical risk factors for atherosclerosis"
+      ]
+    }
+  ],
+  "redFlags": [
+    "New onset ventricular arrhythmias in endemic patient",
+    "Syncope or presyncope episodes",
+    "Evidence of apical aneurysm on imaging"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Infectious Disease Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Rassi A Jr, Rassi A, Marin-Neto JA. Chagas disease. Lancet. 2010 Apr 17;375(9723):1388-402.",
+    "Bern C. Chagas' Disease. N Engl J Med. 2015 Jul 16;373(5):456-66.",
+    "Brazilian Consensus on Chagas Disease Diagnosis and Treatment, 2015."
+  ],
+  "confidenceInData": "medium"
+}

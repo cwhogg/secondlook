@@ -1,0 +1,212 @@
+{
+  "id": "autoimmune-neutropenia",
+  "name": "Autoimmune Neutropenia",
+  "aliases": [
+    "AIN",
+    "Immune-Mediated Neutropenia"
+  ],
+  "icd10Codes": [
+    "D70.9"
+  ],
+  "omimId": "608233",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.001%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 60,
+      "peak": 1
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Autoimmune Neutropenia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "neutropenia",
+        "description": "Absolute neutrophil count (ANC) below 1500 cells/µL on at least two occasions",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "anti-neutrophil-antibodies",
+        "description": "Presence of anti-neutrophil antibodies detected by immunoassays",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-secondary-causes",
+        "description": "Exclusion of other causes of neutropenia such as drug-induced, congenital, or infectious etiologies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "recurrent-infections",
+        "description": "History of recurrent bacterial infections consistent with neutropenia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bone-marrow-examination",
+        "description": "Bone marrow showing normal or increased myeloid precursors without maturation arrest",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Persistent neutropenia with positive anti-neutrophil antibodies and exclusion of secondary causes",
+    "notes": "Diagnosis is often clinical supported by laboratory confirmation; bone marrow biopsy is not always required."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chronic neutropenia",
+        "frequency": 0.85,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Recurrent bacterial infections",
+        "frequency": 0.8,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Oral mucosal ulcerations",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fever episodes",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.65,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Skin infections (e.g., cellulitis)",
+        "frequency": 0.6,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pharyngitis",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Gingivitis",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Otitis media",
+        "frequency": 0.3,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Abdominal pain due to infections",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sepsis",
+        "frequency": 0.08,
+        "bodySystem": "hematological",
+        "notes": "Potentially life-threatening complication"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.05,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Autoimmune hemolytic anemia",
+        "frequency": 0.03,
+        "bodySystem": "hematological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "gastrointestinal",
+    "dermatological",
+    "otolaryngological",
+    "constitutional",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Persistent neutropenia (ANC <1500 cells/µL)",
+      "Positive anti-neutrophil antibodies",
+      "Normal or increased myeloid precursors in bone marrow"
+    ],
+    "imaging": [
+      "Chest X-ray may show pneumonia in infectious complications"
+    ],
+    "genetic": [
+      "No specific genetic mutations identified; diagnosis is immunologic"
+    ],
+    "other": [
+      "Exclusion of secondary causes such as drug-induced neutropenia"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "congenital-neutropenia",
+      "distinguishingFeatures": [
+        "Onset in infancy with severe neutropenia",
+        "Genetic mutations identified",
+        "Bone marrow shows maturation arrest"
+      ]
+    },
+    {
+      "diseaseId": "drug-induced-neutropenia",
+      "distinguishingFeatures": [
+        "Temporal association with drug exposure",
+        "Resolution after drug withdrawal",
+        "Negative anti-neutrophil antibodies"
+      ]
+    },
+    {
+      "diseaseId": "chronic-infection-associated-neutropenia",
+      "distinguishingFeatures": [
+        "Neutropenia secondary to infections like HIV or tuberculosis",
+        "Improvement with treatment of underlying infection"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe neutropenia (ANC <500 cells/µL) with fever",
+    "Signs of systemic infection or sepsis",
+    "Failure to respond to standard infection treatments"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Immunologist",
+    "Infectious Disease Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Newburger PE, Dale DC. Evaluation and management of patients with isolated neutropenia. Semin Hematol. 2013;50(3):198-206.",
+    "Bux J. Autoimmune neutropenia. Semin Hematol. 2010;47(3):214-220.",
+    "Orphanet: Autoimmune neutropenia. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=395"
+  ],
+  "confidenceInData": "medium"
+}

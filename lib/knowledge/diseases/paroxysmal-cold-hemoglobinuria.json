@@ -1,0 +1,215 @@
+{
+  "id": "paroxysmal-cold-hemoglobinuria",
+  "name": "Paroxysmal Cold Hemoglobinuria",
+  "aliases": [
+    "PCH",
+    "Donath-Landsteiner Hemoglobinuria"
+  ],
+  "icd10Codes": [
+    "D59.1"
+  ],
+  "omimId": "609089",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 5
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Donath-Landsteiner Test Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "dl-test-positive",
+        "description": "Positive Donath-Landsteiner test demonstrating biphasic hemolysin activity",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hemoglobinuria",
+        "description": "Presence of hemoglobinuria following cold exposure",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "complement-mediated-hemolysis",
+        "description": "Evidence of complement-mediated intravascular hemolysis (elevated LDH, low haptoglobin, elevated indirect bilirubin)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cold-exposure-trigger",
+        "description": "History of hemolytic episodes triggered by cold exposure",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "anemia",
+        "description": "Presence of anemia with reticulocytosis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Positive Donath-Landsteiner test plus evidence of hemoglobinuria and complement-mediated hemolysis",
+    "notes": "Diagnosis relies heavily on the Donath-Landsteiner test; false negatives can occur if testing conditions are not optimal."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Paroxysmal hemoglobinuria triggered by cold exposure",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Characteristic sudden onset of hemoglobinuria after cold exposure"
+      },
+      {
+        "symptomName": "Positive Donath-Landsteiner antibody test",
+        "frequency": 0.9,
+        "bodySystem": "immunological",
+        "notes": "Biphasic hemolysin antibody specific to PCH"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue secondary to anemia",
+        "frequency": 0.75,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pallor",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to increased bilirubin from hemolysis"
+      },
+      {
+        "symptomName": "Dark or red-colored urine",
+        "frequency": 0.6,
+        "bodySystem": "renal",
+        "notes": "Resulting from hemoglobinuria"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fever",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Chills",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Acute renal failure",
+        "frequency": 0.05,
+        "bodySystem": "renal",
+        "notes": "Due to hemoglobin-induced tubular injury"
+      },
+      {
+        "symptomName": "Hemoglobin casts in urine",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.02,
+        "bodySystem": "respiratory",
+        "notes": "Secondary to severe anemia"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "renal",
+    "constitutional",
+    "gastrointestinal",
+    "neurological",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive Donath-Landsteiner test",
+      "Hemoglobinuria on urinalysis",
+      "Elevated lactate dehydrogenase (LDH)",
+      "Low serum haptoglobin",
+      "Elevated indirect bilirubin",
+      "Reticulocytosis",
+      "Anemia with evidence of intravascular hemolysis"
+    ],
+    "imaging": [
+      "Splenomegaly on abdominal ultrasound (occasionally)"
+    ],
+    "genetic": [
+      "No known genetic mutations; autoimmune etiology"
+    ],
+    "other": [
+      "Cold exposure triggers hemolytic episodes",
+      "Biphasic hemolysin antibody (IgG) binding at cold temperatures and causing complement activation at body temperature"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "cold-agglutinin-disease",
+      "distinguishingFeatures": [
+        "Presence of cold agglutinins (IgM antibodies)",
+        "Agglutination of red cells at cold temperatures",
+        "Direct antiglobulin test positive for C3 only",
+        "Usually chronic course"
+      ]
+    },
+    {
+      "diseaseId": "paroxysmal-nocturnal-hemoglobinuria",
+      "distinguishingFeatures": [
+        "Complement-mediated hemolysis without cold trigger",
+        "Flow cytometry showing absence of CD55 and CD59 on red cells",
+        "Chronic hemolysis with thrombosis risk"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe anemia with hemodynamic instability",
+    "Acute renal failure secondary to hemoglobinuria",
+    "Rapidly progressive hemolysis following cold exposure"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Immunologist",
+    "Nephrologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Berentsen S. Cold agglutinin disease. Hematology Am Soc Hematol Educ Program. 2016;2016(1):226-231.",
+    "Packman CH. Hemolytic anemia due to warm autoantibodies. Blood Rev. 2008;22(1):17-31.",
+    "Barcellini W, Fattizzo B. Clinical Applications of Hemolytic Markers in the Differential Diagnosis and Management of Hemolytic Anemia. Dis Markers. 2015;2015:635670."
+  ],
+  "confidenceInData": "medium"
+}

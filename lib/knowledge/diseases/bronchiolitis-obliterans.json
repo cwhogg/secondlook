@@ -1,0 +1,197 @@
+{
+  "id": "bronchiolitis-obliterans",
+  "name": "Bronchiolitis Obliterans",
+  "aliases": [
+    "Constrictive Bronchiolitis",
+    "Obliterative Bronchiolitis"
+  ],
+  "icd10Codes": [
+    "J68.5",
+    "J44.9"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 40
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No standardized formal criteria; diagnosis based on clinical, radiologic, and histopathologic findings",
+    "criteria": [
+      {
+        "id": "clinical-presentation",
+        "description": "Progressive dyspnea and cough following a known insult (infection, inhalation injury, transplant)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-findings",
+        "description": "High-resolution CT showing mosaic attenuation, air trapping on expiratory images, and bronchial wall thickening",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology",
+        "description": "Lung biopsy demonstrating fibrotic narrowing or obliteration of small airways",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pulmonary-function-tests",
+        "description": "Obstructive pattern with reduced FEV1 and air trapping on lung volumes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of clinical symptoms plus characteristic imaging findings and either histopathologic confirmation or compatible pulmonary function tests",
+    "notes": "Histopathology is gold standard but often diagnosis is clinical-radiologic due to biopsy risks"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive exertional dyspnea",
+        "frequency": 0.85,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Nonproductive chronic cough",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Wheezing",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Air trapping on expiratory imaging",
+        "frequency": 0.7,
+        "bodySystem": "respiratory",
+        "notes": "Radiologic finding correlating with symptoms"
+      },
+      {
+        "symptomName": "Reduced exercise tolerance",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Chest discomfort",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hypoxemia at rest or exertion",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Inspiratory crackles",
+        "frequency": 0.25,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Digital clubbing",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pulmonary hypertension",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "cardiovascular",
+    "constitutional",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Non-specific inflammatory markers may be elevated",
+      "Arterial blood gas may show hypoxemia"
+    ],
+    "imaging": [
+      "High-resolution CT showing mosaic attenuation",
+      "Air trapping on expiratory CT",
+      "Bronchial wall thickening"
+    ],
+    "genetic": [],
+    "other": [
+      "Pulmonary function tests showing obstructive ventilatory defect with air trapping",
+      "Histopathology demonstrating fibrotic obliteration of bronchioles"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chronic-obstructive-pulmonary-disease",
+      "distinguishingFeatures": [
+        "History of smoking",
+        "Emphysematous changes on imaging",
+        "Response to bronchodilators"
+      ]
+    },
+    {
+      "diseaseId": "idiopathic-pulmonary-fibrosis",
+      "distinguishingFeatures": [
+        "Restrictive pattern on pulmonary function tests",
+        "Honeycombing on HRCT",
+        "Predominantly basal and peripheral fibrosis"
+      ]
+    },
+    {
+      "diseaseId": "asthma",
+      "distinguishingFeatures": [
+        "Reversible airway obstruction",
+        "Episodic symptoms",
+        "Atopy history"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive respiratory failure",
+    "Development of pulmonary hypertension",
+    "Severe hypoxemia refractory to oxygen therapy"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Thoracic Surgeon",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "King TE Jr, et al. Idiopathic pulmonary fibrosis: diagnosis and treatment. Am J Respir Crit Care Med. 2011.",
+    "Yousem SA. Bronchiolitis obliterans. Semin Diagn Pathol. 1997.",
+    "American Thoracic Society. Diagnosis and management of bronchiolitis obliterans syndrome. Am J Respir Crit Care Med. 2014."
+  ],
+  "confidenceInData": "medium"
+}

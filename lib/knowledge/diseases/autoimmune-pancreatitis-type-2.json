@@ -1,0 +1,189 @@
+{
+  "id": "autoimmune-pancreatitis-type-2",
+  "name": "Autoimmune Pancreatitis Type 2",
+  "aliases": [
+    "Idiopathic Duct-Centric Pancreatitis",
+    "Granulocytic Epithelial Lesion Pancreatitis"
+  ],
+  "icd10Codes": [
+    "K86.1"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 60,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "International Consensus Diagnostic Criteria (ICDC) for Autoimmune Pancreatitis",
+    "criteria": [
+      {
+        "id": "granulocytic-epithelial-lesions",
+        "description": "Presence of granulocytic epithelial lesions on pancreatic histology",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-pancreatic-narrowing",
+        "description": "Imaging evidence of segmental or focal narrowing of the main pancreatic duct",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "association-ibd",
+        "description": "Association with inflammatory bowel disease (especially ulcerative colitis)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "serum-igg4-normal",
+        "description": "Normal serum IgG4 levels (distinguishing from Type 1 AIP)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histological confirmation of granulocytic epithelial lesions plus imaging evidence of pancreatic duct narrowing",
+    "notes": "Serum IgG4 levels are typically normal, differentiating from Type 1 autoimmune pancreatitis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Granulocytic epithelial lesions on pancreatic biopsy",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Segmental or focal narrowing of the main pancreatic duct",
+        "frequency": 0.8,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Acute pancreatitis episodes",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "notes": "Often related to associated inflammatory bowel disease"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Nausea",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pancreatic exocrine insufficiency",
+        "frequency": 0.08,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Diabetes mellitus secondary to pancreatic involvement",
+        "frequency": 0.05,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cholestatic liver enzyme elevation",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "constitutional",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal serum IgG4 levels",
+      "Mildly elevated inflammatory markers (ESR, CRP) in some cases",
+      "Possible elevated liver enzymes if biliary involvement"
+    ],
+    "imaging": [
+      "Segmental or focal narrowing of the main pancreatic duct on MRCP or ERCP",
+      "Focal pancreatic enlargement or mass-like lesion on CT or MRI",
+      "Absence of diffuse pancreatic enlargement typical of Type 1 AIP"
+    ],
+    "genetic": [
+      "No specific genetic markers identified"
+    ],
+    "other": [
+      "Histopathology showing granulocytic epithelial lesions without significant IgG4-positive plasma cell infiltration"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "autoimmune-pancreatitis-type-1",
+      "distinguishingFeatures": [
+        "Elevated serum IgG4 levels",
+        "Diffuse pancreatic enlargement",
+        "IgG4-positive plasma cell infiltration on biopsy"
+      ]
+    },
+    {
+      "diseaseId": "pancreatic-adenocarcinoma",
+      "distinguishingFeatures": [
+        "Malignant cells on biopsy",
+        "Progressive pancreatic mass without response to steroids",
+        "Absence of granulocytic epithelial lesions"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Unexplained persistent jaundice",
+    "Rapidly enlarging pancreatic mass",
+    "Failure to respond to corticosteroid therapy"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Pancreatologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Shimosegawa T, et al. International consensus diagnostic criteria for autoimmune pancreatitis: guidelines of the International Association of Pancreatology. Pancreas. 2011.",
+    "Chari ST, et al. Diagnosis of autoimmune pancreatitis: the Mayo Clinic experience. Clin Gastroenterol Hepatol. 2006.",
+    "Ghazale A, et al. Autoimmune pancreatitis: a systematic review. J Clin Gastroenterol. 2009."
+  ],
+  "confidenceInData": "medium"
+}

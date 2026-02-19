@@ -1,0 +1,219 @@
+{
+  "id": "chronic-recurrent-multifocal-osteomyelitis-pediatric-form",
+  "name": "Chronic Recurrent Multifocal Osteomyelitis (CRMO) Pediatric Form",
+  "aliases": [
+    "Chronic Nonbacterial Osteomyelitis (CNO)",
+    "Juvenile Chronic Osteomyelitis"
+  ],
+  "icd10Codes": [
+    "M86.3"
+  ],
+  "omimId": "605089",
+  "orphanetId": "2386",
+  "prevalence": {
+    "estimate": "1 in 200,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 2,
+      "max": 16,
+      "peak": 10
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Jansson Criteria for CRMO",
+    "criteria": [
+      {
+        "id": "multifocal-lesions",
+        "description": "Presence of multifocal bone lesions on imaging",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "chronic-recurrent-course",
+        "description": "Recurrent episodes of bone pain and swelling lasting months to years",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "negative-bacterial-culture",
+        "description": "Absence of bacterial infection confirmed by negative cultures",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "elevated-inflammatory-markers",
+        "description": "Elevated ESR and/or CRP during active disease",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "typical-imaging-findings",
+        "description": "MRI showing bone marrow edema and osteolytic lesions",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "associated-dermatological-manifestations",
+        "description": "Presence of psoriasis or palmoplantar pustulosis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria must be met for diagnosis",
+    "notes": "Diagnosis is clinical and radiological; biopsy may be required to exclude malignancy or infection"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent multifocal bone pain",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Localized bone swelling",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Tenderness over affected bones",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate (ESR)",
+        "frequency": 0.7,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated C-reactive protein (CRP)",
+        "frequency": 0.65,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Low-grade fever during flares",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Skin manifestations such as psoriasis or palmoplantar pustulosis",
+        "frequency": 0.3,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Joint pain or arthritis adjacent to bone lesions",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Malaise",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild anemia",
+        "frequency": 0.15,
+        "bodySystem": "hematological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pathological fractures",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Spinal involvement causing neurological symptoms",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Growth retardation",
+        "frequency": 0.02,
+        "bodySystem": "endocrine"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "hematological",
+    "dermatological",
+    "constitutional",
+    "neurological",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated ESR and CRP during active disease",
+      "Negative bacterial cultures",
+      "Mild anemia in some cases"
+    ],
+    "imaging": [
+      "MRI showing multifocal bone marrow edema",
+      "Osteolytic and sclerotic bone lesions on X-ray",
+      "Bone scintigraphy revealing multiple active sites"
+    ],
+    "genetic": [
+      "No single causative gene identified; possible association with LPIN2 and FBLIM1 mutations in some cases"
+    ],
+    "other": [
+      "Bone biopsy showing sterile chronic inflammation",
+      "Exclusion of infectious and malignant causes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "bacterial-osteomyelitis",
+      "distinguishingFeatures": [
+        "Positive bacterial cultures",
+        "Acute onset with systemic toxicity",
+        "Response to antibiotics"
+      ]
+    },
+    {
+      "diseaseId": "juvenile-idiopathic-arthritis",
+      "distinguishingFeatures": [
+        "Primary joint involvement rather than bone lesions",
+        "Presence of rheumatoid factor or ANA in some subtypes",
+        "Different imaging findings without multifocal bone lesions"
+      ]
+    },
+    {
+      "diseaseId": "malignant-bone-tumors",
+      "distinguishingFeatures": [
+        "Presence of mass lesion on imaging",
+        "Histopathology confirming malignancy",
+        "Systemic symptoms like weight loss and night sweats"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Persistent fever with systemic toxicity",
+    "Neurological deficits indicating spinal involvement",
+    "Rapidly progressive bone destruction or mass formation"
+  ],
+  "specialistType": [
+    "Pediatric Rheumatologist",
+    "Pediatric Orthopedic Surgeon",
+    "Pediatric Infectious Disease Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Jansson AF, et al. Chronic recurrent multifocal osteomyelitis in children. J Pediatr Orthop. 2007.",
+    "Giedion A, et al. Chronic recurrent multifocal osteomyelitis. Radiology. 1972.",
+    "Ferguson PJ, et al. Autoinflammatory bone disorders. Curr Opin Rheumatol. 2014."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,219 @@
+{
+  "id": "typical-hemolytic-uremic-syndrome",
+  "name": "Typical Hemolytic Uremic Syndrome",
+  "aliases": [
+    "Shiga toxin-associated HUS",
+    "STEC-HUS"
+  ],
+  "icd10Codes": [
+    "D59.3"
+  ],
+  "omimId": "612925",
+  "orphanetId": "795",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.001-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 10,
+      "peak": 2
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical Triad for Typical HUS",
+    "criteria": [
+      {
+        "id": "microangiopathic-hemolytic-anemia",
+        "description": "Evidence of microangiopathic hemolytic anemia (schistocytes on blood smear, elevated LDH, decreased haptoglobin)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "thrombocytopenia",
+        "description": "Thrombocytopenia (platelet count <150,000/µL)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "acute-renal-failure",
+        "description": "Acute kidney injury with elevated serum creatinine and reduced urine output",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "preceding-diarrheal-illness",
+        "description": "History of preceding diarrheal illness, often bloody, caused by Shiga toxin-producing bacteria",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of the triad of microangiopathic hemolytic anemia, thrombocytopenia, and acute renal failure",
+    "notes": "Confirmation of Shiga toxin-producing bacterial infection supports diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Microangiopathic hemolytic anemia",
+        "frequency": 0.95,
+        "bodySystem": "hematological",
+        "notes": "Presence of schistocytes on peripheral blood smear"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Acute kidney injury",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "notes": "Elevated serum creatinine and oliguria/anuria"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Bloody diarrhea",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "notes": "Often precedes onset of HUS by several days"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pallor",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Edema",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Neurological symptoms (irritability, seizures)",
+        "frequency": 0.4,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.35,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.25,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Mild fever",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Purpura or petechiae",
+        "frequency": 0.08,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Visual disturbances",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Respiratory distress",
+        "frequency": 0.04,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "renal",
+    "gastrointestinal",
+    "neurological",
+    "cardiovascular",
+    "constitutional",
+    "dermatological",
+    "ophthalmological",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Schistocytes on peripheral blood smear",
+      "Elevated lactate dehydrogenase (LDH)",
+      "Decreased haptoglobin",
+      "Thrombocytopenia",
+      "Elevated serum creatinine and blood urea nitrogen (BUN)",
+      "Hematuria and proteinuria on urinalysis",
+      "Positive stool test for Shiga toxin or culture for E. coli O157:H7"
+    ],
+    "imaging": [
+      "Renal ultrasound showing normal or enlarged kidneys",
+      "Brain imaging (CT/MRI) if neurological symptoms present"
+    ],
+    "genetic": [
+      "No primary genetic mutations typically associated; differs from atypical HUS"
+    ],
+    "other": [
+      "History of recent diarrheal illness, often with bloody stools"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "atypical-hemolytic-uremic-syndrome",
+      "distinguishingFeatures": [
+        "Absence of preceding diarrheal illness",
+        "Complement pathway genetic mutations",
+        "Poor response to supportive care alone"
+      ]
+    },
+    {
+      "diseaseId": "thrombotic-thrombocytopenic-purpura",
+      "distinguishingFeatures": [
+        "Severe ADAMTS13 deficiency",
+        "More prominent neurological symptoms",
+        "Less severe renal involvement"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive renal failure",
+    "Neurological deterioration (seizures, coma)",
+    "Severe thrombocytopenia with bleeding"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Hematologist",
+    "Infectious disease specialist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Nester CM, et al. Hemolytic Uremic Syndrome. N Engl J Med. 2015;372(18):1720-32.",
+    "Karpman D, et al. Hemolytic uremic syndrome: pathogenesis and novel therapies. Nat Rev Nephrol. 2017;13(6): 313-326.",
+    "Orphanet: Typical Hemolytic Uremic Syndrome. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=795"
+  ],
+  "confidenceInData": "medium"
+}

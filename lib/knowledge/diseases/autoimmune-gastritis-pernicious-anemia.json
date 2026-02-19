@@ -1,0 +1,226 @@
+{
+  "id": "autoimmune-gastritis-pernicious-anemia",
+  "name": "Autoimmune Gastritis / Pernicious Anemia",
+  "aliases": [
+    "Type A Gastritis",
+    "Vitamin B12 Deficiency Anemia"
+  ],
+  "icd10Codes": [
+    "K29.4",
+    "D51.0"
+  ],
+  "omimId": "261000",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 1,000",
+    "range": "0.1%-0.5%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 80,
+      "peak": 60
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "Northern European descent",
+      "Caucasian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Autoimmune Gastritis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "anti-parietal-cell-antibodies",
+        "description": "Presence of anti-parietal cell antibodies in serum",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "gastric-mucosal-atrophy",
+        "description": "Histological evidence of gastric mucosal atrophy predominantly in the corpus and fundus",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "vitamin-b12-deficiency",
+        "description": "Laboratory confirmed vitamin B12 deficiency with elevated methylmalonic acid and homocysteine",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "intrinsic-factor-antibodies",
+        "description": "Presence of intrinsic factor antibodies in serum",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "megaloblastic-anemia",
+        "description": "Peripheral blood smear showing megaloblastic anemia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of gastric mucosal atrophy on biopsy plus either anti-parietal cell antibodies or vitamin B12 deficiency",
+    "notes": "Intrinsic factor antibody testing increases specificity but is not always positive."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Glossitis with atrophic papillae",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Also known as Hunter's glossitis"
+      },
+      {
+        "symptomName": "Paresthesia due to subacute combined degeneration",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Peripheral neuropathy related to B12 deficiency"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue related to anemia",
+        "frequency": 0.8,
+        "bodySystem": "constitutional",
+        "notes": "Due to decreased oxygen carrying capacity"
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Secondary to anemia"
+      },
+      {
+        "symptomName": "Mild epigastric discomfort",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "notes": "Often nonspecific"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "notes": "May be due to malabsorption or chronic disease"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Diarrhea or loose stools",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to malabsorption"
+      },
+      {
+        "symptomName": "Depression or cognitive changes",
+        "frequency": 0.25,
+        "bodySystem": "psychiatric",
+        "notes": "Neuropsychiatric manifestations of B12 deficiency"
+      },
+      {
+        "symptomName": "Mild jaundice",
+        "frequency": 0.2,
+        "bodySystem": "hematological",
+        "notes": "Due to ineffective erythropoiesis"
+      },
+      {
+        "symptomName": "Loss of appetite",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Nonspecific symptom"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Atrophic gastritis-related gastric carcinoid tumors",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Rare neoplastic complication"
+      },
+      {
+        "symptomName": "Iron deficiency anemia",
+        "frequency": 0.07,
+        "bodySystem": "hematological",
+        "notes": "Due to chronic blood loss or malabsorption"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "notes": "Secondary to severe anemia or hypoalbuminemia"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "neurological",
+    "constitutional",
+    "psychiatric"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Macrocytic anemia with elevated mean corpuscular volume (MCV)",
+      "Low serum vitamin B12 levels",
+      "Positive anti-parietal cell antibodies",
+      "Elevated methylmalonic acid and homocysteine levels",
+      "Presence of intrinsic factor antibodies (variable)"
+    ],
+    "imaging": [
+      "Endoscopic findings of gastric mucosal atrophy in the corpus and fundus",
+      "Possible gastric intestinal metaplasia on biopsy"
+    ],
+    "genetic": [
+      "No specific genetic mutation identified; associated with HLA-DR antigens (e.g., HLA-DR3, DR4)"
+    ],
+    "other": [
+      "Histopathology showing loss of parietal cells and lymphocytic infiltration",
+      "Schilling test historically used to confirm B12 malabsorption (rarely used now)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "h-pylori-associated-chronic-gastritis",
+      "distinguishingFeatures": [
+        "Presence of Helicobacter pylori infection",
+        "Antral predominant gastritis rather than corpus",
+        "Negative intrinsic factor antibodies"
+      ]
+    },
+    {
+      "diseaseId": "dietary-vitamin-b12-deficiency",
+      "distinguishingFeatures": [
+        "History of inadequate dietary intake (e.g., veganism)",
+        "No gastric mucosal atrophy",
+        "Negative anti-parietal cell and intrinsic factor antibodies"
+      ]
+    },
+    {
+      "diseaseId": "other-causes-of-megaloblastic-anemia",
+      "distinguishingFeatures": [
+        "Folate deficiency",
+        "Drug-induced causes (e.g., methotrexate)",
+        "No autoimmune markers"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe neurological deficits including ataxia and spasticity",
+    "Marked anemia with hemodynamic instability",
+    "Development of gastric neoplasia (carcinoid or adenocarcinoma)"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Hematologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Anderson GJ, et al. Autoimmune gastritis and pernicious anemia. N Engl J Med. 2020;382(12):1157-1165.",
+    "Tack GJ, et al. Autoimmune gastritis: pathogenesis, diagnosis, and treatment. Nat Rev Gastroenterol Hepatol. 2019;16(3):207-220.",
+    "Stabler SP. Clinical practice. Vitamin B12 deficiency. N Engl J Med. 2013;368(2):149-160."
+  ],
+  "confidenceInData": "medium"
+}

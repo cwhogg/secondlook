@@ -1,0 +1,203 @@
+{
+  "id": "sympathetic-ophthalmia",
+  "name": "Sympathetic Ophthalmia",
+  "aliases": [
+    "Sympathetic Uveitis",
+    "Sympathetic Panuveitis"
+  ],
+  "icd10Codes": [
+    "H44.0"
+  ],
+  "prevalence": {
+    "estimate": "1 in 500,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 70,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No standardized formal criteria",
+    "criteria": [
+      {
+        "id": "history-penetrating-injury",
+        "description": "History of penetrating ocular trauma or surgery to one eye",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bilateral-granulomatous-panuveitis",
+        "description": "Presence of bilateral granulomatous panuveitis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-infectious-uveitis",
+        "description": "Exclusion of infectious causes of uveitis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-response-corticosteroids",
+        "description": "Clinical improvement with corticosteroid or immunosuppressive therapy",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "History of penetrating ocular injury plus bilateral granulomatous panuveitis with exclusion of infectious etiologies",
+    "notes": "Diagnosis is primarily clinical and by exclusion; histopathology is rarely performed."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Bilateral granulomatous panuveitis",
+        "frequency": 0.85,
+        "bodySystem": "ophthalmological",
+        "notes": "Characteristic inflammation involving all uveal layers in both eyes"
+      },
+      {
+        "symptomName": "Dalen-Fuchs nodules",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological",
+        "notes": "Small, discrete, yellow-white subretinal lesions seen on fundoscopic exam"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Decreased visual acuity",
+        "frequency": 0.8,
+        "bodySystem": "ophthalmological",
+        "notes": "Often progressive if untreated"
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.7,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Eye pain",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Conjunctival injection",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Floaters",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Anterior chamber cells and flare",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Vitreous haze",
+        "frequency": 0.35,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Retinal detachment",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Macular edema",
+        "frequency": 0.2,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hypopyon",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Optic nerve edema",
+        "frequency": 0.08,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Secondary glaucoma",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Cataract formation",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "ophthalmological",
+    "immunological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated inflammatory markers (ESR, CRP) nonspecific",
+      "Negative infectious workup (e.g., syphilis, tuberculosis, toxoplasmosis)"
+    ],
+    "imaging": [
+      "Fluorescein angiography showing multiple pinpoint leaks",
+      "Optical coherence tomography (OCT) demonstrating retinal edema and subretinal fluid",
+      "Ultrasound B-scan showing choroidal thickening"
+    ],
+    "genetic": [],
+    "other": [
+      "Histopathology (rarely performed) shows diffuse granulomatous inflammation with Dalen-Fuchs nodules"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "vogt-koyanagi-harada-disease",
+      "distinguishingFeatures": [
+        "No history of ocular trauma",
+        "Associated systemic findings such as meningismus, auditory symptoms, and vitiligo"
+      ]
+    },
+    {
+      "diseaseId": "infectious-uveitis",
+      "distinguishingFeatures": [
+        "Positive infectious serologies or PCR",
+        "Response to antimicrobial therapy rather than immunosuppression"
+      ]
+    },
+    {
+      "diseaseId": "sarcoidosis",
+      "distinguishingFeatures": [
+        "Systemic granulomatous disease with pulmonary involvement",
+        "Noncaseating granulomas on biopsy"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid bilateral vision loss",
+    "Signs of retinal detachment",
+    "Elevated intraocular pressure indicating secondary glaucoma"
+  ],
+  "specialistType": [
+    "Ophthalmologist",
+    "Immunologist",
+    "Rheumatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Nussenblatt RB. Sympathetic ophthalmia. Int Ophthalmol Clin. 1982;22(3):1-17.",
+    "Chan CC, et al. Sympathetic ophthalmia: clinical and experimental perspectives. Surv Ophthalmol. 1995;39(3):233-246.",
+    "Jabs DA, et al. Standardization of uveitis nomenclature for reporting clinical data. Am J Ophthalmol. 2005;140(3):509-516."
+  ],
+  "confidenceInData": "medium"
+}

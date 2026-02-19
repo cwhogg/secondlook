@@ -1,0 +1,199 @@
+{
+  "id": "palindromic-rheumatism-with-anti-ccp-positivity",
+  "name": "Palindromic Rheumatism with Anti-Cyclic Citrullinated Peptide Positivity",
+  "aliases": [
+    "Palindromic Rheumatism",
+    "Episodic Rheumatoid Arthritis Precursor"
+  ],
+  "icd10Codes": [
+    "M06.3"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.001%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 60,
+      "peak": 40
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No standardized formal criteria; clinical diagnosis based on episodic arthritis and serology",
+    "criteria": [
+      {
+        "id": "episodic-arthritis",
+        "description": "Recurrent, sudden-onset, self-limiting episodes of mono- or oligoarticular arthritis lasting hours to days",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "anti-ccp-positivity",
+        "description": "Presence of anti-cyclic citrullinated peptide antibodies in serum",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-radiographic-joint-damage",
+        "description": "No permanent joint damage or erosions on imaging during early disease",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-of-other-arthritides",
+        "description": "Exclusion of other causes of episodic arthritis such as gout or infectious arthritis",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Recurrent episodic arthritis with anti-CCP antibody positivity and exclusion of other causes",
+    "notes": "Diagnosis is clinical and supported by serology; no universally accepted criteria exist"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent episodic monoarticular or oligoarticular arthritis",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "notes": "Episodes last hours to days and resolve completely"
+      },
+      {
+        "symptomName": "Sudden onset joint swelling and pain",
+        "frequency": 0.8,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Morning stiffness lasting less than 30 minutes",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue during or preceding attacks",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Joint tenderness on palpation",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated inflammatory markers during attacks (ESR, CRP)",
+        "frequency": 0.6,
+        "bodySystem": "hematological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Low-grade fever during attacks",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Symmetrical joint involvement in some episodes",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Transient erythema over affected joints",
+        "frequency": 0.25,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Mild synovial thickening on ultrasound during attacks",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Progression to persistent rheumatoid arthritis",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal",
+        "notes": "Occurs in a subset of patients over time"
+      },
+      {
+        "symptomName": "Extra-articular manifestations (e.g., sicca symptoms)",
+        "frequency": 0.03,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Nodules or subcutaneous lumps near joints",
+        "frequency": 0.02,
+        "bodySystem": "dermatological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "constitutional",
+    "hematological",
+    "dermatological",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive anti-cyclic citrullinated peptide (anti-CCP) antibodies",
+      "Elevated erythrocyte sedimentation rate (ESR) and C-reactive protein (CRP) during attacks",
+      "Negative rheumatoid factor in some cases"
+    ],
+    "imaging": [
+      "Normal radiographs without erosions in early disease",
+      "Ultrasound showing synovial thickening and increased vascularity during attacks"
+    ],
+    "genetic": [
+      "Association with HLA-DRB1 shared epitope alleles"
+    ],
+    "other": [
+      "Clinical pattern of episodic arthritis with complete resolution between attacks"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "rheumatoid-arthritis",
+      "distinguishingFeatures": [
+        "Persistent symmetric polyarthritis",
+        "Radiographic joint erosions",
+        "Chronic disease course without complete resolution between attacks"
+      ]
+    },
+    {
+      "diseaseId": "gout",
+      "distinguishingFeatures": [
+        "Presence of monosodium urate crystals in synovial fluid",
+        "Typically affects first metatarsophalangeal joint",
+        "Elevated serum uric acid"
+      ]
+    },
+    {
+      "diseaseId": "systemic-lupus-erythematosus",
+      "distinguishingFeatures": [
+        "Multisystem involvement",
+        "Positive ANA and other lupus-specific antibodies",
+        "Non-erosive arthritis"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Persistent joint swelling beyond typical episodic duration",
+    "Development of joint erosions on imaging",
+    "Systemic symptoms such as high fever or weight loss"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Sangha O. Palindromic rheumatism. Best Pract Res Clin Rheumatol. 2006;20(5):849-863.",
+    "Le Loët X, et al. Palindromic rheumatism: a clinical and immunological study. Ann Rheum Dis. 1992;51(7): 853-856.",
+    "van der Helm-van Mil AH, et al. Anti-citrullinated protein antibodies and the development of rheumatoid arthritis. Arthritis Rheum. 2006;54(5): 1255-1261."
+  ],
+  "confidenceInData": "medium"
+}

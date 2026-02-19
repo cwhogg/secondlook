@@ -1,0 +1,213 @@
+{
+  "id": "chagas-disease",
+  "name": "Chagas Disease",
+  "aliases": [
+    "American Trypanosomiasis",
+    "Trypanosoma cruzi infection"
+  ],
+  "icd10Codes": [
+    "B57"
+  ],
+  "prevalence": {
+    "estimate": "1 in 1000",
+    "range": "0.1%-0.5%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Latin American populations",
+      "Indigenous groups in endemic areas"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Diagnostic Criteria for Chagas Disease",
+    "criteria": [
+      {
+        "id": "serology-positive",
+        "description": "Positive serological test for Trypanosoma cruzi antibodies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "parasitological-evidence",
+        "description": "Detection of Trypanosoma cruzi parasites in blood or tissue by microscopy or PCR",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "clinical-features",
+        "description": "Presence of clinical signs consistent with acute or chronic Chagas disease (e.g., cardiac or gastrointestinal involvement)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Positive serology plus either parasitological evidence or compatible clinical features",
+    "notes": "Diagnosis in chronic phase relies primarily on serology; parasitological tests are more useful in acute phase."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Romaña's sign (unilateral periorbital swelling)",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Characteristic of acute infection following conjunctival entry"
+      },
+      {
+        "symptomName": "Chagoma (inflammatory nodule at parasite entry site)",
+        "frequency": 0.7,
+        "bodySystem": "dermatological",
+        "notes": "Localized swelling and erythema at inoculation site"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chronic cardiomyopathy with arrhythmias",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Includes conduction abnormalities and heart failure"
+      },
+      {
+        "symptomName": "Megaesophagus",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "notes": "Esophageal dilation causing dysphagia"
+      },
+      {
+        "symptomName": "Megacolon",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "notes": "Colonic dilation leading to constipation"
+      },
+      {
+        "symptomName": "Fever during acute phase",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Non-specific febrile illness"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Common in chronic disease"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Headache",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "notes": "Often present during acute infection"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to arrhythmias"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to heart failure"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.35,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to esophageal involvement"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal",
+        "notes": "Associated with megacolon"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Meningoencephalitis",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "More common in immunocompromised patients"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Secondary to cardiac embolism"
+      },
+      {
+        "symptomName": "Thromboembolism",
+        "frequency": 0.04,
+        "bodySystem": "hematological",
+        "notes": "Due to cardiac dysfunction"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "gastrointestinal",
+    "dermatological",
+    "neurological",
+    "constitutional",
+    "hematological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive serology for T. cruzi IgG antibodies",
+      "Detection of trypomastigotes in blood smear (acute phase)",
+      "PCR detection of T. cruzi DNA"
+    ],
+    "imaging": [
+      "Chest X-ray showing cardiomegaly",
+      "Echocardiogram revealing ventricular dilation and wall motion abnormalities",
+      "Barium swallow demonstrating esophageal dilation"
+    ],
+    "genetic": [],
+    "other": [
+      "Electrocardiogram abnormalities including right bundle branch block and arrhythmias",
+      "Endoscopic evidence of megacolon or megaesophagus"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "dilated-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Absence of T. cruzi serology positivity",
+        "No gastrointestinal megasyndromes",
+        "Different epidemiological background"
+      ]
+    },
+    {
+      "diseaseId": "achalasia",
+      "distinguishingFeatures": [
+        "Lack of systemic symptoms",
+        "Negative T. cruzi serology",
+        "Primary esophageal motility disorder without cardiac involvement"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive heart failure with arrhythmias",
+    "Sudden cardiac death",
+    "Severe gastrointestinal dysmotility causing obstruction"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Cardiologist",
+    "Gastroenterologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "World Health Organization. Chagas disease (American trypanosomiasis). WHO Fact Sheet, 2023.",
+    "Bern C. Chagas' Disease. N Engl J Med. 2015;373(5):456-466.",
+    "Rassi A Jr, Rassi A, Marin-Neto JA. Chagas disease. Lancet. 2010;375(9723):1388-1402."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,205 @@
+{
+  "id": "peripartum-cardiomyopathy",
+  "name": "Peripartum Cardiomyopathy",
+  "aliases": [
+    "Pregnancy-Associated Cardiomyopathy",
+    "Postpartum Cardiomyopathy"
+  ],
+  "icd10Codes": [
+    "O90.3"
+  ],
+  "prevalence": {
+    "estimate": "1 in 1,000 to 1 in 4,000 live births",
+    "range": "0.025%-0.1%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 45,
+      "peak": 30
+    },
+    "sexPredilection": "female",
+    "ethnicAssociations": [
+      "African descent",
+      "Haitian",
+      "Nigerian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Demakis Criteria",
+    "criteria": [
+      {
+        "id": "timing",
+        "description": "Development of heart failure in the last month of pregnancy or within 5 months postpartum",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "no-other-cause",
+        "description": "Absence of another identifiable cause of heart failure",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "left-ventricular-dysfunction",
+        "description": "Left ventricular systolic dysfunction with ejection fraction <45%, fractional shortening <30%, or end-diastolic dimension >2.7 cm/m²",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria must be met for diagnosis",
+    "notes": "Exclusion of preexisting heart disease is essential"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "New onset systolic heart failure in peripartum period",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Left ventricular dilatation with reduced ejection fraction",
+        "frequency": 0.8,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Orthopnea",
+        "frequency": 0.7,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Cough",
+        "frequency": 0.4,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest discomfort",
+        "frequency": 0.35,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abdominal bloating due to hepatic congestion",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nocturnal dyspnea",
+        "frequency": 0.25,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Thromboembolic events (e.g. stroke, pulmonary embolism)",
+        "frequency": 0.08,
+        "bodySystem": "hematological",
+        "notes": "Due to ventricular thrombus formation"
+      },
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Ventricular arrhythmias",
+        "frequency": 0.04,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "respiratory",
+    "hematological",
+    "gastrointestinal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated B-type natriuretic peptide (BNP) or NT-proBNP",
+      "Elevated liver enzymes secondary to congestion",
+      "Possible mild leukocytosis"
+    ],
+    "imaging": [
+      "Echocardiogram showing left ventricular dilatation and reduced ejection fraction",
+      "Chest X-ray demonstrating cardiomegaly and pulmonary congestion",
+      "Cardiac MRI may show myocardial edema or fibrosis"
+    ],
+    "genetic": [
+      "No specific genetic markers identified; some familial clustering reported"
+    ],
+    "other": [
+      "Electrocardiogram may show nonspecific ST-T changes or arrhythmias",
+      "Endomyocardial biopsy rarely performed, may show myocarditis or nonspecific changes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "dilated-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Onset unrelated to pregnancy",
+        "Family history of cardiomyopathy",
+        "No temporal association with peripartum period"
+      ]
+    },
+    {
+      "diseaseId": "preexisting-heart-failure",
+      "distinguishingFeatures": [
+        "Symptoms present before pregnancy",
+        "Known cardiac disease history",
+        "No new onset in peripartum period"
+      ]
+    },
+    {
+      "diseaseId": "pulmonary-embolism",
+      "distinguishingFeatures": [
+        "Sudden onset dyspnea and chest pain",
+        "Imaging showing pulmonary artery obstruction",
+        "No left ventricular dysfunction"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive heart failure symptoms",
+    "Signs of cardiogenic shock",
+    "Thromboembolic complications",
+    "Severe arrhythmias"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Maternal-Fetal Medicine Specialist",
+    "Heart Failure Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Demakis JG, Rahimtoola SH. Peripartum cardiomyopathy. Circulation. 1971;44(5):964-968.",
+    "Sliwa K, Hilfiker-Kleiner D, Petrie MC, et al. Current state of knowledge on aetiology, diagnosis, management, and therapy of peripartum cardiomyopathy: a position statement from the Heart Failure Association of the European Society of Cardiology Working Group on peripartum cardiomyopathy. Eur J Heart Fail. 2010;12(8):767-778.",
+    "Elkayam U. Clinical characteristics of peripartum cardiomyopathy in the United States: diagnosis, prognosis, and management. J Am Coll Cardiol. 2011;58(7):659-670."
+  ],
+  "confidenceInData": "medium"
+}

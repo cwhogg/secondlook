@@ -1,0 +1,208 @@
+{
+  "id": "factor-x-deficiency",
+  "name": "Factor X Deficiency",
+  "aliases": [
+    "Stuart-Prower factor deficiency",
+    "Factor X deficiency"
+  ],
+  "icd10Codes": [
+    "D68.1"
+  ],
+  "omimId": "286900",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 60,
+      "peak": 10
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Factor X Deficiency Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "prolonged-pt-apt",
+        "description": "Prolonged prothrombin time (PT) and activated partial thromboplastin time (aPTT) not corrected by mixing studies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "factor-x-activity",
+        "description": "Reduced Factor X activity level below 10-15% of normal",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-bleeding-history",
+        "description": "History of bleeding symptoms consistent with coagulation disorder",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in the F10 gene",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of prolonged PT/aPTT with reduced Factor X activity and clinical bleeding history",
+    "notes": "Genetic testing can confirm diagnosis but is not mandatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Spontaneous mucocutaneous bleeding",
+        "frequency": 0.85,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Prolonged bleeding after trauma or surgery",
+        "frequency": 0.8,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hemarthrosis",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Easy bruising",
+        "frequency": 0.7,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Epistaxis",
+        "frequency": 0.65,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Menorrhagia",
+        "frequency": 0.6,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Gingival bleeding",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Gastrointestinal bleeding",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Intracranial hemorrhage",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Rare but life-threatening"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.25,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Postpartum hemorrhage",
+        "frequency": 0.15,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Retroperitoneal bleeding",
+        "frequency": 0.08,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Muscle hematomas",
+        "frequency": 0.07,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "musculoskeletal",
+    "dermatological",
+    "otolaryngological",
+    "reproductive",
+    "gastrointestinal",
+    "neurological",
+    "renal",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Prolonged PT and aPTT",
+      "Reduced Factor X activity assay",
+      "Normal platelet count and function"
+    ],
+    "imaging": [
+      "Imaging may reveal hemarthrosis or muscle hematomas",
+      "CT/MRI for intracranial hemorrhage"
+    ],
+    "genetic": [
+      "Mutations in F10 gene on chromosome 13q34"
+    ],
+    "other": [
+      "Bleeding time usually normal",
+      "Mixing studies correct PT/aPTT"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "factor-v-deficiency",
+      "distinguishingFeatures": [
+        "Factor V activity decreased instead of Factor X",
+        "Similar bleeding but different coagulation factor assay"
+      ]
+    },
+    {
+      "diseaseId": "vitamin-k-deficiency",
+      "distinguishingFeatures": [
+        "History of malnutrition or malabsorption",
+        "Multiple vitamin K-dependent factors decreased (II, VII, IX, X)"
+      ]
+    },
+    {
+      "diseaseId": "hemophilia-a",
+      "distinguishingFeatures": [
+        "Factor VIII deficiency",
+        "X-linked inheritance pattern",
+        "Predominantly affects males"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Intracranial hemorrhage",
+    "Severe spontaneous hemarthrosis",
+    "Massive gastrointestinal bleeding"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Geneticist",
+    "Coagulation specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Mannucci PM, Tuddenham EG. The hemophilias—from royal genes to gene therapy. N Engl J Med. 2001;344(23):1773-1779.",
+    "Orphanet: Factor X deficiency. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=791",
+    "National Organization for Rare Disorders (NORD): Factor X Deficiency"
+  ],
+  "confidenceInData": "medium"
+}

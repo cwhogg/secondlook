@@ -1,0 +1,230 @@
+{
+  "id": "buerger-disease",
+  "name": "Thromboangiitis Obliterans",
+  "aliases": [
+    "Buerger's Disease",
+    "Thromboangiitis Obliterans"
+  ],
+  "icd10Codes": [
+    "I73.1"
+  ],
+  "omimId": "605284",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.5-1.5 per 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 45,
+      "peak": 30
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "Middle Eastern",
+      "Asian",
+      "Mediterranean"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Shionoya Criteria",
+    "criteria": [
+      {
+        "id": "age-onset",
+        "description": "Onset before age 45 years",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "tobacco-use",
+        "description": "Current or recent history of tobacco use",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "distal-extremity-involvement",
+        "description": "Infrapopliteal arterial occlusive disease",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-atherosclerosis",
+        "description": "Exclusion of autoimmune diseases, hypercoagulable states, and diabetes mellitus",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "superficial-thrombophlebitis",
+        "description": "Migratory superficial thrombophlebitis",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All major criteria must be met including age of onset, tobacco use, distal extremity involvement, and exclusion of other diseases",
+    "notes": "Diagnosis is clinical and supported by angiographic findings; biopsy is rarely performed."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Distal extremity ischemic pain (rest pain)",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "notes": "Severe pain at rest due to ischemia"
+      },
+      {
+        "symptomName": "Superficial thrombophlebitis",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Migratory inflammation of superficial veins"
+      },
+      {
+        "symptomName": "Digital ulcerations and gangrene",
+        "frequency": 0.7,
+        "bodySystem": "dermatological",
+        "notes": "Ischemic tissue necrosis of fingers or toes"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Intermittent claudication of hands or feet",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal",
+        "notes": "Pain during exertion due to arterial insufficiency"
+      },
+      {
+        "symptomName": "Cold sensitivity of extremities",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Exacerbation of symptoms in cold environments"
+      },
+      {
+        "symptomName": "Reduced peripheral pulses",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "notes": "Diminished or absent pulses distal to occlusion"
+      },
+      {
+        "symptomName": "Skin color changes (pallor, cyanosis, rubor)",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "notes": "Color changes due to ischemia and reperfusion"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Cold-induced Raynaud phenomenon",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular",
+        "notes": "Vasospasm of digital arteries triggered by cold"
+      },
+      {
+        "symptomName": "Muscle atrophy of affected limbs",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to chronic ischemia and disuse"
+      },
+      {
+        "symptomName": "Neuropathic pain or paresthesia",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Secondary to nerve ischemia"
+      },
+      {
+        "symptomName": "Edema of affected extremities",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to venous involvement"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Superficial skin infections",
+        "frequency": 0.08,
+        "bodySystem": "dermatological",
+        "notes": "Secondary to ulcerations"
+      },
+      {
+        "symptomName": "Deep vein thrombosis",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "notes": "Rare venous thrombosis in affected limbs"
+      },
+      {
+        "symptomName": "Autoamputation of digits",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal",
+        "notes": "Severe ischemic necrosis leading to spontaneous digit loss"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "cardiovascular",
+    "dermatological",
+    "hematological",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Non-specific inflammatory markers may be mildly elevated",
+      "Normal autoimmune and coagulation profiles"
+    ],
+    "imaging": [
+      "Angiography showing segmental occlusions and corkscrew collaterals in distal arteries",
+      "Doppler ultrasound demonstrating reduced blood flow in affected vessels"
+    ],
+    "genetic": [
+      "No definitive genetic markers identified"
+    ],
+    "other": [
+      "Strong association with tobacco use",
+      "Histopathology shows segmental inflammation and thrombosis of small and medium arteries and veins"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "atherosclerosis",
+      "distinguishingFeatures": [
+        "Older age at onset",
+        "Presence of traditional cardiovascular risk factors (hypertension, hyperlipidemia, diabetes)",
+        "Diffuse arterial involvement rather than segmental"
+      ]
+    },
+    {
+      "diseaseId": "systemic-lupus-erythematosus",
+      "distinguishingFeatures": [
+        "Positive autoimmune serologies (ANA, anti-dsDNA)",
+        "Multisystem involvement including renal and hematologic",
+        "Lack of strong association with tobacco use"
+      ]
+    },
+    {
+      "diseaseId": "raynaud-phenomenon",
+      "distinguishingFeatures": [
+        "Vasospastic episodes without occlusive arterial disease",
+        "Usually no tissue necrosis or ulcerations",
+        "Often associated with connective tissue diseases"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression to digital gangrene",
+    "Severe rest pain refractory to analgesics",
+    "Signs of critical limb ischemia (pallor, coldness, absent pulses)"
+  ],
+  "specialistType": [
+    "Vascular Surgeon",
+    "Rheumatologist",
+    "Cardiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Olin JW. Thromboangiitis obliterans (Buerger's disease). N Engl J Med. 2000;343(12):864-9.",
+    "Shionoya S. Diagnostic criteria of Buerger's disease. Int J Cardiol. 1998;66 Suppl 1:S243-5.",
+    "Mills JL Sr. Buerger's disease in the 21st century: diagnosis, clinical features, and therapy. Semin Vasc Surg. 2003;16(3):179-89."
+  ],
+  "confidenceInData": "medium"
+}

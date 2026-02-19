@@ -1,0 +1,203 @@
+{
+  "id": "berylliosis",
+  "name": "Chronic Beryllium Disease",
+  "aliases": [
+    "Beryllium Sensitization",
+    "Beryllium Lung Disease"
+  ],
+  "icd10Codes": [
+    "J67.0"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.1%-0.5%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 60,
+      "peak": 40
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Beryllium Lymphocyte Proliferation Test (BeLPT) Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "exposure-history",
+        "description": "Documented history of beryllium exposure",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "positive-belpt",
+        "description": "Positive beryllium lymphocyte proliferation test (BeLPT)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "granulomatous-inflammation",
+        "description": "Presence of noncaseating granulomas on lung biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pulmonary-function",
+        "description": "Abnormal pulmonary function tests consistent with restrictive lung disease",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "radiographic-findings",
+        "description": "Chest imaging showing nodular or fibrotic changes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Documented beryllium exposure plus positive BeLPT and either granulomatous inflammation on biopsy or consistent radiographic and pulmonary function abnormalities",
+    "notes": "Diagnosis requires exclusion of other granulomatous lung diseases such as sarcoidosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Noncaseating granulomatous inflammation",
+        "frequency": 0.85,
+        "bodySystem": "respiratory",
+        "notes": "Histopathological hallmark"
+      },
+      {
+        "symptomName": "Positive beryllium lymphocyte proliferation test",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Progressive dyspnea on exertion",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chronic nonproductive cough",
+        "frequency": 0.7,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chest discomfort",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Low-grade fever",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Clubbing of fingers",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pulmonary hypertension",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Digital cyanosis",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.07,
+        "bodySystem": "immunological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "immunological",
+    "musculoskeletal",
+    "cardiovascular",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive beryllium lymphocyte proliferation test (BeLPT)",
+      "Elevated serum angiotensin-converting enzyme (ACE) levels (nonspecific)",
+      "Mild leukocytosis or lymphocytosis in bronchoalveolar lavage fluid"
+    ],
+    "imaging": [
+      "Chest X-ray showing bilateral hilar lymphadenopathy and nodular infiltrates",
+      "High-resolution CT scan showing ground-glass opacities, nodules, and fibrosis"
+    ],
+    "genetic": [
+      "HLA-DPB1 gene variants associated with increased susceptibility"
+    ],
+    "other": [
+      "Noncaseating granulomas on lung biopsy",
+      "Restrictive pattern on pulmonary function tests"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "sarcoidosis",
+      "distinguishingFeatures": [
+        "No history of beryllium exposure",
+        "Negative BeLPT",
+        "Similar granulomatous inflammation but different epidemiology"
+      ]
+    },
+    {
+      "diseaseId": "hypersensitivity-pneumonitis",
+      "distinguishingFeatures": [
+        "Exposure to organic antigens rather than beryllium",
+        "Different histopathology with poorly formed granulomas",
+        "Usually reversible with antigen avoidance"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of respiratory failure",
+    "Development of pulmonary hypertension",
+    "Failure to respond to corticosteroid therapy"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Occupational Medicine Specialist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Newman LS, Rose CS, Maier LA. Sarcoidosis. N Engl J Med. 1997;336(17):1224-1234.",
+    "Maier LA. Chronic beryllium disease: diagnosis and management. Curr Opin Pulm Med. 2005;11(4):314-320.",
+    "Richeldi L, et al. Beryllium sensitization and chronic beryllium disease: a review. Eur Respir J. 2000;15(5):1024-1034."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,225 @@
+{
+  "id": "hartnup-disease",
+  "name": "Hartnup Disease",
+  "aliases": [
+    "Hartnup Disorder",
+    "Neutral Aminoaciduria"
+  ],
+  "icd10Codes": [
+    "E72.0"
+  ],
+  "omimId": "234500",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 30,000 to 1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 40,
+      "peak": 10
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Hartnup Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "neutral-aminoaciduria",
+        "description": "Presence of neutral aminoaciduria demonstrated by increased urinary excretion of neutral amino acids",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pellagra-like-dermatitis",
+        "description": "Pellagra-like photosensitive skin rash, especially on sun-exposed areas",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "neurological-symptoms",
+        "description": "Neurological manifestations such as cerebellar ataxia, tremors, or psychiatric symptoms",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Consanguinity or family history consistent with autosomal recessive inheritance",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of biallelic pathogenic variants in the SLC6A19 gene",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of neutral aminoaciduria plus either pellagra-like dermatitis or neurological symptoms",
+    "notes": "Diagnosis is supported by genetic testing and family history but primarily clinical and biochemical."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Neutral aminoaciduria",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "notes": "Increased urinary excretion of neutral amino acids such as tryptophan"
+      },
+      {
+        "symptomName": "Pellagra-like photosensitive dermatitis",
+        "frequency": 0.85,
+        "bodySystem": "dermatological",
+        "notes": "Erythematous, scaly rash on sun-exposed areas"
+      },
+      {
+        "symptomName": "Cerebellar ataxia",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Impaired coordination and balance"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Psychiatric symptoms including anxiety and depression",
+        "frequency": 0.65,
+        "bodySystem": "psychiatric",
+        "notes": "Mood disturbances and behavioral changes"
+      },
+      {
+        "symptomName": "Photosensitivity",
+        "frequency": 0.6,
+        "bodySystem": "dermatological",
+        "notes": "Increased skin sensitivity to sunlight"
+      },
+      {
+        "symptomName": "Tremors",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "notes": "Involuntary shaking movements"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.5,
+        "bodySystem": "gastrointestinal",
+        "notes": "Intermittent episodes of loose stools"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Headache",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "notes": "Mild to moderate headaches"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.35,
+        "bodySystem": "constitutional",
+        "notes": "Generalized tiredness"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological",
+        "notes": "Involuntary eye movements"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal",
+        "notes": "Mild proximal weakness"
+      },
+      {
+        "symptomName": "Irritability",
+        "frequency": 0.2,
+        "bodySystem": "psychiatric",
+        "notes": "Easily agitated mood"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.08,
+        "bodySystem": "neurological",
+        "notes": "Occasional convulsive episodes"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological",
+        "notes": "Degeneration of the optic nerve"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.04,
+        "bodySystem": "neurological",
+        "notes": "Numbness or tingling in extremities"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "dermatological",
+    "neurological",
+    "psychiatric",
+    "gastrointestinal",
+    "ophthalmological",
+    "musculoskeletal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Increased urinary excretion of neutral amino acids (e.g., tryptophan, alanine, serine)",
+      "Normal serum amino acid levels",
+      "Possible niacin deficiency markers"
+    ],
+    "imaging": [
+      "MRI may show cerebellar atrophy in advanced neurological involvement"
+    ],
+    "genetic": [
+      "Biallelic pathogenic variants in SLC6A19 gene"
+    ],
+    "other": [
+      "Positive response to niacin or nicotinamide supplementation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pellagra",
+      "distinguishingFeatures": [
+        "Niacin deficiency due to dietary lack or malabsorption",
+        "No neutral aminoaciduria",
+        "Usually adult onset"
+      ]
+    },
+    {
+      "diseaseId": "cystinuria",
+      "distinguishingFeatures": [
+        "Increased urinary excretion of dibasic amino acids and cystine, not neutral amino acids",
+        "No pellagra-like rash",
+        "Risk of kidney stones"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe neurological deterioration including ataxia and seizures",
+    "Progressive photosensitive dermatitis with secondary infection",
+    "Failure to respond to niacin supplementation"
+  ],
+  "specialistType": [
+    "Geneticist",
+    "Neurologist",
+    "Dermatologist",
+    "Nephrologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Nigam SK. Hartnup disorder: a disorder of neutral amino acid transport. J Inherit Metab Dis. 1993;16(4):647-653.",
+    "Brunetti-Pierri N, et al. Hartnup disorder: clinical and molecular aspects. Mol Genet Metab. 2004;81(3):193-199.",
+    "Orphanet: Hartnup disease. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=284"
+  ],
+  "confidenceInData": "medium"
+}

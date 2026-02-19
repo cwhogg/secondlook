@@ -1,0 +1,224 @@
+{
+  "id": "barth-syndrome",
+  "name": "Barth Syndrome",
+  "aliases": [
+    "3-Methylglutaconic Aciduria Type II",
+    "X-linked Cardioskeletal Myopathy with Neutropenia"
+  ],
+  "icd10Codes": [
+    "E88.42"
+  ],
+  "omimId": "302060",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 300,000 to 400,000 male births",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 5,
+      "peak": 1
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Barth Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "cardiomyopathy",
+        "description": "Presence of dilated or hypertrophic cardiomyopathy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "neutropenia",
+        "description": "Chronic or intermittent neutropenia documented by serial blood counts",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "tafazzin-mutation",
+        "description": "Pathogenic mutation in the TAZ (tafazzin) gene confirmed by genetic testing",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "skeletal-myopathy",
+        "description": "Clinical or electromyographic evidence of skeletal myopathy",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "growth-delay",
+        "description": "Delayed growth and failure to thrive in infancy or early childhood",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "3-methylglutaconic-aciduria",
+        "description": "Elevated urinary 3-methylglutaconic acid levels",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of cardiomyopathy, neutropenia, and a pathogenic TAZ gene mutation",
+    "notes": "Diagnosis may be supported by biochemical findings and clinical features but requires genetic confirmation."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Dilated cardiomyopathy",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Chronic neutropenia",
+        "frequency": 0.8,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated 3-methylglutaconic aciduria",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "notes": "Detected via urine organic acid analysis"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Skeletal muscle weakness",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Growth delay and failure to thrive",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue and exercise intolerance",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Neutropenia-related recurrent infections",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Cardiac arrhythmias",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Delayed motor milestones",
+        "frequency": 0.35,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Neutropenic fever episodes",
+        "frequency": 0.25,
+        "bodySystem": "immunological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Left ventricular noncompaction",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hypoglycemia",
+        "frequency": 0.05,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.04,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "hematological",
+    "musculoskeletal",
+    "immunological",
+    "constitutional",
+    "renal",
+    "neurological",
+    "gastrointestinal",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Persistent neutropenia on serial complete blood counts",
+      "Elevated urinary 3-methylglutaconic acid levels",
+      "Elevated creatine kinase in some patients"
+    ],
+    "imaging": [
+      "Echocardiogram showing dilated or hypertrophic cardiomyopathy",
+      "Cardiac MRI may show left ventricular noncompaction"
+    ],
+    "genetic": [
+      "Pathogenic variants in the TAZ (tafazzin) gene on X chromosome"
+    ],
+    "other": [
+      "Muscle biopsy may show mitochondrial abnormalities",
+      "Electromyography indicating skeletal myopathy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "dilated-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Lack of neutropenia",
+        "No TAZ gene mutation",
+        "Absence of 3-methylglutaconic aciduria"
+      ]
+    },
+    {
+      "diseaseId": "severe-congenital-neutropenia",
+      "distinguishingFeatures": [
+        "Neutropenia without cardiomyopathy",
+        "Different genetic mutations (e.g. ELANE gene)",
+        "No skeletal myopathy or growth delay"
+      ]
+    },
+    {
+      "diseaseId": "mitochondrial-myopathy",
+      "distinguishingFeatures": [
+        "Variable cardiomyopathy types",
+        "No neutropenia",
+        "Different genetic causes"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Early onset cardiomyopathy with heart failure symptoms",
+    "Recurrent severe infections due to neutropenia",
+    "Failure to thrive with muscle weakness in a male infant"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Hematologist",
+    "Geneticist",
+    "Neurologist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Barth PG, Scholte HR, Berden JA, et al. An X-linked mitochondrial disease affecting cardiac muscle, skeletal muscle and neutrophil leucocytes. J Neurol Sci. 1983.",
+    "Clarke SL, Bowron A, Gonzalez IL, et al. Barth syndrome. Orphanet J Rare Dis. 2013.",
+    "Spencer CT, Bryant RM, Day J, et al. Cardiac and clinical phenotype in Barth syndrome. Pediatrics. 2006."
+  ],
+  "confidenceInData": "medium"
+}

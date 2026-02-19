@@ -1,0 +1,213 @@
+{
+  "id": "familial-renal-glucosuria",
+  "name": "Familial Renal Glucosuria",
+  "aliases": [
+    "Renal Glucosuria",
+    "Benign Renal Glucosuria"
+  ],
+  "icd10Codes": [
+    "E08.36"
+  ],
+  "omimId": "233100",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 40,000",
+    "range": "0.0025%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 10
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "No specific ethnic predilection reported"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Familial Renal Glucosuria Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "isolated-glucosuria",
+        "description": "Persistent renal glucosuria without hyperglycemia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "normal-blood-glucose",
+        "description": "Normal fasting and postprandial blood glucose levels",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sglt2-mutation",
+        "description": "Identification of pathogenic SGLT2 gene mutation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-other-renal-disease",
+        "description": "Exclusion of other causes of glucosuria and renal tubular dysfunction",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of persistent isolated glucosuria with normal blood glucose and identification of SGLT2 mutation",
+    "notes": "Diagnosis requires exclusion of diabetes mellitus and other renal tubular disorders."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Isolated renal glucosuria",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "notes": "Glucose excretion in urine despite normal blood glucose"
+      },
+      {
+        "symptomName": "Normoglycemia",
+        "frequency": 0.9,
+        "bodySystem": "endocrine",
+        "notes": "Absence of hyperglycemia differentiates from diabetes"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Polyuria",
+        "frequency": 0.7,
+        "bodySystem": "renal",
+        "notes": "Increased urine output due to osmotic diuresis"
+      },
+      {
+        "symptomName": "Nocturia",
+        "frequency": 0.65,
+        "bodySystem": "renal",
+        "notes": "Frequent urination at night"
+      },
+      {
+        "symptomName": "Mild polydipsia",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Increased thirst secondary to polyuria"
+      },
+      {
+        "symptomName": "Normal renal function",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "notes": "No impairment in glomerular filtration rate"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Mild dehydration episodes",
+        "frequency": 0.3,
+        "bodySystem": "constitutional",
+        "notes": "Due to fluid loss from glucosuria"
+      },
+      {
+        "symptomName": "Mild electrolyte imbalance",
+        "frequency": 0.2,
+        "bodySystem": "renal",
+        "notes": "Occasional mild hypokalemia or hyponatremia"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "notes": "Non-specific symptom possibly related to fluid loss"
+      },
+      {
+        "symptomName": "Urinary tract infections",
+        "frequency": 0.4,
+        "bodySystem": "renal",
+        "notes": "Occasional increased risk due to glucosuria"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hypoglycemia",
+        "frequency": 0.05,
+        "bodySystem": "endocrine",
+        "notes": "Rare episodes possibly related to altered glucose handling"
+      },
+      {
+        "symptomName": "Mild proteinuria",
+        "frequency": 0.07,
+        "bodySystem": "renal",
+        "notes": "Rarely observed in some cases"
+      },
+      {
+        "symptomName": "Renal tubular acidosis",
+        "frequency": 0.02,
+        "bodySystem": "renal",
+        "notes": "Very rare association"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "endocrine",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Persistent glucosuria with normal blood glucose levels",
+      "Normal serum electrolytes or mild imbalances",
+      "Normal renal function tests"
+    ],
+    "imaging": [
+      "Renal ultrasound typically normal"
+    ],
+    "genetic": [
+      "Pathogenic mutations in SGLT2 (SLC5A2) gene"
+    ],
+    "other": [
+      "Negative oral glucose tolerance test for diabetes",
+      "Absence of ketonuria"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "diabetes-mellitus",
+      "distinguishingFeatures": [
+        "Presence of hyperglycemia",
+        "Positive oral glucose tolerance test",
+        "Absence of SGLT2 mutations"
+      ]
+    },
+    {
+      "diseaseId": "renal-tubular-acidosis",
+      "distinguishingFeatures": [
+        "Metabolic acidosis with normal anion gap",
+        "Electrolyte disturbances more severe",
+        "Possible glucosuria but with acid-base imbalance"
+      ]
+    },
+    {
+      "diseaseId": "fanconi-syndrome",
+      "distinguishingFeatures": [
+        "Generalized proximal tubular dysfunction",
+        "Glucosuria with aminoaciduria, phosphaturia, bicarbonate loss",
+        "Associated with other systemic symptoms"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Persistent hyperglycemia indicating diabetes mellitus",
+    "Signs of renal impairment or progressive kidney disease",
+    "Severe electrolyte disturbances or metabolic acidosis"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Endocrinologist",
+    "Clinical Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Santer R, Calado J. Familial renal glucosuria. Trends Endocrinol Metab. 2010;21(5):252-9.",
+    "Vallon V. The mechanisms and therapeutic potential of SGLT2 inhibitors in diabetes mellitus. Annu Rev Med. 2015;66:255-70.",
+    "OMIM Entry - # 233100 - RENAL GLUCOSURIA, FAMILIAL"
+  ],
+  "confidenceInData": "medium"
+}

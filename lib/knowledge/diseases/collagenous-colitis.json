@@ -1,0 +1,198 @@
+{
+  "id": "collagenous-colitis",
+  "name": "Collagenous Colitis",
+  "aliases": [
+    "Microscopic Colitis - Collagenous Type",
+    "Collagenous Microscopic Colitis"
+  ],
+  "icd10Codes": [
+    "K52.8"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.01%-0.05%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 80,
+      "peak": 60
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Histopathological Diagnostic Criteria for Collagenous Colitis",
+    "criteria": [
+      {
+        "id": "chronic_diarrhea",
+        "description": "Presence of chronic watery, non-bloody diarrhea lasting more than 4 weeks",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histology_collagen_layer",
+        "description": "Biopsy showing thickened subepithelial collagen band >10 µm in colonic mucosa",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "inflammatory_infiltrate",
+        "description": "Increased intraepithelial lymphocytes and lamina propria inflammatory infiltrate",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "normal_endoscopic_appearance",
+        "description": "Normal or near-normal colonoscopy findings",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Chronic watery diarrhea plus histological evidence of thickened subepithelial collagen band on colonic biopsy",
+    "notes": "Diagnosis requires exclusion of other causes of chronic diarrhea and microscopic colitis subtypes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chronic watery non-bloody diarrhea",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Histological thickened subepithelial collagen layer",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal",
+        "notes": "Identified on colonic mucosal biopsy"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abdominal cramping and pain",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Urgency to defecate",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Nocturnal diarrhea",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Mild fecal incontinence",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nausea",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "notes": "May be associated with autoimmune comorbidities"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Fever",
+        "frequency": 0.05,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mucus in stool",
+        "frequency": 0.04,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Rarely due to hypoalbuminemia"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "constitutional",
+    "musculoskeletal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal or mild elevation of inflammatory markers (CRP, ESR)",
+      "Normal complete blood count",
+      "Possible mild hypoalbuminemia"
+    ],
+    "imaging": [
+      "Normal colonoscopy or nonspecific mucosal changes",
+      "Barium enema typically normal"
+    ],
+    "genetic": [],
+    "other": [
+      "Colonic mucosal biopsy showing thickened subepithelial collagen band (>10 µm)",
+      "Increased intraepithelial lymphocytes and lamina propria inflammation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "lymphocytic-colitis",
+      "distinguishingFeatures": [
+        "Absence of thickened collagen band on biopsy",
+        "Increased intraepithelial lymphocytes without collagen deposition",
+        "Similar clinical presentation with watery diarrhea"
+      ]
+    },
+    {
+      "diseaseId": "inflammatory-bowel-disease",
+      "distinguishingFeatures": [
+        "Presence of mucosal ulcerations or erosions on endoscopy",
+        "Histological evidence of crypt architectural distortion",
+        "Bloody diarrhea more common"
+      ]
+    },
+    {
+      "diseaseId": "irritable-bowel-syndrome",
+      "distinguishingFeatures": [
+        "No histological abnormalities on biopsy",
+        "Symptoms related to bowel habits without inflammation",
+        "Absence of nocturnal diarrhea"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Presence of bloody diarrhea",
+    "Unintentional significant weight loss (>10% body weight)",
+    "Signs of systemic infection or sepsis"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Munch A, et al. Microscopic colitis: current status, present and future challenges. Nat Rev Gastroenterol Hepatol. 2019.",
+    "Pardi DS, Kelly CP. Microscopic colitis. Gastroenterology. 2011.",
+    "European Microscopic Colitis Group (EMCG) guidelines, 2020."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,8 +1,19 @@
 {
   "id": "inflammatory-bowel-disease-crohn",
   "name": "Crohn Disease",
-  "aliases": ["Crohn's Disease", "Regional Enteritis", "Granulomatous Ileitis", "Granulomatous Colitis", "Terminal Ileitis"],
-  "icd10Codes": ["K50.0", "K50.1", "K50.8", "K50.9"],
+  "aliases": [
+    "Crohn's Disease",
+    "Regional Enteritis",
+    "Granulomatous Ileitis",
+    "Granulomatous Colitis",
+    "Terminal Ileitis"
+  ],
+  "icd10Codes": [
+    "K50.0",
+    "K50.1",
+    "K50.8",
+    "K50.9"
+  ],
   "omimId": "266600",
   "orphanetId": "206",
   "prevalence": {
@@ -11,52 +22,187 @@
     "classification": "common"
   },
   "demographics": {
-    "typicalOnsetAge": { "min": 15, "max": 35, "peak": 25 },
+    "typicalOnsetAge": {
+      "min": 15,
+      "max": 35,
+      "peak": 25
+    },
     "sexPredilection": "equal",
-    "ethnicAssociations": ["Ashkenazi Jewish (highest risk)", "Northern European/North American", "Increasing incidence in Asian populations"]
+    "ethnicAssociations": [
+      "Ashkenazi Jewish (highest risk)",
+      "Northern European/North American",
+      "Increasing incidence in Asian populations"
+    ]
   },
   "diagnosticCriteria": {
     "formalCriteriaName": "ACG/ECCO Diagnostic Approach for Crohn's Disease",
     "criteria": [
-      { "id": "crohn-1", "description": "Clinical presentation: chronic diarrhea (>4 weeks), abdominal pain, weight loss", "category": "major", "requiredForDiagnosis": false },
-      { "id": "crohn-2", "description": "Endoscopic findings: skip lesions, deep linear/serpiginous ulcers, cobblestone mucosa, strictures", "category": "major", "requiredForDiagnosis": false },
-      { "id": "crohn-3", "description": "Histological findings: transmural inflammation, non-caseating granulomas, focal chronic inflammation", "category": "major", "requiredForDiagnosis": false },
-      { "id": "crohn-4", "description": "Imaging: bowel wall thickening, mesenteric fat stranding (creeping fat), fistulae, abscesses", "category": "major", "requiredForDiagnosis": false },
-      { "id": "crohn-5", "description": "Perianal disease: fistulae, abscesses, skin tags", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "crohn-6", "description": "Exclusion of infectious causes (TB, Yersinia, C. difficile)", "category": "major", "requiredForDiagnosis": true }
+      {
+        "id": "crohn-1",
+        "description": "Clinical presentation: chronic diarrhea (>4 weeks), abdominal pain, weight loss",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "crohn-2",
+        "description": "Endoscopic findings: skip lesions, deep linear/serpiginous ulcers, cobblestone mucosa, strictures",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "crohn-3",
+        "description": "Histological findings: transmural inflammation, non-caseating granulomas, focal chronic inflammation",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "crohn-4",
+        "description": "Imaging: bowel wall thickening, mesenteric fat stranding (creeping fat), fistulae, abscesses",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "crohn-5",
+        "description": "Perianal disease: fistulae, abscesses, skin tags",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "crohn-6",
+        "description": "Exclusion of infectious causes (TB, Yersinia, C. difficile)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
     ],
     "minimumForDiagnosis": "Combination of clinical, endoscopic, histologic, and radiologic findings consistent with Crohn's disease after excluding infections. No single gold standard test.",
     "notes": "Montreal classification: Age at diagnosis (A1 <16, A2 17-40, A3 >40), Location (L1 ileal, L2 colonic, L3 ileocolonic, L4 upper GI), Behavior (B1 non-stricturing/non-penetrating, B2 stricturing, B3 penetrating, p perianal modifier)."
   },
   "symptoms": {
     "pathognomonic": [
-      { "symptomName": "Non-caseating granulomas on biopsy", "frequency": 0.30, "bodySystem": "Gastrointestinal", "notes": "Present in ~30% of biopsies; when found, highly suggestive" },
-      { "symptomName": "Skip lesions with transmural inflammation", "frequency": 0.70, "bodySystem": "Gastrointestinal", "notes": "Discontinuous involvement; full-thickness bowel wall inflammation" },
-      { "symptomName": "Perianal fistulae and abscesses", "snomedCode": "235726002", "frequency": 0.30, "bodySystem": "Gastrointestinal", "notes": "Complex perianal disease is characteristic of Crohn's" }
+      {
+        "symptomName": "Non-caseating granulomas on biopsy",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "notes": "Present in ~30% of biopsies; when found, highly suggestive"
+      },
+      {
+        "symptomName": "Skip lesions with transmural inflammation",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal",
+        "notes": "Discontinuous involvement; full-thickness bowel wall inflammation"
+      },
+      {
+        "symptomName": "Perianal fistulae and abscesses",
+        "snomedCode": "235726002",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "notes": "Complex perianal disease is characteristic of Crohn's"
+      }
     ],
     "common": [
-      { "symptomName": "Chronic diarrhea (often non-bloody)", "snomedCode": "236071009", "frequency": 0.70, "bodySystem": "Gastrointestinal" },
-      { "symptomName": "Abdominal pain (often right lower quadrant)", "snomedCode": "21522001", "frequency": 0.80, "bodySystem": "Gastrointestinal" },
-      { "symptomName": "Weight loss", "snomedCode": "89362005", "frequency": 0.60, "bodySystem": "Constitutional" },
-      { "symptomName": "Fatigue", "snomedCode": "84229001", "frequency": 0.70, "bodySystem": "Constitutional" },
-      { "symptomName": "Fever", "snomedCode": "386661006", "frequency": 0.30, "bodySystem": "Constitutional" }
+      {
+        "symptomName": "Chronic diarrhea (often non-bloody)",
+        "snomedCode": "236071009",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain (often right lower quadrant)",
+        "snomedCode": "21522001",
+        "frequency": 0.8,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fever",
+        "snomedCode": "386661006",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      }
     ],
     "occasional": [
-      { "symptomName": "Erythema nodosum", "snomedCode": "32861005", "frequency": 0.15, "bodySystem": "Dermatologic" },
-      { "symptomName": "Arthralgia/arthritis (peripheral and axial)", "snomedCode": "57676002", "frequency": 0.25, "bodySystem": "Musculoskeletal" },
-      { "symptomName": "Oral aphthous ulcers", "snomedCode": "26284000", "frequency": 0.15, "bodySystem": "Oral" },
-      { "symptomName": "Uveitis/episcleritis", "snomedCode": "128473001", "frequency": 0.05, "bodySystem": "Ocular" },
-      { "symptomName": "Enterocutaneous or enteroenteric fistulae", "snomedCode": "235726002", "frequency": 0.15, "bodySystem": "Gastrointestinal" }
+      {
+        "symptomName": "Erythema nodosum",
+        "snomedCode": "32861005",
+        "frequency": 0.15,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Arthralgia/arthritis (peripheral and axial)",
+        "snomedCode": "57676002",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Oral aphthous ulcers",
+        "snomedCode": "26284000",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Uveitis/episcleritis",
+        "snomedCode": "128473001",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Enterocutaneous or enteroenteric fistulae",
+        "snomedCode": "235726002",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      }
     ],
     "rare": [
-      { "symptomName": "Pyoderma gangrenosum", "snomedCode": "55464003", "frequency": 0.02, "bodySystem": "Dermatologic" },
-      { "symptomName": "Primary sclerosing cholangitis", "snomedCode": "197441003", "frequency": 0.03, "bodySystem": "Hepatobiliary" },
-      { "symptomName": "Amyloidosis (secondary AA)", "snomedCode": "17602002", "frequency": 0.01, "bodySystem": "Multi-system" },
-      { "symptomName": "Intestinal obstruction from stricture", "snomedCode": "81060008", "frequency": 0.10, "bodySystem": "Gastrointestinal" },
-      { "symptomName": "Colorectal or small bowel carcinoma", "snomedCode": "363406005", "frequency": 0.02, "bodySystem": "Gastrointestinal/Oncologic" }
+      {
+        "symptomName": "Pyoderma gangrenosum",
+        "snomedCode": "55464003",
+        "frequency": 0.02,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Primary sclerosing cholangitis",
+        "snomedCode": "197441003",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Amyloidosis (secondary AA)",
+        "snomedCode": "17602002",
+        "frequency": 0.01,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Intestinal obstruction from stricture",
+        "snomedCode": "81060008",
+        "frequency": 0.1,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Colorectal or small bowel carcinoma",
+        "snomedCode": "363406005",
+        "frequency": 0.02,
+        "bodySystem": "gastrointestinal"
+      }
     ]
   },
-  "systemsAffected": ["Gastrointestinal", "Musculoskeletal", "Dermatologic", "Ocular", "Hepatobiliary", "Hematologic", "Oral"],
+  "systemsAffected": [
+    "gastrointestinal",
+    "musculoskeletal",
+    "dermatological",
+    "ophthalmological",
+    "hematological"
+  ],
   "keyFindings": {
     "laboratory": [
       "Elevated CRP and ESR",
@@ -86,11 +232,52 @@
     ]
   },
   "differentialDiagnoses": [
-    { "diseaseId": "inflammatory-bowel-disease-ulcerative-colitis", "distinguishingFeatures": ["Continuous colonic inflammation from rectum", "Superficial/mucosal inflammation only", "Bloody diarrhea", "No small bowel involvement", "pANCA positive"] },
-    { "diseaseId": "celiac-disease", "distinguishingFeatures": ["Villous atrophy on duodenal biopsy", "tTG-IgA positive", "Response to gluten-free diet", "No fistulae/strictures"] },
-    { "diseaseId": "behcet-disease", "distinguishingFeatures": ["Oral and genital ulcers", "Ocular involvement (uveitis)", "Pathergy positive", "Ileocecal ulcers can mimic Crohn's"] },
-    { "diseaseId": "intestinal-tuberculosis", "distinguishingFeatures": ["Caseating granulomas", "Positive TB testing", "Endemic area exposure", "Circumferential ulcers", "Responds to anti-TB therapy"] },
-    { "diseaseId": "irritable-bowel-syndrome", "distinguishingFeatures": ["Normal inflammatory markers and calprotectin", "No structural abnormalities", "No weight loss or anemia"] }
+    {
+      "diseaseId": "inflammatory-bowel-disease-ulcerative-colitis",
+      "distinguishingFeatures": [
+        "Continuous colonic inflammation from rectum",
+        "Superficial/mucosal inflammation only",
+        "Bloody diarrhea",
+        "No small bowel involvement",
+        "pANCA positive"
+      ]
+    },
+    {
+      "diseaseId": "celiac-disease",
+      "distinguishingFeatures": [
+        "Villous atrophy on duodenal biopsy",
+        "tTG-IgA positive",
+        "Response to gluten-free diet",
+        "No fistulae/strictures"
+      ]
+    },
+    {
+      "diseaseId": "behcet-disease",
+      "distinguishingFeatures": [
+        "Oral and genital ulcers",
+        "Ocular involvement (uveitis)",
+        "Pathergy positive",
+        "Ileocecal ulcers can mimic Crohn's"
+      ]
+    },
+    {
+      "diseaseId": "intestinal-tuberculosis",
+      "distinguishingFeatures": [
+        "Caseating granulomas",
+        "Positive TB testing",
+        "Endemic area exposure",
+        "Circumferential ulcers",
+        "Responds to anti-TB therapy"
+      ]
+    },
+    {
+      "diseaseId": "irritable-bowel-syndrome",
+      "distinguishingFeatures": [
+        "Normal inflammatory markers and calprotectin",
+        "No structural abnormalities",
+        "No weight loss or anemia"
+      ]
+    }
   ],
   "redFlags": [
     "Signs of intestinal obstruction (vomiting, distension, absent bowel sounds)",
@@ -100,7 +287,11 @@
     "Severe malnutrition with hypoalbuminemia",
     "Perianal sepsis requiring urgent surgical drainage"
   ],
-  "specialistType": ["Gastroenterology", "Colorectal Surgery", "Nutrition"],
+  "specialistType": [
+    "Gastroenterology",
+    "Colorectal Surgery",
+    "Nutrition"
+  ],
   "lastUpdated": "2026-02-17",
   "references": [
     "Lichtenstein GR, et al. ACG Clinical Guideline: Management of Crohn's Disease in Adults. Am J Gastroenterol. 2018;113(4):481-517.",

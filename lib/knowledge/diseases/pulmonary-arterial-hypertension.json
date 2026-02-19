@@ -1,0 +1,205 @@
+{
+  "id": "pulmonary-arterial-hypertension",
+  "name": "Pulmonary Arterial Hypertension",
+  "aliases": [
+    "Pulmonary Hypertension Group 1",
+    "PAH"
+  ],
+  "icd10Codes": [
+    "I27.0"
+  ],
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 20,000",
+    "range": "0.005%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 36
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "Caucasian",
+      "African American"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "2015 ESC/ERS Pulmonary Hypertension Guidelines",
+    "criteria": [
+      {
+        "id": "mPAP",
+        "description": "Mean pulmonary arterial pressure (mPAP) ≥ 25 mmHg at rest measured by right heart catheterization",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "PAWP",
+        "description": "Pulmonary artery wedge pressure (PAWP) ≤ 15 mmHg to exclude left heart disease",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "PVR",
+        "description": "Pulmonary vascular resistance (PVR) > 3 Wood units",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion",
+        "description": "Exclusion of other causes of pulmonary hypertension such as lung diseases, chronic thromboembolism, or left heart disease",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "All major criteria (mPAP ≥ 25 mmHg, PAWP ≤ 15 mmHg, PVR > 3 Wood units) plus exclusion of other causes",
+    "notes": "Right heart catheterization is the gold standard for diagnosis"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Exertional dyspnea",
+        "frequency": 0.85,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Fatigue related to decreased cardiac output",
+        "frequency": 0.75,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Syncope on exertion",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Due to transient cerebral hypoperfusion"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chest pain or angina-like discomfort",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.5,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abdominal distension due to hepatomegaly or ascites",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Lightheadedness",
+        "frequency": 0.4,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "frequency": 0.15,
+        "bodySystem": "immunological",
+        "notes": "Especially in connective tissue disease-associated PAH"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hoarseness due to recurrent laryngeal nerve compression",
+        "frequency": 0.05,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Cyanosis",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Clubbing of fingers",
+        "frequency": 0.02,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "respiratory",
+    "neurological",
+    "gastrointestinal",
+    "constitutional",
+    "immunological",
+    "otolaryngological",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated brain natriuretic peptide (BNP) or NT-proBNP",
+      "Autoantibodies in connective tissue disease-associated PAH"
+    ],
+    "imaging": [
+      "Right ventricular hypertrophy and dilation on echocardiogram",
+      "Enlarged pulmonary arteries on chest CT",
+      "Perfusion defects excluded by ventilation/perfusion scan"
+    ],
+    "genetic": [
+      "BMPR2 gene mutations in familial and idiopathic PAH"
+    ],
+    "other": [
+      "Right heart catheterization confirming elevated pulmonary arterial pressures",
+      "6-minute walk test showing reduced exercise capacity"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chronic-thromboembolic-pulmonary-hypertension",
+      "distinguishingFeatures": [
+        "History of pulmonary embolism",
+        "Perfusion defects on V/Q scan",
+        "Surgical treatment options"
+      ]
+    },
+    {
+      "diseaseId": "pulmonary-hypertension-due-to-left-heart-disease",
+      "distinguishingFeatures": [
+        "Elevated pulmonary artery wedge pressure (>15 mmHg)",
+        "Left ventricular dysfunction on echocardiogram",
+        "Treatment focused on underlying cardiac disease"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of dyspnea and syncope",
+    "Signs of right heart failure (jugular venous distension, peripheral edema)",
+    "Severe hypoxemia or cyanosis"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Cardiologist",
+    "Rheumatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Galiè N, Humbert M, Vachiery JL, et al. 2015 ESC/ERS Guidelines for the diagnosis and treatment of pulmonary hypertension. Eur Heart J. 2016 Jan 1;37(1):67-119.",
+    "Simonneau G, Montani D, Celermajer DS, et al. Haemodynamic definitions and updated clinical classification of pulmonary hypertension. Eur Respir J. 2019 Jan;53(1):1801913.",
+    "Thenappan T, Ormiston ML, Ryan JJ, Archer SL. Pulmonary arterial hypertension: pathogenesis and clinical management. BMJ. 2018 Mar 27;360:j5492."
+  ],
+  "confidenceInData": "medium"
+}

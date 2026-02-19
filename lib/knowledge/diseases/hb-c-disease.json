@@ -1,0 +1,201 @@
+{
+  "id": "hb-c-disease",
+  "name": "Hemoglobin C Disease",
+  "aliases": [
+    "Hb C Disease",
+    "Hemoglobin C Homozygous Disease"
+  ],
+  "icd10Codes": [
+    "D58.2"
+  ],
+  "omimId": "142100",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.001-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 10
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "West African descent",
+      "African American"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Hemoglobin C Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "homozygous-hb-c",
+        "description": "Presence of homozygous hemoglobin C confirmed by hemoglobin electrophoresis or HPLC",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mild-hemolytic-anemia",
+        "description": "Evidence of mild hemolytic anemia with reticulocytosis and mild anemia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "splenomegaly",
+        "description": "Clinical or imaging evidence of splenomegaly",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "absence-of-sickle-cells",
+        "description": "Absence of sickle cells differentiating from sickle cell disease",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Homozygous hemoglobin C confirmed plus evidence of mild hemolytic anemia",
+    "notes": "Diagnosis requires exclusion of other hemoglobinopathies such as sickle cell disease."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Homozygous hemoglobin C on electrophoresis",
+        "frequency": 0.95,
+        "bodySystem": "hematological",
+        "notes": "Definitive diagnostic finding"
+      },
+      {
+        "symptomName": "Mild chronic hemolytic anemia",
+        "frequency": 0.85,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.75,
+        "bodySystem": "hematological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.65,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild pallor",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Gallstones (cholelithiasis)",
+        "frequency": 0.5,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Splenic infarcts",
+        "frequency": 0.3,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Mild hepatomegaly",
+        "frequency": 0.25,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated bilirubin",
+        "frequency": 0.4,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Reticulocytosis",
+        "frequency": 0.35,
+        "bodySystem": "hematological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Leg ulcers",
+        "frequency": 0.05,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Avascular necrosis",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pulmonary hypertension",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "gastrointestinal",
+    "constitutional",
+    "dermatological",
+    "musculoskeletal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Hemoglobin electrophoresis showing homozygous Hb C",
+      "Mild anemia with reticulocytosis",
+      "Elevated indirect bilirubin"
+    ],
+    "imaging": [
+      "Ultrasound showing splenomegaly",
+      "Imaging evidence of splenic infarcts"
+    ],
+    "genetic": [
+      "Mutation in HBB gene resulting in glutamic acid to lysine substitution at position 6"
+    ],
+    "other": [
+      "Absence of sickled erythrocytes on peripheral smear"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "sickle-cell-disease",
+      "distinguishingFeatures": [
+        "Presence of sickled red cells",
+        "More severe hemolytic anemia",
+        "Frequent vaso-occlusive crises"
+      ]
+    },
+    {
+      "diseaseId": "beta-thalassemia-minor",
+      "distinguishingFeatures": [
+        "Microcytic anemia without Hb C on electrophoresis",
+        "No splenomegaly in mild cases",
+        "Different genetic mutation in HBB gene"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe anemia requiring transfusion",
+    "Acute splenic sequestration",
+    "Signs of hemolytic crisis or aplastic crisis"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Hoffman R et al. Hematology: Basic Principles and Practice. 7th Edition. 2018.",
+    "National Organization for Rare Disorders (NORD) - Hemoglobin C Disease",
+    "OMIM Entry #142100 - Hemoglobin C Disease"
+  ],
+  "confidenceInData": "medium"
+}

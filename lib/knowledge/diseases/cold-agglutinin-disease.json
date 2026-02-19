@@ -1,0 +1,212 @@
+{
+  "id": "cold-agglutinin-disease",
+  "name": "Cold Agglutinin Disease",
+  "aliases": [
+    "Cold Autoimmune Hemolytic Anemia",
+    "Cold Hemagglutinin Disease"
+  ],
+  "icd10Codes": [
+    "D59.1"
+  ],
+  "omimId": "608105",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 40,
+      "max": 80,
+      "peak": 65
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Cold Agglutinin Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "cold-agglutinin-titer",
+        "description": "Presence of cold agglutinin antibodies with a titer ≥1:64 at 4°C",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hemolytic-anemia",
+        "description": "Evidence of hemolytic anemia including elevated LDH, low haptoglobin, and reticulocytosis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "direct-antiglobulin-test",
+        "description": "Positive direct antiglobulin test (DAT) for complement (C3d) only",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Symptoms exacerbated by cold exposure such as acrocyanosis or Raynaud phenomenon",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria (cold agglutinin titer ≥1:64, hemolytic anemia, and positive DAT for complement) must be met",
+    "notes": "Exclusion of secondary causes such as infections or lymphoproliferative disorders is recommended"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Cold-induced red blood cell agglutination",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Occurs at temperatures below normal body temperature"
+      },
+      {
+        "symptomName": "Acrocyanosis triggered by cold exposure",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Bluish discoloration of distal extremities"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue due to anemia",
+        "frequency": 0.8,
+        "bodySystem": "constitutional",
+        "notes": ""
+      },
+      {
+        "symptomName": "Pallor from anemia",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": ""
+      },
+      {
+        "symptomName": "Jaundice from hemolysis",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": ""
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "frequency": 0.6,
+        "bodySystem": "dermatological",
+        "notes": "Vasospasm of small vessels in fingers and toes"
+      },
+      {
+        "symptomName": "Dark urine due to hemoglobinuria",
+        "frequency": 0.55,
+        "bodySystem": "renal",
+        "notes": ""
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.4,
+        "bodySystem": "respiratory",
+        "notes": "Secondary to anemia"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.3,
+        "bodySystem": "hematological",
+        "notes": "Mild enlargement in some cases"
+      },
+      {
+        "symptomName": "Hemoglobinuria after cold exposure",
+        "frequency": 0.25,
+        "bodySystem": "renal",
+        "notes": ""
+      },
+      {
+        "symptomName": "Low-grade fever",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "notes": ""
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Possibly related to cold-induced ischemia"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.04,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to splenic infarction or hemolysis"
+      },
+      {
+        "symptomName": "Thrombosis",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare complication"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "dermatological",
+    "constitutional",
+    "renal",
+    "respiratory",
+    "neurological",
+    "cardiovascular",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive direct antiglobulin test (DAT) for complement (C3d) only",
+      "Elevated cold agglutinin titers (≥1:64 at 4°C)",
+      "Evidence of hemolytic anemia: elevated LDH, low haptoglobin, increased reticulocytes",
+      "Peripheral blood smear showing red blood cell agglutination"
+    ],
+    "imaging": [
+      "Splenomegaly on abdominal ultrasound (occasionally)"
+    ],
+    "genetic": [
+      "No known specific genetic mutations; disease is autoimmune in nature"
+    ],
+    "other": [
+      "Cold exposure triggers symptom exacerbation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "warm-autoimmune-hemolytic-anemia",
+      "distinguishingFeatures": [
+        "Warm-reactive autoantibodies active at 37°C",
+        "Positive DAT for IgG rather than complement",
+        "Lack of cold-induced symptoms"
+      ]
+    },
+    {
+      "diseaseId": "paroxysmal-cold-hemoglobinuria",
+      "distinguishingFeatures": [
+        "Presence of Donath-Landsteiner antibodies",
+        "Biphasic hemolysin causing intravascular hemolysis",
+        "Usually acute and self-limited"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe hemolytic anemia causing hemodynamic instability",
+    "Rapid onset of jaundice and dark urine",
+    "Signs of thrombosis or ischemic complications"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Berentsen S. Cold agglutinin disease. Hematology Am Soc Hematol Educ Program. 2016;2016(1):226-231.",
+    "Swiecicki PL, Hegerova LT, Gertz MA. Cold agglutinin disease. Blood. 2013;122(7):1114-1121.",
+    "Berentsen S, Tjønnfjord GE. Diagnosis and treatment of cold agglutinin mediated autoimmune hemolytic anemia. Blood Rev. 2012;26(3):107-115."
+  ],
+  "confidenceInData": "medium"
+}

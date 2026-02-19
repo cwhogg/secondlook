@@ -1,0 +1,213 @@
+{
+  "id": "renal-ciliopathies",
+  "name": "Renal Ciliopathies",
+  "aliases": [
+    "Cystic Kidney Ciliopathies",
+    "Genetic Renal Ciliopathies"
+  ],
+  "icd10Codes": [
+    "Q61.4",
+    "Q61.5",
+    "Q61.8"
+  ],
+  "omimId": "614846",
+  "orphanetId": "98765",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "range": "0.001-0.005%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 5
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Renal Ciliopathy Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "renal-cysts",
+        "description": "Presence of bilateral renal cystic disease on imaging",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-mutation",
+        "description": "Identification of pathogenic mutation in cilia-related genes (e.g., PKD1, PKD2, NPHP genes)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "extrarenal-manifestations",
+        "description": "Presence of extrarenal features such as retinal degeneration, hepatic fibrosis, or polydactyly",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history consistent with autosomal recessive or dominant inheritance",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Bilateral renal cystic disease plus identification of pathogenic mutation in cilia-related gene or typical extrarenal manifestations with family history",
+    "notes": "Genetic testing is critical for confirmation; clinical heterogeneity is common."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Bilateral renal cystic disease",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "notes": "Characteristic cyst formation in kidneys"
+      },
+      {
+        "symptomName": "Retinal dystrophy (e.g., retinitis pigmentosa)",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological",
+        "notes": "Common in syndromic ciliopathies like Senior-Løken syndrome"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hepatic fibrosis",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Often seen in syndromic forms such as ARPKD"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to renal impairment"
+      },
+      {
+        "symptomName": "Polydactyly",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "notes": "Extra digits, especially in syndromic ciliopathies"
+      },
+      {
+        "symptomName": "Progressive renal insufficiency",
+        "frequency": 0.8,
+        "bodySystem": "renal",
+        "notes": "Decline in kidney function over time"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Reported in some syndromic ciliopathies"
+      },
+      {
+        "symptomName": "Liver cysts",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "May accompany hepatic fibrosis"
+      },
+      {
+        "symptomName": "Respiratory infections",
+        "frequency": 0.15,
+        "bodySystem": "respiratory",
+        "notes": "Due to ciliary dysfunction in airway epithelium"
+      },
+      {
+        "symptomName": "Skeletal abnormalities",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "notes": "Including short ribs or narrow thorax in some syndromes"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Congenital heart defects",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Occasional in syndromic ciliopathies"
+      },
+      {
+        "symptomName": "Hearing loss",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological",
+        "notes": "Reported in select ciliopathy syndromes"
+      },
+      {
+        "symptomName": "Diabetes mellitus",
+        "frequency": 0.02,
+        "bodySystem": "endocrine",
+        "notes": "Rare association"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "ophthalmological",
+    "gastrointestinal",
+    "cardiovascular",
+    "musculoskeletal",
+    "neurological",
+    "respiratory",
+    "otolaryngological",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum creatinine and blood urea nitrogen indicating renal impairment",
+      "Liver function abnormalities in hepatic fibrosis"
+    ],
+    "imaging": [
+      "Ultrasound or MRI showing bilateral renal cysts",
+      "Hepatic fibrosis and cysts on abdominal imaging",
+      "Retinal imaging showing pigmentary changes"
+    ],
+    "genetic": [
+      "Pathogenic variants in PKD1, PKD2, NPHP1-13, or other cilia-related genes"
+    ],
+    "other": [
+      "Family history consistent with autosomal dominant or recessive inheritance",
+      "Histopathology showing cystic dilation of renal tubules"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "autosomal-dominant-polycystic-kidney-disease",
+      "distinguishingFeatures": [
+        "Later onset (typically adulthood)",
+        "Usually no extrarenal retinal involvement",
+        "Predominantly PKD1 or PKD2 mutations"
+      ]
+    },
+    {
+      "diseaseId": "nephronophthisis",
+      "distinguishingFeatures": [
+        "Tubulointerstitial fibrosis with corticomedullary cysts",
+        "Early onset chronic kidney disease",
+        "Frequent retinal and neurological involvement"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive renal failure in a child or young adult",
+    "Presence of multisystem involvement including retinal degeneration and hepatic fibrosis",
+    "Family history of cystic kidney disease or syndromic features"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Geneticist",
+    "Ophthalmologist",
+    "Hepatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Hildebrandt F, Benzing T, Katsanis N. Ciliopathies. N Engl J Med. 2011 Apr 21;364(16):1533-43.",
+    "Waters AM, Beales PL. Ciliopathies: an expanding disease spectrum. Pediatr Nephrol. 2011 Jul;26(7):1039-56.",
+    "Torres VE, Harris PC. Autosomal dominant polycystic kidney disease: the last 3 years. Kidney Int. 2009 Oct;76(5):149-68."
+  ],
+  "confidenceInData": "medium"
+}

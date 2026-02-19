@@ -1,0 +1,204 @@
+{
+  "id": "aplastic-anemia",
+  "name": "Aplastic Anemia",
+  "aliases": [
+    "Bone Marrow Failure Syndrome",
+    "Hypoplastic Anemia"
+  ],
+  "icd10Codes": [
+    "D61.9"
+  ],
+  "omimId": "609135",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Higher incidence in East Asia"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Camitta Criteria",
+    "criteria": [
+      {
+        "id": "pancytopenia",
+        "description": "Presence of pancytopenia with at least two of the following: hemoglobin <10 g/dL, absolute neutrophil count <1.5 x 10^9/L, platelet count <50 x 10^9/L",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bone-marrow-hypocellularity",
+        "description": "Bone marrow biopsy showing hypocellularity (<25% cellularity) without abnormal infiltration or fibrosis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-other-causes",
+        "description": "Exclusion of other causes of pancytopenia such as myelodysplastic syndrome, leukemia, or marrow infiltration",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "reticulocyte-count",
+        "description": "Low reticulocyte count indicating decreased marrow production",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Pancytopenia with at least two cytopenias plus hypocellular bone marrow and exclusion of other causes",
+    "notes": "Diagnosis requires bone marrow biopsy and comprehensive hematologic evaluation"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Pancytopenia",
+        "frequency": 0.95,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hypocellular bone marrow",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue due to anemia",
+        "frequency": 0.85,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Petechiae and easy bruising",
+        "frequency": 0.75,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Recurrent infections due to neutropenia",
+        "frequency": 0.7,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Mucosal bleeding (e.g., gingival bleeding, epistaxis)",
+        "frequency": 0.65,
+        "bodySystem": "hematological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.4,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Low-grade fever",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pallor",
+        "frequency": 0.2,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.03,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Neurological symptoms secondary to anemia (e.g., dizziness, headache)",
+        "frequency": 0.02,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "dermatological",
+    "constitutional",
+    "respiratory",
+    "cardiovascular",
+    "gastrointestinal",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Pancytopenia on complete blood count",
+      "Reticulocytopenia",
+      "Low serum erythropoietin levels"
+    ],
+    "imaging": [
+      "Bone marrow biopsy showing hypocellularity without fibrosis or malignant infiltration"
+    ],
+    "genetic": [
+      "Somatic mutations in genes such as PIGA, BCOR, and DNMT3A in some cases",
+      "No consistent germline mutations in acquired aplastic anemia"
+    ],
+    "other": [
+      "Negative cytogenetics for clonal disorders",
+      "Normal or decreased serum iron and ferritin"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "myelodysplastic-syndrome",
+      "distinguishingFeatures": [
+        "Presence of dysplastic changes in bone marrow",
+        "Clonal cytogenetic abnormalities",
+        "Hypercellular or normocellular marrow"
+      ]
+    },
+    {
+      "diseaseId": "acute-leukemia",
+      "distinguishingFeatures": [
+        "Presence of blasts in peripheral blood or bone marrow",
+        "Hypercellular marrow with malignant infiltration",
+        "Rapid clinical progression"
+      ]
+    },
+    {
+      "diseaseId": "paroxysmal-nocturnal-hemoglobinuria",
+      "distinguishingFeatures": [
+        "Complement-mediated hemolysis",
+        "Flow cytometry showing CD55/CD59 deficiency",
+        "Hemoglobinuria episodes"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe neutropenia with recurrent or severe infections",
+    "Profound thrombocytopenia with spontaneous bleeding",
+    "Rapid clinical deterioration with pancytopenia"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Oncologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Young NS. Aplastic anemia. N Engl J Med. 2018;379(17):1643-1656.",
+    "Camitta BM, et al. Severe aplastic anemia: a prospective study of the effect of early marrow transplantation on acute mortality. Blood. 1976;48(1):63-70.",
+    "Orphanet: Aplastic anemia. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=284"
+  ],
+  "confidenceInData": "medium"
+}

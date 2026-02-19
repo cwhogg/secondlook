@@ -1,0 +1,204 @@
+{
+  "id": "mendelian-susceptibility-to-mycobacterial-disease",
+  "name": "Mendelian Susceptibility to Mycobacterial Disease",
+  "aliases": [
+    "MSMD",
+    "Inherited IFN-γ Pathway Deficiency"
+  ],
+  "icd10Codes": [
+    "D84.9"
+  ],
+  "omimId": "209950",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 10,
+      "peak": 2
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "No specific ethnic predilection"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "MSMD Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "recurrent-mycobacterial-infections",
+        "description": "Recurrent or severe infections with weakly virulent mycobacteria such as BCG or environmental mycobacteria",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "impaired-ifn-gamma-response",
+        "description": "Demonstrated impairment in IFN-γ signaling pathway by functional assays",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pathogenic-genetic-variant",
+        "description": "Identification of pathogenic variants in genes involved in IFN-γ immunity (e.g., IFNGR1, IFNGR2, STAT1, IL12B, IL12RB1)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-secondary-immunodeficiency",
+        "description": "Exclusion of acquired or secondary immunodeficiencies",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of recurrent infections with weakly virulent mycobacteria plus either impaired IFN-γ response or identification of pathogenic genetic variant in IFN-γ pathway genes",
+    "notes": "Diagnosis requires integration of clinical, immunological, and genetic data."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Disseminated BCG infection",
+        "frequency": 0.85,
+        "bodySystem": "immunological",
+        "notes": "Often occurs after BCG vaccination in infancy"
+      },
+      {
+        "symptomName": "Disseminated environmental non-tuberculous mycobacterial infection",
+        "frequency": 0.75,
+        "bodySystem": "immunological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Recurrent lymphadenitis due to mycobacterial infection",
+        "frequency": 0.65,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Chronic or recurrent pulmonary infections with mycobacteria",
+        "frequency": 0.6,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Fever of unknown origin",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.5,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Cutaneous abscesses or skin infections",
+        "frequency": 0.3,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Osteomyelitis caused by mycobacteria",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Chronic diarrhea",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Lymphopenia",
+        "frequency": 0.15,
+        "bodySystem": "hematological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Central nervous system mycobacterial infection",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Disseminated salmonella infections",
+        "frequency": 0.04,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Autoimmune manifestations",
+        "frequency": 0.03,
+        "bodySystem": "immunological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "immunological",
+    "respiratory",
+    "gastrointestinal",
+    "musculoskeletal",
+    "dermatological",
+    "hematological",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Impaired IFN-γ production or response in functional assays",
+      "Normal or mildly decreased lymphocyte counts",
+      "Elevated inflammatory markers during infection"
+    ],
+    "imaging": [
+      "Lymphadenopathy on ultrasound or CT",
+      "Pulmonary infiltrates or nodules on chest imaging",
+      "Bone lesions consistent with osteomyelitis"
+    ],
+    "genetic": [
+      "Pathogenic variants in IFNGR1, IFNGR2, STAT1, IL12B, IL12RB1, or related genes"
+    ],
+    "other": [
+      "Poor response to standard antimycobacterial therapy without adjunctive IFN-γ",
+      "History of BCG vaccination complications"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chronic-granulomatous-disease",
+      "distinguishingFeatures": [
+        "Defect in NADPH oxidase leading to impaired oxidative burst",
+        "Recurrent bacterial and fungal infections rather than primarily mycobacterial"
+      ]
+    },
+    {
+      "diseaseId": "severe-combined-immunodeficiency",
+      "distinguishingFeatures": [
+        "Profound T and B cell deficiency",
+        "Early onset severe infections with broad range of pathogens"
+      ]
+    },
+    {
+      "diseaseId": "common-variable-immunodeficiency",
+      "distinguishingFeatures": [
+        "Hypogammaglobulinemia with recurrent bacterial infections",
+        "Less specific susceptibility to mycobacteria"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Disseminated infection following BCG vaccination",
+    "Recurrent or persistent infections with weakly virulent mycobacteria",
+    "Poor response to conventional antimycobacterial therapy"
+  ],
+  "specialistType": [
+    "Clinical Immunologist",
+    "Infectious Disease Specialist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Bustamante J, et al. Mendelian susceptibility to mycobacterial disease: genetic, immunological, and clinical features of inborn errors of IFN-γ immunity. Semin Immunol. 2014;26(6):454-470.",
+    "Newport MJ, et al. Mendelian susceptibility to mycobacterial disease: genetic, immunological, and clinical features of inborn errors of IFN-γ immunity. Curr Opin Immunol. 2015;32:103-110.",
+    "World Health Organization. BCG vaccine complications and Mendelian susceptibility to mycobacterial disease. WHO Immunization Safety Review. 2017."
+  ],
+  "confidenceInData": "medium"
+}

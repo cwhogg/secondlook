@@ -1,8 +1,15 @@
 {
   "id": "takayasu-arteritis",
   "name": "Takayasu Arteritis",
-  "aliases": ["Takayasu's Arteritis", "Pulseless Disease", "Aortic Arch Syndrome", "Occlusive Thromboaortopathy"],
-  "icd10Codes": ["M31.4"],
+  "aliases": [
+    "Takayasu's Arteritis",
+    "Pulseless Disease",
+    "Aortic Arch Syndrome",
+    "Occlusive Thromboaortopathy"
+  ],
+  "icd10Codes": [
+    "M31.4"
+  ],
   "omimId": "207600",
   "orphanetId": "3287",
   "prevalence": {
@@ -11,54 +18,205 @@
     "classification": "rare"
   },
   "demographics": {
-    "typicalOnsetAge": { "min": 10, "max": 40, "peak": 25 },
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 40,
+      "peak": 25
+    },
     "sexPredilection": "female",
-    "ethnicAssociations": ["East Asian (Japanese, Korean, Chinese)", "South Asian (Indian)", "Southeast Asian"]
+    "ethnicAssociations": [
+      "East Asian (Japanese, Korean, Chinese)",
+      "South Asian (Indian)",
+      "Southeast Asian"
+    ]
   },
   "diagnosticCriteria": {
     "formalCriteriaName": "2022 ACR/EULAR Classification Criteria for Takayasu Arteritis",
     "criteria": [
-      { "id": "ta-1", "description": "Age at onset <= 60 years", "category": "major", "requiredForDiagnosis": true },
-      { "id": "ta-2", "description": "Female sex", "category": "supportive", "requiredForDiagnosis": false },
-      { "id": "ta-3", "description": "Angina or ischemic cardiac pain", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "ta-4", "description": "Arm or leg claudication", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "ta-5", "description": "Vascular bruit (subclavian, aortic)", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "ta-6", "description": "Reduced peripheral pulse", "category": "major", "requiredForDiagnosis": false },
-      { "id": "ta-7", "description": "Blood pressure asymmetry (>10 mmHg systolic between arms)", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "ta-8", "description": "Number of affected vascular territories on imaging", "category": "major", "requiredForDiagnosis": false },
-      { "id": "ta-9", "description": "Paired vascular involvement (bilateral subclavian, bilateral renal, bilateral carotid)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "ta-10", "description": "Abdominal aorta involvement on imaging", "category": "minor", "requiredForDiagnosis": false }
+      {
+        "id": "ta-1",
+        "description": "Age at onset <= 60 years",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ta-2",
+        "description": "Female sex",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ta-3",
+        "description": "Angina or ischemic cardiac pain",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ta-4",
+        "description": "Arm or leg claudication",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ta-5",
+        "description": "Vascular bruit (subclavian, aortic)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ta-6",
+        "description": "Reduced peripheral pulse",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ta-7",
+        "description": "Blood pressure asymmetry (>10 mmHg systolic between arms)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ta-8",
+        "description": "Number of affected vascular territories on imaging",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ta-9",
+        "description": "Paired vascular involvement (bilateral subclavian, bilateral renal, bilateral carotid)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ta-10",
+        "description": "Abdominal aorta involvement on imaging",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
     ],
     "minimumForDiagnosis": "Established diagnosis of large-vessel vasculitis, age <= 60, plus total weighted score >= 5",
     "notes": "Angiographic classification: Type I (aortic arch branches), Type IIa (ascending aorta and arch), Type IIb (ascending aorta, arch, and thoracic descending aorta), Type III (thoracic descending aorta, abdominal aorta, renal arteries), Type IV (abdominal aorta and/or renal arteries), Type V (combined features)."
   },
   "symptoms": {
     "pathognomonic": [
-      { "symptomName": "Pulselessness or diminished pulses in upper extremities", "snomedCode": "54518005", "frequency": 0.60, "bodySystem": "Vascular", "notes": "Pulseless disease; asymmetric arm blood pressures" },
-      { "symptomName": "Arterial bruits (subclavian, carotid, aortic)", "snomedCode": "271636001", "frequency": 0.50, "bodySystem": "Vascular" }
+      {
+        "symptomName": "Pulselessness or diminished pulses in upper extremities",
+        "snomedCode": "54518005",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "notes": "Pulseless disease; asymmetric arm blood pressures"
+      },
+      {
+        "symptomName": "Arterial bruits (subclavian, carotid, aortic)",
+        "snomedCode": "271636001",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular"
+      }
     ],
     "common": [
-      { "symptomName": "Constitutional symptoms (malaise, fever, weight loss)", "snomedCode": "386661006", "frequency": 0.60, "bodySystem": "Constitutional", "notes": "Often in early pre-pulseless phase" },
-      { "symptomName": "Upper limb claudication", "snomedCode": "63491006", "frequency": 0.50, "bodySystem": "Vascular" },
-      { "symptomName": "Hypertension", "snomedCode": "38341003", "frequency": 0.50, "bodySystem": "Cardiovascular", "notes": "From renal artery stenosis; may be undetectable in arm with subclavian stenosis" },
-      { "symptomName": "Headache/dizziness", "snomedCode": "25064002", "frequency": 0.40, "bodySystem": "Neurological" },
-      { "symptomName": "Arthralgia/myalgia", "snomedCode": "57676002", "frequency": 0.30, "bodySystem": "Musculoskeletal" }
+      {
+        "symptomName": "Constitutional symptoms (malaise, fever, weight loss)",
+        "snomedCode": "386661006",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Often in early pre-pulseless phase"
+      },
+      {
+        "symptomName": "Upper limb claudication",
+        "snomedCode": "63491006",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hypertension",
+        "snomedCode": "38341003",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular",
+        "notes": "From renal artery stenosis; may be undetectable in arm with subclavian stenosis"
+      },
+      {
+        "symptomName": "Headache/dizziness",
+        "snomedCode": "25064002",
+        "frequency": 0.4,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arthralgia/myalgia",
+        "snomedCode": "57676002",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      }
     ],
     "occasional": [
-      { "symptomName": "Visual disturbances", "snomedCode": "63102001", "frequency": 0.15, "bodySystem": "Ocular", "notes": "Retinal ischemia from carotid involvement" },
-      { "symptomName": "Angina pectoris", "snomedCode": "194828000", "frequency": 0.15, "bodySystem": "Cardiovascular", "notes": "Coronary ostial stenosis" },
-      { "symptomName": "Aortic regurgitation", "snomedCode": "60234000", "frequency": 0.20, "bodySystem": "Cardiovascular" },
-      { "symptomName": "Erythema nodosum", "snomedCode": "32861005", "frequency": 0.10, "bodySystem": "Dermatologic" },
-      { "symptomName": "Abdominal pain", "snomedCode": "21522001", "frequency": 0.10, "bodySystem": "Gastrointestinal", "notes": "Mesenteric artery involvement" }
+      {
+        "symptomName": "Visual disturbances",
+        "snomedCode": "63102001",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological",
+        "notes": "Retinal ischemia from carotid involvement"
+      },
+      {
+        "symptomName": "Angina pectoris",
+        "snomedCode": "194828000",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "Coronary ostial stenosis"
+      },
+      {
+        "symptomName": "Aortic regurgitation",
+        "snomedCode": "60234000",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Erythema nodosum",
+        "snomedCode": "32861005",
+        "frequency": 0.1,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "snomedCode": "21522001",
+        "frequency": 0.1,
+        "bodySystem": "gastrointestinal",
+        "notes": "Mesenteric artery involvement"
+      }
     ],
     "rare": [
-      { "symptomName": "Stroke", "snomedCode": "230690007", "frequency": 0.05, "bodySystem": "Neurological" },
-      { "symptomName": "Aortic aneurysm rupture", "snomedCode": "67362008", "frequency": 0.03, "bodySystem": "Cardiovascular" },
-      { "symptomName": "Pulmonary artery involvement (pulmonary hypertension)", "snomedCode": "70995007", "frequency": 0.05, "bodySystem": "Pulmonary" },
-      { "symptomName": "Heart failure (dilated cardiomyopathy)", "snomedCode": "84114007", "frequency": 0.05, "bodySystem": "Cardiovascular" }
+      {
+        "symptomName": "Stroke",
+        "snomedCode": "230690007",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Aortic aneurysm rupture",
+        "snomedCode": "67362008",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pulmonary artery involvement (pulmonary hypertension)",
+        "snomedCode": "70995007",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Heart failure (dilated cardiomyopathy)",
+        "snomedCode": "84114007",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      }
     ]
   },
-  "systemsAffected": ["Vascular", "Cardiovascular", "Neurological", "Renal", "Musculoskeletal", "Pulmonary", "Ocular"],
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "renal",
+    "musculoskeletal",
+    "respiratory",
+    "ophthalmological"
+  ],
   "keyFindings": {
     "laboratory": [
       "Elevated ESR and CRP (may be normal in chronic/burnt-out phase)",
@@ -84,10 +242,40 @@
     ]
   },
   "differentialDiagnoses": [
-    { "diseaseId": "giant-cell-arteritis", "distinguishingFeatures": ["Age > 50", "Temporal headache", "Jaw claudication", "Northern European descent"] },
-    { "diseaseId": "atherosclerosis", "distinguishingFeatures": ["Older age", "Cardiovascular risk factors", "Focal stenoses rather than long-segment", "No wall thickening on imaging"] },
-    { "diseaseId": "fibromuscular-dysplasia", "distinguishingFeatures": ["String-of-beads angiographic appearance", "No systemic inflammation", "Renal and carotid predominance"] },
-    { "diseaseId": "igg4-related-disease", "distinguishingFeatures": ["Elevated serum IgG4", "Periaortitis pattern", "Other organ involvement (pancreas, salivary glands)"] }
+    {
+      "diseaseId": "giant-cell-arteritis",
+      "distinguishingFeatures": [
+        "Age > 50",
+        "Temporal headache",
+        "Jaw claudication",
+        "Northern European descent"
+      ]
+    },
+    {
+      "diseaseId": "atherosclerosis",
+      "distinguishingFeatures": [
+        "Older age",
+        "Cardiovascular risk factors",
+        "Focal stenoses rather than long-segment",
+        "No wall thickening on imaging"
+      ]
+    },
+    {
+      "diseaseId": "fibromuscular-dysplasia",
+      "distinguishingFeatures": [
+        "String-of-beads angiographic appearance",
+        "No systemic inflammation",
+        "Renal and carotid predominance"
+      ]
+    },
+    {
+      "diseaseId": "igg4-related-disease",
+      "distinguishingFeatures": [
+        "Elevated serum IgG4",
+        "Periaortitis pattern",
+        "Other organ involvement (pancreas, salivary glands)"
+      ]
+    }
   ],
   "redFlags": [
     "Undetectable blood pressure in one or both arms",
@@ -96,7 +284,11 @@
     "New aortic regurgitation murmur",
     "Chest or back pain suggesting aortic dissection or aneurysm expansion"
   ],
-  "specialistType": ["Rheumatology", "Vascular Surgery", "Cardiology"],
+  "specialistType": [
+    "Rheumatology",
+    "Vascular Surgery",
+    "Cardiology"
+  ],
   "lastUpdated": "2026-02-17",
   "references": [
     "Goel R, et al. 2022 American College of Rheumatology/EULAR Classification Criteria for Takayasu Arteritis. Arthritis Rheumatol. 2022;74(12):1872-1880.",

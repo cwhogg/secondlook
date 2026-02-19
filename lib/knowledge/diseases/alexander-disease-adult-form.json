@@ -1,0 +1,223 @@
+{
+  "id": "alexander-disease-adult-form",
+  "name": "Alexander Disease Adult Form",
+  "aliases": [
+    "Adult-Onset Alexander Disease",
+    "Adult Form Alexander Leukodystrophy"
+  ],
+  "icd10Codes": [
+    "E75.2"
+  ],
+  "omimId": "203450",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 60,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Adult Alexander Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "gfap-mutation",
+        "description": "Presence of pathogenic GFAP gene mutation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bulbar-dysfunction",
+        "description": "Progressive bulbar dysfunction including dysarthria and dysphagia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "white-matter-changes",
+        "description": "MRI evidence of frontal white matter abnormalities with contrast enhancement",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "spasticity",
+        "description": "Spasticity and pyramidal signs in limbs",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "absence-of-other-leukodystrophies",
+        "description": "Exclusion of other leukodystrophies by clinical and genetic testing",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of pathogenic GFAP mutation plus progressive bulbar dysfunction and characteristic MRI findings",
+    "notes": "Diagnosis is confirmed by genetic testing and characteristic neuroimaging; clinical presentation may vary."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive bulbar dysfunction",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Includes dysarthria and dysphagia"
+      },
+      {
+        "symptomName": "Frontal white matter abnormalities on MRI",
+        "frequency": 0.9,
+        "bodySystem": "neurological",
+        "notes": "Characteristic imaging finding"
+      },
+      {
+        "symptomName": "GFAP gene mutation",
+        "frequency": 1,
+        "bodySystem": "constitutional",
+        "notes": "Causative mutation"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Spasticity in limbs",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "notes": "Pyramidal tract involvement"
+      },
+      {
+        "symptomName": "Pseudobulbar affect",
+        "frequency": 0.65,
+        "bodySystem": "psychiatric",
+        "notes": "Emotional lability"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "notes": "Mild to moderate executive dysfunction"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "notes": "Gait and limb coordination difficulties"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Occasional seizure activity reported"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Non-specific symptom"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Mild sensory deficits"
+      },
+      {
+        "symptomName": "Dystonia",
+        "frequency": 0.12,
+        "bodySystem": "musculoskeletal",
+        "notes": "Involuntary muscle contractions"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.08,
+        "bodySystem": "respiratory",
+        "notes": "Late-stage complication"
+      },
+      {
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Occasional ventricular enlargement"
+      },
+      {
+        "symptomName": "Visual disturbances",
+        "frequency": 0.04,
+        "bodySystem": "ophthalmological",
+        "notes": "Rare optic nerve involvement"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "musculoskeletal",
+    "psychiatric",
+    "respiratory",
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF analysis typically normal or mildly elevated protein",
+      "Exclusion of other metabolic leukodystrophies"
+    ],
+    "imaging": [
+      "MRI showing frontal white matter abnormalities with contrast enhancement",
+      "Atrophy of medulla and cervical spinal cord in some cases"
+    ],
+    "genetic": [
+      "Pathogenic mutations in GFAP gene confirmed by sequencing"
+    ],
+    "other": [
+      "Histopathology (rarely performed) shows Rosenthal fibers in astrocytes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "multiple-sclerosis",
+      "distinguishingFeatures": [
+        "Relapsing-remitting course",
+        "Oligoclonal bands in CSF",
+        "Lesions not predominantly frontal white matter with contrast enhancement"
+      ]
+    },
+    {
+      "diseaseId": "adult-onset-metachromatic-leukodystrophy",
+      "distinguishingFeatures": [
+        "Arylsulfatase A deficiency",
+        "Peripheral neuropathy more prominent",
+        "Different MRI pattern with periventricular involvement"
+      ]
+    },
+    {
+      "diseaseId": "hereditary-spastic-paraplegia",
+      "distinguishingFeatures": [
+        "Pure spasticity without prominent bulbar signs",
+        "No characteristic MRI white matter changes",
+        "Genetic mutations distinct from GFAP"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive bulbar dysfunction",
+    "Early onset spasticity with frontal white matter lesions",
+    "Confirmed GFAP mutation in symptomatic adult"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Geneticist",
+    "Neuroradiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Brenner M et al. Alexander disease: diagnosis and pathogenesis. Neurology. 2001.",
+    "Prust MJ et al. GFAP mutations in adult-onset Alexander disease. Neurology. 2011.",
+    "Messing A et al. Alexander disease. In: GeneReviews. 2020."
+  ],
+  "confidenceInData": "medium"
+}

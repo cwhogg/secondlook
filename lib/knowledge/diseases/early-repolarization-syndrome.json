@@ -1,0 +1,213 @@
+{
+  "id": "early-repolarization-syndrome",
+  "name": "Early Repolarization Syndrome",
+  "aliases": [
+    "J-wave syndrome",
+    "Early repolarization pattern"
+  ],
+  "icd10Codes": [
+    "I49.9"
+  ],
+  "prevalence": {
+    "estimate": "1 in 1,000",
+    "range": "1-5%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 15,
+      "max": 50,
+      "peak": 30
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "African descent",
+      "Asian descent"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Consensus Criteria for Early Repolarization Syndrome",
+    "criteria": [
+      {
+        "id": "j-point-elevation",
+        "description": "J-point elevation ≥0.1 mV in at least two contiguous inferior and/or lateral leads on ECG",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "slurring-or-notching",
+        "description": "Presence of slurring or notching of the terminal QRS complex",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-structural-heart-disease",
+        "description": "No evidence of structural heart disease on imaging",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "history-of-idiopathic-ventricular-fibrillation",
+        "description": "History of idiopathic ventricular fibrillation or unexplained sudden cardiac arrest",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Family history of sudden cardiac death under age 50",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "J-point elevation with slurring or notching in at least two contiguous leads plus absence of structural heart disease",
+    "notes": "Diagnosis requires exclusion of other causes of J-point elevation and structural heart disease."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "J-point elevation on ECG",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Characteristic ECG finding defining the syndrome"
+      },
+      {
+        "symptomName": "Terminal QRS slurring or notching",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Distinctive ECG morphology associated with early repolarization"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Idiopathic ventricular fibrillation",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "notes": "Life-threatening arrhythmia associated with the syndrome"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "Subjective awareness of abnormal heartbeats"
+      },
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.52,
+        "bodySystem": "cardiovascular",
+        "notes": "Transient loss of consciousness due to arrhythmia"
+      },
+      {
+        "symptomName": "Nocturnal sudden cardiac arrest",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular",
+        "notes": "Sudden cardiac arrest often occurring during sleep"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Chest discomfort",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Non-specific chest pain or discomfort"
+      },
+      {
+        "symptomName": "Exercise-induced arrhythmias",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Arrhythmias triggered by physical exertion"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "notes": "Generalized tiredness"
+      },
+      {
+        "symptomName": "Dizziness",
+        "frequency": 0.12,
+        "bodySystem": "neurological",
+        "notes": "Lightheadedness related to transient arrhythmias"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden cardiac death",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Fatal arrhythmia without prior warning"
+      },
+      {
+        "symptomName": "Nocturnal agonal respiration",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "notes": "Abnormal breathing pattern preceding cardiac arrest"
+      },
+      {
+        "symptomName": "Seizure-like activity secondary to cerebral hypoxia",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "notes": "Convulsive syncope due to arrhythmia-induced hypoxia"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "respiratory",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [],
+    "imaging": [
+      "Normal echocardiogram excluding structural heart disease"
+    ],
+    "genetic": [
+      "Mutations in genes related to cardiac ion channels (e.g., KCNJ8, CACNA1C)"
+    ],
+    "other": [
+      "Characteristic ECG pattern with J-point elevation and terminal QRS notching/slurring"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "brugada-syndrome",
+      "distinguishingFeatures": [
+        "ST-segment elevation in right precordial leads (V1-V3)",
+        "Right bundle branch block pattern",
+        "Higher risk of ventricular arrhythmias localized to right ventricular outflow tract"
+      ]
+    },
+    {
+      "diseaseId": "pericarditis",
+      "distinguishingFeatures": [
+        "Diffuse concave ST-segment elevation",
+        "PR-segment depression",
+        "Associated chest pain and pericardial rub"
+      ]
+    },
+    {
+      "diseaseId": "myocardial-infarction",
+      "distinguishingFeatures": [
+        "Localized ST-segment elevation with reciprocal changes",
+        "Elevated cardiac biomarkers",
+        "Regional wall motion abnormalities on imaging"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Syncope or near-syncope episodes",
+    "Family history of sudden cardiac death under age 50",
+    "Documented ventricular fibrillation or polymorphic ventricular tachycardia"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Electrophysiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Haïssaguerre M, et al. 'Sudden cardiac arrest associated with early repolarization.' N Engl J Med. 2008.",
+    "Antzelevitch C, et al. 'J-wave syndromes expert consensus conference report.' Heart Rhythm. 2017.",
+    "Tikkanen JT, et al. 'Long-term outcome associated with early repolarization on electrocardiography.' N Engl J Med. 2009."
+  ],
+  "confidenceInData": "medium"
+}

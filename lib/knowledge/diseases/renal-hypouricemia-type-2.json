@@ -1,0 +1,208 @@
+{
+  "id": "renal-hypouricemia-type-2",
+  "name": "Renal Hypouricemia Type 2",
+  "aliases": [
+    "RHUC2",
+    "Familial Renal Hypouricemia Type 2"
+  ],
+  "icd10Codes": [
+    "E88.0"
+  ],
+  "omimId": "220150",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.001%-0.002%",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 40,
+      "peak": 20
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "East Asian",
+      "Japanese",
+      "Korean"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Renal Hypouricemia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "hypouricemia",
+        "description": "Serum uric acid concentration below 2 mg/dL",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "increased-uric-acid-excretion",
+        "description": "Elevated fractional excretion of uric acid (>10%)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-confirmation",
+        "description": "Identification of pathogenic mutations in the SLC2A9 gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exercise-induced-aki-history",
+        "description": "History of exercise-induced acute kidney injury episodes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of hypouricemia, increased renal uric acid excretion, and pathogenic SLC2A9 mutation",
+    "notes": "Diagnosis may be supported by clinical history of exercise-induced AKI and exclusion of secondary causes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Persistent hypouricemia",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "notes": "Consistently low serum uric acid levels"
+      },
+      {
+        "symptomName": "Exercise-induced acute kidney injury",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "notes": "AKI episodes triggered by strenuous exercise"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Increased urinary uric acid excretion",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "notes": "Elevated fractional excretion of uric acid"
+      },
+      {
+        "symptomName": "Fatigue following exercise",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Post-exertional tiredness"
+      },
+      {
+        "symptomName": "Mild flank pain",
+        "frequency": 0.6,
+        "bodySystem": "renal",
+        "notes": "Intermittent discomfort in the flank region"
+      },
+      {
+        "symptomName": "Asymptomatic hypouricemia",
+        "frequency": 0.6,
+        "bodySystem": "renal",
+        "notes": "Detected incidentally on lab testing"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.3,
+        "bodySystem": "renal",
+        "notes": "Microscopic or macroscopic blood in urine"
+      },
+      {
+        "symptomName": "Muscle cramps post-exercise",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal",
+        "notes": "Transient cramps associated with exertion"
+      },
+      {
+        "symptomName": "Nausea during AKI episodes",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Associated with acute kidney injury"
+      },
+      {
+        "symptomName": "Mild proteinuria",
+        "frequency": 0.12,
+        "bodySystem": "renal",
+        "notes": "Low-level protein in urine"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Urolithiasis",
+        "frequency": 0.08,
+        "bodySystem": "renal",
+        "notes": "Kidney stone formation"
+      },
+      {
+        "symptomName": "Hypertension secondary to renal injury",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Elevated blood pressure due to renal impairment"
+      },
+      {
+        "symptomName": "Chronic kidney disease progression",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "notes": "Rare progression to chronic renal impairment"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "musculoskeletal",
+    "constitutional",
+    "gastrointestinal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Serum uric acid <2 mg/dL",
+      "Fractional excretion of uric acid >10%",
+      "Normal or elevated serum creatinine during AKI episodes"
+    ],
+    "imaging": [
+      "Renal ultrasound may show normal kidneys or signs of acute injury during AKI",
+      "Possible detection of nephrolithiasis"
+    ],
+    "genetic": [
+      "Pathogenic mutations in SLC2A9 gene encoding GLUT9 transporter"
+    ],
+    "other": [
+      "Episodes of acute kidney injury triggered by anaerobic exercise",
+      "Family history consistent with autosomal recessive inheritance"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "renal-hypouricemia-type-1",
+      "distinguishingFeatures": [
+        "Mutation in SLC22A12 gene (URAT1)",
+        "Similar hypouricemia but different transporter affected"
+      ]
+    },
+    {
+      "diseaseId": "secondary-hypouricemia",
+      "distinguishingFeatures": [
+        "Due to medications or systemic diseases",
+        "Transient hypouricemia without genetic mutations"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Recurrent exercise-induced acute kidney injury",
+    "Severe hypouricemia with symptoms",
+    "Rapid decline in renal function following exertion"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Geneticist",
+    "Internal Medicine Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Ichida K, et al. Renal hypouricemia caused by mutations in SLC2A9, a urate transporter gene. Nat Genet. 2008.",
+    "Enomoto A, et al. Molecular identification of a renal urate anion exchanger that regulates blood urate levels. Nature. 2002.",
+    "Matsuo H, et al. Mutations in glucose transporter 9 gene SLC2A9 cause renal hypouricemia. Am J Hum Genet. 2008."
+  ],
+  "confidenceInData": "medium"
+}

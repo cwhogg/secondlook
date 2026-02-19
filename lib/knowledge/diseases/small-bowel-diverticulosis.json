@@ -1,0 +1,187 @@
+{
+  "id": "small-bowel-diverticulosis",
+  "name": "Small Bowel Diverticulosis",
+  "aliases": [
+    "Jejunal Diverticulosis",
+    "Small Intestinal Diverticulosis"
+  ],
+  "icd10Codes": [
+    "K57.80"
+  ],
+  "prevalence": {
+    "estimate": "1 in 5000",
+    "range": "0.06-1.3%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 40,
+      "max": 80,
+      "peak": 60
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Small Bowel Diverticulosis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "imaging-evidence",
+        "description": "Radiologic or endoscopic identification of multiple diverticula in the small intestine",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "symptom-assessment",
+        "description": "Presence of gastrointestinal symptoms such as malabsorption, bleeding, or abdominal pain",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-of-other-causes",
+        "description": "Exclusion of other causes of small bowel pathology such as Crohn’s disease or neoplasms",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Imaging evidence of multiple small bowel diverticula plus exclusion of other causes",
+    "notes": "Diagnosis is often incidental; symptomatic cases require correlation with clinical presentation"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Multiple small bowel diverticula detected on imaging",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Usually asymptomatic but definitive for diagnosis"
+      },
+      {
+        "symptomName": "Chronic malabsorption syndrome",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to bacterial overgrowth in diverticula"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Intermittent abdominal pain",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Often nonspecific and postprandial"
+      },
+      {
+        "symptomName": "Iron deficiency anemia secondary to occult bleeding",
+        "frequency": 0.6,
+        "bodySystem": "hematological",
+        "notes": "May be due to chronic blood loss from diverticula"
+      },
+      {
+        "symptomName": "Bloating and flatulence",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "notes": "Related to bacterial overgrowth"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Overt gastrointestinal bleeding",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "notes": "May present as melena or hematochezia"
+      },
+      {
+        "symptomName": "Small bowel obstruction",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to inflammation or adhesions"
+      },
+      {
+        "symptomName": "Fever associated with diverticulitis",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "notes": "Indicates inflammation or infection"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "notes": "May accompany obstruction or inflammation"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Perforation of small bowel diverticula",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Leads to peritonitis, surgical emergency"
+      },
+      {
+        "symptomName": "Abscess formation",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "notes": "Localized infection adjacent to diverticula"
+      },
+      {
+        "symptomName": "Sepsis secondary to diverticulitis",
+        "frequency": 0.02,
+        "bodySystem": "constitutional",
+        "notes": "Systemic inflammatory response"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Iron deficiency anemia on CBC",
+      "Elevated inflammatory markers (CRP, ESR) in diverticulitis"
+    ],
+    "imaging": [
+      "Barium follow-through or enteroclysis showing multiple diverticula",
+      "CT scan demonstrating small bowel diverticula with or without inflammation",
+      "Endoscopic visualization of diverticula in jejunum or ileum"
+    ],
+    "genetic": [],
+    "other": [
+      "Positive hydrogen breath test indicating bacterial overgrowth"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "crohns-disease",
+      "distinguishingFeatures": [
+        "Transmural inflammation with skip lesions",
+        "Granulomas on histology",
+        "More common diarrhea and systemic symptoms"
+      ]
+    },
+    {
+      "diseaseId": "small-bowel-neoplasm",
+      "distinguishingFeatures": [
+        "Mass lesion on imaging",
+        "Progressive obstructive symptoms",
+        "Histologic confirmation of malignancy"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Acute abdominal pain with signs of peritonitis",
+    "Overt gastrointestinal bleeding with hemodynamic instability",
+    "Signs of sepsis or systemic inflammatory response"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "General Surgeon",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Norton JA, et al. Small bowel diverticulosis: clinical features and management. Surg Clin North Am. 2010;90(1):123-134.",
+    "Singh VV, et al. Small bowel diverticulosis: a clinical review. World J Gastroenterol. 2015;21(20): 6179-6185.",
+    "American College of Gastroenterology Clinical Guideline: Management of Small Bowel Diverticulosis. 2023."
+  ],
+  "confidenceInData": "medium"
+}

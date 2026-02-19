@@ -1,0 +1,213 @@
+{
+  "id": "familial-restrictive-cardiomyopathy",
+  "name": "Familial Restrictive Cardiomyopathy",
+  "aliases": [
+    "Inherited Restrictive Cardiomyopathy",
+    "Genetic Restrictive Cardiomyopathy"
+  ],
+  "icd10Codes": [
+    "I42.5"
+  ],
+  "omimId": "115210",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 60,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Restrictive Cardiomyopathy Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "diastolic-dysfunction",
+        "description": "Evidence of severe diastolic dysfunction with restrictive filling pattern on echocardiography or cardiac catheterization",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of restrictive cardiomyopathy or sudden cardiac death",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-other-cardiac-disease",
+        "description": "Exclusion of other causes of restrictive physiology such as amyloidosis, sarcoidosis, or radiation-induced heart disease",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-mutation",
+        "description": "Identification of pathogenic mutation in sarcomeric or cytoskeletal genes associated with familial restrictive cardiomyopathy",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "biatrial-enlargement",
+        "description": "Biatrial enlargement on imaging studies",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of diastolic dysfunction with restrictive filling pattern plus either positive family history or exclusion of other causes",
+    "notes": "Genetic testing can support diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Severe exercise intolerance due to diastolic heart failure",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Biatrial enlargement with restrictive filling pattern",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.75,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.8,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Jugular venous distension",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Syncope or presyncope",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Chest discomfort",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Atrial fibrillation",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Thromboembolic events",
+        "frequency": 0.05,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Sudden cardiac death",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "respiratory",
+    "gastrointestinal",
+    "neurological",
+    "hematological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal or mildly elevated natriuretic peptides (BNP, NT-proBNP)",
+      "Normal cardiac enzymes unless ischemia present"
+    ],
+    "imaging": [
+      "Echocardiography showing restrictive filling pattern and biatrial enlargement",
+      "Cardiac MRI demonstrating normal or mildly reduced ventricular volumes with preserved systolic function",
+      "Absence of late gadolinium enhancement typical for infiltrative diseases"
+    ],
+    "genetic": [
+      "Pathogenic mutations in sarcomeric genes such as TNNI3, TNNT2, MYH7",
+      "Mutations in cytoskeletal genes like DES (desmin)"
+    ],
+    "other": [
+      "Hemodynamic studies confirming elevated ventricular filling pressures with normal systolic function",
+      "Endomyocardial biopsy may show nonspecific fibrosis without infiltrative disease"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "cardiac-amyloidosis",
+      "distinguishingFeatures": [
+        "Presence of amyloid deposits on biopsy",
+        "Characteristic late gadolinium enhancement on cardiac MRI",
+        "Elevated serum or urine light chains in AL amyloidosis"
+      ]
+    },
+    {
+      "diseaseId": "sarcoidosis-cardiac-involvement",
+      "distinguishingFeatures": [
+        "Noncaseating granulomas on biopsy",
+        "Multisystem involvement with pulmonary or lymph node disease",
+        "Patchy late gadolinium enhancement on cardiac MRI"
+      ]
+    },
+    {
+      "diseaseId": "constrictive-pericarditis",
+      "distinguishingFeatures": [
+        "Pericardial thickening or calcification on imaging",
+        "Respiratory variation in ventricular filling pressures",
+        "Improvement after pericardiectomy"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of heart failure symptoms despite therapy",
+    "Syncope or sudden cardiac arrest",
+    "Family history of sudden cardiac death or cardiomyopathy"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Geneticist",
+    "Heart Failure Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Maron BJ, Towbin JA, Thiene G, et al. Contemporary definitions and classification of the cardiomyopathies. Circulation. 2006;113(14):1807-1816.",
+    "Ho CY. Genetic advances in sarcomeric cardiomyopathies: state of the art. Cardiovasc Res. 2015;105(4):397-408.",
+    "Orphanet: Familial restrictive cardiomyopathy. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=395"
+  ],
+  "confidenceInData": "medium"
+}

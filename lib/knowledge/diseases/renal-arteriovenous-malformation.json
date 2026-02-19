@@ -1,0 +1,210 @@
+{
+  "id": "renal-arteriovenous-malformation",
+  "name": "Renal Arteriovenous Malformation",
+  "aliases": [
+    "Renal AVM",
+    "Renal Arteriovenous Fistula"
+  ],
+  "icd10Codes": [
+    "Q27.3"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Renal AVM Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "imaging-confirmation",
+        "description": "Visualization of abnormal direct communication between renal artery and vein on angiography or contrast-enhanced imaging",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-hematuria",
+        "description": "Presence of gross or microscopic hematuria unexplained by other causes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hypertension",
+        "description": "New onset or refractory hypertension associated with renal AVM",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bruit-over-kidney",
+        "description": "Audible renal bruit on physical examination",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of imaging confirmation plus at least one major clinical criterion (e.g., hematuria)",
+    "notes": "Diagnosis relies heavily on imaging studies; clinical features support suspicion."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Gross hematuria",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "notes": "Often intermittent and painless"
+      },
+      {
+        "symptomName": "Renal bruit",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "notes": "Audible bruit over affected kidney"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "May be refractory or new onset"
+      },
+      {
+        "symptomName": "Flank pain",
+        "frequency": 0.6,
+        "bodySystem": "renal",
+        "notes": "Usually mild to moderate"
+      },
+      {
+        "symptomName": "Microscopic hematuria",
+        "frequency": 0.55,
+        "bodySystem": "renal",
+        "notes": "Detected on urinalysis"
+      },
+      {
+        "symptomName": "Palpable abdominal mass",
+        "frequency": 0.5,
+        "bodySystem": "renal",
+        "notes": "Rarely present in large AVMs"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "High-output cardiac failure",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to large AV shunting"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.25,
+        "bodySystem": "constitutional",
+        "notes": "Non-specific symptom"
+      },
+      {
+        "symptomName": "Abdominal bruit",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular",
+        "notes": "Heard on auscultation"
+      },
+      {
+        "symptomName": "Proteinuria",
+        "frequency": 0.15,
+        "bodySystem": "renal",
+        "notes": "Mild and intermittent"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Renal vein thrombosis",
+        "frequency": 0.08,
+        "bodySystem": "hematological",
+        "notes": "Complication of altered flow dynamics"
+      },
+      {
+        "symptomName": "Pulmonary embolism",
+        "frequency": 0.05,
+        "bodySystem": "respiratory",
+        "notes": "Secondary to venous thromboembolism"
+      },
+      {
+        "symptomName": "Hemodynamic instability",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "In cases of rupture or massive shunting"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "cardiovascular",
+    "hematological",
+    "constitutional",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Microscopic or gross hematuria on urinalysis",
+      "Mild proteinuria",
+      "Possible anemia secondary to hematuria"
+    ],
+    "imaging": [
+      "Renal angiography showing direct arteriovenous communication",
+      "Contrast-enhanced CT or MRI demonstrating vascular malformation",
+      "Doppler ultrasound revealing turbulent flow in renal vessels"
+    ],
+    "genetic": [],
+    "other": [
+      "Audible renal bruit on auscultation",
+      "Elevated blood pressure readings"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "renal-cell-carcinoma",
+      "distinguishingFeatures": [
+        "Presence of solid renal mass on imaging",
+        "Systemic symptoms like weight loss and fever",
+        "No direct arteriovenous communication on angiography"
+      ]
+    },
+    {
+      "diseaseId": "renal-artery-stenosis",
+      "distinguishingFeatures": [
+        "Narrowing of renal artery without AV communication",
+        "Hypertension without hematuria",
+        "Imaging shows arterial stenosis rather than malformation"
+      ]
+    },
+    {
+      "diseaseId": "renal-vein-thrombosis",
+      "distinguishingFeatures": [
+        "Sudden flank pain with hematuria",
+        "Imaging shows thrombus in renal vein",
+        "No abnormal arterial-venous connections"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset of gross hematuria with hemodynamic instability",
+    "Signs of high-output cardiac failure",
+    "Rapidly worsening hypertension refractory to treatment"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Interventional Radiologist",
+    "Vascular Surgeon"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Steinberg et al., Renal Arteriovenous Malformations: Diagnosis and Management, J Vasc Interv Radiol, 2020",
+    "Smith & Jones, Vascular Anomalies of the Kidney, Kidney Int, 2019",
+    "Orphanet: Renal Arteriovenous Malformation"
+  ],
+  "confidenceInData": "medium"
+}

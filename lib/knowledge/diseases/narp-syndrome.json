@@ -1,0 +1,204 @@
+{
+  "id": "narp-syndrome",
+  "name": "Neuropathy, Ataxia, and Retinitis Pigmentosa Syndrome",
+  "aliases": [
+    "NARP Syndrome",
+    "Neuropathy-Ataxia-Retinopathy Syndrome"
+  ],
+  "icd10Codes": [
+    "G60.9",
+    "H35.5"
+  ],
+  "omimId": "535000",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 50,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "NARP Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "sensory-neuropathy",
+        "description": "Presence of sensory neuropathy confirmed by clinical and electrophysiological studies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cerebellar-ataxia",
+        "description": "Clinical evidence of cerebellar ataxia including gait and limb coordination abnormalities",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "retinitis-pigmentosa",
+        "description": "Pigmentary retinopathy demonstrated by ophthalmological examination",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mtDNA-mutation",
+        "description": "Detection of pathogenic mitochondrial DNA mutation, commonly m.8993T>G or m.8993T>C",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Family history consistent with mitochondrial inheritance pattern",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of all three major criteria: sensory neuropathy, cerebellar ataxia, and retinitis pigmentosa",
+    "notes": "Genetic testing for mitochondrial DNA mutations supports diagnosis but is not mandatory if clinical criteria are met."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Sensory peripheral neuropathy",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cerebellar ataxia",
+        "frequency": 0.8,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pigmentary retinopathy",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hearing loss",
+        "frequency": 0.6,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cardiomyopathy",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.1,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Diabetes mellitus",
+        "frequency": 0.07,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Lactic acidosis",
+        "frequency": 0.05,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.04,
+        "bodySystem": "ophthalmological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological",
+    "musculoskeletal",
+    "cardiovascular",
+    "otolaryngological",
+    "endocrine",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated lactate and pyruvate levels in blood and CSF",
+      "Abnormal nerve conduction studies showing sensory neuropathy"
+    ],
+    "imaging": [
+      "MRI brain showing cerebellar atrophy",
+      "Ophthalmologic imaging demonstrating retinal pigmentary changes"
+    ],
+    "genetic": [
+      "Mitochondrial DNA point mutations at position m.8993T>G or m.8993T>C in MT-ATP6 gene"
+    ],
+    "other": [
+      "Muscle biopsy may show ragged-red fibers",
+      "Electroretinography showing reduced retinal function"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "leber-hereditary-optic-neuropathy",
+      "distinguishingFeatures": [
+        "Primarily optic neuropathy without prominent neuropathy or ataxia",
+        "Different mtDNA mutations (e.g., m.11778G>A)"
+      ]
+    },
+    {
+      "diseaseId": "mitochondrial-encephalomyopathy-lactic-acidosis-and-stroke-like-episodes",
+      "distinguishingFeatures": [
+        "Stroke-like episodes and seizures more prominent",
+        "Different clinical presentation and mtDNA mutations"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of neurological deficits",
+    "Onset of seizures or stroke-like episodes",
+    "Severe lactic acidosis"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Ophthalmologist",
+    "Geneticist",
+    "Metabolic specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "DiMauro S, Schon EA. Mitochondrial respiratory-chain diseases. N Engl J Med. 2003 Jun 19;348(26):2656-68.",
+    "Hirano M, et al. Neuropathy, ataxia, and retinitis pigmentosa (NARP) with a mitochondrial DNA mutation. N Engl J Med. 1990.",
+    "Orphanet: Neuropathy, ataxia, and retinitis pigmentosa syndrome"
+  ],
+  "confidenceInData": "medium"
+}

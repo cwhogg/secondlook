@@ -1,0 +1,190 @@
+{
+  "id": "catecholaminergic-polymorphic-ventricular-tachycardia",
+  "name": "Catecholaminergic Polymorphic Ventricular Tachycardia",
+  "aliases": [
+    "CPVT",
+    "Catecholaminergic Polymorphic VT"
+  ],
+  "icd10Codes": [
+    "I47.5"
+  ],
+  "omimId": "604772",
+  "orphanetId": "795",
+  "prevalence": {
+    "estimate": "1 in 10,000 to 1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 40,
+      "peak": 10
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "CPVT Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "exercise-induced-ventricular-tachycardia",
+        "description": "Bidirectional or polymorphic ventricular tachycardia induced by exercise or emotional stress",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "normal-resting-ecg",
+        "description": "Normal resting 12-lead ECG without QT prolongation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ryr2-or-casq2-mutation",
+        "description": "Pathogenic mutation in RYR2 or CASQ2 gene",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history-sudden-cardiac-death",
+        "description": "Family history of sudden cardiac death or exercise-induced syncope",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of exercise or stress-induced bidirectional or polymorphic ventricular tachycardia with normal resting ECG, with or without a pathogenic mutation in RYR2 or CASQ2 genes",
+    "notes": "Diagnosis often requires exercise stress testing or catecholamine challenge to provoke arrhythmia."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Exercise-induced bidirectional ventricular tachycardia",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Characteristic arrhythmia pattern on stress testing"
+      },
+      {
+        "symptomName": "Polymorphic ventricular tachycardia triggered by emotional stress",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Syncope during physical exertion",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Exercise-induced dizziness",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Normal resting electrocardiogram",
+        "frequency": 0.8,
+        "bodySystem": "cardiovascular",
+        "notes": "No QT prolongation or structural abnormalities"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Sudden cardiac arrest",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Chest pain during exertion",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anxiety related to arrhythmia episodes",
+        "frequency": 0.15,
+        "bodySystem": "psychiatric"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizure-like activity secondary to cerebral hypoperfusion",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nocturnal arrhythmias",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Sudden infant death syndrome in affected families",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "psychiatric",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [],
+    "imaging": [
+      "Normal echocardiogram without structural heart disease",
+      "Exercise stress test showing bidirectional or polymorphic VT"
+    ],
+    "genetic": [
+      "Pathogenic variants in RYR2 gene (autosomal dominant)",
+      "Pathogenic variants in CASQ2 gene (autosomal recessive)"
+    ],
+    "other": [
+      "Normal resting ECG with no QT prolongation",
+      "Arrhythmia provoked by catecholamine surge"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "long-qt-syndrome",
+      "distinguishingFeatures": [
+        "Prolonged QT interval on resting ECG",
+        "Torsades de pointes rather than bidirectional VT",
+        "Different genetic mutations (e.g., KCNQ1, KCNH2)"
+      ]
+    },
+    {
+      "diseaseId": "arrhythmogenic-right-ventricular-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Structural abnormalities on imaging",
+        "Epsilon waves on ECG",
+        "Fibrofatty replacement of right ventricular myocardium"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Syncope during exercise or emotional stress",
+    "Family history of sudden cardiac death at young age",
+    "Exercise-induced polymorphic or bidirectional ventricular tachycardia"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Electrophysiologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Priori SG, et al. 2013 HRS/EHRA/APHRS expert consensus statement on the diagnosis and management of patients with inherited primary arrhythmia syndromes. Heart Rhythm. 2013.",
+    "Leenhardt A, et al. Catecholaminergic polymorphic ventricular tachycardia in children. Circulation. 1995.",
+    "Hayashi M, et al. Catecholaminergic polymorphic ventricular tachycardia. Circ Arrhythm Electrophysiol. 2009."
+  ],
+  "confidenceInData": "medium"
+}

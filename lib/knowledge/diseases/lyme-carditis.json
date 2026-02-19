@@ -1,0 +1,210 @@
+{
+  "id": "lyme-carditis",
+  "name": "Lyme Carditis",
+  "aliases": [
+    "Cardiac Lyme Disease",
+    "Borrelia burgdorferi Carditis"
+  ],
+  "icd10Codes": [
+    "A69.23"
+  ],
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "range": "0.3-4% of Lyme disease cases",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 70,
+      "peak": 30
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Suspicious Lyme Carditis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "history-tick-exposure",
+        "description": "History of tick bite or exposure in endemic area",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ecg-conduction-abnormalities",
+        "description": "Presence of atrioventricular conduction abnormalities on ECG (e.g., varying degrees of heart block)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "positive-lyme-serology",
+        "description": "Positive Lyme disease serologic testing (ELISA and confirmatory Western blot)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features-lyme",
+        "description": "Presence of other clinical features of Lyme disease (e.g., erythema migrans, arthritis)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of atrioventricular conduction abnormalities on ECG plus positive Lyme serology",
+    "notes": "Diagnosis is clinical and supported by serology; cardiac biopsy is rarely performed."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Atrioventricular conduction block",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Variable degrees from first to third degree heart block"
+      },
+      {
+        "symptomName": "Erythema migrans rash",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Typical expanding bull's-eye rash often precedes cardiac symptoms"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to arrhythmias or conduction abnormalities"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "notes": "May reflect myocarditis or pericarditis"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "notes": "Common systemic symptom"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.5,
+        "bodySystem": "respiratory",
+        "notes": "May occur due to heart failure or conduction abnormalities"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to transient heart block or arrhythmias"
+      },
+      {
+        "symptomName": "Myocarditis",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Inflammation of myocardium causing chest discomfort and dysfunction"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal",
+        "notes": "Joint pain associated with Lyme disease"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "notes": "Low-grade fever may be present"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Heart failure",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular",
+        "notes": "Severe myocarditis can lead to heart failure"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Inflammation of pericardium occasionally observed"
+      },
+      {
+        "symptomName": "Neurological symptoms",
+        "frequency": 0.04,
+        "bodySystem": "neurological",
+        "notes": "Concurrent Lyme neuroborreliosis may occur"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "dermatological",
+    "constitutional",
+    "musculoskeletal",
+    "neurological",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive Lyme serology (ELISA and Western blot)",
+      "Elevated inflammatory markers (ESR, CRP) in some cases"
+    ],
+    "imaging": [
+      "ECG showing atrioventricular conduction abnormalities",
+      "Echocardiogram may show myocarditis or pericardial effusion"
+    ],
+    "genetic": [],
+    "other": [
+      "Response to antibiotic therapy supports diagnosis",
+      "Cardiac MRI may show myocardial inflammation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "acute-myocarditis",
+      "distinguishingFeatures": [
+        "No history of tick exposure",
+        "Negative Lyme serology",
+        "Often viral etiology"
+      ]
+    },
+    {
+      "diseaseId": "idiopathic-atrioventricular-block",
+      "distinguishingFeatures": [
+        "No systemic symptoms",
+        "No erythema migrans or Lyme exposure",
+        "Normal inflammatory markers"
+      ]
+    },
+    {
+      "diseaseId": "cardiac-sarcoidosis",
+      "distinguishingFeatures": [
+        "Granulomatous inflammation on biopsy",
+        "Multisystem involvement",
+        "Non-caseating granulomas on imaging"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive high-grade atrioventricular block",
+    "Syncope or presyncope episodes",
+    "Signs of heart failure or cardiogenic shock"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Infectious Disease Specialist",
+    "Electrophysiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Wormser GP, et al. Clinical practice guidelines by the Infectious Diseases Society of America (IDSA) for Lyme disease. Clin Infect Dis. 2006.",
+    "Forrester JD, Mead P. Lyme Carditis: Clinical Features and Management. Infect Dis Clin North Am. 2020.",
+    "Krause PJ, et al. Lyme Disease and the Heart. Circulation. 2019."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,212 @@
+{
+  "id": "severe-combined-immunodeficiency",
+  "name": "Severe Combined Immunodeficiency",
+  "aliases": [
+    "SCID",
+    "Severe Combined Immunodeficiency Syndrome"
+  ],
+  "icd10Codes": [
+    "D81.0"
+  ],
+  "omimId": "300400",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 50,000 to 100,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 12,
+      "peak": 3
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ESID Diagnostic Criteria for SCID",
+    "criteria": [
+      {
+        "id": "lymphopenia",
+        "description": "Profound lymphopenia with markedly reduced T-cell counts",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "impaired-t-cell-function",
+        "description": "Absent or severely impaired T-cell function demonstrated by mitogen response testing",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hypogammaglobulinemia",
+        "description": "Low or absent immunoglobulin levels (IgG, IgA, IgM)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of SCID or early infant deaths from infections",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-confirmation",
+        "description": "Identification of pathogenic mutation in known SCID-associated genes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of profound lymphopenia with severely impaired T-cell function and hypogammaglobulinemia",
+    "notes": "Genetic testing is recommended to confirm diagnosis and guide treatment."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Severe, recurrent opportunistic infections",
+        "frequency": 0.95,
+        "bodySystem": "immunological",
+        "notes": "Includes infections with Pneumocystis jirovecii, Candida, and other opportunistic pathogens"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.85,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chronic diarrhea",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Persistent oral thrush",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.7,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.65,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Eczematous skin rash",
+        "frequency": 0.6,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Recurrent pneumonia",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Chronic cough",
+        "frequency": 0.4,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Sepsis",
+        "frequency": 0.35,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Persistent viral infections (e.g., CMV, EBV)",
+        "frequency": 0.3,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Autoimmune manifestations",
+        "frequency": 0.2,
+        "bodySystem": "immunological",
+        "notes": "May include cytopenias or enteropathy"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Neurological complications due to infections",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Severe eczema with erythroderma",
+        "frequency": 0.05,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Lymphoid malignancies",
+        "frequency": 0.03,
+        "bodySystem": "hematological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "immunological",
+    "gastrointestinal",
+    "respiratory",
+    "dermatological",
+    "constitutional",
+    "neurological",
+    "hematological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Profound T-cell lymphopenia",
+      "Absent or severely reduced T-cell proliferation response to mitogens",
+      "Hypogammaglobulinemia",
+      "Elevated serum IgE in some variants"
+    ],
+    "imaging": [
+      "Chest X-ray showing pneumonia or absent thymic shadow"
+    ],
+    "genetic": [
+      "Pathogenic mutations in genes such as IL2RG, ADA, RAG1, RAG2, JAK3"
+    ],
+    "other": [
+      "Positive family history of early infant deaths or immunodeficiency",
+      "Abnormal newborn screening for T-cell receptor excision circles (TRECs)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "wiskott-aldrich-syndrome",
+      "distinguishingFeatures": [
+        "Thrombocytopenia with small platelets",
+        "Eczema with bleeding tendency",
+        "X-linked inheritance"
+      ]
+    },
+    {
+      "diseaseId": "x-linked-agammaglobulinemia",
+      "distinguishingFeatures": [
+        "Absent B cells with normal T-cell function",
+        "Later onset than SCID",
+        "Recurrent bacterial infections without opportunistic infections"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe infections with opportunistic pathogens in early infancy",
+    "Failure to thrive despite adequate nutrition",
+    "Family history of infant deaths from infections"
+  ],
+  "specialistType": [
+    "Immunologist",
+    "Pediatrician",
+    "Infectious Disease Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Buckley RH. The multiple causes of human SCID. J Clin Invest. 2004;114(10):1409-1411.",
+    "Notarangelo LD. Primary immunodeficiencies. J Allergy Clin Immunol. 2010;125(2 Suppl 2):S182-S194.",
+    "ESID Registry - Diagnostic Criteria for SCID. European Society for Immunodeficiencies."
+  ],
+  "confidenceInData": "medium"
+}

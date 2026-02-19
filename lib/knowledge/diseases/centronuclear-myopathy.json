@@ -1,0 +1,220 @@
+{
+  "id": "centronuclear-myopathy",
+  "name": "Centronuclear Myopathy",
+  "aliases": [
+    "CNM",
+    "Myotubular Myopathy",
+    "Central Core Myopathy"
+  ],
+  "icd10Codes": [
+    "G71.3"
+  ],
+  "omimId": "255200",
+  "orphanetId": "795",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 0
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Centronuclear Myopathy Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "central-nuclei",
+        "description": "Presence of centrally located nuclei in >25% of muscle fibers on muscle biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "muscle-weakness",
+        "description": "Clinical evidence of generalized muscle weakness predominantly affecting proximal muscles",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-mutation",
+        "description": "Identification of pathogenic variants in genes associated with CNM (e.g., MTM1, DNM2, BIN1)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "electromyography-findings",
+        "description": "Electromyography showing myopathic changes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history consistent with inheritance pattern",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of centrally located nuclei in muscle biopsy plus clinical muscle weakness; genetic confirmation supports diagnosis",
+    "notes": "Muscle biopsy remains the gold standard; genetic testing aids in subtype classification"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Centrally located muscle cell nuclei",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal",
+        "notes": "Histopathological hallmark"
+      },
+      {
+        "symptomName": "Proximal muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hypotonia in infancy",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Facial muscle weakness",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Respiratory muscle weakness",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Delayed motor milestones",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue on exertion",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skeletal deformities (e.g., scoliosis)",
+        "frequency": 0.5,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Ophthalmoplegia",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Joint contractures",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cardiac conduction abnormalities",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Intellectual disability",
+        "frequency": 0.08,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Respiratory failure requiring ventilation",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "respiratory",
+    "cardiovascular",
+    "ophthalmological",
+    "gastrointestinal",
+    "psychiatric",
+    "constitutional",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum creatine kinase (mild to moderate)",
+      "Normal or mildly elevated lactate dehydrogenase"
+    ],
+    "imaging": [
+      "Muscle MRI showing selective muscle involvement and fatty infiltration"
+    ],
+    "genetic": [
+      "Pathogenic variants in MTM1, DNM2, BIN1, RYR1 genes"
+    ],
+    "other": [
+      "Muscle biopsy demonstrating centrally located nuclei in muscle fibers",
+      "Electromyography showing myopathic motor unit potentials"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "myotonic-dystrophy",
+      "distinguishingFeatures": [
+        "Presence of myotonia",
+        "Multisystem involvement including cataracts and cardiac conduction defects",
+        "Genetic testing positive for DMPK or CNBP expansions"
+      ]
+    },
+    {
+      "diseaseId": "central-core-disease",
+      "distinguishingFeatures": [
+        "Muscle biopsy showing central cores rather than central nuclei",
+        "Predominantly RYR1 mutations",
+        "Usually presents with malignant hyperthermia susceptibility"
+      ]
+    },
+    {
+      "diseaseId": "nemaline-myopathy",
+      "distinguishingFeatures": [
+        "Presence of nemaline rods on muscle biopsy",
+        "Different genetic mutations (e.g., NEB, ACTA1)",
+        "Distinct clinical presentation with facial weakness and hypotonia"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive respiratory failure",
+    "Severe hypotonia in neonates",
+    "Cardiac arrhythmias or conduction block"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neuromuscular specialist",
+    "Geneticist",
+    "Pulmonologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "North KN, et al. Centronuclear myopathies: a widening concept. Neuromuscul Disord. 1997.",
+    "Romero NB. Centronuclear myopathies: a widening concept. Neuromuscul Disord. 2010.",
+    "OMIM Entry - 255200 - CENTRONUCLEAR MYOPATHY, X-LINKED"
+  ],
+  "confidenceInData": "medium"
+}

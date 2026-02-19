@@ -1,0 +1,220 @@
+{
+  "id": "idiopathic-pulmonary-fibrosis",
+  "name": "Idiopathic Pulmonary Fibrosis",
+  "aliases": [
+    "IPF",
+    "Cryptogenic Fibrosing Alveolitis"
+  ],
+  "icd10Codes": [
+    "J84.112"
+  ],
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "range": "0.005-0.02%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 50,
+      "max": 80,
+      "peak": 65
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Caucasian",
+      "East Asian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ATS/ERS/JRS/ALAT Clinical Practice Guideline for IPF Diagnosis",
+    "criteria": [
+      {
+        "id": "clinical-presentation",
+        "description": "Progressive exertional dyspnea and chronic dry cough in adults over 50 years",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hrct-pattern",
+        "description": "High-resolution CT showing usual interstitial pneumonia (UIP) pattern",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-other-causes",
+        "description": "Exclusion of other known causes of interstitial lung disease such as connective tissue disease, drug toxicity, or environmental exposures",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "lung-biopsy",
+        "description": "Surgical lung biopsy showing UIP pattern when HRCT is inconclusive",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pulmonary-function-tests",
+        "description": "Restrictive ventilatory defect and reduced diffusing capacity for carbon monoxide (DLCO)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of typical clinical presentation, UIP pattern on HRCT, and exclusion of other causes",
+    "notes": "Lung biopsy reserved for cases with indeterminate HRCT findings"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Velcro-like inspiratory crackles",
+        "frequency": 0.85,
+        "bodySystem": "respiratory",
+        "notes": "Audible on auscultation, especially at lung bases"
+      },
+      {
+        "symptomName": "Progressive exertional dyspnea",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chronic non-productive cough",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Digital clubbing",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Exertional hypoxemia",
+        "frequency": 0.7,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Bibasilar inspiratory crackles",
+        "frequency": 0.7,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Chest discomfort",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular",
+        "notes": "May indicate right heart failure"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Low-grade fever",
+        "frequency": 0.1,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to pulmonary hypertension or hypoxemia"
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "frequency": 0.02,
+        "bodySystem": "immunological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "musculoskeletal",
+    "cardiovascular",
+    "constitutional",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal or mildly elevated inflammatory markers (ESR, CRP)",
+      "Exclusion of autoimmune serologies (ANA, RF, anti-CCP) to rule out connective tissue disease"
+    ],
+    "imaging": [
+      "High-resolution CT showing basal and subpleural predominant reticular opacities with honeycombing and traction bronchiectasis consistent with UIP pattern",
+      "Absence of features suggestive of alternative diagnoses (e.g., extensive ground-glass opacities)"
+    ],
+    "genetic": [
+      "Mutations in genes such as TERT, TERC, and surfactant protein genes in familial cases"
+    ],
+    "other": [
+      "Pulmonary function tests showing restrictive pattern with reduced total lung capacity and decreased DLCO",
+      "6-minute walk test demonstrating exercise-induced desaturation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chronic-hypersensitivity-pneumonitis",
+      "distinguishingFeatures": [
+        "History of antigen exposure",
+        "Predominant ground-glass opacities on HRCT",
+        "Presence of lymphocytosis in bronchoalveolar lavage"
+      ]
+    },
+    {
+      "diseaseId": "connective-tissue-disease-associated-interstitial-lung-disease",
+      "distinguishingFeatures": [
+        "Positive autoimmune serologies",
+        "Systemic symptoms such as arthritis, rash",
+        "Non-UIP pattern on imaging"
+      ]
+    },
+    {
+      "diseaseId": "sarcoidosis",
+      "distinguishingFeatures": [
+        "Non-caseating granulomas on biopsy",
+        "Bilateral hilar lymphadenopathy on chest imaging",
+        "Multisystem involvement"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive dyspnea over weeks",
+    "Development of pulmonary hypertension",
+    "Acute exacerbation with new bilateral ground-glass opacities"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Radiologist",
+    "Rheumatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Raghu G, et al. An Official ATS/ERS/JRS/ALAT Clinical Practice Guideline: Treatment of Idiopathic Pulmonary Fibrosis. Am J Respir Crit Care Med. 2015.",
+    "American Thoracic Society. Idiopathic Pulmonary Fibrosis: Diagnosis and Treatment. 2011.",
+    "King TE Jr, et al. Idiopathic pulmonary fibrosis. Lancet. 2011."
+  ],
+  "confidenceInData": "medium"
+}

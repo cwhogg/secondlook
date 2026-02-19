@@ -1,0 +1,205 @@
+{
+  "id": "autoimmune-gastritis",
+  "name": "Autoimmune Gastritis",
+  "aliases": [
+    "Type A Gastritis",
+    "Chronic Autoimmune Atrophic Gastritis"
+  ],
+  "icd10Codes": [
+    "K29.4"
+  ],
+  "prevalence": {
+    "estimate": "1 in 2,000",
+    "range": "0.5-2%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 70,
+      "peak": 60
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Autoimmune Gastritis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "autoantibodies",
+        "description": "Presence of anti-parietal cell antibodies and/or anti-intrinsic factor antibodies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histology",
+        "description": "Gastric mucosal biopsy showing chronic atrophic gastritis predominantly affecting the corpus and fundus with lymphocytic infiltration",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pernicious-anemia",
+        "description": "Evidence of pernicious anemia with vitamin B12 deficiency and elevated methylmalonic acid/homocysteine",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hypergastrinemia",
+        "description": "Elevated serum gastrin levels due to achlorhydria",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of anti-parietal cell or anti-intrinsic factor antibodies plus histological confirmation of atrophic gastritis",
+    "notes": "Vitamin B12 deficiency and pernicious anemia support diagnosis but are not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Achlorhydria",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Loss of gastric acid secretion due to parietal cell destruction"
+      },
+      {
+        "symptomName": "Pernicious anemia",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Macrocytic anemia caused by vitamin B12 deficiency"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Due to anemia and vitamin B12 deficiency"
+      },
+      {
+        "symptomName": "Glossitis",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "notes": "Inflammation of the tongue associated with B12 deficiency"
+      },
+      {
+        "symptomName": "Epigastric discomfort",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "notes": "Mild upper abdominal pain or discomfort"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.5,
+        "bodySystem": "constitutional",
+        "notes": "Unintentional weight loss in chronic disease"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Neuropathy",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Peripheral neuropathy due to B12 deficiency"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Occasional bowel habit changes"
+      },
+      {
+        "symptomName": "Nausea",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal",
+        "notes": "Mild nausea without vomiting"
+      },
+      {
+        "symptomName": "Subclinical hypothyroidism",
+        "frequency": 0.15,
+        "bodySystem": "endocrine",
+        "notes": "Associated autoimmune thyroid disease"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Neuropsychiatric symptoms",
+        "frequency": 0.05,
+        "bodySystem": "psychiatric",
+        "notes": "Cognitive impairment, depression related to B12 deficiency"
+      },
+      {
+        "symptomName": "Gastric carcinoid tumors",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "notes": "Rare neoplastic complication"
+      },
+      {
+        "symptomName": "Iron deficiency anemia",
+        "frequency": 0.02,
+        "bodySystem": "hematological",
+        "notes": "Due to impaired iron absorption"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "neurological",
+    "endocrine",
+    "psychiatric",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive anti-parietal cell antibodies",
+      "Positive anti-intrinsic factor antibodies",
+      "Macrocytic anemia with low vitamin B12",
+      "Elevated serum gastrin",
+      "Elevated methylmalonic acid and homocysteine"
+    ],
+    "imaging": [
+      "Endoscopic evidence of gastric mucosal atrophy",
+      "Possible gastric neuroendocrine tumors on imaging"
+    ],
+    "genetic": [],
+    "other": [
+      "Histopathology showing chronic atrophic gastritis with lymphocytic infiltration",
+      "Achlorhydria confirmed by gastric pH testing"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "h-pylori-associated-chronic-gastritis",
+      "distinguishingFeatures": [
+        "Predominantly affects antrum rather than corpus",
+        "Presence of Helicobacter pylori infection",
+        "Less commonly associated with pernicious anemia"
+      ]
+    },
+    {
+      "diseaseId": "chemical-gastritis",
+      "distinguishingFeatures": [
+        "History of NSAID or bile reflux exposure",
+        "Lack of autoimmune antibodies",
+        "Histology shows reactive gastropathy rather than lymphocytic infiltration"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe macrocytic anemia with neurological deficits",
+    "Rapid weight loss or persistent vomiting",
+    "Evidence of gastric neoplasia or carcinoid tumor"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Hematologist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Neumann WL, et al. Autoimmune atrophic gastritis—pathogenesis, pathology and management. Nat Rev Gastroenterol Hepatol. 2013.",
+    "Tack GJ, et al. Autoimmune gastritis: current perspectives. Clin Exp Gastroenterol. 2015.",
+    "Kaptan K, et al. Helicobacter pylori-negative autoimmune gastritis: a distinct entity? World J Gastroenterol. 2006."
+  ],
+  "confidenceInData": "medium"
+}

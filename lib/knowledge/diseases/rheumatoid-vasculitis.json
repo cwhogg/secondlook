@@ -1,0 +1,220 @@
+{
+  "id": "rheumatoid-vasculitis",
+  "name": "Rheumatoid Vasculitis",
+  "aliases": [
+    "Rheumatoid Arthritis-associated Vasculitis",
+    "RV"
+  ],
+  "icd10Codes": [
+    "M05.7"
+  ],
+  "prevalence": {
+    "estimate": "1 in 1,000 to 1 in 5,000 rheumatoid arthritis patients",
+    "range": "0.5-5%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No universally accepted formal criteria; diagnosis based on clinical, laboratory, and histopathological findings",
+    "criteria": [
+      {
+        "id": "history-ra",
+        "description": "Established diagnosis of rheumatoid arthritis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "vasculitic-lesions",
+        "description": "Presence of clinical signs of vasculitis such as palpable purpura, ulcers, or mononeuritis multiplex",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology",
+        "description": "Biopsy demonstrating necrotizing vasculitis of small- and medium-sized vessels",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "serologic-markers",
+        "description": "High titers of rheumatoid factor and anti-CCP antibodies",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-other-vasculitis",
+        "description": "Exclusion of other systemic vasculitides and infections",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Established rheumatoid arthritis plus clinical evidence of vasculitis and confirmatory biopsy showing necrotizing vasculitis",
+    "notes": "Diagnosis often requires multidisciplinary evaluation including rheumatology, dermatology, and pathology."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Necrotizing vasculitic skin ulcers",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Typically on lower extremities"
+      },
+      {
+        "symptomName": "Mononeuritis multiplex",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Asymmetric peripheral neuropathy due to vessel inflammation"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Palpable purpura",
+        "frequency": 0.65,
+        "bodySystem": "dermatological",
+        "notes": "Non-blanching raised purpuric lesions"
+      },
+      {
+        "symptomName": "Constitutional symptoms (fever, weight loss, malaise)",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Reflect systemic inflammation"
+      },
+      {
+        "symptomName": "Digital ischemia and gangrene",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to vessel occlusion"
+      },
+      {
+        "symptomName": "Peripheral neuropathy symptoms (numbness, weakness)",
+        "frequency": 0.58,
+        "bodySystem": "neurological",
+        "notes": "Often related to mononeuritis multiplex"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Livedo reticularis",
+        "frequency": 0.3,
+        "bodySystem": "dermatological",
+        "notes": "Mottled vascular pattern on skin"
+      },
+      {
+        "symptomName": "Arthralgia beyond baseline rheumatoid arthritis",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "notes": "May indicate vasculitic flare"
+      },
+      {
+        "symptomName": "Renal involvement (hematuria, proteinuria)",
+        "frequency": 0.25,
+        "bodySystem": "renal",
+        "notes": "Due to vasculitis affecting renal vessels"
+      },
+      {
+        "symptomName": "Ocular inflammation (scleritis, episcleritis)",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological",
+        "notes": "Inflammation related to vasculitis"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Gastrointestinal ischemia and infarction",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Severe complication from vasculitis"
+      },
+      {
+        "symptomName": "Cardiac involvement (pericarditis, myocarditis)",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare but serious manifestation"
+      },
+      {
+        "symptomName": "Central nervous system vasculitis",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "notes": "Very rare and severe"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "neurological",
+    "cardiovascular",
+    "renal",
+    "constitutional",
+    "ophthalmological",
+    "gastrointestinal",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated rheumatoid factor (RF) titers",
+      "High anti-cyclic citrullinated peptide (anti-CCP) antibodies",
+      "Elevated inflammatory markers (ESR, CRP)",
+      "Anemia of chronic disease"
+    ],
+    "imaging": [
+      "Nerve conduction studies showing mononeuritis multiplex",
+      "Angiography demonstrating vessel irregularities or occlusions"
+    ],
+    "genetic": [],
+    "other": [
+      "Histopathology showing necrotizing vasculitis with fibrinoid necrosis and leukocytoclastic infiltration"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "polyarteritis-nodosa",
+      "distinguishingFeatures": [
+        "Typically affects medium-sized arteries without association with rheumatoid arthritis",
+        "Lacks high rheumatoid factor and anti-CCP antibodies",
+        "Different histopathological features"
+      ]
+    },
+    {
+      "diseaseId": "cryoglobulinemic-vasculitis",
+      "distinguishingFeatures": [
+        "Presence of circulating cryoglobulins",
+        "Often associated with hepatitis C infection",
+        "Different serologic profile and clinical presentation"
+      ]
+    },
+    {
+      "diseaseId": "systemic-lupus-erythematosus-vasculitis",
+      "distinguishingFeatures": [
+        "Associated with SLE-specific antibodies (ANA, anti-dsDNA)",
+        "Different clinical and immunological features",
+        "Usually occurs in context of active lupus"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive skin ulcers with necrosis",
+    "Mononeuritis multiplex causing acute neurological deficits",
+    "Signs of systemic organ ischemia (renal failure, gastrointestinal infarction)"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Dermatologist",
+    "Neurologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Scott DL, Wolfe F, Huizinga TWJ. Rheumatoid arthritis. Lancet. 2010 Sep 25;376(9746):1094-108.",
+    "Jennette JC, Falk RJ, Bacon PA, et al. 2012 Revised International Chapel Hill Consensus Conference Nomenclature of Vasculitides. Arthritis Rheum. 2013 Jan;65(1):1-11.",
+    "Turesson C, Jacobsson LTH. Epidemiology of extra-articular manifestations in rheumatoid arthritis. Scand J Rheumatol. 2004;33(2):65-72."
+  ],
+  "confidenceInData": "medium"
+}

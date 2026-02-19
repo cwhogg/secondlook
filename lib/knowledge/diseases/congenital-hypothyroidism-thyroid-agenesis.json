@@ -1,0 +1,213 @@
+{
+  "id": "congenital-hypothyroidism-thyroid-agenesis",
+  "name": "Congenital Hypothyroidism Due to Thyroid Agenesis",
+  "aliases": [
+    "Thyroid Agenesis Congenital Hypothyroidism",
+    "Agenetic Congenital Hypothyroidism"
+  ],
+  "icd10Codes": [
+    "E03.1"
+  ],
+  "omimId": "218700",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 3,000 to 4,000 newborns",
+    "range": "0.025%-0.033%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 1,
+      "peak": 0
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Newborn Screening and Confirmatory Diagnostic Criteria for Congenital Hypothyroidism",
+    "criteria": [
+      {
+        "id": "elevated-tsh",
+        "description": "Elevated serum thyroid-stimulating hormone (TSH) levels on newborn screening",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "low-thyroxine",
+        "description": "Low serum free thyroxine (T4) concentration confirming hypothyroidism",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-thyroid-agenesis",
+        "description": "Absence of thyroid gland on thyroid ultrasound or radionuclide thyroid scan",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Presence of clinical features consistent with hypothyroidism (e.g., prolonged jaundice, feeding difficulties)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Elevated TSH and low free T4 with imaging confirming absent thyroid gland",
+    "notes": "Newborn screening programs are critical for early detection; imaging differentiates agenesis from other causes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Absent thyroid gland on imaging",
+        "frequency": 0.95,
+        "bodySystem": "endocrine",
+        "notes": "Confirmed by ultrasound or radionuclide scan"
+      },
+      {
+        "symptomName": "Elevated serum TSH levels",
+        "frequency": 0.98,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Low serum free thyroxine (T4)",
+        "frequency": 0.97,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Prolonged neonatal jaundice",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Feeding difficulties and poor sucking",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Constipation",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Macroglossia",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Umbilical hernia",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hoarse cry",
+        "frequency": 0.25,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Dry, coarse skin",
+        "frequency": 0.2,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Bradycardia",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Delayed bone age",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Mental retardation or developmental delay if untreated",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Periorbital edema",
+        "frequency": 0.07,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hypothermia",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "endocrine",
+    "gastrointestinal",
+    "musculoskeletal",
+    "otolaryngological",
+    "dermatological",
+    "cardiovascular",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum TSH",
+      "Low serum free T4",
+      "Normal or low serum thyroglobulin"
+    ],
+    "imaging": [
+      "Absent thyroid gland on ultrasound",
+      "No uptake on radionuclide thyroid scan (e.g., 99mTc-pertechnetate or I-123)"
+    ],
+    "genetic": [
+      "Mutations rarely identified; mostly sporadic cases",
+      "Some familial cases linked to genes involved in thyroid development (e.g., TSHR, PAX8)"
+    ],
+    "other": [
+      "Newborn screening programs critical for early detection",
+      "Response to levothyroxine therapy confirms diagnosis"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "dyshormonogenetic-congenital-hypothyroidism",
+      "distinguishingFeatures": [
+        "Presence of thyroid gland on imaging",
+        "Elevated TSH with goiter",
+        "Defects in thyroid hormone synthesis enzymes"
+      ]
+    },
+    {
+      "diseaseId": "central-congenital-hypothyroidism",
+      "distinguishingFeatures": [
+        "Low or normal TSH despite low T4",
+        "Pituitary or hypothalamic abnormalities",
+        "No thyroid agenesis on imaging"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Delayed diagnosis leading to irreversible intellectual disability",
+    "Severe hypothyroid symptoms in neonate (e.g., poor feeding, lethargy)",
+    "Failure to thrive despite adequate nutrition"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Pediatrician",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "American Academy of Pediatrics. Clinical Practice Guideline: Screening and Management of Congenital Hypothyroidism. Pediatrics. 2014.",
+    "Lazar L, et al. Congenital hypothyroidism due to thyroid dysgenesis: clinical and molecular aspects. Horm Res Paediatr. 2017.",
+    "Orphanet: Congenital hypothyroidism due to thyroid agenesis. Orphanet Journal of Rare Diseases. 2020."
+  ],
+  "confidenceInData": "medium"
+}

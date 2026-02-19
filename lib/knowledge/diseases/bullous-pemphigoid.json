@@ -1,0 +1,193 @@
+{
+  "id": "bullous-pemphigoid",
+  "name": "Bullous Pemphigoid",
+  "aliases": [
+    "BP",
+    "Pemphigoid Bullous"
+  ],
+  "icd10Codes": [
+    "L12.0"
+  ],
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 60,
+      "max": 90,
+      "peak": 75
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Bullous Pemphigoid Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clinical-presentation",
+        "description": "Presence of tense subepidermal blisters on erythematous or normal skin",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology",
+        "description": "Skin biopsy showing subepidermal blister with eosinophilic infiltrate",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "direct-immunofluorescence",
+        "description": "Linear deposition of IgG and/or C3 along the basement membrane zone",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "serologic-testing",
+        "description": "Detection of circulating anti-BP180 and/or anti-BP230 antibodies by ELISA",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria (clinical presentation, histopathology, and direct immunofluorescence) must be met",
+    "notes": "Serologic testing supports diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Tense subepidermal blisters",
+        "frequency": 0.95,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pruritus",
+        "frequency": 0.85,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Linear IgG and C3 deposition at basement membrane zone",
+        "frequency": 0.9,
+        "bodySystem": "immunological",
+        "notes": "Detected by direct immunofluorescence"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Erythematous urticarial plaques",
+        "frequency": 0.75,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Mucosal involvement (rare but possible)",
+        "frequency": 0.6,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Eosinophilia in peripheral blood",
+        "frequency": 0.65,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Burning or stinging sensation at lesion sites",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Secondary bacterial skin infection",
+        "frequency": 0.3,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Nikolsky sign negative",
+        "frequency": 0.4,
+        "bodySystem": "dermatological",
+        "notes": "Helps differentiate from pemphigus vulgaris"
+      },
+      {
+        "symptomName": "Mild systemic symptoms (fever, malaise)",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Edema around blisters",
+        "frequency": 0.15,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Anaphylactoid purpura-like lesions",
+        "frequency": 0.05,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.07,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mucosal erosions",
+        "frequency": 0.03,
+        "bodySystem": "dermatological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "immunological",
+    "hematological",
+    "constitutional",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Peripheral eosinophilia",
+      "Elevated anti-BP180 and anti-BP230 antibodies by ELISA"
+    ],
+    "imaging": [],
+    "genetic": [
+      "HLA-DQB1*0301 association reported"
+    ],
+    "other": [
+      "Direct immunofluorescence showing linear IgG and C3 at basement membrane zone",
+      "Histopathology revealing subepidermal blister with eosinophilic infiltrate"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pemphigus-vulgaris",
+      "distinguishingFeatures": [
+        "Flaccid intraepidermal blisters",
+        "Positive Nikolsky sign",
+        "Mucosal involvement more common"
+      ]
+    },
+    {
+      "diseaseId": "dermatitis-herpetiformis",
+      "distinguishingFeatures": [
+        "Grouped vesicles and papules",
+        "Granular IgA deposits in dermal papillae on immunofluorescence",
+        "Strong association with gluten sensitivity"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of blistering with systemic symptoms",
+    "Signs of secondary infection (fever, purulence)",
+    "Extensive mucosal involvement"
+  ],
+  "specialistType": [
+    "Dermatologist",
+    "Immunologist",
+    "Rheumatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Schmidt E, Zillikens D. Bullous pemphigoid: a review of its diagnosis, associations and treatment. Am J Clin Dermatol. 2013;14(5): 351-364.",
+    "Langan SM, Smeeth L, Hubbard R, Fleming KM, Smith CJ, West J. Bullous pemphigoid and pemphigus vulgaris--incidence and mortality in the UK: population based cohort study. BMJ. 2008;337:a180.",
+    "Di Zenzo G, et al. Diagnostic criteria for bullous pemphigoid: a consensus report. J Eur Acad Dermatol Venereol. 2020;34(3): 497-504."
+  ],
+  "confidenceInData": "medium"
+}

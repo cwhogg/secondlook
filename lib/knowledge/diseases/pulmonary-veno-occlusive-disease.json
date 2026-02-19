@@ -1,0 +1,201 @@
+{
+  "id": "pulmonary-veno-occlusive-disease",
+  "name": "Pulmonary Veno-Occlusive Disease",
+  "aliases": [
+    "PVOD",
+    "Pulmonary Capillary Hemangiomatosis (related condition)"
+  ],
+  "icd10Codes": [
+    "I27.82"
+  ],
+  "omimId": "265450",
+  "orphanetId": "795",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 60,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No formal universally accepted criteria; diagnosis based on clinical, radiologic, and histopathologic findings",
+    "criteria": [
+      {
+        "id": "clinical-pulmonary-hypertension",
+        "description": "Presence of pulmonary hypertension confirmed by right heart catheterization",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "radiologic-features",
+        "description": "Characteristic high-resolution CT findings including centrilobular ground-glass opacities, septal lines, and mediastinal lymphadenopathy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathologic-confirmation",
+        "description": "Histological evidence of widespread occlusion of small pulmonary veins",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-of-other-causes",
+        "description": "Exclusion of other causes of pulmonary hypertension such as left heart disease or chronic thromboembolic disease",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Clinical pulmonary hypertension with characteristic radiologic features and exclusion of other causes; histopathologic confirmation if available",
+    "notes": "Lung biopsy is definitive but often high risk; diagnosis often presumptive based on clinical and imaging findings"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive exertional dyspnea",
+        "frequency": 0.85,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hypoxemia refractory to oxygen therapy",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pulmonary hypertension confirmed by right heart catheterization",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Non-productive cough",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Exertional syncope",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.2,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Orthopnea",
+        "frequency": 0.15,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Digital clubbing",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hemodynamic instability",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Syncope at rest",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "cardiovascular",
+    "constitutional",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Hypoxemia on arterial blood gas analysis",
+      "Elevated brain natriuretic peptide (BNP) levels"
+    ],
+    "imaging": [
+      "High-resolution CT showing centrilobular ground-glass opacities",
+      "Interlobular septal thickening",
+      "Mediastinal lymphadenopathy",
+      "Right ventricular enlargement on echocardiogram"
+    ],
+    "genetic": [
+      "Mutations in EIF2AK4 gene associated with familial cases"
+    ],
+    "other": [
+      "Right heart catheterization demonstrating elevated pulmonary arterial pressures with normal wedge pressure"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pulmonary-arterial-hypertension",
+      "distinguishingFeatures": [
+        "Absence of venous obstruction on histology",
+        "Different radiologic pattern without septal lines or lymphadenopathy"
+      ]
+    },
+    {
+      "diseaseId": "chronic-thromboembolic-pulmonary-hypertension",
+      "distinguishingFeatures": [
+        "Presence of thromboembolic material on imaging",
+        "Improvement with pulmonary thromboendarterectomy"
+      ]
+    },
+    {
+      "diseaseId": "left-heart-disease-related-pulmonary-hypertension",
+      "distinguishingFeatures": [
+        "Elevated pulmonary capillary wedge pressure",
+        "Echocardiographic evidence of left heart dysfunction"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of pulmonary hypertension symptoms",
+    "Severe hypoxemia refractory to oxygen therapy",
+    "Development of pulmonary edema with vasodilator therapy"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Cardiologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Montani D, et al. Pulmonary veno-occlusive disease. Eur Respir J. 2009;33(1):189-200.",
+    "Eyries M, et al. EIF2AK4 mutations cause pulmonary veno-occlusive disease, a recessive form of pulmonary hypertension. Nat Genet. 2014;46(1):65-69.",
+    "Simonneau G, et al. Updated clinical classification of pulmonary hypertension. J Am Coll Cardiol. 2013;62(25 Suppl):D34-D41."
+  ],
+  "confidenceInData": "medium"
+}

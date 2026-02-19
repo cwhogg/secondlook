@@ -1,0 +1,221 @@
+{
+  "id": "familial-hypocalciuric-hypercalcemia",
+  "name": "Familial Hypocalciuric Hypercalcemia",
+  "aliases": [
+    "FHH",
+    "Benign Familial Hypercalcemia"
+  ],
+  "icd10Codes": [
+    "E83.52"
+  ],
+  "omimId": "145980",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 78,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Familial Hypocalciuric Hypercalcemia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "persistent-mild-hypercalcemia",
+        "description": "Lifelong mild hypercalcemia typically with serum calcium levels mildly elevated above normal",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "low-urinary-calcium-excretion",
+        "description": "Hypocalciuria demonstrated by low 24-hour urinary calcium excretion or calcium-to-creatinine clearance ratio <0.01",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of hypercalcemia consistent with autosomal dominant inheritance",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "normal-or-mildly-elevated-pth",
+        "description": "Normal or mildly elevated parathyroid hormone (PTH) levels despite hypercalcemia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "absence-of-symptoms",
+        "description": "Typically asymptomatic or minimal symptoms without complications of hypercalcemia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of persistent mild hypercalcemia with low urinary calcium excretion and positive family history",
+    "notes": "Genetic testing for CaSR mutations can confirm diagnosis but is not always required."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Persistent mild hypercalcemia",
+        "frequency": 0.95,
+        "bodySystem": "endocrine",
+        "notes": "Lifelong and stable elevated serum calcium levels"
+      },
+      {
+        "symptomName": "Hypocalciuria (low urinary calcium excretion)",
+        "frequency": 0.9,
+        "bodySystem": "renal",
+        "notes": "Characteristic low calcium clearance despite hypercalcemia"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Normal or mildly elevated parathyroid hormone levels",
+        "frequency": 0.75,
+        "bodySystem": "endocrine",
+        "notes": "PTH levels inappropriately normal or slightly raised"
+      },
+      {
+        "symptomName": "Asymptomatic presentation",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Most patients do not experience symptoms"
+      },
+      {
+        "symptomName": "Mild fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Non-specific symptom occasionally reported"
+      },
+      {
+        "symptomName": "Mild musculoskeletal discomfort",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "notes": "Occasional mild aches without significant pathology"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Mild nephrolithiasis",
+        "frequency": 0.3,
+        "bodySystem": "renal",
+        "notes": "Rare kidney stones despite hypocalciuria"
+      },
+      {
+        "symptomName": "Mild constipation",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Occasional mild GI symptoms"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Non-specific symptom sometimes reported"
+      },
+      {
+        "symptomName": "Mild depression or mood changes",
+        "frequency": 0.15,
+        "bodySystem": "psychiatric",
+        "notes": "Occasional mild psychiatric symptoms"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pancreatitis",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Very rare complication"
+      },
+      {
+        "symptomName": "Severe nephrolithiasis requiring intervention",
+        "frequency": 0.04,
+        "bodySystem": "renal",
+        "notes": "Rarely severe kidney stones"
+      },
+      {
+        "symptomName": "Osteitis fibrosa cystica",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal",
+        "notes": "Extremely rare bone disease usually absent in FHH"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "endocrine",
+    "renal",
+    "musculoskeletal",
+    "gastrointestinal",
+    "neurological",
+    "psychiatric",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Mildly elevated serum calcium",
+      "Low 24-hour urinary calcium excretion",
+      "Normal or mildly elevated PTH levels",
+      "Normal serum phosphate"
+    ],
+    "imaging": [
+      "Usually normal skeletal imaging",
+      "Occasional nephrolithiasis on renal ultrasound or CT"
+    ],
+    "genetic": [
+      "Inactivating mutations in the calcium-sensing receptor gene (CaSR)"
+    ],
+    "other": [
+      "Family history consistent with autosomal dominant inheritance"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "primary-hyperparathyroidism",
+      "distinguishingFeatures": [
+        "Elevated serum calcium with elevated or inappropriately normal PTH",
+        "Increased urinary calcium excretion",
+        "Possible parathyroid adenoma on imaging"
+      ]
+    },
+    {
+      "diseaseId": "malignancy-associated-hypercalcemia",
+      "distinguishingFeatures": [
+        "Rapidly progressive hypercalcemia",
+        "Suppressed PTH levels",
+        "Presence of malignancy or metastases"
+      ]
+    },
+    {
+      "diseaseId": "vitamin-d-toxicity",
+      "distinguishingFeatures": [
+        "Elevated serum calcium with suppressed PTH",
+        "Elevated 25-hydroxyvitamin D levels",
+        "History of vitamin D supplementation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe hypercalcemia (>3.0 mmol/L)",
+    "Symptoms of hypercalcemic crisis (confusion, dehydration, arrhythmia)",
+    "Rapidly rising serum calcium levels"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Nephrologist",
+    "Clinical Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Brown EM, et al. Familial hypocalciuric hypercalcemia. N Engl J Med. 1993;329(26):1982-1985.",
+    "Marx SJ. Hyperparathyroid and hypoparathyroid disorders. N Engl J Med. 2000;343(25):1863-1875.",
+    "Orphanet: Familial hypocalciuric hypercalcemia. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=395"
+  ],
+  "confidenceInData": "medium"
+}

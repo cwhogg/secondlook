@@ -1,0 +1,197 @@
+{
+  "id": "paraneoplastic-limbic-encephalitis",
+  "name": "Paraneoplastic Limbic Encephalitis",
+  "aliases": [
+    "PLE",
+    "Paraneoplastic Limbic Encephalopathy"
+  ],
+  "icd10Codes": [
+    "G04.81"
+  ],
+  "prevalence": {
+    "estimate": "1 in 500,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Graus et al. 2004 Paraneoplastic Neurological Syndrome Criteria",
+    "criteria": [
+      {
+        "id": "limbic-symptoms",
+        "description": "Subacute onset of memory loss, seizures, or psychiatric symptoms consistent with limbic system involvement",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cancer-association",
+        "description": "Presence of an underlying malignancy within 5 years of neurological symptom onset",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "antineuronal-antibodies",
+        "description": "Detection of well-characterized paraneoplastic antibodies (e.g., anti-Hu, anti-Ma2, anti-CRMP5) in serum or CSF",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "MRI-findings",
+        "description": "MRI evidence of medial temporal lobe hyperintensity on T2/FLAIR sequences",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "CSF-inflammatory-changes",
+        "description": "CSF pleocytosis or elevated protein suggestive of inflammation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Subacute limbic symptoms plus either confirmed malignancy or presence of paraneoplastic antibodies",
+    "notes": "Diagnosis may be supported by MRI and CSF findings but these are not mandatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Subacute anterograde amnesia",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Temporal lobe seizures",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychiatric disturbances including anxiety and hallucinations",
+        "frequency": 0.7,
+        "bodySystem": "psychiatric"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Confusion and disorientation",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mood changes including depression and irritability",
+        "frequency": 0.6,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Sleep disturbances",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.52,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Focal neurological deficits (e.g., aphasia, hemiparesis)",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Autonomic dysfunction (e.g., orthostatic hypotension)",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.2,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Movement disorders (e.g., chorea, myoclonus)",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Visual disturbances",
+        "frequency": 0.04,
+        "bodySystem": "ophthalmological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "psychiatric",
+    "constitutional",
+    "gastrointestinal",
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Presence of paraneoplastic antibodies (anti-Hu, anti-Ma2, anti-CRMP5) in serum or CSF",
+      "CSF pleocytosis and elevated protein"
+    ],
+    "imaging": [
+      "MRI showing hyperintensity in medial temporal lobes on T2/FLAIR sequences"
+    ],
+    "genetic": [],
+    "other": [
+      "Detection of underlying malignancy (commonly small cell lung carcinoma, testicular germ cell tumors, breast cancer)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "herpes-simplex-encephalitis",
+      "distinguishingFeatures": [
+        "Rapid onset with fever and focal neurological signs",
+        "Positive HSV PCR in CSF",
+        "Response to antiviral therapy"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-limbic-encephalitis",
+      "distinguishingFeatures": [
+        "Absence of underlying malignancy",
+        "Presence of antibodies against neuronal surface antigens (e.g., anti-NMDA receptor)",
+        "Often younger patients"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive memory loss and seizures",
+    "New onset psychiatric symptoms in middle-aged or older adults",
+    "Known or suspected malignancy concurrent with neurological symptoms"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Oncologist",
+    "Immunologist",
+    "Psychiatrist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Graus F, et al. A clinical approach to diagnosis of autoimmune encephalitis. Lancet Neurol. 2016.",
+    "Dalmau J, et al. Paraneoplastic limbic encephalitis: clinical and immunologic features. Neurology. 2004.",
+    "Lancaster E. The diagnosis and treatment of autoimmune encephalitis. J Clin Neurol. 2016."
+  ],
+  "confidenceInData": "medium"
+}

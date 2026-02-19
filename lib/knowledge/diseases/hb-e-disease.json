@@ -1,0 +1,191 @@
+{
+  "id": "hb-e-disease",
+  "name": "Hemoglobin E Disease",
+  "aliases": [
+    "Hb E Disease",
+    "Hemoglobin E Homozygous Disease"
+  ],
+  "icd10Codes": [
+    "D56.3"
+  ],
+  "omimId": "143690",
+  "orphanetId": "98765",
+  "prevalence": {
+    "estimate": "1 in 1000 in Southeast Asia",
+    "range": "0.1-1%",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 5
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Southeast Asian",
+      "Thai",
+      "Cambodian",
+      "Laotian",
+      "Burmese"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Hemoglobin E Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "hbe-homozygosity",
+        "description": "Presence of homozygous Hemoglobin E mutation confirmed by hemoglobin electrophoresis or HPLC",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mild-microcytic-anemia",
+        "description": "Mild anemia with microcytosis (low MCV) on complete blood count",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-severe-symptoms",
+        "description": "Lack of severe hemolysis or transfusion dependence",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Homozygous Hb E mutation plus mild microcytic anemia",
+    "notes": "Diagnosis is often incidental during screening or anemia workup in endemic populations."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Homozygous Hemoglobin E variant detected",
+        "frequency": 0.95,
+        "bodySystem": "hematological",
+        "notes": "Confirmed by electrophoresis or HPLC"
+      },
+      {
+        "symptomName": "Mild microcytic anemia",
+        "frequency": 0.85,
+        "bodySystem": "hematological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Mild pallor",
+        "frequency": 0.75,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild splenomegaly",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Microcytosis without significant anemia",
+        "frequency": 0.6,
+        "bodySystem": "hematological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.3,
+        "bodySystem": "hematological",
+        "notes": "Rarely mild and transient"
+      },
+      {
+        "symptomName": "Mild hepatomegaly",
+        "frequency": 0.25,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Mild reticulocytosis",
+        "frequency": 0.2,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Occasional mild splenic discomfort",
+        "frequency": 0.15,
+        "bodySystem": "hematological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Severe anemia requiring transfusion",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "notes": "Usually due to coexisting hemoglobinopathies"
+      },
+      {
+        "symptomName": "Iron overload",
+        "frequency": 0.03,
+        "bodySystem": "hematological",
+        "notes": "Rare without transfusion"
+      },
+      {
+        "symptomName": "Extramedullary hematopoiesis",
+        "frequency": 0.02,
+        "bodySystem": "hematological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Hemoglobin electrophoresis or HPLC showing homozygous Hb E",
+      "Mild microcytic anemia (low MCV, low MCH)",
+      "Normal to mildly elevated reticulocyte count"
+    ],
+    "imaging": [
+      "Ultrasound may show mild splenomegaly"
+    ],
+    "genetic": [
+      "Mutation in HBB gene at codon 26 (Glu→Lys)"
+    ],
+    "other": [
+      "Usually no requirement for transfusion or chelation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "beta-thalassemia-trait",
+      "distinguishingFeatures": [
+        "More severe microcytosis and anemia",
+        "Absent or reduced Hb A on electrophoresis",
+        "Family history of thalassemia"
+      ]
+    },
+    {
+      "diseaseId": "iron-deficiency-anemia",
+      "distinguishingFeatures": [
+        "Low serum ferritin and iron studies",
+        "Response to iron supplementation",
+        "No abnormal hemoglobin variants on electrophoresis"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe anemia requiring transfusion",
+    "Signs of hemolytic crisis or severe jaundice",
+    "Presence of coexisting hemoglobinopathies or thalassemia"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Weatherall DJ. The hemoglobinopathies. In: Harrison's Principles of Internal Medicine. 20th ed. 2018.",
+    "Hoffman R, et al. Hemoglobin E disease. Hematology: Basic Principles and Practice. 7th ed. 2018.",
+    "Orphanet: Hemoglobin E disease. https://www.orpha.net"
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,224 @@
+{
+  "id": "nemaline-myopathy",
+  "name": "Nemaline Myopathy",
+  "aliases": [
+    "Nemaline Rod Myopathy",
+    "Rod Myopathy"
+  ],
+  "icd10Codes": [
+    "G71.2"
+  ],
+  "omimId": "256030",
+  "orphanetId": "920",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 40,
+      "peak": 0
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Nemaline Myopathy Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "nemaline-rods",
+        "description": "Presence of nemaline rods in muscle biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "muscle-weakness",
+        "description": "Congenital or early-onset muscle weakness predominantly affecting proximal muscles",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-mutation",
+        "description": "Identification of pathogenic variants in known nemaline myopathy-associated genes (e.g., ACTA1, NEB)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "electromyography",
+        "description": "Electromyographic findings consistent with myopathy",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history consistent with autosomal dominant or recessive inheritance",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of nemaline rods on muscle biopsy plus clinical evidence of muscle weakness",
+    "notes": "Genetic testing can confirm diagnosis but is not mandatory if biopsy findings are definitive."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Nemaline rods detected in muscle fibers",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal",
+        "notes": "Identified via muscle biopsy"
+      },
+      {
+        "symptomName": "Congenital proximal muscle weakness",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hypotonia at birth",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Facial muscle weakness",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Respiratory muscle weakness",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Delayed motor milestones",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.5,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Joint contractures",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Ptosis",
+        "frequency": 0.35,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Cardiomyopathy",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare but reported in some cases"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.1,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Respiratory failure requiring ventilation",
+        "frequency": 0.08,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cardiac arrhythmias",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.03,
+        "bodySystem": "psychiatric",
+        "notes": "Not typical, may be secondary"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "respiratory",
+    "cardiovascular",
+    "gastrointestinal",
+    "ophthalmological",
+    "constitutional",
+    "psychiatric"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum creatine kinase (mild or normal)",
+      "Muscle biopsy showing nemaline rods with Gomori trichrome stain"
+    ],
+    "imaging": [
+      "Muscle MRI showing selective muscle involvement and fatty replacement"
+    ],
+    "genetic": [
+      "Pathogenic variants in ACTA1, NEB, TPM3, TPM2, TNNT1, CFL2 genes"
+    ],
+    "other": [
+      "Electromyography consistent with myopathic changes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "central-core-disease",
+      "distinguishingFeatures": [
+        "Central cores on muscle biopsy instead of nemaline rods",
+        "Usually caused by RYR1 mutations",
+        "Different muscle involvement pattern on MRI"
+      ]
+    },
+    {
+      "diseaseId": "myotubular-myopathy",
+      "distinguishingFeatures": [
+        "Presence of centrally located nuclei in muscle fibers",
+        "Different genetic mutations (MTM1 gene)",
+        "More severe neonatal hypotonia and respiratory failure"
+      ]
+    },
+    {
+      "diseaseId": "congenital muscular dystrophy",
+      "distinguishingFeatures": [
+        "Muscle biopsy shows dystrophic changes rather than rods",
+        "Often associated with brain and eye abnormalities",
+        "Different genetic causes"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe neonatal hypotonia with respiratory distress",
+    "Rapidly progressive respiratory failure",
+    "Feeding difficulties with risk of aspiration"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neuromuscular specialist",
+    "Geneticist",
+    "Pulmonologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "North KN, Laing NG, Wallgren-Pettersson C. Nemaline myopathy: current concepts. The ENMC International Consortium. Neuromuscular Disorders. 1997.",
+    "Ryan MM, Schnell C, Strickland CD, et al. Nemaline myopathy: a clinical study of 143 cases. Ann Neurol. 2001.",
+    "OMIM Entry - #256030 - NEMALINE MYOPATHY 1; NEM1"
+  ],
+  "confidenceInData": "medium"
+}

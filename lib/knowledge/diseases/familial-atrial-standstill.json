@@ -1,0 +1,209 @@
+{
+  "id": "familial-atrial-standstill",
+  "name": "Familial Atrial Standstill",
+  "aliases": [
+    "Inherited Atrial Standstill",
+    "Familial Atrial Electrical Inactivity"
+  ],
+  "icd10Codes": [
+    "I49.9"
+  ],
+  "omimId": "108800",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Familial Atrial Standstill Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "absence-atrial-activity",
+        "description": "Electrocardiographic evidence of absence of atrial electrical activity (no P waves)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bradycardia",
+        "description": "Persistent bradycardia with junctional or ventricular escape rhythm",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of atrial standstill or sudden cardiac death",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "atrial-non-capture",
+        "description": "Failure to capture atrial myocardium on pacing attempts",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "absence-atrial-contraction",
+        "description": "Echocardiographic evidence of absent atrial contraction",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of all three major criteria: absence of atrial electrical activity on ECG, persistent bradycardia with escape rhythm, and positive family history",
+    "notes": "Genetic testing may support diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Absence of atrial electrical activity",
+        "frequency": 0.95,
+        "bodySystem": "cardiovascular",
+        "notes": "Identified on ECG as absent P waves"
+      },
+      {
+        "symptomName": "Severe bradycardia due to atrial standstill",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Syncope related to bradyarrhythmia",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Transient loss of consciousness due to cerebral hypoperfusion"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dizziness",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Heart failure symptoms",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to atrial mechanical failure and ventricular dysfunction"
+      },
+      {
+        "symptomName": "Palpitations due to junctional escape rhythm",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Mild peripheral edema",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lightheadedness",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Stroke or systemic embolism",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Due to atrial standstill-related thrombus formation"
+      },
+      {
+        "symptomName": "Atrial fibrillation",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Sudden cardiac death",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal routine blood tests",
+      "Possible elevated brain natriuretic peptide (BNP) in heart failure"
+    ],
+    "imaging": [
+      "Echocardiography showing absence of atrial contraction",
+      "ECG demonstrating absence of P waves and junctional or ventricular escape rhythm"
+    ],
+    "genetic": [
+      "Mutations in SCN5A gene associated with familial atrial standstill"
+    ],
+    "other": [
+      "Electrophysiological studies confirming atrial electrical inactivity",
+      "Failure of atrial capture on pacing"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "sick-sinus-syndrome",
+      "distinguishingFeatures": [
+        "Presence of sinus node dysfunction with preserved atrial activity",
+        "P waves present but abnormal sinus rhythm"
+      ]
+    },
+    {
+      "diseaseId": "atrioventricular-block",
+      "distinguishingFeatures": [
+        "Presence of P waves with AV conduction delay or block",
+        "Bradycardia due to AV node dysfunction rather than atrial standstill"
+      ]
+    },
+    {
+      "diseaseId": "atrial-fibrillation",
+      "distinguishingFeatures": [
+        "Irregularly irregular rhythm with fibrillatory waves instead of absent atrial activity",
+        "Presence of chaotic atrial electrical activity"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Syncope or near-syncope episodes",
+    "Sudden onset severe bradycardia",
+    "Family history of sudden cardiac death"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Electrophysiologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Watanabe H, et al. Familial atrial standstill associated with SCN5A mutation. Circulation. 2008;117(3): 340-346.",
+    "Orphanet: Familial Atrial Standstill. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=395",
+    "Miyamoto K, et al. Clinical features and management of atrial standstill. J Cardiol. 2019;73(1): 1-7."
+  ],
+  "confidenceInData": "medium"
+}

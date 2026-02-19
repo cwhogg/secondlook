@@ -1,0 +1,223 @@
+{
+  "id": "antithrombin-deficiency",
+  "name": "Antithrombin Deficiency",
+  "aliases": [
+    "Antithrombin III Deficiency",
+    "Inherited Antithrombin Deficiency"
+  ],
+  "icd10Codes": [
+    "D68.61"
+  ],
+  "omimId": "107300",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 2,000 to 1 in 5,000",
+    "range": "0.02%-0.05%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Antithrombin Deficiency Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "low-antithrombin-activity",
+        "description": "Reduced functional antithrombin activity in plasma (<70% of normal)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "personal-history-thrombosis",
+        "description": "Personal history of venous thromboembolism, especially at a young age or recurrent",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history-thrombophilia",
+        "description": "Family history of confirmed antithrombin deficiency or early venous thrombosis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic SERPINC1 gene mutation",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Reduced antithrombin activity plus personal history of venous thrombosis or positive genetic testing",
+    "notes": "Functional assays preferred; antigenic assays may be normal in type II deficiency."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent venous thromboembolism",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Often unprovoked and at a young age"
+      },
+      {
+        "symptomName": "Deep vein thrombosis",
+        "frequency": 0.8,
+        "bodySystem": "hematological",
+        "notes": "Common initial presentation"
+      },
+      {
+        "symptomName": "Pulmonary embolism",
+        "frequency": 0.75,
+        "bodySystem": "respiratory",
+        "notes": "Potentially life-threatening complication"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Leg swelling and pain",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to deep vein thrombosis"
+      },
+      {
+        "symptomName": "Skin discoloration over affected veins",
+        "frequency": 0.6,
+        "bodySystem": "dermatological",
+        "notes": "Associated with venous insufficiency"
+      },
+      {
+        "symptomName": "Chronic venous insufficiency",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to recurrent thrombosis"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.5,
+        "bodySystem": "constitutional",
+        "notes": "May be related to chronic illness"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Superficial thrombophlebitis",
+        "frequency": 0.3,
+        "bodySystem": "dermatological",
+        "notes": "Inflammation of superficial veins"
+      },
+      {
+        "symptomName": "Stroke or arterial thrombosis",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Rare but reported in some cases"
+      },
+      {
+        "symptomName": "Pregnancy complications (e.g., miscarriage)",
+        "frequency": 0.15,
+        "bodySystem": "reproductive",
+        "notes": "Increased risk due to thrombophilia"
+      },
+      {
+        "symptomName": "Post-thrombotic syndrome",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "notes": "Chronic pain and swelling after DVT"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Heparin resistance",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "notes": "Due to low antithrombin levels affecting anticoagulation"
+      },
+      {
+        "symptomName": "Cerebral venous sinus thrombosis",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Rare site of thrombosis"
+      },
+      {
+        "symptomName": "Renal vein thrombosis",
+        "frequency": 0.02,
+        "bodySystem": "renal",
+        "notes": "Uncommon thrombotic event"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "musculoskeletal",
+    "respiratory",
+    "dermatological",
+    "neurological",
+    "reproductive",
+    "renal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Reduced antithrombin activity (<70%)",
+      "Normal or reduced antithrombin antigen levels depending on type",
+      "Prolonged thrombin time in some cases"
+    ],
+    "imaging": [
+      "Ultrasound evidence of deep vein thrombosis",
+      "CT pulmonary angiography showing pulmonary embolism"
+    ],
+    "genetic": [
+      "Pathogenic variants in SERPINC1 gene"
+    ],
+    "other": [
+      "Family history of thrombophilia",
+      "Poor response to heparin anticoagulation in some patients"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "protein-c-deficiency",
+      "distinguishingFeatures": [
+        "Normal antithrombin levels",
+        "Protein C activity deficiency",
+        "Different genetic mutations"
+      ]
+    },
+    {
+      "diseaseId": "factor-v-leiden-thrombophilia",
+      "distinguishingFeatures": [
+        "Presence of Factor V Leiden mutation",
+        "Normal antithrombin activity",
+        "Activated protein C resistance"
+      ]
+    },
+    {
+      "diseaseId": "protein-s-deficiency",
+      "distinguishingFeatures": [
+        "Reduced protein S levels",
+        "Normal antithrombin activity",
+        "Different inheritance pattern"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Recurrent unprovoked venous thromboembolism at young age",
+    "Family history of early thrombosis",
+    "Heparin resistance during anticoagulation therapy"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Vascular Medicine Specialist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Bauer KA. Antithrombin deficiency: a review. Haemophilia. 2006;12(6): 1-7.",
+    "Mannucci PM. Thrombophilia: clinical and laboratory aspects. Haematologica. 2001;86(6): 1-10.",
+    "Orphanet: Antithrombin deficiency. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=791"
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,205 @@
+{
+  "id": "li-fraumeni-syndrome",
+  "name": "Li-Fraumeni Syndrome",
+  "aliases": [
+    "LFS",
+    "TP53 Cancer Predisposition Syndrome"
+  ],
+  "icd10Codes": [
+    "Z15.01"
+  ],
+  "omimId": "151623",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 5,000 to 1 in 20,000",
+    "range": "0.005% - 0.02%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 25
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "No specific ethnic predilection"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Classic Li-Fraumeni Syndrome Criteria",
+    "criteria": [
+      {
+        "id": "early-onset-sarcoma",
+        "description": "Proband with sarcoma diagnosed before age 45",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "first-degree-relative-cancer",
+        "description": "First-degree relative with any cancer before age 45",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "second-degree-relative-cancer",
+        "description": "First- or second-degree relative with any cancer before age 45 or sarcoma at any age",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "tp53-mutation",
+        "description": "Presence of pathogenic germline TP53 mutation",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Proband with sarcoma before age 45 plus first-degree relative with cancer before age 45, or identification of pathogenic TP53 mutation",
+    "notes": "Genetic testing for TP53 mutations is confirmatory and increasingly used for diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Early-onset soft tissue sarcoma",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "notes": "Often occurs before age 45"
+      },
+      {
+        "symptomName": "Breast carcinoma diagnosed before age 35",
+        "frequency": 0.75,
+        "bodySystem": "reproductive",
+        "notes": "Frequently bilateral or multifocal"
+      },
+      {
+        "symptomName": "Adrenocortical carcinoma in childhood",
+        "frequency": 0.7,
+        "bodySystem": "endocrine",
+        "notes": "Rare but highly indicative"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Osteosarcoma",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Brain tumors (e.g., gliomas, medulloblastomas)",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Leukemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Lung carcinoma",
+        "frequency": 0.52,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Gastrointestinal tract cancers (e.g., colorectal carcinoma)",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Skin melanoma",
+        "frequency": 0.25,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Thyroid carcinoma",
+        "frequency": 0.2,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Soft tissue tumors other than sarcoma",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Leptomeningeal carcinomatosis",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pancreatic carcinoma",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Choroid plexus carcinoma",
+        "frequency": 0.04,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "reproductive",
+    "endocrine",
+    "neurological",
+    "hematological",
+    "respiratory",
+    "gastrointestinal",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated tumor markers depending on cancer type",
+      "Abnormal blood counts in hematological malignancies"
+    ],
+    "imaging": [
+      "MRI/CT showing diverse early-onset tumors including sarcomas, brain tumors, and adrenal masses",
+      "Whole-body MRI for cancer surveillance"
+    ],
+    "genetic": [
+      "Germline pathogenic variants in TP53 gene",
+      "Loss of heterozygosity in tumor tissue"
+    ],
+    "other": [
+      "Family history of diverse early-onset cancers",
+      "Multiple primary malignancies in the same individual"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hereditary-breast-and-ovarian-cancer-syndrome",
+      "distinguishingFeatures": [
+        "BRCA1/BRCA2 mutations",
+        "Predominantly breast and ovarian cancers without sarcomas or adrenocortical carcinoma"
+      ]
+    },
+    {
+      "diseaseId": "cowden-syndrome",
+      "distinguishingFeatures": [
+        "PTEN mutations",
+        "Hamartomas and increased risk of breast, thyroid, and endometrial cancers",
+        "Lack of early-onset sarcomas"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Multiple primary malignancies in a single individual",
+    "Early-onset sarcoma or breast cancer before age 35",
+    "Family history of diverse cancers diagnosed at young ages"
+  ],
+  "specialistType": [
+    "Medical Geneticist",
+    "Oncologist",
+    "Genetic Counselor"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Malkin D. Li-Fraumeni syndrome. Genes Cancer. 2011;2(4):475-484.",
+    "Bougeard G, et al. Revisiting Li-Fraumeni syndrome from TP53 mutation carriers. J Clin Oncol. 2015;33(21):2345-2352.",
+    "National Comprehensive Cancer Network (NCCN) Guidelines: Genetic/Familial High-Risk Assessment: Breast, Ovarian, and Pancreatic."
+  ],
+  "confidenceInData": "medium"
+}

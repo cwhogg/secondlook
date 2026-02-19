@@ -1,0 +1,226 @@
+{
+  "id": "mitochondrial-myopathy",
+  "name": "Mitochondrial Myopathy",
+  "aliases": [
+    "Mitochondrial Encephalomyopathy",
+    "Mitochondrial Muscle Disease"
+  ],
+  "icd10Codes": [
+    "G71.3"
+  ],
+  "omimId": "250320",
+  "orphanetId": "ORPHA:98722",
+  "prevalence": {
+    "estimate": "1 in 5,000 to 1 in 10,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Mitochondrial Disease Criteria (MDC)",
+    "criteria": [
+      {
+        "id": "clinical-features",
+        "description": "Presence of progressive muscle weakness and exercise intolerance",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology",
+        "description": "Muscle biopsy showing ragged-red fibers or cytochrome c oxidase (COX) deficient fibers",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mitochondrial DNA or nuclear DNA mutations affecting mitochondrial function",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "elevated-lactate",
+        "description": "Elevated blood or cerebrospinal fluid lactate levels at rest or after exercise",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "neuroimaging",
+        "description": "Brain MRI showing characteristic abnormalities such as basal ganglia lesions",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of progressive muscle weakness plus either diagnostic muscle biopsy findings or confirmed pathogenic genetic mutation",
+    "notes": "Diagnosis often requires integration of clinical, histological, biochemical, and genetic data."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Ragged-red fibers on muscle biopsy",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "notes": "Indicative of mitochondrial proliferation in muscle fibers"
+      },
+      {
+        "symptomName": "Exercise intolerance due to muscle weakness",
+        "frequency": 0.8,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated blood lactate at rest or post-exercise",
+        "frequency": 0.75,
+        "bodySystem": "constitutional",
+        "notes": "Reflects impaired oxidative phosphorylation"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Ptosis (drooping of eyelids)",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "External ophthalmoplegia (limited eye movement)",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Proximal muscle weakness",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hearing loss",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Sensorineural type"
+      },
+      {
+        "symptomName": "Cardiomyopathy",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Diabetes mellitus",
+        "frequency": 0.15,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.1,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Stroke-like episodes",
+        "frequency": 0.08,
+        "bodySystem": "neurological",
+        "notes": "Seen in MELAS syndrome subtype"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Renal tubular dysfunction",
+        "frequency": 0.04,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Gastrointestinal dysmotility",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "neurological",
+    "ophthalmological",
+    "cardiovascular",
+    "endocrine",
+    "constitutional",
+    "renal",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum and CSF lactate and pyruvate",
+      "Elevated creatine kinase (mild to moderate)",
+      "Abnormal oxidative phosphorylation enzyme activities in muscle biopsy"
+    ],
+    "imaging": [
+      "Brain MRI showing basal ganglia calcifications or stroke-like lesions",
+      "Muscle MRI showing selective muscle involvement"
+    ],
+    "genetic": [
+      "Pathogenic mitochondrial DNA mutations (e.g., MT-TL1 gene)",
+      "Nuclear gene mutations affecting mitochondrial function (e.g., POLG, TK2)"
+    ],
+    "other": [
+      "Muscle biopsy showing ragged-red fibers and COX-negative fibers",
+      "Electromyography showing myopathic changes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "inflammatory-myopathy",
+      "distinguishingFeatures": [
+        "Presence of inflammatory infiltrates on muscle biopsy",
+        "Elevated muscle enzymes (CK) often higher",
+        "Response to immunosuppressive therapy"
+      ]
+    },
+    {
+      "diseaseId": "congenital-myopathies",
+      "distinguishingFeatures": [
+        "Non-progressive or slowly progressive course",
+        "Characteristic structural abnormalities on muscle biopsy",
+        "Lack of mitochondrial DNA mutations"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive muscle weakness with respiratory failure",
+    "Stroke-like episodes or acute neurological deterioration",
+    "Severe cardiomyopathy or arrhythmias"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Geneticist",
+    "Neuromuscular specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "DiMauro S, Schon EA. Mitochondrial respiratory-chain diseases. N Engl J Med. 2003 Jun 19;348(26):2656-68.",
+    "Parikh S, Goldstein A, Karaa A, et al. Diagnosis and management of mitochondrial disease: a consensus statement from the Mitochondrial Medicine Society. Genet Med. 2015 Sep;17(9):689-701.",
+    "Chinnery PF. Mitochondrial Disorders Overview. GeneReviews® [Internet]. 2020."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,210 @@
+{
+  "id": "hyperkalemic-periodic-paralysis",
+  "name": "Hyperkalemic Periodic Paralysis",
+  "aliases": [
+    "Hyperkalemic PP",
+    "Hyperkalemic Periodic Paralysis Syndrome"
+  ],
+  "icd10Codes": [
+    "G72.3"
+  ],
+  "omimId": "170500",
+  "orphanetId": "795",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 40,
+      "peak": 10
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Electrophysiological Diagnostic Criteria for Hyperkalemic Periodic Paralysis",
+    "criteria": [
+      {
+        "id": "episodic-muscle-weakness",
+        "description": "Recurrent episodes of muscle weakness or paralysis lasting minutes to hours",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "elevated-serum-potassium",
+        "description": "Episodes associated with elevated serum potassium levels (hyperkalemia)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in the SCN4A gene",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "electromyography-findings",
+        "description": "Electromyographic evidence of myotonia or abnormal muscle membrane excitability",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of similar episodic paralysis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of recurrent episodes of muscle weakness with documented hyperkalemia during attacks, supported by genetic testing or family history",
+    "notes": "Diagnosis is primarily clinical supported by laboratory and genetic findings; electromyography can aid in confirmation."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Episodic muscle weakness or paralysis",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal",
+        "notes": "Typically affects proximal muscles and may involve respiratory muscles in severe cases"
+      },
+      {
+        "symptomName": "Transient hyperkalemia during attacks",
+        "frequency": 0.85,
+        "bodySystem": "endocrine",
+        "notes": "Serum potassium elevated during episodes but normalizes between attacks"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Muscle stiffness or myotonia",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "notes": "Mild muscle stiffness may precede or follow weakness episodes"
+      },
+      {
+        "symptomName": "Muscle cramps",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal",
+        "notes": "Often reported during or between attacks"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Generalized tiredness especially after attacks"
+      },
+      {
+        "symptomName": "Weakness triggered by rest after exercise",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "notes": "Common trigger for attacks"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal",
+        "notes": "Difficulty swallowing during severe episodes"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.25,
+        "bodySystem": "respiratory",
+        "notes": "Respiratory muscle involvement causing breathing difficulty"
+      },
+      {
+        "symptomName": "Cardiac arrhythmias",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare but possible due to hyperkalemia"
+      },
+      {
+        "symptomName": "Muscle hypertrophy",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "notes": "Mild muscle enlargement may be present"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Permanent muscle weakness",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal",
+        "notes": "Occurs in longstanding disease with repeated attacks"
+      },
+      {
+        "symptomName": "Cardiac conduction abnormalities",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Severe hyperkalemia may cause conduction defects"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.02,
+        "bodySystem": "respiratory",
+        "notes": "Rare complication during severe paralysis episodes"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "endocrine",
+    "cardiovascular",
+    "respiratory",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum potassium during attacks",
+      "Normal serum potassium between attacks",
+      "Normal creatine kinase or mildly elevated"
+    ],
+    "imaging": [
+      "Usually normal; muscle MRI may show mild fatty infiltration in chronic cases"
+    ],
+    "genetic": [
+      "Pathogenic variants in SCN4A gene encoding the skeletal muscle sodium channel"
+    ],
+    "other": [
+      "Electromyography showing myotonia or abnormal muscle membrane excitability",
+      "Family history consistent with autosomal dominant inheritance"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hypokalemic-periodic-paralysis",
+      "distinguishingFeatures": [
+        "Episodes associated with low serum potassium",
+        "Different triggering factors such as carbohydrate-rich meals",
+        "Distinct genetic mutations (CACNA1S or SCN4A variants)"
+      ]
+    },
+    {
+      "diseaseId": "paramyotonia-congenita",
+      "distinguishingFeatures": [
+        "Predominant muscle stiffness worsened by cold and exercise",
+        "Less prominent or absent episodic paralysis",
+        "SCN4A mutations but different clinical presentation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive permanent muscle weakness",
+    "Respiratory distress during attacks",
+    "Cardiac arrhythmias or syncope"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Geneticist",
+    "Endocrinologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Statland JM, Fontaine B, Hanna MG. Hyperkalemic periodic paralysis. GeneReviews. 2020.",
+    "Cannon SC. Channelopathies of skeletal muscle excitability. Compr Physiol. 2015.",
+    "Orphanet: Hyperkalemic periodic paralysis. Orphanet Journal of Rare Diseases. 2021."
+  ],
+  "confidenceInData": "medium"
+}

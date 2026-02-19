@@ -1,0 +1,213 @@
+{
+  "id": "lynch-syndrome",
+  "name": "Lynch Syndrome",
+  "aliases": [
+    "Hereditary Nonpolyposis Colorectal Cancer",
+    "HNPCC"
+  ],
+  "icd10Codes": [
+    "Z15.09"
+  ],
+  "omimId": "120435",
+  "orphanetId": "565",
+  "prevalence": {
+    "estimate": "1 in 279",
+    "range": "0.3%-0.5%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 40
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Amsterdam II Criteria",
+    "criteria": [
+      {
+        "id": "family-history",
+        "description": "At least three relatives with Lynch syndrome-associated cancers, one of whom is a first-degree relative of the other two",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "generations",
+        "description": "Involvement of at least two successive generations",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "early-onset",
+        "description": "At least one Lynch syndrome-associated cancer diagnosed before age 50",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "tumor-testing",
+        "description": "Tumor demonstrating microsatellite instability or loss of mismatch repair protein expression",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria must be met for clinical diagnosis; tumor testing supports diagnosis",
+    "notes": "Genetic testing for mismatch repair gene mutations confirms diagnosis"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Early-onset colorectal adenocarcinoma",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Typically before age 50"
+      },
+      {
+        "symptomName": "Endometrial carcinoma",
+        "frequency": 0.75,
+        "bodySystem": "reproductive",
+        "notes": "Common in female carriers"
+      },
+      {
+        "symptomName": "Mismatch repair deficiency in tumor tissue",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal",
+        "notes": "Detected by immunohistochemistry or MSI testing"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Gastric adenocarcinoma",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "notes": "Increased risk compared to general population"
+      },
+      {
+        "symptomName": "Ovarian carcinoma",
+        "frequency": 0.55,
+        "bodySystem": "reproductive",
+        "notes": "Elevated risk in female carriers"
+      },
+      {
+        "symptomName": "Urothelial carcinoma of the upper urinary tract",
+        "frequency": 0.5,
+        "bodySystem": "renal",
+        "notes": "Includes renal pelvis and ureter cancers"
+      },
+      {
+        "symptomName": "Sebaceous neoplasms",
+        "frequency": 0.5,
+        "bodySystem": "dermatological",
+        "notes": "Seen in Muir-Torre variant"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Small bowel adenocarcinoma",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "notes": "Less common gastrointestinal malignancy"
+      },
+      {
+        "symptomName": "Brain tumors (glioblastoma multiforme)",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Associated with Turcot syndrome variant"
+      },
+      {
+        "symptomName": "Pancreatic cancer",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Increased but less frequent risk"
+      },
+      {
+        "symptomName": "Cholangiocarcinoma",
+        "frequency": 0.1,
+        "bodySystem": "gastrointestinal",
+        "notes": "Rarely observed"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sebaceous adenomas",
+        "frequency": 0.05,
+        "bodySystem": "dermatological",
+        "notes": "Rare skin tumors in Muir-Torre syndrome"
+      },
+      {
+        "symptomName": "Adenomas of the colon",
+        "frequency": 0.07,
+        "bodySystem": "gastrointestinal",
+        "notes": "May precede carcinoma"
+      },
+      {
+        "symptomName": "Uterine sarcomas",
+        "frequency": 0.02,
+        "bodySystem": "reproductive",
+        "notes": "Very rare"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "reproductive",
+    "dermatological",
+    "renal",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Microsatellite instability (MSI) testing positive in tumor tissue",
+      "Immunohistochemistry showing loss of mismatch repair proteins (MLH1, MSH2, MSH6, PMS2)"
+    ],
+    "imaging": [
+      "Colonoscopy revealing colorectal tumors or adenomas",
+      "Pelvic ultrasound or MRI for endometrial or ovarian tumors"
+    ],
+    "genetic": [
+      "Germline pathogenic variants in mismatch repair genes: MLH1, MSH2, MSH6, PMS2, EPCAM"
+    ],
+    "other": [
+      "Family history of Lynch syndrome-associated cancers",
+      "Histopathology showing tumor infiltrating lymphocytes and mucinous features"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "familial-adenomatous-polyposis",
+      "distinguishingFeatures": [
+        "Hundreds to thousands of colorectal adenomatous polyps",
+        "APC gene mutation",
+        "Earlier onset of polyposis"
+      ]
+    },
+    {
+      "diseaseId": "muir-torre-syndrome",
+      "distinguishingFeatures": [
+        "Presence of sebaceous skin tumors",
+        "Subset of Lynch syndrome with skin manifestations",
+        "Mismatch repair gene mutations"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Colorectal cancer diagnosed before age 50",
+    "Multiple family members with Lynch syndrome-associated cancers",
+    "Presence of mismatch repair deficiency in tumor tissue"
+  ],
+  "specialistType": [
+    "Geneticist",
+    "Oncologist",
+    "Gastroenterologist",
+    "Gynecologic Oncologist",
+    "Dermatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Lynch HT, de la Chapelle A. Hereditary colorectal cancer. N Engl J Med. 2003 Mar 6;348(10):919-32.",
+    "Vasen HF, Blanco I, Aktan-Collan K, et al. Revised guidelines for the clinical management of Lynch syndrome (HNPCC): recommendations by a group of European experts. Gut. 2013 Jun;62(6):812-23.",
+    "Boland CR, Goel A. Microsatellite instability in colorectal cancer. Gastroenterology. 2010 Jun;138(6):2073-87.e3."
+  ],
+  "confidenceInData": "medium"
+}

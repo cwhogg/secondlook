@@ -1,0 +1,223 @@
+{
+  "id": "sweet-syndrome",
+  "name": "Sweet Syndrome",
+  "aliases": [
+    "Acute Febrile Neutrophilic Dermatosis",
+    "Gomm-Button Disease"
+  ],
+  "icd10Codes": [
+    "L98.2"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 60,
+      "peak": 40
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Modified Su and Liu Criteria",
+    "criteria": [
+      {
+        "id": "major-1",
+        "description": "Abrupt onset of painful erythematous plaques or nodules",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "major-2",
+        "description": "Histopathologic evidence of dense neutrophilic infiltration without evidence of leukocytoclastic vasculitis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "minor-1",
+        "description": "Fever >38°C",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "minor-2",
+        "description": "Association with underlying malignancy, infection, inflammatory disease, or pregnancy",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "minor-3",
+        "description": "Response to systemic corticosteroids or potassium iodide",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "minor-4",
+        "description": "Elevated inflammatory markers (e.g., ESR, CRP, leukocytosis)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Both major criteria plus at least two minor criteria",
+    "notes": "Diagnosis requires exclusion of infections and other neutrophilic dermatoses."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Painful erythematous plaques or nodules",
+        "frequency": 0.85,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Dense neutrophilic dermal infiltration on biopsy",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fever",
+        "frequency": 0.75,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Leukocytosis with neutrophilia",
+        "frequency": 0.7,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate (ESR)",
+        "frequency": 0.65,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Malaise",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Conjunctivitis",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Oral mucosal ulcers",
+        "frequency": 0.25,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.2,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.1,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pulmonary involvement (e.g., infiltrates, pleuritis)",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cardiac involvement (e.g., myocarditis, pericarditis)",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Renal involvement (e.g., glomerulonephritis)",
+        "frequency": 0.02,
+        "bodySystem": "renal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "constitutional",
+    "hematological",
+    "musculoskeletal",
+    "ophthalmological",
+    "neurological",
+    "respiratory",
+    "cardiovascular",
+    "renal",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Leukocytosis with neutrophilia",
+      "Elevated ESR and CRP",
+      "Negative blood cultures"
+    ],
+    "imaging": [
+      "Chest X-ray or CT may show pulmonary infiltrates in rare cases"
+    ],
+    "genetic": [],
+    "other": [
+      "Skin biopsy showing dense neutrophilic infiltrate without vasculitis",
+      "Rapid response to systemic corticosteroids"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "erythema-nodosum",
+      "distinguishingFeatures": [
+        "Tender red nodules primarily on lower legs",
+        "Histology shows septal panniculitis without vasculitis",
+        "Less frequent fever and neutrophilia"
+      ]
+    },
+    {
+      "diseaseId": "leukocytoclastic-vasculitis",
+      "distinguishingFeatures": [
+        "Palpable purpura rather than plaques",
+        "Histology shows leukocytoclastic vasculitis with vessel wall damage",
+        "Often associated with immune complex deposition"
+      ]
+    },
+    {
+      "diseaseId": "pyoderma-gangrenosum",
+      "distinguishingFeatures": [
+        "Ulcerative skin lesions with undermined borders",
+        "Histology shows neutrophilic infiltrate with necrosis",
+        "Often associated with inflammatory bowel disease"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of skin lesions with ulceration",
+    "Signs of systemic infection or sepsis",
+    "Underlying hematologic malignancy or solid tumor"
+  ],
+  "specialistType": [
+    "Dermatologist",
+    "Rheumatologist",
+    "Hematologist",
+    "Infectious Disease Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Cohen PR. Sweet's syndrome—a comprehensive review of an acute febrile neutrophilic dermatosis. Orphanet J Rare Dis. 2007;2:34.",
+    "Su WP, Liu HN. Diagnostic criteria for Sweet's syndrome. Cutis. 1986;37(3):167-174.",
+    "Winkelmann RK. Sweet's syndrome: a neutrophilic dermatosis. Int J Dermatol. 1994;33(9):679-685."
+  ],
+  "confidenceInData": "medium"
+}

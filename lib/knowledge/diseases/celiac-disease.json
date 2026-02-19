@@ -1,8 +1,15 @@
 {
   "id": "celiac-disease",
   "name": "Celiac Disease",
-  "aliases": ["Coeliac Disease", "Celiac Sprue", "Gluten-Sensitive Enteropathy", "Non-Tropical Sprue"],
-  "icd10Codes": ["K90.0"],
+  "aliases": [
+    "Coeliac Disease",
+    "Celiac Sprue",
+    "Gluten-Sensitive Enteropathy",
+    "Non-Tropical Sprue"
+  ],
+  "icd10Codes": [
+    "K90.0"
+  ],
   "omimId": "212750",
   "orphanetId": "555",
   "prevalence": {
@@ -11,51 +18,183 @@
     "classification": "common"
   },
   "demographics": {
-    "typicalOnsetAge": { "min": 1, "max": 70, "peak": 40 },
+    "typicalOnsetAge": {
+      "min": 1,
+      "max": 70,
+      "peak": 40
+    },
     "sexPredilection": "slight-female",
-    "ethnicAssociations": ["Northern European (highest prevalence)", "Middle Eastern (Sahrawi population)", "All ethnicities can be affected"]
+    "ethnicAssociations": [
+      "Northern European (highest prevalence)",
+      "Middle Eastern (Sahrawi population)",
+      "All ethnicities can be affected"
+    ]
   },
   "diagnosticCriteria": {
     "formalCriteriaName": "ACG Guidelines / ESPGHAN 2020 Criteria for Celiac Disease",
     "criteria": [
-      { "id": "cd-1", "description": "Positive tissue transglutaminase IgA (tTG-IgA) antibody (>10x upper limit of normal in ESPGHAN pediatric criteria allows biopsy-free diagnosis)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "cd-2", "description": "Positive endomysial antibody (EMA-IgA)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "cd-3", "description": "Positive deamidated gliadin peptide antibodies (DGP-IgG) - especially useful in IgA-deficient patients", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "cd-4", "description": "Duodenal biopsy showing villous atrophy (Marsh 3), crypt hyperplasia, and increased intraepithelial lymphocytes", "category": "major", "requiredForDiagnosis": false },
-      { "id": "cd-5", "description": "Clinical and serologic improvement on gluten-free diet", "category": "supportive", "requiredForDiagnosis": false },
-      { "id": "cd-6", "description": "HLA-DQ2 or HLA-DQ8 positivity (nearly 100% of celiac patients carry one or both)", "category": "supportive", "requiredForDiagnosis": false }
+      {
+        "id": "cd-1",
+        "description": "Positive tissue transglutaminase IgA (tTG-IgA) antibody (>10x upper limit of normal in ESPGHAN pediatric criteria allows biopsy-free diagnosis)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cd-2",
+        "description": "Positive endomysial antibody (EMA-IgA)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cd-3",
+        "description": "Positive deamidated gliadin peptide antibodies (DGP-IgG) - especially useful in IgA-deficient patients",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cd-4",
+        "description": "Duodenal biopsy showing villous atrophy (Marsh 3), crypt hyperplasia, and increased intraepithelial lymphocytes",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cd-5",
+        "description": "Clinical and serologic improvement on gluten-free diet",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cd-6",
+        "description": "HLA-DQ2 or HLA-DQ8 positivity (nearly 100% of celiac patients carry one or both)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
     ],
     "minimumForDiagnosis": "Positive serology (tTG-IgA) plus confirmatory duodenal biopsy (Marsh 3) in adults; in children, tTG-IgA >10x ULN plus positive EMA on separate sample can be biopsy-free",
     "notes": "Patient must be on a gluten-containing diet at time of testing. IgA-deficient patients (2-3% of celiac patients) need IgG-based testing. Negative HLA-DQ2/DQ8 essentially excludes celiac disease."
   },
   "symptoms": {
     "pathognomonic": [
-      { "symptomName": "Villous atrophy with crypt hyperplasia on duodenal biopsy (Marsh 3)", "frequency": 0.85, "bodySystem": "Gastrointestinal", "notes": "Must be on gluten-containing diet; at least 4-6 biopsies from duodenum including bulb" },
-      { "symptomName": "Dermatitis herpetiformis", "snomedCode": "111196000", "frequency": 0.10, "bodySystem": "Dermatologic", "notes": "Intensely pruritic papulovesicular rash on extensor surfaces; granular IgA deposits at dermal papillae; pathognomonic for celiac disease" }
+      {
+        "symptomName": "Villous atrophy with crypt hyperplasia on duodenal biopsy (Marsh 3)",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Must be on gluten-containing diet; at least 4-6 biopsies from duodenum including bulb"
+      },
+      {
+        "symptomName": "Dermatitis herpetiformis",
+        "snomedCode": "111196000",
+        "frequency": 0.1,
+        "bodySystem": "dermatological",
+        "notes": "Intensely pruritic papulovesicular rash on extensor surfaces; granular IgA deposits at dermal papillae; pathognomonic for celiac disease"
+      }
     ],
     "common": [
-      { "symptomName": "Chronic diarrhea", "snomedCode": "236071009", "frequency": 0.50, "bodySystem": "Gastrointestinal" },
-      { "symptomName": "Bloating and abdominal distension", "snomedCode": "248490000", "frequency": 0.60, "bodySystem": "Gastrointestinal" },
-      { "symptomName": "Iron deficiency anemia", "snomedCode": "87522002", "frequency": 0.50, "bodySystem": "Hematologic", "notes": "Most common extraintestinal presentation" },
-      { "symptomName": "Fatigue", "snomedCode": "84229001", "frequency": 0.60, "bodySystem": "Constitutional" },
-      { "symptomName": "Weight loss", "snomedCode": "89362005", "frequency": 0.30, "bodySystem": "Constitutional" }
+      {
+        "symptomName": "Chronic diarrhea",
+        "snomedCode": "236071009",
+        "frequency": 0.5,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Bloating and abdominal distension",
+        "snomedCode": "248490000",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Iron deficiency anemia",
+        "snomedCode": "87522002",
+        "frequency": 0.5,
+        "bodySystem": "hematological",
+        "notes": "Most common extraintestinal presentation"
+      },
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      }
     ],
     "occasional": [
-      { "symptomName": "Osteoporosis/osteopenia", "snomedCode": "64859006", "frequency": 0.25, "bodySystem": "Musculoskeletal" },
-      { "symptomName": "Elevated liver transaminases (cryptogenic)", "snomedCode": "166603001", "frequency": 0.20, "bodySystem": "Hepatic" },
-      { "symptomName": "Peripheral neuropathy", "snomedCode": "42658009", "frequency": 0.10, "bodySystem": "Neurological" },
-      { "symptomName": "Recurrent aphthous stomatitis", "snomedCode": "26284000", "frequency": 0.15, "bodySystem": "Oral" },
-      { "symptomName": "Infertility and recurrent miscarriages", "snomedCode": "6738008", "frequency": 0.10, "bodySystem": "Reproductive" }
+      {
+        "symptomName": "Osteoporosis/osteopenia",
+        "snomedCode": "64859006",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated liver transaminases (cryptogenic)",
+        "snomedCode": "166603001",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "snomedCode": "42658009",
+        "frequency": 0.1,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Recurrent aphthous stomatitis",
+        "snomedCode": "26284000",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Infertility and recurrent miscarriages",
+        "snomedCode": "6738008",
+        "frequency": 0.1,
+        "bodySystem": "reproductive"
+      }
     ],
     "rare": [
-      { "symptomName": "Cerebellar ataxia (gluten ataxia)", "snomedCode": "85102008", "frequency": 0.03, "bodySystem": "Neurological" },
-      { "symptomName": "Enteropathy-associated T-cell lymphoma (EATL)", "snomedCode": "404138008", "frequency": 0.01, "bodySystem": "Gastrointestinal/Oncologic", "notes": "Associated with refractory celiac disease type II" },
-      { "symptomName": "Dental enamel defects", "snomedCode": "37031009", "frequency": 0.10, "bodySystem": "Oral" },
-      { "symptomName": "Cardiomyopathy (dilated)", "snomedCode": "195021004", "frequency": 0.02, "bodySystem": "Cardiovascular" },
-      { "symptomName": "Refractory celiac disease/ulcerative jejunitis", "frequency": 0.02, "bodySystem": "Gastrointestinal" }
+      {
+        "symptomName": "Cerebellar ataxia (gluten ataxia)",
+        "snomedCode": "85102008",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Enteropathy-associated T-cell lymphoma (EATL)",
+        "snomedCode": "404138008",
+        "frequency": 0.01,
+        "bodySystem": "gastrointestinal",
+        "notes": "Associated with refractory celiac disease type II"
+      },
+      {
+        "symptomName": "Dental enamel defects",
+        "snomedCode": "37031009",
+        "frequency": 0.1,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cardiomyopathy (dilated)",
+        "snomedCode": "195021004",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Refractory celiac disease/ulcerative jejunitis",
+        "frequency": 0.02,
+        "bodySystem": "gastrointestinal"
+      }
     ]
   },
-  "systemsAffected": ["Gastrointestinal", "Hematologic", "Musculoskeletal", "Neurological", "Dermatologic", "Reproductive", "Hepatic", "Oral"],
+  "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "musculoskeletal",
+    "neurological",
+    "dermatological",
+    "reproductive"
+  ],
   "keyFindings": {
     "laboratory": [
       "tTG-IgA positive (sensitivity 93-96%, specificity 96-98%)",
@@ -84,11 +223,49 @@
     ]
   },
   "differentialDiagnoses": [
-    { "diseaseId": "irritable-bowel-syndrome", "distinguishingFeatures": ["Normal serology and biopsy", "No malabsorption markers", "Fluctuating symptoms without weight loss"] },
-    { "diseaseId": "inflammatory-bowel-disease-crohn", "distinguishingFeatures": ["Transmural inflammation", "Skip lesions", "Can affect any part of GI tract", "Granulomas on biopsy"] },
-    { "diseaseId": "tropical-sprue", "distinguishingFeatures": ["History of travel to endemic area", "B12 deficiency prominent", "Responds to antibiotics", "Negative celiac serology"] },
-    { "diseaseId": "whipple-disease", "distinguishingFeatures": ["PAS-positive macrophages on biopsy", "Tropheryma whipplei PCR positive", "Arthritis, neurologic, cardiac involvement"] },
-    { "diseaseId": "common-variable-immunodeficiency", "distinguishingFeatures": ["Low immunoglobulins", "Recurrent infections", "Nodular lymphoid hyperplasia", "No response to GFD"] }
+    {
+      "diseaseId": "irritable-bowel-syndrome",
+      "distinguishingFeatures": [
+        "Normal serology and biopsy",
+        "No malabsorption markers",
+        "Fluctuating symptoms without weight loss"
+      ]
+    },
+    {
+      "diseaseId": "inflammatory-bowel-disease-crohn",
+      "distinguishingFeatures": [
+        "Transmural inflammation",
+        "Skip lesions",
+        "Can affect any part of GI tract",
+        "Granulomas on biopsy"
+      ]
+    },
+    {
+      "diseaseId": "tropical-sprue",
+      "distinguishingFeatures": [
+        "History of travel to endemic area",
+        "B12 deficiency prominent",
+        "Responds to antibiotics",
+        "Negative celiac serology"
+      ]
+    },
+    {
+      "diseaseId": "whipple-disease",
+      "distinguishingFeatures": [
+        "PAS-positive macrophages on biopsy",
+        "Tropheryma whipplei PCR positive",
+        "Arthritis, neurologic, cardiac involvement"
+      ]
+    },
+    {
+      "diseaseId": "common-variable-immunodeficiency",
+      "distinguishingFeatures": [
+        "Low immunoglobulins",
+        "Recurrent infections",
+        "Nodular lymphoid hyperplasia",
+        "No response to GFD"
+      ]
+    }
   ],
   "redFlags": [
     "Failure to improve on strict gluten-free diet after 6-12 months (consider refractory celiac disease)",
@@ -97,7 +274,11 @@
     "Unexplained iron deficiency anemia refractory to supplementation",
     "Dermatitis herpetiformis not responding to dapsone and GFD"
   ],
-  "specialistType": ["Gastroenterology", "Nutrition/Dietetics", "Dermatology"],
+  "specialistType": [
+    "Gastroenterology",
+    "Nutrition/Dietetics",
+    "Dermatology"
+  ],
   "lastUpdated": "2026-02-17",
   "references": [
     "Rubio-Tapia A, et al. ACG Clinical Guidelines: Diagnosis and Management of Celiac Disease. Am J Gastroenterol. 2023;118(1):59-76.",

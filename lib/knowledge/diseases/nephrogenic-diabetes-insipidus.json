@@ -1,0 +1,200 @@
+{
+  "id": "nephrogenic-diabetes-insipidus",
+  "name": "Nephrogenic Diabetes Insipidus",
+  "aliases": [
+    "NDI",
+    "Renal Diabetes Insipidus"
+  ],
+  "icd10Codes": [
+    "N25.1"
+  ],
+  "omimId": "125800",
+  "orphanetId": "795",
+  "prevalence": {
+    "estimate": "1 in 250,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 0
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Nephrogenic Diabetes Insipidus Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "polyuria-polydipsia",
+        "description": "Presence of persistent polyuria and polydipsia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "water-deprivation-test",
+        "description": "Water deprivation test showing inability to concentrate urine despite dehydration",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "vasopressin-response",
+        "description": "Lack of increase in urine osmolality after administration of exogenous vasopressin",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of mutations in AVPR2 or AQP2 genes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of polyuria and polydipsia with failure to concentrate urine after water deprivation and no response to vasopressin administration",
+    "notes": "Genetic testing can confirm diagnosis but is not mandatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Polyuria",
+        "frequency": 0.95,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Polydipsia",
+        "frequency": 0.95,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hyposthenuria (dilute urine with low specific gravity)",
+        "frequency": 0.85,
+        "bodySystem": "renal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Nocturia",
+        "frequency": 0.75,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Dehydration episodes",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Irritability (especially in infants)",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hypernatremia",
+        "frequency": 0.4,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Growth retardation (in children)",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Constipation",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizures secondary to severe hypernatremia",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Renal medullary calcifications",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Electrolyte imbalance-related arrhythmias",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "endocrine",
+    "neurological",
+    "musculoskeletal",
+    "cardiovascular",
+    "gastrointestinal",
+    "psychiatric",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low urine osmolality (<300 mOsm/kg) despite hypernatremia",
+      "Elevated serum sodium (hypernatremia)",
+      "Normal or elevated plasma vasopressin levels"
+    ],
+    "imaging": [
+      "Renal ultrasound may show nephrocalcinosis in chronic cases"
+    ],
+    "genetic": [
+      "Mutations in AVPR2 gene (X-linked recessive)",
+      "Mutations in AQP2 gene (autosomal recessive or dominant)"
+    ],
+    "other": [
+      "Water deprivation test with no urine concentration",
+      "No response to desmopressin (DDAVP) administration"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "central-diabetes-insipidus",
+      "distinguishingFeatures": [
+        "Deficiency of vasopressin production",
+        "Improvement of urine concentration after desmopressin administration",
+        "Low plasma vasopressin levels"
+      ]
+    },
+    {
+      "diseaseId": "primary-polydipsia",
+      "distinguishingFeatures": [
+        "Excessive water intake suppressing vasopressin",
+        "Urine osmolality normalizes after water deprivation",
+        "No hypernatremia"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe dehydration with altered mental status",
+    "Hypernatremic seizures",
+    "Failure to thrive in infants"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Endocrinologist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Bichet DG. Nephrogenic diabetes insipidus. Adv Chronic Kidney Dis. 2006 Jul;13(3):96-104.",
+    "Knoers NVAM, Deen PMT. Molecular and cellular defects in nephrogenic diabetes insipidus. Pediatr Nephrol. 2001;16(12):1146-1152.",
+    "Orphanet: Nephrogenic diabetes insipidus. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=795"
+  ],
+  "confidenceInData": "medium"
+}

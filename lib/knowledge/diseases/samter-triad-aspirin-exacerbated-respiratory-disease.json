@@ -1,0 +1,221 @@
+{
+  "id": "samter-triad-aspirin-exacerbated-respiratory-disease",
+  "name": "Samter Triad (Aspirin-Exacerbated Respiratory Disease)",
+  "aliases": [
+    "Aspirin-Exacerbated Respiratory Disease",
+    "AERD",
+    "Widal's Syndrome"
+  ],
+  "icd10Codes": [
+    "J45.9",
+    "J33.9",
+    "T88.1"
+  ],
+  "prevalence": {
+    "estimate": "1 in 1,000",
+    "range": "0.3-0.9%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 50,
+      "peak": 30
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Samter Triad Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "asthma",
+        "description": "Presence of asthma diagnosed by clinical history and pulmonary function tests",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "nasal-polyposis",
+        "description": "Presence of nasal polyps confirmed by nasal endoscopy or imaging",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "aspirin-sensitivity",
+        "description": "Respiratory reaction to aspirin or other COX-1 inhibitors confirmed by history or aspirin challenge",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "chronic-rhinosinusitis",
+        "description": "Chronic inflammation of the nasal and sinus mucosa with symptoms lasting >12 weeks",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of all three major criteria: asthma, nasal polyposis, and aspirin sensitivity",
+    "notes": "Aspirin challenge testing is the gold standard for confirming aspirin sensitivity when history is unclear."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Aspirin-induced bronchospasm",
+        "frequency": 0.85,
+        "bodySystem": "respiratory",
+        "notes": "Triggered by aspirin or other COX-1 inhibitors"
+      },
+      {
+        "symptomName": "Nasal polyposis",
+        "frequency": 0.9,
+        "bodySystem": "otolaryngological",
+        "notes": "Bilateral nasal polyps causing nasal obstruction"
+      },
+      {
+        "symptomName": "Asthma exacerbations",
+        "frequency": 0.8,
+        "bodySystem": "respiratory",
+        "notes": "Often severe and difficult to control"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chronic rhinosinusitis with nasal congestion",
+        "frequency": 0.75,
+        "bodySystem": "otolaryngological",
+        "notes": "Persistent nasal inflammation and discharge"
+      },
+      {
+        "symptomName": "Postnasal drip",
+        "frequency": 0.7,
+        "bodySystem": "otolaryngological",
+        "notes": "Mucus drainage from nasal cavity to throat"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.65,
+        "bodySystem": "respiratory",
+        "notes": "Often worsens with aspirin exposure"
+      },
+      {
+        "symptomName": "Facial pressure or pain",
+        "frequency": 0.6,
+        "bodySystem": "otolaryngological",
+        "notes": "Due to sinus inflammation"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Anosmia or hyposmia",
+        "frequency": 0.4,
+        "bodySystem": "otolaryngological",
+        "notes": "Reduced or lost sense of smell"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.3,
+        "bodySystem": "constitutional",
+        "notes": "Associated with chronic inflammation"
+      },
+      {
+        "symptomName": "Wheezing",
+        "frequency": 0.35,
+        "bodySystem": "respiratory",
+        "notes": "Intermittent airway obstruction"
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.25,
+        "bodySystem": "respiratory",
+        "notes": "Shortness of breath during physical activity"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Urticaria or angioedema",
+        "frequency": 0.05,
+        "bodySystem": "dermatological",
+        "notes": "Hypersensitivity skin reactions"
+      },
+      {
+        "symptomName": "Gastrointestinal upset",
+        "frequency": 0.07,
+        "bodySystem": "gastrointestinal",
+        "notes": "Nausea or abdominal pain after aspirin ingestion"
+      },
+      {
+        "symptomName": "Anaphylaxis",
+        "frequency": 0.02,
+        "bodySystem": "immunological",
+        "notes": "Severe systemic allergic reaction to aspirin"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "otolaryngological",
+    "dermatological",
+    "gastrointestinal",
+    "immunological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated eosinophil count in peripheral blood",
+      "Increased urinary leukotriene E4 during aspirin challenge"
+    ],
+    "imaging": [
+      "CT scan showing bilateral nasal polyposis and sinus opacification",
+      "Chest X-ray or CT may show airway inflammation"
+    ],
+    "genetic": [
+      "No specific genetic marker identified; possible HLA associations under investigation"
+    ],
+    "other": [
+      "Positive aspirin challenge test confirming aspirin sensitivity",
+      "Pulmonary function tests showing reversible airway obstruction"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chronic-rhinosinusitis-with-nasal-polyps",
+      "distinguishingFeatures": [
+        "Absence of aspirin sensitivity",
+        "Less severe asthma or absent asthma",
+        "No aspirin-induced respiratory reactions"
+      ]
+    },
+    {
+      "diseaseId": "allergic-asthma-with-nasal-polyposis",
+      "distinguishingFeatures": [
+        "Positive allergy testing to aeroallergens",
+        "No aspirin sensitivity",
+        "Asthma controlled with standard therapies"
+      ]
+    },
+    {
+      "diseaseId": "vasculitis-associated-respiratory-disease",
+      "distinguishingFeatures": [
+        "Systemic vasculitis signs (e.g., purpura, renal involvement)",
+        "ANCA positivity",
+        "Different treatment approach"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe aspirin-induced bronchospasm causing respiratory distress",
+    "Rapid progression of nasal polyposis with airway obstruction",
+    "Refractory asthma despite high-dose corticosteroids"
+  ],
+  "specialistType": [
+    "Allergist/Immunologist",
+    "Pulmonologist",
+    "Otolaryngologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Stevenson DD, et al. Aspirin-exacerbated respiratory disease: prevalence, diagnosis, and management. J Allergy Clin Immunol. 2014.",
+    "Laidlaw TM, et al. Aspirin-exacerbated respiratory disease: pathophysiology and treatment. Allergy Asthma Proc. 2018.",
+    "Bachert C, et al. European Position Paper on Rhinosinusitis and Nasal Polyps 2020."
+  ],
+  "confidenceInData": "medium"
+}

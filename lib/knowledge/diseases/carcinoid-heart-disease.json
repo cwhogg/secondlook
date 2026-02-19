@@ -1,0 +1,217 @@
+{
+  "id": "carcinoid-heart-disease",
+  "name": "Carcinoid Heart Disease",
+  "aliases": [
+    "Hedinger Syndrome",
+    "Carcinoid Valvular Heart Disease"
+  ],
+  "icd10Codes": [
+    "I39.8"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Carcinoid Heart Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "right-sided-valvular-fibrosis",
+        "description": "Presence of fibrotic plaques on right-sided heart valves confirmed by echocardiography or surgery",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "elevated-urinary-5-HIAA",
+        "description": "Elevated levels of 5-hydroxyindoleacetic acid (5-HIAA) in urine indicating carcinoid syndrome",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "carcinoid-tumor-presence",
+        "description": "Confirmed diagnosis of carcinoid tumor or carcinoid syndrome",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "right-heart-failure-signs",
+        "description": "Clinical or imaging evidence of right-sided heart failure",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of carcinoid tumor with elevated 5-HIAA and echocardiographic evidence of right-sided valvular fibrosis",
+    "notes": "Diagnosis relies heavily on echocardiographic findings combined with biochemical and clinical evidence of carcinoid syndrome."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Right-sided valvular regurgitation",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Typically tricuspid and pulmonary valve involvement"
+      },
+      {
+        "symptomName": "Fibrotic plaques on endocardium",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Elevated urinary 5-HIAA",
+        "frequency": 0.9,
+        "bodySystem": "renal",
+        "notes": "Reflects serotonin metabolism from carcinoid tumor"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.6,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Flushing episodes",
+        "frequency": 0.58,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Right-sided heart failure symptoms",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Wheezing",
+        "frequency": 0.25,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Left-sided valvular involvement",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Occurs if patent foramen ovale or bronchial carcinoid present"
+      },
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Carcinoid crisis",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Severe hemodynamic instability triggered by tumor manipulation or stress"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "gastrointestinal",
+    "renal",
+    "dermatological",
+    "respiratory",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated urinary 5-HIAA",
+      "Increased serum serotonin",
+      "Elevated NT-proBNP indicating cardiac strain"
+    ],
+    "imaging": [
+      "Echocardiography showing thickened, retracted tricuspid and pulmonary valves with regurgitation",
+      "Cardiac MRI demonstrating right ventricular dysfunction",
+      "Somatostatin receptor scintigraphy identifying carcinoid tumor"
+    ],
+    "genetic": [],
+    "other": [
+      "Histopathology showing fibrous plaques on endocardium",
+      "Right heart catheterization demonstrating elevated right atrial pressures"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "rheumatic-heart-disease",
+      "distinguishingFeatures": [
+        "Typically affects left-sided valves",
+        "History of rheumatic fever",
+        "Absence of carcinoid syndrome symptoms and biochemical markers"
+      ]
+    },
+    {
+      "diseaseId": "pulmonary-hypertension",
+      "distinguishingFeatures": [
+        "No valvular fibrosis plaques",
+        "Elevated pulmonary artery pressures without carcinoid tumor",
+        "Lack of elevated 5-HIAA"
+      ]
+    },
+    {
+      "diseaseId": "endocarditis",
+      "distinguishingFeatures": [
+        "Presence of vegetations rather than fibrotic plaques",
+        "Positive blood cultures",
+        "Fever and systemic infection signs"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of right-sided heart failure",
+    "Severe tricuspid or pulmonary valve regurgitation",
+    "Carcinoid crisis with hemodynamic instability"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Oncologist",
+    "Endocrinologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Møller JE, et al. Carcinoid heart disease: clinical and echocardiographic spectrum in 74 patients. Circulation. 2005.",
+    "Bhattacharyya S, et al. Carcinoid heart disease: pathophysiology, diagnosis, and management. Heart. 2017.",
+    "Davies J, et al. Diagnosis and management of carcinoid heart disease: a practical approach. Heart. 2019."
+  ],
+  "confidenceInData": "medium"
+}

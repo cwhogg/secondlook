@@ -1,0 +1,220 @@
+{
+  "id": "omenn-syndrome",
+  "name": "Omenn Syndrome",
+  "aliases": [
+    "Severe Combined Immunodeficiency Variant",
+    "SCID with Erythroderma"
+  ],
+  "icd10Codes": [
+    "D81.1"
+  ],
+  "omimId": "603554",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 200,000 to 1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 12,
+      "peak": 1
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Omenn Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "erythroderma",
+        "description": "Generalized erythroderma present from early infancy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "oligoclonal-t-cell-expansion",
+        "description": "Presence of oligoclonal, activated T-cell expansion",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "lymphadenopathy-hepatosplenomegaly",
+        "description": "Lymphadenopathy and hepatosplenomegaly",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hypogammaglobulinemia",
+        "description": "Hypogammaglobulinemia with elevated IgE",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-mutation",
+        "description": "Identification of mutations in RAG1 or RAG2 genes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of generalized erythroderma, oligoclonal T-cell expansion, and lymphadenopathy/hepatosplenomegaly",
+    "notes": "Genetic testing for RAG1/RAG2 mutations supports diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Generalized erythroderma",
+        "frequency": 0.95,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Oligoclonal activated T-cell expansion",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.85,
+        "bodySystem": "immunological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.75,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Chronic diarrhea",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Recurrent infections",
+        "frequency": 0.65,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Eosinophilia",
+        "frequency": 0.6,
+        "bodySystem": "hematological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hepatitis",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "notes": "May be secondary to immune dysregulation"
+      },
+      {
+        "symptomName": "Alopecia",
+        "frequency": 0.3,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Lymphopenia",
+        "frequency": 0.25,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Oral candidiasis",
+        "frequency": 0.2,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Failure of B-cell function",
+        "frequency": 0.15,
+        "bodySystem": "immunological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Neurological abnormalities",
+        "frequency": 0.08,
+        "bodySystem": "neurological",
+        "notes": "Rarely reported developmental delay or seizures"
+      },
+      {
+        "symptomName": "Pulmonary infiltrates",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Autoimmune cytopenias",
+        "frequency": 0.04,
+        "bodySystem": "hematological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "immunological",
+    "hematological",
+    "gastrointestinal",
+    "constitutional",
+    "otolaryngological",
+    "neurological",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated IgE levels",
+      "Hypogammaglobulinemia",
+      "Eosinophilia",
+      "Lymphopenia with oligoclonal T-cell expansion"
+    ],
+    "imaging": [
+      "Lymphadenopathy and hepatosplenomegaly on ultrasound or CT",
+      "Possible pulmonary infiltrates on chest imaging"
+    ],
+    "genetic": [
+      "Mutations in RAG1 or RAG2 genes",
+      "Other SCID-related gene mutations (rare)"
+    ],
+    "other": [
+      "Skin biopsy showing inflammatory infiltrate",
+      "T-cell receptor repertoire analysis demonstrating oligoclonality"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "severe-combined-immunodeficiency",
+      "distinguishingFeatures": [
+        "Absence of oligoclonal T-cell expansion",
+        "Lack of erythroderma",
+        "Profound lymphopenia without activated T cells"
+      ]
+    },
+    {
+      "diseaseId": "wiskott-aldrich-syndrome",
+      "distinguishingFeatures": [
+        "Thrombocytopenia with small platelets",
+        "Eczema without erythroderma",
+        "Normal T-cell receptor diversity"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Persistent generalized erythroderma in infancy",
+    "Severe recurrent infections with lymphadenopathy",
+    "Failure to thrive with hepatosplenomegaly"
+  ],
+  "specialistType": [
+    "Immunologist",
+    "Pediatrician",
+    "Dermatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Notarangelo LD. Omenn syndrome: a disorder of Rag1 and Rag2 gene mutations. Immunol Rev. 2005;203:150-64.",
+    "Villa A, Sobacchi C, Notarangelo LD. Omenn syndrome: a disorder of Rag1 and Rag2 gene mutations. Curr Opin Allergy Clin Immunol. 2008;8(6):516-22.",
+    "Orange JS, et al. Use and interpretation of diagnostic vaccination in primary immunodeficiency: a working group report of the Basic and Clinical Immunology Interest Section of the American Academy of Allergy, Asthma & Immunology. J Allergy Clin Immunol. 2012;130(3 Suppl):S1-24."
+  ],
+  "confidenceInData": "medium"
+}

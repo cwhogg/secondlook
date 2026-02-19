@@ -1,8 +1,15 @@
 {
   "id": "eosinophilic-granulomatosis-with-polyangiitis",
   "name": "Eosinophilic Granulomatosis with Polyangiitis",
-  "aliases": ["EGPA", "Churg-Strauss Syndrome", "Churg-Strauss Vasculitis", "Allergic Granulomatosis and Angiitis"],
-  "icd10Codes": ["M30.1"],
+  "aliases": [
+    "EGPA",
+    "Churg-Strauss Syndrome",
+    "Churg-Strauss Vasculitis",
+    "Allergic Granulomatosis and Angiitis"
+  ],
+  "icd10Codes": [
+    "M30.1"
+  ],
   "omimId": "608710",
   "orphanetId": "183",
   "prevalence": {
@@ -11,51 +18,181 @@
     "classification": "rare"
   },
   "demographics": {
-    "typicalOnsetAge": { "min": 30, "max": 60, "peak": 48 },
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 60,
+      "peak": 48
+    },
     "sexPredilection": "equal",
-    "ethnicAssociations": ["No strong ethnic predilection"]
+    "ethnicAssociations": [
+      "No strong ethnic predilection"
+    ]
   },
   "diagnosticCriteria": {
     "formalCriteriaName": "2022 ACR/EULAR Classification Criteria for EGPA",
     "criteria": [
-      { "id": "egpa-1", "description": "Obstructive airway disease (asthma or nasal polyposis)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "egpa-2", "description": "Peripheral blood eosinophilia > 1.0 x 10^9/L (> 10%)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "egpa-3", "description": "Maximum eosinophil count >= 1.0 x 10^9/L", "category": "major", "requiredForDiagnosis": false },
-      { "id": "egpa-4", "description": "Extravascular eosinophilic-predominant inflammation on biopsy", "category": "major", "requiredForDiagnosis": false },
-      { "id": "egpa-5", "description": "MPO-ANCA (p-ANCA) positivity", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "egpa-6", "description": "Myocardial involvement attributable to EGPA", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "egpa-7", "description": "Nasal polyps", "category": "minor", "requiredForDiagnosis": false }
+      {
+        "id": "egpa-1",
+        "description": "Obstructive airway disease (asthma or nasal polyposis)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "egpa-2",
+        "description": "Peripheral blood eosinophilia > 1.0 x 10^9/L (> 10%)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "egpa-3",
+        "description": "Maximum eosinophil count >= 1.0 x 10^9/L",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "egpa-4",
+        "description": "Extravascular eosinophilic-predominant inflammation on biopsy",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "egpa-5",
+        "description": "MPO-ANCA (p-ANCA) positivity",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "egpa-6",
+        "description": "Myocardial involvement attributable to EGPA",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "egpa-7",
+        "description": "Nasal polyps",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
     ],
     "minimumForDiagnosis": "Diagnosis of vasculitis or eosinophilia plus total weighted score >= 6",
     "notes": "EGPA has two phenotypes: ANCA-positive (more vasculitic, with GN, neuropathy, purpura) and ANCA-negative (more eosinophilic, with cardiac and pulmonary involvement)."
   },
   "symptoms": {
     "pathognomonic": [
-      { "symptomName": "Asthma with peripheral eosinophilia and vasculitis", "frequency": 0.95, "bodySystem": "Pulmonary", "notes": "Asthma typically precedes vasculitis by years; late-onset/severe asthma" },
-      { "symptomName": "Eosinophilic tissue infiltration", "frequency": 0.85, "bodySystem": "Multi-system", "notes": "Extravascular eosinophilic granulomas" }
+      {
+        "symptomName": "Asthma with peripheral eosinophilia and vasculitis",
+        "frequency": 0.95,
+        "bodySystem": "respiratory",
+        "notes": "Asthma typically precedes vasculitis by years; late-onset/severe asthma"
+      },
+      {
+        "symptomName": "Eosinophilic tissue infiltration",
+        "frequency": 0.85,
+        "bodySystem": "constitutional",
+        "notes": "Extravascular eosinophilic granulomas"
+      }
     ],
     "common": [
-      { "symptomName": "Asthma (severe, late-onset)", "snomedCode": "195967001", "frequency": 0.95, "bodySystem": "Pulmonary" },
-      { "symptomName": "Chronic rhinosinusitis with nasal polyps", "snomedCode": "40055000", "frequency": 0.70, "bodySystem": "ENT" },
-      { "symptomName": "Peripheral blood eosinophilia", "snomedCode": "419455006", "frequency": 0.90, "bodySystem": "Hematologic" },
-      { "symptomName": "Mononeuritis multiplex or peripheral neuropathy", "snomedCode": "128189008", "frequency": 0.60, "bodySystem": "Neurological" },
-      { "symptomName": "Constitutional symptoms (fever, weight loss, malaise)", "snomedCode": "386661006", "frequency": 0.60, "bodySystem": "Constitutional" }
+      {
+        "symptomName": "Asthma (severe, late-onset)",
+        "snomedCode": "195967001",
+        "frequency": 0.95,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chronic rhinosinusitis with nasal polyps",
+        "snomedCode": "40055000",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral blood eosinophilia",
+        "snomedCode": "419455006",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Mononeuritis multiplex or peripheral neuropathy",
+        "snomedCode": "128189008",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Constitutional symptoms (fever, weight loss, malaise)",
+        "snomedCode": "386661006",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      }
     ],
     "occasional": [
-      { "symptomName": "Palpable purpura", "snomedCode": "20143000", "frequency": 0.30, "bodySystem": "Dermatologic" },
-      { "symptomName": "Eosinophilic myocarditis", "snomedCode": "55827005", "frequency": 0.25, "bodySystem": "Cardiovascular", "notes": "Leading cause of mortality; may present as heart failure" },
-      { "symptomName": "Pulmonary infiltrates (migratory)", "snomedCode": "233703007", "frequency": 0.35, "bodySystem": "Pulmonary" },
-      { "symptomName": "Gastrointestinal involvement (abdominal pain, bleeding)", "snomedCode": "21522001", "frequency": 0.25, "bodySystem": "Gastrointestinal" },
-      { "symptomName": "Arthralgia", "snomedCode": "57676002", "frequency": 0.40, "bodySystem": "Musculoskeletal" }
+      {
+        "symptomName": "Palpable purpura",
+        "snomedCode": "20143000",
+        "frequency": 0.3,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Eosinophilic myocarditis",
+        "snomedCode": "55827005",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Leading cause of mortality; may present as heart failure"
+      },
+      {
+        "symptomName": "Pulmonary infiltrates (migratory)",
+        "snomedCode": "233703007",
+        "frequency": 0.35,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Gastrointestinal involvement (abdominal pain, bleeding)",
+        "snomedCode": "21522001",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "snomedCode": "57676002",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      }
     ],
     "rare": [
-      { "symptomName": "Glomerulonephritis", "snomedCode": "36171008", "frequency": 0.10, "bodySystem": "Renal", "notes": "More common in ANCA-positive phenotype" },
-      { "symptomName": "Cerebral vasculitis", "snomedCode": "195353004", "frequency": 0.05, "bodySystem": "Neurological" },
-      { "symptomName": "Pericardial effusion/tamponade", "snomedCode": "373945007", "frequency": 0.08, "bodySystem": "Cardiovascular" },
-      { "symptomName": "Coronary arteritis", "frequency": 0.03, "bodySystem": "Cardiovascular" }
+      {
+        "symptomName": "Glomerulonephritis",
+        "snomedCode": "36171008",
+        "frequency": 0.1,
+        "bodySystem": "renal",
+        "notes": "More common in ANCA-positive phenotype"
+      },
+      {
+        "symptomName": "Cerebral vasculitis",
+        "snomedCode": "195353004",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pericardial effusion/tamponade",
+        "snomedCode": "373945007",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Coronary arteritis",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      }
     ]
   },
-  "systemsAffected": ["Pulmonary", "ENT", "Neurological", "Cardiovascular", "Dermatologic", "Gastrointestinal", "Renal", "Musculoskeletal"],
+  "systemsAffected": [
+    "respiratory",
+    "neurological",
+    "cardiovascular",
+    "dermatological",
+    "gastrointestinal",
+    "renal",
+    "musculoskeletal"
+  ],
   "keyFindings": {
     "laboratory": [
       "Marked peripheral eosinophilia (often >1500/mm3, can be >10,000)",
@@ -82,10 +219,41 @@
     ]
   },
   "differentialDiagnoses": [
-    { "diseaseId": "granulomatosis-with-polyangiitis", "distinguishingFeatures": ["No asthma or eosinophilia", "PR3-ANCA predominant", "Cavitating pulmonary nodules", "ENT destruction (saddle nose)"] },
-    { "diseaseId": "hypereosinophilic-syndrome", "distinguishingFeatures": ["No vasculitis on biopsy", "No asthma history", "ANCA negative", "May have FIP1L1-PDGFRA fusion"] },
-    { "diseaseId": "allergic-bronchopulmonary-aspergillosis", "distinguishingFeatures": ["Aspergillus sensitization", "Central bronchiectasis", "No vasculitis", "Elevated Aspergillus-specific IgE"] },
-    { "diseaseId": "microscopic-polyangiitis", "distinguishingFeatures": ["No eosinophilia or asthma", "MPO-ANCA positive", "Pauci-immune GN"] }
+    {
+      "diseaseId": "granulomatosis-with-polyangiitis",
+      "distinguishingFeatures": [
+        "No asthma or eosinophilia",
+        "PR3-ANCA predominant",
+        "Cavitating pulmonary nodules",
+        "ENT destruction (saddle nose)"
+      ]
+    },
+    {
+      "diseaseId": "hypereosinophilic-syndrome",
+      "distinguishingFeatures": [
+        "No vasculitis on biopsy",
+        "No asthma history",
+        "ANCA negative",
+        "May have FIP1L1-PDGFRA fusion"
+      ]
+    },
+    {
+      "diseaseId": "allergic-bronchopulmonary-aspergillosis",
+      "distinguishingFeatures": [
+        "Aspergillus sensitization",
+        "Central bronchiectasis",
+        "No vasculitis",
+        "Elevated Aspergillus-specific IgE"
+      ]
+    },
+    {
+      "diseaseId": "microscopic-polyangiitis",
+      "distinguishingFeatures": [
+        "No eosinophilia or asthma",
+        "MPO-ANCA positive",
+        "Pauci-immune GN"
+      ]
+    }
   ],
   "redFlags": [
     "Cardiac involvement (eosinophilic myocarditis) - leading cause of death",
@@ -94,7 +262,12 @@
     "Acute mononeuritis multiplex with foot/wrist drop",
     "Severe eosinophilia (>5000/mm3) with organ damage"
   ],
-  "specialistType": ["Rheumatology", "Pulmonology", "Cardiology", "Allergy/Immunology"],
+  "specialistType": [
+    "Rheumatology",
+    "Pulmonology",
+    "Cardiology",
+    "Allergy/Immunology"
+  ],
   "lastUpdated": "2026-02-17",
   "references": [
     "Grayson PC, et al. 2022 American College of Rheumatology/European Alliance of Associations for Rheumatology Classification Criteria for Eosinophilic Granulomatosis with Polyangiitis. Arthritis Rheumatol. 2022;74(3):386-392.",

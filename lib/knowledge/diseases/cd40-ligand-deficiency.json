@@ -1,0 +1,217 @@
+{
+  "id": "cd40-ligand-deficiency",
+  "name": "CD40 Ligand Deficiency",
+  "aliases": [
+    "X-linked Hyper-IgM Syndrome",
+    "HIGM1"
+  ],
+  "icd10Codes": [
+    "D80.3"
+  ],
+  "omimId": "308230",
+  "orphanetId": "795",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 10,
+      "peak": 2
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Diagnostic Criteria for X-linked Hyper-IgM Syndrome",
+    "criteria": [
+      {
+        "id": "clinical-infections",
+        "description": "Recurrent bacterial and opportunistic infections, especially of the respiratory and gastrointestinal tracts",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunoglobulin-profile",
+        "description": "Elevated or normal serum IgM with markedly decreased IgG, IgA, and IgE levels",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutation in the CD40LG gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "flow-cytometry",
+        "description": "Absent or markedly reduced CD40 ligand (CD154) expression on activated T cells",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history consistent with X-linked inheritance",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of recurrent infections plus abnormal immunoglobulin profile and confirmation by genetic testing or flow cytometry",
+    "notes": "Genetic confirmation is considered definitive; immunophenotyping supports diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent sinopulmonary bacterial infections",
+        "frequency": 0.85,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Elevated serum IgM with low IgG and IgA levels",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Opportunistic infections including Pneumocystis jirovecii pneumonia",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chronic diarrhea",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.65,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Oral ulcers",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.5,
+        "bodySystem": "immunological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Neutropenia",
+        "frequency": 0.3,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Autoimmune cytopenias",
+        "frequency": 0.2,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Skin infections and abscesses",
+        "frequency": 0.4,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Neurological complications (e.g., encephalopathy)",
+        "frequency": 0.1,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Malignancies such as lymphoma",
+        "frequency": 0.05,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Cryptosporidium-induced cholangitis",
+        "frequency": 0.07,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pulmonary fibrosis",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "immunological",
+    "respiratory",
+    "gastrointestinal",
+    "hematological",
+    "dermatological",
+    "musculoskeletal",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum IgM with low IgG, IgA, and IgE",
+      "Neutropenia in some patients",
+      "Flow cytometry showing absent/reduced CD40L expression on activated T cells"
+    ],
+    "imaging": [
+      "Chest X-ray or CT showing recurrent pneumonia or bronchiectasis",
+      "Abdominal ultrasound may show hepatosplenomegaly"
+    ],
+    "genetic": [
+      "Pathogenic variants in CD40LG gene on X chromosome"
+    ],
+    "other": [
+      "Positive family history consistent with X-linked inheritance",
+      "Poor response to polysaccharide vaccines"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "activation-induced-cytidine-deaminase-deficiency",
+      "distinguishingFeatures": [
+        "Autosomal recessive inheritance",
+        "Normal CD40L expression",
+        "Defect in class-switch recombination downstream of CD40L"
+      ]
+    },
+    {
+      "diseaseId": "cd40-deficiency",
+      "distinguishingFeatures": [
+        "Mutation in CD40 gene (not CD40LG)",
+        "Similar clinical features but affects B cell receptor",
+        "Autosomal recessive inheritance"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Recurrent severe bacterial infections in male infants",
+    "Opportunistic infections such as Pneumocystis jirovecii pneumonia",
+    "Elevated IgM with low IgG and IgA levels"
+  ],
+  "specialistType": [
+    "Immunologist",
+    "Pediatrician",
+    "Infectious Disease Specialist",
+    "Hematologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Notarangelo LD, et al. Primary Immunodeficiencies: 2009 Update. J Allergy Clin Immunol. 2009.",
+    "Durandy A, et al. Hyper IgM Syndromes. Clin Rev Allergy Immunol. 2012.",
+    "Tangye SG, et al. Human Hyper-IgM Syndromes: Clinical, Immunological, and Molecular Features. Immunol Rev. 2009."
+  ],
+  "confidenceInData": "medium"
+}

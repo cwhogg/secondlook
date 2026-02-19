@@ -1,0 +1,214 @@
+{
+  "id": "neonatal-diabetes-mellitus",
+  "name": "Neonatal Diabetes Mellitus",
+  "aliases": [
+    "NDM",
+    "Monogenic Diabetes of Infancy"
+  ],
+  "icd10Codes": [
+    "E13.9"
+  ],
+  "omimId": "606176",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 90,000 to 160,000 live births",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 180,
+      "peak": 90
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Neonatal Diabetes Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "onset-age",
+        "description": "Onset of hyperglycemia within the first 6 months of life",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "persistent-hyperglycemia",
+        "description": "Persistent hyperglycemia documented on multiple occasions",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in genes affecting insulin production (e.g., KCNJ11, ABCC8, INS)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-autoantibodies",
+        "description": "Negative pancreatic autoantibodies (to distinguish from type 1 diabetes)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Onset of hyperglycemia before 6 months of age plus either persistent hyperglycemia or identification of a causative genetic mutation",
+    "notes": "Genetic testing is critical for confirming diagnosis and guiding treatment."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Persistent hyperglycemia",
+        "frequency": 0.95,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Intrauterine growth retardation",
+        "frequency": 0.75,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Polyuria",
+        "frequency": 0.85,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Polydipsia",
+        "frequency": 0.8,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dehydration",
+        "frequency": 0.65,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Ketoacidosis",
+        "frequency": 0.6,
+        "bodySystem": "endocrine",
+        "notes": "More common in permanent neonatal diabetes"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Neurological abnormalities (e.g., developmental delay, seizures)",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pancreatic hypoplasia",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Irritability",
+        "frequency": 0.15,
+        "bodySystem": "psychiatric"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Congenital cataracts",
+        "frequency": 0.08,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Sensorineural hearing loss",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "endocrine",
+    "renal",
+    "neurological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "constitutional",
+    "ophthalmological",
+    "psychiatric",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated blood glucose levels",
+      "Low or absent C-peptide",
+      "Negative pancreatic autoantibodies",
+      "Metabolic acidosis in ketoacidosis"
+    ],
+    "imaging": [
+      "Pancreatic hypoplasia or agenesis on abdominal ultrasound or MRI"
+    ],
+    "genetic": [
+      "Mutations in KCNJ11, ABCC8, INS, or other monogenic diabetes genes"
+    ],
+    "other": [
+      "Response to sulfonylurea therapy in some genetic subtypes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "type-1-diabetes-mellitus",
+      "distinguishingFeatures": [
+        "Onset usually after 6 months of age",
+        "Presence of pancreatic autoantibodies",
+        "No causative monogenic mutations"
+      ]
+    },
+    {
+      "diseaseId": "transient-neonatal-hyperglycemia",
+      "distinguishingFeatures": [
+        "Hyperglycemia resolves within weeks to months",
+        "No persistent insulin deficiency",
+        "No genetic mutations identified"
+      ]
+    },
+    {
+      "diseaseId": "congenital-pancreatic-hypoplasia",
+      "distinguishingFeatures": [
+        "Structural pancreatic abnormalities on imaging",
+        "May present with exocrine insufficiency",
+        "May or may not have diabetes"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Hyperglycemia presenting before 6 months of age",
+    "Failure to thrive despite adequate feeding",
+    "Severe dehydration or ketoacidosis in neonate"
+  ],
+  "specialistType": [
+    "Pediatric Endocrinologist",
+    "Medical Geneticist",
+    "Neonatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Hattersley AT, et al. Neonatal diabetes mellitus: a model for personalized medicine. Trends Endocrinol Metab. 2019.",
+    "Naylor RN, et al. Neonatal diabetes mellitus: an update on diagnosis and management. Curr Opin Endocrinol Diabetes Obes. 2018.",
+    "Orphanet: Neonatal diabetes mellitus. Orphanet Report Series. 2021."
+  ],
+  "confidenceInData": "medium"
+}

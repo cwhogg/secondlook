@@ -1,0 +1,201 @@
+{
+  "id": "mesothelioma",
+  "name": "Malignant Mesothelioma",
+  "aliases": [
+    "Pleural Mesothelioma",
+    "Asbestos-related Mesothelioma"
+  ],
+  "icd10Codes": [
+    "C45.0"
+  ],
+  "omimId": "155550",
+  "orphanetId": "586",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.001%-0.002%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 40,
+      "max": 85,
+      "peak": 65
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "International Mesothelioma Interest Group (IMIG) Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation of malignant mesothelial cells",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunohistochemistry",
+        "description": "Positive immunohistochemical markers for mesothelial origin (e.g., calretinin, WT-1)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "radiologic-evidence",
+        "description": "Imaging evidence of pleural thickening or masses consistent with mesothelioma",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "asbestos-exposure-history",
+        "description": "Documented history of asbestos exposure",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation with positive immunohistochemical markers",
+    "notes": "Diagnosis requires exclusion of metastatic carcinoma and other pleural malignancies."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Pleural thickening with malignant mesothelial proliferation",
+        "frequency": 0.85,
+        "bodySystem": "respiratory",
+        "notes": "Detected via imaging and biopsy"
+      },
+      {
+        "symptomName": "Pleural effusion with malignant cells",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Dyspnea (shortness of breath)",
+        "frequency": 0.7,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Non-productive cough",
+        "frequency": 0.6,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hoarseness",
+        "frequency": 0.2,
+        "bodySystem": "otolaryngological",
+        "notes": "Due to recurrent laryngeal nerve involvement"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to esophageal compression"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Superior vena cava syndrome",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Clubbing of fingers",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Paraneoplastic syndromes",
+        "frequency": 0.03,
+        "bodySystem": "immunological",
+        "notes": "Rare autoimmune phenomena"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "constitutional",
+    "cardiovascular",
+    "gastrointestinal",
+    "musculoskeletal",
+    "otolaryngological",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Pleural fluid cytology positive for malignant mesothelial cells",
+      "Elevated serum mesothelin-related peptides",
+      "Elevated fibulin-3 levels"
+    ],
+    "imaging": [
+      "Chest X-ray showing pleural effusion or thickening",
+      "CT scan revealing pleural masses and nodularity",
+      "PET scan showing hypermetabolic pleural lesions"
+    ],
+    "genetic": [
+      "BAP1 gene mutations or deletions in tumor tissue"
+    ],
+    "other": [
+      "Histopathological subtyping (epithelioid, sarcomatoid, biphasic)",
+      "Immunohistochemical staining panel confirming mesothelial origin"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "lung-adenocarcinoma",
+      "distinguishingFeatures": [
+        "Positive TTF-1 and Napsin A immunostaining",
+        "Absence of diffuse pleural thickening",
+        "Different cytological features on biopsy"
+      ]
+    },
+    {
+      "diseaseId": "pleural-metastases",
+      "distinguishingFeatures": [
+        "History of primary malignancy elsewhere",
+        "Immunohistochemical markers consistent with primary tumor",
+        "Less diffuse pleural involvement"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive dyspnea with pleural effusion",
+    "Unexplained chest pain with history of asbestos exposure",
+    "Weight loss and fatigue in a patient with pleural abnormalities"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Oncologist",
+    "Thoracic Surgeon",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Robinson BW, Lake RA. Advances in malignant mesothelioma. N Engl J Med. 2005;353(15):1591-603.",
+    "Carbone M, et al. Mesothelioma: Scientific clues for prevention, diagnosis, and therapy. CA Cancer J Clin. 2019;69(5):402-429.",
+    "International Mesothelioma Interest Group (IMIG) Guidelines, 2020."
+  ],
+  "confidenceInData": "medium"
+}

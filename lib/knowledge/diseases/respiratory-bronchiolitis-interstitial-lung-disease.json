@@ -1,0 +1,204 @@
+{
+  "id": "respiratory-bronchiolitis-interstitial-lung-disease",
+  "name": "Respiratory Bronchiolitis-Interstitial Lung Disease",
+  "aliases": [
+    "RB-ILD",
+    "Respiratory Bronchiolitis with Interstitial Lung Disease"
+  ],
+  "icd10Codes": [
+    "J84.89"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 60,
+      "peak": 40
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Respiratory Bronchiolitis-Interstitial Lung Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "smoking-history",
+        "description": "Current or former history of cigarette smoking",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology",
+        "description": "Presence of pigmented macrophages in respiratory bronchioles on lung biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-findings",
+        "description": "High-resolution CT showing centrilobular nodules and patchy ground-glass opacities",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pulmonary-function",
+        "description": "Mild restrictive ventilatory defect and reduced diffusion capacity on pulmonary function tests",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-other-diseases",
+        "description": "Exclusion of other interstitial lung diseases such as desquamative interstitial pneumonia or hypersensitivity pneumonitis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Presence of smoking history, characteristic histopathology, compatible imaging findings, and exclusion of other interstitial lung diseases",
+    "notes": "Lung biopsy is often required to confirm diagnosis; clinical correlation with smoking history is essential."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chronic cough",
+        "frequency": 0.85,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.8,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Tobacco smoking history",
+        "frequency": 0.95,
+        "bodySystem": "constitutional",
+        "notes": "Essential risk factor and clinical feature"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild hypoxemia at rest or exertion",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Bibasilar crackles on lung auscultation",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Reduced diffusion capacity for carbon monoxide (DLCO)",
+        "frequency": 0.7,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Wheezing",
+        "frequency": 0.2,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest discomfort",
+        "frequency": 0.15,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Mild clubbing of fingers",
+        "frequency": 0.1,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pulmonary hypertension",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Digital cyanosis",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "constitutional",
+    "musculoskeletal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Mild hypoxemia on arterial blood gas analysis",
+      "Normal or mildly elevated inflammatory markers"
+    ],
+    "imaging": [
+      "High-resolution CT showing centrilobular nodules, patchy ground-glass opacities, and mild interstitial thickening"
+    ],
+    "genetic": [],
+    "other": [
+      "Lung biopsy demonstrating pigmented macrophages in respiratory bronchioles with mild interstitial inflammation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "desquamative-interstitial-pneumonia",
+      "distinguishingFeatures": [
+        "More diffuse alveolar involvement with abundant macrophages",
+        "More extensive ground-glass opacities on imaging",
+        "Usually more severe symptoms"
+      ]
+    },
+    {
+      "diseaseId": "hypersensitivity-pneumonitis",
+      "distinguishingFeatures": [
+        "History of antigen exposure",
+        "Lymphocytic alveolitis on bronchoalveolar lavage",
+        "Presence of granulomas on biopsy"
+      ]
+    },
+    {
+      "diseaseId": "idiopathic-pulmonary-fibrosis",
+      "distinguishingFeatures": [
+        "Older age at onset",
+        "Honeycombing on HRCT",
+        "Progressive fibrosis with poor response to smoking cessation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive dyspnea",
+    "Severe hypoxemia at rest",
+    "Development of pulmonary hypertension"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Pathologist",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "American Thoracic Society/European Respiratory Society International Multidisciplinary Consensus Classification of the Idiopathic Interstitial Pneumonias, Am J Respir Crit Care Med. 2002",
+    "Respiratory bronchiolitis-associated interstitial lung disease: clinical features and outcome, Chest. 2000",
+    "High-resolution CT findings in respiratory bronchiolitis-associated interstitial lung disease, Radiology. 1997"
+  ],
+  "confidenceInData": "medium"
+}

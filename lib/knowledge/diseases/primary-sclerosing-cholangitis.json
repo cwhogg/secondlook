@@ -1,8 +1,13 @@
 {
   "id": "primary-sclerosing-cholangitis",
   "name": "Primary Sclerosing Cholangitis",
-  "aliases": ["PSC", "Sclerosing Cholangitis"],
-  "icd10Codes": ["K83.01"],
+  "aliases": [
+    "PSC",
+    "Sclerosing Cholangitis"
+  ],
+  "icd10Codes": [
+    "K83.01"
+  ],
   "omimId": "613806",
   "orphanetId": "171",
   "prevalence": {
@@ -11,47 +16,153 @@
     "classification": "rare"
   },
   "demographics": {
-    "typicalOnsetAge": { "min": 25, "max": 50, "peak": 40 },
+    "typicalOnsetAge": {
+      "min": 25,
+      "max": 50,
+      "peak": 40
+    },
     "sexPredilection": "slight-male",
-    "ethnicAssociations": ["Northern European/Scandinavian"]
+    "ethnicAssociations": [
+      "Northern European/Scandinavian"
+    ]
   },
   "diagnosticCriteria": {
     "formalCriteriaName": "AASLD Guidelines for Diagnosis of PSC",
     "criteria": [
-      { "id": "psc-1", "description": "Cholestatic biochemistry (elevated ALP, GGT) for >6 months", "category": "major", "requiredForDiagnosis": false },
-      { "id": "psc-2", "description": "Characteristic cholangiographic findings: multifocal strictures and segmental dilatations of intrahepatic and/or extrahepatic bile ducts (beaded appearance) on MRCP or ERCP", "category": "major", "requiredForDiagnosis": false },
-      { "id": "psc-3", "description": "Liver biopsy showing periductal (onion-skin) fibrosis (in small duct PSC or when cholangiography is normal)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "psc-4", "description": "Exclusion of secondary causes of sclerosing cholangitis (IgG4-related, ischemic, infectious)", "category": "major", "requiredForDiagnosis": true }
+      {
+        "id": "psc-1",
+        "description": "Cholestatic biochemistry (elevated ALP, GGT) for >6 months",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "psc-2",
+        "description": "Characteristic cholangiographic findings: multifocal strictures and segmental dilatations of intrahepatic and/or extrahepatic bile ducts (beaded appearance) on MRCP or ERCP",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "psc-3",
+        "description": "Liver biopsy showing periductal (onion-skin) fibrosis (in small duct PSC or when cholangiography is normal)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "psc-4",
+        "description": "Exclusion of secondary causes of sclerosing cholangitis (IgG4-related, ischemic, infectious)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
     ],
     "minimumForDiagnosis": "Cholestatic biochemistry plus characteristic cholangiographic findings, after exclusion of secondary causes",
     "notes": "Small duct PSC has normal cholangiography and is diagnosed by liver biopsy. Up to 80% of PSC patients have concurrent IBD (usually ulcerative colitis)."
   },
   "symptoms": {
     "pathognomonic": [
-      { "symptomName": "Multifocal biliary strictures (beading) on MRCP/ERCP", "frequency": 0.90, "bodySystem": "Hepatobiliary", "notes": "Alternating strictures and dilatations of intra- and extrahepatic bile ducts" }
+      {
+        "symptomName": "Multifocal biliary strictures (beading) on MRCP/ERCP",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal",
+        "notes": "Alternating strictures and dilatations of intra- and extrahepatic bile ducts"
+      }
     ],
     "common": [
-      { "symptomName": "Fatigue", "snomedCode": "84229001", "frequency": 0.75, "bodySystem": "Constitutional" },
-      { "symptomName": "Pruritus", "snomedCode": "418290006", "frequency": 0.60, "bodySystem": "Dermatologic" },
-      { "symptomName": "Right upper quadrant abdominal pain", "snomedCode": "21522001", "frequency": 0.40, "bodySystem": "Hepatic" },
-      { "symptomName": "Jaundice (intermittent or progressive)", "snomedCode": "18165001", "frequency": 0.30, "bodySystem": "Hepatic" },
-      { "symptomName": "Concurrent inflammatory bowel disease symptoms", "snomedCode": "24526004", "frequency": 0.70, "bodySystem": "Gastrointestinal", "notes": "Usually UC; often mild pancolitis" }
+      {
+        "symptomName": "Fatigue",
+        "snomedCode": "84229001",
+        "frequency": 0.75,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pruritus",
+        "snomedCode": "418290006",
+        "frequency": 0.6,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Right upper quadrant abdominal pain",
+        "snomedCode": "21522001",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Jaundice (intermittent or progressive)",
+        "snomedCode": "18165001",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Concurrent inflammatory bowel disease symptoms",
+        "snomedCode": "24526004",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal",
+        "notes": "Usually UC; often mild pancolitis"
+      }
     ],
     "occasional": [
-      { "symptomName": "Bacterial cholangitis (fever, rigors)", "snomedCode": "82403002", "frequency": 0.15, "bodySystem": "Hepatobiliary", "notes": "Recurrent episodes; from biliary strictures" },
-      { "symptomName": "Weight loss", "snomedCode": "89362005", "frequency": 0.20, "bodySystem": "Constitutional" },
-      { "symptomName": "Hepatomegaly and splenomegaly", "snomedCode": "80515008", "frequency": 0.25, "bodySystem": "Hepatic" },
-      { "symptomName": "Steatorrhea", "snomedCode": "267063001", "frequency": 0.10, "bodySystem": "Gastrointestinal" }
+      {
+        "symptomName": "Bacterial cholangitis (fever, rigors)",
+        "snomedCode": "82403002",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Recurrent episodes; from biliary strictures"
+      },
+      {
+        "symptomName": "Weight loss",
+        "snomedCode": "89362005",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hepatomegaly and splenomegaly",
+        "snomedCode": "80515008",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Steatorrhea",
+        "snomedCode": "267063001",
+        "frequency": 0.1,
+        "bodySystem": "gastrointestinal"
+      }
     ],
     "rare": [
-      { "symptomName": "Cholangiocarcinoma", "snomedCode": "312104005", "frequency": 0.08, "bodySystem": "Hepatobiliary/Oncologic", "notes": "Lifetime risk 10-15%; major concern; difficult to detect early" },
-      { "symptomName": "Gallbladder carcinoma", "frequency": 0.03, "bodySystem": "Hepatobiliary/Oncologic" },
-      { "symptomName": "Hepatocellular carcinoma", "snomedCode": "25370001", "frequency": 0.03, "bodySystem": "Hepatic/Oncologic" },
-      { "symptomName": "Colorectal carcinoma (in PSC-IBD)", "snomedCode": "363406005", "frequency": 0.05, "bodySystem": "Gastrointestinal/Oncologic", "notes": "Higher risk than IBD alone" },
-      { "symptomName": "Dominant stricture with obstruction", "frequency": 0.10, "bodySystem": "Hepatobiliary" }
+      {
+        "symptomName": "Cholangiocarcinoma",
+        "snomedCode": "312104005",
+        "frequency": 0.08,
+        "bodySystem": "constitutional",
+        "notes": "Lifetime risk 10-15%; major concern; difficult to detect early"
+      },
+      {
+        "symptomName": "Gallbladder carcinoma",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hepatocellular carcinoma",
+        "snomedCode": "25370001",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Colorectal carcinoma (in PSC-IBD)",
+        "snomedCode": "363406005",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Higher risk than IBD alone"
+      },
+      {
+        "symptomName": "Dominant stricture with obstruction",
+        "frequency": 0.1,
+        "bodySystem": "gastrointestinal"
+      }
     ]
   },
-  "systemsAffected": ["Hepatobiliary", "Gastrointestinal", "Musculoskeletal"],
+  "systemsAffected": [
+    "gastrointestinal",
+    "musculoskeletal"
+  ],
   "keyFindings": {
     "laboratory": [
       "Elevated ALP and GGT (cholestatic pattern)",
@@ -80,10 +191,42 @@
     ]
   },
   "differentialDiagnoses": [
-    { "diseaseId": "primary-biliary-cholangitis", "distinguishingFeatures": ["AMA positive", "Female predominance", "Normal cholangiogram", "Granulomatous bile duct destruction"] },
-    { "diseaseId": "igg4-related-disease", "distinguishingFeatures": ["Elevated serum IgG4 >2x ULN", "Pancreatic involvement (autoimmune pancreatitis)", "Responds to corticosteroids", "Dense IgG4+ plasma cell infiltrate on biopsy"] },
-    { "diseaseId": "autoimmune-hepatitis", "distinguishingFeatures": ["Hepatocellular enzyme pattern", "ANA/SMA positive", "Interface hepatitis", "Can overlap with PSC"] },
-    { "diseaseId": "cholangiocarcinoma", "distinguishingFeatures": ["Malignant stricture on ERCP", "CA 19-9 markedly elevated", "Mass lesion on imaging", "Positive cytology/FISH"] }
+    {
+      "diseaseId": "primary-biliary-cholangitis",
+      "distinguishingFeatures": [
+        "AMA positive",
+        "Female predominance",
+        "Normal cholangiogram",
+        "Granulomatous bile duct destruction"
+      ]
+    },
+    {
+      "diseaseId": "igg4-related-disease",
+      "distinguishingFeatures": [
+        "Elevated serum IgG4 >2x ULN",
+        "Pancreatic involvement (autoimmune pancreatitis)",
+        "Responds to corticosteroids",
+        "Dense IgG4+ plasma cell infiltrate on biopsy"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-hepatitis",
+      "distinguishingFeatures": [
+        "Hepatocellular enzyme pattern",
+        "ANA/SMA positive",
+        "Interface hepatitis",
+        "Can overlap with PSC"
+      ]
+    },
+    {
+      "diseaseId": "cholangiocarcinoma",
+      "distinguishingFeatures": [
+        "Malignant stricture on ERCP",
+        "CA 19-9 markedly elevated",
+        "Mass lesion on imaging",
+        "Positive cytology/FISH"
+      ]
+    }
   ],
   "redFlags": [
     "Rapidly progressive jaundice (concern for dominant stricture or cholangiocarcinoma)",
@@ -93,7 +236,11 @@
     "Progressive portal hypertension/decompensation (transplant evaluation)",
     "Colorectal dysplasia on surveillance colonoscopy"
   ],
-  "specialistType": ["Hepatology", "Gastroenterology", "Transplant Surgery"],
+  "specialistType": [
+    "Hepatology",
+    "Gastroenterology",
+    "Transplant Surgery"
+  ],
   "lastUpdated": "2026-02-17",
   "references": [
     "Lindor KD, et al. ACG Clinical Guideline: Primary Sclerosing Cholangitis. Am J Gastroenterol. 2015;110(5):646-659.",

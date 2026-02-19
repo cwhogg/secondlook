@@ -1,0 +1,211 @@
+{
+  "id": "chronic-recurrent-multifocal-osteomyelitis",
+  "name": "Chronic Recurrent Multifocal Osteomyelitis",
+  "aliases": [
+    "CRMO",
+    "Chronic Nonbacterial Osteomyelitis"
+  ],
+  "icd10Codes": [
+    "M86.3"
+  ],
+  "omimId": "607634",
+  "orphanetId": "2386",
+  "prevalence": {
+    "estimate": "1 in 200,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 4,
+      "max": 20,
+      "peak": 10
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Jansson Criteria for CRMO",
+    "criteria": [
+      {
+        "id": "multifocal-lesions",
+        "description": "Presence of multifocal bone lesions on imaging",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sterile-bone-inflammation",
+        "description": "Histopathological evidence of sterile bone inflammation without bacterial infection",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "recurrent-bone-pain",
+        "description": "Recurrent episodes of localized bone pain and swelling",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-pathogenic-organisms",
+        "description": "Negative microbiological cultures from bone biopsy",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "normal-immunologic-markers",
+        "description": "Lack of systemic infection or immunodeficiency markers",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of multifocal sterile bone inflammation with recurrent symptoms and exclusion of infectious causes",
+    "notes": "Diagnosis is clinical and radiological, supported by biopsy and exclusion of infection and malignancy"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent sterile bone inflammation",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Multifocal bone pain and swelling",
+        "frequency": 0.8,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Radiologic evidence of lytic and sclerotic bone lesions",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Localized tenderness over affected bones",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mild fever during flare-ups",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated inflammatory markers (ESR, CRP)",
+        "frequency": 0.6,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Limited range of motion near affected joints",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Soft tissue swelling adjacent to bone lesions",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild anemia",
+        "frequency": 0.25,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Skin manifestations such as pustulosis or psoriasis",
+        "frequency": 0.15,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pathologic fractures",
+        "frequency": 0.08,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Spinal involvement causing neurological symptoms",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arthritis of adjacent joints",
+        "frequency": 0.04,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "constitutional",
+    "hematological",
+    "dermatological",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated ESR and CRP during active disease",
+      "Negative blood and bone biopsy cultures",
+      "Mild anemia of chronic disease"
+    ],
+    "imaging": [
+      "MRI showing multifocal bone marrow edema",
+      "X-rays with lytic and sclerotic lesions",
+      "Bone scintigraphy demonstrating multiple active sites"
+    ],
+    "genetic": [
+      "Association with mutations in LPIN2, IL1RN, and other autoinflammatory genes in some cases"
+    ],
+    "other": [
+      "Histopathology showing sterile chronic inflammation with neutrophilic and lymphocytic infiltrates"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "infectious-osteomyelitis",
+      "distinguishingFeatures": [
+        "Positive bacterial cultures",
+        "Systemic signs of infection",
+        "Response to antibiotics"
+      ]
+    },
+    {
+      "diseaseId": "bone-malignancy",
+      "distinguishingFeatures": [
+        "Presence of malignant cells on biopsy",
+        "Unifocal lesion with aggressive bone destruction",
+        "Systemic symptoms like weight loss and night sweats"
+      ]
+    },
+    {
+      "diseaseId": "juvenile-idiopathic-arthritis",
+      "distinguishingFeatures": [
+        "Primary joint involvement rather than bone lesions",
+        "Presence of arthritis and systemic features",
+        "Autoimmune markers may be positive"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Persistent fever and systemic toxicity",
+    "Neurological deficits from spinal involvement",
+    "Rapidly progressive bone destruction"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Orthopedic surgeon",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Jansson AF et al. Diagnostic criteria for chronic recurrent multifocal osteomyelitis (CRMO). J Pediatr. 2007.",
+    "Ferguson PJ. Chronic recurrent multifocal osteomyelitis. Curr Opin Rheumatol. 2007.",
+    "Wipff J et al. Chronic recurrent multifocal osteomyelitis. Best Pract Res Clin Rheumatol. 2015."
+  ],
+  "confidenceInData": "medium"
+}

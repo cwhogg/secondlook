@@ -1,0 +1,213 @@
+{
+  "id": "biliary-atresia",
+  "name": "Biliary Atresia",
+  "aliases": [
+    "Extrahepatic Biliary Atresia",
+    "Neonatal Cholestasis Syndrome"
+  ],
+  "icd10Codes": [
+    "Q44.2"
+  ],
+  "omimId": "210500",
+  "orphanetId": "238",
+  "prevalence": {
+    "estimate": "1 in 10,000 to 15,000 live births",
+    "range": "0.0067% - 0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 45
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "Higher incidence in East Asian populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Kasai Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "persistent-jaundice",
+        "description": "Persistent conjugated hyperbilirubinemia beyond 2 weeks of age",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absent-or-narrow-bile-ducts",
+        "description": "Intraoperative cholangiography showing absent or obliterated extrahepatic bile ducts",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "liver-biopsy-findings",
+        "description": "Liver biopsy showing bile duct proliferation, portal fibrosis, and bile plugs",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ultrasound-findings",
+        "description": "Ultrasound showing absent or abnormal gallbladder and triangular cord sign",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Persistent conjugated hyperbilirubinemia plus cholangiographic evidence of bile duct obliteration",
+    "notes": "Early diagnosis is critical for timely surgical intervention (Kasai portoenterostomy)."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Persistent conjugated hyperbilirubinemia",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal",
+        "notes": "Jaundice persisting beyond 2 weeks of age"
+      },
+      {
+        "symptomName": "Acholic (pale) stools",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Dark urine due to choluria",
+        "frequency": 0.75,
+        "bodySystem": "renal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.65,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.8,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pruritus",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Coagulopathy due to vitamin K deficiency",
+        "frequency": 0.4,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Abdominal distension",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Portal hypertension signs",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fat malabsorption",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.08,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Jaundice-induced irritability",
+        "frequency": 0.05,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Hypoglycemia",
+        "frequency": 0.03,
+        "bodySystem": "endocrine"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "dermatological",
+    "renal",
+    "constitutional",
+    "psychiatric",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated direct (conjugated) bilirubin",
+      "Elevated serum gamma-glutamyl transferase (GGT)",
+      "Prolonged prothrombin time (PT) due to vitamin K deficiency"
+    ],
+    "imaging": [
+      "Absent or small gallbladder on ultrasound",
+      "Triangular cord sign on ultrasound",
+      "Cholangiography showing obliteration of extrahepatic bile ducts"
+    ],
+    "genetic": [
+      "No definitive genetic mutation identified; possible multifactorial etiology"
+    ],
+    "other": [
+      "Liver biopsy showing bile duct proliferation, portal fibrosis, and bile plugs"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "neonatal-hepatitis",
+      "distinguishingFeatures": [
+        "Presence of hepatocellular inflammation without bile duct obliteration",
+        "Normal or mildly abnormal bile ducts on cholangiography"
+      ]
+    },
+    {
+      "diseaseId": "alpha-1-antitrypsin-deficiency",
+      "distinguishingFeatures": [
+        "Serum alpha-1 antitrypsin deficiency",
+        "PAS-positive diastase-resistant globules on liver biopsy"
+      ]
+    },
+    {
+      "diseaseId": "cystic-fibrosis-related-liver-disease",
+      "distinguishingFeatures": [
+        "Positive sweat chloride test",
+        "Multisystem involvement including pulmonary symptoms"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive jaundice beyond 2 weeks of age",
+    "Acholic stools indicating bile flow obstruction",
+    "Rapidly worsening liver function tests"
+  ],
+  "specialistType": [
+    "Pediatric Gastroenterologist",
+    "Pediatric Hepatologist",
+    "Pediatric Surgeon"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Sokol RJ, Shepherd RW. Biliary atresia: clinical and research challenges for the twenty-first century. Hepatology. 2007.",
+    "Mack CL, Sokol RJ. Biliary atresia: clinical and research challenges for the twenty-first century. Hepatology. 2013.",
+    "Orphanet: Biliary atresia. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=238"
+  ],
+  "confidenceInData": "medium"
+}

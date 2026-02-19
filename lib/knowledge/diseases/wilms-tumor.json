@@ -1,0 +1,214 @@
+{
+  "id": "wilms-tumor",
+  "name": "Wilms Tumor",
+  "aliases": [
+    "Nephroblastoma",
+    "Wilms' Tumor"
+  ],
+  "icd10Codes": [
+    "C64"
+  ],
+  "omimId": "194070",
+  "orphanetId": "920",
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 10,
+      "peak": 3
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "African American (higher incidence)"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Wilms Tumor Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "abdominal-mass",
+        "description": "Palpable abdominal mass typically unilateral",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-characteristics",
+        "description": "Renal mass with characteristic features on ultrasound, CT, or MRI",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation of triphasic pattern (blastemal, stromal, epithelial cells)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Detection of WT1 gene mutations or loss of heterozygosity at 11p13",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of a renal mass with characteristic imaging features plus histopathological confirmation",
+    "notes": "Genetic testing supports diagnosis and prognosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Palpable abdominal mass",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Typically painless and unilateral"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.75,
+        "bodySystem": "renal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abdominal pain or discomfort",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to renin secretion by tumor"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.52,
+        "bodySystem": "hematological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Varicocele (left-sided)",
+        "frequency": 0.15,
+        "bodySystem": "reproductive",
+        "notes": "Due to tumor compression of left renal vein"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Respiratory distress",
+        "frequency": 0.05,
+        "bodySystem": "respiratory",
+        "notes": "May indicate pulmonary metastases"
+      },
+      {
+        "symptomName": "Hemodynamic instability",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to tumor rupture or hemorrhage"
+      },
+      {
+        "symptomName": "Abdominal distension",
+        "frequency": 0.07,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "renal",
+    "cardiovascular",
+    "hematological",
+    "constitutional",
+    "reproductive",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Anemia on complete blood count",
+      "Elevated lactate dehydrogenase (LDH)",
+      "Possible microscopic hematuria"
+    ],
+    "imaging": [
+      "Ultrasound showing solid renal mass",
+      "CT/MRI demonstrating well-circumscribed renal tumor with possible necrosis or hemorrhage",
+      "Chest imaging to evaluate for pulmonary metastases"
+    ],
+    "genetic": [
+      "WT1 gene mutations or deletions",
+      "Loss of heterozygosity at chromosome 11p13",
+      "Alterations in WTX and CTNNB1 genes"
+    ],
+    "other": [
+      "Histopathology revealing triphasic pattern (blastemal, stromal, epithelial components)",
+      "Immunohistochemistry positive for WT1 protein"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "neuroblastoma",
+      "distinguishingFeatures": [
+        "Originates from adrenal medulla or sympathetic chain",
+        "Elevated catecholamine metabolites in urine",
+        "Calcifications common on imaging"
+      ]
+    },
+    {
+      "diseaseId": "renal-cell-carcinoma-pediatric",
+      "distinguishingFeatures": [
+        "Rare in children, typically older age group",
+        "Different histopathological features",
+        "No WT1 mutations"
+      ]
+    },
+    {
+      "diseaseId": "mesoblastic-nephroma",
+      "distinguishingFeatures": [
+        "Usually presents in neonates",
+        "Benign tumor with spindle cell histology",
+        "Different imaging characteristics"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging abdominal mass",
+    "Hemodynamic instability suggesting tumor rupture",
+    "Respiratory distress indicating possible metastasis"
+  ],
+  "specialistType": [
+    "Pediatric Oncologist",
+    "Pediatric Nephrologist",
+    "Pediatric Surgeon",
+    "Radiologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "National Comprehensive Cancer Network (NCCN) Guidelines for Wilms Tumor",
+    "American Cancer Society: Wilms Tumor",
+    "UpToDate: Wilms Tumor (Nephroblastoma) in Children"
+  ],
+  "confidenceInData": "medium"
+}

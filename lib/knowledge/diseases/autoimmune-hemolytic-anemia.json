@@ -1,0 +1,210 @@
+{
+  "id": "autoimmune-hemolytic-anemia",
+  "name": "Autoimmune Hemolytic Anemia",
+  "aliases": [
+    "AIHA",
+    "Autoimmune Hemolysis"
+  ],
+  "icd10Codes": [
+    "D59.1"
+  ],
+  "omimId": "303700",
+  "orphanetId": "565",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 90,
+      "peak": 50
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No universally accepted formal criteria; diagnosis based on clinical and laboratory findings",
+    "criteria": [
+      {
+        "id": "positive-direct-antiglobulin-test",
+        "description": "Positive direct antiglobulin (Coombs) test indicating antibody or complement coating of red blood cells",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "evidence-hemolysis",
+        "description": "Laboratory evidence of hemolysis including elevated lactate dehydrogenase, elevated indirect bilirubin, decreased haptoglobin",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "anemia",
+        "description": "Presence of anemia with reticulocytosis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-other-causes",
+        "description": "Exclusion of other causes of hemolytic anemia such as hereditary spherocytosis or drug-induced hemolysis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Positive direct antiglobulin test plus laboratory evidence of hemolysis and anemia",
+    "notes": "Diagnosis requires integration of clinical presentation and laboratory findings; no single test is definitive alone."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Spherocytes on peripheral blood smear",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Indicative of extravascular hemolysis"
+      },
+      {
+        "symptomName": "Positive direct antiglobulin (Coombs) test",
+        "frequency": 0.95,
+        "bodySystem": "immunological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue due to anemia",
+        "frequency": 0.85,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pallor",
+        "frequency": 0.75,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Jaundice (icterus)",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.6,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Dark urine (hemoglobinuria)",
+        "frequency": 0.4,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Tachycardia",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abdominal discomfort due to splenomegaly",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Mild fever",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Leg ulcers",
+        "frequency": 0.05,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Neurological symptoms due to hypoxia",
+        "frequency": 0.02,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "constitutional",
+    "cardiovascular",
+    "respiratory",
+    "renal",
+    "gastrointestinal",
+    "dermatological",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive direct antiglobulin (Coombs) test",
+      "Elevated lactate dehydrogenase (LDH)",
+      "Elevated indirect bilirubin",
+      "Decreased serum haptoglobin",
+      "Reticulocytosis",
+      "Anemia with spherocytes on peripheral smear"
+    ],
+    "imaging": [
+      "Splenomegaly on abdominal ultrasound or CT"
+    ],
+    "genetic": [],
+    "other": [
+      "Exclusion of other hemolytic anemias",
+      "Response to corticosteroid therapy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hereditary-spherocytosis",
+      "distinguishingFeatures": [
+        "Family history of hemolytic anemia",
+        "Negative direct antiglobulin test",
+        "Osmotic fragility test positive"
+      ]
+    },
+    {
+      "diseaseId": "cold-agglutinin-disease",
+      "distinguishingFeatures": [
+        "Cold-induced hemolysis",
+        "Positive cold agglutinin titers",
+        "Symptoms exacerbated by cold exposure"
+      ]
+    },
+    {
+      "diseaseId": "drug-induced-hemolytic-anemia",
+      "distinguishingFeatures": [
+        "Temporal relationship with drug exposure",
+        "Resolution after drug withdrawal",
+        "Positive direct antiglobulin test may be present"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly worsening anemia with hemodynamic instability",
+    "Severe jaundice with signs of hepatic dysfunction",
+    "Signs of thromboembolism or disseminated intravascular coagulation"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Immunologist",
+    "Internal Medicine Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Gehrs BC, Friedberg RC. Autoimmune hemolytic anemia. Am J Hematol. 2002;69(4):258-71.",
+    "Barcellini W. New insights in autoimmune hemolytic anemia: from pathogenesis to therapy. Int J Lab Hematol. 2015;37(3):237-45.",
+    "Hill QA, Stamps R, Massey E, et al. The diagnosis and management of primary autoimmune haemolytic anaemia. Br J Haematol. 2017;176(3):395-411."
+  ],
+  "confidenceInData": "medium"
+}

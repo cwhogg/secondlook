@@ -1,8 +1,15 @@
 {
   "id": "behcet-disease",
   "name": "Behcet Disease",
-  "aliases": ["Behcet's Disease", "Behcet Syndrome", "Morbus Behcet", "Silk Road Disease"],
-  "icd10Codes": ["M35.2"],
+  "aliases": [
+    "Behcet's Disease",
+    "Behcet Syndrome",
+    "Morbus Behcet",
+    "Silk Road Disease"
+  ],
+  "icd10Codes": [
+    "M35.2"
+  ],
   "omimId": "109650",
   "orphanetId": "117",
   "prevalence": {
@@ -11,52 +18,195 @@
     "classification": "rare"
   },
   "demographics": {
-    "typicalOnsetAge": { "min": 20, "max": 40, "peak": 30 },
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 40,
+      "peak": 30
+    },
     "sexPredilection": "equal",
-    "ethnicAssociations": ["Turkish", "Middle Eastern", "East Asian (Japanese, Korean)", "Silk Road populations"]
+    "ethnicAssociations": [
+      "Turkish",
+      "Middle Eastern",
+      "East Asian (Japanese, Korean)",
+      "Silk Road populations"
+    ]
   },
   "diagnosticCriteria": {
     "formalCriteriaName": "International Criteria for Behcet's Disease (ICBD) 2014",
     "criteria": [
-      { "id": "bd-1", "description": "Recurrent oral aphthous ulcers (2 points)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "bd-2", "description": "Genital aphthous ulcers (2 points)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "bd-3", "description": "Ocular lesions: anterior uveitis, posterior uveitis, retinal vasculitis (2 points)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "bd-4", "description": "Skin lesions: erythema nodosum, pseudofolliculitis, papulopustular lesions, acneiform nodules (1 point)", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "bd-5", "description": "Vascular manifestations: arterial thrombosis, large vein thrombosis, phlebitis, superficial phlebitis (1 point)", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "bd-6", "description": "Positive pathergy test (1 point; optional, applied in countries where pathergy testing is performed)", "category": "supportive", "requiredForDiagnosis": false },
-      { "id": "bd-7", "description": "Neurological manifestations (1 point)", "category": "minor", "requiredForDiagnosis": false }
+      {
+        "id": "bd-1",
+        "description": "Recurrent oral aphthous ulcers (2 points)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bd-2",
+        "description": "Genital aphthous ulcers (2 points)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bd-3",
+        "description": "Ocular lesions: anterior uveitis, posterior uveitis, retinal vasculitis (2 points)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bd-4",
+        "description": "Skin lesions: erythema nodosum, pseudofolliculitis, papulopustular lesions, acneiform nodules (1 point)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bd-5",
+        "description": "Vascular manifestations: arterial thrombosis, large vein thrombosis, phlebitis, superficial phlebitis (1 point)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bd-6",
+        "description": "Positive pathergy test (1 point; optional, applied in countries where pathergy testing is performed)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bd-7",
+        "description": "Neurological manifestations (1 point)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
     ],
     "minimumForDiagnosis": "Total score >= 4 points",
     "notes": "Oral ulcers are the most common manifestation but are no longer an absolute requirement. Pathergy test specificity varies by geography and is most reliable in endemic regions."
   },
   "symptoms": {
     "pathognomonic": [
-      { "symptomName": "Recurrent oral aphthous ulcers", "snomedCode": "26284000", "frequency": 0.97, "bodySystem": "Oral", "notes": "Painful; recur >= 3 times/year; cardinal feature" },
-      { "symptomName": "Genital ulcers", "snomedCode": "300479005", "frequency": 0.65, "bodySystem": "Urogenital", "notes": "Painful; often scarring; highly specific for Behcet's" },
-      { "symptomName": "Positive pathergy test", "frequency": 0.40, "bodySystem": "Dermatologic", "notes": "Papule/pustule at needle prick site after 24-48 hours; more common in Middle Eastern/Asian patients" }
+      {
+        "symptomName": "Recurrent oral aphthous ulcers",
+        "snomedCode": "26284000",
+        "frequency": 0.97,
+        "bodySystem": "gastrointestinal",
+        "notes": "Painful; recur >= 3 times/year; cardinal feature"
+      },
+      {
+        "symptomName": "Genital ulcers",
+        "snomedCode": "300479005",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Painful; often scarring; highly specific for Behcet's"
+      },
+      {
+        "symptomName": "Positive pathergy test",
+        "frequency": 0.4,
+        "bodySystem": "dermatological",
+        "notes": "Papule/pustule at needle prick site after 24-48 hours; more common in Middle Eastern/Asian patients"
+      }
     ],
     "common": [
-      { "symptomName": "Anterior and/or posterior uveitis", "snomedCode": "128473001", "frequency": 0.50, "bodySystem": "Ocular", "notes": "Often bilateral; can lead to blindness" },
-      { "symptomName": "Skin lesions (pseudofolliculitis, erythema nodosum, papulopustular)", "snomedCode": "32861005", "frequency": 0.60, "bodySystem": "Dermatologic" },
-      { "symptomName": "Arthritis/arthralgia", "snomedCode": "57676002", "frequency": 0.50, "bodySystem": "Musculoskeletal", "notes": "Non-erosive; often oligoarticular; knees, ankles, wrists" },
-      { "symptomName": "Retinal vasculitis", "snomedCode": "399463004", "frequency": 0.30, "bodySystem": "Ocular" }
+      {
+        "symptomName": "Anterior and/or posterior uveitis",
+        "snomedCode": "128473001",
+        "frequency": 0.5,
+        "bodySystem": "ophthalmological",
+        "notes": "Often bilateral; can lead to blindness"
+      },
+      {
+        "symptomName": "Skin lesions (pseudofolliculitis, erythema nodosum, papulopustular)",
+        "snomedCode": "32861005",
+        "frequency": 0.6,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Arthritis/arthralgia",
+        "snomedCode": "57676002",
+        "frequency": 0.5,
+        "bodySystem": "musculoskeletal",
+        "notes": "Non-erosive; often oligoarticular; knees, ankles, wrists"
+      },
+      {
+        "symptomName": "Retinal vasculitis",
+        "snomedCode": "399463004",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological"
+      }
     ],
     "occasional": [
-      { "symptomName": "Deep vein thrombosis", "snomedCode": "128053003", "frequency": 0.20, "bodySystem": "Vascular", "notes": "Unique inflammatory thrombosis; anti-coagulation alone insufficient" },
-      { "symptomName": "Superficial thrombophlebitis", "snomedCode": "404223003", "frequency": 0.15, "bodySystem": "Vascular" },
-      { "symptomName": "GI ulceration (ileocecal region)", "snomedCode": "235657003", "frequency": 0.15, "bodySystem": "Gastrointestinal", "notes": "Can mimic Crohn's disease" },
-      { "symptomName": "Headache", "snomedCode": "25064002", "frequency": 0.20, "bodySystem": "Neurological" },
-      { "symptomName": "Epididymitis", "snomedCode": "31070006", "frequency": 0.05, "bodySystem": "Urogenital" }
+      {
+        "symptomName": "Deep vein thrombosis",
+        "snomedCode": "128053003",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular",
+        "notes": "Unique inflammatory thrombosis; anti-coagulation alone insufficient"
+      },
+      {
+        "symptomName": "Superficial thrombophlebitis",
+        "snomedCode": "404223003",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "GI ulceration (ileocecal region)",
+        "snomedCode": "235657003",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Can mimic Crohn's disease"
+      },
+      {
+        "symptomName": "Headache",
+        "snomedCode": "25064002",
+        "frequency": 0.2,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Epididymitis",
+        "snomedCode": "31070006",
+        "frequency": 0.05,
+        "bodySystem": "constitutional"
+      }
     ],
     "rare": [
-      { "symptomName": "Neuro-Behcet (parenchymal CNS disease)", "snomedCode": "230250001", "frequency": 0.05, "bodySystem": "Neurological", "notes": "Brainstem syndrome, meningoencephalitis" },
-      { "symptomName": "Cerebral venous sinus thrombosis", "snomedCode": "192759008", "frequency": 0.05, "bodySystem": "Neurological" },
-      { "symptomName": "Pulmonary artery aneurysm", "frequency": 0.03, "bodySystem": "Pulmonary", "notes": "Highly characteristic when present; can cause massive hemoptysis" },
-      { "symptomName": "Budd-Chiari syndrome", "snomedCode": "82385007", "frequency": 0.02, "bodySystem": "Hepatic" },
-      { "symptomName": "Cardiac involvement (myocarditis, intracardiac thrombus)", "frequency": 0.02, "bodySystem": "Cardiovascular" }
+      {
+        "symptomName": "Neuro-Behcet (parenchymal CNS disease)",
+        "snomedCode": "230250001",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Brainstem syndrome, meningoencephalitis"
+      },
+      {
+        "symptomName": "Cerebral venous sinus thrombosis",
+        "snomedCode": "192759008",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pulmonary artery aneurysm",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "notes": "Highly characteristic when present; can cause massive hemoptysis"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "snomedCode": "82385007",
+        "frequency": 0.02,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cardiac involvement (myocarditis, intracardiac thrombus)",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      }
     ]
   },
-  "systemsAffected": ["Oral/Mucosal", "Ocular", "Dermatologic", "Urogenital", "Vascular", "Neurological", "Gastrointestinal", "Musculoskeletal", "Pulmonary"],
+  "systemsAffected": [
+    "gastrointestinal",
+    "ophthalmological",
+    "dermatological",
+    "cardiovascular",
+    "neurological",
+    "musculoskeletal",
+    "respiratory"
+  ],
   "keyFindings": {
     "laboratory": [
       "No specific laboratory test; diagnosis is clinical",
@@ -84,10 +234,40 @@
     ]
   },
   "differentialDiagnoses": [
-    { "diseaseId": "inflammatory-bowel-disease-crohn", "distinguishingFeatures": ["Transmural inflammation", "Skip lesions", "Granulomas on biopsy", "No genital ulcers or pathergy"] },
-    { "diseaseId": "systemic-lupus-erythematosus", "distinguishingFeatures": ["ANA and anti-dsDNA positive", "Malar rash", "Lupus nephritis", "Complement consumption"] },
-    { "diseaseId": "reactive-arthritis", "distinguishingFeatures": ["Preceding infection (urethritis, dysentery)", "HLA-B27 positive", "Keratoderma blennorrhagicum"] },
-    { "diseaseId": "herpes-simplex-virus", "distinguishingFeatures": ["Viral culture/PCR positive", "Vesicular lesions", "Dermatomal distribution in HSV-2"] }
+    {
+      "diseaseId": "inflammatory-bowel-disease-crohn",
+      "distinguishingFeatures": [
+        "Transmural inflammation",
+        "Skip lesions",
+        "Granulomas on biopsy",
+        "No genital ulcers or pathergy"
+      ]
+    },
+    {
+      "diseaseId": "systemic-lupus-erythematosus",
+      "distinguishingFeatures": [
+        "ANA and anti-dsDNA positive",
+        "Malar rash",
+        "Lupus nephritis",
+        "Complement consumption"
+      ]
+    },
+    {
+      "diseaseId": "reactive-arthritis",
+      "distinguishingFeatures": [
+        "Preceding infection (urethritis, dysentery)",
+        "HLA-B27 positive",
+        "Keratoderma blennorrhagicum"
+      ]
+    },
+    {
+      "diseaseId": "herpes-simplex-virus",
+      "distinguishingFeatures": [
+        "Viral culture/PCR positive",
+        "Vesicular lesions",
+        "Dermatomal distribution in HSV-2"
+      ]
+    }
   ],
   "redFlags": [
     "Sudden vision loss (ocular emergency from retinal vasculitis)",
@@ -96,7 +276,12 @@
     "Progressive neurological deficits (neuro-Behcet)",
     "GI hemorrhage or perforation"
   ],
-  "specialistType": ["Rheumatology", "Ophthalmology", "Dermatology", "Neurology"],
+  "specialistType": [
+    "Rheumatology",
+    "Ophthalmology",
+    "Dermatology",
+    "Neurology"
+  ],
   "lastUpdated": "2026-02-17",
   "references": [
     "International Team for the Revision of the International Criteria for Behcet's Disease (ITR-ICBD). The International Criteria for Behcet's Disease (ICBD): a collaborative study of 27 countries. J Eur Acad Dermatol Venereol. 2014;28(3):338-347.",

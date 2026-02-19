@@ -1,0 +1,216 @@
+{
+  "id": "tropical-sprue",
+  "name": "Tropical Sprue",
+  "aliases": [
+    "Endemic Sprue",
+    "Tropical Malabsorption Syndrome"
+  ],
+  "icd10Codes": [
+    "K90.0"
+  ],
+  "prevalence": {
+    "estimate": "1 in 10,000 in endemic tropical regions",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 60,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Residents of tropical regions in South Asia, Caribbean, Central and South America"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Histopathological Diagnostic Criteria for Tropical Sprue",
+    "criteria": [
+      {
+        "id": "chronic-diarrhea",
+        "description": "Presence of chronic diarrhea lasting more than 1 month",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "malabsorption-evidence",
+        "description": "Evidence of malabsorption including steatorrhea and nutrient deficiencies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "small-bowel-biopsy",
+        "description": "Small intestinal biopsy showing villous atrophy and mucosal inflammation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-other-causes",
+        "description": "Exclusion of other causes of malabsorption such as celiac disease and infections",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "response-to-antibiotics",
+        "description": "Clinical improvement with antibiotic therapy and folate supplementation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All major criteria must be met including chronic diarrhea, evidence of malabsorption, characteristic biopsy findings, and exclusion of other causes",
+    "notes": "Diagnosis is clinical supported by histology and response to treatment; other malabsorption syndromes must be ruled out."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chronic watery diarrhea",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Persistent diarrhea lasting weeks to months"
+      },
+      {
+        "symptomName": "Steatorrhea",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "notes": "Fatty, foul-smelling stools due to fat malabsorption"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Significant unintentional weight loss"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Generalized weakness and tiredness"
+      },
+      {
+        "symptomName": "Nutrient deficiencies (e.g. folate, vitamin B12)",
+        "frequency": 0.6,
+        "bodySystem": "hematological",
+        "notes": "Manifesting as anemia and glossitis"
+      },
+      {
+        "symptomName": "Abdominal bloating and discomfort",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "notes": "Postprandial fullness and cramping"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Glossitis",
+        "frequency": 0.4,
+        "bodySystem": "hematological",
+        "notes": "Inflammation of the tongue due to vitamin deficiencies"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Due to vitamin B12 deficiency"
+      },
+      {
+        "symptomName": "Mild fever",
+        "frequency": 0.25,
+        "bodySystem": "constitutional",
+        "notes": "Low-grade fever in some patients"
+      },
+      {
+        "symptomName": "Muscle cramps",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to electrolyte imbalances"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Edema",
+        "frequency": 0.08,
+        "bodySystem": "constitutional",
+        "notes": "Secondary to hypoalbuminemia"
+      },
+      {
+        "symptomName": "Osteomalacia",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to vitamin D and calcium malabsorption"
+      },
+      {
+        "symptomName": "Neurological deficits (ataxia, cognitive changes)",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Severe vitamin B12 deficiency complications"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "neurological",
+    "musculoskeletal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Macrocytic anemia with low serum folate and vitamin B12 levels",
+      "Elevated stool fat content (steatorrhea)",
+      "Mildly elevated inflammatory markers"
+    ],
+    "imaging": [
+      "Small bowel imaging may show mucosal thickening but is nonspecific"
+    ],
+    "genetic": [],
+    "other": [
+      "Small bowel biopsy demonstrating villous atrophy with increased inflammatory cells",
+      "Clinical improvement with antibiotics (e.g., tetracycline) and folate supplementation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "celiac-disease",
+      "distinguishingFeatures": [
+        "Positive anti-tTG or anti-endomysial antibodies",
+        "Response to gluten-free diet",
+        "HLA-DQ2/DQ8 association"
+      ]
+    },
+    {
+      "diseaseId": "giardiasis",
+      "distinguishingFeatures": [
+        "Identification of Giardia lamblia in stool",
+        "Acute onset diarrhea",
+        "Response to antiparasitic treatment"
+      ]
+    },
+    {
+      "diseaseId": "whipple-disease",
+      "distinguishingFeatures": [
+        "PAS-positive macrophages on biopsy",
+        "Systemic symptoms including arthritis and neurological signs",
+        "PCR detection of Tropheryma whipplei"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe malnutrition and weight loss",
+    "Neurological symptoms indicating vitamin B12 deficiency",
+    "Failure to respond to antibiotic and folate therapy"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Infectious Disease Specialist",
+    "Hematologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Gupta S, et al. Tropical Sprue: Clinical Features and Management. Gastroenterol Clin North Am. 2020.",
+    "Kumar S, et al. Tropical Sprue: A Review. Indian J Gastroenterol. 2019.",
+    "Harrison's Principles of Internal Medicine, 20th Edition, 2018."
+  ],
+  "confidenceInData": "medium"
+}

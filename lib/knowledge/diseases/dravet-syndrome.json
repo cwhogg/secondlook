@@ -1,0 +1,217 @@
+{
+  "id": "dravet-syndrome",
+  "name": "Dravet Syndrome",
+  "aliases": [
+    "Severe Myoclonic Epilepsy of Infancy",
+    "SMEI"
+  ],
+  "icd10Codes": [
+    "G40.4"
+  ],
+  "omimId": "607208",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 15,700",
+    "range": "0.006-0.01%",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 2,
+      "max": 12,
+      "peak": 6
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Dravet Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "febrile-seizures",
+        "description": "Prolonged febrile seizures beginning in infancy (usually before 12 months)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "multiple-seizure-types",
+        "description": "Multiple seizure types including myoclonic, generalized tonic-clonic, and focal seizures",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "developmental-delay",
+        "description": "Developmental slowing or regression after seizure onset",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "scn1a-mutation",
+        "description": "Presence of pathogenic SCN1A gene mutation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "normal-early-development",
+        "description": "Normal development prior to seizure onset",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of prolonged febrile seizures starting before 12 months, multiple seizure types including myoclonic seizures, and developmental delay after seizure onset",
+    "notes": "Genetic testing for SCN1A mutations supports diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Prolonged febrile seizures in infancy",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "notes": "Typically lasting more than 15 minutes"
+      },
+      {
+        "symptomName": "Myoclonic seizures",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Multiple seizure types including generalized tonic-clonic and focal seizures",
+        "frequency": 0.8,
+        "bodySystem": "neurological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Developmental delay or regression",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Behavioral disturbances including hyperactivity and autistic features",
+        "frequency": 0.6,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Status epilepticus episodes",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Speech impairment",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Sleep disturbances",
+        "frequency": 0.4,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysautonomia",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Includes temperature regulation abnormalities"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Feeding difficulties",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiac arrhythmias",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Ophthalmological abnormalities (e.g., strabismus)",
+        "frequency": 0.04,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Respiratory complications",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "psychiatric",
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
+    "ophthalmological",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal routine blood tests",
+      "Possible elevated lactate during status epilepticus"
+    ],
+    "imaging": [
+      "Normal brain MRI early in disease",
+      "Possible cerebral atrophy or hippocampal sclerosis in later stages"
+    ],
+    "genetic": [
+      "Pathogenic variants in SCN1A gene in approximately 80% of cases"
+    ],
+    "other": [
+      "Electroencephalogram (EEG) showing generalized spike-and-wave and polyspike discharges",
+      "Prolonged seizures triggered by fever or hyperthermia"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "febrile-seizures",
+      "distinguishingFeatures": [
+        "Shorter duration febrile seizures",
+        "No multiple seizure types",
+        "No developmental regression"
+      ]
+    },
+    {
+      "diseaseId": "other-epileptic-encephalopathies",
+      "distinguishingFeatures": [
+        "Different genetic mutations",
+        "Distinct seizure semiology",
+        "Earlier or later onset"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Prolonged febrile seizures lasting more than 15 minutes",
+    "Multiple seizure types refractory to standard antiepileptic drugs",
+    "Developmental regression following seizure onset"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Pediatric Neurologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Dravet C. The core Dravet syndrome phenotype. Epilepsia. 2011 Jun;52 Suppl 2:3-9.",
+    "Marini C, et al. SCN1A-related epilepsies: clinical spectrum, molecular pathogenesis and therapeutic perspectives. Brain. 2021 Jan;144(1):1-15.",
+    "Orphanet: Dravet syndrome. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=284"
+  ],
+  "confidenceInData": "medium"
+}

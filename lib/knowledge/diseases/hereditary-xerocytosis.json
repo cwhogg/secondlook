@@ -1,0 +1,207 @@
+{
+  "id": "hereditary-xerocytosis",
+  "name": "Hereditary Xerocytosis",
+  "aliases": [
+    "Dehydrated Hereditary Stomatocytosis",
+    "Xerocytic Hemolytic Anemia"
+  ],
+  "icd10Codes": [
+    "D58.8"
+  ],
+  "omimId": "194380",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 500,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 40,
+      "peak": 10
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Hereditary Xerocytosis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "dehydrated-erythrocytes",
+        "description": "Presence of dehydrated erythrocytes with decreased osmotic fragility",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "chronic-hemolytic-anemia",
+        "description": "Chronic hemolytic anemia with reticulocytosis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "abnormal-rbc-membrane-permeability",
+        "description": "Abnormal red blood cell membrane permeability to potassium and sodium ions",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history consistent with autosomal dominant inheritance",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in PIEZO1 or KCNN4 genes",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of dehydrated erythrocytes with chronic hemolytic anemia plus either abnormal RBC membrane permeability or genetic confirmation",
+    "notes": "Diagnosis is supported by family history and exclusion of other hemolytic anemias"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Dehydrated erythrocytes with stomatocytes on peripheral smear",
+        "frequency": 0.85,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Chronic compensated hemolytic anemia",
+        "frequency": 0.8,
+        "bodySystem": "hematological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Jaundice due to hemolysis",
+        "frequency": 0.75,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.7,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated reticulocyte count",
+        "frequency": 0.7,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Gallstones (cholelithiasis)",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild fatigue",
+        "frequency": 0.35,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Transient edema",
+        "frequency": 0.3,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Mild splenic infarcts",
+        "frequency": 0.15,
+        "bodySystem": "hematological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Iron overload due to chronic hemolysis",
+        "frequency": 0.08,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Aplastic crises",
+        "frequency": 0.05,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Transient neurological symptoms due to microvascular occlusion",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "gastrointestinal",
+    "constitutional",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Peripheral blood smear showing stomatocytes and dehydrated erythrocytes",
+      "Elevated reticulocyte count",
+      "Elevated lactate dehydrogenase (LDH)",
+      "Low haptoglobin",
+      "Elevated indirect bilirubin"
+    ],
+    "imaging": [
+      "Ultrasound showing gallstones",
+      "Splenic enlargement on abdominal imaging"
+    ],
+    "genetic": [
+      "Mutations in PIEZO1 gene",
+      "Mutations in KCNN4 gene"
+    ],
+    "other": [
+      "Abnormal red blood cell cation permeability assays",
+      "Osmotic gradient ektacytometry showing decreased RBC deformability"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hereditary-spherocytosis",
+      "distinguishingFeatures": [
+        "Presence of spherocytes instead of stomatocytes",
+        "Increased osmotic fragility rather than decreased",
+        "Different genetic mutations (ANK1, SPTB, SPTA1)"
+      ]
+    },
+    {
+      "diseaseId": "hereditary-elliptocytosis",
+      "distinguishingFeatures": [
+        "Elliptical-shaped erythrocytes on smear",
+        "Normal or increased osmotic fragility",
+        "Different membrane protein defects"
+      ]
+    },
+    {
+      "diseaseId": "paroxysmal nocturnal hemoglobinuria",
+      "distinguishingFeatures": [
+        "Complement-mediated intravascular hemolysis",
+        "Flow cytometry showing CD55/CD59 deficiency",
+        "No stomatocytes on smear"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe anemia requiring transfusions",
+    "Acute splenic sequestration or infarction",
+    "Signs of iron overload (e.g., hepatomegaly, elevated ferritin)"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Bae C, Gnanasambandam R, Nicolai C, et al. Xerocytosis is caused by mutations that alter the kinetics of the mechanosensitive channel PIEZO1. Proc Natl Acad Sci U S A. 2013;110(12):E1162-8.",
+    "Andolfo I, Russo R, Gambale A, et al. Hereditary xerocytosis: clinical and molecular heterogeneity. Blood Cells Mol Dis. 2015;54(4):280-5.",
+    "Orphanet: Hereditary xerocytosis. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=395"
+  ],
+  "confidenceInData": "medium"
+}

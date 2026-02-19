@@ -1,0 +1,202 @@
+{
+  "id": "long-qt-syndrome-type-1",
+  "name": "Long QT Syndrome Type 1",
+  "aliases": [
+    "LQT1",
+    "KCNQ1-related Long QT Syndrome"
+  ],
+  "icd10Codes": [
+    "I45.81"
+  ],
+  "omimId": "192500",
+  "orphanetId": "ORPHA:803",
+  "prevalence": {
+    "estimate": "1 in 7,000",
+    "range": "0.01%-0.02%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 40,
+      "peak": 15
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Schwartz Score for Long QT Syndrome",
+    "criteria": [
+      {
+        "id": "prolonged-qt-interval",
+        "description": "Corrected QT interval (QTc) ≥ 480 ms on repeated ECGs",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pathogenic-kcnq1-variant",
+        "description": "Presence of pathogenic or likely pathogenic KCNQ1 gene mutation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-history",
+        "description": "History of syncope triggered by exercise or emotional stress",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Family history of confirmed LQT1 or sudden cardiac death under age 30",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Prolonged QTc ≥ 480 ms and/or presence of pathogenic KCNQ1 mutation with clinical features",
+    "notes": "Diagnosis is supported by Schwartz Score incorporating ECG, clinical, and family history data."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Prolonged QT interval on ECG",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "QTc prolongation is hallmark of LQT1"
+      },
+      {
+        "symptomName": "Exercise-induced syncope",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Syncope often triggered by swimming or exertion"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to ventricular arrhythmias"
+      },
+      {
+        "symptomName": "Torsades de pointes",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "notes": "Polymorphic ventricular tachycardia causing syncope or sudden death"
+      },
+      {
+        "symptomName": "Sudden cardiac arrest",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "May be first presentation"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.5,
+        "bodySystem": "constitutional",
+        "notes": "Non-specific symptom related to arrhythmia episodes"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Seizure-like episodes",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Secondary to cerebral hypoperfusion during arrhythmia"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "May occur during arrhythmic events"
+      },
+      {
+        "symptomName": "Dizziness",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Pre-syncope symptom"
+      },
+      {
+        "symptomName": "Shortness of breath",
+        "frequency": 0.15,
+        "bodySystem": "respiratory",
+        "notes": "During arrhythmia or syncope episodes"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden infant death",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare presentation in infants with LQT1"
+      },
+      {
+        "symptomName": "Nocturnal agonal respirations",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "notes": "Rarely reported during arrhythmic events"
+      },
+      {
+        "symptomName": "Psychiatric symptoms",
+        "frequency": 0.02,
+        "bodySystem": "psychiatric",
+        "notes": "Anxiety related to recurrent syncope or ICD implantation"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "respiratory",
+    "constitutional",
+    "psychiatric"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal routine blood tests; electrolyte abnormalities may exacerbate QT prolongation"
+    ],
+    "imaging": [
+      "ECG showing prolonged QTc interval; Holter monitoring may capture arrhythmias"
+    ],
+    "genetic": [
+      "Pathogenic variants in KCNQ1 gene causing loss of function of IKs potassium channel"
+    ],
+    "other": [
+      "Exercise stress testing may provoke QT prolongation and arrhythmias"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "long-qt-syndrome-type-2",
+      "distinguishingFeatures": [
+        "Mutations in KCNH2 gene",
+        "Syncope triggered by auditory stimuli",
+        "Different ECG T-wave morphology"
+      ]
+    },
+    {
+      "diseaseId": "catecholaminergic-polymorphic-ventricular-tachycardia",
+      "distinguishingFeatures": [
+        "Normal resting ECG",
+        "Exercise-induced bidirectional VT",
+        "Mutations in RYR2 or CASQ2 genes"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Syncope during exercise or emotional stress",
+    "Family history of sudden cardiac death under age 30",
+    "Documented torsades de pointes or ventricular fibrillation"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Geneticist",
+    "Electrophysiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Schwartz PJ, et al. Diagnostic criteria for the long QT syndrome: an update. Circulation. 2013.",
+    "Ackerman MJ, et al. HRS/EHRA expert consensus statement on the diagnosis and management of patients with inherited primary arrhythmia syndromes. Heart Rhythm. 2013.",
+    "Moss AJ, et al. Clinical aspects of the long QT syndrome. Circulation. 1995."
+  ],
+  "confidenceInData": "medium"
+}

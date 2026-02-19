@@ -1,0 +1,202 @@
+{
+  "id": "episodic-ataxia-type-2",
+  "name": "Episodic Ataxia Type 2",
+  "aliases": [
+    "EA2",
+    "Episodic Cerebellar Ataxia Type 2"
+  ],
+  "icd10Codes": [
+    "G11.89"
+  ],
+  "omimId": "108500",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 40,
+      "peak": 15
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical Diagnostic Criteria for Episodic Ataxia Type 2",
+    "criteria": [
+      {
+        "id": "recurrent-ataxia",
+        "description": "Recurrent episodes of cerebellar ataxia lasting hours to days",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "vertigo",
+        "description": "Episodes accompanied by vertigo and nausea",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cacna1a-mutation",
+        "description": "Identification of pathogenic CACNA1A gene mutation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "trigger-factors",
+        "description": "Symptoms triggered by stress, exertion, or caffeine",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "interictal-nystagmus",
+        "description": "Presence of interictal nystagmus on neurological exam",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of recurrent cerebellar ataxia episodes with vertigo plus identification of CACNA1A mutation or typical clinical presentation with supportive findings",
+    "notes": "Genetic testing is critical for confirmation; clinical presentation can overlap with other episodic ataxias."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent episodic cerebellar ataxia",
+        "frequency": 0.95,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Vertigo during attacks",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Interictal nystagmus",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Nausea associated with vertigo",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Dysarthria during episodes",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Muscle weakness during attacks",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Tinnitus",
+        "frequency": 0.3,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Diplopia",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Mild cognitive impairment",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Usually subtle and non-progressive"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Progressive ataxia between episodes",
+        "frequency": 0.07,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hearing loss",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal routine blood tests",
+      "Exclusion of metabolic causes"
+    ],
+    "imaging": [
+      "MRI may show mild cerebellar atrophy in chronic cases"
+    ],
+    "genetic": [
+      "Pathogenic variants in CACNA1A gene"
+    ],
+    "other": [
+      "Electro-oculography demonstrating interictal nystagmus",
+      "Response to acetazolamide treatment"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "episodic-ataxia-type-1",
+      "distinguishingFeatures": [
+        "Shorter episodes (seconds to minutes)",
+        "Mutations in KCNA1 gene",
+        "Presence of myokymia"
+      ]
+    },
+    {
+      "diseaseId": "migraine-ataxia",
+      "distinguishingFeatures": [
+        "Headache predominates",
+        "No CACNA1A mutation",
+        "Episodes triggered by migraine triggers"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive neurological deterioration",
+    "Seizures or status epilepticus",
+    "Sudden onset of focal neurological deficits"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Geneticist",
+    "Ophthalmologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Jen JC, et al. Episodic Ataxia Type 2. GeneReviews. 2020.",
+    "D'Adamo MC, et al. CACNA1A-related disorders. Handbook of Clinical Neurology. 2018.",
+    "Strupp M, et al. Episodic Ataxias: Clinical and Genetic Features. Front Neurol. 2017."
+  ],
+  "confidenceInData": "medium"
+}

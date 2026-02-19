@@ -1,0 +1,211 @@
+{
+  "id": "dent-disease",
+  "name": "Dent Disease",
+  "aliases": [
+    "X-linked Dent Disease",
+    "Dent's Disease"
+  ],
+  "icd10Codes": [
+    "N25.8"
+  ],
+  "omimId": "300009",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 40,
+      "peak": 10
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Dent Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "lmwp",
+        "description": "Presence of low molecular weight proteinuria",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hypercalciuria",
+        "description": "Hypercalciuria documented on urine analysis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "nephrocalcinosis",
+        "description": "Evidence of nephrocalcinosis or nephrolithiasis on imaging",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history consistent with X-linked inheritance",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in CLCN5 or OCRL genes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of low molecular weight proteinuria, hypercalciuria, and nephrocalcinosis/nephrolithiasis",
+    "notes": "Genetic testing can confirm diagnosis but is not mandatory if clinical criteria are met."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Low molecular weight proteinuria",
+        "frequency": 0.95,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hypercalciuria",
+        "frequency": 0.85,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Nephrocalcinosis",
+        "frequency": 0.75,
+        "bodySystem": "renal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Nephrolithiasis (kidney stones)",
+        "frequency": 0.65,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Proteinuria detected on routine screening",
+        "frequency": 0.6,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Fatigue related to chronic kidney disease",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Polyuria",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hypophosphatemia",
+        "frequency": 0.4,
+        "bodySystem": "endocrine",
+        "notes": "Due to proximal tubular dysfunction"
+      },
+      {
+        "symptomName": "Rickets or osteomalacia",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Growth retardation in children",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.15,
+        "bodySystem": "renal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Progressive renal failure",
+        "frequency": 0.08,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hyperphosphaturia",
+        "frequency": 0.05,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Muscle weakness secondary to electrolyte imbalance",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "musculoskeletal",
+    "endocrine",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low molecular weight proteinuria (e.g., elevated β2-microglobulin or retinol-binding protein in urine)",
+      "Hypercalciuria on 24-hour urine collection",
+      "Hypophosphatemia",
+      "Elevated serum creatinine in advanced disease"
+    ],
+    "imaging": [
+      "Renal ultrasound showing nephrocalcinosis",
+      "CT scan or X-ray demonstrating nephrolithiasis"
+    ],
+    "genetic": [
+      "Pathogenic mutations in CLCN5 gene (Dent disease type 1)",
+      "Pathogenic mutations in OCRL gene (Dent disease type 2)"
+    ],
+    "other": [
+      "Family history consistent with X-linked inheritance pattern"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "fanconi-syndrome",
+      "distinguishingFeatures": [
+        "Generalized proximal tubular dysfunction with glucosuria, aminoaciduria, and phosphaturia",
+        "Often caused by acquired conditions or other inherited disorders"
+      ]
+    },
+    {
+      "diseaseId": "primary-hyperoxaluria",
+      "distinguishingFeatures": [
+        "Excessive oxalate production leading to recurrent kidney stones",
+        "Elevated urinary oxalate levels",
+        "No low molecular weight proteinuria"
+      ]
+    },
+    {
+      "diseaseId": "bartter-syndrome",
+      "distinguishingFeatures": [
+        "Hypokalemic metabolic alkalosis",
+        "Normal or low urinary calcium excretion",
+        "No low molecular weight proteinuria"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Early onset nephrocalcinosis in a male patient",
+    "Persistent low molecular weight proteinuria despite normal glomerular function",
+    "Family history of kidney stones or renal failure with X-linked inheritance pattern"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Geneticist",
+    "Pediatric Nephrologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Wrong O, Norden AG, Feest TG, et al. Dent's disease: a familial proximal tubular nephropathy with low-molecular-weight proteinuria, hypercalciuria, nephrocalcinosis, and progressive renal failure. Kidney Int. 1994;45(6):1600-1607.",
+    "Lloyd SE, Pearce SH, Fisher SE, et al. A common molecular basis for three inherited kidney stone diseases. Nature. 1996;379(6564):445-449.",
+    "Orphanet: Dent Disease. Available at: https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=395"
+  ],
+  "confidenceInData": "medium"
+}

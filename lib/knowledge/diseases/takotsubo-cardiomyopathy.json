@@ -1,0 +1,209 @@
+{
+  "id": "takotsubo-cardiomyopathy",
+  "name": "Takotsubo Cardiomyopathy",
+  "aliases": [
+    "Stress-induced cardiomyopathy",
+    "Broken heart syndrome",
+    "Transient apical ballooning syndrome"
+  ],
+  "icd10Codes": [
+    "I51.81"
+  ],
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "range": "0.02-0.07%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 40,
+      "max": 90,
+      "peak": 65
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "Caucasian",
+      "Asian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Mayo Clinic Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "transient-wall-motion-abnormality",
+        "description": "Transient hypokinesis, akinesis, or dyskinesis of the left ventricular mid segments with or without apical involvement",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-coronary-artery-obstruction",
+        "description": "Absence of obstructive coronary disease or angiographic evidence of acute plaque rupture",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "new-ecg-abnormalities",
+        "description": "New electrocardiographic abnormalities (ST-segment elevation and/or T-wave inversion) or modest elevation in cardiac troponin",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-myocarditis-pheochromocytoma",
+        "description": "Absence of pheochromocytoma or myocarditis",
+        "category": "minor",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "All major criteria plus exclusion of myocarditis and pheochromocytoma",
+    "notes": "Diagnosis requires transient left ventricular dysfunction with typical wall motion abnormalities and exclusion of obstructive coronary artery disease."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Apical ballooning of left ventricle",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Characteristic imaging finding on echocardiogram or ventriculography"
+      },
+      {
+        "symptomName": "Transient left ventricular systolic dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Electrocardiographic ST-segment elevation",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Elevated cardiac troponin levels",
+        "frequency": 0.7,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Emotional or physical stress trigger",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric",
+        "notes": "Preceding stressful event often reported"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Nausea",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiogenic shock",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Ventricular arrhythmias",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Left ventricular outflow tract obstruction",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "respiratory",
+    "neurological",
+    "psychiatric",
+    "gastrointestinal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Mildly elevated cardiac troponin I or T",
+      "Elevated brain natriuretic peptide (BNP) or NT-proBNP"
+    ],
+    "imaging": [
+      "Echocardiogram showing apical ballooning and left ventricular dysfunction",
+      "Coronary angiography showing absence of obstructive coronary artery disease",
+      "Cardiac MRI excluding myocarditis and confirming wall motion abnormalities"
+    ],
+    "genetic": [],
+    "other": [
+      "Electrocardiogram with ST-segment elevation or T-wave inversion",
+      "Transient nature of left ventricular dysfunction with recovery within days to weeks"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "acute-myocardial-infarction",
+      "distinguishingFeatures": [
+        "Presence of obstructive coronary artery disease on angiography",
+        "Irreversible myocardial necrosis",
+        "Persistent wall motion abnormalities"
+      ]
+    },
+    {
+      "diseaseId": "myocarditis",
+      "distinguishingFeatures": [
+        "Inflammatory infiltrates on cardiac MRI or biopsy",
+        "Elevated inflammatory markers",
+        "Often associated with viral prodrome"
+      ]
+    },
+    {
+      "diseaseId": "pheochromocytoma-induced-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Elevated catecholamine levels",
+        "Presence of adrenal tumor",
+        "Recurrent episodes triggered by catecholamine surges"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset chest pain with ECG changes mimicking myocardial infarction",
+    "Development of cardiogenic shock",
+    "Life-threatening arrhythmias"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Emergency Medicine Physician",
+    "Intensivist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Prasad A, Lerman A, Rihal CS. Apical ballooning syndrome (Tako-Tsubo or stress cardiomyopathy): a mimic of acute myocardial infarction. Am Heart J. 2008;155(3):408-417.",
+    "Templin C, Ghadri JR, Diekmann J, et al. Clinical features and outcomes of Takotsubo (stress) cardiomyopathy. N Engl J Med. 2015;373(10):929-938.",
+    "Mayo Clinic Diagnostic Criteria for Takotsubo Cardiomyopathy. Mayo Clinic Proceedings. 2008."
+  ],
+  "confidenceInData": "medium"
+}

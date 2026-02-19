@@ -1,0 +1,207 @@
+{
+  "id": "pulmonary-lymphangiomyomatosis",
+  "name": "Pulmonary Lymphangioleiomyomatosis",
+  "aliases": [
+    "LAM",
+    "Lymphangioleiomyomatosis"
+  ],
+  "icd10Codes": [
+    "J84.89"
+  ],
+  "omimId": "606690",
+  "orphanetId": "793",
+  "prevalence": {
+    "estimate": "1 in 400,000 adult women",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 50,
+      "peak": 35
+    },
+    "sexPredilection": "female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "European Respiratory Society (ERS) LAM Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "lung-cysts",
+        "description": "Characteristic thin-walled cystic changes on high-resolution CT scan of the lungs",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "extrapulmonary-lam",
+        "description": "Presence of angiomyolipomas or chylous effusions",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "tuberous-sclerosis",
+        "description": "Diagnosis of tuberous sclerosis complex or presence of TSC gene mutations",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "serum-vegf-d",
+        "description": "Elevated serum vascular endothelial growth factor-D (VEGF-D) levels",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of characteristic lung cysts on HRCT plus either histological confirmation or presence of extrapulmonary manifestations (e.g., angiomyolipomas) or elevated VEGF-D",
+    "notes": "Definitive diagnosis may require lung biopsy if clinical and radiologic criteria are inconclusive."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive dyspnea on exertion",
+        "frequency": 0.85,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Recurrent spontaneous pneumothorax",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chylous pleural effusion",
+        "frequency": 0.7,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Nonproductive cough",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abdominal pain related to renal angiomyolipomas",
+        "frequency": 0.5,
+        "bodySystem": "renal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Exertional hypoxemia",
+        "frequency": 0.25,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Leg swelling due to lymphatic obstruction",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abdominal distension from chylous ascites",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pulmonary hypertension",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Renal hemorrhage from angiomyolipoma rupture",
+        "frequency": 0.05,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Neurological symptoms related to tuberous sclerosis complex",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "renal",
+    "cardiovascular",
+    "gastrointestinal",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum VEGF-D levels",
+      "Mild hypoxemia on arterial blood gas analysis"
+    ],
+    "imaging": [
+      "High-resolution CT showing diffuse thin-walled lung cysts",
+      "Abdominal ultrasound or CT showing renal angiomyolipomas",
+      "Chest X-ray may show pneumothorax or pleural effusions"
+    ],
+    "genetic": [
+      "Mutations in TSC1 or TSC2 genes in some cases",
+      "Association with tuberous sclerosis complex"
+    ],
+    "other": [
+      "Histopathology showing proliferation of abnormal smooth muscle-like LAM cells",
+      "Immunohistochemistry positive for HMB-45 marker"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pulmonary-emphysema",
+      "distinguishingFeatures": [
+        "Absence of cystic lung lesions typical of LAM",
+        "Smoking history common in emphysema",
+        "No association with angiomyolipomas or elevated VEGF-D"
+      ]
+    },
+    {
+      "diseaseId": "pulmonary-langerhans-cell-histiocytosis",
+      "distinguishingFeatures": [
+        "Nodular and cystic lung lesions predominantly in upper lobes",
+        "Smoking history common",
+        "Presence of Langerhans cells on biopsy"
+      ]
+    },
+    {
+      "diseaseId": "tuberous-sclerosis-complex",
+      "distinguishingFeatures": [
+        "Multisystem involvement with skin lesions, seizures",
+        "LAM may be a manifestation but TSC has broader clinical features"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Recurrent spontaneous pneumothorax",
+    "Rapidly progressive dyspnea",
+    "Chylous pleural effusions or ascites"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Thoracic surgeon",
+    "Nephrologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "McCormack FX. Lymphangioleiomyomatosis: a clinical update. Chest. 2008;133(2):507-516.",
+    "European Respiratory Society guidelines for the diagnosis and management of lymphangioleiomyomatosis. Eur Respir J. 2010;35(1):14-26.",
+    "Young LR, et al. Serum VEGF-D as a diagnostic biomarker for lymphangioleiomyomatosis. N Engl J Med. 2010;362(18):1751-1758."
+  ],
+  "confidenceInData": "medium"
+}

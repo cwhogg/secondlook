@@ -1,0 +1,210 @@
+{
+  "id": "long-qt-syndrome-type-2",
+  "name": "Long QT Syndrome Type 2",
+  "aliases": [
+    "LQT2",
+    "KCNH2-related Long QT Syndrome"
+  ],
+  "icd10Codes": [
+    "I45.81"
+  ],
+  "omimId": "613688",
+  "orphanetId": "ORPHA:98828",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "range": "0.002% - 0.005%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 20
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Schwartz Score adapted for LQTS",
+    "criteria": [
+      {
+        "id": "prolonged-qt-interval",
+        "description": "QTc interval ≥ 480 ms on repeated ECGs",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pathogenic-kcnh2-mutation",
+        "description": "Presence of pathogenic or likely pathogenic mutation in KCNH2 gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "history-of-torsades",
+        "description": "Documented torsades de pointes or polymorphic ventricular tachycardia",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "syncope-with-exertion-or-auditory-trigger",
+        "description": "Syncope triggered by auditory stimuli or emotional stress",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history-lqts",
+        "description": "Family history of confirmed LQTS or sudden cardiac death under age 40",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Prolonged QTc interval plus either a pathogenic KCNH2 mutation or documented torsades de pointes",
+    "notes": "Diagnosis may be supported by clinical history and family history in absence of genetic confirmation."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Prolonged QT interval on ECG",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "QTc typically ≥ 480 ms"
+      },
+      {
+        "symptomName": "Torsades de pointes ventricular tachycardia",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Characteristic polymorphic ventricular arrhythmia"
+      },
+      {
+        "symptomName": "Syncope triggered by auditory stimuli",
+        "frequency": 0.7,
+        "bodySystem": "cardiovascular",
+        "notes": "Syncope often precipitated by sudden loud noises"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Subjective awareness of irregular heartbeat"
+      },
+      {
+        "symptomName": "Syncope triggered by emotional stress",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "notes": "Fainting episodes during stress or exercise"
+      },
+      {
+        "symptomName": "Sudden cardiac arrest",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "May be first presentation in some patients"
+      },
+      {
+        "symptomName": "Palpitations during rest or sleep",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular",
+        "notes": "Arrhythmias may occur at rest"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Seizure-like episodes",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Secondary to cerebral hypoperfusion during arrhythmia"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.25,
+        "bodySystem": "constitutional",
+        "notes": "May be related to arrhythmia or medication side effects"
+      },
+      {
+        "symptomName": "Chest discomfort",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular",
+        "notes": "Non-specific symptom during arrhythmia episodes"
+      },
+      {
+        "symptomName": "Dizziness",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Often precedes syncope"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden unexplained death in infancy",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare presentation in neonates"
+      },
+      {
+        "symptomName": "Atrial fibrillation",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Uncommon arrhythmia in LQT2"
+      },
+      {
+        "symptomName": "Hearing impairment",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "notes": "Rarely reported in association with LQT2"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [],
+    "imaging": [
+      "Electrocardiogram showing prolonged QT interval",
+      "Holter monitoring detecting ventricular arrhythmias"
+    ],
+    "genetic": [
+      "Pathogenic variants in KCNH2 gene (HERG potassium channel gene)"
+    ],
+    "other": [
+      "Family history of sudden cardiac death or syncope",
+      "Response to QT-prolonging medications"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "long-qt-syndrome-type-1",
+      "distinguishingFeatures": [
+        "Mutations in KCNQ1 gene",
+        "Syncope often triggered by exercise rather than auditory stimuli"
+      ]
+    },
+    {
+      "diseaseId": "catecholaminergic-polymorphic-ventricular-tachycardia",
+      "distinguishingFeatures": [
+        "Normal resting ECG with exercise-induced arrhythmias",
+        "Mutations in RYR2 or CASQ2 genes"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Syncope triggered by sudden loud noises or emotional stress",
+    "Documented torsades de pointes or polymorphic ventricular tachycardia",
+    "Family history of sudden cardiac death under age 40"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Clinical Geneticist",
+    "Electrophysiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Schwartz PJ, Crotti L, Insolia R. Long-QT syndrome: from genetics to management. Circ Arrhythm Electrophysiol. 2012;5(4):868-877.",
+    "Ackerman MJ, Priori SG, Willems S, et al. HRS/EHRA expert consensus statement on the diagnosis and management of patients with inherited primary arrhythmia syndromes. Heart Rhythm. 2011;8(8):1304-1339.",
+    "Moss AJ, Kass RS. Long QT syndrome: from channels to cardiac arrhythmias. J Clin Invest. 2005;115(8):2018-2024."
+  ],
+  "confidenceInData": "medium"
+}

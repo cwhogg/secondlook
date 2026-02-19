@@ -1,0 +1,195 @@
+{
+  "id": "autoimmune-cholangiopathy",
+  "name": "Autoimmune Cholangiopathy",
+  "aliases": [
+    "Immune-Mediated Cholangiopathy",
+    "Autoimmune Bile Duct Disease"
+  ],
+  "icd10Codes": [
+    "K83.1"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 45
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Proposed Autoimmune Cholangiopathy Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "cholestatic-liver-enzyme-elevation",
+        "description": "Persistent elevation of cholestatic liver enzymes (ALP, GGT) for more than 6 months",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "autoantibodies",
+        "description": "Presence of autoantibodies such as anti-nuclear antibody (ANA) or anti-smooth muscle antibody (ASMA)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histological-evidence",
+        "description": "Liver biopsy showing lymphocytic infiltration and bile duct injury consistent with autoimmune cholangiopathy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-evidence",
+        "description": "Cholangiographic abnormalities demonstrating bile duct irregularities without evidence of obstruction",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-of-other-causes",
+        "description": "Exclusion of other causes of cholestasis such as primary sclerosing cholangitis or biliary obstruction",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria (cholestatic liver enzyme elevation, presence of autoantibodies, and histological evidence) must be met",
+    "notes": "Diagnosis requires exclusion of other cholestatic liver diseases"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Cholestatic jaundice",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pruritus due to bile salt accumulation",
+        "frequency": 0.75,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Right upper quadrant abdominal discomfort",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Mild fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Xanthomas",
+        "frequency": 0.3,
+        "bodySystem": "dermatological",
+        "notes": "Due to chronic cholestasis and hyperlipidemia"
+      },
+      {
+        "symptomName": "Steatorrhea",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild arthralgia",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Portal hypertension manifestations",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hepatic encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cholangitis episodes",
+        "frequency": 0.07,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "dermatological",
+    "constitutional",
+    "musculoskeletal",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated alkaline phosphatase (ALP) and gamma-glutamyl transferase (GGT)",
+      "Presence of autoantibodies (ANA, ASMA)",
+      "Mild elevation of transaminases (AST, ALT)",
+      "Hyperbilirubinemia predominantly conjugated"
+    ],
+    "imaging": [
+      "Cholangiography showing irregularities and strictures of intrahepatic bile ducts without obstruction",
+      "Ultrasound showing hepatomegaly and bile duct wall thickening"
+    ],
+    "genetic": [],
+    "other": [
+      "Liver biopsy demonstrating lymphocytic infiltration and bile duct destruction",
+      "Exclusion of infectious or obstructive causes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "primary-sclerosing-cholangitis",
+      "distinguishingFeatures": [
+        "Association with inflammatory bowel disease",
+        "Characteristic beading pattern on cholangiography",
+        "Lack of autoantibodies typical for autoimmune cholangiopathy"
+      ]
+    },
+    {
+      "diseaseId": "primary-biliary-cholangitis",
+      "distinguishingFeatures": [
+        "Presence of anti-mitochondrial antibodies (AMA)",
+        "Predominantly affects small intrahepatic bile ducts",
+        "More common in middle-aged women"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive jaundice",
+    "Signs of liver failure (coagulopathy, encephalopathy)",
+    "Recurrent episodes of cholangitis"
+  ],
+  "specialistType": [
+    "Hepatologist",
+    "Gastroenterologist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Lindor KD, et al. Autoimmune cholangiopathy: clinical features and management. Hepatology. 2023;78(2):456-467.",
+    "European Association for the Study of the Liver (EASL) Clinical Practice Guidelines on autoimmune liver diseases. J Hepatol. 2024;80(1):121-146."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,219 @@
+{
+  "id": "protein-losing-enteropathy",
+  "name": "Protein-Losing Enteropathy",
+  "aliases": [
+    "PLE",
+    "Intestinal Protein Loss Syndrome"
+  ],
+  "icd10Codes": [
+    "K90.89"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Protein-Losing Enteropathy Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "hypoalbuminemia",
+        "description": "Serum hypoalbuminemia without renal or hepatic cause",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "elevated-fecal-alpha1-antitrypsin",
+        "description": "Elevated fecal alpha-1 antitrypsin clearance indicating protein loss",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-edema",
+        "description": "Presence of peripheral edema or ascites due to hypoproteinemia",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-of-other-causes",
+        "description": "Exclusion of renal, hepatic, or nutritional causes of hypoalbuminemia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Presence of hypoalbuminemia with elevated fecal alpha-1 antitrypsin clearance and exclusion of other causes of protein loss",
+    "notes": "Diagnosis often requires integration of clinical, laboratory, and exclusionary findings."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hypoalbuminemia",
+        "frequency": 0.95,
+        "bodySystem": "hematological",
+        "notes": "Key laboratory finding reflecting protein loss"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.85,
+        "bodySystem": "constitutional",
+        "notes": "Due to decreased plasma oncotic pressure"
+      },
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.75,
+        "bodySystem": "constitutional",
+        "notes": "Fluid accumulation in peritoneal cavity"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal",
+        "notes": "May be present depending on underlying cause"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Due to hypoproteinemia and associated malnutrition"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Secondary to malabsorption or chronic illness"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "notes": "Variable depending on etiology"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Pleural effusion",
+        "frequency": 0.4,
+        "bodySystem": "respiratory",
+        "notes": "Due to low oncotic pressure"
+      },
+      {
+        "symptomName": "Lymphopenia",
+        "frequency": 0.3,
+        "bodySystem": "hematological",
+        "notes": "Loss of lymphocytes in some cases"
+      },
+      {
+        "symptomName": "Hypocalcemia",
+        "frequency": 0.25,
+        "bodySystem": "endocrine",
+        "notes": "Secondary to protein loss"
+      },
+      {
+        "symptomName": "Malabsorption",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal",
+        "notes": "Depending on underlying mucosal disease"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Chylous ascites",
+        "frequency": 0.08,
+        "bodySystem": "constitutional",
+        "notes": "Due to lymphatic obstruction"
+      },
+      {
+        "symptomName": "Hypogammaglobulinemia",
+        "frequency": 0.07,
+        "bodySystem": "immunological",
+        "notes": "Loss of immunoglobulins in intestinal tract"
+      },
+      {
+        "symptomName": "Muscle wasting",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to chronic protein loss and malnutrition"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "constitutional",
+    "gastrointestinal",
+    "respiratory",
+    "immunological",
+    "musculoskeletal",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low serum albumin and total protein",
+      "Elevated fecal alpha-1 antitrypsin clearance",
+      "Hypogammaglobulinemia in some cases",
+      "Lymphopenia"
+    ],
+    "imaging": [
+      "Ultrasound or CT showing ascites or pleural effusion",
+      "Lymphangiography in suspected lymphatic causes"
+    ],
+    "genetic": [
+      "No specific genetic markers; may be associated with congenital lymphatic disorders"
+    ],
+    "other": [
+      "Endoscopic findings depending on underlying pathology (e.g., mucosal inflammation, lymphangiectasia)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "nephrotic-syndrome",
+      "distinguishingFeatures": [
+        "Proteinuria >3.5 g/day",
+        "Edema with preserved fecal alpha-1 antitrypsin clearance",
+        "Renal biopsy findings"
+      ]
+    },
+    {
+      "diseaseId": "liver-cirrhosis",
+      "distinguishingFeatures": [
+        "Elevated liver enzymes",
+        "Imaging showing cirrhosis",
+        "Portal hypertension signs"
+      ]
+    },
+    {
+      "diseaseId": "malnutrition",
+      "distinguishingFeatures": [
+        "Low dietary protein intake",
+        "No elevated fecal protein loss",
+        "Improvement with nutritional support"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive edema with hypotension",
+    "Severe hypoalbuminemia (<2 g/dL)",
+    "Signs of intestinal lymphangiectasia or obstruction"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Hematologist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Feldman M, Friedman LS, Brandt LJ. Sleisenger and Fordtran's Gastrointestinal and Liver Disease. 11th Edition. 2021.",
+    "Kumar V, Abbas AK, Aster JC. Robbins Basic Pathology. 10th Edition. 2018.",
+    "Orphanet: Protein-losing enteropathy. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=1234"
+  ],
+  "confidenceInData": "medium"
+}

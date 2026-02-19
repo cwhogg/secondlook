@@ -1,8 +1,17 @@
 {
   "id": "autoimmune-polyglandular-syndrome",
   "name": "Autoimmune Polyglandular Syndrome",
-  "aliases": ["APS", "Polyglandular Autoimmune Syndrome", "Autoimmune Polyendocrine Syndrome", "Schmidt Syndrome (Type 2)", "APECED (Type 1)", "Autoimmune Polyendocrinopathy-Candidiasis-Ectodermal Dystrophy (Type 1)"],
-  "icd10Codes": ["E31.0"],
+  "aliases": [
+    "APS",
+    "Polyglandular Autoimmune Syndrome",
+    "Autoimmune Polyendocrine Syndrome",
+    "Schmidt Syndrome (Type 2)",
+    "APECED (Type 1)",
+    "Autoimmune Polyendocrinopathy-Candidiasis-Ectodermal Dystrophy (Type 1)"
+  ],
+  "icd10Codes": [
+    "E31.0"
+  ],
   "omimId": "240300",
   "orphanetId": "3453",
   "prevalence": {
@@ -11,53 +20,191 @@
     "classification": "rare"
   },
   "demographics": {
-    "typicalOnsetAge": { "min": 1, "max": 60, "peak": 30 },
+    "typicalOnsetAge": {
+      "min": 1,
+      "max": 60,
+      "peak": 30
+    },
     "sexPredilection": "slight-female",
-    "ethnicAssociations": ["Type 1 (APECED): Finnish, Sardinian, Iranian Jewish populations (higher prevalence)", "Type 2: All ethnic groups"]
+    "ethnicAssociations": [
+      "Type 1 (APECED): Finnish, Sardinian, Iranian Jewish populations (higher prevalence)",
+      "Type 2: All ethnic groups"
+    ]
   },
   "diagnosticCriteria": {
     "formalCriteriaName": "Clinical Diagnostic Criteria for APS Type 1 and Type 2",
     "criteria": [
-      { "id": "aps-t1-1", "description": "Type 1 (APECED): Two of three cardinal features: chronic mucocutaneous candidiasis, hypoparathyroidism, adrenal insufficiency (Addison's)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "aps-t1-2", "description": "Type 1: AIRE gene mutation confirmed", "category": "major", "requiredForDiagnosis": false },
-      { "id": "aps-t1-3", "description": "Type 1: One cardinal feature in a sibling of an affected individual", "category": "major", "requiredForDiagnosis": false },
-      { "id": "aps-t2-1", "description": "Type 2 (Schmidt syndrome): Adrenal insufficiency (Addison's) plus autoimmune thyroid disease (Hashimoto's or Graves') and/or Type 1 diabetes", "category": "major", "requiredForDiagnosis": false },
-      { "id": "aps-t2-2", "description": "Type 2: Presence of organ-specific autoantibodies supporting diagnosis", "category": "supportive", "requiredForDiagnosis": false },
-      { "id": "aps-t3-1", "description": "Type 3: Autoimmune thyroid disease plus another autoimmune condition (excluding adrenal insufficiency)", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "aps-t4-1", "description": "Type 4: Two or more organ-specific autoimmune endocrine conditions not fitting Types 1-3", "category": "minor", "requiredForDiagnosis": false }
+      {
+        "id": "aps-t1-1",
+        "description": "Type 1 (APECED): Two of three cardinal features: chronic mucocutaneous candidiasis, hypoparathyroidism, adrenal insufficiency (Addison's)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aps-t1-2",
+        "description": "Type 1: AIRE gene mutation confirmed",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aps-t1-3",
+        "description": "Type 1: One cardinal feature in a sibling of an affected individual",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aps-t2-1",
+        "description": "Type 2 (Schmidt syndrome): Adrenal insufficiency (Addison's) plus autoimmune thyroid disease (Hashimoto's or Graves') and/or Type 1 diabetes",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aps-t2-2",
+        "description": "Type 2: Presence of organ-specific autoantibodies supporting diagnosis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aps-t3-1",
+        "description": "Type 3: Autoimmune thyroid disease plus another autoimmune condition (excluding adrenal insufficiency)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "aps-t4-1",
+        "description": "Type 4: Two or more organ-specific autoimmune endocrine conditions not fitting Types 1-3",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
     ],
     "minimumForDiagnosis": "Type 1: 2 of 3 cardinal features OR 1 cardinal feature plus AIRE mutation OR 1 cardinal feature in sibling of APECED patient. Type 2: Addison's disease plus autoimmune thyroid disease and/or Type 1 diabetes.",
     "notes": "Type 1 (APECED) is autosomal recessive (AIRE gene); onset in childhood. Type 2 (Schmidt) is polygenic with HLA associations; onset in adulthood. Type 2 is much more common than Type 1."
   },
   "symptoms": {
     "pathognomonic": [
-      { "symptomName": "Combination of multiple endocrine autoimmune diseases", "frequency": 1.0, "bodySystem": "Endocrine", "notes": "The hallmark is the co-occurrence of multiple autoimmune endocrinopathies" },
-      { "symptomName": "Chronic mucocutaneous candidiasis (Type 1)", "snomedCode": "88263002", "frequency": 0.85, "bodySystem": "Oral/Dermatologic", "notes": "Usually first manifestation of APECED; onset in infancy/early childhood" },
-      { "symptomName": "Hypoparathyroidism (Type 1)", "snomedCode": "36976004", "frequency": 0.80, "bodySystem": "Endocrine", "notes": "Usually second manifestation of APECED; hypocalcemia" }
+      {
+        "symptomName": "Combination of multiple endocrine autoimmune diseases",
+        "frequency": 1,
+        "bodySystem": "endocrine",
+        "notes": "The hallmark is the co-occurrence of multiple autoimmune endocrinopathies"
+      },
+      {
+        "symptomName": "Chronic mucocutaneous candidiasis (Type 1)",
+        "snomedCode": "88263002",
+        "frequency": 0.85,
+        "bodySystem": "constitutional",
+        "notes": "Usually first manifestation of APECED; onset in infancy/early childhood"
+      },
+      {
+        "symptomName": "Hypoparathyroidism (Type 1)",
+        "snomedCode": "36976004",
+        "frequency": 0.8,
+        "bodySystem": "endocrine",
+        "notes": "Usually second manifestation of APECED; hypocalcemia"
+      }
     ],
     "common": [
-      { "symptomName": "Adrenal insufficiency (Addison's)", "snomedCode": "386584007", "frequency": 0.70, "bodySystem": "Endocrine", "notes": "Cardinal feature in both Type 1 and Type 2" },
-      { "symptomName": "Autoimmune thyroid disease (hypothyroidism or hyperthyroidism)", "snomedCode": "73211009", "frequency": 0.70, "bodySystem": "Endocrine" },
-      { "symptomName": "Type 1 diabetes mellitus", "snomedCode": "46635009", "frequency": 0.50, "bodySystem": "Endocrine" },
-      { "symptomName": "Fatigue and weakness", "snomedCode": "84229001", "frequency": 0.90, "bodySystem": "Constitutional" },
-      { "symptomName": "Vitiligo", "snomedCode": "56727007", "frequency": 0.20, "bodySystem": "Dermatologic" }
+      {
+        "symptomName": "Adrenal insufficiency (Addison's)",
+        "snomedCode": "386584007",
+        "frequency": 0.7,
+        "bodySystem": "endocrine",
+        "notes": "Cardinal feature in both Type 1 and Type 2"
+      },
+      {
+        "symptomName": "Autoimmune thyroid disease (hypothyroidism or hyperthyroidism)",
+        "snomedCode": "73211009",
+        "frequency": 0.7,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Type 1 diabetes mellitus",
+        "snomedCode": "46635009",
+        "frequency": 0.5,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Fatigue and weakness",
+        "snomedCode": "84229001",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Vitiligo",
+        "snomedCode": "56727007",
+        "frequency": 0.2,
+        "bodySystem": "dermatological"
+      }
     ],
     "occasional": [
-      { "symptomName": "Pernicious anemia (autoimmune gastritis/B12 deficiency)", "snomedCode": "84027009", "frequency": 0.15, "bodySystem": "Hematologic" },
-      { "symptomName": "Autoimmune hepatitis (Type 1 APECED)", "snomedCode": "235890007", "frequency": 0.15, "bodySystem": "Hepatic" },
-      { "symptomName": "Primary gonadal failure (premature ovarian insufficiency)", "snomedCode": "237788002", "frequency": 0.20, "bodySystem": "Reproductive" },
-      { "symptomName": "Alopecia areata or totalis", "snomedCode": "278040002", "frequency": 0.20, "bodySystem": "Dermatologic" },
-      { "symptomName": "Nail dystrophy and dental enamel hypoplasia (Type 1)", "snomedCode": "37031009", "frequency": 0.25, "bodySystem": "Dermatologic/Oral" }
+      {
+        "symptomName": "Pernicious anemia (autoimmune gastritis/B12 deficiency)",
+        "snomedCode": "84027009",
+        "frequency": 0.15,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Autoimmune hepatitis (Type 1 APECED)",
+        "snomedCode": "235890007",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Primary gonadal failure (premature ovarian insufficiency)",
+        "snomedCode": "237788002",
+        "frequency": 0.2,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Alopecia areata or totalis",
+        "snomedCode": "278040002",
+        "frequency": 0.2,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Nail dystrophy and dental enamel hypoplasia (Type 1)",
+        "snomedCode": "37031009",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      }
     ],
     "rare": [
-      { "symptomName": "Autoimmune intestinal dysfunction (chronic diarrhea, malabsorption)", "frequency": 0.10, "bodySystem": "Gastrointestinal" },
-      { "symptomName": "Keratitis and corneal opacification (Type 1)", "snomedCode": "64634000", "frequency": 0.10, "bodySystem": "Ocular" },
-      { "symptomName": "Asplenia (functional)", "frequency": 0.05, "bodySystem": "Hematologic" },
-      { "symptomName": "Interstitial pneumonitis", "frequency": 0.03, "bodySystem": "Pulmonary" },
-      { "symptomName": "Tubulointerstitial nephritis", "frequency": 0.05, "bodySystem": "Renal" }
+      {
+        "symptomName": "Autoimmune intestinal dysfunction (chronic diarrhea, malabsorption)",
+        "frequency": 0.1,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Keratitis and corneal opacification (Type 1)",
+        "snomedCode": "64634000",
+        "frequency": 0.1,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Asplenia (functional)",
+        "frequency": 0.05,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Interstitial pneumonitis",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Tubulointerstitial nephritis",
+        "frequency": 0.05,
+        "bodySystem": "renal"
+      }
     ]
   },
-  "systemsAffected": ["Endocrine", "Dermatologic", "Hematologic", "Hepatic", "Reproductive", "Gastrointestinal", "Oral", "Ocular"],
+  "systemsAffected": [
+    "endocrine",
+    "dermatological",
+    "hematological",
+    "gastrointestinal",
+    "reproductive",
+    "ophthalmological"
+  ],
   "keyFindings": {
     "laboratory": [
       "Organ-specific autoantibodies: 21-hydroxylase (adrenal), anti-TPO/TG (thyroid), anti-GAD/IA2/ZnT8 (islet), anti-parietal cell/intrinsic factor (gastric)",
@@ -85,10 +232,37 @@
     ]
   },
   "differentialDiagnoses": [
-    { "diseaseId": "addison-disease", "distinguishingFeatures": ["Isolated adrenal insufficiency without other endocrinopathies", "May be early presentation of APS Type 2; screen for additional components"] },
-    { "diseaseId": "hashimoto-thyroiditis", "distinguishingFeatures": ["Isolated thyroid involvement", "No adrenal or islet cell disease", "May progress to APS if additional glands become affected"] },
-    { "diseaseId": "type-1-diabetes", "distinguishingFeatures": ["Isolated islet autoimmunity", "Screen for thyroid and adrenal antibodies to detect evolving APS"] },
-    { "diseaseId": "digeorge-syndrome", "distinguishingFeatures": ["22q11 deletion", "Hypoparathyroidism but from developmental absence", "Cardiac defects", "No autoimmune adrenalitis"] }
+    {
+      "diseaseId": "addison-disease",
+      "distinguishingFeatures": [
+        "Isolated adrenal insufficiency without other endocrinopathies",
+        "May be early presentation of APS Type 2; screen for additional components"
+      ]
+    },
+    {
+      "diseaseId": "hashimoto-thyroiditis",
+      "distinguishingFeatures": [
+        "Isolated thyroid involvement",
+        "No adrenal or islet cell disease",
+        "May progress to APS if additional glands become affected"
+      ]
+    },
+    {
+      "diseaseId": "type-1-diabetes",
+      "distinguishingFeatures": [
+        "Isolated islet autoimmunity",
+        "Screen for thyroid and adrenal antibodies to detect evolving APS"
+      ]
+    },
+    {
+      "diseaseId": "digeorge-syndrome",
+      "distinguishingFeatures": [
+        "22q11 deletion",
+        "Hypoparathyroidism but from developmental absence",
+        "Cardiac defects",
+        "No autoimmune adrenalitis"
+      ]
+    }
   ],
   "redFlags": [
     "Adrenal crisis in patient with known thyroid or diabetes autoimmunity (undiagnosed Addison's)",
@@ -97,7 +271,11 @@
     "Severe mucocutaneous candidiasis in childhood (APECED screening needed)",
     "Autoimmune hepatitis in child with candidiasis (APECED - can be fatal)"
   ],
-  "specialistType": ["Endocrinology", "Pediatric Endocrinology", "Immunology"],
+  "specialistType": [
+    "Endocrinology",
+    "Pediatric Endocrinology",
+    "Immunology"
+  ],
   "lastUpdated": "2026-02-17",
   "references": [
     "Husebye ES, et al. Autoimmune polyendocrine syndromes. N Engl J Med. 2018;378(12):1132-1141.",

@@ -1,8 +1,15 @@
 {
   "id": "granulomatosis-with-polyangiitis",
   "name": "Granulomatosis with Polyangiitis",
-  "aliases": ["GPA", "Wegener's Granulomatosis", "Wegener Granulomatosis"],
-  "icd10Codes": ["M31.30", "M31.31"],
+  "aliases": [
+    "GPA",
+    "Wegener's Granulomatosis",
+    "Wegener Granulomatosis"
+  ],
+  "icd10Codes": [
+    "M31.30",
+    "M31.31"
+  ],
   "omimId": "608710",
   "orphanetId": "900",
   "prevalence": {
@@ -11,53 +18,197 @@
     "classification": "rare"
   },
   "demographics": {
-    "typicalOnsetAge": { "min": 40, "max": 65, "peak": 55 },
+    "typicalOnsetAge": {
+      "min": 40,
+      "max": 65,
+      "peak": 55
+    },
     "sexPredilection": "slight-male",
-    "ethnicAssociations": ["Northern European descent", "Caucasian"]
+    "ethnicAssociations": [
+      "Northern European descent",
+      "Caucasian"
+    ]
   },
   "diagnosticCriteria": {
     "formalCriteriaName": "2022 ACR/EULAR Classification Criteria for GPA",
     "criteria": [
-      { "id": "gpa-1", "description": "Nasal involvement: bloody discharge, crusting, nasal ulceration, or septal perforation/saddle nose deformity", "category": "major", "requiredForDiagnosis": false },
-      { "id": "gpa-2", "description": "Cartilaginous involvement: nasal septal perforation/saddle nose, hearing loss (conductive or sensorineural), or laryngeal/tracheal stenosis", "category": "major", "requiredForDiagnosis": false },
-      { "id": "gpa-3", "description": "PR3-ANCA (c-ANCA) positivity", "category": "major", "requiredForDiagnosis": false },
-      { "id": "gpa-4", "description": "Pulmonary nodules, masses, or cavities on imaging", "category": "major", "requiredForDiagnosis": false },
-      { "id": "gpa-5", "description": "Granulomatous inflammation on biopsy (extravascular)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "gpa-6", "description": "Pauci-immune glomerulonephritis (crescentic or necrotizing)", "category": "major", "requiredForDiagnosis": false },
-      { "id": "gpa-7", "description": "Positive c-ANCA or PR3-ANCA by immunoassay", "category": "major", "requiredForDiagnosis": false },
-      { "id": "gpa-8", "description": "Retro-orbital mass or inflammation", "category": "minor", "requiredForDiagnosis": false }
+      {
+        "id": "gpa-1",
+        "description": "Nasal involvement: bloody discharge, crusting, nasal ulceration, or septal perforation/saddle nose deformity",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "gpa-2",
+        "description": "Cartilaginous involvement: nasal septal perforation/saddle nose, hearing loss (conductive or sensorineural), or laryngeal/tracheal stenosis",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "gpa-3",
+        "description": "PR3-ANCA (c-ANCA) positivity",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "gpa-4",
+        "description": "Pulmonary nodules, masses, or cavities on imaging",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "gpa-5",
+        "description": "Granulomatous inflammation on biopsy (extravascular)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "gpa-6",
+        "description": "Pauci-immune glomerulonephritis (crescentic or necrotizing)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "gpa-7",
+        "description": "Positive c-ANCA or PR3-ANCA by immunoassay",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "gpa-8",
+        "description": "Retro-orbital mass or inflammation",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
     ],
     "minimumForDiagnosis": "Diagnosis of small- or medium-vessel vasculitis plus total weighted score >= 5 on the classification criteria",
     "notes": "Must first establish a diagnosis of vasculitis. The 2022 criteria use a weighted scoring system. Biopsy showing necrotizing granulomatous inflammation is highly supportive."
   },
   "symptoms": {
     "pathognomonic": [
-      { "symptomName": "Saddle nose deformity", "snomedCode": "249308005", "frequency": 0.15, "bodySystem": "ENT", "notes": "Due to nasal cartilage destruction from granulomatous inflammation" },
-      { "symptomName": "Cavitating pulmonary nodules", "snomedCode": "713178000", "frequency": 0.35, "bodySystem": "Pulmonary", "notes": "Multiple bilateral nodules that may cavitate" },
-      { "symptomName": "Necrotizing granulomatous vasculitis on biopsy", "frequency": 0.60, "bodySystem": "Histopathologic" }
+      {
+        "symptomName": "Saddle nose deformity",
+        "snomedCode": "249308005",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "notes": "Due to nasal cartilage destruction from granulomatous inflammation"
+      },
+      {
+        "symptomName": "Cavitating pulmonary nodules",
+        "snomedCode": "713178000",
+        "frequency": 0.35,
+        "bodySystem": "respiratory",
+        "notes": "Multiple bilateral nodules that may cavitate"
+      },
+      {
+        "symptomName": "Necrotizing granulomatous vasculitis on biopsy",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      }
     ],
     "common": [
-      { "symptomName": "Chronic sinusitis with bloody nasal discharge", "snomedCode": "40055000", "frequency": 0.70, "bodySystem": "ENT" },
-      { "symptomName": "Pulmonary infiltrates or nodules", "snomedCode": "713178000", "frequency": 0.60, "bodySystem": "Pulmonary" },
-      { "symptomName": "Glomerulonephritis (rapidly progressive)", "snomedCode": "36171008", "frequency": 0.50, "bodySystem": "Renal" },
-      { "symptomName": "Constitutional symptoms (fever, weight loss, fatigue)", "snomedCode": "386661006", "frequency": 0.70, "bodySystem": "Constitutional" },
-      { "symptomName": "Arthralgia or arthritis", "snomedCode": "57676002", "frequency": 0.50, "bodySystem": "Musculoskeletal" }
+      {
+        "symptomName": "Chronic sinusitis with bloody nasal discharge",
+        "snomedCode": "40055000",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pulmonary infiltrates or nodules",
+        "snomedCode": "713178000",
+        "frequency": 0.6,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Glomerulonephritis (rapidly progressive)",
+        "snomedCode": "36171008",
+        "frequency": 0.5,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Constitutional symptoms (fever, weight loss, fatigue)",
+        "snomedCode": "386661006",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arthralgia or arthritis",
+        "snomedCode": "57676002",
+        "frequency": 0.5,
+        "bodySystem": "musculoskeletal"
+      }
     ],
     "occasional": [
-      { "symptomName": "Subglottic stenosis", "snomedCode": "419977006", "frequency": 0.15, "bodySystem": "ENT", "notes": "Stridor, dyspnea; more common in younger patients" },
-      { "symptomName": "Orbital pseudotumor/proptosis", "snomedCode": "18146001", "frequency": 0.15, "bodySystem": "Ocular" },
-      { "symptomName": "Scleritis or episcleritis", "snomedCode": "78370002", "frequency": 0.15, "bodySystem": "Ocular" },
-      { "symptomName": "Mononeuritis multiplex", "snomedCode": "128189008", "frequency": 0.15, "bodySystem": "Neurological" },
-      { "symptomName": "Otitis media (serous or hemorrhagic)", "snomedCode": "65363002", "frequency": 0.25, "bodySystem": "ENT" }
+      {
+        "symptomName": "Subglottic stenosis",
+        "snomedCode": "419977006",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "notes": "Stridor, dyspnea; more common in younger patients"
+      },
+      {
+        "symptomName": "Orbital pseudotumor/proptosis",
+        "snomedCode": "18146001",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Scleritis or episcleritis",
+        "snomedCode": "78370002",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Mononeuritis multiplex",
+        "snomedCode": "128189008",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Otitis media (serous or hemorrhagic)",
+        "snomedCode": "65363002",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      }
     ],
     "rare": [
-      { "symptomName": "Diffuse alveolar hemorrhage", "snomedCode": "233608003", "frequency": 0.08, "bodySystem": "Pulmonary", "notes": "Life-threatening; pulmonary-renal syndrome" },
-      { "symptomName": "Pachymeningitis", "snomedCode": "45170000", "frequency": 0.05, "bodySystem": "Neurological" },
-      { "symptomName": "Pericarditis", "snomedCode": "3238004", "frequency": 0.05, "bodySystem": "Cardiovascular" },
-      { "symptomName": "Skin ulceration or palpable purpura", "snomedCode": "20143000", "frequency": 0.10, "bodySystem": "Dermatologic" }
+      {
+        "symptomName": "Diffuse alveolar hemorrhage",
+        "snomedCode": "233608003",
+        "frequency": 0.08,
+        "bodySystem": "respiratory",
+        "notes": "Life-threatening; pulmonary-renal syndrome"
+      },
+      {
+        "symptomName": "Pachymeningitis",
+        "snomedCode": "45170000",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "snomedCode": "3238004",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Skin ulceration or palpable purpura",
+        "snomedCode": "20143000",
+        "frequency": 0.1,
+        "bodySystem": "dermatological"
+      }
     ]
   },
-  "systemsAffected": ["ENT/Upper Respiratory", "Pulmonary", "Renal", "Ocular", "Musculoskeletal", "Neurological", "Dermatologic", "Cardiovascular"],
+  "systemsAffected": [
+    "otolaryngological",
+    "respiratory",
+    "renal",
+    "ophthalmological",
+    "musculoskeletal",
+    "neurological",
+    "dermatological",
+    "cardiovascular"
+  ],
   "keyFindings": {
     "laboratory": [
       "PR3-ANCA (c-ANCA) positive (80-90% in generalized disease)",
@@ -84,11 +235,47 @@
     ]
   },
   "differentialDiagnoses": [
-    { "diseaseId": "microscopic-polyangiitis", "distinguishingFeatures": ["No granulomatous inflammation", "MPO-ANCA (p-ANCA) predominant", "No ENT involvement"] },
-    { "diseaseId": "eosinophilic-granulomatosis-with-polyangiitis", "distinguishingFeatures": ["Asthma and eosinophilia", "Eosinophilic infiltration on biopsy", "MPO-ANCA when positive"] },
-    { "diseaseId": "anti-gbm-disease", "distinguishingFeatures": ["Anti-GBM antibodies", "Linear IgG on immunofluorescence", "No granulomas"] },
-    { "diseaseId": "sarcoidosis", "distinguishingFeatures": ["Non-necrotizing granulomas", "Bilateral hilar lymphadenopathy", "Elevated ACE", "ANCA negative"] },
-    { "diseaseId": "lymphomatoid-granulomatosis", "distinguishingFeatures": ["EBV-positive B cells", "Angiocentric and angiodestructive", "ANCA negative"] }
+    {
+      "diseaseId": "microscopic-polyangiitis",
+      "distinguishingFeatures": [
+        "No granulomatous inflammation",
+        "MPO-ANCA (p-ANCA) predominant",
+        "No ENT involvement"
+      ]
+    },
+    {
+      "diseaseId": "eosinophilic-granulomatosis-with-polyangiitis",
+      "distinguishingFeatures": [
+        "Asthma and eosinophilia",
+        "Eosinophilic infiltration on biopsy",
+        "MPO-ANCA when positive"
+      ]
+    },
+    {
+      "diseaseId": "anti-gbm-disease",
+      "distinguishingFeatures": [
+        "Anti-GBM antibodies",
+        "Linear IgG on immunofluorescence",
+        "No granulomas"
+      ]
+    },
+    {
+      "diseaseId": "sarcoidosis",
+      "distinguishingFeatures": [
+        "Non-necrotizing granulomas",
+        "Bilateral hilar lymphadenopathy",
+        "Elevated ACE",
+        "ANCA negative"
+      ]
+    },
+    {
+      "diseaseId": "lymphomatoid-granulomatosis",
+      "distinguishingFeatures": [
+        "EBV-positive B cells",
+        "Angiocentric and angiodestructive",
+        "ANCA negative"
+      ]
+    }
   ],
   "redFlags": [
     "Rapidly progressive glomerulonephritis with rising creatinine",
@@ -97,7 +284,12 @@
     "Acute vision loss from orbital involvement",
     "Pulmonary-renal syndrome (concurrent lung hemorrhage and renal failure)"
   ],
-  "specialistType": ["Rheumatology", "Pulmonology", "Nephrology", "Otolaryngology"],
+  "specialistType": [
+    "Rheumatology",
+    "Pulmonology",
+    "Nephrology",
+    "Otolaryngology"
+  ],
   "lastUpdated": "2026-02-17",
   "references": [
     "Robson JC, et al. 2022 American College of Rheumatology/European Alliance of Associations for Rheumatology Classification Criteria for Granulomatosis with Polyangiitis. Arthritis Rheumatol. 2022;74(3):393-399.",

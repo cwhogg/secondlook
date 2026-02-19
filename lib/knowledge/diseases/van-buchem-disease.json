@@ -1,0 +1,200 @@
+{
+  "id": "van-buchem-disease",
+  "name": "Van Buchem Disease",
+  "aliases": [
+    "Sclerosteosis Type 2",
+    "Hyperostosis Corticalis Generalisata"
+  ],
+  "icd10Codes": [
+    "Q78.8"
+  ],
+  "omimId": "239100",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 40,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Dutch (Frisian) population"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Van Buchem Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "hyperostosis-skull-mandible",
+        "description": "Radiologically confirmed hyperostosis of the skull and mandible",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing-sost",
+        "description": "Identification of biallelic mutations or deletions in the SOST gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Presence of progressive facial nerve palsy or cranial nerve compression symptoms",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history consistent with autosomal recessive inheritance",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of radiological hyperostosis of skull and mandible plus genetic confirmation of SOST mutation or deletion",
+    "notes": "Diagnosis may be supported by clinical features and family history but requires imaging and genetic confirmation."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Skull hyperostosis",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mandibular hyperostosis",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cranial nerve compression neuropathy",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Often involves facial nerve palsy"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Facial nerve palsy",
+        "frequency": 0.7,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Progressive hearing loss",
+        "frequency": 0.65,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased bone density on radiographs",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Visual impairment due to optic nerve compression",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nasal obstruction",
+        "frequency": 0.3,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Mandibular prognathism",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Facial bone enlargement",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hydrocephalus secondary to cranial hyperostosis",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Trigeminal neuralgia",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "neurological",
+    "otolaryngological",
+    "ophthalmological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal routine blood tests",
+      "No specific biochemical markers"
+    ],
+    "imaging": [
+      "Skull and mandibular hyperostosis on X-ray and CT",
+      "Increased bone density on radiographs",
+      "Possible narrowing of cranial foramina on CT"
+    ],
+    "genetic": [
+      "Biallelic mutations or deletions in the SOST gene on chromosome 17q12-q21"
+    ],
+    "other": [
+      "Family history consistent with autosomal recessive inheritance"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "sclerosteosis",
+      "distinguishingFeatures": [
+        "More severe bone overgrowth",
+        "Presence of syndactyly",
+        "Autosomal recessive inheritance with SOST mutations but distinct phenotype"
+      ]
+    },
+    {
+      "diseaseId": "craniometaphyseal-dysplasia",
+      "distinguishingFeatures": [
+        "Metaphyseal abnormalities of long bones",
+        "Cranial hyperostosis with different radiographic pattern",
+        "Autosomal dominant or recessive inheritance"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive cranial nerve palsies",
+    "Visual loss due to optic nerve compression",
+    "Hydrocephalus from cranial hyperostosis"
+  ],
+  "specialistType": [
+    "Geneticist",
+    "Neurologist",
+    "Orthopedic surgeon",
+    "Otolaryngologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "van Buchem FS, et al. A new familial bone dysplasia. Am J Med. 1955.",
+    "Balemans W, et al. Identification of a 52-kb deletion downstream of the SOST gene in patients with van Buchem disease. J Bone Miner Res. 2002.",
+    "Whyte MP. Van Buchem disease and sclerosteosis: new insights into the role of sclerostin in bone formation. J Clin Endocrinol Metab. 2006."
+  ],
+  "confidenceInData": "medium"
+}

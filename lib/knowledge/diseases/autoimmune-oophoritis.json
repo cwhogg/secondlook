@@ -1,0 +1,193 @@
+{
+  "id": "autoimmune-oophoritis",
+  "name": "Autoimmune Oophoritis",
+  "aliases": [
+    "Autoimmune Ovarian Inflammation",
+    "Autoimmune Premature Ovarian Failure"
+  ],
+  "icd10Codes": [
+    "N97.8"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 15,
+      "max": 40,
+      "peak": 30
+    },
+    "sexPredilection": "female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Autoimmune Oophoritis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clinical-pof",
+        "description": "Clinical evidence of premature ovarian failure (amenorrhea >4 months before age 40 with elevated gonadotropins)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "autoantibodies",
+        "description": "Presence of anti-ovarian antibodies detected by immunoassays",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology",
+        "description": "Ovarian biopsy showing lymphocytic infiltration consistent with autoimmune oophoritis",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "associated-autoimmune-disease",
+        "description": "Coexisting autoimmune disorders such as autoimmune adrenalitis or autoimmune thyroiditis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of clinical premature ovarian failure and positive anti-ovarian antibodies; histopathology supportive if available",
+    "notes": "Ovarian biopsy is rarely performed due to invasiveness; diagnosis often based on clinical and serological findings"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Premature ovarian failure",
+        "frequency": 0.85,
+        "bodySystem": "reproductive",
+        "notes": "Defined as amenorrhea before age 40 with elevated FSH"
+      },
+      {
+        "symptomName": "Anti-ovarian autoantibodies",
+        "frequency": 0.75,
+        "bodySystem": "immunological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Amenorrhea",
+        "frequency": 0.8,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Hot flashes",
+        "frequency": 0.7,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Infertility",
+        "frequency": 0.65,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Vaginal dryness",
+        "frequency": 0.4,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Mood disturbances",
+        "frequency": 0.3,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Joint pain",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Associated autoimmune symptoms (e.g., hypothyroidism)",
+        "frequency": 0.15,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Ovarian enlargement or tenderness",
+        "frequency": 0.08,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Adrenal insufficiency symptoms",
+        "frequency": 0.05,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Skin rash related to autoimmune disease",
+        "frequency": 0.03,
+        "bodySystem": "dermatological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "reproductive",
+    "immunological",
+    "endocrine",
+    "constitutional",
+    "psychiatric",
+    "musculoskeletal",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum follicle-stimulating hormone (FSH) and luteinizing hormone (LH)",
+      "Low estradiol levels",
+      "Positive anti-ovarian antibodies",
+      "Possible presence of other autoimmune antibodies (e.g., anti-thyroid, anti-adrenal)"
+    ],
+    "imaging": [
+      "Ultrasound showing small or normal-sized ovaries with reduced follicular activity"
+    ],
+    "genetic": [
+      "No specific genetic mutation identified; possible association with HLA-DR3 and HLA-DR4 haplotypes"
+    ],
+    "other": [
+      "Ovarian biopsy showing lymphocytic infiltration (rarely performed)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "premature-ovarian-failure-non-autoimmune",
+      "distinguishingFeatures": [
+        "Absence of anti-ovarian antibodies",
+        "History of chemotherapy, radiation, or genetic causes",
+        "No lymphocytic infiltration on biopsy"
+      ]
+    },
+    {
+      "diseaseId": "polycystic-ovary-syndrome",
+      "distinguishingFeatures": [
+        "Oligomenorrhea rather than amenorrhea",
+        "Hyperandrogenism signs",
+        "Normal or low FSH levels"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid onset of amenorrhea before age 40",
+    "Presence of multiple autoimmune disorders",
+    "Signs of adrenal insufficiency (e.g., hypotension, hyperpigmentation)"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Reproductive Endocrinologist",
+    "Rheumatologist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Nelson LM. Primary ovarian insufficiency. N Engl J Med. 2009;360(6):606-14.",
+    "Hoek A, et al. Autoimmune oophoritis: clinical and immunological features. J Clin Endocrinol Metab. 1997;82(9):2963-7.",
+    "American Society for Reproductive Medicine. Premature ovarian failure: a committee opinion. Fertil Steril. 2015;103(1):e1-e5."
+  ],
+  "confidenceInData": "medium"
+}

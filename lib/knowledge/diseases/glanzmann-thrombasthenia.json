@@ -1,0 +1,212 @@
+{
+  "id": "glanzmann-thrombasthenia",
+  "name": "Glanzmann Thrombasthenia",
+  "aliases": [
+    "Glanzmann's thrombasthenia",
+    "Glanzmann disease"
+  ],
+  "icd10Codes": [
+    "D69.59"
+  ],
+  "omimId": "273800",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 5
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Middle Eastern populations",
+      "South Asian populations",
+      "Mediterranean populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Glanzmann Thrombasthenia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "platelet-aggregation-defect",
+        "description": "Absent or severely reduced platelet aggregation in response to ADP, collagen, and epinephrine",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "normal-platelet-count",
+        "description": "Normal platelet count and morphology on peripheral blood smear",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in ITGA2B or ITGB3 genes",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bleeding-history",
+        "description": "History of mucocutaneous bleeding such as epistaxis, gingival bleeding, or menorrhagia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of absent platelet aggregation with normal platelet count and morphology, plus clinical bleeding history",
+    "notes": "Genetic testing supports diagnosis but is not mandatory if functional platelet studies are conclusive."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Severe mucocutaneous bleeding",
+        "frequency": 0.95,
+        "bodySystem": "hematological",
+        "notes": "Includes spontaneous bruising and prolonged bleeding from minor injuries"
+      },
+      {
+        "symptomName": "Absent platelet aggregation to multiple agonists",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Normal platelet count with defective clot retraction",
+        "frequency": 0.75,
+        "bodySystem": "hematological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Epistaxis",
+        "frequency": 0.85,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Gingival bleeding",
+        "frequency": 0.8,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Menorrhagia",
+        "frequency": 0.7,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Prolonged bleeding after surgery or dental extraction",
+        "frequency": 0.65,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Petechiae",
+        "frequency": 0.6,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Gastrointestinal bleeding",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.3,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Postpartum hemorrhage",
+        "frequency": 0.25,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Joint bleeding (hemarthrosis)",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "notes": "Less common than in coagulation factor deficiencies"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Intracranial hemorrhage",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Rare but life-threatening complication"
+      },
+      {
+        "symptomName": "Anemia secondary to chronic bleeding",
+        "frequency": 0.07,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "dermatological",
+    "gastrointestinal",
+    "reproductive",
+    "renal",
+    "musculoskeletal",
+    "neurological",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Absent platelet aggregation with ADP, collagen, and epinephrine",
+      "Normal platelet count and morphology",
+      "Prolonged bleeding time",
+      "Reduced or absent clot retraction"
+    ],
+    "imaging": [
+      "Imaging may be required to evaluate bleeding complications such as intracranial hemorrhage"
+    ],
+    "genetic": [
+      "Mutations in ITGA2B gene encoding integrin alpha-IIb",
+      "Mutations in ITGB3 gene encoding integrin beta-3"
+    ],
+    "other": [
+      "Flow cytometry showing decreased or absent GPIIb/IIIa complex on platelet surface"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "bernard-soulier-syndrome",
+      "distinguishingFeatures": [
+        "Thrombocytopenia with giant platelets",
+        "Defect in platelet adhesion (GPIb deficiency)",
+        "Abnormal ristocetin-induced platelet aggregation"
+      ]
+    },
+    {
+      "diseaseId": "storage-pool-disease",
+      "distinguishingFeatures": [
+        "Deficiency of platelet dense granules",
+        "Normal platelet aggregation to ADP and collagen but defective secondary aggregation",
+        "Mild to moderate bleeding symptoms"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe spontaneous mucocutaneous bleeding",
+    "Prolonged bleeding after minor trauma or surgery",
+    "Intracranial hemorrhage"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Geneticist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Nurden AT. Glanzmann thrombasthenia. Orphanet J Rare Dis. 2006;1:10.",
+    "George JN, Caen JP, Nurden AT. Glanzmann thrombasthenia: the spectrum of clinical disease. Blood. 1990;75(7):1383-95.",
+    "Seligsohn U. Glanzmann thrombasthenia: a review. Semin Thromb Hemost. 1993;19(4):353-60."
+  ],
+  "confidenceInData": "medium"
+}

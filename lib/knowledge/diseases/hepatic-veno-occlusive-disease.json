@@ -1,0 +1,211 @@
+{
+  "id": "hepatic-veno-occlusive-disease",
+  "name": "Hepatic Veno-Occlusive Disease",
+  "aliases": [
+    "Sinusoidal Obstruction Syndrome",
+    "Hepatic Sinusoidal Obstruction Syndrome"
+  ],
+  "icd10Codes": [
+    "K76.5"
+  ],
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "range": "0.5%-5% in at-risk populations",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Baltimore Criteria",
+    "criteria": [
+      {
+        "id": "bilirubin-elevation",
+        "description": "Serum bilirubin ≥ 2 mg/dL within 21 days post-transplant",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hepatomegaly",
+        "description": "Tender hepatomegaly or right upper quadrant pain",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "weight-gain",
+        "description": "Unexplained weight gain >5% due to fluid retention",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ascites",
+        "description": "Presence of ascites confirmed clinically or radiologically",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "jaundice",
+        "description": "Clinical jaundice",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of all three major criteria (bilirubin elevation, hepatomegaly, and weight gain) within 21 days post bone marrow transplant",
+    "notes": "Diagnosis is clinical; liver biopsy is rarely performed due to bleeding risk."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hepatomegaly with right upper quadrant tenderness",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Rapid onset ascites",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Jaundice (hyperbilirubinemia)",
+        "frequency": 0.8,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Unexplained weight gain due to fluid retention",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Right upper quadrant abdominal pain",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Nausea",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Mild hepatocellular enzyme elevation",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Detected on laboratory testing"
+      },
+      {
+        "symptomName": "Mild thrombocytopenia",
+        "frequency": 0.15,
+        "bodySystem": "hematological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hepatic encephalopathy",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Coagulopathy with bleeding tendency",
+        "frequency": 0.07,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Renal impairment secondary to hepatorenal syndrome",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "constitutional",
+    "cardiovascular",
+    "hematological",
+    "neurological",
+    "renal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum bilirubin",
+      "Mild to moderate elevation of liver transaminases (AST, ALT)",
+      "Prolonged prothrombin time",
+      "Thrombocytopenia"
+    ],
+    "imaging": [
+      "Ultrasound showing hepatomegaly and ascites",
+      "Doppler ultrasound demonstrating reduced or reversed hepatic venous flow",
+      "CT or MRI may show patchy liver enhancement and ascites"
+    ],
+    "genetic": [],
+    "other": [
+      "Histopathology (rarely performed) shows occlusion of small hepatic veins and sinusoidal congestion"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "acute-hepatitis",
+      "distinguishingFeatures": [
+        "Elevated transaminases often >1000 U/L",
+        "Absence of weight gain and ascites typical of VOD",
+        "No history of bone marrow transplant"
+      ]
+    },
+    {
+      "diseaseId": "hepatic-cirrhosis",
+      "distinguishingFeatures": [
+        "Chronic progressive course",
+        "Presence of portal hypertension signs like varices",
+        "Imaging shows nodular liver surface"
+      ]
+    },
+    {
+      "diseaseId": "congestive-hepatopathy",
+      "distinguishingFeatures": [
+        "History of right heart failure",
+        "Hepatic congestion secondary to cardiac causes",
+        "Improvement with cardiac function optimization"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive liver failure",
+    "Severe coagulopathy with bleeding",
+    "Development of hepatic encephalopathy"
+  ],
+  "specialistType": [
+    "Hepatologist",
+    "Hematologist",
+    "Transplant physician"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Jones RJ et al. Hepatic Veno-Occlusive Disease. N Engl J Med. 1987;316(6):360-367.",
+    "DeLeve LD et al. Hepatic Veno-Occlusive Disease. Hepatology. 2002;35(2): 321-334.",
+    "Carreras E et al. Diagnosis and management of hepatic veno-occlusive disease after hematopoietic stem cell transplantation. Bone Marrow Transplant. 2017;52(6): 841-849."
+  ],
+  "confidenceInData": "medium"
+}

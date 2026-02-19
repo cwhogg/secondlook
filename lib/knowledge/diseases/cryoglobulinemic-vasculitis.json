@@ -1,8 +1,15 @@
 {
   "id": "cryoglobulinemic-vasculitis",
   "name": "Cryoglobulinemic Vasculitis",
-  "aliases": ["Mixed Cryoglobulinemia", "Cryoglobulinemia Vasculitis", "Essential Mixed Cryoglobulinemia", "HCV-Associated Cryoglobulinemic Vasculitis"],
-  "icd10Codes": ["D89.1"],
+  "aliases": [
+    "Mixed Cryoglobulinemia",
+    "Cryoglobulinemia Vasculitis",
+    "Essential Mixed Cryoglobulinemia",
+    "HCV-Associated Cryoglobulinemic Vasculitis"
+  ],
+  "icd10Codes": [
+    "D89.1"
+  ],
   "omimId": "123550",
   "orphanetId": "91138",
   "prevalence": {
@@ -11,51 +18,184 @@
     "classification": "rare"
   },
   "demographics": {
-    "typicalOnsetAge": { "min": 40, "max": 65, "peak": 55 },
+    "typicalOnsetAge": {
+      "min": 40,
+      "max": 65,
+      "peak": 55
+    },
     "sexPredilection": "female",
-    "ethnicAssociations": ["Southern European (Mediterranean)", "Populations with high HCV prevalence"]
+    "ethnicAssociations": [
+      "Southern European (Mediterranean)",
+      "Populations with high HCV prevalence"
+    ]
   },
   "diagnosticCriteria": {
     "formalCriteriaName": "2011 Classification Criteria for Cryoglobulinemic Vasculitis (Italian Study Group)",
     "criteria": [
-      { "id": "cv-1", "description": "Serum cryoglobulins positive (Types II or III)", "category": "major", "requiredForDiagnosis": true },
-      { "id": "cv-2", "description": "Low C4 complement level", "category": "major", "requiredForDiagnosis": false },
-      { "id": "cv-3", "description": "Palpable purpura", "category": "major", "requiredForDiagnosis": false },
-      { "id": "cv-4", "description": "Membranoproliferative glomerulonephritis on biopsy", "category": "major", "requiredForDiagnosis": false },
-      { "id": "cv-5", "description": "Peripheral neuropathy (sensorimotor)", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "cv-6", "description": "Skin ulcers", "category": "minor", "requiredForDiagnosis": false },
-      { "id": "cv-7", "description": "Positive rheumatoid factor", "category": "supportive", "requiredForDiagnosis": false },
-      { "id": "cv-8", "description": "Hepatitis C virus infection", "category": "supportive", "requiredForDiagnosis": false }
+      {
+        "id": "cv-1",
+        "description": "Serum cryoglobulins positive (Types II or III)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cv-2",
+        "description": "Low C4 complement level",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cv-3",
+        "description": "Palpable purpura",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cv-4",
+        "description": "Membranoproliferative glomerulonephritis on biopsy",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cv-5",
+        "description": "Peripheral neuropathy (sensorimotor)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cv-6",
+        "description": "Skin ulcers",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cv-7",
+        "description": "Positive rheumatoid factor",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cv-8",
+        "description": "Hepatitis C virus infection",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
     ],
     "minimumForDiagnosis": "Positive serum cryoglobulins plus clinical evidence of vasculitis (purpura, nephritis, neuropathy, or skin ulcers)",
     "notes": "Type I is monoclonal (associated with lymphoproliferative disorders). Types II and III (mixed) are most commonly associated with HCV infection. Type II has both monoclonal and polyclonal components."
   },
   "symptoms": {
     "pathognomonic": [
-      { "symptomName": "Meltzer triad: purpura, arthralgia, weakness", "frequency": 0.50, "bodySystem": "Multi-system", "notes": "Classic presentation described by Meltzer; highly suggestive" },
-      { "symptomName": "Palpable purpura (lower extremities)", "snomedCode": "20143000", "frequency": 0.80, "bodySystem": "Dermatologic", "notes": "Recurrent; often triggered by cold exposure or prolonged standing" }
+      {
+        "symptomName": "Meltzer triad: purpura, arthralgia, weakness",
+        "frequency": 0.5,
+        "bodySystem": "constitutional",
+        "notes": "Classic presentation described by Meltzer; highly suggestive"
+      },
+      {
+        "symptomName": "Palpable purpura (lower extremities)",
+        "snomedCode": "20143000",
+        "frequency": 0.8,
+        "bodySystem": "dermatological",
+        "notes": "Recurrent; often triggered by cold exposure or prolonged standing"
+      }
     ],
     "common": [
-      { "symptomName": "Arthralgia", "snomedCode": "57676002", "frequency": 0.70, "bodySystem": "Musculoskeletal", "notes": "Non-deforming; symmetric; small and large joints" },
-      { "symptomName": "Fatigue and weakness", "snomedCode": "84229001", "frequency": 0.70, "bodySystem": "Constitutional" },
-      { "symptomName": "Peripheral neuropathy (sensorimotor)", "snomedCode": "42658009", "frequency": 0.50, "bodySystem": "Neurological", "notes": "Painful; distal symmetric or mononeuritis multiplex" },
-      { "symptomName": "Raynaud phenomenon", "snomedCode": "266261006", "frequency": 0.25, "bodySystem": "Vascular" },
-      { "symptomName": "Skin ulcers (lower extremities)", "snomedCode": "271807003", "frequency": 0.20, "bodySystem": "Dermatologic" }
+      {
+        "symptomName": "Arthralgia",
+        "snomedCode": "57676002",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal",
+        "notes": "Non-deforming; symmetric; small and large joints"
+      },
+      {
+        "symptomName": "Fatigue and weakness",
+        "snomedCode": "84229001",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy (sensorimotor)",
+        "snomedCode": "42658009",
+        "frequency": 0.5,
+        "bodySystem": "neurological",
+        "notes": "Painful; distal symmetric or mononeuritis multiplex"
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "snomedCode": "266261006",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Skin ulcers (lower extremities)",
+        "snomedCode": "271807003",
+        "frequency": 0.2,
+        "bodySystem": "dermatological"
+      }
     ],
     "occasional": [
-      { "symptomName": "Membranoproliferative glomerulonephritis", "snomedCode": "36171008", "frequency": 0.25, "bodySystem": "Renal", "notes": "Type I MPGN with subendothelial deposits" },
-      { "symptomName": "Hepatomegaly/splenomegaly", "snomedCode": "80515008", "frequency": 0.20, "bodySystem": "Hepatic" },
-      { "symptomName": "Livedo reticularis", "snomedCode": "238790005", "frequency": 0.15, "bodySystem": "Dermatologic" },
-      { "symptomName": "Sicca symptoms (secondary Sjogren-like)", "snomedCode": "87715008", "frequency": 0.15, "bodySystem": "Oral/Ocular" }
+      {
+        "symptomName": "Membranoproliferative glomerulonephritis",
+        "snomedCode": "36171008",
+        "frequency": 0.25,
+        "bodySystem": "renal",
+        "notes": "Type I MPGN with subendothelial deposits"
+      },
+      {
+        "symptomName": "Hepatomegaly/splenomegaly",
+        "snomedCode": "80515008",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Livedo reticularis",
+        "snomedCode": "238790005",
+        "frequency": 0.15,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Sicca symptoms (secondary Sjogren-like)",
+        "snomedCode": "87715008",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
     ],
     "rare": [
-      { "symptomName": "Intestinal vasculitis (abdominal pain, GI bleeding)", "snomedCode": "95572001", "frequency": 0.05, "bodySystem": "Gastrointestinal" },
-      { "symptomName": "Pulmonary vasculitis", "frequency": 0.03, "bodySystem": "Pulmonary" },
-      { "symptomName": "CNS vasculitis", "snomedCode": "195353004", "frequency": 0.03, "bodySystem": "Neurological" },
-      { "symptomName": "Transformation to B-cell lymphoma", "snomedCode": "118617000", "frequency": 0.05, "bodySystem": "Hematologic/Oncologic", "notes": "Especially in type II cryoglobulinemia" }
+      {
+        "symptomName": "Intestinal vasculitis (abdominal pain, GI bleeding)",
+        "snomedCode": "95572001",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pulmonary vasculitis",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "CNS vasculitis",
+        "snomedCode": "195353004",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Transformation to B-cell lymphoma",
+        "snomedCode": "118617000",
+        "frequency": 0.05,
+        "bodySystem": "constitutional",
+        "notes": "Especially in type II cryoglobulinemia"
+      }
     ]
   },
-  "systemsAffected": ["Dermatologic", "Neurological", "Renal", "Musculoskeletal", "Hepatic", "Vascular"],
+  "systemsAffected": [
+    "dermatological",
+    "neurological",
+    "renal",
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular"
+  ],
   "keyFindings": {
     "laboratory": [
       "Serum cryoglobulins positive (must be collected at 37C and processed appropriately)",
@@ -82,10 +222,41 @@
     ]
   },
   "differentialDiagnoses": [
-    { "diseaseId": "iga-vasculitis", "distinguishingFeatures": ["IgA deposits on biopsy", "Younger patients (children)", "Abdominal pain and joint symptoms predominate", "No cryoglobulins"] },
-    { "diseaseId": "polyarteritis-nodosa", "distinguishingFeatures": ["Medium vessel involvement", "Microaneurysms", "ANCA negative", "No cryoglobulins", "HBV association"] },
-    { "diseaseId": "sjogren-syndrome", "distinguishingFeatures": ["Sicca symptoms predominant", "Anti-Ro/La antibodies", "Salivary gland biopsy diagnostic"] },
-    { "diseaseId": "waldenström-macroglobulinemia", "distinguishingFeatures": ["IgM monoclonal protein >3 g/dL", "Bone marrow lymphoplasmacytic infiltrate", "Hyperviscosity syndrome"] }
+    {
+      "diseaseId": "iga-vasculitis",
+      "distinguishingFeatures": [
+        "IgA deposits on biopsy",
+        "Younger patients (children)",
+        "Abdominal pain and joint symptoms predominate",
+        "No cryoglobulins"
+      ]
+    },
+    {
+      "diseaseId": "polyarteritis-nodosa",
+      "distinguishingFeatures": [
+        "Medium vessel involvement",
+        "Microaneurysms",
+        "ANCA negative",
+        "No cryoglobulins",
+        "HBV association"
+      ]
+    },
+    {
+      "diseaseId": "sjogren-syndrome",
+      "distinguishingFeatures": [
+        "Sicca symptoms predominant",
+        "Anti-Ro/La antibodies",
+        "Salivary gland biopsy diagnostic"
+      ]
+    },
+    {
+      "diseaseId": "waldenström-macroglobulinemia",
+      "distinguishingFeatures": [
+        "IgM monoclonal protein >3 g/dL",
+        "Bone marrow lymphoplasmacytic infiltrate",
+        "Hyperviscosity syndrome"
+      ]
+    }
   ],
   "redFlags": [
     "Rapidly progressive glomerulonephritis",
@@ -94,7 +265,12 @@
     "Signs of B-cell lymphoma transformation (rapidly enlarging lymph nodes, rising monoclonal protein)",
     "Severe hypocomplementemia with organ damage"
   ],
-  "specialistType": ["Rheumatology", "Hepatology", "Nephrology", "Hematology"],
+  "specialistType": [
+    "Rheumatology",
+    "Hepatology",
+    "Nephrology",
+    "Hematology"
+  ],
   "lastUpdated": "2026-02-17",
   "references": [
     "De Vita S, et al. A proposed classification for cryoglobulinaemic vasculitis. Ann Rheum Dis. 2011;70(7):1183-1190.",

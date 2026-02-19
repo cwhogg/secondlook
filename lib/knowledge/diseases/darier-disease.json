@@ -1,0 +1,193 @@
+{
+  "id": "darier-disease",
+  "name": "Darier Disease",
+  "aliases": [
+    "Keratosis Follicularis",
+    "Darier-White Disease"
+  ],
+  "icd10Codes": [
+    "L82.0"
+  ],
+  "omimId": "124200",
+  "orphanetId": "ORPHA:232",
+  "prevalence": {
+    "estimate": "1 in 30,000 to 1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 6,
+      "max": 40,
+      "peak": 15
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Darier Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clinical-papules",
+        "description": "Presence of greasy, crusted, hyperkeratotic papules primarily in seborrheic areas",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology",
+        "description": "Histological evidence of suprabasal acantholysis and dyskeratosis with corps ronds and grains",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history consistent with autosomal dominant inheritance",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "nail-changes",
+        "description": "Characteristic nail abnormalities including V-shaped notching and longitudinal ridging",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of typical clinical papules in seborrheic areas plus histopathological confirmation",
+    "notes": "Genetic testing for ATP2A2 mutations can support diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Greasy, crusted, hyperkeratotic papules in seborrheic areas",
+        "frequency": 0.95,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Nail abnormalities including V-shaped notching and longitudinal ridging",
+        "frequency": 0.85,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Histological suprabasal acantholysis with dyskeratosis (corps ronds and grains)",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Pruritus in affected skin areas",
+        "frequency": 0.75,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Malodor from affected skin lesions",
+        "frequency": 0.7,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Palmoplantar keratoderma",
+        "frequency": 0.6,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Mucosal papules in oral cavity",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Photosensitivity exacerbating skin lesions",
+        "frequency": 0.4,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Secondary bacterial or fungal skin infections",
+        "frequency": 0.3,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Neuropsychiatric symptoms including mood disorders",
+        "frequency": 0.2,
+        "bodySystem": "psychiatric",
+        "notes": "Reported in some patients, possibly related to disease burden"
+      },
+      {
+        "symptomName": "Hair abnormalities such as fragility and brittleness",
+        "frequency": 0.15,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Erosions and ulcerations in severe disease",
+        "frequency": 0.08,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Neurodevelopmental delay or epilepsy",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Rarely reported in association with Darier disease"
+      },
+      {
+        "symptomName": "Ocular involvement including conjunctival keratosis",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "psychiatric",
+    "neurological",
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Histopathology showing suprabasal acantholysis with dyskeratotic cells (corps ronds and grains)"
+    ],
+    "imaging": [],
+    "genetic": [
+      "Mutations in ATP2A2 gene encoding SERCA2 calcium pump"
+    ],
+    "other": [
+      "Characteristic nail changes (V-shaped notching, longitudinal ridging)",
+      "Positive family history consistent with autosomal dominant inheritance"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "seborrheic-dermatitis",
+      "distinguishingFeatures": [
+        "Lacks histological acantholysis and dyskeratosis",
+        "Lesions less hyperkeratotic and greasy",
+        "No characteristic nail changes"
+      ]
+    },
+    {
+      "diseaseId": "hailey-hailey-disease",
+      "distinguishingFeatures": [
+        "Histology shows suprabasal acantholysis without dyskeratosis",
+        "Lesions typically in intertriginous areas",
+        "Different genetic mutation (ATP2C1 gene)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of erosive or ulcerative skin lesions",
+    "Secondary bacterial or fungal infections causing systemic symptoms",
+    "Neuropsychiatric symptoms including seizures or severe mood disorders"
+  ],
+  "specialistType": [
+    "Dermatologist",
+    "Geneticist",
+    "Psychiatrist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Burge SM. Darier-White disease: clinical features and management. Clin Exp Dermatol. 1994.",
+    "Boyden LM, et al. Mutations in ATP2A2, encoding a Ca2+ pump, cause Darier disease. Nat Genet. 2001.",
+    "Orphanet: Darier disease. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=232"
+  ],
+  "confidenceInData": "medium"
+}

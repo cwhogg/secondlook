@@ -1,0 +1,215 @@
+{
+  "id": "good-syndrome",
+  "name": "Good Syndrome",
+  "aliases": [
+    "Thymoma-associated immunodeficiency",
+    "Hypogammaglobulinemia with thymoma"
+  ],
+  "icd10Codes": [
+    "D80.8"
+  ],
+  "omimId": "240300",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No formal consensus criteria",
+    "criteria": [
+      {
+        "id": "presence-thymoma",
+        "description": "Presence of thymoma confirmed by imaging or histology",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hypogammaglobulinemia",
+        "description": "Marked hypogammaglobulinemia with low serum immunoglobulin levels",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunodeficiency",
+        "description": "Immunodeficiency characterized by low or absent B cells and impaired antibody response",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "recurrent-infections",
+        "description": "Recurrent bacterial, viral, or opportunistic infections",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of thymoma plus hypogammaglobulinemia and immunodeficiency",
+    "notes": "Diagnosis is clinical and supported by laboratory and imaging findings; no standardized formal criteria exist."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hypogammaglobulinemia",
+        "frequency": 0.95,
+        "bodySystem": "immunological",
+        "notes": "Severe reduction in serum immunoglobulins"
+      },
+      {
+        "symptomName": "Presence of thymoma",
+        "frequency": 0.9,
+        "bodySystem": "immunological",
+        "notes": "Thymic tumor detected by imaging or biopsy"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Recurrent sinopulmonary bacterial infections",
+        "frequency": 0.85,
+        "bodySystem": "respiratory",
+        "notes": "Including pneumonia and bronchitis"
+      },
+      {
+        "symptomName": "Chronic diarrhea",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to infections or malabsorption"
+      },
+      {
+        "symptomName": "Opportunistic infections",
+        "frequency": 0.65,
+        "bodySystem": "immunological",
+        "notes": "Including candidiasis and cytomegalovirus"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Generalized weakness and malaise"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Autoimmune cytopenias",
+        "frequency": 0.3,
+        "bodySystem": "hematological",
+        "notes": "Including anemia and thrombocytopenia"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal",
+        "notes": "May be related to associated myasthenia gravis"
+      },
+      {
+        "symptomName": "Myasthenia gravis",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Neuromuscular junction disorder associated with thymoma"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "notes": "Unintentional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pure red cell aplasia",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "notes": "Severe anemia due to erythroid precursor failure"
+      },
+      {
+        "symptomName": "Hypocalcemia",
+        "frequency": 0.04,
+        "bodySystem": "endocrine",
+        "notes": "Due to associated hypoparathyroidism"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Sensory or motor deficits"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "immunological",
+    "respiratory",
+    "gastrointestinal",
+    "hematological",
+    "neurological",
+    "musculoskeletal",
+    "endocrine",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low serum immunoglobulin levels (IgG, IgA, IgM)",
+      "Reduced or absent peripheral B cells",
+      "Lymphopenia",
+      "Autoimmune cytopenias"
+    ],
+    "imaging": [
+      "Mediastinal mass consistent with thymoma on chest CT or MRI"
+    ],
+    "genetic": [
+      "No specific genetic mutation identified; considered acquired immunodeficiency"
+    ],
+    "other": [
+      "Impaired antibody response to vaccines",
+      "Histopathology confirming thymoma subtype"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "common-variable-immunodeficiency",
+      "distinguishingFeatures": [
+        "Absence of thymoma",
+        "Variable age of onset",
+        "More heterogeneous immunoglobulin deficiency"
+      ]
+    },
+    {
+      "diseaseId": "myasthenia-gravis",
+      "distinguishingFeatures": [
+        "Neuromuscular symptoms without hypogammaglobulinemia",
+        "May have thymoma but no immunodeficiency"
+      ]
+    },
+    {
+      "diseaseId": "severe-combined-immunodeficiency",
+      "distinguishingFeatures": [
+        "Pediatric onset",
+        "Profound T and B cell deficiency",
+        "No thymoma"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Recurrent severe infections despite standard treatment",
+    "Presence of mediastinal mass on imaging",
+    "Marked hypogammaglobulinemia with low B cell counts"
+  ],
+  "specialistType": [
+    "Immunologist",
+    "Hematologist",
+    "Thoracic surgeon"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Kelleher P, Misbah SA. What is Good's syndrome? Immunological abnormalities in patients with thymoma. J Clin Pathol. 2003;56(1):12-16.",
+    "Malphettes M, Gérard L, Galicier L, et al. Good syndrome: an adult-onset immunodeficiency remarkable for its high incidence of invasive infections and autoimmune complications. Clin Infect Dis. 2015;61(5):e13-e19.",
+    "Kelesidis T, Yang O. Good's syndrome remains a mystery after 55 years: a systematic review of the scientific evidence. Clin Immunol. 2010;135(3):347-363."
+  ],
+  "confidenceInData": "medium"
+}

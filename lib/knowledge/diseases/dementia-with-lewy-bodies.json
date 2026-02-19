@@ -1,0 +1,216 @@
+{
+  "id": "dementia-with-lewy-bodies",
+  "name": "Dementia with Lewy Bodies",
+  "aliases": [
+    "Lewy Body Dementia",
+    "DLB"
+  ],
+  "icd10Codes": [
+    "G31.83"
+  ],
+  "omimId": "127750",
+  "orphanetId": "565",
+  "prevalence": {
+    "estimate": "1 in 1,000",
+    "range": "0.1-5%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 50,
+      "max": 85,
+      "peak": 75
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Fourth Consensus Report of the DLB Consortium",
+    "criteria": [
+      {
+        "id": "cognitive-fluctuations",
+        "description": "Recurrent fluctuations in attention and alertness",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "visual-hallucinations",
+        "description": "Recurrent well-formed visual hallucinations",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "parkinsonism",
+        "description": "Spontaneous parkinsonian motor features",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "REM-sleep-behavior-disorder",
+        "description": "REM sleep behavior disorder",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "severe-neuroleptic-sensitivity",
+        "description": "Severe sensitivity to antipsychotic agents",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Dementia plus two or more core clinical features (cognitive fluctuations, visual hallucinations, parkinsonism) or one core feature with one or more suggestive features",
+    "notes": "Diagnosis requires exclusion of other causes of dementia and parkinsonism."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent well-formed visual hallucinations",
+        "frequency": 0.8,
+        "bodySystem": "psychiatric",
+        "notes": "Typically vivid and detailed"
+      },
+      {
+        "symptomName": "Fluctuating cognition with pronounced variations in attention and alertness",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Often manifests as episodes of confusion"
+      },
+      {
+        "symptomName": "Spontaneous parkinsonism (bradykinesia, rigidity)",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal",
+        "notes": "Usually symmetric and less tremor dominant"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "REM sleep behavior disorder",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "notes": "Dream enactment behaviors"
+      },
+      {
+        "symptomName": "Cognitive impairment affecting executive function and visuospatial skills",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "notes": "Early deficits in attention and visuospatial processing"
+      },
+      {
+        "symptomName": "Autonomic dysfunction (orthostatic hypotension, constipation)",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "Common non-motor symptom"
+      },
+      {
+        "symptomName": "Depression and anxiety",
+        "frequency": 0.5,
+        "bodySystem": "psychiatric",
+        "notes": "Mood disturbances are frequent"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Visual misperceptions and illusions",
+        "frequency": 0.4,
+        "bodySystem": "psychiatric",
+        "notes": "Less well-formed than hallucinations"
+      },
+      {
+        "symptomName": "Hypersomnia or excessive daytime sleepiness",
+        "frequency": 0.3,
+        "bodySystem": "constitutional",
+        "notes": "Common but variable"
+      },
+      {
+        "symptomName": "Delusions",
+        "frequency": 0.25,
+        "bodySystem": "psychiatric",
+        "notes": "Paranoid or persecutory delusions"
+      },
+      {
+        "symptomName": "Falls and gait instability",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to parkinsonism and postural instability"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Myoclonus",
+        "frequency": 0.08,
+        "bodySystem": "neurological",
+        "notes": "Sudden, brief muscle jerks"
+      },
+      {
+        "symptomName": "Severe neuroleptic sensitivity reactions",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Exaggerated adverse response to antipsychotics"
+      },
+      {
+        "symptomName": "Visual agnosia",
+        "frequency": 0.04,
+        "bodySystem": "neurological",
+        "notes": "Difficulty recognizing objects"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "psychiatric",
+    "musculoskeletal",
+    "cardiovascular",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "No specific blood biomarkers; routine labs to exclude other causes"
+    ],
+    "imaging": [
+      "Reduced dopamine transporter uptake in basal ganglia on SPECT or PET",
+      "MRI may show relative preservation of medial temporal lobe compared to Alzheimer's disease"
+    ],
+    "genetic": [
+      "Rare familial cases linked to SNCA gene mutations"
+    ],
+    "other": [
+      "Polysomnography confirming REM sleep behavior disorder",
+      "Neuropsychological testing showing executive and visuospatial deficits"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "alzheimer-disease",
+      "distinguishingFeatures": [
+        "Memory impairment is more prominent early",
+        "Less frequent visual hallucinations",
+        "MRI shows hippocampal atrophy"
+      ]
+    },
+    {
+      "diseaseId": "parkinson-disease-dementia",
+      "distinguishingFeatures": [
+        "Parkinsonism precedes dementia by at least one year",
+        "More prominent motor symptoms initially",
+        "Visual hallucinations may occur later"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression over weeks",
+    "Early severe neuroleptic sensitivity",
+    "Prominent autonomic failure with syncope"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Geriatrician",
+    "Psychiatrist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "McKeith IG, Boeve BF, Dickson DW, et al. Diagnosis and management of dementia with Lewy bodies: Fourth consensus report of the DLB Consortium. Neurology. 2017;89(1):88-100.",
+    "Walker Z, Possin KL, Boeve BF, Aarsland D. Lewy body dementias. Lancet. 2015;386(10004):1683-1697.",
+    "Boeve BF. REM sleep behavior disorder: Updated review of the core features, the REM sleep behavior disorder-neurodegenerative disease association, evolving concepts, controversies, and future directions. Ann N Y Acad Sci. 2010;1184:15-54."
+  ],
+  "confidenceInData": "medium"
+}

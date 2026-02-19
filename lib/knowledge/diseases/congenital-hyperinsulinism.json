@@ -1,0 +1,232 @@
+{
+  "id": "congenital-hyperinsulinism",
+  "name": "Congenital Hyperinsulinism",
+  "aliases": [
+    "Persistent Hyperinsulinemic Hypoglycemia of Infancy",
+    "Familial Hyperinsulinism"
+  ],
+  "icd10Codes": [
+    "E16.1"
+  ],
+  "omimId": "256450",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "range": "0.002%-0.005%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Ashkenazi Jewish",
+      "Finnish",
+      "Saudi Arabian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Diagnostic Criteria for Congenital Hyperinsulinism",
+    "criteria": [
+      {
+        "id": "persistent-hypoglycemia",
+        "description": "Persistent hypoglycemia with plasma glucose <50 mg/dL in neonates or infants",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "inappropriately-elevated-insulin",
+        "description": "Inappropriately elevated plasma insulin levels during hypoglycemia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "suppressed-ketones-and-fatty-acids",
+        "description": "Suppressed plasma ketone bodies and free fatty acids during hypoglycemia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in genes associated with hyperinsulinism (e.g., ABCC8, KCNJ11)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "response-to-glucagon",
+        "description": "Increase in blood glucose following glucagon administration during hypoglycemia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of persistent hypoglycemia with inappropriately elevated insulin during hypoglycemia and suppressed ketones/fatty acids",
+    "notes": "Genetic testing and response to glucagon are supportive but not mandatory for diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Persistent neonatal hypoglycemia",
+        "frequency": 0.95,
+        "bodySystem": "endocrine",
+        "notes": "Hypoglycemia unresponsive to feeding"
+      },
+      {
+        "symptomName": "Inappropriately elevated insulin levels during hypoglycemia",
+        "frequency": 0.9,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Suppressed ketogenesis during hypoglycemia",
+        "frequency": 0.85,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Poor feeding",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Lethargy",
+        "frequency": 0.7,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Irritability",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tremors",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Apnea episodes",
+        "frequency": 0.4,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.35,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Poor weight gain",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sweating",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cardiovascular instability",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Developmental delay",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pancreatic hypertrophy",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.04,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "endocrine",
+    "neurological",
+    "gastrointestinal",
+    "respiratory",
+    "musculoskeletal",
+    "cardiovascular",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low plasma glucose (<50 mg/dL) during symptomatic episodes",
+      "Elevated plasma insulin during hypoglycemia",
+      "Low plasma ketone bodies and free fatty acids during hypoglycemia",
+      "Positive glycemic response to glucagon injection"
+    ],
+    "imaging": [
+      "18F-DOPA PET scan showing focal or diffuse pancreatic lesions",
+      "Pancreatic ultrasound may show hypertrophy"
+    ],
+    "genetic": [
+      "Mutations in ABCC8 gene",
+      "Mutations in KCNJ11 gene",
+      "Mutations in GLUD1, GCK, HADH, HNF4A, or UCP2 genes"
+    ],
+    "other": [
+      "Histopathology showing focal or diffuse islet cell hyperplasia",
+      "Response to diazoxide therapy varies by genetic subtype"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "neonatal-adrenal-insufficiency",
+      "distinguishingFeatures": [
+        "Low cortisol levels",
+        "Hyponatremia and hyperkalemia",
+        "No inappropriate insulin secretion"
+      ]
+    },
+    {
+      "diseaseId": "becker-muscular-dystrophy",
+      "distinguishingFeatures": [
+        "Progressive muscle weakness",
+        "Elevated creatine kinase",
+        "No hypoglycemia"
+      ]
+    },
+    {
+      "diseaseId": "glycogen-storage-disease-type-1",
+      "distinguishingFeatures": [
+        "Hepatomegaly",
+        "Elevated lactate and uric acid",
+        "Hypoglycemia with elevated ketones"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Recurrent seizures in neonate or infant",
+    "Persistent hypoglycemia despite feeding",
+    "Poor neurological development or regression"
+  ],
+  "specialistType": [
+    "Pediatric Endocrinologist",
+    "Geneticist",
+    "Neonatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Stanley CA. Hyperinsulinism in infancy and childhood: pathophysiology, diagnosis, and management. Pediatr Clin North Am. 1997;44(4):921-949.",
+    "De León DD, Stanley CA. Congenital hyperinsulinism: genetic and clinical characteristics. Endocr Dev. 2016;31:1-13.",
+    "Snider KE, Becker S, Boyajian L, et al. Genotype and phenotype correlations in 417 children with congenital hyperinsulinism. J Clin Endocrinol Metab. 2013;98(2):E355-E363."
+  ],
+  "confidenceInData": "medium"
+}

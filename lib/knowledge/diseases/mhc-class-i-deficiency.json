@@ -1,0 +1,203 @@
+{
+  "id": "mhc-class-i-deficiency",
+  "name": "Major Histocompatibility Complex Class I Deficiency",
+  "aliases": [
+    "MHC Class I Deficiency",
+    "Bare Lymphocyte Syndrome Type I"
+  ],
+  "icd10Codes": [
+    "D81.8"
+  ],
+  "omimId": "608892",
+  "orphanetId": "ORPHA:2309",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 10,
+      "peak": 2
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Diagnostic Criteria for MHC Class I Deficiency",
+    "criteria": [
+      {
+        "id": "low-mhc-i-expression",
+        "description": "Markedly reduced or absent expression of MHC class I molecules on peripheral blood lymphocytes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cd8-lymphopenia",
+        "description": "Significant reduction in circulating CD8+ T-cell counts",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-confirmation",
+        "description": "Identification of pathogenic mutations in genes involved in antigen processing (e.g., TAP1, TAP2, TAPBP)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "recurrent-respiratory-infections",
+        "description": "History of recurrent sinopulmonary infections",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "normal-mhc-class-ii-expression",
+        "description": "Normal expression of MHC class II molecules",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of all three major criteria: low MHC class I expression, CD8+ T-cell deficiency, and genetic confirmation of causative mutations",
+    "notes": "Diagnosis requires exclusion of other immunodeficiencies affecting T-cell subsets."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Markedly reduced MHC class I expression on lymphocytes",
+        "frequency": 0.95,
+        "bodySystem": "immunological",
+        "notes": "Detected by flow cytometry"
+      },
+      {
+        "symptomName": "Severe CD8+ T-cell lymphopenia",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Recurrent sinopulmonary bacterial infections",
+        "frequency": 0.85,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chronic respiratory tract inflammation",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Failure to thrive in infancy",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chronic nasal congestion and otitis media",
+        "frequency": 0.65,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Cutaneous viral infections (e.g., warts, molluscum contagiosum)",
+        "frequency": 0.4,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Chronic diarrhea",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Autoimmune manifestations",
+        "frequency": 0.2,
+        "bodySystem": "immunological",
+        "notes": "Including autoimmune cytopenias"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.15,
+        "bodySystem": "immunological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Neurological complications secondary to infections",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Granulomatous inflammation",
+        "frequency": 0.03,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.02,
+        "bodySystem": "hematological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "immunological",
+    "respiratory",
+    "dermatological",
+    "gastrointestinal",
+    "otolaryngological",
+    "constitutional",
+    "neurological",
+    "hematological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Flow cytometry showing absent or markedly reduced MHC class I expression on lymphocytes",
+      "Reduced CD8+ T-cell counts with normal CD4+ T-cell counts",
+      "Normal immunoglobulin levels in most cases"
+    ],
+    "imaging": [
+      "Chest radiographs showing recurrent or chronic pulmonary infections",
+      "Sinus CT scans demonstrating chronic sinusitis"
+    ],
+    "genetic": [
+      "Pathogenic mutations in TAP1, TAP2, or TAPBP genes confirmed by molecular genetic testing"
+    ],
+    "other": [
+      "Normal MHC class II expression on antigen-presenting cells",
+      "Negative HIV testing to exclude secondary CD8 lymphopenia"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "bare-lymphocyte-syndrome-type-ii",
+      "distinguishingFeatures": [
+        "Deficiency of MHC class II expression",
+        "Severe CD4+ T-cell deficiency",
+        "More profound combined immunodeficiency phenotype"
+      ]
+    },
+    {
+      "diseaseId": "severe-combined-immunodeficiency",
+      "distinguishingFeatures": [
+        "Profound deficiency of both T and B lymphocytes",
+        "Early onset severe infections",
+        "Absent or very low T-cell function"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Recurrent severe bacterial respiratory infections in infancy",
+    "Marked CD8+ T-cell lymphopenia with normal CD4+ counts",
+    "Failure to thrive despite standard treatments"
+  ],
+  "specialistType": [
+    "Immunologist",
+    "Pediatrician",
+    "Infectious Disease Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Al-Herz W, et al. Primary immunodeficiency diseases: an update on the classification from the International Union of Immunological Societies Expert Committee for Primary Immunodeficiency. Front Immunol. 2014.",
+    "de la Salle H, et al. MHC class I deficiency: a rare primary immunodeficiency. J Clin Immunol. 2016.",
+    "OMIM Entry - # 608892 - BARE LYMPHOCYTE SYNDROME 1; BLS1."
+  ],
+  "confidenceInData": "medium"
+}

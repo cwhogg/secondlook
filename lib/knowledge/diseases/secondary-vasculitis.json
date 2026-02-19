@@ -1,0 +1,217 @@
+{
+  "id": "secondary-vasculitis",
+  "name": "Secondary Vasculitis",
+  "aliases": [
+    "Reactive Vasculitis",
+    "Secondary Inflammatory Vasculitis"
+  ],
+  "icd10Codes": [
+    "M31.8"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 80,
+      "peak": 50
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No standardized formal criteria; diagnosis based on clinical, laboratory, and histopathological correlation",
+    "criteria": [
+      {
+        "id": "evidence-infection-or-malignancy",
+        "description": "Presence of underlying infection, malignancy, or autoimmune disease known to trigger vasculitis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathological-confirmation",
+        "description": "Biopsy demonstrating vessel wall inflammation consistent with vasculitis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Clinical signs and symptoms consistent with vasculitis affecting one or more organ systems",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-primary-vasculitis",
+        "description": "Exclusion of primary vasculitis or other mimicking conditions",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Presence of underlying trigger plus histopathological confirmation of vasculitis and compatible clinical features",
+    "notes": "Diagnosis requires correlation of clinical, laboratory, and histopathological findings; no universally accepted formal criteria exist."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Palpable purpura",
+        "frequency": 0.85,
+        "bodySystem": "dermatological",
+        "notes": "Commonly seen in cutaneous small vessel involvement"
+      },
+      {
+        "symptomName": "Vessel wall necrosis on biopsy",
+        "frequency": 0.75,
+        "bodySystem": "immunological",
+        "notes": "Histopathological hallmark"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fever of unknown origin",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Reflects systemic inflammation"
+      },
+      {
+        "symptomName": "Arthralgia or arthritis",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "notes": "Joint involvement is frequent"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "notes": "Due to vasculitic nerve ischemia"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.58,
+        "bodySystem": "constitutional",
+        "notes": "Common systemic symptom"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.3,
+        "bodySystem": "renal",
+        "notes": "Indicates renal vasculitis involvement"
+      },
+      {
+        "symptomName": "Mononeuritis multiplex",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Multiple nerve involvement"
+      },
+      {
+        "symptomName": "Livedo reticularis",
+        "frequency": 0.2,
+        "bodySystem": "dermatological",
+        "notes": "Mottled skin discoloration"
+      },
+      {
+        "symptomName": "Malaise",
+        "frequency": 0.4,
+        "bodySystem": "constitutional",
+        "notes": "Nonspecific systemic symptom"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Alveolar hemorrhage",
+        "frequency": 0.05,
+        "bodySystem": "respiratory",
+        "notes": "Severe pulmonary involvement"
+      },
+      {
+        "symptomName": "Visual loss",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological",
+        "notes": "Due to ocular vasculitis"
+      },
+      {
+        "symptomName": "Cardiac ischemia",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare but serious complication"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "neurological",
+    "renal",
+    "musculoskeletal",
+    "constitutional",
+    "respiratory",
+    "ophthalmological",
+    "cardiovascular",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated inflammatory markers (ESR, CRP)",
+      "Positive ANCA or other autoantibodies depending on underlying disease",
+      "Evidence of infection or malignancy in relevant tests"
+    ],
+    "imaging": [
+      "Angiography showing vessel irregularities or occlusions",
+      "MRI or CT demonstrating organ involvement"
+    ],
+    "genetic": [
+      "No specific genetic markers; genetic predisposition may be related to underlying autoimmune diseases"
+    ],
+    "other": [
+      "Histopathology showing leukocytoclastic vasculitis or necrotizing vasculitis",
+      "Clinical correlation with underlying trigger"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "primary-vasculitis",
+      "distinguishingFeatures": [
+        "Absence of underlying infection, malignancy, or autoimmune trigger",
+        "Different histopathological patterns",
+        "May have distinct autoantibody profiles"
+      ]
+    },
+    {
+      "diseaseId": "infectious-endocarditis",
+      "distinguishingFeatures": [
+        "Presence of cardiac vegetations on echocardiogram",
+        "Positive blood cultures",
+        "Vasculitis-like symptoms secondary to septic emboli"
+      ]
+    },
+    {
+      "diseaseId": "drug-induced-vasculitis",
+      "distinguishingFeatures": [
+        "Temporal relationship with drug exposure",
+        "Resolution upon drug withdrawal",
+        "Histopathology may be similar but clinical context differs"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive renal failure",
+    "Alveolar hemorrhage with respiratory distress",
+    "Severe neurological deficits such as mononeuritis multiplex or stroke"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Immunologist",
+    "Nephrologist",
+    "Infectious Disease Specialist",
+    "Oncologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Jennette JC, Falk RJ, Bacon PA, et al. 2012 Revised International Chapel Hill Consensus Conference Nomenclature of Vasculitides. Arthritis Rheum. 2013 Jan;65(1):1-11.",
+    "Guillevin L, Pagnoux C, Seror R, et al. The Five-Factor Score revisited: assessment of prognoses of systemic necrotizing vasculitides based on the French Vasculitis Study Group (FVSG) cohort. Medicine (Baltimore). 2011 Mar;90(1):19-27.",
+    "Kumar V, Abbas AK, Aster JC. Robbins Basic Pathology. 10th Edition. Elsevier; 2017."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,242 @@
+{
+  "id": "medium-vessel-vasculitis",
+  "name": "Medium Vessel Vasculitis",
+  "aliases": [
+    "Polyarteritis Nodosa",
+    "Kawasaki Disease"
+  ],
+  "icd10Codes": [
+    "M31.6",
+    "M30.3"
+  ],
+  "orphanetId": "ORPHA:232",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 60,
+      "peak": 40
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Caucasian",
+      "Asian (Kawasaki Disease)"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "American College of Rheumatology 1990 Criteria for Polyarteritis Nodosa",
+    "criteria": [
+      {
+        "id": "weight-loss",
+        "description": "Unexplained weight loss greater than 4 kg",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "livedo-reticularis",
+        "description": "Livedo reticularis or other skin manifestations",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "testicular-pain",
+        "description": "Testicular pain or tenderness",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "neuropathy",
+        "description": "Mononeuropathy or polyneuropathy",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "angiographic-abnormalities",
+        "description": "Arteriographic abnormalities not due to atherosclerosis or fibromuscular dysplasia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "biopsy-vasculitis",
+        "description": "Biopsy of small or medium artery containing polymorphonuclear cells",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "At least 3 of the criteria including either biopsy evidence or angiographic abnormalities",
+    "notes": "Diagnosis often requires exclusion of other vasculitides and infectious causes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Livedo reticularis",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Mottled purplish skin discoloration due to vascular inflammation"
+      },
+      {
+        "symptomName": "Mononeuritis multiplex",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Asymmetric peripheral nerve damage"
+      },
+      {
+        "symptomName": "Abdominal pain due to mesenteric ischemia",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal",
+        "notes": "Postprandial pain and possible bowel infarction"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fever",
+        "frequency": 0.85,
+        "bodySystem": "constitutional",
+        "notes": "Low-grade to high-grade fever"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.8,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to renal artery involvement"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "notes": "Muscle pain often proximal"
+      },
+      {
+        "symptomName": "Testicular pain or tenderness",
+        "frequency": 0.6,
+        "bodySystem": "reproductive",
+        "notes": "Due to vasculitis of testicular arteries"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Unintentional and progressive"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to renal involvement or heart failure"
+      },
+      {
+        "symptomName": "Hyposmia or anosmia",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Rare cranial nerve involvement"
+      },
+      {
+        "symptomName": "Oral ulcers",
+        "frequency": 0.25,
+        "bodySystem": "otolaryngological",
+        "notes": "Mucosal involvement"
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "Vasospasm of small arteries"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal",
+        "notes": "Joint pain without arthritis"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Aneurysm rupture",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Potentially life-threatening complication"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Due to cerebral artery involvement"
+      },
+      {
+        "symptomName": "Pulmonary hemorrhage",
+        "frequency": 0.02,
+        "bodySystem": "respiratory",
+        "notes": "Rare in medium vessel vasculitis"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "gastrointestinal",
+    "dermatological",
+    "musculoskeletal",
+    "constitutional",
+    "reproductive",
+    "respiratory",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated ESR and CRP",
+      "Mild anemia of chronic disease",
+      "Negative ANCA (usually)",
+      "Elevated serum creatinine if renal involvement"
+    ],
+    "imaging": [
+      "Angiography showing microaneurysms and stenoses in medium-sized arteries",
+      "CT or MR angiography for vessel assessment"
+    ],
+    "genetic": [
+      "No specific genetic markers identified"
+    ],
+    "other": [
+      "Biopsy of affected artery showing necrotizing inflammation with polymorphonuclear infiltration"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "small-vessel-vasculitis",
+      "distinguishingFeatures": [
+        "Predominant involvement of small vessels",
+        "Positive ANCA in many cases",
+        "Pulmonary-renal syndrome more common"
+      ]
+    },
+    {
+      "diseaseId": "giant-cell-arteritis",
+      "distinguishingFeatures": [
+        "Involvement of large vessels (e.g. temporal artery)",
+        "Older age of onset (>50 years)",
+        "Elevated ESR with headache and jaw claudication"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset of severe abdominal pain indicating mesenteric ischemia",
+    "Rapidly progressive renal failure",
+    "Signs of aneurysm rupture such as hypotension and acute pain"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Vascular Surgeon",
+    "Nephrologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Jennette JC, et al. 2012 Revised International Chapel Hill Consensus Conference Nomenclature of Vasculitides. Arthritis Rheum. 2013.",
+    "American College of Rheumatology 1990 Criteria for Polyarteritis Nodosa",
+    "Kawasaki Disease: A Review. Circulation. 2017."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,208 @@
+{
+  "id": "methemoglobinemia",
+  "name": "Methemoglobinemia",
+  "aliases": [
+    "Methemoglobin disorder",
+    "Methemoglobinemia"
+  ],
+  "icd10Codes": [
+    "D75.1"
+  ],
+  "omimId": "250800",
+  "orphanetId": "920",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 5
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Methemoglobinemia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "elevated-methemoglobin",
+        "description": "Methemoglobin level >1.5% of total hemoglobin",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cyanosis-with-normal-pao2",
+        "description": "Presence of cyanosis with normal arterial oxygen tension (PaO2)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "response-to-methylene-blue",
+        "description": "Improvement of symptoms following administration of methylene blue",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of methemoglobinemia or related enzyme deficiencies",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Elevated methemoglobin level >1.5% plus clinical cyanosis with normal PaO2",
+    "notes": "Diagnosis confirmed by co-oximetry and clinical correlation; genetic testing may support diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Central cyanosis unresponsive to oxygen therapy",
+        "frequency": 0.85,
+        "bodySystem": "dermatological",
+        "notes": "Bluish discoloration of skin and mucous membranes"
+      },
+      {
+        "symptomName": "Chocolate-brown colored blood",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Characteristic appearance of blood due to oxidized hemoglobin"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.7,
+        "bodySystem": "respiratory",
+        "notes": "Shortness of breath due to impaired oxygen delivery"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Generalized weakness and tiredness"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "notes": "Due to hypoxia"
+      },
+      {
+        "symptomName": "Tachycardia",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "Compensatory increase in heart rate"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Confusion",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Cognitive impairment secondary to hypoxia"
+      },
+      {
+        "symptomName": "Dizziness",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Lightheadedness related to decreased oxygen delivery"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to myocardial hypoxia"
+      },
+      {
+        "symptomName": "Nausea",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Non-specific symptom"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Severe hypoxia-induced neurologic event"
+      },
+      {
+        "symptomName": "Coma",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "In extreme cases of methemoglobinemia"
+      },
+      {
+        "symptomName": "Arrhythmias",
+        "frequency": 0.04,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to hypoxia"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "hematological",
+    "respiratory",
+    "cardiovascular",
+    "neurological",
+    "gastrointestinal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated methemoglobin fraction on co-oximetry",
+      "Normal arterial oxygen tension (PaO2) despite cyanosis",
+      "Normal or decreased oxygen saturation by pulse oximetry"
+    ],
+    "imaging": [
+      "Usually normal chest X-ray",
+      "Brain imaging may show hypoxic injury in severe cases"
+    ],
+    "genetic": [
+      "Mutations in CYB5R3 gene (NADH-cytochrome b5 reductase deficiency)",
+      "Mutations in globin genes causing hemoglobin M variants"
+    ],
+    "other": [
+      "Characteristic chocolate-brown colored blood sample",
+      "Response to methylene blue treatment"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "cyanotic-congenital-heart-disease",
+      "distinguishingFeatures": [
+        "Abnormal cardiac anatomy on echocardiogram",
+        "Low PaO2 on arterial blood gas",
+        "No improvement with methylene blue"
+      ]
+    },
+    {
+      "diseaseId": "sulfhemoglobinemia",
+      "distinguishingFeatures": [
+        "Presence of sulfhemoglobin on specialized testing",
+        "No response to methylene blue",
+        "History of exposure to sulfur-containing drugs"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly worsening cyanosis despite oxygen therapy",
+    "Neurological deterioration (seizures, coma)",
+    "Cardiovascular instability or arrhythmias"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Pulmonologist",
+    "Medical Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Wright RO, Lewander WJ, Woolf AD. Methemoglobinemia: etiology, pharmacology, and clinical management. Ann Emerg Med. 1999;34(5):646-656.",
+    "Rehman HU. Methemoglobinemia. West J Med. 2001;175(3):193-196.",
+    "Orphanet: Methemoglobinemia. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=920"
+  ],
+  "confidenceInData": "medium"
+}

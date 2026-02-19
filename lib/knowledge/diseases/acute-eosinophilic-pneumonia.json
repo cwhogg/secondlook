@@ -1,0 +1,218 @@
+{
+  "id": "acute-eosinophilic-pneumonia",
+  "name": "Acute Eosinophilic Pneumonia",
+  "aliases": [
+    "AEP",
+    "Acute Idiopathic Eosinophilic Pneumonia"
+  ],
+  "icd10Codes": [
+    "J82"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 15,
+      "max": 50,
+      "peak": 30
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Philit Criteria for Acute Eosinophilic Pneumonia",
+    "criteria": [
+      {
+        "id": "acute-onset",
+        "description": "Acute febrile respiratory illness with duration less than 1 month",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pulmonary-eosinophilia",
+        "description": "Eosinophilia in bronchoalveolar lavage fluid >25%",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "radiographic-infiltrates",
+        "description": "Diffuse bilateral pulmonary infiltrates on chest imaging",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-other-causes",
+        "description": "Exclusion of other known causes of eosinophilic lung disease such as infections, drugs, or malignancy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "peripheral-eosinophilia",
+        "description": "Peripheral blood eosinophilia may be absent early but can develop later",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All major criteria must be met including acute onset, pulmonary eosinophilia, radiographic infiltrates, and exclusion of other causes",
+    "notes": "Peripheral eosinophilia is often absent at presentation and should not exclude diagnosis"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Acute febrile respiratory illness",
+        "frequency": 0.95,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Diffuse bilateral pulmonary infiltrates",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Bronchoalveolar lavage eosinophilia >25%",
+        "frequency": 0.85,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Dyspnea (shortness of breath)",
+        "frequency": 0.85,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Nonproductive cough",
+        "frequency": 0.8,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Peripheral blood eosinophilia (may be delayed)",
+        "frequency": 0.6,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hypoxemia",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Tachypnea",
+        "frequency": 0.45,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myalgias",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild wheezing",
+        "frequency": 0.2,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.08,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pleural effusion",
+        "frequency": 0.07,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Rash",
+        "frequency": 0.05,
+        "bodySystem": "dermatological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "hematological",
+    "constitutional",
+    "musculoskeletal",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated eosinophils in bronchoalveolar lavage fluid (>25%)",
+      "Peripheral blood eosinophilia (may be absent early)",
+      "Elevated inflammatory markers (e.g., ESR, CRP)"
+    ],
+    "imaging": [
+      "Diffuse bilateral pulmonary infiltrates on chest X-ray or CT",
+      "Ground-glass opacities",
+      "Absence of lymphadenopathy or cavitation"
+    ],
+    "genetic": [],
+    "other": [
+      "Rapid clinical improvement with corticosteroid therapy",
+      "Exclusion of infectious and other eosinophilic lung diseases"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chronic-eosinophilic-pneumonia",
+      "distinguishingFeatures": [
+        "Chronic onset over weeks to months",
+        "Peripheral eosinophilia present early and prominent",
+        "Upper lobe predominance on imaging"
+      ]
+    },
+    {
+      "diseaseId": "hypersensitivity-pneumonitis",
+      "distinguishingFeatures": [
+        "Exposure to known antigen",
+        "Lymphocytic rather than eosinophilic alveolitis",
+        "Presence of granulomas on biopsy"
+      ]
+    },
+    {
+      "diseaseId": "eosinophilic-granulomatosis-with-polyangiitis",
+      "distinguishingFeatures": [
+        "Systemic vasculitis features",
+        "Asthma history",
+        "ANCA positivity"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression to respiratory failure",
+    "Hypoxemia refractory to oxygen therapy",
+    "Failure to improve or worsening despite corticosteroids"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Immunologist",
+    "Critical Care Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Philit F, et al. Idiopathic acute eosinophilic pneumonia: a study of 22 patients. Am J Respir Crit Care Med. 2002.",
+    "Cottin V, Cordier JF. Eosinophilic pneumonias. Allergy. 2005.",
+    "Allen JN, Davis WB. Eosinophilic lung diseases. Am J Respir Crit Care Med. 1994."
+  ],
+  "confidenceInData": "medium"
+}

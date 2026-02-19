@@ -1,0 +1,220 @@
+{
+  "id": "primary-ciliary-dyskinesia",
+  "name": "Primary Ciliary Dyskinesia",
+  "aliases": [
+    "Immotile Cilia Syndrome",
+    "Kartagener Syndrome"
+  ],
+  "icd10Codes": [
+    "Q34.8"
+  ],
+  "omimId": "244400",
+  "orphanetId": "920",
+  "prevalence": {
+    "estimate": "1 in 10,000 to 1 in 30,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 10,
+      "peak": 2
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ERS Guidelines for Diagnosis of Primary Ciliary Dyskinesia",
+    "criteria": [
+      {
+        "id": "chronic-respiratory-infections",
+        "description": "Persistent or recurrent upper and lower respiratory tract infections since early childhood",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "situs-inversus",
+        "description": "Presence of situs inversus or other laterality defects",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "abnormal-ciliary-function",
+        "description": "Abnormal ciliary ultrastructure or function demonstrated by electron microscopy or high-speed video microscopy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "low-nasal-nitric-oxide",
+        "description": "Low nasal nitric oxide levels",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of biallelic pathogenic variants in known PCD-associated genes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Presence of chronic respiratory symptoms plus either abnormal ciliary function or biallelic pathogenic variants in PCD genes",
+    "notes": "Diagnosis often requires a combination of clinical, functional, and genetic testing due to phenotypic variability."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chronic productive cough",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Situs inversus totalis",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular",
+        "notes": "Occurs in approximately 50% of cases, known as Kartagener syndrome when present"
+      },
+      {
+        "symptomName": "Neonatal respiratory distress",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chronic sinusitis",
+        "frequency": 0.85,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Recurrent otitis media",
+        "frequency": 0.7,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Bronchiectasis",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Nasal congestion and rhinorrhea",
+        "frequency": 0.6,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Male infertility due to immotile sperm",
+        "frequency": 0.6,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Chronic otorrhea",
+        "frequency": 0.4,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Digital clubbing",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Chronic cough with hemoptysis",
+        "frequency": 0.2,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Female subfertility",
+        "frequency": 0.15,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Associated with some genetic subtypes"
+      },
+      {
+        "symptomName": "Congenital heart defects",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Chronic otitis externa",
+        "frequency": 0.02,
+        "bodySystem": "otolaryngological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "cardiovascular",
+    "otolaryngological",
+    "reproductive",
+    "musculoskeletal",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low nasal nitric oxide levels",
+      "Sputum cultures showing recurrent bacterial infections"
+    ],
+    "imaging": [
+      "Chest CT showing bronchiectasis",
+      "Sinus CT demonstrating chronic sinusitis",
+      "Chest X-ray or abdominal ultrasound showing situs inversus"
+    ],
+    "genetic": [
+      "Biallelic pathogenic variants in DNAH5, DNAI1, or other PCD-associated genes"
+    ],
+    "other": [
+      "Abnormal ciliary ultrastructure on electron microscopy",
+      "Abnormal ciliary beat pattern on high-speed video microscopy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "cystic-fibrosis",
+      "distinguishingFeatures": [
+        "Elevated sweat chloride test",
+        "Pancreatic insufficiency",
+        "CFTR gene mutations"
+      ]
+    },
+    {
+      "diseaseId": "immotile-cilia-syndrome-secondary",
+      "distinguishingFeatures": [
+        "Secondary ciliary dysfunction due to infection or environmental factors",
+        "Lack of genetic mutations",
+        "Reversible ciliary abnormalities"
+      ]
+    },
+    {
+      "diseaseId": "bronchiectasis-non-pcd",
+      "distinguishingFeatures": [
+        "Bronchiectasis due to other causes such as post-infectious or immunodeficiency",
+        "No situs inversus",
+        "Normal ciliary function"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Neonatal respiratory distress with unexplained cause",
+    "Recurrent lower respiratory tract infections from early childhood",
+    "Presence of situs inversus with chronic respiratory symptoms"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Geneticist",
+    "Otolaryngologist",
+    "Reproductive endocrinologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Lucas JS, et al. Diagnosis and management of primary ciliary dyskinesia. Eur Respir J. 2017.",
+    "Shapiro AJ, et al. Clinical features and diagnosis of primary ciliary dyskinesia. UpToDate. 2024.",
+    "Knowles MR, et al. Primary ciliary dyskinesia. Nat Rev Dis Primers. 2016."
+  ],
+  "confidenceInData": "medium"
+}

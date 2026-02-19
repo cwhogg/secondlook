@@ -1,0 +1,211 @@
+{
+  "id": "cardiac-hemochromatosis",
+  "name": "Cardiac Hemochromatosis",
+  "aliases": [
+    "Iron Overload Cardiomyopathy",
+    "Myocardial Hemochromatosis"
+  ],
+  "icd10Codes": [
+    "E83.19"
+  ],
+  "prevalence": {
+    "estimate": "1 in 200,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 60,
+      "peak": 40
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "Caucasian",
+      "Mediterranean descent"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Cardiac Hemochromatosis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "iron-overload",
+        "description": "Evidence of systemic iron overload with elevated serum ferritin and transferrin saturation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cardiac-dysfunction",
+        "description": "Clinical signs of cardiomyopathy including heart failure symptoms and reduced ejection fraction",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cardiac-mri",
+        "description": "Cardiac MRI showing myocardial iron deposition (T2* imaging)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of HFE gene mutations or other hemochromatosis-associated mutations",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "liver-biopsy",
+        "description": "Liver biopsy demonstrating iron overload (optional supportive evidence)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of systemic iron overload plus cardiac dysfunction with confirmatory cardiac MRI evidence of myocardial iron deposition",
+    "notes": "Genetic testing and liver biopsy are supportive but not mandatory for diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Restrictive cardiomyopathy with iron deposition",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Characteristic myocardial iron overload causing diastolic dysfunction"
+      },
+      {
+        "symptomName": "Heart failure with preserved or reduced ejection fraction",
+        "frequency": 0.8,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Arrhythmias including atrial fibrillation and ventricular tachycardia",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Fatigue and exercise intolerance",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hepatomegaly due to systemic iron overload",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hypogonadism",
+        "frequency": 0.4,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Diabetes mellitus secondary to pancreatic iron deposition",
+        "frequency": 0.3,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Bronze skin pigmentation",
+        "frequency": 0.25,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Joint pain and arthropathy",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Conduction abnormalities requiring pacemaker",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pulmonary hypertension",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cirrhosis with portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "gastrointestinal",
+    "endocrine",
+    "dermatological",
+    "musculoskeletal",
+    "constitutional",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum ferritin",
+      "Increased transferrin saturation (>45%)",
+      "Elevated liver enzymes in some cases"
+    ],
+    "imaging": [
+      "Cardiac MRI T2* showing decreased myocardial signal consistent with iron deposition",
+      "Echocardiogram showing restrictive cardiomyopathy and reduced ejection fraction"
+    ],
+    "genetic": [
+      "HFE gene mutations (C282Y homozygosity or compound heterozygosity)",
+      "Other non-HFE hemochromatosis gene mutations (e.g., TFR2, HJV)"
+    ],
+    "other": [
+      "Liver biopsy with iron staining (Prussian blue) confirming iron overload",
+      "ECG abnormalities including arrhythmias and conduction delays"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "dilated-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Absence of systemic iron overload",
+        "No myocardial iron deposition on MRI",
+        "Different genetic and etiologic factors"
+      ]
+    },
+    {
+      "diseaseId": "amyloid-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Presence of amyloid deposits on biopsy",
+        "Characteristic imaging findings on cardiac MRI and nuclear scans",
+        "Different systemic involvement pattern"
+      ]
+    },
+    {
+      "diseaseId": "hypertrophic-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Myocardial hypertrophy without iron overload",
+        "Genetic mutations in sarcomeric proteins",
+        "Different clinical presentation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive heart failure symptoms",
+    "New onset arrhythmias or conduction block",
+    "Evidence of systemic iron overload with cardiac involvement"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Hematologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Anderson LJ, et al. Cardiovascular T2* magnetic resonance for the early diagnosis of myocardial iron overload. Eur Heart J. 2001.",
+    "Barton JC, Acton RT. Hemochromatosis and iron overload: diagnosis and management. Hematol Oncol Clin North Am. 2014.",
+    "Pennell DJ. Cardiovascular magnetic resonance in the evaluation of iron overload. Circulation. 2012."
+  ],
+  "confidenceInData": "medium"
+}

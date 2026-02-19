@@ -1,0 +1,229 @@
+{
+  "id": "renal-tubular-acidosis-type-1",
+  "name": "Renal Tubular Acidosis Type 1 (Distal Renal Tubular Acidosis)",
+  "aliases": [
+    "Distal RTA",
+    "Type 1 RTA"
+  ],
+  "icd10Codes": [
+    "N25.8"
+  ],
+  "omimId": "179800",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 5
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Diagnostic criteria for Distal Renal Tubular Acidosis",
+    "criteria": [
+      {
+        "id": "non-anion-gap-metabolic-acidosis",
+        "description": "Presence of hyperchloremic non-anion gap metabolic acidosis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "inability-to-acidify-urine",
+        "description": "Urine pH persistently >5.5 despite systemic acidemia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hypokalemia",
+        "description": "Hypokalemia or low serum potassium levels",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "nephrocalcinosis",
+        "description": "Evidence of nephrocalcinosis or nephrolithiasis on imaging",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "normal-glomerular-filtration-rate",
+        "description": "Normal or near-normal glomerular filtration rate",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of hyperchloremic non-anion gap metabolic acidosis with inability to acidify urine (urine pH >5.5) in the absence of other causes",
+    "notes": "Exclusion of proximal RTA and other causes of metabolic acidosis is essential"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hyperchloremic non-anion gap metabolic acidosis",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "notes": "Key biochemical hallmark"
+      },
+      {
+        "symptomName": "Inability to acidify urine (urine pH >5.5)",
+        "frequency": 0.9,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Nephrocalcinosis",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "notes": "Calcium deposition in renal parenchyma"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hypokalemia",
+        "frequency": 0.7,
+        "bodySystem": "renal",
+        "notes": "May cause muscle weakness"
+      },
+      {
+        "symptomName": "Nephrolithiasis",
+        "frequency": 0.65,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Polyuria",
+        "frequency": 0.6,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "notes": "Secondary to hypokalemia"
+      },
+      {
+        "symptomName": "Growth retardation in children",
+        "frequency": 0.5,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Bone pain",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to osteomalacia or rickets"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.35,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Polydipsia",
+        "frequency": 0.3,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Constipation",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hypocalcemia symptoms (tetany, paresthesias)",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Nephrogenic diabetes insipidus",
+        "frequency": 0.08,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Renal failure",
+        "frequency": 0.05,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Cardiac arrhythmias secondary to hypokalemia",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "musculoskeletal",
+    "constitutional",
+    "neurological",
+    "cardiovascular",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Hyperchloremic metabolic acidosis with normal anion gap",
+      "Hypokalemia",
+      "Elevated urine pH >5.5 despite systemic acidemia",
+      "Low serum bicarbonate",
+      "Normal or mildly reduced GFR"
+    ],
+    "imaging": [
+      "Renal ultrasound showing nephrocalcinosis or nephrolithiasis",
+      "Bone X-rays showing signs of rickets or osteomalacia in children"
+    ],
+    "genetic": [
+      "Mutations in ATP6V1B1 or ATP6V0A4 genes (autosomal recessive distal RTA)",
+      "SLC4A1 gene mutations (autosomal dominant distal RTA)"
+    ],
+    "other": [
+      "Urine acidification test demonstrating failure to lower urine pH after acid load"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "renal-tubular-acidosis-type-2",
+      "distinguishingFeatures": [
+        "Proximal tubular defect with low urine pH",
+        "Generalized proximal tubule dysfunction (Fanconi syndrome)",
+        "More prominent bicarbonate wasting"
+      ]
+    },
+    {
+      "diseaseId": "primary-hyperparathyroidism",
+      "distinguishingFeatures": [
+        "Hypercalcemia rather than hypocalcemia",
+        "Elevated parathyroid hormone levels",
+        "Different acid-base disturbance"
+      ]
+    },
+    {
+      "diseaseId": "medullary-cystic-kidney-disease",
+      "distinguishingFeatures": [
+        "Progressive renal failure",
+        "Medullary cysts on imaging",
+        "No primary acidification defect"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe hypokalemia causing paralysis or arrhythmias",
+    "Progressive nephrocalcinosis leading to renal failure",
+    "Failure to thrive or growth retardation in children"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Pediatric nephrologist",
+    "Clinical geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Batlle DC, Haque SK. Genetic causes and mechanisms of distal renal tubular acidosis. Nephrol Dial Transplant. 2012;27(10):3691-3704.",
+    "Karet FE. Molecular genetics of distal renal tubular acidosis. Pediatr Nephrol. 2005;20(11):1597-1604.",
+    "Scheinman SJ. Genetic causes of renal tubular acidosis. Kidney Int. 2009;75(11):1145-1151."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,197 @@
+{
+  "id": "osteopoikilosis",
+  "name": "Osteopoikilosis",
+  "aliases": [
+    "Spotted Bone Disease",
+    "Osteopathia Condensans Disseminata"
+  ],
+  "icd10Codes": [
+    "M85.8"
+  ],
+  "omimId": "166700",
+  "orphanetId": "217",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 60,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Radiographic Diagnostic Criteria for Osteopoikilosis",
+    "criteria": [
+      {
+        "id": "multiple-bone-islands",
+        "description": "Presence of multiple, symmetric, well-defined sclerotic bone islands on X-ray",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-clinical-symptoms",
+        "description": "Typically asymptomatic or mild musculoskeletal symptoms",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history consistent with autosomal dominant inheritance",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "normal-laboratory-findings",
+        "description": "Normal laboratory tests including bone metabolism markers",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of multiple symmetric sclerotic bone islands on imaging with exclusion of other sclerosing bone dysplasias",
+    "notes": "Diagnosis is primarily radiological; biopsy rarely needed unless malignancy suspected"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Multiple symmetric sclerotic bone islands on radiographs",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Asymptomatic presentation",
+        "frequency": 0.85,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Mild joint pain",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Occasional joint stiffness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Normal physical examination",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "No systemic symptoms",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Localized tenderness over affected bones",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mild swelling around joints",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Rare dermatological manifestations (e.g. skin lesions in Buschke-Ollendorff syndrome)",
+        "frequency": 0.1,
+        "bodySystem": "dermatological",
+        "notes": "When associated with Buschke-Ollendorff syndrome"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pathological fractures",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Joint effusions",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Nerve compression symptoms due to bone islands",
+        "frequency": 0.02,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "constitutional",
+    "dermatological",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal serum calcium, phosphate, alkaline phosphatase, and bone turnover markers"
+    ],
+    "imaging": [
+      "Multiple, small, round or ovoid, symmetric sclerotic bone islands predominantly in epiphyses and metaphyses on X-ray",
+      "Bone scan typically normal or shows no increased uptake"
+    ],
+    "genetic": [
+      "Mutations in LEMD3 gene associated with autosomal dominant inheritance"
+    ],
+    "other": [
+      "Histology shows dense lamellar bone without malignant features"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "osteoblastic-metastases",
+      "distinguishingFeatures": [
+        "Asymmetric lesions",
+        "Clinical history of malignancy",
+        "Increased uptake on bone scan"
+      ]
+    },
+    {
+      "diseaseId": "mastocytosis",
+      "distinguishingFeatures": [
+        "Skin lesions (urticaria pigmentosa)",
+        "Systemic symptoms",
+        "Bone lesions with different radiographic appearance"
+      ]
+    },
+    {
+      "diseaseId": "melorheostosis",
+      "distinguishingFeatures": [
+        "Linear sclerotic bone thickening",
+        "Pain and deformity",
+        "Unilateral distribution"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive bone pain",
+    "Unexplained pathological fractures",
+    "Asymmetric or atypical bone lesions suggestive of malignancy"
+  ],
+  "specialistType": [
+    "Orthopedic Surgeon",
+    "Radiologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Kozlowski K. Osteopoikilosis: a review of the literature. Clin Orthop Relat Res. 1974;(101):14-24.",
+    "Hellemans J, Preobrazhenska O, Willaert A, et al. Loss-of-function mutations in LEMD3 result in osteopoikilosis, Buschke-Ollendorff syndrome and melorheostosis. Nat Genet. 2004;36(11):1213-1218.",
+    "Resnick D. Diagnosis of Bone and Joint Disorders. 4th ed. Saunders; 2002."
+  ],
+  "confidenceInData": "medium"
+}

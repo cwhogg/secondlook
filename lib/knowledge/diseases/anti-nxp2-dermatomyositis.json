@@ -1,0 +1,226 @@
+{
+  "id": "anti-nxp2-dermatomyositis",
+  "name": "Anti-NXP2 Dermatomyositis",
+  "aliases": [
+    "NXP2-positive Dermatomyositis",
+    "Anti-NXP2 Antibody-associated Dermatomyositis"
+  ],
+  "icd10Codes": [
+    "M33.2"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 2,
+      "max": 70,
+      "peak": 10
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "Caucasian",
+      "Asian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "European League Against Rheumatism/American College of Rheumatology (EULAR/ACR) Classification Criteria for Dermatomyositis",
+    "criteria": [
+      {
+        "id": "anti-nxp2-antibody",
+        "description": "Presence of anti-NXP2 autoantibodies detected by immunoprecipitation or ELISA",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "muscle-weakness",
+        "description": "Symmetric proximal muscle weakness affecting limb girdle muscles",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "characteristic-skin-rash",
+        "description": "Typical dermatomyositis skin manifestations including heliotrope rash or Gottron papules",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "calcinosis",
+        "description": "Presence of subcutaneous or intramuscular calcinosis detected clinically or radiologically",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "elevated-muscle-enzymes",
+        "description": "Elevated serum creatine kinase (CK) or aldolase levels",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of anti-NXP2 antibodies plus symmetric proximal muscle weakness with or without characteristic skin rash",
+    "notes": "Calcinosis is more frequent in juvenile cases and may aid diagnosis"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Symmetric proximal muscle weakness",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Calcinosis cutis",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "More common in juvenile patients"
+      },
+      {
+        "symptomName": "Anti-NXP2 autoantibody positivity",
+        "frequency": 0.95,
+        "bodySystem": "immunological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Heliotrope rash",
+        "frequency": 0.65,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Gottron papules",
+        "frequency": 0.6,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Elevated serum creatine kinase",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.58,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Interstitial lung disease",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mechanic’s hands",
+        "frequency": 0.15,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiac involvement (myocarditis, arrhythmias)",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "frequency": 0.07,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Calcinosis-related ulcerations",
+        "frequency": 0.03,
+        "bodySystem": "dermatological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "dermatological",
+    "immunological",
+    "respiratory",
+    "gastrointestinal",
+    "cardiovascular",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Anti-NXP2 autoantibodies detected by immunoprecipitation or ELISA",
+      "Elevated serum creatine kinase (CK) and aldolase",
+      "Elevated inflammatory markers (ESR, CRP) in some cases"
+    ],
+    "imaging": [
+      "MRI showing muscle edema and inflammation",
+      "X-ray or CT demonstrating calcinosis",
+      "High-resolution CT for interstitial lung disease assessment"
+    ],
+    "genetic": [
+      "No specific genetic mutations identified; autoantibody association is key"
+    ],
+    "other": [
+      "Muscle biopsy showing perifascicular atrophy and inflammatory infiltrates",
+      "Electromyography showing myopathic changes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "anti-mda5-dermatomyositis",
+      "distinguishingFeatures": [
+        "Presence of anti-MDA5 antibodies",
+        "Higher risk of rapidly progressive interstitial lung disease",
+        "Less frequent calcinosis"
+      ]
+    },
+    {
+      "diseaseId": "juvenile-dermatomyositis",
+      "distinguishingFeatures": [
+        "May lack anti-NXP2 antibodies",
+        "Varied autoantibody profiles",
+        "Different patterns of skin involvement and calcinosis"
+      ]
+    },
+    {
+      "diseaseId": "polymyositis",
+      "distinguishingFeatures": [
+        "Absence of characteristic dermatomyositis skin rash",
+        "Lack of anti-NXP2 antibodies",
+        "Muscle involvement without cutaneous features"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive muscle weakness leading to respiratory failure",
+    "Development of extensive calcinosis causing ulcerations or infections",
+    "Signs of cardiac involvement such as arrhythmias or myocarditis"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Dermatologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Betteridge Z, McHugh N. Myositis-specific autoantibodies: an important tool to support diagnosis of myositis. J Intern Med. 2016.",
+    "Sato S, Kuwana M. Clinical features and pathogenesis of anti-NXP2 antibody-positive dermatomyositis. Curr Rheumatol Rep. 2019.",
+    "EULAR/ACR Classification Criteria for Idiopathic Inflammatory Myopathies. Ann Rheum Dis. 2017."
+  ],
+  "confidenceInData": "medium"
+}

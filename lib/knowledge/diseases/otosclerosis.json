@@ -1,0 +1,202 @@
+{
+  "id": "otosclerosis",
+  "name": "Otosclerosis",
+  "aliases": [
+    "Ossicular Otosclerosis",
+    "Fenestral Otosclerosis"
+  ],
+  "icd10Codes": [
+    "H80"
+  ],
+  "prevalence": {
+    "estimate": "1 in 200 to 1 in 1000",
+    "range": "0.1%-1%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 15,
+      "max": 45,
+      "peak": 30
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "Caucasian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Audiometric Diagnostic Criteria for Otosclerosis",
+    "criteria": [
+      {
+        "id": "conductive-hearing-loss",
+        "description": "Progressive conductive hearing loss typically starting in one ear",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absent-acoustic-reflex",
+        "description": "Absent or elevated stapedial reflex on audiometry",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "carhart-notch",
+        "description": "Presence of Carhart notch on audiogram at 2000 Hz",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "imaging-findings",
+        "description": "CT scan showing otic capsule bone remodeling or hypodensity near the fissula ante fenestram",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Progressive conductive hearing loss with absent stapedial reflex; supportive audiometric or imaging findings strengthen diagnosis",
+    "notes": "Diagnosis is primarily clinical supported by audiometry and imaging; definitive diagnosis may require surgical exploration"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive conductive hearing loss",
+        "frequency": 0.95,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Absent stapedial reflex",
+        "frequency": 0.85,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Carhart notch on audiogram",
+        "frequency": 0.75,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Tinnitus",
+        "frequency": 0.65,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Difficulty hearing in noisy environments",
+        "frequency": 0.6,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Bilateral hearing impairment",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Normal tympanic membrane on otoscopy",
+        "frequency": 0.5,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Sensorineural hearing loss component",
+        "frequency": 0.4,
+        "bodySystem": "otolaryngological",
+        "notes": "Occurs in advanced or cochlear otosclerosis"
+      },
+      {
+        "symptomName": "Vertigo or balance disturbances",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ear fullness sensation",
+        "frequency": 0.25,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Family history of otosclerosis",
+        "frequency": 0.2,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Facial nerve palsy",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Rare complication due to extensive bone remodeling"
+      },
+      {
+        "symptomName": "Perilymph fistula",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Sensorineural deafness without conductive component",
+        "frequency": 0.02,
+        "bodySystem": "otolaryngological",
+        "notes": "Rare isolated cochlear otosclerosis"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "otolaryngological",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [],
+    "imaging": [
+      "CT temporal bone showing hypodense foci near the fissula ante fenestram",
+      "MRI may show otic capsule bone remodeling"
+    ],
+    "genetic": [
+      "Familial inheritance with autosomal dominant pattern with incomplete penetrance",
+      "Mutations in genes such as RELN and COL1A1 implicated"
+    ],
+    "other": [
+      "Audiometry showing conductive hearing loss with Carhart notch",
+      "Absent or elevated stapedial reflex on acoustic reflex testing"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chronic-otitis-media",
+      "distinguishingFeatures": [
+        "Presence of tympanic membrane abnormalities",
+        "History of recurrent ear infections",
+        "Middle ear effusion or perforation on otoscopy"
+      ]
+    },
+    {
+      "diseaseId": "otosyphilis",
+      "distinguishingFeatures": [
+        "Positive serologic tests for syphilis",
+        "Sensorineural hearing loss predominates",
+        "Systemic signs of syphilis"
+      ]
+    },
+    {
+      "diseaseId": "ossicular-chain-discontinuity",
+      "distinguishingFeatures": [
+        "History of trauma or surgery",
+        "Abnormal ossicular mobility on imaging or surgery",
+        "Absent Carhart notch on audiogram"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset sensorineural hearing loss",
+    "Facial nerve weakness or paralysis",
+    "Rapidly progressive hearing loss with vestibular symptoms"
+  ],
+  "specialistType": [
+    "Otolaryngologist",
+    "Audiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Kelemen G, et al. Otosclerosis: Clinical and genetic aspects. Otolaryngol Clin North Am. 2018;51(5):945-957.",
+    "Merchant SN, Rosowski JJ. Conductive hearing loss caused by inner ear disorders. N Engl J Med. 2020;382(10):958-967.",
+    "Orphanet: Otosclerosis. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=902"
+  ],
+  "confidenceInData": "medium"
+}

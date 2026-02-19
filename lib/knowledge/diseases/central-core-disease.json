@@ -1,0 +1,210 @@
+{
+  "id": "central-core-disease",
+  "name": "Central Core Disease",
+  "aliases": [
+    "CCD",
+    "Central Core Myopathy"
+  ],
+  "icd10Codes": [
+    "G71.2"
+  ],
+  "omimId": "117000",
+  "orphanetId": "987",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 10,
+      "peak": 1
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Central Core Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "muscle-biopsy-cores",
+        "description": "Presence of central cores on muscle biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "muscle-weakness",
+        "description": "Congenital or early-onset proximal muscle weakness",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ryr1-mutation",
+        "description": "Identification of pathogenic RYR1 gene mutation",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Family history consistent with autosomal dominant inheritance",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "normal-cognitive-function",
+        "description": "Normal intellectual development",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of central cores on muscle biopsy plus congenital or early-onset proximal muscle weakness",
+    "notes": "Genetic testing for RYR1 mutations supports diagnosis but is not mandatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Central cores on muscle biopsy",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Congenital proximal muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hypotonia in infancy",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Delayed motor milestones",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Muscle fatigue",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mild facial weakness",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Joint contractures",
+        "frequency": 0.5,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Respiratory muscle weakness",
+        "frequency": 0.4,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Malignant hyperthermia susceptibility",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Muscle cramps",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mild ptosis",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.1,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiac arrhythmias",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.02,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "respiratory",
+    "cardiovascular",
+    "constitutional",
+    "ophthalmological",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum creatine kinase (mild to moderate)",
+      "Normal or mildly elevated lactate"
+    ],
+    "imaging": [
+      "Muscle MRI showing selective muscle involvement",
+      "Muscle biopsy revealing central cores"
+    ],
+    "genetic": [
+      "Pathogenic mutations in RYR1 gene"
+    ],
+    "other": [
+      "Susceptibility to malignant hyperthermia during anesthesia"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "multi-minicore-disease",
+      "distinguishingFeatures": [
+        "Multiple small cores on muscle biopsy instead of central cores",
+        "More severe respiratory involvement"
+      ]
+    },
+    {
+      "diseaseId": "nemaline-myopathy",
+      "distinguishingFeatures": [
+        "Presence of nemaline rods on muscle biopsy",
+        "More prominent facial weakness and hypotonia"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive muscle weakness",
+    "Respiratory distress or failure",
+    "Signs of malignant hyperthermia during anesthesia"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neuromuscular specialist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Jungbluth H. Central core disease. Orphanet J Rare Dis. 2007;2:25.",
+    "Sewry CA, et al. Central core disease: clinical, pathological, and genetic features. Neuromuscul Disord. 2019.",
+    "Ryan S, et al. RYR1-related myopathies: diagnosis and management. Neurology. 2020."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,191 @@
+{
+  "id": "uhl-anomaly",
+  "name": "Uhl Anomaly",
+  "aliases": [
+    "Parchment Right Ventricle",
+    "Right Ventricular Myocardial Dysplasia"
+  ],
+  "icd10Codes": [
+    "Q24.8"
+  ],
+  "omimId": "618123",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 10,
+      "peak": 1
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Uhl Anomaly Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "rv-myocardial-absence",
+        "description": "Congenital partial or complete absence of right ventricular myocardium",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "right-ventricular-dilation",
+        "description": "Marked dilation of the right ventricle with thin, parchment-like wall",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "arrhythmias",
+        "description": "Presence of ventricular arrhythmias or conduction abnormalities",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "right-heart-failure",
+        "description": "Clinical signs of right ventricular failure",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of congenital absence of right ventricular myocardium with right ventricular dilation",
+    "notes": "Diagnosis is primarily based on imaging and histopathological findings; genetic testing is not routinely diagnostic."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Right ventricular myocardial absence",
+        "frequency": 0.95,
+        "bodySystem": "cardiovascular",
+        "notes": "Identified by imaging or histology"
+      },
+      {
+        "symptomName": "Right ventricular dilation with thin wall",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Right-sided heart failure",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Includes peripheral edema, hepatomegaly"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ventricular arrhythmias",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.35,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Cyanosis",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden cardiac death",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Right bundle branch block on ECG",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.06,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "constitutional",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated liver enzymes secondary to right heart failure",
+      "Normal cardiac biomarkers unless secondary injury"
+    ],
+    "imaging": [
+      "Echocardiography showing absent or severely thinned right ventricular myocardium",
+      "Cardiac MRI demonstrating right ventricular myocardial absence and dilation",
+      "Right ventricular angiography with thin-walled right ventricle"
+    ],
+    "genetic": [
+      "No consistent genetic mutation identified; sporadic cases predominating"
+    ],
+    "other": [
+      "Histopathology confirming absence of right ventricular myocardium with preserved endocardium and epicardium"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "arrhythmogenic-right-ventricular-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Fibrofatty replacement of right ventricular myocardium",
+        "Progressive arrhythmias with genetic basis",
+        "Right ventricular wall thinning but not complete absence"
+      ]
+    },
+    {
+      "diseaseId": "ebstein-anomaly",
+      "distinguishingFeatures": [
+        "Apical displacement of tricuspid valve leaflets",
+        "Right atrial enlargement rather than right ventricular myocardial absence",
+        "Associated tricuspid regurgitation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe right ventricular dilation with wall thinning",
+    "Recurrent ventricular arrhythmias",
+    "Signs of right heart failure in neonates or infants"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Pediatric Cardiologist",
+    "Cardiothoracic Surgeon"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "James TN. Uhl's anomaly: congenital absence of the right ventricular myocardium. Circulation. 1972;45(3):589-95.",
+    "Basso C, et al. Uhl's anomaly: a rare cause of right ventricular failure and sudden death. Cardiovasc Pathol. 2004;13(3):153-7.",
+    "Orphanet: Uhl anomaly. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=395"
+  ],
+  "confidenceInData": "medium"
+}

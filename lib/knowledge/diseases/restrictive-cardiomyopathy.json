@@ -1,0 +1,218 @@
+{
+  "id": "restrictive-cardiomyopathy",
+  "name": "Restrictive Cardiomyopathy",
+  "aliases": [
+    "RCM",
+    "Infiltrative Cardiomyopathy"
+  ],
+  "icd10Codes": [
+    "I42.5"
+  ],
+  "omimId": "115210",
+  "orphanetId": "795",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.01-0.05%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 40
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Restrictive Cardiomyopathy Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "impaired-ventricular-filling",
+        "description": "Evidence of impaired ventricular filling with restrictive physiology on echocardiography or cardiac catheterization",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "normal-systolic-function",
+        "description": "Preserved or near-normal left ventricular systolic function",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "biopsy-myocardial-stiffness",
+        "description": "Endomyocardial biopsy showing myocardial fibrosis or infiltration causing stiffness",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "absence-of-other-cardiomyopathies",
+        "description": "Exclusion of other causes of restrictive physiology such as constrictive pericarditis or hypertrophic cardiomyopathy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Presence of impaired ventricular filling with restrictive physiology and preserved systolic function, excluding other causes",
+    "notes": "Diagnosis often requires multimodal imaging and sometimes biopsy to confirm etiology"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Elevated jugular venous pressure with prominent y descent",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Reflects impaired ventricular filling"
+      },
+      {
+        "symptomName": "Kussmaul's sign",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Paradoxical rise in jugular venous pressure on inspiration"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Exertional dyspnea",
+        "frequency": 0.8,
+        "bodySystem": "respiratory",
+        "notes": "Due to elevated filling pressures and pulmonary congestion"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.75,
+        "bodySystem": "constitutional",
+        "notes": "Secondary to reduced cardiac output"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Right heart failure manifestation"
+      },
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to systemic venous congestion"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to atrial arrhythmias"
+      },
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Secondary to low cardiac output or arrhythmias"
+      },
+      {
+        "symptomName": "Chest discomfort",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Non-specific symptom"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to venous congestion"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Thromboembolic events",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "notes": "Due to atrial enlargement and stasis"
+      },
+      {
+        "symptomName": "Orthostatic hypotension",
+        "frequency": 0.04,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to impaired cardiac output"
+      },
+      {
+        "symptomName": "Angina pectoris",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to microvascular ischemia"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "respiratory",
+    "gastrointestinal",
+    "hematological",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated brain natriuretic peptide (BNP)",
+      "Normal or mildly elevated troponin",
+      "Possible abnormal serum protein electrophoresis if amyloidosis present"
+    ],
+    "imaging": [
+      "Echocardiogram showing biatrial enlargement with normal ventricular size and preserved systolic function",
+      "Doppler demonstrating restrictive filling pattern",
+      "Cardiac MRI showing myocardial fibrosis or infiltration",
+      "Endomyocardial biopsy confirming fibrosis or infiltration"
+    ],
+    "genetic": [
+      "Mutations in sarcomeric protein genes (e.g., TNNI3, TNNT2) in familial cases",
+      "Genetic testing for amyloidosis-related mutations (e.g., TTR gene)"
+    ],
+    "other": [
+      "Electrocardiogram may show low voltage or atrial enlargement",
+      "Right heart catheterization demonstrating elevated filling pressures with normal cardiac output"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "constrictive-pericarditis",
+      "distinguishingFeatures": [
+        "Pericardial thickening or calcification on imaging",
+        "Respiratory variation in ventricular filling",
+        "History of pericardial disease or surgery"
+      ]
+    },
+    {
+      "diseaseId": "hypertrophic-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Asymmetric septal hypertrophy on imaging",
+        "Systolic anterior motion of mitral valve",
+        "Dynamic outflow tract obstruction"
+      ]
+    },
+    {
+      "diseaseId": "dilated-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Dilated ventricular chambers with reduced systolic function",
+        "Absence of restrictive filling pattern"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of heart failure symptoms",
+    "Refractory atrial arrhythmias",
+    "Evidence of systemic amyloidosis or infiltrative disease",
+    "Syncope or sudden cardiac death"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Cardiac Electrophysiologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Maron BJ, Towbin JA, Thiene G, et al. Contemporary definitions and classification of the cardiomyopathies: an American Heart Association Scientific Statement. Circulation. 2006;113(14):1807-1816.",
+    "Elliott P, Andersson B, Arbustini E, et al. Classification of the cardiomyopathies: a position statement from the European Society Of Cardiology Working Group on Myocardial and Pericardial Diseases. Eur Heart J. 2008;29(2):270-276.",
+    "Muchtar E, Blauwet LA, Gertz MA. Restrictive Cardiomyopathy: Genetics, Pathogenesis, Clinical Manifestations, Diagnosis, and Therapy. Circ Res. 2017;121(7):819-837."
+  ],
+  "confidenceInData": "medium"
+}

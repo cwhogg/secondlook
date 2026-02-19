@@ -1,0 +1,194 @@
+{
+  "id": "dense-deposit-disease",
+  "name": "Dense Deposit Disease",
+  "aliases": [
+    "DDD",
+    "Membranoproliferative Glomerulonephritis Type II"
+  ],
+  "icd10Codes": [
+    "N03.2"
+  ],
+  "omimId": "233700",
+  "orphanetId": "ORPHA395",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 40,
+      "peak": 15
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Dense Deposit Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Electron microscopy showing dense intramembranous deposits in the glomerular basement membrane",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "complement-abnormalities",
+        "description": "Evidence of alternative complement pathway dysregulation (e.g., low C3 with normal C4)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Nephrotic syndrome or nephritic syndrome with proteinuria and hematuria",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-other-glomerulopathies",
+        "description": "Exclusion of other causes of C3 glomerulopathy and immune complex-mediated glomerulonephritis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of dense intramembranous deposits on electron microscopy plus clinical evidence of nephrotic/nephritic syndrome and complement abnormalities",
+    "notes": "Diagnosis requires renal biopsy with electron microscopy and complement studies."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Dense intramembranous deposits in glomerular basement membrane",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "notes": "Identified by electron microscopy"
+      },
+      {
+        "symptomName": "Hypocomplementemia (low serum C3 with normal C4)",
+        "frequency": 0.85,
+        "bodySystem": "immunological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Proteinuria",
+        "frequency": 0.85,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.75,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Edema",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased urine output",
+        "frequency": 0.3,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Microscopic hematuria",
+        "frequency": 0.15,
+        "bodySystem": "renal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Nephrotic syndrome complications (e.g., thromboembolism)",
+        "frequency": 0.08,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Progressive renal failure",
+        "frequency": 0.07,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Ocular drusen",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological",
+        "notes": "Associated with complement dysregulation"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "immunological",
+    "cardiovascular",
+    "constitutional",
+    "hematological",
+    "ophthalmological",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low serum C3 with normal C4",
+      "Proteinuria and hematuria on urinalysis",
+      "Elevated serum creatinine in advanced disease"
+    ],
+    "imaging": [
+      "Renal ultrasound may show normal or increased echogenicity",
+      "Ophthalmologic exam may reveal drusen"
+    ],
+    "genetic": [
+      "Mutations or polymorphisms in complement regulatory genes (e.g., CFH, C3)"
+    ],
+    "other": [
+      "Renal biopsy with electron microscopy demonstrating dense deposits",
+      "Complement factor H autoantibodies in some cases"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "c3-glomerulopathy",
+      "distinguishingFeatures": [
+        "Presence of C3 dominant deposits but lacking dense intramembranous deposits",
+        "Variable complement abnormalities"
+      ]
+    },
+    {
+      "diseaseId": "immune-complex-glomerulonephritis",
+      "distinguishingFeatures": [
+        "Presence of immunoglobulin deposits on immunofluorescence",
+        "Different electron microscopy findings"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive renal failure",
+    "Severe nephrotic syndrome with hypoalbuminemia",
+    "Refractory hypertension"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Immunologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Fakhouri F, et al. Dense Deposit Disease: Clinical Features, Pathogenesis, and Treatment. Kidney Int. 2010.",
+    "Servais A, et al. C3 Glomerulopathy: A New Classification. Nat Rev Nephrol. 2012.",
+    "Pickering MC, et al. Dense Deposit Disease and C3 Glomerulopathy. Nat Rev Nephrol. 2013."
+  ],
+  "confidenceInData": "medium"
+}

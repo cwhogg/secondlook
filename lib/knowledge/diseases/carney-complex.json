@@ -1,0 +1,206 @@
+{
+  "id": "carney-complex",
+  "name": "Carney Complex",
+  "aliases": [
+    "Carney Syndrome",
+    "LAMB Syndrome",
+    "NAME Syndrome"
+  ],
+  "icd10Codes": [
+    "Q85.8"
+  ],
+  "omimId": "160980",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Stratakis Diagnostic Criteria for Carney Complex",
+    "criteria": [
+      {
+        "id": "cardiac-myxoma",
+        "description": "Presence of cardiac myxoma confirmed by imaging or histology",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "spotty-skin-pigmentation",
+        "description": "Spotty skin pigmentation including lentigines and blue nevi",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "endocrine-tumors",
+        "description": "Endocrine tumors such as primary pigmented nodular adrenocortical disease (PPNAD) or pituitary adenomas",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "First-degree relative with Carney Complex",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "myxoma-other-sites",
+        "description": "Myxomas in extracardiac locations (skin, breast, etc.)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Diagnosis requires two or more major criteria or one major criterion plus a pathogenic PRKAR1A mutation or a first-degree relative with Carney Complex",
+    "notes": "Genetic testing for PRKAR1A mutations supports diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Cardiac myxoma",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Spotty skin pigmentation (lentigines and blue nevi)",
+        "frequency": 0.85,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Primary pigmented nodular adrenocortical disease (PPNAD)",
+        "frequency": 0.7,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Cutaneous myxomas",
+        "frequency": 0.65,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pituitary adenomas causing acromegaly or Cushing disease",
+        "frequency": 0.6,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Breast myxomatosis",
+        "frequency": 0.55,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Testicular tumors (large-cell calcifying Sertoli cell tumors)",
+        "frequency": 0.5,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Thyroid nodules or carcinoma",
+        "frequency": 0.3,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Osteochondromyxoma",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cushing syndrome symptoms due to PPNAD",
+        "frequency": 0.4,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Stroke secondary to cardiac myxoma embolism",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arrhythmias related to cardiac myxomas",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hypogonadism due to testicular tumors",
+        "frequency": 0.03,
+        "bodySystem": "endocrine"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "dermatological",
+    "endocrine",
+    "reproductive",
+    "musculoskeletal",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated cortisol levels with loss of diurnal variation in PPNAD",
+      "Elevated IGF-1 in pituitary adenomas",
+      "Hormonal assays indicating endocrine hyperfunction"
+    ],
+    "imaging": [
+      "Echocardiography showing cardiac myxomas",
+      "MRI of pituitary gland revealing adenomas",
+      "Ultrasound or MRI detecting testicular or thyroid tumors"
+    ],
+    "genetic": [
+      "Pathogenic variants in PRKAR1A gene detected by molecular genetic testing"
+    ],
+    "other": [
+      "Histopathology confirming myxomas in cardiac or extracardiac tissues",
+      "Skin biopsy showing blue nevi or lentigines"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "carney-triad",
+      "distinguishingFeatures": [
+        "Presence of gastrointestinal stromal tumors, pulmonary chondromas, and paragangliomas",
+        "Lack of cardiac myxomas and spotty skin pigmentation"
+      ]
+    },
+    {
+      "diseaseId": "multiple-endocrine-neoplasia-type-1",
+      "distinguishingFeatures": [
+        "Parathyroid hyperplasia, pancreatic neuroendocrine tumors, pituitary adenomas",
+        "Absence of cardiac myxomas and characteristic skin pigmentation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Recurrent cardiac myxomas causing embolic events",
+    "Early onset endocrine tumors with unusual pigmentation",
+    "Family history of cardiac tumors or endocrine neoplasia"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Endocrinologist",
+    "Dermatologist",
+    "Geneticist",
+    "Oncologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Stratakis CA. Carney complex: clinical and molecular features. Front Horm Res. 2013;41:50-63.",
+    "Carney JA. The complex of myxomas, spotty pigmentation, and endocrine overactivity. Medicine (Baltimore). 1985;64(4):270-283.",
+    "Nesterova M, Stratakis CA. Carney complex: clinical features and molecular genetics. Neuroendocrinology. 2014;99(2):125-138."
+  ],
+  "confidenceInData": "medium"
+}

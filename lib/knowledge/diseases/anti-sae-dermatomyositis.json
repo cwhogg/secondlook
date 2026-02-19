@@ -1,0 +1,214 @@
+{
+  "id": "anti-sae-dermatomyositis",
+  "name": "Anti-SAE Dermatomyositis",
+  "aliases": [
+    "Anti-SAE Antibody-Associated Dermatomyositis",
+    "SAE1 Dermatomyositis"
+  ],
+  "icd10Codes": [
+    "M33.0"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 45
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "East Asian",
+      "Caucasian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "European Neuromuscular Centre (ENMC) 2018 Dermatomyositis Criteria",
+    "criteria": [
+      {
+        "id": "anti-sae-antibody",
+        "description": "Presence of anti-SAE autoantibodies in serum",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "characteristic-skin-rash",
+        "description": "Typical dermatomyositis skin manifestations including heliotrope rash and Gottron's papules",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "muscle-weakness",
+        "description": "Symmetric proximal muscle weakness",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "muscle-enzyme-elevation",
+        "description": "Elevated serum creatine kinase or aldolase levels",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "muscle-biopsy",
+        "description": "Muscle biopsy showing perifascicular atrophy and inflammation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of anti-SAE antibodies plus characteristic skin rash and muscle weakness",
+    "notes": "Muscle biopsy and enzyme elevation support diagnosis but are not mandatory if serology and clinical features are definitive."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Heliotrope rash",
+        "frequency": 0.85,
+        "bodySystem": "dermatological",
+        "notes": "Violaceous discoloration of eyelids"
+      },
+      {
+        "symptomName": "Gottron's papules",
+        "frequency": 0.8,
+        "bodySystem": "dermatological",
+        "notes": "Scaly erythematous papules over extensor surfaces of joints"
+      },
+      {
+        "symptomName": "Anti-SAE autoantibodies positivity",
+        "frequency": 0.75,
+        "bodySystem": "immunological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Symmetric proximal muscle weakness",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Photosensitive poikiloderma",
+        "frequency": 0.7,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to oropharyngeal muscle involvement"
+      },
+      {
+        "symptomName": "Elevated serum creatine kinase",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mild interstitial lung disease",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Periorbital edema",
+        "frequency": 0.3,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild Raynaud phenomenon",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "Considered under cardiovascular system"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Calcinosis cutis",
+        "frequency": 0.05,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Severe interstitial lung disease",
+        "frequency": 0.07,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cardiac conduction abnormalities",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "musculoskeletal",
+    "immunological",
+    "respiratory",
+    "gastrointestinal",
+    "cardiovascular",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Presence of anti-SAE autoantibodies by immunoprecipitation or ELISA",
+      "Elevated serum creatine kinase and aldolase",
+      "Mild elevation of inflammatory markers (ESR, CRP)"
+    ],
+    "imaging": [
+      "MRI of muscles showing edema and inflammation",
+      "High-resolution CT chest for interstitial lung disease evaluation"
+    ],
+    "genetic": [
+      "No specific genetic mutations identified; autoimmune etiology"
+    ],
+    "other": [
+      "Muscle biopsy demonstrating perifascicular atrophy and inflammatory infiltrates"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "classic-dermatomyositis",
+      "distinguishingFeatures": [
+        "Absence of anti-SAE antibodies",
+        "More frequent muscle involvement and systemic symptoms",
+        "Different autoantibody profiles (e.g., anti-Mi-2, anti-MDA5)"
+      ]
+    },
+    {
+      "diseaseId": "anti-mda5-dermatomyositis",
+      "distinguishingFeatures": [
+        "Presence of anti-MDA5 antibodies",
+        "Higher risk of rapidly progressive interstitial lung disease",
+        "Distinct cutaneous ulcerations and palmar papules"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive muscle weakness",
+    "Development of severe interstitial lung disease",
+    "Dysphagia with risk of aspiration pneumonia"
+  ],
+  "specialistType": [
+    "Rheumatologist",
+    "Dermatologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Betteridge Z, McHugh N. Myositis-specific autoantibodies: an important tool to support diagnosis of myositis. J Intern Med. 2016.",
+    "Fiorentino DF, Chung L, Zwerner J, Rosen A, Casciola-Rosen L. The mucocutaneous and systemic phenotype of dermatomyositis patients with antibodies to SAE. Arthritis Rheum. 2013.",
+    "European Neuromuscular Centre (ENMC) International Workshop: Classification of Idiopathic Inflammatory Myopathies. Neuromuscul Disord. 2018."
+  ],
+  "confidenceInData": "medium"
+}

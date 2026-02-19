@@ -1,0 +1,213 @@
+{
+  "id": "igg4-related-sclerosing-cholangitis",
+  "name": "IgG4-Related Sclerosing Cholangitis",
+  "aliases": [
+    "IgG4-SC",
+    "IgG4-Associated Sclerosing Cholangitis"
+  ],
+  "icd10Codes": [
+    "K83.1"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 70,
+      "peak": 55
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "East Asian",
+      "Japanese"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Comprehensive Diagnostic Criteria for IgG4-Related Sclerosing Cholangitis",
+    "criteria": [
+      {
+        "id": "serum-igg4-elevation",
+        "description": "Elevated serum IgG4 concentration (>135 mg/dL)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-bile-duct",
+        "description": "Characteristic bile duct imaging findings showing segmental or diffuse strictures with wall thickening",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology",
+        "description": "Histopathological evidence of dense lymphoplasmacytic infiltration rich in IgG4-positive plasma cells and storiform fibrosis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "response-to-steroids",
+        "description": "Clinical and radiological improvement after corticosteroid therapy",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of characteristic bile duct imaging findings plus elevated serum IgG4 and/or histopathological confirmation",
+    "notes": "Diagnosis often requires exclusion of malignancy and other causes of sclerosing cholangitis"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Obstructive jaundice",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to bile duct strictures causing cholestasis"
+      },
+      {
+        "symptomName": "Elevated serum IgG4 levels",
+        "frequency": 0.75,
+        "bodySystem": "immunological",
+        "notes": "Key serological marker"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Often in right upper quadrant"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pruritus",
+        "frequency": 0.5,
+        "bodySystem": "dermatological",
+        "notes": "Due to cholestasis"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fever",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pancreatitis",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Associated autoimmune pancreatitis may coexist"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis (bacterial infection of bile ducts)",
+        "frequency": 0.07,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "notes": "Rarely reported in systemic IgG4-related disease"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "immunological",
+    "constitutional",
+    "dermatological",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum IgG4 concentration (>135 mg/dL)",
+      "Mild to moderate elevation of liver function tests (alkaline phosphatase, gamma-GT, bilirubin)",
+      "Elevated inflammatory markers (ESR, CRP) occasionally"
+    ],
+    "imaging": [
+      "Cholangiography showing segmental or diffuse bile duct strictures with wall thickening",
+      "MRI/MRCP demonstrating bile duct irregularities and pancreatic involvement",
+      "CT scan showing bile duct wall thickening and possible pancreatic enlargement"
+    ],
+    "genetic": [
+      "No specific genetic markers identified"
+    ],
+    "other": [
+      "Histopathology showing lymphoplasmacytic infiltration with IgG4-positive plasma cells and storiform fibrosis",
+      "Good clinical response to corticosteroid therapy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "primary-sclerosing-cholangitis",
+      "distinguishingFeatures": [
+        "Typically affects younger patients",
+        "Associated with inflammatory bowel disease",
+        "No elevation of serum IgG4",
+        "Poor response to steroids"
+      ]
+    },
+    {
+      "diseaseId": "cholangiocarcinoma",
+      "distinguishingFeatures": [
+        "Malignant bile duct tumor",
+        "Mass lesion on imaging",
+        "No elevated serum IgG4",
+        "Progressive clinical course without steroid response"
+      ]
+    },
+    {
+      "diseaseId": "secondary-sclerosing-cholangitis",
+      "distinguishingFeatures": [
+        "Due to infections, ischemia, or toxins",
+        "History of biliary injury or infection",
+        "No IgG4 elevation",
+        "Variable imaging findings"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive jaundice",
+    "Unexplained weight loss with mass lesion on imaging",
+    "Poor response or worsening despite corticosteroid therapy"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Hepatologist",
+    "Immunologist",
+    "Pathologist",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Kamisawa T, et al. IgG4-related sclerosing cholangitis: clinical features and diagnosis. J Hepatobiliary Pancreat Sci. 2010;17(5): 539-545.",
+    "Zen Y, Nakanuma Y. IgG4-related disease: a cross-sectional study of 114 cases. Am J Surg Pathol. 2010;34(12):1812-1819.",
+    "Chari ST, et al. Diagnosis of IgG4-related sclerosing cholangitis. Gut. 2012;61(3): 408-414."
+  ],
+  "confidenceInData": "medium"
+}

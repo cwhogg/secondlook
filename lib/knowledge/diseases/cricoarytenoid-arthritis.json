@@ -1,0 +1,197 @@
+{
+  "id": "cricoarytenoid-arthritis",
+  "name": "Cricoarytenoid Arthritis",
+  "aliases": [
+    "Cricoarytenoid Joint Arthritis",
+    "Cricoarytenoid Joint Inflammation"
+  ],
+  "icd10Codes": [
+    "M06.89"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 45
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Cricoarytenoid Arthritis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clinical-presentation",
+        "description": "Presence of hoarseness and laryngeal pain localized to the cricoarytenoid joint",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "laryngoscopy-findings",
+        "description": "Visualization of cricoarytenoid joint inflammation or fixation on laryngoscopy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-evidence",
+        "description": "Radiologic evidence of cricoarytenoid joint erosion or swelling on CT or MRI",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "associated-autoimmune-disease",
+        "description": "Presence of underlying autoimmune disease such as rheumatoid arthritis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Both major criteria (clinical presentation and laryngoscopy findings) must be present; supportive criteria aid confirmation.",
+    "notes": "Diagnosis is often clinical supported by imaging and laryngoscopy; biopsy is rarely performed."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Cricoarytenoid joint tenderness",
+        "frequency": 0.85,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Hoarseness of voice",
+        "frequency": 0.9,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Airway obstruction due to joint fixation",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Throat pain localized to laryngeal area",
+        "frequency": 0.7,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Dysphonia",
+        "frequency": 0.65,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Difficulty swallowing (dysphagia)",
+        "frequency": 0.6,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Crepitus on laryngeal palpation",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Stridor",
+        "frequency": 0.4,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Referred ear pain (otalgia)",
+        "frequency": 0.3,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Neck stiffness",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mild dyspnea on exertion",
+        "frequency": 0.15,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Complete vocal cord paralysis",
+        "frequency": 0.08,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Severe airway compromise requiring tracheostomy",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Systemic symptoms such as fever",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "otolaryngological",
+    "respiratory",
+    "musculoskeletal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated inflammatory markers (ESR, CRP) in associated autoimmune disease",
+      "Positive rheumatoid factor or anti-CCP antibodies if rheumatoid arthritis present"
+    ],
+    "imaging": [
+      "CT or MRI showing cricoarytenoid joint swelling, erosion, or ankylosis",
+      "Laryngoscopy demonstrating joint inflammation or fixation"
+    ],
+    "genetic": [],
+    "other": [
+      "Response to corticosteroids or immunosuppressive therapy in autoimmune-associated cases"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "laryngeal-cancer",
+      "distinguishingFeatures": [
+        "Presence of mass lesion on imaging",
+        "Progressive hoarseness without inflammatory signs",
+        "Absence of joint tenderness"
+      ]
+    },
+    {
+      "diseaseId": "laryngopharyngeal-reflux",
+      "distinguishingFeatures": [
+        "Symptoms related to reflux triggers",
+        "Lack of joint inflammation on laryngoscopy",
+        "Improvement with acid suppression therapy"
+      ]
+    },
+    {
+      "diseaseId": "vocal-cord-paralysis",
+      "distinguishingFeatures": [
+        "Neurological cause of vocal cord immobility",
+        "No joint inflammation",
+        "Possible history of nerve injury or tumor"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive airway obstruction",
+    "Severe dysphagia with risk of aspiration",
+    "Rapidly worsening hoarseness or stridor"
+  ],
+  "specialistType": [
+    "Otolaryngologist",
+    "Rheumatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Courey MS, et al. Cricoarytenoid arthritis: clinical features and management. Otolaryngol Clin North Am. 2019.",
+    "Koufman JA. Laryngeal manifestations of rheumatoid arthritis. Otolaryngol Clin North Am. 2017.",
+    "American College of Rheumatology. Rheumatoid arthritis classification criteria. 2010."
+  ],
+  "confidenceInData": "medium"
+}

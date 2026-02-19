@@ -1,0 +1,217 @@
+{
+  "id": "glomus-tumors-head-neck",
+  "name": "Glomus Tumors of Head and Neck",
+  "aliases": [
+    "Paragangliomas of Head and Neck",
+    "Glomus Jugulare Tumor",
+    "Carotid Body Tumor"
+  ],
+  "icd10Codes": [
+    "D35.2"
+  ],
+  "omimId": "168000",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 30,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Radiologic Diagnostic Criteria for Head and Neck Paragangliomas",
+    "criteria": [
+      {
+        "id": "vascular-mass-imaging",
+        "description": "Identification of highly vascular mass on imaging (MRI/CT) in typical locations (temporal bone, carotid body)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Presence of pulsatile tinnitus, hearing loss, or neck mass consistent with tumor location",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation showing chief cells and sustentacular cells with characteristic Zellballen pattern",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "catecholamine-secretion",
+        "description": "Elevated plasma or urine catecholamines or metanephrines (in functional tumors)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history or genetic mutation associated with paragangliomas (e.g. SDH mutations)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of characteristic vascular mass on imaging plus clinical presentation consistent with tumor location; histopathological confirmation if biopsy performed",
+    "notes": "Biopsy is often avoided due to vascularity; diagnosis frequently based on imaging and clinical features."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Pulsatile tinnitus",
+        "frequency": 0.85,
+        "bodySystem": "otolaryngological",
+        "notes": "Common in glomus jugulare tumors"
+      },
+      {
+        "symptomName": "Pulsatile neck mass",
+        "frequency": 0.75,
+        "bodySystem": "otolaryngological",
+        "notes": "Typical for carotid body tumors"
+      },
+      {
+        "symptomName": "Hearing loss",
+        "frequency": 0.7,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hoarseness",
+        "frequency": 0.65,
+        "bodySystem": "otolaryngological",
+        "notes": "Due to cranial nerve involvement"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.6,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Neck pain",
+        "frequency": 0.52,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Cranial nerve palsies (e.g. IX, X, XI, XII)",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "notes": "May cause dysphonia, dysphagia, shoulder weakness"
+      },
+      {
+        "symptomName": "Facial paralysis",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "In functional tumors secreting catecholamines"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Horner syndrome",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Due to sympathetic chain involvement"
+      },
+      {
+        "symptomName": "Epistaxis",
+        "frequency": 0.04,
+        "bodySystem": "otolaryngological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "otolaryngological",
+    "neurological",
+    "cardiovascular",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated plasma or urine catecholamines/metanephrines in functional tumors"
+    ],
+    "imaging": [
+      "MRI showing highly vascular mass with 'salt and pepper' appearance",
+      "CT demonstrating enhancing mass at carotid bifurcation or temporal bone",
+      "Digital subtraction angiography showing tumor vascularity and feeding vessels"
+    ],
+    "genetic": [
+      "Mutations in SDH gene complex (SDHB, SDHD, SDHC) associated with familial cases"
+    ],
+    "other": [
+      "Histopathology showing Zellballen pattern with chief and sustentacular cells",
+      "Positive uptake on 123I-MIBG or 68Ga-DOTATATE PET scans"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "schwannoma-head-neck",
+      "distinguishingFeatures": [
+        "Typically less vascular on imaging",
+        "Lack of catecholamine secretion",
+        "Different histopathological pattern"
+      ]
+    },
+    {
+      "diseaseId": "carotid-artery-aneurysm",
+      "distinguishingFeatures": [
+        "Pulsatile mass but with vascular lumen continuity",
+        "Absence of tumor cells on imaging",
+        "Different clinical course and management"
+      ]
+    },
+    {
+      "diseaseId": "metastatic-neck-mass",
+      "distinguishingFeatures": [
+        "History of primary malignancy",
+        "Different imaging characteristics",
+        "Histopathology consistent with metastatic carcinoma"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging neck mass",
+    "Sudden onset cranial nerve deficits",
+    "Severe hypertension in context of functional tumor"
+  ],
+  "specialistType": [
+    "Otolaryngologist",
+    "Neurosurgeon",
+    "Head and Neck Surgeon",
+    "Endocrinologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Lloyd RV, Osamura RY, Klöppel G, Rosai J. WHO Classification of Tumours of Endocrine Organs. 4th ed. IARC; 2017.",
+    "Mendenhall WM, Amdur RJ, Morris CG. Paragangliomas of the head and neck. Am J Clin Oncol. 2005;28(3):234-239.",
+    "Neumann HP, Bausch B, McWhinney SR, et al. Germ-line mutations in nonsyndromic pheochromocytoma. N Engl J Med. 2002;346(19):1459-1466."
+  ],
+  "confidenceInData": "medium"
+}

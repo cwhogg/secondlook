@@ -1,0 +1,228 @@
+{
+  "id": "dyskeratosis-congenita",
+  "name": "Dyskeratosis Congenita",
+  "aliases": [
+    "DKC",
+    "Zinsser-Engman-Cole syndrome"
+  ],
+  "icd10Codes": [
+    "D61.8"
+  ],
+  "omimId": "127550",
+  "orphanetId": "795",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 40,
+      "peak": 15
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Dyskeratosis Congenita Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "mucocutaneous-triad",
+        "description": "Presence of the classic mucocutaneous triad: abnormal skin pigmentation, nail dystrophy, and oral leukoplakia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bone-marrow-failure",
+        "description": "Evidence of bone marrow failure (e.g., aplastic anemia, pancytopenia)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "telomere-length",
+        "description": "Shortened telomere length below the first percentile for age",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history consistent with inheritance patterns (X-linked, autosomal dominant, or autosomal recessive)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-mutation",
+        "description": "Identification of pathogenic mutation in known DKC-related genes (e.g., DKC1, TERC, TERT)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of the mucocutaneous triad plus bone marrow failure and shortened telomere length",
+    "notes": "Genetic testing and family history support diagnosis but are not mandatory if clinical criteria are met."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Nail dystrophy",
+        "frequency": 0.85,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Reticular hyperpigmentation of the skin",
+        "frequency": 0.8,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Oral leukoplakia",
+        "frequency": 0.75,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Bone marrow failure leading to pancytopenia",
+        "frequency": 0.75,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Epiphora (excessive tearing)",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Pulmonary fibrosis",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Mucosal leukoplakia beyond oral cavity",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Dental abnormalities (e.g., hypodontia, early tooth loss)",
+        "frequency": 0.5,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Esophageal strictures",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Liver fibrosis or cirrhosis",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Increased risk of malignancies (e.g., squamous cell carcinoma)",
+        "frequency": 0.4,
+        "bodySystem": "constitutional",
+        "notes": "Often develops in mucocutaneous sites"
+      },
+      {
+        "symptomName": "Avascular necrosis of bone",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Growth retardation",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Neurological abnormalities (e.g., developmental delay, cognitive impairment)",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Immunodeficiency with recurrent infections",
+        "frequency": 0.07,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Pulmonary arteriovenous malformations",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "hematological",
+    "otolaryngological",
+    "respiratory",
+    "gastrointestinal",
+    "musculoskeletal",
+    "constitutional",
+    "ophthalmological",
+    "neurological",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Pancytopenia on complete blood count",
+      "Shortened telomere length by flow-FISH or qPCR",
+      "Elevated fetal hemoglobin in some cases"
+    ],
+    "imaging": [
+      "Chest CT showing pulmonary fibrosis",
+      "Bone marrow biopsy showing hypocellularity"
+    ],
+    "genetic": [
+      "Pathogenic variants in DKC1, TERC, TERT, TINF2, and other telomere maintenance genes"
+    ],
+    "other": [
+      "Abnormal skin biopsy showing epidermal atrophy and pigment incontinence"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "fanconi-anemia",
+      "distinguishingFeatures": [
+        "Chromosomal breakage on diepoxybutane testing",
+        "Absent mucocutaneous triad",
+        "Different genetic mutations (FANCA, FANCC, etc.)"
+      ]
+    },
+    {
+      "diseaseId": "aplastic-anemia",
+      "distinguishingFeatures": [
+        "Lack of mucocutaneous features",
+        "Usually acquired rather than inherited",
+        "No telomere shortening"
+      ]
+    },
+    {
+      "diseaseId": "poikiloderma-congenitale",
+      "distinguishingFeatures": [
+        "Poikiloderma with photosensitivity",
+        "Mutations in the RECQL4 gene",
+        "Absence of bone marrow failure"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive pancytopenia with bleeding or infections",
+    "Development of mucosal or skin squamous cell carcinoma",
+    "Early onset pulmonary fibrosis or respiratory failure"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Dermatologist",
+    "Geneticist",
+    "Pulmonologist",
+    "Otolaryngologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Dokal I. Dyskeratosis congenita. Hematology Am Soc Hematol Educ Program. 2011;2011:480-6.",
+    "Armanios M. Telomeres and age-related disease: how telomere biology informs clinical paradigms. J Clin Invest. 2013;123(3):996-1002.",
+    "Savage SA. Dyskeratosis congenita. Hematol Oncol Clin North Am. 2018;32(2):215-228."
+  ],
+  "confidenceInData": "medium"
+}

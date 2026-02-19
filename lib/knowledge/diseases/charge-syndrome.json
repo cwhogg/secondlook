@@ -1,0 +1,237 @@
+{
+  "id": "charge-syndrome",
+  "name": "CHARGE Syndrome",
+  "aliases": [
+    "CHARGE Association",
+    "CHD7-related disorder"
+  ],
+  "icd10Codes": [
+    "Q87.8"
+  ],
+  "omimId": "214800",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 10,000 to 15,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 1,
+      "peak": 0
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Blake Criteria",
+    "criteria": [
+      {
+        "id": "coloboma",
+        "description": "Presence of ocular coloboma",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "choanal-atresia",
+        "description": "Congenital choanal atresia or stenosis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cranial-nerve-anomalies",
+        "description": "Cranial nerve dysfunction including facial palsy or swallowing difficulties",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "heart-defects",
+        "description": "Congenital heart defects",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genital-anomalies",
+        "description": "Hypogonadism or genital hypoplasia",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "growth-retardation",
+        "description": "Postnatal growth deficiency",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ear-anomalies",
+        "description": "External ear anomalies or hearing loss",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of all 4 major criteria or 3 major plus 3 minor criteria",
+    "notes": "Genetic testing for CHD7 mutations supports diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Ocular coloboma",
+        "frequency": 0.85,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Choanal atresia or stenosis",
+        "frequency": 0.75,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cranial nerve dysfunction",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Includes facial palsy, swallowing difficulties"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Congenital heart defects",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "External ear anomalies",
+        "frequency": 0.7,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Hearing loss",
+        "frequency": 0.65,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Growth retardation",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypogonadism or genital hypoplasia",
+        "frequency": 0.55,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Feeding difficulties",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Developmental delay",
+        "frequency": 0.35,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tracheoesophageal fistula",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Renal anomalies",
+        "frequency": 0.2,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Skeletal anomalies",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Immunodeficiency",
+        "frequency": 0.05,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Hypothyroidism",
+        "frequency": 0.04,
+        "bodySystem": "endocrine"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "ophthalmological",
+    "respiratory",
+    "neurological",
+    "cardiovascular",
+    "otolaryngological",
+    "constitutional",
+    "reproductive",
+    "gastrointestinal",
+    "renal",
+    "musculoskeletal",
+    "immunological",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal routine blood tests",
+      "Possible hormonal abnormalities related to hypogonadism"
+    ],
+    "imaging": [
+      "Ocular ultrasound or MRI showing coloboma",
+      "CT or MRI confirming choanal atresia",
+      "Echocardiography revealing congenital heart defects",
+      "Brain MRI showing cranial nerve anomalies"
+    ],
+    "genetic": [
+      "Pathogenic variants in CHD7 gene detected by molecular genetic testing"
+    ],
+    "other": [
+      "Audiological evaluation confirming sensorineural or conductive hearing loss",
+      "Endocrine evaluation for hypogonadism"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "22q11-deletion-syndrome",
+      "distinguishingFeatures": [
+        "Absence of coloboma",
+        "Characteristic facial features different from CHARGE",
+        "Hypocalcemia and immunodeficiency more common"
+      ]
+    },
+    {
+      "diseaseId": "vacterl-association",
+      "distinguishingFeatures": [
+        "Vertebral anomalies, anal atresia, cardiac defects, tracheoesophageal fistula",
+        "Lack of coloboma and choanal atresia",
+        "No CHD7 mutation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Neonatal respiratory distress due to choanal atresia",
+    "Severe congenital heart defects requiring early intervention",
+    "Feeding difficulties with risk of aspiration"
+  ],
+  "specialistType": [
+    "Clinical geneticist",
+    "Pediatric cardiologist",
+    "Otolaryngologist",
+    "Ophthalmologist",
+    "Endocrinologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Blake KD et al. Diagnostic criteria for CHARGE syndrome: a consensus statement. Am J Med Genet A. 1998.",
+    "Jongmans MC et al. CHD7 mutations in patients with CHARGE syndrome and related phenotypes. J Med Genet. 2006.",
+    "Bergman JEH et al. CHARGE syndrome: clinical features, diagnostic criteria, and molecular genetics. Eur J Hum Genet. 2011."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,218 @@
+{
+  "id": "protein-s-deficiency",
+  "name": "Protein S Deficiency",
+  "aliases": [
+    "Inherited Protein S Deficiency",
+    "Protein S Deficiency Thrombophilia"
+  ],
+  "icd10Codes": [
+    "D68.51"
+  ],
+  "omimId": "176880",
+  "orphanetId": "ORPHA238",
+  "prevalence": {
+    "estimate": "1 in 20,000",
+    "range": "0.005%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Protein S Deficiency Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "low-protein-s-activity",
+        "description": "Reduced free and/or total protein S activity levels confirmed by functional assays",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history-thrombosis",
+        "description": "Positive family history of venous thromboembolism or known protein S deficiency",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "recurrent-thrombotic-events",
+        "description": "History of recurrent venous thromboembolism without other identifiable risk factors",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in the PROS1 gene",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of reduced protein S activity levels plus either recurrent thrombotic events or family history of thrombosis",
+    "notes": "Functional assays should be performed off anticoagulation and after exclusion of acquired causes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent venous thromboembolism",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Includes deep vein thrombosis and pulmonary embolism"
+      },
+      {
+        "symptomName": "Venous thrombosis at unusual sites",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Such as cerebral venous sinus thrombosis or mesenteric vein thrombosis"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Deep vein thrombosis",
+        "frequency": 0.7,
+        "bodySystem": "hematological",
+        "notes": "Typically in lower extremities"
+      },
+      {
+        "symptomName": "Pulmonary embolism",
+        "frequency": 0.65,
+        "bodySystem": "respiratory",
+        "notes": "May present with dyspnea and chest pain"
+      },
+      {
+        "symptomName": "Leg swelling and pain",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to venous obstruction"
+      },
+      {
+        "symptomName": "Skin necrosis at warfarin initiation",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "notes": "Rare but characteristic complication"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Transient ischemic attacks or stroke",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Due to paradoxical embolism"
+      },
+      {
+        "symptomName": "Superficial thrombophlebitis",
+        "frequency": 0.25,
+        "bodySystem": "hematological",
+        "notes": "Inflammation of superficial veins"
+      },
+      {
+        "symptomName": "Chronic venous insufficiency",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to recurrent venous thrombosis"
+      },
+      {
+        "symptomName": "Pregnancy complications including fetal loss",
+        "frequency": 0.15,
+        "bodySystem": "reproductive",
+        "notes": "Associated with thrombophilia"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Arterial thrombosis",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Less common than venous thrombosis"
+      },
+      {
+        "symptomName": "Heparin-induced skin necrosis",
+        "frequency": 0.03,
+        "bodySystem": "dermatological",
+        "notes": "Rare complication in protein S deficiency"
+      },
+      {
+        "symptomName": "Purpura fulminans in neonates",
+        "frequency": 0.02,
+        "bodySystem": "dermatological",
+        "notes": "Severe neonatal presentation"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "cardiovascular",
+    "respiratory",
+    "musculoskeletal",
+    "dermatological",
+    "neurological",
+    "reproductive"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Reduced free and total protein S antigen levels",
+      "Decreased protein S functional activity",
+      "Normal protein C and antithrombin levels"
+    ],
+    "imaging": [
+      "Ultrasound Doppler showing venous thrombosis",
+      "CT pulmonary angiography for pulmonary embolism",
+      "MRI venography for cerebral venous sinus thrombosis"
+    ],
+    "genetic": [
+      "Pathogenic variants in PROS1 gene",
+      "Family segregation of mutations"
+    ],
+    "other": [
+      "Exclusion of acquired causes such as vitamin K deficiency or liver disease",
+      "Coagulation profile typically normal except protein S assays"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "protein-c-deficiency",
+      "distinguishingFeatures": [
+        "Protein C deficiency involves decreased protein C activity rather than protein S",
+        "Different genetic mutations (PROC gene)",
+        "Similar thrombotic risk but distinct laboratory profile"
+      ]
+    },
+    {
+      "diseaseId": "antithrombin-deficiency",
+      "distinguishingFeatures": [
+        "Antithrombin deficiency shows decreased antithrombin activity",
+        "Higher risk of thrombosis with different anticoagulant response",
+        "Normal protein S levels"
+      ]
+    },
+    {
+      "diseaseId": "factor-v-leiden-thrombophilia",
+      "distinguishingFeatures": [
+        "Presence of Factor V Leiden mutation",
+        "Activated protein C resistance on functional testing",
+        "Normal protein S levels"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Recurrent unexplained venous thromboembolism especially at young age",
+    "Venous thrombosis at unusual anatomical sites",
+    "Skin necrosis following initiation of warfarin therapy"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Geneticist",
+    "Vascular Medicine Specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Mannucci PM, et al. Protein S deficiency and thrombophilia. Blood. 2013.",
+    "OrphaNet: Protein S Deficiency. Orphanet Journal of Rare Diseases. 2020.",
+    "American Society of Hematology guidelines on thrombophilia testing. 2021."
+  ],
+  "confidenceInData": "medium"
+}

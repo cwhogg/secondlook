@@ -1,0 +1,212 @@
+{
+  "id": "chronic-granulomatous-disease",
+  "name": "Chronic Granulomatous Disease",
+  "aliases": [
+    "CGD",
+    "Phagocyte NADPH Oxidase Deficiency"
+  ],
+  "icd10Codes": [
+    "D71"
+  ],
+  "omimId": "233700",
+  "orphanetId": "556",
+  "prevalence": {
+    "estimate": "1 in 200,000 to 250,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 10,
+      "peak": 1
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Chronic Granulomatous Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "dihydrorhodamine-test",
+        "description": "Abnormal dihydrorhodamine (DHR) flow cytometry test showing defective oxidative burst in neutrophils",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in NADPH oxidase complex genes (e.g., CYBB, NCF1, NCF2, NCF4)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-history",
+        "description": "Recurrent, severe bacterial and fungal infections with granuloma formation",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "nitroblue-tetrazolium-test",
+        "description": "Abnormal nitroblue tetrazolium (NBT) test indicating defective neutrophil oxidative metabolism",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of abnormal oxidative burst test (DHR or NBT) plus clinical history of recurrent infections or identification of pathogenic NADPH oxidase mutations",
+    "notes": "Genetic testing is confirmatory and useful for family counseling."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent life-threatening bacterial infections",
+        "frequency": 0.85,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Granuloma formation in affected tissues",
+        "frequency": 0.75,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Impaired neutrophil oxidative burst",
+        "frequency": 0.95,
+        "bodySystem": "hematological",
+        "notes": "Detected by DHR or NBT test"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Lymphadenitis",
+        "frequency": 0.65,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Pneumonia",
+        "frequency": 0.7,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abscess formation in skin or organs",
+        "frequency": 0.6,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Chronic diarrhea",
+        "frequency": 0.5,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Osteomyelitis",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Granulomatous colitis",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Perianal abscesses",
+        "frequency": 0.2,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chronic cough",
+        "frequency": 0.4,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Granulomatous uveitis",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Sepsis with catalase-positive organisms",
+        "frequency": 0.07,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "immunological",
+    "hematological",
+    "respiratory",
+    "dermatological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "constitutional",
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Abnormal dihydrorhodamine (DHR) flow cytometry test",
+      "Abnormal nitroblue tetrazolium (NBT) test",
+      "Elevated inflammatory markers during infections"
+    ],
+    "imaging": [
+      "Chest X-ray showing pneumonia or abscesses",
+      "CT scan revealing granulomas in lungs or liver",
+      "Bone imaging showing osteomyelitis"
+    ],
+    "genetic": [
+      "Pathogenic mutations in CYBB (X-linked), NCF1, NCF2, or NCF4 genes"
+    ],
+    "other": [
+      "Granuloma formation on histopathology",
+      "Recurrent infections with catalase-positive organisms (e.g., Staphylococcus aureus, Serratia marcescens)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "severe-combined-immunodeficiency",
+      "distinguishingFeatures": [
+        "Profound T and B cell deficiency",
+        "Early onset severe infections including viral and opportunistic",
+        "Absent or severely reduced lymphocytes"
+      ]
+    },
+    {
+      "diseaseId": "leukocyte-adhesion-deficiency",
+      "distinguishingFeatures": [
+        "Delayed umbilical cord separation",
+        "Marked leukocytosis without pus formation",
+        "Defective leukocyte migration"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Recurrent severe infections with catalase-positive bacteria or fungi",
+    "Failure to respond to standard antibiotic therapy",
+    "Formation of granulomas causing organ dysfunction"
+  ],
+  "specialistType": [
+    "Immunologist",
+    "Infectious Disease Specialist",
+    "Hematologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Seger RA. Chronic granulomatous disease: recent advances in pathophysiology and treatment. Br J Haematol. 2008.",
+    "Holland SM. Chronic granulomatous disease. Hematol Oncol Clin North Am. 2013.",
+    "Roos D. Chronic granulomatous disease. Br Med Bull. 2016."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,201 @@
+{
+  "id": "retinoblastoma",
+  "name": "Retinoblastoma",
+  "aliases": [
+    "Retinoblastoma tumor",
+    "RB"
+  ],
+  "icd10Codes": [
+    "C69.2"
+  ],
+  "omimId": "180200",
+  "orphanetId": "795",
+  "prevalence": {
+    "estimate": "1 in 15,000 to 20,000 live births",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 5,
+      "peak": 2
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "International Retinoblastoma Staging System (IRSS)",
+    "criteria": [
+      {
+        "id": "leukocoria",
+        "description": "Presence of leukocoria (white pupillary reflex)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "intraocular_mass",
+        "description": "Identification of intraocular mass on fundoscopy or imaging",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic_testing",
+        "description": "Detection of RB1 gene mutation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "imaging_findings",
+        "description": "Characteristic calcifications on ocular ultrasound or CT",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Presence of intraocular mass consistent with retinoblastoma plus either leukocoria or characteristic imaging findings",
+    "notes": "Genetic testing supports diagnosis and guides familial risk assessment"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Leukocoria (white pupillary reflex)",
+        "frequency": 0.85,
+        "bodySystem": "ophthalmological",
+        "notes": "Most common presenting sign"
+      },
+      {
+        "symptomName": "Intraocular mass detected on fundoscopy",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Strabismus (misalignment of the eyes)",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Redness and swelling of the eye",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Poor vision or visual impairment",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Eye pain or discomfort",
+        "frequency": 0.5,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Glaucoma secondary to tumor",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hyphema (blood in the anterior chamber)",
+        "frequency": 0.2,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Proptosis (eye bulging)",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Irritability or fussiness in infants",
+        "frequency": 0.1,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Orbital cellulitis-like presentation",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological",
+        "notes": "May mimic infection"
+      },
+      {
+        "symptomName": "Metastatic symptoms (e.g., bone pain, neurological deficits)",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Secondary cataract formation",
+        "frequency": 0.02,
+        "bodySystem": "ophthalmological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "ophthalmological",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "RB1 gene mutation analysis",
+      "Cytogenetic studies for chromosomal abnormalities"
+    ],
+    "imaging": [
+      "Ocular ultrasound showing intraocular mass with calcifications",
+      "CT scan demonstrating calcified intraocular tumor",
+      "MRI for assessment of optic nerve and intracranial extension"
+    ],
+    "genetic": [
+      "Germline RB1 gene mutation in hereditary cases",
+      "Somatic RB1 mutations in sporadic tumors"
+    ],
+    "other": [
+      "Fundoscopic examination revealing white retinal mass",
+      "Histopathology confirming small round blue cell tumor"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "coats-disease",
+      "distinguishingFeatures": [
+        "Unilateral retinal telangiectasia with exudation",
+        "Absence of calcifications on imaging",
+        "No RB1 gene mutation"
+      ]
+    },
+    {
+      "diseaseId": "persistent-fetal-vasculature",
+      "distinguishingFeatures": [
+        "Congenital anomaly with persistent hyaloid vasculature",
+        "No intraocular calcifications",
+        "Different fundoscopic appearance"
+      ]
+    },
+    {
+      "diseaseId": "retinopathy-of-prematurity",
+      "distinguishingFeatures": [
+        "History of prematurity and oxygen therapy",
+        "Retinal neovascularization without mass",
+        "No leukocoria"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Leukocoria in a child",
+    "Rapidly progressive intraocular mass",
+    "Family history of retinoblastoma or RB1 mutation"
+  ],
+  "specialistType": [
+    "Pediatric ophthalmologist",
+    "Oncologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Dimaras H, et al. Retinoblastoma. Nat Rev Dis Primers. 2015;1:15021.",
+    "Kivela T. The epidemiological challenge of the most frequent eye cancer: retinoblastoma, an issue of birth and death. Br J Ophthalmol. 2009;93(9):1129-31.",
+    "Moll AC, et al. Retinoblastoma: the role of genetic testing. Expert Rev Mol Diagn. 2017;17(3):263-273."
+  ],
+  "confidenceInData": "medium"
+}

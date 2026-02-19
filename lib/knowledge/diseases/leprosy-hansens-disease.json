@@ -1,0 +1,216 @@
+{
+  "id": "leprosy-hansens-disease",
+  "name": "Leprosy (Hansen's Disease)",
+  "aliases": [
+    "Hansen's Disease",
+    "Mycobacterial Leprosy"
+  ],
+  "icd10Codes": [
+    "A30"
+  ],
+  "omimId": "245600",
+  "orphanetId": "987",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.0001%-0.001%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 30
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "South Asian",
+      "African",
+      "South American"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Diagnostic Criteria for Leprosy",
+    "criteria": [
+      {
+        "id": "hypopigmented-patch",
+        "description": "Hypopigmented or reddish skin patch with definite loss of sensation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "peripheral-nerve-thickening",
+        "description": "Thickened peripheral nerves with loss of sensation and/or muscle weakness",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "acid-fast-bacilli",
+        "description": "Detection of acid-fast bacilli in skin smear or biopsy",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "skin-lesions",
+        "description": "Presence of characteristic skin lesions such as nodules, plaques, or diffuse infiltration",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "At least one major criterion (hypopigmented patch with sensory loss or thickened peripheral nerve) or positive acid-fast bacilli detection",
+    "notes": "Diagnosis is primarily clinical supported by laboratory confirmation when available."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hypopigmented or erythematous anesthetic skin patch",
+        "frequency": 0.85,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Peripheral nerve thickening with sensory loss",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Acid-fast bacilli positive skin smear",
+        "frequency": 0.7,
+        "bodySystem": "immunological",
+        "notes": "Confirmed by Ziehl-Neelsen staining"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Muscle weakness in hands and feet",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Numbness or paresthesia in affected areas",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Skin nodules or plaques",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Nasal congestion or epistaxis",
+        "frequency": 0.52,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Claw hand deformity",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Loss of eyebrows or eyelashes (madarosis)",
+        "frequency": 0.3,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Ulceration of skin lesions",
+        "frequency": 0.25,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Eye dryness or lagophthalmos",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Facial palsy",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Renal involvement with proteinuria",
+        "frequency": 0.05,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Type 1 or Type 2 lepra reactions (erythema nodosum leprosum)",
+        "frequency": 0.07,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Secondary infections of skin ulcers",
+        "frequency": 0.06,
+        "bodySystem": "dermatological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "neurological",
+    "musculoskeletal",
+    "ophthalmological",
+    "otolaryngological",
+    "renal",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive acid-fast bacilli on skin smear or biopsy",
+      "Histopathology showing granulomatous inflammation with foamy macrophages",
+      "Elevated inflammatory markers during lepra reactions"
+    ],
+    "imaging": [
+      "Ultrasound or MRI showing nerve thickening",
+      "X-rays may show bone resorption in advanced cases"
+    ],
+    "genetic": [
+      "No specific genetic markers; susceptibility influenced by HLA and immune response genes"
+    ],
+    "other": [
+      "Skin biopsy demonstrating Mycobacterium leprae",
+      "Nerve conduction studies showing sensory and motor neuropathy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "tuberculoid-leprosy",
+      "distinguishingFeatures": [
+        "Localized skin lesions with strong cell-mediated immunity",
+        "Negative or low bacillary load"
+      ]
+    },
+    {
+      "diseaseId": "cutaneous-tuberculosis",
+      "distinguishingFeatures": [
+        "Skin lesions with caseating granulomas",
+        "Positive tuberculin skin test",
+        "No peripheral nerve involvement"
+      ]
+    },
+    {
+      "diseaseId": "peripheral-neuropathy-other-causes",
+      "distinguishingFeatures": [
+        "Absence of skin lesions",
+        "Different etiology such as diabetes or toxins"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive peripheral neuropathy with motor weakness",
+    "Development of lepra reactions with systemic symptoms",
+    "Ulceration and secondary infection of skin lesions"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Dermatologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "World Health Organization. Guidelines for the diagnosis, treatment and prevention of leprosy. 2018.",
+    "Scollard DM, Adams LB, Gillis TP, et al. The continuing challenges of leprosy. Clin Microbiol Rev. 2006;19(2):338-381.",
+    "Lockwood DNJ, Suneetha S. Leprosy: too complex a disease for a simple elimination paradigm. Bull World Health Organ. 2005;83(3):230-235."
+  ],
+  "confidenceInData": "medium"
+}

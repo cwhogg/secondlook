@@ -1,0 +1,216 @@
+{
+  "id": "laminopathies",
+  "name": "Laminopathies",
+  "aliases": [
+    "LMNA-related disorders",
+    "Nuclear envelopathies"
+  ],
+  "icd10Codes": [
+    "G71.8",
+    "E88.8"
+  ],
+  "omimId": "150330",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 60,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No standardized formal criteria; diagnosis based on clinical, genetic, and histopathological findings",
+    "criteria": [
+      {
+        "id": "lmna-mutation",
+        "description": "Presence of pathogenic mutation in the LMNA gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "muscle-weakness",
+        "description": "Progressive skeletal muscle weakness and wasting, often with limb-girdle distribution",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cardiac-involvement",
+        "description": "Cardiac conduction defects or cardiomyopathy",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "histopathology",
+        "description": "Muscle biopsy showing dystrophic changes with nuclear abnormalities",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Family history consistent with autosomal dominant or recessive inheritance",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Identification of a pathogenic LMNA mutation plus clinical evidence of muscle involvement",
+    "notes": "Diagnosis may be supported by cardiac findings and muscle biopsy; genetic testing is definitive."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive limb-girdle muscular weakness",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cardiac conduction defects",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lipodystrophy with regional fat loss",
+        "frequency": 0.7,
+        "bodySystem": "endocrine",
+        "notes": "Particularly in familial partial lipodystrophy type 2"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Muscle cramps and myalgia",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Joint contractures",
+        "frequency": 0.58,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue and exercise intolerance",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arrhythmias including atrial fibrillation",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Respiratory muscle weakness",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Rarely reported in some phenotypes"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Stroke or transient ischemic attacks",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Severe insulin resistance",
+        "frequency": 0.07,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Skeletal deformities (e.g., scoliosis)",
+        "frequency": 0.04,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "cardiovascular",
+    "neurological",
+    "endocrine",
+    "respiratory",
+    "gastrointestinal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated creatine kinase (mild to moderate)",
+      "Metabolic abnormalities in lipodystrophy phenotypes"
+    ],
+    "imaging": [
+      "Muscle MRI showing selective muscle atrophy and fatty replacement",
+      "Echocardiogram revealing cardiomyopathy or ventricular dysfunction"
+    ],
+    "genetic": [
+      "Pathogenic variants in LMNA gene detected by sequencing"
+    ],
+    "other": [
+      "Muscle biopsy with dystrophic changes and nuclear envelope abnormalities"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "emery-dreifuss-muscular-dystrophy",
+      "distinguishingFeatures": [
+        "Emery-Dreifuss muscular dystrophy may overlap but often has earlier contractures and distinct inheritance patterns",
+        "Presence of LMNA mutations common to both but clinical presentation differs"
+      ]
+    },
+    {
+      "diseaseId": "familial-partial-lipodystrophy",
+      "distinguishingFeatures": [
+        "Lipodystrophy predominant without significant muscle weakness",
+        "May have different genetic causes such as PPARG mutations"
+      ]
+    },
+    {
+      "diseaseId": "other-congenital-muscular-dystrophies",
+      "distinguishingFeatures": [
+        "Lack of cardiac involvement or LMNA mutations",
+        "Different histopathological and clinical features"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Early onset cardiac conduction abnormalities",
+    "Rapidly progressive muscle weakness with respiratory involvement",
+    "Family history of sudden cardiac death"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Cardiologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Bonne G et al. Laminopathies: a wide spectrum of human diseases. Exp Cell Res. 2018.",
+    "Worman HJ et al. Nuclear envelope diseases: laminopathies. Nat Rev Mol Cell Biol. 2019.",
+    "OMIM Entry - LMNA-related disorders, #150330"
+  ],
+  "confidenceInData": "medium"
+}

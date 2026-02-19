@@ -1,0 +1,224 @@
+{
+  "id": "vexas-syndrome",
+  "name": "VEXAS Syndrome",
+  "aliases": [
+    "VEXAS",
+    "VEXAS autoinflammatory syndrome"
+  ],
+  "icd10Codes": [
+    "M35.9",
+    "D72.8"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 50,
+      "max": 80,
+      "peak": 65
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Proposed diagnostic criteria for VEXAS Syndrome",
+    "criteria": [
+      {
+        "id": "uba1-mutation",
+        "description": "Presence of somatic mutation in UBA1 gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "systemic-inflammation",
+        "description": "Evidence of systemic inflammation including fever and elevated inflammatory markers",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hematologic-abnormalities",
+        "description": "Hematologic abnormalities such as macrocytic anemia or myelodysplastic syndrome",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cutaneous-vasculitis",
+        "description": "Presence of cutaneous vasculitis or neutrophilic dermatosis",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "pulmonary-involvement",
+        "description": "Pulmonary infiltrates or interstitial lung disease",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of somatic UBA1 mutation plus systemic inflammation and hematologic abnormalities",
+    "notes": "Diagnosis requires genetic confirmation of UBA1 mutation; clinical features support diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Somatic UBA1 gene mutation",
+        "frequency": 1,
+        "bodySystem": "constitutional",
+        "notes": "Defining molecular abnormality"
+      },
+      {
+        "symptomName": "Macrocytic anemia",
+        "frequency": 0.85,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Neutrophilic dermatosis",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Skin lesions such as Sweet syndrome"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fever",
+        "frequency": 0.8,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chondritis",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal",
+        "notes": "Inflammation of cartilage, especially ears and nose"
+      },
+      {
+        "symptomName": "Pulmonary infiltrates",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated inflammatory markers (CRP, ESR)",
+        "frequency": 0.85,
+        "bodySystem": "immunological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Myelodysplastic syndrome",
+        "frequency": 0.4,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.3,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.2,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.35,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.15,
+        "bodySystem": "hematological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pulmonary fibrosis",
+        "frequency": 0.08,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Thrombosis",
+        "frequency": 0.05,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Ocular inflammation",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "dermatological",
+    "musculoskeletal",
+    "respiratory",
+    "constitutional",
+    "neurological",
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Macrocytic anemia",
+      "Elevated CRP and ESR",
+      "Bone marrow dysplasia"
+    ],
+    "imaging": [
+      "Pulmonary infiltrates on chest CT",
+      "Cartilage inflammation on MRI"
+    ],
+    "genetic": [
+      "Somatic mutations in UBA1 gene (typically affecting methionine-41)"
+    ],
+    "other": [
+      "Skin biopsy showing neutrophilic dermatosis",
+      "Bone marrow biopsy showing vacuolization of myeloid and erythroid precursors"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "relapsing-polychondritis",
+      "distinguishingFeatures": [
+        "Absence of UBA1 mutation",
+        "Predominantly cartilage inflammation without hematologic abnormalities"
+      ]
+    },
+    {
+      "diseaseId": "myelodysplastic-syndrome",
+      "distinguishingFeatures": [
+        "Lack of systemic inflammatory symptoms",
+        "No neutrophilic dermatosis or chondritis"
+      ]
+    },
+    {
+      "diseaseId": "adult-onset-still-disease",
+      "distinguishingFeatures": [
+        "Younger age of onset",
+        "High spiking fevers with characteristic rash",
+        "No UBA1 mutation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Adult-onset systemic inflammation with refractory fever",
+    "Macrocytic anemia with bone marrow dysplasia",
+    "Presence of UBA1 somatic mutation"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Rheumatologist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Beck DB et al. Somatic Mutations in UBA1 and Severe Adult-Onset Autoinflammatory Disease. N Engl J Med. 2020.",
+    "Ferrada MA et al. VEXAS syndrome: a novel paradigm for adult-onset autoinflammatory disease. Curr Opin Rheumatol. 2022.",
+    "Shaffer LG et al. VEXAS syndrome: clinical and molecular insights. Blood. 2021."
+  ],
+  "confidenceInData": "medium"
+}

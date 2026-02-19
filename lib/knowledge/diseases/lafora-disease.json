@@ -1,0 +1,216 @@
+{
+  "id": "lafora-disease",
+  "name": "Lafora Disease",
+  "aliases": [
+    "Progressive Myoclonus Epilepsy Type 2",
+    "Lafora Progressive Myoclonus Epilepsy"
+  ],
+  "icd10Codes": [
+    "G40.8"
+  ],
+  "omimId": "254780",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 8,
+      "max": 20,
+      "peak": 15
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Mediterranean",
+      "Southern European",
+      "South Asian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Lafora Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clinical-presentation",
+        "description": "Progressive myoclonus epilepsy with onset in adolescence",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "lafora-bodies",
+        "description": "Presence of Lafora bodies (polyglucosan inclusions) in skin biopsy or brain tissue",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-confirmation",
+        "description": "Identification of pathogenic mutations in EPM2A or NHLRC1 genes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "electroencephalogram",
+        "description": "EEG showing progressive background slowing and epileptiform discharges",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "clinical-course",
+        "description": "Rapid neurological deterioration with cognitive decline and ataxia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of progressive myoclonus epilepsy with either Lafora bodies on biopsy or pathogenic mutations in EPM2A/NHLRC1 genes",
+    "notes": "Genetic testing is considered the gold standard for definitive diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Myoclonus",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "notes": "Brief, involuntary muscle jerks typically worsening over time"
+      },
+      {
+        "symptomName": "Lafora bodies accumulation",
+        "frequency": 0.9,
+        "bodySystem": "neurological",
+        "notes": "Polyglucosan inclusions in neurons confirmed by biopsy"
+      },
+      {
+        "symptomName": "Progressive cognitive decline",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Dementia developing within a few years of onset"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Generalized tonic-clonic seizures",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Impaired coordination and gait abnormalities"
+      },
+      {
+        "symptomName": "Visual hallucinations",
+        "frequency": 0.6,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Epileptic status episodes",
+        "frequency": 0.5,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Depression",
+        "frequency": 0.4,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Autonomic dysfunction",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Includes orthostatic hypotension and sweating abnormalities"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Psychosis",
+        "frequency": 0.08,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Cardiac arrhythmias",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "psychiatric",
+    "cardiovascular",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Skin biopsy showing Lafora bodies with periodic acid-Schiff (PAS) staining",
+      "Elevated lactate in cerebrospinal fluid in some cases"
+    ],
+    "imaging": [
+      "MRI brain may show cerebral and cerebellar atrophy in advanced stages",
+      "EEG with generalized epileptiform discharges and background slowing"
+    ],
+    "genetic": [
+      "Mutations in EPM2A gene (encoding laforin)",
+      "Mutations in NHLRC1 gene (encoding malin)"
+    ],
+    "other": [
+      "Progressive neurological deterioration despite treatment",
+      "Poor response to conventional antiepileptic drugs"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "unverricht-lundborg-disease",
+      "distinguishingFeatures": [
+        "Later onset (usually 6-16 years)",
+        "Slower progression",
+        "Absence of Lafora bodies"
+      ]
+    },
+    {
+      "diseaseId": "myoclonic-epilepsy-with-ragged-red-fibers",
+      "distinguishingFeatures": [
+        "Mitochondrial inheritance pattern",
+        "Presence of ragged-red fibers on muscle biopsy",
+        "Systemic involvement including myopathy"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive myoclonus and cognitive decline in adolescence",
+    "Presence of Lafora bodies on skin biopsy",
+    "Refractory generalized seizures with status epilepticus"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Geneticist",
+    "Epileptologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Turner G, et al. Lafora disease: clinical features, molecular genetics, and pathogenesis. Lancet Neurol. 2004.",
+    "Minassian BA. Lafora disease: towards a clinical, pathologic, and molecular synthesis. Pediatr Neurol. 2001.",
+    "Ganesh S, et al. Lafora disease: clinical and genetic findings in a cohort of patients. Neurology. 2019."
+  ],
+  "confidenceInData": "medium"
+}

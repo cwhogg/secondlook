@@ -1,0 +1,198 @@
+{
+  "id": "rippling-muscle-disease",
+  "name": "Rippling Muscle Disease",
+  "aliases": [
+    "Rippling Muscle Phenomenon",
+    "Rippling Muscle Myopathy"
+  ],
+  "icd10Codes": [
+    "G72.89"
+  ],
+  "omimId": "606072",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 50,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Rippling Muscle Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "muscle-rippling",
+        "description": "Visible rippling waves on muscle percussion or stretch",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "muscle-stiffness",
+        "description": "Muscle stiffness and delayed relaxation after contraction",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "electromyography-findings",
+        "description": "Electromyographic evidence of myopathic changes without myotonia",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in CAV3 or related genes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of both major criteria (muscle rippling and muscle stiffness) with supportive electromyography or genetic testing",
+    "notes": "Diagnosis is clinical supported by EMG and genetic testing; muscle biopsy may show nonspecific myopathic changes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Percussion-induced muscle rippling",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "notes": "Visible rippling waves on muscle surface following mechanical stimulation"
+      },
+      {
+        "symptomName": "Muscle stiffness with delayed relaxation",
+        "frequency": 0.8,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Muscle cramps",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigability on exertion",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Transient muscle hypertrophy",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mild joint contractures",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Muscle twitching (fasciculations)",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiac arrhythmias",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Reported in some cases with caveolin-3 mutations"
+      },
+      {
+        "symptomName": "Respiratory muscle weakness",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.02,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "cardiovascular",
+    "respiratory",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal or mildly elevated serum creatine kinase (CK) levels"
+    ],
+    "imaging": [
+      "Muscle MRI may show mild fatty infiltration or edema in affected muscles"
+    ],
+    "genetic": [
+      "Mutations in CAV3 gene (encoding caveolin-3) commonly identified"
+    ],
+    "other": [
+      "Electromyography showing myopathic changes without myotonia",
+      "Muscle biopsy may show nonspecific myopathic features"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "myotonia-congenita",
+      "distinguishingFeatures": [
+        "Presence of myotonia on EMG",
+        "Absence of visible muscle rippling",
+        "Different genetic mutations (CLCN1 gene)"
+      ]
+    },
+    {
+      "diseaseId": "paramyotonia-congenita",
+      "distinguishingFeatures": [
+        "Cold-induced muscle stiffness",
+        "Myotonia worsens with repeated activity",
+        "Mutations in SCN4A gene"
+      ]
+    },
+    {
+      "diseaseId": "fascioscapulohumeral-muscular-dystrophy",
+      "distinguishingFeatures": [
+        "Progressive muscle weakness without rippling",
+        "Characteristic facial and scapular muscle involvement",
+        "Genetic deletion on chromosome 4q35"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of muscle weakness",
+    "Cardiac arrhythmias or conduction abnormalities",
+    "Respiratory insufficiency or dyspnea"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neuromuscular Specialist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Nishimura et al., Rippling muscle disease: clinical and genetic features, Neurology, 2018",
+    "Catterall et al., Caveolin-3 mutations in rippling muscle disease, Muscle Nerve, 2016",
+    "Orphanet: Rippling Muscle Disease, 2023"
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,208 @@
+{
+  "id": "anomalous-coronary-arteries",
+  "name": "Anomalous Coronary Arteries",
+  "aliases": [
+    "Coronary Artery Anomalies",
+    "Congenital Coronary Artery Anomalies"
+  ],
+  "icd10Codes": [
+    "I25.4"
+  ],
+  "prevalence": {
+    "estimate": "1 in 300 to 1 in 500",
+    "range": "0.2%-0.5%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 20
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No standardized formal criteria; diagnosis based on imaging and clinical presentation",
+    "criteria": [
+      {
+        "id": "abnormal-origin",
+        "description": "Coronary artery originating from an abnormal sinus of Valsalva or inappropriate location",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "interarterial-course",
+        "description": "Coronary artery coursing between the aorta and pulmonary artery (interarterial course)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ischemic-symptoms",
+        "description": "Clinical evidence of myocardial ischemia or sudden cardiac arrest unexplained by other causes",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "imaging-confirmation",
+        "description": "Confirmation of anomalous coronary anatomy by coronary angiography, CT angiography, or MRI",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-other-causes",
+        "description": "Exclusion of other causes of ischemia or sudden cardiac death",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Identification of anomalous coronary artery origin or course on imaging with or without ischemic symptoms",
+    "notes": "Diagnosis relies heavily on imaging modalities; clinical presentation varies widely."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Exercise-induced syncope",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Often due to transient ischemia during exertion"
+      },
+      {
+        "symptomName": "Sudden cardiac arrest",
+        "frequency": 0.7,
+        "bodySystem": "cardiovascular",
+        "notes": "May be first manifestation, especially in young athletes"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Angina pectoris",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Chest pain due to myocardial ischemia"
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.6,
+        "bodySystem": "respiratory",
+        "notes": "Secondary to cardiac ischemia or dysfunction"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "Arrhythmias may occur"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.5,
+        "bodySystem": "constitutional",
+        "notes": "Related to decreased cardiac output"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Dizziness",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "notes": "May occur with transient ischemia"
+      },
+      {
+        "symptomName": "Palpitations with exertion",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Exercise-induced arrhythmias"
+      },
+      {
+        "symptomName": "Syncope at rest",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Less common than exertional syncope"
+      },
+      {
+        "symptomName": "Chest discomfort",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular",
+        "notes": "Non-specific chest pain"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden cardiac death during sleep",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare but reported"
+      },
+      {
+        "symptomName": "Heart failure symptoms",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to chronic ischemic damage"
+      },
+      {
+        "symptomName": "Ventricular arrhythmias",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular",
+        "notes": "May lead to sudden death"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "respiratory",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Generally normal cardiac biomarkers unless acute ischemia or infarction present"
+    ],
+    "imaging": [
+      "Coronary CT angiography showing anomalous coronary artery origin or course",
+      "Invasive coronary angiography confirming abnormal coronary anatomy",
+      "Cardiac MRI demonstrating myocardial ischemia or fibrosis"
+    ],
+    "genetic": [
+      "No specific genetic markers identified; congenital etiology"
+    ],
+    "other": [
+      "Exercise stress testing may provoke ischemic changes or arrhythmias",
+      "Electrocardiogram may show ischemic changes or arrhythmias"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "atherosclerotic-coronary-artery-disease",
+      "distinguishingFeatures": [
+        "Presence of atherosclerotic plaques on imaging",
+        "Older age of onset",
+        "Typical cardiovascular risk factors"
+      ]
+    },
+    {
+      "diseaseId": "hypertrophic-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Left ventricular hypertrophy on echocardiogram",
+        "Genetic testing positive for sarcomeric mutations",
+        "Characteristic ECG abnormalities"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden cardiac arrest during or immediately after exertion",
+    "Exertional syncope or near-syncope",
+    "Unexplained angina in young individuals without risk factors"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Cardiothoracic surgeon",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Taylor AJ, Rogan KM, Virmani R. Sudden cardiac death associated with isolated congenital coronary artery anomalies. J Am Coll Cardiol. 1992;20(3):640-647.",
+    "Cheezum MK, Liberthson RR, Shah NR, et al. Anomalous coronary arteries: diagnosis and management. J Am Coll Cardiol. 2017;69(12):1592-1608.",
+    "Brothers JA, Frommelt MA, Jaquiss RD, Myerburg RJ, Fraser CD Jr, Tweddell JS. Expert consensus guidelines: Anomalous aortic origin of a coronary artery. J Thorac Cardiovasc Surg. 2017;153(6):1440-1457."
+  ],
+  "confidenceInData": "medium"
+}

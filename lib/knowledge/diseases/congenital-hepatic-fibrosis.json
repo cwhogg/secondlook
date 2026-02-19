@@ -1,0 +1,206 @@
+{
+  "id": "congenital-hepatic-fibrosis",
+  "name": "Congenital Hepatic Fibrosis",
+  "aliases": [
+    "CHF",
+    "Periportal Fibrosis with Portal Hypertension"
+  ],
+  "icd10Codes": [
+    "Q44.7"
+  ],
+  "omimId": "610622",
+  "orphanetId": "238",
+  "prevalence": {
+    "estimate": "1 in 10,000 to 1 in 20,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 40,
+      "peak": 10
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No formal standardized criteria; diagnosis based on clinical, imaging, histopathology and genetic findings",
+    "criteria": [
+      {
+        "id": "periportal-fibrosis",
+        "description": "Histopathological evidence of periportal fibrosis with preserved hepatic lobular architecture",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "portal-hypertension",
+        "description": "Clinical or imaging evidence of portal hypertension (e.g., splenomegaly, varices)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "preserved-liver-function",
+        "description": "Normal or near-normal liver synthetic function despite fibrosis",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic variants in PKHD1 gene",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of periportal fibrosis on histology plus clinical or imaging evidence of portal hypertension with preserved liver function",
+    "notes": "Genetic testing supports diagnosis but is not mandatory; liver biopsy is gold standard"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Periportal fibrosis",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal",
+        "notes": "Histological hallmark"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Leads to splenomegaly and varices"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Due to portal hypertension"
+      },
+      {
+        "symptomName": "Esophageal varices",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal",
+        "notes": "Risk of bleeding"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Enlarged liver due to fibrosis"
+      },
+      {
+        "symptomName": "Preserved liver synthetic function",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "notes": "Normal albumin and coagulation profile"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "notes": "Recurrent bacterial infections of bile ducts"
+      },
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Usually mild and intermittent"
+      },
+      {
+        "symptomName": "Growth retardation",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "notes": "Due to chronic illness"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Related to portal hypertension or cholangitis"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hepatic encephalopathy",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Rare due to preserved liver function"
+      },
+      {
+        "symptomName": "Hepatocellular carcinoma",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "notes": "Rare malignant transformation"
+      },
+      {
+        "symptomName": "Renal cystic disease",
+        "frequency": 0.07,
+        "bodySystem": "renal",
+        "notes": "Associated with autosomal recessive polycystic kidney disease"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "constitutional",
+    "neurological",
+    "renal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal liver function tests with possible mild elevation of transaminases",
+      "Thrombocytopenia due to hypersplenism",
+      "Mild elevation of bilirubin during cholangitis episodes"
+    ],
+    "imaging": [
+      "Ultrasound showing enlarged echogenic liver with periportal thickening",
+      "Splenomegaly and signs of portal hypertension on Doppler ultrasound",
+      "MRI/MRCP demonstrating biliary abnormalities and fibrosis"
+    ],
+    "genetic": [
+      "Pathogenic variants in PKHD1 gene"
+    ],
+    "other": [
+      "Liver biopsy showing periportal fibrosis with preserved lobular architecture"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "caroli-disease",
+      "distinguishingFeatures": [
+        "Intrahepatic bile duct dilatation",
+        "Recurrent cholangitis more prominent",
+        "Associated with Caroli syndrome when combined with CHF"
+      ]
+    },
+    {
+      "diseaseId": "cirrhosis",
+      "distinguishingFeatures": [
+        "Disrupted liver architecture with regenerative nodules",
+        "Impaired liver synthetic function",
+        "Usually acquired rather than congenital"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe gastrointestinal bleeding from varices",
+    "Recurrent cholangitis with sepsis",
+    "Rapidly progressive renal failure"
+  ],
+  "specialistType": [
+    "Hepatologist",
+    "Gastroenterologist",
+    "Geneticist",
+    "Nephrologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Desmet VJ. Congenital hepatic fibrosis: a clinicopathologic study of 23 cases. Hum Pathol. 1992.",
+    "Sweeney WE Jr, Avner ED. Autosomal recessive polycystic kidney disease: the clinical experience. Pediatr Nephrol. 2011.",
+    "Orphanet: Congenital hepatic fibrosis. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=238"
+  ],
+  "confidenceInData": "medium"
+}

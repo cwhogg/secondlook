@@ -1,0 +1,188 @@
+{
+  "id": "holt-oram-syndrome",
+  "name": "Holt-Oram Syndrome",
+  "aliases": [
+    "Heart-Hand Syndrome",
+    "HOS"
+  ],
+  "icd10Codes": [
+    "Q87.8"
+  ],
+  "omimId": "142900",
+  "orphanetId": "284",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 1,
+      "peak": 0
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Holt-Oram Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "upper-limb-malformations",
+        "description": "Presence of congenital upper limb malformations including radial ray defects",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "congenital-heart-defects",
+        "description": "Presence of congenital heart defects, especially atrial septal defect or ventricular septal defect",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "tbx5-mutation",
+        "description": "Identification of pathogenic mutation in the TBX5 gene",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Family history of Holt-Oram syndrome or related cardiac and limb anomalies",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of congenital upper limb malformations and congenital heart defects, with or without TBX5 mutation confirmation",
+    "notes": "Genetic testing for TBX5 mutations supports diagnosis but is not mandatory if clinical features are definitive"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Radial ray upper limb malformations",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Atrial septal defect",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Ventricular septal defect",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Thumb anomalies (hypoplasia, triphalangeal thumb)",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Conduction abnormalities (e.g., atrioventricular block)",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Shortened forearm bones (radius or ulna hypoplasia)",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Clubbing or malformation of carpal bones",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Mitral valve prolapse",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Arrhythmias other than AV block",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hypoplastic scapula",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Reduced range of motion in upper limbs",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Lower limb malformations",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Congenital heart block requiring pacemaker",
+        "frequency": 0.04,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pulmonary valve stenosis",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [],
+    "imaging": [
+      "X-ray showing radial ray defects and carpal bone abnormalities",
+      "Echocardiogram demonstrating septal defects and valvular abnormalities",
+      "Electrocardiogram showing conduction abnormalities"
+    ],
+    "genetic": [
+      "Pathogenic variants in TBX5 gene detected by molecular genetic testing"
+    ],
+    "other": [
+      "Family history consistent with autosomal dominant inheritance"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "thrombocytopenia-absent-radius-syndrome",
+      "distinguishingFeatures": [
+        "Absent radius with thrombocytopenia",
+        "No congenital heart defects typical of Holt-Oram syndrome"
+      ]
+    },
+    {
+      "diseaseId": "vacterl-association",
+      "distinguishingFeatures": [
+        "Multiple congenital anomalies including vertebral, anal, cardiac, tracheoesophageal, renal, and limb defects",
+        "Limb anomalies less specific to radial ray defects"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe congenital heart defects causing heart failure",
+    "Progressive conduction abnormalities leading to syncope or sudden cardiac death",
+    "Severe upper limb malformations impairing function"
+  ],
+  "specialistType": [
+    "Clinical Geneticist",
+    "Cardiologist",
+    "Orthopedic Surgeon"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Basson CT, et al. Mutations in human TBX5 cause limb and cardiac malformation in Holt-Oram syndrome. Nat Genet. 1997.",
+    "Bruneau BG. The developmental genetics of congenital heart disease. Nature. 2008.",
+    "Orphanet: Holt-Oram syndrome"
+  ],
+  "confidenceInData": "medium"
+}

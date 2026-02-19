@@ -1,0 +1,206 @@
+{
+  "id": "cardiac-sarcoidosis",
+  "name": "Cardiac Sarcoidosis",
+  "aliases": [
+    "Myocardial Sarcoidosis",
+    "Sarcoid Cardiomyopathy"
+  ],
+  "icd10Codes": [
+    "D86.85"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 60,
+      "peak": 40
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "African American",
+      "Northern European"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Japanese Ministry of Health and Welfare Criteria for Cardiac Sarcoidosis",
+    "criteria": [
+      {
+        "id": "histological-confirmation",
+        "description": "Non-caseating granulomas on myocardial biopsy",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "advanced-conduction-disturbance",
+        "description": "High-grade atrioventricular block or ventricular tachycardia",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "imaging-evidence",
+        "description": "Positive cardiac MRI or FDG-PET showing myocardial inflammation or scarring",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "extracardiac-sarcoidosis",
+        "description": "Histological or clinical evidence of sarcoidosis in other organs",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "abnormal-ecg",
+        "description": "ECG abnormalities such as bundle branch block or premature ventricular contractions",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Either histological confirmation from myocardial tissue or a combination of clinical, imaging, and extracardiac sarcoidosis evidence as per formal criteria",
+    "notes": "Endomyocardial biopsy has low sensitivity; diagnosis often relies on clinical and imaging criteria combined with extracardiac sarcoidosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "High-grade atrioventricular block",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Ventricular tachycardia",
+        "frequency": 0.7,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Heart failure symptoms (dyspnea, fatigue, edema)",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Syncope or presyncope",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fatigue unrelated to heart failure",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Palpitations due to premature ventricular contractions",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Exertional dyspnea",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lightheadedness",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden cardiac death",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pericardial effusion",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Right ventricular failure",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "immunological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum angiotensin-converting enzyme (ACE) levels",
+      "Elevated inflammatory markers (ESR, CRP)",
+      "Hypercalcemia in some cases"
+    ],
+    "imaging": [
+      "Cardiac MRI showing late gadolinium enhancement and myocardial edema",
+      "FDG-PET scan demonstrating active myocardial inflammation",
+      "Echocardiography showing regional wall motion abnormalities or ventricular dysfunction"
+    ],
+    "genetic": [
+      "No specific genetic markers identified; familial clustering reported in some cases"
+    ],
+    "other": [
+      "Endomyocardial biopsy demonstrating non-caseating granulomas (low sensitivity)",
+      "ECG abnormalities including bundle branch block and ventricular arrhythmias"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "arrhythmogenic-right-ventricular-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Fibrofatty replacement of myocardium",
+        "Predominant right ventricular involvement",
+        "Genetic mutations in desmosomal proteins"
+      ]
+    },
+    {
+      "diseaseId": "giant-cell-myocarditis",
+      "distinguishingFeatures": [
+        "Rapidly progressive heart failure",
+        "Histology showing multinucleated giant cells",
+        "Poor response to standard sarcoidosis treatments"
+      ]
+    },
+    {
+      "diseaseId": "ischemic-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Coronary artery disease evidence on angiography",
+        "Typical ischemic pattern on imaging",
+        "Absence of granulomatous inflammation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "New onset high-grade atrioventricular block in young or middle-aged adults",
+    "Unexplained ventricular tachycardia or ventricular fibrillation",
+    "Rapidly progressive heart failure symptoms"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Pulmonologist",
+    "Rheumatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Birnie DH, et al. Cardiac Sarcoidosis. J Am Coll Cardiol. 2020;75(12):1423-1434.",
+    "Hiraga H, et al. Diagnostic criteria for cardiac sarcoidosis. Jpn Cir J. 1993;57(9):845-853.",
+    "Sekiguchi M, et al. Cardiac sarcoidosis: diagnosis and treatment. Curr Cardiol Rep. 2019;21(10):111."
+  ],
+  "confidenceInData": "medium"
+}

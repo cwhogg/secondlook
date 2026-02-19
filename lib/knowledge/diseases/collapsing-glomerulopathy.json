@@ -1,0 +1,214 @@
+{
+  "id": "collapsing-glomerulopathy",
+  "name": "Collapsing Glomerulopathy",
+  "aliases": [
+    "Collapsing Variant of Focal Segmental Glomerulosclerosis",
+    "CG"
+  ],
+  "icd10Codes": [
+    "N04.8"
+  ],
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 70,
+      "peak": 40
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "African descent",
+      "Hispanic"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Histopathological Diagnostic Criteria for Collapsing Glomerulopathy",
+    "criteria": [
+      {
+        "id": "glomerular-collapse",
+        "description": "Collapse of glomerular capillary tufts with wrinkling and retraction of the basement membrane",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "podocyte-hyperplasia",
+        "description": "Proliferation and hypertrophy of overlying podocytes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "rapid-renal-decline",
+        "description": "Rapid progression of renal dysfunction with elevated serum creatinine",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "proteinuria",
+        "description": "Nephrotic range proteinuria often present",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of glomerular capillary tuft collapse and podocyte hyperplasia on renal biopsy",
+    "notes": "Diagnosis requires renal biopsy with characteristic histopathological findings."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Nephrotic-range proteinuria",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "notes": "Massive proteinuria typically exceeding 3.5 g/day"
+      },
+      {
+        "symptomName": "Rapidly progressive renal failure",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "notes": "Marked decline in glomerular filtration rate over weeks to months"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Edema",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Peripheral and periorbital edema due to hypoalbuminemia"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Elevated blood pressure often accompanies renal impairment"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Generalized weakness and malaise"
+      },
+      {
+        "symptomName": "Microscopic hematuria",
+        "frequency": 0.55,
+        "bodySystem": "renal",
+        "notes": "Presence of red blood cells in urine without gross hematuria"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Foamy urine",
+        "frequency": 0.4,
+        "bodySystem": "renal",
+        "notes": "Due to proteinuria"
+      },
+      {
+        "symptomName": "Anorexia",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "notes": "Loss of appetite related to uremia"
+      },
+      {
+        "symptomName": "Nausea",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Common in renal failure"
+      },
+      {
+        "symptomName": "Mild anemia",
+        "frequency": 0.15,
+        "bodySystem": "hematological",
+        "notes": "Anemia of chronic disease or renal origin"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Nephrotic syndrome-associated hyperlipidemia",
+        "frequency": 0.08,
+        "bodySystem": "endocrine",
+        "notes": "Elevated serum cholesterol and triglycerides"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Rarely reported in advanced renal failure"
+      },
+      {
+        "symptomName": "Pulmonary edema",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "notes": "Secondary to fluid overload in renal failure"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "cardiovascular",
+    "constitutional",
+    "hematological",
+    "gastrointestinal",
+    "endocrine",
+    "neurological",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Nephrotic range proteinuria (>3.5 g/day)",
+      "Elevated serum creatinine and blood urea nitrogen",
+      "Hypoalbuminemia",
+      "Hyperlipidemia"
+    ],
+    "imaging": [
+      "Renal ultrasound showing normal or enlarged kidneys",
+      "No specific imaging findings diagnostic for CG"
+    ],
+    "genetic": [
+      "Association with APOL1 high-risk variants in individuals of African descent"
+    ],
+    "other": [
+      "Renal biopsy demonstrating glomerular capillary tuft collapse and podocyte hyperplasia"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "focal-segmental-glomerulosclerosis",
+      "distinguishingFeatures": [
+        "Segmental sclerosis without capillary tuft collapse",
+        "Slower progression compared to collapsing variant"
+      ]
+    },
+    {
+      "diseaseId": "minimal-change-disease",
+      "distinguishingFeatures": [
+        "Normal glomeruli on light microscopy",
+        "Responsive to corticosteroids",
+        "Absence of podocyte hyperplasia or tuft collapse"
+      ]
+    },
+    {
+      "diseaseId": "membranoproliferative-glomerulonephritis",
+      "distinguishingFeatures": [
+        "Mesangial cell proliferation and basement membrane thickening",
+        "Immune complex deposits on immunofluorescence"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly worsening renal function over weeks",
+    "Nephrotic syndrome refractory to standard therapies",
+    "Presence of collapsing lesions on renal biopsy"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Renal Pathologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "D'Agati VD, et al. Pathology of collapsing glomerulopathy. Kidney Int. 2016;90(2):281-289.",
+    "Kopp JB, et al. APOL1 genetic variants in focal segmental glomerulosclerosis and HIV-associated nephropathy. Nat Rev Nephrol. 2013;9(6): 345-354.",
+    "Fogo AB. Approach to renal biopsy. Am J Kidney Dis. 2003;42(4):826-836."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,215 @@
+{
+  "id": "mycosis-fungoides",
+  "name": "Mycosis Fungoides",
+  "aliases": [
+    "Cutaneous T-cell lymphoma",
+    "Alibert-Bazin syndrome"
+  ],
+  "icd10Codes": [
+    "C84.0"
+  ],
+  "omimId": "159000",
+  "orphanetId": "534",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.02-0.1%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 70,
+      "peak": 55
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "Caucasian predominance"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ISCL/EORTC Diagnostic Criteria for Mycosis Fungoides",
+    "criteria": [
+      {
+        "id": "clinical-features",
+        "description": "Presence of persistent, progressive patches, plaques, or tumors on the skin",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology",
+        "description": "Epidermotropism of atypical cerebriform T-lymphocytes on skin biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunophenotyping",
+        "description": "Loss of pan-T-cell markers (e.g., CD7) and CD4+ T-cell predominance",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "molecular-clonality",
+        "description": "Detection of T-cell receptor gene rearrangement clonality",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "clinical-duration",
+        "description": "Chronicity of skin lesions typically over months to years",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of characteristic clinical features plus histopathological confirmation and immunophenotyping consistent with MF",
+    "notes": "Molecular studies support diagnosis but are not mandatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Persistent erythematous patches with fine scaling",
+        "frequency": 0.85,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Plaques with epidermotropism of atypical lymphocytes",
+        "frequency": 0.75,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Cutaneous tumors arising from plaques",
+        "frequency": 0.7,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Pruritus",
+        "frequency": 0.65,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Skin xerosis",
+        "frequency": 0.6,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Hypopigmented patches",
+        "frequency": 0.52,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Erosions or ulcerations of skin lesions",
+        "frequency": 0.3,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Secondary bacterial skin infections",
+        "frequency": 0.25,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild systemic symptoms (fever, night sweats)",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Severe erythroderma",
+        "frequency": 0.08,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Visceral organ involvement",
+        "frequency": 0.05,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Peripheral blood smear may show Sézary cells in advanced disease",
+      "Elevated LDH in advanced stages",
+      "T-cell clonality by PCR"
+    ],
+    "imaging": [
+      "CT scan for lymph node and visceral involvement",
+      "PET scan to assess extent of disease"
+    ],
+    "genetic": [
+      "T-cell receptor gene rearrangement clonality",
+      "Chromosomal abnormalities in malignant T-cells"
+    ],
+    "other": [
+      "Skin biopsy demonstrating epidermotropism and Pautrier microabscesses",
+      "Immunohistochemistry showing CD4+ T-cell predominance with loss of CD7"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "psoriasis",
+      "distinguishingFeatures": [
+        "Well-demarcated plaques with silvery scale",
+        "Absence of atypical lymphocytes on biopsy",
+        "Lack of T-cell clonality"
+      ]
+    },
+    {
+      "diseaseId": "eczema",
+      "distinguishingFeatures": [
+        "Pruritic, inflamed patches with spongiosis on biopsy",
+        "Polyclonal T-cell infiltrate",
+        "Rapid response to topical steroids"
+      ]
+    },
+    {
+      "diseaseId": "parapsoriasis",
+      "distinguishingFeatures": [
+        "Smaller, less infiltrated patches",
+        "Lack of epidermotropism of atypical lymphocytes",
+        "Usually benign clinical course"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression from patches to tumors",
+    "Development of erythroderma",
+    "Lymphadenopathy with systemic symptoms"
+  ],
+  "specialistType": [
+    "Dermatologist",
+    "Hematologist-Oncologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Willemze R, Jaffe ES, Burg G, et al. WHO-EORTC classification for cutaneous lymphomas. Blood. 2005;105(10):3768-3785.",
+    "Kim YH, Liu HL, Mraz-Gernhard S, Varghese A, Hoppe RT. Long-term outcome of 525 patients with mycosis fungoides and Sézary syndrome: clinical prognostic factors and risk for disease progression. Arch Dermatol. 2003;139(7):857-866.",
+    "Guitart J, Pulitzer M, Duvic M. Mycosis fungoides and Sézary syndrome: clinical presentation, diagnosis, and staging. UpToDate. 2023."
+  ],
+  "confidenceInData": "medium"
+}

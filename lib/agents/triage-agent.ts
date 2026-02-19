@@ -90,8 +90,8 @@ export class TriageAgent extends BaseAgent {
       .slice(0, 3); // max 3 domain specialists
     const relevantSpecialties = [...domainSpecialists, 'general-internist' as SpecialistType];
 
-    // Retrieve candidate diseases from knowledge base
-    const candidateDiseases = findMatchingDiseases(
+    // Retrieve candidate diseases from knowledge base (async — uses semantic search if embeddings available)
+    const candidateDiseases = await findMatchingDiseases(
       patientCase.symptoms,
       patientCase.demographics,
       {

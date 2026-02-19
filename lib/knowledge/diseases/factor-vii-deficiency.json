@@ -1,0 +1,204 @@
+{
+  "id": "factor-vii-deficiency",
+  "name": "Factor VII Deficiency",
+  "aliases": [
+    "Congenital Factor VII Deficiency",
+    "Inherited Factor VII Deficiency"
+  ],
+  "icd10Codes": [
+    "D68.01"
+  ],
+  "omimId": "227500",
+  "orphanetId": "791",
+  "prevalence": {
+    "estimate": "1 in 500,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 60,
+      "peak": 10
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Factor VII Deficiency Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "prolonged-pt",
+        "description": "Prolonged prothrombin time (PT) with normal activated partial thromboplastin time (aPTT)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "factor-vii-activity",
+        "description": "Reduced Factor VII activity level below 50% of normal",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in the F7 gene",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bleeding-history",
+        "description": "Personal or family history of bleeding symptoms consistent with coagulation defect",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Prolonged PT with reduced Factor VII activity level below 50%, with or without confirmatory genetic testing",
+    "notes": "Diagnosis requires exclusion of acquired causes of Factor VII deficiency."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Spontaneous mucocutaneous bleeding",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Includes epistaxis and gum bleeding"
+      },
+      {
+        "symptomName": "Prolonged bleeding after trauma or surgery",
+        "frequency": 0.75,
+        "bodySystem": "hematological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Menorrhagia",
+        "frequency": 0.65,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Easy bruising",
+        "frequency": 0.6,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hemarthrosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "notes": "Less frequent than in other coagulation factor deficiencies"
+      },
+      {
+        "symptomName": "Postpartum hemorrhage",
+        "frequency": 0.5,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Gastrointestinal bleeding",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Intracranial hemorrhage",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Rare but potentially life-threatening"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.15,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Prolonged bleeding from minor cuts",
+        "frequency": 0.4,
+        "bodySystem": "hematological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Muscle hematomas",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Retroperitoneal hemorrhage",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.02,
+        "bodySystem": "respiratory"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "dermatological",
+    "musculoskeletal",
+    "reproductive",
+    "gastrointestinal",
+    "neurological",
+    "renal",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Prolonged prothrombin time (PT) with normal activated partial thromboplastin time (aPTT)",
+      "Reduced Factor VII activity levels (<50%)",
+      "Normal platelet count and function"
+    ],
+    "imaging": [
+      "Imaging to evaluate bleeding complications such as intracranial hemorrhage or muscle hematomas (CT, MRI)"
+    ],
+    "genetic": [
+      "Mutations in the F7 gene identified by molecular genetic testing"
+    ],
+    "other": [
+      "Family history of bleeding disorders"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hemophilia-a",
+      "distinguishingFeatures": [
+        "Prolonged aPTT rather than PT",
+        "Factor VIII deficiency",
+        "X-linked inheritance pattern"
+      ]
+    },
+    {
+      "diseaseId": "hemophilia-b",
+      "distinguishingFeatures": [
+        "Prolonged aPTT rather than PT",
+        "Factor IX deficiency",
+        "X-linked inheritance pattern"
+      ]
+    },
+    {
+      "diseaseId": "vitamin-k-deficiency",
+      "distinguishingFeatures": [
+        "Acquired cause",
+        "Multiple coagulation factor deficiencies including II, VII, IX, X",
+        "Corrected by vitamin K administration"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Intracranial hemorrhage",
+    "Severe postpartum hemorrhage",
+    "Uncontrolled bleeding after surgery or trauma"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Geneticist",
+    "Coagulation specialist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Franchini M, Lippi G. Factor VII deficiency: an update. Blood Transfus. 2010;8(2):120-7.",
+    "Mariani G, Herrmann FH, Schulman S, et al. Clinical phenotypes and factor VII genotype in congenital factor VII deficiency. Thromb Haemost. 2005;94(3):450-7.",
+    "Orphanet: Factor VII deficiency - https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=791"
+  ],
+  "confidenceInData": "medium"
+}

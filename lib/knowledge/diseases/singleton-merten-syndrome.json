@@ -1,0 +1,222 @@
+{
+  "id": "singleton-merten-syndrome",
+  "name": "Singleton-Merten Syndrome",
+  "aliases": [
+    "SMS",
+    "Singleton-Merten Disease"
+  ],
+  "icd10Codes": [
+    "Q87.8"
+  ],
+  "omimId": "182250",
+  "orphanetId": "ORPHA:2760",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 40,
+      "peak": 10
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Singleton-Merten Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "dental-anomalies",
+        "description": "Presence of dental anomalies including delayed tooth eruption and root dysplasia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "aortic-calcifications",
+        "description": "Radiographic evidence of aortic and large vessel calcifications",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immune-dysregulation",
+        "description": "Clinical or laboratory evidence of immune dysregulation such as recurrent infections or autoimmunity",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "musculoskeletal-abnormalities",
+        "description": "Presence of musculoskeletal abnormalities including osteoporosis or joint contractures",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-confirmation",
+        "description": "Identification of pathogenic variants in IFIH1 or DDX58 genes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of all three major criteria (dental anomalies, aortic calcifications, and immune dysregulation) or genetic confirmation with supportive clinical features",
+    "notes": "Genetic testing is recommended to confirm diagnosis due to phenotypic variability."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Delayed tooth eruption with root dysplasia",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "notes": "Characteristic dental anomalies affecting permanent teeth"
+      },
+      {
+        "symptomName": "Aortic and large vessel calcifications",
+        "frequency": 0.8,
+        "bodySystem": "cardiovascular",
+        "notes": "Detected by imaging, often early in disease course"
+      },
+      {
+        "symptomName": "Immune dysregulation manifesting as recurrent infections or autoimmunity",
+        "frequency": 0.75,
+        "bodySystem": "immunological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Osteoporosis or decreased bone mineral density",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Joint contractures or arthralgia",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Muscle weakness or hypotonia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Skin rash or dermatological manifestations",
+        "frequency": 0.5,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Glaucoma or other ophthalmological abnormalities",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Growth retardation or short stature",
+        "frequency": 0.25,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Mild neurological symptoms such as headaches or paresthesias",
+        "frequency": 0.2,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Recurrent fevers or constitutional symptoms",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pulmonary calcifications or restrictive lung disease",
+        "frequency": 0.08,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Renal calcifications or nephrocalcinosis",
+        "frequency": 0.05,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hearing loss or otolaryngological abnormalities",
+        "frequency": 0.04,
+        "bodySystem": "otolaryngological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "cardiovascular",
+    "immunological",
+    "dermatological",
+    "ophthalmological",
+    "neurological",
+    "endocrine",
+    "respiratory",
+    "renal",
+    "constitutional",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated inflammatory markers (e.g., ESR, CRP)",
+      "Autoantibodies indicating immune dysregulation",
+      "Normal to mildly elevated serum calcium and phosphate"
+    ],
+    "imaging": [
+      "Calcifications of the ascending aorta and large arteries on CT or X-ray",
+      "Dental radiographs showing root hypoplasia and delayed eruption",
+      "Osteopenia or osteoporosis on bone densitometry"
+    ],
+    "genetic": [
+      "Pathogenic variants in IFIH1 gene",
+      "Pathogenic variants in DDX58 gene"
+    ],
+    "other": [
+      "Histopathology of affected tissues showing calcifications and inflammatory infiltrates"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "calcific-artery-disease",
+      "distinguishingFeatures": [
+        "Typically acquired with age or secondary to metabolic disorders",
+        "Lack of dental anomalies",
+        "Absence of immune dysregulation"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-polyendocrine-syndrome",
+      "distinguishingFeatures": [
+        "Multiple endocrine gland failures",
+        "Autoimmune features without vascular calcifications",
+        "Different genetic etiology"
+      ]
+    },
+    {
+      "diseaseId": "familial-juvenile-pulmonary-alveolar-proteinosis",
+      "distinguishingFeatures": [
+        "Pulmonary symptoms predominate",
+        "No dental or vascular calcifications",
+        "Different genetic mutations"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Early onset aortic calcifications leading to cardiovascular complications",
+    "Severe dental anomalies impairing nutrition and oral health",
+    "Recurrent infections or autoimmune manifestations indicating immune dysregulation"
+  ],
+  "specialistType": [
+    "Geneticist",
+    "Cardiologist",
+    "Immunologist",
+    "Dentist",
+    "Rheumatologist"
+  ],
+  "lastUpdated": "2026-02-17",
+  "references": [
+    "Singleton-Merten syndrome: clinical and molecular characterization. J Med Genet. 2015.",
+    "IFIH1 and DDX58 mutations in Singleton-Merten syndrome. Nat Genet. 2014.",
+    "Clinical features and management of Singleton-Merten syndrome. Orphanet J Rare Dis. 2017."
+  ],
+  "confidenceInData": "medium"
+}

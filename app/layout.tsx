@@ -63,13 +63,6 @@ export const metadata: Metadata = {
     description:
       "Analyze your symptoms against thousands of rare and complex conditions. Get insights in minutes, not months.",
   },
-  icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/icon-light-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: "/apple-icon.png",
-  },
   robots: {
     index: true,
     follow: true,

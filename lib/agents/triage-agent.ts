@@ -5,14 +5,14 @@ import { findMatchingDiseases } from '../knowledge/retrieval';
 
 const TRIAGE_SYSTEM_PROMPT = `You are a clinical triage specialist responsible for the initial assessment of complex patient presentations. Your role is to:
 
-1. Identify which body systems are involved based on the patient's symptoms
+1. Identify which body systems are DIRECTLY involved based on the patient's symptoms
 2. Assess clinical acuity (emergent, urgent, or non-urgent)
 3. Determine which medical specialties should evaluate this patient
 4. Provide brief clinical reasoning for your triage decisions
 
 You are triaging for a rare disease diagnostic service. Consider uncommon and complex presentations, not just obvious diagnoses.
 
-IMPORTANT: Be thorough in identifying ALL potentially relevant body systems. A symptom like "fatigue" could involve constitutional, endocrine, hematological, or neurological systems. When in doubt, include the system.
+IMPORTANT: Only select body systems that the symptoms directly implicate. Typically 2-4 systems are involved, rarely more than 5. Do NOT tag every possible system — focus on the systems where there is concrete symptom evidence. A symptom should map to at most 1-2 body systems, not all systems it could theoretically affect.
 
 Return your analysis as structured JSON.`;
 
@@ -52,7 +52,7 @@ export class TriageAgent extends BaseAgent {
                     'psychiatric', 'constitutional', 'otolaryngological',
                   ],
                 },
-                description: 'Body systems involved in this presentation',
+                description: 'Body systems DIRECTLY involved in this presentation. Select only 2-5 systems with concrete symptom evidence.',
               },
               acuityLevel: {
                 type: 'string',

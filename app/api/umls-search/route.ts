@@ -64,7 +64,6 @@ export async function POST(request: NextRequest) {
     const searchParams = new URLSearchParams({
       string: searchTerm,
       sabs: 'SNOMEDCT_US',
-      searchType: 'approximate',
       returnIdType: 'concept',
       pageSize: '5',
       ticket: serviceTicket
@@ -104,7 +103,6 @@ export async function POST(request: NextRequest) {
           const altSearchParams = new URLSearchParams({
             string: searchTerm,
             sabs: 'SNOMEDCT_US',
-            searchType: 'approximate',
             returnIdType: 'concept',
             pageSize: '5',
             ticket: altServiceTicket

@@ -1,8 +1,10 @@
 import { BaseAgent } from './base-agent';
 import { AgentInput, AgentOutput, SynthesisOutput } from './types';
 import { DiagnosisHypothesis, PatientCase } from '../types';
+import { getDiseaseCount } from '../knowledge';
 
-const SYNTHESIS_PROMPT = `You are the senior diagnostician and department chief — the final decision-maker on this case. You have 30+ years of experience in complex diagnostic medicine, specializing in rare and multi-system diseases.
+function buildSynthesisPrompt(): string {
+  return `You are the senior diagnostician and department chief — the final decision-maker on this case. You have 30+ years of experience in complex diagnostic medicine, specializing in rare and multi-system diseases.
 
 You are reviewing a patient case where multiple specialist consultations have been completed and an evidence evaluator has systematically checked each hypothesis against diagnostic criteria. ALL of this information is now in front of you.
 
@@ -33,9 +35,10 @@ YOUR JOB: Make the final clinical judgment.
 
 IMPORTANT NOTES:
 - Some hypotheses have structured KB criteria data, others were evaluated via clinical reasoning. BOTH are valid. Do not favor one type over the other.
-- Our knowledge base covers ~150 of ~7,000-10,000 rare diseases. A disease NOT in our KB can absolutely be the correct diagnosis.
+- Our knowledge base covers ${getDiseaseCount()} of ~7,000-10,000 rare diseases. A disease NOT in our KB can absolutely be the correct diagnosis.
 - The evidence evaluator's criteria fulfillment data is INPUT to your judgment, not the answer itself. A disease can meet 5/8 criteria and still be unlikely if the missing criteria are the important ones.
 - Be honest about uncertainty. If the evidence genuinely doesn't distinguish between diagnoses, say so.`;
+}
 
 export class SynthesisAgent extends BaseAgent {
   constructor() {
@@ -44,7 +47,7 @@ export class SynthesisAgent extends BaseAgent {
       model: 'gpt-4.1',
       temperature: 0.2,
       maxTokens: 4000,
-      systemPrompt: SYNTHESIS_PROMPT,
+      systemPrompt: buildSynthesisPrompt(),
     });
   }
 

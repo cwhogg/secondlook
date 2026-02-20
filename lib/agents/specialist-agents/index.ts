@@ -2,6 +2,7 @@ import { BaseAgent, LLMCallResult } from '../base-agent';
 import { AgentInput, AgentOutput, SpecialistType } from '../types';
 import { PatientCase, DiagnosisHypothesis } from '../../types';
 import { DiseaseMatch } from '../../types/knowledge-base';
+import { getDiseaseCount } from '../../knowledge';
 
 // ===== SPECIALIST PROMPTS =====
 
@@ -150,7 +151,7 @@ YOUR DIAGNOSTIC APPROACH:
 5. Consider mimics, overlapping conditions, and atypical presentations
 6. Think about what is COMMONLY MISSED by generalists in your specialty area
 
-CRITICAL: You are NOT limited to the diseases shown in the knowledge base profiles below. Our knowledge base covers ~150 diseases out of 7,000-10,000 known rare diseases. If the patient's presentation suggests a condition NOT in the provided profiles, you MUST still propose it. A disease being absent from our database says nothing about its likelihood — it only means we lack structured criteria for it. Use your clinical training and expertise for any condition you consider relevant.
+CRITICAL: You are NOT limited to the diseases shown in the knowledge base profiles below. Our knowledge base covers ${getDiseaseCount()} diseases out of 7,000-10,000 known rare diseases. If the patient's presentation suggests a condition NOT in the provided profiles, you MUST still propose it. A disease being absent from our database says nothing about its likelihood — it only means we lack structured criteria for it. Use your clinical training and expertise for any condition you consider relevant.
 
 OUTPUT RULES:
 - Generate 2-4 diagnostic hypotheses ranked by likelihood
@@ -166,9 +167,9 @@ Your areas of deep expertise include:
 
 ${expertise}
 
-You are reviewing a patient case as part of a multi-specialist diagnostic consultation. Other domain specialists (neurologist, rheumatologist, cardiologist, etc.) are also reviewing this case. They have access to a curated knowledge base of ~150 rare disease profiles. YOUR role is different:
+You are reviewing a patient case as part of a multi-specialist diagnostic consultation. Other domain specialists (neurologist, rheumatologist, cardiologist, etc.) are also reviewing this case. They have access to a curated knowledge base of ${getDiseaseCount()} rare disease profiles. YOUR role is different:
 
-YOU ARE THE UN-ANCHORED DIAGNOSTICIAN. You are intentionally NOT given structured disease profiles from the knowledge base. This is by design. The other specialists may anchor too heavily on the ~150 diseases in our database. There are 7,000-10,000 known rare diseases. Your job is to think broadly and consider diagnoses the other specialists might miss because they were focused on their domain or anchored to the knowledge base.
+YOU ARE THE UN-ANCHORED DIAGNOSTICIAN. You are intentionally NOT given structured disease profiles from the knowledge base. This is by design. The other specialists may anchor too heavily on the ${getDiseaseCount()} diseases in our database. There are 7,000-10,000 known rare diseases. Your job is to think broadly and consider diagnoses the other specialists might miss because they were focused on their domain or anchored to the knowledge base.
 
 YOUR DIAGNOSTIC APPROACH:
 1. Think across ALL specialties and body systems — you are not confined to one domain
@@ -360,13 +361,13 @@ Red flags: ${d.redFlags.join(', ')}`;
 
       kbSection = `
 ===== KNOWLEDGE BASE: CANDIDATE DISEASES =====
-The following diseases from our curated knowledge base (~150 of ~7,000+ rare diseases) match this patient's symptoms.
+The following diseases from our curated knowledge base (${getDiseaseCount()} of ~7,000+ rare diseases) match this patient's symptoms.
 Reference these profiles where relevant, but also consider diseases NOT listed here.
 ${diseaseProfiles}`;
     } else if (isGeneralInternist) {
       kbSection = `
 ===== NOTE =====
-You are intentionally not provided with knowledge base disease profiles. Other specialists on this case have been given profiles from our database of ~150 rare diseases. Your role is to think independently and consider what they might miss.`;
+You are intentionally not provided with knowledge base disease profiles. Other specialists on this case have been given profiles from our database of ${getDiseaseCount()} rare diseases. Your role is to think independently and consider what they might miss.`;
     }
 
     const taskSection = isGeneralInternist

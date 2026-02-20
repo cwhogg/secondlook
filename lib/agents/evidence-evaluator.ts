@@ -2,8 +2,10 @@ import { BaseAgent } from './base-agent';
 import { AgentInput, AgentOutput, EvidenceEvaluation } from './types';
 import { DiagnosisHypothesis, CriteriaFulfillment, PatientCase } from '../types';
 import { DiseaseMatch, DiseaseProfile } from '../types/knowledge-base';
+import { getDiseaseCount } from '../knowledge';
 
-const EVIDENCE_EVALUATOR_PROMPT = `You are a senior clinical evidence evaluator. Your role is to systematically assess each diagnostic hypothesis against available evidence and diagnostic criteria, producing a structured analysis that a senior diagnostician will use to make final probability assessments.
+function buildEvidenceEvaluatorPrompt(): string {
+  return `You are a senior clinical evidence evaluator. Your role is to systematically assess each diagnostic hypothesis against available evidence and diagnostic criteria, producing a structured analysis that a senior diagnostician will use to make final probability assessments.
 
 You are NOT the final decision-maker on probability. Your job is to produce a rigorous, structured evidence review. A senior diagnostician will review your analysis and assign final probability scores.
 
@@ -32,9 +34,10 @@ YOUR APPROACH FOR EACH HYPOTHESIS:
 5. CONTRADICTIONS:
    - What in the patient's presentation argues against this diagnosis?
 
-IMPORTANT: Our knowledge base covers ~150 of ~7,000-10,000 known rare diseases. The absence of a disease from our database is NOT evidence against it. Evaluate all hypotheses with equal rigor regardless of KB status.
+IMPORTANT: Our knowledge base covers ${getDiseaseCount()} of ~7,000-10,000 known rare diseases. The absence of a disease from our database is NOT evidence against it. Evaluate all hypotheses with equal rigor regardless of KB status.
 
 Be RIGOROUS and HONEST. Clearly distinguish between what the evidence supports and what remains unknown.`;
+}
 
 export class EvidenceEvaluator extends BaseAgent {
   constructor() {
@@ -43,7 +46,7 @@ export class EvidenceEvaluator extends BaseAgent {
       model: 'gpt-4.1',
       temperature: 0.1,
       maxTokens: 6000, // increased to handle two-track evaluation
-      systemPrompt: EVIDENCE_EVALUATOR_PROMPT,
+      systemPrompt: buildEvidenceEvaluatorPrompt(),
     });
   }
 

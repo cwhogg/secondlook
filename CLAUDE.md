@@ -1,6 +1,6 @@
 # SecondLook
 
-AI-powered rare disease diagnostic tool. Patients input symptoms through a multi-step form, and a multi-agent AI pipeline generates differential diagnoses grounded in a curated knowledge base of ~150 rare diseases.
+AI-powered rare disease diagnostic tool. Patients input symptoms through a multi-step form, and a multi-agent AI pipeline generates differential diagnoses grounded in a curated knowledge base of ~1,200 rare diseases.
 
 ## Tech Stack
 
@@ -45,7 +45,7 @@ lib/
     specialist-agents/
       index.ts                # 9 specialist agents (neuro, rheum, cardio, etc.)
   knowledge/
-    diseases/                 # ~150 JSON disease profiles
+    diseases/                 # ~1,200 JSON disease profiles
     index.ts                  # KB loader with caching
     retrieval.ts              # Symptom-to-disease matching engine
     validation.ts             # Zod schema for disease profiles

@@ -198,7 +198,7 @@ async function mapSingleSymptom(symptom: any): Promise<MappedSymptom> {
 async function buildPatientCase(
   patient: GeneratedPatient,
   onProgress?: (msg: string) => void
-): Promise<any> {
+): Promise<{ patientCase: any; extractedSymptoms: MappedSymptom[] }> {
   // Step 1: Parse symptoms from narrative using the real extraction pipeline
   onProgress?.("Parsing symptoms from narrative...")
   const parseResponse = await fetch("/api/parse-symptoms", {
@@ -236,22 +236,25 @@ async function buildPatientCase(
   onProgress?.(`UMLS mapping complete: ${successCount}/${mappedSymptoms.length} mapped successfully`)
 
   return {
-    demographics: patient.demographics,
-    chiefComplaint: {
-      description: patient.chiefComplaint,
-      bodyRegions: [],
-      severity: 5,
-    },
-    symptoms: mappedSymptoms,
-    symptomPatterns: null,
-    patientHypothesis: null,
-    medicalHistory: {
-      currentMedications: patient.medicalHistory.currentMedications?.map((m) => ({ name: m })) || [],
-      pastMedicalHistory: patient.medicalHistory.pastMedicalHistory || [],
-      familyHistory: patient.medicalHistory.familyHistory || [],
-      recentTests: patient.medicalHistory.recentTests || [],
-      medicalCare: "",
-      testingHistory: [],
+    extractedSymptoms: mappedSymptoms,
+    patientCase: {
+      demographics: patient.demographics,
+      chiefComplaint: {
+        description: patient.chiefComplaint,
+        bodyRegions: [],
+        severity: 5,
+      },
+      symptoms: mappedSymptoms,
+      symptomPatterns: null,
+      patientHypothesis: null,
+      medicalHistory: {
+        currentMedications: patient.medicalHistory.currentMedications?.map((m) => ({ name: m })) || [],
+        pastMedicalHistory: patient.medicalHistory.pastMedicalHistory || [],
+        familyHistory: patient.medicalHistory.familyHistory || [],
+        recentTests: patient.medicalHistory.recentTests || [],
+        medicalCare: "",
+        testingHistory: [],
+      },
     },
   }
 }
@@ -448,6 +451,58 @@ function PatientSection({ patient }: { patient: GeneratedPatient }) {
               <span className="font-semibold">Meds:</span> {patient.medicalHistory.currentMedications.join(", ")}
             </div>
           )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function ExtractedSymptomsSection({ symptoms }: { symptoms: MappedSymptom[] }) {
+  const mapped = symptoms.filter((s) => !s.mappingError)
+  const failed = symptoms.filter((s) => s.mappingError)
+
+  return (
+    <div className="border border-[#d4c5b0] bg-white p-4 space-y-3">
+      <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
+        Extracted Symptoms ({mapped.length}/{symptoms.length} mapped)
+      </div>
+      <div className="space-y-1.5">
+        {symptoms.map((s, i) => (
+          <div key={i} className="text-sm flex items-start gap-2">
+            <span className={`font-mono text-xs mt-0.5 ${s.mappingError ? "text-red-400" : "text-[#8b7355]"}`}>
+              {i + 1}.
+            </span>
+            <div className="flex-1">
+              <div>
+                <span className="text-[#2a2a2a]">&ldquo;{s.originalPhrase}&rdquo;</span>
+                <span className="text-[#8b7355]"> &rarr; </span>
+                <span className="font-medium text-[#5a5a5a]">{s.medicalTerm}</span>
+              </div>
+              {s.selectedConcept && (
+                <div className="text-xs text-[#8b7355]">
+                  UMLS: {s.selectedConcept.name}
+                  {s.selectedConcept.cui && ` (${s.selectedConcept.cui})`}
+                  {s.searchTermUsed && s.searchTermUsed !== s.medicalTerm && (
+                    <span> &middot; matched via &ldquo;{s.searchTermUsed}&rdquo;</span>
+                  )}
+                  <span> &middot; conf: {(s.confidence * 100).toFixed(0)}%</span>
+                </div>
+              )}
+              {s.mappingError && (
+                <div className="text-xs text-red-500">UMLS mapping failed</div>
+              )}
+              {(s.severity || s.duration || s.bodyPart) && (
+                <div className="text-xs text-[#8b7355]">
+                  {[s.severity, s.duration, s.bodyPart].filter(Boolean).join(" · ")}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+      {failed.length > 0 && (
+        <div className="text-xs text-red-500">
+          {failed.length} symptom{failed.length > 1 ? "s" : ""} failed UMLS mapping
         </div>
       )}
     </div>
@@ -813,10 +868,15 @@ export default function AdminPage() {
 
     try {
       setExtractionStatus("Starting symptom extraction...")
-      const payload = await buildPatientCase(activeTest.generatedPatient, (msg) => {
+      const { patientCase, extractedSymptoms } = await buildPatientCase(activeTest.generatedPatient, (msg) => {
         setExtractionStatus(msg)
       })
       setExtractionStatus(null)
+
+      // Store extracted symptoms on the test case
+      updateTestCases((prev) =>
+        prev.map((tc) => (tc.id === activeTest.id ? { ...tc, extractedSymptoms } : tc))
+      )
 
       const abortController = new AbortController()
       abortRef.current = abortController
@@ -824,7 +884,7 @@ export default function AdminPage() {
       const response = await fetch("/api/analyze-patient-v2", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(patientCase),
         signal: abortController.signal,
       })
 
@@ -1062,6 +1122,11 @@ export default function AdminPage() {
               {/* Patient Presentation */}
               <PatientSection patient={currentActiveTest.generatedPatient} />
 
+              {/* Extracted Symptoms (after pipeline has run extraction) */}
+              {currentActiveTest.extractedSymptoms && currentActiveTest.extractedSymptoms.length > 0 && (
+                <ExtractedSymptomsSection symptoms={currentActiveTest.extractedSymptoms} />
+              )}
+
               {/* Pipeline Controls — show for generated, error, or completed-without-results */}
               {(currentActiveTest.status === "generated" ||
                 currentActiveTest.status === "error" ||
@@ -1104,7 +1169,7 @@ export default function AdminPage() {
               )}
 
               {/* Grading Controls — show whenever results exist and not yet graded */}
-              {currentActiveTest.pipelineResult?.differentialDiagnoses?.length && !currentActiveTest.grading && (
+              {(currentActiveTest.pipelineResult?.differentialDiagnoses?.length ?? 0) > 0 && !currentActiveTest.grading && (
                 <button
                   onClick={handleGrade}
                   disabled={isGrading}

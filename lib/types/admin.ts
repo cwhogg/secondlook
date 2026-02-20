@@ -1,4 +1,4 @@
-import type { AnalysisResult, PipelineMetadata } from './index';
+import type { AnalysisResult, MappedSymptom, PipelineMetadata } from './index';
 
 // ===== GENERATION TYPES =====
 
@@ -73,6 +73,7 @@ export interface TestCase {
   groundTruth: GroundTruth;
   generatedPatient: GeneratedPatient;
   generationMetadata: GenerationMetadata;
+  extractedSymptoms?: MappedSymptom[];
   pipelineResult?: AnalysisResult;
   pipelineError?: string;
   grading?: TestGrading;

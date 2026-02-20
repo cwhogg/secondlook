@@ -14,7 +14,7 @@ export interface AnthropicCallResult {
   model: string;
 }
 
-const DEFAULT_MODEL = 'claude-sonnet-4-20250514';
+const DEFAULT_MODEL = 'claude-sonnet-4-6-20250219';
 
 /**
  * Thin wrapper around the Anthropic Messages API using direct fetch.

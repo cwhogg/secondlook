@@ -366,6 +366,68 @@ function PipelineProgressDisplay({ events, percent }: { events: PipelineProgress
     complete: "Complete",
   }
 
+  function renderEventDetail(e: PipelineProgress) {
+    switch (e.stage) {
+      case "triage":
+        return (
+          <div className="ml-4 mt-0.5 space-y-0.5">
+            <div className="text-xs text-[#5a5a5a]">
+              <span className="font-medium">Body systems:</span> {e.data.bodySystems.join(", ")}
+            </div>
+            <div className="text-xs text-[#5a5a5a]">
+              <span className="font-medium">Specialists:</span> {e.data.specialties.join(", ")}
+            </div>
+            <div className="text-xs text-[#5a5a5a]">
+              <span className="font-medium">Acuity:</span> {e.data.acuityLevel} &middot;{" "}
+              {e.data.candidateCount} KB candidates
+            </div>
+          </div>
+        )
+      case "specialists-complete":
+        return (
+          <div className="ml-4 mt-0.5 space-y-1">
+            {e.data.results.map((r, j) => (
+              <div key={j} className="text-xs">
+                <span className="font-medium text-[#5a5a5a]">{r.agentName}</span>
+                <span className="text-[#8b7355]"> ({r.specialty})</span>
+                <div className="ml-3 text-[#5a5a5a]">
+                  {r.hypotheses.map((h, k) => (
+                    <div key={k}>
+                      {k + 1}. {h.diagnosis}
+                      <span className="text-[#8b7355] ml-1">({h.confidenceScore})</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )
+      case "evidence-complete":
+        return (
+          <div className="ml-4 mt-0.5 text-xs text-[#5a5a5a]">
+            {e.data.evaluatedCount} evaluated &middot; {e.data.kbMatchedCount} KB-matched &middot;{" "}
+            {e.data.reasoningEvaluatedCount} reasoning-only
+          </div>
+        )
+      case "synthesis-complete":
+        return (
+          <div className="ml-4 mt-0.5 space-y-0.5">
+            <div className="text-xs text-[#5a5a5a]">
+              <span className="font-medium">Consensus:</span> {e.data.consensusLevel}
+            </div>
+            {e.data.topDiagnoses.slice(0, 5).map((d, j) => (
+              <div key={j} className="text-xs text-[#5a5a5a] ml-3">
+                {j + 1}. {d.diagnosis}
+                <span className="text-[#8b7355] ml-1">({d.probabilityScore})</span>
+              </div>
+            ))}
+          </div>
+        )
+      default:
+        return null
+    }
+  }
+
   return (
     <div className="space-y-2">
       <div className="h-2 bg-[#e8ddd0] w-full">
@@ -376,11 +438,14 @@ function PipelineProgressDisplay({ events, percent }: { events: PipelineProgress
       </div>
       <div className="text-xs text-[#8b7355]">{percent}% complete</div>
       {events.length > 0 && (
-        <div className="max-h-32 overflow-y-auto space-y-0.5">
+        <div className="max-h-64 overflow-y-auto space-y-1.5">
           {events.map((e, i) => (
-            <div key={i} className="text-xs text-[#5a5a5a]">
-              <span className="font-medium">{stageNames[e.stage] || e.stage}</span>
-              <span className="ml-1 text-[#8b7355]">&mdash; {e.detail}</span>
+            <div key={i}>
+              <div className="text-xs text-[#5a5a5a]">
+                <span className="font-medium">{stageNames[e.stage] || e.stage}</span>
+                <span className="ml-1 text-[#8b7355]">&mdash; {e.detail}</span>
+              </div>
+              {renderEventDetail(e)}
             </div>
           ))}
         </div>

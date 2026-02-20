@@ -118,21 +118,122 @@ function computeStats(cases: TestCase[]): TestSuiteStats | null {
   }
 }
 
-function buildPatientCase(patient: GeneratedPatient): any {
-  const symptoms: MappedSymptom[] = patient.symptoms.map((s) => ({
-    originalPhrase: s.originalPhrase,
-    medicalTerm: s.medicalTerm,
-    umlsConcepts: [],
-    selectedConcept: { name: s.medicalTerm, cui: "", semanticType: "" },
-    confidence: 1,
-    confirmed: true,
-    mappingError: false,
+async function searchUMLS(searchTerm: string): Promise<{ concepts: any[]; confidence: number; error?: boolean }> {
+  try {
+    const response = await fetch("/api/umls-search", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ searchTerm }),
+    })
+    if (!response.ok) return { concepts: [], confidence: 0, error: true }
+    const data = await response.json()
+    return { concepts: data.concepts || [], confidence: data.confidence || 0, error: !!data.error }
+  } catch {
+    return { concepts: [], confidence: 0, error: true }
+  }
+}
+
+async function mapSingleSymptom(symptom: any): Promise<MappedSymptom> {
+  const primaryTerm = symptom.medicalTerm || symptom.originalPhrase
+  const alternativeTerms: string[] = symptom.alternativeSearchTerms || []
+  const originalPhrase = symptom.originalPhrase || symptom.text || "Unknown"
+
+  const makeResult = (concepts: any[], confidence: number, searchTermUsed: string, error: boolean): MappedSymptom => ({
+    originalPhrase,
+    medicalTerm: symptom.medicalTerm || originalPhrase,
+    alternativeSearchTerms: alternativeTerms,
+    category: symptom.category,
+    severity: symptom.severity,
+    duration: symptom.duration,
+    bodyPart: symptom.bodyPart,
+    umlsConcepts: concepts,
+    selectedConcept: concepts[0] || null,
+    confidence,
+    confirmed: false,
+    mappingError: error,
     feedbackStatus: "none" as const,
-    severity: s.severity,
-    duration: s.duration,
-    bodyPart: s.bodySystem,
-    category: undefined,
-  }))
+    searchTermUsed,
+  })
+
+  if (!primaryTerm) return makeResult([], 0, "", true)
+
+  // 1. Try primary medicalTerm
+  let result = await searchUMLS(primaryTerm)
+  if (result.concepts.length > 0 && !result.error) {
+    return makeResult(result.concepts, result.confidence, primaryTerm, false)
+  }
+
+  // 2. Try each alternativeSearchTerm
+  for (const altTerm of alternativeTerms) {
+    result = await searchUMLS(altTerm)
+    if (result.concepts.length > 0 && !result.error) {
+      return makeResult(result.concepts, result.confidence, altTerm, false)
+    }
+  }
+
+  // 3. Try originalPhrase as last resort
+  if (originalPhrase !== primaryTerm) {
+    result = await searchUMLS(originalPhrase)
+    if (result.concepts.length > 0 && !result.error) {
+      return makeResult(result.concepts, result.confidence, originalPhrase, false)
+    }
+  }
+
+  // 4. Word-reduction fallback
+  const words = primaryTerm.split(/\s+/)
+  if (words.length >= 3) {
+    for (let drop = 1; drop < words.length - 1; drop++) {
+      const reduced = words.slice(drop).join(" ")
+      result = await searchUMLS(reduced)
+      if (result.concepts.length > 0 && !result.error) {
+        return makeResult(result.concepts, Math.max(0.5, result.confidence - 0.1), reduced, false)
+      }
+    }
+  }
+
+  // All attempts failed
+  return makeResult([], 0, primaryTerm, true)
+}
+
+async function buildPatientCase(
+  patient: GeneratedPatient,
+  onProgress?: (msg: string) => void
+): Promise<any> {
+  // Step 1: Parse symptoms from narrative using the real extraction pipeline
+  onProgress?.("Parsing symptoms from narrative...")
+  const parseResponse = await fetch("/api/parse-symptoms", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      text: patient.narrative,
+      patientAge: patient.demographics.age,
+      patientSex: patient.demographics.sex,
+    }),
+  })
+
+  if (!parseResponse.ok) {
+    throw new Error(`Symptom parsing failed: ${parseResponse.statusText}`)
+  }
+
+  const parsed = await parseResponse.json()
+  const parsedSymptoms: any[] = parsed.symptoms || []
+
+  if (parsedSymptoms.length === 0) {
+    throw new Error("Symptom parsing returned no symptoms from narrative")
+  }
+
+  onProgress?.(`Parsed ${parsedSymptoms.length} symptoms, mapping to UMLS...`)
+
+  // Step 2: Map each symptom through UMLS (same logic as symptom-mapping-section)
+  const mappedSymptoms: MappedSymptom[] = []
+  for (let i = 0; i < parsedSymptoms.length; i++) {
+    onProgress?.(`Mapping symptom ${i + 1}/${parsedSymptoms.length}: ${parsedSymptoms[i].medicalTerm || parsedSymptoms[i].originalPhrase}`)
+    const mapped = await mapSingleSymptom(parsedSymptoms[i])
+    mappedSymptoms.push(mapped)
+  }
+
+  const successCount = mappedSymptoms.filter((s) => !s.mappingError).length
+  onProgress?.(`UMLS mapping complete: ${successCount}/${mappedSymptoms.length} mapped successfully`)
 
   return {
     demographics: patient.demographics,
@@ -141,7 +242,7 @@ function buildPatientCase(patient: GeneratedPatient): any {
       bodyRegions: [],
       severity: 5,
     },
-    symptoms,
+    symptoms: mappedSymptoms,
     symptomPatterns: null,
     patientHypothesis: null,
     medicalHistory: {
@@ -634,6 +735,7 @@ export default function AdminPage() {
   const [isGrading, setIsGrading] = useState(false)
   const [pipelineEvents, setPipelineEvents] = useState<PipelineProgress[]>([])
   const [progressPercent, setProgressPercent] = useState(0)
+  const [extractionStatus, setExtractionStatus] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const abortRef = useRef<AbortController | null>(null)
 
@@ -710,7 +812,12 @@ export default function AdminPage() {
     )
 
     try {
-      const payload = buildPatientCase(activeTest.generatedPatient)
+      setExtractionStatus("Starting symptom extraction...")
+      const payload = await buildPatientCase(activeTest.generatedPatient, (msg) => {
+        setExtractionStatus(msg)
+      })
+      setExtractionStatus(null)
+
       const abortController = new AbortController()
       abortRef.current = abortController
 
@@ -804,7 +911,10 @@ export default function AdminPage() {
 
   // ===== GRADE =====
   const handleGrade = async () => {
-    if (!activeTest?.pipelineResult) return
+    if (!activeTest?.pipelineResult?.differentialDiagnoses?.length) {
+      setError("No pipeline results to grade — try re-running the pipeline")
+      return
+    }
     setIsGrading(true)
     setError(null)
 
@@ -952,8 +1062,10 @@ export default function AdminPage() {
               {/* Patient Presentation */}
               <PatientSection patient={currentActiveTest.generatedPatient} />
 
-              {/* Pipeline Controls */}
-              {(currentActiveTest.status === "generated" || currentActiveTest.status === "error") && (
+              {/* Pipeline Controls — show for generated, error, or completed-without-results */}
+              {(currentActiveTest.status === "generated" ||
+                currentActiveTest.status === "error" ||
+                (currentActiveTest.status === "completed" && !currentActiveTest.pipelineResult?.differentialDiagnoses?.length)) && (
                 <div className="flex items-center gap-3">
                   <button
                     onClick={handleRunPipeline}
@@ -968,9 +1080,22 @@ export default function AdminPage() {
                 </div>
               )}
 
-              {/* Pipeline Progress (while running) */}
+              {/* Extraction + Pipeline Progress (while running) */}
               {isRunning && activeTestId === currentActiveTest.id && (
-                <PipelineProgressDisplay events={pipelineEvents} percent={progressPercent} />
+                <div className="space-y-2">
+                  {extractionStatus && (
+                    <div className="border border-[#d4c5b0] bg-[#faf7f3] p-3">
+                      <div className="text-xs font-semibold text-[#8b7355] uppercase tracking-wider mb-1">
+                        Symptom Extraction
+                      </div>
+                      <div className="text-sm text-[#5a5a5a] flex items-center gap-2">
+                        <span className="inline-block w-2 h-2 bg-[#8b2500] rounded-full animate-pulse" />
+                        {extractionStatus}
+                      </div>
+                    </div>
+                  )}
+                  {!extractionStatus && <PipelineProgressDisplay events={pipelineEvents} percent={progressPercent} />}
+                </div>
               )}
 
               {/* Pipeline Results */}
@@ -978,8 +1103,8 @@ export default function AdminPage() {
                 <PipelineResultsSection result={currentActiveTest.pipelineResult} />
               )}
 
-              {/* Grading Controls */}
-              {currentActiveTest.status === "completed" && (
+              {/* Grading Controls — show whenever results exist and not yet graded */}
+              {currentActiveTest.pipelineResult?.differentialDiagnoses?.length && !currentActiveTest.grading && (
                 <button
                   onClick={handleGrade}
                   disabled={isGrading}

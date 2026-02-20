@@ -119,10 +119,10 @@ Respond with this exact JSON structure:
       temperature: 0.3,
     });
 
-    if (!result.content?.score || !result.content?.grade) {
-      console.error(`[${requestId}] Invalid grading response:`, typeof result.content);
+    if (typeof result.content?.score !== 'number' || !result.content?.grade) {
+      console.error(`[${requestId}] Invalid grading response:`, JSON.stringify(result.content).substring(0, 500));
       return NextResponse.json(
-        { error: 'Failed to generate valid grading — unexpected response format', requestId },
+        { error: `Failed to generate valid grading — unexpected response format (got ${typeof result.content})`, requestId },
         { status: 500 }
       );
     }

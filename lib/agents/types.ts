@@ -80,7 +80,7 @@ export type SpecialistType = typeof SPECIALIST_TYPES[number];
 
 // Maps body systems to relevant specialist types
 export const SYSTEM_TO_SPECIALIST: Record<string, SpecialistType[]> = {
-  neurological: ['neurologist'],
+  neurological: ['neurologist', 'geneticist'],
   musculoskeletal: ['rheumatologist'],
   cardiovascular: ['cardiologist'],
   respiratory: ['immunologist'],
@@ -93,7 +93,7 @@ export const SYSTEM_TO_SPECIALIST: Record<string, SpecialistType[]> = {
   renal: ['rheumatologist'],
   reproductive: ['endocrinologist'],
   psychiatric: ['psychiatrist'],
-  constitutional: ['general-internist', 'rheumatologist'],
+  constitutional: ['general-internist', 'rheumatologist', 'geneticist'],
   otolaryngological: ['general-internist'],
   oncological: ['oncologist', 'hematologist'],
 };

@@ -384,6 +384,16 @@ function GroundTruthSection({ groundTruth, collapsed }: { groundTruth: GroundTru
               ))}
             </ul>
           </div>
+          {groundTruth.difficultyFactors && groundTruth.difficultyFactors.length > 0 && (
+            <div>
+              <span className="font-semibold text-[#5a5a5a]">Difficulty Factors:</span>
+              <ul className="list-disc list-inside ml-2 mt-1 text-[#5a5a5a]">
+                {groundTruth.difficultyFactors.map((f, i) => (
+                  <li key={i}>{f}</li>
+                ))}
+              </ul>
+            </div>
+          )}
           <div>
             <span className="font-semibold text-[#5a5a5a]">Expected Systems:</span>{" "}
             {groundTruth.expectedBodySystems.join(", ")}
@@ -700,6 +710,13 @@ function GradingSection({ grading }: { grading: TestGrading }) {
       </div>
 
       <div className="text-sm text-[#2a2a2a] font-serif italic">{grading.feedback}</div>
+
+      {grading.partialCreditReason && (
+        <div className="border border-amber-200 bg-amber-50 p-3">
+          <div className="text-xs font-semibold text-amber-700 uppercase tracking-wider mb-1">Partial Credit</div>
+          <div className="text-sm text-amber-900">{grading.partialCreditReason}</div>
+        </div>
+      )}
 
       {grading.strengths.length > 0 && (
         <div>

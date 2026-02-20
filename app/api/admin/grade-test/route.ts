@@ -64,25 +64,30 @@ export async function POST(request: NextRequest) {
     const systemPrompt = `You are a clinical diagnostics evaluator grading an AI diagnostic pipeline's performance on a synthetic patient case.
 
 SCORING RUBRIC:
-- 90-100 (A range): Correct diagnosis ranked #1 with strong clinical reasoning and key findings identified
-- 80-89 (B range): Correct diagnosis in top 3, reasonable reasoning
-- 70-79 (C range): Correct diagnosis in top 5, adequate reasoning
-- 60-69 (D): Correct diagnosis present but ranked poorly, or significant reasoning gaps
-- Below 60 (F): Correct diagnosis missing or fundamental errors in reasoning
+- 90-100 (A): Correct diagnosis ranked #1 with strong reasoning and key findings identified
+- 80-89 (B): Correct diagnosis in top 3 with reasonable reasoning
+- 70-79 (C): Correct diagnosis in top 5 with adequate reasoning
+- 55-69 (D): Correct diagnosis present but ranked >5, OR absent but a closely related diagnosis in the same disease family/mechanism is in top 3
+- 40-54 (F): Diagnosis absent, but pipeline identified the correct disease category, organ system, or specialist pathway that would lead a clinician toward the right diagnosis. The differential would get the patient closer to an answer.
+- 20-39 (F): Diagnosis absent, partially relevant differential but significant reasoning errors or misleading false leads
+- 0-19 (F): Complete miss — wrong organ system, wrong disease category, misleading differential that would send a clinician in the wrong direction
 
 LETTER GRADE MAPPING:
 - 97-100: A+, 93-96: A, 90-92: A-
 - 87-89: B+, 83-86: B, 80-82: B-
 - 77-79: C+, 73-76: C, 70-72: C-
-- 60-69: D
-- Below 60: F
+- 55-69: D
+- Below 55: F
 
 EVALUATION CRITERIA:
 1. Was the correct diagnosis identified? At what rank?
 2. Were the key diagnostic findings recognized in the supporting evidence?
 3. Were appropriate body systems and specialists engaged?
 4. Were there false leads that could mislead a clinician?
-5. Account for difficulty level — harder cases deserve more credit for partial matches
+
+Grade the same regardless of difficulty level. Do NOT give bonus credit for hard cases.
+
+PARTIAL CREDIT: When the correct diagnosis is absent but the pipeline identified useful directions (correct disease category, organ system, or related conditions), explain what partial credit was given and why in the partialCreditReason field. Set partialCreditReason to null when the correct diagnosis was found.
 
 You must respond with valid JSON only (no markdown fences, no extra text).`;
 
@@ -109,7 +114,8 @@ Respond with this exact JSON structure:
   "strengths": ["strength 1", "strength 2"],
   "weaknesses": ["weakness 1", "weakness 2"],
   "missedFindings": ["finding that was in key findings but not in evidence"],
-  "falseLeads": ["diagnosis or evidence that was misleading"]
+  "falseLeads": ["diagnosis or evidence that was misleading"],
+  "partialCreditReason": "explanation of partial credit given, or null if correct diagnosis was found"
 }`;
 
     const result = await callAnthropic({

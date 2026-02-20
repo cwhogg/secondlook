@@ -72,9 +72,13 @@ const SPECIALIST_PROMPTS: Record<SpecialistType, { title: string; expertise: str
 - Chromosomal abnormalities (Turner, Klinefelter, 22q11.2 deletion)
 - Neurocutaneous syndromes (NF1, NF2, tuberous sclerosis, VHL)
 - Inborn errors of metabolism (storage diseases, aminoacidopathies)
+- Trinucleotide/repeat expansion disorders (NIID, Huntington's, myotonic dystrophy, FXTAS, SCA subtypes)
+- Hereditary neuropathies (CMT subtypes, HSAN, familial amyloid polyneuropathy)
+- Hereditary ataxias and hereditary spastic paraplegias
+- Mitochondrial DNA disorders and nuclear-encoded mitochondrial diseases
 - Hereditary cancer syndromes
 - Skeletal dysplasias
-- Mitochondrial disorders`,
+- Undiagnosed hereditary multi-system conditions — the "diagnostic odyssey" patient`,
   },
   hematologist: {
     title: 'Board-Certified Hematologist',

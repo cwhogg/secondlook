@@ -204,6 +204,27 @@ export class DiagnosticPipeline {
 
       this.checkBudget();
 
+      // ===== LOW-CONFIDENCE ESCALATION CHECK =====
+      const topScore = synthesisResult.hypotheses[0]?.confidenceScore || 0;
+      const allLow = synthesisResult.hypotheses.slice(0, 5).every(h => h.confidenceScore < 40);
+      const weakConsensus = synthesisData_.consensusLevel === 'weak' || synthesisData_.consensusLevel === 'divergent';
+      const lowReliability = synthesisData_.confidenceCalibration?.topDiagnosisReliability === 'low';
+
+      if (allLow || weakConsensus || lowReliability) {
+        const reasons: string[] = [];
+        if (allLow) reasons.push(`all top-5 diagnoses scored below 40 (highest: ${topScore})`);
+        if (weakConsensus) reasons.push(`specialist consensus is ${synthesisData_.consensusLevel}`);
+        if (lowReliability) reasons.push('top diagnosis reliability rated low');
+
+        if (!(synthesisResult as any).synthesisData) (synthesisResult as any).synthesisData = {};
+        (synthesisResult as any).synthesisData.escalationContext =
+          `LOW DIAGNOSTIC CERTAINTY: ${reasons.join('; ')}. ` +
+          `The patient's condition may fall outside the knowledge base of ${getDiseaseCount()} profiled diseases. ` +
+          `Consider broader investigative pathways including genetic panel testing (WES/WGS), ` +
+          `advanced neuroimaging, tissue biopsy, and referral to a medical geneticist or ` +
+          `academic undiagnosed disease program (e.g., NIH UDP).`;
+      }
+
       // ===== STAGE 5: REPORT GENERATION =====
       onProgress?.({
         stage: 'report',

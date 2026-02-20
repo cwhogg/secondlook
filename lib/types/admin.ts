@@ -33,6 +33,7 @@ export interface GroundTruth {
   keyFindings: string[];
   expectedBodySystems: string[];
   expectedSpecialists: string[];
+  difficultyFactors?: string[];
 }
 
 // ===== GRADING TYPES =====
@@ -50,6 +51,7 @@ export interface TestGrading {
   weaknesses: string[];
   missedFindings: string[];
   falseLeads: string[];
+  partialCreditReason: string | null;
 }
 
 // ===== API METADATA =====

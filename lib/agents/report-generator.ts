@@ -169,7 +169,16 @@ ${diagSummary}
 ===== EXCLUDED COMMON CONDITIONS =====
 ${synthesisData.excludedCommonDiagnoses?.map((e: any) => `- ${e.diagnosis}: ${e.reasonExcluded}`).join('\n') || '(none)'}
 
-===== YOUR TASK =====
+${ synthesisData.escalationContext ? `===== LOW DIAGNOSTIC CERTAINTY FLAG =====
+${synthesisData.escalationContext}
+
+Given low certainty, you MUST:
+1. State explicitly that diagnostic certainty is low and the condition may not be in the knowledge base
+2. Recommend broader investigative pathways: genetic panel / WES / WGS, advanced neuroimaging, tissue biopsy
+3. Suggest referral to medical geneticist or academic undiagnosed disease program
+4. Frame the differential as disease categories to investigate, not definitive answers
+
+` : ''}===== YOUR TASK =====
 Generate the final diagnostic report.
 - Identify data gaps linked to specific diagnoses
 - Recommend specific tests with urgency levels

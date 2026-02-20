@@ -49,7 +49,7 @@ export class TriageAgent extends BaseAgent {
                     'neurological', 'musculoskeletal', 'cardiovascular', 'respiratory',
                     'gastrointestinal', 'dermatological', 'ophthalmological', 'endocrine',
                     'hematological', 'immunological', 'renal', 'reproductive',
-                    'psychiatric', 'constitutional', 'otolaryngological',
+                    'psychiatric', 'constitutional', 'otolaryngological', 'oncological',
                   ],
                 },
                 description: 'Body systems DIRECTLY involved in this presentation. Select only 2-5 systems with concrete symptom evidence.',

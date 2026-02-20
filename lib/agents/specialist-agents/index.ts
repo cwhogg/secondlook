@@ -86,6 +86,30 @@ const SPECIALIST_PROMPTS: Record<SpecialistType, { title: string; expertise: str
 - Hemolytic anemias (PNH, TTP, hereditary spherocytosis)
 - Hemophagocytic syndromes (HLH)`,
   },
+  psychiatrist: {
+    title: 'Board-Certified Psychiatrist',
+    expertise: `- Somatic symptom disorders and functional neurological disorder (conversion disorder)
+- Neuropsychiatric manifestations of autoimmune diseases (autoimmune encephalitis, lupus cerebritis)
+- Psychiatric presentations of metabolic and endocrine diseases (Wilson's disease, porphyria, thyroid)
+- Catatonia and its medical mimics
+- Psychosis secondary to medical conditions (anti-NMDA receptor encephalitis, SLE)
+- Chronic fatigue, fibromyalgia, and central sensitization syndromes
+- Mast cell activation syndrome psychiatric manifestations (anxiety, cognitive dysfunction)
+- Medication-induced psychiatric syndromes
+- Dissociative disorders and their neurological differential diagnoses`,
+  },
+  oncologist: {
+    title: 'Board-Certified Medical Oncologist',
+    expertise: `- Paraneoplastic syndromes (neurological, endocrine, dermatological, hematological)
+- Hereditary cancer syndromes (Lynch, Li-Fraumeni, BRCA, MEN, VHL, Cowden)
+- Myeloproliferative and lymphoproliferative disorders with systemic manifestations
+- Carcinoid syndrome and neuroendocrine tumors
+- Cancer-related constitutional symptoms (unexplained weight loss, fevers, night sweats)
+- Tumor-induced osteomalacia and other oncogenic metabolic syndromes
+- Langerhans cell histiocytosis and other histiocytic disorders
+- Castleman disease (unicentric and multicentric)
+- Occult malignancy presenting as dermatomyositis, vasculitis, or neuropathy`,
+  },
   'general-internist': {
     title: 'Board-Certified Internal Medicine Specialist (Diagnostician)',
     expertise: `- Multi-system diseases that cross specialty boundaries

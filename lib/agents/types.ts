@@ -71,6 +71,8 @@ export const SPECIALIST_TYPES = [
   'gastroenterologist',
   'geneticist',
   'hematologist',
+  'psychiatrist',
+  'oncologist',
   'general-internist',
 ] as const;
 
@@ -90,7 +92,8 @@ export const SYSTEM_TO_SPECIALIST: Record<string, SpecialistType[]> = {
   immunological: ['immunologist', 'rheumatologist'],
   renal: ['rheumatologist'],
   reproductive: ['endocrinologist'],
-  psychiatric: ['neurologist'],
+  psychiatric: ['psychiatrist'],
   constitutional: ['general-internist', 'rheumatologist'],
   otolaryngological: ['general-internist'],
+  oncological: ['oncologist', 'hematologist'],
 };

@@ -190,6 +190,36 @@ async function mapSingleSymptom(symptom: any): Promise<MappedSymptom> {
     }
   }
 
+  // 4. Word-reduction fallback: strip leading words from primaryTerm to find a simpler match
+  //    e.g. "severe abdominal pain" → "abdominal pain" → "pain"
+  const words = primaryTerm.split(/\s+/)
+  if (words.length >= 3) {
+    for (let dropCount = 1; dropCount < words.length - 1; dropCount++) {
+      const reducedTerm = words.slice(dropCount).join(" ")
+      result = await searchUMLS(reducedTerm)
+      if (result.concepts.length > 0 && !result.error) {
+        return {
+          originalPhrase,
+          medicalTerm: symptom.medicalTerm || originalPhrase,
+          alternativeSearchTerms: alternativeTerms,
+          category: symptom.category,
+          severity: symptom.severity,
+          duration: symptom.duration,
+          bodyPart: symptom.bodyPart,
+          umlsConcepts: result.concepts,
+          selectedConcept: result.concepts[0] || null,
+          confidence: Math.max(0.5, result.confidence - 0.1),
+          confirmed: false,
+          mappingError: false,
+          feedbackStatus: "none",
+          userCorrection: "",
+          isEditingCorrection: false,
+          searchTermUsed: reducedTerm,
+        }
+      }
+    }
+  }
+
   // All attempts failed
   return {
     originalPhrase,

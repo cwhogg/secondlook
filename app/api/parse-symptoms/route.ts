@@ -65,7 +65,7 @@ CRITICAL INTERPRETATION RULES:
 FIELD REQUIREMENTS:
 - "originalPhrase": exact words the patient used
 - "medicalTerm": use SNOMED CT / UMLS-compatible clinical terminology. Prefer terms that exist in medical ontologies (e.g., "muscle cramp" not "crampy feeling")
-- "alternativeSearchTerms": provide 2-3 synonyms or related UMLS-searchable terms, ordered from most to least specific
+- "alternativeSearchTerms": provide 2-3 synonyms or related UMLS-searchable terms. IMPORTANT: the FIRST alternative MUST be a simple, well-known SNOMED CT concept (1-2 words, e.g., "abdominal pain", "paresthesia", "weakness", "fatigue"). Subsequent alternatives can be more specific. For compound symptoms (e.g., "weakness and tingling in arms"), split into the core concepts as alternatives (e.g., ["weakness", "paresthesia", "limb weakness"])
 - "severity": mild/moderate/severe based on context, or null
 - "duration": timeframe if mentioned, or null
 - "bodyPart": affected body part or null

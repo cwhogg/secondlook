@@ -239,7 +239,7 @@ export default function Step1() {
                       placeholder="Example: I've been experiencing extreme fatigue and muscle weakness that started about 6 months ago. It's gotten worse over time and now affects my daily activities..."
                       value={formData.primaryConcern}
                       onChange={(e) => updateFormData("primaryConcern", e.target.value)}
-                      maxLength={1000}
+                      maxLength={10000}
                       rows={6}
                       className={cn(
                         "w-full px-4 py-4 border border-gray-200 rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-lg resize-none transition-all duration-200",
@@ -254,7 +254,7 @@ export default function Step1() {
                       <p className="text-base text-gray-600">
                         Include when symptoms started, how they've changed, and what makes them better or worse
                       </p>
-                      <CharacterCounter current={formData.primaryConcern.length} max={1000} />
+                      <CharacterCounter current={formData.primaryConcern.length} max={10000} />
                     </div>
                   </div>
                   {errors.primaryConcern && <p className="text-red-600 text-sm mt-2">{errors.primaryConcern}</p>}

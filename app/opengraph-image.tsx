@@ -16,12 +16,13 @@ export default async function Image() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          background: "linear-gradient(135deg, #f8fafc 0%, #ffffff 40%, #faf5ff 100%)",
+          background: "#f5f0eb",
           position: "relative",
           overflow: "hidden",
+          fontFamily: "Georgia, serif",
         }}
       >
-        {/* Background gradient accent */}
+        {/* Subtle texture overlay */}
         <div
           style={{
             position: "absolute",
@@ -30,7 +31,7 @@ export default async function Image() {
             right: 0,
             bottom: 0,
             background:
-              "radial-gradient(ellipse at 20% 50%, rgba(147, 51, 234, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 50%)",
+              "radial-gradient(ellipse at 30% 20%, rgba(139, 37, 0, 0.04) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(139, 37, 0, 0.03) 0%, transparent 60%)",
             display: "flex",
           }}
         />
@@ -42,8 +43,21 @@ export default async function Image() {
             top: 0,
             left: 0,
             right: 0,
-            height: "6px",
-            background: "linear-gradient(90deg, #9333ea, #2563eb)",
+            height: "5px",
+            background: "#8b2500",
+            display: "flex",
+          }}
+        />
+
+        {/* Bottom accent bar */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "5px",
+            background: "#8b2500",
             display: "flex",
           }}
         />
@@ -59,81 +73,75 @@ export default async function Image() {
             position: "relative",
           }}
         >
-          {/* Trust badges row */}
+          {/* SL Monogram */}
           <div
             style={{
+              width: "72px",
+              height: "72px",
+              borderRadius: "14px",
+              background: "#8b2500",
               display: "flex",
-              gap: "16px",
-              marginBottom: "40px",
+              alignItems: "center",
+              justifyContent: "center",
+              marginBottom: "36px",
             }}
           >
-            {["HIPAA Compliant", "MD Reviewed", "Bank-Level Encryption"].map(
-              (badge) => (
-                <div
-                  key={badge}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    background: "rgba(255,255,255,0.9)",
-                    border: "1px solid #e5e7eb",
-                    borderRadius: "9999px",
-                    padding: "8px 20px",
-                    fontSize: "16px",
-                    color: "#374151",
-                    fontWeight: 500,
-                  }}
-                >
-                  {badge}
-                </div>
-              )
-            )}
+            <span
+              style={{
+                color: "#f5f0eb",
+                fontSize: "40px",
+                fontWeight: 700,
+                fontFamily: "Georgia, serif",
+                letterSpacing: -2,
+                marginTop: -2,
+              }}
+            >
+              SL
+            </span>
           </div>
 
           {/* Title */}
           <div
             style={{
-              fontSize: "72px",
-              fontWeight: 800,
+              fontSize: "68px",
+              fontWeight: 700,
               textAlign: "center",
               lineHeight: 1.1,
+              color: "#1a1a1a",
               marginBottom: "12px",
-              background: "linear-gradient(135deg, #111827, #6b21a8, #1e40af)",
-              backgroundClip: "text",
-              color: "transparent",
               display: "flex",
+              fontFamily: "Georgia, serif",
             }}
           >
             Find Your Rare Diagnosis
           </div>
+
+          {/* Decorative divider */}
           <div
             style={{
-              fontSize: "72px",
-              fontWeight: 800,
-              textAlign: "center",
-              lineHeight: 1.1,
-              marginBottom: "32px",
-              background: "linear-gradient(90deg, #9333ea, #2563eb)",
-              backgroundClip: "text",
-              color: "transparent",
+              width: "80px",
+              height: "3px",
+              background: "#8b2500",
+              marginTop: "8px",
+              marginBottom: "28px",
               display: "flex",
             }}
-          >
-            in Minutes.
-          </div>
+          />
 
           {/* Subtitle */}
           <div
             style={{
-              fontSize: "24px",
-              color: "#4b5563",
+              fontSize: "26px",
+              color: "#5c5347",
               textAlign: "center",
               maxWidth: "800px",
               lineHeight: 1.5,
               display: "flex",
+              fontFamily: "Georgia, serif",
             }}
           >
-            AI-powered symptom analysis against thousands of rare and complex
-            conditions that might be overlooked.
+            AI-powered symptom analysis against thousands of rare
+            and complex conditions that might be overlooked.
           </div>
 
           {/* Bottom branding */}
@@ -141,32 +149,19 @@ export default async function Image() {
             style={{
               display: "flex",
               alignItems: "center",
-              marginTop: "48px",
-              gap: "12px",
+              marginTop: "44px",
+              gap: "8px",
             }}
           >
             <div
               style={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "12px",
-                background: "linear-gradient(135deg, #9333ea, #2563eb)",
+                fontSize: "22px",
+                fontWeight: 400,
+                color: "#8b2500",
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "white",
-                fontSize: "20px",
-                fontWeight: 800,
-              }}
-            >
-              S
-            </div>
-            <div
-              style={{
-                fontSize: "28px",
-                fontWeight: 700,
-                color: "#111827",
-                display: "flex",
+                fontFamily: "Georgia, serif",
+                letterSpacing: 3,
+                textTransform: "uppercase" as const,
               }}
             >
               SecondLook

@@ -17,6 +17,15 @@ export default async function Image({ params }: { params: { slug: string } }) {
           ? "Guide"
           : "Comparison"
 
+  const badgeColor =
+    piece?.type === "blog"
+      ? { bg: "rgba(139, 37, 0, 0.1)", text: "#8b2500" }
+      : piece?.type === "faq"
+        ? { bg: "rgba(75, 85, 50, 0.1)", text: "#4b5532" }
+        : piece?.type === "landing-page"
+          ? { bg: "rgba(139, 100, 0, 0.1)", text: "#8b6400" }
+          : { bg: "rgba(90, 70, 60, 0.1)", text: "#5a463c" }
+
   return new ImageResponse(
     (
       <div
@@ -26,13 +35,14 @@ export default async function Image({ params }: { params: { slug: string } }) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "linear-gradient(135deg, #f8fafc 0%, #ffffff 40%, #faf5ff 100%)",
+          background: "#f5f0eb",
           position: "relative",
           overflow: "hidden",
           padding: "60px 80px",
+          fontFamily: "Georgia, serif",
         }}
       >
-        {/* Background gradient accent */}
+        {/* Subtle texture */}
         <div
           style={{
             position: "absolute",
@@ -41,7 +51,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
             right: 0,
             bottom: 0,
             background:
-              "radial-gradient(ellipse at 20% 50%, rgba(147, 51, 234, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 50%)",
+              "radial-gradient(ellipse at 20% 50%, rgba(139, 37, 0, 0.03) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(139, 37, 0, 0.02) 0%, transparent 50%)",
             display: "flex",
           }}
         />
@@ -53,8 +63,21 @@ export default async function Image({ params }: { params: { slug: string } }) {
             top: 0,
             left: 0,
             right: 0,
-            height: "6px",
-            background: "linear-gradient(90deg, #9333ea, #2563eb)",
+            height: "5px",
+            background: "#8b2500",
+            display: "flex",
+          }}
+        />
+
+        {/* Bottom accent bar */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "5px",
+            background: "#8b2500",
             display: "flex",
           }}
         />
@@ -71,26 +94,16 @@ export default async function Image({ params }: { params: { slug: string } }) {
             style={{
               display: "flex",
               alignItems: "center",
-              background:
-                piece?.type === "blog"
-                  ? "#dbeafe"
-                  : piece?.type === "faq"
-                    ? "#d1fae5"
-                    : piece?.type === "landing-page"
-                      ? "#fef3c7"
-                      : "#ede9fe",
-              color:
-                piece?.type === "blog"
-                  ? "#1d4ed8"
-                  : piece?.type === "faq"
-                    ? "#047857"
-                    : piece?.type === "landing-page"
-                      ? "#b45309"
-                      : "#7c3aed",
-              borderRadius: "9999px",
-              padding: "8px 24px",
-              fontSize: "20px",
+              background: badgeColor.bg,
+              color: badgeColor.text,
+              borderRadius: "0px",
+              padding: "8px 20px",
+              fontSize: "18px",
               fontWeight: 600,
+              fontFamily: "Georgia, serif",
+              letterSpacing: 1,
+              textTransform: "uppercase" as const,
+              border: `1px solid ${badgeColor.text}20`,
             }}
           >
             {typeBadge}
@@ -109,13 +122,12 @@ export default async function Image({ params }: { params: { slug: string } }) {
           <div
             style={{
               fontSize: title.length > 60 ? "44px" : "52px",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              background: "linear-gradient(135deg, #111827, #6b21a8, #1e40af)",
-              backgroundClip: "text",
-              color: "transparent",
+              fontWeight: 700,
+              lineHeight: 1.25,
+              color: "#1a1a1a",
               display: "flex",
               maxWidth: "1040px",
+              fontFamily: "Georgia, serif",
             }}
           >
             {title}
@@ -127,36 +139,65 @@ export default async function Image({ params }: { params: { slug: string } }) {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "12px",
+            justifyContent: "space-between",
             position: "relative",
           }}
         >
           <div
             style={{
-              width: "40px",
-              height: "40px",
-              borderRadius: "12px",
-              background: "linear-gradient(135deg, #9333ea, #2563eb)",
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              color: "white",
-              fontSize: "20px",
-              fontWeight: 800,
+              gap: "14px",
             }}
           >
-            S
+            <div
+              style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "8px",
+                background: "#8b2500",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <span
+                style={{
+                  color: "#f5f0eb",
+                  fontSize: "20px",
+                  fontWeight: 700,
+                  fontFamily: "Georgia, serif",
+                  letterSpacing: -1,
+                  marginTop: -1,
+                }}
+              >
+                SL
+              </span>
+            </div>
+            <div
+              style={{
+                fontSize: "24px",
+                fontWeight: 400,
+                color: "#8b2500",
+                display: "flex",
+                fontFamily: "Georgia, serif",
+                letterSpacing: 2,
+                textTransform: "uppercase" as const,
+              }}
+            >
+              SecondLook
+            </div>
           </div>
+
+          {/* Decorative line */}
           <div
             style={{
-              fontSize: "28px",
-              fontWeight: 700,
-              color: "#111827",
+              width: "60px",
+              height: "2px",
+              background: "#d4c5b0",
               display: "flex",
             }}
-          >
-            SecondLook
-          </div>
+          />
         </div>
       </div>
     ),

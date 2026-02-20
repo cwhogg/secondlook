@@ -3,6 +3,7 @@ import { z } from 'zod';
 const envSchema = z.object({
   OPENAI_API_KEY: z.string().min(1, 'OPENAI_API_KEY is required'),
   UMLS_API_KEY: z.string().min(1, 'UMLS_API_KEY is required').optional(),
+  ANTHROPIC_API_KEY: z.string().optional(),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   ANALYSIS_BUDGET_CENTS: z.string().transform(Number).pipe(z.number().min(10).max(1000)).optional(),
 });

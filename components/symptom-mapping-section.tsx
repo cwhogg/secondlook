@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { MedicalButton } from "./medical-button"
 import { RefreshCw } from "lucide-react"
+import { searchUMLSWithFallbacks } from "@/lib/umls-search"
 
 interface SymptomMappingSectionProps {
   chiefComplaint: string
@@ -68,159 +69,13 @@ const categoryColors: Record<string, string> = {
   constitutional: "bg-orange-100 text-orange-800",
 }
 
-async function searchUMLS(searchTerm: string): Promise<{ concepts: UMLSConcept[]; confidence: number; error?: boolean }> {
-  try {
-    const response = await fetch("/api/umls-search", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ searchTerm }),
-    })
-
-    if (!response.ok) {
-      return { concepts: [], confidence: 0, error: true }
-    }
-
-    const data = await response.json()
-    return {
-      concepts: data.concepts || [],
-      confidence: data.confidence || 0,
-      error: !!data.error,
-    }
-  } catch {
-    return { concepts: [], confidence: 0, error: true }
-  }
-}
-
 async function mapSingleSymptom(symptom: any): Promise<MappedSymptom> {
   const primaryTerm = symptom.medicalTerm || symptom.originalPhrase
   const alternativeTerms: string[] = symptom.alternativeSearchTerms || []
   const originalPhrase = symptom.originalPhrase || symptom.text || "Unknown"
 
-  if (!primaryTerm) {
-    return {
-      originalPhrase,
-      medicalTerm: originalPhrase,
-      alternativeSearchTerms: alternativeTerms,
-      category: symptom.category,
-      severity: symptom.severity,
-      duration: symptom.duration,
-      bodyPart: symptom.bodyPart,
-      umlsConcepts: [],
-      selectedConcept: null,
-      confidence: 0,
-      confirmed: false,
-      mappingError: true,
-      feedbackStatus: "none",
-      userCorrection: "",
-      isEditingCorrection: false,
-      searchTermUsed: undefined,
-    }
-  }
+  const result = await searchUMLSWithFallbacks(primaryTerm || "", alternativeTerms, originalPhrase)
 
-  // 1. Try primary medicalTerm
-  let result = await searchUMLS(primaryTerm)
-  if (result.concepts.length > 0 && !result.error) {
-    return {
-      originalPhrase,
-      medicalTerm: symptom.medicalTerm || originalPhrase,
-      alternativeSearchTerms: alternativeTerms,
-      category: symptom.category,
-      severity: symptom.severity,
-      duration: symptom.duration,
-      bodyPart: symptom.bodyPart,
-      umlsConcepts: result.concepts,
-      selectedConcept: result.concepts[0] || null,
-      confidence: result.confidence,
-      confirmed: false,
-      mappingError: false,
-      feedbackStatus: "none",
-      userCorrection: "",
-      isEditingCorrection: false,
-      searchTermUsed: primaryTerm,
-    }
-  }
-
-  // 2. Try each alternativeSearchTerm in order
-  for (const altTerm of alternativeTerms) {
-    result = await searchUMLS(altTerm)
-    if (result.concepts.length > 0 && !result.error) {
-      return {
-        originalPhrase,
-        medicalTerm: symptom.medicalTerm || originalPhrase,
-        alternativeSearchTerms: alternativeTerms,
-        category: symptom.category,
-        severity: symptom.severity,
-        duration: symptom.duration,
-        bodyPart: symptom.bodyPart,
-        umlsConcepts: result.concepts,
-        selectedConcept: result.concepts[0] || null,
-        confidence: result.confidence,
-        confirmed: false,
-        mappingError: false,
-        feedbackStatus: "none",
-        userCorrection: "",
-        isEditingCorrection: false,
-        searchTermUsed: altTerm,
-      }
-    }
-  }
-
-  // 3. Try originalPhrase as last resort
-  if (originalPhrase !== primaryTerm) {
-    result = await searchUMLS(originalPhrase)
-    if (result.concepts.length > 0 && !result.error) {
-      return {
-        originalPhrase,
-        medicalTerm: symptom.medicalTerm || originalPhrase,
-        alternativeSearchTerms: alternativeTerms,
-        category: symptom.category,
-        severity: symptom.severity,
-        duration: symptom.duration,
-        bodyPart: symptom.bodyPart,
-        umlsConcepts: result.concepts,
-        selectedConcept: result.concepts[0] || null,
-        confidence: result.confidence,
-        confirmed: false,
-        mappingError: false,
-        feedbackStatus: "none",
-        userCorrection: "",
-        isEditingCorrection: false,
-        searchTermUsed: originalPhrase,
-      }
-    }
-  }
-
-  // 4. Word-reduction fallback: strip leading words from primaryTerm to find a simpler match
-  //    e.g. "severe abdominal pain" → "abdominal pain" → "pain"
-  const words = primaryTerm.split(/\s+/)
-  if (words.length >= 3) {
-    for (let dropCount = 1; dropCount < words.length - 1; dropCount++) {
-      const reducedTerm = words.slice(dropCount).join(" ")
-      result = await searchUMLS(reducedTerm)
-      if (result.concepts.length > 0 && !result.error) {
-        return {
-          originalPhrase,
-          medicalTerm: symptom.medicalTerm || originalPhrase,
-          alternativeSearchTerms: alternativeTerms,
-          category: symptom.category,
-          severity: symptom.severity,
-          duration: symptom.duration,
-          bodyPart: symptom.bodyPart,
-          umlsConcepts: result.concepts,
-          selectedConcept: result.concepts[0] || null,
-          confidence: Math.max(0.5, result.confidence - 0.1),
-          confirmed: false,
-          mappingError: false,
-          feedbackStatus: "none",
-          userCorrection: "",
-          isEditingCorrection: false,
-          searchTermUsed: reducedTerm,
-        }
-      }
-    }
-  }
-
-  // All attempts failed
   return {
     originalPhrase,
     medicalTerm: symptom.medicalTerm || originalPhrase,
@@ -229,15 +84,15 @@ async function mapSingleSymptom(symptom: any): Promise<MappedSymptom> {
     severity: symptom.severity,
     duration: symptom.duration,
     bodyPart: symptom.bodyPart,
-    umlsConcepts: [],
-    selectedConcept: null,
-    confidence: 0,
+    umlsConcepts: result.concepts,
+    selectedConcept: result.concepts[0] || null,
+    confidence: result.confidence,
     confirmed: false,
-    mappingError: true,
+    mappingError: result.error,
     feedbackStatus: "none",
     userCorrection: "",
     isEditingCorrection: false,
-    searchTermUsed: undefined,
+    searchTermUsed: result.searchTermUsed,
   }
 }
 

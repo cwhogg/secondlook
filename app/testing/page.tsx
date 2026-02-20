@@ -12,6 +12,7 @@ import type {
 } from "@/lib/types/admin"
 import type { AnalysisResult, DiagnosisHypothesis, MappedSymptom } from "@/lib/types/index"
 import type { PipelineProgress } from "@/lib/types/pipeline"
+import { searchUMLSWithFallbacks } from "@/lib/umls-search"
 
 // ===== CONSTANTS =====
 
@@ -118,27 +119,14 @@ function computeStats(cases: TestCase[]): TestSuiteStats | null {
   }
 }
 
-async function searchUMLS(searchTerm: string): Promise<{ concepts: any[]; confidence: number; error?: boolean }> {
-  try {
-    const response = await fetch("/api/umls-search", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ searchTerm }),
-    })
-    if (!response.ok) return { concepts: [], confidence: 0, error: true }
-    const data = await response.json()
-    return { concepts: data.concepts || [], confidence: data.confidence || 0, error: !!data.error }
-  } catch {
-    return { concepts: [], confidence: 0, error: true }
-  }
-}
-
 async function mapSingleSymptom(symptom: any): Promise<MappedSymptom> {
   const primaryTerm = symptom.medicalTerm || symptom.originalPhrase
   const alternativeTerms: string[] = symptom.alternativeSearchTerms || []
   const originalPhrase = symptom.originalPhrase || symptom.text || "Unknown"
 
-  const makeResult = (concepts: any[], confidence: number, searchTermUsed: string, error: boolean): MappedSymptom => ({
+  const result = await searchUMLSWithFallbacks(primaryTerm || "", alternativeTerms, originalPhrase)
+
+  return {
     originalPhrase,
     medicalTerm: symptom.medicalTerm || originalPhrase,
     alternativeSearchTerms: alternativeTerms,
@@ -146,53 +134,14 @@ async function mapSingleSymptom(symptom: any): Promise<MappedSymptom> {
     severity: symptom.severity,
     duration: symptom.duration,
     bodyPart: symptom.bodyPart,
-    umlsConcepts: concepts,
-    selectedConcept: concepts[0] || null,
-    confidence,
+    umlsConcepts: result.concepts,
+    selectedConcept: result.concepts[0] || null,
+    confidence: result.confidence,
     confirmed: false,
-    mappingError: error,
+    mappingError: result.error,
     feedbackStatus: "none" as const,
-    searchTermUsed,
-  })
-
-  if (!primaryTerm) return makeResult([], 0, "", true)
-
-  // 1. Try primary medicalTerm
-  let result = await searchUMLS(primaryTerm)
-  if (result.concepts.length > 0 && !result.error) {
-    return makeResult(result.concepts, result.confidence, primaryTerm, false)
+    searchTermUsed: result.searchTermUsed,
   }
-
-  // 2. Try each alternativeSearchTerm
-  for (const altTerm of alternativeTerms) {
-    result = await searchUMLS(altTerm)
-    if (result.concepts.length > 0 && !result.error) {
-      return makeResult(result.concepts, result.confidence, altTerm, false)
-    }
-  }
-
-  // 3. Try originalPhrase as last resort
-  if (originalPhrase !== primaryTerm) {
-    result = await searchUMLS(originalPhrase)
-    if (result.concepts.length > 0 && !result.error) {
-      return makeResult(result.concepts, result.confidence, originalPhrase, false)
-    }
-  }
-
-  // 4. Word-reduction fallback
-  const words = primaryTerm.split(/\s+/)
-  if (words.length >= 3) {
-    for (let drop = 1; drop < words.length - 1; drop++) {
-      const reduced = words.slice(drop).join(" ")
-      result = await searchUMLS(reduced)
-      if (result.concepts.length > 0 && !result.error) {
-        return makeResult(result.concepts, Math.max(0.5, result.confidence - 0.1), reduced, false)
-      }
-    }
-  }
-
-  // All attempts failed
-  return makeResult([], 0, primaryTerm, true)
 }
 
 async function buildPatientCase(

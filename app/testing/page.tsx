@@ -828,11 +828,10 @@ export default function AdminPage() {
   const activeTest = testCases.find((tc) => tc.id === activeTestId) || null
   const stats = computeStats(testCases)
 
-  // ===== GENERATE =====
-  const handleGenerate = async () => {
-    setIsGenerating(true)
-    setError(null)
+  // ===== CORE HELPERS =====
 
+  const doGenerate = async (): Promise<TestCase> => {
+    setIsGenerating(true)
     try {
       const response = await fetch("/api/admin/generate-patient", {
         method: "POST",
@@ -864,35 +863,30 @@ export default function AdminPage() {
 
       updateTestCases((prev) => [newCase, ...prev])
       setActiveTestId(newCase.id)
-    } catch (err: any) {
-      setError(err.message)
+      return newCase
     } finally {
       setIsGenerating(false)
     }
   }
 
-  // ===== RUN PIPELINE =====
-  const handleRunPipeline = async () => {
-    if (!activeTest) return
+  const doRunPipeline = async (testId: string, patient: GeneratedPatient): Promise<AnalysisResult> => {
     setIsRunning(true)
-    setError(null)
     setPipelineEvents([])
     setProgressPercent(0)
 
     updateTestCases((prev) =>
-      prev.map((tc) => (tc.id === activeTest.id ? { ...tc, status: "running" as const, pipelineError: undefined } : tc))
+      prev.map((tc) => (tc.id === testId ? { ...tc, status: "running" as const, pipelineError: undefined } : tc))
     )
 
     try {
       setExtractionStatus("Starting symptom extraction...")
-      const { patientCase, extractedSymptoms } = await buildPatientCase(activeTest.generatedPatient, (msg) => {
+      const { patientCase, extractedSymptoms } = await buildPatientCase(patient, (msg) => {
         setExtractionStatus(msg)
       })
       setExtractionStatus(null)
 
-      // Store extracted symptoms on the test case
       updateTestCases((prev) =>
-        prev.map((tc) => (tc.id === activeTest.id ? { ...tc, extractedSymptoms } : tc))
+        prev.map((tc) => (tc.id === testId ? { ...tc, extractedSymptoms } : tc))
       )
 
       const abortController = new AbortController()
@@ -918,6 +912,7 @@ export default function AdminPage() {
       const reader = response.body!.getReader()
       const decoder = new TextDecoder()
       let buffer = ""
+      let pipelineResult: AnalysisResult | null = null
 
       while (true) {
         const { done, value } = await reader.read()
@@ -956,54 +951,56 @@ export default function AdminPage() {
               throw new Error("Invalid analysis result from pipeline")
             }
 
-            const result: AnalysisResult = event.analysis
+            pipelineResult = event.analysis
 
             updateTestCases((prev) =>
               prev.map((tc) =>
-                tc.id === activeTest.id ? { ...tc, status: "completed" as const, pipelineResult: result } : tc
+                tc.id === testId ? { ...tc, status: "completed" as const, pipelineResult: pipelineResult! } : tc
               )
             )
-            return
           } else if (event.type === "error") {
             throw new Error(event.error || "Pipeline error")
           }
         }
+        if (pipelineResult) break
       }
 
-      throw new Error("Pipeline stream ended without a result")
-    } catch (err: any) {
-      if (err instanceof DOMException && err.name === "AbortError") return
+      if (!pipelineResult) {
+        throw new Error("Pipeline stream ended without a result")
+      }
 
-      setError(err.message)
-      updateTestCases((prev) =>
-        prev.map((tc) =>
-          tc.id === activeTest.id ? { ...tc, status: "error" as const, pipelineError: err.message } : tc
+      return pipelineResult
+    } catch (err: any) {
+      if (!(err instanceof DOMException && err.name === "AbortError")) {
+        updateTestCases((prev) =>
+          prev.map((tc) =>
+            tc.id === testId ? { ...tc, status: "error" as const, pipelineError: err.message } : tc
+          )
         )
-      )
+      }
+      throw err
     } finally {
       setIsRunning(false)
       abortRef.current = null
     }
   }
 
-  // ===== GRADE =====
-  const handleGrade = async () => {
-    if (!activeTest?.pipelineResult?.differentialDiagnoses?.length) {
-      setError("No pipeline results to grade — try re-running the pipeline")
-      return
-    }
+  const doGrade = async (
+    testId: string,
+    groundTruth: GroundTruth,
+    pipelineResult: AnalysisResult,
+    testDifficulty: number
+  ): Promise<void> => {
     setIsGrading(true)
-    setError(null)
-
     try {
       const response = await fetch("/api/admin/grade-test", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          groundTruth: activeTest.groundTruth,
-          differentialDiagnoses: activeTest.pipelineResult.differentialDiagnoses,
-          pipelineMetadata: activeTest.pipelineResult.pipelineMetadata,
-          difficulty: activeTest.difficulty,
+          groundTruth,
+          differentialDiagnoses: pipelineResult.differentialDiagnoses,
+          pipelineMetadata: pipelineResult.pipelineMetadata,
+          difficulty: testDifficulty,
         }),
       })
 
@@ -1016,15 +1013,54 @@ export default function AdminPage() {
 
       updateTestCases((prev) =>
         prev.map((tc) =>
-          tc.id === activeTest.id
+          tc.id === testId
             ? { ...tc, status: "graded" as const, grading: data.grading, gradingMetadata: data.gradingMetadata }
             : tc
         )
       )
-    } catch (err: any) {
-      setError(err.message)
     } finally {
       setIsGrading(false)
+    }
+  }
+
+  // ===== HANDLERS =====
+
+  const handleRunNewTest = async () => {
+    setError(null)
+    try {
+      const newCase = await doGenerate()
+      const result = await doRunPipeline(newCase.id, newCase.generatedPatient)
+      await doGrade(newCase.id, newCase.groundTruth, result, newCase.difficulty)
+    } catch (err: any) {
+      if (!(err instanceof DOMException && err.name === "AbortError")) {
+        setError(err.message)
+      }
+    }
+  }
+
+  const handleRetryPipeline = async () => {
+    if (!activeTest) return
+    setError(null)
+    try {
+      const result = await doRunPipeline(activeTest.id, activeTest.generatedPatient)
+      await doGrade(activeTest.id, activeTest.groundTruth, result, activeTest.difficulty)
+    } catch (err: any) {
+      if (!(err instanceof DOMException && err.name === "AbortError")) {
+        setError(err.message)
+      }
+    }
+  }
+
+  const handleRegrade = async () => {
+    if (!activeTest?.pipelineResult?.differentialDiagnoses?.length) {
+      setError("No pipeline results to grade")
+      return
+    }
+    setError(null)
+    try {
+      await doGrade(activeTest.id, activeTest.groundTruth, activeTest.pipelineResult, activeTest.difficulty)
+    } catch (err: any) {
+      setError(err.message)
     }
   }
 
@@ -1064,7 +1100,7 @@ export default function AdminPage() {
         {/* Generation Controls */}
         <div className="border border-[#d4c5b0] bg-white p-4 sm:p-6 mb-6">
           <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider mb-4">
-            Generate Test Case
+            Run New Test
           </div>
 
           <div className="flex flex-wrap items-end gap-4">
@@ -1104,11 +1140,11 @@ export default function AdminPage() {
             </div>
 
             <button
-              onClick={handleGenerate}
-              disabled={isGenerating}
+              onClick={handleRunNewTest}
+              disabled={isGenerating || isRunning || isGrading}
               className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              {isGenerating ? "Generating..." : "Generate Patient"}
+              {isGenerating ? "Generating Patient..." : isRunning ? "Running Pipeline..." : isGrading ? "Grading..." : "Run New Test"}
             </button>
           </div>
         </div>
@@ -1144,17 +1180,15 @@ export default function AdminPage() {
                 <ExtractedSymptomsSection symptoms={currentActiveTest.extractedSymptoms} />
               )}
 
-              {/* Pipeline Controls — show for generated, error, or completed-without-results */}
-              {(currentActiveTest.status === "generated" ||
-                currentActiveTest.status === "error" ||
-                (currentActiveTest.status === "completed" && !currentActiveTest.pipelineResult?.differentialDiagnoses?.length)) && (
+              {/* Retry Pipeline — only for error state */}
+              {currentActiveTest.status === "error" && !isRunning && !isGenerating && (
                 <div className="flex items-center gap-3">
                   <button
-                    onClick={handleRunPipeline}
+                    onClick={handleRetryPipeline}
                     disabled={isRunning}
                     className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                   >
-                    {isRunning ? "Running Pipeline..." : "Run Pipeline"}
+                    Retry Pipeline
                   </button>
                   {currentActiveTest.pipelineError && (
                     <span className="text-sm text-red-600">Error: {currentActiveTest.pipelineError}</span>
@@ -1185,19 +1219,28 @@ export default function AdminPage() {
                 <PipelineResultsSection result={currentActiveTest.pipelineResult} />
               )}
 
-              {/* Grading Controls — show whenever results exist and not yet graded */}
-              {(currentActiveTest.pipelineResult?.differentialDiagnoses?.length ?? 0) > 0 && !currentActiveTest.grading && (
-                <button
-                  onClick={handleGrade}
-                  disabled={isGrading}
-                  className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  {isGrading ? "Grading..." : "Grade Results"}
-                </button>
+              {/* Grading progress indicator */}
+              {isGrading && activeTestId === currentActiveTest.id && (
+                <div className="border border-[#d4c5b0] bg-[#faf7f3] p-3">
+                  <div className="text-sm text-[#5a5a5a] flex items-center gap-2">
+                    <span className="inline-block w-2 h-2 bg-[#8b2500] rounded-full animate-pulse" />
+                    Grading results...
+                  </div>
+                </div>
               )}
 
               {/* Grading Results */}
               {currentActiveTest.grading && <GradingSection grading={currentActiveTest.grading} />}
+
+              {/* Re-grade button — for already graded tests or completed tests that failed grading */}
+              {currentActiveTest.pipelineResult?.differentialDiagnoses?.length && !isGrading && !isRunning && !isGenerating && (
+                <button
+                  onClick={handleRegrade}
+                  className="px-4 py-1.5 border border-[#d4c5b0] text-[#8b7355] text-xs font-medium hover:bg-[#faf7f3] transition-colors"
+                >
+                  {currentActiveTest.grading ? "Re-grade" : "Grade Results"}
+                </button>
+              )}
 
               {/* Metadata footer */}
               <div className="text-xs text-[#8b7355] pt-2 border-t border-[#e8ddd0] flex flex-wrap gap-4">
@@ -1242,7 +1285,7 @@ export default function AdminPage() {
         {testCases.length === 0 && !isGenerating && (
           <div className="text-center py-16 text-[#8b7355]">
             <div className="text-lg font-serif mb-2">No test cases yet</div>
-            <div className="text-sm">Generate a patient above to get started</div>
+            <div className="text-sm">Run a new test above to get started</div>
           </div>
         )}
       </div>

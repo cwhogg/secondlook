@@ -6,7 +6,7 @@ AI-powered rare disease diagnostic tool. Patients input symptoms through a multi
 
 - **Framework**: Next.js 14 (App Router) + React 19 + TypeScript
 - **Styling**: Tailwind CSS + Radix UI (shadcn/ui)
-- **AI**: OpenAI API (GPT-4o for reasoning, GPT-4o-mini for classification/formatting)
+- **AI**: OpenAI API (GPT-4.1 for reasoning, GPT-4.1-nano/mini for classification/formatting)
 - **Content**: MDX blog/FAQ system with gray-matter frontmatter
 - **Validation**: Zod
 - **Deployment**: Vercel
@@ -21,6 +21,7 @@ app/
   step-3/page.tsx             # Medications, testing, consent
   analysis/page.tsx           # Loading screen during analysis
   results/analysis/page.tsx   # Results display
+  testing/page.tsx            # Internal testing framework (generate cases, run pipeline, grade)
   blog/                       # Blog index + [slug] pages
   api/
     analyze-patient/          # V1 API (single-call, legacy)
@@ -30,28 +31,32 @@ app/
     parse-medications/        # Medication parsing
     umls-search/              # UMLS terminology lookup
     feedback/                 # User feedback
+    admin/                    # Testing framework APIs (generate-patient, run-pipeline, grade-test)
 
 lib/
   types/
     index.ts                  # Core types (PatientCase, AnalysisResult, etc.)
     knowledge-base.ts         # Disease profile types (DiseaseProfile, DiseaseMatch)
+    admin.ts                  # Testing framework types (TestCase, TestGrading, GroundTruth)
+    pipeline.ts               # Pipeline progress + SSE streaming types
   agents/
     base-agent.ts             # Abstract base class with OpenAI calling logic
-    types.ts                  # Agent I/O types, specialist registry
+    types.ts                  # Agent I/O types, specialist registry, body system mappings
     triage-agent.ts           # Stage 1: symptom classification + KB retrieval
     evidence-evaluator.ts     # Stage 3: criteria-grounded scoring
     synthesizer.ts            # Stage 4: reconcile specialist opinions
     report-generator.ts       # Stage 5: final report formatting
     specialist-agents/
-      index.ts                # 9 specialist agents (neuro, rheum, cardio, etc.)
+      index.ts                # 11 specialist agents (see list below)
   knowledge/
     diseases/                 # ~1,200 JSON disease profiles
-    index.ts                  # KB loader with caching
+    index.ts                  # KB loader with caching + getDiseaseCount()
     retrieval.ts              # Symptom-to-disease matching engine
     validation.ts             # Zod schema for disease profiles
   pipeline/
-    orchestrator.ts           # 5-stage pipeline coordinator
+    orchestrator.ts           # 5-stage pipeline coordinator + low-confidence escalation
     budget.ts                 # Cost tracking + limits
+  umls-search.ts              # Shared UMLS search with intelligent fallback strategies
   env.ts                      # Environment variable validation
   content.ts                  # Blog/FAQ content loader
   markdown.ts                 # Markdown → HTML conversion
@@ -77,13 +82,35 @@ The `/api/analyze-patient-v2` endpoint runs a 5-stage pipeline:
 
 | Stage | Agent | Model | Purpose |
 |-------|-------|-------|---------|
-| 1. Triage | triage-agent | gpt-4o-mini | Classify body systems, retrieve KB candidates, select specialists |
-| 2. Specialists | 2-4 domain agents (parallel) | gpt-4o | Generate hypotheses with evidence mapped to patient symptoms |
-| 3. Evidence Eval | evidence-evaluator | gpt-4o | Score hypotheses against diagnostic criteria from KB |
-| 4. Synthesis | synthesizer | gpt-4o | Reconcile opinions, rank by evidence, identify gaps |
-| 5. Report | report-generator | gpt-4o-mini | Format final report with recommendations |
+| 1. Triage | triage-agent | gpt-4.1-nano | Classify body systems, retrieve KB candidates, select specialists |
+| 2. Specialists | 2-4 domain agents (parallel) | gpt-4.1 | Generate hypotheses with evidence mapped to patient symptoms |
+| 3. Evidence Eval | evidence-evaluator | gpt-4.1 | Score hypotheses against diagnostic criteria from KB |
+| 4. Synthesis | synthesizer | gpt-4.1 | Reconcile opinions, rank by evidence, identify gaps |
+| 5. Report | report-generator | gpt-4.1-mini | Format final report with recommendations |
 
 Key innovation: **Evidence scores are grounded in diagnostic criteria fulfillment**, not LLM self-assessed confidence.
+
+### Low-Confidence Escalation
+
+After synthesis, the orchestrator detects low-confidence scenarios (all top-5 scores < 40, weak/divergent consensus, or low reliability). When triggered, escalation context is injected into the report generator prompt, recommending broader investigative pathways (WES/WGS, geneticist referral, undiagnosed disease programs).
+
+### Specialist Agents
+
+11 specialists, each with domain-specific prompts and KB disease profiles:
+
+| Specialist | Body Systems Routed |
+|------------|-------------------|
+| neurologist | neurological, ophthalmological |
+| rheumatologist | musculoskeletal, dermatological, immunological, renal |
+| cardiologist | cardiovascular |
+| immunologist | respiratory, dermatological, immunological |
+| endocrinologist | endocrine, reproductive |
+| gastroenterologist | gastrointestinal |
+| geneticist | neurological, constitutional |
+| hematologist | hematological, oncological |
+| psychiatrist | psychiatric |
+| oncologist | oncological |
+| general-internist | constitutional, otolaryngological (always included, receives no KB profiles) |
 
 ## Knowledge Base
 
@@ -95,6 +122,17 @@ Disease profiles in `lib/knowledge/diseases/*.json` follow the `DiseaseProfile` 
 
 The retrieval engine (`lib/knowledge/retrieval.ts`) uses multi-factor matching:
 symptom overlap (weighted by tier) + body system overlap + demographic fit + prevalence prior.
+
+Use `getDiseaseCount()` from `lib/knowledge/index.ts` for dynamic counts in prompts — never hardcode the number.
+
+## Testing Framework
+
+The `/testing` page provides an automated test harness:
+1. **Generate** — LLM creates a synthetic patient case with ground truth diagnosis
+2. **Run Pipeline** — Full V2 pipeline analyzes the generated case
+3. **Grade** — LLM grades the pipeline output against ground truth
+
+All three steps chain automatically via "Run New Test". Difficulty levels (1-5) are multi-dimensional, not purely prevalence-driven. Grading uses a 7-tier rubric with partial credit for correct disease category/organ system even when the exact diagnosis is missed.
 
 ## Development
 
@@ -122,6 +160,7 @@ See `.env.example` for all options.
 - **Content**: Markdown in `content/{type}/` with YAML frontmatter. Status must be `published` to appear on site.
 - **Components**: shadcn/ui components in `components/ui/`. Custom components at `components/` root.
 - **API routes**: Use Zod for input validation. Return `requestId` in all responses.
+- **UMLS mapping**: Use `searchUMLSWithFallbacks()` from `lib/umls-search.ts` — never write inline UMLS search logic.
 
 ## Important Notes
 
@@ -130,3 +169,5 @@ See `.env.example` for all options.
 - Per-analysis budget cap is $1.00 by default (configurable via `ANALYSIS_BUDGET_CENTS`)
 - Patient data is stored in `localStorage`/`sessionStorage` only — no server-side persistence
 - Disease profile `confidenceInData` field tracks whether data has been human-reviewed
+- General-internist is always included in specialist panel and receives no KB profiles (un-anchored counterweight)
+- Evidence evaluator uses two-track scoring: KB diseases against structured criteria, non-KB via clinical reasoning quality

@@ -152,6 +152,15 @@ UMLS_API_KEY=      # Required for symptom validation — get from https://uts.nl
 
 See `.env.example` for all options.
 
+## Working Principles
+
+- **Verify before done**: Always run `pnpm build` after non-trivial changes. Never consider a task complete without proving it works.
+- **Fix bugs autonomously**: When given a bug report, investigate root cause and fix it. Don't ask what to do — look at logs, errors, and code, then resolve.
+- **Simplicity first**: Make every change as simple as possible. Minimal code impact. Find root causes — no temporary fixes or workarounds.
+- **Minimal blast radius**: Changes should only touch what's necessary. Don't refactor surrounding code, add speculative features, or "improve" things that weren't asked for.
+- **Plan for complex tasks**: For changes touching 3+ files or involving architectural decisions, use plan mode first. If something goes sideways mid-implementation, stop and re-plan rather than pushing through.
+- **Challenge your own work**: Before presenting a fix, ask "is there a more elegant way?" For simple fixes, skip this — don't over-engineer.
+
 ## Conventions
 
 - **Types**: All shared types live in `lib/types/`. Don't define inline types for API responses.

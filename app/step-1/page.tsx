@@ -8,6 +8,7 @@ import { BodyRegionSelector } from "@/components/body-region-selector"
 import { SeveritySlider } from "@/components/severity-slider"
 import { ArrowRight, CheckCircle, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { DocumentUpload } from "@/components/document-upload"
 
 interface FormData {
   age: string
@@ -234,6 +235,15 @@ export default function Step1() {
                   <label className="block text-lg font-semibold text-gray-900">
                     Describe your symptoms <span className="text-red-500">*</span>
                   </label>
+                  <DocumentUpload
+                    onTextExtracted={(text) => {
+                      const current = formData.primaryConcern.trim()
+                      const newText = current
+                        ? `${formData.primaryConcern}\n\n--- From uploaded document ---\n\n${text}`
+                        : text
+                      updateFormData("primaryConcern", newText.slice(0, 10000))
+                    }}
+                  />
                   <div className="space-y-3">
                     <textarea
                       placeholder="Example: I've been experiencing extreme fatigue and muscle weakness that started about 6 months ago. It's gotten worse over time and now affects my daily activities..."

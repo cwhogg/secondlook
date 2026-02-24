@@ -105,10 +105,6 @@ export default function Step3() {
   const [isParsing, setIsParsing] = useState(false)
   const [showValidationSummary, setShowValidationSummary] = useState(false)
 
-  const currentStep = 3
-  const totalSteps = 3
-  const breadcrumbItems = [{ label: "Home" }, { label: "Assessment" }, { label: "Medical Context", current: true }]
-
   // Load data from previous steps
   useEffect(() => {
     // Load step 1 data
@@ -391,7 +387,7 @@ export default function Step3() {
   const missingItems = getValidationSummary()
 
   return (
-    <Layout currentStep={currentStep} totalSteps={totalSteps} breadcrumbItems={breadcrumbItems}>
+    <Layout>
       <div className="min-h-screen bg-[#f5f0eb] py-4 sm:py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Fixed Auto-save notification */}
@@ -599,7 +595,7 @@ export default function Step3() {
                     <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 leading-tight mb-2">
                       Have you seen doctors about these symptoms?
                     </h2>
-                    {errors.medicalCare && <p className="text-red-600 text-xs sm:text-sm mt-1">{errors.medicalCare}</p>}
+                    {errors.medicalCare && <p id="medicalCare-error" role="alert" className="text-red-600 text-xs sm:text-sm mt-1">{errors.medicalCare}</p>}
                     <div
                       className={`flex items-center space-x-1.5 sm:space-x-2 mt-2 ${formData.medicalCare ? "text-emerald-600" : "text-amber-600"}`}
                     >

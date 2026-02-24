@@ -43,7 +43,8 @@ export function MobileFormInput({
   const [isFocused, setIsFocused] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const [isListening, setIsListening] = useState(false)
-  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
   const recognitionRef = useRef<any>(null)
 
   // Initialize speech recognition
@@ -116,7 +117,6 @@ export function MobileFormInput({
   )
 
   const commonProps = {
-    ref: inputRef,
     value,
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => onChange(e.target.value),
     onFocus: () => setIsFocused(true),
@@ -133,9 +133,10 @@ export function MobileFormInput({
     <div className="space-y-2">
       <div className="relative">
         {type === "textarea" ? (
-          <textarea {...commonProps} rows={rows} placeholder={placeholder} />
+          <textarea ref={textareaRef} {...commonProps} rows={rows} placeholder={placeholder} />
         ) : (
           <input
+            ref={inputRef}
             {...commonProps}
             type={type === "password" && showPassword ? "text" : type}
             placeholder={placeholder}

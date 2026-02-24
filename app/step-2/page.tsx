@@ -55,10 +55,6 @@ export default function Step2() {
   const [autoSaved, setAutoSaved] = useState(false)
   const [actualMappedSymptoms, setActualMappedSymptoms] = useState<any[]>([])
 
-  const currentStep = 2
-  const totalSteps = 3
-  const breadcrumbItems = [{ label: "Home" }, { label: "Assessment" }, { label: "Symptom Patterns", current: true }]
-
   // Load data from previous step and saved data
   useEffect(() => {
     // Load step 1 data to get body regions and other info
@@ -163,7 +159,7 @@ export default function Step2() {
   }
 
   return (
-    <Layout currentStep={currentStep} totalSteps={totalSteps} breadcrumbItems={breadcrumbItems}>
+    <Layout>
       <div className="min-h-screen bg-[#f5f0eb] py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Fixed Auto-save notification */}
@@ -278,7 +274,7 @@ export default function Step2() {
             <div className="bg-white rounded-none border border-gray-100 p-5 md:p-6">
               <div className="text-left mb-8">
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">When did things start?</h2>
-                {errors.mainSymptomStart && <p className="text-red-600 text-sm">{errors.mainSymptomStart}</p>}
+                {errors.mainSymptomStart && <p id="mainSymptomStart-error" role="alert" className="text-red-600 text-sm">{errors.mainSymptomStart}</p>}
               </div>
 
               <div className="space-y-6">
@@ -294,7 +290,7 @@ export default function Step2() {
             <div className="bg-white rounded-none border border-gray-100 p-5 md:p-6">
               <div className="text-left mb-8">
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">How would you describe your symptoms?</h2>
-                {errors.symptomPattern && <p className="text-red-600 text-sm">{errors.symptomPattern}</p>}
+                {errors.symptomPattern && <p id="symptomPattern-error" role="alert" className="text-red-600 text-sm">{errors.symptomPattern}</p>}
               </div>
 
               <SymptomPatternSelector

@@ -43,7 +43,8 @@ const ModernInput = React.forwardRef<HTMLInputElement, ModernInputProps>(
         return
       }
 
-      const SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition
       const recognition = new SpeechRecognition()
 
       recognition.continuous = false
@@ -54,7 +55,7 @@ const ModernInput = React.forwardRef<HTMLInputElement, ModernInputProps>(
         setIsListening(true)
       }
 
-      recognition.onresult = (event) => {
+      recognition.onresult = (event: any) => {
         const transcript = event.results[0][0].transcript
         if (onVoiceInput) {
           onVoiceInput(transcript)
@@ -157,7 +158,8 @@ const ModernTextarea = React.forwardRef<HTMLTextAreaElement, ModernTextareaProps
         return
       }
 
-      const SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition
       const recognition = new SpeechRecognition()
 
       recognition.continuous = false
@@ -168,7 +170,7 @@ const ModernTextarea = React.forwardRef<HTMLTextAreaElement, ModernTextareaProps
         setIsListening(true)
       }
 
-      recognition.onresult = (event) => {
+      recognition.onresult = (event: any) => {
         const transcript = event.results[0][0].transcript
         if (onVoiceInput) {
           onVoiceInput(transcript)

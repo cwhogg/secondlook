@@ -17,6 +17,13 @@ const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
   ({ children, title, showBackButton, onBack, className }, ref) => {
     return (
       <div className={cn("min-h-screen bg-[#f5f0eb]", className)} ref={ref}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:bg-[#8b2500] focus:text-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
+        >
+          Skip to main content
+        </a>
+
         {/* Header */}
         <header className="bg-white border-b border-[#d4c5b0] sticky top-0 z-40">
           <div className="mobile-padding py-4">
@@ -41,7 +48,7 @@ const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
         </header>
 
         {/* Main Content */}
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">{children}</main>
 
         {/* Footer */}
         <footer className="bg-white border-t border-[#e5ddd3] pb-safe">

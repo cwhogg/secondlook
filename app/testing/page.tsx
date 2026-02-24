@@ -747,6 +747,11 @@ function TestHistoryRow({
 // ===== MAIN PAGE =====
 
 export default function AdminPage() {
+  const [isAuthorized, setIsAuthorized] = useState(false)
+  const [authChecked, setAuthChecked] = useState(false)
+  const [passwordInput, setPasswordInput] = useState("")
+  const [authError, setAuthError] = useState("")
+
   const [testCases, setTestCases] = useState<TestCase[]>([])
   const [activeTestId, setActiveTestId] = useState<string | null>(null)
   const [difficulty, setDifficulty] = useState(2)
@@ -759,6 +764,58 @@ export default function AdminPage() {
   const [extractionStatus, setExtractionStatus] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const abortRef = useRef<AbortController | null>(null)
+
+  // Check auth on mount
+  useEffect(() => {
+    const authorized = sessionStorage.getItem("testingAuthorized")
+    if (authorized === "true") {
+      setIsAuthorized(true)
+      setAuthChecked(true)
+    } else {
+      // Check if password is even required
+      fetch("/api/admin/verify-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: "" }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.authorized) {
+            // No password configured
+            setIsAuthorized(true)
+            sessionStorage.setItem("testingAuthorized", "true")
+          }
+          setAuthChecked(true)
+        })
+        .catch(() => {
+          setAuthChecked(true)
+        })
+    }
+  }, [])
+
+  const handlePasswordSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setAuthError("")
+
+    try {
+      const res = await fetch("/api/admin/verify-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: passwordInput }),
+      })
+
+      const data = await res.json()
+
+      if (data.authorized) {
+        sessionStorage.setItem("testingAuthorized", "true")
+        setIsAuthorized(true)
+      } else {
+        setAuthError("Invalid password")
+      }
+    } catch {
+      setAuthError("Failed to verify password")
+    }
+  }
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -1021,6 +1078,42 @@ export default function AdminPage() {
 
   // Re-read active test from updated state
   const currentActiveTest = testCases.find((tc) => tc.id === activeTestId) || null
+
+  if (!authChecked) {
+    return (
+      <div className="min-h-screen bg-[#f5f0eb] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#8b2500]" />
+      </div>
+    )
+  }
+
+  if (!isAuthorized) {
+    return (
+      <div className="min-h-screen bg-[#f5f0eb] flex items-center justify-center">
+        <div className="bg-white border border-[#d4c5b0] p-8 max-w-sm w-full">
+          <h1 className="text-xl font-bold font-serif text-[#2a2a2a] mb-4">Testing Framework</h1>
+          <p className="text-sm text-gray-600 mb-6">Enter the password to access the testing framework.</p>
+          <form onSubmit={handlePasswordSubmit} className="space-y-4">
+            <input
+              type="password"
+              value={passwordInput}
+              onChange={(e) => setPasswordInput(e.target.value)}
+              placeholder="Password"
+              className="w-full px-4 py-3 border border-gray-200 focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-sm"
+              autoFocus
+            />
+            {authError && <p className="text-red-600 text-sm">{authError}</p>}
+            <button
+              type="submit"
+              className="w-full bg-[#8b2500] text-white py-3 font-semibold text-sm hover:bg-[#6d1d00] transition-colors"
+            >
+              Access Testing
+            </button>
+          </form>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-[#f5f0eb]">

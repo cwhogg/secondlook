@@ -113,7 +113,7 @@ export function SymptomMappingSection({
   const [error, setError] = useState<string | null>(null)
   const [currentStep, setCurrentStep] = useState("")
   const [newSymptom, setNewSymptom] = useState("")
-  const [feedbackData, setFeedbackData] = useState<{ [key: number]: { status: string; correction?: string } }>({})
+  const [feedbackData, setFeedbackData] = useState<{ [key: number]: { status: string; correction?: string; originalText?: string; mappedTerm?: string; cui?: string; userCorrection?: string } }>({})
   const [cumulativeSymptomText, setCumulativeSymptomText] = useState("")
   const [symptomPatterns, setSymptomPatterns] = useState<SymptomPatternData | null>(null)
   const [isAnalyzingPatterns, setIsAnalyzingPatterns] = useState(false)

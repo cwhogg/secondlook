@@ -6,6 +6,7 @@ const envSchema = z.object({
   ANTHROPIC_API_KEY: z.string().optional(),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   ANALYSIS_BUDGET_CENTS: z.string().transform(Number).pipe(z.number().min(10).max(1000)).optional(),
+  TESTING_PASSWORD: z.string().optional(),
 });
 
 export type Env = z.infer<typeof envSchema>;

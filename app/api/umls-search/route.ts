@@ -136,8 +136,7 @@ export async function POST(request: NextRequest) {
       {
         error: error.message || "Internal server error",
         concepts: [],
-        confidence: 0,
-        searchTerm: searchTerm
+        confidence: 0
       },
       { status: 500 }
     )
@@ -200,12 +199,12 @@ function processSearchResults(searchData: any, searchTerm: string) {
       console.log("UMLS ranking-based confidence (1st result) - confidence: 0.80")
       
       // Optional: Add small boost for word overlap to differentiate quality
-      const searchWords = searchTermLower.split(/\s+/).filter(w => w.length > 2)
-      const matchWords = matchNameLower.split(/\s+/).filter(w => w.length > 2)
-      
+      const searchWords = searchTermLower.split(/\s+/).filter((w: string) => w.length > 2)
+      const matchWords = matchNameLower.split(/\s+/).filter((w: string) => w.length > 2)
+
       let hasWordOverlap = false
-      searchWords.forEach(searchWord => {
-        matchWords.forEach(matchWord => {
+      searchWords.forEach((searchWord: string) => {
+        matchWords.forEach((matchWord: string) => {
           if (searchWord.includes(matchWord) || matchWord.includes(searchWord)) {
             hasWordOverlap = true
           }

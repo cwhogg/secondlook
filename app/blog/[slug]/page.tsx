@@ -191,6 +191,17 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 year: "numeric",
               })}
             </time>
+            {piece.lastModified !== piece.date && (
+              <span className="text-sm text-gray-400">
+                · Updated <time dateTime={piece.lastModified}>
+                  {new Date(piece.lastModified).toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </time>
+              </span>
+            )}
           </div>
           <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight mb-4">
             <span className="text-[#1a1a1a]">

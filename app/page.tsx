@@ -40,6 +40,51 @@ const jsonLd = {
       url: "https://secondlook.vercel.app",
       logo: "https://secondlook.vercel.app/icon.svg",
     },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is SecondLook?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "SecondLook is an AI-powered diagnostic tool that analyzes your symptoms against thousands of rare and complex medical conditions. It helps patients who may be on a diagnostic odyssey by identifying conditions that general practitioners might overlook.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How does SecondLook work?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "SecondLook uses a multi-agent AI pipeline where specialist AI agents analyze your symptoms from different medical perspectives. You describe your symptoms through a guided questionnaire, and our AI compares them against a curated knowledge base of rare diseases using evidence-based diagnostic criteria.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is SecondLook a substitute for medical advice?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. SecondLook provides educational information only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider for medical concerns. Our reports are designed to help inform conversations with your doctor.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is my health data secure?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. Your health information is processed securely and is never stored on our servers. All patient data remains in your browser's local storage and is never transmitted beyond what is needed for the AI analysis. We use bank-level encryption for all data in transit.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How much does SecondLook cost?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "SecondLook is currently free during our early access period. We want to make rare disease diagnostic guidance accessible to everyone while we continue to improve our platform.",
+          },
+        },
+      ],
+    },
   ],
 }
 
@@ -199,6 +244,13 @@ function ResourcesSection() {
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#f5f0eb]">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:bg-[#8b2500] focus:text-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
+      >
+        Skip to main content
+      </a>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -229,7 +281,7 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="py-20 md:py-[5rem]">
+      <section id="main-content" className="py-20 md:py-[5rem]">
         <div className="max-w-[1140px] mx-auto px-8 grid grid-cols-1 md:grid-cols-[1fr_0.65fr] gap-12 items-center">
           {/* Text Content */}
           <div className="max-w-[600px]">

@@ -34,7 +34,7 @@ export class BudgetTracker {
     return this.estimatedCostCents() / 100;
   }
 
-  getSummary(): { totalTokens: number; totalCostCents: number; stages: typeof this.stages } {
+  getSummary(): { totalTokens: number; totalCostCents: number; stages: Array<{ model: string; tokens: number; estimatedCostCents: number }> } {
     return {
       totalTokens: this.totalTokens,
       totalCostCents: Math.round(this.estimatedCostCents() * 100) / 100,

@@ -6,8 +6,10 @@ import { ExpertAnalysisResults } from "@/components/expert-analysis-results"
 
 export default function ExpertResultsPage() {
   const router = useRouter()
-  const [analysisResults, setAnalysisResults] = useState(null)
-  const [analysisMetadata, setAnalysisMetadata] = useState(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [analysisResults, setAnalysisResults] = useState<any>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [analysisMetadata, setAnalysisMetadata] = useState<any>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

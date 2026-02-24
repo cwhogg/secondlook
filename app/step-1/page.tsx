@@ -36,10 +36,6 @@ export default function Step1() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [autoSaved, setAutoSaved] = useState(false)
 
-  const currentStep = 1
-  const totalSteps = 3
-  const breadcrumbItems = [{ label: "Home" }, { label: "Assessment", current: true }]
-
   // Load saved data on mount, but check for start over flag first
   useEffect(() => {
     // Check if we're starting over
@@ -116,7 +112,7 @@ export default function Step1() {
     formData.age && formData.biologicalSex && formData.primaryConcern.trim() && formData.bodyRegions.length > 0
 
   return (
-    <Layout currentStep={currentStep} totalSteps={totalSteps} breadcrumbItems={breadcrumbItems}>
+    <Layout>
       <div className="min-h-screen bg-[#f5f0eb] py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Fixed Auto-save notification */}
@@ -170,6 +166,8 @@ export default function Step1() {
                       max="120"
                       value={formData.age}
                       onChange={(e) => updateFormData("age", e.target.value)}
+                      aria-invalid={!!errors.age}
+                      aria-describedby={errors.age ? "age-error" : undefined}
                       className={cn(
                         "w-full px-4 py-4 border border-gray-200 rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-lg transition-all duration-200",
                         errors.age
@@ -179,7 +177,7 @@ export default function Step1() {
                             : "border-gray-200",
                       )}
                     />
-                    {errors.age && <p className="text-red-600 text-sm mt-2">{errors.age}</p>}
+                    {errors.age && <p id="age-error" role="alert" className="text-red-600 text-sm mt-2">{errors.age}</p>}
                   </div>
 
                   <div className="space-y-3">
@@ -217,7 +215,7 @@ export default function Step1() {
                         </label>
                       ))}
                     </div>
-                    {errors.biologicalSex && <p className="text-red-600 text-sm mt-2">{errors.biologicalSex}</p>}
+                    {errors.biologicalSex && <p id="biologicalSex-error" role="alert" className="text-red-600 text-sm mt-2">{errors.biologicalSex}</p>}
                   </div>
                 </div>
               </div>
@@ -251,6 +249,8 @@ export default function Step1() {
                       onChange={(e) => updateFormData("primaryConcern", e.target.value)}
                       maxLength={10000}
                       rows={6}
+                      aria-invalid={!!errors.primaryConcern}
+                      aria-describedby={errors.primaryConcern ? "primaryConcern-error" : undefined}
                       className={cn(
                         "w-full px-4 py-4 border border-gray-200 rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-lg resize-none transition-all duration-200",
                         errors.primaryConcern
@@ -267,7 +267,7 @@ export default function Step1() {
                       <CharacterCounter current={formData.primaryConcern.length} max={10000} />
                     </div>
                   </div>
-                  {errors.primaryConcern && <p className="text-red-600 text-sm mt-2">{errors.primaryConcern}</p>}
+                  {errors.primaryConcern && <p id="primaryConcern-error" role="alert" className="text-red-600 text-sm mt-2">{errors.primaryConcern}</p>}
                 </div>
               </div>
 
@@ -340,7 +340,7 @@ export default function Step1() {
                   <p className="text-lg text-gray-600 mb-2">
                     Select all areas where you're experiencing symptoms - many conditions affect multiple body systems
                   </p>
-                  {errors.bodyRegions && <p className="text-red-600 text-sm">{errors.bodyRegions}</p>}
+                  {errors.bodyRegions && <p id="bodyRegions-error" role="alert" className="text-red-600 text-sm">{errors.bodyRegions}</p>}
                 </div>
 
                 <BodyRegionSelector

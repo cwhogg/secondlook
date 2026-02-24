@@ -13,6 +13,7 @@ import type {
 import type { AnalysisResult, DiagnosisHypothesis, MappedSymptom } from "@/lib/types/index"
 import type { PipelineProgress } from "@/lib/types/pipeline"
 import { searchUMLSWithFallbacks } from "@/lib/umls-search"
+import { cn } from "@/lib/utils"
 
 // ===== CONSTANTS =====
 
@@ -569,6 +570,27 @@ function PipelineProgressDisplay({ events, percent }: { events: PipelineProgress
   )
 }
 
+function StepIndicator({ label, status }: { label: string; status: "pending" | "active" | "done" }) {
+  return (
+    <div className="flex items-center gap-2">
+      <div className={cn(
+        "w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold",
+        status === "done" && "bg-[#8b2500] text-white",
+        status === "active" && "bg-[#8b2500] text-white animate-pulse",
+        status === "pending" && "bg-[#e8ddd0] text-[#8b7355]",
+      )}>
+        {status === "done" ? "\u2713" : status === "active" ? "\u2022" : ""}
+      </div>
+      <span className={cn(
+        "text-xs font-medium",
+        status === "active" ? "text-[#8b2500]" : "text-[#8b7355]",
+      )}>
+        {label}
+      </span>
+    </div>
+  )
+}
+
 function PipelineResultsSection({ result }: { result: AnalysisResult }) {
   const meta = result.pipelineMetadata
   const topDx = result.differentialDiagnoses.slice(0, 5)
@@ -834,6 +856,22 @@ export default function AdminPage() {
   const activeTest = testCases.find((tc) => tc.id === activeTestId) || null
   const stats = computeStats(testCases)
 
+  const getStepStatus = (step: "generate" | "pipeline" | "grade"): "pending" | "active" | "done" => {
+    if (step === "generate") {
+      if (isGenerating) return "active"
+      if (isRunning || isGrading) return "done"
+      return "pending"
+    }
+    if (step === "pipeline") {
+      if (isRunning) return "active"
+      if (isGrading) return "done"
+      return "pending"
+    }
+    // grade
+    if (isGrading) return "active"
+    return "pending"
+  }
+
   // ===== CORE HELPERS =====
 
   const doGenerate = async (): Promise<TestCase> => {
@@ -1033,6 +1071,10 @@ export default function AdminPage() {
 
   const handleRunNewTest = async () => {
     setError(null)
+    setActiveTestId(null)
+    setPipelineEvents([])
+    setProgressPercent(0)
+    setExtractionStatus(null)
     try {
       const newCase = await doGenerate()
       const result = await doRunPipeline(newCase.id, newCase.generatedPatient)
@@ -1190,6 +1232,46 @@ export default function AdminPage() {
             </button>
           </div>
         </div>
+
+        {/* Inline progress when running */}
+        {(isGenerating || isRunning || isGrading) && (
+          <div className="border border-[#d4c5b0] bg-white p-5 mb-6">
+            {/* Step indicators */}
+            <div className="flex items-center gap-3 mb-4">
+              <StepIndicator label="Generate" status={getStepStatus("generate")} />
+              <div className="flex-1 h-px bg-[#e8ddd0]" />
+              <StepIndicator label="Pipeline" status={getStepStatus("pipeline")} />
+              <div className="flex-1 h-px bg-[#e8ddd0]" />
+              <StepIndicator label="Grade" status={getStepStatus("grade")} />
+            </div>
+
+            {/* Detail area */}
+            {isGenerating && (
+              <div className="text-sm text-[#5a5a5a] flex items-center gap-2">
+                <span className="inline-block w-2 h-2 bg-[#8b2500] rounded-full animate-pulse" />
+                Generating patient case...
+              </div>
+            )}
+
+            {isRunning && extractionStatus && (
+              <div className="text-sm text-[#5a5a5a] flex items-center gap-2">
+                <span className="inline-block w-2 h-2 bg-[#8b2500] rounded-full animate-pulse" />
+                {extractionStatus}
+              </div>
+            )}
+
+            {isRunning && !extractionStatus && (
+              <PipelineProgressDisplay events={pipelineEvents} percent={progressPercent} />
+            )}
+
+            {isGrading && (
+              <div className="text-sm text-[#5a5a5a] flex items-center gap-2">
+                <span className="inline-block w-2 h-2 bg-[#8b2500] rounded-full animate-pulse" />
+                Grading results...
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Active Test Detail */}
         {currentActiveTest && (

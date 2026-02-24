@@ -189,19 +189,15 @@ async function buildPatientCase(
     extractedSymptoms: mappedSymptoms,
     patientCase: {
       demographics: patient.demographics,
-      chiefComplaint: {
-        description: patient.chiefComplaint,
-        bodyRegions: [],
-        severity: 5,
-      },
+      chiefComplaint: { description: "", bodyRegions: [], severity: 5 },
       symptoms: mappedSymptoms,
       symptomPatterns: null,
       patientHypothesis: null,
       medicalHistory: {
-        currentMedications: patient.medicalHistory.currentMedications?.map((m) => ({ name: m })) || [],
-        pastMedicalHistory: patient.medicalHistory.pastMedicalHistory || [],
-        familyHistory: patient.medicalHistory.familyHistory || [],
-        recentTests: patient.medicalHistory.recentTests || [],
+        currentMedications: [],
+        pastMedicalHistory: [],
+        familyHistory: [],
+        recentTests: [],
         medicalCare: "",
         testingHistory: [],
       },
@@ -370,49 +366,6 @@ function PatientSection({ patient }: { patient: GeneratedPatient }) {
       <div className="bg-[#faf7f3] border border-[#e8ddd0] p-3 text-sm text-[#2a2a2a] italic font-serif leading-relaxed">
         &ldquo;{patient.narrative}&rdquo;
       </div>
-
-      <div className="text-sm text-[#5a5a5a]">
-        <span className="font-semibold">Chief Complaint:</span> {patient.chiefComplaint}
-      </div>
-
-      <div>
-        <div className="text-sm font-semibold text-[#5a5a5a] mb-1">Symptoms ({patient.symptoms.length}):</div>
-        <div className="space-y-1">
-          {patient.symptoms.map((s, i) => (
-            <div key={i} className="text-sm flex items-start gap-2">
-              <span className="text-[#8b7355] font-mono text-xs mt-0.5">{i + 1}.</span>
-              <div>
-                <span className="text-[#2a2a2a]">&ldquo;{s.originalPhrase}&rdquo;</span>
-                <span className="text-[#8b7355]"> &rarr; </span>
-                <span className="font-medium text-[#5a5a5a]">{s.medicalTerm}</span>
-                <span className="text-xs text-[#8b7355] ml-1">({s.bodySystem}, {s.severity}, {s.duration})</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {(patient.medicalHistory.pastMedicalHistory?.length > 0 ||
-        patient.medicalHistory.familyHistory?.length > 0 ||
-        patient.medicalHistory.currentMedications?.length > 0) && (
-        <div className="text-sm space-y-1 text-[#5a5a5a]">
-          {patient.medicalHistory.pastMedicalHistory?.length > 0 && (
-            <div>
-              <span className="font-semibold">PMH:</span> {patient.medicalHistory.pastMedicalHistory.join(", ")}
-            </div>
-          )}
-          {patient.medicalHistory.familyHistory?.length > 0 && (
-            <div>
-              <span className="font-semibold">FHx:</span> {patient.medicalHistory.familyHistory.join(", ")}
-            </div>
-          )}
-          {patient.medicalHistory.currentMedications?.length > 0 && (
-            <div>
-              <span className="font-semibold">Meds:</span> {patient.medicalHistory.currentMedications.join(", ")}
-            </div>
-          )}
-        </div>
-      )}
     </div>
   )
 }

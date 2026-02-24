@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Dysautonomia vs POTS vs Orthostatic Hypotension: Why Doctors Confuse These Conditions and What Tests You Actually Need"
 description: "POTS, dysautonomia, and orthostatic hypotension are routinely misdiagnosed as anxiety or deconditioning. Learn the key differences and tests that matter."
@@ -11,7 +10,6 @@ status: published
 wordCount: 2740
 canonicalUrl: "https://secondlook.vercel.app/blog/dysautonomia-vs-pots-vs-orthostatic-hypotension-misdiagnosis-guide"
 ---
-```
 
 # Dysautonomia vs POTS vs Orthostatic Hypotension: Why Doctors Confuse These Conditions and What Tests You Actually Need
 

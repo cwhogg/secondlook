@@ -189,7 +189,6 @@ async function buildPatientCase(
     extractedSymptoms: mappedSymptoms,
     patientCase: {
       demographics: patient.demographics,
-      chiefComplaint: { description: "", bodyRegions: [], severity: 5 },
       symptoms: mappedSymptoms,
       symptomPatterns: null,
       patientHypothesis: null,

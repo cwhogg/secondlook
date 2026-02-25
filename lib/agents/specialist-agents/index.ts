@@ -384,11 +384,10 @@ Map evidence to specific patient symptoms.`;
 
 Demographics: Age ${patientCase.demographics.age}, ${patientCase.demographics.sex}
 
-Chief Complaint: "${patientCase.chiefComplaint.description}"
+${patientCase.chiefComplaint?.description ? `Chief Complaint: "${patientCase.chiefComplaint.description}"
 Duration: ${patientCase.chiefComplaint.duration || 'unknown'}
 Severity: ${patientCase.chiefComplaint.severity || 'unknown'}/10
-
-Symptoms:
+` : ''}Symptoms:
 ${symptomList}
 
 ${patientCase.medicalHistory?.familyHistory?.length ? `Family History: ${patientCase.medicalHistory.familyHistory.join(', ')}` : ''}

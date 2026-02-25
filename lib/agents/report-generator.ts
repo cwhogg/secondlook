@@ -156,7 +156,7 @@ ${criteriaStr || '   (no formal criteria assessed)'}`;
       .join('\n\n');
 
     return `PATIENT: Age ${patientCase.demographics.age}, ${patientCase.demographics.sex}
-Chief complaint: "${patientCase.chiefComplaint.description}"
+${patientCase.chiefComplaint?.description ? `Chief complaint: "${patientCase.chiefComplaint.description}"` : ''}
 
 ${patientCase.patientHypothesis ? `Patient suspects: "${patientCase.patientHypothesis}"` : ''}
 

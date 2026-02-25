@@ -58,7 +58,7 @@ export interface SymptomPatternData {
 
 export interface PatientCase {
   demographics: Demographics;
-  chiefComplaint: ChiefComplaint;
+  chiefComplaint?: ChiefComplaint;
   symptoms: MappedSymptom[];
   symptomPatterns: SymptomPatternData | null;
   patientHypothesis: string | null;

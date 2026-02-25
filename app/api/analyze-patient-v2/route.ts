@@ -38,7 +38,7 @@ const symptomSchema = z.object({
 
 const patientCaseSchema = z.object({
   demographics: demographicsSchema,
-  chiefComplaint: chiefComplaintSchema,
+  chiefComplaint: chiefComplaintSchema.optional().default({ description: '', bodyRegions: [] }),
   symptoms: z.array(symptomSchema).min(1, 'At least one symptom is required'),
   symptomPatterns: z.any().nullable().optional().default(null),
   patientHypothesis: z.string().nullable().optional().default(null),

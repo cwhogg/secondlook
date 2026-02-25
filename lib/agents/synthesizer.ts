@@ -251,8 +251,7 @@ ${h.contradictoryEvidence.map((e) => `     - [${e.strength}] ${e.finding} ← "$
     const nonKbCount = hypotheses.filter((h) => !h.knowledgeBaseMatch).length;
 
     return `PATIENT: Age ${patientCase.demographics.age}, ${patientCase.demographics.sex}
-Chief complaint: "${patientCase.chiefComplaint.description}"
-Symptoms: ${patientCase.symptoms.map((s) => s.selectedConcept?.name || s.medicalTerm || s.originalPhrase).join(', ')}
+${patientCase.chiefComplaint?.description ? `Chief complaint: "${patientCase.chiefComplaint.description}"` : ''}Symptoms: ${patientCase.symptoms.map((s) => s.selectedConcept?.name || s.medicalTerm || s.originalPhrase).join(', ')}
 ${patientCase.medicalHistory?.familyHistory?.length ? `Family history: ${patientCase.medicalHistory.familyHistory.join(', ')}` : ''}
 ${patientCase.medicalHistory?.pastMedicalHistory?.length ? `Past medical history: ${patientCase.medicalHistory.pastMedicalHistory.join(', ')}` : ''}
 

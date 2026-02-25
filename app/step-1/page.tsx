@@ -6,9 +6,10 @@ import { Layout } from "@/components/layout"
 import { CharacterCounter } from "@/components/character-counter"
 import { BodyRegionSelector } from "@/components/body-region-selector"
 import { SeveritySlider } from "@/components/severity-slider"
-import { ArrowRight, CheckCircle, Sparkles } from "lucide-react"
+import { ArrowRight, CheckCircle, Sparkles, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { DocumentUpload } from "@/components/document-upload"
+import { DEMO_CASES } from "@/lib/demo-cases"
 
 interface FormData {
   age: string
@@ -35,6 +36,7 @@ export default function Step1() {
 
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [autoSaved, setAutoSaved] = useState(false)
+  const [showDemoPicker, setShowDemoPicker] = useState(false)
 
   // Load saved data on mount, but check for start over flag first
   useEffect(() => {
@@ -108,6 +110,15 @@ export default function Step1() {
     }
   }
 
+  const loadDemoCase = (index: number) => {
+    const demoCase = DEMO_CASES[index]
+    if (demoCase) {
+      setFormData(demoCase.formData)
+      setShowDemoPicker(false)
+      setErrors({})
+    }
+  }
+
   const isFormValid =
     formData.age && formData.biologicalSex && formData.primaryConcern.trim() && formData.bodyRegions.length > 0
 
@@ -142,6 +153,36 @@ export default function Step1() {
             <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
               We'll help you explore potential diagnoses that you can discuss with your healthcare provider.
             </p>
+            <div className="mt-4">
+              <button
+                onClick={() => setShowDemoPicker((prev) => !prev)}
+                className="text-[#8b2500] hover:text-[#6d1d00] text-sm font-medium transition-colors inline-flex items-center gap-1"
+              >
+                Don't have symptoms to enter? Try a demo case
+                <ChevronDown
+                  className={cn(
+                    "h-3.5 w-3.5 transition-transform duration-200",
+                    showDemoPicker && "rotate-180",
+                  )}
+                />
+              </button>
+              {showDemoPicker && (
+                <div className="mt-4 max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {DEMO_CASES.map((demoCase, index) => (
+                    <button
+                      key={index}
+                      onClick={() => loadDemoCase(index)}
+                      className="text-left p-4 border border-gray-200 rounded-none hover:border-[#8b2500] hover:bg-[#faf6f0] transition-all duration-200 group"
+                    >
+                      <p className="font-medium text-gray-900 group-hover:text-[#8b2500] text-sm leading-snug">
+                        {demoCase.label}
+                      </p>
+                      <p className="text-gray-500 text-xs mt-1">{demoCase.description}</p>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Main Form Container */}

@@ -130,7 +130,14 @@ export async function POST(request: NextRequest) {
     let post: { selftext: string; title: string; subreddit: string; author: string; url: string };
 
     if (input.mode === 'url') {
-      post = await fetchRedditPost(input.url);
+      try {
+        post = await fetchRedditPost(input.url);
+      } catch (fetchErr: any) {
+        return NextResponse.json(
+          { error: fetchErr.message, fetchFailed: true, requestId },
+          { status: 502 }
+        );
+      }
     } else {
       post = {
         selftext: input.selftext,

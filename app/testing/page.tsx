@@ -1209,10 +1209,9 @@ export default function AdminPage() {
         body: JSON.stringify({ mode: "url", url: redditUrl }),
       })
       if (!response.ok) {
-        const err = await response.json()
-        // Show paste fallback on fetch failure (Reddit blocks cloud IPs)
+        const err = await response.json().catch(() => ({}))
         setShowPasteFallback(true)
-        throw new Error(err.error || `Fetch failed: ${response.statusText}`)
+        throw new Error("Reddit blocked the request. Paste the post text below instead.")
       }
       const data = await response.json()
       setRedditPreview(data)

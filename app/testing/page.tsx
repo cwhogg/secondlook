@@ -79,25 +79,21 @@ const ARCHETYPE_LABELS: Record<PatientArchetype, string> = {
 
 // ===== HELPERS =====
 
-async function loadTestCasesFromServer(): Promise<TestCase[]> {
+function loadTestCases(): TestCase[] {
   try {
-    const res = await fetch("/api/admin/test-cases")
-    if (!res.ok) return []
-    const data = await res.json()
-    return data.testCases ?? []
+    const data = localStorage.getItem("testCases")
+    return data ? JSON.parse(data) : []
   } catch {
     return []
   }
 }
 
-function saveTestCasesToServer(cases: TestCase[]) {
-  fetch("/api/admin/test-cases", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ testCases: cases }),
-  }).catch(() => {
-    // Fire-and-forget — state is source of truth
-  })
+function saveTestCases(cases: TestCase[]) {
+  try {
+    localStorage.setItem("testCases", JSON.stringify(cases))
+  } catch {
+    // localStorage full or unavailable — state is source of truth
+  }
 }
 
 function computeStats(cases: TestCase[]): TestSuiteStats | null {
@@ -891,16 +887,16 @@ export default function AdminPage() {
     }
   }
 
-  // Load from server on mount
+  // Load from localStorage on mount
   useEffect(() => {
-    loadTestCasesFromServer().then(setTestCases)
+    setTestCases(loadTestCases())
   }, [])
 
-  // Persist to server on every change
+  // Persist to localStorage on every change
   const updateTestCases = useCallback((updater: (prev: TestCase[]) => TestCase[]) => {
     setTestCases((prev) => {
       const next = updater(prev)
-      saveTestCasesToServer(next)
+      saveTestCases(next)
       return next
     })
   }, [])

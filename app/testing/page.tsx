@@ -828,6 +828,9 @@ export default function AdminPage() {
   const [redditUrl, setRedditUrl] = useState("")
   const [isFetchingReddit, setIsFetchingReddit] = useState(false)
   const [redditPreview, setRedditPreview] = useState<any | null>(null)
+  const [showPasteFallback, setShowPasteFallback] = useState(false)
+  const [pasteTitle, setPasteTitle] = useState("")
+  const [pasteText, setPasteText] = useState("")
   const [redditGroundTruth, setRedditGroundTruth] = useState({
     diagnosis: "",
     keyFindings: "",
@@ -1198,19 +1201,58 @@ export default function AdminPage() {
     setError(null)
     setIsFetchingReddit(true)
     setRedditPreview(null)
+    setShowPasteFallback(false)
     try {
       const response = await fetch("/api/admin/import-reddit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: redditUrl }),
+        body: JSON.stringify({ mode: "url", url: redditUrl }),
       })
       if (!response.ok) {
         const err = await response.json()
+        // Show paste fallback on fetch failure (Reddit blocks cloud IPs)
+        setShowPasteFallback(true)
         throw new Error(err.error || `Fetch failed: ${response.statusText}`)
       }
       const data = await response.json()
       setRedditPreview(data)
-      // Pre-fill ground truth from LLM extraction
+      if (data.processed?.diagnosisInfo?.diagnosis) {
+        setRedditGroundTruth((prev) => ({
+          ...prev,
+          diagnosis: data.processed.diagnosisInfo.diagnosis || "",
+        }))
+      }
+    } catch (err: any) {
+      setError(err.message)
+    } finally {
+      setIsFetchingReddit(false)
+    }
+  }
+
+  const handlePasteSubmit = async () => {
+    if (!pasteText.trim() || !pasteTitle.trim()) return
+    setError(null)
+    setIsFetchingReddit(true)
+    setRedditPreview(null)
+    try {
+      const response = await fetch("/api/admin/import-reddit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          mode: "paste",
+          title: pasteTitle,
+          selftext: pasteText,
+          subreddit: redditUrl.match(/\/r\/(\w+)/)?.[1] || "unknown",
+          url: redditUrl,
+        }),
+      })
+      if (!response.ok) {
+        const err = await response.json()
+        throw new Error(err.error || `Analysis failed: ${response.statusText}`)
+      }
+      const data = await response.json()
+      setRedditPreview(data)
+      setShowPasteFallback(false)
       if (data.processed?.diagnosisInfo?.diagnosis) {
         setRedditGroundTruth((prev) => ({
           ...prev,
@@ -1464,6 +1506,42 @@ export default function AdminPage() {
                   {isFetchingReddit ? "Fetching..." : "Fetch & Preview"}
                 </button>
               </div>
+
+              {/* Paste fallback when URL fetch fails */}
+              {showPasteFallback && (
+                <div className="border border-[#d4c5b0] bg-[#faf7f3] p-4 space-y-3">
+                  <p className="text-xs text-[#8b7355]">
+                    Reddit blocked the server request. Copy the post title and text from Reddit and paste below.
+                  </p>
+                  <div>
+                    <label className="block text-xs text-[#8b7355] mb-1">Post Title</label>
+                    <input
+                      type="text"
+                      value={pasteTitle}
+                      onChange={(e) => setPasteTitle(e.target.value)}
+                      placeholder="Paste the Reddit post title..."
+                      className="w-full border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-[#8b7355] mb-1">Post Text</label>
+                    <textarea
+                      value={pasteText}
+                      onChange={(e) => setPasteText(e.target.value)}
+                      placeholder="Paste the full Reddit post text..."
+                      rows={6}
+                      className="w-full border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500] resize-none"
+                    />
+                  </div>
+                  <button
+                    onClick={handlePasteSubmit}
+                    disabled={isAnyRunning || !pasteText.trim() || !pasteTitle.trim()}
+                    className="px-5 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  >
+                    {isFetchingReddit ? "Analyzing..." : "Analyze Post"}
+                  </button>
+                </div>
+              )}
 
               {/* Reddit Preview */}
               {redditPreview && (

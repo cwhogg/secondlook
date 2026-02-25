@@ -72,8 +72,7 @@ export interface GenerationMetadata {
   tokensUsed: number;
   durationMs: number;
   archetype?: PatientArchetype;
-  source?: 'generated' | 'reddit-import';
-  redditUrl?: string;
+  source?: 'generated';
 }
 
 // ===== RERUN SNAPSHOT =====
@@ -97,7 +96,7 @@ export interface TestCase {
   difficulty: number;
   categoryHint?: string;
   status: TestCaseStatus;
-  source?: 'generated' | 'reddit-import';
+  source?: 'generated';
   groundTruth: GroundTruth;
   generatedPatient: GeneratedPatient;
   generationMetadata: GenerationMetadata;

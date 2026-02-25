@@ -212,50 +212,71 @@ function pct(n: number): string {
 // ===== COMPONENTS =====
 
 function StatsBanner({ stats }: { stats: TestSuiteStats }) {
+  const difficultyEntries = Object.entries(stats.byDifficulty)
+    .sort(([a], [b]) => parseInt(a) - parseInt(b))
+
   return (
-    <div className="border border-[#d4c5b0] bg-white p-4 sm:p-6 mb-6">
-      <div className="flex flex-wrap gap-6 sm:gap-10 items-center">
-        <div>
-          <div className="text-xs uppercase tracking-wider text-[#8b7355] mb-1">Avg Score</div>
+    <div className="border border-[#d4c5b0] bg-white mb-6">
+      {/* Overall metrics */}
+      <div className="grid grid-cols-5 divide-x divide-[#e8ddd0]">
+        <div className="p-4 sm:p-5">
+          <div className="text-[10px] uppercase tracking-wider text-[#8b7355] mb-1.5">Tests</div>
+          <div className="text-2xl font-bold font-serif text-[#2a2a2a]">
+            {stats.gradedTests}<span className="text-base font-normal text-[#8b7355]">/{stats.totalTests}</span>
+          </div>
+        </div>
+        <div className="p-4 sm:p-5">
+          <div className="text-[10px] uppercase tracking-wider text-[#8b7355] mb-1.5">Avg Score</div>
           <div className="text-2xl font-bold font-serif text-[#2a2a2a]">{stats.avgScore.toFixed(1)}</div>
         </div>
-        <div>
-          <div className="text-xs uppercase tracking-wider text-[#8b7355] mb-1">Top-1</div>
+        <div className="p-4 sm:p-5">
+          <div className="text-[10px] uppercase tracking-wider text-[#8b7355] mb-1.5">Top-1</div>
           <div className="text-2xl font-bold font-serif text-[#2a2a2a]">{pct(stats.top1Rate)}</div>
         </div>
-        <div>
-          <div className="text-xs uppercase tracking-wider text-[#8b7355] mb-1">Top-3</div>
+        <div className="p-4 sm:p-5">
+          <div className="text-[10px] uppercase tracking-wider text-[#8b7355] mb-1.5">Top-3</div>
           <div className="text-2xl font-bold font-serif text-[#2a2a2a]">{pct(stats.top3Rate)}</div>
         </div>
-        <div>
-          <div className="text-xs uppercase tracking-wider text-[#8b7355] mb-1">Top-5</div>
+        <div className="p-4 sm:p-5">
+          <div className="text-[10px] uppercase tracking-wider text-[#8b7355] mb-1.5">Top-5</div>
           <div className="text-2xl font-bold font-serif text-[#2a2a2a]">{pct(stats.top5Rate)}</div>
-        </div>
-        <div>
-          <div className="text-xs uppercase tracking-wider text-[#8b7355] mb-1">Tests</div>
-          <div className="text-2xl font-bold font-serif text-[#2a2a2a]">
-            {stats.gradedTests}/{stats.totalTests}
-          </div>
         </div>
       </div>
 
-      {Object.keys(stats.byDifficulty).length > 1 && (
-        <div className="mt-4 pt-4 border-t border-[#e8ddd0]">
-          <div className="text-xs uppercase tracking-wider text-[#8b7355] mb-2">By Difficulty</div>
-          <div className="flex flex-wrap gap-3">
-            {Object.entries(stats.byDifficulty)
-              .sort(([a], [b]) => parseInt(a) - parseInt(b))
-              .map(([d, entry]) => (
-                <div key={d} className="text-sm">
-                  <span className={`inline-block px-2 py-0.5 border text-xs mr-1 ${DIFFICULTY_COLORS[parseInt(d)]}`}>
-                    {DIFFICULTY_LABELS[parseInt(d)]}
-                  </span>
-                  <span className="text-[#5a5a5a]">
-                    {entry.avgScore.toFixed(0)}avg &middot; {pct(entry.top1Rate)} top-1 &middot; n={entry.count}
-                  </span>
-                </div>
-              ))}
-          </div>
+      {/* By-difficulty breakdown table */}
+      {difficultyEntries.length > 0 && (
+        <div className="border-t border-[#d4c5b0]">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[#e8ddd0] bg-[#faf7f2]">
+                <th className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Difficulty</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">n</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Avg Score</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-1</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-3</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-5</th>
+              </tr>
+            </thead>
+            <tbody>
+              {difficultyEntries.map(([d, entry]) => {
+                const diff = parseInt(d)
+                return (
+                  <tr key={d} className="border-b border-[#e8ddd0] last:border-b-0">
+                    <td className="py-2.5 px-4 sm:px-5">
+                      <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${DIFFICULTY_COLORS[diff]}`}>
+                        {DIFFICULTY_LABELS[diff]}
+                      </span>
+                    </td>
+                    <td className="py-2.5 px-4 sm:px-5 text-right text-[#5a5a5a] tabular-nums">{entry.count}</td>
+                    <td className="py-2.5 px-4 sm:px-5 text-right font-medium text-[#2a2a2a] tabular-nums">{entry.avgScore.toFixed(1)}</td>
+                    <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top1Rate)}</td>
+                    <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top3Rate)}</td>
+                    <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top5Rate)}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
         </div>
       )}
     </div>

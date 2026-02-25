@@ -3,6 +3,10 @@ import { z } from 'zod';
 import { callAnthropic } from '@/lib/anthropic';
 
 const inputSchema = z.object({
+  title: z.string(),
+  selftext: z.string().min(50, 'Post text is too short'),
+  subreddit: z.string(),
+  author: z.string(),
   url: z.string().url(),
 });
 
@@ -28,64 +32,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    // Normalize Reddit URL and convert to JSON endpoint
-    let redditUrl = input.url.trim();
-
-    // Handle various Reddit URL formats
-    // Remove trailing slashes, query params
-    redditUrl = redditUrl.split('?')[0].replace(/\/+$/, '');
-
-    // Convert old.reddit.com, www.reddit.com, reddit.com to consistent form
-    redditUrl = redditUrl
-      .replace(/^https?:\/\/old\.reddit\.com/, 'https://www.reddit.com')
-      .replace(/^https?:\/\/reddit\.com/, 'https://www.reddit.com');
-
-    // Validate it looks like a Reddit post URL
-    if (!redditUrl.match(/reddit\.com\/r\/\w+\/comments\//)) {
-      return NextResponse.json(
-        { error: 'URL must be a Reddit post (e.g., reddit.com/r/subreddit/comments/...)', requestId },
-        { status: 400 }
-      );
-    }
-
-    // Fetch the Reddit post as JSON
-    // Use old.reddit.com — less aggressive blocking than www.reddit.com
-    const oldRedditUrl = redditUrl.replace('https://www.reddit.com', 'https://old.reddit.com');
-    const jsonUrl = oldRedditUrl + '.json';
-    const redditResponse = await fetch(jsonUrl, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; SecondLook/1.0; +https://secondlook.health)',
-        'Accept': 'application/json',
-      },
-    });
-
-    if (!redditResponse.ok) {
-      return NextResponse.json(
-        { error: `Failed to fetch Reddit post: ${redditResponse.status} ${redditResponse.statusText}`, requestId },
-        { status: 502 }
-      );
-    }
-
-    const redditData = await redditResponse.json();
-
-    // Reddit returns an array: [post_listing, comments_listing]
-    const postData = redditData?.[0]?.data?.children?.[0]?.data;
-
-    if (!postData) {
-      return NextResponse.json(
-        { error: 'Could not parse Reddit response — post may be deleted or private', requestId },
-        { status: 404 }
-      );
-    }
-
-    const { selftext, title, subreddit, author } = postData;
-
-    if (!selftext || selftext.trim().length < 50) {
-      return NextResponse.json(
-        { error: 'Post has no text content or is too short — may be a link post or image', requestId },
-        { status: 400 }
-      );
-    }
+    const { title, selftext, subreddit, author, url } = input;
 
     // Use LLM to extract patient narrative and diagnosis info
     const systemPrompt = `You are a clinical data extraction specialist. You will receive a Reddit post from a health-related subreddit. Your job is to determine if it's a patient narrative and extract relevant clinical information.
@@ -144,7 +91,7 @@ IMPORTANT:
         title,
         subreddit,
         author,
-        url: redditUrl,
+        url,
       },
       requestId,
     });

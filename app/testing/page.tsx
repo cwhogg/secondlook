@@ -18,8 +18,6 @@ import { cn } from "@/lib/utils"
 
 // ===== CONSTANTS =====
 
-const STORAGE_KEY = "adminTestCases"
-
 const DIFFICULTY_LABELS: Record<number, string> = {
   1: "Easy",
   2: "Moderate",
@@ -69,18 +67,25 @@ const CATEGORY_OPTIONS = [
 
 // ===== HELPERS =====
 
-function loadTestCases(): TestCase[] {
-  if (typeof window === "undefined") return []
+async function loadTestCasesFromServer(): Promise<TestCase[]> {
   try {
-    const data = localStorage.getItem(STORAGE_KEY)
-    return data ? JSON.parse(data) : []
+    const res = await fetch("/api/admin/test-cases")
+    if (!res.ok) return []
+    const data = await res.json()
+    return data.testCases ?? []
   } catch {
     return []
   }
 }
 
-function saveTestCases(cases: TestCase[]) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(cases))
+function saveTestCasesToServer(cases: TestCase[]) {
+  fetch("/api/admin/test-cases", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ testCases: cases }),
+  }).catch(() => {
+    // Fire-and-forget — state is source of truth
+  })
 }
 
 function computeStats(cases: TestCase[]): TestSuiteStats | null {
@@ -834,16 +839,16 @@ export default function AdminPage() {
     }
   }
 
-  // Load from localStorage on mount
+  // Load from server on mount
   useEffect(() => {
-    setTestCases(loadTestCases())
+    loadTestCasesFromServer().then(setTestCases)
   }, [])
 
-  // Persist to localStorage on every change
+  // Persist to server on every change
   const updateTestCases = useCallback((updater: (prev: TestCase[]) => TestCase[]) => {
     setTestCases((prev) => {
       const next = updater(prev)
-      saveTestCases(next)
+      saveTestCasesToServer(next)
       return next
     })
   }, [])

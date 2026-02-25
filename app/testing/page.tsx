@@ -79,21 +79,25 @@ const ARCHETYPE_LABELS: Record<PatientArchetype, string> = {
 
 // ===== HELPERS =====
 
-function loadTestCases(): TestCase[] {
+async function loadTestCases(): Promise<TestCase[]> {
   try {
-    const data = localStorage.getItem("testCases")
-    return data ? JSON.parse(data) : []
+    const res = await fetch("/api/admin/test-cases")
+    if (!res.ok) return []
+    const data = await res.json()
+    return data.testCases ?? []
   } catch {
     return []
   }
 }
 
 function saveTestCases(cases: TestCase[]) {
-  try {
-    localStorage.setItem("testCases", JSON.stringify(cases))
-  } catch {
-    // localStorage full or unavailable — state is source of truth
-  }
+  fetch("/api/admin/test-cases", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ testCases: cases }),
+  }).catch(() => {
+    // Fire-and-forget — state is source of truth
+  })
 }
 
 function computeStats(cases: TestCase[]): TestSuiteStats | null {
@@ -866,12 +870,12 @@ export default function AdminPage() {
     }
   }
 
-  // Load from localStorage on mount
+  // Load from KV on mount
   useEffect(() => {
-    setTestCases(loadTestCases())
+    loadTestCases().then(setTestCases)
   }, [])
 
-  // Persist to localStorage on every change
+  // Persist to KV on every change
   const updateTestCases = useCallback((updater: (prev: TestCase[]) => TestCase[]) => {
     setTestCases((prev) => {
       const next = updater(prev)

@@ -62,6 +62,17 @@ export interface GenerationMetadata {
   durationMs: number;
 }
 
+// ===== RERUN SNAPSHOT =====
+
+export interface PreviousRunSnapshot {
+  score: number;
+  grade: LetterGrade;
+  correctDiagnosisRank: number | null;
+  inTop3: boolean;
+  inTop5: boolean;
+  ranAt: string; // ISO timestamp of when this run happened
+}
+
 // ===== TEST CASE LIFECYCLE =====
 
 export type TestCaseStatus = 'generated' | 'running' | 'completed' | 'graded' | 'error';
@@ -80,6 +91,7 @@ export interface TestCase {
   pipelineError?: string;
   grading?: TestGrading;
   gradingMetadata?: GenerationMetadata;
+  previousRun?: PreviousRunSnapshot;
 }
 
 // ===== AGGREGATE STATS =====

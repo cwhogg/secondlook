@@ -9,6 +9,7 @@ import type {
   GroundTruth,
   TestGrading,
   GenerationMetadata,
+  PreviousRunSnapshot,
 } from "@/lib/types/admin"
 import type { AnalysisResult, DiagnosisHypothesis, MappedSymptom } from "@/lib/types/index"
 import type { PipelineProgress } from "@/lib/types/pipeline"
@@ -634,7 +635,14 @@ function PipelineResultsSection({ result }: { result: AnalysisResult }) {
   )
 }
 
-function GradingSection({ grading }: { grading: TestGrading }) {
+function ScoreDelta({ delta }: { delta: number }) {
+  if (delta === 0) return <span className="text-xs text-[#8b7355]">(no change)</span>
+  const color = delta > 0 ? "text-green-600" : "text-red-600"
+  const sign = delta > 0 ? "+" : ""
+  return <span className={`text-xs font-bold ${color}`}>{sign}{delta}</span>
+}
+
+function GradingSection({ grading, previousRun }: { grading: TestGrading; previousRun?: PreviousRunSnapshot }) {
   return (
     <div className="border border-[#d4c5b0] bg-white p-4 space-y-3">
       <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">Grading</div>
@@ -652,6 +660,14 @@ function GradingSection({ grading }: { grading: TestGrading }) {
           </div>
         </div>
       </div>
+
+      {previousRun && (
+        <div className="bg-[#faf7f3] border border-[#e8ddd0] px-3 py-2 text-sm text-[#5a5a5a]">
+          Previous: <span className={`font-medium ${GRADE_COLORS[previousRun.grade] || "text-gray-600"}`}>{previousRun.grade}</span>{" "}
+          ({previousRun.score}) &rarr; Current: <span className={`font-medium ${GRADE_COLORS[grading.grade] || "text-gray-600"}`}>{grading.grade}</span>{" "}
+          ({grading.score}) <ScoreDelta delta={grading.score - previousRun.score} />
+        </div>
+      )}
 
       <div className="text-sm text-[#2a2a2a] font-serif italic">{grading.feedback}</div>
 
@@ -734,7 +750,12 @@ function TestHistoryRow({
       </div>
       <DifficultyBadge difficulty={tc.difficulty} />
       <StatusBadge status={tc.status} />
-      {tc.grading && <GradeBadge grading={tc.grading} />}
+      {tc.grading && (
+        <span className="flex items-center gap-1.5">
+          <GradeBadge grading={tc.grading} />
+          {tc.previousRun && <ScoreDelta delta={tc.grading.score - tc.previousRun.score} />}
+        </span>
+      )}
     </button>
   )
 }
@@ -754,6 +775,8 @@ export default function AdminPage() {
   const [isGenerating, setIsGenerating] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
   const [isGrading, setIsGrading] = useState(false)
+  const [isRerunning, setIsRerunning] = useState(false)
+  const [rerunProgress, setRerunProgress] = useState<{ current: number; total: number; diagnosis: string } | null>(null)
   const [pipelineEvents, setPipelineEvents] = useState<PipelineProgress[]>([])
   const [progressPercent, setProgressPercent] = useState(0)
   const [extractionStatus, setExtractionStatus] = useState<string | null>(null)
@@ -844,6 +867,8 @@ export default function AdminPage() {
     if (isGrading) return "active"
     return "pending"
   }
+
+  const isAnyRunning = isGenerating || isRunning || isGrading
 
   // ===== CORE HELPERS =====
 
@@ -1059,16 +1084,73 @@ export default function AdminPage() {
     }
   }
 
-  const handleRetryPipeline = async () => {
+  const snapshotPreviousRun = (tc: TestCase) => {
+    if (tc.grading) {
+      const snapshot: PreviousRunSnapshot = {
+        score: tc.grading.score,
+        grade: tc.grading.grade,
+        correctDiagnosisRank: tc.grading.correctDiagnosisRank,
+        inTop3: tc.grading.inTop3,
+        inTop5: tc.grading.inTop5,
+        ranAt: new Date().toISOString(),
+      }
+      updateTestCases((prev) =>
+        prev.map((c) => (c.id === tc.id ? { ...c, previousRun: snapshot } : c))
+      )
+    }
+  }
+
+  const handleRerun = async () => {
     if (!activeTest) return
     setError(null)
+    setIsRerunning(true)
+    setPipelineEvents([])
+    setProgressPercent(0)
+    setExtractionStatus(null)
     try {
+      snapshotPreviousRun(activeTest)
       const result = await doRunPipeline(activeTest.id, activeTest.generatedPatient)
       await doGrade(activeTest.id, activeTest.groundTruth, result, activeTest.difficulty)
     } catch (err: any) {
       if (!(err instanceof DOMException && err.name === "AbortError")) {
         setError(err.message)
       }
+    } finally {
+      setIsRerunning(false)
+    }
+  }
+
+  const handleRerunAll = async () => {
+    const gradedTests = testCases.filter((tc) => tc.status === "graded" && tc.grading)
+    if (gradedTests.length === 0) return
+    setError(null)
+    setIsRerunning(true)
+    setRerunProgress({ current: 0, total: gradedTests.length, diagnosis: "" })
+    try {
+      for (let i = 0; i < gradedTests.length; i++) {
+        const tc = gradedTests[i]
+        setRerunProgress({ current: i + 1, total: gradedTests.length, diagnosis: tc.groundTruth.diagnosis })
+        setActiveTestId(tc.id)
+        setPipelineEvents([])
+        setProgressPercent(0)
+        setExtractionStatus(null)
+        snapshotPreviousRun(tc)
+        try {
+          const result = await doRunPipeline(tc.id, tc.generatedPatient)
+          await doGrade(tc.id, tc.groundTruth, result, tc.difficulty)
+        } catch (err: any) {
+          if (err instanceof DOMException && err.name === "AbortError") throw err
+          // Continue to next test on individual failure
+          continue
+        }
+      }
+    } catch (err: any) {
+      if (!(err instanceof DOMException && err.name === "AbortError")) {
+        setError(err.message)
+      }
+    } finally {
+      setIsRerunning(false)
+      setRerunProgress(null)
     }
   }
 
@@ -1196,23 +1278,45 @@ export default function AdminPage() {
               </select>
             </div>
 
-            <button
-              onClick={handleRunNewTest}
-              disabled={isGenerating || isRunning || isGrading}
-              className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              {isGenerating ? "Generating Patient..." : isRunning ? "Running Pipeline..." : isGrading ? "Grading..." : "Run New Test"}
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handleRunNewTest}
+                disabled={isAnyRunning}
+                className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                {isGenerating ? "Generating Patient..." : isRunning ? "Running Pipeline..." : isGrading ? "Grading..." : "Run New Test"}
+              </button>
+              {testCases.some((tc) => tc.status === "graded") && (
+                <button
+                  onClick={handleRerunAll}
+                  disabled={isAnyRunning}
+                  className="px-6 py-2 border border-[#8b2500] text-[#8b2500] text-sm font-medium hover:bg-[#8b2500] hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  {isRerunning ? "Rerunning..." : "Rerun All"}
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
         {/* Inline progress when running */}
-        {(isGenerating || isRunning || isGrading) && (
+        {isAnyRunning && (
           <div className="border border-[#d4c5b0] bg-white p-5 mb-6">
+            {/* Rerun-all progress banner */}
+            {rerunProgress && (
+              <div className="text-sm text-[#5a5a5a] mb-3">
+                Rerunning test {rerunProgress.current} of {rerunProgress.total}: <span className="font-serif font-medium text-[#2a2a2a]">{rerunProgress.diagnosis}</span>
+              </div>
+            )}
+
             {/* Step indicators */}
             <div className="flex items-center gap-3 mb-4">
-              <StepIndicator label="Generate" status={getStepStatus("generate")} />
-              <div className="flex-1 h-px bg-[#e8ddd0]" />
+              {!isRerunning && (
+                <>
+                  <StepIndicator label="Generate" status={getStepStatus("generate")} />
+                  <div className="flex-1 h-px bg-[#e8ddd0]" />
+                </>
+              )}
               <StepIndicator label="Pipeline" status={getStepStatus("pipeline")} />
               <div className="flex-1 h-px bg-[#e8ddd0]" />
               <StepIndicator label="Grade" status={getStepStatus("grade")} />
@@ -1277,15 +1381,15 @@ export default function AdminPage() {
                 <ExtractedSymptomsSection symptoms={currentActiveTest.extractedSymptoms} />
               )}
 
-              {/* Retry Pipeline — only for error state */}
-              {currentActiveTest.status === "error" && !isRunning && !isGenerating && (
+              {/* Rerun — for completed, graded, or error states */}
+              {(currentActiveTest.status === "completed" || currentActiveTest.status === "graded" || currentActiveTest.status === "error") && !isAnyRunning && (
                 <div className="flex items-center gap-3">
                   <button
-                    onClick={handleRetryPipeline}
-                    disabled={isRunning}
+                    onClick={handleRerun}
+                    disabled={isAnyRunning}
                     className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                   >
-                    Retry Pipeline
+                    Rerun
                   </button>
                   {currentActiveTest.pipelineError && (
                     <span className="text-sm text-red-600">Error: {currentActiveTest.pipelineError}</span>
@@ -1327,7 +1431,7 @@ export default function AdminPage() {
               )}
 
               {/* Grading Results */}
-              {currentActiveTest.grading && <GradingSection grading={currentActiveTest.grading} />}
+              {currentActiveTest.grading && <GradingSection grading={currentActiveTest.grading} previousRun={currentActiveTest.previousRun} />}
 
               {/* Re-grade button — for already graded tests or completed tests that failed grading */}
               {currentActiveTest.pipelineResult?.differentialDiagnoses?.length && !isGrading && !isRunning && !isGenerating && (

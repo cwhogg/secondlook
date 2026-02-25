@@ -72,22 +72,27 @@ export class TriageAgent extends BaseAgent {
 
     const { bodySystems, acuityLevel, triageReasoning } = result.content;
 
-    // Determine relevant specialties from body systems
-    const specialtySet = new Set<SpecialistType>();
+    // Ensure every body system gets at least its primary specialist
+    const primaryBySystem: SpecialistType[] = [];
+    const allSpecialists = new Set<SpecialistType>();
+
     for (const system of bodySystems) {
       const specialists = SYSTEM_TO_SPECIALIST[system] || [];
-      specialists.forEach((s) => specialtySet.add(s));
+      if (specialists.length > 0 && !allSpecialists.has(specialists[0])) {
+        primaryBySystem.push(specialists[0]);
+      }
+      specialists.forEach((s) => allSpecialists.add(s));
     }
+
+    // Primary specialists first (guarantees every body system has representation),
+    // then secondaries, capped at 4 domain specialists
+    const secondaries = Array.from(allSpecialists)
+      .filter((s) => s !== 'general-internist' && !primaryBySystem.includes(s));
+    const domainSpecialists = [...primaryBySystem, ...secondaries].slice(0, 4);
 
     // Always include general-internist as the un-anchored counterweight agent.
     // It receives NO KB profiles and reasons purely from training data, providing
     // a check against the other specialists' KB anchoring bias.
-    specialtySet.add('general-internist');
-
-    // Take up to 4 domain specialists + always include general-internist
-    const domainSpecialists = Array.from(specialtySet)
-      .filter((s) => s !== 'general-internist')
-      .slice(0, 3); // max 3 domain specialists
     const relevantSpecialties = [...domainSpecialists, 'general-internist' as SpecialistType];
 
     // Retrieve candidate diseases from knowledge base (async — uses semantic search if embeddings available)

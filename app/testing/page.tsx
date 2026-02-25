@@ -776,7 +776,6 @@ export default function AdminPage() {
   const [isRunning, setIsRunning] = useState(false)
   const [isGrading, setIsGrading] = useState(false)
   const [isRerunning, setIsRerunning] = useState(false)
-  const [rerunProgress, setRerunProgress] = useState<{ current: number; total: number; diagnosis: string } | null>(null)
   const [pipelineEvents, setPipelineEvents] = useState<PipelineProgress[]>([])
   const [progressPercent, setProgressPercent] = useState(0)
   const [extractionStatus, setExtractionStatus] = useState<string | null>(null)
@@ -1095,7 +1094,7 @@ export default function AdminPage() {
         ranAt: new Date().toISOString(),
       }
       updateTestCases((prev) =>
-        prev.map((c) => (c.id === tc.id ? { ...c, previousRun: snapshot } : c))
+        prev.map((c) => (c.id === tc.id ? { ...c, previousRun: snapshot, pipelineResult: undefined, grading: undefined, gradingMetadata: undefined, pipelineError: undefined } : c))
       )
     }
   }
@@ -1117,40 +1116,6 @@ export default function AdminPage() {
       }
     } finally {
       setIsRerunning(false)
-    }
-  }
-
-  const handleRerunAll = async () => {
-    const gradedTests = testCases.filter((tc) => tc.status === "graded" && tc.grading)
-    if (gradedTests.length === 0) return
-    setError(null)
-    setIsRerunning(true)
-    setRerunProgress({ current: 0, total: gradedTests.length, diagnosis: "" })
-    try {
-      for (let i = 0; i < gradedTests.length; i++) {
-        const tc = gradedTests[i]
-        setRerunProgress({ current: i + 1, total: gradedTests.length, diagnosis: tc.groundTruth.diagnosis })
-        setActiveTestId(tc.id)
-        setPipelineEvents([])
-        setProgressPercent(0)
-        setExtractionStatus(null)
-        snapshotPreviousRun(tc)
-        try {
-          const result = await doRunPipeline(tc.id, tc.generatedPatient)
-          await doGrade(tc.id, tc.groundTruth, result, tc.difficulty)
-        } catch (err: any) {
-          if (err instanceof DOMException && err.name === "AbortError") throw err
-          // Continue to next test on individual failure
-          continue
-        }
-      }
-    } catch (err: any) {
-      if (!(err instanceof DOMException && err.name === "AbortError")) {
-        setError(err.message)
-      }
-    } finally {
-      setIsRerunning(false)
-      setRerunProgress(null)
     }
   }
 
@@ -1278,37 +1243,19 @@ export default function AdminPage() {
               </select>
             </div>
 
-            <div className="flex items-center gap-3">
-              <button
-                onClick={handleRunNewTest}
-                disabled={isAnyRunning}
-                className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              >
-                {isGenerating ? "Generating Patient..." : isRunning ? "Running Pipeline..." : isGrading ? "Grading..." : "Run New Test"}
-              </button>
-              {testCases.some((tc) => tc.status === "graded") && (
-                <button
-                  onClick={handleRerunAll}
-                  disabled={isAnyRunning}
-                  className="px-6 py-2 border border-[#8b2500] text-[#8b2500] text-sm font-medium hover:bg-[#8b2500] hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  {isRerunning ? "Rerunning..." : "Rerun All"}
-                </button>
-              )}
-            </div>
+            <button
+              onClick={handleRunNewTest}
+              disabled={isAnyRunning}
+              className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              {isGenerating ? "Generating Patient..." : isRunning ? "Running Pipeline..." : isGrading ? "Grading..." : "Run New Test"}
+            </button>
           </div>
         </div>
 
         {/* Inline progress when running */}
         {isAnyRunning && (
           <div className="border border-[#d4c5b0] bg-white p-5 mb-6">
-            {/* Rerun-all progress banner */}
-            {rerunProgress && (
-              <div className="text-sm text-[#5a5a5a] mb-3">
-                Rerunning test {rerunProgress.current} of {rerunProgress.total}: <span className="font-serif font-medium text-[#2a2a2a]">{rerunProgress.diagnosis}</span>
-              </div>
-            )}
-
             {/* Step indicators */}
             <div className="flex items-center gap-3 mb-4">
               {!isRerunning && (

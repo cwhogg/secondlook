@@ -157,7 +157,7 @@ function DNAHelix() {
 // Gold Divider Component
 function GoldDivider({ wide = false }: { wide?: boolean }) {
   return (
-    <div className={`flex items-center justify-center gap-6 ${wide ? 'max-w-[1140px] px-8' : 'max-w-[600px]'} mx-auto`}>
+    <div className={`flex items-center justify-center gap-6 ${wide ? 'max-w-[1140px] px-4 sm:px-8' : 'max-w-[600px] px-4 sm:px-0'} mx-auto`}>
       <div className="flex-1 h-px bg-[#c9a96e]" />
       <div className="w-[7px] h-[7px] bg-[#c9a96e] rotate-45 flex-shrink-0" />
       <div className="flex-1 h-px bg-[#c9a96e]" />
@@ -176,16 +176,16 @@ function TimelineStep({
   description: string
 }) {
   return (
-    <div className="relative pb-12 last:pb-0">
+    <div className="relative pb-10 sm:pb-12 last:pb-0">
       {/* Roman numeral */}
-      <div className="absolute -left-20 md:-left-20 top-0 w-10 text-center font-serif text-2xl text-[#c9a96e]">
+      <div className="absolute -left-10 sm:-left-20 top-0 w-8 sm:w-10 text-center font-serif text-lg sm:text-2xl text-[#c9a96e]">
         {number}
       </div>
       {/* Red dot */}
-      <div className="absolute -left-[11px] md:-left-[11px] top-2 w-[5px] h-[5px] bg-[#8b2500] rounded-full" />
+      <div className="absolute -left-[11px] sm:-left-[11px] top-2 w-[5px] h-[5px] bg-[#8b2500] rounded-full" />
       {/* Content */}
-      <h3 className="font-serif text-xl font-medium text-[#1a1a1a] mb-2 leading-tight">{title}</h3>
-      <p className="font-serif-body text-[15px] leading-relaxed text-[#5a5a5a] max-w-[520px]">{description}</p>
+      <h3 className="font-serif text-lg sm:text-xl font-medium text-[#1a1a1a] mb-2 leading-tight">{title}</h3>
+      <p className="font-serif-body text-sm sm:text-[15px] leading-relaxed text-[#5a5a5a] max-w-[520px]">{description}</p>
     </div>
   )
 }
@@ -195,12 +195,12 @@ function ResourcesSection() {
   if (posts.length === 0) return null
 
   return (
-    <section className="max-w-[1140px] mx-auto px-8 py-16">
-      <div className="text-center mb-10">
-        <h2 className="font-serif text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-6">
+    <section className="max-w-[1140px] mx-auto px-4 sm:px-8 py-12 sm:py-16">
+      <div className="text-center mb-8 sm:mb-10">
+        <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4 sm:mb-6">
           Health Resources &amp; Rare Disease Guides
         </h2>
-        <p className="font-serif-body text-xl text-[#5a5a5a] max-w-3xl mx-auto leading-relaxed">
+        <p className="font-serif-body text-lg sm:text-xl text-[#5a5a5a] max-w-3xl mx-auto leading-relaxed">
           Explore our guides on rare disease diagnosis, navigating complex medical cases, and making the most of AI symptom checkers on your health journey.
         </p>
       </div>
@@ -258,15 +258,15 @@ export default function HomePage() {
 
       {/* Navigation */}
       <nav className="border-b border-[#d4c5b0]">
-        <div className="max-w-[1140px] mx-auto px-8 py-6 flex justify-between items-baseline">
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-8 py-4 sm:py-6 flex justify-between items-baseline">
           <Link href="/" className="font-serif text-[1.35rem] font-semibold tracking-[0.01em]">
             <span className="text-[#1a1a1a]">Second</span>
             <span className="text-[#8b2500]">Look</span>
           </Link>
-          <div className="flex gap-9 items-baseline">
+          <div className="flex gap-4 sm:gap-9 items-baseline">
             <Link
               href="/blog"
-              className="font-sans text-[0.82rem] font-medium text-[#5a5a5a] uppercase tracking-[0.03em] hover:text-[#1a1a1a] transition-colors"
+              className="font-sans text-[0.82rem] font-medium text-[#5a5a5a] uppercase tracking-[0.03em] hover:text-[#1a1a1a] transition-colors hidden sm:inline"
             >
               Resources
             </Link>
@@ -281,28 +281,28 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section id="main-content" className="py-20 md:py-[5rem]">
-        <div className="max-w-[1140px] mx-auto px-8 grid grid-cols-1 md:grid-cols-[1fr_0.65fr] gap-12 items-center">
+      <section id="main-content" className="py-12 sm:py-20 md:py-[5rem]">
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-8 grid grid-cols-1 md:grid-cols-[1fr_0.65fr] gap-8 sm:gap-12 items-center">
           {/* Text Content */}
           <div className="max-w-[600px]">
             {/* Trust Badges */}
-            <div className="flex flex-wrap items-center gap-4 mb-8">
-              <div className="flex items-center space-x-2 border border-[#d4c5b0] px-4 py-2">
-                <Shield className="h-4 w-4 text-[#8b2500]" />
-                <span className="font-sans text-xs font-medium text-[#5a5a5a] uppercase tracking-wide">HIPAA Compliant</span>
+            <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-6 sm:mb-8">
+              <div className="flex items-center space-x-1.5 sm:space-x-2 border border-[#d4c5b0] px-2.5 sm:px-4 py-1.5 sm:py-2">
+                <Shield className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#8b2500]" />
+                <span className="font-sans text-[10px] sm:text-xs font-medium text-[#5a5a5a] uppercase tracking-wide">HIPAA Compliant</span>
               </div>
-              <div className="flex items-center space-x-2 border border-[#d4c5b0] px-4 py-2">
-                <CheckCircle className="h-4 w-4 text-[#8b2500]" />
-                <span className="font-sans text-xs font-medium text-[#5a5a5a] uppercase tracking-wide">MD Reviewed</span>
+              <div className="flex items-center space-x-1.5 sm:space-x-2 border border-[#d4c5b0] px-2.5 sm:px-4 py-1.5 sm:py-2">
+                <CheckCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#8b2500]" />
+                <span className="font-sans text-[10px] sm:text-xs font-medium text-[#5a5a5a] uppercase tracking-wide">MD Reviewed</span>
               </div>
-              <div className="flex items-center space-x-2 border border-[#d4c5b0] px-4 py-2">
-                <Lock className="h-4 w-4 text-[#c9a96e]" />
-                <span className="font-sans text-xs font-medium text-[#5a5a5a] uppercase tracking-wide">Bank-Level Encryption</span>
+              <div className="flex items-center space-x-1.5 sm:space-x-2 border border-[#d4c5b0] px-2.5 sm:px-4 py-1.5 sm:py-2">
+                <Lock className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#c9a96e]" />
+                <span className="font-sans text-[10px] sm:text-xs font-medium text-[#5a5a5a] uppercase tracking-wide">Encrypted</span>
               </div>
             </div>
 
             {/* Headline */}
-            <h1 className="font-serif text-[2.6rem] md:text-[3.4rem] font-normal leading-[1.12] text-[#1a1a1a] mb-7 tracking-[-0.01em]">
+            <h1 className="font-serif text-[2rem] sm:text-[2.6rem] md:text-[3.4rem] font-normal leading-[1.12] text-[#1a1a1a] mb-5 sm:mb-7 tracking-[-0.01em]">
               Find Your Rare Diagnosis <em className="text-[#8b2500]">in Minutes.</em>
             </h1>
 
@@ -328,7 +328,9 @@ export default function HomePage() {
 
           {/* DNA Helix Decoration */}
           <div className="flex justify-center items-center order-first md:order-last">
-            <DNAHelix />
+            <div className="max-w-[240px] sm:max-w-[380px]">
+              <DNAHelix />
+            </div>
           </div>
         </div>
       </section>
@@ -339,8 +341,8 @@ export default function HomePage() {
       </div>
 
       {/* Medical Notice */}
-      <section className="py-14">
-        <div className="max-w-[700px] mx-auto px-8">
+      <section className="py-10 sm:py-14">
+        <div className="max-w-[700px] mx-auto px-4 sm:px-8">
           <div className="border border-[#d4c5b0] border-t-2 border-t-[#8b2500] bg-white p-8 md:px-10">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-[#8b2500] flex items-center justify-center flex-shrink-0">
@@ -358,8 +360,8 @@ export default function HomePage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-[4.5rem]">
-        <div className="max-w-[1140px] mx-auto px-8">
+      <section className="py-12 sm:py-[4.5rem]">
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
             {/* Feature 1 */}
             <div className="py-6 md:px-8 md:border-r border-[#d4c5b0] first:pl-0 border-b md:border-b-0">
@@ -409,20 +411,20 @@ export default function HomePage() {
       </div>
 
       {/* How It Works - Timeline */}
-      <section className="py-16">
-        <div className="max-w-[820px] mx-auto px-8">
+      <section className="py-12 sm:py-16">
+        <div className="max-w-[820px] mx-auto px-4 sm:px-8">
           {/* Section Header */}
-          <div className="text-center mb-14">
-            <h2 className="font-serif text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4">
+          <div className="text-center mb-10 sm:mb-14">
+            <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4">
               How SecondLook Works
             </h2>
-            <p className="font-serif-body text-xl text-[#5a5a5a] max-w-3xl mx-auto leading-relaxed">
+            <p className="font-serif-body text-lg sm:text-xl text-[#5a5a5a] max-w-3xl mx-auto leading-relaxed">
               Our simple 4-step process helps you get expert medical insights quickly and securely.
             </p>
           </div>
 
           {/* Timeline */}
-          <div className="relative pl-20 before:content-[''] before:absolute before:left-[33px] before:top-1 before:bottom-1 before:w-px before:bg-[#d4c5b0]">
+          <div className="relative pl-10 sm:pl-20 before:content-[''] before:absolute before:left-[13px] sm:before:left-[33px] before:top-1 before:bottom-1 before:w-px before:bg-[#d4c5b0]">
             <TimelineStep
               number="I"
               title="Share Your Health Story"
@@ -454,7 +456,7 @@ export default function HomePage() {
 
       {/* SEO Paragraph */}
       <section className="py-8">
-        <div className="max-w-[820px] mx-auto px-8">
+        <div className="max-w-[820px] mx-auto px-4 sm:px-8">
           <p className="font-serif-body text-center text-[#5a5a5a] leading-relaxed">
             Whether you&apos;re searching for a medical second opinion, exploring an AI symptom checker for rare diseases,
             or looking for help with a complex diagnosis, SecondLook provides the analytical depth that standard tools lack.
@@ -472,9 +474,9 @@ export default function HomePage() {
       </div>
 
       {/* Final CTA Section */}
-      <section className="py-[4.5rem] text-center">
-        <div className="max-w-[480px] mx-auto px-8">
-          <h2 className="font-serif text-[2rem] font-normal text-[#1a1a1a] mb-4 leading-snug">
+      <section className="py-12 sm:py-[4.5rem] text-center">
+        <div className="max-w-[480px] mx-auto px-4 sm:px-8">
+          <h2 className="font-serif text-[1.5rem] sm:text-[2rem] font-normal text-[#1a1a1a] mb-4 leading-snug">
             Ready to explore your health?
           </h2>
           <p className="font-serif-body text-[1.05rem] text-[#5a5a5a] leading-relaxed mb-9">
@@ -497,8 +499,8 @@ export default function HomePage() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-[#d4c5b0] pt-10 pb-8">
-        <div className="max-w-[1140px] mx-auto px-8">
+      <footer className="border-t border-[#d4c5b0] pt-8 sm:pt-10 pb-8">
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-8">
           {/* Top Row */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-baseline gap-4 mb-3">
             <div className="flex flex-col md:flex-row items-start md:items-baseline gap-2 md:gap-8">

@@ -235,7 +235,7 @@ function StatsBanner({ stats }: { stats: TestSuiteStats }) {
   return (
     <div className="border border-[#d4c5b0] bg-white mb-6">
       {/* Overall metrics */}
-      <div className="grid grid-cols-5 divide-x divide-[#e8ddd0]">
+      <div className="grid grid-cols-2 sm:grid-cols-5 divide-x divide-[#e8ddd0]">
         <div className="p-4 sm:p-5">
           <div className="text-[10px] uppercase tracking-wider text-[#8b7355] mb-1.5">Tests</div>
           <div className="text-2xl font-bold font-serif text-[#2a2a2a]">
@@ -262,8 +262,8 @@ function StatsBanner({ stats }: { stats: TestSuiteStats }) {
 
       {/* By-difficulty breakdown table */}
       {difficultyEntries.length > 0 && (
-        <div className="border-t border-[#d4c5b0]">
-          <table className="w-full text-sm">
+        <div className="border-t border-[#d4c5b0] overflow-x-auto">
+          <table className="w-full text-sm min-w-[480px]">
             <thead>
               <tr className="border-b border-[#e8ddd0] bg-[#faf7f2]">
                 <th className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Difficulty</th>
@@ -774,11 +774,11 @@ function TestHistoryRow({
   return (
     <button
       onClick={onClick}
-      className={`w-full text-left px-4 py-3 flex items-center gap-3 border-b border-[#e8ddd0] hover:bg-[#faf7f3] transition-colors ${
+      className={`w-full text-left px-3 sm:px-4 py-3 flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3 border-b border-[#e8ddd0] hover:bg-[#faf7f3] transition-colors ${
         isActive ? "bg-[#faf7f3] border-l-2 border-l-[#8b2500]" : ""
       }`}
     >
-      <div className="flex-1 min-w-0">
+      <div className="flex-1 min-w-0 w-full sm:w-auto">
         <div className="text-sm font-serif text-[#2a2a2a] truncate flex items-center gap-1.5">
           {tc.source === 'reddit-import' && (
             <span className="inline-block w-4 h-4 shrink-0 text-orange-500" title="Reddit import">
@@ -791,14 +791,16 @@ function TestHistoryRow({
           {date.toLocaleDateString()} {date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
         </div>
       </div>
-      <DifficultyBadge difficulty={tc.difficulty} />
-      <StatusBadge status={tc.status} />
-      {tc.grading && (
-        <span className="flex items-center gap-1.5">
-          <GradeBadge grading={tc.grading} />
-          {tc.previousRun && <ScoreDelta delta={tc.grading.score - tc.previousRun.score} />}
-        </span>
-      )}
+      <div className="flex items-center gap-2 flex-wrap">
+        <DifficultyBadge difficulty={tc.difficulty} />
+        <StatusBadge status={tc.status} />
+        {tc.grading && (
+          <span className="flex items-center gap-1.5">
+            <GradeBadge grading={tc.grading} />
+            {tc.previousRun && <ScoreDelta delta={tc.grading.score - tc.previousRun.score} />}
+          </span>
+        )}
+      </div>
     </button>
   )
 }
@@ -1348,7 +1350,7 @@ export default function AdminPage() {
       <div className="max-w-5xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold font-serif text-[#2a2a2a]">Clinical Testing Framework</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold font-serif text-[#2a2a2a]">Clinical Testing Framework</h1>
           <p className="text-sm text-[#8b7355] mt-1">
             Generate synthetic patients, run the diagnostic pipeline, and grade accuracy
           </p>
@@ -1447,7 +1449,7 @@ export default function AdminPage() {
           {testMode === 'reddit' && (
             <div className="space-y-4">
               {/* URL input */}
-              <div className="flex items-end gap-3">
+              <div className="flex flex-col sm:flex-row sm:items-end gap-3">
                 <div className="flex-1">
                   <label className="block text-xs text-[#8b7355] mb-1">Reddit Post URL</label>
                   <input
@@ -1541,7 +1543,7 @@ export default function AdminPage() {
                         />
                       </div>
 
-                      <div className="grid grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
                           <label className="block text-xs text-[#8b7355] mb-1">Expected Body Systems (comma-separated)</label>
                           <input
@@ -1626,13 +1628,15 @@ export default function AdminPage() {
         {/* Active Test Detail */}
         {currentActiveTest && (
           <div className="border border-[#d4c5b0] bg-white mb-6">
-            <div className="px-4 py-3 border-b border-[#e8ddd0] flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <h2 className="text-lg font-serif font-bold text-[#2a2a2a]">
+            <div className="px-4 py-3 border-b border-[#e8ddd0] flex flex-wrap items-center justify-between gap-2">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 min-w-0">
+                <h2 className="text-base sm:text-lg font-serif font-bold text-[#2a2a2a] break-words">
                   {currentActiveTest.groundTruth.diagnosis}
                 </h2>
-                <DifficultyBadge difficulty={currentActiveTest.difficulty} />
-                <StatusBadge status={currentActiveTest.status} />
+                <div className="flex items-center gap-2">
+                  <DifficultyBadge difficulty={currentActiveTest.difficulty} />
+                  <StatusBadge status={currentActiveTest.status} />
+                </div>
               </div>
               <button
                 onClick={() => handleDelete(currentActiveTest.id)}

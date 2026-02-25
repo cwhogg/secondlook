@@ -3,10 +3,6 @@ import { z } from 'zod';
 import { callAnthropic } from '@/lib/anthropic';
 
 const inputSchema = z.object({
-  title: z.string(),
-  selftext: z.string().min(50, 'Post text is too short'),
-  subreddit: z.string(),
-  author: z.string(),
   url: z.string().url(),
 });
 
@@ -32,7 +28,54 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const { title, selftext, subreddit, author, url } = input;
+    // Normalize Reddit URL
+    let redditUrl = input.url.trim().split('?')[0].replace(/\/+$/, '');
+    redditUrl = redditUrl
+      .replace(/^https?:\/\/old\.reddit\.com/, 'https://www.reddit.com')
+      .replace(/^https?:\/\/reddit\.com/, 'https://www.reddit.com');
+
+    if (!redditUrl.match(/reddit\.com\/r\/\w+\/comments\//)) {
+      return NextResponse.json(
+        { error: 'URL must be a Reddit post (e.g., reddit.com/r/subreddit/comments/...)', requestId },
+        { status: 400 }
+      );
+    }
+
+    // Fetch the Reddit post as JSON (requires browser-like User-Agent)
+    const jsonUrl = redditUrl + '.json';
+    const redditResponse = await fetch(jsonUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,application/json;q=0.8,*/*;q=0.7',
+        'Accept-Language': 'en-US,en;q=0.5',
+      },
+    });
+
+    if (!redditResponse.ok) {
+      return NextResponse.json(
+        { error: `Failed to fetch Reddit post: ${redditResponse.status} ${redditResponse.statusText}`, requestId },
+        { status: 502 }
+      );
+    }
+
+    const redditData = await redditResponse.json();
+    const postData = redditData?.[0]?.data?.children?.[0]?.data;
+
+    if (!postData) {
+      return NextResponse.json(
+        { error: 'Could not parse Reddit response — post may be deleted or private', requestId },
+        { status: 404 }
+      );
+    }
+
+    const { selftext, title, subreddit, author } = postData;
+
+    if (!selftext || selftext.trim().length < 50) {
+      return NextResponse.json(
+        { error: 'Post has no text content or is too short — may be a link post or image', requestId },
+        { status: 400 }
+      );
+    }
 
     // Use LLM to extract patient narrative and diagnosis info
     const systemPrompt = `You are a clinical data extraction specialist. You will receive a Reddit post from a health-related subreddit. Your job is to determine if it's a patient narrative and extract relevant clinical information.
@@ -91,7 +134,7 @@ IMPORTANT:
         title,
         subreddit,
         author,
-        url,
+        url: redditUrl,
       },
       requestId,
     });

@@ -1199,42 +1199,14 @@ export default function AdminPage() {
     setIsFetchingReddit(true)
     setRedditPreview(null)
     try {
-      // Fetch Reddit JSON from the browser (avoids server-side 403 blocks)
-      let normalizedUrl = redditUrl.trim().split('?')[0].replace(/\/+$/, '')
-      normalizedUrl = normalizedUrl
-        .replace(/^https?:\/\/old\.reddit\.com/, 'https://www.reddit.com')
-        .replace(/^https?:\/\/reddit\.com/, 'https://www.reddit.com')
-
-      if (!normalizedUrl.match(/reddit\.com\/r\/\w+\/comments\//)) {
-        throw new Error('URL must be a Reddit post (e.g., reddit.com/r/subreddit/comments/...)')
-      }
-
-      const jsonUrl = normalizedUrl + '.json'
-      const redditResponse = await fetch(jsonUrl)
-      if (!redditResponse.ok) {
-        throw new Error(`Failed to fetch Reddit post: ${redditResponse.status} ${redditResponse.statusText}`)
-      }
-
-      const redditData = await redditResponse.json()
-      const postData = redditData?.[0]?.data?.children?.[0]?.data
-      if (!postData) {
-        throw new Error('Could not parse Reddit response — post may be deleted or private')
-      }
-
-      const { selftext, title, subreddit, author } = postData
-      if (!selftext || selftext.trim().length < 50) {
-        throw new Error('Post has no text content or is too short — may be a link post or image')
-      }
-
-      // Send post data to API for LLM analysis
       const response = await fetch("/api/admin/import-reddit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, selftext, subreddit, author, url: normalizedUrl }),
+        body: JSON.stringify({ url: redditUrl }),
       })
       if (!response.ok) {
         const err = await response.json()
-        throw new Error(err.error || `Analysis failed: ${response.statusText}`)
+        throw new Error(err.error || `Fetch failed: ${response.statusText}`)
       }
       const data = await response.json()
       setRedditPreview(data)

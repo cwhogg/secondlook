@@ -10,7 +10,7 @@ const demographicsSchema = z.object({
 });
 
 const chiefComplaintSchema = z.object({
-  description: z.string().min(10, 'Chief complaint must be at least 10 characters'),
+  description: z.string().default(''),
   duration: z.string().optional(),
   severity: z.number().min(1).max(10).optional(),
   bodyRegions: z.array(z.string()).optional(),

@@ -49,10 +49,13 @@ export async function POST(request: NextRequest) {
     }
 
     // Fetch the Reddit post as JSON
-    const jsonUrl = redditUrl + '.json';
+    // Use old.reddit.com — less aggressive blocking than www.reddit.com
+    const oldRedditUrl = redditUrl.replace('https://www.reddit.com', 'https://old.reddit.com');
+    const jsonUrl = oldRedditUrl + '.json';
     const redditResponse = await fetch(jsonUrl, {
       headers: {
-        'User-Agent': 'SecondLook:diagnostic-testing:v1.0 (research tool)',
+        'User-Agent': 'Mozilla/5.0 (compatible; SecondLook/1.0; +https://secondlook.health)',
+        'Accept': 'application/json',
       },
     });
 

@@ -2,12 +2,23 @@ import type { AnalysisResult, MappedSymptom, PipelineMetadata } from './index';
 
 // ===== GENERATION TYPES =====
 
+export type PatientArchetype =
+  | 'researcher'          // Googled extensively, uses medical jargon (sometimes wrong)
+  | 'minimizer'           // Downplays everything, omits details they think are minor
+  | 'storyteller'         // Exhaustive chronological narrative with life context
+  | 'frustrated-chronic'  // Seen many doctors, tired and skeptical
+  | 'anxious'             // Catastrophizes, mixes real symptoms with anxiety-driven concerns
+  | 'stoic'               // Brief, matter-of-fact, minimal elaboration
+  | 'caregiver-proxy'     // Family member describing patient's symptoms secondhand
+  | 'elderly-vague';      // Temporal imprecision, attributes symptoms to aging
+
 export interface GeneratedSymptom {
   originalPhrase: string;
   medicalTerm: string;
   bodySystem: string;
   severity: 'mild' | 'moderate' | 'severe';
   duration: string;
+  mentionedInNarrative?: boolean; // false = intentionally omitted from narrative
 }
 
 export interface GeneratedPatient {
@@ -60,6 +71,9 @@ export interface GenerationMetadata {
   model: string;
   tokensUsed: number;
   durationMs: number;
+  archetype?: PatientArchetype;
+  source?: 'generated' | 'reddit-import';
+  redditUrl?: string;
 }
 
 // ===== RERUN SNAPSHOT =====
@@ -83,6 +97,7 @@ export interface TestCase {
   difficulty: number;
   categoryHint?: string;
   status: TestCaseStatus;
+  source?: 'generated' | 'reddit-import';
   groundTruth: GroundTruth;
   generatedPatient: GeneratedPatient;
   generationMetadata: GenerationMetadata;

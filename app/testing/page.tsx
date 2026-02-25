@@ -10,6 +10,7 @@ import type {
   TestGrading,
   GenerationMetadata,
   PreviousRunSnapshot,
+  PatientArchetype,
 } from "@/lib/types/admin"
 import type { AnalysisResult, DiagnosisHypothesis, MappedSymptom } from "@/lib/types/index"
 import type { PipelineProgress } from "@/lib/types/pipeline"
@@ -64,6 +65,17 @@ const CATEGORY_OPTIONS = [
   "psychiatric",
   "oncological",
 ]
+
+const ARCHETYPE_LABELS: Record<PatientArchetype, string> = {
+  'researcher': 'Researcher',
+  'minimizer': 'Minimizer',
+  'storyteller': 'Storyteller',
+  'frustrated-chronic': 'Frustrated Chronic',
+  'anxious': 'Anxious',
+  'stoic': 'Stoic',
+  'caregiver-proxy': 'Caregiver Proxy',
+  'elderly-vague': 'Elderly Vague',
+}
 
 // ===== HELPERS =====
 
@@ -199,10 +211,10 @@ async function buildPatientCase(
       symptomPatterns: null,
       patientHypothesis: null,
       medicalHistory: {
-        currentMedications: [],
-        pastMedicalHistory: [],
-        familyHistory: [],
-        recentTests: [],
+        currentMedications: patient.medicalHistory?.currentMedications || [],
+        pastMedicalHistory: patient.medicalHistory?.pastMedicalHistory || [],
+        familyHistory: patient.medicalHistory?.familyHistory || [],
+        recentTests: patient.medicalHistory?.recentTests || [],
         medicalCare: "",
         testingHistory: [],
       },
@@ -289,6 +301,13 @@ function StatsBanner({ stats }: { stats: TestSuiteStats }) {
 }
 
 function DifficultyBadge({ difficulty }: { difficulty: number }) {
+  if (difficulty === 0) {
+    return (
+      <span className="inline-block px-2 py-0.5 border text-xs font-medium bg-gray-100 text-gray-600 border-gray-300">
+        N/A
+      </span>
+    )
+  }
   return (
     <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${DIFFICULTY_COLORS[difficulty]}`}>
       {DIFFICULTY_LABELS[difficulty]} ({difficulty})
@@ -380,10 +399,22 @@ function GroundTruthSection({ groundTruth, collapsed }: { groundTruth: GroundTru
   )
 }
 
-function PatientSection({ patient }: { patient: GeneratedPatient }) {
+function PatientSection({ patient, archetype, source }: { patient: GeneratedPatient; archetype?: PatientArchetype; source?: string }) {
   return (
     <div className="border border-[#d4c5b0] bg-white p-4 space-y-3">
-      <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">Patient Presentation</div>
+      <div className="flex items-center gap-2">
+        <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">Patient Presentation</div>
+        {archetype && (
+          <span className="inline-block px-2 py-0.5 border border-purple-300 bg-purple-50 text-purple-700 text-xs font-medium">
+            {ARCHETYPE_LABELS[archetype] || archetype}
+          </span>
+        )}
+        {source === 'reddit-import' && (
+          <span className="inline-block px-2 py-0.5 border border-orange-300 bg-orange-50 text-orange-700 text-xs font-medium">
+            Reddit
+          </span>
+        )}
+      </div>
 
       <div className="text-sm text-[#5a5a5a]">
         <span className="font-semibold">Demographics:</span> {patient.demographics.age}yo {patient.demographics.sex}
@@ -748,7 +779,14 @@ function TestHistoryRow({
       }`}
     >
       <div className="flex-1 min-w-0">
-        <div className="text-sm font-serif text-[#2a2a2a] truncate">{tc.groundTruth.diagnosis}</div>
+        <div className="text-sm font-serif text-[#2a2a2a] truncate flex items-center gap-1.5">
+          {tc.source === 'reddit-import' && (
+            <span className="inline-block w-4 h-4 shrink-0 text-orange-500" title="Reddit import">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+            </span>
+          )}
+          {tc.groundTruth.diagnosis}
+        </div>
         <div className="text-xs text-[#8b7355]">
           {date.toLocaleDateString()} {date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
         </div>
@@ -786,6 +824,18 @@ export default function AdminPage() {
   const [extractionStatus, setExtractionStatus] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const abortRef = useRef<AbortController | null>(null)
+
+  // Reddit import state
+  const [testMode, setTestMode] = useState<'generate' | 'reddit'>('generate')
+  const [redditUrl, setRedditUrl] = useState("")
+  const [isFetchingReddit, setIsFetchingReddit] = useState(false)
+  const [redditPreview, setRedditPreview] = useState<any | null>(null)
+  const [redditGroundTruth, setRedditGroundTruth] = useState({
+    diagnosis: "",
+    keyFindings: "",
+    expectedBodySystems: "",
+    expectedSpecialists: "",
+  })
 
   // Check auth on mount
   useEffect(() => {
@@ -872,7 +922,7 @@ export default function AdminPage() {
     return "pending"
   }
 
-  const isAnyRunning = isGenerating || isRunning || isGrading
+  const isAnyRunning = isGenerating || isRunning || isGrading || isFetchingReddit
 
   // ===== CORE HELPERS =====
 
@@ -902,6 +952,7 @@ export default function AdminPage() {
         difficulty,
         categoryHint: categoryHint || undefined,
         status: "generated",
+        source: "generated",
         groundTruth: data.groundTruth,
         generatedPatient: data.patient,
         generationMetadata: data.generationMetadata,
@@ -1143,6 +1194,116 @@ export default function AdminPage() {
     if (activeTestId === id) setActiveTestId(null)
   }
 
+  // ===== REDDIT IMPORT =====
+  const handleFetchReddit = async () => {
+    if (!redditUrl.trim()) return
+    setError(null)
+    setIsFetchingReddit(true)
+    setRedditPreview(null)
+    try {
+      const response = await fetch("/api/admin/import-reddit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: redditUrl }),
+      })
+      if (!response.ok) {
+        const err = await response.json()
+        throw new Error(err.error || `Fetch failed: ${response.statusText}`)
+      }
+      const data = await response.json()
+      setRedditPreview(data)
+      // Pre-fill ground truth from LLM extraction
+      if (data.processed?.diagnosisInfo?.diagnosis) {
+        setRedditGroundTruth((prev) => ({
+          ...prev,
+          diagnosis: data.processed.diagnosisInfo.diagnosis || "",
+        }))
+      }
+    } catch (err: any) {
+      setError(err.message)
+    } finally {
+      setIsFetchingReddit(false)
+    }
+  }
+
+  const handleImportAndRun = async () => {
+    if (!redditPreview?.processed) return
+    if (!redditGroundTruth.diagnosis.trim()) {
+      setError("Diagnosis is required for ground truth")
+      return
+    }
+    setError(null)
+    setActiveTestId(null)
+    setPipelineEvents([])
+    setProgressPercent(0)
+    setExtractionStatus(null)
+
+    const processed = redditPreview.processed
+    const rawPost = redditPreview.rawPost
+
+    const newCase: TestCase = {
+      id: `test_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+      createdAt: new Date().toISOString(),
+      difficulty: 0,
+      status: "generated",
+      source: "reddit-import",
+      groundTruth: {
+        diagnosis: redditGroundTruth.diagnosis.trim(),
+        keyFindings: redditGroundTruth.keyFindings
+          ? redditGroundTruth.keyFindings.split(",").map((s: string) => s.trim()).filter(Boolean)
+          : [],
+        expectedBodySystems: redditGroundTruth.expectedBodySystems
+          ? redditGroundTruth.expectedBodySystems.split(",").map((s: string) => s.trim()).filter(Boolean)
+          : [],
+        expectedSpecialists: redditGroundTruth.expectedSpecialists
+          ? redditGroundTruth.expectedSpecialists.split(",").map((s: string) => s.trim()).filter(Boolean)
+          : [],
+      },
+      generatedPatient: {
+        narrative: processed.narrative,
+        demographics: {
+          age: processed.demographics?.age || "unknown",
+          sex: processed.demographics?.sex === "male" || processed.demographics?.sex === "female"
+            ? processed.demographics.sex
+            : "other",
+        },
+        chiefComplaint: processed.chiefComplaint || "",
+        symptoms: [],
+        medicalHistory: {
+          pastMedicalHistory: [],
+          familyHistory: [],
+          currentMedications: [],
+          recentTests: [],
+        },
+      },
+      generationMetadata: {
+        model: "reddit-import",
+        tokensUsed: 0,
+        durationMs: 0,
+        source: "reddit-import",
+        redditUrl: rawPost.url,
+      },
+    }
+
+    updateTestCases((prev) => [newCase, ...prev])
+    setActiveTestId(newCase.id)
+
+    // Clear the Reddit form
+    setRedditPreview(null)
+    setRedditUrl("")
+    setRedditGroundTruth({ diagnosis: "", keyFindings: "", expectedBodySystems: "", expectedSpecialists: "" })
+
+    // Chain to pipeline and grading
+    try {
+      const result = await doRunPipeline(newCase.id, newCase.generatedPatient)
+      await doGrade(newCase.id, newCase.groundTruth, result, newCase.difficulty)
+    } catch (err: any) {
+      if (!(err instanceof DOMException && err.name === "AbortError")) {
+        setError(err.message)
+      }
+    }
+  }
+
   // Re-read active test from updated state
   const currentActiveTest = testCases.find((tc) => tc.id === activeTestId) || null
 
@@ -1208,54 +1369,214 @@ export default function AdminPage() {
 
         {/* Generation Controls */}
         <div className="border border-[#d4c5b0] bg-white p-4 sm:p-6 mb-6">
-          <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider mb-4">
-            Run New Test
-          </div>
-
-          <div className="flex flex-wrap items-end gap-4">
-            <div className="flex-1 min-w-[200px]">
-              <label className="block text-xs text-[#8b7355] mb-1">
-                Difficulty: {DIFFICULTY_LABELS[difficulty]} ({difficulty})
-              </label>
-              <input
-                type="range"
-                min={1}
-                max={5}
-                step={1}
-                value={difficulty}
-                onChange={(e) => setDifficulty(parseInt(e.target.value))}
-                className="w-full accent-[#8b2500]"
-              />
-              <div className="flex justify-between text-xs text-[#8b7355] mt-0.5">
-                <span>Easy</span>
-                <span>Expert</span>
-              </div>
-            </div>
-
-            <div className="min-w-[160px]">
-              <label className="block text-xs text-[#8b7355] mb-1">Category (optional)</label>
-              <select
-                value={categoryHint}
-                onChange={(e) => setCategoryHint(e.target.value)}
-                className="w-full border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500]"
-              >
-                <option value="">Any</option>
-                {CATEGORY_OPTIONS.filter(Boolean).map((c) => (
-                  <option key={c} value={c}>
-                    {c.charAt(0).toUpperCase() + c.slice(1)}
-                  </option>
-                ))}
-              </select>
-            </div>
-
+          {/* Mode Toggle */}
+          <div className="flex items-center gap-0 mb-4">
             <button
-              onClick={handleRunNewTest}
-              disabled={isAnyRunning}
-              className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              onClick={() => setTestMode('generate')}
+              className={cn(
+                "px-4 py-1.5 text-sm font-medium border transition-colors",
+                testMode === 'generate'
+                  ? "bg-[#8b2500] text-white border-[#8b2500]"
+                  : "bg-white text-[#8b7355] border-[#d4c5b0] hover:bg-[#faf7f3]"
+              )}
             >
-              {isGenerating ? "Generating Patient..." : isRunning ? "Running Pipeline..." : isGrading ? "Grading..." : "Run New Test"}
+              Generate Case
+            </button>
+            <button
+              onClick={() => setTestMode('reddit')}
+              className={cn(
+                "px-4 py-1.5 text-sm font-medium border border-l-0 transition-colors",
+                testMode === 'reddit'
+                  ? "bg-[#8b2500] text-white border-[#8b2500]"
+                  : "bg-white text-[#8b7355] border-[#d4c5b0] hover:bg-[#faf7f3]"
+              )}
+            >
+              Import from Reddit
             </button>
           </div>
+
+          {/* Generate Mode */}
+          {testMode === 'generate' && (
+            <div className="flex flex-wrap items-end gap-4">
+              <div className="flex-1 min-w-[200px]">
+                <label className="block text-xs text-[#8b7355] mb-1">
+                  Difficulty: {DIFFICULTY_LABELS[difficulty]} ({difficulty})
+                </label>
+                <input
+                  type="range"
+                  min={1}
+                  max={5}
+                  step={1}
+                  value={difficulty}
+                  onChange={(e) => setDifficulty(parseInt(e.target.value))}
+                  className="w-full accent-[#8b2500]"
+                />
+                <div className="flex justify-between text-xs text-[#8b7355] mt-0.5">
+                  <span>Easy</span>
+                  <span>Expert</span>
+                </div>
+              </div>
+
+              <div className="min-w-[160px]">
+                <label className="block text-xs text-[#8b7355] mb-1">Category (optional)</label>
+                <select
+                  value={categoryHint}
+                  onChange={(e) => setCategoryHint(e.target.value)}
+                  className="w-full border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500]"
+                >
+                  <option value="">Any</option>
+                  {CATEGORY_OPTIONS.filter(Boolean).map((c) => (
+                    <option key={c} value={c}>
+                      {c.charAt(0).toUpperCase() + c.slice(1)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <button
+                onClick={handleRunNewTest}
+                disabled={isAnyRunning}
+                className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                {isGenerating ? "Generating Patient..." : isRunning ? "Running Pipeline..." : isGrading ? "Grading..." : "Run New Test"}
+              </button>
+            </div>
+          )}
+
+          {/* Reddit Import Mode */}
+          {testMode === 'reddit' && (
+            <div className="space-y-4">
+              {/* URL input */}
+              <div className="flex items-end gap-3">
+                <div className="flex-1">
+                  <label className="block text-xs text-[#8b7355] mb-1">Reddit Post URL</label>
+                  <input
+                    type="text"
+                    value={redditUrl}
+                    onChange={(e) => setRedditUrl(e.target.value)}
+                    placeholder="https://www.reddit.com/r/rarediseases/comments/..."
+                    className="w-full border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500]"
+                  />
+                </div>
+                <button
+                  onClick={handleFetchReddit}
+                  disabled={isAnyRunning || !redditUrl.trim()}
+                  className="px-5 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors whitespace-nowrap"
+                >
+                  {isFetchingReddit ? "Fetching..." : "Fetch & Preview"}
+                </button>
+              </div>
+
+              {/* Reddit Preview */}
+              {redditPreview && (
+                <div className="border border-[#d4c5b0] bg-[#faf7f3] p-4 space-y-3">
+                  <div className="flex items-center gap-2">
+                    <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">Preview</div>
+                    {!redditPreview.processed?.isPatientNarrative && (
+                      <span className="inline-block px-2 py-0.5 border border-red-300 bg-red-50 text-red-600 text-xs font-medium">
+                        Not a patient narrative
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="text-xs text-[#8b7355]">
+                    r/{redditPreview.rawPost?.subreddit} &middot; u/{redditPreview.rawPost?.author}
+                  </div>
+                  <div className="text-sm font-medium text-[#2a2a2a]">{redditPreview.rawPost?.title}</div>
+
+                  {redditPreview.processed?.narrative && (
+                    <div className="bg-white border border-[#e8ddd0] p-3 text-sm text-[#2a2a2a] italic font-serif leading-relaxed max-h-48 overflow-y-auto">
+                      &ldquo;{redditPreview.processed.narrative}&rdquo;
+                    </div>
+                  )}
+
+                  <div className="flex flex-wrap gap-3 text-xs text-[#5a5a5a]">
+                    {redditPreview.processed?.demographics && (
+                      <span>
+                        Demographics: {redditPreview.processed.demographics.age}, {redditPreview.processed.demographics.sex}
+                      </span>
+                    )}
+                    {redditPreview.processed?.diagnosisInfo && (
+                      <span>
+                        Diagnosis: {redditPreview.processed.diagnosisInfo.diagnosis || "unknown"}
+                        {" "}({redditPreview.processed.diagnosisInfo.status}, {redditPreview.processed.diagnosisInfo.confidence} confidence)
+                      </span>
+                    )}
+                  </div>
+
+                  {redditPreview.processed?.warnings?.length > 0 && (
+                    <div className="space-y-1">
+                      {redditPreview.processed.warnings.map((w: string, i: number) => (
+                        <div key={i} className="text-xs text-amber-700 bg-amber-50 border border-amber-200 px-2 py-1">
+                          {w}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Ground Truth Fields */}
+                  {redditPreview.processed?.isPatientNarrative && (
+                    <div className="border-t border-[#d4c5b0] pt-3 space-y-3">
+                      <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">Ground Truth</div>
+
+                      <div>
+                        <label className="block text-xs text-[#8b7355] mb-1">Diagnosis (required)</label>
+                        <input
+                          type="text"
+                          value={redditGroundTruth.diagnosis}
+                          onChange={(e) => setRedditGroundTruth((prev) => ({ ...prev, diagnosis: e.target.value }))}
+                          placeholder="e.g., Ehlers-Danlos Syndrome"
+                          className="w-full border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500]"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs text-[#8b7355] mb-1">Key Findings (comma-separated)</label>
+                        <input
+                          type="text"
+                          value={redditGroundTruth.keyFindings}
+                          onChange={(e) => setRedditGroundTruth((prev) => ({ ...prev, keyFindings: e.target.value }))}
+                          placeholder="e.g., joint hypermobility, skin fragility, easy bruising"
+                          className="w-full border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500]"
+                        />
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <label className="block text-xs text-[#8b7355] mb-1">Expected Body Systems (comma-separated)</label>
+                          <input
+                            type="text"
+                            value={redditGroundTruth.expectedBodySystems}
+                            onChange={(e) => setRedditGroundTruth((prev) => ({ ...prev, expectedBodySystems: e.target.value }))}
+                            placeholder="e.g., musculoskeletal, dermatological"
+                            className="w-full border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500]"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs text-[#8b7355] mb-1">Expected Specialists (comma-separated)</label>
+                          <input
+                            type="text"
+                            value={redditGroundTruth.expectedSpecialists}
+                            onChange={(e) => setRedditGroundTruth((prev) => ({ ...prev, expectedSpecialists: e.target.value }))}
+                            placeholder="e.g., rheumatologist, geneticist"
+                            className="w-full border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500]"
+                          />
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={handleImportAndRun}
+                        disabled={isAnyRunning || !redditGroundTruth.diagnosis.trim()}
+                        className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                      >
+                        {isRunning ? "Running Pipeline..." : isGrading ? "Grading..." : "Import & Run Pipeline"}
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Inline progress when running */}
@@ -1326,7 +1647,11 @@ export default function AdminPage() {
               <GroundTruthSection groundTruth={currentActiveTest.groundTruth} collapsed={false} />
 
               {/* Patient Presentation */}
-              <PatientSection patient={currentActiveTest.generatedPatient} />
+              <PatientSection
+                patient={currentActiveTest.generatedPatient}
+                archetype={currentActiveTest.generationMetadata?.archetype}
+                source={currentActiveTest.source}
+              />
 
               {/* Extracted Symptoms (after pipeline has run extraction) */}
               {currentActiveTest.extractedSymptoms && currentActiveTest.extractedSymptoms.length > 0 && (

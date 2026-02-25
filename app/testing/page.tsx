@@ -916,7 +916,7 @@ export default function AdminPage() {
     setProgressPercent(0)
 
     updateTestCases((prev) =>
-      prev.map((tc) => (tc.id === testId ? { ...tc, status: "running" as const, pipelineError: undefined } : tc))
+      prev.map((tc) => (tc.id === testId ? { ...tc, status: "running" as const, pipelineResult: undefined, grading: undefined, gradingMetadata: undefined, pipelineError: undefined } : tc))
     )
 
     try {

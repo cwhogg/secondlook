@@ -8,39 +8,31 @@ import type { PipelineProgress } from "@/lib/types/pipeline"
 interface Step1Data {
   age: string
   biologicalSex: string
-  primaryConcern: string
-  patientHypothesis?: string
-  noIdea?: boolean
-  bodyRegions?: string[]
-  severity?: number
 }
 
 interface Step2Data {
-  symptoms?: Array<{
-    text: string
-    medicalTerm?: string
-    umls?: {
-      cui: string
-      name: string
-      confidence: number
-    }
-    severity?: number
-    duration?: string
-    pattern?: string
-    triggers?: string[]
-  }>
+  primaryConcern: string
+  patientHypothesis?: string
+  noIdea?: boolean
 }
 
 interface Step3Data {
-  medications?: Array<{
-    name: string
-    dosage?: string
-    frequency?: string
-    duration?: string
-  }>
-  medicalHistory?: string[]
-  familyHistory?: string[]
-  recentTests?: string[]
+  mainSymptomStart?: string
+  severity?: number
+}
+
+interface Step4Data {
+  medicationsText?: string
+  familyHistoryText?: string
+  priorTestsText?: string
+}
+
+function toLines(text?: string): string[] {
+  if (!text) return []
+  return text
+    .split("\n")
+    .map((s) => s.trim())
+    .filter(Boolean)
 }
 
 export default function AnalysisPage() {
@@ -56,61 +48,44 @@ export default function AnalysisPage() {
       if (hasStartedRef.current) return
       hasStartedRef.current = true
 
-      console.log("[AnalysisPage] Loading analysis data...")
-
-      // Load data from localStorage (where step-1, step-2, step-3 pages save it)
       const step1Data = localStorage.getItem("step1Data")
       const step2Data = localStorage.getItem("step2Data")
       const step3Data = localStorage.getItem("step3Data")
+      const step4Data = localStorage.getItem("step4Data")
 
-      console.log("[AnalysisPage] Analysis data loaded:", {
-        hasStep1: !!step1Data,
-        hasStep2: !!step2Data,
-        hasStep3: !!step3Data,
-        symptomsCount: step2Data ? JSON.parse(step2Data).symptoms?.length || 0 : 0,
-        step1Keys: step1Data ? Object.keys(JSON.parse(step1Data)) : [],
-        primaryConcern: step1Data ? JSON.parse(step1Data).primaryConcern?.substring(0, 50) + "..." : "none",
-      })
-
-      if (!step1Data) {
-        console.error("[AnalysisPage] Missing step 1 data")
+      if (!step1Data || !step2Data || !step3Data || !step4Data) {
         router.push("/step-1")
         return
       }
 
       try {
         const parsedStep1: Step1Data = JSON.parse(step1Data)
-        const parsedStep2: Step2Data = step2Data ? JSON.parse(step2Data) : { symptoms: [] }
-        const parsedStep3: Step3Data = step3Data ? JSON.parse(step3Data) : {}
+        const parsedStep2: Step2Data = JSON.parse(step2Data)
+        const parsedStep3: Step3Data = JSON.parse(step3Data)
+        const parsedStep4: Step4Data = JSON.parse(step4Data)
 
-        console.log("[AnalysisPage] Auto-starting analysis...")
-
-        // Build symptoms array - include mapped symptoms from step 2, or fall back to primary concern
         const symptoms: any[] = []
 
-        // Load mapped symptoms from localStorage (persisted by step-2's SymptomMappingSection)
         const mappedSymptomsData = localStorage.getItem("mappedSymptoms")
         let mappedSymptoms: any[] = []
         if (mappedSymptomsData) {
           try {
             mappedSymptoms = JSON.parse(mappedSymptomsData)
-          } catch (e) {
-            console.error("[AnalysisPage] Failed to parse mapped symptoms:", e)
+          } catch {
+            mappedSymptoms = []
           }
         }
 
-        // Load symptom patterns from localStorage
         const symptomPatternsData = localStorage.getItem("symptomPatterns")
         let symptomPatterns: any = null
         if (symptomPatternsData) {
           try {
             symptomPatterns = JSON.parse(symptomPatternsData)
-          } catch (e) {
-            console.error("[AnalysisPage] Failed to parse symptom patterns:", e)
+          } catch {
+            symptomPatterns = null
           }
         }
 
-        // Use mapped symptoms if available, otherwise fall back to primary concern
         if (mappedSymptoms.length > 0) {
           symptoms.push(
             ...mappedSymptoms.map((s: any) => ({
@@ -124,24 +99,15 @@ export default function AnalysisPage() {
               severity: s.severity,
             })),
           )
-        } else {
-          // Add primary concern as a symptom if no mapped symptoms available
-          if (parsedStep1.primaryConcern) {
-            symptoms.push({
-              text: parsedStep1.primaryConcern,
-              originalText: parsedStep1.primaryConcern,
-              medicalTerm: "Primary concern",
-              severity: parsedStep1.severity || 5,
-            })
-          }
-
-          // Add any symptoms from step 2 data
-          if (parsedStep2.symptoms && Array.isArray(parsedStep2.symptoms)) {
-            symptoms.push(...parsedStep2.symptoms)
-          }
+        } else if (parsedStep2.primaryConcern) {
+          symptoms.push({
+            text: parsedStep2.primaryConcern,
+            originalText: parsedStep2.primaryConcern,
+            originalPhrase: parsedStep2.primaryConcern,
+            medicalTerm: "Primary concern",
+            severity: parsedStep3.severity || 5,
+          })
         }
-
-        console.log("[AnalysisPage] Constructed symptoms:", symptoms.length)
 
         const analysisPayload = {
           demographics: {
@@ -149,26 +115,27 @@ export default function AnalysisPage() {
             sex: parsedStep1.biologicalSex,
           },
           chiefComplaint: {
-            description: parsedStep1.primaryConcern,
-            bodyRegions: parsedStep1.bodyRegions || [],
-            severity: parsedStep1.severity || 5,
+            description: parsedStep2.primaryConcern,
+            duration: parsedStep3.mainSymptomStart || undefined,
+            bodyRegions: [],
+            severity: parsedStep3.severity || 5,
           },
-          symptoms: symptoms,
-          patientHypothesis: parsedStep1.patientHypothesis || null,
+          symptoms,
+          patientHypothesis: parsedStep2.noIdea ? null : parsedStep2.patientHypothesis || null,
           medicalHistory: {
-            currentMedications: parsedStep3.medications || [],
-            pastMedicalHistory: parsedStep3.medicalHistory || [],
-            familyHistory: parsedStep3.familyHistory || [],
-            recentTests: parsedStep3.recentTests || [],
+            currentMedications: toLines(parsedStep4.medicationsText).map((m) => ({ name: m })),
+            pastMedicalHistory: [],
+            familyHistory: toLines(parsedStep4.familyHistoryText),
+            recentTests: toLines(parsedStep4.priorTestsText),
+            medicalCare: "",
+            testingHistory: toLines(parsedStep4.priorTestsText),
           },
-          familyHistory: parsedStep3.familyHistory || [],
-          symptomPatterns: symptomPatterns,
+          familyHistory: toLines(parsedStep4.familyHistoryText),
+          symptomPatterns,
         }
 
-        console.log("[AnalysisPage] Sending to v2 pipeline SSE...")
         const startTime = Date.now()
 
-        // Use v2 SSE endpoint
         const abortController = new AbortController()
         abortControllerRef.current = abortController
 
@@ -187,12 +154,11 @@ export default function AnalysisPage() {
             if (parsed.error) errorMessage = parsed.error
             if (parsed.retryAfter) errorMessage += ` (retry in ${parsed.retryAfter}s)`
           } catch {
-            // use default message
+            // keep default
           }
           throw new Error(errorMessage)
         }
 
-        // Read SSE stream
         const reader = response.body!.getReader()
         const decoder = new TextDecoder()
         let buffer = ""
@@ -214,26 +180,10 @@ export default function AnalysisPage() {
             try {
               event = JSON.parse(jsonStr)
             } catch {
-              console.warn("[AnalysisPage] Failed to parse SSE event:", jsonStr)
               continue
             }
 
-            if (event.type === "log") {
-              const label = `%c[${event.agent}] ${event.phase}`
-              if (event.phase === "ERROR") {
-                console.error(label, "color: red; font-weight: bold", "\n" + event.message)
-              } else if (event.phase === "RESPONSE_BODY") {
-                console.groupCollapsed(label, "color: #2563eb; font-weight: bold")
-                console.log(event.message)
-                console.groupEnd()
-              } else if (event.phase === "SYSTEM_PROMPT" || event.phase === "USER_PROMPT") {
-                console.groupCollapsed(label, "color: #8b2500; font-weight: bold")
-                console.log(event.message)
-                console.groupEnd()
-              } else {
-                console.log(label, "color: #666; font-weight: bold", event.message)
-              }
-            } else if (event.type === "progress") {
+            if (event.type === "progress") {
               const progressEvent: PipelineProgress = {
                 stage: event.stage,
                 stageNumber: event.stageNumber,
@@ -245,19 +195,13 @@ export default function AnalysisPage() {
 
               setPipelineEvents((prev) => [...prev, progressEvent])
               setProgress(event.percentage)
-              console.log(`[AnalysisPage] Stage: ${event.stage} (${event.percentage}%) — ${event.detail}`)
             } else if (event.type === "result") {
               const processingTime = Date.now() - startTime
-              console.log("[AnalysisPage] Pipeline complete:", {
-                processingTime,
-                diagnosesCount: event.analysis?.differentialDiagnoses?.length,
-              })
 
               if (!event.success || !event.analysis) {
                 throw new Error("Invalid analysis result from pipeline")
               }
 
-              // Store results in sessionStorage
               const analysisResults = {
                 differentialDiagnoses: event.analysis.differentialDiagnoses || [],
                 excludedCommonDiagnoses: event.analysis.excludedCommonDiagnoses || [],
@@ -274,13 +218,12 @@ export default function AnalysisPage() {
                 processingTime,
                 patientAge: parsedStep1.age,
                 patientSex: parsedStep1.biologicalSex,
-                patientHypothesis: parsedStep1.patientHypothesis,
+                patientHypothesis: parsedStep2.patientHypothesis,
               }
 
               sessionStorage.setItem("analysisResults", JSON.stringify(analysisResults))
               sessionStorage.setItem("analysisMetadata", JSON.stringify(analysisMetadata))
 
-              console.log("[AnalysisPage] Redirecting to /results/analysis")
               router.push("/results/analysis")
               return
             } else if (event.type === "error") {
@@ -289,14 +232,9 @@ export default function AnalysisPage() {
           }
         }
 
-        // If we reach here without a result event, something went wrong
         throw new Error("Analysis stream ended without a result")
       } catch (err) {
-        if (err instanceof DOMException && err.name === "AbortError") {
-          console.log("[AnalysisPage] Analysis aborted")
-          return
-        }
-        console.error("[AnalysisPage] Analysis error:", err)
+        if (err instanceof DOMException && err.name === "AbortError") return
         setError(err instanceof Error ? err.message : "Analysis failed")
         setProgress(0)
       }
@@ -307,8 +245,7 @@ export default function AnalysisPage() {
     return () => {
       abortControllerRef.current?.abort()
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [router])
 
   if (error) {
     return (
@@ -316,10 +253,7 @@ export default function AnalysisPage() {
         <div className="text-center max-w-md">
           <div className="text-red-600 text-xl font-semibold mb-4">Analysis Failed</div>
           <p className="text-gray-600 mb-6">{error}</p>
-          <button
-            onClick={() => router.push("/step-1")}
-            className="px-6 py-3 bg-[#8b2500] text-white rounded-none hover:bg-[#6d1d00]"
-          >
+          <button onClick={() => router.push("/step-1")} className="px-6 py-3 bg-[#8b2500] text-white rounded-none">
             Start Over
           </button>
         </div>

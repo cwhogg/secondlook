@@ -3,130 +3,79 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Layout } from "@/components/layout"
-import { CharacterCounter } from "@/components/character-counter"
-import { BodyRegionSelector } from "@/components/body-region-selector"
-import { SeveritySlider } from "@/components/severity-slider"
-import { ArrowRight, CheckCircle, Sparkles, ChevronDown } from "lucide-react"
+import { ArrowRight, CheckCircle, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { DocumentUpload } from "@/components/document-upload"
-import { DEMO_CASES } from "@/lib/demo-cases"
 
-interface FormData {
+interface Step1Data {
   age: string
-  biologicalSex: string
-  primaryConcern: string
-  patientHypothesis: string
-  noIdea: boolean
-  bodyRegions: string[]
-  severity: number
+  biologicalSex: "male" | "female" | "other" | ""
 }
 
 export default function Step1() {
   const router = useRouter()
-
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<Step1Data>({
     age: "",
     biologicalSex: "",
-    primaryConcern: "",
-    patientHypothesis: "",
-    noIdea: false,
-    bodyRegions: [],
-    severity: 5,
   })
-
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [autoSaved, setAutoSaved] = useState(false)
-  const [showDemoPicker, setShowDemoPicker] = useState(false)
 
-  // Load saved data on mount, but check for start over flag first
   useEffect(() => {
-    // Check if we're starting over
-    const startingOver = localStorage.getItem("startingOver")
-
-    if (startingOver) {
-      // Remove the flag and don't load any saved data
-      localStorage.removeItem("startingOver")
-      console.log("Starting over - not loading saved data")
-      return
-    }
-
-    // Normal data loading
-    const savedData = localStorage.getItem("step1Data")
-    if (savedData) {
+    const saved = localStorage.getItem("step1Data")
+    if (saved) {
       try {
-        const parsed = JSON.parse(savedData)
-        setFormData(parsed)
-        console.log("Loaded saved step1 data:", parsed)
-      } catch (error) {
-        console.error("Error loading saved data:", error)
+        setFormData(JSON.parse(saved))
+      } catch {
+        // ignore corrupt save
       }
     }
   }, [])
 
-  // Auto-save functionality
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (formData.age || formData.primaryConcern) {
-        // Save to localStorage for persistence
+      if (formData.age || formData.biologicalSex) {
         localStorage.setItem("step1Data", JSON.stringify(formData))
         setAutoSaved(true)
-        setTimeout(() => setAutoSaved(false), 2000)
+        setTimeout(() => setAutoSaved(false), 1500)
       }
-    }, 1000)
+    }, 700)
 
     return () => clearTimeout(timer)
   }, [formData])
 
-  const updateFormData = (field: keyof FormData, value: any) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-    // Clear error when user starts typing
+  const updateFormData = (field: keyof Step1Data, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value as any }))
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: "" }))
     }
   }
 
   const validateForm = () => {
-    const newErrors: Record<string, string> = {}
+    const nextErrors: Record<string, string> = {}
 
-    if (!formData.age) newErrors.age = "Please enter your age"
-    else if (Number.parseInt(formData.age) < 1 || Number.parseInt(formData.age) > 120) {
-      newErrors.age = "Please enter a valid age between 1 and 120"
+    if (!formData.age) nextErrors.age = "Please enter your age"
+    else if (Number.isNaN(Number.parseInt(formData.age, 10)) || Number.parseInt(formData.age, 10) < 1 || Number.parseInt(formData.age, 10) > 120) {
+      nextErrors.age = "Please enter a valid age between 1 and 120"
     }
 
-    if (!formData.biologicalSex) newErrors.biologicalSex = "Please select your biological sex"
-    if (!formData.primaryConcern.trim()) newErrors.primaryConcern = "Please describe your main health concern"
-    if (formData.bodyRegions.length === 0) newErrors.bodyRegions = "Please select at least one affected area"
+    if (!formData.biologicalSex) nextErrors.biologicalSex = "Please select your biological sex"
 
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
+    setErrors(nextErrors)
+    return Object.keys(nextErrors).length === 0
   }
 
   const handleContinue = () => {
-    if (validateForm()) {
-      // Save data to localStorage
-      localStorage.setItem("step1Data", JSON.stringify(formData))
-      // Navigate to step 2 and scroll to top
-      router.push("/step-2")
-    }
+    if (!validateForm()) return
+    localStorage.setItem("step1Data", JSON.stringify(formData))
+    router.push("/step-2")
   }
 
-  const loadDemoCase = (index: number) => {
-    const demoCase = DEMO_CASES[index]
-    if (demoCase) {
-      setFormData(demoCase.formData)
-      setShowDemoPicker(false)
-      setErrors({})
-    }
-  }
-
-  const isFormValid =
-    formData.age && formData.biologicalSex && formData.primaryConcern.trim() && formData.bodyRegions.length > 0
+  const isFormValid = !!formData.age && !!formData.biologicalSex
 
   return (
     <Layout>
       <div className="min-h-screen bg-[#f5f0eb] py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Fixed Auto-save notification */}
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             className={`fixed top-20 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ${
               autoSaved ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
@@ -134,293 +83,89 @@ export default function Step1() {
           >
             <div className="bg-emerald-500 text-white px-6 py-3 rounded-none flex items-center space-x-2">
               <CheckCircle className="h-4 w-4" />
-              <span className="text-sm font-medium">Your information is automatically saved</span>
+              <span className="text-sm font-medium">Progress saved</span>
             </div>
           </div>
 
-          {/* Premium Header Section */}
-          <div className="text-center mb-6 sm:mb-10">
+          <div className="text-center mb-10">
             <div className="inline-flex items-center space-x-2 bg-[#faf6f0] px-4 py-2 rounded-full mb-6">
               <Sparkles className="h-4 w-4 text-[#8b2500]" />
-              <span className="text-sm font-medium text-[#8b2500]">Step 1 of 3</span>
+              <span className="text-sm font-medium text-[#8b2500]">Step 1 of 4</span>
             </div>
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Tell us about your{" "}
-              <span className="text-[#8b2500]">
-                health concerns
-              </span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              We'll help you explore potential diagnoses that you can discuss with your healthcare provider.
-            </p>
-            <div className="mt-4">
-              <button
-                onClick={() => setShowDemoPicker((prev) => !prev)}
-                className="text-[#8b2500] hover:text-[#6d1d00] text-sm font-medium transition-colors inline-flex items-center gap-1"
-              >
-                Don't have symptoms to enter? Try a demo case
-                <ChevronDown
-                  className={cn(
-                    "h-3.5 w-3.5 transition-transform duration-200",
-                    showDemoPicker && "rotate-180",
-                  )}
-                />
-              </button>
-              {showDemoPicker && (
-                <div className="mt-4 max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {DEMO_CASES.map((demoCase, index) => (
-                    <button
-                      key={index}
-                      onClick={() => loadDemoCase(index)}
-                      className="text-left p-4 border border-gray-200 rounded-none hover:border-[#8b2500] hover:bg-[#faf6f0] transition-all duration-200 group"
-                    >
-                      <p className="font-medium text-gray-900 group-hover:text-[#8b2500] text-sm leading-snug">
-                        {demoCase.label}
-                      </p>
-                      <p className="text-gray-500 text-xs mt-1">{demoCase.description}</p>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">About you</h1>
+            <p className="text-lg text-gray-600">A couple basics to personalize your analysis</p>
           </div>
 
-          {/* Main Form Container */}
-          <div className="max-w-3xl mx-auto bg-white rounded-none border border-gray-100 p-5 md:p-6">
-            <div className="space-y-6 sm:space-y-12">
-              {/* Section 1: Essential Demographics */}
-              <div className="space-y-8">
-                <div className="text-left">
-                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Basic Information</h2>
-                  <p className="text-lg text-gray-600">This helps us consider conditions that affect people like you</p>
-                </div>
+          <div className="bg-white border border-gray-100 p-6 sm:p-8 space-y-8">
+            <div className="space-y-3">
+              <label className="block text-lg font-semibold text-gray-900">
+                Your age <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="number"
+                min="1"
+                max="120"
+                value={formData.age}
+                onChange={(e) => updateFormData("age", e.target.value)}
+                className={cn(
+                  "w-full px-4 py-4 border rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-lg",
+                  errors.age ? "border-red-300" : "border-gray-200",
+                )}
+                placeholder="Enter your age"
+              />
+              {errors.age && <p className="text-red-600 text-sm">{errors.age}</p>}
+            </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="block text-lg font-semibold text-gray-900">
-                      Your age <span className="text-red-500">*</span>
-                    </label>
+            <div className="space-y-3">
+              <label className="block text-lg font-semibold text-gray-900">
+                Biological sex <span className="text-red-500">*</span>
+              </label>
+              <div className="space-y-3">
+                {[
+                  { label: "Male", value: "male" },
+                  { label: "Female", value: "female" },
+                  { label: "Other", value: "other" },
+                ].map((option) => (
+                  <label key={option.value} className="flex items-center space-x-3 cursor-pointer group">
                     <input
-                      type="number"
-                      placeholder="Enter your age"
-                      min="1"
-                      max="120"
-                      value={formData.age}
-                      onChange={(e) => updateFormData("age", e.target.value)}
-                      aria-invalid={!!errors.age}
-                      aria-describedby={errors.age ? "age-error" : undefined}
-                      className={cn(
-                        "w-full px-4 py-4 border border-gray-200 rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-lg transition-all duration-200",
-                        errors.age
-                          ? "border-red-300 focus:ring-red-500"
-                          : formData.age
-                            ? "border-emerald-300 focus:ring-emerald-500"
-                            : "border-gray-200",
-                      )}
+                      type="radio"
+                      name="biologicalSex"
+                      value={option.value}
+                      checked={formData.biologicalSex === option.value}
+                      onChange={(e) => updateFormData("biologicalSex", e.target.value)}
+                      className="sr-only"
                     />
-                    {errors.age && <p id="age-error" role="alert" className="text-red-600 text-sm mt-2">{errors.age}</p>}
-                  </div>
-
-                  <div className="space-y-3">
-                    <label className="block text-lg font-semibold text-gray-900">
-                      Biological sex <span className="text-red-500">*</span>
-                    </label>
-                    <div className="space-y-3">
-                      {["Male", "Female", "Other"].map((option) => (
-                        <label key={option} className="flex items-center space-x-3 cursor-pointer group">
-                          <div className="relative">
-                            <input
-                              type="radio"
-                              name="biologicalSex"
-                              value={option.toLowerCase()}
-                              checked={formData.biologicalSex === option.toLowerCase()}
-                              onChange={(e) => updateFormData("biologicalSex", e.target.value)}
-                              className="sr-only"
-                            />
-                            <div
-                              className={cn(
-                                "w-5 h-5 rounded-full border-2 transition-all duration-200",
-                                formData.biologicalSex === option.toLowerCase()
-                                  ? "border-[#8b2500] bg-[#8b2500]"
-                                  : "border-gray-300 group-hover:border-[#d4c5b0]",
-                              )}
-                            >
-                              {formData.biologicalSex === option.toLowerCase() && (
-                                <div className="w-2 h-2 bg-white rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-                              )}
-                            </div>
-                          </div>
-                          <span className="text-lg font-medium text-gray-900 group-hover:text-[#8b2500] transition-colors">
-                            {option}
-                          </span>
-                        </label>
-                      ))}
-                    </div>
-                    {errors.biologicalSex && <p id="biologicalSex-error" role="alert" className="text-red-600 text-sm mt-2">{errors.biologicalSex}</p>}
-                  </div>
-                </div>
-              </div>
-
-              {/* Section 2: Primary Concern */}
-              <div className="space-y-6">
-                <div className="text-left">
-                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">What's your main health concern?</h2>
-                  <p className="text-lg text-gray-600">
-                    Describe your symptoms in your own words - be as detailed as possible
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  <label className="block text-lg font-semibold text-gray-900">
-                    Describe your symptoms <span className="text-red-500">*</span>
-                  </label>
-                  <DocumentUpload
-                    onTextExtracted={(text) => {
-                      const current = formData.primaryConcern.trim()
-                      const newText = current
-                        ? `${formData.primaryConcern}\n\n--- From uploaded document ---\n\n${text}`
-                        : text
-                      updateFormData("primaryConcern", newText.slice(0, 10000))
-                    }}
-                  />
-                  <div className="space-y-3">
-                    <textarea
-                      placeholder="Example: I've been experiencing extreme fatigue and muscle weakness that started about 6 months ago. It's gotten worse over time and now affects my daily activities..."
-                      value={formData.primaryConcern}
-                      onChange={(e) => updateFormData("primaryConcern", e.target.value)}
-                      maxLength={10000}
-                      rows={6}
-                      aria-invalid={!!errors.primaryConcern}
-                      aria-describedby={errors.primaryConcern ? "primaryConcern-error" : undefined}
+                    <div
                       className={cn(
-                        "w-full px-4 py-4 border border-gray-200 rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-lg resize-none transition-all duration-200",
-                        errors.primaryConcern
-                          ? "border-red-300 focus:ring-red-500"
-                          : formData.primaryConcern
-                            ? "border-emerald-300 focus:ring-emerald-500"
-                            : "border-gray-200",
+                        "w-5 h-5 rounded-full border-2 transition-all relative",
+                        formData.biologicalSex === option.value ? "border-[#8b2500] bg-[#8b2500]" : "border-gray-300",
                       )}
-                    />
-                    <div className="flex justify-between items-center flex-wrap gap-1">
-                      <p className="text-base text-gray-600">
-                        Include when symptoms started, how they've changed, and what makes them better or worse
-                      </p>
-                      <CharacterCounter current={formData.primaryConcern.length} max={10000} />
+                    >
+                      {formData.biologicalSex === option.value && (
+                        <div className="w-2 h-2 bg-white rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                      )}
                     </div>
-                  </div>
-                  {errors.primaryConcern && <p id="primaryConcern-error" role="alert" className="text-red-600 text-sm mt-2">{errors.primaryConcern}</p>}
-                </div>
-              </div>
-
-              {/* Section 3: Patient Hypothesis */}
-              <div className="space-y-6">
-                <div className="text-left">
-                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
-                    Do you have any thoughts about what this might be?
-                  </h2>
-                  <p className="text-lg text-gray-600">
-                    Your insights are valuable - many patients research their symptoms and have helpful observations
-                  </p>
-                </div>
-
-                <div className="space-y-6">
-                  <label className="flex items-center space-x-4 cursor-pointer group p-4 rounded-none border border-gray-200 hover:border-[#d4c5b0] transition-all duration-200">
-                    <div className="relative">
-                      <input
-                        type="checkbox"
-                        checked={formData.noIdea}
-                        onChange={(e) => {
-                          updateFormData("noIdea", e.target.checked)
-                          if (e.target.checked) {
-                            updateFormData("patientHypothesis", "")
-                          }
-                        }}
-                        className="sr-only"
-                      />
-                      <div
-                        className={cn(
-                          "w-5 h-5 rounded border-2 transition-all duration-200",
-                          formData.noIdea
-                            ? "border-[#8b2500] bg-[#8b2500]"
-                            : "border-gray-300 group-hover:border-[#d4c5b0]",
-                        )}
-                      >
-                        {formData.noIdea && <CheckCircle className="w-3 h-3 text-white absolute top-0.5 left-0.5" />}
-                      </div>
-                    </div>
-                    <span className="text-lg font-medium text-gray-900 group-hover:text-[#8b2500] transition-colors">
-                      I'm not sure - I'd like help figuring this out
-                    </span>
+                    <span className="text-lg text-gray-900">{option.label}</span>
                   </label>
-
-                  {!formData.noIdea && (
-                    <div className="space-y-3">
-                      <textarea
-                        placeholder="Example: I think it might be related to my thyroid because I've had similar symptoms before... / My doctor mentioned it could be an autoimmune condition... / I read about fibromyalgia and some symptoms match..."
-                        value={formData.patientHypothesis}
-                        onChange={(e) => updateFormData("patientHypothesis", e.target.value)}
-                        maxLength={200}
-                        rows={4}
-                        className="w-full px-4 py-4 border border-gray-200 rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-lg resize-none transition-all duration-200"
-                      />
-                      <div className="flex justify-between items-center">
-                        <p className="text-base text-gray-600">
-                          This helps us understand your perspective and explain our analysis
-                        </p>
-                        <CharacterCounter current={formData.patientHypothesis.length} max={200} />
-                      </div>
-                    </div>
-                  )}
-                </div>
+                ))}
               </div>
+              {errors.biologicalSex && <p className="text-red-600 text-sm">{errors.biologicalSex}</p>}
+            </div>
 
-              {/* Section 4: Body Regions */}
-              <div className="space-y-6">
-                <div className="text-left">
-                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Which parts of your body are affected?</h2>
-                  <p className="text-lg text-gray-600 mb-2">
-                    Select all areas where you're experiencing symptoms - many conditions affect multiple body systems
-                  </p>
-                  {errors.bodyRegions && <p id="bodyRegions-error" role="alert" className="text-red-600 text-sm">{errors.bodyRegions}</p>}
-                </div>
-
-                <BodyRegionSelector
-                  value={formData.bodyRegions}
-                  onChange={(value) => updateFormData("bodyRegions", value)}
-                />
-              </div>
-
-              {/* Section 5: Severity */}
-              <div className="space-y-6">
-                <div className="text-left">
-                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
-                    How much are these symptoms affecting your daily life?
-                  </h2>
-                  <p className="text-lg text-gray-600">This helps us understand the impact on your quality of life</p>
-                </div>
-                <div className="bg-[#faf6f0] rounded-none p-6">
-                  <SeveritySlider value={formData.severity} onChange={(value) => updateFormData("severity", value)} />
-                </div>
-              </div>
-
-              {/* Navigation */}
-              <div className="flex justify-center pt-8">
-                <button
-                  onClick={handleContinue}
-                  disabled={!isFormValid}
-                  className={cn(
-                    "group relative px-8 py-4 rounded-none font-semibold text-lg transition-all duration-300 min-w-[200px]",
-                    isFormValid
-                      ? "bg-[#8b2500] hover:bg-[#6d1d00] text-white"
-                      : "bg-gray-200 text-gray-500 cursor-not-allowed",
-                  )}
-                >
-                  <span className="flex items-center justify-center space-x-2">
-                    <span>Continue to Next Step</span>
-                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </button>
-              </div>
+            <div className="flex justify-center pt-2">
+              <button
+                onClick={handleContinue}
+                disabled={!isFormValid}
+                className={cn(
+                  "group px-8 py-4 rounded-none font-semibold text-lg transition-all duration-300 min-w-[220px]",
+                  isFormValid ? "bg-[#8b2500] text-white" : "bg-gray-200 text-gray-500 cursor-not-allowed",
+                )}
+              >
+                <span className="flex items-center justify-center space-x-2">
+                  <span>Continue</span>
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </button>
             </div>
           </div>
         </div>

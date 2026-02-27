@@ -395,9 +395,10 @@ export function AnalysisLoading({ progress, pipelineEvents }: AnalysisLoadingPro
         <BreadcrumbNav
           items={[
             { label: "Home" },
-            { label: "Symptoms" },
-            { label: "Medical History" },
-            { label: "Family History" },
+            { label: "About You" },
+            { label: "Your Story" },
+            { label: "Timeline" },
+            { label: "Consent" },
             { label: "Analysis", current: true },
           ]}
         />

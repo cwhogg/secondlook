@@ -314,7 +314,7 @@ export default function HomePage() {
             {/* CTA Button */}
             <Link
               href="/step-1"
-              className="inline-flex items-center gap-2 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-white bg-[#8b2500] px-9 py-4 hover:bg-[#6d1d00] transition-colors"
+              className="inline-flex items-center gap-2 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-white bg-[#16a34a] px-9 py-4 hover:bg-[#15803d] transition-colors"
             >
               <Sparkles className="h-4 w-4" />
               <span>Start My Health Analysis</span>
@@ -484,7 +484,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/step-1"
-            className="inline-flex items-center gap-2 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-white bg-[#8b2500] px-10 py-4 hover:bg-[#6d1d00] transition-colors"
+            className="inline-flex items-center gap-2 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-white bg-[#16a34a] px-10 py-4 hover:bg-[#15803d] transition-colors"
           >
             <Sparkles className="h-4 w-4" />
             <span>Start My Health Analysis</span>

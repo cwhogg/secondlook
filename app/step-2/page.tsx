@@ -34,7 +34,13 @@ export default function Step2() {
     const saved = localStorage.getItem("step2Data")
     if (saved) {
       try {
-        setFormData(JSON.parse(saved))
+        const parsed = JSON.parse(saved)
+        setFormData((prev) => ({
+          ...prev,
+          primaryConcern: typeof parsed.primaryConcern === "string" ? parsed.primaryConcern : "",
+          patientHypothesis: typeof parsed.patientHypothesis === "string" ? parsed.patientHypothesis : "",
+          noIdea: typeof parsed.noIdea === "boolean" ? parsed.noIdea : false,
+        }))
       } catch {
         // ignore
       }
@@ -76,7 +82,7 @@ export default function Step2() {
     router.push("/step-1")
   }
 
-  const isFormValid = formData.primaryConcern.trim().length > 0
+  const isFormValid = (formData.primaryConcern || "").trim().length > 0
 
   return (
     <Layout>

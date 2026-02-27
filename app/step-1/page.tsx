@@ -24,7 +24,15 @@ export default function Step1() {
     const saved = localStorage.getItem("step1Data")
     if (saved) {
       try {
-        setFormData(JSON.parse(saved))
+        const parsed = JSON.parse(saved)
+        setFormData((prev) => ({
+          ...prev,
+          age: typeof parsed.age === "string" ? parsed.age : "",
+          biologicalSex:
+            parsed.biologicalSex === "male" || parsed.biologicalSex === "female" || parsed.biologicalSex === "other"
+              ? parsed.biologicalSex
+              : "",
+        }))
       } catch {
         // ignore corrupt save
       }

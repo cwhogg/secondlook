@@ -37,7 +37,12 @@ export default function Step3() {
     const saved = localStorage.getItem("step3Data")
     if (saved) {
       try {
-        setFormData(JSON.parse(saved))
+        const parsed = JSON.parse(saved)
+        setFormData((prev) => ({
+          ...prev,
+          mainSymptomStart: typeof parsed.mainSymptomStart === "string" ? parsed.mainSymptomStart : "",
+          severity: typeof parsed.severity === "number" ? parsed.severity : 5,
+        }))
       } catch {
         // ignore
       }

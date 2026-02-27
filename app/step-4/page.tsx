@@ -48,7 +48,16 @@ export default function Step4() {
     const saved = localStorage.getItem("step4Data")
     if (saved) {
       try {
-        setFormData(JSON.parse(saved))
+        const parsed = JSON.parse(saved)
+        setFormData((prev) => ({
+          ...prev,
+          medicationsText: typeof parsed.medicationsText === "string" ? parsed.medicationsText : "",
+          familyHistoryText: typeof parsed.familyHistoryText === "string" ? parsed.familyHistoryText : "",
+          priorTestsText: typeof parsed.priorTestsText === "string" ? parsed.priorTestsText : "",
+          consentAnalysis: typeof parsed.consentAnalysis === "boolean" ? parsed.consentAnalysis : false,
+          consentNotSubstitute: typeof parsed.consentNotSubstitute === "boolean" ? parsed.consentNotSubstitute : false,
+          consentAccurate: typeof parsed.consentAccurate === "boolean" ? parsed.consentAccurate : false,
+        }))
       } catch {
         // ignore
       }

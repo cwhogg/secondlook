@@ -21,19 +21,7 @@ interface Step3Data {
   severity?: number
 }
 
-interface Step4Data {
-  medicationsText?: string
-  familyHistoryText?: string
-  priorTestsText?: string
-}
-
-function toLines(text?: string): string[] {
-  if (!text) return []
-  return text
-    .split("\n")
-    .map((s) => s.trim())
-    .filter(Boolean)
-}
+interface Step4Data {}
 
 export default function AnalysisPage() {
   const router = useRouter()
@@ -123,14 +111,14 @@ export default function AnalysisPage() {
           symptoms,
           patientHypothesis: parsedStep2.noIdea ? null : parsedStep2.patientHypothesis || null,
           medicalHistory: {
-            currentMedications: toLines(parsedStep4.medicationsText).map((m) => ({ name: m })),
+            currentMedications: [],
             pastMedicalHistory: [],
-            familyHistory: toLines(parsedStep4.familyHistoryText),
-            recentTests: toLines(parsedStep4.priorTestsText),
+            familyHistory: [],
+            recentTests: [],
             medicalCare: "",
-            testingHistory: toLines(parsedStep4.priorTestsText),
+            testingHistory: [],
           },
-          familyHistory: toLines(parsedStep4.familyHistoryText),
+          familyHistory: [],
           symptomPatterns,
         }
 

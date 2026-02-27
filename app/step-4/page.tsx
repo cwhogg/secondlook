@@ -6,9 +6,6 @@ import { Layout } from "@/components/layout"
 import { ArrowLeft, CheckCircle, AlertCircle, Sparkles, Shield } from "lucide-react"
 
 interface Step4Data {
-  medicationsText: string
-  familyHistoryText: string
-  priorTestsText: string
   consentAnalysis: boolean
   consentNotSubstitute: boolean
   consentAccurate: boolean
@@ -17,9 +14,6 @@ interface Step4Data {
 export default function Step4() {
   const router = useRouter()
   const [formData, setFormData] = useState<Step4Data>({
-    medicationsText: "",
-    familyHistoryText: "",
-    priorTestsText: "",
     consentAnalysis: false,
     consentNotSubstitute: false,
     consentAccurate: false,
@@ -51,9 +45,6 @@ export default function Step4() {
         const parsed = JSON.parse(saved)
         setFormData((prev) => ({
           ...prev,
-          medicationsText: typeof parsed.medicationsText === "string" ? parsed.medicationsText : "",
-          familyHistoryText: typeof parsed.familyHistoryText === "string" ? parsed.familyHistoryText : "",
-          priorTestsText: typeof parsed.priorTestsText === "string" ? parsed.priorTestsText : "",
           consentAnalysis: typeof parsed.consentAnalysis === "boolean" ? parsed.consentAnalysis : false,
           consentNotSubstitute: typeof parsed.consentNotSubstitute === "boolean" ? parsed.consentNotSubstitute : false,
           consentAccurate: typeof parsed.consentAccurate === "boolean" ? parsed.consentAccurate : false,
@@ -151,51 +142,11 @@ export default function Step4() {
               <Sparkles className="h-4 w-4 text-[#8b2500]" />
               <span className="text-sm font-medium text-[#8b2500]">Step 4 of 4</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Optional context & consent</h1>
-            <p className="text-lg text-gray-600">Add any extra context you want us to consider, then start analysis</p>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Consent & submit</h1>
+            <p className="text-lg text-gray-600">Review consent and start your analysis</p>
           </div>
 
           <div className="max-w-3xl mx-auto space-y-6">
-            <div className="bg-white border border-gray-100 p-6 sm:p-8 space-y-6">
-              <h2 className="text-xl font-bold text-gray-900">Optional clinical context</h2>
-
-              <div className="space-y-2">
-                <label className="font-semibold text-gray-900">Current medications/supplements</label>
-                <textarea
-                  rows={4}
-                  maxLength={1200}
-                  value={formData.medicationsText}
-                  onChange={(e) => update("medicationsText", e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent"
-                  placeholder="Optional: one per line (name, dose, frequency if known)"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="font-semibold text-gray-900">Family history</label>
-                <textarea
-                  rows={4}
-                  maxLength={1200}
-                  value={formData.familyHistoryText}
-                  onChange={(e) => update("familyHistoryText", e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent"
-                  placeholder="Optional: relatives with similar symptoms, diagnoses, or relevant conditions"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="font-semibold text-gray-900">Prior tests/scans and notable results</label>
-                <textarea
-                  rows={4}
-                  maxLength={1200}
-                  value={formData.priorTestsText}
-                  onChange={(e) => update("priorTestsText", e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent"
-                  placeholder="Optional: test name + what was normal/abnormal"
-                />
-              </div>
-            </div>
-
             <div className="bg-white border border-gray-100 p-6 sm:p-8">
               <div className="flex items-start gap-3 mb-6">
                 <div className="p-2 bg-[#8b2500]">

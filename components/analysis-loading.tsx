@@ -89,6 +89,35 @@ function formatSpecialtyName(name: string): string {
     .replace(/\b\w/g, (c) => c.toUpperCase())
 }
 
+function SymptomExtractionSummary({ events }: { events: PipelineProgress[] }) {
+  const triageEvent = events.find((e) => e.stage === "triage") as (PipelineProgress & { stage: "triage" }) | undefined
+  const extractedSymptoms = triageEvent?.data?.extractedSymptoms || []
+
+  if (extractedSymptoms.length === 0) return null
+
+  return (
+    <div className="bg-white border border-[#d4c5b0] rounded-sm p-4 sm:p-5 mb-4">
+      <div className="flex items-center justify-between gap-2 mb-2">
+        <h2 className="text-sm sm:text-base font-semibold text-gray-900">Symptom extraction</h2>
+        <span className="text-[11px] text-gray-500">{extractedSymptoms.length} extracted</span>
+      </div>
+      <p className="text-[11px] sm:text-xs text-gray-500 mb-3">
+        These are the symptoms parsed from your intake and used for triage.
+      </p>
+      <div className="flex flex-wrap gap-1.5">
+        {extractedSymptoms.map((symptom, idx) => (
+          <span
+            key={`${symptom}-${idx}`}
+            className="inline-flex items-center px-2 py-0.5 text-[11px] font-medium bg-[#faf6f0] text-[#6d4c30] border border-[#d4c5b0] rounded-sm"
+          >
+            {symptom}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 // ===== CONFIDENCE BAR (reusable) =====
 
 function ConfidenceBar({
@@ -395,10 +424,6 @@ export function AnalysisLoading({ progress, pipelineEvents }: AnalysisLoadingPro
         <BreadcrumbNav
           items={[
             { label: "Home" },
-            { label: "About You" },
-            { label: "Your Story" },
-            { label: "Timeline" },
-            { label: "Consent" },
             { label: "Analysis", current: true },
           ]}
         />
@@ -433,6 +458,8 @@ export function AnalysisLoading({ progress, pipelineEvents }: AnalysisLoadingPro
             />
           </div>
         </div>
+
+        <SymptomExtractionSummary events={pipelineEvents} />
 
         {/* Timeline Feed */}
         <div className="bg-white border border-[#d4c5b0] rounded-sm p-4 sm:p-5">

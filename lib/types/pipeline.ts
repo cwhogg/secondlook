@@ -13,6 +13,7 @@ export type PipelineProgress =
         acuityLevel: string;
         specialties: string[];
         candidateCount: number;
+        extractedSymptoms: string[];
       };
     }
   | {

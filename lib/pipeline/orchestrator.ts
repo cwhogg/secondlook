@@ -43,6 +43,10 @@ export class DiagnosticPipeline {
           acuityLevel: triageResult.acuityLevel,
           specialties: triageResult.relevantSpecialties,
           candidateCount: triageResult.candidateDiseases.length,
+          extractedSymptoms: patientCase.symptoms
+            .map((s) => s.medicalTerm || s.originalPhrase || s.userCorrection || "")
+            .filter(Boolean)
+            .slice(0, 12),
         },
       });
 

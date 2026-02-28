@@ -27,6 +27,12 @@ export default function AnalysisPage() {
   const router = useRouter()
   const [progress, setProgress] = useState(0)
   const [pipelineEvents, setPipelineEvents] = useState<PipelineProgress[]>([])
+  const [preTriageSymptoms, setPreTriageSymptoms] = useState<Array<{
+    originalPhrase: string
+    medicalTerm: string
+    code: string | null
+    codeSystem: 'SNOMED' | 'UMLS CUI' | null
+  }>>([])
   const [error, setError] = useState<string | null>(null)
   const abortControllerRef = useRef<AbortController | null>(null)
   const hasStartedRef = useRef(false)
@@ -75,6 +81,20 @@ export default function AnalysisPage() {
         }
 
         if (mappedSymptoms.length > 0) {
+          const preExtracted = mappedSymptoms.map((s: any) => {
+            const concept = s.selectedConcept || null
+            const code = concept?.snomedCode || concept?.cui || null
+            const codeSystem: 'SNOMED' | 'UMLS CUI' | null = concept?.snomedCode ? 'SNOMED' : concept?.cui ? 'UMLS CUI' : null
+            return {
+              originalPhrase: s.originalPhrase || s.medicalTerm || '',
+              medicalTerm: s.medicalTerm || s.originalPhrase || '',
+              code,
+              codeSystem,
+            }
+          }).filter((s: any) => s.medicalTerm)
+
+          setPreTriageSymptoms(preExtracted)
+
           symptoms.push(
             ...mappedSymptoms.map((s: any) => ({
               originalPhrase: s.originalPhrase,
@@ -249,5 +269,5 @@ export default function AnalysisPage() {
     )
   }
 
-  return <AnalysisLoading progress={progress} pipelineEvents={pipelineEvents} />
+  return <AnalysisLoading progress={progress} pipelineEvents={pipelineEvents} preTriageSymptoms={preTriageSymptoms} />
 }

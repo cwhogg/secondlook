@@ -8,6 +8,12 @@ import type { PipelineProgress } from "@/lib/types/pipeline"
 interface AnalysisLoadingProps {
   progress: number
   pipelineEvents: PipelineProgress[]
+  preTriageSymptoms?: Array<{
+    originalPhrase: string
+    medicalTerm: string
+    code: string | null
+    codeSystem: 'SNOMED' | 'UMLS CUI' | null
+  }>
 }
 
 const STAGE_CONFIG: Record<string, { label: string; icon: typeof Brain; description: string }> = {
@@ -89,9 +95,22 @@ function formatSpecialtyName(name: string): string {
     .replace(/\b\w/g, (c) => c.toUpperCase())
 }
 
-function SymptomExtractionSummary({ events }: { events: PipelineProgress[] }) {
+function SymptomExtractionSummary({
+  events,
+  preTriageSymptoms,
+}: {
+  events: PipelineProgress[]
+  preTriageSymptoms?: Array<{
+    originalPhrase: string
+    medicalTerm: string
+    code: string | null
+    codeSystem: 'SNOMED' | 'UMLS CUI' | null
+  }>
+}) {
   const triageEvent = events.find((e) => e.stage === "triage") as (PipelineProgress & { stage: "triage" }) | undefined
-  const extractedSymptoms = triageEvent?.data?.extractedSymptoms || []
+  const extractedSymptoms = (preTriageSymptoms && preTriageSymptoms.length > 0)
+    ? preTriageSymptoms
+    : triageEvent?.data?.extractedSymptoms || []
 
   if (extractedSymptoms.length === 0) return null
 
@@ -412,7 +431,7 @@ function TimelineStage({
 
 // ===== MAIN COMPONENT =====
 
-export function AnalysisLoading({ progress, pipelineEvents }: AnalysisLoadingProps) {
+export function AnalysisLoading({ progress, pipelineEvents, preTriageSymptoms }: AnalysisLoadingProps) {
   const timelineEndRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -460,7 +479,7 @@ export function AnalysisLoading({ progress, pipelineEvents }: AnalysisLoadingPro
           </div>
         </div>
 
-        <SymptomExtractionSummary events={pipelineEvents} />
+        <SymptomExtractionSummary events={pipelineEvents} preTriageSymptoms={preTriageSymptoms} />
 
         {/* Timeline Feed */}
         <div className="bg-white border border-[#d4c5b0] rounded-sm p-4 sm:p-5">

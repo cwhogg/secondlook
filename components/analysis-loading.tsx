@@ -102,16 +102,17 @@ function SymptomExtractionSummary({ events }: { events: PipelineProgress[] }) {
         <span className="text-[11px] text-gray-500">{extractedSymptoms.length} extracted</span>
       </div>
       <p className="text-[11px] sm:text-xs text-gray-500 mb-3">
-        These are the symptoms parsed from your intake and used for triage.
+        Parsed symptoms and mapped codes used for triage.
       </p>
-      <div className="flex flex-wrap gap-1.5">
+      <div className="space-y-2">
         {extractedSymptoms.map((symptom, idx) => (
-          <span
-            key={`${symptom}-${idx}`}
-            className="inline-flex items-center px-2 py-0.5 text-[11px] font-medium bg-[#faf6f0] text-[#6d4c30] border border-[#d4c5b0] rounded-sm"
-          >
-            {symptom}
-          </span>
+          <div key={`${symptom.medicalTerm}-${idx}`} className="border border-[#e8ddd0] bg-[#fdfcfa] rounded-sm p-2.5">
+            <div className="text-xs font-medium text-gray-800">{symptom.medicalTerm}</div>
+            <div className="text-[11px] text-gray-500">From: “{symptom.originalPhrase}”</div>
+            <div className="text-[11px] text-[#6d4c30] mt-1">
+              {symptom.code && symptom.codeSystem ? `${symptom.codeSystem}: ${symptom.code}` : 'Code: not mapped'}
+            </div>
+          </div>
         ))}
       </div>
     </div>

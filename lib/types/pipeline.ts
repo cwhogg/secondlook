@@ -13,7 +13,12 @@ export type PipelineProgress =
         acuityLevel: string;
         specialties: string[];
         candidateCount: number;
-        extractedSymptoms: string[];
+        extractedSymptoms: Array<{
+          originalPhrase: string;
+          medicalTerm: string;
+          code: string | null;
+          codeSystem: 'SNOMED' | 'UMLS CUI' | null;
+        }>;
       };
     }
   | {

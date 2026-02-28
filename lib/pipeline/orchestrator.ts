@@ -44,8 +44,22 @@ export class DiagnosticPipeline {
           specialties: triageResult.relevantSpecialties,
           candidateCount: triageResult.candidateDiseases.length,
           extractedSymptoms: patientCase.symptoms
-            .map((s) => s.medicalTerm || s.originalPhrase || s.userCorrection || "")
-            .filter(Boolean)
+            .map((s) => {
+              const concept = s.selectedConcept || null;
+              const code = concept?.snomedCode || concept?.cui || null;
+              const codeSystem: 'SNOMED' | 'UMLS CUI' | null = concept?.snomedCode
+                ? 'SNOMED'
+                : concept?.cui
+                  ? 'UMLS CUI'
+                  : null;
+              return {
+                originalPhrase: s.originalPhrase || s.userCorrection || s.medicalTerm || '',
+                medicalTerm: s.medicalTerm || s.originalPhrase || s.userCorrection || '',
+                code,
+                codeSystem,
+              };
+            })
+            .filter((s) => s.medicalTerm)
             .slice(0, 12),
         },
       });

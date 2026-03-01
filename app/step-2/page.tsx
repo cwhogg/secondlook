@@ -25,6 +25,8 @@ export default function Step2() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [autoSaved, setAutoSaved] = useState(false)
   const [step1Snapshot, setStep1Snapshot] = useState<{ age: string; biologicalSex: string }>({ age: "", biologicalSex: "" })
+  const [symptomMapCount, setSymptomMapCount] = useState(0)
+  const [isMappingProcessing, setIsMappingProcessing] = useState(false)
 
   useEffect(() => {
     const step1 = localStorage.getItem("step1Data")
@@ -79,6 +81,9 @@ export default function Step2() {
   const validateForm = () => {
     const nextErrors: Record<string, string> = {}
     if (!formData.primaryConcern.trim()) nextErrors.primaryConcern = "Please describe your main health concern"
+    if (formData.primaryConcern.trim().length > 10 && isMappingProcessing) {
+      nextErrors.primaryConcern = "Symptom extraction is still running. Please wait a moment before continuing."
+    }
     setErrors(nextErrors)
     return Object.keys(nextErrors).length === 0
   }
@@ -94,7 +99,7 @@ export default function Step2() {
     router.push("/step-1")
   }
 
-  const isFormValid = (formData.primaryConcern || "").trim().length > 0
+  const isFormValid = (formData.primaryConcern || "").trim().length > 0 && !isMappingProcessing
 
   return (
     <Layout>
@@ -163,9 +168,20 @@ export default function Step2() {
                     chiefComplaint={formData.primaryConcern}
                     age={step1Snapshot.age}
                     sex={step1Snapshot.biologicalSex}
-                    onMappingUpdate={(mapped) => localStorage.setItem("mappedSymptoms", JSON.stringify(mapped))}
+                    onMappingUpdate={(mapped) => {
+                      setSymptomMapCount(mapped.length)
+                      localStorage.setItem("mappedSymptoms", JSON.stringify(mapped))
+                    }}
                     onPatternUpdate={(patterns) => localStorage.setItem("symptomPatterns", JSON.stringify(patterns))}
+                    onProcessingStateChange={setIsMappingProcessing}
                   />
+                  <p className="text-xs text-gray-500">
+                    {isMappingProcessing
+                      ? "Extracting and mapping symptoms…"
+                      : symptomMapCount > 0
+                        ? `${symptomMapCount} mapped symptom${symptomMapCount === 1 ? "" : "s"} ready for triage`
+                        : "No mapped symptoms yet — parser may still be processing"}
+                  </p>
                 </div>
               </div>
             )}

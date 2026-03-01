@@ -17,6 +17,7 @@ interface SymptomMappingSectionProps {
   familyHistory?: string
   onMappingUpdate?: (mappedSymptoms: MappedSymptom[]) => void
   onPatternUpdate?: (patterns: SymptomPatternData | null) => void
+  onProcessingStateChange?: (isProcessing: boolean) => void
 }
 
 interface MappedSymptom {
@@ -107,6 +108,7 @@ export function SymptomMappingSection({
   familyHistory,
   onMappingUpdate,
   onPatternUpdate,
+  onProcessingStateChange,
 }: SymptomMappingSectionProps) {
   const [isLoading, setIsLoading] = useState(false)
   const [mappedSymptoms, setMappedSymptoms] = useState<MappedSymptom[]>([])
@@ -137,6 +139,12 @@ export function SymptomMappingSection({
       onPatternUpdate(symptomPatterns)
     }
   }, [symptomPatterns, onPatternUpdate])
+
+  useEffect(() => {
+    if (onProcessingStateChange) {
+      onProcessingStateChange(isLoading)
+    }
+  }, [isLoading, onProcessingStateChange])
 
   // Trigger pattern analysis when we have 2+ mapped symptoms
   useEffect(() => {

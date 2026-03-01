@@ -7,6 +7,7 @@ import { CharacterCounter } from "@/components/character-counter"
 import { DocumentUpload } from "@/components/document-upload"
 import { ArrowRight, ArrowLeft, CheckCircle, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { SymptomMappingSection } from "@/components/symptom-mapping-section"
 
 interface Step2Data {
   primaryConcern: string
@@ -23,12 +24,23 @@ export default function Step2() {
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [autoSaved, setAutoSaved] = useState(false)
+  const [step1Snapshot, setStep1Snapshot] = useState<{ age: string; biologicalSex: string }>({ age: "", biologicalSex: "" })
 
   useEffect(() => {
     const step1 = localStorage.getItem("step1Data")
     if (!step1) {
       router.push("/step-1")
       return
+    }
+
+    try {
+      const parsedStep1 = JSON.parse(step1)
+      setStep1Snapshot({
+        age: typeof parsedStep1.age === "string" ? parsedStep1.age : "",
+        biologicalSex: typeof parsedStep1.biologicalSex === "string" ? parsedStep1.biologicalSex : "",
+      })
+    } catch {
+      // ignore
     }
 
     const saved = localStorage.getItem("step2Data")
@@ -141,6 +153,22 @@ export default function Step2() {
               </div>
               {errors.primaryConcern && <p className="text-red-600 text-sm">{errors.primaryConcern}</p>}
             </div>
+
+            {formData.primaryConcern.trim().length > 10 && (
+              <div className="space-y-3">
+                <h2 className="text-xl font-bold text-gray-900">Symptom extraction preview</h2>
+                <p className="text-sm text-gray-600">Using the existing parser and mapping pipeline from previous flow.</p>
+                <div className="border border-gray-200 p-4">
+                  <SymptomMappingSection
+                    chiefComplaint={formData.primaryConcern}
+                    age={step1Snapshot.age}
+                    sex={step1Snapshot.biologicalSex}
+                    onMappingUpdate={(mapped) => localStorage.setItem("mappedSymptoms", JSON.stringify(mapped))}
+                    onPatternUpdate={(patterns) => localStorage.setItem("symptomPatterns", JSON.stringify(patterns))}
+                  />
+                </div>
+              </div>
+            )}
 
             <div className="space-y-4">
               <h2 className="text-xl font-bold text-gray-900">Do you have a theory about what this might be? (optional)</h2>

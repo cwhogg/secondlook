@@ -105,49 +105,6 @@ function formatSpecialtyName(name: string): string {
     .replace(/\b\w/g, (c) => c.toUpperCase())
 }
 
-function SymptomExtractionSummary({
-  events,
-  preTriageSymptoms,
-}: {
-  events: PipelineProgress[]
-  preTriageSymptoms?: Array<{
-    originalPhrase: string
-    medicalTerm: string
-    code: string | null
-    codeSystem: 'SNOMED' | 'UMLS CUI' | null
-  }>
-}) {
-  const triageEvent = events.find((e) => e.stage === "triage") as (PipelineProgress & { stage: "triage" }) | undefined
-  const extractedSymptoms = (preTriageSymptoms && preTriageSymptoms.length > 0)
-    ? preTriageSymptoms
-    : triageEvent?.data?.extractedSymptoms || []
-
-  if (extractedSymptoms.length === 0) return null
-
-  return (
-    <div className="bg-white border border-[#d4c5b0] rounded-sm p-4 sm:p-5 mb-4">
-      <div className="flex items-center justify-between gap-2 mb-2">
-        <h2 className="text-sm sm:text-base font-semibold text-gray-900">Symptom extraction</h2>
-        <span className="text-[11px] text-gray-500">{extractedSymptoms.length} extracted</span>
-      </div>
-      <p className="text-[11px] sm:text-xs text-gray-500 mb-3">
-        Parsed symptoms and mapped codes used for triage.
-      </p>
-      <div className="space-y-2">
-        {extractedSymptoms.map((symptom, idx) => (
-          <div key={`${symptom.medicalTerm}-${idx}`} className="border border-[#e8ddd0] bg-[#fdfcfa] rounded-sm p-2.5">
-            <div className="text-xs font-medium text-gray-800">{symptom.medicalTerm}</div>
-            <div className="text-[11px] text-gray-500">From: “{symptom.originalPhrase}”</div>
-            <div className="text-[11px] text-[#6d4c30] mt-1">
-              {symptom.code && symptom.codeSystem ? `${symptom.codeSystem}: ${symptom.code}` : 'Code: not mapped'}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
 // ===== CONFIDENCE BAR (reusable) =====
 
 function ConfidenceBar({
@@ -333,11 +290,18 @@ function TimelineStage({
   status,
   event,
   isLast,
+  preTriageSymptoms,
 }: {
   stageKey: string
   status: "pending" | "active" | "complete"
   event: PipelineProgress | null
   isLast: boolean
+  preTriageSymptoms?: Array<{
+    originalPhrase: string
+    medicalTerm: string
+    code: string | null
+    codeSystem: 'SNOMED' | 'UMLS CUI' | null
+  }>
 }) {
   const config = STAGE_CONFIG[stageKey]
   if (!config) return null
@@ -347,12 +311,25 @@ function TimelineStage({
     if (!event) return null
 
     switch (event.stage) {
-      case "extraction-complete":
+      case "extraction-complete": {
+        const symptoms = preTriageSymptoms && preTriageSymptoms.length > 0
+          ? preTriageSymptoms
+          : (event as any).data?.symptoms || []
+        if (symptoms.length === 0) return null
         return (
-          <div className="mt-2 text-xs text-gray-600">
-            {(event as any).data?.symptomCount || 0} symptoms extracted and mapped to medical codes
+          <div className="mt-3 space-y-2">
+            {symptoms.map((symptom: any, idx: number) => (
+              <div key={`${symptom.medicalTerm}-${idx}`} className="border border-[#e8ddd0] bg-[#fdfcfa] rounded-sm p-2.5">
+                <div className="text-xs font-medium text-gray-800">{symptom.medicalTerm}</div>
+                <div className="text-[11px] text-gray-500">From: &ldquo;{symptom.originalPhrase}&rdquo;</div>
+                <div className="text-[11px] text-[#6d4c30] mt-1">
+                  {symptom.code && symptom.codeSystem ? `${symptom.codeSystem}: ${symptom.code}` : 'Code: not mapped'}
+                </div>
+              </div>
+            ))}
           </div>
         )
+      }
       case "triage":
         return <TriageData event={event as PipelineProgress & { stage: "triage" }} />
       case "specialists-complete":
@@ -495,8 +472,6 @@ export function AnalysisLoading({ progress, pipelineEvents, preTriageSymptoms }:
           </div>
         </div>
 
-        <SymptomExtractionSummary events={pipelineEvents} preTriageSymptoms={preTriageSymptoms} />
-
         {/* Timeline Feed */}
         <div className="bg-white border border-[#d4c5b0] rounded-sm p-4 sm:p-5">
           {ORDERED_STAGES.map((stageKey, index) => {
@@ -510,6 +485,7 @@ export function AnalysisLoading({ progress, pipelineEvents, preTriageSymptoms }:
                 status={status}
                 event={event}
                 isLast={index === ORDERED_STAGES.length - 1}
+                preTriageSymptoms={stageKey === "extraction" ? preTriageSymptoms : undefined}
               />
             )
           })}

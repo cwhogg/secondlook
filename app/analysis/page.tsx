@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { AnalysisLoading } from "@/components/analysis-loading"
+import { mapSingleSymptom } from "@/lib/symptom-parser"
 import type { PipelineProgress } from "@/lib/types/pipeline"
 
 interface Step1Data {
@@ -56,66 +57,85 @@ export default function AnalysisPage() {
         const parsedStep1: Step1Data = JSON.parse(step1Data)
         const parsedStep2: Step2Data = JSON.parse(step2Data)
         const parsedStep3: Step3Data = JSON.parse(step3Data)
-        const parsedStep4: Step4Data = JSON.parse(step4Data)
+        JSON.parse(step4Data) // validate step4 is present
 
-        const symptoms: any[] = []
+        // ===== STAGE 0: SYMPTOM EXTRACTION =====
+        setPipelineEvents([{
+          stage: 'extraction',
+          stageNumber: 0,
+          totalStages: 6,
+          percentage: 2,
+          detail: 'Parsing symptoms from your narrative...',
+          data: { symptomCount: 0, symptoms: [] },
+        } as PipelineProgress])
+        setProgress(2)
 
-        const mappedSymptomsData = localStorage.getItem("mappedSymptoms")
-        let mappedSymptoms: any[] = []
-        if (mappedSymptomsData) {
-          try {
-            mappedSymptoms = JSON.parse(mappedSymptomsData)
-          } catch {
-            mappedSymptoms = []
-          }
-        }
-
-        const symptomPatternsData = localStorage.getItem("symptomPatterns")
-        let symptomPatterns: any = null
-        if (symptomPatternsData) {
-          try {
-            symptomPatterns = JSON.parse(symptomPatternsData)
-          } catch {
-            symptomPatterns = null
-          }
-        }
-
-        if (mappedSymptoms.length > 0) {
-          const preExtracted = mappedSymptoms.map((s: any) => {
-            const concept = s.selectedConcept || null
-            const code = concept?.snomedCode || concept?.cui || null
-            const codeSystem: 'SNOMED' | 'UMLS CUI' | null = concept?.snomedCode ? 'SNOMED' : concept?.cui ? 'UMLS CUI' : null
-            return {
-              originalPhrase: s.originalPhrase || s.medicalTerm || '',
-              medicalTerm: s.medicalTerm || s.originalPhrase || '',
-              code,
-              codeSystem,
-            }
-          }).filter((s: any) => s.medicalTerm)
-
-          setPreTriageSymptoms(preExtracted)
-
-          symptoms.push(
-            ...mappedSymptoms.map((s: any) => ({
-              originalPhrase: s.originalPhrase,
-              originalText: s.originalPhrase,
-              text: s.originalPhrase,
-              medicalTerm: s.medicalTerm,
-              selectedConcept: s.selectedConcept,
-              category: s.category,
-              bodyPart: s.bodyPart,
-              severity: s.severity,
-            })),
-          )
-        } else if (parsedStep2.primaryConcern) {
-          symptoms.push({
+        // Call parse-symptoms API
+        const parseResponse = await fetch("/api/parse-symptoms", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
             text: parsedStep2.primaryConcern,
-            originalText: parsedStep2.primaryConcern,
-            originalPhrase: parsedStep2.primaryConcern,
-            medicalTerm: "Primary concern",
-            severity: parsedStep3.severity || 5,
-          })
+            patientAge: parsedStep1.age,
+            patientSex: parsedStep1.biologicalSex,
+          }),
+        })
+
+        if (!parseResponse.ok) {
+          throw new Error(`Symptom parsing failed: ${parseResponse.statusText}`)
         }
+
+        const parseData = await parseResponse.json()
+        if (parseData.error || !parseData.symptoms?.length) {
+          throw new Error(parseData.error || "No symptoms could be extracted from your description.")
+        }
+
+        // Map each parsed symptom to UMLS concepts
+        setProgress(5)
+        const mappedResults = await Promise.all(
+          parseData.symptoms.map((symptom: any) => mapSingleSymptom(symptom))
+        )
+
+        // Build pre-triage display data
+        const preExtracted = mappedResults.map((s) => {
+          const concept = s.selectedConcept || null
+          const code = concept?.cui || null
+          const codeSystem: 'SNOMED' | 'UMLS CUI' | null = concept?.cui ? 'UMLS CUI' : null
+          return {
+            originalPhrase: s.originalPhrase,
+            medicalTerm: s.medicalTerm,
+            code,
+            codeSystem,
+          }
+        }).filter((s) => s.medicalTerm)
+
+        setPreTriageSymptoms(preExtracted)
+
+        // Store mapped symptoms in localStorage for consistency
+        localStorage.setItem("mappedSymptoms", JSON.stringify(mappedResults))
+
+        // Emit extraction-complete event
+        setPipelineEvents([{
+          stage: 'extraction-complete',
+          stageNumber: 0,
+          totalStages: 6,
+          percentage: 10,
+          detail: `Extracted ${preExtracted.length} symptoms with UMLS mappings`,
+          data: { symptomCount: preExtracted.length, symptoms: preExtracted },
+        } as PipelineProgress])
+        setProgress(10)
+
+        // Build symptoms array for pipeline payload
+        const symptoms = mappedResults.map((s) => ({
+          originalPhrase: s.originalPhrase,
+          originalText: s.originalPhrase,
+          text: s.originalPhrase,
+          medicalTerm: s.medicalTerm,
+          selectedConcept: s.selectedConcept,
+          category: s.category,
+          bodyPart: s.bodyPart,
+          severity: s.severity,
+        }))
 
         const analysisPayload = {
           demographics: {
@@ -139,7 +159,7 @@ export default function AnalysisPage() {
             testingHistory: [],
           },
           familyHistory: [],
-          symptomPatterns,
+          symptomPatterns: null,
         }
 
         const startTime = Date.now()

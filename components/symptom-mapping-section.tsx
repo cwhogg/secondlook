@@ -4,7 +4,8 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { MedicalButton } from "./medical-button"
 import { RefreshCw } from "lucide-react"
-import { searchUMLSWithFallbacks } from "@/lib/umls-search"
+import { mapSingleSymptom } from "@/lib/symptom-parser"
+import type { MappedSymptom, UMLSConcept } from "@/lib/symptom-parser"
 
 interface SymptomMappingSectionProps {
   chiefComplaint: string
@@ -20,30 +21,6 @@ interface SymptomMappingSectionProps {
   onProcessingStateChange?: (isProcessing: boolean) => void
 }
 
-interface MappedSymptom {
-  originalPhrase: string
-  medicalTerm: string
-  alternativeSearchTerms?: string[]
-  category?: string
-  severity?: string
-  duration?: string
-  bodyPart?: string
-  umlsConcepts: UMLSConcept[]
-  selectedConcept: UMLSConcept | null
-  confidence: number
-  confirmed: boolean
-  mappingError: boolean
-  feedbackStatus: "none" | "needs_adjustment"
-  userCorrection?: string
-  isEditingCorrection?: boolean
-  searchTermUsed?: string
-}
-
-interface UMLSConcept {
-  name: string
-  cui: string
-  semanticType?: string
-}
 
 interface SymptomPattern {
   patternName: string
@@ -68,33 +45,6 @@ const categoryColors: Record<string, string> = {
   cognitive: "bg-[#faf6f0] text-[#6d1d00]",
   autonomic: "bg-green-100 text-green-800",
   constitutional: "bg-orange-100 text-orange-800",
-}
-
-async function mapSingleSymptom(symptom: any): Promise<MappedSymptom> {
-  const primaryTerm = symptom.medicalTerm || symptom.originalPhrase
-  const alternativeTerms: string[] = symptom.alternativeSearchTerms || []
-  const originalPhrase = symptom.originalPhrase || symptom.text || "Unknown"
-
-  const result = await searchUMLSWithFallbacks(primaryTerm || "", alternativeTerms, originalPhrase)
-
-  return {
-    originalPhrase,
-    medicalTerm: symptom.medicalTerm || originalPhrase,
-    alternativeSearchTerms: alternativeTerms,
-    category: symptom.category,
-    severity: symptom.severity,
-    duration: symptom.duration,
-    bodyPart: symptom.bodyPart,
-    umlsConcepts: result.concepts,
-    selectedConcept: result.concepts[0] || null,
-    confidence: result.confidence,
-    confirmed: false,
-    mappingError: result.error,
-    feedbackStatus: "none",
-    userCorrection: "",
-    isEditingCorrection: false,
-    searchTermUsed: result.searchTermUsed,
-  }
 }
 
 export function SymptomMappingSection({

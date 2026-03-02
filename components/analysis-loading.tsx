@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { Brain, CheckCircle2, Loader2, Stethoscope, FlaskConical, Scale, FileText, Activity } from "lucide-react"
+import { Brain, CheckCircle2, Loader2, Stethoscope, FlaskConical, Scale, FileText, Activity, Search } from "lucide-react"
 import { BreadcrumbNav } from "./breadcrumb-nav"
 import type { PipelineProgress } from "@/lib/types/pipeline"
 
@@ -17,6 +17,11 @@ interface AnalysisLoadingProps {
 }
 
 const STAGE_CONFIG: Record<string, { label: string; icon: typeof Brain; description: string }> = {
+  extraction: {
+    label: "Symptom Extraction",
+    icon: Search,
+    description: "Parsing your narrative and mapping to medical terminology",
+  },
   triage: {
     label: "Triage",
     icon: Activity,
@@ -44,7 +49,7 @@ const STAGE_CONFIG: Record<string, { label: string; icon: typeof Brain; descript
   },
 }
 
-const ORDERED_STAGES = ["triage", "specialists", "evidence", "synthesis", "report"] as const
+const ORDERED_STAGES = ["extraction", "triage", "specialists", "evidence", "synthesis", "report"] as const
 
 function getStageStatus(
   stageKey: string,
@@ -63,6 +68,7 @@ function getStageStatus(
     }
   }
 
+  if (events.some((e) => e.stage === "extraction-complete")) completeStages.add("extraction")
   if (events.some((e) => e.stage === "specialists-complete")) completeStages.add("specialists")
   if (events.some((e) => e.stage === "evidence-complete")) completeStages.add("evidence")
   if (events.some((e) => e.stage === "synthesis-complete")) completeStages.add("synthesis")
@@ -85,6 +91,10 @@ function getStageData(stageKey: string, events: PipelineProgress[]) {
       (stageKey === "report" && e.stage === "complete")
   )
   const startEvent = events.find((e) => e.stage === stageKey)
+  // For extraction, prefer the complete event to show final symptom count
+  if (stageKey === "extraction") {
+    return completeEvent || startEvent || null
+  }
   return completeEvent || startEvent || null
 }
 
@@ -337,6 +347,12 @@ function TimelineStage({
     if (!event) return null
 
     switch (event.stage) {
+      case "extraction-complete":
+        return (
+          <div className="mt-2 text-xs text-gray-600">
+            {(event as any).data?.symptomCount || 0} symptoms extracted and mapped to medical codes
+          </div>
+        )
       case "triage":
         return <TriageData event={event as PipelineProgress & { stage: "triage" }} />
       case "specialists-complete":
@@ -466,7 +482,7 @@ export function AnalysisLoading({ progress, pipelineEvents, preTriageSymptoms }:
           <div className="flex items-center justify-between mb-1.5">
             <span className="text-[11px] font-medium text-gray-400">
               {progress < 100
-                ? `Stage ${Math.max(1, pipelineEvents.length > 0 ? pipelineEvents[pipelineEvents.length - 1].stageNumber : 1)} of 5`
+                ? `Stage ${Math.max(1, pipelineEvents.length > 0 ? pipelineEvents[pipelineEvents.length - 1].stageNumber + 1 : 1)} of 6`
                 : "Complete"}
             </span>
             <span className="text-[11px] font-bold text-[#8b2500] tabular-nums">{progress}%</span>

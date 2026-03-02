@@ -7,7 +7,6 @@ import { CharacterCounter } from "@/components/character-counter"
 import { DocumentUpload } from "@/components/document-upload"
 import { ArrowRight, ArrowLeft, CheckCircle, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { SymptomMappingSection } from "@/components/symptom-mapping-section"
 
 interface Step2Data {
   primaryConcern: string
@@ -24,25 +23,12 @@ export default function Step2() {
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [autoSaved, setAutoSaved] = useState(false)
-  const [step1Snapshot, setStep1Snapshot] = useState<{ age: string; biologicalSex: string }>({ age: "", biologicalSex: "" })
-  const [symptomMapCount, setSymptomMapCount] = useState(0)
-  const [isMappingProcessing, setIsMappingProcessing] = useState(false)
 
   useEffect(() => {
     const step1 = localStorage.getItem("step1Data")
     if (!step1) {
       router.push("/step-1")
       return
-    }
-
-    try {
-      const parsedStep1 = JSON.parse(step1)
-      setStep1Snapshot({
-        age: typeof parsedStep1.age === "string" ? parsedStep1.age : "",
-        biologicalSex: typeof parsedStep1.biologicalSex === "string" ? parsedStep1.biologicalSex : "",
-      })
-    } catch {
-      // ignore
     }
 
     const saved = localStorage.getItem("step2Data")
@@ -81,9 +67,6 @@ export default function Step2() {
   const validateForm = () => {
     const nextErrors: Record<string, string> = {}
     if (!formData.primaryConcern.trim()) nextErrors.primaryConcern = "Please describe your main health concern"
-    if (formData.primaryConcern.trim().length > 10 && isMappingProcessing) {
-      nextErrors.primaryConcern = "Symptom extraction is still running. Please wait a moment before continuing."
-    }
     setErrors(nextErrors)
     return Object.keys(nextErrors).length === 0
   }
@@ -99,7 +82,7 @@ export default function Step2() {
     router.push("/step-1")
   }
 
-  const isFormValid = (formData.primaryConcern || "").trim().length > 0 && !isMappingProcessing
+  const isFormValid = (formData.primaryConcern || "").trim().length > 0
 
   return (
     <Layout>
@@ -158,33 +141,6 @@ export default function Step2() {
               </div>
               {errors.primaryConcern && <p className="text-red-600 text-sm">{errors.primaryConcern}</p>}
             </div>
-
-            {formData.primaryConcern.trim().length > 10 && (
-              <div className="space-y-3">
-                <h2 className="text-xl font-bold text-gray-900">Symptom extraction preview</h2>
-                <p className="text-sm text-gray-600">Using the existing parser and mapping pipeline from previous flow.</p>
-                <div className="border border-gray-200 p-4">
-                  <SymptomMappingSection
-                    chiefComplaint={formData.primaryConcern}
-                    age={step1Snapshot.age}
-                    sex={step1Snapshot.biologicalSex}
-                    onMappingUpdate={(mapped) => {
-                      setSymptomMapCount(mapped.length)
-                      localStorage.setItem("mappedSymptoms", JSON.stringify(mapped))
-                    }}
-                    onPatternUpdate={(patterns) => localStorage.setItem("symptomPatterns", JSON.stringify(patterns))}
-                    onProcessingStateChange={setIsMappingProcessing}
-                  />
-                  <p className="text-xs text-gray-500">
-                    {isMappingProcessing
-                      ? "Extracting and mapping symptoms…"
-                      : symptomMapCount > 0
-                        ? `${symptomMapCount} mapped symptom${symptomMapCount === 1 ? "" : "s"} ready for triage`
-                        : "No mapped symptoms yet — parser may still be processing"}
-                  </p>
-                </div>
-              </div>
-            )}
 
             <div className="space-y-4">
               <h2 className="text-xl font-bold text-gray-900">Do you have a theory about what this might be? (optional)</h2>

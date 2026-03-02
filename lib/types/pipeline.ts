@@ -3,9 +3,41 @@
 
 export type PipelineProgress =
   | {
+      stage: 'extraction';
+      stageNumber: 0;
+      totalStages: 6;
+      percentage: number;
+      detail: string;
+      data: {
+        symptomCount: number;
+        symptoms: Array<{
+          originalPhrase: string;
+          medicalTerm: string;
+          code: string | null;
+          codeSystem: 'SNOMED' | 'UMLS CUI' | null;
+        }>;
+      };
+    }
+  | {
+      stage: 'extraction-complete';
+      stageNumber: 0;
+      totalStages: 6;
+      percentage: number;
+      detail: string;
+      data: {
+        symptomCount: number;
+        symptoms: Array<{
+          originalPhrase: string;
+          medicalTerm: string;
+          code: string | null;
+          codeSystem: 'SNOMED' | 'UMLS CUI' | null;
+        }>;
+      };
+    }
+  | {
       stage: 'triage';
       stageNumber: 1;
-      totalStages: 5;
+      totalStages: 6;
       percentage: number;
       detail: string;
       data: {
@@ -24,7 +56,7 @@ export type PipelineProgress =
   | {
       stage: 'specialists';
       stageNumber: 2;
-      totalStages: 5;
+      totalStages: 6;
       percentage: number;
       detail: string;
       data: { specialties: string[] };
@@ -32,7 +64,7 @@ export type PipelineProgress =
   | {
       stage: 'specialists-complete';
       stageNumber: 2;
-      totalStages: 5;
+      totalStages: 6;
       percentage: number;
       detail: string;
       data: {
@@ -46,7 +78,7 @@ export type PipelineProgress =
   | {
       stage: 'evidence';
       stageNumber: 3;
-      totalStages: 5;
+      totalStages: 6;
       percentage: number;
       detail: string;
       data: { hypothesesCount: number };
@@ -54,7 +86,7 @@ export type PipelineProgress =
   | {
       stage: 'evidence-complete';
       stageNumber: 3;
-      totalStages: 5;
+      totalStages: 6;
       percentage: number;
       detail: string;
       data: {
@@ -66,7 +98,7 @@ export type PipelineProgress =
   | {
       stage: 'synthesis';
       stageNumber: 4;
-      totalStages: 5;
+      totalStages: 6;
       percentage: number;
       detail: string;
       data: null;
@@ -74,7 +106,7 @@ export type PipelineProgress =
   | {
       stage: 'synthesis-complete';
       stageNumber: 4;
-      totalStages: 5;
+      totalStages: 6;
       percentage: number;
       detail: string;
       data: {
@@ -85,7 +117,7 @@ export type PipelineProgress =
   | {
       stage: 'report';
       stageNumber: 5;
-      totalStages: 5;
+      totalStages: 6;
       percentage: number;
       detail: string;
       data: null;
@@ -93,7 +125,7 @@ export type PipelineProgress =
   | {
       stage: 'complete';
       stageNumber: 5;
-      totalStages: 5;
+      totalStages: 6;
       percentage: 100;
       detail: string;
       data: null;

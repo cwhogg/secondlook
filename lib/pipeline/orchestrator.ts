@@ -35,7 +35,7 @@ export class DiagnosticPipeline {
       onProgress?.({
         stage: 'triage',
         stageNumber: 1,
-        totalStages: 5,
+        totalStages: 6,
         detail: 'Classifying symptoms and retrieving candidate conditions from knowledge base',
         percentage: 15,
         data: {
@@ -81,7 +81,7 @@ export class DiagnosticPipeline {
       onProgress?.({
         stage: 'specialists',
         stageNumber: 2,
-        totalStages: 5,
+        totalStages: 6,
         detail: `Consulting ${triageResult.relevantSpecialties.length} specialist agents in parallel`,
         percentage: 20,
         data: { specialties: triageResult.relevantSpecialties },
@@ -117,7 +117,7 @@ export class DiagnosticPipeline {
       onProgress?.({
         stage: 'specialists-complete',
         stageNumber: 2,
-        totalStages: 5,
+        totalStages: 6,
         detail: `${specialistResults.reduce((sum, sr) => sum + sr.hypotheses.length, 0)} hypotheses generated from ${specialistResults.length} specialists`,
         percentage: 50,
         data: {
@@ -136,7 +136,7 @@ export class DiagnosticPipeline {
       onProgress?.({
         stage: 'evidence',
         stageNumber: 3,
-        totalStages: 5,
+        totalStages: 6,
         detail: 'Evaluating hypotheses against diagnostic criteria from knowledge base',
         percentage: 55,
         data: {
@@ -165,7 +165,7 @@ export class DiagnosticPipeline {
       onProgress?.({
         stage: 'evidence-complete',
         stageNumber: 3,
-        totalStages: 5,
+        totalStages: 6,
         detail: `${evaluationResult.hypotheses.length} hypotheses evaluated against diagnostic criteria`,
         percentage: 65,
         data: {
@@ -181,7 +181,7 @@ export class DiagnosticPipeline {
       onProgress?.({
         stage: 'synthesis',
         stageNumber: 4,
-        totalStages: 5,
+        totalStages: 6,
         detail: 'Senior diagnostician reviewing all evidence and assigning probabilities',
         percentage: 70,
         data: null,
@@ -208,7 +208,7 @@ export class DiagnosticPipeline {
       onProgress?.({
         stage: 'synthesis-complete',
         stageNumber: 4,
-        totalStages: 5,
+        totalStages: 6,
         detail: `Final ranking complete — ${synthesisResult.hypotheses.length} diagnoses ranked by evidence`,
         percentage: 85,
         data: {
@@ -247,7 +247,7 @@ export class DiagnosticPipeline {
       onProgress?.({
         stage: 'report',
         stageNumber: 5,
-        totalStages: 5,
+        totalStages: 6,
         detail: 'Generating your detailed diagnostic report',
         percentage: 90,
         data: null,
@@ -274,7 +274,7 @@ export class DiagnosticPipeline {
       onProgress?.({
         stage: 'complete',
         stageNumber: 5,
-        totalStages: 5,
+        totalStages: 6,
         detail: 'Analysis complete',
         percentage: 100,
         data: null,

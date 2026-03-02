@@ -790,6 +790,8 @@ export default function AdminPage() {
   const [progressPercent, setProgressPercent] = useState(0)
   const [extractionStatus, setExtractionStatus] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [testCount, setTestCount] = useState(1)
+  const [batchProgress, setBatchProgress] = useState<{ current: number; total: number } | null>(null)
   const abortRef = useRef<AbortController | null>(null)
 
 
@@ -1079,19 +1081,31 @@ export default function AdminPage() {
   // ===== HANDLERS =====
 
   const handleRunNewTest = async () => {
+    const total = testCount
     setError(null)
     setActiveTestId(null)
     setPipelineEvents([])
     setProgressPercent(0)
     setExtractionStatus(null)
+    if (total > 1) setBatchProgress({ current: 1, total })
     try {
-      const newCase = await doGenerate()
-      const result = await doRunPipeline(newCase.id, newCase.generatedPatient)
-      await doGrade(newCase.id, newCase.groundTruth, result, newCase.difficulty)
+      for (let i = 0; i < total; i++) {
+        if (i > 0) {
+          setPipelineEvents([])
+          setProgressPercent(0)
+          setExtractionStatus(null)
+        }
+        if (total > 1) setBatchProgress({ current: i + 1, total })
+        const newCase = await doGenerate()
+        const result = await doRunPipeline(newCase.id, newCase.generatedPatient)
+        await doGrade(newCase.id, newCase.groundTruth, result, newCase.difficulty)
+      }
     } catch (err: any) {
       if (!(err instanceof DOMException && err.name === "AbortError")) {
         setError(err.message)
       }
+    } finally {
+      setBatchProgress(null)
     }
   }
 
@@ -1251,19 +1265,68 @@ export default function AdminPage() {
               </select>
             </div>
 
-            <button
-              onClick={handleRunNewTest}
-              disabled={isAnyRunning}
-              className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              {isGenerating ? "Generating Patient..." : isRunning ? "Running Pipeline..." : isGrading ? "Grading..." : "Run New Test"}
-            </button>
+            <div className="flex items-center">
+              <button
+                onClick={() => setTestCount((c) => Math.max(1, c - 1))}
+                disabled={isAnyRunning || testCount <= 1}
+                className="px-2.5 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors border-r border-[#6d1d00]"
+                aria-label="Decrease test count"
+              >
+                −
+              </button>
+              <button
+                onClick={handleRunNewTest}
+                disabled={isAnyRunning}
+                className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                {isGenerating
+                  ? batchProgress && batchProgress.total > 1
+                    ? `Test ${batchProgress.current}/${batchProgress.total}: Generating...`
+                    : "Generating Patient..."
+                  : isRunning
+                    ? batchProgress && batchProgress.total > 1
+                      ? `Test ${batchProgress.current}/${batchProgress.total}: Pipeline...`
+                      : "Running Pipeline..."
+                    : isGrading
+                      ? batchProgress && batchProgress.total > 1
+                        ? `Test ${batchProgress.current}/${batchProgress.total}: Grading...`
+                        : "Grading..."
+                      : testCount === 1
+                        ? "Run New Test"
+                        : `Run ${testCount} New Tests`}
+              </button>
+              <button
+                onClick={() => setTestCount((c) => Math.min(10, c + 1))}
+                disabled={isAnyRunning || testCount >= 10}
+                className="px-2.5 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors border-l border-[#6d1d00]"
+                aria-label="Increase test count"
+              >
+                +
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Inline progress when running */}
         {isAnyRunning && (
           <div className="border border-[#d4c5b0] bg-white p-5 mb-6">
+            {/* Batch progress */}
+            {batchProgress && batchProgress.total > 1 && (
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-sm font-medium text-[#2a2a2a]">
+                  Test {batchProgress.current} of {batchProgress.total}
+                </span>
+                <div className="flex-1 h-1.5 bg-[#e8ddd0] rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-[#8b2500] rounded-full transition-all duration-300"
+                    style={{ width: `${((batchProgress.current - 1) / batchProgress.total) * 100}%` }}
+                  />
+                </div>
+                <span className="text-xs text-[#8b7355]">
+                  {batchProgress.current - 1}/{batchProgress.total} done
+                </span>
+              </div>
+            )}
             {/* Step indicators */}
             <div className="flex items-center gap-3 mb-4">
               {!isRerunning && (

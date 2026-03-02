@@ -75,7 +75,7 @@ Every distinct symptom or functional complaint MUST be extracted as a separate e
 `
 
     console.log("📤 Sending request to OpenAI...")
-    console.log("Model: gpt-4")
+    console.log("Model: gpt-4.1-mini")
     console.log("Temperature: 0.3")
     console.log("Max tokens: 1500")
     console.log("Prompt length:", prompt.length)
@@ -89,7 +89,7 @@ Every distinct symptom or functional complaint MUST be extracted as a separate e
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-4",
+        model: "gpt-4.1-mini",
         messages: [
           {
             role: "system",

@@ -14,7 +14,7 @@ import type {
 } from "@/lib/types/admin"
 import type { AnalysisResult, DiagnosisHypothesis, MappedSymptom } from "@/lib/types/index"
 import type { PipelineProgress } from "@/lib/types/pipeline"
-import { searchUMLSWithFallbacks } from "@/lib/umls-search"
+import { mapSingleSymptom } from "@/lib/symptom-parser"
 import { cn } from "@/lib/utils"
 
 // ===== CONSTANTS =====
@@ -135,31 +135,6 @@ function computeStats(cases: TestCase[]): TestSuiteStats | null {
     top3Rate: top3 / graded.length,
     top5Rate: top5 / graded.length,
     byDifficulty,
-  }
-}
-
-async function mapSingleSymptom(symptom: any): Promise<MappedSymptom> {
-  const primaryTerm = symptom.medicalTerm || symptom.originalPhrase
-  const alternativeTerms: string[] = symptom.alternativeSearchTerms || []
-  const originalPhrase = symptom.originalPhrase || symptom.text || "Unknown"
-
-  const result = await searchUMLSWithFallbacks(primaryTerm || "", alternativeTerms, originalPhrase)
-
-  return {
-    originalPhrase,
-    medicalTerm: symptom.medicalTerm || originalPhrase,
-    alternativeSearchTerms: alternativeTerms,
-    category: symptom.category,
-    severity: symptom.severity,
-    duration: symptom.duration,
-    bodyPart: symptom.bodyPart,
-    umlsConcepts: result.concepts,
-    selectedConcept: result.concepts[0] || null,
-    confidence: result.confidence,
-    confirmed: false,
-    mappingError: result.error,
-    feedbackStatus: "none" as const,
-    searchTermUsed: result.searchTermUsed,
   }
 }
 

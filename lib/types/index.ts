@@ -37,6 +37,7 @@ export interface MappedSymptom {
   mappingError: boolean;
   feedbackStatus: 'none' | 'needs_adjustment';
   userCorrection?: string;
+  isEditingCorrection?: boolean;
   searchTermUsed?: string;
 }
 

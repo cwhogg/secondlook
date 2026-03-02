@@ -1,34 +1,12 @@
 /**
  * Shared symptom parsing utilities.
- * Extracts mapSingleSymptom so both SymptomMappingSection and the analysis page can use it.
+ * Extracts mapSingleSymptom so SymptomMappingSection, analysis page, and testing page can reuse it.
  */
 
 import { searchUMLSWithFallbacks } from "@/lib/umls-search"
+import type { MappedSymptom, UMLSConcept } from "@/lib/types/index"
 
-export interface MappedSymptom {
-  originalPhrase: string
-  medicalTerm: string
-  alternativeSearchTerms?: string[]
-  category?: string
-  severity?: string
-  duration?: string
-  bodyPart?: string
-  umlsConcepts: UMLSConcept[]
-  selectedConcept: UMLSConcept | null
-  confidence: number
-  confirmed: boolean
-  mappingError: boolean
-  feedbackStatus: "none" | "needs_adjustment"
-  userCorrection?: string
-  isEditingCorrection?: boolean
-  searchTermUsed?: string
-}
-
-export interface UMLSConcept {
-  name: string
-  cui: string
-  semanticType?: string
-}
+export type { MappedSymptom, UMLSConcept }
 
 export async function mapSingleSymptom(symptom: {
   originalPhrase?: string
@@ -50,8 +28,8 @@ export async function mapSingleSymptom(symptom: {
     originalPhrase,
     medicalTerm: symptom.medicalTerm || originalPhrase,
     alternativeSearchTerms: alternativeTerms,
-    category: symptom.category,
-    severity: symptom.severity,
+    category: symptom.category as MappedSymptom["category"],
+    severity: symptom.severity as MappedSymptom["severity"],
     duration: symptom.duration,
     bodyPart: symptom.bodyPart,
     umlsConcepts: result.concepts,
@@ -60,8 +38,6 @@ export async function mapSingleSymptom(symptom: {
     confirmed: false,
     mappingError: result.error,
     feedbackStatus: "none",
-    userCorrection: "",
-    isEditingCorrection: false,
     searchTermUsed: result.searchTermUsed,
   }
 }

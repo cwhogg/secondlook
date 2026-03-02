@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { callAnthropic } from '@/lib/anthropic';
 import { loadDiseaseDatabase } from '@/lib/knowledge/index';
 import type { PatientArchetype } from '@/lib/types/admin';
+import type { DiseaseProfile, BodySystem } from '@/lib/types/knowledge-base';
 
 const inputSchema = z.object({
   difficulty: z.number().min(1).max(5),
@@ -151,6 +152,96 @@ const ANTI_PATTERN_RULES = `
 7. DO NOT make all symptoms clearly distinguishable. Real patients conflate symptoms, describe two things as one, or split one symptom into multiple complaints.
 `;
 
+// ===== CATEGORY → BODY SYSTEM MAPPING =====
+
+const CATEGORY_TO_BODY_SYSTEMS: Record<string, BodySystem[]> = {
+  neurological: ['neurological'],
+  rheumatological: ['musculoskeletal', 'immunological'],
+  cardiovascular: ['cardiovascular'],
+  hematological: ['hematological'],
+  endocrine: ['endocrine'],
+  gastrointestinal: ['gastrointestinal'],
+  pulmonary: ['respiratory'],
+  dermatological: ['dermatological'],
+  immunological: ['immunological'],
+  musculoskeletal: ['musculoskeletal'],
+  renal: ['renal'],
+  psychiatric: ['psychiatric'],
+  oncological: ['hematological'],
+};
+
+// ===== DISEASE PRE-SELECTION =====
+
+/** Fisher-Yates shuffle (in-place, returns same array) */
+function shuffleArray<T>(arr: T[]): T[] {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+/** Probability that Claude picks freely (non-KB) at each difficulty */
+const FREE_CHOICE_PROBABILITY: Record<number, number> = {
+  1: 0,
+  2: 0,
+  3: 0.2,
+  4: 0.35,
+  5: 0.5,
+};
+
+function formatSymptomList(symptoms: DiseaseProfile['symptoms']['pathognomonic']): string {
+  if (symptoms.length === 0) return 'none';
+  return symptoms
+    .map(s => `${s.symptomName} (${Math.round(s.frequency * 100)}%, ${s.bodySystem})`)
+    .join('; ');
+}
+
+function formatDiseaseProfile(disease: DiseaseProfile): string {
+  const lines = [
+    `Disease: ${disease.name}`,
+    `Aliases: ${disease.aliases.length > 0 ? disease.aliases.join(', ') : 'none'}`,
+    `ICD-10: ${disease.icd10Codes.join(', ') || 'unknown'}`,
+    `Prevalence: ${disease.prevalence.estimate}${disease.prevalence.range ? ` (range: ${disease.prevalence.range})` : ''}`,
+    `Typical onset: age ${disease.demographics.typicalOnsetAge.min}-${disease.demographics.typicalOnsetAge.max}${disease.demographics.typicalOnsetAge.peak ? `, peak ~${disease.demographics.typicalOnsetAge.peak}` : ''}, sex predilection: ${disease.demographics.sexPredilection}`,
+    `Body systems: ${disease.systemsAffected.join(', ')}`,
+    `Pathognomonic symptoms (>90%): ${formatSymptomList(disease.symptoms.pathognomonic)}`,
+    `Common symptoms (>50%): ${formatSymptomList(disease.symptoms.common)}`,
+    `Occasional symptoms (10-50%): ${formatSymptomList(disease.symptoms.occasional)}`,
+    `Rare symptoms (<10%): ${formatSymptomList(disease.symptoms.rare)}`,
+  ];
+
+  if (disease.diagnosticCriteria.formalCriteriaName) {
+    lines.push(`Diagnostic criteria: ${disease.diagnosticCriteria.formalCriteriaName}`);
+    if (disease.diagnosticCriteria.minimumForDiagnosis) {
+      lines.push(`  Minimum for diagnosis: ${disease.diagnosticCriteria.minimumForDiagnosis}`);
+    }
+    const majors = disease.diagnosticCriteria.criteria.filter(c => c.category === 'major');
+    const minors = disease.diagnosticCriteria.criteria.filter(c => c.category === 'minor');
+    if (majors.length > 0) {
+      lines.push(`  Major criteria: ${majors.map(c => c.description).join('; ')}`);
+    }
+    if (minors.length > 0) {
+      lines.push(`  Minor criteria: ${minors.map(c => c.description).join('; ')}`);
+    }
+  }
+
+  const findings = [];
+  if (disease.keyFindings.laboratory.length > 0) findings.push(`Lab: ${disease.keyFindings.laboratory.join(', ')}`);
+  if (disease.keyFindings.imaging.length > 0) findings.push(`Imaging: ${disease.keyFindings.imaging.join(', ')}`);
+  if (disease.keyFindings.genetic.length > 0) findings.push(`Genetic: ${disease.keyFindings.genetic.join(', ')}`);
+  if (disease.keyFindings.other.length > 0) findings.push(`Other: ${disease.keyFindings.other.join(', ')}`);
+  if (findings.length > 0) {
+    lines.push(`Key findings: ${findings.join(' | ')}`);
+  }
+
+  if (disease.redFlags.length > 0) {
+    lines.push(`Red flags: ${disease.redFlags.join('; ')}`);
+  }
+
+  return lines.join('\n');
+}
+
 export async function POST(request: NextRequest) {
   const requestId = `gen_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
@@ -173,30 +264,49 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    // Load KB disease names for context
+    // Load KB diseases
     const diseases = loadDiseaseDatabase();
-    const diseaseNames = diseases.map(d => d.name);
     const excludeSet = new Set(input.excludeDiseases || []);
-    const availableDiseases = diseaseNames.filter(n => !excludeSet.has(n));
+
+    // Filter by category hint (map to body systems)
+    let candidateDiseases = diseases.filter(d => !excludeSet.has(d.name));
+    if (input.categoryHint && CATEGORY_TO_BODY_SYSTEMS[input.categoryHint]) {
+      const targetSystems = CATEGORY_TO_BODY_SYSTEMS[input.categoryHint];
+      const filtered = candidateDiseases.filter(d =>
+        d.systemsAffected.some(s => targetSystems.includes(s))
+      );
+      // Only apply filter if it leaves us with candidates
+      if (filtered.length > 0) {
+        candidateDiseases = filtered;
+      }
+    }
+
+    // Decide: pre-select a KB disease or let Claude pick freely?
+    const freeChoiceProbability = FREE_CHOICE_PROBABILITY[input.difficulty] || 0;
+    const useFreeChoice = candidateDiseases.length === 0 || Math.random() < freeChoiceProbability;
+
+    let preSelectedDisease: DiseaseProfile | null = null;
+    if (!useFreeChoice && candidateDiseases.length > 0) {
+      preSelectedDisease = candidateDiseases[Math.floor(Math.random() * candidateDiseases.length)];
+    }
 
     // Select archetype based on difficulty
     const archetype = selectArchetype(input.difficulty);
 
     const difficultyDescriptions: Record<number, string> = {
-      1: `EASY — Textbook presentation. Classic, well-described symptoms with pathognomonic or highly specific features present. Straightforward differential. Choose a disease FROM the knowledge base list below.`,
-      2: `MODERATE — Mostly typical presentation with 1-2 less common features. Well-defined diagnostic criteria that the patient mostly meets. Choose a disease FROM the knowledge base list below.`,
+      1: `EASY — Textbook presentation. Classic, well-described symptoms with pathognomonic or highly specific features present. Straightforward differential.`,
+      2: `MODERATE — Mostly typical presentation with 1-2 less common features. Well-defined diagnostic criteria that the patient mostly meets.`,
       3: `CHALLENGING — Use ONE OR MORE of these difficulty factors (choose what fits the disease naturally):
   • Atypical features or overlapping differential (symptoms shared by multiple conditions)
   • Early/incomplete presentation missing 1-2 key features that would clinch the diagnosis
-  • Mild comorbidities that complicate the picture
-  Can use a disease from the KB or outside it.`,
+  • Mild comorbidities that complicate the picture`,
       4: `HARD — Use TWO OR MORE of these difficulty factors (choose what fits the disease naturally):
   • Nonspecific symptom profile — symptoms individually common but the combination is telling
   • High diagnostic overlap — multiple legitimate rare diseases share this presentation
   • Poorly characterized disease with less established or informal diagnostic criteria
   • Evolving/early presentation where classic features haven't fully emerged
   • Contradictory or misleading symptoms (1-2 red herrings pointing to wrong specialty/category)
-  Can use a KB disease OR a non-KB disease. Do NOT default to ultra-rare — a moderately rare disease with nonspecific or conflicting symptoms can be harder to diagnose than an ultra-rare disease with pathognomonic features.`,
+  Do NOT default to ultra-rare — a moderately rare disease with nonspecific or conflicting symptoms can be harder to diagnose than an ultra-rare disease with pathognomonic features.`,
       5: `EXPERT — Use THREE OR MORE of these difficulty factors (choose what fits the disease naturally):
   • Extremely nonspecific symptoms that individually suggest common conditions
   • Contradictory symptoms pointing different specialists in different directions
@@ -204,18 +314,33 @@ export async function POST(request: NextRequest) {
   • Symptom pattern that doesn't cleanly fit any known disease category
   • Key distinguishing features require specific testing (genetic, biopsy, advanced imaging) not yet performed
   • Multiple red herrings including real symptoms from comorbidities
-  Can use a KB disease OR a non-KB disease. A well-known rare disease with a terrible symptom profile is a valid expert case — do NOT equate "expert" with "ultra-rare."`,
+  A well-known rare disease with a terrible symptom profile is a valid expert case — do NOT equate "expert" with "ultra-rare."`,
     };
 
     const categoryInstruction = input.categoryHint
       ? `\nFocus on diseases in the "${input.categoryHint}" category or body system.`
       : '';
 
+    // Build disease context for the prompt
+    let diseaseInstruction: string;
+    if (preSelectedDisease) {
+      diseaseInstruction = `Generate a patient case for the following disease. Use the profile below to create an accurate presentation.
+
+${formatDiseaseProfile(preSelectedDisease)}`;
+    } else {
+      // Free choice: shuffle the disease list to eliminate positional bias
+      const shuffledNames = shuffleArray([...candidateDiseases.map(d => d.name)]);
+      diseaseInstruction = `Choose a rare disease for this case. You may pick from the knowledge base list below OR choose a disease outside the KB.${categoryInstruction}
+
+Knowledge base diseases available (${shuffledNames.length} total):
+${shuffledNames.join(', ')}`;
+    }
+
     const systemPrompt = `You are a clinical simulation specialist creating synthetic rare disease patient presentations for a diagnostic AI testing framework.
 
 Your task: Generate a realistic first-person patient narrative and structured clinical data for a rare disease case at difficulty level ${input.difficulty}/5.
 
-${difficultyDescriptions[input.difficulty]}${categoryInstruction}
+${difficultyDescriptions[input.difficulty]}
 
 ${archetype.narrativeRules}
 
@@ -234,8 +359,7 @@ You must respond with valid JSON only (no markdown fences, no extra text).`;
 
     const userPrompt = `Generate a synthetic rare disease patient case at difficulty ${input.difficulty}/5, using the "${archetype.name}" patient archetype (${archetype.label}).
 
-Knowledge base diseases available (${availableDiseases.length} total):
-${availableDiseases.join(', ')}
+${diseaseInstruction}
 
 Respond with this exact JSON structure:
 {
@@ -296,6 +420,7 @@ Respond with this exact JSON structure:
         durationMs: result.durationMs,
         archetype: archetype.name,
         source: 'generated' as const,
+        preSelectedDisease: preSelectedDisease?.name ?? null,
       },
       requestId,
     });

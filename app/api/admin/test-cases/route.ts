@@ -1,31 +1,37 @@
 import { NextResponse } from "next/server"
-import { kv } from "@vercel/kv"
+import { put, list } from "@vercel/blob"
 import type { TestCase } from "@/lib/types/admin"
 
-const KV_KEY = "test-cases"
+const BLOB_PATH = "test-cases.json"
 
-function kvConfigured(): boolean {
-  return !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN)
+function blobConfigured(): boolean {
+  return !!process.env.BLOB_READ_WRITE_TOKEN
 }
 
 export async function GET() {
-  if (!kvConfigured()) {
+  if (!blobConfigured()) {
     return NextResponse.json({ testCases: [] })
   }
 
   try {
-    const testCases = await kv.get<TestCase[]>(KV_KEY)
-    return NextResponse.json({ testCases: testCases ?? [] })
+    const { blobs } = await list({ prefix: BLOB_PATH })
+    if (blobs.length === 0) {
+      return NextResponse.json({ testCases: [] })
+    }
+
+    const response = await fetch(blobs[0].url)
+    const testCases: TestCase[] = await response.json()
+    return NextResponse.json({ testCases })
   } catch (error) {
-    console.error("Failed to load test cases from KV:", error)
+    console.error("Failed to load test cases from Blob:", error)
     return NextResponse.json({ testCases: [] }, { status: 500 })
   }
 }
 
 export async function POST(request: Request) {
-  if (!kvConfigured()) {
+  if (!blobConfigured()) {
     return NextResponse.json(
-      { error: "KV storage not configured" },
+      { error: "Blob storage not configured" },
       { status: 503 }
     )
   }
@@ -41,10 +47,14 @@ export async function POST(request: Request) {
       )
     }
 
-    await kv.set(KV_KEY, testCases)
+    await put(BLOB_PATH, JSON.stringify(testCases), {
+      contentType: "application/json",
+      addRandomSuffix: false,
+      access: "public",
+    })
     return NextResponse.json({ success: true })
   } catch (error) {
-    console.error("Failed to save test cases to KV:", error)
+    console.error("Failed to save test cases to Blob:", error)
     return NextResponse.json(
       { error: "Failed to save test cases" },
       { status: 500 }

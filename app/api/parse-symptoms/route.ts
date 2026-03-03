@@ -1,5 +1,42 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { callAnthropic } from "@/lib/anthropic"
+
+const MAX_RETRIES = 3
+const BASE_DELAY_MS = 2000
+
+async function callOpenAIWithRetry(
+  openaiApiKey: string,
+  messages: Array<{ role: string; content: string }>,
+): Promise<Response> {
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${openaiApiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "gpt-4.1-mini",
+        messages,
+        temperature: 0.3,
+        max_tokens: 1500,
+      }),
+    })
+
+    if (response.status === 429 && attempt < MAX_RETRIES) {
+      const retryAfter = response.headers.get("retry-after")
+      const delay = retryAfter
+        ? parseInt(retryAfter, 10) * 1000
+        : BASE_DELAY_MS * Math.pow(2, attempt)
+      console.log(`[parse-symptoms] Rate limited (429), retrying in ${delay}ms (attempt ${attempt + 1}/${MAX_RETRIES})`)
+      await new Promise((resolve) => setTimeout(resolve, delay))
+      continue
+    }
+
+    return response
+  }
+
+  throw new Error("OpenAI rate limit exceeded after retries")
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,11 +46,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Symptom description too short" }, { status: 400 })
     }
 
-    if (!process.env.ANTHROPIC_API_KEY) {
-      return NextResponse.json({ error: "ANTHROPIC_API_KEY not configured" }, { status: 503 })
+    const openaiApiKey = process.env.OPENAI_API_KEY
+    if (!openaiApiKey) {
+      return NextResponse.json({ error: "OpenAI API key not configured" }, { status: 503 })
     }
 
-    const userPrompt = `
+    const prompt = `
+You are a medical symptom parser specializing in translating patient language into SNOMED CT-compatible medical terminology. You must interpret ALL patient descriptions — including functional limitations, anecdotal reports, and colloquial language — as clinical symptoms.
+
 Patient Information:
 - Age: ${patientAge}
 - Sex: ${patientSex}
@@ -60,26 +100,43 @@ FIELD REQUIREMENTS:
 - "category": classify as motor, sensory, pain, cognitive, autonomic, or constitutional
 
 Every distinct symptom or functional complaint MUST be extracted as a separate entry. Do not skip descriptions just because they are colloquial or anecdotal.
-
-You must respond with valid JSON only (no markdown fences, no extra text).
 `
 
-    const result = await callAnthropic({
-      systemPrompt:
-        "You are a medical symptom extraction assistant that specializes in interpreting functional descriptions, anecdotal evidence, and colloquial language as clinical symptoms. Return only valid JSON. Every symptom must include originalPhrase, medicalTerm (SNOMED CT-compatible), alternativeSearchTerms (2-3 synonyms), and category.",
-      userPrompt,
-      maxTokens: 1500,
-      temperature: 0.3,
-      model: "claude-haiku-4-5-20251001",
-    })
+    const response = await callOpenAIWithRetry(openaiApiKey, [
+      {
+        role: "system",
+        content:
+          "You are a medical symptom extraction assistant that specializes in interpreting functional descriptions, anecdotal evidence, and colloquial language as clinical symptoms. Return only valid JSON. Every symptom must include originalPhrase, medicalTerm (SNOMED CT-compatible), alternativeSearchTerms (2-3 synonyms), and category.",
+      },
+      {
+        role: "user",
+        content: prompt,
+      },
+    ])
 
-    const parsed = result.content
-    if (!parsed?.symptoms || !Array.isArray(parsed.symptoms)) {
-      console.error("[parse-symptoms] Unexpected response structure:", typeof parsed)
-      return NextResponse.json({ error: "Failed to parse symptom data" }, { status: 500 })
+    if (!response.ok) {
+      const errorText = await response.text()
+      console.error(`[parse-symptoms] OpenAI API error ${response.status}:`, errorText)
+      return NextResponse.json(
+        { error: `OpenAI API error: ${response.status}` },
+        { status: response.status === 429 ? 429 : 502 }
+      )
     }
 
-    return NextResponse.json(parsed)
+    const data = await response.json()
+    const content = data.choices[0]?.message?.content
+
+    if (!content) {
+      return NextResponse.json({ error: "No response from OpenAI" }, { status: 502 })
+    }
+
+    try {
+      const parsedSymptoms = JSON.parse(content)
+      return NextResponse.json(parsedSymptoms)
+    } catch {
+      console.error("[parse-symptoms] Failed to parse JSON:", content)
+      return NextResponse.json({ error: "Failed to parse symptom data" }, { status: 500 })
+    }
   } catch (error: any) {
     console.error("[parse-symptoms] Error:", error.message)
     return NextResponse.json({ error: error.message || "Internal server error" }, { status: 500 })

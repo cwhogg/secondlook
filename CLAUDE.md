@@ -6,10 +6,19 @@ AI-powered rare disease diagnostic tool. Patients input symptoms through a multi
 
 - **Framework**: Next.js 14 (App Router) + React 19 + TypeScript
 - **Styling**: Tailwind CSS + Radix UI (shadcn/ui)
-- **AI**: OpenAI API (GPT-4.1 for reasoning, GPT-4.1-nano/mini for classification/formatting)
+- **AI**: OpenAI API (GPT-4.1 for reasoning, GPT-4.1-nano/mini for classification/formatting), Anthropic API (Claude for test generation/grading)
 - **Content**: MDX blog/FAQ system with gray-matter frontmatter
 - **Validation**: Zod
 - **Deployment**: Vercel
+
+### AI Provider Separation
+
+The analysis flow and testing framework use **separate AI providers** to keep their API quotas independent:
+
+- **Analysis flow (OpenAI)**: `parse-symptoms`, `parse-medications`, `analyze-symptom-patterns`, `analyze-patient-v2` (all pipeline agents). Everything a real user touches uses OpenAI.
+- **Testing framework (Anthropic)**: `admin/generate-patient`, `admin/grade-test`. Everything internal for test generation and grading uses Anthropic/Claude.
+
+**Never mix providers across this boundary.** Analysis endpoints must use OpenAI. Testing endpoints must use Anthropic. This ensures testing activity cannot cause rate limits or quota issues for the production analysis flow, and vice versa.
 
 ## Project Structure
 

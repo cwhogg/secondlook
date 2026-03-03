@@ -4,6 +4,7 @@ import { callAnthropic } from '@/lib/anthropic';
 import { loadDiseaseDatabase } from '@/lib/knowledge/index';
 import type { PatientArchetype } from '@/lib/types/admin';
 import type { DiseaseProfile, BodySystem } from '@/lib/types/knowledge-base';
+import nonKbDiseases from '@/lib/knowledge/non-kb-diseases.json';
 
 const inputSchema = z.object({
   difficulty: z.number().min(1).max(5),
@@ -328,20 +329,15 @@ export async function POST(request: NextRequest) {
 
 ${formatDiseaseProfile(preSelectedDisease)}`;
     } else {
-      // Free choice: instruct Claude to pick a disease NOT in the KB
-      // Do NOT include the KB list — if Claude sees it, it always picks from it
-      const kbNames = candidateDiseases.map(d => d.name);
-      diseaseInstruction = `Choose a rare disease for this case that is NOT in our knowledge base. Pick a real, documented rare disease — do not invent a fictional one. The disease should be a genuine rare condition found in medical literature.${categoryInstruction}
+      // Free choice: pre-select a non-KB disease from the Orphanet-derived list
+      // Server picks the disease — never let the LLM choose
+      const nonKbCandidate = nonKbDiseases[Math.floor(Math.random() * nonKbDiseases.length)];
+      diseaseInstruction = `Generate a patient case for the following disease. This disease is NOT in our knowledge base, so use your medical knowledge to create an accurate presentation.
 
-For reference, the following diseases ARE in our knowledge base — do NOT pick any of these:
-${shuffleArray([...kbNames]).slice(0, 50).join(', ')}
-... and ${Math.max(0, kbNames.length - 50)} more.
+Disease: ${nonKbCandidate.name}
+Orphanet code: ORPHA:${nonKbCandidate.orphaCode}
 
-Pick a disease OUTSIDE this knowledge base. Good candidates include:
-- Rare diseases listed in OMIM, NORD, or Orphanet that are not in the list above
-- Well-documented but uncommon genetic conditions
-- Rare metabolic, autoimmune, or neurological disorders
-- Conditions with established diagnostic criteria but low prevalence`;
+Use your knowledge of this disease to generate accurate symptoms, demographics, and clinical features. If you are not familiar with this specific disease, research what you do know about the name, associated gene/pathway, or disease family to create a clinically plausible case.`;
     }
 
     const systemPrompt = `You are a clinical simulation specialist creating synthetic rare disease patient presentations for a diagnostic AI testing framework.

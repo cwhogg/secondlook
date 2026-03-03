@@ -115,10 +115,10 @@ After synthesis, the orchestrator detects low-confidence scenarios (all top-5 sc
 | immunologist | respiratory, dermatological, immunological |
 | endocrinologist | endocrine, reproductive |
 | gastroenterologist | gastrointestinal |
-| geneticist | neurological, constitutional |
 | hematologist | hematological, oncological |
 | psychiatrist | psychiatric |
 | oncologist | oncological |
+| geneticist | neurological, constitutional (always included — rare diseases are disproportionately genetic) |
 | general-internist | constitutional, otolaryngological (always included, receives no KB profiles) |
 
 ## Knowledge Base
@@ -188,4 +188,5 @@ See `.env.example` for all options.
 - Patient data is stored in `localStorage`/`sessionStorage` only — no server-side persistence
 - Disease profile `confidenceInData` field tracks whether data has been human-reviewed
 - General-internist is always included in specialist panel and receives no KB profiles (un-anchored counterweight)
+- Geneticist is always included in specialist panel (rare diseases are disproportionately genetic in origin)
 - Evidence evaluator uses two-track scoring: KB diseases against structured criteria, non-KB via clinical reasoning quality

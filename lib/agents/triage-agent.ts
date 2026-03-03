@@ -86,14 +86,16 @@ export class TriageAgent extends BaseAgent {
 
     // Primary specialists first (guarantees every body system has representation),
     // then secondaries, capped at 4 domain specialists
+    const alwaysIncluded: SpecialistType[] = ['general-internist', 'geneticist'];
     const secondaries = Array.from(allSpecialists)
-      .filter((s) => s !== 'general-internist' && !primaryBySystem.includes(s));
-    const domainSpecialists = [...primaryBySystem, ...secondaries].slice(0, 4);
+      .filter((s) => !alwaysIncluded.includes(s) && !primaryBySystem.includes(s));
+    const domainSpecialists = [...primaryBySystem, ...secondaries]
+      .filter((s) => !alwaysIncluded.includes(s))
+      .slice(0, 4);
 
-    // Always include general-internist as the un-anchored counterweight agent.
-    // It receives NO KB profiles and reasons purely from training data, providing
-    // a check against the other specialists' KB anchoring bias.
-    const relevantSpecialties = [...domainSpecialists, 'general-internist' as SpecialistType];
+    // Always include general-internist (un-anchored counterweight, no KB profiles)
+    // and geneticist (rare diseases are disproportionately genetic in origin).
+    const relevantSpecialties = [...domainSpecialists, ...alwaysIncluded];
 
     // Retrieve candidate diseases from knowledge base (async — uses semantic search if embeddings available)
     const candidateDiseases = await findMatchingDiseases(

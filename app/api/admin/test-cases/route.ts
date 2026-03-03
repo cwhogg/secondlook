@@ -50,6 +50,7 @@ export async function POST(request: Request) {
     await put(BLOB_PATH, JSON.stringify(testCases), {
       contentType: "application/json",
       addRandomSuffix: false,
+      allowOverwrite: true,
       access: "public",
     })
     return NextResponse.json({ success: true })

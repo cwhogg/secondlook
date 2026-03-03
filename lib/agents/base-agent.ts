@@ -32,6 +32,27 @@ export abstract class BaseAgent {
     BaseAgent.onLog?.(this.config.name, phase, message);
   }
 
+  /** Fetch with automatic retry on 429 rate limits */
+  private async fetchWithRetry(url: string, init: RequestInit, maxRetries = 3): Promise<Response> {
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      const response = await fetch(url, init);
+
+      if (response.status === 429 && attempt < maxRetries) {
+        const retryAfter = response.headers.get('retry-after');
+        const delay = retryAfter
+          ? parseInt(retryAfter, 10) * 1000
+          : 2000 * Math.pow(2, attempt);
+        this.log('RETRY', `429 rate limited, retrying in ${delay}ms (attempt ${attempt + 1}/${maxRetries})`);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+        continue;
+      }
+
+      return response;
+    }
+
+    throw new Error(`OpenAI rate limit exceeded after ${maxRetries} retries`);
+  }
+
   /**
    * Call OpenAI with structured output via function calling.
    */
@@ -61,7 +82,7 @@ export abstract class BaseAgent {
     this.log('USER_PROMPT', userPrompt);
     this.log('TOOLS', JSON.stringify(tools.map((t: any) => t.function?.name || t.name || 'unknown')));
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await this.fetchWithRetry('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -126,7 +147,7 @@ export abstract class BaseAgent {
     this.log('SYSTEM_PROMPT', this.config.systemPrompt);
     this.log('USER_PROMPT', userPrompt);
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await this.fetchWithRetry('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,

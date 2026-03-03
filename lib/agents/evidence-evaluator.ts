@@ -45,7 +45,7 @@ export class EvidenceEvaluator extends BaseAgent {
       name: 'evidence-evaluator',
       model: 'gpt-4.1',
       temperature: 0.1,
-      maxTokens: 6000, // increased to handle two-track evaluation
+      maxTokens: 10000, // needs headroom for multi-hypothesis two-track evaluation
       systemPrompt: buildEvidenceEvaluatorPrompt(),
     });
   }

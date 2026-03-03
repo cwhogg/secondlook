@@ -53,10 +53,10 @@ export async function POST(request: Request) {
       access: "public",
     })
     return NextResponse.json({ success: true })
-  } catch (error) {
+  } catch (error: any) {
     console.error("Failed to save test cases to Blob:", error)
     return NextResponse.json(
-      { error: "Failed to save test cases" },
+      { error: `Failed to save test cases: ${error.message || "unknown error"}` },
       { status: 500 }
     )
   }

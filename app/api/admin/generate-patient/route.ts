@@ -323,11 +323,20 @@ export async function POST(request: NextRequest) {
       : '';
 
     // Build disease context for the prompt
+    // Low difficulty (1-2): send full KB profile so Claude generates textbook presentations
+    // High difficulty (3+): send name only so the patient reflects Claude's own medical
+    //   knowledge rather than mirroring our stored criteria (harder, more realistic test)
     let diseaseInstruction: string;
-    if (preSelectedDisease) {
+    if (preSelectedDisease && input.difficulty <= 2) {
       diseaseInstruction = `Generate a patient case for the following disease. Use the profile below to create an accurate presentation.
 
 ${formatDiseaseProfile(preSelectedDisease)}`;
+    } else if (preSelectedDisease) {
+      diseaseInstruction = `Generate a patient case for the following disease. Use your own medical knowledge to create an accurate presentation — do NOT rely on any provided profile.
+
+Disease: ${preSelectedDisease.name}
+
+Use your knowledge of this disease to generate accurate symptoms, demographics, and clinical features.`;
     } else {
       // Free choice: pre-select a non-KB disease from the Orphanet-derived list
       // Server picks the disease — never let the LLM choose

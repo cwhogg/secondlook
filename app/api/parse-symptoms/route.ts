@@ -117,8 +117,14 @@ Every distinct symptom or functional complaint MUST be extracted as a separate e
     if (!response.ok) {
       const errorText = await response.text()
       console.error(`[parse-symptoms] OpenAI API error ${response.status}:`, errorText)
+      // Surface the actual OpenAI error message for debugging
+      let openaiMessage = `OpenAI API error: ${response.status}`
+      try {
+        const parsed = JSON.parse(errorText)
+        if (parsed.error?.message) openaiMessage = parsed.error.message
+      } catch {}
       return NextResponse.json(
-        { error: `OpenAI API error: ${response.status}` },
+        { error: openaiMessage },
         { status: response.status === 429 ? 429 : 502 }
       )
     }

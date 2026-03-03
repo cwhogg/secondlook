@@ -73,6 +73,7 @@ export interface GenerationMetadata {
   durationMs: number;
   archetype?: PatientArchetype;
   source?: 'generated';
+  isKnowledgeBaseDisease?: boolean;
 }
 
 // ===== RERUN SNAPSHOT =====

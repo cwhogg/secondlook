@@ -757,6 +757,15 @@ function TestHistoryRow({
         </div>
       </div>
       <div className="flex items-center gap-2 flex-wrap">
+        {tc.generationMetadata?.isKnowledgeBaseDisease != null && (
+          <span className={`text-xs px-2 py-0.5 rounded font-medium ${
+            tc.generationMetadata.isKnowledgeBaseDisease
+              ? "bg-blue-50 text-blue-700 border border-blue-200"
+              : "bg-gray-50 text-gray-500 border border-gray-200"
+          }`}>
+            {tc.generationMetadata.isKnowledgeBaseDisease ? "KB" : "Non-KB"}
+          </span>
+        )}
         <DifficultyBadge difficulty={tc.difficulty} />
         <StatusBadge status={tc.status} />
         {tc.grading && (

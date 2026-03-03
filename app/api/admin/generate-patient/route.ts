@@ -411,6 +411,12 @@ Respond with this exact JSON structure:
       );
     }
 
+    // Check if the generated diagnosis is in the KB (covers both pre-selected and free-choice)
+    const generatedDiagnosis = result.content.groundTruth?.diagnosis?.toLowerCase() || '';
+    const isKnowledgeBaseDisease = diseases.some(
+      d => d.name.toLowerCase() === generatedDiagnosis || d.aliases.some(a => a.toLowerCase() === generatedDiagnosis)
+    );
+
     return NextResponse.json({
       groundTruth: result.content.groundTruth,
       patient: result.content.patient,
@@ -421,6 +427,7 @@ Respond with this exact JSON structure:
         archetype: archetype.name,
         source: 'generated' as const,
         preSelectedDisease: preSelectedDisease?.name ?? null,
+        isKnowledgeBaseDisease,
       },
       requestId,
     });

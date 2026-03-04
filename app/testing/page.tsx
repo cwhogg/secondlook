@@ -127,6 +127,26 @@ function computeStats(cases: TestCase[]): TestSuiteStats | null {
     entry.top5Rate = diffCases.filter((c) => c.grading!.inTop5).length / diffCases.length
   }
 
+  // By source (KB vs Non-KB) — fall back to isKnowledgeBaseDisease for older cases
+  const bySource: TestSuiteStats["bySource"] = {}
+  for (const tc of graded) {
+    const src = tc.diseaseSource ?? (tc.generationMetadata?.isKnowledgeBaseDisease === false ? 'non-kb' : 'kb')
+    if (!bySource[src]) {
+      bySource[src] = { count: 0, avgScore: 0, top1Rate: 0, top3Rate: 0, top5Rate: 0 }
+    }
+    bySource[src].count++
+  }
+  for (const [src, entry] of Object.entries(bySource)) {
+    const srcCases = graded.filter((c) => {
+      const s = c.diseaseSource ?? (c.generationMetadata?.isKnowledgeBaseDisease === false ? 'non-kb' : 'kb')
+      return s === src
+    })
+    entry.avgScore = srcCases.reduce((a, c) => a + c.grading!.score, 0) / srcCases.length
+    entry.top1Rate = srcCases.filter((c) => c.grading!.correctDiagnosisRank === 1).length / srcCases.length
+    entry.top3Rate = srcCases.filter((c) => c.grading!.inTop3).length / srcCases.length
+    entry.top5Rate = srcCases.filter((c) => c.grading!.inTop5).length / srcCases.length
+  }
+
   return {
     totalTests: cases.length,
     gradedTests: graded.length,
@@ -135,6 +155,7 @@ function computeStats(cases: TestCase[]): TestSuiteStats | null {
     top3Rate: top3 / graded.length,
     top5Rate: top5 / graded.length,
     byDifficulty,
+    bySource,
   }
 }
 
@@ -203,9 +224,17 @@ function pct(n: number): string {
 
 // ===== COMPONENTS =====
 
+const SOURCE_LABELS: Record<string, string> = { kb: "KB", "non-kb": "Non-KB" }
+const SOURCE_COLORS: Record<string, string> = {
+  kb: "bg-blue-50 text-blue-800 border-blue-300",
+  "non-kb": "bg-amber-50 text-amber-800 border-amber-300",
+}
+
 function StatsBanner({ stats }: { stats: TestSuiteStats }) {
   const difficultyEntries = Object.entries(stats.byDifficulty)
     .sort(([a], [b]) => parseInt(a) - parseInt(b))
+  const sourceEntries = Object.entries(stats.bySource)
+    .sort(([a], [b]) => (a === "kb" ? -1 : b === "kb" ? 1 : 0))
 
   return (
     <div className="border border-[#d4c5b0] bg-white mb-6">
@@ -267,6 +296,40 @@ function StatsBanner({ stats }: { stats: TestSuiteStats }) {
                   </tr>
                 )
               })}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {/* By-source breakdown table */}
+      {sourceEntries.length > 1 && (
+        <div className="border-t border-[#d4c5b0] overflow-x-auto">
+          <table className="w-full text-sm min-w-[480px]">
+            <thead>
+              <tr className="border-b border-[#e8ddd0] bg-[#faf7f2]">
+                <th className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Source</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">n</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Avg Score</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-1</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-3</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-5</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sourceEntries.map(([src, entry]) => (
+                <tr key={src} className="border-b border-[#e8ddd0] last:border-b-0">
+                  <td className="py-2.5 px-4 sm:px-5">
+                    <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${SOURCE_COLORS[src] || "bg-gray-100 text-gray-700 border-gray-300"}`}>
+                      {SOURCE_LABELS[src] || src}
+                    </span>
+                  </td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#5a5a5a] tabular-nums">{entry.count}</td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right font-medium text-[#2a2a2a] tabular-nums">{entry.avgScore.toFixed(1)}</td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top1Rate)}</td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top3Rate)}</td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top5Rate)}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

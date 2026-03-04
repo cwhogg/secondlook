@@ -127,4 +127,11 @@ export interface TestSuiteStats {
     top3Rate: number;
     top5Rate: number;
   }>;
+  bySource: Record<string, {
+    count: number;
+    avgScore: number;
+    top1Rate: number;
+    top3Rate: number;
+    top5Rate: number;
+  }>;
 }

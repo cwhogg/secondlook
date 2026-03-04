@@ -120,14 +120,9 @@ export interface TestSuiteStats {
   top1Rate: number;
   top3Rate: number;
   top5Rate: number;
-  byDifficulty: Record<number, {
-    count: number;
-    avgScore: number;
-    top1Rate: number;
-    top3Rate: number;
-    top5Rate: number;
-  }>;
-  bySource: Record<string, {
+  byDifficultySource: Record<string, {
+    difficulty: number;
+    source: string;
     count: number;
     avgScore: number;
     top1Rate: number;

@@ -110,41 +110,24 @@ function computeStats(cases: TestCase[]): TestSuiteStats | null {
   const top3 = graded.filter((c) => c.grading!.inTop3).length
   const top5 = graded.filter((c) => c.grading!.inTop5).length
 
-  const byDifficulty: TestSuiteStats["byDifficulty"] = {}
-  for (const tc of graded) {
-    const d = tc.difficulty
-    if (!byDifficulty[d]) {
-      byDifficulty[d] = { count: 0, avgScore: 0, top1Rate: 0, top3Rate: 0, top5Rate: 0 }
-    }
-    byDifficulty[d].count++
-  }
-  for (const [d, entry] of Object.entries(byDifficulty)) {
-    const diff = parseInt(d)
-    const diffCases = graded.filter((c) => c.difficulty === diff)
-    entry.avgScore = diffCases.reduce((a, c) => a + c.grading!.score, 0) / diffCases.length
-    entry.top1Rate = diffCases.filter((c) => c.grading!.correctDiagnosisRank === 1).length / diffCases.length
-    entry.top3Rate = diffCases.filter((c) => c.grading!.inTop3).length / diffCases.length
-    entry.top5Rate = diffCases.filter((c) => c.grading!.inTop5).length / diffCases.length
-  }
+  // Combined difficulty + source breakdown
+  const getSource = (tc: TestCase) =>
+    tc.diseaseSource ?? (tc.generationMetadata?.isKnowledgeBaseDisease === false ? 'non-kb' : 'kb')
 
-  // By source (KB vs Non-KB) — fall back to isKnowledgeBaseDisease for older cases
-  const bySource: TestSuiteStats["bySource"] = {}
+  const byDifficultySource: TestSuiteStats["byDifficultySource"] = {}
   for (const tc of graded) {
-    const src = tc.diseaseSource ?? (tc.generationMetadata?.isKnowledgeBaseDisease === false ? 'non-kb' : 'kb')
-    if (!bySource[src]) {
-      bySource[src] = { count: 0, avgScore: 0, top1Rate: 0, top3Rate: 0, top5Rate: 0 }
+    const key = `${tc.difficulty}-${getSource(tc)}`
+    if (!byDifficultySource[key]) {
+      byDifficultySource[key] = { difficulty: tc.difficulty, source: getSource(tc), count: 0, avgScore: 0, top1Rate: 0, top3Rate: 0, top5Rate: 0 }
     }
-    bySource[src].count++
+    byDifficultySource[key].count++
   }
-  for (const [src, entry] of Object.entries(bySource)) {
-    const srcCases = graded.filter((c) => {
-      const s = c.diseaseSource ?? (c.generationMetadata?.isKnowledgeBaseDisease === false ? 'non-kb' : 'kb')
-      return s === src
-    })
-    entry.avgScore = srcCases.reduce((a, c) => a + c.grading!.score, 0) / srcCases.length
-    entry.top1Rate = srcCases.filter((c) => c.grading!.correctDiagnosisRank === 1).length / srcCases.length
-    entry.top3Rate = srcCases.filter((c) => c.grading!.inTop3).length / srcCases.length
-    entry.top5Rate = srcCases.filter((c) => c.grading!.inTop5).length / srcCases.length
+  for (const entry of Object.values(byDifficultySource)) {
+    const bucket = graded.filter((c) => c.difficulty === entry.difficulty && getSource(c) === entry.source)
+    entry.avgScore = bucket.reduce((a, c) => a + c.grading!.score, 0) / bucket.length
+    entry.top1Rate = bucket.filter((c) => c.grading!.correctDiagnosisRank === 1).length / bucket.length
+    entry.top3Rate = bucket.filter((c) => c.grading!.inTop3).length / bucket.length
+    entry.top5Rate = bucket.filter((c) => c.grading!.inTop5).length / bucket.length
   }
 
   return {
@@ -154,8 +137,7 @@ function computeStats(cases: TestCase[]): TestSuiteStats | null {
     top1Rate: top1 / graded.length,
     top3Rate: top3 / graded.length,
     top5Rate: top5 / graded.length,
-    byDifficulty,
-    bySource,
+    byDifficultySource,
   }
 }
 
@@ -231,10 +213,8 @@ const SOURCE_COLORS: Record<string, string> = {
 }
 
 function StatsBanner({ stats }: { stats: TestSuiteStats }) {
-  const difficultyEntries = Object.entries(stats.byDifficulty)
-    .sort(([a], [b]) => parseInt(a) - parseInt(b))
-  const sourceEntries = Object.entries(stats.bySource)
-    .sort(([a], [b]) => (a === "kb" ? -1 : b === "kb" ? 1 : 0))
+  const breakdownEntries = Object.values(stats.byDifficultySource)
+    .sort((a, b) => a.difficulty - b.difficulty || (a.source === "kb" ? -1 : 1))
 
   return (
     <div className="border border-[#d4c5b0] bg-white mb-6">
@@ -264,49 +244,13 @@ function StatsBanner({ stats }: { stats: TestSuiteStats }) {
         </div>
       </div>
 
-      {/* By-difficulty breakdown table */}
-      {difficultyEntries.length > 0 && (
+      {/* Combined difficulty + source breakdown */}
+      {breakdownEntries.length > 0 && (
         <div className="border-t border-[#d4c5b0] overflow-x-auto">
           <table className="w-full text-sm min-w-[480px]">
             <thead>
               <tr className="border-b border-[#e8ddd0] bg-[#faf7f2]">
                 <th className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Difficulty</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">n</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Avg Score</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-1</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-3</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-5</th>
-              </tr>
-            </thead>
-            <tbody>
-              {difficultyEntries.map(([d, entry]) => {
-                const diff = parseInt(d)
-                return (
-                  <tr key={d} className="border-b border-[#e8ddd0] last:border-b-0">
-                    <td className="py-2.5 px-4 sm:px-5">
-                      <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${DIFFICULTY_COLORS[diff]}`}>
-                        {DIFFICULTY_LABELS[diff]}
-                      </span>
-                    </td>
-                    <td className="py-2.5 px-4 sm:px-5 text-right text-[#5a5a5a] tabular-nums">{entry.count}</td>
-                    <td className="py-2.5 px-4 sm:px-5 text-right font-medium text-[#2a2a2a] tabular-nums">{entry.avgScore.toFixed(1)}</td>
-                    <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top1Rate)}</td>
-                    <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top3Rate)}</td>
-                    <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top5Rate)}</td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </div>
-      )}
-
-      {/* By-source breakdown table */}
-      {sourceEntries.length > 1 && (
-        <div className="border-t border-[#d4c5b0] overflow-x-auto">
-          <table className="w-full text-sm min-w-[480px]">
-            <thead>
-              <tr className="border-b border-[#e8ddd0] bg-[#faf7f2]">
                 <th className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Source</th>
                 <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">n</th>
                 <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Avg Score</th>
@@ -316,11 +260,16 @@ function StatsBanner({ stats }: { stats: TestSuiteStats }) {
               </tr>
             </thead>
             <tbody>
-              {sourceEntries.map(([src, entry]) => (
-                <tr key={src} className="border-b border-[#e8ddd0] last:border-b-0">
+              {breakdownEntries.map((entry) => (
+                <tr key={`${entry.difficulty}-${entry.source}`} className="border-b border-[#e8ddd0] last:border-b-0">
                   <td className="py-2.5 px-4 sm:px-5">
-                    <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${SOURCE_COLORS[src] || "bg-gray-100 text-gray-700 border-gray-300"}`}>
-                      {SOURCE_LABELS[src] || src}
+                    <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${DIFFICULTY_COLORS[entry.difficulty]}`}>
+                      {DIFFICULTY_LABELS[entry.difficulty]}
+                    </span>
+                  </td>
+                  <td className="py-2.5 px-4 sm:px-5">
+                    <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${SOURCE_COLORS[entry.source] || "bg-gray-100 text-gray-700 border-gray-300"}`}>
+                      {SOURCE_LABELS[entry.source] || entry.source}
                     </span>
                   </td>
                   <td className="py-2.5 px-4 sm:px-5 text-right text-[#5a5a5a] tabular-nums">{entry.count}</td>

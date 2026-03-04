@@ -73,6 +73,7 @@ export interface GenerationMetadata {
   durationMs: number;
   archetype?: PatientArchetype;
   source?: 'generated';
+  preSelectedDisease?: string | null;
   isKnowledgeBaseDisease?: boolean;
 }
 
@@ -96,6 +97,7 @@ export interface TestCase {
   createdAt: string;
   difficulty: number;
   categoryHint?: string;
+  diseaseSource?: 'kb' | 'non-kb';
   status: TestCaseStatus;
   source?: 'generated';
   groundTruth: GroundTruth;

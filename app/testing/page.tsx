@@ -791,6 +791,7 @@ export default function AdminPage() {
   const [activeTestId, setActiveTestId] = useState<string | null>(null)
   const [difficulty, setDifficulty] = useState(2)
   const [categoryHint, setCategoryHint] = useState("")
+  const [diseaseSource, setDiseaseSource] = useState<'kb' | 'non-kb'>('kb')
   const [isGenerating, setIsGenerating] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
   const [isGrading, setIsGrading] = useState(false)
@@ -903,6 +904,7 @@ export default function AdminPage() {
           difficulty,
           categoryHint: categoryHint || undefined,
           excludeDiseases: testCases.map((tc) => tc.groundTruth.diagnosis),
+          source: diseaseSource,
         }),
       })
 
@@ -918,6 +920,7 @@ export default function AdminPage() {
         createdAt: new Date().toISOString(),
         difficulty,
         categoryHint: categoryHint || undefined,
+        diseaseSource,
         status: "generated",
         source: "generated",
         groundTruth: data.groundTruth,
@@ -1272,6 +1275,38 @@ export default function AdminPage() {
                   </option>
                 ))}
               </select>
+            </div>
+
+            <div>
+              <label className="block text-xs text-[#8b7355] mb-1">Disease source</label>
+              <div className="flex border border-[#d4c5b0]">
+                <button
+                  onClick={() => setDiseaseSource('kb')}
+                  disabled={isAnyRunning}
+                  className={cn(
+                    "px-3 py-2 text-sm font-medium transition-colors",
+                    diseaseSource === 'kb'
+                      ? "bg-[#8b2500] text-white"
+                      : "bg-white text-[#2a2a2a] hover:bg-[#f5f0e8]",
+                    "disabled:opacity-50 disabled:cursor-not-allowed"
+                  )}
+                >
+                  KB
+                </button>
+                <button
+                  onClick={() => setDiseaseSource('non-kb')}
+                  disabled={isAnyRunning}
+                  className={cn(
+                    "px-3 py-2 text-sm font-medium transition-colors border-l border-[#d4c5b0]",
+                    diseaseSource === 'non-kb'
+                      ? "bg-[#8b2500] text-white"
+                      : "bg-white text-[#2a2a2a] hover:bg-[#f5f0e8]",
+                    "disabled:opacity-50 disabled:cursor-not-allowed"
+                  )}
+                >
+                  Non-KB
+                </button>
+              </div>
             </div>
 
             <div className="flex items-center">

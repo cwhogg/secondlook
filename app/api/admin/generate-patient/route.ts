@@ -10,6 +10,7 @@ const inputSchema = z.object({
   difficulty: z.number().min(1).max(5),
   categoryHint: z.string().optional(),
   excludeDiseases: z.array(z.string()).optional(),
+  source: z.enum(['kb', 'non-kb']).optional().default('kb'),
 });
 
 // ===== ARCHETYPE SYSTEM =====
@@ -182,15 +183,6 @@ function shuffleArray<T>(arr: T[]): T[] {
   return arr;
 }
 
-/** Probability that Claude picks freely (non-KB) at each difficulty */
-const FREE_CHOICE_PROBABILITY: Record<number, number> = {
-  1: 0,
-  2: 0,
-  3: 0.2,
-  4: 0.35,
-  5: 0.5,
-};
-
 function formatSymptomList(symptoms: DiseaseProfile['symptoms']['pathognomonic']): string {
   if (symptoms.length === 0) return 'none';
   return symptoms
@@ -282,12 +274,12 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Decide: pre-select a KB disease or let Claude pick freely?
-    const freeChoiceProbability = FREE_CHOICE_PROBABILITY[input.difficulty] || 0;
-    const useFreeChoice = candidateDiseases.length === 0 || Math.random() < freeChoiceProbability;
+    // Decide: KB disease or non-KB based on explicit source toggle
+    // Fall back to non-KB if category filter eliminated all KB candidates
+    const useNonKb = input.source === 'non-kb' || candidateDiseases.length === 0;
 
     let preSelectedDisease: DiseaseProfile | null = null;
-    if (!useFreeChoice && candidateDiseases.length > 0) {
+    if (!useNonKb && candidateDiseases.length > 0) {
       preSelectedDisease = candidateDiseases[Math.floor(Math.random() * candidateDiseases.length)];
     }
 
@@ -295,27 +287,32 @@ export async function POST(request: NextRequest) {
     const archetype = selectArchetype(input.difficulty);
 
     const difficultyDescriptions: Record<number, string> = {
-      1: `EASY — Textbook presentation. Classic, well-described symptoms with pathognomonic or highly specific features present. Straightforward differential.`,
-      2: `MODERATE — Mostly typical presentation with 1-2 less common features. Well-defined diagnostic criteria that the patient mostly meets.`,
-      3: `CHALLENGING — Use ONE OR MORE of these difficulty factors (choose what fits the disease naturally):
-  • Atypical features or overlapping differential (symptoms shared by multiple conditions)
-  • Early/incomplete presentation missing 1-2 key features that would clinch the diagnosis
-  • Mild comorbidities that complicate the picture`,
-      4: `HARD — Use TWO OR MORE of these difficulty factors (choose what fits the disease naturally):
-  • Nonspecific symptom profile — symptoms individually common but the combination is telling
-  • High diagnostic overlap — multiple legitimate rare diseases share this presentation
-  • Poorly characterized disease with less established or informal diagnostic criteria
-  • Evolving/early presentation where classic features haven't fully emerged
-  • Contradictory or misleading symptoms (1-2 red herrings pointing to wrong specialty/category)
-  Do NOT default to ultra-rare — a moderately rare disease with nonspecific or conflicting symptoms can be harder to diagnose than an ultra-rare disease with pathognomonic features.`,
-      5: `EXPERT — Use THREE OR MORE of these difficulty factors (choose what fits the disease naturally):
-  • Extremely nonspecific symptoms that individually suggest common conditions
-  • Contradictory symptoms pointing different specialists in different directions
-  • Disease poorly characterized in literature with no formal diagnostic criteria
-  • Symptom pattern that doesn't cleanly fit any known disease category
-  • Key distinguishing features require specific testing (genetic, biopsy, advanced imaging) not yet performed
-  • Multiple red herrings including real symptoms from comorbidities
-  A well-known rare disease with a terrible symptom profile is a valid expert case — do NOT equate "expert" with "ultra-rare."`,
+      1: `EASY — The patient communicates clearly and thoroughly.
+  • Well-organized narrative; most symptoms mentioned directly in useful, specific terms
+  • Accurate timelines and severity descriptions
+  • Few tangential details — the narrative reads like a good medical history
+  • The disease presentation itself should be textbook/classic`,
+      2: `MODERATE — The patient is mostly clear but slightly imprecise.
+  • 1-2 symptoms described in imprecise lay language ("my hands feel weird" instead of describing numbness)
+  • Minor tangential details (work stress, a friend's opinion) that don't significantly obscure the picture
+  • Slight timeline imprecision for one symptom
+  • The disease presentation itself should be mostly typical`,
+      3: `CHALLENGING — The patient communicates in ways that obscure the clinical picture.
+  • Vague descriptions for 2-3 key symptoms — uses general terms that could mean multiple things
+  • Important symptoms buried in tangential anecdotes or mentioned as afterthoughts
+  • Mild comorbidity noise (e.g., mentions unrelated chronic conditions that add confusion)
+  • May conflate two distinct symptoms into one complaint`,
+      4: `HARD — The patient's narrative actively misleads.
+  • Symptoms described so vaguely they suggest the wrong body system ("stomach problems" for what is actually referred pain)
+  • 1-2 diagnostically important symptoms omitted entirely — patient doesn't think they're relevant
+  • Red herrings from anxiety, comorbidities, or lifestyle factors woven throughout
+  • Misleading emphasis: fixates on the least important symptom while barely mentioning the most telling one`,
+      5: `EXPERT — The patient's narrative is a diagnostic minefield.
+  • Key symptoms described in misleading terms that point to wrong diagnoses
+  • 2-3 diagnostically important symptoms omitted — patient considers them "normal" or unrelated
+  • Multiple red herrings from comorbidities, anxiety, or unrelated complaints
+  • Contradictory or inconsistent information (e.g., timeline doesn't add up, severity descriptions conflict)
+  • Pathognomonic features, if present, are buried deep in tangents or minimized ("oh, and sometimes my eyes look a little yellow, but that's probably nothing")`,
     };
 
     const categoryInstruction = input.categoryHint

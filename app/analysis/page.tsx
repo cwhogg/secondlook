@@ -232,6 +232,7 @@ export default function AnalysisPage() {
 
               const analysisResults = {
                 differentialDiagnoses: event.analysis.differentialDiagnoses || [],
+                differentialClusters: event.analysis.differentialClusters || [],
                 excludedCommonDiagnoses: event.analysis.excludedCommonDiagnoses || [],
                 dataGaps: event.analysis.dataGaps || [],
                 recommendedTesting: event.analysis.recommendedTesting || [],

@@ -137,6 +137,15 @@ export interface NextSteps {
   redFlags: string[];
 }
 
+export interface DifferentialCluster {
+  clusterName: string;
+  diagnoses: string[];
+  combinedProbabilityRange: string;
+  sharedFeatures: string[];
+  distinguishingTests: string[];
+  reasoning: string;
+}
+
 export interface StageResult {
   stageName: string;
   durationMs: number;
@@ -165,6 +174,7 @@ export interface PipelineMetadata {
 
 export interface AnalysisResult {
   differentialDiagnoses: DiagnosisHypothesis[];
+  differentialClusters?: DifferentialCluster[];
   excludedCommonDiagnoses: Array<{
     diagnosis: string;
     reasonExcluded: string;

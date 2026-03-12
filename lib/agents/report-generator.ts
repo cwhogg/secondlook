@@ -169,7 +169,18 @@ ${diagSummary}
 ===== EXCLUDED COMMON CONDITIONS =====
 ${synthesisData.excludedCommonDiagnoses?.map((e: any) => `- ${e.diagnosis}: ${e.reasonExcluded}`).join('\n') || '(none)'}
 
-${ synthesisData.escalationContext ? `===== LOW DIAGNOSTIC CERTAINTY FLAG =====
+${synthesisData.differentialClusters?.length > 0 ? `===== DIFFERENTIAL CLUSTERS =====
+The following diagnoses from the ranked differential are phenotypic variants that cannot be reliably distinguished by symptoms alone:
+
+${synthesisData.differentialClusters.map((c: any) => `Cluster: ${c.clusterName}
+  Diagnoses: ${c.diagnoses.join(', ')}
+  Combined probability: ${c.combinedProbabilityRange}
+  Shared features: ${c.sharedFeatures.join('; ')}
+  Distinguishing tests: ${c.distinguishingTests.join('; ')}
+  Reasoning: ${c.reasoning}`).join('\n\n')}
+
+IMPORTANT: In the overall assessment, present clustered diagnoses as a unified group rather than independent alternatives. Explain that they share the same clinical presentation and recommend the specific discriminating tests prominently. The patient should understand that the answer likely lives within this cluster.
+` : ''}${ synthesisData.escalationContext ? `===== LOW DIAGNOSTIC CERTAINTY FLAG =====
 ${synthesisData.escalationContext}
 
 Given low certainty, you MUST:

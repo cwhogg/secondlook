@@ -286,6 +286,7 @@ export class DiagnosticPipeline {
 
       const analysisResult: AnalysisResult = {
         differentialDiagnoses: reportResult.hypotheses,
+        differentialClusters: synthesisData.differentialClusters || [],
         excludedCommonDiagnoses: synthesisData.excludedCommonDiagnoses || reportData.excludedCommonDiagnoses || [],
         dataGaps: reportData.dataGaps || [],
         recommendedTesting: reportData.recommendedTesting || [],

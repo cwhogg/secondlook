@@ -33,6 +33,13 @@ YOUR JOB: Make the final clinical judgment.
 
 5. IDENTIFY common conditions to explicitly exclude
 
+6. DETECT DIFFERENTIAL CLUSTERS: If two or more of your ranked diagnoses are:
+   - Phenotypic variants of the same disease family (e.g., different genetic subtypes causing similar clinical presentations)
+   - Clinically indistinguishable based on the available symptom and history data alone
+   - Differentiable only through specific molecular, genetic, or advanced testing
+   Then group them as a "differential cluster." For each cluster, identify the shared features that make them indistinguishable, a combined probability range treating the cluster as one entity, and the specific tests needed to tell them apart.
+   Only create clusters when genuinely warranted — most differentials do NOT contain phenotypic siblings. Return an empty array if no clustering applies.
+
 IMPORTANT NOTES:
 - Some hypotheses have structured KB criteria data, others were evaluated via clinical reasoning. BOTH are valid. Do not favor one type over the other.
 - Our knowledge base covers ${getDiseaseCount()} of an estimated 10,000+ known rare diseases. A disease NOT in our KB can absolutely be the correct diagnosis.
@@ -125,6 +132,22 @@ export class SynthesisAgent extends BaseAgent {
                   reasoning: { type: 'string' },
                 },
               },
+              differentialClusters: {
+                type: 'array',
+                items: {
+                  type: 'object',
+                  properties: {
+                    clusterName: { type: 'string', description: 'Name for this disease family/cluster' },
+                    diagnoses: { type: 'array', items: { type: 'string' }, description: 'Exact diagnosis names from the ranked list that belong to this cluster' },
+                    combinedProbabilityRange: { type: 'string', description: 'Combined probability treating the cluster as one entity, e.g. "35-50%"' },
+                    sharedFeatures: { type: 'array', items: { type: 'string' }, description: 'Clinical features shared by all diagnoses in this cluster' },
+                    distinguishingTests: { type: 'array', items: { type: 'string' }, description: 'Specific tests that can differentiate between diagnoses within this cluster' },
+                    reasoning: { type: 'string', description: 'Why these diagnoses are clinically indistinguishable from available data' },
+                  },
+                  required: ['clusterName', 'diagnoses', 'combinedProbabilityRange', 'sharedFeatures', 'distinguishingTests', 'reasoning'],
+                },
+                description: 'Groups of phenotypic sibling diagnoses that cannot be distinguished by symptoms alone. Empty array if no clustering applies.',
+              },
             },
             required: ['rankedDiagnoses', 'consensusLevel', 'criticalGaps', 'overallAssessment', 'excludedCommonDiagnoses'],
           },
@@ -173,6 +196,7 @@ export class SynthesisAgent extends BaseAgent {
       criticalGaps: synthesis.criticalGaps,
       excludedCommonDiagnoses: synthesis.excludedCommonDiagnoses || [],
       confidenceCalibration: synthesis.confidenceCalibration,
+      differentialClusters: synthesis.differentialClusters || [],
     };
 
     return agentOutput;
@@ -272,6 +296,7 @@ You are the final decision-maker. Review ALL of the above — specialist reasoni
 4. Assess specialist consensus level
 5. Identify critical information gaps
 6. List common conditions to exclude
-7. Write an honest overall assessment`;
+7. Write an honest overall assessment
+8. If any ranked diagnoses are phenotypic siblings, group them into differential clusters`;
   }
 }

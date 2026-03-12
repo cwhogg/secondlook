@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prebuild": "node scripts/compile-kb.js",
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "compile-kb": "node scripts/compile-kb.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

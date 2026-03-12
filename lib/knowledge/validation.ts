@@ -79,7 +79,7 @@ export const diseaseProfileSchema = z.object({
 
   lastUpdated: z.string(),
   references: z.array(z.string()),
-  confidenceInData: z.enum(['high', 'medium', 'low']),
+  confidenceInData: z.enum(['high', 'medium', 'low', 'ai-generated']),
 });
 
 export type ValidatedDiseaseProfile = z.infer<typeof diseaseProfileSchema>;

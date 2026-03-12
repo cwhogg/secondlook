@@ -34,7 +34,7 @@ YOUR APPROACH FOR EACH HYPOTHESIS:
 5. CONTRADICTIONS:
    - What in the patient's presentation argues against this diagnosis?
 
-IMPORTANT: Our knowledge base covers ${getDiseaseCount()} of ~7,000-10,000 known rare diseases. The absence of a disease from our database is NOT evidence against it. Evaluate all hypotheses with equal rigor regardless of KB status.
+IMPORTANT: Our knowledge base covers ${getDiseaseCount()} of an estimated 10,000+ known rare diseases. The absence of a disease from our database is NOT evidence against it. Evaluate all hypotheses with equal rigor regardless of KB status.
 
 Be RIGOROUS and HONEST. Clearly distinguish between what the evidence supports and what remains unknown.`;
 }

@@ -95,7 +95,7 @@ export interface DiseaseProfile {
   // Metadata
   lastUpdated: string;
   references: string[];
-  confidenceInData: 'high' | 'medium' | 'low';
+  confidenceInData: 'high' | 'medium' | 'low' | 'ai-generated';
 }
 
 // ===== RETRIEVAL TYPES =====

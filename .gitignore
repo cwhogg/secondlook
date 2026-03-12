@@ -24,6 +24,13 @@ yarn-error.log*
 lib/knowledge/embeddings-meta.json
 lib/knowledge/embeddings-vectors.bin
 
+# compiled KB (generated via: node scripts/compile-kb.js)
+lib/knowledge/diseases-compiled.json
+
+# expansion script artifacts
+scripts/expansion-screening.json
+scripts/expansion-rejected.json
+
 # test case data
 /data/
 
@@ -33,3 +40,4 @@ lib/knowledge/embeddings-vectors.bin
 # typescript
 *.tsbuildinfo
 next-env.d.ts*.DS_Store
+.env*.local

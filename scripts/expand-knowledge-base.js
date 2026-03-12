@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 
 /**
- * Expand the SecondLook knowledge base to ~1,500 rare diseases.
+ * Expand the SecondLook knowledge base.
  *
- * Phase 1: Generate disease name lists per medical domain using GPT-4.1-mini
- * Phase 2: Generate full disease profiles for each disease (10 concurrent)
- * Phase 3: Summary and stats
+ * Two modes:
+ *   1. Domain-based (default): Generate disease name lists per medical domain, then generate profiles.
+ *   2. Non-KB mode (--from-non-kb): Read diseases from lib/knowledge/non-kb-diseases.json and generate profiles.
  *
- * Usage: OPENAI_API_KEY=sk-... node scripts/expand-knowledge-base.js
+ * Usage:
+ *   OPENAI_API_KEY=sk-... node scripts/expand-knowledge-base.js
+ *   OPENAI_API_KEY=sk-... node scripts/expand-knowledge-base.js --from-non-kb
  *
  * The script is restartable — it skips diseases that already have profiles on disk.
  * Progress is saved to scripts/expansion-progress.json.
@@ -17,10 +19,22 @@ const fs = require('fs');
 const path = require('path');
 
 const DISEASES_DIR = path.join(__dirname, '..', 'lib', 'knowledge', 'diseases');
+const NON_KB_FILE = path.join(__dirname, '..', 'lib', 'knowledge', 'non-kb-diseases.json');
 const DISEASE_LIST_FILE = path.join(__dirname, 'expansion-disease-list.json');
 const PROGRESS_FILE = path.join(__dirname, 'expansion-progress.json');
+const SCREENING_FILE = path.join(__dirname, 'expansion-screening.json');
+const REJECTED_FILE = path.join(__dirname, 'expansion-rejected.json');
 const MODEL = 'gpt-4.1-mini';
-const CONCURRENCY = 10;
+const SCREENING_MODEL = 'gpt-4.1-nano';
+const CONCURRENCY = 100;
+const SCREENING_CONCURRENCY = 50;
+const MAX_RETRIES = 1;
+const RETRY_DELAY_MS = 2000;
+
+// Rolling average window for ETA calculation
+const ETA_WINDOW = 50;
+
+const FROM_NON_KB = process.argv.includes('--from-non-kb');
 
 // ===== DOMAIN DEFINITIONS =====
 // Each domain has a target count of NEW diseases to add and a description to guide generation.
@@ -116,6 +130,18 @@ const VALID_BODY_SYSTEMS = [
   'psychiatric', 'constitutional', 'otolaryngological',
 ];
 
+// ===== GENERIC SYMPTOM DETECTION =====
+const GENERIC_SYMPTOM_TERMS = [
+  'fatigue', 'malaise', 'pain', 'weakness', 'fever', 'weight loss',
+  'nausea', 'headache', 'dizziness',
+];
+
+function isGenericSymptom(name) {
+  const lower = name.toLowerCase().trim();
+  // Only flag if the symptom IS the generic term (not "chronic fatigue with post-exertional malaise")
+  return GENERIC_SYMPTOM_TERMS.some(term => lower === term);
+}
+
 // ===== API HELPERS =====
 
 async function callOpenAI(messages, options = {}) {
@@ -149,7 +175,124 @@ async function callOpenAI(messages, options = {}) {
   return data.choices[0].message.content;
 }
 
-// ===== PHASE 1: DISEASE LIST GENERATION =====
+// ===== SLUGIFY =====
+
+function slugify(name) {
+  return name
+    .toLowerCase()
+    .replace(/['']/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+// ===== NON-KB DISEASE LIST LOADING =====
+
+function loadNonKbDiseases(existingIds) {
+  console.log('[Non-KB] Loading diseases from non-kb-diseases.json...');
+
+  if (!fs.existsSync(NON_KB_FILE)) {
+    console.error('Error: non-kb-diseases.json not found at', NON_KB_FILE);
+    process.exit(1);
+  }
+
+  const raw = JSON.parse(fs.readFileSync(NON_KB_FILE, 'utf-8'));
+  const existingSet = new Set(existingIds);
+
+  const diseases = [];
+  const seenIds = new Set();
+
+  for (const entry of raw) {
+    const id = slugify(entry.name);
+    if (existingSet.has(id) || seenIds.has(id)) continue;
+    seenIds.add(id);
+    diseases.push({
+      name: entry.name,
+      id,
+      brief: '',
+      orphaCode: entry.orphaCode,
+    });
+  }
+
+  console.log(`[Non-KB] ${raw.length} total entries, ${diseases.length} after filtering existing KB diseases`);
+  return diseases;
+}
+
+// ===== PRE-SCREEN PASS (QUALITY GATE) =====
+
+async function screenDiseases(diseases) {
+  console.log(`\n[Screening] Pre-screening ${diseases.length} diseases for LLM knowledge quality...`);
+
+  // Load existing screening results
+  const screening = fs.existsSync(SCREENING_FILE)
+    ? JSON.parse(fs.readFileSync(SCREENING_FILE, 'utf-8'))
+    : {};
+
+  const toScreen = diseases.filter(d => !(d.id in screening));
+  console.log(`  ${Object.keys(screening).length} already screened, ${toScreen.length} to screen`);
+
+  let screened = 0;
+  const startTime = Date.now();
+
+  for (let i = 0; i < toScreen.length; i += SCREENING_CONCURRENCY) {
+    const batch = toScreen.slice(i, i + SCREENING_CONCURRENCY);
+
+    const results = await Promise.allSettled(
+      batch.map(async (disease) => {
+        const orphaRef = disease.orphaCode ? ` (ORPHA:${disease.orphaCode})` : '';
+        const prompt = `Do you have reliable clinical knowledge of ${disease.name}${orphaRef}? Rate: HIGH (well-documented symptoms, criteria, epidemiology), MEDIUM (partial knowledge, can describe key features), LOW (unfamiliar, would be guessing). Respond with only the rating.`;
+
+        const result = await callOpenAI(
+          [{ role: 'user', content: prompt }],
+          { model: SCREENING_MODEL, maxTokens: 10, temperature: 0.0 }
+        );
+
+        const rating = result.trim().toUpperCase();
+        return { id: disease.id, rating };
+      })
+    );
+
+    for (const result of results) {
+      if (result.status === 'fulfilled') {
+        const { id, rating } = result.value;
+        screening[id] = rating.startsWith('HIGH') ? 'HIGH' : rating.startsWith('MED') ? 'MEDIUM' : 'LOW';
+        screened++;
+      }
+    }
+
+    // Save periodically
+    if ((i + SCREENING_CONCURRENCY) % 200 === 0 || i + SCREENING_CONCURRENCY >= toScreen.length) {
+      fs.writeFileSync(SCREENING_FILE, JSON.stringify(screening, null, 2));
+    }
+
+    if (screened % 200 === 0 || i + SCREENING_CONCURRENCY >= toScreen.length) {
+      const elapsed = ((Date.now() - startTime) / 1000).toFixed(0);
+      console.log(`  Screened: ${screened}/${toScreen.length} (${elapsed}s)`);
+    }
+  }
+
+  // Save final
+  fs.writeFileSync(SCREENING_FILE, JSON.stringify(screening, null, 2));
+
+  // Filter to HIGH and MEDIUM only
+  const passed = diseases.filter(d => {
+    const rating = screening[d.id];
+    return rating === 'HIGH' || rating === 'MEDIUM';
+  });
+
+  const counts = { HIGH: 0, MEDIUM: 0, LOW: 0, UNKNOWN: 0 };
+  for (const d of diseases) {
+    const r = screening[d.id] || 'UNKNOWN';
+    counts[r] = (counts[r] || 0) + 1;
+  }
+
+  console.log(`[Screening] Results: HIGH=${counts.HIGH}, MEDIUM=${counts.MEDIUM}, LOW=${counts.LOW}`);
+  console.log(`[Screening] ${passed.length} diseases passed (${diseases.length - passed.length} excluded as LOW)`);
+
+  return passed;
+}
+
+// ===== PHASE 1: DISEASE LIST GENERATION (DOMAIN MODE) =====
 
 async function generateDiseaseList(existingIds) {
   if (fs.existsSync(DISEASE_LIST_FILE)) {
@@ -257,7 +400,7 @@ Respond with a JSON object: { "diseases": [ { "name": "...", "id": "...", "brief
 const PROFILE_PROMPT_TEMPLATE = `You are a medical expert creating a comprehensive disease profile for a clinical decision support system.
 
 Generate a complete JSON profile for: {{DISEASE_NAME}}
-Brief description: {{DISEASE_BRIEF}}
+{{ORPHA_LINE}}Brief description: {{DISEASE_BRIEF}}
 
 The profile MUST follow this exact JSON schema:
 
@@ -312,9 +455,9 @@ The profile MUST follow this exact JSON schema:
   ],
   "redFlags": ["Clinical red flag 1", "..."],
   "specialistType": ["Specialist 1", "..."],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-10",
   "references": ["Key reference 1", "..."],
-  "confidenceInData": "medium"
+  "confidenceInData": "ai-generated"
 }
 
 CRITICAL RULES:
@@ -327,15 +470,21 @@ CRITICAL RULES:
 7. Include at least 2 differential diagnoses
 8. Include at least 3 red flags
 9. The id field must be exactly: "{{DISEASE_ID}}"
-10. All symptomName values should be medically precise, descriptive terms
+10. All symptomName values should be medically precise, descriptive terms — avoid generic terms like just "fatigue" or "pain" without specificity
+11. confidenceInData must be exactly: "ai-generated"
 
 Return ONLY the JSON object. No markdown, no explanation.`;
 
 async function generateProfile(disease) {
+  const orphaLine = disease.orphaCode
+    ? `Orphanet code: ORPHA:${disease.orphaCode}\n`
+    : '';
+
   const prompt = PROFILE_PROMPT_TEMPLATE
     .replace(/\{\{DISEASE_NAME\}\}/g, disease.name)
     .replace(/\{\{DISEASE_ID\}\}/g, disease.id)
-    .replace(/\{\{DISEASE_BRIEF\}\}/g, disease.brief || '');
+    .replace(/\{\{DISEASE_BRIEF\}\}/g, disease.brief || '')
+    .replace(/\{\{ORPHA_LINE\}\}/g, orphaLine);
 
   const result = await callOpenAI(
     [{ role: 'user', content: prompt }],
@@ -347,8 +496,16 @@ async function generateProfile(disease) {
   // Enforce the correct ID
   profile.id = disease.id;
 
-  // Basic validation
+  // Set orphanetId if we have it
+  if (disease.orphaCode && !profile.orphanetId) {
+    profile.orphanetId = String(disease.orphaCode);
+  }
+
+  // Basic structural validation + body system fixing
   validateProfile(profile);
+
+  // Strict quality validation for expansion
+  strictValidateProfile(profile);
 
   return profile;
 }
@@ -393,6 +550,16 @@ function validateProfile(profile) {
     'metabolic': 'endocrine',
     'pancreatic': 'gastrointestinal',
     'splenic': 'hematological',
+    'autonomic': 'neurological',
+    'facial': 'musculoskeletal',
+    'craniofacial': 'musculoskeletal',
+    'connective-tissue': 'musculoskeletal',
+    'nutritional': 'gastrointestinal',
+    'adrenal': 'endocrine',
+    'thyroid': 'endocrine',
+    'pituitary': 'endocrine',
+    'hepatorenal': 'renal',
+    'cardiopulmonary': 'cardiovascular',
   };
 
   function fixBodySystem(sys) {
@@ -442,36 +609,142 @@ function validateProfile(profile) {
   if (!profile.keyFindings) profile.keyFindings = { laboratory: [], imaging: [], genetic: [], other: [] };
   if (!Array.isArray(profile.differentialDiagnoses)) profile.differentialDiagnoses = [];
   if (!profile.diagnosticCriteria) profile.diagnosticCriteria = { criteria: [] };
-  if (!profile.confidenceInData) profile.confidenceInData = 'medium';
-  if (!profile.lastUpdated) profile.lastUpdated = '2026-02-17';
+  // Force ai-generated for expansion profiles
+  profile.confidenceInData = 'ai-generated';
+  if (!profile.lastUpdated) profile.lastUpdated = '2026-03-10';
 
   if (errors.length > 0) {
     throw new Error(`Validation errors for ${profile.id}: ${errors.join('; ')}`);
   }
 }
 
+// ===== STRICT POST-GENERATION VALIDATION =====
+
+function strictValidateProfile(profile) {
+  const reasons = [];
+
+  // Count total symptoms across all tiers
+  const allSymptoms = [
+    ...(profile.symptoms?.pathognomonic || []),
+    ...(profile.symptoms?.common || []),
+    ...(profile.symptoms?.occasional || []),
+    ...(profile.symptoms?.rare || []),
+  ];
+
+  if (allSymptoms.length < 6) {
+    reasons.push(`Too few symptoms: ${allSymptoms.length} (minimum 6)`);
+  }
+
+  // Check for identical frequencies (copy-paste pattern)
+  if (allSymptoms.length >= 4) {
+    const freqs = allSymptoms.map(s => s.frequency);
+    const uniqueFreqs = new Set(freqs);
+    if (uniqueFreqs.size === 1) {
+      reasons.push(`All ${allSymptoms.length} symptoms have identical frequency ${freqs[0]}`);
+    }
+  }
+
+  // Check pathognomonic symptoms have frequency >= 0.7
+  for (const s of (profile.symptoms?.pathognomonic || [])) {
+    if (s.frequency < 0.7) {
+      reasons.push(`Pathognomonic symptom "${s.symptomName}" has frequency ${s.frequency} (must be >= 0.7)`);
+    }
+  }
+
+  // Check for diagnostic criteria quality
+  const criteria = profile.diagnosticCriteria?.criteria || [];
+  const hasRequired = criteria.some(c => c.requiredForDiagnosis === true);
+  const hasFormalName = !!profile.diagnosticCriteria?.formalCriteriaName;
+  if (!hasRequired && !hasFormalName) {
+    reasons.push('No diagnostic criteria have requiredForDiagnosis:true AND no formalCriteriaName');
+  }
+
+  // Check for generic symptom names
+  const genericSymptoms = allSymptoms.filter(s => isGenericSymptom(s.symptomName));
+  if (genericSymptoms.length > 0) {
+    reasons.push(`Generic symptom names without specificity: ${genericSymptoms.map(s => `"${s.symptomName}"`).join(', ')}`);
+  }
+
+  if (reasons.length > 0) {
+    throw new StrictValidationError(reasons);
+  }
+}
+
+class StrictValidationError extends Error {
+  constructor(reasons) {
+    super(`Strict validation failed: ${reasons.join('; ')}`);
+    this.name = 'StrictValidationError';
+    this.reasons = reasons;
+  }
+}
+
+// ===== PROFILE GENERATION WITH RETRY =====
+
+async function generateProfileWithRetry(disease) {
+  let lastError;
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      return await generateProfile(disease);
+    } catch (err) {
+      lastError = err;
+      if (attempt < MAX_RETRIES) {
+        await new Promise(r => setTimeout(r, RETRY_DELAY_MS));
+      }
+    }
+  }
+  throw lastError;
+}
+
+// ===== ROLLING AVERAGE ETA =====
+
+class RollingAverage {
+  constructor(windowSize) {
+    this.windowSize = windowSize;
+    this.times = [];
+  }
+
+  add(durationMs) {
+    this.times.push(durationMs);
+    if (this.times.length > this.windowSize) {
+      this.times.shift();
+    }
+  }
+
+  average() {
+    if (this.times.length === 0) return 0;
+    return this.times.reduce((a, b) => a + b, 0) / this.times.length;
+  }
+}
+
 async function generateProfilesPhase(diseaseList) {
-  console.log(`[Phase 2] Generating profiles for ${diseaseList.length} diseases (${CONCURRENCY} concurrent)...`);
+  console.log(`[Profiles] Generating profiles for ${diseaseList.length} diseases (${CONCURRENCY} concurrent)...`);
 
   let completed = 0;
   let skipped = 0;
   let failed = 0;
   const errors = [];
-  const startTime = Date.now();
+  const rejected = [];
+  const rollingAvg = new RollingAverage(ETA_WINDOW);
 
   // Load progress
   const progress = fs.existsSync(PROGRESS_FILE)
     ? JSON.parse(fs.readFileSync(PROGRESS_FILE, 'utf-8'))
-    : { completed: [], failed: [] };
+    : { phase: 'profiles', totalTarget: diseaseList.length, completed: [], failed: [], startedAt: new Date().toISOString(), lastUpdatedAt: new Date().toISOString() };
+
+  // Load existing rejections
+  const existingRejected = fs.existsSync(REJECTED_FILE)
+    ? JSON.parse(fs.readFileSync(REJECTED_FILE, 'utf-8'))
+    : [];
 
   // Filter to diseases that need processing
+  const completedSet = new Set(progress.completed);
   const toProcess = diseaseList.filter(d => {
     const filePath = path.join(DISEASES_DIR, `${d.id}.json`);
     if (fs.existsSync(filePath)) {
       skipped++;
       return false;
     }
-    if (progress.completed.includes(d.id)) {
+    if (completedSet.has(d.id)) {
       skipped++;
       return false;
     }
@@ -483,21 +756,31 @@ async function generateProfilesPhase(diseaseList) {
   // Process in concurrent batches
   for (let i = 0; i < toProcess.length; i += CONCURRENCY) {
     const batch = toProcess.slice(i, i + CONCURRENCY);
+    const batchStart = Date.now();
 
     const results = await Promise.allSettled(
       batch.map(async (disease) => {
         try {
-          const profile = await generateProfile(disease);
+          const profile = await generateProfileWithRetry(disease);
           const filePath = path.join(DISEASES_DIR, `${disease.id}.json`);
           fs.writeFileSync(filePath, JSON.stringify(profile, null, 2));
           progress.completed.push(disease.id);
           return { success: true, id: disease.id };
         } catch (err) {
+          if (err instanceof StrictValidationError) {
+            rejected.push({ id: disease.id, name: disease.name, reasons: err.reasons });
+            // Count as "completed" in progress (don't retry on future runs)
+            progress.completed.push(disease.id);
+            return { success: false, id: disease.id, error: err.message, rejected: true };
+          }
           progress.failed.push({ id: disease.id, error: err.message });
           return { success: false, id: disease.id, error: err.message };
         }
       })
     );
+
+    const batchDuration = Date.now() - batchStart;
+    rollingAvg.add(batchDuration);
 
     for (const result of results) {
       if (result.status === 'fulfilled' && result.value.success) {
@@ -510,35 +793,44 @@ async function generateProfilesPhase(diseaseList) {
     }
 
     // Save progress periodically
-    if ((i + CONCURRENCY) % 50 === 0 || i + CONCURRENCY >= toProcess.length) {
+    progress.lastUpdatedAt = new Date().toISOString();
+    if ((i + CONCURRENCY) % 100 === 0 || i + CONCURRENCY >= toProcess.length) {
       fs.writeFileSync(PROGRESS_FILE, JSON.stringify(progress, null, 2));
+      if (rejected.length > 0) {
+        fs.writeFileSync(REJECTED_FILE, JSON.stringify([...existingRejected, ...rejected], null, 2));
+      }
     }
 
-    const elapsed = ((Date.now() - startTime) / 1000).toFixed(0);
-    const total = completed + skipped + failed;
-    const rate = completed > 0 ? (completed / ((Date.now() - startTime) / 1000)).toFixed(1) : '0';
-    const remaining = toProcess.length - (completed + failed);
-    const eta = rate > 0 ? (remaining / parseFloat(rate) / 60).toFixed(1) : '?';
-    console.log(`  Progress: ${total}/${diseaseList.length} (${completed} new, ${skipped} skipped, ${failed} failed) | ${rate}/s | ETA: ${eta}min`);
+    const processed = completed + failed;
+    const remaining = toProcess.length - processed;
+    const avgBatchMs = rollingAvg.average();
+    const batchesRemaining = Math.ceil(remaining / CONCURRENCY);
+    const etaMin = avgBatchMs > 0 ? ((batchesRemaining * avgBatchMs) / 60000).toFixed(1) : '?';
+    const rate = (completed / ((Date.now() - batchStart + (i * avgBatchMs)) / 1000) || 0).toFixed(1);
+    console.log(`  Progress: ${skipped + processed}/${diseaseList.length} (${completed} new, ${skipped} skipped, ${failed} failed, ${rejected.length} rejected) | ETA: ${etaMin}min`);
   }
 
   // Save final progress
+  progress.lastUpdatedAt = new Date().toISOString();
   fs.writeFileSync(PROGRESS_FILE, JSON.stringify(progress, null, 2));
+  if (rejected.length > 0) {
+    fs.writeFileSync(REJECTED_FILE, JSON.stringify([...existingRejected, ...rejected], null, 2));
+  }
 
-  console.log(`[Phase 2] Complete.`);
+  console.log(`[Profiles] Complete.`);
   console.log(`  Generated: ${completed}`);
   console.log(`  Skipped (existing): ${skipped}`);
-  console.log(`  Failed: ${failed}`);
+  console.log(`  Rejected (quality): ${rejected.length}`);
+  console.log(`  Failed (error): ${failed - rejected.length}`);
 
   if (errors.length > 0) {
     console.log(`  Errors:`);
-    for (const err of errors.slice(0, 20)) {
+    for (const err of errors.filter(e => !e.rejected).slice(0, 20)) {
       console.log(`    - ${err.id}: ${err.error?.substring(0, 100)}`);
     }
-    if (errors.length > 20) console.log(`    ... and ${errors.length - 20} more`);
   }
 
-  return { completed, skipped, failed };
+  return { completed, skipped, failed, rejected: rejected.length };
 }
 
 // ===== MAIN =====
@@ -550,31 +842,45 @@ async function main() {
     process.exit(1);
   }
 
-  console.log('=== SecondLook Knowledge Base Expansion ===\n');
+  console.log('=== SecondLook Knowledge Base Expansion ===');
+  console.log(`Mode: ${FROM_NON_KB ? 'Non-KB diseases (Orphanet)' : 'Domain-based generation'}\n`);
 
   // Get existing disease IDs
   const existingFiles = fs.readdirSync(DISEASES_DIR).filter(f => f.endsWith('.json'));
   const existingIds = existingFiles.map(f => f.replace('.json', ''));
   console.log(`Existing diseases: ${existingIds.length}`);
 
-  const totalTarget = DOMAINS.reduce((sum, d) => sum + d.target, 0);
-  console.log(`Target new diseases: ${totalTarget}`);
-  console.log(`Target total: ~${existingIds.length + totalTarget}\n`);
+  let diseaseList;
 
-  // Phase 1: Generate disease lists
-  const diseaseList = await generateDiseaseList(existingIds);
-  console.log(`\nDisease list: ${diseaseList.length} diseases across ${DOMAINS.length} domains\n`);
+  if (FROM_NON_KB) {
+    // Load from non-kb-diseases.json, skip Phase 1
+    diseaseList = loadNonKbDiseases(existingIds);
 
-  // Phase 2: Generate profiles
+    // Pre-screen for quality
+    diseaseList = await screenDiseases(diseaseList);
+  } else {
+    // Domain-based generation (original mode)
+    const totalTarget = DOMAINS.reduce((sum, d) => sum + d.target, 0);
+    console.log(`Target new diseases: ${totalTarget}`);
+    console.log(`Target total: ~${existingIds.length + totalTarget}\n`);
+    diseaseList = await generateDiseaseList(existingIds);
+  }
+
+  console.log(`\nDisease list: ${diseaseList.length} diseases to process\n`);
+
+  // Generate profiles
   const stats = await generateProfilesPhase(diseaseList);
 
-  // Phase 3: Summary
+  // Summary
   const finalCount = fs.readdirSync(DISEASES_DIR).filter(f => f.endsWith('.json')).length;
   console.log(`\n=== Summary ===`);
   console.log(`Total disease profiles: ${finalCount}`);
   console.log(`New profiles generated: ${stats.completed}`);
-  console.log(`Failed: ${stats.failed}`);
-  console.log(`\nNext step: Run 'node scripts/embed-diseases.js' to generate embeddings`);
+  console.log(`Rejected (quality): ${stats.rejected}`);
+  console.log(`Failed: ${stats.failed - stats.rejected}`);
+  console.log(`\nNext steps:`);
+  console.log(`  1. Run 'node scripts/embed-diseases.js' to regenerate embeddings`);
+  console.log(`  2. Run 'node scripts/compile-kb.js' to create compiled database`);
 }
 
 main().catch(err => {

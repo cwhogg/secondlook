@@ -5,10 +5,25 @@ import path from 'path';
 let diseaseCache: DiseaseProfile[] | null = null;
 
 const DISEASES_DIR = path.join(process.cwd(), 'lib', 'knowledge', 'diseases');
+const COMPILED_FILE = path.join(process.cwd(), 'lib', 'knowledge', 'diseases-compiled.json');
 
 export function loadDiseaseDatabase(): DiseaseProfile[] {
   if (diseaseCache) return diseaseCache;
 
+  // Try compiled single-file database first (fast path)
+  if (fs.existsSync(COMPILED_FILE)) {
+    try {
+      const content = fs.readFileSync(COMPILED_FILE, 'utf-8');
+      const diseases = JSON.parse(content) as DiseaseProfile[];
+      console.log(`[KB] Loaded ${diseases.length} disease profiles from compiled database`);
+      diseaseCache = diseases;
+      return diseaseCache;
+    } catch (err) {
+      console.warn('[KB] Failed to load compiled database, falling back to per-file loading:', err);
+    }
+  }
+
+  // Fall back to per-file loading (dev convenience)
   if (!fs.existsSync(DISEASES_DIR)) {
     console.warn('[KB] Diseases directory not found:', DISEASES_DIR);
     return [];

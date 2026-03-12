@@ -35,7 +35,7 @@ YOUR JOB: Make the final clinical judgment.
 
 IMPORTANT NOTES:
 - Some hypotheses have structured KB criteria data, others were evaluated via clinical reasoning. BOTH are valid. Do not favor one type over the other.
-- Our knowledge base covers ${getDiseaseCount()} of ~7,000-10,000 rare diseases. A disease NOT in our KB can absolutely be the correct diagnosis.
+- Our knowledge base covers ${getDiseaseCount()} of an estimated 10,000+ known rare diseases. A disease NOT in our KB can absolutely be the correct diagnosis.
 - The evidence evaluator's criteria fulfillment data is INPUT to your judgment, not the answer itself. A disease can meet 5/8 criteria and still be unlikely if the missing criteria are the important ones.
 - Be honest about uncertainty. If the evidence genuinely doesn't distinguish between diagnoses, say so.`;
 }

@@ -15,7 +15,7 @@ export class DiagnosticPipeline {
   private budgetTracker: BudgetTracker;
   private maxBudgetCents: number;
 
-  constructor(maxBudgetCents: number = 100) {
+  constructor(maxBudgetCents: number = 200) {
     this.budgetTracker = new BudgetTracker();
     this.maxBudgetCents = maxBudgetCents;
   }
@@ -237,7 +237,7 @@ export class DiagnosticPipeline {
         if (!(synthesisResult as any).synthesisData) (synthesisResult as any).synthesisData = {};
         (synthesisResult as any).synthesisData.escalationContext =
           `LOW DIAGNOSTIC CERTAINTY: ${reasons.join('; ')}. ` +
-          `The patient's condition may fall outside the knowledge base of ${getDiseaseCount()} profiled diseases. ` +
+          `The patient's condition may not match any of the ${getDiseaseCount()} profiled diseases in our knowledge base. ` +
           `Consider broader investigative pathways including genetic panel testing (WES/WGS), ` +
           `advanced neuroimaging, tissue biopsy, and referral to a medical geneticist or ` +
           `academic undiagnosed disease program (e.g., NIH UDP).`;
@@ -309,7 +309,7 @@ export class DiagnosticPipeline {
             totalProfiledDiseases: getDiseaseCount(),
             criteriaGroundedCount: reportResult.hypotheses.filter((h) => h.knowledgeBaseMatch).length,
             reasoningEvaluatedCount: reportResult.hypotheses.filter((h) => !h.knowledgeBaseMatch).length,
-            disclaimer: `This analysis was evaluated against a knowledge base of ${getDiseaseCount()} profiled diseases out of an estimated 7,000-10,000 known rare diseases. Diagnoses marked as "reasoning-evaluated" were assessed using specialist clinical knowledge rather than structured diagnostic criteria from our database.`,
+            disclaimer: `This analysis was evaluated against a knowledge base of ${getDiseaseCount()} profiled diseases out of an estimated 10,000+ known rare diseases. Diagnoses marked as "reasoning-evaluated" were assessed using specialist clinical knowledge rather than structured diagnostic criteria from our database.`,
           },
         },
       };

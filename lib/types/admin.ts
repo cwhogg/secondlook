@@ -74,7 +74,6 @@ export interface GenerationMetadata {
   archetype?: PatientArchetype;
   source?: 'generated';
   preSelectedDisease?: string | null;
-  isKnowledgeBaseDisease?: boolean;
 }
 
 // ===== RERUN SNAPSHOT =====
@@ -97,7 +96,7 @@ export interface TestCase {
   createdAt: string;
   difficulty: number;
   categoryHint?: string;
-  diseaseSource?: 'kb' | 'non-kb';
+  testVersion?: 'v1' | 'v2';
   status: TestCaseStatus;
   source?: 'generated';
   groundTruth: GroundTruth;
@@ -122,7 +121,7 @@ export interface TestSuiteStats {
   top5Rate: number;
   byDifficultySource: Record<string, {
     difficulty: number;
-    source: string;
+    version: string;
     count: number;
     avgScore: number;
     top1Rate: number;

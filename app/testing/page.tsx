@@ -110,20 +110,19 @@ function computeStats(cases: TestCase[]): TestSuiteStats | null {
   const top3 = graded.filter((c) => c.grading!.inTop3).length
   const top5 = graded.filter((c) => c.grading!.inTop5).length
 
-  // Combined difficulty + source breakdown
-  const getSource = (tc: TestCase) =>
-    tc.diseaseSource ?? (tc.generationMetadata?.isKnowledgeBaseDisease === false ? 'non-kb' : 'kb')
+  // Combined difficulty + version breakdown
+  const getVersion = (tc: TestCase) => tc.testVersion ?? 'v1'
 
   const byDifficultySource: TestSuiteStats["byDifficultySource"] = {}
   for (const tc of graded) {
-    const key = `${tc.difficulty}-${getSource(tc)}`
+    const key = `${tc.difficulty}-${getVersion(tc)}`
     if (!byDifficultySource[key]) {
-      byDifficultySource[key] = { difficulty: tc.difficulty, source: getSource(tc), count: 0, avgScore: 0, top1Rate: 0, top3Rate: 0, top5Rate: 0 }
+      byDifficultySource[key] = { difficulty: tc.difficulty, version: getVersion(tc), count: 0, avgScore: 0, top1Rate: 0, top3Rate: 0, top5Rate: 0 }
     }
     byDifficultySource[key].count++
   }
   for (const entry of Object.values(byDifficultySource)) {
-    const bucket = graded.filter((c) => c.difficulty === entry.difficulty && getSource(c) === entry.source)
+    const bucket = graded.filter((c) => c.difficulty === entry.difficulty && getVersion(c) === entry.version)
     entry.avgScore = bucket.reduce((a, c) => a + c.grading!.score, 0) / bucket.length
     entry.top1Rate = bucket.filter((c) => c.grading!.correctDiagnosisRank === 1).length / bucket.length
     entry.top3Rate = bucket.filter((c) => c.grading!.inTop3).length / bucket.length
@@ -206,15 +205,15 @@ function pct(n: number): string {
 
 // ===== COMPONENTS =====
 
-const SOURCE_LABELS: Record<string, string> = { kb: "KB", "non-kb": "Non-KB" }
-const SOURCE_COLORS: Record<string, string> = {
-  kb: "bg-blue-50 text-blue-800 border-blue-300",
-  "non-kb": "bg-amber-50 text-amber-800 border-amber-300",
+const VERSION_LABELS: Record<string, string> = { v1: "v1", v2: "v2" }
+const VERSION_COLORS: Record<string, string> = {
+  v1: "bg-gray-50 text-gray-700 border-gray-300",
+  v2: "bg-blue-50 text-blue-800 border-blue-300",
 }
 
 function StatsBanner({ stats }: { stats: TestSuiteStats }) {
   const breakdownEntries = Object.values(stats.byDifficultySource)
-    .sort((a, b) => a.difficulty - b.difficulty || (a.source === "kb" ? -1 : 1))
+    .sort((a, b) => a.difficulty - b.difficulty || (a.version === "v1" ? -1 : 1))
 
   return (
     <div className="border border-[#d4c5b0] bg-white mb-6">
@@ -251,7 +250,7 @@ function StatsBanner({ stats }: { stats: TestSuiteStats }) {
             <thead>
               <tr className="border-b border-[#e8ddd0] bg-[#faf7f2]">
                 <th className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Difficulty</th>
-                <th className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Source</th>
+                <th className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Version</th>
                 <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">n</th>
                 <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Avg Score</th>
                 <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-1</th>
@@ -261,15 +260,15 @@ function StatsBanner({ stats }: { stats: TestSuiteStats }) {
             </thead>
             <tbody>
               {breakdownEntries.map((entry) => (
-                <tr key={`${entry.difficulty}-${entry.source}`} className="border-b border-[#e8ddd0] last:border-b-0">
+                <tr key={`${entry.difficulty}-${entry.version}`} className="border-b border-[#e8ddd0] last:border-b-0">
                   <td className="py-2.5 px-4 sm:px-5">
                     <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${DIFFICULTY_COLORS[entry.difficulty]}`}>
                       {DIFFICULTY_LABELS[entry.difficulty]}
                     </span>
                   </td>
                   <td className="py-2.5 px-4 sm:px-5">
-                    <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${SOURCE_COLORS[entry.source] || "bg-gray-100 text-gray-700 border-gray-300"}`}>
-                      {SOURCE_LABELS[entry.source] || entry.source}
+                    <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${VERSION_COLORS[entry.version] || "bg-gray-100 text-gray-700 border-gray-300"}`}>
+                      {VERSION_LABELS[entry.version] || entry.version}
                     </span>
                   </td>
                   <td className="py-2.5 px-4 sm:px-5 text-right text-[#5a5a5a] tabular-nums">{entry.count}</td>
@@ -769,15 +768,13 @@ function TestHistoryRow({
         </div>
       </div>
       <div className="flex items-center gap-2 flex-wrap">
-        {tc.generationMetadata?.isKnowledgeBaseDisease != null && (
-          <span className={`text-xs px-2 py-0.5 rounded font-medium ${
-            tc.generationMetadata.isKnowledgeBaseDisease
-              ? "bg-blue-50 text-blue-700 border border-blue-200"
-              : "bg-gray-50 text-gray-500 border border-gray-200"
-          }`}>
-            {tc.generationMetadata.isKnowledgeBaseDisease ? "KB" : "Non-KB"}
-          </span>
-        )}
+        <span className={`text-xs px-2 py-0.5 rounded font-medium ${
+          (tc.testVersion ?? 'v1') === 'v2'
+            ? "bg-blue-50 text-blue-700 border border-blue-200"
+            : "bg-gray-50 text-gray-500 border border-gray-200"
+        }`}>
+          {tc.testVersion ?? 'v1'}
+        </span>
         <DifficultyBadge difficulty={tc.difficulty} />
         <StatusBadge status={tc.status} />
         {tc.grading && (
@@ -803,7 +800,6 @@ export default function AdminPage() {
   const [activeTestId, setActiveTestId] = useState<string | null>(null)
   const [difficulty, setDifficulty] = useState(2)
   const [categoryHint, setCategoryHint] = useState("")
-  const [diseaseSource, setDiseaseSource] = useState<'kb' | 'non-kb'>('kb')
   const [isGenerating, setIsGenerating] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
   const [isGrading, setIsGrading] = useState(false)
@@ -916,7 +912,6 @@ export default function AdminPage() {
           difficulty,
           categoryHint: categoryHint || undefined,
           excludeDiseases: testCases.map((tc) => tc.groundTruth.diagnosis),
-          source: diseaseSource,
         }),
       })
 
@@ -932,7 +927,7 @@ export default function AdminPage() {
         createdAt: new Date().toISOString(),
         difficulty,
         categoryHint: categoryHint || undefined,
-        diseaseSource,
+        testVersion: 'v2' as const,
         status: "generated",
         source: "generated",
         groundTruth: data.groundTruth,
@@ -1287,38 +1282,6 @@ export default function AdminPage() {
                   </option>
                 ))}
               </select>
-            </div>
-
-            <div>
-              <label className="block text-xs text-[#8b7355] mb-1">Disease source</label>
-              <div className="flex border border-[#d4c5b0]">
-                <button
-                  onClick={() => setDiseaseSource('kb')}
-                  disabled={isAnyRunning}
-                  className={cn(
-                    "px-3 py-2 text-sm font-medium transition-colors",
-                    diseaseSource === 'kb'
-                      ? "bg-[#8b2500] text-white"
-                      : "bg-white text-[#2a2a2a] hover:bg-[#f5f0e8]",
-                    "disabled:opacity-50 disabled:cursor-not-allowed"
-                  )}
-                >
-                  KB
-                </button>
-                <button
-                  onClick={() => setDiseaseSource('non-kb')}
-                  disabled={isAnyRunning}
-                  className={cn(
-                    "px-3 py-2 text-sm font-medium transition-colors border-l border-[#d4c5b0]",
-                    diseaseSource === 'non-kb'
-                      ? "bg-[#8b2500] text-white"
-                      : "bg-white text-[#2a2a2a] hover:bg-[#f5f0e8]",
-                    "disabled:opacity-50 disabled:cursor-not-allowed"
-                  )}
-                >
-                  Non-KB
-                </button>
-              </div>
             </div>
 
             <div className="flex items-center">

@@ -4,13 +4,11 @@ import { callAnthropic } from '@/lib/anthropic';
 import { loadDiseaseDatabase } from '@/lib/knowledge/index';
 import type { PatientArchetype } from '@/lib/types/admin';
 import type { DiseaseProfile, BodySystem } from '@/lib/types/knowledge-base';
-import nonKbDiseases from '@/lib/knowledge/non-kb-diseases.json';
 
 const inputSchema = z.object({
   difficulty: z.number().min(1).max(5),
   categoryHint: z.string().optional(),
   excludeDiseases: z.array(z.string()).optional(),
-  source: z.enum(['kb', 'non-kb']).optional().default('kb'),
 });
 
 // ===== ARCHETYPE SYSTEM =====
@@ -274,12 +272,8 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Decide: KB disease or non-KB based on explicit source toggle
-    // Fall back to non-KB if category filter eliminated all KB candidates
-    const useNonKb = input.source === 'non-kb' || candidateDiseases.length === 0;
-
     let preSelectedDisease: DiseaseProfile | null = null;
-    if (!useNonKb && candidateDiseases.length > 0) {
+    if (candidateDiseases.length > 0) {
       preSelectedDisease = candidateDiseases[Math.floor(Math.random() * candidateDiseases.length)];
     }
 
@@ -323,27 +317,24 @@ export async function POST(request: NextRequest) {
     // Low difficulty (1-2): send full KB profile so Claude generates textbook presentations
     // High difficulty (3+): send name only so the patient reflects Claude's own medical
     //   knowledge rather than mirroring our stored criteria (harder, more realistic test)
+    if (!preSelectedDisease) {
+      return NextResponse.json(
+        { error: 'No candidate diseases available after filtering', requestId },
+        { status: 400 }
+      );
+    }
+
     let diseaseInstruction: string;
-    if (preSelectedDisease && input.difficulty <= 2) {
+    if (input.difficulty <= 2) {
       diseaseInstruction = `Generate a patient case for the following disease. Use the profile below to create an accurate presentation.
 
 ${formatDiseaseProfile(preSelectedDisease)}`;
-    } else if (preSelectedDisease) {
+    } else {
       diseaseInstruction = `Generate a patient case for the following disease. Use your own medical knowledge to create an accurate presentation — do NOT rely on any provided profile.
 
 Disease: ${preSelectedDisease.name}
 
 Use your knowledge of this disease to generate accurate symptoms, demographics, and clinical features.`;
-    } else {
-      // Free choice: pre-select a non-KB disease from the Orphanet-derived list
-      // Server picks the disease — never let the LLM choose
-      const nonKbCandidate = nonKbDiseases[Math.floor(Math.random() * nonKbDiseases.length)];
-      diseaseInstruction = `Generate a patient case for the following disease. This disease is NOT in our knowledge base, so use your medical knowledge to create an accurate presentation.
-
-Disease: ${nonKbCandidate.name}
-Orphanet code: ORPHA:${nonKbCandidate.orphaCode}
-
-Use your knowledge of this disease to generate accurate symptoms, demographics, and clinical features. If you are not familiar with this specific disease, research what you do know about the name, associated gene/pathway, or disease family to create a clinically plausible case.`;
     }
 
     const systemPrompt = `You are a clinical simulation specialist creating synthetic rare disease patient presentations for a diagnostic AI testing framework.
@@ -421,12 +412,6 @@ Respond with this exact JSON structure:
       );
     }
 
-    // Check if the generated diagnosis is in the KB (covers both pre-selected and free-choice)
-    const generatedDiagnosis = result.content.groundTruth?.diagnosis?.toLowerCase() || '';
-    const isKnowledgeBaseDisease = diseases.some(
-      d => d.name.toLowerCase() === generatedDiagnosis || d.aliases.some(a => a.toLowerCase() === generatedDiagnosis)
-    );
-
     return NextResponse.json({
       groundTruth: result.content.groundTruth,
       patient: result.content.patient,
@@ -437,7 +422,6 @@ Respond with this exact JSON structure:
         archetype: archetype.name,
         source: 'generated' as const,
         preSelectedDisease: preSelectedDisease?.name ?? null,
-        isKnowledgeBaseDisease,
       },
       requestId,
     });

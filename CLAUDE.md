@@ -169,6 +169,7 @@ See `.env.example` for all options.
 - **Minimal blast radius**: Changes should only touch what's necessary. Don't refactor surrounding code, add speculative features, or "improve" things that weren't asked for.
 - **Plan for complex tasks**: For changes touching 3+ files or involving architectural decisions, use plan mode first. If something goes sideways mid-implementation, stop and re-plan rather than pushing through.
 - **Challenge your own work**: Before presenting a fix, ask "is there a more elegant way?" For simple fixes, skip this — don't over-engineer.
+- **Generalize, never specialize**: When fixing bugs or improving accuracy, never solve a problem specifically for one disease or disease group. All fixes must be general-purpose improvements to the pipeline, retrieval, or scoring logic that benefit all diseases equally.
 
 ## Conventions
 
@@ -184,7 +185,7 @@ See `.env.example` for all options.
 
 - The V1 analysis endpoint (`/api/analyze-patient`) is a single GPT-4o call — kept as fallback
 - The V2 pipeline streams progress via SSE (Server-Sent Events)
-- Per-analysis budget cap is $1.00 by default (configurable via `ANALYSIS_BUDGET_CENTS`)
+- Per-analysis budget cap is $2.00 by default (configurable via `ANALYSIS_BUDGET_CENTS`)
 - Patient data is stored in `localStorage`/`sessionStorage` only — no server-side persistence
 - Disease profile `confidenceInData` field tracks whether data has been human-reviewed
 - General-internist is always included in specialist panel and receives no KB profiles (un-anchored counterweight)

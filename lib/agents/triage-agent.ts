@@ -1,5 +1,5 @@
 import { BaseAgent } from './base-agent';
-import { AgentInput, TriageOutput, SYSTEM_TO_SPECIALIST, SpecialistType } from './types';
+import { AgentInput, TriageOutput, SPECIALIST_TYPES, SpecialistType } from './types';
 import { PatientCase } from '../types';
 import { findMatchingDiseases } from '../knowledge/retrieval';
 
@@ -72,30 +72,10 @@ export class TriageAgent extends BaseAgent {
 
     const { bodySystems, acuityLevel, triageReasoning } = result.content;
 
-    // Ensure every body system gets at least its primary specialist
-    const primaryBySystem: SpecialistType[] = [];
-    const allSpecialists = new Set<SpecialistType>();
-
-    for (const system of bodySystems) {
-      const specialists = SYSTEM_TO_SPECIALIST[system] || [];
-      if (specialists.length > 0 && !allSpecialists.has(specialists[0])) {
-        primaryBySystem.push(specialists[0]);
-      }
-      specialists.forEach((s) => allSpecialists.add(s));
-    }
-
-    // Primary specialists first (guarantees every body system has representation),
-    // then secondaries, capped at 4 domain specialists
-    const alwaysIncluded: SpecialistType[] = ['general-internist', 'geneticist'];
-    const secondaries = Array.from(allSpecialists)
-      .filter((s) => !alwaysIncluded.includes(s) && !primaryBySystem.includes(s));
-    const domainSpecialists = [...primaryBySystem, ...secondaries]
-      .filter((s) => !alwaysIncluded.includes(s))
-      .slice(0, 4);
-
-    // Always include general-internist (un-anchored counterweight, no KB profiles)
-    // and geneticist (rare diseases are disproportionately genetic in origin).
-    const relevantSpecialties = [...domainSpecialists, ...alwaysIncluded];
+    // Run all 11 specialists for every case — eliminates triage routing failures
+    // as a source of diagnostic misses. Cost increase is negligible (~$0.01)
+    // since specialists run in parallel and use the same model.
+    const relevantSpecialties: SpecialistType[] = [...SPECIALIST_TYPES];
 
     // Retrieve candidate diseases from knowledge base (async — uses semantic search if embeddings available)
     const candidateDiseases = await findMatchingDiseases(

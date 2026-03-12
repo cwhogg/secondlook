@@ -96,7 +96,7 @@ export interface TestCase {
   createdAt: string;
   difficulty: number;
   categoryHint?: string;
-  testVersion?: 'v1' | 'v2';
+  testVersion?: 'v1' | 'v2' | 'v3';
   status: TestCaseStatus;
   source?: 'generated';
   groundTruth: GroundTruth;
@@ -121,6 +121,14 @@ export interface TestSuiteStats {
   top5Rate: number;
   byDifficultySource: Record<string, {
     difficulty: number;
+    version: string;
+    count: number;
+    avgScore: number;
+    top1Rate: number;
+    top3Rate: number;
+    top5Rate: number;
+  }>;
+  byVersion: Record<string, {
     version: string;
     count: number;
     avgScore: number;

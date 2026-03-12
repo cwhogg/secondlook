@@ -59,7 +59,7 @@ const patientCaseSchema = z.object({
   }),
 });
 
-// Simple in-memory rate limiting
+// Simple in-memory rate limiting (disabled in development for testing)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT_MAX = 3;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
@@ -85,9 +85,9 @@ export async function POST(request: NextRequest) {
   const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   const startTime = Date.now();
 
-  // Rate limiting
+  // Rate limiting (skip in development for testing)
   const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
-  const rateCheck = checkRateLimit(ip);
+  const rateCheck = process.env.NODE_ENV === 'production' ? checkRateLimit(ip) : { allowed: true };
   if (!rateCheck.allowed) {
     return new Response(
       JSON.stringify({

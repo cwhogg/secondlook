@@ -129,6 +129,23 @@ function computeStats(cases: TestCase[]): TestSuiteStats | null {
     entry.top5Rate = bucket.filter((c) => c.grading!.inTop5).length / bucket.length
   }
 
+  // Version-only breakdown
+  const byVersion: TestSuiteStats["byVersion"] = {}
+  for (const tc of graded) {
+    const ver = getVersion(tc)
+    if (!byVersion[ver]) {
+      byVersion[ver] = { version: ver, count: 0, avgScore: 0, top1Rate: 0, top3Rate: 0, top5Rate: 0 }
+    }
+    byVersion[ver].count++
+  }
+  for (const entry of Object.values(byVersion)) {
+    const bucket = graded.filter((c) => getVersion(c) === entry.version)
+    entry.avgScore = bucket.reduce((a, c) => a + c.grading!.score, 0) / bucket.length
+    entry.top1Rate = bucket.filter((c) => c.grading!.correctDiagnosisRank === 1).length / bucket.length
+    entry.top3Rate = bucket.filter((c) => c.grading!.inTop3).length / bucket.length
+    entry.top5Rate = bucket.filter((c) => c.grading!.inTop5).length / bucket.length
+  }
+
   return {
     totalTests: cases.length,
     gradedTests: graded.length,
@@ -137,6 +154,7 @@ function computeStats(cases: TestCase[]): TestSuiteStats | null {
     top3Rate: top3 / graded.length,
     top5Rate: top5 / graded.length,
     byDifficultySource,
+    byVersion,
   }
 }
 
@@ -205,15 +223,18 @@ function pct(n: number): string {
 
 // ===== COMPONENTS =====
 
-const VERSION_LABELS: Record<string, string> = { v1: "v1", v2: "v2" }
+const VERSION_LABELS: Record<string, string> = { v1: "v1", v2: "v2", v3: "v3" }
 const VERSION_COLORS: Record<string, string> = {
   v1: "bg-gray-50 text-gray-700 border-gray-300",
   v2: "bg-blue-50 text-blue-800 border-blue-300",
+  v3: "bg-emerald-50 text-emerald-800 border-emerald-300",
 }
 
 function StatsBanner({ stats }: { stats: TestSuiteStats }) {
   const breakdownEntries = Object.values(stats.byDifficultySource)
     .sort((a, b) => a.difficulty - b.difficulty || (a.version === "v1" ? -1 : 1))
+  const versionEntries = Object.values(stats.byVersion)
+    .sort((a, b) => a.version.localeCompare(b.version))
 
   return (
     <div className="border border-[#d4c5b0] bg-white mb-6">
@@ -267,6 +288,40 @@ function StatsBanner({ stats }: { stats: TestSuiteStats }) {
                     </span>
                   </td>
                   <td className="py-2.5 px-4 sm:px-5">
+                    <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${VERSION_COLORS[entry.version] || "bg-gray-100 text-gray-700 border-gray-300"}`}>
+                      {VERSION_LABELS[entry.version] || entry.version}
+                    </span>
+                  </td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#5a5a5a] tabular-nums">{entry.count}</td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right font-medium text-[#2a2a2a] tabular-nums">{entry.avgScore.toFixed(1)}</td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top1Rate)}</td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top3Rate)}</td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top5Rate)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {/* Version summary breakdown */}
+      {versionEntries.length > 0 && (
+        <div className="border-t border-[#d4c5b0] overflow-x-auto">
+          <table className="w-full text-sm min-w-[480px]">
+            <thead>
+              <tr className="border-b border-[#e8ddd0] bg-[#faf7f2]">
+                <th className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium" colSpan={2}>Version Summary</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">n</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Avg Score</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-1</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-3</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-5</th>
+              </tr>
+            </thead>
+            <tbody>
+              {versionEntries.map((entry) => (
+                <tr key={entry.version} className="border-b border-[#e8ddd0] last:border-b-0">
+                  <td className="py-2.5 px-4 sm:px-5" colSpan={2}>
                     <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${VERSION_COLORS[entry.version] || "bg-gray-100 text-gray-700 border-gray-300"}`}>
                       {VERSION_LABELS[entry.version] || entry.version}
                     </span>
@@ -927,7 +982,7 @@ export default function AdminPage() {
         createdAt: new Date().toISOString(),
         difficulty,
         categoryHint: categoryHint || undefined,
-        testVersion: 'v2' as const,
+        testVersion: 'v3' as const,
         status: "generated",
         source: "generated",
         groundTruth: data.groundTruth,

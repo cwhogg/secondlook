@@ -96,7 +96,7 @@ export interface TestCase {
   createdAt: string;
   difficulty: number;
   categoryHint?: string;
-  testVersion?: 'v1' | 'v2' | 'v3';
+  testVersion?: 'v1' | 'v2' | 'v3' | 'v4';
   status: TestCaseStatus;
   source?: 'generated';
   groundTruth: GroundTruth;

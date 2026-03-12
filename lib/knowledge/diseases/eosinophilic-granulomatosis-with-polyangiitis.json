@@ -13,15 +13,15 @@
   "omimId": "608710",
   "orphanetId": "183",
   "prevalence": {
-    "estimate": "1-3 per 100,000",
-    "range": "0.5-3 per 100,000",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 30,
-      "max": 60,
-      "peak": 48
+      "min": 10,
+      "max": 120,
+      "peak": 14
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -80,117 +80,353 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Asthma with peripheral eosinophilia and vasculitis",
-        "frequency": 0.95,
-        "bodySystem": "respiratory",
-        "notes": "Asthma typically precedes vasculitis by years; late-onset/severe asthma"
+        "symptomName": "Sinusitis",
+        "frequency": 0.9,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Eosinophilic tissue infiltration",
-        "frequency": 0.85,
-        "bodySystem": "constitutional",
-        "notes": "Extravascular eosinophilic granulomas"
-      }
-    ],
-    "common": [
-      {
-        "symptomName": "Asthma (severe, late-onset)",
-        "snomedCode": "195967001",
-        "frequency": 0.95,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Chronic rhinosinusitis with nasal polyps",
-        "snomedCode": "40055000",
-        "frequency": 0.7,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Peripheral blood eosinophilia",
-        "snomedCode": "419455006",
+        "symptomName": "Purpura",
         "frequency": 0.9,
         "bodySystem": "hematological"
       },
       {
-        "symptomName": "Mononeuritis multiplex or peripheral neuropathy",
-        "snomedCode": "128189008",
-        "frequency": 0.6,
+        "symptomName": "Urticaria",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Asthma",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pulmonary infiltrates",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Autoimmunity",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Central nervous system degeneration",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.9,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Constitutional symptoms (fever, weight loss, malaise)",
-        "snomedCode": "386661006",
-        "frequency": 0.6,
+        "symptomName": "Increased inflammatory response",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hypopigmented skin patches",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Gait disturbance",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypertrophic cardiomyopathy",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Tubulointerstitial nephritis",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormality of the pleura",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Rheumatoid factor positive",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Increased circulating IgE level",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Venous thrombosis",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Airway obstruction",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Multiple mononeuropathy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Eosinophilic pneumonia",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cytoplasmic antineutrophil antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-proteinase 3 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-myeloperoxidase antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-neutrophil elastase antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Palpable purpura",
-        "snomedCode": "20143000",
-        "frequency": 0.3,
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Proteinuria",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Cutis marmorata",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Acrocyanosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Subcutaneous nodule",
+        "frequency": 0.17,
         "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Eosinophilic myocarditis",
-        "snomedCode": "55827005",
-        "frequency": 0.25,
-        "bodySystem": "cardiovascular",
-        "notes": "Leading cause of mortality; may present as heart failure"
+        "symptomName": "Congestive heart failure",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Pulmonary infiltrates (migratory)",
-        "snomedCode": "233703007",
-        "frequency": 0.35,
-        "bodySystem": "respiratory"
+        "symptomName": "Myocardial infarction",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Gastrointestinal involvement (abdominal pain, bleeding)",
-        "snomedCode": "21522001",
-        "frequency": 0.25,
+        "symptomName": "Fever",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gastroesophageal reflux",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Arthralgia",
-        "snomedCode": "57676002",
-        "frequency": 0.4,
-        "bodySystem": "musculoskeletal"
-      }
-    ],
-    "rare": [
-      {
-        "symptomName": "Glomerulonephritis",
-        "snomedCode": "36171008",
-        "frequency": 0.1,
-        "bodySystem": "renal",
-        "notes": "More common in ANCA-positive phenotype"
+        "symptomName": "Malabsorption",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Cerebral vasculitis",
-        "snomedCode": "195353004",
-        "frequency": 0.05,
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pleural effusion",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Transient ischemic attack",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hemiplegia/hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Intestinal obstruction",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Recurrent intrapulmonary hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Pericardial effusion/tamponade",
-        "snomedCode": "373945007",
-        "frequency": 0.08,
+        "symptomName": "Crescentic glomerulonephritis",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myocarditis",
+        "frequency": 0.17,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Coronary arteritis",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Gastrointestinal eosinophilia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nasal polyposis",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Endocarditis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myositis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Glomerulopathy",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Papule",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cutaneous granuloma",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
       }
-    ]
+    ],
+    "rare": []
   },
   "systemsAffected": [
-    "respiratory",
-    "neurological",
-    "cardiovascular",
+    "otolaryngological",
+    "hematological",
     "dermatological",
-    "gastrointestinal",
+    "constitutional",
+    "respiratory",
+    "cardiovascular",
+    "immunological",
+    "neurological",
     "renal",
+    "gastrointestinal",
     "musculoskeletal"
   ],
   "keyFindings": {
@@ -268,7 +504,7 @@
     "Cardiology",
     "Allergy/Immunology"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Grayson PC, et al. 2022 American College of Rheumatology/European Alliance of Associations for Rheumatology Classification Criteria for Eosinophilic Granulomatosis with Polyangiitis. Arthritis Rheumatol. 2022;74(3):386-392.",
     "Comarmond C, et al. Eosinophilic granulomatosis with polyangiitis (Churg-Strauss): clinical characteristics and long-term followup of the 383 patients enrolled in the French Vasculitis Study Group cohort. Arthritis Rheum. 2013;65(1):270-281.",

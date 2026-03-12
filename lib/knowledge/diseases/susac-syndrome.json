@@ -17,9 +17,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 50,
-      "peak": 30
+      "min": 0,
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "female",
     "ethnicAssociations": []
@@ -64,86 +64,135 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Clinical triad: encephalopathy + retinal artery occlusion + hearing loss",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "notes": "Complete triad present in ~85% eventually; only ~13% present with all three simultaneously"
+        "symptomName": "Headache",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       }
     ],
     "common": [
       {
-        "symptomName": "Encephalopathy (confusion, personality change, cognitive decline)",
-        "frequency": 0.9,
-        "bodySystem": "neurological",
-        "notes": "Often the first and most prominent feature; may include paranoia, psychosis"
+        "symptomName": "Sensorineural hearing impairment",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Sensorineural hearing loss",
-        "snomedCode": "60700002",
-        "frequency": 0.8,
-        "bodySystem": "neurological",
-        "notes": "Low-to-mid frequency loss; may be unilateral initially then bilateral"
+        "symptomName": "Visual loss",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Visual field defects/scotomata from BRAO",
-        "frequency": 0.75,
-        "bodySystem": "ophthalmological",
-        "notes": "Patients may not report visual changes; fluorescein angiography essential"
+        "symptomName": "Abnormal corpus callosum morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Headache",
-        "snomedCode": "25064002",
-        "frequency": 0.7,
+        "symptomName": "Confusion",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized hypotonia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.55,
         "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
         "symptomName": "Tinnitus",
-        "snomedCode": "60862001",
-        "frequency": 0.4,
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Abnormality of eye movement",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Diplopia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Atypical behavior",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Apathy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Personality changes",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Gait ataxia",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
         "symptomName": "Vertigo",
-        "snomedCode": "399153001",
-        "frequency": 0.3,
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Gait ataxia",
-        "frequency": 0.25,
-        "bodySystem": "neurological"
+        "symptomName": "Somatic sensory dysfunction",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Dysarthria",
-        "frequency": 0.2,
-        "bodySystem": "neurological"
+        "symptomName": "Abnormal emotion/affect behavior",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
-    "rare": [
-      {
-        "symptomName": "Seizures",
-        "snomedCode": "91175000",
-        "frequency": 0.05,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Myalgia/arthralgia",
-        "frequency": 0.15,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Skin livedo reticularis",
-        "frequency": 0.05,
-        "bodySystem": "dermatological"
-      }
-    ]
+    "rare": []
   },
   "systemsAffected": [
     "neurological",
+    "otolaryngological",
     "ophthalmological",
-    "otolaryngological"
+    "constitutional",
+    "psychiatric",
+    "musculoskeletal",
+    "gastrointestinal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -205,7 +254,7 @@
     "Otolaryngologist/Audiologist",
     "Rheumatologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Kleffner I, et al. Diagnostic criteria for Susac syndrome. J Neurol Neurosurg Psychiatry. 2016;87(12):1287-1295.",
     "Susac JO. Susac's syndrome. AJNR Am J Neuroradiol. 2004;25(3):351-352.",

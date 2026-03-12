@@ -12,15 +12,15 @@
   "omimId": "162200",
   "orphanetId": "636",
   "prevalence": {
-    "estimate": "1 in 2,500 to 1 in 3,000",
-    "range": "0.033%-0.04%",
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
     "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 10,
-      "peak": 3
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -86,118 +86,413 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Cafe-au-lait macules (>= 6)",
-        "snomedCode": "254205002",
-        "frequency": 0.95,
-        "bodySystem": "dermatological",
-        "notes": "Uniformly hyperpigmented, flat, well-demarcated macules; often first sign"
+        "symptomName": "Abnormality of the nervous system",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Lisch nodules (iris hamartomas)",
-        "snomedCode": "84724009",
-        "frequency": 0.8,
-        "bodySystem": "ophthalmological",
-        "notes": "Melanocytic hamartomas on slit-lamp exam; age-dependent (rare before age 3, >90% by adulthood)"
+        "symptomName": "Delayed puberty",
+        "frequency": 0.9,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Melanocytic nevus",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Multiple lipomas",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Intellectual disability, mild",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Subcutaneous nodule",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Meningioma",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized hyperpigmentation",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Multiple cafe-au-lait spots",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Neoplasm of the skin",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Astrocytoma",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Plexiform neurofibroma",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Lisch nodules",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Macule",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
       }
     ],
     "common": [
       {
-        "symptomName": "Cutaneous neurofibromas",
-        "snomedCode": "92503002",
-        "frequency": 0.85,
-        "bodySystem": "dermatological",
-        "notes": "Soft, fleshy tumors that increase in number with age and during pregnancy"
+        "symptomName": "Cryptorchidism",
+        "frequency": 0.55,
+        "bodySystem": "reproductive"
       },
       {
-        "symptomName": "Axillary/inguinal freckling (Crowe sign)",
-        "snomedCode": "254205002",
-        "frequency": 0.8,
-        "bodySystem": "dermatological"
+        "symptomName": "Tall stature",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Learning difficulties and ADHD",
-        "snomedCode": "3446000",
-        "frequency": 0.5,
-        "bodySystem": "neurological",
-        "notes": "IQ usually normal range but ~50% have learning disabilities"
+        "symptomName": "Hearing abnormality",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Plexiform neurofibromas",
-        "snomedCode": "92503002",
-        "frequency": 0.35,
-        "bodySystem": "neurological",
-        "notes": "Diffuse, often congenital, involving nerve branches; can cause significant disfigurement"
+        "symptomName": "Hearing impairment",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Abnormality of vision",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Proptosis",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Axillary freckling",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Heterochromia iridis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of speech or vocalization",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Memory impairment",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skeletal dysplasia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Recurrent fractures",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Genu valgum",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Slender long bone",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Paresthesia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Attention deficit hyperactivity disorder",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Inguinal freckling",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Optic pathway glioma",
-        "snomedCode": "92053004",
-        "frequency": 0.15,
-        "bodySystem": "ophthalmological",
-        "notes": "Usually low-grade pilocytic astrocytoma; majority in first decade of life"
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Scoliosis",
-        "snomedCode": "298382003",
-        "frequency": 0.2,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Macrocephaly",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Hypertension (essential or from renal artery stenosis/pheochromocytoma)",
-        "snomedCode": "38341003",
-        "frequency": 0.15,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Abnormal eyelid morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Short stature",
-        "snomedCode": "237837007",
-        "frequency": 0.2,
+        "symptomName": "Glaucoma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Visual impairment",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Abnormal electroretinogram",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cataract",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Myopia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Chorioretinal coloboma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Autistic behavior",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Abnormality of the endocrine system",
+        "frequency": 0.17,
         "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Bone abnormalities (pseudarthrosis, sphenoid wing dysplasia)",
-        "snomedCode": "264283009",
-        "frequency": 0.1,
+        "symptomName": "Hypertension",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Precocious puberty",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Abnormality of the skeletal system",
+        "frequency": 0.17,
         "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Osteopenia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hypopigmented skin patches",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Joint stiffness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of the respiratory system",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Neoplasm",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pheochromocytoma",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Kyphosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Genu varum",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of the hip bone",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Short stature",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Chronic myelogenous leukemia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Neoplasm of the gastrointestinal tract",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormality of retinal pigmentation",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Corneal opacity",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic nerve glioma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Spinal neurofibromas",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Urinary tract neoplasm",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormality of the upper urinary tract",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal hair quantity",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Neoplasm of the breast",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sarcoma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arterial stenosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Gastrointestinal stroma tumor",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       }
     ],
     "rare": [
       {
-        "symptomName": "Malignant peripheral nerve sheath tumor (MPNST)",
-        "snomedCode": "404034003",
-        "frequency": 0.08,
-        "bodySystem": "neurological",
-        "notes": "Lifetime risk 8-13%; most serious complication; often arises from plexiform neurofibroma"
+        "symptomName": "Leukemia",
+        "frequency": 0.03,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Pheochromocytoma",
-        "snomedCode": "302835009",
-        "frequency": 0.02,
-        "bodySystem": "endocrine"
+        "symptomName": "Rhabdomyosarcoma",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Gastrointestinal stromal tumor (GIST)",
-        "snomedCode": "420120006",
-        "frequency": 0.05,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Breast cancer (increased risk in young women)",
-        "snomedCode": "254838004",
-        "frequency": 0.05,
+        "symptomName": "Carcinoid tumor",
+        "frequency": 0.03,
         "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
+    "constitutional",
+    "endocrine",
     "dermatological",
     "neurological",
     "ophthalmological",
+    "reproductive",
     "musculoskeletal",
+    "otolaryngological",
+    "psychiatric",
+    "gastrointestinal",
     "cardiovascular",
-    "endocrine",
-    "gastrointestinal"
+    "respiratory",
+    "hematological",
+    "renal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -281,7 +576,7 @@
     "Dermatologist",
     "Developmental Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Legius E, et al. Revised diagnostic criteria for neurofibromatosis type 1 and Legius syndrome: an international consensus recommendation. Genet Med. 2021;23(8):1506-1513.",
     "Gutmann DH, et al. Neurofibromatosis type 1. Nat Rev Dis Primers. 2017;3:17004.",

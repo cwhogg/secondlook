@@ -11,14 +11,15 @@
   "omimId": "169600",
   "orphanetId": "ORPHA:900",
   "prevalence": {
-    "estimate": "1 in 50,000",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 10,
-      "max": 50,
-      "peak": 30
+      "min": 2,
+      "max": 120,
+      "peak": 14
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,82 +58,426 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Recurrent vesiculopustular eruptions in intertriginous regions",
-        "frequency": 0.85,
-        "bodySystem": "dermatological"
+        "symptomName": "Abnormal oral cavity morphology",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Acantholysis with 'dilapidated brick wall' histological pattern",
+        "symptomName": "Sinusitis",
         "frequency": 0.9,
-        "bodySystem": "dermatological"
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Abnormality of the nose",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Otitis media",
+        "frequency": 0.9,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Epistaxis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pulmonary infiltrates",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Recurrent respiratory infections",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Cerebral ischemia",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Granulomatosis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Autoimmunity",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Glomerulopathy",
+        "frequency": 0.9,
+        "bodySystem": "renal"
       }
     ],
     "common": [
       {
-        "symptomName": "Painful erosions and fissures in skin folds",
-        "frequency": 0.75,
+        "symptomName": "Proteinuria",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Glomerulonephritis",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Nasolacrimal duct obstruction",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of the hypothalamus-pituitary axis",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.55,
         "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Pruritus localized to affected areas",
-        "frequency": 0.7,
-        "bodySystem": "dermatological"
+        "symptomName": "Arthritis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Malodorous discharge from erosions",
-        "frequency": 0.6,
-        "bodySystem": "dermatological"
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Secondary bacterial infections of lesions",
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pulmonary fibrosis",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Polyarticular arthritis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Chronic pulmonary obstruction",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Recurrent intrapulmonary hemorrhage",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Elevated circulating C-reactive protein concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased inflammatory response",
         "frequency": 0.55,
         "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cytoplasmic antineutrophil antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-proteinase 3 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-myeloperoxidase antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-neutrophil elastase antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Scleritis",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Inflammatory abnormality of the eye",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Periorbital edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Papule",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hyperpigmentation or hypopigmentation in healed areas",
-        "frequency": 0.4,
-        "bodySystem": "dermatological"
+        "symptomName": "Prostatitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mild regional lymphadenopathy",
-        "frequency": 0.3,
-        "bodySystem": "immunological"
+        "symptomName": "Ureteral stenosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Exacerbation with heat, sweating, or friction",
-        "frequency": 0.35,
-        "bodySystem": "dermatological"
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Nail changes including dystrophy",
-        "frequency": 0.15,
-        "bodySystem": "dermatological"
-      }
-    ],
-    "rare": [
+        "symptomName": "Hydronephrosis",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
       {
-        "symptomName": "Oral mucosal involvement",
-        "frequency": 0.05,
+        "symptomName": "Chronic otitis media",
+        "frequency": 0.17,
         "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Eczema herpeticum secondary to viral infection",
-        "frequency": 0.03,
-        "bodySystem": "immunological"
+        "symptomName": "Sensorineural hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Extensive widespread blistering beyond typical folds",
-        "frequency": 0.02,
+        "symptomName": "Retinopathy",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Keratitis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Visual impairment",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Proptosis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Sensory neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Diabetes insipidus",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Purpura",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Meningitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Subglottic stenosis",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Angina pectoris",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Restrictive ventilatory defect",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pleuritis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pleural effusion",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Gastrointestinal hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hemiplegia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Intestinal obstruction",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arrhythmia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Diffuse alveolar hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Pulmonary nodule",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Gangrene",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skin ulcer",
+        "frequency": 0.17,
         "bodySystem": "dermatological"
       }
-    ]
+    ],
+    "rare": []
   },
   "systemsAffected": [
-    "dermatological",
+    "constitutional",
+    "otolaryngological",
+    "hematological",
+    "respiratory",
+    "cardiovascular",
+    "neurological",
+    "musculoskeletal",
     "immunological",
-    "otolaryngological"
+    "renal",
+    "endocrine",
+    "dermatological",
+    "gastrointestinal",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -141,7 +486,11 @@
     ],
     "imaging": [],
     "genetic": [
-      "Mutation in ATP2C1 gene encoding the secretory pathway Ca2+/Mn2+-ATPase (SPCA1)"
+      "HLA-DPA1 (susceptibility)",
+      "HLA-DPB1 (susceptibility)",
+      "CTLA4 (susceptibility)",
+      "PTPN22 (susceptibility)",
+      "PRTN3 (susceptibility)"
     ],
     "other": [
       "Positive family history consistent with autosomal dominant inheritance"
@@ -175,7 +524,7 @@
     "Geneticist",
     "Immunologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Hailey-Hailey disease: clinical features, pathogenesis, and management. Dermatol Clin. 2019.",
     "ATP2C1 mutations in Hailey-Hailey disease. J Invest Dermatol. 2018.",

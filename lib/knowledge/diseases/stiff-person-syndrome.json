@@ -13,15 +13,15 @@
   "omimId": "184850",
   "orphanetId": "3198",
   "prevalence": {
-    "estimate": "1-2 per million",
-    "range": "1-2 per million",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 60,
-      "peak": 40
+      "min": 0,
+      "max": 120,
+      "peak": 14
     },
     "sexPredilection": "female",
     "ethnicAssociations": [
@@ -69,97 +69,177 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Truncal stiffness with lumbar hyperlordosis",
-        "snomedCode": "16046003",
+        "symptomName": "Anxiety",
         "frequency": 0.9,
-        "bodySystem": "musculoskeletal",
-        "notes": "Board-like rigidity of paraspinal muscles; exaggerated lumbar lordosis"
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Stimulus-triggered painful spasms",
-        "snomedCode": "45352006",
+        "symptomName": "Hyperhidrosis",
         "frequency": 0.9,
-        "bodySystem": "neurological",
-        "notes": "Triggered by sudden noise, touch, or emotional stress; can cause falls"
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Exaggerated startle response",
-        "frequency": 0.75,
-        "bodySystem": "neurological",
-        "notes": "Hyperekplexia; whole-body stiffening in response to unexpected stimuli"
+        "symptomName": "Falls",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "EMG abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Intermittent painful muscle spasms",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
       }
     ],
     "common": [
       {
-        "symptomName": "Gait difficulty",
-        "snomedCode": "228158008",
-        "frequency": 0.8,
-        "bodySystem": "neurological",
-        "notes": "Stiff, slow gait; difficulty turning; robot-like walking"
+        "symptomName": "Emotional lability",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Anxiety and task-specific phobias",
-        "snomedCode": "48694002",
-        "frequency": 0.7,
-        "bodySystem": "psychiatric",
-        "notes": "Agoraphobia-like symptoms; fear of falling; anticipatory anxiety worsens spasms"
+        "symptomName": "Agoraphobia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Falls",
-        "snomedCode": "217082002",
-        "frequency": 0.65,
-        "bodySystem": "neurological",
-        "notes": "Falls 'like a statue' without protective reflexes"
+        "symptomName": "Gait disturbance",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Lower extremity stiffness",
-        "frequency": 0.7,
+        "symptomName": "Myoclonus",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hyperreflexia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Constipation",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Rigidity",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Exaggerated startle response",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.55,
         "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Paraspinal muscle hypertrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Autoimmune antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Anti-Amphiphysin antibody",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-DPPX antibody",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-GAD65 antibody",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-Gephyrin antibody",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-GlyR antibody",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Gait disturbance",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Episodic autonomic dysfunction during spasms",
-        "snomedCode": "72167002",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "notes": "Tachycardia, hypertension, diaphoresis during severe spasms"
+        "symptomName": "Diplopia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Concurrent autoimmune conditions",
-        "frequency": 0.3,
-        "bodySystem": "endocrine",
-        "notes": "Type 1 diabetes mellitus (~30-40% of GAD-positive SPS patients)"
+        "symptomName": "Diabetes mellitus",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Upper limb stiffness",
-        "frequency": 0.25,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Hypothyroidism",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Lumbar hyperlordosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Freezing of gait",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
-    "rare": [
-      {
-        "symptomName": "Nystagmus and brainstem signs",
-        "frequency": 0.1,
-        "bodySystem": "neurological",
-        "notes": "More common in PERM variant (progressive encephalomyelitis with rigidity and myoclonus)"
-      },
-      {
-        "symptomName": "Respiratory muscle spasms",
-        "frequency": 0.1,
-        "bodySystem": "respiratory",
-        "notes": "Can be life-threatening; status spasticus"
-      },
-      {
-        "symptomName": "Sphincter dysfunction",
-        "frequency": 0.08,
-        "bodySystem": "renal"
-      }
-    ]
+    "rare": []
   },
   "systemsAffected": [
+    "psychiatric",
+    "constitutional",
+    "musculoskeletal",
     "neurological",
-    "musculoskeletal"
+    "gastrointestinal",
+    "immunological",
+    "endocrine",
+    "respiratory",
+    "otolaryngological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -225,7 +305,7 @@
     "neurologist",
     "neuroimmunologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Dalakas MC. Stiff-person syndrome and GAD antibody-spectrum disorders: GABAergic neuronal excitability, immunopathogenesis and update on antibody therapies. Neurotherapeutics. 2022;19(3):832-847.",
     "Baizabal-Carvallo JF, Jankovic J. Stiff-person syndrome: insights into a complex autoimmune disorder. J Neurol Neurosurg Psychiatry. 2015;86(8):840-848.",

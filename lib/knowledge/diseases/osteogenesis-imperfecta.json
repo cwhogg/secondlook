@@ -13,15 +13,15 @@
   "omimId": "166200",
   "orphanetId": "666",
   "prevalence": {
-    "estimate": "1 in 10,000 to 1 in 20,000",
-    "range": "0.005%-0.01%",
-    "classification": "rare"
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 10,
-      "peak": 0
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -96,107 +96,597 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Recurrent fractures with minimal or no trauma",
-        "snomedCode": "125605004",
-        "frequency": 0.95,
-        "bodySystem": "musculoskeletal",
-        "notes": "Hallmark feature; fracture frequency varies by type"
+        "symptomName": "Brachycephaly",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Macrocephaly",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Prominent occiput",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Micrognathia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hearing impairment",
+        "frequency": 0.9,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Mixed hearing impairment",
+        "frequency": 0.9,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Convex nasal ridge",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Carious teeth",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of dental enamel",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pectus carinatum",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal rib morphology",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Thin ribs",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal metaphysis morphology",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Intrauterine growth retardation",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of tibia morphology",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Decreased skull ossification",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Diaphyseal thickening",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of dental color",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Blue or grey sclerae",
-        "snomedCode": "44684002",
-        "frequency": 0.7,
-        "bodySystem": "ophthalmological",
-        "notes": "Most pronounced in Type I; may darken with age"
+        "symptomName": "Abnormality of the dentition",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Short stature",
-        "snomedCode": "237837007",
-        "frequency": 0.65,
-        "bodySystem": "musculoskeletal",
-        "notes": "More severe in Types III and IV"
+        "symptomName": "Large fontanelles",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Joint hypermobility and ligamentous laxity",
-        "snomedCode": "298181000",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Glaucoma",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Easy bruising",
-        "snomedCode": "302227002",
-        "frequency": 0.6,
-        "bodySystem": "dermatological"
+        "symptomName": "Visual impairment",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Blue sclerae",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Dental malocclusion",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
         "symptomName": "Dentinogenesis imperfecta",
-        "snomedCode": "78494001",
-        "frequency": 0.5,
-        "bodySystem": "musculoskeletal",
-        "notes": "Opalescent, translucent, and fragile teeth; more common in Types III and IV"
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Narrow chest",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Osteopenia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Osteoporosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cutis laxa",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hyperhidrosis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Joint hypermobility",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Progressive hearing impairment",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Hypercalciuria",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Loss of ambulation",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Bone pain",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Increased susceptibility to fractures",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Recurrent fractures",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of femur morphology",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Genu valgum",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Vertebral compression fracture",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Femoral bowing",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fractures of the long bones",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Slender long bone",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal cortical bone morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the hip bone",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal form of the vertebral bodies",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Short stature",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Reduced bone mineral density",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Biconcave vertebral bodies",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Enlarged vertebral pedicles",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Multiple ribs fractures",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Corneal opacity",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Abnormality of long bone morphology",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cardiovascular system morphology",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Joint hypermobility",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Progressive hearing loss",
-        "snomedCode": "15188001",
-        "frequency": 0.35,
-        "bodySystem": "otolaryngological",
-        "notes": "Mixed conductive and sensorineural; onset typically in 2nd-3rd decade"
+        "symptomName": "Inguinal hernia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Scoliosis or kyphosis",
-        "snomedCode": "298382003",
-        "frequency": 0.4,
+        "symptomName": "Triangular face",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Delayed eruption of teeth",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pectus excavatum",
+        "frequency": 0.17,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Bowing of long bones",
-        "frequency": 0.35,
-        "bodySystem": "musculoskeletal",
-        "notes": "More common in severe types (III, IV)"
+        "symptomName": "Nephrolithiasis",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Chronic bone pain",
-        "snomedCode": "76948002",
-        "frequency": 0.45,
+        "symptomName": "Bruising susceptibility",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Flexion contracture",
+        "frequency": 0.17,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Wormian bones on skull X-ray",
-        "frequency": 0.4,
+        "symptomName": "Growth delay",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Small for gestational age",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Umbilical hernia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Constipation",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Wormian bones",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.17,
         "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Osteoarthritis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Kyphosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Micromelia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dislocated radial head",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Protrusio acetabuli",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Paresthesia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Somatic sensory dysfunction",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of the endocardium",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Relative macrocephaly",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Intestinal obstruction",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Bowing of the long bones",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Calcification of the interosseus membrane of the forearm",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperplastic callus formation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Trigeminal neuralgia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Visceral angiomatosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cerebral hemorrhage",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mitral valve prolapse",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Aortic regurgitation",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pulmonary hypoplasia",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Tetraparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain stem compression",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Aortic root aneurysm",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Neonatal respiratory distress",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Aortic dissection",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Cervical kyphosis",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Syringomyelia",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Aortic aneurysm",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Thoracic hypoplasia",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arterial dissection",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Rhizomelia",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Noncommunicating hydrocephalus",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
         "symptomName": "Basilar invagination",
-        "snomedCode": "65655009",
-        "frequency": 0.1,
-        "bodySystem": "neurological",
-        "notes": "Can cause brainstem compression; more common in severe types"
-      },
-      {
-        "symptomName": "Cardiopulmonary complications (valvular disease, restrictive lung disease)",
-        "frequency": 0.1,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Aortic root dilation",
-        "frequency": 0.08,
-        "bodySystem": "cardiovascular"
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
+    "constitutional",
+    "neurological",
+    "otolaryngological",
     "musculoskeletal",
     "ophthalmological",
-    "otolaryngological",
+    "psychiatric",
+    "dermatological",
+    "endocrine",
     "cardiovascular",
-    "neurological",
-    "dermatological"
+    "gastrointestinal",
+    "renal",
+    "hematological",
+    "respiratory"
   ],
   "keyFindings": {
     "laboratory": [
@@ -216,7 +706,8 @@
       "COL1A2 mutations (qualitative/structural collagen defects)",
       "IFITM5 mutations (OI Type V, with hyperplastic callus)",
       "Autosomal recessive genes: CRTAP, LEPRE1/P3H1, PPIB, SERPINF1, SERPINH1, BMP1, WNT1, TMEM38B, SPARC, etc.",
-      "Autosomal dominant in most cases; recessive forms account for 5-10%"
+      "Autosomal dominant in most cases; recessive forms account for 5-10%",
+      "X-linked recessive inheritance"
     ],
     "other": [
       "Clinical assessment of fracture history and family pedigree",
@@ -258,7 +749,7 @@
     "Audiologist",
     "Dentist (specialized in OI)"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Marini JC, et al. Osteogenesis imperfecta. Nat Rev Dis Primers. 2017;3:17052.",
     "Sillence DO, Senn A, Danks DM. Genetic heterogeneity in osteogenesis imperfecta. J Med Genet. 1979;16(2):101-16.",

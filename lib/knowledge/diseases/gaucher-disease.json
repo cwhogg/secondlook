@@ -14,15 +14,15 @@
   "omimId": "230800",
   "orphanetId": "355",
   "prevalence": {
-    "estimate": "1 in 40,000 to 1 in 60,000 (general); 1 in 800 in Ashkenazi Jewish population",
-    "range": "0.0017%-0.0025%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 60,
-      "peak": 20
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -70,128 +70,494 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Gaucher cells on bone marrow biopsy",
-        "frequency": 0.95,
-        "bodySystem": "hematological",
-        "notes": "Lipid-laden macrophages with characteristic 'crinkled tissue paper' or 'wrinkled silk' cytoplasm; not entirely specific as pseudo-Gaucher cells can occur in other conditions"
+        "symptomName": "Splenomegaly",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased beta-glucocerebrosidase level",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Splenomegaly (often massive)",
-        "snomedCode": "16294009",
-        "frequency": 0.9,
-        "bodySystem": "hematological",
-        "notes": "Spleen may enlarge 5-75x normal; most consistent finding in type 1"
+        "symptomName": "Strabismus",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Hepatomegaly",
-        "snomedCode": "80515008",
-        "frequency": 0.8,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Depression",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Thrombocytopenia",
-        "snomedCode": "302215000",
-        "frequency": 0.8,
-        "bodySystem": "hematological",
-        "notes": "Due to hypersplenism and marrow infiltration"
+        "symptomName": "Delayed puberty",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Anemia",
-        "snomedCode": "271737000",
-        "frequency": 0.7,
-        "bodySystem": "hematological"
+        "symptomName": "Abnormality of the skeletal system",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Fatigue",
-        "snomedCode": "84229001",
-        "frequency": 0.7,
+        "symptomName": "Osteopenia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cholelithiasis",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Bone pain (bone crises)",
-        "snomedCode": "12584003",
-        "frequency": 0.65,
-        "bodySystem": "musculoskeletal",
-        "notes": "Acute bone crises mimic osteomyelitis; chronic bone pain also common"
+        "symptomName": "Intellectual disability",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Joint dislocation",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Growth delay",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Leukopenia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Developmental regression",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Bone pain",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Delayed skeletal maturation",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Recurrent fractures",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Increased circulating ferritin concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal bone structure",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Erlenmeyer flask deformity of the femurs",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Avascular necrosis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated circulating CCL18 level",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of movement",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated circulating Angiotensin-converting enzyme concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Avascular necrosis (femoral head most common)",
-        "snomedCode": "87642003",
-        "frequency": 0.35,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Pathologic fractures",
-        "snomedCode": "443165006",
-        "frequency": 0.3,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Erlenmeyer flask deformity of distal femur",
-        "snomedCode": "298388006",
-        "frequency": 0.4,
-        "bodySystem": "musculoskeletal",
-        "notes": "Failure of normal cortical bone remodeling"
-      },
-      {
-        "symptomName": "Easy bruising and bleeding",
-        "snomedCode": "302227002",
-        "frequency": 0.45,
+        "symptomName": "Abnormality of coagulation",
+        "frequency": 0.17,
         "bodySystem": "hematological"
       },
       {
-        "symptomName": "Growth retardation (in children)",
-        "snomedCode": "276611004",
-        "frequency": 0.3,
+        "symptomName": "Abnormality of extrapyramidal motor function",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pulmonary arterial hypertension",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Opisthotonus",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pulmonary fibrosis",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Osteomyelitis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pathologic fracture",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Osteoarthritis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Osteolysis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Arthrogryposis multiplex congenita",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Kyphosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Decreased HDL cholesterol concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Polyclonal elevation of IgM",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Short stature",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hemiplegia/hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Aortic valve calcification",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Mitral valve calcification",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pulmonary interstitial morphology",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Multiple myeloma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Sensorimotor neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Corneal opacity",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Ichthyosis",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Cherry red spot of the macula",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Increased bone mineral density",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated circulating C-reactive protein concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hepatitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Paraproteinemia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Proteinuria",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Gingival bleeding",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Retinopathy",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Oculomotor apraxia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Dementia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Osteoporosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of skin pigmentation",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Abnormal macular morphology",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Parkinsonism",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tremor",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Joint stiffness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cirrhosis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hepatic fibrosis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Death in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal myocardium morphology",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal heart valve morphology",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hydrops fetalis",
+        "frequency": 0.17,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Pancytopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Abnormal bleeding",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Pulmonary hypertension",
-        "snomedCode": "70995007",
-        "frequency": 0.05,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Parkinsonism (GBA1-associated)",
-        "snomedCode": "32798002",
-        "frequency": 0.08,
-        "bodySystem": "neurological",
-        "notes": "GBA1 heterozygotes and homozygotes have increased Parkinson disease risk"
-      },
-      {
-        "symptomName": "Hepatic fibrosis or cirrhosis",
-        "snomedCode": "19943007",
-        "frequency": 0.05,
+        "symptomName": "Hepatic failure",
+        "frequency": 0.03,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Oculomotor apraxia (type 3 Gaucher)",
-        "snomedCode": "246765005",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "Hallmark of type 3; horizontal supranuclear gaze palsy"
+        "symptomName": "Splenic rupture",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Myoclonic seizures (types 2 and 3)",
-        "snomedCode": "91175000",
-        "frequency": 0.05,
-        "bodySystem": "neurological"
+        "symptomName": "Splenic infarction",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
     "hematological",
-    "gastrointestinal",
-    "musculoskeletal",
-    "neurological",
+    "constitutional",
+    "cardiovascular",
     "respiratory",
-    "constitutional"
+    "neurological",
+    "musculoskeletal",
+    "ophthalmological",
+    "dermatological",
+    "immunological",
+    "gastrointestinal",
+    "psychiatric",
+    "endocrine",
+    "renal",
+    "otolaryngological",
+    "reproductive"
   ],
   "keyFindings": {
     "laboratory": [
@@ -272,7 +638,7 @@
     "Orthopedic Surgeon",
     "Neurologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Biegstraaten M, et al. Management goals for type 1 Gaucher disease: An expert consensus document. Blood Cells Mol Dis. 2018;68:203-208.",
     "Pastores GM, Hughes DA. Gaucher Disease. In: Adam MP, et al., eds. GeneReviews. University of Washington, Seattle; 2000 [Updated 2018].",

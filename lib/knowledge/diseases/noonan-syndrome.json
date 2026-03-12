@@ -12,14 +12,14 @@
   "omimId": "163950",
   "orphanetId": "648",
   "prevalence": {
-    "estimate": "1 in 1,000 to 1 in 2,500 live births",
-    "range": "0.04%-0.1%",
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
     "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 5,
+      "max": 12,
       "peak": 0
     },
     "sexPredilection": "equal",
@@ -83,109 +83,377 @@
     "notes": "Noonan syndrome is the most common RASopathy. PTPN11 mutations account for ~50% of cases. Phenotype overlaps with other RASopathies (CFC syndrome, Costello syndrome, Noonan syndrome with multiple lentigines)."
   },
   "symptoms": {
-    "pathognomonic": [],
-    "common": [
+    "pathognomonic": [
       {
-        "symptomName": "Characteristic facial features",
+        "symptomName": "Joint hypermobility",
         "frequency": 0.9,
-        "bodySystem": "constitutional",
-        "notes": "Widely spaced eyes, low-set ears, ptosis, down-slanting palpebral fissures; changes with age"
-      },
-      {
-        "symptomName": "Congenital heart disease",
-        "snomedCode": "13213009",
-        "frequency": 0.8,
-        "bodySystem": "cardiovascular",
-        "notes": "Pulmonary valve stenosis (~60%), hypertrophic cardiomyopathy (~20%)"
-      },
-      {
-        "symptomName": "Short stature",
-        "snomedCode": "237837007",
-        "frequency": 0.7,
-        "bodySystem": "endocrine"
-      },
-      {
-        "symptomName": "Pectus deformity",
-        "snomedCode": "391985003",
-        "frequency": 0.7,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Cryptorchidism (in males)",
-        "snomedCode": "204878002",
-        "frequency": 0.6,
+        "symptomName": "Hypogonadotropic hypogonadism",
+        "frequency": 0.9,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Thick lower lip vermilion",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "High palate",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypertelorism",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Triangular face",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Micrognathia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "High forehead",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Thickened helices",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Webbed neck",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Thickened nuchal skin fold",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Cystic hygroma",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Downslanted palpebral fissures",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Ptosis",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Proptosis",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Pectus excavatum",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pectus carinatum",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of speech or vocalization",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal EKG",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Short stature",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pulmonary artery stenosis",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Wide intermamillary distance",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Aplasia/Hypoplasia of the abdominal wall musculature",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Midface retrusion",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cardiovascular system morphology",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Enlarged thorax",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Posteriorly rotated ears",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abnormal pulmonary valve morphology",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormality of the spleen",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormal bleeding",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Abnormality of coagulation",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Low posterior hairline",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Coarse hair",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Delayed skeletal maturation",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal dermatoglyphics",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal hair quantity",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Arrhythmia",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal platelet function",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Neurodevelopmental delay",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the lymphatic system",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cryptorchidism",
+        "frequency": 0.55,
         "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Abnormality of the genital system",
+        "frequency": 0.55,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Strabismus",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Blue irides",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Mild intellectual disability or learning difficulties",
-        "snomedCode": "3446000",
-        "frequency": 0.35,
-        "bodySystem": "neurological",
-        "notes": "Mean IQ ~85; ranges from normal to mild intellectual disability"
+        "symptomName": "Sensorineural hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Bleeding diathesis (easy bruising, coagulation factor deficiencies)",
-        "snomedCode": "302227002",
-        "frequency": 0.4,
-        "bodySystem": "hematological",
-        "notes": "Factor XI deficiency, platelet dysfunction, or combined"
+        "symptomName": "Nystagmus",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Lymphatic dysplasia (lymphedema, chylothorax)",
-        "snomedCode": "234097001",
-        "frequency": 0.2,
-        "bodySystem": "immunological"
+        "symptomName": "Osteopenia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Feeding difficulties in infancy",
-        "snomedCode": "78164000",
-        "frequency": 0.4,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Bruising susceptibility",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hepatosplenomegaly",
-        "snomedCode": "36760000",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Melanocytic nevus",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Lymphedema",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Brachydactyly",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Atrial septal defect",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hypertrophic cardiomyopathy",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Coarctation of aorta",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Radioulnar synostosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Clinodactyly of the 5th finger",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Postnatal growth retardation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dilatation of the renal pelvis",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Aplasia of the semicircular canal",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Juvenile myelomonocytic leukemia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Delayed menarche",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Juvenile myelomonocytic leukemia (JMML)",
-        "snomedCode": "413587002",
+        "symptomName": "Patent ductus arteriosus",
         "frequency": 0.03,
-        "bodySystem": "hematological",
-        "notes": "Most common malignancy in NS; associated with PTPN11 mutations"
-      },
-      {
-        "symptomName": "Chiari I malformation",
-        "snomedCode": "111498003",
-        "frequency": 0.05,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Sensorineural hearing loss",
-        "snomedCode": "60700002",
-        "frequency": 0.08,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Renal anomalies",
-        "snomedCode": "41931001",
-        "frequency": 0.05,
-        "bodySystem": "renal"
+        "bodySystem": "cardiovascular"
       }
     ]
   },
   "systemsAffected": [
-    "cardiovascular",
     "musculoskeletal",
-    "endocrine",
+    "cardiovascular",
+    "gastrointestinal",
     "hematological",
+    "constitutional",
+    "dermatological",
     "neurological",
-    "immunological",
+    "otolaryngological",
+    "ophthalmological",
+    "renal",
+    "endocrine",
     "reproductive"
   ],
   "keyFindings": {
@@ -201,13 +469,23 @@
       "Skeletal radiographs may show pectus deformity, scoliosis"
     ],
     "genetic": [
-      "PTPN11 mutations (~50% of cases)",
-      "SOS1 mutations (~13%)",
-      "RAF1 mutations (~5%, strongly associated with HCM)",
-      "RIT1 mutations (~5%)",
-      "KRAS mutations (~2%)",
-      "LZTR1, MRAS, SOS2, BRAF, MAP2K1, CBL and others",
-      "Autosomal dominant inheritance; ~50-70% de novo"
+      "RRAS (candidate)",
+      "MRAS (causative)",
+      "SPRED2 (causative)",
+      "RRAS2 (causative)",
+      "PTPN11 (causative)",
+      "CBL (causative)",
+      "SOS1 (causative, gain-of-function)",
+      "KRAS (causative)",
+      "RAF1 (causative, gain-of-function)",
+      "NRAS (causative)",
+      "RIT1 (causative, gain-of-function)",
+      "LZTR1 (causative)",
+      "RASA2 (causative, loss-of-function)",
+      "SOS2 (causative)",
+      "BRAF (causative)",
+      "Autosomal dominant inheritance; ~50-70% de novo",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Clinical scoring by van der Burgt criteria",
@@ -267,7 +545,7 @@
     "Developmental Pediatrician",
     "Pediatric Hematologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Roberts AE, et al. Noonan syndrome. Lancet. 2013;381(9863):333-342.",
     "Romano AA, et al. Noonan syndrome: clinical features, diagnosis, and management guidelines. Pediatrics. 2010;126(4):746-759.",

@@ -13,15 +13,15 @@
   "omimId": "156550",
   "orphanetId": "728",
   "prevalence": {
-    "estimate": "3.5 per 1,000,000",
-    "range": "0.0002%-0.0004%",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 40,
-      "max": 60,
-      "peak": 50
+      "min": 0,
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -78,92 +78,290 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Auricular chondritis (red, swollen, painful ear pinna sparing lobe)",
+        "symptomName": "Cataract",
         "frequency": 0.9,
-        "bodySystem": "musculoskeletal",
-        "notes": "Most common presenting feature; ear lobe spared (no cartilage). Eventually causes floppy/cauliflower ear."
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Large vessel vasculitis",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Chondritis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chondritis of pinna",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Non-erosive polyarthritis",
-        "snomedCode": "69896004",
-        "frequency": 0.7,
+        "symptomName": "Tinnitus",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Limitation of joint mobility",
+        "frequency": 0.55,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Nasal chondritis with saddle nose deformity",
+        "symptomName": "Hoarse voice",
         "frequency": 0.55,
-        "bodySystem": "musculoskeletal",
-        "notes": "Nasal bridge pain and swelling; progressive collapse leads to saddle nose"
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Ocular inflammation (scleritis, episcleritis, uveitis)",
-        "frequency": 0.5,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Abnormal aortic valve morphology",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Laryngotracheal involvement (hoarseness, stridor, cough)",
-        "frequency": 0.5,
-        "bodySystem": "respiratory",
-        "notes": "Can be life-threatening; tracheal collapse or subglottic stenosis"
+        "symptomName": "Pericarditis",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Tracheobronchomalacia",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Wheezing",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Atelectasis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Sensorineural hearing loss",
-        "snomedCode": "60700002",
-        "frequency": 0.3,
-        "bodySystem": "neurological"
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Vertigo and tinnitus",
-        "snomedCode": "399153001",
-        "frequency": 0.25,
-        "bodySystem": "neurological"
+        "symptomName": "Proteinuria",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Costochondritis (rib/chest pain)",
-        "frequency": 0.35,
+        "symptomName": "Sensorineural hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Keratitis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Conjunctivitis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Proptosis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Uveitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Purpura",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Anteriorly placed anus",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Alopecia",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Laryngomalacia",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Loss of voice",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dilatation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal pattern of respiration",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.17,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Skin lesions (nodules, purpura, livedo reticularis)",
-        "frequency": 0.2,
-        "bodySystem": "dermatological"
-      }
-    ],
-    "rare": [
-      {
-        "symptomName": "Aortic valve regurgitation (aortic root dilation)",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "notes": "From destruction of aortic root cartilage/connective tissue"
+        "symptomName": "Rheumatoid factor positive",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
       },
       {
-        "symptomName": "Large vessel vasculitis (aortitis)",
-        "frequency": 0.05,
+        "symptomName": "Antinuclear antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Abnormality of the endocardium",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Thrombophlebitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biparietal narrowing",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Venous thrombosis",
+        "frequency": 0.17,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "CNS vasculitis (meningoencephalitis)",
-        "frequency": 0.03,
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Renal involvement (glomerulonephritis)",
-        "frequency": 0.05,
+        "symptomName": "Erythema",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Recurrent aphthous stomatitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hepatitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Macule",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Myocarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal mitral valve physiology",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Nasal chondritis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Scleritis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Inflammatory abnormality of the eye",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Episcleritis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gangrene",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Glomerulopathy",
+        "frequency": 0.17,
         "bodySystem": "renal"
       }
-    ]
+    ],
+    "rare": []
   },
   "systemsAffected": [
-    "musculoskeletal",
-    "respiratory",
     "ophthalmological",
+    "musculoskeletal",
     "cardiovascular",
+    "constitutional",
+    "otolaryngological",
     "neurological",
-    "dermatological"
+    "gastrointestinal",
+    "respiratory",
+    "renal",
+    "hematological",
+    "dermatological",
+    "immunological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -228,7 +426,7 @@
     "Otolaryngologist",
     "Cardiologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "McAdam LP, et al. Relapsing polychondritis: prospective study of 23 patients and a review of the literature. Medicine (Baltimore). 1976;55(3):193-215.",
     "Borgia F, et al. Relapsing polychondritis: an updated review. Biomedicines. 2018;6(3):84.",

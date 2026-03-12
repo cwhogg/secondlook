@@ -14,15 +14,15 @@
   "omimId": "254500",
   "orphanetId": "85443",
   "prevalence": {
-    "estimate": "9-14 per million per year (incidence)",
-    "range": "0.0009%-0.0014%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 40,
-      "max": 80,
-      "peak": 63
+      "min": 18,
+      "max": 65,
+      "peak": 42
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": []
@@ -61,119 +61,291 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Periorbital purpura (raccoon eyes)",
-        "snomedCode": "302227002",
-        "frequency": 0.15,
-        "bodySystem": "dermatological",
-        "notes": "Pathognomonic for AL amyloidosis; purpura around eyes after minor straining"
-      },
-      {
-        "symptomName": "Macroglossia",
-        "snomedCode": "4698002",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal",
-        "notes": "Enlarged tongue with indentations from teeth; classic but not common"
+        "symptomName": "Fatigue",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Fatigue and weight loss",
-        "snomedCode": "84229001",
-        "frequency": 0.8,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Nephrotic syndrome (proteinuria, edema)",
-        "snomedCode": "44785005",
-        "frequency": 0.5,
+        "symptomName": "Abnormality of the kidney",
+        "frequency": 0.55,
         "bodySystem": "renal"
       },
       {
-        "symptomName": "Peripheral edema",
-        "snomedCode": "102572006",
-        "frequency": 0.6,
+        "symptomName": "Proteinuria",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Nephrotic syndrome",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal heart morphology",
+        "frequency": 0.55,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Dyspnea on exertion",
-        "snomedCode": "60845006",
-        "frequency": 0.5,
-        "bodySystem": "cardiovascular",
-        "notes": "From restrictive cardiomyopathy"
+        "symptomName": "Hypertrophic cardiomyopathy",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "snomedCode": "42658009",
-        "frequency": 0.35,
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Malabsorption",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormal EKG",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal pulmonary interstitial morphology",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Sensorimotor neuropathy",
+        "frequency": 0.55,
         "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Hepatic amyloidosis",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Albuminuria",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased QRS voltage",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Periorbital purpura",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating NT-proBNP concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Monoclonal light chain cardiac amyloidosis",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Renal interstitial amyloid deposits",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Erectile dysfunction",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased circulating troponin I concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased troponin T level in blood",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Orthostatic hypotension",
-        "snomedCode": "28651003",
-        "frequency": 0.25,
-        "bodySystem": "neurological",
-        "notes": "From autonomic neuropathy"
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Carpal tunnel syndrome (bilateral)",
-        "snomedCode": "57406009",
-        "frequency": 0.25,
-        "bodySystem": "neurological"
+        "symptomName": "Xerostomia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Diarrhea or constipation (GI dysmotility)",
-        "snomedCode": "62315008",
-        "frequency": 0.25,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Bruising susceptibility",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cardiac ventricle morphology",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
         "symptomName": "Hepatomegaly",
-        "snomedCode": "80515008",
-        "frequency": 0.3,
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Easy bruising",
-        "snomedCode": "302227002",
-        "frequency": 0.3,
-        "bodySystem": "hematological",
-        "notes": "Factor X deficiency from adsorption to amyloid fibrils"
+        "symptomName": "Obstructive sleep apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hypoalbuminemia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated circulating alkaline phosphatase concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal distention",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormal cardiac atrium morphology",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Postural hypotension with compensatory tachycardia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Reduced factor X activity",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Autonomic erectile dysfunction",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal salivary gland morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arrhythmia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Constrictive median neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal autonomic nervous system physiology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pulmonary interstitial high-resolution computed tomography abnormality",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Jaw claudication",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Nonproductive cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal P wave",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Howell-Jolly bodies",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Jaw claudication from vascular amyloid",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Nail dystrophy",
-        "snomedCode": "367570008",
-        "frequency": 0.05,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Arthropathy (shoulder pad sign)",
-        "snomedCode": "399269003",
-        "frequency": 0.05,
-        "bodySystem": "musculoskeletal",
-        "notes": "Bilateral shoulder enlargement from amyloid infiltration"
-      },
-      {
-        "symptomName": "Submandibular gland enlargement",
-        "frequency": 0.04,
+        "symptomName": "Macroglossia",
+        "frequency": 0.03,
         "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hoarse voice",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Gastrointestinal hemorrhage",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Gastroparesis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormality of the gastrointestinal tract",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "cardiovascular",
+    "constitutional",
     "renal",
-    "neurological",
+    "cardiovascular",
     "gastrointestinal",
-    "dermatological",
+    "respiratory",
+    "neurological",
+    "immunological",
     "hematological"
   ],
   "keyFindings": {
@@ -252,7 +424,7 @@
     "Nephrologist",
     "Neurologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Merlini G, et al. Systemic immunoglobulin light chain amyloidosis. Nat Rev Dis Primers. 2018;4(1):38.",
     "Gertz MA, et al. Immunoglobulin light chain amyloidosis: 2020 update on diagnosis, prognosis, and treatment. Am J Hematol. 2020;95(7):848-860.",

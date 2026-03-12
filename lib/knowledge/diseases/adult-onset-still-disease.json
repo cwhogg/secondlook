@@ -12,15 +12,15 @@
   "omimId": "604302",
   "orphanetId": "829",
   "prevalence": {
-    "estimate": "1 to 34 per 1,000,000",
-    "range": "0.0001%-0.003%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 16,
-      "max": 45,
-      "peak": 30
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": []
@@ -83,103 +83,306 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Quotidian (daily) spiking fever >= 39°C with return to baseline",
-        "frequency": 0.95,
-        "bodySystem": "constitutional",
-        "notes": "Typically spikes in evening with morning defervescence; double quotidian pattern"
+        "symptomName": "Skin rash",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Evanescent salmon-pink macular rash",
-        "frequency": 0.85,
-        "bodySystem": "dermatological",
-        "notes": "Non-pruritic, appears with fever spikes, trunk and proximal extremities; may be Koebner-positive"
+        "symptomName": "Pruritus",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Joint swelling",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Leukocytosis",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Increased circulating ferritin concentration",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Arthralgia/arthritis",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Erythema",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Elevated circulating C-reactive protein concentration",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Neutrophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Arthralgias and/or arthritis",
-        "snomedCode": "57676002",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal",
-        "notes": "Initially oligoarticular; may progress to destructive polyarthritis (wrists, knees)"
-      },
-      {
-        "symptomName": "Sore throat (pharyngitis)",
-        "snomedCode": "162397003",
-        "frequency": 0.7,
-        "bodySystem": "constitutional",
-        "notes": "Often the earliest symptom; culture-negative"
-      },
-      {
-        "symptomName": "Myalgias",
-        "snomedCode": "68962001",
+        "symptomName": "Splenomegaly",
         "frequency": 0.55,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Lymphadenopathy",
-        "snomedCode": "30746006",
-        "frequency": 0.5,
-        "bodySystem": "immunological"
-      }
-    ],
-    "occasional": [
-      {
-        "symptomName": "Hepatomegaly/splenomegaly",
-        "snomedCode": "80515008",
-        "frequency": 0.4,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Pleuritis/pericarditis (serositis)",
-        "frequency": 0.3,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Abdominal pain",
-        "snomedCode": "21522001",
-        "frequency": 0.25,
         "bodySystem": "gastrointestinal"
       },
       {
         "symptomName": "Weight loss",
-        "snomedCode": "89362005",
-        "frequency": 0.35,
+        "frequency": 0.55,
         "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pleuritis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pleural effusion",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Elevated circulating hepatic transaminase concentration",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Elevated circulating alkaline phosphatase concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Transient pulmonary infiltrates",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Generalized lymphadenopathy",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pharyngitis",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Pharyngalgia",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Maculopapular exanthema",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Koebner Phenomenon",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Proteinuria",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nausea",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anorexia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Respiratory distress",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Lymphadenitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Rheumatoid factor positive",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Abnormal circulating lipid concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Antinuclear antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Bone marrow hypocellularity",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Interstitial pneumonitis",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hepatitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hemophagocytosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated circulating aldolase concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myocarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Cartilage destruction",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
       }
     ],
     "rare": [
       {
-        "symptomName": "Macrophage activation syndrome (MAS)/reactive HLH",
-        "frequency": 0.12,
-        "bodySystem": "hematological",
-        "notes": "Life-threatening complication; characterized by pancytopenia, liver failure, DIC, hyperferritinemia > 10,000"
+        "symptomName": "Conjunctivitis",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Disseminated intravascular coagulation (DIC)",
-        "frequency": 0.05,
+        "symptomName": "Uveitis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Disseminated intravascular coagulation",
+        "frequency": 0.03,
         "bodySystem": "hematological"
       },
       {
-        "symptomName": "Myocarditis",
+        "symptomName": "Amyloidosis",
         "frequency": 0.03,
-        "bodySystem": "cardiovascular"
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Pulmonary arterial hypertension",
-        "frequency": 0.02,
-        "bodySystem": "respiratory"
+        "symptomName": "Non-infectious meningitis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Episcleritis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
-    "musculoskeletal",
     "dermatological",
-    "immunological",
+    "musculoskeletal",
+    "constitutional",
+    "hematological",
     "gastrointestinal",
     "respiratory",
-    "cardiovascular",
-    "hematological"
+    "immunological",
+    "otolaryngological",
+    "ophthalmological",
+    "renal",
+    "neurological",
+    "cardiovascular"
   ],
   "keyFindings": {
     "laboratory": [
@@ -245,7 +448,7 @@
     "Internal Medicine",
     "Infectious Disease"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Yamaguchi M, et al. Preliminary criteria for classification of adult Still's disease. J Rheumatol. 1992;19(3):424-430.",
     "Feist E, et al. Mechanisms, biomarkers and targets for adult-onset Still's disease. Nat Rev Rheumatol. 2018;14(10):603-618.",

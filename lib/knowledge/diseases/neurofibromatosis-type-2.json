@@ -14,15 +14,15 @@
   "omimId": "101000",
   "orphanetId": "637",
   "prevalence": {
-    "estimate": "1 in 25,000 to 1 in 40,000",
-    "range": "0.0025%-0.004%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 10,
-      "max": 40,
-      "peak": 20
+      "min": 0,
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -69,110 +69,257 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Bilateral vestibular schwannomas",
-        "snomedCode": "92042006",
-        "frequency": 0.95,
-        "bodySystem": "neurological",
-        "notes": "Hallmark of NF2; bilateral in >90% by age 30; present in virtually all patients eventually"
+        "symptomName": "Neuroma",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       }
     ],
     "common": [
       {
-        "symptomName": "Hearing loss (progressive, sensorineural)",
-        "snomedCode": "60700002",
-        "frequency": 0.9,
-        "bodySystem": "constitutional",
-        "notes": "Usually first symptom; gradual onset, bilateral"
+        "symptomName": "Sensorineural hearing impairment",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Tinnitus",
-        "snomedCode": "60862001",
-        "frequency": 0.7,
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Myelopathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Meningioma",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Balance problems and vertigo",
-        "snomedCode": "399153001",
-        "frequency": 0.6,
+        "symptomName": "Reduced visual acuity",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Posterior subcapsular cataract",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Bilateral vestibular schwannoma",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Peripheral schwannoma",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spinal cord tumor",
+        "frequency": 0.55,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Intracranial meningiomas",
-        "snomedCode": "92078007",
-        "frequency": 0.5,
-        "bodySystem": "neurological"
+        "symptomName": "Intracranial meningioma",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Peripheral schwannomas (non-vestibular)",
-        "snomedCode": "92042006",
-        "frequency": 0.45,
-        "bodySystem": "neurological"
+        "symptomName": "Hyperesthesia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Spinal tumors (schwannomas, meningiomas, ependymomas)",
-        "snomedCode": "126956007",
-        "frequency": 0.4,
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Posterior subcapsular cataracts (juvenile)",
-        "snomedCode": "193575004",
-        "frequency": 0.35,
-        "bodySystem": "ophthalmological",
-        "notes": "May be the earliest finding; often detected in childhood"
+        "symptomName": "Tinnitus",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Facial nerve palsy",
-        "snomedCode": "280816001",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "notes": "From vestibular schwannoma compression or surgical complication"
+        "symptomName": "Visual loss",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "snomedCode": "42658009",
-        "frequency": 0.25,
+        "symptomName": "Abnormal optic nerve morphology",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Blindness",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Amblyopia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Diplopia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sensory neuropathy",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Cutaneous schwannomas or plaque-like skin lesions",
-        "snomedCode": "92042006",
-        "frequency": 0.3,
+        "symptomName": "Hyperpigmentation of the skin",
+        "frequency": 0.17,
         "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Polyneuropathy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cerebellum morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Postural instability",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Unsteady gait",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Memory impairment",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Brain stem compression",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ependymoma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Somatic sensory dysfunction",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Neoplasm of the skin",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Foot dorsiflexor weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Retinal hamartoma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Mononeuropathy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Facial palsy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Wrist drop",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spinal meningioma",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Epiretinal membrane",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cortical cataract",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Spinal cord compression with myelopathy",
-        "snomedCode": "95685003",
-        "frequency": 0.1,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Visual loss from optic nerve meningioma",
-        "snomedCode": "95657005",
-        "frequency": 0.05,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Epiretinal membranes",
-        "snomedCode": "367649002",
-        "frequency": 0.08,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Malignant transformation of schwannoma",
+        "symptomName": "Aphasia",
         "frequency": 0.03,
         "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Remnants of the hyaloid vascular system",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Astrocytoma",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Glioma",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
     "neurological",
+    "otolaryngological",
     "ophthalmological",
-    "dermatological"
+    "constitutional",
+    "dermatological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "cardiovascular"
   ],
   "keyFindings": {
     "laboratory": [
@@ -186,11 +333,8 @@
       "Whole-body MRI for tumor surveillance"
     ],
     "genetic": [
-      "NF2 gene mutations on chromosome 22q12.2 (merlin/schwannomin)",
-      "Autosomal dominant inheritance",
-      "~50% de novo mutations",
-      "Mosaicism in ~25-33% of de novo cases (milder phenotype, unilateral VS initially)",
-      "Truncating mutations associated with more severe disease than missense mutations"
+      "NF2 (causative)",
+      "Autosomal dominant inheritance"
     ],
     "other": [
       "Slit-lamp examination for posterior subcapsular cataracts",
@@ -251,7 +395,7 @@
     "Ophthalmologist",
     "Audiologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Evans DG. Neurofibromatosis type 2 (NF2): a clinical and molecular review. Orphanet J Rare Dis. 2009;4:16.",
     "Evans DG, et al. A clinical study of type 2 neurofibromatosis. Q J Med. 1992;84(304):603-618.",

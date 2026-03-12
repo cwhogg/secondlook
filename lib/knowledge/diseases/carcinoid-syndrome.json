@@ -19,9 +19,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 40,
-      "max": 70,
-      "peak": 55
+      "min": 0,
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -74,102 +74,156 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Episodic flushing (cutaneous vasodilation)",
-        "snomedCode": "271807003",
-        "frequency": 0.9,
-        "bodySystem": "dermatological",
-        "notes": "Typically face and upper trunk; can be triggered by alcohol, stress, exercise"
-      },
-      {
-        "symptomName": "Secretory diarrhea",
-        "snomedCode": "62315008",
-        "frequency": 0.8,
-        "bodySystem": "gastrointestinal",
-        "notes": "Watery, non-bloody; due to serotonin-mediated increased gut motility"
+        "symptomName": "Carcinoid tumor",
+        "frequency": 1,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Abdominal cramping",
-        "snomedCode": "21522001",
-        "frequency": 0.65,
+        "symptomName": "Erythematous plaque",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Episodic abdominal pain",
+        "frequency": 0.55,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Bronchospasm / wheezing",
-        "snomedCode": "56018004",
-        "frequency": 0.4,
-        "bodySystem": "respiratory"
+        "symptomName": "Protracted diarrhea",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Telangiectasias (chronic facial)",
-        "snomedCode": "247479008",
-        "frequency": 0.45,
-        "bodySystem": "dermatological",
-        "notes": "Develop over time from chronic flushing episodes"
+        "symptomName": "Small intestine carcinoid",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Weight loss",
-        "snomedCode": "89362005",
-        "frequency": 0.5,
-        "bodySystem": "constitutional"
+        "symptomName": "Intestinal carcinoid",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Carcinoid heart disease (right-sided valvular fibrosis)",
-        "snomedCode": "92059005",
-        "frequency": 0.3,
-        "bodySystem": "cardiovascular",
-        "notes": "Tricuspid regurgitation and pulmonary stenosis; due to serotonin-mediated endocardial fibrosis"
+        "symptomName": "Bronchoconstriction",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Pellagra-like syndrome (niacin deficiency)",
-        "snomedCode": "70090004",
-        "frequency": 0.15,
-        "bodySystem": "dermatological",
-        "notes": "Due to tryptophan diversion to serotonin synthesis"
-      },
-      {
-        "symptomName": "Hypotension during flushing episodes",
-        "snomedCode": "45007003",
-        "frequency": 0.2,
+        "symptomName": "Right ventricular failure",
+        "frequency": 0.17,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Peripheral edema",
-        "snomedCode": "271809000",
-        "frequency": 0.25,
+        "symptomName": "Palpitations",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Asthma",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chronic noninfectious lymphadenopathy",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Elevated circulating hepatic transaminase concentration",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Increased serum serotonin",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Tricuspid regurgitation",
+        "frequency": 0.17,
         "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Facial telangiectasia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epiphora",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Heart murmur",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pulmonary carcinoid tumor",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormal B-type natriuretic peptide level",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Rhinorrhea",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Carcinoid crisis (life-threatening flushing, hypotension, bronchospasm)",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "notes": "Can occur during anesthesia or tumor manipulation; medical emergency"
-      },
-      {
-        "symptomName": "Left-sided carcinoid heart disease",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "notes": "Seen with bronchial carcinoids or patent foramen ovale"
-      },
-      {
-        "symptomName": "Mesenteric fibrosis with bowel obstruction",
-        "snomedCode": "81060008",
-        "frequency": 0.08,
+        "symptomName": "Hepatic necrosis",
+        "frequency": 0.03,
         "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Paraganglioma",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myopathy",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Lack of bowel sounds",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Atypical pulmonary carcinoid tumor",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
       }
     ]
   },
   "systemsAffected": [
-    "gastrointestinal",
-    "cardiovascular",
     "respiratory",
     "dermatological",
-    "constitutional"
+    "constitutional",
+    "cardiovascular",
+    "gastrointestinal",
+    "immunological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -187,10 +241,7 @@
       "MRI liver for hepatic metastases characterization"
     ],
     "genetic": [
-      "Generally sporadic; familial cases rare",
-      "MEN1 gene mutations in some gastric and pancreatic NETs",
-      "CDKN1B mutations in MEN4-associated NETs",
-      "Germline testing not routinely recommended unless syndromic features present"
+      "SDHD (candidate)"
     ],
     "other": [
       "Tumor biopsy with chromogranin A, synaptophysin, Ki-67 staining",
@@ -246,7 +297,7 @@
     "Surgical Oncologist",
     "Cardiologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Halperin DM, et al. Frequency of carcinoid syndrome at neuroendocrine tumour diagnosis. Lancet Oncol. 2017;18(4):525-534.",
     "Modlin IM, et al. Current status of gastrointestinal carcinoids. Gastroenterology. 2005;128(6):1717-51.",

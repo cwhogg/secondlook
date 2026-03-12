@@ -12,9 +12,9 @@
   "omimId": "604581",
   "orphanetId": "3452",
   "prevalence": {
-    "estimate": "Less than 1 per 1,000,000",
-    "range": "< 0.0001%",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
@@ -66,112 +66,260 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Chronic diarrhea with malabsorption",
-        "snomedCode": "62315008",
-        "frequency": 0.85,
-        "bodySystem": "gastrointestinal",
-        "notes": "Steatorrhea and weight loss from fat malabsorption"
+        "symptomName": "Depression",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Migratory, non-deforming polyarthralgia",
-        "snomedCode": "57676002",
-        "frequency": 0.8,
-        "bodySystem": "musculoskeletal",
-        "notes": "Often the earliest symptom; may precede GI symptoms by 5-10 years"
-      }
-    ],
-    "common": [
+        "symptomName": "Myoclonus",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
       {
-        "symptomName": "Weight loss",
-        "snomedCode": "89362005",
+        "symptomName": "Arthritis",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fever",
         "frequency": 0.9,
         "bodySystem": "constitutional"
       },
       {
+        "symptomName": "Diarrhea",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Malabsorption",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
         "symptomName": "Abdominal pain",
-        "snomedCode": "21522001",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anorexia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Developmental regression",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cachexia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mediastinal lymphadenopathy",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Uveitis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Splenomegaly",
         "frequency": 0.55,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Lymphadenopathy",
-        "snomedCode": "30746006",
-        "frequency": 0.5,
-        "bodySystem": "immunological"
-      },
-      {
-        "symptomName": "Low-grade fever",
-        "snomedCode": "386661006",
-        "frequency": 0.45,
+        "symptomName": "Pleuritis",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Fatigue and malaise",
-        "snomedCode": "84229001",
-        "frequency": 0.6,
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Sleep abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hyperpigmentation of skin",
-        "snomedCode": "49765009",
-        "frequency": 0.3,
-        "bodySystem": "dermatological",
-        "notes": "Diffuse gray-brown skin darkening, especially sun-exposed areas"
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Cardiac involvement (endocarditis, pericarditis)",
-        "frequency": 0.25,
-        "bodySystem": "cardiovascular",
-        "notes": "Culture-negative endocarditis is a recognized presentation"
+        "symptomName": "Proptosis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Peripheral edema",
-        "snomedCode": "271809000",
-        "frequency": 0.2,
-        "bodySystem": "constitutional",
-        "notes": "Due to hypoalbuminemia from malabsorption"
+        "symptomName": "Hypothyroidism",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Pleuritic chest pain",
-        "frequency": 0.15,
+        "symptomName": "Insulin resistance",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Myocardial infarction",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Polydipsia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.17,
         "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Gastrointestinal hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Infectious encephalitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyponatremia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal pyramidal sign",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized hyperpigmentation",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myocarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Myositis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Erectile dysfunction",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Galactorrhea",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
-    "rare": [
-      {
-        "symptomName": "Oculomasticatory myorhythmia",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "Pathognomonic for CNS Whipple disease when present; convergent nystagmus with synchronous jaw movements"
-      },
-      {
-        "symptomName": "Cognitive decline/dementia",
-        "snomedCode": "386806002",
-        "frequency": 0.1,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Supranuclear ophthalmoplegia",
-        "frequency": 0.08,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Seizures",
-        "snomedCode": "91175000",
-        "frequency": 0.05,
-        "bodySystem": "neurological"
-      }
-    ]
+    "rare": []
   },
   "systemsAffected": [
-    "gastrointestinal",
-    "musculoskeletal",
     "neurological",
+    "ophthalmological",
+    "constitutional",
+    "psychiatric",
+    "endocrine",
+    "musculoskeletal",
     "cardiovascular",
-    "immunological",
-    "dermatological"
+    "gastrointestinal",
+    "hematological",
+    "respiratory",
+    "dermatological",
+    "immunological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -187,8 +335,7 @@
       "Small bowel imaging may show thickened mucosal folds"
     ],
     "genetic": [
-      "HLA-B27 association reported in some studies",
-      "Possible immunogenetic susceptibility involving defective Th1 response"
+      "IRF4 (susceptibility)"
     ],
     "other": [
       "Upper endoscopy: pale, shaggy duodenal mucosa with whitish-yellow patches (lymphatic obstruction)",
@@ -233,7 +380,7 @@
     "Neurologist",
     "Cardiologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Dolmans RA, et al. Clinical manifestations, treatment, and diagnosis of Tropheryma whipplei infections. Clin Microbiol Rev. 2017;30(2):529-555.",
     "Fenollar F, et al. Whipple's disease. N Engl J Med. 2007;356(1):55-66.",

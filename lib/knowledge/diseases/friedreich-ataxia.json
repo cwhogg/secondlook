@@ -12,15 +12,15 @@
   "omimId": "229300",
   "orphanetId": "95",
   "prevalence": {
-    "estimate": "1-2 per 50,000",
-    "range": "1 in 20,000 to 1 in 50,000 in European populations",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 5,
-      "max": 25,
-      "peak": 12
+      "min": 2,
+      "max": 18,
+      "peak": 14
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -75,121 +75,290 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Progressive gait ataxia with areflexia",
-        "snomedCode": "20262006",
-        "frequency": 0.95,
-        "bodySystem": "neurological",
-        "notes": "Combination of ataxia with absent reflexes is highly characteristic; distinguishes from other ataxias"
+        "symptomName": "Gait ataxia",
+        "frequency": 1,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Hypertrophic cardiomyopathy",
-        "snomedCode": "45227007",
-        "frequency": 0.65,
-        "bodySystem": "cardiovascular",
-        "notes": "Present in ~60-75%; major cause of morbidity and mortality"
+        "symptomName": "Dysarthria",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Friedreich foot (pes cavus with hammer toes)",
-        "snomedCode": "205083008",
-        "frequency": 0.55,
-        "bodySystem": "musculoskeletal",
-        "notes": "High-arched feet with toe deformities"
+        "symptomName": "Limb ataxia",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Gait imbalance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Babinski sign",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hand muscle atrophy",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Impaired proprioception",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Limb ataxia",
-        "snomedCode": "85102008",
-        "frequency": 0.9,
-        "bodySystem": "neurological",
-        "notes": "Dysmetria, dysdiadochokinesia"
+        "symptomName": "Areflexia of lower limbs",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Dysarthria",
-        "snomedCode": "8011004",
-        "frequency": 0.8,
-        "bodySystem": "neurological",
-        "notes": "Scanning, explosive speech; progressive"
-      },
-      {
-        "symptomName": "Loss of vibration and proprioception",
-        "snomedCode": "44077006",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "notes": "Dorsal column sensory loss"
+        "symptomName": "Falls",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
         "symptomName": "Scoliosis",
-        "snomedCode": "298382003",
-        "frequency": 0.6,
+        "frequency": 0.55,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Extensor plantar responses (Babinski sign)",
-        "snomedCode": "246586000",
-        "frequency": 0.8,
-        "bodySystem": "neurological",
-        "notes": "Combined UMN (Babinski) and LMN (areflexia) signs"
+        "symptomName": "Urinary bladder sphincter dysfunction",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal EKG",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sensory axonal neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Muscle spasm",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Poor fine motor coordination",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cervical spinal cord atrophy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of central motor conduction",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Restless legs",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Impaired visually enhanced vestibulo-ocular reflex",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Urinary urgency",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal saccadic eye movements",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Acrocyanosis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dysmetria",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cardiomyopathy",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal foot morphology",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pes cavus",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Talipes equinovarus",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Inflammation of the large intestine",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Intention tremor",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the autonomic nervous system",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Clumsiness",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Impaired vibratory sensation",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
+        "symptomName": "Hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Depression",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
         "symptomName": "Diabetes mellitus",
-        "snomedCode": "73211009",
-        "frequency": 0.3,
-        "bodySystem": "endocrine",
-        "notes": "Impaired glucose tolerance in ~30%; frank diabetes in ~10-15%"
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Visual impairment",
-        "snomedCode": "397540003",
-        "frequency": 0.25,
-        "bodySystem": "ophthalmological",
-        "notes": "Optic atrophy"
+        "symptomName": "Spasticity",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Hearing loss",
-        "snomedCode": "15188001",
-        "frequency": 0.2,
-        "bodySystem": "constitutional",
-        "notes": "Sensorineural hearing loss; auditory neuropathy"
+        "symptomName": "Cerebellar atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dystonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysphonia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
         "symptomName": "Dysphagia",
-        "snomedCode": "40739000",
-        "frequency": 0.3,
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Dysdiadochokinesis",
+        "frequency": 0.17,
         "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Inability to walk",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Incomprehensible speech",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased motor nerve conduction velocity",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Reduced bone mineral density",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Reduced visual acuity",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Sleep apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Square-wave jerks",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Cardiac arrhythmias",
-        "snomedCode": "698247007",
-        "frequency": 0.15,
-        "bodySystem": "cardiovascular",
-        "notes": "Atrial fibrillation; can cause sudden death"
-      },
-      {
-        "symptomName": "Nystagmus",
-        "snomedCode": "563001",
-        "frequency": 0.15,
-        "bodySystem": "neurological",
-        "notes": "Less prominent than in other cerebellar ataxias"
-      },
-      {
-        "symptomName": "Cognitive impairment",
-        "snomedCode": "386806002",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "Generally preserved cognition; mild executive dysfunction reported"
+        "symptomName": "Chorea",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
     "neurological",
-    "cardiovascular",
+    "constitutional",
     "musculoskeletal",
-    "endocrine"
+    "renal",
+    "ophthalmological",
+    "otolaryngological",
+    "cardiovascular",
+    "gastrointestinal",
+    "psychiatric",
+    "endocrine",
+    "respiratory"
   ],
   "keyFindings": {
     "laboratory": [
@@ -205,10 +374,7 @@
       "Cardiac MRI: myocardial fibrosis, iron deposition"
     ],
     "genetic": [
-      "FXN gene (chromosome 9q21): homozygous GAA trinucleotide repeat expansion",
-      "Normal: <33 GAA repeats; premutation: 34-65; pathogenic: 66-1700+",
-      "Inverse correlation between GAA repeat length and onset age",
-      "~96% homozygous GAA expansion; ~4% compound heterozygous (GAA + point mutation)",
+      "FXN (causative, loss-of-function)",
       "Autosomal recessive inheritance"
     ],
     "other": [
@@ -260,7 +426,7 @@
     "geneticist",
     "rehabilitation specialist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Pandolfo M. Friedreich ataxia: the clinical picture. J Neurol. 2009;256(Suppl 1):3-8.",
     "Cook A, Giunti P. Friedreich's ataxia: clinical features, pathogenesis and management. Br Med Bull. 2017;124(1):19-30.",

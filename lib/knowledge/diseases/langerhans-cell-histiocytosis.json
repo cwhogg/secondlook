@@ -16,15 +16,15 @@
   "omimId": "604856",
   "orphanetId": "389",
   "prevalence": {
-    "estimate": "1 to 9 per 1,000,000 in children; rarer in adults",
-    "range": "0.0001%-0.0009%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 1,
-      "max": 15,
-      "peak": 3
+      "min": 0,
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": []
@@ -69,91 +69,160 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Lytic bone lesions (skull, long bones, ribs, pelvis)",
-        "frequency": 0.8,
-        "bodySystem": "musculoskeletal",
-        "notes": "Most common presentation; well-circumscribed punched-out lytic lesions on imaging"
+        "symptomName": "Bone pain",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Osteolysis",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
       }
     ],
     "common": [
       {
-        "symptomName": "Bone pain or swelling over lesion",
-        "snomedCode": "12584003",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Eczematoid dermatitis",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Skin rash (seborrheic dermatitis-like, crusted papules)",
-        "frequency": 0.5,
-        "bodySystem": "dermatological",
-        "notes": "Scalp most common; resembles seborrheic dermatitis or eczema. Petechial/purpuric in infants."
+        "symptomName": "Skin rash",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Otitis media/externa (chronic, refractory)",
-        "frequency": 0.25,
-        "bodySystem": "neurological",
-        "notes": "From temporal bone involvement"
+        "symptomName": "Splenomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Diabetes insipidus",
-        "frequency": 0.25,
-        "bodySystem": "endocrine",
-        "notes": "From pituitary stalk infiltration; polyuria and polydipsia"
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Lymphadenopathy",
-        "snomedCode": "30746006",
-        "frequency": 0.2,
-        "bodySystem": "immunological"
+        "symptomName": "Oral ulcer",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Hepatosplenomegaly",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal",
-        "notes": "Indicates risk organ involvement; poor prognostic sign"
+        "symptomName": "Hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Cough and dyspnea (pulmonary LCH)",
-        "frequency": 0.15,
-        "bodySystem": "respiratory",
-        "notes": "Pulmonary LCH in adults strongly associated with smoking"
+        "symptomName": "Diabetes insipidus",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Gingival/oral mucosal lesions with tooth loss",
-        "frequency": 0.1,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Ataxia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Growth delay",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Leukopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Spontaneous pneumothorax",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hypoalbuminemia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Genital ulcers",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Reduced circulating growth hormone concentration",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Pulmonary Langerhans cell histiocytosis",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       }
     ],
     "rare": [
       {
-        "symptomName": "Cerebellar neurodegeneration",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "Late complication; progressive ataxia, dysarthria, cognitive decline"
-      },
-      {
-        "symptomName": "Liver failure (sclerosing cholangitis pattern)",
+        "symptomName": "Hepatic failure",
         "frequency": 0.03,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Cytopenias from bone marrow involvement",
-        "frequency": 0.05,
-        "bodySystem": "hematological",
-        "notes": "Indicates risk organ involvement; requires aggressive treatment"
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Sclerosing cholangitis",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
       }
     ]
   },
   "systemsAffected": [
     "musculoskeletal",
     "dermatological",
-    "endocrine",
-    "respiratory",
     "gastrointestinal",
+    "constitutional",
+    "immunological",
+    "otolaryngological",
+    "endocrine",
+    "neurological",
     "hematological",
-    "neurological"
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -170,9 +239,9 @@
       "PET-CT: FDG-avid bone and soft tissue lesions; useful for staging and response assessment"
     ],
     "genetic": [
-      "BRAF V600E somatic mutation in 50-60% of cases",
-      "MAP2K1 mutations in ~25% of BRAF-wild-type cases",
-      "MAPK pathway activation is central to pathogenesis"
+      "MAP2K1 (causative)",
+      "NRAS (somatic)",
+      "BRAF (somatic)"
     ],
     "other": [
       "Biopsy with CD1a and langerin (CD207) immunohistochemistry: diagnostic gold standard",
@@ -221,7 +290,7 @@
     "Pulmonologist",
     "Dermatologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Allen CE, et al. Langerhans-cell histiocytosis. N Engl J Med. 2018;379(9):856-868.",
     "Rodriguez-Galindo C, Allen CE. Langerhans cell histiocytosis. Blood. 2020;135(16):1319-1331.",

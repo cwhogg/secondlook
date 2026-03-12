@@ -13,15 +13,15 @@
   "omimId": "130020",
   "orphanetId": "285",
   "prevalence": {
-    "estimate": "1 in 500 to 1 in 5,000",
-    "range": "0.02%-0.2%",
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
     "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 5,
-      "max": 40,
-      "peak": 15
+      "min": 0,
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": []
@@ -138,119 +138,373 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Generalized joint hypermobility",
-        "snomedCode": "298181000",
-        "frequency": 1,
-        "bodySystem": "musculoskeletal",
-        "notes": "Beighton score >= 5 in adults; required for diagnosis"
-      }
-    ],
-    "common": [
+        "symptomName": "Hyperextensible skin",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
       {
-        "symptomName": "Chronic widespread musculoskeletal pain",
-        "snomedCode": "426979002",
+        "symptomName": "Acrocyanosis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Joint dislocation",
         "frequency": 0.9,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Recurrent joint subluxations or dislocations",
-        "snomedCode": "57093009",
-        "frequency": 0.85,
+        "symptomName": "Joint hypermobility",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal foot morphology",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.9,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Sleep abnormality",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Wormian bones",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hip dislocation",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elbow dislocation",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.9,
         "bodySystem": "musculoskeletal"
       },
       {
         "symptomName": "Fatigue",
-        "snomedCode": "84229001",
-        "frequency": 0.85,
+        "frequency": 0.9,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Soft or velvety skin",
-        "frequency": 0.8,
+        "symptomName": "Joint hypermobility",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Dental crowding",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Depression",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Decreased nerve conduction velocity",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Thin skin",
+        "frequency": 0.55,
         "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Easy bruising",
-        "snomedCode": "302227002",
-        "frequency": 0.75,
+        "symptomName": "Soft skin",
+        "frequency": 0.55,
         "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Functional gastrointestinal disorders",
-        "snomedCode": "235595009",
-        "frequency": 0.7,
-        "bodySystem": "gastrointestinal",
-        "notes": "IBS-like symptoms, gastroparesis, GERD common"
+        "symptomName": "Bruising susceptibility",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Orthostatic intolerance / dysautonomia",
-        "snomedCode": "30012004",
-        "frequency": 0.65,
-        "bodySystem": "cardiovascular",
-        "notes": "POTS is a frequent comorbidity"
+        "symptomName": "Striae distensae",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arachnodactyly",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mitral valve prolapse",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pes planus",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Constipation",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Malabsorption",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Rectal prolapse",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Migraine",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Osteoarthritis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Arrhythmia",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Chronic pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pelvic organ prolapse",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Anxiety and depression",
-        "snomedCode": "197480006",
-        "frequency": 0.5,
-        "bodySystem": "psychiatric"
+        "symptomName": "Inguinal hernia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Temporomandibular joint dysfunction",
-        "snomedCode": "41847000",
-        "frequency": 0.45,
+        "symptomName": "Decreased fertility",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gingival overgrowth",
+        "frequency": 0.17,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Pelvic organ prolapse",
-        "snomedCode": "237826008",
-        "frequency": 0.35,
-        "bodySystem": "renal"
+        "symptomName": "Gingivitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Chronic headaches or migraines",
-        "snomedCode": "37796009",
-        "frequency": 0.4,
-        "bodySystem": "neurological"
+        "symptomName": "Epicanthus",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Myopia",
-        "snomedCode": "57190000",
-        "frequency": 0.35,
+        "symptomName": "Epistaxis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ptosis",
+        "frequency": 0.17,
         "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Keratoconus",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Microdontia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Atypical scarring of skin",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Keratoconjunctivitis sicca",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Limitation of joint mobility",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Subcutaneous nodule",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Umbilical hernia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Gastroesophageal reflux",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Gastrointestinal dysmotility",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Aortic root aneurysm",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "High, narrow palate",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Osteolysis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of the wrist",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Paresthesia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ascending tubular aorta aneurysm",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Venous insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arterial dissection",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Aplasia/Hypoplasia of the abdominal wall musculature",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "High myopia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Abnormal autonomic nervous system physiology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anorectal anomaly",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Keratosis pilaris",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Tendon rupture",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cystocele",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Genital hernia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Menometrorrhagia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
-    "rare": [
-      {
-        "symptomName": "Chiari malformation Type I",
-        "snomedCode": "111498003",
-        "frequency": 0.1,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Mast cell activation syndrome",
-        "snomedCode": "789028002",
-        "frequency": 0.1,
-        "bodySystem": "immunological"
-      },
-      {
-        "symptomName": "Cervical spine instability",
-        "frequency": 0.08,
-        "bodySystem": "musculoskeletal",
-        "notes": "Craniocervical instability reported in some patients"
-      }
-    ]
+    "rare": []
   },
   "systemsAffected": [
-    "musculoskeletal",
     "dermatological",
+    "constitutional",
+    "musculoskeletal",
+    "otolaryngological",
+    "neurological",
+    "psychiatric",
     "cardiovascular",
     "gastrointestinal",
-    "neurological",
-    "renal",
-    "psychiatric"
+    "ophthalmological",
+    "respiratory"
   ],
   "keyFindings": {
     "laboratory": [
@@ -266,7 +520,8 @@
     "genetic": [
       "No known causative gene identified as of 2026",
       "Autosomal dominant inheritance pattern suspected",
-      "Genetic testing used to exclude other EDS subtypes (COL5A1, COL3A1, TNXB, etc.)"
+      "Genetic testing used to exclude other EDS subtypes (COL5A1, COL3A1, TNXB, etc.)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Beighton score assessment",
@@ -324,7 +579,7 @@
     "Pain Management",
     "Cardiologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Malfait F, et al. The 2017 International Classification of the Ehlers-Danlos Syndromes. Am J Med Genet C Semin Med Genet. 2017;175(1):8-26.",
     "Castori M, et al. Management of pain and fatigue in the joint hypermobility syndrome. Am J Med Genet A. 2012;158A(8):2055-70.",

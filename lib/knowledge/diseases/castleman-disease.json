@@ -15,15 +15,15 @@
   "omimId": "148000",
   "orphanetId": "160",
   "prevalence": {
-    "estimate": "UCD: 15-19 per million; iMCD: 5 per million",
-    "range": "0.0005%-0.002%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 60,
-      "peak": 40
+      "min": 0,
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -86,99 +86,166 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Lymphadenopathy (localized in UCD; generalized in MCD)",
-        "snomedCode": "30746006",
-        "frequency": 0.95,
-        "bodySystem": "immunological",
-        "notes": "UCD: single enlarged lymph node station. MCD: multiple stations."
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Fatigue/malaise",
-        "snomedCode": "84229001",
-        "frequency": 0.75,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Fever",
-        "snomedCode": "386661006",
-        "frequency": 0.6,
-        "bodySystem": "constitutional",
-        "notes": "More common in MCD; may be absent in UCD"
-      },
-      {
-        "symptomName": "Night sweats",
-        "frequency": 0.45,
-        "bodySystem": "constitutional"
-      },
-      {
         "symptomName": "Weight loss",
-        "snomedCode": "89362005",
-        "frequency": 0.5,
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hepatosplenomegaly (MCD)",
-        "frequency": 0.4,
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
         "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Follicular hyperplasia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated circulating C-reactive protein concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Constitutional symptom",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased circulating interleukin 6 concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mediastinal lymphadenopathy",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Peripheral edema/anasarca",
-        "snomedCode": "271809000",
-        "frequency": 0.3,
+        "symptomName": "Jaundice",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal distention",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Generalized lymphadenopathy",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Abnormality of the gastrointestinal tract",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Pleural effusion/ascites (TAFRO)",
-        "frequency": 0.25,
-        "bodySystem": "respiratory"
+        "symptomName": "Decreased mean corpuscular volume",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Skin rash (cherry hemangiomas, violaceous papules)",
-        "frequency": 0.15,
-        "bodySystem": "dermatological"
+        "symptomName": "Flank pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Neuropathy",
-        "frequency": 0.1,
-        "bodySystem": "neurological"
+        "symptomName": "Abdominal mass",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       }
     ],
     "rare": [
       {
-        "symptomName": "Renal failure (TAFRO subtype)",
-        "frequency": 0.1,
-        "bodySystem": "renal",
-        "notes": "TAFRO: Thrombocytopenia, Anasarca, Fever, Reticulin fibrosis, Organomegaly"
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.03,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "POEMS syndrome overlap",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "Polyneuropathy, Organomegaly, Endocrinopathy, Monoclonal protein, Skin changes"
+        "symptomName": "Hematuria",
+        "frequency": 0.03,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Paraneoplastic pemphigus (UCD)",
-        "frequency": 0.02,
-        "bodySystem": "dermatological"
+        "symptomName": "Restrictive cardiomyopathy",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Progression to lymphoma",
-        "frequency": 0.05,
-        "bodySystem": "immunological"
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.03,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Intestinal obstruction",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Ureteral obstruction",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Myelofibrosis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anasarca",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
     "immunological",
+    "constitutional",
     "hematological",
-    "renal",
     "gastrointestinal",
-    "respiratory",
-    "constitutional"
+    "renal",
+    "cardiovascular",
+    "respiratory"
   ],
   "keyFindings": {
     "laboratory": [
@@ -242,7 +309,7 @@
     "Surgeon (for UCD resection)",
     "Infectious Disease (HHV-8/HIV-associated)"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Fajgenbaum DC, et al. International, evidence-based consensus diagnostic criteria for HHV-8-negative/idiopathic multicentric Castleman disease. Blood. 2017;129(12):1646-1657.",
     "Dispenzieri A, Fajgenbaum DC. Overview of Castleman disease. Blood. 2020;135(16):1353-1364.",

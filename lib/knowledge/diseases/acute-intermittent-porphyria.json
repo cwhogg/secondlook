@@ -14,15 +14,15 @@
   "omimId": "176000",
   "orphanetId": "79276",
   "prevalence": {
-    "estimate": "1 in 10,000 to 1 in 20,000",
-    "range": "0.005%-0.01%",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 15,
-      "max": 45,
-      "peak": 30
+      "min": 10,
+      "max": 65,
+      "peak": 14
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": [
@@ -83,130 +83,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Severe colicky abdominal pain without peritoneal signs",
-        "snomedCode": "21522001",
-        "frequency": 0.95,
-        "bodySystem": "gastrointestinal",
-        "notes": "Most common presenting symptom; pain is diffuse, poorly localized"
+        "symptomName": "Abdominal pain",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Port wine or dark red-brown urine",
-        "snomedCode": "281866005",
-        "frequency": 0.75,
-        "bodySystem": "renal",
-        "notes": "Urine darkens upon standing due to PBG polymerization"
+        "symptomName": "Elevated urinary delta-aminolevulinic acid",
+        "frequency": 0.9,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Porphyrinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased urinary porphobilinogen",
+        "frequency": 0.9,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Nausea and vomiting",
-        "snomedCode": "422400008",
-        "frequency": 0.8,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Tachycardia",
-        "snomedCode": "3424008",
-        "frequency": 0.75,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.55,
+        "bodySystem": "renal"
       },
       {
         "symptomName": "Hypertension",
-        "snomedCode": "38341003",
-        "frequency": 0.7,
+        "frequency": 0.55,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Constipation",
-        "snomedCode": "14760008",
-        "frequency": 0.7,
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Tachycardia",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.55,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Anxiety and restlessness",
-        "snomedCode": "48694002",
-        "frequency": 0.65,
-        "bodySystem": "psychiatric"
+        "symptomName": "Constipation",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
         "symptomName": "Limb pain",
-        "snomedCode": "10601006",
-        "frequency": 0.6,
+        "frequency": 0.55,
         "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Neck pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Motor neuropathy / muscle weakness",
-        "snomedCode": "26544005",
-        "frequency": 0.45,
-        "bodySystem": "neurological",
-        "notes": "Predominantly motor; can progress to quadriparesis"
+        "symptomName": "Restlessness",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Seizures",
-        "snomedCode": "91175000",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "notes": "Often due to hyponatremia from SIADH"
+        "symptomName": "Depression",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Hallucinations",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Excessive daytime somnolence",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Confusion",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hepatocellular carcinoma",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Respiratory paralysis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Memory impairment",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Distal muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Ileus",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
         "symptomName": "Hyponatremia",
-        "snomedCode": "89627008",
-        "frequency": 0.35,
-        "bodySystem": "endocrine",
-        "notes": "Due to SIADH"
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Psychiatric symptoms (hallucinations, confusion, psychosis)",
-        "snomedCode": "69322001",
-        "frequency": 0.3,
-        "bodySystem": "psychiatric"
+        "symptomName": "Abdominal distention",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Somatic sensory dysfunction",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weakness of muscles of respiration",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Motor axonal neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pseudobulbar paralysis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Motor polyneuropathy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Proximal muscle weakness in lower limbs",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Proximal muscle weakness in upper limbs",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Paranoia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dark urine",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
         "symptomName": "Insomnia",
-        "snomedCode": "193462001",
-        "frequency": 0.35,
-        "bodySystem": "psychiatric"
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Respiratory paralysis",
-        "snomedCode": "87317003",
-        "frequency": 0.05,
-        "bodySystem": "respiratory",
-        "notes": "Life-threatening; requires mechanical ventilation"
+        "symptomName": "Urinary retention",
+        "frequency": 0.03,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Posterior reversible encephalopathy syndrome (PRES)",
-        "snomedCode": "439127006",
-        "frequency": 0.05,
+        "symptomName": "Urinary incontinence",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hyperhidrosis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Coma",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Tremor",
+        "frequency": 0.03,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Chronic renal insufficiency",
-        "snomedCode": "723190009",
-        "frequency": 0.08,
-        "bodySystem": "renal",
-        "notes": "Associated with chronic disease; long-term complication"
-      },
-      {
-        "symptomName": "Hepatocellular carcinoma",
-        "snomedCode": "25370001",
+        "symptomName": "Dysuria",
         "frequency": 0.03,
-        "bodySystem": "gastrointestinal",
-        "notes": "Long-term risk in recurrent AIP; screening recommended after age 50"
+        "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
-    "neurological",
     "gastrointestinal",
-    "cardiovascular",
-    "psychiatric",
     "renal",
-    "endocrine"
+    "constitutional",
+    "cardiovascular",
+    "neurological",
+    "musculoskeletal",
+    "psychiatric",
+    "respiratory"
   ],
   "keyFindings": {
     "laboratory": [
@@ -222,10 +364,8 @@
       "Hepatic MRI or ultrasound for HCC screening in chronic patients"
     ],
     "genetic": [
-      "Autosomal dominant inheritance",
-      "Pathogenic variants in HMBS gene (chromosome 11q23.3)",
-      "Over 400 mutations identified",
-      "Low clinical penetrance (~10-20%)"
+      "HMBS (causative)",
+      "Autosomal dominant inheritance"
     ],
     "other": [
       "Watson-Schwartz test (qualitative urine PBG screening)",
@@ -281,7 +421,7 @@
     "Neurologist",
     "Porphyria Specialist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Bissell DM, et al. Porphyria. N Engl J Med. 2017;377(9):862-872.",
     "Anderson KE, et al. Recommendations for the diagnosis and treatment of the acute porphyrias. Ann Intern Med. 2005;142(6):439-50.",

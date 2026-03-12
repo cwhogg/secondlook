@@ -16,15 +16,15 @@
   "omimId": "188400",
   "orphanetId": "567",
   "prevalence": {
-    "estimate": "1 in 4,000 to 1 in 6,000 live births",
-    "range": "0.017%-0.025%",
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
     "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 5,
-      "peak": 0
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -76,111 +76,685 @@
     "notes": "Most common microdeletion syndrome in humans. ~90% have a ~3 Mb deletion; ~8% have a ~1.5 Mb deletion. TBX1 is the critical gene. ~90-95% are de novo; ~5-10% inherited from an affected parent."
   },
   "symptoms": {
-    "pathognomonic": [],
-    "common": [
+    "pathognomonic": [
       {
-        "symptomName": "Congenital heart defects",
-        "snomedCode": "13213009",
-        "frequency": 0.75,
-        "bodySystem": "cardiovascular",
-        "notes": "Tetralogy of Fallot (20%), VSD, interrupted aortic arch type B, truncus arteriosus"
-      },
-      {
-        "symptomName": "Characteristic facial features",
-        "frequency": 0.8,
-        "bodySystem": "constitutional",
-        "notes": "Long face, hooded eyelids, broad nasal bridge, bulbous nasal tip, small low-set ears"
-      },
-      {
-        "symptomName": "Palatal abnormalities (VPI, cleft palate)",
-        "snomedCode": "87979003",
-        "frequency": 0.7,
+        "symptomName": "Cleft palate",
+        "frequency": 0.9,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Speech and language delay",
-        "snomedCode": "229721007",
-        "frequency": 0.75,
+        "symptomName": "Epicanthus",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Low-set ears",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Conductive hearing impairment",
+        "frequency": 0.9,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Bulbous nose",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Prominent nasal bridge",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Wide nasal bridge",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Telecanthus",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Upslanted palpebral fissure",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Abnormality of the pharynx",
+        "frequency": 0.9,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Hypoplasia of the thymus",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.9,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Learning difficulties",
-        "snomedCode": "3446000",
-        "frequency": 0.7,
-        "bodySystem": "neurological",
-        "notes": "Average IQ ~70-85; range varies widely"
+        "symptomName": "Hypernasal speech",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ventricular septal defect",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrial septal defect",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Tetralogy of Fallot",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pulmonary valve morphology",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Truncus arteriosus",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal facial shape",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Platybasia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Immunodeficiency",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Abnormal aortic arch morphology",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal cardiovascular system morphology",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abnormality of T cell physiology",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Renal hypoplasia",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormality of the dentition",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Malar flattening",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Long face",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Long philtrum",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hearing impairment",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Small earlobe",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chronic otitis media",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Overfolded helix",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Short neck",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal eyelid morphology",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ptosis",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Posterior embryotoxon",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Carious teeth",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Hypoparathyroidism",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Abnormal skull morphology",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seborrheic dermatitis",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Acne",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arachnodactyly",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intellectual disability, mild",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Global developmental delay",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tetany",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Constipation",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Meningocele",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hypocalcemia",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Short stature",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Attention deficit hyperactivity disorder",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Corneal neovascularization",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Anorectal anomaly",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of the tonsils",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hypocalcemia (neonatal or intermittent)",
-        "snomedCode": "5291005",
-        "frequency": 0.45,
-        "bodySystem": "endocrine",
-        "notes": "From hypoparathyroidism; may present as neonatal seizures"
+        "symptomName": "Joint hypermobility",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Immunodeficiency (T-cell deficiency)",
-        "snomedCode": "234532001",
-        "frequency": 0.5,
-        "bodySystem": "immunological",
-        "notes": "Ranges from mild T-cell lymphopenia to severe combined immunodeficiency (complete DiGeorge, rare)"
-      },
-      {
-        "symptomName": "Feeding difficulties in infancy",
-        "snomedCode": "78164000",
-        "frequency": 0.45,
+        "symptomName": "Inguinal hernia",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Renal anomalies",
-        "snomedCode": "41931001",
-        "frequency": 0.3,
-        "bodySystem": "renal"
+        "symptomName": "Cryptorchidism",
+        "frequency": 0.17,
+        "bodySystem": "reproductive"
       },
       {
-        "symptomName": "Anxiety disorders",
-        "snomedCode": "197480006",
-        "frequency": 0.35,
+        "symptomName": "Hypospadias",
+        "frequency": 0.17,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Vesicoureteral reflux",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Polycystic kidney dysplasia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of the uterus",
+        "frequency": 0.17,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Narrow mouth",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Microcephaly",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Turricephaly",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypertelorism",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Short philtrum",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Micrognathia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Choanal atresia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Strabismus",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Downslanted palpebral fissures",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Glaucoma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Cataract",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Microphthalmia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Abnormality of dental enamel",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Atypical behavior",
+        "frequency": 0.17,
         "bodySystem": "psychiatric"
-      }
-    ],
-    "rare": [
-      {
-        "symptomName": "Schizophrenia / psychotic disorder",
-        "snomedCode": "58214004",
-        "frequency": 0.1,
-        "bodySystem": "psychiatric",
-        "notes": "~25-fold increased risk compared to general population; onset typically late adolescence/young adulthood"
       },
       {
-        "symptomName": "Autoimmune disorders (JIA, ITP, autoimmune thyroid disease)",
-        "snomedCode": "85828009",
-        "frequency": 0.08,
-        "bodySystem": "immunological"
+        "symptomName": "Depression",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Growth hormone deficiency / short stature",
-        "snomedCode": "237837007",
-        "frequency": 0.1,
+        "symptomName": "Autism",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Abnormal thorax morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypothyroidism",
+        "frequency": 0.17,
         "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Skeletal anomalies (vertebral, limb)",
-        "snomedCode": "43029002",
-        "frequency": 0.08,
+        "symptomName": "Hyperthyroidism",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Purpura",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hypopigmented skin patches",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Cholelithiasis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Retinal arteriolar tortuosity",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hand polydactyly",
+        "frequency": 0.17,
         "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Parkinsonism",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Intrauterine growth retardation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Obesity",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Umbilical hernia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Polyhydramnios",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Laryngomalacia",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Patent ductus arteriosus",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal aortic valve morphology",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Talipes equinovarus",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Foot polydactyly",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of thrombocytes",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Gastroesophageal reflux",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anal atresia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Asthma",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormal lung lobation",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Arrhinencephaly",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gastrointestinal hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Aganglionic megacolon",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spina bifida",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Intestinal malrotation",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Bowel incontinence",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Varicose veins",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Autoimmunity",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Patellar dislocation",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Multiple renal cysts",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Chronic pulmonary obstruction",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Bipolar affective disorder",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Multiple suture craniosynostosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Tricuspid atresia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hypertensive crisis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Atelectasis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Schizophrenia",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       }
-    ]
+    ],
+    "rare": []
   },
   "systemsAffected": [
+    "musculoskeletal",
+    "constitutional",
+    "otolaryngological",
+    "ophthalmological",
+    "neurological",
     "cardiovascular",
     "immunological",
-    "endocrine",
-    "neurological",
-    "psychiatric",
     "renal",
-    "gastrointestinal"
+    "psychiatric",
+    "endocrine",
+    "dermatological",
+    "gastrointestinal",
+    "reproductive",
+    "hematological",
+    "respiratory"
   ],
   "keyFindings": {
     "laboratory": [
@@ -197,11 +771,17 @@
       "Brain MRI may show polymicrogyria or white matter abnormalities"
     ],
     "genetic": [
-      "22q11.2 deletion detected by chromosomal microarray (preferred first-line test)",
-      "FISH for 22q11.2 deletion",
-      "MLPA",
-      "~90-95% de novo; ~5-10% inherited (autosomal dominant)",
-      "TBX1 is the critical haploinsufficient gene"
+      "TBX1 (causative)",
+      "TBX1 (phenotype modifier)",
+      "ARVCF (phenotype modifier)",
+      "GP1BB (phenotype modifier)",
+      "UFD1 (phenotype modifier)",
+      "HIRA (phenotype modifier)",
+      "COMT (phenotype modifier)",
+      "JMJD1C (modifier)",
+      "RREB1 (modifier)",
+      "SEC24C (modifier)",
+      "~90-95% de novo; ~5-10% inherited (autosomal dominant)"
     ],
     "other": [
       "Formal speech and language assessment",
@@ -255,7 +835,7 @@
     "Psychiatrist",
     "Developmental Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "McDonald-McGinn DM, et al. 22q11.2 deletion syndrome. Nat Rev Dis Primers. 2015;1:15071.",
     "Bassett AS, et al. Practical guidelines for managing patients with 22q11.2 deletion syndrome. J Pediatr. 2011;159(2):332-339.e1.",

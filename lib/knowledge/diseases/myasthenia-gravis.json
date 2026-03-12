@@ -13,14 +13,15 @@
   "omimId": "254200",
   "orphanetId": "589",
   "prevalence": {
-    "estimate": "15-30 per 100,000",
-    "range": "10-40 per 100,000",
-    "classification": "uncommon"
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 80
+      "min": 0,
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": [
@@ -75,111 +76,252 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Fatigable ptosis",
-        "snomedCode": "11934000",
-        "frequency": 0.85,
-        "bodySystem": "ophthalmological",
-        "notes": "Worsens with sustained upgaze; most common presenting sign"
-      },
-      {
-        "symptomName": "Fatigable diplopia",
-        "snomedCode": "24982008",
-        "frequency": 0.8,
-        "bodySystem": "ophthalmological",
-        "notes": "Fluctuating and variable; does not conform to single nerve palsy pattern"
-      },
-      {
-        "symptomName": "Fatigable weakness worsening with repetitive use",
-        "snomedCode": "26544005",
+        "symptomName": "Muscle weakness",
         "frequency": 0.9,
-        "bodySystem": "musculoskeletal",
-        "notes": "Cardinal feature: weakness worsens with activity, improves with rest"
+        "bodySystem": "musculoskeletal"
       }
     ],
     "common": [
       {
-        "symptomName": "Bulbar weakness (dysarthria and dysphagia)",
-        "snomedCode": "288959006",
-        "frequency": 0.6,
-        "bodySystem": "neurological",
-        "notes": "Nasal speech, difficulty chewing, liquids may come out of nose"
-      },
-      {
-        "symptomName": "Proximal limb weakness",
-        "snomedCode": "249938007",
-        "frequency": 0.5,
-        "bodySystem": "musculoskeletal",
-        "notes": "Arms typically affected before legs"
-      },
-      {
-        "symptomName": "Facial weakness",
-        "snomedCode": "95667003",
-        "frequency": 0.5,
-        "bodySystem": "neurological",
-        "notes": "Snarling smile, difficulty whistling"
-      },
-      {
-        "symptomName": "Neck flexor weakness",
-        "snomedCode": "249937002",
-        "frequency": 0.45,
-        "bodySystem": "musculoskeletal",
-        "notes": "Head drop sign"
-      },
-      {
-        "symptomName": "Voice fatigue",
-        "snomedCode": "44564008",
+        "symptomName": "Ptosis",
         "frequency": 0.55,
-        "bodySystem": "neurological",
-        "notes": "Voice becomes progressively weaker during conversation"
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Ophthalmoparesis",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Diplopia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of the thymus",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Bulbar palsy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dysphonia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Skeletal muscle atrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Difficulty climbing stairs",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Limb muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Thymus hyperplasia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Single fiber EMG abnormality",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigable weakness of skeletal muscles",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Acetylcholine receptor antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Muscle specific kinase antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Weakness of facial musculature",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Myositis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anti-titin antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-ryanodine receptor antibody",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-Kv1.4 antibody",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-DCC netrin 1 receptor antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Respiratory weakness",
-        "snomedCode": "409622000",
-        "frequency": 0.2,
-        "bodySystem": "respiratory",
-        "notes": "Dyspnea on exertion; can progress to myasthenic crisis"
+        "symptomName": "Raynaud phenomenon",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Jaw fatigue with chewing",
-        "snomedCode": "298378000",
-        "frequency": 0.35,
-        "bodySystem": "neurological",
-        "notes": "Jaw may hang open after prolonged chewing"
+        "symptomName": "Thymoma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Difficulty holding head up",
-        "frequency": 0.3,
-        "bodySystem": "musculoskeletal",
-        "notes": "Dropped head syndrome"
+        "symptomName": "Anti-Lrp4 antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Hyperthyroidism",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Hashimoto thyroiditis",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Rheumatoid arthritis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Systemic lupus erythematosus",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Glycosuria",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Paresthesia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Primary adrenal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Hyperacusis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Tongue atrophy",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
       }
     ],
     "rare": [
       {
-        "symptomName": "Isolated limb weakness without ocular symptoms",
-        "frequency": 0.05,
-        "bodySystem": "musculoskeletal",
-        "notes": "Uncommon presentation; usually ocular symptoms develop"
+        "symptomName": "Psychosis",
+        "frequency": 0.03,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Myasthenic crisis (respiratory failure)",
-        "snomedCode": "91637004",
-        "frequency": 0.15,
-        "bodySystem": "respiratory",
-        "notes": "Life-threatening; requires ICU admission and ventilatory support"
+        "symptomName": "Acrocyanosis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Tongue atrophy",
-        "frequency": 0.1,
-        "bodySystem": "neurological",
-        "notes": "More common in MuSK-positive MG"
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemolytic anemia",
+        "frequency": 0.03,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hepatitis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pure red cell aplasia",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
+    "cardiovascular",
+    "constitutional",
+    "immunological",
+    "psychiatric",
     "neurological",
-    "respiratory"
+    "hematological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "ophthalmological",
+    "respiratory",
+    "otolaryngological",
+    "endocrine",
+    "dermatological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -194,7 +336,8 @@
     ],
     "genetic": [
       "HLA-B8, DR3 association with early-onset MG",
-      "Congenital myasthenic syndromes have distinct genetic causes (not autoimmune)"
+      "Congenital myasthenic syndromes have distinct genetic causes (not autoimmune)",
+      "Multigenic/multifactorial inheritance"
     ],
     "other": [
       "Repetitive nerve stimulation showing >10% decremental response at 2-3 Hz",
@@ -245,7 +388,7 @@
     "neuromuscular specialist",
     "thoracic surgeon"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Gilhus NE, et al. Myasthenia gravis. Nat Rev Dis Primers. 2019;5(1):30.",
     "Sanders DB, et al. International consensus guidance for management of myasthenia gravis. Neurology. 2016;87(4):419-425.",

@@ -13,15 +13,15 @@
   "omimId": "223900",
   "orphanetId": "ORPHA1764",
   "prevalence": {
-    "estimate": "1 per 3,600 live births in Ashkenazi Jewish population; extremely rare outside this group",
-    "range": "Carrier frequency ~1:30 in Ashkenazi Jews",
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
     "classification": "ultra-rare"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 0,
-      "peak": 0
+      "max": 12,
+      "peak": 7
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -74,114 +74,207 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Alacrima (absence of emotional tears) from birth",
-        "snomedCode": "246921003",
-        "frequency": 0.98,
-        "bodySystem": "ophthalmological",
-        "notes": "One of the earliest and most consistent findings"
-      },
-      {
-        "symptomName": "Absent fungiform papillae on the tongue",
-        "frequency": 0.99,
-        "bodySystem": "gastrointestinal",
-        "notes": "Smooth tongue appearance is virtually pathognomonic"
-      }
-    ],
-    "common": [
-      {
-        "symptomName": "Autonomic crises (episodic hypertension, tachycardia, diaphoresis, vomiting)",
-        "frequency": 0.8,
-        "bodySystem": "neurological",
-        "notes": "Can be triggered by emotional or physical stress"
-      },
-      {
-        "symptomName": "Feeding difficulty and dysphagia from infancy",
-        "snomedCode": "40739000",
+        "symptomName": "Alacrima",
         "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Reduced pain and temperature sensitivity",
-        "snomedCode": "44077006",
-        "frequency": 0.95,
+        "symptomName": "Abnormal pupil morphology",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypohidrosis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhidrosis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyporeflexia",
+        "frequency": 0.9,
         "bodySystem": "neurological"
       },
       {
         "symptomName": "Orthostatic hypotension",
-        "snomedCode": "28651003",
-        "frequency": 0.75,
-        "bodySystem": "cardiovascular"
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Absent deep tendon reflexes",
-        "snomedCode": "37280007",
+        "symptomName": "Growth delay",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Malignant hyperthermia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "EMG abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Impaired pain sensation",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
         "frequency": 0.9,
         "bodySystem": "neurological"
       }
     ],
-    "occasional": [
+    "common": [
       {
-        "symptomName": "Scoliosis",
-        "snomedCode": "298382003",
-        "frequency": 0.5,
-        "bodySystem": "musculoskeletal",
-        "notes": "Progressive, often requiring surgical correction"
+        "symptomName": "Atypical behavior",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Recurrent aspiration pneumonia",
-        "snomedCode": "422588002",
-        "frequency": 0.4,
+        "symptomName": "Hypertension",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Gait disturbance",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Recurrent respiratory infections",
+        "frequency": 0.55,
         "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Episodic vomiting (cyclical vomiting-like crises)",
-        "snomedCode": "249497008",
-        "frequency": 0.5,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Scoliosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Corneal ulceration (neuropathic keratopathy)",
-        "snomedCode": "95730006",
-        "frequency": 0.35,
+        "symptomName": "Corneal erosion",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Abnormality of the kidney",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Myopia",
+        "frequency": 0.17,
         "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Gait unsteadiness / ataxia",
-        "snomedCode": "25136009",
-        "frequency": 0.45,
+        "symptomName": "Optic atrophy",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Acrocyanosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Heterochromia iridis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
         "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tachycardia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Gastroesophageal reflux",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormality of the pleura",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of the peritoneum",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Recurrent fractures",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Osteolysis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hyponatremia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Corneal opacity",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Avascular necrosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Glomerulopathy",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       }
     ],
-    "rare": [
-      {
-        "symptomName": "Renal failure",
-        "snomedCode": "42399005",
-        "frequency": 0.15,
-        "bodySystem": "renal",
-        "notes": "Chronic kidney disease develops in some adults"
-      },
-      {
-        "symptomName": "Seizures",
-        "snomedCode": "91175000",
-        "frequency": 0.1,
-        "bodySystem": "neurological",
-        "notes": "May occur during autonomic crises with severe hypertension"
-      },
-      {
-        "symptomName": "Painless fractures (from insensitivity to pain)",
-        "frequency": 0.15,
-        "bodySystem": "musculoskeletal"
-      }
-    ]
+    "rare": []
   },
   "systemsAffected": [
+    "renal",
+    "constitutional",
+    "ophthalmological",
+    "psychiatric",
+    "cardiovascular",
     "neurological",
     "gastrointestinal",
-    "ophthalmological",
-    "cardiovascular",
-    "musculoskeletal",
     "respiratory",
-    "renal"
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -193,10 +286,8 @@
       "Spine imaging: scoliosis assessment"
     ],
     "genetic": [
-      "Autosomal recessive inheritance",
-      "ELP1 (IKBKAP) gene on chromosome 9q31",
-      "Major Ashkenazi Jewish founder mutation: IVS20+6T>C (splice site)",
-      "Second known mutation: R696P (very rare)"
+      "ELP1 (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Absent axon flare response to intradermal histamine",
@@ -234,7 +325,7 @@
     "Medical geneticist",
     "Gastroenterologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Axelrod FB. Familial dysautonomia. Muscle Nerve. 2004;29(3):352-363.",
     "Norcliffe-Kaufmann L, et al. Familial dysautonomia: history, genotype, phenotype and translational research. Prog Neurobiol. 2017;152:131-148.",

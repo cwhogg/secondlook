@@ -15,15 +15,15 @@
   "omimId": "232300",
   "orphanetId": "365",
   "prevalence": {
-    "estimate": "1 in 40,000 (combined infantile and late-onset); infantile-onset ~1 in 138,000",
-    "range": "0.0007%-0.0025%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 60,
-      "peak": 35
+      "max": 65,
+      "peak": 14
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -78,121 +78,383 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Hypertrophic cardiomyopathy with generalized hypotonia in infant (infantile-onset)",
-        "snomedCode": "45227007",
-        "frequency": 0.95,
-        "bodySystem": "cardiovascular",
-        "notes": "Massive cardiomegaly in IOPD; typically absent in LOPD"
+        "symptomName": "Muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Progressive proximal muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Oligosacchariduria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased circulating acid maltase activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Progressive proximal muscle weakness (limb-girdle pattern)",
-        "snomedCode": "26544005",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal",
-        "notes": "Lower limbs and trunk affected earlier than upper limbs; Gowers sign may be present"
+        "symptomName": "Gait disturbance",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Respiratory insufficiency / diaphragmatic weakness",
-        "snomedCode": "409623005",
-        "frequency": 0.85,
-        "bodySystem": "respiratory",
-        "notes": "Disproportionate to limb weakness; may present as sleep-disordered breathing or respiratory failure. May be presenting feature in LOPD."
-      },
-      {
-        "symptomName": "Hypotonia ('floppy infant' in IOPD)",
-        "snomedCode": "398152000",
-        "frequency": 0.95,
-        "bodySystem": "musculoskeletal",
-        "notes": "Infantile-onset; profound generalized hypotonia with head lag and frog-leg posture"
-      },
-      {
-        "symptomName": "Exercise intolerance and fatigue",
-        "snomedCode": "84229001",
-        "frequency": 0.75,
+        "symptomName": "Hypomimic face",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Feeding difficulties and failure to thrive (IOPD)",
-        "snomedCode": "78164000",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal",
-        "notes": "Infantile-onset presentation"
+        "symptomName": "Delayed speech and language development",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hyporeflexia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Motor delay",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Areflexia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tongue fasciculations",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Growth delay",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cardiomegaly",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Left ventricular hypertrophy",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Recurrent respiratory infections",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Respiratory insufficiency due to muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Exertional dyspnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Elevated circulating creatine kinase concentration",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Gowers sign",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "EMG: myopathic abnormalities",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Difficulty climbing stairs",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Respiratory tract infection",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased circulating lactate dehydrogenase concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Heart murmur",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Glycogen accumulation in muscle fiber lysosomes",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated circulating alanine aminotransferase concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Camptocormia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Macroglossia (IOPD)",
-        "snomedCode": "79617003",
-        "frequency": 0.35,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Abnormal internal carotid artery morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hepatomegaly (IOPD)",
-        "snomedCode": "80515008",
-        "frequency": 0.4,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Macroglossia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Scapular winging",
-        "snomedCode": "64667009",
-        "frequency": 0.4,
-        "bodySystem": "musculoskeletal",
-        "notes": "Common in LOPD; paraspinal and abdominal wall weakness"
-      },
-      {
-        "symptomName": "Lower back pain",
-        "snomedCode": "279039007",
-        "frequency": 0.4,
+        "symptomName": "Tongue muscle weakness",
+        "frequency": 0.17,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Sleep-disordered breathing / nocturnal hypoventilation",
-        "snomedCode": "73430006",
-        "frequency": 0.5,
-        "bodySystem": "respiratory",
-        "notes": "May precede daytime respiratory symptoms in LOPD"
+        "symptomName": "Facial hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Ptosis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Osteoporosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypertrophic cardiomyopathy",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Respiratory distress",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Transient ischemic attack",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Inability to walk",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hyperlordosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Dilatation of the cerebral artery",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Shortened PR interval",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Impaired mastication",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Floppy infant",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Diaphragmatic weakness",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Sleep apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chronic pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Thoracic aortic aneurysm",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Orthopnea",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigable weakness of swallowing muscles",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigable weakness of respiratory muscles",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Basilar artery calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Left ventricular outflow tract obstruction",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
       }
     ],
     "rare": [
       {
-        "symptomName": "Rigid spine syndrome",
-        "frequency": 0.08,
+        "symptomName": "Flexion contracture",
+        "frequency": 0.03,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Ptosis",
-        "snomedCode": "11934000",
-        "frequency": 0.1,
+        "symptomName": "Bowel incontinence",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Motor axonal neuropathy",
+        "frequency": 0.03,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Scoliosis",
-        "snomedCode": "298382003",
-        "frequency": 0.15,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Small fiber neuropathy",
-        "snomedCode": "36031001",
-        "frequency": 0.1,
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.03,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Cerebrovascular anomalies (intracranial aneurysms, dolichoectasia)",
-        "frequency": 0.08,
-        "bodySystem": "neurological",
-        "notes": "Glycogen accumulation in vascular smooth muscle; basilar artery aneurysm reported"
+        "symptomName": "Atelectasis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
-    "musculoskeletal",
-    "respiratory",
-    "cardiovascular",
     "neurological",
-    "gastrointestinal"
+    "constitutional",
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "hematological",
+    "otolaryngological",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -283,7 +545,7 @@
     "Neurologist",
     "Physical Medicine and Rehabilitation"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Kishnani PS, et al. Pompe disease diagnosis and management guideline. Genet Med. 2006;8(5):267-88.",
     "van der Ploeg AT, Reuser AJ. Pompe's disease. Lancet. 2008;372(9646):1342-53.",

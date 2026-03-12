@@ -24,15 +24,15 @@
   "omimId": "222100",
   "orphanetId": "233",
   "prevalence": {
-    "estimate": "100-300 per 100,000",
-    "range": "100-500 per 100,000 depending on region",
-    "classification": "common"
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 4,
-      "max": 40,
-      "peak": 13
+      "min": 0,
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -87,110 +87,331 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Diabetic ketoacidosis at presentation",
-        "snomedCode": "420422005",
-        "frequency": 0.3,
-        "bodySystem": "endocrine",
-        "notes": "DKA as initial presentation in ~30% of new diagnoses; characterized by hyperglycemia, ketonemia, metabolic acidosis"
+        "symptomName": "Strabismus",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Rapid onset of insulin-dependent hyperglycemia with ketosis",
-        "frequency": 0.8,
-        "bodySystem": "endocrine"
+        "symptomName": "Abnormality of eye movement",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Oculomotor apraxia",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Duane anomaly",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Oculomotor nerve palsy",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Short palpebral fissure",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
       }
     ],
     "common": [
       {
-        "symptomName": "Polyuria",
-        "snomedCode": "28442001",
-        "frequency": 0.8,
-        "bodySystem": "endocrine"
+        "symptomName": "Sensorineural hearing impairment",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Polydipsia",
-        "snomedCode": "17173007",
-        "frequency": 0.8,
+        "symptomName": "Anteverted nares",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Unintentional weight loss",
-        "snomedCode": "89362005",
-        "frequency": 0.6,
+        "symptomName": "Deeply set eye",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Impaired ocular adduction",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Blepharophimosis",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Impaired ocular abduction",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Low posterior hairline",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Fatigue",
-        "snomedCode": "84229001",
-        "frequency": 0.7,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Polyphagia",
-        "snomedCode": "38868003",
-        "frequency": 0.4,
-        "bodySystem": "constitutional"
+        "symptomName": "Abnormal vertebral segmentation and fusion",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Blurred vision",
-        "snomedCode": "111516008",
-        "frequency": 0.2,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Ectopic kidney",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Recurrent infections (candidiasis, UTI)",
-        "snomedCode": "78048006",
-        "frequency": 0.15,
+        "symptomName": "Cleft palate",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Nausea and vomiting (DKA)",
-        "snomedCode": "422587007",
-        "frequency": 0.25,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Everted lower lip vermilion",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Abdominal pain (DKA)",
-        "snomedCode": "21522001",
-        "frequency": 0.2,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Microcephaly",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Enuresis in children (new onset)",
-        "snomedCode": "8009008",
-        "frequency": 0.3,
-        "bodySystem": "renal"
+        "symptomName": "Facial asymmetry",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Micrognathia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Preauricular skin tag",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Stenosis of the external auditory canal",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Wide nasal bridge",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Webbed neck",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Short neck",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Microcornea",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ptosis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Aniridia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chorioretinal coloboma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Iris coloboma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Abnormal pupil morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Blepharospasm",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Amblyopia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hypopigmented skin patches",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Brachydactyly",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Preaxial hand polydactyly",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Triphalangeal thumb",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Plagiocephaly",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Talipes equinovarus",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hypoplasia of the radius",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Skeletal muscle atrophy",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Spina bifida occulta",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal form of the vertebral bodies",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Absent radius",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Irregular hyperpigmentation",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Optic disc hypoplasia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Central heterochromia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypoplastic iris stroma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Aplasia/Hypoplasia of the thumb",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Patchy hypopigmentation of hair",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Narrow internal auditory canal",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Camptodactyly",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Anorectal anomaly",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Marcus Gunn jaw winking synkinesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cardiovascular system morphology",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Compensatory head posture",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gustatory lacrimation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal pinna morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
-    "rare": [
-      {
-        "symptomName": "Cerebral edema (DKA complication in children)",
-        "snomedCode": "2032001",
-        "frequency": 0.01,
-        "bodySystem": "neurological",
-        "notes": "Rare but potentially fatal; occurs during DKA treatment"
-      },
-      {
-        "symptomName": "Honeymoon phase (transient remission)",
-        "frequency": 0.3,
-        "bodySystem": "endocrine",
-        "notes": "Partial remission with decreased insulin requirements; typically lasts weeks to months after diagnosis"
-      },
-      {
-        "symptomName": "Kussmaul breathing (DKA)",
-        "snomedCode": "51615001",
-        "frequency": 0.15,
-        "bodySystem": "respiratory"
-      }
-    ]
+    "rare": []
   },
   "systemsAffected": [
-    "endocrine",
-    "cardiovascular",
+    "ophthalmological",
+    "constitutional",
+    "otolaryngological",
+    "musculoskeletal",
     "renal",
     "neurological",
-    "ophthalmological"
+    "cardiovascular",
+    "dermatological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -211,12 +432,11 @@
       "Abdominal CT if DKA with atypical features (exclude pancreatitis, pancreatic pathology)"
     ],
     "genetic": [
-      "HLA-DR3/DR4-DQ2/DQ8 haplotypes (highest risk; 30-50x increased)",
-      "HLA-DR3 (DRB1*0301-DQB1*0201)",
-      "HLA-DR4 (DRB1*0401-DQB1*0302)",
-      "INS gene (insulin VNTR) polymorphisms",
-      "PTPN22, CTLA-4, IL2RA gene variants",
-      "Over 60 susceptibility loci identified"
+      "CHN1 (causative)",
+      "MAFB (causative, loss-of-function)",
+      "SALL4 (causative)",
+      "Autosomal dominant inheritance",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Screening for associated autoimmune conditions: thyroid (anti-TPO, TSH), celiac (tTG-IgA), adrenal (21-OH antibodies)"
@@ -272,7 +492,7 @@
     "Pediatric Endocrinology",
     "Diabetology"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "American Diabetes Association Professional Practice Committee. Classification and Diagnosis of Diabetes: Standards of Care in Diabetes-2024. Diabetes Care. 2024;47(Supplement_1):S20-S42.",
     "Holt RIG, et al. The management of type 1 diabetes in adults. A consensus report by the American Diabetes Association (ADA) and the European Association for the Study of Diabetes (EASD). Diabetes Care. 2021;44(11):2589-2625.",

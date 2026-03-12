@@ -13,15 +13,15 @@
   "omimId": "600807",
   "orphanetId": "761",
   "prevalence": {
-    "estimate": "10-20 per 100,000 in children; 1-2 per 100,000 in adults",
-    "range": "1-20 per 100,000",
+    "estimate": "6-9 in 10,000",
+    "range": "6-9 / 10 000",
     "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 3,
-      "max": 10,
-      "peak": 6
+      "min": 2,
+      "max": 12,
+      "peak": 7
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": [
@@ -69,117 +69,192 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Palpable purpura (lower extremities and buttocks)",
-        "snomedCode": "20143000",
-        "frequency": 0.95,
-        "bodySystem": "dermatological",
-        "notes": "Non-thrombocytopenic; gravity-dependent distribution; mandatory for diagnosis"
+        "symptomName": "Hematuria",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "IgA deposits on skin or renal biopsy",
-        "frequency": 0.8,
+        "symptomName": "Bruising susceptibility",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Purpura",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Gastrointestinal infarctions",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pustule",
+        "frequency": 0.9,
         "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Arthritis/arthralgia (knees, ankles)",
-        "snomedCode": "57676002",
-        "frequency": 0.75,
-        "bodySystem": "musculoskeletal",
-        "notes": "Non-destructive; periarticular swelling"
+        "symptomName": "Arthritis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Colicky abdominal pain",
-        "snomedCode": "21522001",
-        "frequency": 0.65,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hematuria (microscopic or gross)",
-        "snomedCode": "34436003",
-        "frequency": 0.4,
-        "bodySystem": "renal"
+        "symptomName": "Anorexia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Proteinuria",
-        "snomedCode": "29738008",
-        "frequency": 0.35,
-        "bodySystem": "renal"
+        "symptomName": "Migraine",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Nausea and vomiting",
-        "snomedCode": "422587007",
-        "frequency": 0.35,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Infectious encephalitis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Erythema",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Vascular skin abnormality",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Orchitis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skin ulcer",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Gastrointestinal bleeding (melena, hematochezia)",
-        "snomedCode": "74474003",
-        "frequency": 0.2,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Intussusception",
-        "snomedCode": "19063002",
-        "frequency": 0.05,
-        "bodySystem": "gastrointestinal",
-        "notes": "Especially in children; usually ileocolic"
+        "symptomName": "Proteinuria",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Testicular/scrotal involvement (orchitis)",
-        "snomedCode": "274718006",
-        "frequency": 0.1,
-        "bodySystem": "constitutional",
-        "notes": "Acute scrotum in boys; can mimic testicular torsion"
+        "symptomName": "Optic atrophy",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Subcutaneous edema (scalp, periorbital in young children)",
-        "snomedCode": "65124004",
-        "frequency": 0.15,
+        "symptomName": "Edema",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Urticaria",
+        "frequency": 0.17,
         "bodySystem": "dermatological"
-      }
-    ],
-    "rare": [
-      {
-        "symptomName": "Nephrotic syndrome",
-        "snomedCode": "52254009",
-        "frequency": 0.05,
-        "bodySystem": "renal"
       },
       {
-        "symptomName": "Rapidly progressive glomerulonephritis",
-        "snomedCode": "36171008",
-        "frequency": 0.03,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Pulmonary hemorrhage",
-        "snomedCode": "233608003",
-        "frequency": 0.02,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Seizures/CNS vasculitis",
-        "snomedCode": "91175000",
-        "frequency": 0.02,
+        "symptomName": "Seizure",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Pancreatitis",
-        "snomedCode": "75694006",
-        "frequency": 0.02,
+        "symptomName": "Muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Restrictive ventilatory defect",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gastrointestinal hemorrhage",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hemiplegia/hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Macule",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Episcleritis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Angioedema",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Glomerulopathy",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       }
-    ]
+    ],
+    "rare": []
   },
   "systemsAffected": [
+    "hematological",
+    "constitutional",
     "dermatological",
-    "musculoskeletal",
     "gastrointestinal",
-    "renal"
+    "cardiovascular",
+    "musculoskeletal",
+    "neurological",
+    "renal",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -257,7 +332,7 @@
     "Nephrology",
     "Pediatrics"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Ozen S, et al. EULAR/PRINTO/PRES criteria for Henoch-Schonlein purpura, childhood polyarteritis nodosa, childhood Wegener granulomatosis and childhood Takayasu arteritis. Ann Rheum Dis. 2010;69(5):798-806.",
     "Audemard-Verger A, et al. IgA vasculitis (Henoch-Schonlein purpura) in adults: Diagnostic and therapeutic aspects. Autoimmun Rev. 2015;14(7):579-585.",

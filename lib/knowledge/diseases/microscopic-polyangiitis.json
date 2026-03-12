@@ -11,15 +11,15 @@
   "omimId": "615688",
   "orphanetId": "727",
   "prevalence": {
-    "estimate": "1-3 per 100,000",
-    "range": "1-3 per 100,000",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 50,
-      "max": 70,
-      "peak": 60
+      "min": 2,
+      "max": 65,
+      "peak": 42
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": [
@@ -73,114 +73,299 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Pauci-immune rapidly progressive glomerulonephritis",
-        "snomedCode": "36171008",
-        "frequency": 0.8,
-        "bodySystem": "renal",
-        "notes": "Crescentic necrotizing GN without immune complex deposits"
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.9,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Diffuse alveolar hemorrhage",
-        "snomedCode": "233608003",
-        "frequency": 0.25,
-        "bodySystem": "respiratory",
-        "notes": "Can present as pulmonary-renal syndrome"
+        "symptomName": "Glomerulonephritis",
+        "frequency": 0.9,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Autoimmunity",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Crescentic glomerulonephritis",
+        "frequency": 0.9,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Erythema",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Increased inflammatory response",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Oliguria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Glomerulopathy",
+        "frequency": 0.9,
+        "bodySystem": "renal"
       }
     ],
     "common": [
       {
-        "symptomName": "Renal insufficiency (progressive)",
-        "snomedCode": "723190009",
-        "frequency": 0.8,
-        "bodySystem": "renal"
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Constitutional symptoms (fatigue, fever, weight loss)",
-        "snomedCode": "84229001",
-        "frequency": 0.7,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Arthralgia/myalgia",
-        "snomedCode": "57676002",
-        "frequency": 0.5,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Palpable purpura",
-        "snomedCode": "20143000",
-        "frequency": 0.4,
+        "symptomName": "Subcutaneous hemorrhage",
+        "frequency": 0.55,
         "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "snomedCode": "42658009",
-        "frequency": 0.3,
-        "bodySystem": "neurological"
+        "symptomName": "Diarrhea",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Gastrointestinal hemorrhage",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Peritonitis",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Poor appetite",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Venous thrombosis",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Gastrointestinal infarctions",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal urine cytology",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Multiple mononeuropathy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cytoplasmic antineutrophil antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Livedo reticularis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anti-proteinase 3 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-myeloperoxidase antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-neutrophil elastase antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Skin ulcer",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hemoptysis",
-        "snomedCode": "66857006",
-        "frequency": 0.25,
-        "bodySystem": "respiratory"
+        "symptomName": "Sinusitis",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Interstitial lung disease",
-        "snomedCode": "233703007",
-        "frequency": 0.2,
-        "bodySystem": "respiratory",
-        "notes": "UIP pattern associated with MPO-ANCA"
+        "symptomName": "Epistaxis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mononeuritis multiplex",
-        "snomedCode": "128189008",
-        "frequency": 0.2,
-        "bodySystem": "neurological"
+        "symptomName": "Uveitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Scleritis",
-        "snomedCode": "78370002",
-        "frequency": 0.1,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Cutis marmorata",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Gastrointestinal bleeding",
-        "snomedCode": "74474003",
-        "frequency": 0.1,
-        "bodySystem": "gastrointestinal"
-      }
-    ],
-    "rare": [
+        "symptomName": "Arthritis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
       {
-        "symptomName": "Cardiac involvement (pericarditis, myocarditis)",
-        "snomedCode": "3238004",
-        "frequency": 0.05,
+        "symptomName": "Subcutaneous nodule",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Congestive heart failure",
+        "frequency": 0.17,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "CNS vasculitis",
-        "snomedCode": "195353004",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Pericarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
       },
       {
         "symptomName": "Pancreatitis",
-        "snomedCode": "75694006",
-        "frequency": 0.02,
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Paresthesia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal retinal vascular morphology",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arrhythmia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Retinal vasculitis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Diffuse alveolar hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Palpable purpura",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Episcleritis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gangrene",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
-    ]
+    ],
+    "rare": []
   },
   "systemsAffected": [
     "renal",
-    "respiratory",
+    "hematological",
     "dermatological",
-    "neurological",
-    "musculoskeletal",
+    "constitutional",
+    "cardiovascular",
+    "immunological",
     "gastrointestinal",
-    "ophthalmological"
+    "musculoskeletal",
+    "otolaryngological",
+    "ophthalmological",
+    "neurological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -254,7 +439,7 @@
     "Nephrology",
     "Pulmonology"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Suppiah R, et al. 2022 American College of Rheumatology/European Alliance of Associations for Rheumatology Classification Criteria for Microscopic Polyangiitis. Arthritis Rheumatol. 2022;74(3):400-406.",
     "Guillevin L, et al. Microscopic polyangiitis: clinical and laboratory findings in eighty-five patients. Arthritis Rheum. 1999;42(3):421-430.",

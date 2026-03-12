@@ -13,15 +13,15 @@
   "omimId": "167800",
   "orphanetId": "676",
   "prevalence": {
-    "estimate": "0.3 per 100,000",
-    "range": "0.0002%-0.0005%",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 2,
-      "max": 20,
-      "peak": 10
+      "max": 18,
+      "peak": 14
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -65,83 +65,63 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Recurrent episodes of acute pancreatitis beginning in childhood",
-        "frequency": 0.95,
-        "bodySystem": "gastrointestinal",
-        "notes": "First attack often before age 10; recurrences throughout life"
+        "symptomName": "Leukocytosis",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Elevated circulating C-reactive protein concentration",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Recurrent pancreatitis",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       }
     ],
     "common": [
       {
-        "symptomName": "Severe epigastric pain radiating to back",
-        "snomedCode": "235862006",
-        "frequency": 0.95,
-        "bodySystem": "gastrointestinal",
-        "notes": "Classic pancreatitis pain pattern"
-      },
-      {
-        "symptomName": "Nausea and vomiting",
-        "snomedCode": "422587007",
-        "frequency": 0.85,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Chronic abdominal pain",
-        "snomedCode": "21522001",
-        "frequency": 0.75,
-        "bodySystem": "gastrointestinal",
-        "notes": "Develops as chronic pancreatitis establishes"
-      },
-      {
-        "symptomName": "Steatorrhea (exocrine insufficiency)",
-        "snomedCode": "271820007",
-        "frequency": 0.5,
-        "bodySystem": "gastrointestinal",
-        "notes": "Develops with progressive chronic pancreatitis"
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Weight loss",
-        "snomedCode": "89362005",
-        "frequency": 0.4,
-        "bodySystem": "constitutional"
+        "symptomName": "Diabetes mellitus",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Diabetes mellitus (type 3c)",
-        "frequency": 0.35,
-        "bodySystem": "endocrine",
-        "notes": "Pancreatogenic diabetes from progressive gland destruction"
-      },
-      {
-        "symptomName": "Jaundice (from bile duct stricture)",
-        "snomedCode": "18165001",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal"
-      }
-    ],
-    "rare": [
-      {
-        "symptomName": "Pancreatic pseudocyst",
-        "frequency": 0.1,
+        "symptomName": "Jaundice",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Pancreatic ductal adenocarcinoma",
-        "frequency": 0.05,
-        "bodySystem": "gastrointestinal",
-        "notes": "Lifetime risk ~40% by age 70; dramatically elevated compared to general population"
+        "symptomName": "Pancreatic calcification",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Splenic vein thrombosis",
-        "frequency": 0.05,
+        "symptomName": "Splanchnic vein thrombosis",
+        "frequency": 0.17,
         "bodySystem": "cardiovascular"
       }
-    ]
+    ],
+    "rare": []
   },
   "systemsAffected": [
+    "hematological",
     "gastrointestinal",
-    "endocrine"
+    "constitutional",
+    "endocrine",
+    "cardiovascular"
   ],
   "keyFindings": {
     "laboratory": [
@@ -156,10 +136,13 @@
       "EUS: parenchymal and ductal changes of chronic pancreatitis"
     ],
     "genetic": [
-      "PRSS1 gene mutations: R122H (most common), N29I, A16V (autosomal dominant, ~80% penetrance)",
-      "SPINK1 gene mutations: N34S (recessive susceptibility factor)",
-      "CFTR gene mutations: may act as modifier/susceptibility gene",
-      "CTRC gene mutations: loss-of-function variants"
+      "CASR (candidate)",
+      "PRSS1 (causative, gain-of-function)",
+      "PRSS2 (candidate)",
+      "CTRC (candidate)",
+      "CPA1 (susceptibility)",
+      "TRPV6 (susceptibility)",
+      "PRSS1 gene mutations: R122H (most common), N29I, A16V (autosomal dominant, ~80% penetrance)"
     ],
     "other": [
       "Secretin-stimulated MRCP for early chronic pancreatitis",
@@ -203,7 +186,7 @@
     "Medical Geneticist",
     "Endocrinologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Whitcomb DC, et al. Hereditary pancreatitis is caused by a mutation in the cationic trypsinogen gene. Nat Genet. 1996;14(2):141-145.",
     "Rebours V, et al. The natural history of hereditary pancreatitis: a national series. Gut. 2009;58(1):97-103.",

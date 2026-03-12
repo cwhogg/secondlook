@@ -223,11 +223,12 @@ function pct(n: number): string {
 
 // ===== COMPONENTS =====
 
-const VERSION_LABELS: Record<string, string> = { v1: "v1", v2: "v2", v3: "v3" }
+const VERSION_LABELS: Record<string, string> = { v1: "v1", v2: "v2", v3: "v3", v4: "v4" }
 const VERSION_COLORS: Record<string, string> = {
   v1: "bg-gray-50 text-gray-700 border-gray-300",
   v2: "bg-blue-50 text-blue-800 border-blue-300",
   v3: "bg-emerald-50 text-emerald-800 border-emerald-300",
+  v4: "bg-purple-50 text-purple-800 border-purple-300",
 }
 
 function StatsBanner({ stats }: { stats: TestSuiteStats }) {
@@ -982,7 +983,7 @@ export default function AdminPage() {
         createdAt: new Date().toISOString(),
         difficulty,
         categoryHint: categoryHint || undefined,
-        testVersion: 'v3' as const,
+        testVersion: 'v4' as const,
         status: "generated",
         source: "generated",
         groundTruth: data.groundTruth,

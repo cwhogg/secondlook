@@ -12,15 +12,15 @@
   ],
   "orphanetId": "2070",
   "prevalence": {
-    "estimate": "1 to 30 per 100,000",
-    "range": "0.001%-0.03%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 50,
-      "peak": 40
+      "min": 0,
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": []
@@ -65,91 +65,124 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Abdominal pain with peripheral eosinophilia and GI eosinophilic infiltration",
-        "frequency": 0.85,
-        "bodySystem": "gastrointestinal",
-        "notes": "The combination is highly characteristic but not pathognomonic alone"
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       }
     ],
     "common": [
       {
-        "symptomName": "Abdominal pain/cramping",
-        "snomedCode": "21522001",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Nausea and vomiting",
-        "snomedCode": "422587007",
-        "frequency": 0.65,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Leukocytosis",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Diarrhea",
-        "snomedCode": "62315008",
-        "frequency": 0.6,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Bloating",
-        "snomedCode": "248490005",
+        "symptomName": "Vomiting",
         "frequency": 0.55,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Weight loss",
-        "snomedCode": "89362005",
-        "frequency": 0.45,
+        "symptomName": "Diarrhea",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Malabsorption",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Steatorrhea",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypoalbuminemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Allergic rhinitis",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Abnormality of the gastrointestinal tract",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Elevated circulating C-reactive protein concentration",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Early satiety",
-        "snomedCode": "422868009",
-        "frequency": 0.3,
+        "symptomName": "Edema",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Atopic dermatitis",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Dysphagia (if esophageal involvement)",
-        "snomedCode": "40739000",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "GI bleeding (occult or overt)",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Asthma",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
         "symptomName": "Protein-losing enteropathy",
-        "frequency": 0.1,
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hematochezia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
       }
     ],
-    "rare": [
-      {
-        "symptomName": "Eosinophilic ascites (serosal type)",
-        "frequency": 0.1,
-        "bodySystem": "gastrointestinal",
-        "notes": "Ascitic fluid rich in eosinophils; serosal subtype"
-      },
-      {
-        "symptomName": "Intestinal obstruction (muscular type)",
-        "frequency": 0.08,
-        "bodySystem": "gastrointestinal",
-        "notes": "From eosinophilic infiltration of muscularis causing thickening and stenosis"
-      },
-      {
-        "symptomName": "Intestinal perforation",
-        "frequency": 0.02,
-        "bodySystem": "gastrointestinal"
-      }
-    ]
+    "rare": []
   },
   "systemsAffected": [
+    "hematological",
     "gastrointestinal",
-    "immunological"
+    "constitutional",
+    "otolaryngological",
+    "dermatological",
+    "respiratory"
   ],
   "keyFindings": {
     "laboratory": [
@@ -210,7 +243,7 @@
     "Allergist/Immunologist",
     "Hematologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Talley NJ, et al. Eosinophilic gastroenteritis: a clinicopathological study of patients with disease of the mucosa, muscle layer, and subserosal tissues. Gut. 1990;31(1):54-58.",
     "Zhang L, et al. Eosinophilic gastroenteritis: clinical profiles and therapeutic outcomes. BMC Gastroenterol. 2014;14:14.",

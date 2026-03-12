@@ -13,15 +13,15 @@
   "omimId": "182900",
   "orphanetId": "822",
   "prevalence": {
-    "estimate": "1 in 2,000 to 1 in 5,000 in Northern European populations",
-    "range": "0.02%-0.05%",
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
     "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 30,
-      "peak": 5
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -81,101 +81,157 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Spherocytes on peripheral blood smear",
-        "snomedCode": "30800001",
-        "frequency": 0.95,
-        "bodySystem": "hematological",
-        "notes": "Dense round RBCs lacking central pallor"
+        "symptomName": "Increased red cell osmotic fragility",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Jaundice (intermittent or chronic)",
-        "snomedCode": "18165001",
-        "frequency": 0.8,
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pallor",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cholelithiasis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.55,
         "bodySystem": "gastrointestinal"
       },
       {
         "symptomName": "Anemia",
-        "snomedCode": "271737000",
-        "frequency": 0.75,
+        "frequency": 0.55,
         "bodySystem": "hematological"
       },
       {
-        "symptomName": "Splenomegaly",
-        "snomedCode": "16294009",
-        "frequency": 0.75,
+        "symptomName": "Reticulocytosis",
+        "frequency": 0.55,
         "bodySystem": "hematological"
       },
       {
-        "symptomName": "Fatigue",
-        "snomedCode": "84229001",
-        "frequency": 0.7,
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hyperbilirubinemia",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Dark urine (bilirubinuria)",
-        "snomedCode": "720451001",
-        "frequency": 0.5,
-        "bodySystem": "renal"
+        "symptomName": "Spherocytosis",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Spontaneous hemolytic crises",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hypofibrinogenemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased mean corpuscular hemoglobin concentration",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hypercoagulability",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Gallstones (pigmented bilirubin stones)",
-        "snomedCode": "235919008",
-        "frequency": 0.4,
-        "bodySystem": "gastrointestinal",
-        "notes": "Can present in childhood; occur in up to 50% by adulthood"
+        "symptomName": "Ataxia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Aplastic crisis (from parvovirus B19)",
-        "snomedCode": "191245005",
-        "frequency": 0.25,
-        "bodySystem": "hematological",
-        "notes": "Acute severe anemia from transient red cell aplasia"
+        "symptomName": "Restrictive cardiomyopathy",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Neonatal hyperbilirubinemia",
-        "snomedCode": "387712008",
-        "frequency": 0.3,
-        "bodySystem": "gastrointestinal",
-        "notes": "May require phototherapy or exchange transfusion"
-      },
-      {
-        "symptomName": "Exercise intolerance",
-        "snomedCode": "413839001",
-        "frequency": 0.35,
+        "symptomName": "Fever",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Extramedullary hematopoiesis",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Chills",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Maculopapular exanthema",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Hemolytic crisis",
-        "snomedCode": "55602000",
-        "frequency": 0.1,
-        "bodySystem": "hematological",
-        "notes": "Triggered by infections"
+        "symptomName": "Growth delay",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Extramedullary hematopoiesis",
-        "snomedCode": "30380007",
-        "frequency": 0.05,
-        "bodySystem": "hematological",
-        "notes": "In severe untreated cases"
+        "symptomName": "Gout",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Leg ulcers",
-        "snomedCode": "95345008",
+        "symptomName": "Abdominal distention",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Skin ulcer",
         "frequency": 0.03,
         "bodySystem": "dermatological"
       }
     ]
   },
   "systemsAffected": [
-    "hematological",
+    "constitutional",
     "gastrointestinal",
-    "constitutional"
+    "musculoskeletal",
+    "hematological",
+    "neurological",
+    "cardiovascular",
+    "ophthalmological",
+    "dermatological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -193,12 +249,13 @@
       "Gallbladder ultrasound may show pigmented gallstones"
     ],
     "genetic": [
-      "ANK1 mutations (ankyrin-1 deficiency) most common (~40-65%)",
-      "SLC4A1 mutations (band 3 deficiency)",
-      "SPTB mutations (beta-spectrin deficiency)",
-      "EPB41 mutations (protein 4.1 deficiency)",
-      "EPB42 mutations (protein 4.2 deficiency)",
-      "Autosomal dominant in ~75% of cases; recessive in ~25%"
+      "SLC4A1 (causative)",
+      "SPTA1 (causative)",
+      "SPTB (causative)",
+      "ANK1 (causative)",
+      "EPB42 (causative)",
+      "Autosomal dominant in ~75% of cases; recessive in ~25%",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "SDS-PAGE analysis of red cell membrane proteins",
@@ -246,7 +303,7 @@
     "General Surgeon (for splenectomy consideration)",
     "Medical Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Bolton-Maggs PH, et al. Guidelines for the diagnosis and management of hereditary spherocytosis - 2011 update. Br J Haematol. 2012;156(1):37-49.",
     "Perrotta S, et al. Hereditary spherocytosis. Lancet. 2008;372(9647):1411-1426.",

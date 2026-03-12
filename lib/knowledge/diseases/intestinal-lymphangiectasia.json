@@ -20,8 +20,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 30,
-      "peak": 3
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -71,96 +71,198 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Bilateral lower extremity edema",
-        "snomedCode": "271809000",
+        "symptomName": "Edema",
         "frequency": 0.9,
-        "bodySystem": "immunological",
-        "notes": "Often asymmetric; may present as lymphedema"
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hypoalbuminemia with protein-losing enteropathy",
-        "frequency": 0.95,
-        "bodySystem": "gastrointestinal",
-        "notes": "Serum albumin often < 2.5 g/dL"
+        "symptomName": "Anemia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Intestinal lymphangiectasia",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Combined immunodeficiency",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Functional abnormality of the gastrointestinal tract",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormal lymphatic vessel morphology",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Chronic diarrhea",
-        "snomedCode": "62315008",
-        "frequency": 0.7,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Abdominal distension/ascites",
-        "snomedCode": "60728008",
+        "symptomName": "Growth delay",
         "frequency": 0.55,
-        "bodySystem": "gastrointestinal",
-        "notes": "Chylous ascites may occur"
-      },
-      {
-        "symptomName": "Fatigue and weakness",
-        "snomedCode": "84229001",
-        "frequency": 0.65,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Steatorrhea/fatty stools",
-        "snomedCode": "271820007",
-        "frequency": 0.5,
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lymphopenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chronic diarrhea",
+        "frequency": 0.55,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Growth retardation (in children)",
-        "snomedCode": "276610007",
-        "frequency": 0.6,
+        "symptomName": "Hypoalbuminemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypoproteinemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased circulating antibody level",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Abnormality of small intestinal villus morphology",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormality of vitamin metabolism",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Pleural effusion (chylothorax)",
-        "snomedCode": "60046008",
-        "frequency": 0.2,
-        "bodySystem": "respiratory"
+        "symptomName": "Tetany",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Nausea and vomiting",
-        "snomedCode": "422587007",
-        "frequency": 0.3,
+        "symptomName": "Ascites",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Recurrent infections",
-        "frequency": 0.25,
-        "bodySystem": "immunological",
-        "notes": "Due to hypogammaglobulinemia and lymphopenia"
+        "symptomName": "Pericardial effusion",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pleural effusion",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Decreased circulating IgA level",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased circulating total IgM",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypocalcemia",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Hypomagnesemia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Muscle spasm",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Decreased circulating IgG level",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized edema",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Reduced proportion of CD4+ effector memory T cells",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased stool alpha1-antitrypsin concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Opportunistic infection",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased proportion of CD3-positive T cells",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Low levels of vitamin D",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       }
     ],
     "rare": [
       {
-        "symptomName": "Lymphoma development",
+        "symptomName": "Cryptococcal meningitis",
         "frequency": 0.03,
-        "bodySystem": "immunological",
-        "notes": "Increased risk of B-cell lymphoma reported"
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Tetany from hypocalcemia",
-        "frequency": 0.05,
-        "bodySystem": "musculoskeletal",
-        "notes": "Due to calcium and vitamin D malabsorption"
-      },
-      {
-        "symptomName": "Seizures from hypocalcemia/hypomagnesemia",
+        "symptomName": "Disseminated cutaneous warts",
         "frequency": 0.03,
-        "bodySystem": "neurological"
+        "bodySystem": "dermatological"
       }
     ]
   },
   "systemsAffected": [
+    "constitutional",
+    "hematological",
     "gastrointestinal",
     "immunological",
-    "constitutional"
+    "cardiovascular",
+    "respiratory",
+    "endocrine",
+    "musculoskeletal",
+    "dermatological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -220,7 +322,7 @@
     "Immunologist",
     "Dietitian"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Vignes S, Bellanger J. Primary intestinal lymphangiectasia (Waldmann's disease). Orphanet J Rare Dis. 2008;3:5.",
     "Wen J, et al. Primary intestinal lymphangiectasia: four case reports and a review of the literature. Dig Dis Sci. 2010;55(12):3466-3472.",

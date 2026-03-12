@@ -17,15 +17,15 @@
   "omimId": "125370",
   "orphanetId": "221",
   "prevalence": {
-    "estimate": "1 in 50,000 to 1 in 100,000",
-    "range": "0.001%-0.002%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 5,
-      "max": 70,
-      "peak": 50
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "female",
     "ethnicAssociations": [
@@ -98,117 +98,408 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Heliotrope rash",
-        "snomedCode": "72528005",
-        "frequency": 0.6,
-        "bodySystem": "dermatological",
-        "notes": "Violaceous or lilac-colored erythema and edema of upper eyelids"
+        "symptomName": "Abnormal eyelid morphology",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Gottron's papules",
-        "snomedCode": "402736002",
-        "frequency": 0.7,
-        "bodySystem": "dermatological",
-        "notes": "Flat-topped violaceous papules over MCPs, PIPs, DIPs, elbows, knees"
+        "symptomName": "Edema",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Autoimmunity",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Limb-girdle muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "EMG abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Proximal muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Inflammatory myopathy",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Erythema",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Periorbital edema",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Symmetric proximal muscle weakness",
-        "snomedCode": "26544005",
-        "frequency": 0.8,
-        "bodySystem": "musculoskeletal",
-        "notes": "Difficulty climbing stairs, rising from chairs, lifting arms overhead"
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Gottron's sign (macular erythema over extensor surfaces)",
-        "frequency": 0.65,
-        "bodySystem": "dermatological"
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Elevated serum CK",
-        "frequency": 0.8,
-        "bodySystem": "musculoskeletal",
-        "notes": "Can be 10-50x upper limit of normal in classic DM; may be normal in CADM"
+        "symptomName": "Recurrent respiratory infections",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Periungual erythema and nailfold capillary changes",
-        "frequency": 0.6,
+        "symptomName": "Pulmonary fibrosis",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Diffuse reticular or finely nodular infiltrations",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Respiratory insufficiency due to muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated circulating hepatic transaminase concentration",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Elevated circulating creatine kinase concentration",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "EMG: myopathic abnormalities",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal pulmonary interstitial morphology",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormal hair quantity",
+        "frequency": 0.55,
         "bodySystem": "dermatological"
       },
       {
         "symptomName": "Fatigue",
-        "snomedCode": "84229001",
-        "frequency": 0.75,
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "V-sign (erythema of anterior neck and upper chest) and shawl sign (upper back)",
-        "frequency": 0.5,
+        "symptomName": "Elevated circulating aldolase concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased circulating lactate dehydrogenase concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gottron's papules",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Shawl sign",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anti-SUMO-activating enzyme subunit 1 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-SUMO-activating enzyme subunit 2 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Heliotrope rash",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myositis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Papule",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skin ulcer",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Chondrocalcinosis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dry skin",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pruritus",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Facial erythema",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Acrocyanosis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of the nail",
+        "frequency": 0.55,
         "bodySystem": "dermatological"
       }
     ],
     "occasional": [
       {
+        "symptomName": "Cutaneous photosensitivity",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Poikiloderma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Alopecia",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Dysphonia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myocardial infarction",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormality of eosinophils",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
         "symptomName": "Dysphagia",
-        "snomedCode": "40739000",
-        "frequency": 0.3,
-        "bodySystem": "gastrointestinal",
-        "notes": "Due to pharyngeal/esophageal muscle involvement; risk for aspiration"
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Interstitial lung disease",
-        "snomedCode": "233703007",
-        "frequency": 0.3,
-        "bodySystem": "respiratory",
-        "notes": "Anti-MDA5 associated with rapidly progressive ILD; anti-Jo-1 with chronic ILD"
+        "symptomName": "Pulmonary arterial hypertension",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Arthralgias / non-erosive arthritis",
-        "snomedCode": "57676002",
-        "frequency": 0.35,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Vasculitis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Calcinosis (especially juvenile DM)",
-        "snomedCode": "201119003",
-        "frequency": 0.2,
-        "bodySystem": "dermatological",
-        "notes": "Subcutaneous calcium deposits; much more common in juvenile DM"
+        "symptomName": "Neoplasm",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mechanic's hands (hyperkeratotic cracking of fingers)",
-        "frequency": 0.2,
-        "bodySystem": "dermatological",
-        "notes": "Associated with anti-synthetase antibodies"
+        "symptomName": "Lymphoma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Breast carcinoma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Aplasia/Hypoplasia of the skin",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arrhythmia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Sinus tachycardia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Myocarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "V-sign",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lung adenocarcinoma",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Anti-MDA5 antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-Mi2 antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-transcription intermediary factor-1gamma antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-SUMO-activating enzyme antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-nuclear matrix protein-2 antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-histidyl tRNA synthetase antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Telangiectasia of the skin",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Cellulitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gastrointestinal stroma tumor",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Gangrene",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gottron sign",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Holster sign",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Malignancy (paraneoplastic DM)",
-        "frequency": 0.15,
-        "bodySystem": "constitutional",
-        "notes": "Associated with ovarian, lung, GI, breast cancers; risk highest with anti-TIF1-gamma and anti-NXP2"
-      },
-      {
-        "symptomName": "Cardiac involvement (myocarditis, conduction defects)",
-        "frequency": 0.1,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Rapidly progressive ILD (anti-MDA5)",
-        "frequency": 0.05,
-        "bodySystem": "respiratory",
-        "notes": "Can be fatal; often with minimal muscle disease"
+        "symptomName": "Palmar hyperkeratosis",
+        "frequency": 0.03,
+        "bodySystem": "dermatological"
       }
     ]
   },
   "systemsAffected": [
-    "dermatological",
-    "musculoskeletal",
+    "constitutional",
     "respiratory",
+    "musculoskeletal",
     "gastrointestinal",
-    "cardiovascular"
+    "hematological",
+    "dermatological",
+    "immunological",
+    "cardiovascular",
+    "neurological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -279,7 +570,7 @@
     "Neurologist/Neuromuscular Specialist",
     "Oncologist (for malignancy screening)"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Lundberg IE, et al. 2017 European League Against Rheumatism/American College of Rheumatology classification criteria for adult and juvenile idiopathic inflammatory myopathies. Ann Rheum Dis. 2017;76(12):1955-64.",
     "Dalakas MC. Inflammatory muscle diseases. N Engl J Med. 2015;372(18):1734-47.",

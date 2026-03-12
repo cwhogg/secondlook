@@ -11,15 +11,15 @@
   "omimId": "300818",
   "orphanetId": "447",
   "prevalence": {
-    "estimate": "1 in 100,000 to 1 in 1,000,000",
-    "range": "0.0001%-0.001%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 50,
-      "peak": 35
+      "min": 0,
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -67,114 +67,242 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Dark morning urine (hemoglobinuria)",
-        "snomedCode": "53014005",
-        "frequency": 0.5,
-        "bodySystem": "renal",
-        "notes": "Classical but not universal; dark urine due to intravascular hemolysis, worse overnight"
+        "symptomName": "Abnormal erythrocyte enzyme activity",
+        "frequency": 1,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hemolytic anemia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hemoglobinuria",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Fatigue and weakness",
-        "snomedCode": "84229001",
-        "frequency": 0.9,
+        "symptomName": "Thromboembolism",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Anemia",
-        "snomedCode": "271737000",
-        "frequency": 0.85,
+        "symptomName": "Reticulocytosis",
+        "frequency": 0.55,
         "bodySystem": "hematological"
       },
       {
-        "symptomName": "Dyspnea on exertion",
-        "snomedCode": "60845006",
-        "frequency": 0.6,
+        "symptomName": "Dyspnea",
+        "frequency": 0.55,
         "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Abdominal pain",
-        "snomedCode": "21522001",
-        "frequency": 0.5,
-        "bodySystem": "gastrointestinal",
-        "notes": "Smooth muscle dystonia from nitric oxide scavenging by free hemoglobin"
+        "symptomName": "Headache",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Dysphagia and esophageal spasm",
-        "snomedCode": "40739000",
-        "frequency": 0.4,
+        "symptomName": "Episodic abdominal pain",
+        "frequency": 0.55,
         "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Increased blood urea nitrogen",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Venous thrombosis",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Unconjugated hyperbilirubinemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hemosiderinuria",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chronic kidney disease",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Reduced haptoglobin level",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased circulating lactate dehydrogenase concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Conjunctival icterus",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Erythromelalgia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased serum iron",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Venous thromboembolism (including unusual sites)",
-        "snomedCode": "111293003",
-        "frequency": 0.35,
-        "bodySystem": "cardiovascular",
-        "notes": "Hepatic vein (Budd-Chiari), cerebral, dermal, mesenteric veins"
-      },
-      {
-        "symptomName": "Erectile dysfunction",
-        "snomedCode": "860914002",
-        "frequency": 0.3,
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
         "bodySystem": "renal"
       },
       {
+        "symptomName": "Proteinuria",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Impotence",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
         "symptomName": "Jaundice",
-        "snomedCode": "18165001",
-        "frequency": 0.3,
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Headache",
-        "snomedCode": "25064002",
-        "frequency": 0.35,
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myocardial infarction",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Pancytopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Leukopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Acute kidney injury",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Pulmonary embolism",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Bone marrow failure / cytopenias",
-        "snomedCode": "127034005",
-        "frequency": 0.3,
-        "bodySystem": "hematological"
+        "symptomName": "Arterial thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Erythroid hyperplasia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mesenteric venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Odynophagia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Budd-Chiari syndrome",
-        "snomedCode": "82385007",
-        "frequency": 0.1,
+        "symptomName": "Renal Fanconi syndrome",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.03,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Pulmonary hypertension",
-        "snomedCode": "70995007",
-        "frequency": 0.08,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Renal failure (chronic)",
-        "snomedCode": "46177005",
-        "frequency": 0.08,
-        "bodySystem": "renal",
-        "notes": "From chronic hemosiderin deposition in kidney"
-      },
-      {
-        "symptomName": "Acute myeloid leukemia transformation",
-        "snomedCode": "91861009",
+        "symptomName": "Glycosuria",
         "frequency": 0.03,
-        "bodySystem": "hematological"
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Esophageal spasms",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
     "hematological",
+    "constitutional",
+    "respiratory",
+    "neurological",
+    "gastrointestinal",
     "cardiovascular",
     "renal",
-    "gastrointestinal",
-    "respiratory",
-    "neurological"
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -192,8 +320,8 @@
       "CT or MRI for Budd-Chiari syndrome if suspected"
     ],
     "genetic": [
-      "PIGA gene somatic mutation (X-linked; acquired, not inherited)",
-      "Clonal expansion of GPI-deficient hematopoietic stem cells"
+      "PIGA (somatic)",
+      "PIGA gene somatic mutation (X-linked; acquired, not inherited)"
     ],
     "other": [
       "Ham test (acidified serum lysis test) - historical, replaced by flow cytometry",
@@ -241,7 +369,7 @@
     "Hepatologist",
     "Nephrologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Brodsky RA. Paroxysmal nocturnal hemoglobinuria. Blood. 2014;124(18):2804-2811.",
     "Hill A, et al. Under the spotlight: the role of complement in PNH. Blood. 2017;129(12):1570-1577.",

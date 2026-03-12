@@ -19,9 +19,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 10,
-      "max": 50,
-      "peak": 30
+      "min": 0,
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": [
@@ -63,113 +63,242 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Cough/Valsalva-induced occipital headache",
-        "snomedCode": "25064002",
-        "frequency": 0.7,
-        "bodySystem": "neurological",
-        "notes": "Suboccipital headache provoked by coughing, straining, sneezing, or exertion; most characteristic symptom"
+        "symptomName": "Chiari type I malformation",
+        "frequency": 1,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Syringomyelia-associated cape-like sensory loss",
-        "frequency": 0.25,
-        "bodySystem": "neurological",
-        "notes": "Dissociated sensory loss (loss of pain/temperature with preserved touch) in a cape distribution"
+        "symptomName": "Headache",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Downbeat nystagmus",
-        "snomedCode": "81756001",
-        "frequency": 0.2,
-        "bodySystem": "neurological",
-        "notes": "Downbeating nystagmus worse on lateral and downward gaze; characteristic of craniovertebral junction pathology"
+        "symptomName": "Recurrent paroxysmal headache",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Neck pain",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Small posterior fossa",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Occipital and posterior neck pain",
-        "snomedCode": "25064002",
-        "frequency": 0.75,
+        "symptomName": "Tinnitus",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Cranial nerve compression",
+        "frequency": 0.55,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Dizziness and imbalance",
-        "snomedCode": "404640003",
-        "frequency": 0.5,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Numbness and tingling in hands",
-        "snomedCode": "91019004",
-        "frequency": 0.45,
+        "symptomName": "Vocal cord paralysis",
+        "frequency": 0.55,
         "bodySystem": "neurological"
       },
       {
         "symptomName": "Dysphagia",
-        "snomedCode": "40739000",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "notes": "From lower brainstem compression"
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Visual disturbances",
-        "snomedCode": "63102001",
-        "frequency": 0.25,
-        "bodySystem": "ophthalmological",
-        "notes": "Blurred vision, diplopia, photophobia"
+        "symptomName": "Gait ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Progressive cerebellar ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Myelopathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Lower limb hyperreflexia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fused cervical vertebrae",
+        "frequency": 0.55,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Syringomyelia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Somatic sensory dysfunction",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cervical C2/C3 vertebral fusion",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Anteriorly placed odontoid process",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Distal peripheral sensory neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the vestibulocochlear nerve",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Abnormality of the clivus",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of the eleventh cranial nerve",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the twelfth cranial nerve",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Functional abnormality of the inner ear",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Areflexia of upper limbs",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysesthesia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Stiff neck",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Sleep apnea",
-        "snomedCode": "73430006",
-        "frequency": 0.25,
-        "bodySystem": "respiratory",
-        "notes": "Central sleep apnea from brainstem compression"
+        "symptomName": "Urinary incontinence",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Tinnitus",
-        "snomedCode": "60862001",
-        "frequency": 0.2,
+        "symptomName": "Photophobia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Diplopia",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Upper extremity weakness",
-        "snomedCode": "249937002",
-        "frequency": 0.2,
-        "bodySystem": "neurological",
-        "notes": "Often from associated syringomyelia"
+        "symptomName": "Muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Scoliosis",
-        "snomedCode": "298382003",
-        "frequency": 0.15,
-        "bodySystem": "musculoskeletal",
-        "notes": "May be presenting sign, especially in children"
+        "symptomName": "Abnormality of the musculature of the lower limbs",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Brain stem compression",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Babinski sign",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Basilar impression",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Adult onset sensorineural hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Central sleep apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Basilar invagination",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigable weakness of swallowing muscles",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
       }
     ],
-    "rare": [
-      {
-        "symptomName": "Vocal cord paralysis",
-        "snomedCode": "8608003",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "Lower cranial nerve compression"
-      },
-      {
-        "symptomName": "Syncope",
-        "snomedCode": "271594007",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Drop attacks",
-        "snomedCode": "1912002",
-        "frequency": 0.05,
-        "bodySystem": "neurological"
-      }
-    ]
+    "rare": []
   },
   "systemsAffected": [
-    "neurological"
+    "neurological",
+    "constitutional",
+    "otolaryngological",
+    "ophthalmological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "reproductive",
+    "renal",
+    "respiratory"
   ],
   "keyFindings": {
     "laboratory": [
@@ -185,9 +314,7 @@
       "MRI entire spine to evaluate for syrinx"
     ],
     "genetic": [
-      "Some familial clustering suggesting genetic predisposition",
-      "Associated with connective tissue disorders (Ehlers-Danlos syndrome)",
-      "No single causative gene identified for typical CM-I"
+      "DKK1 (causative)"
     ],
     "other": [
       "Sleep study to evaluate for central sleep apnea",
@@ -234,7 +361,7 @@
     "neurologist",
     "neuroradiologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Milhorat TH, et al. Chiari I malformation redefined: clinical and radiographic findings for 364 symptomatic patients. Neurosurgery. 1999;44(5):1005-1017.",
     "Arnautovic A, et al. Chiari malformation Type I: a comprehensive review. Neurosurg Focus. 2015;38(4):E2.",

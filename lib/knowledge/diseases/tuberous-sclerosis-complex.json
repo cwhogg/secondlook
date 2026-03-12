@@ -13,15 +13,15 @@
   "omimId": "191100",
   "orphanetId": "805",
   "prevalence": {
-    "estimate": "1 in 6,000 to 1 in 10,000",
-    "range": "0.01%-0.017%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 20,
-      "peak": 1
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -146,121 +146,336 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Facial angiofibromas",
-        "snomedCode": "254228004",
-        "frequency": 0.75,
-        "bodySystem": "dermatological",
-        "notes": "Red-pink papules in butterfly distribution on face; typically appear by age 3-5 years"
+        "symptomName": "Abnormality of the kidney",
+        "frequency": 0.9,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cortical dysplasia",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Subependymal nodules",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
         "symptomName": "Cortical tubers",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "notes": "Areas of cortical dysplasia seen on MRI; hallmark brain lesion"
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomelanotic macule",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Generalized abnormality of skin",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
       }
     ],
     "common": [
       {
-        "symptomName": "Hypomelanotic macules (ash-leaf spots)",
-        "snomedCode": "23006000",
-        "frequency": 0.9,
-        "bodySystem": "dermatological",
-        "notes": "Often first clinical sign; best seen with Wood lamp"
-      },
-      {
-        "symptomName": "Seizures (including infantile spasms)",
-        "snomedCode": "91175000",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "notes": "Infantile spasms in ~35% of infants; multiple seizure types common"
-      },
-      {
-        "symptomName": "Intellectual disability / developmental delay",
-        "snomedCode": "3446000",
-        "frequency": 0.5,
-        "bodySystem": "neurological",
-        "notes": "Ranges from normal intelligence to severe ID; correlates with seizure burden"
-      },
-      {
-        "symptomName": "Renal angiomyolipomas",
-        "snomedCode": "302846004",
-        "frequency": 0.7,
+        "symptomName": "Renal cyst",
+        "frequency": 0.55,
         "bodySystem": "renal"
       },
       {
-        "symptomName": "Cardiac rhabdomyomas",
-        "snomedCode": "93286003",
-        "frequency": 0.6,
-        "bodySystem": "cardiovascular",
-        "notes": "Often detected prenatally; spontaneous regression common in childhood"
+        "symptomName": "Depression",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Autism",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Aggressive behavior",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Autistic behavior",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Hyperactivity",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Intellectual disability",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Status epilepticus",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Sleep abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Confetti-like hypopigmented macules",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Repetitive compulsive behavior",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Retinal hamartoma",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Shagreen patch",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cardiac rhabdomyoma",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Angiofibromas",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epileptic spasm",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal social behavior",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Infantile spasms",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chronic kidney disease",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Neurodevelopmental delay",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pulmonary lymphangiomyomatosis",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chorioretinal hypopigmentation",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Impulsivity",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Self-injurious behavior",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Skin plaque",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Subependymal giant cell astrocytoma (SEGA)",
-        "snomedCode": "448686003",
-        "frequency": 0.15,
-        "bodySystem": "neurological",
-        "notes": "Can cause obstructive hydrocephalus; requires surveillance"
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Shagreen patch (connective tissue hamartoma)",
-        "snomedCode": "254226003",
-        "frequency": 0.5,
-        "bodySystem": "dermatological",
-        "notes": "Orange-peel textured plaque, typically on lower back"
-      },
-      {
-        "symptomName": "Ungual fibromas (Koenen tumors)",
-        "snomedCode": "254228004",
-        "frequency": 0.4,
-        "bodySystem": "dermatological",
-        "notes": "Flesh-colored growths around fingernails/toenails; appear after puberty"
-      },
-      {
-        "symptomName": "Autism spectrum disorder",
-        "snomedCode": "35919005",
-        "frequency": 0.3,
+        "symptomName": "Anxiety",
+        "frequency": 0.17,
         "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Behavioral difficulties (ADHD, anxiety, aggression)",
-        "snomedCode": "277843001",
-        "frequency": 0.35,
+        "symptomName": "Hypertension",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Respiratory distress",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Poor speech",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Renal angiomyolipoma",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Attention deficit hyperactivity disorder",
+        "frequency": 0.17,
         "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Subependymal giant-cell astrocytoma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Noncommunicating hydrocephalus",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Respiratory tract infection",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Ungual fibroma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epidermoid cyst",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Lymphangioleiomyomatosis (LAM)",
-        "snomedCode": "277844007",
-        "frequency": 0.1,
-        "bodySystem": "respiratory",
-        "notes": "Progressive cystic lung disease; predominantly affects adult women"
+        "symptomName": "Polycystic kidney dysplasia",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Renal cell carcinoma",
-        "snomedCode": "41607009",
+        "symptomName": "Pheochromocytoma",
+        "frequency": 0.03,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pituitary adenoma",
+        "frequency": 0.03,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Parathyroid adenoma",
+        "frequency": 0.03,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Stage 5 chronic kidney disease",
         "frequency": 0.03,
         "bodySystem": "renal"
       },
       {
-        "symptomName": "Hemorrhage from renal angiomyolipoma",
-        "snomedCode": "302846004",
-        "frequency": 0.08,
-        "bodySystem": "renal",
-        "notes": "Risk increases with AML size >4 cm"
+        "symptomName": "Aortic aneurysm",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Renal cell carcinoma",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Parathyroid hyperplasia",
+        "frequency": 0.03,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Internal hemorrhage",
+        "frequency": 0.03,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Retinal astrocytic hamartoma",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Pancreatic endocrine tumor",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Carcinoid tumor",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
-    "neurological",
-    "dermatological",
     "renal",
+    "psychiatric",
+    "neurological",
+    "constitutional",
+    "ophthalmological",
+    "dermatological",
     "cardiovascular",
     "respiratory",
-    "ophthalmological",
-    "psychiatric"
+    "gastrointestinal",
+    "musculoskeletal",
+    "endocrine",
+    "hematological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -276,11 +491,10 @@
       "Abdominal MRI preferred over CT for lifelong renal surveillance (radiation avoidance)"
     ],
     "genetic": [
-      "TSC1 gene mutations (hamartin, chromosome 9q34) ~30% of identified mutations",
-      "TSC2 gene mutations (tuberin, chromosome 16p13) ~70% of identified mutations",
-      "TSC2 mutations tend to cause more severe disease",
-      "~65-75% of cases are de novo; ~25-35% inherited (autosomal dominant)",
-      "~10-25% of clinically definite TSC have no identifiable mutation (mosaicism suspected)"
+      "IFNG (modifier)",
+      "TSC1 (causative)",
+      "TSC2 (causative)",
+      "~65-75% of cases are de novo; ~25-35% inherited (autosomal dominant)"
     ],
     "other": [
       "Wood lamp examination for hypomelanotic macules",
@@ -334,7 +548,7 @@
     "Pediatric Cardiologist",
     "Neurosurgeon"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Northrup H, et al. Tuberous sclerosis complex diagnostic criteria update: recommendations of the 2012 International Tuberous Sclerosis Complex Consensus Conference. Pediatr Neurol. 2013;49(4):243-254.",
     "Krueger DA, et al. Tuberous sclerosis complex surveillance and management: recommendations of the 2012 International Tuberous Sclerosis Complex Consensus Conference. Pediatr Neurol. 2013;49(4):255-265.",

@@ -15,7 +15,7 @@ const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
 function parseArgs() {
   const args = process.argv.slice(2);
-  const opts = { difficulties: [3, 4, 5], count: 3, version: 'v2' };
+  const opts = { difficulties: [3, 4, 5], count: 3, version: 'v4' };
 
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--difficulties' && args[i + 1]) {

@@ -14,15 +14,15 @@
   "omimId": "249100",
   "orphanetId": "342",
   "prevalence": {
-    "estimate": "1 in 200 to 1 in 1,000 in affected populations; 1 in 100,000 in non-Mediterranean populations",
-    "range": "0.1%-0.5% in affected populations",
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
     "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 2,
-      "max": 20,
-      "peak": 10
+      "min": 0,
+      "max": 65,
+      "peak": 14
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": [
@@ -85,88 +85,274 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Recurrent episodes of fever with peritonitis lasting 1-3 days",
-        "frequency": 0.95,
-        "bodySystem": "gastrointestinal",
-        "notes": "Severe abdominal pain mimicking acute abdomen; self-limited in 1-3 days"
-      }
-    ],
-    "common": [
-      {
-        "symptomName": "Fever (38.5-40°C)",
-        "snomedCode": "386661006",
-        "frequency": 0.95,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Severe abdominal pain (sterile peritonitis)",
-        "snomedCode": "21522001",
+        "symptomName": "Constipation",
         "frequency": 0.9,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Pleuritis (unilateral chest pain)",
-        "frequency": 0.45,
-        "bodySystem": "respiratory"
+        "symptomName": "Abdominal pain",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Monoarthritis (acute, large joint, typically knee or ankle)",
-        "snomedCode": "57676002",
-        "frequency": 0.5,
+        "symptomName": "Arthralgia",
+        "frequency": 0.9,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Erysipelas-like erythema (lower leg)",
-        "frequency": 0.25,
-        "bodySystem": "dermatological",
-        "notes": "Well-demarcated erythema on shin/foot, resembles cellulitis but sterile"
+        "symptomName": "Myalgia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Proteinuria",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Irritability",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Erysipelas",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Leukocytosis",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pleuritis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sleep abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Oral leukoplakia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Poor appetite",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Polyarticular arthritis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Erythema",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hyperfibrinogenemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypoesthesia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Myalgia during attacks",
-        "snomedCode": "68962001",
-        "frequency": 0.3,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Nephrotic syndrome",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Pericarditis",
-        "frequency": 0.05,
+        "symptomName": "Nephropathy",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Nephrocalcinosis",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Depression",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Meningitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Myocardial infarction",
+        "frequency": 0.17,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Scrotal swelling/orchitis",
-        "frequency": 0.05,
-        "bodySystem": "renal",
-        "notes": "In males; vaginalitis of tunica vaginalis"
+        "symptomName": "Pancreatitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Malabsorption",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Peritonitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Osteoarthritis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Intestinal obstruction",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Gastrointestinal infarctions",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Acute hepatic failure",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Amyloidosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arrhythmia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Orchitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "AA amyloidosis (renal)",
-        "frequency": 0.1,
-        "bodySystem": "renal",
-        "notes": "Most feared complication; prevented by colchicine. Presents as proteinuria/nephrotic syndrome."
-      },
-      {
-        "symptomName": "Protracted febrile myalgia",
-        "frequency": 0.05,
-        "bodySystem": "musculoskeletal",
-        "notes": "Prolonged episode of severe myalgia lasting weeks"
-      },
-      {
-        "symptomName": "Aseptic meningitis",
-        "frequency": 0.01,
-        "bodySystem": "neurological"
+        "symptomName": "Pericarditis",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
       }
     ]
   },
   "systemsAffected": [
     "gastrointestinal",
     "musculoskeletal",
-    "respiratory",
+    "renal",
+    "psychiatric",
+    "constitutional",
+    "neurological",
+    "hematological",
     "dermatological",
-    "renal"
+    "cardiovascular",
+    "immunological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -182,10 +368,9 @@
       "Echocardiography if pericarditis suspected"
     ],
     "genetic": [
-      "MEFV gene mutations on chromosome 16p13.3",
-      "Common pathogenic variants: M694V, M680I, V726A, M694I, E148Q",
+      "MEFV (causative)",
       "Autosomal recessive (some heterozygotes may be symptomatic)",
-      "M694V homozygosity: most severe phenotype, highest amyloidosis risk"
+      "Autosomal dominant inheritance"
     ],
     "other": [
       "Colchicine therapeutic trial: dramatic reduction in attack frequency strongly supports diagnosis",
@@ -229,7 +414,7 @@
     "Pediatric Rheumatologist",
     "Nephrologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Livneh A, et al. Criteria for the diagnosis of familial Mediterranean fever. Arthritis Rheum. 1997;40(10):1879-1885.",
     "Gattorno M, et al. Classification criteria for autoinflammatory recurrent fevers. Ann Rheum Dis. 2019;78(8):1025-1032.",

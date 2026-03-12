@@ -11,14 +11,14 @@
   "omimId": "105830",
   "orphanetId": "72",
   "prevalence": {
-    "estimate": "1 in 12,000 to 1 in 20,000",
-    "range": "0.005%-0.008%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 3,
+      "max": 2,
       "peak": 1
     },
     "sexPredilection": "equal",
@@ -84,111 +84,377 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Frequent unprovoked laughter and happy demeanor",
-        "frequency": 0.95,
-        "bodySystem": "psychiatric",
-        "notes": "Easily provoked and sustained laughter; apparent happy affect is highly characteristic"
-      },
-      {
-        "symptomName": "Severe intellectual disability with absent or minimal speech",
-        "snomedCode": "3446000",
-        "frequency": 0.98,
-        "bodySystem": "neurological",
-        "notes": "Most individuals use fewer than 5-6 words; nonverbal communication relatively preserved"
-      }
-    ],
-    "common": [
-      {
-        "symptomName": "Seizures",
-        "snomedCode": "91175000",
-        "frequency": 0.8,
-        "bodySystem": "neurological",
-        "notes": "Multiple seizure types; often difficult to control; onset typically <3 years"
-      },
-      {
-        "symptomName": "Ataxic gait (wide-based, jerky)",
-        "snomedCode": "25136009",
+        "symptomName": "Microcephaly",
         "frequency": 0.9,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Microcephaly (acquired, by age 2)",
-        "snomedCode": "431265009",
-        "frequency": 0.7,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hand-flapping and excitable behavior",
-        "snomedCode": "84757009",
-        "frequency": 0.85,
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
         "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Sleep disturbances (decreased need for sleep)",
-        "snomedCode": "39898005",
-        "frequency": 0.75,
+        "symptomName": "Autistic behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Inappropriate laughter",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Delayed speech and language development",
+        "frequency": 0.9,
         "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hyperactivity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Motor delay",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tremor",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cerebral cortical atrophy",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Broad-based gait",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of speech or vocalization",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "EEG abnormality",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Sleep abnormality",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Poor speech",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Intellectual disability, severe",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Severe global developmental delay",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Self-injurious behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Wide mouth",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Astigmatism",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Strabismus",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hypopigmentation of the skin",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Obesity",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Abnormal facial shape",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Constipation",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Gastroesophageal reflux",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fair hair",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Drooling",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Polyphagia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Sleep-wake cycle disturbance",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Iris hypopigmentation",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Floppy infant",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Protruding tongue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of the gastrointestinal tract",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Feeding difficulties",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Recurrent hand flapping",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Feeding difficulties in infancy",
-        "snomedCode": "78164000",
-        "frequency": 0.4,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Mandibular prognathia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hypopigmentation (in deletion subtype)",
-        "snomedCode": "23006000",
-        "frequency": 0.3,
-        "bodySystem": "dermatological",
-        "notes": "Lighter hair, skin, and eyes than family members; due to OCA2 gene in deleted region"
-      },
-      {
-        "symptomName": "Strabismus",
-        "snomedCode": "22066006",
-        "frequency": 0.4,
+        "symptomName": "Ptosis",
+        "frequency": 0.17,
         "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Tongue thrusting and drooling",
-        "snomedCode": "288959006",
-        "frequency": 0.5,
+        "symptomName": "Hypermetropia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Optic disc pallor",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Myopia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Keratoconus",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Amblyopia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Widely spaced teeth",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Aggressive behavior",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Reduced eye contact",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Myoclonus",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Fascination with water",
-        "frequency": 0.4,
-        "bodySystem": "psychiatric"
+        "symptomName": "Absent speech",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Poor suck",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Status epilepticus",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Inability to walk",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Flat occiput",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cerebral dysmyelination",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Atypical absence seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pes valgus",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Precocious puberty in females",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Atonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Gastrostomy tube feeding in infancy",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Delayed menarche",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Happy demeanor",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Nasogastric tube feeding",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Tongue thrusting",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Scoliosis",
-        "snomedCode": "298382003",
-        "frequency": 0.1,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Obesity in older children/adults",
-        "snomedCode": "414916001",
-        "frequency": 0.1,
-        "bodySystem": "endocrine"
-      },
-      {
-        "symptomName": "Status epilepticus",
-        "snomedCode": "230456007",
-        "frequency": 0.08,
-        "bodySystem": "neurological"
+        "symptomName": "Infantile spasms",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
     "neurological",
     "psychiatric",
-    "musculoskeletal",
+    "constitutional",
     "ophthalmological",
-    "gastrointestinal"
+    "dermatological",
+    "endocrine",
+    "gastrointestinal",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -266,7 +532,7 @@
     "Physical and Occupational Therapist",
     "Speech-Language Pathologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Williams CA, et al. Angelman syndrome 2005: updated consensus for diagnostic criteria. Am J Med Genet A. 2006;140(5):413-418.",
     "Buiting K, et al. Angelman syndrome - insights into a rare neurogenetic disorder. Nat Rev Neurol. 2016;12(10):584-593.",

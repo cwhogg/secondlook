@@ -13,15 +13,15 @@
   "omimId": "236200",
   "orphanetId": "394",
   "prevalence": {
-    "estimate": "1 in 200,000 to 1 in 335,000 (worldwide); 1 in 65,000 in Ireland",
-    "range": "0.0003%-0.0015%",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 10,
-      "peak": 3
+      "min": 2,
+      "max": 65,
+      "peak": 14
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -82,115 +82,332 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Ectopia lentis (lens subluxation/dislocation)",
-        "snomedCode": "246933002",
-        "frequency": 0.85,
-        "bodySystem": "ophthalmological",
-        "notes": "Typically downward and nasal; distinguishes from Marfan (upward and temporal). Present by age 10 in most untreated patients."
+        "symptomName": "Dental crowding",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Osteoporosis",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Ectopia lentis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arachnodactyly",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intellectual disability",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Disproportionate tall stature",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Recurrent fractures",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of amino acid metabolism",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Myopia (severe, progressive)",
-        "snomedCode": "57190000",
-        "frequency": 0.9,
+        "symptomName": "Myopia",
+        "frequency": 0.55,
         "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Skeletal abnormalities (marfanoid habitus, tall stature, long limbs)",
-        "snomedCode": "65636009",
-        "frequency": 0.7,
+        "symptomName": "Amblyopia",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Pectus excavatum",
+        "frequency": 0.55,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Osteoporosis",
-        "snomedCode": "64859006",
-        "frequency": 0.6,
-        "bodySystem": "musculoskeletal",
-        "notes": "Present in >50% by age 16 if untreated"
+        "symptomName": "Pectus carinatum",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Intellectual disability (variable severity)",
-        "snomedCode": "91138005",
-        "frequency": 0.6,
-        "bodySystem": "neurological",
-        "notes": "Less common in B6-responsive patients; may range from mild learning difficulties to severe disability"
+        "symptomName": "Hypertension",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Thromboembolic events",
-        "snomedCode": "111293003",
-        "frequency": 0.5,
-        "bodySystem": "hematological",
-        "notes": "Both arterial and venous; major cause of morbidity and mortality. Risk by age 30 is ~50% if untreated."
+        "symptomName": "Joint stiffness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pes cavus",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pulmonary embolism",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Sparse scalp hair",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Cerebral ischemia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Kyphosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Genu valgum",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Arterial thrombosis",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Venous thrombosis",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Arteriovenous malformation",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Seizures",
-        "snomedCode": "91175000",
-        "frequency": 0.2,
-        "bodySystem": "neurological"
+        "symptomName": "High palate",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Psychiatric symptoms (behavioral issues, depression, psychosis)",
-        "snomedCode": "74732009",
-        "frequency": 0.3,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Pectus excavatum or carinatum",
-        "snomedCode": "391986006",
-        "frequency": 0.35,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Scoliosis",
-        "snomedCode": "298382003",
-        "frequency": 0.35,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Malar flush (livedo reticularis)",
-        "snomedCode": "238791000",
-        "frequency": 0.3,
-        "bodySystem": "dermatological"
-      }
-    ],
-    "rare": [
-      {
-        "symptomName": "Stroke (arterial thrombosis)",
-        "snomedCode": "230690007",
-        "frequency": 0.15,
-        "bodySystem": "neurological",
-        "notes": "Can occur at young ages; both ischemic stroke and cerebral venous sinus thrombosis"
-      },
-      {
-        "symptomName": "Pulmonary embolism",
-        "snomedCode": "59282003",
-        "frequency": 0.1,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Retinal detachment",
-        "snomedCode": "42059000",
-        "frequency": 0.1,
+        "symptomName": "Strabismus",
+        "frequency": 0.17,
         "bodySystem": "ophthalmological"
       },
       {
+        "symptomName": "Glaucoma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Cataract",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Retinal detachment",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Atypical behavior",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Depression",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Autistic behavior",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Hypopigmentation of the skin",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Urticaria",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Lens subluxation",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Parkinsonism",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dystonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
         "symptomName": "Pancreatitis",
-        "snomedCode": "75694006",
-        "frequency": 0.05,
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Subcutaneous hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Anorexia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Esophageal varix",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormality of extrapyramidal motor function",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Intracranial hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Gastrointestinal hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "EEG abnormality",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Elevated circulating hepatic transaminase concentration",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hemiplegia/hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of retinal pigmentation",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Obsessive-compulsive trait",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Neurodevelopmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Malar rash",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Livedo reticularis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cerebral venous sinus thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hernia",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       }
-    ]
+    ],
+    "rare": []
   },
   "systemsAffected": [
-    "ophthalmological",
+    "constitutional",
     "musculoskeletal",
     "neurological",
-    "hematological",
+    "ophthalmological",
     "cardiovascular",
-    "psychiatric"
+    "dermatological",
+    "psychiatric",
+    "gastrointestinal",
+    "hematological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -207,11 +424,8 @@
       "DEXA scan for bone density assessment"
     ],
     "genetic": [
-      "Autosomal recessive inheritance",
-      "Biallelic pathogenic variants in CBS gene (chromosome 21q22.3)",
-      "I278T mutation common in B6-responsive patients (Celtic origin)",
-      "G307S mutation common in B6-non-responsive patients",
-      "Over 200 pathogenic variants identified"
+      "CBS (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Slit-lamp examination for ectopia lentis detection",
@@ -269,7 +483,7 @@
     "Hematologist",
     "Metabolic Dietitian"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Morris AAM, et al. Guidelines for the diagnosis and management of cystathionine beta-synthase deficiency. J Inherit Metab Dis. 2017;40(1):49-74.",
     "Sacharow SJ, Picker JD, Levy HL. Homocystinuria Caused by Cystathionine Beta-Synthase Deficiency. In: Adam MP, et al., eds. GeneReviews. University of Washington, Seattle; 2004 [Updated 2017].",

@@ -19,9 +19,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 30,
-      "max": 70,
-      "peak": 50
+      "min": 2,
+      "max": 65,
+      "peak": 14
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -69,89 +69,180 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Proteinuria progressing to nephrotic syndrome",
-        "snomedCode": "236379000",
-        "frequency": 0.85,
-        "bodySystem": "renal",
-        "notes": "Most common presenting manifestation; typically non-selective proteinuria"
+        "symptomName": "Proteinuria",
+        "frequency": 0.9,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Nephropathy",
+        "frequency": 0.9,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Renal amyloidosis",
+        "frequency": 0.9,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Amyloidosis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Peripheral edema",
-        "snomedCode": "271809000",
-        "frequency": 0.7,
-        "bodySystem": "renal",
-        "notes": "Due to nephrotic syndrome"
-      },
-      {
-        "symptomName": "Fatigue and malaise",
-        "snomedCode": "84229001",
-        "frequency": 0.65,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Renal insufficiency progressing to ESRD",
-        "frequency": 0.6,
+        "symptomName": "Nephrotic syndrome",
+        "frequency": 0.55,
         "bodySystem": "renal"
       },
       {
-        "symptomName": "Diarrhea (GI amyloid deposition)",
-        "snomedCode": "62315008",
-        "frequency": 0.3,
+        "symptomName": "Enlarged kidney",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Cholestasis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.55,
         "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nausea",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Malabsorption",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Chronic diarrhea",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Malnutrition",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Venous thrombosis",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal oral mucosa morphology",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chronic kidney disease",
+        "frequency": 0.55,
+        "bodySystem": "renal"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hepatomegaly",
-        "snomedCode": "80515008",
-        "frequency": 0.25,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Splenomegaly",
-        "snomedCode": "16294009",
-        "frequency": 0.15,
-        "bodySystem": "immunological"
-      },
-      {
-        "symptomName": "Goiter (thyroid amyloid deposition)",
-        "frequency": 0.1,
+        "symptomName": "Goiter",
+        "frequency": 0.17,
         "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Weight loss",
-        "snomedCode": "89362005",
-        "frequency": 0.3,
+        "symptomName": "Orthostatic hypotension",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Acute kidney injury",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal left ventricular function",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Constrictive median neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Decreased QRS voltage",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Jaw claudication",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
+        "symptomName": "Macroglossia",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypothyroidism",
+        "frequency": 0.03,
+        "bodySystem": "endocrine"
+      },
+      {
         "symptomName": "Adrenal insufficiency",
-        "frequency": 0.05,
-        "bodySystem": "endocrine",
-        "notes": "From bilateral adrenal amyloid deposition"
+        "frequency": 0.03,
+        "bodySystem": "endocrine"
       },
       {
-        "symptomName": "GI bleeding or malabsorption",
-        "frequency": 0.08,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cardiac involvement (rare in AA, unlike AL)",
-        "frequency": 0.02,
-        "bodySystem": "cardiovascular",
-        "notes": "Cardiac involvement is uncommon in AA, distinguishing it from AL amyloidosis"
+        "symptomName": "Cardiac amyloidosis",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
       }
     ]
   },
   "systemsAffected": [
     "renal",
+    "constitutional",
     "gastrointestinal",
+    "cardiovascular",
     "endocrine",
-    "immunological"
+    "neurological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -168,8 +259,7 @@
       "Echocardiography usually normal (unlike AL amyloidosis)"
     ],
     "genetic": [
-      "SAA1 gene polymorphisms affect risk (SAA1.1 allele associated with increased risk)",
-      "Underlying genetic conditions: MEFV gene (FMF), TNFRSF1A (TRAPS) may predispose"
+      "SAA1 (susceptibility)"
     ],
     "other": [
       "Abdominal fat pad aspiration: least invasive biopsy (sensitivity ~70-80%)",
@@ -214,7 +304,7 @@
     "Hematologist",
     "Amyloidosis Center Specialist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Lachmann HJ, et al. Natural history and outcome in systemic AA amyloidosis. N Engl J Med. 2007;356(23):2361-2371.",
     "Papa R, Bhatt DL. AA amyloidosis. Lancet. 2023;402(10409):1253-1267.",

@@ -18,9 +18,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 1,
-      "max": 80,
-      "peak": 25
+      "min": 0,
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": [
@@ -69,111 +69,287 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Subacute cognitive decline with psychiatric features",
-        "snomedCode": "386806002",
+        "symptomName": "Atypical behavior",
         "frequency": 0.9,
-        "bodySystem": "neurological",
-        "notes": "Developing over days to weeks; confusion, memory impairment, personality change"
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Faciobrachial dystonic seizures",
-        "frequency": 0.7,
-        "bodySystem": "neurological",
-        "notes": "Pathognomonic for anti-LGI1 encephalitis; brief unilateral arm and face jerking"
+        "symptomName": "Short attention span",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Orofacial-limb dyskinesias",
-        "frequency": 0.6,
-        "bodySystem": "neurological",
-        "notes": "Characteristic of anti-NMDAR encephalitis; lip smacking, jaw movements, choreoathetosis"
+        "symptomName": "Seizure",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Confusion",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Memory impairment",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "CSF pleocytosis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anti-NMDA receptor antibody positivity",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "CSF anti-NMDA receptor antibody positivity",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "New-onset seizures",
-        "snomedCode": "91175000",
-        "frequency": 0.75,
+        "symptomName": "Hallucinations",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Delusion",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.55,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Psychiatric symptoms",
-        "frequency": 0.8,
-        "bodySystem": "psychiatric",
-        "notes": "Psychosis, agitation, hallucinations, paranoia, catatonia; often initial presentation"
+        "symptomName": "Involuntary movements",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Memory impairment",
-        "snomedCode": "386807006",
-        "frequency": 0.75,
-        "bodySystem": "neurological",
-        "notes": "Particularly short-term memory; characteristic of limbic involvement"
-      },
-      {
-        "symptomName": "Movement disorders",
-        "frequency": 0.5,
-        "bodySystem": "neurological",
-        "notes": "Chorea, dystonia, myoclonus, orofacial dyskinesias"
-      },
-      {
-        "symptomName": "Decreased level of consciousness",
-        "snomedCode": "3006004",
-        "frequency": 0.5,
+        "symptomName": "EEG with temporal sharp slow waves",
+        "frequency": 0.55,
         "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ovarian teratoma",
+        "frequency": 0.55,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Abnormal autonomic nervous system physiology",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyskinesia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mania",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Insomnia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Autonomic instability",
-        "snomedCode": "72167002",
-        "frequency": 0.35,
-        "bodySystem": "neurological",
-        "notes": "Tachycardia, blood pressure fluctuations, central hypoventilation in anti-NMDAR"
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Hyponatremia",
-        "snomedCode": "89627008",
-        "frequency": 0.25,
-        "bodySystem": "endocrine",
-        "notes": "Characteristic of anti-LGI1 encephalitis (SIADH)"
+        "symptomName": "Agitation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Sleep disturbance",
-        "snomedCode": "39898005",
-        "frequency": 0.4,
-        "bodySystem": "neurological",
-        "notes": "Insomnia or hypersomnia; severe sleep disruption in anti-IgLON5"
+        "symptomName": "Depression",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Speech dysfunction",
-        "snomedCode": "29164008",
-        "frequency": 0.4,
-        "bodySystem": "neurological",
-        "notes": "Reduced speech output progressing to mutism in anti-NMDAR"
+        "symptomName": "Abnormal repetitive mannerisms",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Choreoathetosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Orthostatic hypotension",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dystonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Myoclonus",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Rigidity",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Chorea",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Status epilepticus",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Opisthotonus",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mutism",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Orofacial dyskinesia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Loss of speech",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Language impairment",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Excessive salivation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "No social interaction",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Oculogyric crisis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Orthostatic tachycardia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal sudomotor regulation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Delirium",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Amplification of sexual behavior",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Central hypoventilation",
-        "frequency": 0.15,
-        "bodySystem": "respiratory",
-        "notes": "Anti-NMDAR encephalitis; may require mechanical ventilation"
-      },
-      {
-        "symptomName": "Peripheral nerve hyperexcitability",
-        "frequency": 0.1,
-        "bodySystem": "neurological",
-        "notes": "Morvan syndrome with anti-CASPR2: neuromyotonia, insomnia, autonomic dysfunction"
-      },
-      {
-        "symptomName": "Opsoclonus-myoclonus",
-        "frequency": 0.05,
+        "symptomName": "Neuroblastoma",
+        "frequency": 0.03,
         "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hodgkin lymphoma",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Neoplasm of the breast",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Neoplasm of the thymus",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Neoplasm of the lung",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Testicular teratoma",
+        "frequency": 0.03,
+        "bodySystem": "reproductive"
       }
     ]
   },
   "systemsAffected": [
+    "psychiatric",
+    "constitutional",
     "neurological",
-    "psychiatric"
+    "immunological",
+    "gastrointestinal",
+    "reproductive",
+    "cardiovascular",
+    "respiratory"
   ],
   "keyFindings": {
     "laboratory": [
@@ -243,7 +419,7 @@
     "psychiatrist",
     "oncologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Graus F, et al. A clinical approach to diagnosis of autoimmune encephalitis. Lancet Neurol. 2016;15(4):391-404.",
     "Dalmau J, et al. Autoimmune Encephalitis. N Engl J Med. 2018;378(9):840-851.",

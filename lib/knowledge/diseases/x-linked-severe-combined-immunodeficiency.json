@@ -12,14 +12,15 @@
   "omimId": "300400",
   "orphanetId": "803",
   "prevalence": {
-    "estimate": "1 in 50,000 to 100,000 live births",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 12,
-      "peak": 3
+      "min": 18,
+      "max": 65,
+      "peak": 42
     },
     "sexPredilection": "male",
     "ethnicAssociations": []
@@ -58,93 +59,257 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Profound T-cell lymphopenia",
-        "frequency": 0.95,
-        "bodySystem": "immunological"
+        "symptomName": "Amyotrophic lateral sclerosis",
+        "frequency": 1,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Severe recurrent opportunistic infections",
+        "symptomName": "Neurodegeneration",
         "frequency": 0.9,
-        "bodySystem": "immunological"
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Failure to thrive in infancy",
-        "frequency": 0.85,
-        "bodySystem": "constitutional"
+        "symptomName": "Generalized muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Motor neuron atrophy",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       }
     ],
     "common": [
       {
-        "symptomName": "Chronic diarrhea",
-        "frequency": 0.7,
+        "symptomName": "Xerostomia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Atypical behavior",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Emotional lability",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Depression",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Spasticity",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hyperreflexia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysphonia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.55,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Persistent oral thrush (candidiasis)",
-        "frequency": 0.65,
-        "bodySystem": "otolaryngological"
-      },
-      {
-        "symptomName": "Pneumonia",
-        "frequency": 0.6,
+        "symptomName": "Dyspnea",
+        "frequency": 0.55,
         "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Lymphadenopathy",
+        "symptomName": "Drooling",
         "frequency": 0.55,
-        "bodySystem": "immunological"
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fasciculations",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Skeletal muscle atrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Muscle spasm",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Paralysis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Upper limb muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Babinski sign",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Distal amyotrophy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Progressive distal muscular atrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Tongue atrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigable weakness of bulbar muscles",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigable weakness of swallowing muscles",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigable weakness of respiratory muscles",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormality on pulmonary function testing",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hoffmann sign",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hepatosplenomegaly",
-        "frequency": 0.4,
-        "bodySystem": "hematological"
+        "symptomName": "Tongue fasciculations",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Eczema",
-        "frequency": 0.3,
-        "bodySystem": "dermatological"
+        "symptomName": "Frontotemporal dementia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Chronic otitis media",
-        "frequency": 0.25,
-        "bodySystem": "otolaryngological"
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Sepsis",
-        "frequency": 0.15,
-        "bodySystem": "immunological"
+        "symptomName": "Sleep abnormality",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Language impairment",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Steppage gait",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cachexia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Foot dorsiflexor weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Orthopnea",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Jaw hyperreflexia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Neurological complications secondary to infections",
-        "frequency": 0.08,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Autoimmune manifestations",
-        "frequency": 0.05,
-        "bodySystem": "immunological"
-      },
-      {
-        "symptomName": "Cardiomyopathy",
+        "symptomName": "Laryngospasm",
         "frequency": 0.03,
-        "bodySystem": "cardiovascular"
+        "bodySystem": "otolaryngological"
       }
     ]
   },
   "systemsAffected": [
-    "immunological",
+    "ophthalmological",
+    "neurological",
+    "musculoskeletal",
+    "constitutional",
+    "psychiatric",
     "gastrointestinal",
     "respiratory",
-    "hematological",
-    "dermatological",
-    "otolaryngological",
-    "constitutional",
-    "neurological",
-    "cardiovascular"
+    "otolaryngological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -157,7 +322,44 @@
       "Chest X-ray showing pneumonia or absent thymic shadow"
     ],
     "genetic": [
-      "Pathogenic mutation in IL2RG gene on X chromosome"
+      "CCNF (causative)",
+      "TAF15 (candidate)",
+      "ANXA11 (causative)",
+      "CFAP410 (causative)",
+      "GLE1 (causative)",
+      "NEK1 (susceptibility)",
+      "GLT8D1 (susceptibility)",
+      "CHCHD10 (causative)",
+      "DAO (causative)",
+      "ATXN2 (susceptibility)",
+      "CHMP2B (causative)",
+      "SOD1 (causative)",
+      "TREM2 (susceptibility)",
+      "VAPB (causative)",
+      "VCP (causative)",
+      "NEFH (susceptibility)",
+      "OPTN (causative)",
+      "DCTN1 (candidate)",
+      "TARDBP (causative)",
+      "FIG4 (causative)",
+      "FUS (causative)",
+      "ANG (causative)",
+      "MATR3 (causative)",
+      "PRPH (susceptibility)",
+      "PON1 (causative)",
+      "PON2 (causative)",
+      "PON3 (causative)",
+      "SQSTM1 (causative)",
+      "UBQLN2 (causative)",
+      "C9ORF72 (causative)",
+      "PFN1 (causative)",
+      "TBK1 (susceptibility)",
+      "HNRNPA1 (causative)",
+      "PPARGC1A (modifier)",
+      "ERBB4 (causative)",
+      "UNC13A (susceptibility)",
+      "Autosomal dominant inheritance",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Abnormal lymphocyte proliferation assays",
@@ -193,7 +395,7 @@
     "Geneticist",
     "Infectious Disease Specialist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Buckley RH. The multiple causes of human SCID. J Clin Invest. 2004;114(10):1409-1411.",
     "Notarangelo LD. Primary immunodeficiencies. J Allergy Clin Immunol. 2010;125(2 Suppl 2):S182-94.",

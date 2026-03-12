@@ -13,15 +13,15 @@
   "omimId": "121300",
   "orphanetId": "79273",
   "prevalence": {
-    "estimate": "1 in 500,000 to 1 in 1,000,000",
-    "range": "0.0001%-0.0002%",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 15,
-      "max": 45,
-      "peak": 30
+      "min": 10,
+      "max": 65,
+      "peak": 14
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": []
@@ -72,107 +72,177 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Acute neurovisceral attacks with abdominal pain",
-        "snomedCode": "21522001",
+        "symptomName": "Abdominal pain",
         "frequency": 0.9,
-        "bodySystem": "gastrointestinal",
-        "notes": "Indistinguishable from AIP attacks"
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Elevated urinary delta-aminolevulinic acid",
+        "frequency": 0.9,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal circulating porphyrin concentration",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Nausea and vomiting",
-        "snomedCode": "422400008",
-        "frequency": 0.75,
+        "symptomName": "Atypical scarring of skin",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Nausea",
+        "frequency": 0.55,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Tachycardia",
-        "snomedCode": "3424008",
-        "frequency": 0.7,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Distal muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Constipation",
-        "snomedCode": "14760008",
-        "frequency": 0.65,
+        "symptomName": "Episodic vomiting",
+        "frequency": 0.55,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Dark or red urine during attacks",
-        "snomedCode": "281866005",
-        "frequency": 0.6,
+        "symptomName": "Proximal muscle weakness in lower limbs",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Proximal muscle weakness in upper limbs",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Limb pain",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Porphyrinuria",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skin morphology",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Increased urinary porphobilinogen",
+        "frequency": 0.55,
         "bodySystem": "renal"
       },
       {
-        "symptomName": "Hypertension during attacks",
-        "snomedCode": "38341003",
-        "frequency": 0.6,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Dark urine",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Cutaneous photosensitivity with skin blistering",
-        "snomedCode": "90128006",
-        "frequency": 0.3,
-        "bodySystem": "dermatological",
-        "notes": "Present in ~30% of symptomatic patients; distinguishes from AIP"
+        "symptomName": "Nephropathy",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Peripheral motor neuropathy",
-        "snomedCode": "26544005",
-        "frequency": 0.35,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Psychiatric symptoms (anxiety, confusion, hallucinations)",
-        "snomedCode": "69322001",
-        "frequency": 0.3,
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
         "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Seizures",
-        "snomedCode": "91175000",
-        "frequency": 0.2,
+        "symptomName": "Cutaneous photosensitivity",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Fragile skin",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Back and limb pain",
-        "snomedCode": "10601006",
-        "frequency": 0.4,
-        "bodySystem": "musculoskeletal"
-      }
-    ],
-    "rare": [
+        "symptomName": "Hepatocellular carcinoma",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
       {
-        "symptomName": "Respiratory paralysis",
-        "snomedCode": "87317003",
-        "frequency": 0.03,
+        "symptomName": "Tachycardia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.17,
         "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Jaundice (in homozygous/harderoporphyria)",
-        "snomedCode": "18165001",
-        "frequency": 0.02,
-        "bodySystem": "gastrointestinal",
-        "notes": "Seen primarily in homozygous cases presenting in infancy"
+        "symptomName": "Hyponatremia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hemolytic anemia (in harderoporphyria)",
-        "snomedCode": "61261009",
-        "frequency": 0.02,
-        "bodySystem": "hematological",
-        "notes": "Seen in homozygous variant"
+        "symptomName": "Back pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Extension of hair growth on temples to lateral eyebrow",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Motor polyneuropathy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal blistering of the skin",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Long hairs growing from helix of pinna",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Facial hirsutism",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Small intestinal dysmotility",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Intrusion symptom",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
-    ]
+    ],
+    "rare": []
   },
   "systemsAffected": [
-    "neurological",
     "gastrointestinal",
-    "cardiovascular",
+    "renal",
+    "constitutional",
     "dermatological",
-    "psychiatric"
+    "musculoskeletal",
+    "psychiatric",
+    "neurological",
+    "cardiovascular",
+    "respiratory"
   ],
   "keyFindings": {
     "laboratory": [
@@ -187,10 +257,8 @@
       "MRI brain if neurological complications suspected"
     ],
     "genetic": [
-      "Autosomal dominant inheritance",
-      "Pathogenic variants in CPOX gene (chromosome 3q11.2)",
-      "Low clinical penetrance",
-      "Homozygous or compound heterozygous variants cause harderoporphyria"
+      "CPOX (causative)",
+      "Autosomal dominant inheritance"
     ],
     "other": [
       "Nerve conduction studies may show motor axonal neuropathy during attacks",
@@ -237,7 +305,7 @@
     "Dermatologist",
     "Neurologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Bissell DM, et al. Porphyria. N Engl J Med. 2017;377(9):862-872.",
     "Puy H, Gouya L, Deybach JC. Porphyrias. Lancet. 2010;375(9718):924-37.",

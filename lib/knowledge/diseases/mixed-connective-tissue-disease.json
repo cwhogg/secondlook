@@ -12,15 +12,15 @@
   "omimId": "604184",
   "orphanetId": "809",
   "prevalence": {
-    "estimate": "1 in 10,000 to 1 in 100,000",
-    "range": "0.001%-0.01%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 15,
-      "max": 50,
-      "peak": 30
+      "min": 2,
+      "max": 65,
+      "peak": 14
     },
     "sexPredilection": "female",
     "ethnicAssociations": []
@@ -71,121 +71,366 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Raynaud's phenomenon with high-titer anti-U1 RNP antibodies",
+        "symptomName": "Skin rash",
         "frequency": 0.9,
-        "bodySystem": "cardiovascular",
-        "notes": "Nearly universal; often the earliest symptom"
+        "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Puffy or swollen hands ('sausage fingers')",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal",
-        "notes": "Diffuse hand swelling, not localized joint swelling"
+        "symptomName": "Arthritis",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Gastroesophageal reflux",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pulmonary fibrosis",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Autoimmunity",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Gastritis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Scleroderma",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Raynaud's phenomenon",
-        "snomedCode": "266261006",
-        "frequency": 0.95,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Inflammatory polyarthritis / arthralgias",
-        "snomedCode": "3723001",
-        "frequency": 0.85,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Swollen hands (puffy fingers)",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Fatigue",
-        "snomedCode": "84229001",
-        "frequency": 0.8,
+        "symptomName": "Fever",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Myalgia or proximal muscle weakness",
-        "snomedCode": "68962001",
-        "frequency": 0.6,
+        "symptomName": "Pleuritis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.55,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Sclerodactyly (skin thickening of fingers)",
-        "snomedCode": "201049004",
-        "frequency": 0.5,
-        "bodySystem": "dermatological"
+        "symptomName": "Rheumatoid factor positive",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Edema of the dorsum of hands",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Sclerodactyly",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Anti-dsDNA antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Anti-U1 ribonucleoprotein antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-ribosome Po antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-cyclic citrullinated peptide antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-Ro52/TRIM21 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Myositis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Trigeminal neuralgia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Xerostomia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Psychosis",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Keratoconjunctivitis sicca",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Joint swelling",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Esophageal dysmotility",
-        "snomedCode": "40739000",
-        "frequency": 0.4,
-        "bodySystem": "gastrointestinal",
-        "notes": "Especially distal esophagus; similar to scleroderma pattern"
+        "symptomName": "Proteinuria",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Pulmonary hypertension",
-        "snomedCode": "70995007",
-        "frequency": 0.2,
-        "bodySystem": "respiratory",
-        "notes": "Most serious complication; leading cause of death in MCTD"
+        "symptomName": "Nephropathy",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Pleuritis / pericarditis (serositis)",
-        "snomedCode": "196026004",
-        "frequency": 0.3,
+        "symptomName": "Oral ulcer",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Depression",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Purpura",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Telangiectasia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Joint stiffness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Alopecia",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pericardial effusion",
+        "frequency": 0.17,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Malar rash or photosensitivity",
-        "frequency": 0.25,
-        "bodySystem": "dermatological",
-        "notes": "Lupus-like features"
+        "symptomName": "Pericarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Interstitial lung disease",
-        "snomedCode": "233703007",
-        "frequency": 0.25,
-        "bodySystem": "respiratory"
-      }
-    ],
-    "rare": [
-      {
-        "symptomName": "Trigeminal neuropathy",
-        "snomedCode": "31681005",
-        "frequency": 0.1,
-        "bodySystem": "neurological",
-        "notes": "Relatively characteristic of MCTD among CTDs"
-      },
-      {
-        "symptomName": "Glomerulonephritis",
-        "snomedCode": "36171008",
-        "frequency": 0.1,
-        "bodySystem": "renal",
-        "notes": "Less common than in SLE; usually membranous pattern"
+        "symptomName": "Splenomegaly",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
         "symptomName": "Thrombocytopenia",
-        "snomedCode": "302215000",
-        "frequency": 0.1,
+        "frequency": 0.17,
         "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hemolytic anemia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Leukopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Pulmonary arterial hypertension",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Gastrointestinal hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Osteolysis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Prolonged bleeding time",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hypoproteinemia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal EKG",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal pulmonary interstitial morphology",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Avascular necrosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anasarca",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Erythema nodosum",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Membranous nephropathy",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Myocarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Malar rash",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality on pulmonary function testing",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Ineffective esophageal peristalsis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Non-infectious meningitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Malaise",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mediastinal lymphadenopathy",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
       }
-    ]
+    ],
+    "rare": []
   },
   "systemsAffected": [
+    "constitutional",
     "musculoskeletal",
+    "immunological",
+    "ophthalmological",
     "cardiovascular",
-    "respiratory",
+    "renal",
     "dermatological",
     "gastrointestinal",
-    "neurological",
-    "renal",
-    "hematological"
+    "respiratory",
+    "hematological",
+    "psychiatric",
+    "otolaryngological",
+    "neurological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -206,7 +451,8 @@
     ],
     "genetic": [
       "HLA-DR4 association reported",
-      "No specific single-gene cause; polygenic susceptibility"
+      "No specific single-gene cause; polygenic susceptibility",
+      "Multigenic/multifactorial inheritance"
     ],
     "other": [
       "Pulmonary function tests (reduced DLCO in pulmonary hypertension/ILD)",
@@ -254,7 +500,7 @@
     "Gastroenterologist",
     "Neurologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Sharp GC, et al. Mixed connective tissue disease--an apparently distinct rheumatic disease syndrome associated with a specific antibody to an extractable nuclear antigen (ENA). Am J Med. 1972;52(2):148-59.",
     "Alarcon-Segovia D, Villarreal M. Classification and diagnostic criteria for mixed connective tissue disease. In: Kasukawa R, Sharp GC, eds. Mixed Connective Tissue Disease and Antinuclear Antibodies. 1987:33-40.",

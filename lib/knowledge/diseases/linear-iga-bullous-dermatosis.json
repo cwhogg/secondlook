@@ -11,14 +11,15 @@
   "omimId": "106700",
   "orphanetId": "244",
   "prevalence": {
-    "estimate": "1 in 50,000",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 80,
-      "peak": 60
+      "max": 0.08,
+      "peak": 0
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -61,92 +62,258 @@
     "notes": "Direct immunofluorescence is the gold standard for diagnosis"
   },
   "symptoms": {
-    "pathognomonic": [
-      {
-        "symptomName": "Linear IgA deposition at basement membrane zone",
-        "frequency": 0.95,
-        "bodySystem": "immunological",
-        "notes": "Detected by direct immunofluorescence"
-      },
-      {
-        "symptomName": "Tense subepidermal blisters",
-        "frequency": 0.9,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Annular or grouped vesiculobullous lesions",
-        "frequency": 0.85,
-        "bodySystem": "dermatological"
-      }
-    ],
+    "pathognomonic": [],
     "common": [
       {
-        "symptomName": "Pruritus",
-        "frequency": 0.75,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Erosions and crusting secondary to blister rupture",
-        "frequency": 0.7,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Mucosal involvement (oral or ocular)",
-        "frequency": 0.6,
-        "bodySystem": "ophthalmological",
-        "notes": "May cause conjunctivitis or oral ulcers"
-      },
-      {
-        "symptomName": "Distribution on extensor surfaces",
+        "symptomName": "Chronic otitis media",
         "frequency": 0.55,
-        "bodySystem": "dermatological"
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Recurrent otitis media",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Nasal congestion",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chronic rhinitis",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Neonatal respiratory distress",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Male infertility",
+        "frequency": 0.55,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Recurrent sinopulmonary infections",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chronic sinusitis",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Respiratory tract infection",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormal sperm motility",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Productive cough",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal sputum",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Nasal polyposis",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Nikolsky sign negative",
-        "frequency": 0.4,
-        "bodySystem": "dermatological"
+        "symptomName": "Abnormality of the genitourinary system",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Post-inflammatory hyperpigmentation",
-        "frequency": 0.3,
-        "bodySystem": "dermatological"
+        "symptomName": "Hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Secondary bacterial infection",
-        "frequency": 0.2,
-        "bodySystem": "dermatological"
+        "symptomName": "Conductive hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Pain at blister sites",
-        "frequency": 0.15,
-        "bodySystem": "dermatological"
+        "symptomName": "Delayed speech and language development",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the skeletal system",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Clubbing",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal heart morphology",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Situs inversus totalis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Bronchiectasis",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Airway obstruction",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Female infertility",
+        "frequency": 0.17,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Recurrent mycobacterial infections",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pulmonary situs ambiguus",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Peribronchovascular interstitial thickening",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cardiovascular system morphology",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Wheezing",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ectopic pregnancy",
+        "frequency": 0.17,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Lithoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Atelectasis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Scarring and milia formation",
-        "frequency": 0.05,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Ocular scarring leading to symblepharon",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "ophthalmological"
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Systemic symptoms such as fever",
-        "frequency": 0.02,
+        "symptomName": "Rod-cone dystrophy",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Transposition of the great arteries",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Double outlet right ventricle",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asplenia",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Polysplenia",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Intestinal malrotation",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Persistent left superior vena cava",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anomalous pulmonary venous return",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormal atrial arrangement",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrial situs ambiguous",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal inferior vena cava morphology",
+        "frequency": 0.03,
         "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
-    "dermatological",
-    "immunological",
-    "ophthalmological",
-    "constitutional"
+    "otolaryngological",
+    "constitutional",
+    "respiratory",
+    "reproductive",
+    "neurological",
+    "musculoskeletal",
+    "cardiovascular",
+    "gastrointestinal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -156,7 +323,62 @@
     ],
     "imaging": [],
     "genetic": [
-      "No specific genetic mutations identified; autoimmune etiology"
+      "NME5 (causative)",
+      "DNAH1 (causative)",
+      "TTC12 (causative, loss-of-function)",
+      "NEK10 (causative)",
+      "DNAAF6 (causative, loss-of-function)",
+      "CFAP221 (causative)",
+      "SPEF2 (causative)",
+      "DNAJB13 (causative, loss-of-function)",
+      "ODAD4 (causative, loss-of-function)",
+      "MCIDAS (causative, loss-of-function)",
+      "GAS2L2 (causative)",
+      "OFD1 (causative)",
+      "DNAH11 (causative)",
+      "DNAH5 (causative)",
+      "DNAI1 (causative)",
+      "NME8 (causative)",
+      "DNAI2 (causative)",
+      "DNAAF2 (causative)",
+      "RSPH9 (causative)",
+      "RSPH4A (causative)",
+      "DNAAF1 (causative)",
+      "CCDC39 (causative)",
+      "CCDC40 (causative)",
+      "DNAL1 (causative)",
+      "DNAAF3 (causative)",
+      "DNAAF19 (causative)",
+      "DNAAF5 (causative)",
+      "HYDIN (causative, loss-of-function)",
+      "DNAAF11 (causative, loss-of-function)",
+      "ODAD1 (causative, loss-of-function)",
+      "DRC1 (causative, loss-of-function)",
+      "ODAD2 (causative, loss-of-function)",
+      "DNAAF4 (causative, loss-of-function)",
+      "RSPH1 (causative, loss-of-function)",
+      "ZMYND10 (causative, loss-of-function)",
+      "CFAP298 (causative)",
+      "DRC2 (causative)",
+      "SPAG1 (causative)",
+      "CCNO (causative, loss-of-function)",
+      "ODAD3 (causative, loss-of-function)",
+      "RSPH3 (causative)",
+      "DRC4 (causative, loss-of-function)",
+      "RPGR (causative)",
+      "CFAP74 (causative)",
+      "DNAH7 (causative)",
+      "BRWD1 (causative)",
+      "DAW1 (causative)",
+      "CLXN (causative)",
+      "STK36 (causative, loss-of-function)",
+      "FOXJ1 (causative, loss-of-function)",
+      "DNAH9 (causative, loss-of-function)",
+      "LRRC56 (causative)",
+      "CFAP300 (causative, loss-of-function)",
+      "Autosomal dominant inheritance",
+      "Autosomal recessive inheritance",
+      "X-linked recessive inheritance"
     ],
     "other": [
       "Clinical response to dapsone therapy supports diagnosis"
@@ -190,7 +412,7 @@
     "Immunologist",
     "Ophthalmologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Leonard JN, et al. Linear IgA Bullous Dermatosis: Clinical and Immunopathologic Features. J Am Acad Dermatol. 2020.",
     "Zone JJ. Linear IgA Bullous Dermatosis. Dermatol Clin. 2011.",

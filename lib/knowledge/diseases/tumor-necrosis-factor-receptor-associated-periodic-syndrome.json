@@ -13,14 +13,15 @@
   "omimId": "142680",
   "orphanetId": "32960",
   "prevalence": {
-    "estimate": "Approximately 1 per 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 2,
-      "max": 30,
-      "peak": 10
+      "min": 0,
+      "max": 65,
+      "peak": 14
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -75,95 +76,224 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Prolonged febrile episodes lasting 1-4 weeks",
-        "frequency": 0.95,
-        "bodySystem": "constitutional",
-        "notes": "Duration distinguishes TRAPS from FMF (1-3 days) and HIDS (3-7 days)"
+        "symptomName": "Skin rash",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Migratory erythematous rash overlying myalgia",
-        "frequency": 0.65,
-        "bodySystem": "dermatological",
-        "notes": "Rash and myalgia migrate centrifugally from proximal to distal"
+        "symptomName": "Erysipelas",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Recurrent fever",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated circulating C-reactive protein concentration",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Macule",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
       }
     ],
     "common": [
       {
-        "symptomName": "Severe myalgia (migratory)",
-        "snomedCode": "68962001",
-        "frequency": 0.85,
+        "symptomName": "Arthritis",
+        "frequency": 0.55,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Abdominal pain",
-        "snomedCode": "21522001",
-        "frequency": 0.8,
+        "symptomName": "Splenomegaly",
+        "frequency": 0.55,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Periorbital edema",
-        "frequency": 0.6,
-        "bodySystem": "ophthalmological",
-        "notes": "Distinctive feature; unilateral or bilateral"
+        "symptomName": "Leukocytosis",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Arthralgias/arthritis (large joints)",
-        "snomedCode": "57676002",
+        "symptomName": "Vomiting",
         "frequency": 0.55,
-        "bodySystem": "musculoskeletal"
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Constipation",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pleuritis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Intestinal obstruction",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Erythema",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Orchitis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Pleuritic chest pain",
-        "frequency": 0.35,
-        "bodySystem": "respiratory"
-      },
-      {
         "symptomName": "Conjunctivitis",
-        "snomedCode": "9826008",
-        "frequency": 0.4,
+        "frequency": 0.17,
         "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Testicular pain",
-        "frequency": 0.1,
-        "bodySystem": "renal"
+        "symptomName": "Uveitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Lymphadenopathy",
-        "snomedCode": "30746006",
-        "frequency": 0.25,
-        "bodySystem": "immunological"
-      }
-    ],
-    "rare": [
-      {
-        "symptomName": "AA amyloidosis",
-        "frequency": 0.1,
-        "bodySystem": "renal",
-        "notes": "Occurs in ~10% of patients with pathogenic mutations; presents as proteinuria"
+        "symptomName": "Atypical behavior",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Pericarditis",
-        "frequency": 0.05,
+        "symptomName": "Bruising susceptibility",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypermelanotic macule",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Abnormal myocardium morphology",
+        "frequency": 0.17,
         "bodySystem": "cardiovascular"
       },
       {
+        "symptomName": "Migraine",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Peritonitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Paresthesia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
         "symptomName": "Fasciitis",
-        "frequency": 0.08,
-        "bodySystem": "musculoskeletal",
-        "notes": "Monocytic fasciitis underlying the migratory myalgia"
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Periorbital edema",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myositis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cellulitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Recurrent pharyngitis",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Abnormality of the sacroiliac joint",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
       }
-    ]
+    ],
+    "rare": []
   },
   "systemsAffected": [
-    "constitutional",
-    "musculoskeletal",
-    "gastrointestinal",
-    "dermatological",
     "ophthalmological",
-    "respiratory"
+    "constitutional",
+    "psychiatric",
+    "dermatological",
+    "musculoskeletal",
+    "cardiovascular",
+    "gastrointestinal",
+    "hematological",
+    "neurological",
+    "otolaryngological",
+    "immunological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -178,9 +308,7 @@
       "No specific imaging findings"
     ],
     "genetic": [
-      "TNFRSF1A gene mutations on chromosome 12p13.31",
-      "Common pathogenic variants: C33Y, T50M, C88R (cysteine mutations are higher pathogenicity)",
-      "R92Q and P46L are low-penetrance/uncertain significance variants",
+      "TNFRSF1A (causative)",
       "Autosomal dominant inheritance with variable penetrance"
     ],
     "other": [
@@ -226,7 +354,7 @@
     "Pediatric Rheumatologist",
     "Autoinflammatory Disease Specialist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-03-12",
   "references": [
     "Lachmann HJ, et al. Clinical and subclinical inflammation in patients with familial Mediterranean fever and in heterozygous carriers of MEFV mutations. Rheumatology. 2006;45(6):746-750.",
     "Gattorno M, et al. Classification criteria for autoinflammatory recurrent fevers. Ann Rheum Dis. 2019;78(8):1025-1032.",

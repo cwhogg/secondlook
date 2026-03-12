@@ -232,7 +232,7 @@ const VERSION_COLORS: Record<string, string> = {
 
 function StatsBanner({ stats }: { stats: TestSuiteStats }) {
   const breakdownEntries = Object.values(stats.byDifficultySource)
-    .sort((a, b) => a.difficulty - b.difficulty || (a.version === "v1" ? -1 : 1))
+    .sort((a, b) => a.difficulty - b.difficulty || a.version.localeCompare(b.version))
   const versionEntries = Object.values(stats.byVersion)
     .sort((a, b) => a.version.localeCompare(b.version))
 

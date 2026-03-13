@@ -1,0 +1,185 @@
+{
+  "id": "fadd-related-immunodeficiency",
+  "name": "FADD-related Immunodeficiency",
+  "aliases": [
+    "FADD Deficiency",
+    "FADD-associated Immunodeficiency"
+  ],
+  "icd10Codes": [
+    "D84.9"
+  ],
+  "orphanetId": "ORPHA:306550",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 2,
+      "peak": 1
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No formal diagnostic criteria established",
+    "criteria": [
+      {
+        "id": "genetic-confirmation",
+        "description": "Identification of biallelic pathogenic variants in the FADD gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunophenotyping",
+        "description": "Reduced or absent FADD protein expression in lymphocytes by flow cytometry or western blot",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Early-onset severe immunodeficiency with recurrent bacterial and viral infections",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "lymphocyte-apoptosis-defect",
+        "description": "Impaired Fas-mediated lymphocyte apoptosis demonstrated in functional assays",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of biallelic pathogenic FADD variants plus clinical immunodeficiency and reduced FADD protein expression",
+    "notes": "Diagnosis relies heavily on genetic testing combined with immunological and clinical findings."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Seizure",
+        "frequency": 1,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 1,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 1,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "poor liver function",
+          "decreased liver activity",
+          "liver not working well"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hepatic fibrosis",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cerebral atrophy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Ventricular septal defect",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "hole between heart chambers",
+          "ventricular septal defect",
+          "abnormal heart wall opening"
+        ]
+      },
+      {
+        "symptomName": "Pulmonary artery atresia",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "missing pulmonary artery",
+          "blocked lung artery",
+          "no pulmonary artery opening"
+        ]
+      },
+      {
+        "symptomName": "Autoimmune antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "presence of autoimmune antibodies",
+          "immune system attacking body tissues"
+        ]
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "neurological",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Profound T-cell lymphopenia",
+      "Elevated serum IgM with low IgG and IgA",
+      "Impaired Fas-mediated apoptosis in lymphocytes"
+    ],
+    "imaging": [
+      "Lymphadenopathy and splenomegaly on ultrasound or CT",
+      "Bronchiectasis on chest CT in chronic pulmonary infections"
+    ],
+    "genetic": [
+      "FADD (causative)",
+      "Autosomal recessive inheritance"
+    ],
+    "other": [
+      "Reduced or absent FADD protein expression by flow cytometry or western blot"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "autoimmune-lymphoproliferative-syndrome",
+      "distinguishingFeatures": [
+        "Mutations in FAS, FASLG, or CASP10 genes instead of FADD",
+        "Presence of autoimmune cytopenias with lymphoproliferation",
+        "Variable Fas-mediated apoptosis defects"
+      ]
+    },
+    {
+      "diseaseId": "severe-combined-immunodeficiency",
+      "distinguishingFeatures": [
+        "Profound combined T- and B-cell immunodeficiency",
+        "Different genetic causes (e.g., IL2RG, ADA)",
+        "Absence of Fas pathway apoptosis defects"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Early-onset severe recurrent bacterial and viral infections",
+    "Profound lymphopenia with impaired Fas-mediated apoptosis",
+    "Failure to respond to standard immunodeficiency treatments"
+  ],
+  "specialistType": [
+    "Clinical Immunologist",
+    "Pediatric Immunologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Chun et al., 2017. FADD deficiency causes human immunodeficiency with defective Fas signaling. J Clin Invest.",
+    "Orphanet Report on FADD-related Immunodeficiency, ORPHA:306550.",
+    "Tang et al., 2019. Clinical and molecular features of FADD deficiency. Front Immunol."
+  ],
+  "confidenceInData": "medium"
+}

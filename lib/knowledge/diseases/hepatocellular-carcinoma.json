@@ -1,0 +1,238 @@
+{
+  "id": "hepatocellular-carcinoma",
+  "name": "Hepatocellular Carcinoma",
+  "aliases": [
+    "HCC",
+    "Primary Liver Cancer",
+    "Hepatic Cell Carcinoma"
+  ],
+  "icd10Codes": [
+    "C22.0"
+  ],
+  "omimId": "114550",
+  "orphanetId": "88673",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "East Asian",
+      "Sub-Saharan African",
+      "Hispanic"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "American Association for the Study of Liver Diseases (AASLD) Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "imaging-characteristic",
+        "description": "Liver lesion >1 cm with arterial phase hyperenhancement and washout in portal venous or delayed phases on multiphasic CT or MRI",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "elevated-afp",
+        "description": "Elevated serum alpha-fetoprotein (AFP) levels >200 ng/mL",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation of malignant hepatocellular tumor cells on biopsy",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "underlying-liver-disease",
+        "description": "Presence of chronic liver disease or cirrhosis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Typical imaging features on multiphasic CT or MRI with or without elevated AFP; biopsy if imaging is inconclusive",
+    "notes": "Biopsy is reserved for atypical imaging findings or when non-invasive criteria are not met."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Palpable hepatic mass",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "notes": "Firm, irregular liver enlargement",
+        "searchTerms": [
+          "liver lump felt on exam",
+          "palpable mass in liver area",
+          "detectable liver swelling"
+        ]
+      },
+      {
+        "symptomName": "Jaundice due to bile duct obstruction",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "jaundice from bile duct blockage",
+          "yellow skin due to bile obstruction",
+          "blocked bile causing jaundice"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Right upper quadrant abdominal pain",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "pain in right upper belly",
+          "right side abdominal pain",
+          "upper right stomach ache"
+        ]
+      },
+      {
+        "symptomName": "Unintentional weight loss",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "unplanned weight loss",
+          "losing weight without trying",
+          "involuntary weight reduction"
+        ]
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.58,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fever of unknown origin",
+        "frequency": 0.3,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "unexplained fever",
+          "fever with no known cause",
+          "persistent high temperature without diagnosis"
+        ]
+      },
+      {
+        "symptomName": "Anorexia",
+        "frequency": 0.28,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hepatic encephalopathy",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "In advanced liver dysfunction"
+      },
+      {
+        "symptomName": "Gynecomastia",
+        "frequency": 0.12,
+        "bodySystem": "endocrine",
+        "notes": "Due to hormone imbalance"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Spontaneous tumor rupture with hemoperitoneum",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Life-threatening complication",
+        "searchTerms": [
+          "tumor breaks open causing internal bleeding",
+          "spontaneous cancer rupture with blood in abdomen",
+          "tumor burst leading to hemoperitoneum"
+        ]
+      },
+      {
+        "symptomName": "Paraneoplastic hypercalcemia",
+        "frequency": 0.03,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Digital clubbing",
+        "frequency": 0.02,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "constitutional",
+    "neurological",
+    "endocrine",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum alpha-fetoprotein (AFP)",
+      "Elevated liver enzymes (AST, ALT, ALP)",
+      "Hyperbilirubinemia in obstructive cases",
+      "Coagulopathy due to liver dysfunction"
+    ],
+    "imaging": [
+      "Multiphasic CT or MRI showing arterial phase hyperenhancement and venous/delayed phase washout",
+      "Ultrasound showing hypoechoic or heterogeneous liver mass",
+      "Contrast-enhanced imaging demonstrating tumor vascularity"
+    ],
+    "genetic": [
+      "Mutations in TERT promoter",
+      "TP53 mutations",
+      "CTNNB1 (beta-catenin) mutations"
+    ],
+    "other": [
+      "Histopathology showing trabecular or pseudoglandular hepatocellular carcinoma cells",
+      "Evidence of underlying cirrhosis or chronic liver disease"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "cholangiocarcinoma",
+      "distinguishingFeatures": [
+        "Bile duct origin tumor",
+        "Delayed contrast enhancement on imaging",
+        "Elevated CA 19-9 tumor marker"
+      ]
+    },
+    {
+      "diseaseId": "hepatic-metastases",
+      "distinguishingFeatures": [
+        "Multiple liver lesions",
+        "History of primary malignancy elsewhere",
+        "Different enhancement patterns on imaging"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging liver mass",
+    "Sudden onset of severe abdominal pain (possible tumor rupture)",
+    "Development of jaundice with coagulopathy"
+  ],
+  "specialistType": [
+    "Hepatologist",
+    "Oncologist",
+    "Radiologist",
+    "Pathologist",
+    "Gastroenterologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "American Association for the Study of Liver Diseases Practice Guidelines, Hepatology 2018",
+    "Bray F et al. Global cancer statistics 2018: GLOBOCAN estimates. CA Cancer J Clin. 2018",
+    "Forner A, Reig M, Bruix J. Hepatocellular carcinoma. Lancet. 2018"
+  ],
+  "confidenceInData": "ai-generated"
+}

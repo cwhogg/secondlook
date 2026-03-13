@@ -1,0 +1,222 @@
+{
+  "id": "toxic-maculopathy-due-to-antimalarial-drugs",
+  "name": "Toxic Maculopathy Due to Antimalarial Drugs",
+  "aliases": [
+    "Antimalarial Drug-Induced Maculopathy",
+    "Chloroquine/Hydroxychloroquine Retinopathy"
+  ],
+  "icd10Codes": [
+    "H35.59"
+  ],
+  "orphanetId": "ORPHA:279894",
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "range": "0.01-1%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "American Academy of Ophthalmology (AAO) Screening Guidelines for Hydroxychloroquine Retinopathy",
+    "criteria": [
+      {
+        "id": "history-antimalarial-use",
+        "description": "History of chronic use of antimalarial drugs (chloroquine or hydroxychloroquine) at or above recommended doses",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "visual-field-defects",
+        "description": "Presence of characteristic paracentral or pericentral visual field defects on automated perimetry",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-abnormalities",
+        "description": "Abnormalities on retinal imaging such as spectral-domain optical coherence tomography (SD-OCT) showing parafoveal photoreceptor loss or fundus autofluorescence changes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "electrophysiology-changes",
+        "description": "Abnormal multifocal electroretinogram (mfERG) findings consistent with macular dysfunction",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Chronic antimalarial drug use plus at least two major criteria including characteristic visual field defects and imaging abnormalities",
+    "notes": "Early detection is critical to prevent irreversible vision loss; screening recommended after 5 years of therapy or earlier if risk factors present."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Paracentral scotoma",
+        "frequency": 0.85,
+        "bodySystem": "ophthalmological",
+        "notes": "Characteristic visual field defect near the central vision"
+      },
+      {
+        "symptomName": "Bull's-eye maculopathy",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological",
+        "notes": "Distinctive retinal pigment epithelium pattern seen on fundus examination"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Decreased visual acuity",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological",
+        "notes": "Gradual reduction in sharpness of vision",
+        "searchTerms": [
+          "blurred vision",
+          "difficulty seeing clearly",
+          "reduced sharpness of sight"
+        ]
+      },
+      {
+        "symptomName": "Photopsia",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological",
+        "notes": "Perception of flashes of light"
+      },
+      {
+        "symptomName": "Dyschromatopsia",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological",
+        "notes": "Color vision abnormalities, especially blue-yellow defects"
+      },
+      {
+        "symptomName": "Metamorphopsia",
+        "frequency": 0.5,
+        "bodySystem": "ophthalmological",
+        "notes": "Visual distortion of images"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Nyctalopia",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological",
+        "notes": "Difficulty seeing in low light conditions"
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological",
+        "notes": "Light sensitivity"
+      },
+      {
+        "symptomName": "Central scotoma",
+        "frequency": 0.2,
+        "bodySystem": "ophthalmological",
+        "notes": "Central blind spot in vision"
+      },
+      {
+        "symptomName": "Visual field constriction",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological",
+        "notes": "Narrowing of peripheral vision",
+        "searchTerms": [
+          "narrowed field of vision",
+          "loss of side vision",
+          "tunnel vision"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Photopsia with color flashes",
+        "frequency": 0.07,
+        "bodySystem": "ophthalmological",
+        "notes": "Rare colored light flashes",
+        "searchTerms": [
+          "seeing flashing lights or colors",
+          "colorful light flashes in vision",
+          "photopsia with colored flashes"
+        ]
+      },
+      {
+        "symptomName": "Macular edema",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological",
+        "notes": "Swelling of the macula"
+      },
+      {
+        "symptomName": "Retinal pigment epithelial atrophy beyond macula",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological",
+        "notes": "Peripheral retinal changes in advanced cases",
+        "searchTerms": [
+          "damage to retinal pigment layer beyond center",
+          "retinal atrophy outside macula",
+          "widespread retinal pigment loss"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [],
+    "imaging": [
+      "Spectral-domain optical coherence tomography (SD-OCT) showing parafoveal photoreceptor layer thinning",
+      "Fundus autofluorescence demonstrating parafoveal hypoautofluorescence",
+      "Visual field testing revealing paracentral scotomas"
+    ],
+    "genetic": [],
+    "other": [
+      "Multifocal electroretinogram (mfERG) abnormalities indicating macular dysfunction"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "age-related-macular-degeneration",
+      "distinguishingFeatures": [
+        "Presence of drusen and geographic atrophy",
+        "Older age of onset",
+        "Different fundus autofluorescence patterns"
+      ]
+    },
+    {
+      "diseaseId": "hereditary-macular-dystrophies",
+      "distinguishingFeatures": [
+        "Family history of macular disease",
+        "Earlier onset",
+        "Genetic testing positive for known mutations"
+      ]
+    },
+    {
+      "diseaseId": "central-serous-chorioretinopathy",
+      "distinguishingFeatures": [
+        "Serous retinal detachment on OCT",
+        "Acute onset with visual distortion",
+        "Absence of drug exposure history"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of central vision loss despite drug cessation",
+    "Bilateral bull's-eye maculopathy on fundus exam",
+    "Visual field defects in patients on long-term antimalarial therapy"
+  ],
+  "specialistType": [
+    "Ophthalmologist",
+    "Retina Specialist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Marmor MF, Kellner U, Lai TY, Melles RB, Mieler WF. Recommendations on Screening for Chloroquine and Hydroxychloroquine Retinopathy (2016 Revision). Ophthalmology. 2016 Jun;123(6):1386-1394.",
+    "American Academy of Ophthalmology. Preferred Practice Pattern® Guidelines. Hydroxychloroquine and Chloroquine Retinopathy Screening. 2016.",
+    "Melles RB, Marmor MF. The risk of toxic retinopathy in patients on long-term hydroxychloroquine therapy. JAMA Ophthalmol. 2014 Dec;132(12):1453-1460."
+  ],
+  "confidenceInData": "ai-generated"
+}

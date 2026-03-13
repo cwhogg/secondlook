@@ -1,0 +1,229 @@
+{
+  "id": "human-prion-disease",
+  "name": "Human Prion Disease",
+  "aliases": [
+    "Transmissible Spongiform Encephalopathy",
+    "Prion Encephalopathy"
+  ],
+  "icd10Codes": [
+    "A81.0",
+    "A81.9"
+  ],
+  "omimId": "176640",
+  "orphanetId": "56970",
+  "prevalence": {
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "World Health Organization Diagnostic Criteria for Creutzfeldt-Jakob Disease",
+    "criteria": [
+      {
+        "id": "rapid-progressive-dementia",
+        "description": "Rapidly progressive dementia with cognitive decline",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "myoclonus",
+        "description": "Myoclonus or other movement disorders such as ataxia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "eeg-changes",
+        "description": "Periodic sharp wave complexes on EEG",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "csf-markers",
+        "description": "Positive 14-3-3 protein or elevated tau protein in cerebrospinal fluid",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mri-findings",
+        "description": "MRI showing hyperintensity in caudate nucleus and putamen or cortical ribboning on diffusion-weighted imaging",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of rapidly progressive dementia plus at least two major clinical features (e.g., myoclonus, visual or cerebellar signs, pyramidal/extrapyramidal signs, akinetic mutism) supported by typical EEG, CSF, or MRI findings",
+    "notes": "Definitive diagnosis requires neuropathological confirmation or detection of prion protein in brain tissue."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Rapidly progressive dementia",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "rapidly worsening memory loss",
+          "quickly progressing dementia symptoms",
+          "fast cognitive decline"
+        ]
+      },
+      {
+        "symptomName": "Myoclonus",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Akinetic mutism",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Cerebellar ataxia",
+        "frequency": 0.7,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Visual disturbances including cortical blindness",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "vision problems including cortical blindness",
+          "loss of sight due to brain issues",
+          "visual disturbances from brain dysfunction"
+        ]
+      },
+      {
+        "symptomName": "Pyramidal and extrapyramidal signs",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "signs of nerve pathway damage",
+          "symptoms of muscle stiffness and tremor",
+          "mixed upper and lower motor signs"
+        ]
+      },
+      {
+        "symptomName": "Behavioral changes and psychiatric symptoms",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "changes in behavior and mood",
+          "psychiatric symptoms like depression",
+          "altered mental and emotional state"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.4,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Sleep disturbances",
+        "frequency": 0.25,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Hyperreflexia",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Autonomic dysfunction",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Visual hallucinations",
+        "frequency": 0.03,
+        "bodySystem": "psychiatric"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "psychiatric",
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive 14-3-3 protein in cerebrospinal fluid",
+      "Elevated total tau protein in CSF"
+    ],
+    "imaging": [
+      "MRI diffusion-weighted imaging showing cortical ribboning and basal ganglia hyperintensities",
+      "Periodic sharp wave complexes on EEG"
+    ],
+    "genetic": [
+      "PRNP gene mutations in familial forms"
+    ],
+    "other": [
+      "Neuropathological confirmation with spongiform changes and prion protein deposition on brain biopsy or autopsy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "alzheimer-disease",
+      "distinguishingFeatures": [
+        "Slower progression of dementia",
+        "Absence of myoclonus and periodic EEG complexes",
+        "Characteristic amyloid and tau pathology"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-encephalitis",
+      "distinguishingFeatures": [
+        "Presence of autoantibodies",
+        "Response to immunotherapy",
+        "MRI findings different from prion disease"
+      ]
+    },
+    {
+      "diseaseId": "viral-encephalitis",
+      "distinguishingFeatures": [
+        "Fever and infectious prodrome",
+        "CSF pleocytosis",
+        "Positive viral PCR"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive dementia over weeks to months",
+    "Myoclonus triggered by startle or spontaneously",
+    "Characteristic MRI and EEG abnormalities"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Infectious disease specialist",
+    "Neuropsychiatrist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "World Health Organization. Diagnostic criteria for Creutzfeldt-Jakob disease.",
+    "Prusiner SB. Prions. Proc Natl Acad Sci U S A. 1998 Nov 10;95(23):13363-83.",
+    "Zerr I, Kallenberg K, Summers DM, et al. Updated clinical diagnostic criteria for sporadic Creutzfeldt-Jakob disease. Brain. 2009 Oct;132(Pt 10):2659-68."
+  ],
+  "confidenceInData": "ai-generated"
+}

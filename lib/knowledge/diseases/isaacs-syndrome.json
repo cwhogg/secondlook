@@ -1,0 +1,215 @@
+{
+  "id": "isaacs-syndrome",
+  "name": "Isaacs Syndrome",
+  "aliases": [
+    "Neuromyotonia",
+    "Peripheral Nerve Hyperexcitability Syndrome"
+  ],
+  "icd10Codes": [
+    "G25.8"
+  ],
+  "omimId": "160720",
+  "orphanetId": "84142",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Isaacs Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clinical-features",
+        "description": "Presence of continuous muscle fiber activity including stiffness, cramps, and myokymia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "electromyography-findings",
+        "description": "Electromyography (EMG) showing spontaneous, continuous motor unit activity such as neuromyotonic discharges",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "autoantibodies",
+        "description": "Detection of antibodies against voltage-gated potassium channels (VGKC) or associated proteins",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-other-neuromuscular",
+        "description": "Exclusion of other neuromuscular disorders such as motor neuron disease or myotonia congenita",
+        "category": "minor",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Presence of characteristic clinical features plus EMG findings; supportive antibody testing enhances diagnostic confidence",
+    "notes": "Diagnosis is clinical supported by electrophysiological and immunological studies"
+  },
+  "symptoms": {
+    "pathognomonic": [],
+    "common": [
+      {
+        "symptomName": "Hyperhidrosis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "EEG abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "abnormal brain electrical activity",
+          "EEG irregularities",
+          "unusual brain wave patterns"
+        ]
+      },
+      {
+        "symptomName": "Fasciculations",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myokymia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Muscle spasm",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Muscle stiffness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Calf muscle hypertrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "enlarged calf muscles",
+          "calf muscle swelling",
+          "calf muscle overgrowth"
+        ]
+      },
+      {
+        "symptomName": "Muscle fibrillation",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "EMG: myokymic discharges",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "muscle twitching on EMG",
+          "myokymic discharges detected",
+          "involuntary muscle activity"
+        ]
+      },
+      {
+        "symptomName": "Anti-CASPR2",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Distal sensory impairment",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "loss of sensation in hands and feet",
+          "reduced feeling in distal limbs",
+          "distal sensory loss"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "constitutional",
+    "neurological",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Presence of VGKC-complex antibodies (e.g., anti-CASPR2, anti-LGI1)",
+      "Normal routine blood tests"
+    ],
+    "imaging": [
+      "MRI usually normal; used to exclude other causes"
+    ],
+    "genetic": [
+      "No consistent genetic mutations identified; mostly autoimmune etiology"
+    ],
+    "other": [
+      "Electromyography showing neuromyotonic discharges and continuous motor unit activity"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "myotonia-congenita",
+      "distinguishingFeatures": [
+        "Genetic inheritance pattern",
+        "Myotonia without continuous muscle fiber activity",
+        "EMG shows myotonic discharges but not neuromyotonia"
+      ]
+    },
+    {
+      "diseaseId": "motor-neuron-disease",
+      "distinguishingFeatures": [
+        "Progressive weakness without muscle stiffness or cramps",
+        "EMG shows denervation but no continuous muscle fiber activity",
+        "No VGKC antibodies"
+      ]
+    },
+    {
+      "diseaseId": "cramp-fasciculation-syndrome",
+      "distinguishingFeatures": [
+        "Muscle cramps and fasciculations without continuous EMG activity",
+        "Lack of VGKC antibodies",
+        "Less prominent muscle stiffness"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of muscle weakness",
+    "Respiratory muscle involvement causing breathing difficulty",
+    "Signs of autonomic instability"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neuroimmunologist",
+    "Electromyography specialist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Lancaster E. Isaacs Syndrome. Continuum (Minneap Minn). 2016 Jun;22(3):766-77.",
+    "Vincent A, et al. Autoimmune neuromyotonia: clinical features and VGKC antibodies. Brain. 2004;127(9):2137-48.",
+    "Orphanet: Isaacs syndrome - https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=84142"
+  ],
+  "confidenceInData": "medium"
+}

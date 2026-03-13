@@ -1,0 +1,245 @@
+{
+  "id": "genetic-hemoglobinopathy",
+  "name": "Genetic Hemoglobinopathy",
+  "aliases": [
+    "Inherited Hemoglobin Disorder",
+    "Hemoglobinopathy"
+  ],
+  "icd10Codes": [
+    "D56.9",
+    "D57.0",
+    "D58.0"
+  ],
+  "orphanetId": "466066",
+  "prevalence": {
+    "estimate": "1 in 1000 to 1 in 5000",
+    "range": "0.02%-0.1%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 40,
+      "peak": 5
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "African",
+      "Mediterranean",
+      "Middle Eastern",
+      "Southeast Asian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Hemoglobinopathy Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "hemoglobin-electrophoresis",
+        "description": "Abnormal hemoglobin pattern detected by hemoglobin electrophoresis or HPLC",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic variants in globin genes by molecular genetic testing",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Presence of clinical signs such as chronic hemolytic anemia or vaso-occlusive crises",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Abnormal hemoglobin pattern on electrophoresis or HPLC plus confirmation by genetic testing",
+    "notes": "Diagnosis may be supported by family history and clinical presentation."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Sickle-shaped erythrocytes on peripheral blood smear",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Characteristic of sickle cell disease subtype",
+        "searchTerms": [
+          "crescent-shaped red blood cells",
+          "sickle-shaped blood cells",
+          "abnormal red blood cell shape"
+        ]
+      },
+      {
+        "symptomName": "Presence of hemoglobin S or abnormal hemoglobin variants",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "presence of abnormal hemoglobin",
+          "sickle cell hemoglobin detected",
+          "abnormal blood protein"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chronic hemolytic anemia",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "long-term destruction of red blood cells",
+          "chronic anemia from red cell breakdown",
+          "ongoing hemolytic anemia"
+        ]
+      },
+      {
+        "symptomName": "Jaundice due to increased bilirubin",
+        "frequency": 0.65,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "yellowing of skin from high bilirubin",
+          "jaundice caused by red cell breakdown",
+          "skin and eye yellowing"
+        ]
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.6,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Vaso-occlusive pain crises",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal",
+        "notes": "Episodes of severe pain due to ischemia",
+        "searchTerms": [
+          "episodes of severe pain from blocked vessels",
+          "pain crises due to blood flow blockage",
+          "vascular pain episodes"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Leg ulcers",
+        "frequency": 0.3,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Avascular necrosis of bone",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "bone tissue death from poor blood supply",
+          "bone collapse due to lack of blood flow",
+          "dead bone areas causing pain and fractures"
+        ]
+      },
+      {
+        "symptomName": "Gallstones secondary to chronic hemolysis",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "gallstones caused by chronic red cell breakdown",
+          "stones in gallbladder from hemolysis",
+          "pigment gallstones secondary to anemia"
+        ]
+      },
+      {
+        "symptomName": "Delayed growth and puberty",
+        "frequency": 0.15,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "slow growth and puberty delay",
+          "delayed physical development",
+          "late onset of puberty"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Stroke due to cerebral vaso-occlusion",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "stroke from blocked brain vessels",
+          "brain blood flow blockage causing stroke",
+          "cerebral infarction from vessel occlusion"
+        ]
+      },
+      {
+        "symptomName": "Pulmonary hypertension",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Priapism",
+        "frequency": 0.03,
+        "bodySystem": "reproductive"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "musculoskeletal",
+    "dermatological",
+    "gastrointestinal",
+    "endocrine",
+    "neurological",
+    "cardiovascular",
+    "reproductive"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low hemoglobin and hematocrit levels indicating anemia",
+      "Elevated reticulocyte count indicating hemolysis",
+      "Elevated indirect bilirubin",
+      "Peripheral blood smear showing sickled cells or target cells"
+    ],
+    "imaging": [
+      "MRI showing bone infarcts or avascular necrosis",
+      "Transcranial Doppler ultrasound for stroke risk assessment"
+    ],
+    "genetic": [
+      "Mutations in HBB gene (e.g., HbS, HbC, beta-thalassemia mutations)",
+      "Molecular confirmation by DNA sequencing or targeted mutation analysis"
+    ],
+    "other": [
+      "Positive family history of hemoglobinopathy",
+      "Abnormal hemoglobin electrophoresis or HPLC pattern"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "iron-deficiency-anemia",
+      "distinguishingFeatures": [
+        "Microcytic anemia without abnormal hemoglobin variants",
+        "Low serum ferritin and iron studies",
+        "No sickled cells on peripheral smear"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-hemolytic-anemia",
+      "distinguishingFeatures": [
+        "Positive direct antiglobulin (Coombs) test",
+        "No genetic mutations in globin genes",
+        "Hemolysis due to immune-mediated destruction"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Acute chest syndrome with respiratory distress",
+    "Severe vaso-occlusive crisis unresponsive to analgesia",
+    "Signs of stroke or neurological deficit"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Geneticist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Hoffman R et al. Hematology: Basic Principles and Practice. 7th ed. 2018.",
+    "Orphanet: Genetic Hemoglobinopathy. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=466066",
+    "NIH Genetics Home Reference: Hemoglobinopathies. https://ghr.nlm.nih.gov/condition/hemoglobinopathy"
+  ],
+  "confidenceInData": "ai-generated"
+}

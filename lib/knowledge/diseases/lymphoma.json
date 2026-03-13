@@ -1,0 +1,258 @@
+{
+  "id": "lymphoma",
+  "name": "Lymphoma",
+  "aliases": [
+    "Hodgkin lymphoma",
+    "Non-Hodgkin lymphoma"
+  ],
+  "icd10Codes": [
+    "C81",
+    "C82",
+    "C83",
+    "C84",
+    "C85"
+  ],
+  "orphanetId": "ORPHA:223735",
+  "prevalence": {
+    "estimate": "1 in 25,000",
+    "range": "0.02%-0.04%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 85,
+      "peak": 60
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Caucasian",
+      "Ashkenazi Jewish"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of Hematopoietic and Lymphoid Tissues",
+    "criteria": [
+      {
+        "id": "lymph-node-biopsy",
+        "description": "Histopathological confirmation of malignant lymphoid cells in lymph node or extranodal tissue",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunophenotyping",
+        "description": "Immunohistochemical staining demonstrating characteristic cell surface markers (e.g., CD20, CD3, CD15, CD30)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-staging",
+        "description": "Radiological staging by CT or PET-CT to assess extent of disease",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bone-marrow-examination",
+        "description": "Bone marrow biopsy to evaluate marrow involvement",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation with immunophenotyping demonstrating malignant lymphoid cells",
+    "notes": "Molecular and cytogenetic studies may aid in subtype classification and prognosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Painless lymphadenopathy",
+        "frequency": 0.85,
+        "bodySystem": "immunological",
+        "notes": "Typically cervical, axillary, or inguinal nodes"
+      },
+      {
+        "symptomName": "B symptoms (fever, night sweats, weight loss)",
+        "frequency": 0.75,
+        "bodySystem": "constitutional",
+        "notes": "Indicative of systemic involvement",
+        "searchTerms": [
+          "fever, night sweats, weight loss",
+          "unexplained fever and sweating",
+          "significant weight loss with fever"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.65,
+        "bodySystem": "hematological",
+        "notes": "Enlarged spleen detectable on physical exam or imaging"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.55,
+        "bodySystem": "hematological",
+        "notes": "Liver enlargement due to infiltration"
+      },
+      {
+        "symptomName": "Pruritus",
+        "frequency": 0.5,
+        "bodySystem": "dermatological",
+        "notes": "Generalized itching without rash"
+      },
+      {
+        "symptomName": "Fatigue related to anemia",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Secondary to marrow involvement or chronic disease",
+        "searchTerms": [
+          "tiredness from anemia",
+          "fatigue related to low red blood cells",
+          "weakness due to anemia"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Extranodal mass lesions",
+        "frequency": 0.3,
+        "bodySystem": "varied",
+        "notes": "Common sites include gastrointestinal tract, skin, and CNS",
+        "searchTerms": [
+          "tumor masses outside lymph nodes",
+          "growths in organs or tissues",
+          "extranodal tumor lesions"
+        ]
+      },
+      {
+        "symptomName": "Night sweats without fever",
+        "frequency": 0.25,
+        "bodySystem": "constitutional",
+        "notes": "May precede other systemic symptoms",
+        "searchTerms": [
+          "night sweating without fever",
+          "excessive sweating at night",
+          "night sweats alone"
+        ]
+      },
+      {
+        "symptomName": "Cough or dyspnea due to mediastinal mass",
+        "frequency": 0.15,
+        "bodySystem": "respiratory",
+        "notes": "Compression of airways or vessels",
+        "searchTerms": [
+          "cough or breathlessness from chest mass",
+          "breathing difficulty due to mediastinal lump",
+          "cough caused by chest tumor"
+        ]
+      },
+      {
+        "symptomName": "Hypercalcemia symptoms",
+        "frequency": 0.2,
+        "bodySystem": "endocrine",
+        "notes": "Rare metabolic complication"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Neurological deficits from CNS involvement",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Includes cranial neuropathies or seizures",
+        "searchTerms": [
+          "neurological deficits from brain or spinal involvement",
+          "nerve problems due to CNS disease",
+          "weakness or sensory loss from CNS"
+        ]
+      },
+      {
+        "symptomName": "Superior vena cava syndrome",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to mediastinal mass compressing SVC",
+        "searchTerms": [
+          "swelling from blocked chest vein",
+          "vein blockage causing face/neck swelling",
+          "superior vena cava blockage symptoms"
+        ]
+      },
+      {
+        "symptomName": "Paraneoplastic autoimmune phenomena",
+        "frequency": 0.07,
+        "bodySystem": "immunological",
+        "notes": "Includes hemolytic anemia or neuropathies",
+        "searchTerms": [
+          "immune system attacks related to cancer",
+          "paraneoplastic autoimmune symptoms",
+          "autoimmune reactions triggered by tumors"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "constitutional",
+    "respiratory",
+    "dermatological",
+    "neurological",
+    "cardiovascular",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated lactate dehydrogenase (LDH)",
+      "Anemia and cytopenias",
+      "Abnormal peripheral blood smear in some cases"
+    ],
+    "imaging": [
+      "Enlarged lymph nodes on CT or PET-CT",
+      "Mediastinal mass on chest imaging",
+      "Splenomegaly and hepatomegaly on ultrasound or CT"
+    ],
+    "genetic": [
+      "Chromosomal translocations (e.g., t(14;18) in follicular lymphoma)",
+      "Gene rearrangements involving BCL2, BCL6, MYC",
+      "Clonal immunoglobulin or T-cell receptor gene rearrangements"
+    ],
+    "other": [
+      "Histopathological subtyping critical for prognosis and treatment",
+      "Immunophenotyping by flow cytometry or immunohistochemistry"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "reactive-lymphadenopathy",
+      "distinguishingFeatures": [
+        "Polyclonal lymphoid proliferation",
+        "Absence of clonal markers",
+        "Resolution with treatment of underlying cause"
+      ]
+    },
+    {
+      "diseaseId": "chronic-lymphocytic-leukemia",
+      "distinguishingFeatures": [
+        "Peripheral blood lymphocytosis",
+        "Characteristic immunophenotype (CD5+, CD23+)",
+        "Bone marrow involvement pattern"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging lymph nodes",
+    "Unexplained persistent fever and night sweats",
+    "Signs of airway obstruction or superior vena cava syndrome"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Oncologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Swerdlow SH, Campo E, Harris NL, et al. WHO Classification of Tumours of Haematopoietic and Lymphoid Tissues. IARC; 2017.",
+    "National Comprehensive Cancer Network (NCCN) Guidelines for Non-Hodgkin Lymphomas, Version 6.2023.",
+    "Orphanet: Lymphoma - ORPHA:223735"
+  ],
+  "confidenceInData": "ai-generated"
+}

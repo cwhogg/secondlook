@@ -1,0 +1,254 @@
+{
+  "id": "genetic-cardiac-tumor",
+  "name": "Genetic Cardiac Tumor",
+  "aliases": [
+    "Familial Cardiac Tumor",
+    "Hereditary Cardiac Neoplasm"
+  ],
+  "icd10Codes": [
+    "D15.1"
+  ],
+  "orphanetId": "ORPHA:271841",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Genetic Cardiac Tumor Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "genetic-confirmation",
+        "description": "Identification of pathogenic germline mutation associated with cardiac tumor predisposition",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-evidence",
+        "description": "Cardiac imaging (echocardiography, MRI) demonstrating intracardiac mass consistent with tumor",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "First-degree relative with confirmed cardiac tumor or related genetic syndrome",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation of cardiac tumor tissue with characteristic features",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Presence of clinical signs or symptoms attributable to cardiac tumor (e.g., obstruction, arrhythmia)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of pathogenic germline mutation plus imaging evidence of cardiac tumor, with or without histopathological confirmation",
+    "notes": "Genetic testing is essential for diagnosis; biopsy may be contraindicated depending on tumor location."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Intracardiac mass detected on imaging",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart tumor seen on imaging",
+          "mass inside heart detected",
+          "intracardiac growth found"
+        ]
+      },
+      {
+        "symptomName": "Familial history of cardiac tumors",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "family history of heart tumors",
+          "relatives with cardiac growths",
+          "inherited heart masses"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Exercise-induced syncope",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Palpitations due to arrhythmia",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "irregular heartbeat sensations",
+          "heart racing or fluttering",
+          "palpitations from arrhythmia"
+        ]
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.58,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "shortness of breath when active",
+          "breathlessness on exertion",
+          "difficulty breathing with activity"
+        ]
+      },
+      {
+        "symptomName": "Chest discomfort related to obstruction",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "chest pain from blockage",
+          "discomfort due to obstruction",
+          "pressure in chest related to tumor"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Peripheral edema secondary to heart failure",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "swelling in legs from heart failure",
+          "peripheral edema due to weak heart",
+          "leg swelling caused by heart problems"
+        ]
+      },
+      {
+        "symptomName": "Cough due to pulmonary congestion",
+        "frequency": 0.25,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "cough from fluid in lungs",
+          "pulmonary congestion causing cough",
+          "wet cough due to heart failure"
+        ]
+      },
+      {
+        "symptomName": "Fatigue related to reduced cardiac output",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from weak heart pumping",
+          "fatigue due to low cardiac output",
+          "low energy from heart failure"
+        ]
+      },
+      {
+        "symptomName": "Transient ischemic attacks from embolization",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "mini strokes from blood clots",
+          "transient ischemic attacks",
+          "temporary brain blood flow loss"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden cardiac death",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "sudden heart-related death",
+          "unexpected cardiac arrest"
+        ]
+      },
+      {
+        "symptomName": "Systemic embolism causing stroke",
+        "frequency": 0.04,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "stroke from blood clots traveling",
+          "systemic embolism causing brain injury",
+          "blockage of blood vessels by emboli"
+        ]
+      },
+      {
+        "symptomName": "Constitutional symptoms such as low-grade fever",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "general symptoms like low fever",
+          "constitutional symptoms with mild fever",
+          "feeling unwell with low-grade fever"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "respiratory",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "No specific laboratory markers; possible elevated inflammatory markers if tumor necrosis present"
+    ],
+    "imaging": [
+      "Echocardiography revealing intracardiac mass",
+      "Cardiac MRI showing tumor size, location, and tissue characteristics",
+      "CT scan for extracardiac extension assessment"
+    ],
+    "genetic": [
+      "Pathogenic germline mutations in genes associated with cardiac tumor predisposition (e.g., PRKAR1A, others depending on tumor subtype)"
+    ],
+    "other": [
+      "Histopathological examination confirming tumor type",
+      "Electrocardiogram abnormalities related to arrhythmias"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "cardiac-rhabdomyoma",
+      "distinguishingFeatures": [
+        "Typically associated with tuberous sclerosis complex",
+        "Usually presents in infancy",
+        "Spontaneous regression common"
+      ]
+    },
+    {
+      "diseaseId": "cardiac-myxoma",
+      "distinguishingFeatures": [
+        "Usually sporadic but can be familial (Carney complex)",
+        "Typically located in left atrium",
+        "Histology distinct from genetic cardiac tumors"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset of syncope or presyncope",
+    "New onset arrhythmia or conduction abnormalities",
+    "Signs of systemic embolization (stroke, peripheral ischemia)"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Medical Geneticist",
+    "Cardiothoracic Surgeon"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Orphanet: Genetic Cardiac Tumor - ORPHA:271841",
+    "Maron BJ, et al. Genetic basis of cardiac tumors. Circulation. 2020.",
+    "Prendiville TW, et al. Cardiac tumors: diagnosis and management. Heart. 2019."
+  ],
+  "confidenceInData": "ai-generated"
+}

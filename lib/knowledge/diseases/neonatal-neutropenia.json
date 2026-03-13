@@ -1,0 +1,262 @@
+{
+  "id": "neonatal-neutropenia",
+  "name": "Neonatal Neutropenia",
+  "aliases": [
+    "Congenital Neutropenia in Neonates",
+    "Neutropenia of the Newborn"
+  ],
+  "icd10Codes": [
+    "D70"
+  ],
+  "orphanetId": "37629",
+  "prevalence": {
+    "estimate": "1 in 1,000 to 1 in 5,000 live births",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 28,
+      "peak": 7
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Neonatal Neutropenia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "absolute-neutrophil-count",
+        "description": "Absolute neutrophil count (ANC) less than 1500 cells/µL in the first 28 days of life",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-infection",
+        "description": "Presence of recurrent or severe bacterial infections in the neonatal period",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bone-marrow-examination",
+        "description": "Bone marrow showing decreased neutrophil precursors or maturation arrest",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-secondary-causes",
+        "description": "Exclusion of secondary causes such as maternal hypertension, sepsis, or drug exposure",
+        "category": "minor",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "ANC <1500 cells/µL in neonate plus exclusion of secondary causes; supportive findings include recurrent infections or bone marrow findings",
+    "notes": "Diagnosis requires differentiation from transient neutropenia and secondary causes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Persistent absolute neutropenia (ANC <1500 cells/µL)",
+        "frequency": 0.95,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "low neutrophil count",
+          "persistent low white blood cells",
+          "neutropenia with ANC under 1500"
+        ]
+      },
+      {
+        "symptomName": "Recurrent bacterial infections in neonatal period",
+        "frequency": 0.85,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "frequent bacterial infections in newborn",
+          "repeated infections early in life",
+          "multiple bacterial infections in neonate"
+        ]
+      },
+      {
+        "symptomName": "Delayed umbilical cord separation",
+        "frequency": 0.75,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "umbilical cord takes long to fall off",
+          "delayed cord separation",
+          "slow umbilical healing"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Omphalitis (infection of the umbilical stump)",
+        "frequency": 0.65,
+        "bodySystem": "infectious",
+        "searchTerms": [
+          "infection of belly button stump",
+          "umbilical cord infection",
+          "redness and infection at navel"
+        ]
+      },
+      {
+        "symptomName": "Pneumonia in neonate",
+        "frequency": 0.6,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "lung infection in newborn",
+          "baby pneumonia",
+          "neonatal chest infection"
+        ]
+      },
+      {
+        "symptomName": "Skin abscesses or cellulitis",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin infections with pus",
+          "boils or cellulitis",
+          "skin abscess formation"
+        ]
+      },
+      {
+        "symptomName": "Fever of unknown origin",
+        "frequency": 0.58,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "unexplained fever",
+          "fever with no known cause",
+          "persistent high temperature without diagnosis"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Oral mucosal ulcerations",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "mouth sores",
+          "oral ulcers",
+          "painful mouth lesions"
+        ]
+      },
+      {
+        "symptomName": "Sepsis in neonate",
+        "frequency": 0.3,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "blood infection in newborn",
+          "severe infection spreading in baby",
+          "newborn sepsis"
+        ]
+      },
+      {
+        "symptomName": "Poor feeding",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.15,
+        "bodySystem": "immunological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.08,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Bone pain due to marrow expansion",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "bone aches from marrow swelling",
+          "deep bone pain",
+          "pain caused by marrow expansion"
+        ]
+      },
+      {
+        "symptomName": "Severe fungal infections",
+        "frequency": 0.03,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "serious fungal infections",
+          "severe yeast or mold infections",
+          "invasive fungal disease"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "respiratory",
+    "dermatological",
+    "gastrointestinal",
+    "constitutional",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Absolute neutrophil count <1500 cells/µL",
+      "Bone marrow showing neutrophil maturation arrest or hypoplasia",
+      "Elevated inflammatory markers during infections"
+    ],
+    "imaging": [
+      "Chest X-ray showing pneumonia or pulmonary infiltrates",
+      "Ultrasound may show hepatosplenomegaly"
+    ],
+    "genetic": [
+      "Mutations in ELANE, HAX1, or other genes associated with congenital neutropenia (if genetic testing performed)"
+    ],
+    "other": [
+      "Delayed umbilical cord separation",
+      "Recurrent infections despite antibiotic therapy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "transient-neonatal-neutropenia",
+      "distinguishingFeatures": [
+        "Typically resolves within first few weeks of life",
+        "Associated with maternal hypertension or infection",
+        "No genetic mutations identified"
+      ]
+    },
+    {
+      "diseaseId": "severe-congenital-neutropenia",
+      "distinguishingFeatures": [
+        "Severe neutropenia with ANC often <200 cells/µL",
+        "Early onset severe infections",
+        "Often associated with ELANE gene mutations"
+      ]
+    },
+    {
+      "diseaseId": "cyclic-neutropenia",
+      "distinguishingFeatures": [
+        "Periodic oscillations in neutrophil counts every 21 days",
+        "Intermittent infections correlating with neutropenic phases",
+        "Genetic mutations in ELANE gene"
+      ]
+    }
+  ],
+  "redFlags": [
+    "ANC persistently below 500 cells/µL",
+    "Severe or recurrent bacterial infections in neonate",
+    "Failure to thrive or poor feeding associated with infections"
+  ],
+  "specialistType": [
+    "Neonatologist",
+    "Hematologist",
+    "Immunologist",
+    "Infectious Disease Specialist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Newburger PE, Dale DC. Neutropenia in the newborn. Pediatr Clin North Am. 1990;37(1):1-15.",
+    "Horwitz MS, et al. Severe congenital neutropenia. Hematology Am Soc Hematol Educ Program. 2009;2009:178-85.",
+    "Orphanet: Neonatal neutropenia - https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=37629"
+  ],
+  "confidenceInData": "ai-generated"
+}

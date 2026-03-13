@@ -1,0 +1,213 @@
+{
+  "id": "hypoalphalipoproteinemia",
+  "name": "Hypoalphalipoproteinemia",
+  "aliases": [
+    "Familial Hypoalphalipoproteinemia",
+    "Low HDL Cholesterol Syndrome"
+  ],
+  "icd10Codes": [
+    "E78.6"
+  ],
+  "omimId": "144010",
+  "orphanetId": "31153",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.001%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Hypoalphalipoproteinemia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "low-hdl",
+        "description": "Serum HDL cholesterol level below 35 mg/dL in adults",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of low HDL cholesterol or premature cardiovascular disease",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-secondary-causes",
+        "description": "Exclusion of secondary causes of low HDL such as liver disease, malnutrition, or medications",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of mutations in genes affecting HDL metabolism (e.g., APOA1, LCAT)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of low HDL cholesterol below 35 mg/dL with positive family history and exclusion of secondary causes",
+    "notes": "Genetic testing can support diagnosis but is not mandatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Markedly decreased serum HDL cholesterol",
+        "frequency": 0.95,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "very low HDL cholesterol levels",
+          "markedly decreased good cholesterol"
+        ]
+      },
+      {
+        "symptomName": "Premature atherosclerosis",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Tendon xanthomas",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Corneal arcus",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Elevated triglycerides",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Early onset coronary artery disease",
+        "frequency": 0.58,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "early heart artery disease",
+          "premature coronary artery problems"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Mild anemia",
+        "frequency": 0.2,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fatigue related to cardiovascular insufficiency",
+        "frequency": 0.4,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from heart not pumping well",
+          "fatigue due to heart failure"
+        ]
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Lipemia retinalis",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Cholesteryl ester storage disease features",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "symptoms of cholesterol storage disorder",
+          "fatty cholesterol buildup signs"
+        ]
+      },
+      {
+        "symptomName": "Proteinuria",
+        "frequency": 0.02,
+        "bodySystem": "renal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "endocrine",
+    "musculoskeletal",
+    "ophthalmological",
+    "hematological",
+    "gastrointestinal",
+    "neurological",
+    "constitutional",
+    "renal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Serum HDL cholesterol <35 mg/dL",
+      "Elevated LDL cholesterol and triglycerides in some cases",
+      "Normal to mildly elevated liver enzymes"
+    ],
+    "imaging": [
+      "Coronary artery calcifications on CT",
+      "Tendon xanthomas visible on musculoskeletal imaging"
+    ],
+    "genetic": [
+      "Mutations in APOA1, LCAT, or ABCA1 genes"
+    ],
+    "other": [
+      "Family history of premature cardiovascular disease"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "abetalipoproteinemia",
+      "distinguishingFeatures": [
+        "Absence of apolipoprotein B",
+        "Severe fat malabsorption",
+        "Neurological symptoms more prominent"
+      ]
+    },
+    {
+      "diseaseId": "familial-hypercholesterolemia",
+      "distinguishingFeatures": [
+        "Elevated LDL cholesterol rather than low HDL",
+        "Presence of tendon xanthomas",
+        "Different genetic mutations (LDLR, APOB, PCSK9)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Premature coronary artery disease before age 50",
+    "Recurrent tendon xanthomas",
+    "Severe HDL deficiency unresponsive to lifestyle changes"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Endocrinologist",
+    "Lipidologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Orphanet: Hypoalphalipoproteinemia - ORPHA:31153",
+    "OMIM Entry #144010 - Hypoalphalipoproteinemia",
+    "Goldstein JL, Brown MS. Familial Hypoalphalipoproteinemia. In: The Metabolic and Molecular Bases of Inherited Disease. 8th ed. 2001."
+  ],
+  "confidenceInData": "ai-generated"
+}

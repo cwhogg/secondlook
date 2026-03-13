@@ -1,0 +1,227 @@
+{
+  "id": "acute-tricyclic-antidepressant-poisoning",
+  "name": "Acute Tricyclic Antidepressant Poisoning",
+  "aliases": [
+    "TCA overdose",
+    "Tricyclic antidepressant toxicity"
+  ],
+  "icd10Codes": [
+    "T43.0"
+  ],
+  "orphanetId": "ORPHA:43117",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical criteria for TCA poisoning",
+    "criteria": [
+      {
+        "id": "history-ingestion",
+        "description": "History of recent ingestion of tricyclic antidepressants",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ecg-changes",
+        "description": "Electrocardiogram showing QRS prolongation (>100 ms) or right axis deviation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Presence of anticholinergic symptoms such as dry mouth, mydriasis, and urinary retention",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "neurological-depression",
+        "description": "Altered level of consciousness or seizures",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "History of TCA ingestion plus either ECG changes or characteristic clinical features",
+    "notes": "Diagnosis is clinical supported by ECG and toxicology screening"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "QRS complex prolongation on ECG",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "QRS >100 ms is highly suggestive of TCA toxicity",
+        "searchTerms": [
+          "prolonged QRS on heart ECG",
+          "widened QRS complex",
+          "delayed ventricular conduction",
+          "abnormal heart electrical pattern"
+        ]
+      },
+      {
+        "symptomName": "Anticholinergic toxidrome (dry mouth, mydriasis, urinary retention)",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "notes": "Classic anticholinergic signs are hallmark",
+        "searchTerms": [
+          "dry mouth and dilated pupils",
+          "urinary retention with anticholinergic symptoms",
+          "symptoms of anticholinergic poisoning"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Altered mental status including drowsiness and coma",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Ranges from mild sedation to coma",
+        "searchTerms": [
+          "confusion and drowsiness",
+          "altered consciousness including coma",
+          "changes in mental alertness"
+        ]
+      },
+      {
+        "symptomName": "Hypotension due to myocardial depression",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Common cause of morbidity",
+        "searchTerms": [
+          "low blood pressure from weak heart",
+          "heart failure causing hypotension",
+          "myocardial depression leading to low BP",
+          "decreased blood pressure due to heart weakness"
+        ]
+      },
+      {
+        "symptomName": "Sinus tachycardia",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "notes": "Result of anticholinergic and adrenergic effects"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "notes": "May occur in severe poisoning"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Respiratory depression",
+        "frequency": 0.4,
+        "bodySystem": "respiratory",
+        "notes": "May require ventilatory support"
+      },
+      {
+        "symptomName": "Ventricular arrhythmias",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Includes ventricular tachycardia and fibrillation"
+      },
+      {
+        "symptomName": "Hyperthermia",
+        "frequency": 0.25,
+        "bodySystem": "constitutional",
+        "notes": "Due to anticholinergic effects and seizures"
+      },
+      {
+        "symptomName": "Mydriasis",
+        "frequency": 0.35,
+        "bodySystem": "ophthalmological",
+        "notes": "Dilated pupils due to anticholinergic effect"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Rhabdomyolysis",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal",
+        "notes": "Secondary to seizures or prolonged immobilization"
+      },
+      {
+        "symptomName": "Metabolic acidosis",
+        "frequency": 0.07,
+        "bodySystem": "endocrine",
+        "notes": "Due to hypoxia or seizures"
+      },
+      {
+        "symptomName": "Extrapyramidal symptoms",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "notes": "Rarely reported"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "cardiovascular",
+    "gastrointestinal",
+    "respiratory",
+    "ophthalmological",
+    "musculoskeletal",
+    "constitutional",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum TCA levels",
+      "Metabolic acidosis on arterial blood gas",
+      "Elevated creatine kinase in rhabdomyolysis"
+    ],
+    "imaging": [
+      "Chest X-ray may show aspiration pneumonia in severe cases"
+    ],
+    "genetic": [],
+    "other": [
+      "ECG showing QRS prolongation and right axis deviation",
+      "Toxicology screening positive for tricyclic antidepressants"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "anticholinergic-toxicity-other-causes",
+      "distinguishingFeatures": [
+        "No history of TCA ingestion",
+        "Different toxicology screen",
+        "Variable ECG changes"
+      ]
+    },
+    {
+      "diseaseId": "serotonin-syndrome",
+      "distinguishingFeatures": [
+        "Hyperreflexia and clonus present",
+        "No QRS prolongation on ECG",
+        "History of serotonergic agent use"
+      ]
+    }
+  ],
+  "redFlags": [
+    "QRS duration >100 ms on ECG",
+    "Seizures refractory to benzodiazepines",
+    "Hypotension unresponsive to fluids"
+  ],
+  "specialistType": [
+    "Toxicologist",
+    "Emergency Medicine Physician",
+    "Cardiologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Brent J. Critical Care Toxicology: Diagnosis and Management of the Critically Poisoned Patient. 2017.",
+    "Goldfrank's Toxicologic Emergencies, 12th Edition, 2017.",
+    "Orphanet: Acute tricyclic antidepressant poisoning (ORPHA:43117)"
+  ],
+  "confidenceInData": "ai-generated"
+}

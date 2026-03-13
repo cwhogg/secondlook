@@ -1,0 +1,282 @@
+{
+  "id": "germ-cell-tumor",
+  "name": "Germ Cell Tumor",
+  "aliases": [
+    "GCT",
+    "Germinoma",
+    "Germ cell neoplasm"
+  ],
+  "icd10Codes": [
+    "C62",
+    "C48.1",
+    "C76.2"
+  ],
+  "orphanetId": "ORPHA:3399",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 25
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "Higher incidence in East Asian populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of the Central Nervous System (for intracranial GCTs)",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation of germ cell tumor cells",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "tumor-marker-elevation",
+        "description": "Elevated serum or CSF tumor markers such as alpha-fetoprotein (AFP) or beta-human chorionic gonadotropin (β-hCG)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-characteristics",
+        "description": "Characteristic radiological findings on MRI or CT consistent with germ cell tumor",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Symptoms consistent with tumor location and mass effect",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation plus either elevated tumor markers or characteristic imaging findings",
+    "notes": "Diagnosis may vary depending on tumor location (gonadal vs extragonadal)."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Testicular mass or swelling",
+        "frequency": 0.85,
+        "bodySystem": "reproductive",
+        "searchTerms": [
+          "testicle lump or swelling",
+          "enlarged testicle",
+          "testicular mass or bump"
+        ]
+      },
+      {
+        "symptomName": "Elevated serum alpha-fetoprotein (AFP)",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Indicative of non-seminomatous germ cell tumors",
+        "searchTerms": [
+          "high alpha-fetoprotein blood levels",
+          "elevated AFP in blood tests",
+          "increased AFP serum marker"
+        ]
+      },
+      {
+        "symptomName": "Elevated serum beta-human chorionic gonadotropin (β-hCG)",
+        "frequency": 0.7,
+        "bodySystem": "endocrine",
+        "notes": "Common in choriocarcinoma and some seminomas",
+        "searchTerms": [
+          "high pregnancy hormone levels",
+          "elevated beta-hCG in blood",
+          "increased pregnancy hormone marker"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Headache due to intracranial germ cell tumor",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "headache caused by brain tumor",
+          "persistent headaches from brain growth",
+          "head pain due to brain tumor"
+        ]
+      },
+      {
+        "symptomName": "Gynecomastia",
+        "frequency": 0.6,
+        "bodySystem": "endocrine",
+        "notes": "Due to hormone secretion by tumor"
+      },
+      {
+        "symptomName": "Abdominal or pelvic pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "pain in abdomen or pelvis",
+          "lower belly or pelvic pain",
+          "abdominal or pelvic discomfort"
+        ]
+      },
+      {
+        "symptomName": "Hydrocephalus symptoms (nausea, vomiting, visual disturbances)",
+        "frequency": 0.5,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "symptoms of fluid buildup in brain",
+          "nausea and vomiting from brain pressure",
+          "vision problems from brain fluid buildup"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Precocious puberty",
+        "frequency": 0.3,
+        "bodySystem": "endocrine",
+        "notes": "In pediatric patients with hormone-secreting tumors"
+      },
+      {
+        "symptomName": "Back pain from spinal germ cell tumors",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "back pain from spinal tumor",
+          "spine pain caused by tumor growth",
+          "pain in back due to spinal mass"
+        ]
+      },
+      {
+        "symptomName": "Weight loss and anorexia",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "unintentional weight loss and poor appetite",
+          "losing weight with decreased hunger",
+          "weight reduction and anorexia"
+        ]
+      },
+      {
+        "symptomName": "Visual field defects",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological",
+        "notes": "Due to intracranial tumor compression",
+        "searchTerms": [
+          "loss of part of vision",
+          "blind spots",
+          "partial visual field loss"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Paraneoplastic neurological syndromes",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "nerve problems caused by cancer",
+          "paraneoplastic neurological symptoms",
+          "cancer-related nerve syndromes"
+        ]
+      },
+      {
+        "symptomName": "Gynecological symptoms in females (e.g., ovarian mass)",
+        "frequency": 0.04,
+        "bodySystem": "reproductive",
+        "searchTerms": [
+          "female pelvic symptoms like ovarian lump",
+          "pelvic mass in women",
+          "gynecologic swelling or pain"
+        ]
+      },
+      {
+        "symptomName": "Superior vena cava syndrome",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to mediastinal germ cell tumors",
+        "searchTerms": [
+          "swelling from blocked chest vein",
+          "vein blockage causing face/neck swelling",
+          "superior vena cava blockage symptoms"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "reproductive",
+    "neurological",
+    "endocrine",
+    "hematological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "ophthalmological",
+    "cardiovascular",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum alpha-fetoprotein (AFP)",
+      "Elevated serum beta-human chorionic gonadotropin (β-hCG)",
+      "Elevated lactate dehydrogenase (LDH)"
+    ],
+    "imaging": [
+      "MRI showing mass lesions in gonads or intracranial sites",
+      "CT scan demonstrating mediastinal or retroperitoneal masses",
+      "Ultrasound of testes showing hypoechoic lesions"
+    ],
+    "genetic": [
+      "No specific germline mutations; some tumors show chromosomal abnormalities such as isochromosome 12p"
+    ],
+    "other": [
+      "Histopathological examination confirming germ cell tumor subtype",
+      "Tumor marker analysis in cerebrospinal fluid for intracranial tumors"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "lymphoma",
+      "distinguishingFeatures": [
+        "Lymphoma often presents with systemic B symptoms",
+        "Lymph node biopsy shows lymphoid cells rather than germ cells",
+        "Tumor markers AFP and β-hCG are not elevated"
+      ]
+    },
+    {
+      "diseaseId": "testicular-sarcoma",
+      "distinguishingFeatures": [
+        "Sarcomas have different histopathology",
+        "Lack of germ cell tumor markers elevation",
+        "Different imaging characteristics"
+      ]
+    },
+    {
+      "diseaseId": "teratoma",
+      "distinguishingFeatures": [
+        "Teratomas contain multiple tissue types",
+        "May not elevate AFP or β-hCG unless mixed with other germ cell components",
+        "Histology differentiates teratoma from other germ cell tumors"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging testicular or mediastinal mass",
+    "Signs of increased intracranial pressure (headache, vomiting, papilledema)",
+    "Elevated tumor markers AFP or β-hCG indicating malignant germ cell tumor"
+  ],
+  "specialistType": [
+    "Oncologist",
+    "Urologist",
+    "Neurologist",
+    "Pathologist",
+    "Endocrinologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "WHO Classification of Tumors of the Central Nervous System, 5th Edition, 2021",
+    "National Comprehensive Cancer Network (NCCN) Guidelines for Testicular Cancer, 2024",
+    "Orphanet: Germ Cell Tumor - ORPHA:3399"
+  ],
+  "confidenceInData": "ai-generated"
+}

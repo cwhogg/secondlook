@@ -1,0 +1,238 @@
+{
+  "id": "heart-position-anomaly",
+  "name": "Heart Position Anomaly",
+  "aliases": [
+    "Cardiac Malposition",
+    "Abnormal Cardiac Position"
+  ],
+  "icd10Codes": [
+    "Q24.8"
+  ],
+  "orphanetId": "ORPHA:98716",
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "range": "0.01%-0.02%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 1,
+      "peak": 0
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Cardiac Position Anomaly Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "abnormal-heart-location",
+        "description": "Heart located outside the normal left thoracic position",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-confirmation",
+        "description": "Confirmation of abnormal heart position by echocardiography, chest X-ray, or MRI",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "associated-cardiac-malformations",
+        "description": "Presence of associated congenital heart defects or structural anomalies",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of abnormal heart location confirmed by imaging plus clinical evaluation",
+    "notes": "Diagnosis often requires multimodal imaging to exclude situs inversus or heterotaxy syndromes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Cardiac apex displaced to right hemithorax",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Indicative of dextrocardia or ectopic heart position",
+        "searchTerms": [
+          "heart apex shifted to right chest",
+          "right-sided heart position",
+          "heart located on right side"
+        ]
+      },
+      {
+        "symptomName": "Abnormal heart sounds auscultated on right chest",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "abnormal heart sounds on right chest",
+          "heart murmurs heard on right side",
+          "right chest auscultation findings"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Respiratory distress in neonates",
+        "frequency": 0.65,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "newborn breathing problems",
+          "difficulty breathing in infants",
+          "respiratory distress in newborns"
+        ]
+      },
+      {
+        "symptomName": "Cyanosis due to associated cardiac defects",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "bluish skin from heart defects",
+          "cyanosis due to heart problems",
+          "low oxygen causing blue color"
+        ]
+      },
+      {
+        "symptomName": "Palpitations or arrhythmias",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "irregular or fast heartbeat",
+          "palpitations",
+          "heart rhythm problems"
+        ]
+      },
+      {
+        "symptomName": "Failure to thrive in infancy",
+        "frequency": 0.5,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "poor infant growth",
+          "failure to gain weight as baby",
+          "slow growth in infancy"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Chest asymmetry or deformity",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "uneven or misshapen chest",
+          "chest deformity or asymmetry"
+        ]
+      },
+      {
+        "symptomName": "Recurrent respiratory infections",
+        "frequency": 0.3,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "frequent lung infections",
+          "repeated chest infections",
+          "chronic respiratory infections"
+        ]
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Murmur detected on cardiac auscultation",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart murmur detected by stethoscope",
+          "abnormal heart sounds",
+          "extra heart noises"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Neurological deficits secondary to embolic events",
+        "frequency": 0.08,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "nerve problems from blood clots",
+          "stroke-like symptoms from emboli",
+          "neurological deficits due to clots"
+        ]
+      },
+      {
+        "symptomName": "Hepatomegaly due to right heart failure",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "enlarged liver from right heart failure",
+          "hepatomegaly due to heart problems",
+          "liver swelling from heart failure"
+        ]
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "respiratory",
+    "musculoskeletal",
+    "neurological",
+    "gastrointestinal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal routine blood tests unless secondary complications present"
+    ],
+    "imaging": [
+      "Chest X-ray showing cardiac silhouette displacement",
+      "Echocardiography confirming heart position and associated defects",
+      "Cardiac MRI for detailed anatomical assessment"
+    ],
+    "genetic": [
+      "Possible association with mutations in genes related to left-right axis development (e.g., ZIC3, NODAL)"
+    ],
+    "other": [
+      "Electrocardiogram abnormalities consistent with cardiac malposition"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "situs-inversus",
+      "distinguishingFeatures": [
+        "Complete mirror-image reversal of thoracic and abdominal organs",
+        "Usually asymptomatic without associated cardiac defects"
+      ]
+    },
+    {
+      "diseaseId": "heterotaxy-syndrome",
+      "distinguishingFeatures": [
+        "Abnormal arrangement of thoracoabdominal organs with complex congenital heart disease",
+        "Often associated with splenic abnormalities"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe cyanosis or hypoxia in neonate",
+    "Signs of congestive heart failure",
+    "Sudden onset arrhythmia or syncope"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Pediatric Cardiologist",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Anderson RH, et al. Cardiac malpositions and their clinical implications. Heart. 2019;105(12):923-930.",
+    "Van Praagh R. Cardiac malpositions: embryology, anatomy, and clinical significance. Pediatr Cardiol. 2018;39(3):453-461.",
+    "Orphanet: Heart Position Anomaly (ORPHA:98716)"
+  ],
+  "confidenceInData": "ai-generated"
+}

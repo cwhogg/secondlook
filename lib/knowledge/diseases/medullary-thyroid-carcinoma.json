@@ -1,0 +1,221 @@
+{
+  "id": "medullary-thyroid-carcinoma",
+  "name": "Medullary Thyroid Carcinoma",
+  "aliases": [
+    "MTC",
+    "Medullary Carcinoma of the Thyroid"
+  ],
+  "icd10Codes": [
+    "C73"
+  ],
+  "omimId": "155240",
+  "orphanetId": "ORPHA:1332",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "American Thyroid Association (ATA) Guidelines for Medullary Thyroid Carcinoma",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation of medullary thyroid carcinoma with characteristic amyloid stroma",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "calcitonin-elevation",
+        "description": "Elevated serum calcitonin levels indicative of C-cell tumor activity",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ret-mutation",
+        "description": "Detection of pathogenic RET proto-oncogene mutation in germline or tumor DNA",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "carcinoembryonic-antigen",
+        "description": "Elevated serum carcinoembryonic antigen (CEA) levels supporting diagnosis and prognosis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation plus elevated serum calcitonin levels",
+    "notes": "Genetic testing for RET mutations is recommended for all patients and family members due to hereditary forms."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Medullary thyroid carcinoma",
+        "frequency": 1,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "aggressive thyroid cancer",
+          "medullary thyroid tumor",
+          "thyroid cancer from C cells"
+        ]
+      },
+      {
+        "symptomName": "Elevated calcitonin",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Nodular goiter",
+        "frequency": 0.9,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hyperhidrosis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Dysphonia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pheochromocytoma",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Primary hyperparathyroidism",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Neoplasm of the skeletal system",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "bone tumor",
+          "cancer in skeleton",
+          "malignant bone growth"
+        ]
+      },
+      {
+        "symptomName": "Abnormal liver parenchyma morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "abnormal liver tissue structure",
+          "irregular liver shape or texture",
+          "changed liver parenchyma appearance"
+        ]
+      },
+      {
+        "symptomName": "Neoplasm of the lung",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "lung tumor",
+          "cancer in the lungs",
+          "pulmonary neoplasm"
+        ]
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "endocrine",
+    "constitutional",
+    "gastrointestinal",
+    "immunological",
+    "musculoskeletal",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Markedly elevated serum calcitonin",
+      "Elevated carcinoembryonic antigen (CEA)",
+      "Hypercalcemia in rare cases"
+    ],
+    "imaging": [
+      "Ultrasound showing hypoechoic thyroid nodule with irregular margins",
+      "CT/MRI for local invasion and metastases",
+      "Radioisotope scans for metastatic disease"
+    ],
+    "genetic": [
+      "Germline RET proto-oncogene mutations in familial cases",
+      "Somatic RET mutations in sporadic tumors"
+    ],
+    "other": [
+      "Histopathology showing polygonal tumor cells with amyloid stroma",
+      "Immunohistochemistry positive for calcitonin and CEA"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "papillary-thyroid-carcinoma",
+      "distinguishingFeatures": [
+        "Presence of papillary nuclear features",
+        "Lack of calcitonin elevation",
+        "Different genetic mutations (BRAF, RAS)"
+      ]
+    },
+    {
+      "diseaseId": "follicular-thyroid-carcinoma",
+      "distinguishingFeatures": [
+        "Follicular architecture on histology",
+        "Absence of amyloid deposits",
+        "No RET mutations typical"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging neck mass",
+    "Elevated serum calcitonin >100 pg/mL",
+    "Family history of MEN2 syndrome or MTC"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Oncologist",
+    "Head and Neck Surgeon",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "American Thyroid Association Guidelines for Medullary Thyroid Carcinoma, 2015",
+    "Orphanet: Medullary Thyroid Carcinoma - ORPHA:1332",
+    "National Cancer Institute: Medullary Thyroid Cancer"
+  ],
+  "confidenceInData": "medium"
+}

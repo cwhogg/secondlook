@@ -1,0 +1,505 @@
+{
+  "id": "simple-cryoglobulinemia",
+  "name": "Simple Cryoglobulinemia",
+  "aliases": [
+    "Type I Cryoglobulinemia",
+    "Monoclonal Cryoglobulinemia"
+  ],
+  "icd10Codes": [
+    "D89.1"
+  ],
+  "orphanetId": "ORPHA:91139",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 120,
+      "peak": 42
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Cryoglobulinemia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "presence-cryoglobulins",
+        "description": "Detection of monoclonal cryoglobulins in serum",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-manifestations",
+        "description": "Presence of clinical symptoms such as purpura, arthralgia, or peripheral neuropathy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-secondary-causes",
+        "description": "Exclusion of secondary causes such as hepatitis C infection or autoimmune diseases",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "complement-levels",
+        "description": "Low complement levels (especially C4) supporting diagnosis",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of monoclonal cryoglobulins in serum plus at least one major clinical manifestation and exclusion of secondary causes",
+    "notes": "Diagnosis requires careful exclusion of mixed cryoglobulinemia and secondary etiologies."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Purpura",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Abnormality of blood and blood-forming tissues",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "blood cell abnormalities",
+          "problems with blood formation",
+          "abnormal blood components"
+        ]
+      },
+      {
+        "symptomName": "Cold urticaria",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Unexplained fevers",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased circulating IgM level",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "increased IgM antibody levels",
+          "high circulating IgM",
+          "elevated IgM in blood tests"
+        ]
+      },
+      {
+        "symptomName": "Acral ulceration",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Distal peripheral sensory neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "numbness and tingling in hands and feet",
+          "distal sensory nerve damage",
+          "peripheral sensory neuropathy"
+        ]
+      },
+      {
+        "symptomName": "Sensorimotor neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Localized skin lesion",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "small skin sore",
+          "localized skin spot",
+          "skin lesion in one area"
+        ]
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Paraproteinemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Multiple mononeuropathy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Livedo racemosa",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Abnormality of the kidney",
+        "frequency": 0.17,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "kidney malformation",
+          "abnormal kidney shape or size",
+          "kidney structural defect"
+        ]
+      },
+      {
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Proteinuria",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Membranoproliferative glomerulonephritis",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Microscopic hematuria",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Paresthesia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Monoclonal immunoglobulin M proteinemia",
+        "frequency": 0.17,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "presence of monoclonal IgM protein",
+          "abnormal IgM antibody in blood",
+          "monoclonal immunoglobulin detected"
+        ]
+      },
+      {
+        "symptomName": "Multiple myeloma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spontaneous pain sensation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "spontaneous nerve pain",
+          "unprovoked burning pain",
+          "pain without injury"
+        ]
+      },
+      {
+        "symptomName": "Vascular skin abnormality",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "skin blood vessel abnormalities",
+          "vascular skin lesions",
+          "abnormal blood vessels in skin"
+        ]
+      },
+      {
+        "symptomName": "B-cell lymphoma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mesangial hypercellularity",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Monoclonal elevation of IgG",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high IgG antibody levels",
+          "increased single type IgG",
+          "monoclonal IgG spike"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Chronic lymphatic leukemia",
+        "frequency": 0.03,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "chronic lymphocyte cancer",
+          "long-term lymphatic leukemia",
+          "persistent lymphocyte blood cancer"
+        ]
+      },
+      {
+        "symptomName": "Viral hepatitis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "paralysis of cranial nerves",
+          "loss of nerve function in head",
+          "facial or eye muscle paralysis"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the gastrointestinal tract",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "digestive tract problems",
+          "stomach or intestine abnormalities",
+          "gut malformations"
+        ]
+      },
+      {
+        "symptomName": "Monoclonal elevation of circulating IgA",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high levels of single type IgA antibody",
+          "monoclonal IgA increase in blood",
+          "elevated specific IgA antibody"
+        ]
+      },
+      {
+        "symptomName": "Nephrotic syndrome",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Nephritis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal heart morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "abnormal heart shape",
+          "heart structure problems",
+          "unusual heart anatomy"
+        ]
+      },
+      {
+        "symptomName": "Congestive heart failure",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart failure symptoms",
+          "fluid buildup from weak heart",
+          "heart pumping failure"
+        ]
+      },
+      {
+        "symptomName": "Myocardial infarction",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "brain structure abnormalities",
+          "central nervous system malformations",
+          "abnormal brain shape"
+        ]
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormal lung morphology",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "lung structural abnormalities",
+          "unusual lung shape",
+          "abnormal lung development"
+        ]
+      },
+      {
+        "symptomName": "Gastrointestinal hemorrhage",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Progressive neurologic deterioration",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "worsening neurological symptoms",
+          "progressive nerve problems",
+          "declining brain and nerve function"
+        ]
+      },
+      {
+        "symptomName": "Rheumatoid factor positive",
+        "frequency": 0.03,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "positive rheumatoid factor blood test",
+          "autoantibody associated with arthritis",
+          "RF positive serology"
+        ]
+      },
+      {
+        "symptomName": "Functional motor deficit",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "difficulty moving muscles",
+          "loss of motor function",
+          "weakness affecting movement"
+        ]
+      },
+      {
+        "symptomName": "Complement deficiency",
+        "frequency": 0.03,
+        "bodySystem": "immunological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "gastrointestinal",
+    "neurological",
+    "constitutional",
+    "dermatological",
+    "cardiovascular",
+    "renal",
+    "musculoskeletal",
+    "immunological",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Presence of monoclonal cryoglobulins in serum",
+      "Low complement C4 levels",
+      "Elevated serum viscosity",
+      "Monoclonal gammopathy on serum protein electrophoresis"
+    ],
+    "imaging": [
+      "Nerve conduction studies showing peripheral neuropathy",
+      "Ultrasound or CT showing hepatosplenomegaly"
+    ],
+    "genetic": [],
+    "other": [
+      "Skin biopsy showing leukocytoclastic vasculitis",
+      "Renal biopsy showing membranoproliferative glomerulonephritis"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "mixed-cryoglobulinemia",
+      "distinguishingFeatures": [
+        "Presence of polyclonal cryoglobulins",
+        "Association with hepatitis C infection",
+        "More frequent systemic vasculitis"
+      ]
+    },
+    {
+      "diseaseId": "multiple-myeloma",
+      "distinguishingFeatures": [
+        "Presence of lytic bone lesions",
+        "High monoclonal protein levels",
+        "Bone marrow plasmacytosis"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive renal failure",
+    "Severe peripheral neuropathy with motor deficits",
+    "Signs of hyperviscosity syndrome such as visual disturbances or altered mental status"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Rheumatologist",
+    "Nephrologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Sène D, et al. Cryoglobulinemia. Orphanet J Rare Dis. 2013;8:25.",
+    "Ferri C. Mixed cryoglobulinemia. Orphanet J Rare Dis. 2005;1:25.",
+    "Dammacco F, et al. Pathogenesis and treatment of cryoglobulinemia. Clin Rev Allergy Immunol. 2017;52(2):175-191."
+  ],
+  "confidenceInData": "medium"
+}

@@ -62,6 +62,7 @@ async function main() {
   console.log(`Found ${files.length} disease files`);
 
   // Collect all symptom texts with their disease mappings
+  // Include both symptomName and searchTerms for each symptom
   const symptomTexts = [];
   const symptomMap = [];
 
@@ -72,17 +73,30 @@ async function main() {
     for (const tier of ['pathognomonic', 'common', 'occasional', 'rare']) {
       const symptoms = disease.symptoms[tier] || [];
       for (const symptom of symptoms) {
+        // Always embed the symptomName
         symptomTexts.push(symptom.symptomName);
         symptomMap.push({
           diseaseId: disease.id,
           tier,
           symptomName: symptom.symptomName,
         });
+
+        // Also embed each searchTerm (patient-friendly aliases)
+        if (symptom.searchTerms && symptom.searchTerms.length > 0) {
+          for (const searchTerm of symptom.searchTerms) {
+            symptomTexts.push(searchTerm);
+            symptomMap.push({
+              diseaseId: disease.id,
+              tier,
+              symptomName: searchTerm,
+            });
+          }
+        }
       }
     }
   }
 
-  console.log(`Collected ${symptomTexts.length} symptom names to embed`);
+  console.log(`Collected ${symptomTexts.length} symptom texts to embed (including searchTerms)`);
 
   // Deduplicate symptom texts
   const uniqueTexts = [...new Set(symptomTexts)];

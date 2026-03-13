@@ -1,0 +1,223 @@
+{
+  "id": "uveitis",
+  "name": "Uveitis",
+  "aliases": [
+    "Intraocular Inflammation",
+    "Iritis"
+  ],
+  "icd10Codes": [
+    "H20",
+    "H30"
+  ],
+  "orphanetId": "ORPHA:98715",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 60,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Standardized Uveitis Nomenclature (SUN) Criteria",
+    "criteria": [
+      {
+        "id": "anterior-chamber-cells",
+        "description": "Presence of inflammatory cells in the anterior chamber of the eye",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "vitreous-haze",
+        "description": "Vitreous haze indicating inflammation in the posterior segment",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "keratic-precipitates",
+        "description": "Keratic precipitates on the corneal endothelium",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ocular-pain-redness",
+        "description": "Ocular pain and redness consistent with intraocular inflammation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of inflammatory cells in the anterior chamber or vitreous haze consistent with intraocular inflammation",
+    "notes": "Diagnosis is clinical and supported by slit-lamp examination and imaging studies"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Anterior chamber inflammatory cells",
+        "frequency": 0.85,
+        "bodySystem": "ophthalmological",
+        "notes": "Detected by slit-lamp examination",
+        "searchTerms": [
+          "white blood cells in eye chamber",
+          "eye inflammation cells"
+        ]
+      },
+      {
+        "symptomName": "Keratic precipitates",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological",
+        "notes": "Granulomatous or nongranulomatous deposits on corneal endothelium"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Ocular redness",
+        "frequency": 0.8,
+        "bodySystem": "ophthalmological",
+        "notes": "Conjunctival injection due to inflammation"
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.7,
+        "bodySystem": "ophthalmological",
+        "notes": "Light sensitivity caused by intraocular inflammation"
+      },
+      {
+        "symptomName": "Blurred vision",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological",
+        "notes": "Due to inflammatory cells and edema"
+      },
+      {
+        "symptomName": "Floaters",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological",
+        "notes": "Inflammatory debris in vitreous humor"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Eye pain",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological",
+        "notes": "Variable severity, often with ciliary spasm"
+      },
+      {
+        "symptomName": "Decreased visual acuity",
+        "frequency": 0.35,
+        "bodySystem": "ophthalmological",
+        "notes": "Due to macular edema or cataract formation",
+        "searchTerms": [
+          "blurred vision",
+          "difficulty seeing clearly",
+          "reduced sharpness of sight"
+        ]
+      },
+      {
+        "symptomName": "Posterior synechiae",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological",
+        "notes": "Adhesions between iris and lens"
+      },
+      {
+        "symptomName": "Vitreous haze",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological",
+        "notes": "Indicates posterior segment inflammation"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hypopyon",
+        "frequency": 0.08,
+        "bodySystem": "ophthalmological",
+        "notes": "Layering of white blood cells in anterior chamber"
+      },
+      {
+        "symptomName": "Choroidal neovascularization",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological",
+        "notes": "Secondary to chronic inflammation"
+      },
+      {
+        "symptomName": "Secondary glaucoma",
+        "frequency": 0.04,
+        "bodySystem": "ophthalmological",
+        "notes": "Due to trabecular meshwork obstruction"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "ophthalmological",
+    "immunological",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated inflammatory markers (ESR, CRP) in systemic disease",
+      "HLA-B27 positivity in associated spondyloarthropathies",
+      "Autoantibody panels if systemic autoimmune disease suspected"
+    ],
+    "imaging": [
+      "Optical coherence tomography (OCT) showing macular edema",
+      "Fluorescein angiography demonstrating retinal vasculitis",
+      "Ultrasound B-scan for vitreous opacities or retinal detachment"
+    ],
+    "genetic": [
+      "Association with HLA-B27 allele",
+      "Other HLA associations depending on subtype"
+    ],
+    "other": [
+      "Slit-lamp biomicroscopy revealing inflammatory cells and keratic precipitates",
+      "Fundoscopic examination showing chorioretinal lesions"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "infectious-endophthalmitis",
+      "distinguishingFeatures": [
+        "Rapid onset with severe pain and purulent discharge",
+        "Positive microbial cultures",
+        "History of ocular surgery or trauma"
+      ]
+    },
+    {
+      "diseaseId": "sarcoidosis",
+      "distinguishingFeatures": [
+        "Systemic granulomatous disease with pulmonary involvement",
+        "Noncaseating granulomas on biopsy",
+        "Elevated serum angiotensin-converting enzyme (ACE)"
+      ]
+    },
+    {
+      "diseaseId": "birdshot-chorioretinopathy",
+      "distinguishingFeatures": [
+        "Characteristic cream-colored choroidal lesions",
+        "Strong HLA-A29 association",
+        "Chronic posterior uveitis pattern"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden severe vision loss",
+    "Presence of hypopyon",
+    "Signs of optic nerve involvement or papillitis"
+  ],
+  "specialistType": [
+    "Ophthalmologist",
+    "Rheumatologist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Jabs DA, Nussenblatt RB, Rosenbaum JT. Standardization of Uveitis Nomenclature for Reporting Clinical Data. Am J Ophthalmol. 2005.",
+    "Rothova A. Uveitis: a global perspective. Ocul Immunol Inflamm. 1997.",
+    "Nussenblatt RB. The natural history of uveitis. Int Ophthalmol. 1990."
+  ],
+  "confidenceInData": "ai-generated"
+}

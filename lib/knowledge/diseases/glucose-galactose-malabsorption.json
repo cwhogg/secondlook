@@ -1,0 +1,212 @@
+{
+  "id": "glucose-galactose-malabsorption",
+  "name": "Glucose-Galactose Malabsorption",
+  "aliases": [
+    "GGM",
+    "Congenital Glucose-Galactose Malabsorption"
+  ],
+  "icd10Codes": [
+    "E74.3"
+  ],
+  "omimId": "606824",
+  "orphanetId": "ORPHA:35710",
+  "prevalence": {
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 2,
+      "peak": 1
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Genetic Diagnosis of Glucose-Galactose Malabsorption",
+    "criteria": [
+      {
+        "id": "clinical-presentation",
+        "description": "Severe watery diarrhea and dehydration starting in the neonatal period upon ingestion of glucose or galactose-containing feeds",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "oral-glucose-galactose-challenge",
+        "description": "Resolution of diarrhea upon removal of glucose and galactose from the diet",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in the SLC5A1 gene encoding the sodium/glucose cotransporter 1 (SGLT1)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "intestinal-biopsy",
+        "description": "Normal intestinal mucosa on biopsy excluding other causes of malabsorption",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of neonatal onset diarrhea triggered by glucose/galactose ingestion with symptom resolution on dietary exclusion plus identification of pathogenic SLC5A1 mutations",
+    "notes": "Genetic confirmation is considered definitive; clinical response to dietary modification is critical for diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "poor weight gain",
+          "not growing well",
+          "failure to gain weight"
+        ]
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dehydration",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Osmotic diarrhea",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hypernatremia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal distention",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Malnutrition",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Nephrolithiasis",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hypercalcemia",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Hyperactive bowel sounds",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "loud or increased bowel sounds",
+          "hyperactive intestinal noises",
+          "excessive gut sounds"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.03,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "constitutional",
+    "renal",
+    "endocrine",
+    "hematological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated stool osmotic gap indicating osmotic diarrhea",
+      "Electrolyte disturbances including hyponatremia and hypokalemia",
+      "Normal intestinal biopsy excluding other malabsorptive disorders"
+    ],
+    "imaging": [
+      "Generally normal abdominal imaging; may show nonspecific bowel distension"
+    ],
+    "genetic": [
+      "SLC5A1 (causative, loss-of-function)",
+      "Autosomal recessive inheritance"
+    ],
+    "other": [
+      "Symptom resolution upon removal of glucose and galactose from diet"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "congenital-chloride-diarrhea",
+      "distinguishingFeatures": [
+        "High fecal chloride concentration",
+        "Metabolic alkalosis instead of acidosis",
+        "Mutations in SLC26A3 gene"
+      ]
+    },
+    {
+      "diseaseId": "sucrase-isomaltase-deficiency",
+      "distinguishingFeatures": [
+        "Diarrhea triggered by sucrose and starch ingestion",
+        "Normal glucose and galactose absorption",
+        "Enzyme assay showing sucrase deficiency"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Persistent severe dehydration despite fluid replacement",
+    "Failure to thrive despite dietary management",
+    "Neurological deterioration secondary to electrolyte imbalance"
+  ],
+  "specialistType": [
+    "Pediatric Gastroenterologist",
+    "Clinical Geneticist",
+    "Metabolic Specialist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Wright EM, Loo DD, Hirayama BA. Biology of human sodium glucose transporters. Physiol Rev. 2011;91(2):733-794.",
+    "Orphanet: Glucose-galactose malabsorption. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=35710",
+    "OMIM Entry - #606824 - GLUCOSE-GALACTOSE MALABSORPTION; GGM"
+  ],
+  "confidenceInData": "medium"
+}

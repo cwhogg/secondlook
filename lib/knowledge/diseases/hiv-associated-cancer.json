@@ -1,0 +1,270 @@
+{
+  "id": "hiv-associated-cancer",
+  "name": "HIV-associated Cancer",
+  "aliases": [
+    "HIV-related Malignancy",
+    "AIDS-associated Cancer"
+  ],
+  "icd10Codes": [
+    "C46",
+    "C81-C96"
+  ],
+  "orphanetId": "ORPHA:443291",
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "range": "0.01-0.05%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 60,
+      "peak": 35
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Sub-Saharan African",
+      "Hispanic",
+      "African American"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "CDC AIDS-defining Cancers Criteria",
+    "criteria": [
+      {
+        "id": "histopathology-confirmation",
+        "description": "Histopathological confirmation of malignancy in the context of HIV infection",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hiv-seropositivity",
+        "description": "Confirmed HIV seropositivity by ELISA and Western blot or PCR",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Presence of characteristic clinical features such as Kaposi sarcoma lesions, lymphoma masses, or invasive cervical cancer",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Confirmed HIV infection plus histopathological evidence of malignancy consistent with HIV-associated cancer",
+    "notes": "Diagnosis requires exclusion of non-HIV-related malignancies and consideration of immune status"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Violaceous cutaneous Kaposi sarcoma lesions",
+        "frequency": 0.85,
+        "bodySystem": "dermatological",
+        "notes": "Characteristic violaceous plaques or nodules",
+        "searchTerms": [
+          "purple skin lesions typical of Kaposi sarcoma",
+          "violaceous skin spots",
+          "purple nodules on skin"
+        ]
+      },
+      {
+        "symptomName": "Persistent generalized lymphadenopathy with lymphoma",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Non-Hodgkin lymphoma presenting with painless lymph node enlargement",
+        "searchTerms": [
+          "persistent swollen lymph nodes with lymphoma",
+          "long-lasting lymphadenopathy",
+          "enlarged lymph nodes due to lymphoma"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Unexplained weight loss exceeding 10% body weight",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Common systemic symptom in HIV-associated malignancies",
+        "searchTerms": [
+          "losing more than 10% body weight without cause",
+          "significant unexplained weight loss",
+          "major weight loss without reason"
+        ]
+      },
+      {
+        "symptomName": "Fever of unknown origin",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Often intermittent and persistent",
+        "searchTerms": [
+          "unexplained fever",
+          "fever with no known cause",
+          "persistent high temperature without diagnosis"
+        ]
+      },
+      {
+        "symptomName": "Oral hairy leukoplakia",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological",
+        "notes": "White patches on lateral tongue associated with Epstein-Barr virus",
+        "searchTerms": [
+          "white patches on tongue",
+          "oral hairy leukoplakia appearance",
+          "tongue lesions with white fuzz"
+        ]
+      },
+      {
+        "symptomName": "Persistent cough with or without hemoptysis",
+        "frequency": 0.58,
+        "bodySystem": "respiratory",
+        "notes": "May indicate pulmonary lymphoma or Kaposi sarcoma involvement",
+        "searchTerms": [
+          "ongoing cough with or without blood",
+          "persistent cough possibly with blood",
+          "long-term coughing"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Neurological deficits due to CNS lymphoma",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Focal neurological signs or cognitive decline",
+        "searchTerms": [
+          "nerve problems from brain lymphoma",
+          "neurological symptoms due to CNS tumor",
+          "brain-related deficits from lymphoma"
+        ]
+      },
+      {
+        "symptomName": "Abdominal pain or mass from visceral lymphoma",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "May indicate intra-abdominal lymphadenopathy or organ involvement",
+        "searchTerms": [
+          "belly pain or lump from internal lymphoma",
+          "abdominal mass or discomfort",
+          "pain or swelling in abdomen"
+        ]
+      },
+      {
+        "symptomName": "Persistent diarrhea",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal",
+        "notes": "May be related to gastrointestinal lymphoma or opportunistic infections"
+      },
+      {
+        "symptomName": "Dyspnea due to pleural effusion or pulmonary Kaposi sarcoma",
+        "frequency": 0.15,
+        "bodySystem": "respiratory",
+        "notes": "Progressive shortness of breath",
+        "searchTerms": [
+          "shortness of breath from lung or pleural disease",
+          "breathing difficulty due to lung involvement",
+          "dyspnea from chest fluid or tumor"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Visual disturbances from ocular Kaposi sarcoma",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological",
+        "notes": "Rare but possible ocular involvement",
+        "searchTerms": [
+          "vision problems from eye Kaposi sarcoma",
+          "eye lesions causing visual changes",
+          "ocular tumor affecting sight"
+        ]
+      },
+      {
+        "symptomName": "Seizures secondary to CNS lymphoma",
+        "frequency": 0.07,
+        "bodySystem": "neurological",
+        "notes": "Occasional presentation in advanced disease",
+        "searchTerms": [
+          "seizures caused by brain lymphoma",
+          "convulsions from CNS tumor",
+          "epileptic episodes due to lymphoma"
+        ]
+      },
+      {
+        "symptomName": "Hypercalcemia due to lymphoma",
+        "frequency": 0.04,
+        "bodySystem": "endocrine",
+        "notes": "Paraneoplastic syndrome",
+        "searchTerms": [
+          "high blood calcium from lymphoma",
+          "elevated calcium levels",
+          "hypercalcemia related to cancer"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "hematological",
+    "constitutional",
+    "respiratory",
+    "neurological",
+    "gastrointestinal",
+    "otolaryngological",
+    "ophthalmological",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated LDH levels",
+      "Anemia of chronic disease",
+      "HIV viral load and CD4+ T-cell count indicating immunosuppression"
+    ],
+    "imaging": [
+      "CT or MRI showing lymphadenopathy or mass lesions",
+      "Chest X-ray with pulmonary infiltrates or effusions",
+      "PET scan demonstrating hypermetabolic tumor sites"
+    ],
+    "genetic": [
+      "Detection of Epstein-Barr virus DNA in lymphoma tissue",
+      "HHV-8 (Human herpesvirus 8) DNA in Kaposi sarcoma lesions"
+    ],
+    "other": [
+      "Histopathological confirmation with immunohistochemistry",
+      "Bone marrow biopsy in suspected lymphoma"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "non-hiv-related-lymphoma",
+      "distinguishingFeatures": [
+        "Absence of HIV infection",
+        "Different epidemiology and immune status",
+        "Histopathology may differ in subtype and viral associations"
+      ]
+    },
+    {
+      "diseaseId": "opportunistic-infections",
+      "distinguishingFeatures": [
+        "Infectious etiology rather than neoplastic",
+        "Response to antimicrobial therapy",
+        "Lack of malignant histopathology"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging lymph nodes or masses",
+    "New onset of neurological deficits in HIV-positive patient",
+    "Unexplained persistent fever and weight loss"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Oncologist",
+    "Hematologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Centers for Disease Control and Prevention. HIV/AIDS and Cancer. CDC.gov.",
+    "National Comprehensive Cancer Network. Guidelines for HIV-Associated Malignancies, 2024.",
+    "Gopal S, et al. HIV-associated cancers and their management. Lancet Oncol. 2023."
+  ],
+  "confidenceInData": "ai-generated"
+}

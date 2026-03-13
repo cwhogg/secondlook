@@ -1,0 +1,240 @@
+{
+  "id": "lymphoid-hemopathy",
+  "name": "Lymphoid Hemopathy",
+  "aliases": [
+    "Lymphoid Hematopathy",
+    "Lymphoid Dyscrasia"
+  ],
+  "icd10Codes": [
+    "D47.9"
+  ],
+  "orphanetId": "ORPHA:171898",
+  "prevalence": {
+    "estimate": "1 in 200,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 45
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Lymphoid Hemopathy Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "lymphoid-cell-proliferation",
+        "description": "Presence of abnormal lymphoid cell proliferation in peripheral blood or bone marrow",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunophenotyping-abnormalities",
+        "description": "Immunophenotypic evidence of clonal lymphoid population by flow cytometry",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-other-lymphoproliferative-disorders",
+        "description": "Exclusion of other lymphoproliferative or hematological malignancies by clinical and laboratory evaluation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "lymphadenopathy",
+        "description": "Presence of persistent lymphadenopathy without evidence of infection",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "constitutional-symptoms",
+        "description": "Intermittent low-grade fever, night sweats, or weight loss",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria must be met for diagnosis",
+    "notes": "Diagnosis requires exclusion of other lymphoid malignancies and reactive causes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Clonal lymphoid cell proliferation",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "abnormal growth of lymph cells",
+          "excess lymphocyte production",
+          "clonal lymphocyte increase"
+        ]
+      },
+      {
+        "symptomName": "Persistent lymphadenopathy",
+        "frequency": 0.75,
+        "bodySystem": "hematological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Intermittent low-grade fever",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "occasional low fever",
+          "intermittent mild fever",
+          "recurrent slight temperature elevation"
+        ]
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Unintentional weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "unplanned weight loss",
+          "losing weight without trying",
+          "involuntary weight reduction"
+        ]
+      },
+      {
+        "symptomName": "Mild hepatosplenomegaly",
+        "frequency": 0.58,
+        "bodySystem": "hematological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Anemia of chronic disease",
+        "frequency": 0.35,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "low red blood cells from chronic illness",
+          "anemia due to long-term disease",
+          "chronic disease causing low blood count"
+        ]
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.3,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Lymphocyte atypia on peripheral smear",
+        "frequency": 0.25,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "abnormal lymphocytes in blood smear",
+          "atypical white blood cells",
+          "unusual lymphocytes on blood test"
+        ]
+      },
+      {
+        "symptomName": "Mild splenic discomfort",
+        "frequency": 0.15,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "mild pain or discomfort in spleen area",
+          "slight left upper abdomen ache",
+          "low-level splenic pain"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Autoimmune hemolytic anemia",
+        "frequency": 0.08,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "immune system destroying red blood cells",
+          "anemia caused by immune attack",
+          "red blood cell breakdown from antibodies"
+        ]
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cutaneous vasculitis",
+        "frequency": 0.03,
+        "bodySystem": "dermatological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "constitutional",
+    "neurological",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Clonal lymphoid population detected by flow cytometry",
+      "Mild anemia and thrombocytopenia",
+      "Elevated ESR and CRP"
+    ],
+    "imaging": [
+      "Enlarged lymph nodes on ultrasound or CT scan",
+      "Mild hepatosplenomegaly on abdominal imaging"
+    ],
+    "genetic": [
+      "No specific recurrent genetic mutations identified",
+      "Clonality confirmed by immunoglobulin or T-cell receptor gene rearrangement studies"
+    ],
+    "other": [
+      "Bone marrow biopsy showing lymphoid infiltration",
+      "Exclusion of infectious etiologies"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chronic-lymphocytic-leukemia",
+      "distinguishingFeatures": [
+        "More pronounced lymphocytosis",
+        "Characteristic immunophenotype (CD5+, CD23+)",
+        "Typical older age group"
+      ]
+    },
+    {
+      "diseaseId": "follicular-lymphoma",
+      "distinguishingFeatures": [
+        "Lymph node biopsy showing follicular architecture",
+        "BCL2 gene rearrangement",
+        "More aggressive clinical course"
+      ]
+    },
+    {
+      "diseaseId": "reactive-lymphadenopathy",
+      "distinguishingFeatures": [
+        "Polyclonal lymphoid proliferation",
+        "Resolution with treatment of underlying infection",
+        "Absence of clonal markers"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging lymph nodes",
+    "Unexplained severe anemia or thrombocytopenia",
+    "Systemic B symptoms (high fever, drenching night sweats, significant weight loss)"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Oncologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Orphanet: Lymphoid Hemopathy ORPHA:171898",
+    "Hematology: Basic Principles and Practice, 7th Edition",
+    "WHO Classification of Tumours of Haematopoietic and Lymphoid Tissues, 2017"
+  ],
+  "confidenceInData": "ai-generated"
+}

@@ -1,0 +1,227 @@
+{
+  "id": "harp-syndrome",
+  "name": "HARP Syndrome",
+  "aliases": [
+    "Hypoprebetalipoproteinemia, Acrokeratoderma, Retinitis Pigmentosa, and Pallidum Degeneration Syndrome"
+  ],
+  "icd10Codes": [
+    "E78.6"
+  ],
+  "omimId": "245510",
+  "orphanetId": "157855",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 40,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "HARP Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "retinitis-pigmentosa",
+        "description": "Presence of retinitis pigmentosa confirmed by ophthalmological examination",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hypoprebetalipoproteinemia",
+        "description": "Biochemical evidence of hypoprebetalipoproteinemia (low VLDL cholesterol levels)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pallidum-degeneration",
+        "description": "Neuroimaging or neuropathological evidence of pallidal degeneration",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "acrokeratoderma",
+        "description": "Clinical presence of acrokeratoderma (thickening of skin on hands and feet)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history consistent with autosomal recessive inheritance",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of all three major criteria: retinitis pigmentosa, hypoprebetalipoproteinemia, and pallidum degeneration",
+    "notes": "Diagnosis is supported by clinical, biochemical, and neuroimaging findings; genetic testing may confirm diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Retinitis pigmentosa",
+        "frequency": 0.95,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hypoprebetalipoproteinemia",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "notes": "Detected by lipid profile showing low VLDL cholesterol"
+      },
+      {
+        "symptomName": "Pallidal degeneration",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Confirmed by MRI or neuropathology"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Acrokeratoderma",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Thickening and scaling of skin on hands and feet"
+      },
+      {
+        "symptomName": "Extrapyramidal movement disorders",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Including dystonia and rigidity",
+        "searchTerms": [
+          "involuntary abnormal movements",
+          "movement disorders affecting coordination",
+          "muscle control problems"
+        ]
+      },
+      {
+        "symptomName": "Progressive visual field constriction",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "narrowing of vision field",
+          "progressive tunnel vision",
+          "loss of side vision"
+        ]
+      },
+      {
+        "symptomName": "Mild cognitive impairment",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "mild memory problems",
+          "slight thinking difficulties",
+          "minor cognitive decline"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Tremor",
+        "frequency": 0.4,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mild hepatomegaly",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Psychiatric manifestations (depression, anxiety)",
+        "frequency": 0.08,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "depression and anxiety symptoms",
+          "mood and mental health issues",
+          "psychiatric problems like sadness and worry"
+        ]
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cardiomyopathy",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological",
+    "dermatological",
+    "hematological",
+    "gastrointestinal",
+    "psychiatric",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low very low-density lipoprotein (VLDL) cholesterol levels",
+      "Normal or mildly elevated liver enzymes"
+    ],
+    "imaging": [
+      "MRI showing pallidal degeneration",
+      "Ophthalmological imaging confirming retinitis pigmentosa"
+    ],
+    "genetic": [
+      "Mutations in the VPS13A gene (associated with chorea-acanthocytosis spectrum disorders)"
+    ],
+    "other": [
+      "Skin biopsy showing acrokeratoderma features"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chorea-acanthocytosis",
+      "distinguishingFeatures": [
+        "Presence of acanthocytes on peripheral blood smear",
+        "More prominent choreiform movements",
+        "Absence of hypoprebetalipoproteinemia"
+      ]
+    },
+    {
+      "diseaseId": "hallervorden-spatz-disease",
+      "distinguishingFeatures": [
+        "Iron accumulation in basal ganglia on MRI",
+        "Earlier onset with rapid progression",
+        "No hypoprebetalipoproteinemia"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of visual loss",
+    "Early onset extrapyramidal symptoms",
+    "Evidence of pallidal degeneration on neuroimaging"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Ophthalmologist",
+    "Dermatologist",
+    "Clinical Geneticist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Orphanet: HARP syndrome (ORPHA:157855)",
+    "OMIM Entry #245510 - HARP Syndrome",
+    "Kruer MC, et al. HARP syndrome: clinical and molecular characterization. Neurology. 2011."
+  ],
+  "confidenceInData": "ai-generated"
+}

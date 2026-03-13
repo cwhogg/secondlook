@@ -1,0 +1,277 @@
+{
+  "id": "neuroendocrine-neoplasm",
+  "name": "Neuroendocrine Neoplasm",
+  "aliases": [
+    "Neuroendocrine Tumor",
+    "NET"
+  ],
+  "icd10Codes": [
+    "C7A.0",
+    "C7A.1",
+    "C7A.2",
+    "C7A.3",
+    "C7A.4",
+    "C7A.5",
+    "C7A.6",
+    "C7A.7",
+    "C7A.8",
+    "C7A.9"
+  ],
+  "orphanetId": "877",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Neuroendocrine Neoplasms",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation of neuroendocrine differentiation by morphology and immunohistochemistry (chromogranin A, synaptophysin positivity)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ki67-index",
+        "description": "Ki-67 proliferation index assessment to grade tumor (G1, G2, G3)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging",
+        "description": "Radiological evidence of tumor on CT, MRI, or somatostatin receptor scintigraphy/PET",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "biochemical-markers",
+        "description": "Elevated serum or urine neuroendocrine markers such as chromogranin A, 5-HIAA",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation with immunohistochemistry plus imaging evidence of tumor",
+    "notes": "Grading and staging are essential for prognosis and treatment planning"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Flushing episodes due to carcinoid syndrome",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Common in serotonin-secreting tumors",
+        "searchTerms": [
+          "episodes of skin flushing",
+          "carcinoid flushing attacks",
+          "redness flare-ups from hormone release"
+        ]
+      },
+      {
+        "symptomName": "Secretory diarrhea associated with hormone secretion",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal",
+        "notes": "Often linked to vasoactive intestinal peptide secretion",
+        "searchTerms": [
+          "watery diarrhea from hormone secretion",
+          "secretory diarrhea",
+          "diarrhea caused by tumor hormones"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abdominal pain or discomfort",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to tumor mass effect or metastases",
+        "searchTerms": [
+          "stomach pain",
+          "belly discomfort",
+          "abdominal ache"
+        ]
+      },
+      {
+        "symptomName": "Weight loss and anorexia",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Reflects systemic illness",
+        "searchTerms": [
+          "unintentional weight loss and poor appetite",
+          "losing weight with decreased hunger",
+          "weight reduction and anorexia"
+        ]
+      },
+      {
+        "symptomName": "Hypoglycemia in insulin-secreting tumors",
+        "frequency": 0.55,
+        "bodySystem": "endocrine",
+        "notes": "Indicative of insulinoma subtype",
+        "searchTerms": [
+          "low blood sugar from insulin tumor",
+          "insulin-secreting tumor hypoglycemia",
+          "tumor causing low glucose levels"
+        ]
+      },
+      {
+        "symptomName": "Cough or wheezing due to bronchial carcinoid",
+        "frequency": 0.5,
+        "bodySystem": "respiratory",
+        "notes": "Seen in pulmonary neuroendocrine tumors",
+        "searchTerms": [
+          "cough or wheeze from lung tumor",
+          "breathing sounds due to bronchial tumor",
+          "carcinoid causing cough or wheezing"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Heart valve lesions (carcinoid heart disease)",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Occurs secondary to serotonin effects",
+        "searchTerms": [
+          "heart valve damage from carcinoid",
+          "valve lesions in carcinoid heart disease",
+          "heart valve abnormalities"
+        ]
+      },
+      {
+        "symptomName": "Hypotension episodes",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to vasoactive hormone secretion"
+      },
+      {
+        "symptomName": "Bronchospasm",
+        "frequency": 0.2,
+        "bodySystem": "respiratory",
+        "notes": "May mimic asthma in pulmonary NETs"
+      },
+      {
+        "symptomName": "Hypercalcemia in parathyroid hormone-related peptide secretion",
+        "frequency": 0.15,
+        "bodySystem": "endocrine",
+        "notes": "Seen in rare functional tumors",
+        "searchTerms": [
+          "high calcium from parathyroid hormone-like tumor",
+          "tumor causing hypercalcemia",
+          "parathyroid hormone-related high calcium"
+        ]
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.1,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to carcinoid heart disease or liver metastases"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cushingoid features from ectopic ACTH secretion",
+        "frequency": 0.08,
+        "bodySystem": "endocrine",
+        "notes": "Rare ectopic hormone production",
+        "searchTerms": [
+          "cushingoid appearance from tumor hormone",
+          "features of excess cortisol from tumor",
+          "tumor causing Cushing-like signs"
+        ]
+      },
+      {
+        "symptomName": "Neurological symptoms due to paraneoplastic syndromes",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Includes neuropathies or encephalopathies",
+        "searchTerms": [
+          "nerve symptoms from cancer-related immune effects",
+          "neurological signs due to paraneoplastic syndrome",
+          "nerve problems linked to cancer immune response"
+        ]
+      },
+      {
+        "symptomName": "Skin hyperpigmentation",
+        "frequency": 0.04,
+        "bodySystem": "dermatological",
+        "notes": "Associated with ectopic ACTH secretion"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "dermatological",
+    "endocrine",
+    "cardiovascular",
+    "respiratory",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum chromogranin A",
+      "Increased 24-hour urinary 5-HIAA",
+      "Hypoglycemia in insulinoma",
+      "Elevated serum serotonin or vasoactive intestinal peptide"
+    ],
+    "imaging": [
+      "CT or MRI showing primary tumor and metastases",
+      "Somatostatin receptor scintigraphy (Octreoscan)",
+      "68Ga-DOTATATE PET/CT for receptor imaging"
+    ],
+    "genetic": [
+      "MEN1 gene mutations in familial cases",
+      "Other rare genetic syndromes (e.g., von Hippel-Lindau, NF1)"
+    ],
+    "other": [
+      "Histopathology with immunohistochemical staining for synaptophysin and chromogranin A",
+      "Ki-67 proliferation index for grading"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "adenocarcinoma",
+      "distinguishingFeatures": [
+        "Lack of neuroendocrine markers on immunohistochemistry",
+        "Different histological morphology",
+        "Absence of hormone-related symptoms"
+      ]
+    },
+    {
+      "diseaseId": "pheochromocytoma",
+      "distinguishingFeatures": [
+        "Originates from adrenal medulla",
+        "Catecholamine excess symptoms (hypertension, palpitations)",
+        "Different biochemical markers (metanephrines)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid onset of flushing with diarrhea",
+    "Unexplained hypoglycemia episodes",
+    "Signs of carcinoid heart disease (e.g., right-sided heart failure)"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Oncologist",
+    "Gastroenterologist",
+    "Pathologist",
+    "Cardiologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "WHO Classification of Tumours Editorial Board. WHO Classification of Tumours: Digestive System Tumours. 5th ed. IARC; 2019.",
+    "Modlin IM, Oberg K, Chung DC, et al. Gastroenteropancreatic neuroendocrine tumours. Lancet Oncol. 2008;9(1):61-72.",
+    "Orphanet: Neuroendocrine neoplasm - https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=877"
+  ],
+  "confidenceInData": "ai-generated"
+}

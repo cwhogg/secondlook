@@ -1,0 +1,217 @@
+{
+  "id": "distomatosis",
+  "name": "Distomatosis",
+  "aliases": [
+    "Fascioliasis",
+    "Liver Fluke Infection"
+  ],
+  "icd10Codes": [
+    "B66.0"
+  ],
+  "orphanetId": "1685",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Populations in endemic areas such as South America, Africa, and Asia"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Parasitological Diagnostic Criteria for Distomatosis",
+    "criteria": [
+      {
+        "id": "parasitological-confirmation",
+        "description": "Detection of Fasciola eggs in stool or bile samples",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "serological-evidence",
+        "description": "Positive serological tests for Fasciola antibodies",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Presence of characteristic symptoms such as right upper quadrant abdominal pain and hepatomegaly",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Detection of Fasciola eggs in stool or bile samples or positive serology combined with compatible clinical presentation",
+    "notes": "Imaging and serology support diagnosis especially in early or ectopic infections"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Fasciola hepatica eggs in stool",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Definitive parasitological evidence",
+        "searchTerms": [
+          "Fasciola parasite eggs in stool",
+          "liver fluke eggs detected in feces",
+          "parasite eggs found in stool sample"
+        ]
+      },
+      {
+        "symptomName": "Right upper quadrant hepatomegaly",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "enlarged liver in right upper abdomen",
+          "right upper quadrant liver enlargement",
+          "hepatomegaly in right abdomen"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Eosinophilia",
+        "frequency": 0.8,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever during acute phase",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "fever during initial illness phase",
+          "high temperature in acute phase",
+          "early phase fever"
+        ]
+      },
+      {
+        "symptomName": "Right upper quadrant abdominal pain",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "pain in right upper belly",
+          "right side abdominal pain",
+          "upper right stomach ache"
+        ]
+      },
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Urticarial rash",
+        "frequency": 0.3,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hepatic abscess formation",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "liver abscess formation",
+          "pus-filled liver lesion",
+          "hepatic abscess"
+        ]
+      },
+      {
+        "symptomName": "Cholestasis",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Ectopic fascioliasis with neurological involvement",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "liver fluke infection affecting brain",
+          "ectopic fascioliasis with neurological symptoms",
+          "parasite infection causing neurological issues"
+        ]
+      },
+      {
+        "symptomName": "Anaphylactic reactions",
+        "frequency": 0.03,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.07,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "constitutional",
+    "dermatological",
+    "neurological",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Eosinophilia in peripheral blood",
+      "Detection of Fasciola eggs in stool or bile",
+      "Positive ELISA for Fasciola antibodies"
+    ],
+    "imaging": [
+      "Ultrasound showing hepatomegaly and biliary tract abnormalities",
+      "CT scan revealing hepatic lesions or abscesses"
+    ],
+    "genetic": [],
+    "other": [
+      "History of ingestion of contaminated watercress or freshwater plants",
+      "Exposure in endemic regions"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "schistosomiasis",
+      "distinguishingFeatures": [
+        "Schistosoma eggs in stool or urine",
+        "Different epidemiology and life cycle",
+        "More prominent portal hypertension in chronic cases"
+      ]
+    },
+    {
+      "diseaseId": "biliary-ascariasis",
+      "distinguishingFeatures": [
+        "Presence of Ascaris worms in biliary tract on imaging",
+        "Different stool ova and parasite findings",
+        "More acute biliary colic episodes"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe jaundice with cholangitis",
+    "Signs of hepatic abscess or rupture",
+    "Neurological symptoms indicating ectopic migration"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Gastroenterologist",
+    "Parasitologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "World Health Organization. Fascioliasis. WHO Technical Report Series, 2017.",
+    "Orphanet: Distomatosis - https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=1685",
+    "Centers for Disease Control and Prevention. Parasites - Fasciola. CDC, 2020."
+  ],
+  "confidenceInData": "ai-generated"
+}

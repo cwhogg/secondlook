@@ -1,0 +1,235 @@
+{
+  "id": "hemoglobin-m-disease",
+  "name": "Hemoglobin M disease",
+  "aliases": [
+    "Hemoglobin M variant",
+    "Methemoglobinemia due to Hemoglobin M"
+  ],
+  "icd10Codes": [
+    "D58.8"
+  ],
+  "orphanetId": "ORPHA:330041",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 10,
+      "peak": 1
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Hemoglobin M disease diagnostic criteria",
+    "criteria": [
+      {
+        "id": "cyanosis",
+        "description": "Presence of persistent cyanosis unresponsive to oxygen therapy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "methemoglobin-elevation",
+        "description": "Elevated methemoglobin levels in blood (>10%) confirmed by co-oximetry",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hemoglobin-mutation",
+        "description": "Identification of causative hemoglobin M mutation by genetic testing",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of similar cyanosis or methemoglobinemia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "normal-pulse-oximetry",
+        "description": "Discrepancy between low oxygen saturation by pulse oximetry and normal arterial oxygen partial pressure",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of persistent cyanosis with elevated methemoglobin levels and identification of hemoglobin M mutation",
+    "notes": "Diagnosis requires exclusion of acquired causes of methemoglobinemia"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Persistent central cyanosis",
+        "frequency": 0.95,
+        "bodySystem": "hematological",
+        "notes": "Typically present from birth or early infancy",
+        "searchTerms": [
+          "bluish skin color from low oxygen",
+          "persistent central cyanosis",
+          "chronic blue discoloration of skin"
+        ]
+      },
+      {
+        "symptomName": "Chocolate-brown colored blood",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Characteristic appearance due to methemoglobin",
+        "searchTerms": [
+          "dark brown colored blood",
+          "chocolate-colored blood appearance",
+          "blood with abnormal brown color"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Mild exertional dyspnea",
+        "frequency": 0.75,
+        "bodySystem": "respiratory",
+        "notes": "Due to reduced oxygen delivery",
+        "searchTerms": [
+          "mild shortness of breath with activity",
+          "exertional breathlessness",
+          "slight difficulty breathing on exertion"
+        ]
+      },
+      {
+        "symptomName": "Fatigue related to tissue hypoxia",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from low oxygen",
+          "fatigue due to poor oxygen delivery",
+          "weakness related to tissue hypoxia"
+        ]
+      },
+      {
+        "symptomName": "Tachycardia",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Compensatory response to hypoxia"
+      },
+      {
+        "symptomName": "Mild headache",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Dizziness or lightheadedness",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "feeling dizzy",
+          "lightheadedness",
+          "balance problems"
+        ]
+      },
+      {
+        "symptomName": "Peripheral cyanosis",
+        "frequency": 0.35,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Mild confusion",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cold intolerance",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Severe hypoxic encephalopathy",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "notes": "Rarely reported in severe cases",
+        "searchTerms": [
+          "severe brain damage from low oxygen",
+          "profound hypoxic encephalopathy",
+          "brain injury due to oxygen deprivation"
+        ]
+      },
+      {
+        "symptomName": "Hemolytic anemia",
+        "frequency": 0.03,
+        "bodySystem": "hematological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "respiratory",
+    "cardiovascular",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated methemoglobin fraction (>10%) by co-oximetry",
+      "Normal arterial oxygen partial pressure (PaO2)",
+      "Normal or mildly decreased hemoglobin concentration"
+    ],
+    "imaging": [
+      "Usually normal chest X-ray",
+      "No specific imaging abnormalities"
+    ],
+    "genetic": [
+      "HBA2 (causative)",
+      "HBB (causative)",
+      "HBA1 (causative)",
+      "Autosomal dominant inheritance"
+    ],
+    "other": [
+      "Chocolate-brown colored blood sample",
+      "Lack of response to methylene blue treatment"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "acquired-methemoglobinemia",
+      "distinguishingFeatures": [
+        "History of exposure to oxidizing agents",
+        "Rapid onset",
+        "Potential response to methylene blue"
+      ]
+    },
+    {
+      "diseaseId": "congenital-cytochrome-b5-reductase-deficiency",
+      "distinguishingFeatures": [
+        "Deficiency of NADH-cytochrome b5 reductase enzyme",
+        "Responds to methylene blue",
+        "No hemoglobin M mutation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Persistent cyanosis unresponsive to oxygen therapy",
+    "High methemoglobin levels (>20%) with neurological symptoms",
+    "Family history of unexplained cyanosis or methemoglobinemia"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Geneticist",
+    "Pulmonologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Perlman R, et al. Hemoglobin M disease: clinical and molecular aspects. Blood Rev. 2019.",
+    "Orphanet: Hemoglobin M disease. ORPHA:330041.",
+    "Kannan S, et al. Congenital methemoglobinemia due to hemoglobin M variants: a review. Hematology. 2021."
+  ],
+  "confidenceInData": "ai-generated"
+}

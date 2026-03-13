@@ -1,0 +1,229 @@
+{
+  "id": "neurodegenerative-disease-with-dementia",
+  "name": "Neurodegenerative Disease with Dementia",
+  "aliases": [
+    "Neurodegenerative Dementia",
+    "Progressive Neurodegenerative Dementia"
+  ],
+  "icd10Codes": [
+    "G31.9"
+  ],
+  "orphanetId": "ORPHA:98534",
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "range": "0.01%-0.05%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 40,
+      "max": 85,
+      "peak": 65
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical Diagnostic Criteria for Neurodegenerative Dementia",
+    "criteria": [
+      {
+        "id": "cognitive-decline",
+        "description": "Progressive cognitive decline affecting memory and executive functions",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "functional-impairment",
+        "description": "Impairment in activities of daily living due to cognitive deficits",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-other-causes",
+        "description": "Exclusion of other causes of dementia such as metabolic, infectious, or vascular etiologies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "supportive-neuroimaging",
+        "description": "Neuroimaging evidence of cortical atrophy or other neurodegenerative changes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations associated with neurodegeneration (if applicable)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of progressive cognitive decline and functional impairment with exclusion of other causes",
+    "notes": "Diagnosis is clinical and supported by imaging and genetic testing when available"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive memory impairment",
+        "frequency": 0.9,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "worsening memory loss",
+          "gradual decline in memory",
+          "progressive forgetfulness"
+        ]
+      },
+      {
+        "symptomName": "Executive dysfunction",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Language impairment (aphasia)",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "difficulty speaking",
+          "language problems",
+          "trouble understanding or using words"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Visuospatial disorientation",
+        "frequency": 0.7,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Behavioral changes including apathy and irritability",
+        "frequency": 0.65,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "changes in behavior and mood",
+          "apathy and irritability",
+          "altered personality and emotions"
+        ]
+      },
+      {
+        "symptomName": "Impaired judgment and problem-solving",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "difficulty making decisions",
+          "problems with judgment and planning",
+          "impaired problem-solving skills"
+        ]
+      },
+      {
+        "symptomName": "Sleep disturbances",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Depressive symptoms",
+        "frequency": 0.4,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Motor symptoms such as rigidity or bradykinesia",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "muscle stiffness and slow movements",
+          "rigidity and bradykinesia symptoms",
+          "parkinsonism motor signs"
+        ]
+      },
+      {
+        "symptomName": "Hallucinations",
+        "frequency": 0.2,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Autonomic dysfunction",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Myoclonus",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Weight loss due to dysphagia",
+        "frequency": 0.02,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "weight loss due to difficulty swallowing",
+          "losing weight from swallowing problems",
+          "malnutrition from dysphagia"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "psychiatric",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal routine blood tests excluding metabolic causes",
+      "CSF biomarkers showing elevated tau and decreased beta-amyloid (in some cases)"
+    ],
+    "imaging": [
+      "MRI showing cortical and hippocampal atrophy",
+      "FDG-PET demonstrating hypometabolism in affected brain regions"
+    ],
+    "genetic": [
+      "Mutations in genes such as APP, PSEN1, PSEN2 (in familial cases)"
+    ],
+    "other": [
+      "Neuropsychological testing confirming cognitive deficits"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "vascular-dementia",
+      "distinguishingFeatures": [
+        "History of cerebrovascular disease",
+        "Stepwise cognitive decline",
+        "Imaging showing multiple infarcts"
+      ]
+    },
+    {
+      "diseaseId": "frontotemporal-dementia",
+      "distinguishingFeatures": [
+        "Prominent behavioral and language symptoms early",
+        "Relative preservation of memory initially",
+        "Frontal and temporal lobe atrophy on imaging"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive cognitive decline",
+    "Early onset before age 40",
+    "Presence of seizures or myoclonus"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Geriatrician",
+    "Psychiatrist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "McKhann GM, et al. Clinical diagnosis of Alzheimer’s disease: report of the NINCDS-ADRDA Work Group. Neurology. 1984.",
+    "Dubois B, et al. Advancing research diagnostic criteria for Alzheimer's disease: the IWG-2 criteria. Lancet Neurol. 2014.",
+    "Orphanet: Neurodegenerative disease with dementia (ORPHA:98534)"
+  ],
+  "confidenceInData": "ai-generated"
+}

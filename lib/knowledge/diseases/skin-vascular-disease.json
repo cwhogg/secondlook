@@ -1,0 +1,222 @@
+{
+  "id": "skin-vascular-disease",
+  "name": "Skin Vascular Disease",
+  "aliases": [
+    "Cutaneous Vascular Disorder",
+    "Dermal Vascular Disease"
+  ],
+  "icd10Codes": [
+    "I78.8"
+  ],
+  "orphanetId": "ORPHA:79379",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 70,
+      "peak": 40
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Skin Vascular Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "cutaneous-vascular-lesions",
+        "description": "Presence of characteristic cutaneous vascular lesions such as telangiectasias or purpura",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology-confirmation",
+        "description": "Histopathological evidence of vascular abnormalities in skin biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-secondary-causes",
+        "description": "Exclusion of secondary causes such as systemic vasculitis or coagulopathies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-symptom-consistency",
+        "description": "Clinical symptoms consistent with skin vascular involvement (e.g., livedo reticularis, purpura)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria must be met for diagnosis",
+    "notes": "Diagnosis requires clinical, histological, and exclusion of secondary causes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Telangiectasia",
+        "frequency": 0.85,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Livedo reticularis",
+        "frequency": 0.75,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Purpura",
+        "frequency": 0.7,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Skin ulcerations",
+        "frequency": 0.65,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Edema of affected skin areas",
+        "frequency": 0.6,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "swelling in skin areas",
+          "skin puffiness",
+          "fluid buildup under skin"
+        ]
+      },
+      {
+        "symptomName": "Pruritus localized to vascular lesions",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "itching over blood vessel spots",
+          "localized itch on vascular marks",
+          "pruritus at blood vessel lesions"
+        ]
+      },
+      {
+        "symptomName": "Hyperpigmentation over vascular lesions",
+        "frequency": 0.58,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "darkened skin over blood vessel spots",
+          "skin discoloration on vascular lesions",
+          "hyperpigmented vascular areas"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Painful skin nodules",
+        "frequency": 0.3,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "painful lumps under skin",
+          "tender skin nodules",
+          "painful bumps on skin"
+        ]
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Mild systemic constitutional symptoms (e.g., low-grade fever)",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "mild fever and tiredness",
+          "low-grade fever with fatigue",
+          "general mild illness symptoms"
+        ]
+      },
+      {
+        "symptomName": "Skin blanching on pressure",
+        "frequency": 0.15,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin turns white when pressed",
+          "temporary skin whitening on pressure",
+          "skin blanching after pressure"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Digital gangrene",
+        "frequency": 0.05,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Secondary lymphedema",
+        "frequency": 0.03,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Cutaneous necrosis",
+        "frequency": 0.02,
+        "bodySystem": "dermatological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "cardiovascular",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal or mildly elevated inflammatory markers",
+      "Negative autoimmune serologies (ANA, ANCA) to exclude systemic vasculitis"
+    ],
+    "imaging": [
+      "Doppler ultrasound may show altered cutaneous blood flow",
+      "Capillaroscopy revealing abnormal capillary morphology"
+    ],
+    "genetic": [
+      "No specific genetic markers identified"
+    ],
+    "other": [
+      "Skin biopsy showing vascular ectasia, endothelial proliferation, or vessel wall thickening"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "systemic-vasculitis",
+      "distinguishingFeatures": [
+        "Systemic involvement with multi-organ symptoms",
+        "Positive autoimmune serologies",
+        "More aggressive clinical course"
+      ]
+    },
+    {
+      "diseaseId": "coagulation-disorders",
+      "distinguishingFeatures": [
+        "Laboratory evidence of coagulopathy",
+        "History of thrombosis",
+        "Absence of primary vascular skin lesions"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive skin necrosis",
+    "Development of digital gangrene",
+    "Signs of systemic vasculitis or organ involvement"
+  ],
+  "specialistType": [
+    "Dermatologist",
+    "Rheumatologist",
+    "Vascular Medicine Specialist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Orphanet: Skin Vascular Disease - ORPHA:79379",
+    "James WD, Berger TG, Elston DM. Andrews' Diseases of the Skin: Clinical Dermatology. 13th Edition.",
+    "Mayo Clinic Proceedings. Cutaneous Vascular Disorders: Diagnosis and Management. 2022."
+  ],
+  "confidenceInData": "ai-generated"
+}

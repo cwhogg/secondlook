@@ -1,0 +1,215 @@
+{
+  "id": "central-nervous-system-malformation",
+  "name": "Central Nervous System Malformation",
+  "aliases": [
+    "CNS Malformation",
+    "Congenital CNS Anomaly"
+  ],
+  "icd10Codes": [
+    "Q04.9"
+  ],
+  "orphanetId": "98044",
+  "prevalence": {
+    "estimate": "1 in 1,000 to 1 in 2,000 live births",
+    "range": "0.05%-0.1%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 1,
+      "peak": 0
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Neuroimaging-based Diagnostic Criteria for CNS Malformations",
+    "criteria": [
+      {
+        "id": "imaging-confirmation",
+        "description": "Identification of structural brain abnormalities on MRI or CT",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-neurological-signs",
+        "description": "Presence of neurological deficits consistent with CNS malformation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Detection of pathogenic variants associated with CNS malformations",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of characteristic CNS structural abnormalities on neuroimaging plus compatible neurological signs",
+    "notes": "Genetic testing may support diagnosis but is not mandatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Holoprosencephaly",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Failure of forebrain cleavage"
+      },
+      {
+        "symptomName": "Agenesis of the corpus callosum",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Complete or partial absence of corpus callosum",
+        "searchTerms": [
+          "missing brain structure connecting hemispheres",
+          "absence of corpus callosum"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Developmental delay",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Delayed acquisition of motor and cognitive milestones"
+      },
+      {
+        "symptomName": "Seizure disorder",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Epileptic seizures of variable types"
+      },
+      {
+        "symptomName": "Microcephaly",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "notes": "Head circumference significantly below normal"
+      },
+      {
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "notes": "Accumulation of cerebrospinal fluid in ventricles"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Spasticity",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "notes": "Increased muscle tone with hyperreflexia"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Impaired coordination and balance"
+      },
+      {
+        "symptomName": "Visual impairment due to optic nerve hypoplasia",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological",
+        "notes": "Reduced visual acuity related to optic nerve underdevelopment",
+        "searchTerms": [
+          "poor vision from small optic nerves",
+          "optic nerve underdevelopment causing vision loss",
+          "vision problems due to optic nerve issues"
+        ]
+      },
+      {
+        "symptomName": "Facial dysmorphism",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "notes": "Characteristic facial features associated with some malformations"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Endocrine dysfunction due to hypothalamic-pituitary axis malformation",
+        "frequency": 0.08,
+        "bodySystem": "endocrine",
+        "notes": "Hormonal imbalances secondary to structural defects",
+        "searchTerms": [
+          "hormone problems from brain gland malformation",
+          "pituitary gland dysfunction"
+        ]
+      },
+      {
+        "symptomName": "Sensorineural hearing loss",
+        "frequency": 0.05,
+        "bodySystem": "otolaryngological",
+        "notes": "Hearing impairment related to CNS anomalies",
+        "searchTerms": [
+          "hearing loss from nerve damage",
+          "sensorineural deafness",
+          "inner ear hearing impairment"
+        ]
+      },
+      {
+        "symptomName": "Hydranencephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Near complete absence of cerebral hemispheres"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological",
+    "endocrine",
+    "constitutional",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF analysis typically normal unless secondary complications",
+      "Endocrine hormone panels may reveal pituitary dysfunction"
+    ],
+    "imaging": [
+      "MRI showing structural brain malformations (e.g., agenesis of corpus callosum, holoprosencephaly)",
+      "CT scan may reveal ventricular enlargement or cortical abnormalities"
+    ],
+    "genetic": [
+      "Pathogenic variants in genes such as SHH, ZIC2, or L1CAM",
+      "Chromosomal abnormalities detected by karyotyping or microarray"
+    ],
+    "other": [
+      "Neurodevelopmental assessment revealing cognitive and motor deficits"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hydrocephalus",
+      "distinguishingFeatures": [
+        "Primary ventricular enlargement without cortical malformation",
+        "Normal corpus callosum structure"
+      ]
+    },
+    {
+      "diseaseId": "metabolic-encephalopathy",
+      "distinguishingFeatures": [
+        "Diffuse brain dysfunction without structural anomalies on imaging",
+        "Presence of metabolic abnormalities in laboratory testing"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive neurological deterioration",
+    "Severe refractory seizures",
+    "Signs of increased intracranial pressure"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neuroradiologist",
+    "Geneticist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Orphanet: Central Nervous System Malformations - ORPHA:98044",
+    "Barkovich AJ et al. Pediatric Neuroimaging. 6th Edition. 2012.",
+    "Dobyns WB et al. Malformations of the brain: clinical and genetic aspects. Neurology. 2012."
+  ],
+  "confidenceInData": "ai-generated"
+}

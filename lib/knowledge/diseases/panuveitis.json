@@ -1,0 +1,219 @@
+{
+  "id": "panuveitis",
+  "name": "Panuveitis",
+  "aliases": [
+    "Diffuse uveitis",
+    "Total uveitis"
+  ],
+  "icd10Codes": [
+    "H20.9"
+  ],
+  "orphanetId": "ORPHA:280898",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Standard Clinical Diagnostic Criteria for Panuveitis",
+    "criteria": [
+      {
+        "id": "inflammation-anterior",
+        "description": "Presence of inflammation in the anterior chamber of the eye",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "inflammation-posterior",
+        "description": "Inflammation involving the vitreous, retina, or choroid",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "diffuse-uveal-involvement",
+        "description": "Diffuse involvement of all uveal tract components (iris, ciliary body, choroid)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-infectious",
+        "description": "Exclusion of infectious causes by laboratory and clinical evaluation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of inflammation in both anterior and posterior segments with diffuse uveal involvement, excluding infectious etiologies",
+    "notes": "Diagnosis requires comprehensive ophthalmologic examination and exclusion of infectious and masquerade syndromes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Diffuse uveal inflammation",
+        "frequency": 0.85,
+        "bodySystem": "ophthalmological",
+        "notes": "Involvement of iris, ciliary body, and choroid",
+        "searchTerms": [
+          "widespread eye inflammation",
+          "inflammation inside the eye",
+          "uvea swelling throughout eye",
+          "diffuse eye tissue inflammation"
+        ]
+      },
+      {
+        "symptomName": "Anterior chamber cells and flare",
+        "frequency": 0.8,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "eye inflammation with cells in front chamber",
+          "cloudy eye fluid with cells",
+          "eye flare and cell buildup"
+        ]
+      },
+      {
+        "symptomName": "Vitreous haze",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Blurred vision",
+        "frequency": 0.7,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Eye redness",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Floaters",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Ocular pain",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hypopyon",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological",
+        "notes": "Layering of white blood cells in anterior chamber"
+      },
+      {
+        "symptomName": "Macular edema",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Secondary glaucoma",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Retinal vasculitis",
+        "frequency": 0.08,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic disc edema",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "swelling of optic nerve head",
+          "optic disc swelling",
+          "eye nerve swelling"
+        ]
+      },
+      {
+        "symptomName": "Cataract formation",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "ophthalmological",
+    "immunological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated inflammatory markers (ESR, CRP)",
+      "Negative infectious workup (e.g., syphilis, tuberculosis, toxoplasmosis)",
+      "Autoimmune serologies depending on associated systemic disease"
+    ],
+    "imaging": [
+      "Optical coherence tomography (OCT) showing macular edema",
+      "Fluorescein angiography demonstrating retinal vasculitis",
+      "Ultrasound B-scan showing vitreous opacities"
+    ],
+    "genetic": [],
+    "other": [
+      "Slit-lamp examination revealing anterior chamber cells and flare",
+      "Fundoscopic examination showing vitreous haze and choroidal inflammation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "infectious-uveitis",
+      "distinguishingFeatures": [
+        "Positive infectious agent identification",
+        "Localized rather than diffuse uveal involvement",
+        "Response to antimicrobial therapy"
+      ]
+    },
+    {
+      "diseaseId": "birdshot-chorioretinopathy",
+      "distinguishingFeatures": [
+        "Characteristic cream-colored choroidal lesions",
+        "Strong HLA-A29 association",
+        "Predominantly posterior segment involvement"
+      ]
+    },
+    {
+      "diseaseId": "sarcoid-uveitis",
+      "distinguishingFeatures": [
+        "Systemic sarcoidosis features",
+        "Noncaseating granulomas on biopsy",
+        "Elevated serum ACE levels"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid vision loss",
+    "Development of secondary glaucoma",
+    "Presence of hypopyon"
+  ],
+  "specialistType": [
+    "Ophthalmologist",
+    "Rheumatologist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Jabs DA, Nussenblatt RB, Rosenbaum JT. Standardization of Uveitis Nomenclature for Reporting Clinical Data. Am J Ophthalmol. 2005.",
+    "Durrani OM, Tehrani NN, Marr JE, Moradi P, Stavrou P, Murray PI. Degree, duration, and causes of visual loss in uveitis. Br J Ophthalmol. 2004.",
+    "Orphanet: Panuveitis. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=280898"
+  ],
+  "confidenceInData": "ai-generated"
+}

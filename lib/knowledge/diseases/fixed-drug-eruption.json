@@ -1,0 +1,252 @@
+{
+  "id": "fixed-drug-eruption",
+  "name": "Fixed Drug Eruption",
+  "aliases": [
+    "FDE",
+    "Fixed Drug Reaction"
+  ],
+  "icd10Codes": [
+    "L27.0"
+  ],
+  "orphanetId": "ORPHA:293812",
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "range": "0.01-0.05%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Fixed Drug Eruption Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "recurrent-lesions",
+        "description": "Recurrent well-demarcated erythematous or violaceous patches or plaques at the same anatomical site upon re-exposure to the offending drug",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "drug-exposure",
+        "description": "History of exposure to a known causative drug preceding lesion onset",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "residual-hyperpigmentation",
+        "description": "Residual post-inflammatory hyperpigmentation at lesion sites after resolution",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "histopathology",
+        "description": "Skin biopsy showing vacuolar interface dermatitis with necrotic keratinocytes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of recurrent lesions at identical sites with temporal relationship to drug exposure",
+    "notes": "Patch testing or drug provocation tests may aid in identifying the causative agent."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Erythema",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Adverse drug response",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "side effects from medication",
+          "bad reaction to drugs",
+          "adverse medication response"
+        ]
+      },
+      {
+        "symptomName": "Drug allergy",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Regional abnormality of skin",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "localized skin abnormality",
+          "skin changes in specific area",
+          "regional skin problem"
+        ]
+      },
+      {
+        "symptomName": "Erythematous plaque",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Junctional split",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hyperpigmentation of the skin",
+        "frequency": 0.17,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "dark patches on skin",
+          "skin hyperpigmentation",
+          "areas of increased skin color"
+        ]
+      },
+      {
+        "symptomName": "Oral ulcer",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Stomatitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal blistering of the skin",
+        "frequency": 0.17,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin blisters that form abnormally",
+          "unusual skin blistering"
+        ]
+      },
+      {
+        "symptomName": "Skin erosion",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Skin detachment",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Generalized abnormality of skin",
+        "frequency": 0.03,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "widespread skin abnormalities",
+          "general skin changes",
+          "skin problems affecting large areas"
+        ]
+      },
+      {
+        "symptomName": "Crusting erythematous dermatitis",
+        "frequency": 0.03,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "crusty red skin rash",
+          "scaly inflamed dermatitis",
+          "red flaky skin with crusting"
+        ]
+      },
+      {
+        "symptomName": "Vaginal mucosal ulceration",
+        "frequency": 0.03,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "painful vaginal sores",
+          "ulcers on vaginal lining",
+          "open sores in vagina"
+        ]
+      },
+      {
+        "symptomName": "Chills",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "constitutional",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal or mild leukocytosis",
+      "Negative or nonspecific inflammatory markers"
+    ],
+    "imaging": [],
+    "genetic": [
+      "No specific genetic markers identified"
+    ],
+    "other": [
+      "Histopathology: vacuolar interface dermatitis with necrotic keratinocytes",
+      "Positive patch test or drug provocation test for causative agent"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "erythema-multiforme",
+      "distinguishingFeatures": [
+        "Target lesions with concentric rings",
+        "More widespread distribution",
+        "Often associated with infections"
+      ]
+    },
+    {
+      "diseaseId": "fixed-drug-eruption-vs-stevens-johnson-syndrome",
+      "distinguishingFeatures": [
+        "SJS involves mucosal erosions and widespread epidermal detachment",
+        "Systemic symptoms more severe in SJS",
+        "Histopathology differs"
+      ]
+    },
+    {
+      "diseaseId": "contact-dermatitis",
+      "distinguishingFeatures": [
+        "Lesions correspond to contact area",
+        "No recurrence at identical sites after drug exposure",
+        "Different histopathological findings"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression to widespread blistering",
+    "Mucosal involvement with pain or bleeding",
+    "Signs of systemic hypersensitivity or anaphylaxis"
+  ],
+  "specialistType": [
+    "Dermatologist",
+    "Allergist/Immunologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Shiohara T, Mizukawa Y. Fixed drug eruption: pathogenesis and diagnostic tests. Curr Opin Allergy Clin Immunol. 2013;13(4):324-30.",
+    "Roujeau JC. Clinical heterogeneity of drug hypersensitivity. Toxicology. 2005;209(2):123-9.",
+    "Orphanet: Fixed drug eruption. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=293812"
+  ],
+  "confidenceInData": "medium"
+}

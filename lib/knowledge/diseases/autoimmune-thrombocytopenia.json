@@ -1,0 +1,221 @@
+{
+  "id": "autoimmune-thrombocytopenia",
+  "name": "Autoimmune Thrombocytopenia",
+  "aliases": [
+    "Immune Thrombocytopenic Purpura",
+    "Idiopathic Thrombocytopenic Purpura"
+  ],
+  "icd10Codes": [
+    "D69.3"
+  ],
+  "orphanetId": "ORPHA:71203",
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 1,
+      "max": 70,
+      "peak": 30
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "American Society of Hematology Diagnostic Criteria for ITP",
+    "criteria": [
+      {
+        "id": "isolated-thrombocytopenia",
+        "description": "Isolated thrombocytopenia with platelet count <100 x 10^9/L",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-other-causes",
+        "description": "Exclusion of other causes of thrombocytopenia such as drug-induced, infections, or bone marrow disorders",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "presence-of-anti-platelet-antibodies",
+        "description": "Detection of platelet autoantibodies (supportive but not mandatory)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "normal-bone-marrow-examination",
+        "description": "Bone marrow examination showing normal or increased megakaryocytes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Isolated thrombocytopenia with platelet count <100 x 10^9/L and exclusion of other causes",
+    "notes": "Diagnosis is primarily clinical and by exclusion; autoantibody testing is supportive but not definitive."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Petechiae",
+        "frequency": 0.85,
+        "bodySystem": "dermatological",
+        "notes": "Small pinpoint non-blanching hemorrhages"
+      },
+      {
+        "symptomName": "Mucosal bleeding",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Includes gingival bleeding and epistaxis"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Purpura",
+        "frequency": 0.65,
+        "bodySystem": "dermatological",
+        "notes": "Larger areas of bleeding under the skin"
+      },
+      {
+        "symptomName": "Easy bruising",
+        "frequency": 0.6,
+        "bodySystem": "dermatological",
+        "notes": "Bruises occurring with minimal trauma"
+      },
+      {
+        "symptomName": "Menorrhagia",
+        "frequency": 0.55,
+        "bodySystem": "reproductive",
+        "notes": "Heavy menstrual bleeding in females"
+      },
+      {
+        "symptomName": "Fatigue secondary to anemia",
+        "frequency": 0.5,
+        "bodySystem": "constitutional",
+        "notes": "Due to blood loss or chronic disease",
+        "searchTerms": [
+          "tiredness due to low blood count",
+          "fatigue from anemia",
+          "weakness related to anemia"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Epistaxis",
+        "frequency": 0.4,
+        "bodySystem": "hematological",
+        "notes": "Nosebleeds of varying severity"
+      },
+      {
+        "symptomName": "Gastrointestinal bleeding",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "notes": "Manifested as melena or hematemesis"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.2,
+        "bodySystem": "renal",
+        "notes": "Blood in urine due to bleeding"
+      },
+      {
+        "symptomName": "Transient headache",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "May be related to bleeding complications"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Intracranial hemorrhage",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Life-threatening bleeding in the brain"
+      },
+      {
+        "symptomName": "Hemarthrosis",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal",
+        "notes": "Bleeding into joints, rare in autoimmune thrombocytopenia"
+      },
+      {
+        "symptomName": "Retinal hemorrhage",
+        "frequency": 0.02,
+        "bodySystem": "ophthalmological",
+        "notes": "Bleeding in the retina causing visual disturbances"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "dermatological",
+    "reproductive",
+    "gastrointestinal",
+    "neurological",
+    "renal",
+    "musculoskeletal",
+    "ophthalmological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Isolated thrombocytopenia with platelet count <100 x 10^9/L",
+      "Normal hemoglobin and white blood cell counts unless bleeding present",
+      "Peripheral blood smear showing large platelets",
+      "Negative or low-titer antinuclear antibodies"
+    ],
+    "imaging": [
+      "Bone marrow biopsy showing normal or increased megakaryocytes",
+      "Imaging studies to evaluate bleeding complications if indicated (e.g., CT head for suspected intracranial hemorrhage)"
+    ],
+    "genetic": [
+      "No specific genetic mutations identified; autoimmune etiology"
+    ],
+    "other": [
+      "Detection of platelet-associated IgG antibodies (supportive)",
+      "Response to immunosuppressive therapy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "thrombotic-thrombocytopenic-purpura",
+      "distinguishingFeatures": [
+        "Presence of microangiopathic hemolytic anemia",
+        "Neurological symptoms more prominent",
+        "Severe ADAMTS13 deficiency"
+      ]
+    },
+    {
+      "diseaseId": "drug-induced-thrombocytopenia",
+      "distinguishingFeatures": [
+        "Temporal relationship with drug exposure",
+        "Resolution after drug withdrawal",
+        "Absence of autoantibodies"
+      ]
+    },
+    {
+      "diseaseId": "bone-marrow-failure-syndromes",
+      "distinguishingFeatures": [
+        "Pancytopenia rather than isolated thrombocytopenia",
+        "Abnormal bone marrow cellularity",
+        "Presence of dysplastic changes"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Platelet count <10 x 10^9/L with active bleeding",
+    "Signs of intracranial hemorrhage (severe headache, neurological deficits)",
+    "Rapid onset thrombocytopenia with systemic symptoms suggesting alternative diagnosis"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Neunert C et al. American Society of Hematology 2019 guidelines for immune thrombocytopenia. Blood Adv. 2019.",
+    "Provan D et al. International consensus report on the investigation and management of primary immune thrombocytopenia. Blood. 2010.",
+    "Cines DB, Blanchette VS. Immune thrombocytopenic purpura. N Engl J Med. 2002."
+  ],
+  "confidenceInData": "ai-generated"
+}

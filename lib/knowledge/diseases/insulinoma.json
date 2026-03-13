@@ -1,0 +1,368 @@
+{
+  "id": "insulinoma",
+  "name": "Insulinoma",
+  "aliases": [
+    "Pancreatic insulinoma",
+    "Islet cell tumor"
+  ],
+  "icd10Codes": [
+    "C25.4"
+  ],
+  "orphanetId": "ORPHA:97279",
+  "prevalence": {
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Whipple's Triad",
+    "criteria": [
+      {
+        "id": "hypoglycemia",
+        "description": "Documented hypoglycemia with plasma glucose <50 mg/dL (2.8 mmol/L)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "symptoms_of_hypoglycemia",
+        "description": "Presence of neuroglycopenic and adrenergic symptoms during hypoglycemia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "relief_with_glucose",
+        "description": "Relief of symptoms after administration of glucose",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "inappropriately_high_insulin",
+        "description": "Inappropriately elevated insulin levels during hypoglycemia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "imaging_localization",
+        "description": "Localization of tumor by imaging modalities (e.g., endoscopic ultrasound, MRI)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three components of Whipple's Triad must be present; supportive biochemical and imaging findings aid confirmation",
+    "notes": "Diagnosis often requires supervised 72-hour fast test to document hypoglycemia and insulin levels"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hyperinsulinemic hypoglycemia",
+        "frequency": 0.9,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Hyperinsulinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhidrosis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tremor",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nonketotic hypoglycemia",
+        "frequency": 0.9,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Recurrent hypoglycemia",
+        "frequency": 0.9,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Abnormality of the pancreatic islet cells",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "pancreatic islet cell abnormality",
+          "insulin-producing cell defect",
+          "pancreas hormone cell problem"
+        ]
+      },
+      {
+        "symptomName": "Fasting hyperinsulinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Transient global amnesia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "temporary memory loss",
+          "sudden short-term amnesia",
+          "brief global amnesia episode"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Atypical behavior",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Zollinger-Ellison syndrome",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Polyphagia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "overall muscle weakness",
+          "generalized loss of muscle strength",
+          "weak muscles throughout body"
+        ]
+      },
+      {
+        "symptomName": "Increased body weight",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "weight gain",
+          "increased body mass",
+          "excessive body weight"
+        ]
+      },
+      {
+        "symptomName": "Reduced consciousness/confusion",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pituitary prolactin cell adenoma",
+        "frequency": 0.55,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "pituitary tumor producing prolactin",
+          "prolactin-secreting pituitary adenoma",
+          "pituitary gland tumor causing high prolactin"
+        ]
+      },
+      {
+        "symptomName": "Fluctuations in consciousness",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "changes in awareness",
+          "episodes of confusion",
+          "variable consciousness levels"
+        ]
+      },
+      {
+        "symptomName": "Primary hyperparathyroidism",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Reactive hypoglycemia",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hearing abnormality",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "hearing loss or problems",
+          "difficulty hearing",
+          "abnormal ear function"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of vision",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "vision problems",
+          "eye abnormalities",
+          "difficulty seeing"
+        ]
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Coma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal rapid eye movement sleep",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "unusual rapid eye movement during sleep",
+          "abnormal REM sleep patterns",
+          "disrupted rapid eye movement sleep"
+        ]
+      },
+      {
+        "symptomName": "Paresthesia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of pain sensation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal pain sensation",
+          "increased or decreased pain feeling",
+          "pain sensitivity problems"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of higher mental function",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "problems with thinking or memory",
+          "difficulty with higher brain functions",
+          "impaired cognitive abilities"
+        ]
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Neoplasm of the adrenal gland",
+        "frequency": 0.17,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "tumor of adrenal gland",
+          "adrenal gland growth",
+          "adrenal mass"
+        ]
+      },
+      {
+        "symptomName": "Neuroendocrine neoplasm",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Insomnia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "otolaryngological",
+    "ophthalmological",
+    "psychiatric",
+    "endocrine",
+    "constitutional",
+    "neurological",
+    "musculoskeletal",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Hypoglycemia with plasma glucose <50 mg/dL during symptoms",
+      "Inappropriately elevated insulin levels during hypoglycemia",
+      "Elevated C-peptide and proinsulin levels",
+      "Negative sulfonylurea screen"
+    ],
+    "imaging": [
+      "Endoscopic ultrasound showing pancreatic lesion",
+      "MRI or CT scan localizing pancreatic tumor",
+      "Selective arterial calcium stimulation test with hepatic venous sampling"
+    ],
+    "genetic": [
+      "YY1 (somatic)",
+      "MEN1 (susceptibility)"
+    ],
+    "other": [
+      "72-hour supervised fast test to provoke hypoglycemia"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "factitious_hypoglycemia",
+      "distinguishingFeatures": [
+        "History of exogenous insulin or sulfonylurea use",
+        "Low C-peptide levels during hypoglycemia",
+        "Positive sulfonylurea screen"
+      ]
+    },
+    {
+      "diseaseId": "noninsulinoma_pancreatogenous_hypoglycemia_syndrome",
+      "distinguishingFeatures": [
+        "Postprandial hypoglycemia rather than fasting",
+        "Diffuse islet cell hyperplasia rather than discrete tumor",
+        "Negative imaging for discrete mass"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Recurrent fasting hypoglycemia with neuroglycopenic symptoms",
+    "Seizures or loss of consciousness without other explanation",
+    "Failure to respond to standard epilepsy treatment"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Oncologist",
+    "Gastroenterologist",
+    "Surgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Service FJ. Hypoglycemic disorders. N Engl J Med. 1995;332(17):1144-1152.",
+    "Placzkowski KA, et al. Clinical and pathological features of insulinoma: a 25-year experience at the Mayo Clinic. Mayo Clin Proc. 2009;84(5):422-432.",
+    "Orphanet: Insulinoma. ORPHA:97279."
+  ],
+  "confidenceInData": "medium"
+}

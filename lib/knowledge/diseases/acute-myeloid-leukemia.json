@@ -1,0 +1,251 @@
+{
+  "id": "acute-myeloid-leukemia",
+  "name": "Acute Myeloid Leukemia",
+  "aliases": [
+    "AML",
+    "Acute Myelogenous Leukemia",
+    "Acute Non-Lymphocytic Leukemia"
+  ],
+  "icd10Codes": [
+    "C92.0"
+  ],
+  "omimId": "601626",
+  "orphanetId": "ORPHA:519",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Higher incidence in Caucasians compared to African Americans"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of AML",
+    "criteria": [
+      {
+        "id": "blast-percentage",
+        "description": "Presence of ≥20% myeloblasts in bone marrow or peripheral blood",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cytogenetic-abnormalities",
+        "description": "Detection of recurrent genetic abnormalities specific to AML (e.g., t(8;21), inv(16), t(15;17))",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunophenotyping",
+        "description": "Immunophenotypic evidence of myeloid lineage by flow cytometry",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Symptoms and signs consistent with bone marrow failure and leukemic infiltration",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "≥20% myeloblasts in bone marrow or peripheral blood with supporting cytogenetic or immunophenotypic evidence",
+    "notes": "Diagnosis requires exclusion of other acute leukemias and myelodysplastic syndromes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Peripheral blood myeloblasts",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Presence of immature myeloid cells in peripheral blood smear",
+        "searchTerms": [
+          "immature myeloid cells in blood",
+          "myeloblasts present in bloodstream",
+          "blast cells circulating in blood",
+          "early white blood cells in circulation"
+        ]
+      },
+      {
+        "symptomName": "Bone marrow hypercellularity with myeloblast proliferation",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "bone marrow with too many immature blasts",
+          "excess immature blood cells in marrow",
+          "high blast cell proliferation",
+          "overcrowded marrow with blasts"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Anemia-related pallor and dyspnea on exertion",
+        "frequency": 0.75,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "pale skin and shortness of breath",
+          "anemia causing tiredness and breathlessness",
+          "weakness with exertion"
+        ]
+      },
+      {
+        "symptomName": "Thrombocytopenia causing petechiae and mucosal bleeding",
+        "frequency": 0.7,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "low platelets causing small skin bleeds",
+          "petechiae and mucosal bleeding from thrombocytopenia",
+          "bleeding spots due to low platelet count"
+        ]
+      },
+      {
+        "symptomName": "Recurrent infections due to neutropenia",
+        "frequency": 0.65,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "frequent infections from low neutrophils",
+          "recurrent infections due to immune weakness",
+          "infections caused by low white blood cells"
+        ]
+      },
+      {
+        "symptomName": "Fever without obvious infection",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "fever without clear infection",
+          "temperature rise with no infection found",
+          "unexplained fever"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Gingival hypertrophy",
+        "frequency": 0.3,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Bone pain due to marrow expansion",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "bone aches from marrow swelling",
+          "deep bone pain",
+          "pain caused by marrow expansion"
+        ]
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.2,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.15,
+        "bodySystem": "hematological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Leukostasis causing respiratory distress",
+        "frequency": 0.08,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing difficulty from thick blood",
+          "respiratory distress due to leukostasis",
+          "lung problems from blood cell buildup"
+        ]
+      },
+      {
+        "symptomName": "Central nervous system involvement with neurological deficits",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "brain or nerve symptoms",
+          "neurological problems from leukemia",
+          "nerve deficits due to CNS involvement"
+        ]
+      },
+      {
+        "symptomName": "Chloroma (myeloid sarcoma) presenting as extramedullary tumor",
+        "frequency": 0.03,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "tumor outside bone marrow from myeloid cells",
+          "green tumor mass from leukemia cells",
+          "extramedullary myeloid tumor",
+          "solid tumor from blood cancer cells"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "constitutional",
+    "musculoskeletal",
+    "respiratory",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Peripheral blood smear showing myeloblasts with Auer rods",
+      "Complete blood count revealing anemia, thrombocytopenia, and leukocytosis or leukopenia",
+      "Bone marrow biopsy demonstrating ≥20% myeloblasts"
+    ],
+    "imaging": [
+      "Chest X-ray may show leukostasis-related infiltrates",
+      "CT or MRI for extramedullary involvement (e.g., chloroma)"
+    ],
+    "genetic": [
+      "Cytogenetic abnormalities such as t(8;21), inv(16), t(15;17), and complex karyotypes",
+      "Molecular mutations including FLT3, NPM1, CEBPA"
+    ],
+    "other": [
+      "Flow cytometry immunophenotyping confirming myeloid lineage",
+      "Coagulation studies may reveal disseminated intravascular coagulation (DIC) in some subtypes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "acute-lymphoblastic-leukemia",
+      "distinguishingFeatures": [
+        "Predominance of lymphoblasts rather than myeloblasts",
+        "Different immunophenotypic markers (e.g., CD19, CD10 positive)",
+        "More common in children"
+      ]
+    },
+    {
+      "diseaseId": "myelodysplastic-syndrome",
+      "distinguishingFeatures": [
+        "Less than 20% blasts in bone marrow",
+        "Dysplastic changes in multiple myeloid lineages",
+        "More indolent clinical course"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive pancytopenia",
+    "Signs of leukostasis such as respiratory distress or neurological deficits",
+    "Unexplained bleeding or petechiae"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Oncologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Arber DA, et al. The 2016 revision to the World Health Organization classification of myeloid neoplasms and acute leukemia. Blood. 2016.",
+    "Döhner H, et al. Diagnosis and management of AML in adults: 2017 ELN recommendations from an international expert panel. Blood. 2017.",
+    "Orphanet: Acute myeloid leukemia (ORPHA:519)"
+  ],
+  "confidenceInData": "ai-generated"
+}

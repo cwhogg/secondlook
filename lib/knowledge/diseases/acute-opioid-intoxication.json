@@ -1,0 +1,240 @@
+{
+  "id": "acute-opioid-intoxication",
+  "name": "Acute Opioid Intoxication",
+  "aliases": [
+    "Opioid Overdose",
+    "Acute Opioid Toxicity"
+  ],
+  "icd10Codes": [
+    "T40.0",
+    "T40.1",
+    "T40.2",
+    "T40.3",
+    "T40.4",
+    "T40.6"
+  ],
+  "orphanetId": "ORPHA:35889",
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "DSM-5 Criteria for Opioid Intoxication",
+    "criteria": [
+      {
+        "id": "opioid-use",
+        "description": "Recent opioid use confirmed by history or toxicology",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "respiratory-depression",
+        "description": "Respiratory depression evidenced by decreased respiratory rate (<12 breaths/min)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "miosis",
+        "description": "Pinpoint pupils (miosis) observed on physical examination",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cns-depression",
+        "description": "Central nervous system depression including stupor or coma",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "naloxone-response",
+        "description": "Improvement of symptoms after administration of naloxone",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of recent opioid use plus respiratory depression and miosis",
+    "notes": "Diagnosis is clinical and supported by toxicology; response to naloxone is confirmatory but not required."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Pinpoint pupils (miosis)",
+        "frequency": 0.85,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "very small pupils",
+          "pinpoint pupil size",
+          "constricted pupils",
+          "tiny pupil appearance"
+        ]
+      },
+      {
+        "symptomName": "Respiratory depression",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Central nervous system depression (stupor or coma)",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "severe brain depression causing stupor or coma",
+          "reduced brain activity with unconsciousness",
+          "central nervous system shutdown",
+          "deep sedation or coma state"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Bradycardia",
+        "frequency": 0.7,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hypothermia",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased level of consciousness",
+        "frequency": 0.8,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "lowered alertness or responsiveness",
+          "reduced consciousness level",
+          "drowsiness or confusion",
+          "decreased awareness"
+        ]
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Pulmonary edema",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Muscle rigidity",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cyanosis",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Confusion",
+        "frequency": 0.35,
+        "bodySystem": "psychiatric"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Rhabdomyolysis",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Aspiration pneumonia",
+        "frequency": 0.07,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pulmonary hypertension",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "respiratory",
+    "cardiovascular",
+    "ophthalmological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "psychiatric",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive opioid toxicology screen in blood or urine",
+      "Arterial blood gas showing respiratory acidosis",
+      "Elevated creatine kinase in cases of rhabdomyolysis"
+    ],
+    "imaging": [
+      "Chest X-ray may show aspiration pneumonia or pulmonary edema"
+    ],
+    "genetic": [],
+    "other": [
+      "Clinical improvement after naloxone administration"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "benzodiazepine-intoxication",
+      "distinguishingFeatures": [
+        "Absence of miosis",
+        "Less pronounced respiratory depression",
+        "Positive benzodiazepine toxicology"
+      ]
+    },
+    {
+      "diseaseId": "hypoglycemia",
+      "distinguishingFeatures": [
+        "Low blood glucose levels",
+        "No miosis",
+        "Rapid improvement with glucose administration"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe respiratory depression with hypoxia",
+    "Coma or unresponsiveness",
+    "Cardiac arrest or arrhythmias"
+  ],
+  "specialistType": [
+    "Toxicologist",
+    "Emergency Medicine Physician",
+    "Addiction Medicine Specialist",
+    "Intensivist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Diagnostic and Statistical Manual of Mental Disorders, 5th Edition (DSM-5)",
+    "Goldfrank's Toxicologic Emergencies, 12th Edition",
+    "UpToDate: Opioid Intoxication and Overdose"
+  ],
+  "confidenceInData": "ai-generated"
+}

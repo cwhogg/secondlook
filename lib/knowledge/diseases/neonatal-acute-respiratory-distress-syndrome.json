@@ -1,0 +1,215 @@
+{
+  "id": "neonatal-acute-respiratory-distress-syndrome",
+  "name": "Neonatal Acute Respiratory Distress Syndrome",
+  "aliases": [
+    "Neonatal ARDS",
+    "Acute Respiratory Distress Syndrome in Neonates"
+  ],
+  "icd10Codes": [
+    "P28.5"
+  ],
+  "orphanetId": "217563",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 0.08,
+      "peak": 0
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Montreux Definition for Neonatal ARDS",
+    "criteria": [
+      {
+        "id": "acute-onset",
+        "description": "Acute onset of respiratory distress within 7 days of a known clinical insult",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-findings",
+        "description": "Bilateral opacities on chest radiograph not fully explained by effusions, lobar/lung collapse, or nodules",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "oxygenation-impairment",
+        "description": "Impaired oxygenation defined by oxygenation index or oxygen saturation index thresholds",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-cardiac",
+        "description": "Respiratory failure not fully explained by cardiac failure or fluid overload",
+        "category": "minor",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "All major criteria including acute onset, bilateral radiographic opacities, and oxygenation impairment plus exclusion of cardiac failure",
+    "notes": "Diagnosis requires exclusion of other causes of respiratory distress such as congenital malformations or infections."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Neonatal respiratory distress",
+        "frequency": 0.9,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing problems at birth",
+          "newborn breathing difficulty",
+          "respiratory distress in newborn"
+        ]
+      },
+      {
+        "symptomName": "Tachypnea",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Intraalveolar phospholipid accumulation",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "build-up of lung surfactant material",
+          "phospholipid accumulation in alveoli",
+          "intraalveolar lipid deposits"
+        ]
+      },
+      {
+        "symptomName": "Abnormal pulmonary interstitial morphology",
+        "frequency": 0.9,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "lung tissue scarring and thickening",
+          "abnormal lung tissue structure",
+          "interstitial lung disease changes"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Pulmonary arterial hypertension",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "high blood pressure in lungs",
+          "lung artery hypertension",
+          "pulmonary high blood pressure"
+        ]
+      },
+      {
+        "symptomName": "Pulmonary infiltrates",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pulmonary opacity",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Right ventricular hypertrophy",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "thickened right heart muscle",
+          "enlarged right ventricle",
+          "right heart muscle overgrowth"
+        ]
+      },
+      {
+        "symptomName": "Spontaneous neonatal pneumothorax",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "collapsed lung in newborn",
+          "air leak in baby’s chest",
+          "newborn lung collapse"
+        ]
+      },
+      {
+        "symptomName": "Interstitial pneumonitis",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chronic lung disease",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "long-term lung disease",
+          "chronic respiratory condition",
+          "persistent lung illness"
+        ]
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "respiratory",
+    "constitutional",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Arterial blood gas showing hypoxemia and respiratory acidosis",
+      "Elevated inflammatory markers (e.g., CRP) if secondary infection present"
+    ],
+    "imaging": [
+      "Chest X-ray with bilateral diffuse alveolar infiltrates",
+      "Possible ground-glass opacities on lung ultrasound or CT"
+    ],
+    "genetic": [
+      "SFTPB (causative, loss-of-function)",
+      "ABCA3 (causative)",
+      "Autosomal recessive inheritance"
+    ],
+    "other": [
+      "Exclusion of congenital heart disease by echocardiography",
+      "Assessment of oxygenation index for severity grading"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "neonatal-respiratory-distress-syndrome",
+      "distinguishingFeatures": [
+        "Occurs primarily in preterm infants due to surfactant deficiency",
+        "Radiographic findings show ground-glass appearance with air bronchograms",
+        "Improvement with surfactant therapy"
+      ]
+    },
+    {
+      "diseaseId": "meconium-aspiration-syndrome",
+      "distinguishingFeatures": [
+        "History of meconium-stained amniotic fluid",
+        "Patchy infiltrates with hyperinflation on chest X-ray",
+        "Often presents with airway obstruction and air trapping"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive hypoxemia despite maximal respiratory support",
+    "Development of pulmonary hypertension",
+    "Multi-organ failure secondary to hypoxia"
+  ],
+  "specialistType": [
+    "Neonatologist",
+    "Pediatric Pulmonologist",
+    "Pediatric Intensivist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "De Luca D, et al. The Montreux definition of neonatal ARDS: biological and clinical background. Pediatr Res. 2017.",
+    "Khemani RG, et al. Pediatric Acute Respiratory Distress Syndrome: Definition, Incidence, and Epidemiology. Pediatr Crit Care Med. 2015.",
+    "Orphanet: Neonatal acute respiratory distress syndrome. ORPHA:217563."
+  ],
+  "confidenceInData": "medium"
+}

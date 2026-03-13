@@ -1,0 +1,284 @@
+{
+  "id": "infective-endocarditis",
+  "name": "Infective Endocarditis",
+  "aliases": [
+    "Bacterial Endocarditis",
+    "IE"
+  ],
+  "icd10Codes": [
+    "I33.0"
+  ],
+  "orphanetId": "ORPHA:570762",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Modified Duke Criteria",
+    "criteria": [
+      {
+        "id": "positive-blood-cultures",
+        "description": "Two separate positive blood cultures for typical microorganisms consistent with infective endocarditis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "evidence-endocardial-involvement",
+        "description": "Echocardiographic evidence of endocardial involvement such as vegetation, abscess, or new partial dehiscence of prosthetic valve",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "predisposing-heart-condition",
+        "description": "Presence of predisposing heart condition or intravenous drug use",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "fever",
+        "description": "Fever ≥38.0°C",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "vascular-phenomena",
+        "description": "Vascular phenomena such as arterial emboli, septic pulmonary infarcts, mycotic aneurysm, intracranial hemorrhage, conjunctival hemorrhages, Janeway lesions",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "immunologic-phenomena",
+        "description": "Immunologic phenomena including glomerulonephritis, Osler nodes, Roth spots, rheumatoid factor",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Definite diagnosis requires 2 major criteria, or 1 major and 3 minor criteria, or 5 minor criteria",
+    "notes": "Modified Duke Criteria are widely used for diagnosis and incorporate clinical, microbiological, and echocardiographic findings"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Cardiac vegetations detected by echocardiography",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Vegetations on valves are hallmark lesions",
+        "searchTerms": [
+          "heart valve growths on ultrasound",
+          "abnormal heart masses seen by echo",
+          "vegetations on heart valves"
+        ]
+      },
+      {
+        "symptomName": "Positive blood cultures for typical pathogens",
+        "frequency": 0.8,
+        "bodySystem": "hematological",
+        "notes": "Persistent bacteremia is characteristic",
+        "searchTerms": [
+          "blood infection with common bacteria",
+          "positive bacterial blood test",
+          "bacteria detected in blood"
+        ]
+      },
+      {
+        "symptomName": "New or changing heart murmur",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Indicative of valvular involvement",
+        "searchTerms": [
+          "new heart murmur sound",
+          "changing heart valve noise",
+          "abnormal heart beat sounds"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fever ≥38.0°C",
+        "frequency": 0.85,
+        "bodySystem": "constitutional",
+        "notes": "Most common presenting symptom"
+      },
+      {
+        "symptomName": "Fatigue and malaise",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Non-specific systemic symptoms",
+        "searchTerms": [
+          "extreme tiredness",
+          "general feeling of unwellness",
+          "lack of energy and malaise"
+        ]
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Common systemic manifestation"
+      },
+      {
+        "symptomName": "Arthralgia or myalgia",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "notes": "Immune complex mediated symptoms",
+        "searchTerms": [
+          "joint pain",
+          "muscle aches",
+          "aching joints and muscles"
+        ]
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.55,
+        "bodySystem": "hematological",
+        "notes": "Due to immune activation"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Petechiae",
+        "frequency": 0.4,
+        "bodySystem": "dermatological",
+        "notes": "Small hemorrhages on skin or mucous membranes"
+      },
+      {
+        "symptomName": "Osler nodes",
+        "frequency": 0.3,
+        "bodySystem": "dermatological",
+        "notes": "Tender subcutaneous nodules on fingers or toes"
+      },
+      {
+        "symptomName": "Janeway lesions",
+        "frequency": 0.25,
+        "bodySystem": "dermatological",
+        "notes": "Non-tender erythematous macules on palms or soles"
+      },
+      {
+        "symptomName": "Roth spots",
+        "frequency": 0.2,
+        "bodySystem": "ophthalmological",
+        "notes": "Retinal hemorrhages with pale centers"
+      },
+      {
+        "symptomName": "Splinter hemorrhages",
+        "frequency": 0.15,
+        "bodySystem": "dermatological",
+        "notes": "Linear hemorrhages under fingernails"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Neurological complications (stroke, brain abscess)",
+        "frequency": 0.08,
+        "bodySystem": "neurological",
+        "notes": "Due to septic emboli",
+        "searchTerms": [
+          "stroke symptoms",
+          "brain infection complications",
+          "neurological damage from infection"
+        ]
+      },
+      {
+        "symptomName": "Glomerulonephritis",
+        "frequency": 0.07,
+        "bodySystem": "renal",
+        "notes": "Immune complex mediated renal injury"
+      },
+      {
+        "symptomName": "Heart failure due to valvular destruction",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Severe complication of IE",
+        "searchTerms": [
+          "heart failure from valve damage",
+          "weak heart due to valve problems",
+          "valve-related heart weakness"
+        ]
+      },
+      {
+        "symptomName": "Mycotic aneurysm formation",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Infectious arterial wall dilation",
+        "searchTerms": [
+          "infected artery bulge",
+          "artery ballooning from infection",
+          "mycotic aneurysm"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "hematological",
+    "dermatological",
+    "neurological",
+    "renal",
+    "constitutional",
+    "ophthalmological",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive blood cultures for causative organisms (e.g., Staphylococcus aureus, Streptococci)",
+      "Elevated inflammatory markers (ESR, CRP)",
+      "Anemia of chronic disease",
+      "Elevated rheumatoid factor"
+    ],
+    "imaging": [
+      "Echocardiography showing vegetations, abscesses, or new valvular regurgitation",
+      "Chest X-ray may show septic pulmonary emboli in right-sided IE"
+    ],
+    "genetic": [],
+    "other": [
+      "Electrocardiogram may show conduction abnormalities if abscess present",
+      "Histopathology of excised valve tissue confirms diagnosis"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "non-infective-endocarditis",
+      "distinguishingFeatures": [
+        "Absence of positive blood cultures",
+        "Lack of systemic infection signs",
+        "Presence of underlying autoimmune or malignancy"
+      ]
+    },
+    {
+      "diseaseId": "rheumatic-fever",
+      "distinguishingFeatures": [
+        "History of recent streptococcal pharyngitis",
+        "Migratory polyarthritis",
+        "Elevated ASO titers",
+        "Absence of vegetations on echocardiography"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Persistent high-grade fever despite antibiotics",
+    "New or worsening heart murmur",
+    "Signs of systemic embolization (e.g., stroke, limb ischemia)"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Cardiologist",
+    "Cardiothoracic Surgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Baddour LM et al. Infective Endocarditis in Adults: Diagnosis, Antimicrobial Therapy, and Management of Complications. Circulation. 2015;132(15):1435-1486.",
+    "Habib G et al. 2015 ESC Guidelines for the management of infective endocarditis. Eur Heart J. 2015;36(44):3075-3128.",
+    "Durack DT et al. New criteria for diagnosis of infective endocarditis: utilization of specific echocardiographic findings. Am J Med. 1994;96(3):200-209."
+  ],
+  "confidenceInData": "ai-generated"
+}

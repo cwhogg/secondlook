@@ -1,0 +1,231 @@
+{
+  "id": "myelodysplastic-neoplasm-with-low-blasts",
+  "name": "Myelodysplastic Neoplasm with Low Blasts",
+  "aliases": [
+    "Myelodysplastic Syndrome with Low Blast Count",
+    "MDS with Low Blasts"
+  ],
+  "icd10Codes": [
+    "D46.9"
+  ],
+  "orphanetId": "ORPHA:98826",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 14
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO 2022 Classification for Myelodysplastic Neoplasms",
+    "criteria": [
+      {
+        "id": "blast-percentage",
+        "description": "Bone marrow blast count less than 5%",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "dysplasia",
+        "description": "Presence of dysplasia in one or more myeloid cell lines",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cytopenias",
+        "description": "One or more persistent cytopenias (anemia, neutropenia, or thrombocytopenia)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cytogenetics",
+        "description": "Presence of MDS-associated cytogenetic abnormalities",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Persistent cytopenias with dysplasia in at least one myeloid lineage and bone marrow blasts below 5%",
+    "notes": "Exclusion of other causes of cytopenias and dysplasia is necessary"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Myelodysplasia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Anemia of inadequate production",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "anemia from low blood cell production",
+          "low red blood cells due to bone marrow failure",
+          "inadequate red cell formation"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Macrocytic anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Erythroid hypoplasia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Single lineage myelodysplasia",
+        "frequency": 0.55,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "abnormal development in one blood cell type",
+          "single lineage blood cell dysplasia",
+          "one blood cell type affected"
+        ]
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Normochromic anemia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Normocytic anemia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Bone marrow hypocellularity",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "low bone marrow cell count",
+          "reduced bone marrow cells",
+          "bone marrow underactivity"
+        ]
+      },
+      {
+        "symptomName": "Abnormal cardiac ventricular function",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "poor heart pumping function",
+          "abnormal ventricular heart function",
+          "reduced heart muscle performance"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.03,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Decreased total neutrophil count",
+        "frequency": 0.03,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "low neutrophil white blood cells",
+          "decreased infection-fighting cells",
+          "low neutrophil count"
+        ]
+      },
+      {
+        "symptomName": "Abnormal bleeding",
+        "frequency": 0.03,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "excessive bleeding",
+          "unusual bleeding episodes",
+          "bleeding problems"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "constitutional",
+    "respiratory",
+    "musculoskeletal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Peripheral blood cytopenias (anemia, neutropenia, thrombocytopenia)",
+      "Dysplastic changes in peripheral blood smear",
+      "Elevated mean corpuscular volume (MCV)"
+    ],
+    "imaging": [
+      "Mild hepatosplenomegaly on abdominal ultrasound"
+    ],
+    "genetic": [
+      "TET2 (somatic)"
+    ],
+    "other": [
+      "Bone marrow biopsy showing hypercellularity with dysplasia and <5% blasts"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "acute-myeloid-leukemia",
+      "distinguishingFeatures": [
+        "Blast count ≥20% in bone marrow or peripheral blood",
+        "Rapid clinical progression",
+        "More severe cytopenias and systemic symptoms"
+      ]
+    },
+    {
+      "diseaseId": "aplastic-anemia",
+      "distinguishingFeatures": [
+        "Hypocellular bone marrow without dysplasia",
+        "Pancytopenia without abnormal blasts",
+        "Absence of clonal cytogenetic abnormalities"
+      ]
+    },
+    {
+      "diseaseId": "chronic-myelomonocytic-leukemia",
+      "distinguishingFeatures": [
+        "Persistent monocytosis >1x10^9/L",
+        "Presence of dysplastic and proliferative features",
+        "Higher blast counts than typical low-blast MDS"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid increase in blast percentage (>5%)",
+    "Severe and progressive cytopenias refractory to treatment",
+    "Development of systemic symptoms such as high-grade fever and night sweats"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Oncologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Arber DA, et al. The 2022 WHO Classification of Myeloid Neoplasms and Acute Leukemias. Blood. 2022.",
+    "Tefferi A, Vardiman JW. Myelodysplastic syndromes. N Engl J Med. 2009.",
+    "Orphanet: Myelodysplastic neoplasm with low blasts (ORPHA:98826)"
+  ],
+  "confidenceInData": "medium"
+}

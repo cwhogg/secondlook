@@ -1,0 +1,266 @@
+{
+  "id": "multifocal-tuberculosis",
+  "name": "Multifocal Tuberculosis",
+  "aliases": [
+    "Disseminated Tuberculosis",
+    "Multisite Tuberculosis"
+  ],
+  "icd10Codes": [
+    "A18.8"
+  ],
+  "orphanetId": "ORPHA:645854",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 35
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Higher prevalence in endemic regions such as South Asia, Sub-Saharan Africa"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Multifocal Tuberculosis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "multisite-involvement",
+        "description": "Presence of tuberculosis lesions in two or more non-contiguous anatomical sites",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "microbiological-confirmation",
+        "description": "Isolation of Mycobacterium tuberculosis complex from clinical specimens by culture or PCR",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-evidence",
+        "description": "Radiological evidence of multifocal lesions consistent with tuberculosis on chest X-ray, CT, or MRI",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "histopathological-confirmation",
+        "description": "Granulomatous inflammation with caseous necrosis on biopsy of affected tissue",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Microbiological confirmation plus involvement of two or more non-contiguous sites",
+    "notes": "Diagnosis may be supported by histopathology and imaging findings in the appropriate clinical context."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Caseating granulomatous lesions in multiple organs",
+        "frequency": 0.85,
+        "bodySystem": "immunological",
+        "notes": "Characteristic histopathological finding",
+        "searchTerms": [
+          "granuloma with tissue death in organs",
+          "caseating granulomatous lesions",
+          "organ lesions with necrosis"
+        ]
+      },
+      {
+        "symptomName": "Miliary pattern on chest imaging",
+        "frequency": 0.75,
+        "bodySystem": "respiratory",
+        "notes": "Diffuse micronodular infiltrates typical of disseminated TB",
+        "searchTerms": [
+          "tiny spots on lung imaging",
+          "miliary pattern on chest X-ray",
+          "small nodules throughout lungs"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chronic productive cough",
+        "frequency": 0.65,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "chronic cough with mucus production",
+          "long-lasting productive cough",
+          "persistent cough with phlegm"
+        ]
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Unintentional weight loss",
+        "frequency": 0.68,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "unplanned weight loss",
+          "losing weight without trying",
+          "involuntary weight reduction"
+        ]
+      },
+      {
+        "symptomName": "Fever of unknown origin",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "unexplained fever",
+          "fever with no known cause",
+          "persistent high temperature without diagnosis"
+        ]
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Pleural effusion",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Bone pain due to skeletal involvement",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "bone discomfort",
+          "aching bones",
+          "pain in bones"
+        ]
+      },
+      {
+        "symptomName": "Neurological deficits from tuberculous meningitis or tuberculomas",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "brain nerve problems from tuberculosis",
+          "neurological deficits due to TB meningitis",
+          "nerve symptoms from brain TB lesions"
+        ]
+      },
+      {
+        "symptomName": "Abdominal pain from peritoneal tuberculosis",
+        "frequency": 0.18,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "belly pain from abdominal TB",
+          "abdominal discomfort due to tuberculosis",
+          "stomach pain from peritoneal infection"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cutaneous tuberculosis lesions",
+        "frequency": 0.05,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin tuberculosis lesions",
+          "cutaneous TB skin sores",
+          "tuberculous skin nodules"
+        ]
+      },
+      {
+        "symptomName": "Pericardial tamponade due to tuberculous pericarditis",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "fluid around heart causing pressure",
+          "heart sac fluid buildup from TB",
+          "pericardial tamponade due to infection"
+        ]
+      },
+      {
+        "symptomName": "Visual disturbances from ocular tuberculosis",
+        "frequency": 0.02,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "eye problems from tuberculosis",
+          "vision changes due to eye infection",
+          "ocular infection causing vision issues"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "immunological",
+    "constitutional",
+    "gastrointestinal",
+    "musculoskeletal",
+    "neurological",
+    "dermatological",
+    "cardiovascular",
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive acid-fast bacilli smear or culture",
+      "Elevated erythrocyte sedimentation rate (ESR)",
+      "Interferon-gamma release assay (IGRA) positive"
+    ],
+    "imaging": [
+      "Chest X-ray showing miliary nodules",
+      "CT scan demonstrating multifocal lesions in lungs and extrapulmonary sites",
+      "MRI showing tuberculomas in CNS"
+    ],
+    "genetic": [
+      "No specific genetic markers; host susceptibility influenced by HLA and immune response genes"
+    ],
+    "other": [
+      "Histopathology revealing caseating granulomas",
+      "Positive tuberculin skin test (Mantoux test)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "sarcoidosis",
+      "distinguishingFeatures": [
+        "Non-caseating granulomas on biopsy",
+        "Lack of microbiological evidence of Mycobacterium tuberculosis",
+        "More common bilateral hilar lymphadenopathy without miliary pattern"
+      ]
+    },
+    {
+      "diseaseId": "disseminated-fungal-infections",
+      "distinguishingFeatures": [
+        "Fungal organisms identified on culture or histology",
+        "Different geographic and exposure history",
+        "Response to antifungal therapy rather than antitubercular treatment"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of neurological symptoms indicating tuberculous meningitis",
+    "Signs of respiratory failure",
+    "Development of pericardial tamponade or cardiac tamponade"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Pulmonologist",
+    "Neurologist",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "World Health Organization. Global Tuberculosis Report 2023.",
+    "Tuberculosis: A Comprehensive Clinical Reference, 2nd Edition, 2017.",
+    "Orphanet: Multifocal Tuberculosis (ORPHA:645854)."
+  ],
+  "confidenceInData": "ai-generated"
+}

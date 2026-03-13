@@ -1,0 +1,293 @@
+{
+  "id": "glomerular-disease",
+  "name": "Glomerular Disease",
+  "aliases": [
+    "Glomerulopathy",
+    "Glomerulonephritis"
+  ],
+  "icd10Codes": [
+    "N00-N08"
+  ],
+  "orphanetId": "ORPHA:93548",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Higher prevalence in African descent for certain subtypes"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Kidney Disease Improving Global Outcomes (KDIGO) Criteria",
+    "criteria": [
+      {
+        "id": "proteinuria",
+        "description": "Persistent proteinuria >3.5 g/day or nephrotic range proteinuria",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hematuria",
+        "description": "Microscopic or gross hematuria with dysmorphic red blood cells or red blood cell casts",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "renal-biopsy",
+        "description": "Histopathological evidence of glomerular injury on renal biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "reduced-gfr",
+        "description": "Decreased glomerular filtration rate (GFR) below 60 mL/min/1.73m² for >3 months",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "edema",
+        "description": "Peripheral or periorbital edema",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of nephrotic or nephritic range proteinuria and hematuria with confirmatory renal biopsy findings",
+    "notes": "Diagnosis often requires integration of clinical, laboratory, and histopathological data."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Nephrotic-range proteinuria",
+        "frequency": 0.85,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Microscopic hematuria with red blood cell casts",
+        "frequency": 0.8,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "blood in urine with red cell casts",
+          "microscopic hematuria with casts",
+          "urine containing red blood cell clumps"
+        ]
+      },
+      {
+        "symptomName": "Histopathological glomerular injury on biopsy",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "kidney biopsy showing glomerular damage",
+          "histological glomerular injury",
+          "microscopic kidney tissue injury"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.75,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Elevated serum creatinine",
+        "frequency": 0.7,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "high blood creatinine",
+          "elevated kidney waste levels",
+          "increased serum creatinine"
+        ]
+      },
+      {
+        "symptomName": "Foamy urine due to proteinuria",
+        "frequency": 0.6,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "foamy or bubbly urine",
+          "protein in urine causing foam",
+          "proteinuria with frothy urine"
+        ]
+      },
+      {
+        "symptomName": "Fatigue related to renal impairment",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness due to kidney problems",
+          "fatigue related to renal impairment",
+          "low energy from kidney disease"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hypoalbuminemia",
+        "frequency": 0.4,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hyperlipidemia secondary to nephrotic syndrome",
+        "frequency": 0.3,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "high blood fats from nephrotic syndrome",
+          "hyperlipidemia secondary to kidney disease",
+          "increased cholesterol due to nephrotic syndrome"
+        ]
+      },
+      {
+        "symptomName": "Decreased urine output (oliguria)",
+        "frequency": 0.25,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "low urine output",
+          "reduced urination",
+          "scanty urine"
+        ]
+      },
+      {
+        "symptomName": "Abdominal discomfort due to ascites",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "belly discomfort from fluid buildup",
+          "abdominal swelling pain",
+          "stomach pressure from fluid"
+        ]
+      },
+      {
+        "symptomName": "Mild anemia",
+        "frequency": 0.2,
+        "bodySystem": "hematological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pulmonary edema secondary to fluid overload",
+        "frequency": 0.08,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "fluid in lungs from overload",
+          "lung swelling due to excess fluid",
+          "pulmonary fluid accumulation"
+        ]
+      },
+      {
+        "symptomName": "Nephrogenic systemic fibrosis",
+        "frequency": 0.05,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin thickening and hardening due to kidney disease",
+          "fibrotic skin changes from kidney failure",
+          "systemic skin fibrosis related to kidney problems"
+        ]
+      },
+      {
+        "symptomName": "Thromboembolic events due to hypercoagulability",
+        "frequency": 0.07,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "blood clots from increased clotting",
+          "clotting events causing blockages",
+          "thrombosis due to blood clotting disorder"
+        ]
+      },
+      {
+        "symptomName": "Neuropathy secondary to uremia",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "nerve damage from kidney failure",
+          "tingling and numbness due to uremia",
+          "nerve problems caused by kidney disease"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "cardiovascular",
+    "hematological",
+    "endocrine",
+    "gastrointestinal",
+    "respiratory",
+    "dermatological",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Proteinuria >3.5 g/day",
+      "Microscopic hematuria with dysmorphic RBCs",
+      "Hypoalbuminemia",
+      "Elevated serum creatinine and blood urea nitrogen",
+      "Hyperlipidemia"
+    ],
+    "imaging": [
+      "Renal ultrasound showing normal or enlarged kidneys",
+      "Chest X-ray in cases of pulmonary edema"
+    ],
+    "genetic": [
+      "Mutations in genes such as NPHS1, NPHS2, WT1 in hereditary forms",
+      "APOL1 risk variants in populations of African descent"
+    ],
+    "other": [
+      "Renal biopsy demonstrating glomerular inflammation, sclerosis, or immune complex deposition"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "minimal-change-disease",
+      "distinguishingFeatures": [
+        "Normal glomeruli on light microscopy",
+        "Responds well to corticosteroids",
+        "Usually presents in children"
+      ]
+    },
+    {
+      "diseaseId": "membranous-nephropathy",
+      "distinguishingFeatures": [
+        "Thickened glomerular basement membrane on biopsy",
+        "Presence of subepithelial immune deposits",
+        "Often associated with autoantibodies (e.g. anti-PLA2R)"
+      ]
+    },
+    {
+      "diseaseId": "focal-segmental-glomerulosclerosis",
+      "distinguishingFeatures": [
+        "Segmental sclerosis on biopsy",
+        "Often steroid-resistant",
+        "Common cause of nephrotic syndrome in adults"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive glomerulonephritis with declining renal function",
+    "Nephrotic syndrome with severe hypoalbuminemia and edema",
+    "Presence of red blood cell casts in urine indicating active glomerular inflammation"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Pathologist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "KDIGO Clinical Practice Guideline for Glomerulonephritis, 2012",
+    "Orphanet Report on Glomerular Disease, ORPHA:93548",
+    "UpToDate: Overview of Glomerular Diseases"
+  ],
+  "confidenceInData": "ai-generated"
+}

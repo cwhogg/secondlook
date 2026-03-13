@@ -1,0 +1,184 @@
+{
+  "id": "nut-midline-carcinoma",
+  "name": "NUT Midline Carcinoma",
+  "aliases": [
+    "NUT Carcinoma",
+    "Nuclear Protein in Testis Midline Carcinoma"
+  ],
+  "icd10Codes": [
+    "C80.1"
+  ],
+  "orphanetId": "443167",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 2,
+      "max": 120,
+      "peak": 14
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of the Lung, Pleura, Thymus and Heart (2021)",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Presence of poorly differentiated carcinoma with squamous differentiation on histology",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "nut-gene-fusion",
+        "description": "Detection of NUT gene rearrangement by FISH, RT-PCR, or immunohistochemistry",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "midline-tumor-location",
+        "description": "Tumor arising in midline structures such as the head, neck, or mediastinum",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathologic evidence of poorly differentiated carcinoma plus confirmation of NUT gene rearrangement",
+    "notes": "Immunohistochemical staining for NUT protein is highly specific and sensitive for diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Neoplasm",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Leukemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Squamous cell carcinoma",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "cancer of squamous skin cells",
+          "skin cell carcinoma",
+          "malignant squamous tumor"
+        ]
+      },
+      {
+        "symptomName": "Neuroblastoma",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Oropharyngeal squamous cell carcinoma",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "cancer of mouth and throat lining",
+          "squamous cell cancer in oropharynx",
+          "throat squamous cell carcinoma"
+        ]
+      },
+      {
+        "symptomName": "Ewing sarcoma",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of the mediastinum",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal chest cavity area between lungs",
+          "unusual mediastinum shape or size",
+          "mediastinum structural changes"
+        ]
+      },
+      {
+        "symptomName": "Pancreatoblastoma",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Pancreatic squamous cell carcinoma",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "squamous cell cancer in pancreas",
+          "pancreatic tumor of squamous cell type",
+          "pancreatic squamous carcinoma"
+        ]
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "constitutional",
+    "hematological",
+    "neurological",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated lactate dehydrogenase (LDH)",
+      "NUT protein positivity on immunohistochemistry"
+    ],
+    "imaging": [
+      "CT or MRI showing large midline mass with local invasion",
+      "PET scan demonstrating hypermetabolic tumor activity"
+    ],
+    "genetic": [
+      "NUTM1 (fusion gene)",
+      "BRD4 (fusion gene)"
+    ],
+    "other": [
+      "Histopathology showing poorly differentiated carcinoma with squamous features"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "poorly-differentiated-squamous-cell-carcinoma",
+      "distinguishingFeatures": [
+        "Absence of NUT gene rearrangement",
+        "More common in older adults",
+        "Different immunohistochemical profile"
+      ]
+    },
+    {
+      "diseaseId": "small-cell-carcinoma-of-the-lung",
+      "distinguishingFeatures": [
+        "Neuroendocrine markers positive",
+        "No NUT protein expression",
+        "Typically arises in lung parenchyma"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive midline mass in young patient",
+    "Poor response to conventional chemotherapy",
+    "Presence of NUT gene rearrangement on molecular testing"
+  ],
+  "specialistType": [
+    "Oncologist",
+    "Pathologist",
+    "Pulmonologist",
+    "Head and Neck Surgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "French CA. NUT midline carcinoma. Cancer Genet Cytogenet. 2010;203(1):16-20.",
+    "WHO Classification of Tumors Editorial Board. WHO Classification of Tumors: Thoracic Tumors. 5th ed. IARC; 2021.",
+    "Kees UR. NUT midline carcinoma: clinical, pathologic, and molecular features. Hematol Oncol Clin North Am. 2019;33(1):141-152."
+  ],
+  "confidenceInData": "medium"
+}

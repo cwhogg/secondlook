@@ -1,0 +1,174 @@
+{
+  "id": "chylous-ascites",
+  "name": "Chylous Ascites",
+  "aliases": [
+    "Chyloperitoneum",
+    "Lymphatic Ascites"
+  ],
+  "icd10Codes": [
+    "R18.8"
+  ],
+  "orphanetId": "ORPHA:1160",
+  "prevalence": {
+    "estimate": "1 in 20,000 to 1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Chylous Ascites Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "milky-ascitic-fluid",
+        "description": "Presence of milky, turbid ascitic fluid on paracentesis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ascitic-fluid-triglycerides",
+        "description": "Ascitic fluid triglyceride concentration >110 mg/dL (1.24 mmol/L)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "lymphatic-leak-evidence",
+        "description": "Imaging evidence of lymphatic obstruction or leakage (e.g., lymphangiography, lymphoscintigraphy)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-of-other-ascites-causes",
+        "description": "Exclusion of other causes of ascites such as malignancy, infection, or cirrhosis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Milky ascitic fluid with elevated triglycerides (>110 mg/dL) plus exclusion of other causes of ascites",
+    "notes": "Diagnosis is confirmed by biochemical analysis of ascitic fluid and supported by imaging studies."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Lymphedema",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Subcutaneous nodule",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Glaucoma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Pancreatitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormal intestine morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "abnormal shaped intestines",
+          "intestinal structural abnormalities",
+          "unusual gut morphology"
+        ]
+      },
+      {
+        "symptomName": "Neoplasm",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "ophthalmological",
+    "constitutional",
+    "dermatological",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated triglyceride concentration in ascitic fluid (>110 mg/dL)",
+      "Hypoalbuminemia",
+      "Lymphocytosis in ascitic fluid"
+    ],
+    "imaging": [
+      "Lymphangiography showing lymphatic obstruction or leakage",
+      "Ultrasound or CT scan demonstrating ascites with characteristic fluid density",
+      "Lymphoscintigraphy identifying lymphatic flow abnormalities"
+    ],
+    "genetic": [
+      "No specific genetic markers identified; may be associated with congenital lymphatic malformations"
+    ],
+    "other": [
+      "Paracentesis revealing milky, turbid fluid",
+      "Biochemical analysis excluding infection or malignancy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "malignant-ascites",
+      "distinguishingFeatures": [
+        "Ascitic fluid with malignant cells on cytology",
+        "Typically serous or hemorrhagic fluid rather than milky",
+        "Elevated serum-ascites albumin gradient (SAAG) varies"
+      ]
+    },
+    {
+      "diseaseId": "tuberculous-ascites",
+      "distinguishingFeatures": [
+        "Ascitic fluid with high protein and lymphocytes but not milky",
+        "Positive acid-fast bacilli or PCR for Mycobacterium tuberculosis",
+        "Systemic symptoms like night sweats and weight loss"
+      ]
+    },
+    {
+      "diseaseId": "cirrhotic-ascites",
+      "distinguishingFeatures": [
+        "Ascitic fluid is typically clear or straw-colored",
+        "High SAAG (>1.1 g/dL)",
+        "History of liver disease and portal hypertension"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly increasing abdominal distension",
+    "Signs of infection or peritonitis",
+    "Severe malnutrition or immunodeficiency"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Hepatologist",
+    "Lymphologist",
+    "General Surgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Runyon BA. Management of adult patients with ascites due to cirrhosis: an update. Hepatology. 2009.",
+    "Browse NL, et al. Chylous ascites: a collective review. Surgery. 1982.",
+    "Orphanet: Chylous Ascites. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=1160"
+  ],
+  "confidenceInData": "medium"
+}

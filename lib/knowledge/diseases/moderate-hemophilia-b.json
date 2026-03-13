@@ -1,0 +1,240 @@
+{
+  "id": "moderate-hemophilia-b",
+  "name": "Moderate Hemophilia B",
+  "aliases": [
+    "Factor IX Deficiency, Moderate",
+    "Christmas Disease, Moderate"
+  ],
+  "icd10Codes": [
+    "D66"
+  ],
+  "orphanetId": "169796",
+  "prevalence": {
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 2,
+      "peak": 1
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Hemophilia B Severity Classification",
+    "criteria": [
+      {
+        "id": "factor-ix-activity",
+        "description": "Plasma factor IX activity level between 1% and 5% of normal",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bleeding-history",
+        "description": "History of spontaneous or prolonged bleeding episodes consistent with moderate hemophilia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutation in the F9 gene",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Factor IX activity between 1-5% plus clinical bleeding history consistent with hemophilia",
+    "notes": "Diagnosis is confirmed by coagulation assays and genetic testing when available."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Spontaneous hemarthrosis",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "notes": "Typically affects large joints such as knees, elbows, and ankles"
+      },
+      {
+        "symptomName": "Prolonged bleeding after minor trauma",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "bleeding lasts long after small cuts",
+          "prolonged bleeding from minor injuries",
+          "excessive bleeding after small trauma"
+        ]
+      },
+      {
+        "symptomName": "Deep muscle hematomas",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "deep muscle bruises",
+          "large muscle hematomas",
+          "muscle bleeding causing swelling"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Easy bruising",
+        "frequency": 0.7,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Epistaxis (nosebleeds)",
+        "frequency": 0.65,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Prolonged bleeding after dental procedures",
+        "frequency": 0.6,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "bleeding longer after dental work",
+          "prolonged bleeding from gums",
+          "excessive bleeding after tooth procedures"
+        ]
+      },
+      {
+        "symptomName": "Menorrhagia in affected females (rare carriers)",
+        "frequency": 0.55,
+        "bodySystem": "reproductive",
+        "notes": "Occurs in female carriers with reduced factor IX levels",
+        "searchTerms": [
+          "heavy menstrual bleeding",
+          "excessive periods in women",
+          "menstrual bleeding abnormalities"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Gastrointestinal bleeding",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.25,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Intracranial hemorrhage (rare in moderate cases)",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "bleeding inside the brain",
+          "intracranial bleeding",
+          "brain hemorrhage"
+        ]
+      },
+      {
+        "symptomName": "Postoperative bleeding complications",
+        "frequency": 0.4,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "bleeding after surgery",
+          "postoperative bleeding problems",
+          "excessive surgical bleeding"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Anaphylactic reactions to factor IX concentrates",
+        "frequency": 0.05,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "severe allergic reactions to factor IX",
+          "anaphylaxis from clotting factor treatment",
+          "allergic shock after medication"
+        ]
+      },
+      {
+        "symptomName": "Development of factor IX inhibitors (antibodies)",
+        "frequency": 0.07,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "development of antibodies against factor IX",
+          "immune resistance to clotting factor",
+          "factor IX inhibitor formation"
+        ]
+      },
+      {
+        "symptomName": "Compartment syndrome secondary to muscle hematoma",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "compartment syndrome from muscle bleeding",
+          "pressure buildup in muscle compartments",
+          "muscle swelling causing nerve damage"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "hematological",
+    "dermatological",
+    "otolaryngological",
+    "gastrointestinal",
+    "renal",
+    "neurological",
+    "immunological",
+    "reproductive"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Reduced plasma factor IX activity (1-5% of normal)",
+      "Prolonged activated partial thromboplastin time (aPTT)",
+      "Normal prothrombin time (PT)"
+    ],
+    "imaging": [
+      "MRI or ultrasound showing joint and muscle hemorrhages"
+    ],
+    "genetic": [
+      "F9 (causative)",
+      "X-linked recessive inheritance"
+    ],
+    "other": [
+      "Family history consistent with X-linked recessive inheritance"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "moderate-hemophilia-a",
+      "distinguishingFeatures": [
+        "Factor VIII deficiency instead of factor IX",
+        "Similar bleeding phenotype but different coagulation factor assay results"
+      ]
+    },
+    {
+      "diseaseId": "von-willebrand-disease",
+      "distinguishingFeatures": [
+        "Deficiency or dysfunction of von Willebrand factor",
+        "Typically prolonged bleeding time and abnormal ristocetin cofactor assay",
+        "Usually normal factor IX levels"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Intracranial hemorrhage",
+    "Development of factor IX inhibitors",
+    "Severe spontaneous hemarthrosis leading to joint destruction"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Pediatric hematologist",
+    "Orthopedic surgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "National Hemophilia Foundation. Hemophilia B. 2023.",
+    "Orphanet: Moderate Hemophilia B (ORPHA:169796)",
+    "Mannucci PM, Tuddenham EG. The hemophilias—from royal genes to gene therapy. N Engl J Med. 2001"
+  ],
+  "confidenceInData": "ai-generated"
+}

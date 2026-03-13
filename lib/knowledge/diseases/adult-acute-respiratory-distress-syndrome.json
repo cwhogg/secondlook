@@ -1,0 +1,229 @@
+{
+  "id": "adult-acute-respiratory-distress-syndrome",
+  "name": "Adult Acute Respiratory Distress Syndrome",
+  "aliases": [
+    "ARDS",
+    "Acute Lung Injury (ALI)"
+  ],
+  "icd10Codes": [
+    "J80"
+  ],
+  "orphanetId": "ORPHA:70578",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Berlin Definition",
+    "criteria": [
+      {
+        "id": "timing",
+        "description": "Onset within 1 week of a known clinical insult or new/worsening respiratory symptoms",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging",
+        "description": "Bilateral opacities on chest imaging not fully explained by effusions, lobar/lung collapse, or nodules",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "origin-of-edema",
+        "description": "Respiratory failure not fully explained by cardiac failure or fluid overload",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "oxygenation",
+        "description": "Impaired oxygenation defined by PaO2/FiO2 ratio ≤ 300 mmHg with PEEP or CPAP ≥ 5 cm H2O",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "All four major criteria must be met including timing, imaging, origin of edema, and oxygenation impairment",
+    "notes": "Severity of ARDS is classified based on PaO2/FiO2 ratio into mild, moderate, and severe"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Abnormal circulating interleukin concentration",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal levels of immune signaling proteins",
+          "circulating interleukin imbalance",
+          "irregular interleukin blood concentration"
+        ]
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pulmonary infiltrates",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormal blood gas level",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "abnormal blood oxygen or carbon dioxide",
+          "blood gas test abnormalities",
+          "impaired blood gas levels"
+        ]
+      },
+      {
+        "symptomName": "Hypoxemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Metabolic acidosis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormality of tumor necrosis factor secretion",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal tumor necrosis factor release",
+          "TNF secretion problems",
+          "immune signaling molecule imbalance"
+        ]
+      },
+      {
+        "symptomName": "Increased circulating interleukin 6 concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high blood interleukin 6 levels",
+          "increased IL-6 inflammatory marker",
+          "elevated immune signaling protein"
+        ]
+      },
+      {
+        "symptomName": "Shock",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pulmonary edema",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Sepsis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Pneumonia",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pancreatitis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Diabetic ketoacidosis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "constitutional",
+    "respiratory",
+    "hematological",
+    "gastrointestinal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Arterial blood gas showing hypoxemia with low PaO2/FiO2 ratio",
+      "Elevated inflammatory markers (e.g., CRP, procalcitonin) if infection present",
+      "Normal or low cardiac biomarkers to exclude cardiogenic edema"
+    ],
+    "imaging": [
+      "Chest X-ray or CT scan showing bilateral alveolar infiltrates",
+      "Absence of cardiomegaly or pleural effusions to exclude cardiac causes"
+    ],
+    "genetic": [],
+    "other": [
+      "Pulmonary artery catheterization showing normal pulmonary capillary wedge pressure (<18 mmHg) to exclude cardiogenic pulmonary edema"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "cardiogenic-pulmonary-edema",
+      "distinguishingFeatures": [
+        "Elevated pulmonary capillary wedge pressure",
+        "Cardiomegaly on imaging",
+        "Response to diuretics"
+      ]
+    },
+    {
+      "diseaseId": "pulmonary-embolism",
+      "distinguishingFeatures": [
+        "Sudden onset chest pain and dyspnea",
+        "CT pulmonary angiography showing emboli",
+        "Absence of bilateral infiltrates typical of ARDS"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of hypoxemia despite oxygen therapy",
+    "Development of multi-organ failure",
+    "Refractory shock requiring vasopressors"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Intensivist",
+    "Critical Care Specialist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Ranieri VM, Rubenfeld GD, Thompson BT, et al. Acute respiratory distress syndrome: the Berlin Definition. JAMA. 2012;307(23):2526-2533.",
+    "ARDS Definition Task Force. Acute respiratory distress syndrome: the Berlin Definition. Intensive Care Med. 2012;38(10):1573-1584.",
+    "Thompson BT, Chambers RC, Liu KD. Acute Respiratory Distress Syndrome. N Engl J Med. 2017;377(6):562-572."
+  ],
+  "confidenceInData": "medium"
+}

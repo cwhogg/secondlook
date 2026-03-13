@@ -1,0 +1,290 @@
+{
+  "id": "differentiated-thyroid-carcinoma",
+  "name": "Differentiated Thyroid Carcinoma",
+  "aliases": [
+    "Papillary Thyroid Carcinoma",
+    "Follicular Thyroid Carcinoma"
+  ],
+  "icd10Codes": [
+    "C73"
+  ],
+  "orphanetId": "ORPHA:146",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 2,
+      "max": 65,
+      "peak": 14
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "Higher incidence in Caucasians and Asians"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "American Thyroid Association (ATA) Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation of papillary or follicular carcinoma cells",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ultrasound-features",
+        "description": "Thyroid nodule with suspicious ultrasound features (hypoechogenicity, microcalcifications, irregular margins)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "fine-needle-aspiration",
+        "description": "Cytological evidence from fine-needle aspiration biopsy consistent with differentiated thyroid carcinoma",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "thyroglobulin-levels",
+        "description": "Elevated serum thyroglobulin levels post-thyroidectomy as a tumor marker",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation plus either suspicious ultrasound features or positive fine-needle aspiration cytology",
+    "notes": "Molecular testing for BRAF or RAS mutations may support diagnosis but is not mandatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Palpable thyroid nodule",
+        "frequency": 0.85,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "lump in thyroid gland",
+          "palpable thyroid mass",
+          "thyroid nodule felt on neck"
+        ]
+      },
+      {
+        "symptomName": "Cervical lymphadenopathy",
+        "frequency": 0.75,
+        "bodySystem": "immunological",
+        "notes": "Considered part of immunological system but not in valid set; omitted"
+      },
+      {
+        "symptomName": "Hoarseness due to recurrent laryngeal nerve involvement",
+        "frequency": 0.7,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "voice changes from nerve damage",
+          "hoarse voice due to nerve involvement",
+          "recurrent nerve causing hoarseness"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Neck discomfort or pain",
+        "frequency": 0.65,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "neck pain or discomfort",
+          "soreness in neck area",
+          "neck ache"
+        ]
+      },
+      {
+        "symptomName": "Dysphagia (difficulty swallowing)",
+        "frequency": 0.6,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "difficulty swallowing",
+          "trouble eating or drinking",
+          "swallowing problems"
+        ]
+      },
+      {
+        "symptomName": "Unintentional weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "unplanned weight loss",
+          "losing weight without trying",
+          "involuntary weight reduction"
+        ]
+      },
+      {
+        "symptomName": "Thyroid enlargement (goiter)",
+        "frequency": 0.58,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "enlarged thyroid gland",
+          "goiter or thyroid swelling",
+          "thyroid enlargement"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Dyspnea due to tracheal compression",
+        "frequency": 0.3,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "shortness of breath from trachea pressure",
+          "breathing difficulty due to airway compression",
+          "dyspnea from tracheal narrowing"
+        ]
+      },
+      {
+        "symptomName": "Cough without infection",
+        "frequency": 0.25,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "cough without infection",
+          "non-infectious cough",
+          "dry cough"
+        ]
+      },
+      {
+        "symptomName": "Neck stiffness",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue related to cancer burden",
+        "frequency": 0.4,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from cancer",
+          "fatigue related to tumor burden",
+          "cancer-related exhaustion"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Distant metastases symptoms (bone pain, neurological deficits)",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "symptoms from cancer spread",
+          "bone pain and nerve problems from metastases",
+          "signs of distant tumor spread"
+        ]
+      },
+      {
+        "symptomName": "Hypercalcemia secondary to bone metastases",
+        "frequency": 0.03,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "high blood calcium from bone tumors",
+          "hypercalcemia due to bone metastases",
+          "elevated calcium linked to cancer bones"
+        ]
+      },
+      {
+        "symptomName": "Superior vena cava syndrome",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "swelling from blocked chest vein",
+          "vein blockage causing face/neck swelling",
+          "superior vena cava blockage symptoms"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "endocrine",
+    "otolaryngological",
+    "respiratory",
+    "musculoskeletal",
+    "constitutional",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum thyroglobulin levels post-thyroidectomy",
+      "Normal or suppressed TSH levels",
+      "Fine-needle aspiration cytology showing papillary or follicular carcinoma cells"
+    ],
+    "imaging": [
+      "Ultrasound showing hypoechoic thyroid nodule with microcalcifications",
+      "Radioiodine scan demonstrating uptake in thyroid tissue or metastases",
+      "CT/MRI for local invasion or distant metastases assessment"
+    ],
+    "genetic": [
+      "BRAF (somatic)",
+      "EIF1AX (somatic)",
+      "PPARG (fusion gene)",
+      "RET (fusion gene)",
+      "KRAS (somatic)",
+      "CCDC6 (fusion gene)",
+      "TFG (fusion gene)",
+      "TPR (fusion gene)",
+      "TRIM24 (fusion gene)",
+      "TRIM27 (fusion gene)",
+      "TRIM33 (fusion gene)",
+      "ERC1 (fusion gene)",
+      "FOXE1 (susceptibility)",
+      "GOLGA5 (fusion gene)",
+      "HRAS (somatic)",
+      "NTRK1 (fusion gene)",
+      "PAX8 (fusion gene)",
+      "PCM1 (fusion gene)",
+      "ETV6 (fusion gene)",
+      "NKX2-1 (susceptibility)",
+      "ALK (fusion gene)",
+      "NRAS (somatic)",
+      "NTRK3 (fusion gene)",
+      "NCOA4 (fusion gene)",
+      "DIRC3 (susceptibility)",
+      "NDUFA13 (somatic)",
+      "TERT (somatic)",
+      "GAS8-AS1 (somatic)",
+      "LPAR4 (somatic)"
+    ],
+    "other": [
+      "Histopathological examination confirming tumor subtype",
+      "Lymph node biopsy confirming metastasis"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "medullary-thyroid-carcinoma",
+      "distinguishingFeatures": [
+        "Elevated serum calcitonin levels",
+        "Originates from parafollicular C cells",
+        "Different histopathological features"
+      ]
+    },
+    {
+      "diseaseId": "anaplastic-thyroid-carcinoma",
+      "distinguishingFeatures": [
+        "Rapidly progressive neck mass",
+        "Poorly differentiated cells on histology",
+        "Very aggressive clinical course"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging neck mass",
+    "Hoarseness or vocal cord paralysis",
+    "Dysphagia or airway obstruction symptoms"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Head and Neck Surgeon",
+    "Oncologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "American Thyroid Association Guidelines for Management of Thyroid Nodules and Differentiated Thyroid Cancer, 2015",
+    "Orphanet: Differentiated Thyroid Carcinoma - ORPHA146",
+    "National Comprehensive Cancer Network (NCCN) Clinical Practice Guidelines in Oncology: Thyroid Carcinoma"
+  ],
+  "confidenceInData": "ai-generated"
+}

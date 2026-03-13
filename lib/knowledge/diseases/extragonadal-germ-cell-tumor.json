@@ -1,0 +1,282 @@
+{
+  "id": "extragonadal-germ-cell-tumor",
+  "name": "Extragonadal Germ Cell Tumor",
+  "aliases": [
+    "EGCT",
+    "Primary Extragonadal Germ Cell Neoplasm"
+  ],
+  "icd10Codes": [
+    "C62.9",
+    "C76.8"
+  ],
+  "orphanetId": "ORPHA:363579",
+  "prevalence": {
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 60,
+      "peak": 25
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No standardized formal criteria; diagnosis based on clinical, radiologic, and histopathologic findings",
+    "criteria": [
+      {
+        "id": "absence-gonadal-primary",
+        "description": "No evidence of primary gonadal germ cell tumor on imaging and clinical examination",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "tumor-location-midline",
+        "description": "Tumor located in typical extragonadal midline sites such as mediastinum, retroperitoneum, or pineal gland",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathologic-confirmation",
+        "description": "Histopathologic confirmation of germ cell tumor subtype (seminoma, nonseminomatous, or mixed)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "serum-tumor-markers",
+        "description": "Elevated serum tumor markers such as alpha-fetoprotein (AFP) or beta-human chorionic gonadotropin (β-hCG)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of histopathologic confirmation of germ cell tumor in an extragonadal midline location with no evidence of gonadal primary tumor",
+    "notes": "Exclusion of metastatic gonadal germ cell tumor is essential; imaging of testes and ovaries is mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Mediastinal mass with superior vena cava syndrome",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Common in mediastinal extragonadal germ cell tumors causing vascular compression",
+        "searchTerms": [
+          "chest mass causing vein blockage",
+          "upper chest tumor with vein swelling",
+          "mediastinal tumor causing blood flow obstruction"
+        ]
+      },
+      {
+        "symptomName": "Pineal region mass causing Parinaud syndrome",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Vertical gaze palsy and convergence-retraction nystagmus due to dorsal midbrain involvement",
+        "searchTerms": [
+          "pineal gland tumor causing eye movement problems",
+          "tumor near brain center affecting gaze",
+          "Parinaud syndrome from pineal mass"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chest pain or cough",
+        "frequency": 0.65,
+        "bodySystem": "respiratory",
+        "notes": "Due to mass effect in mediastinal tumors",
+        "searchTerms": [
+          "chest discomfort or coughing",
+          "pain in chest or persistent cough",
+          "thoracic pain or cough"
+        ]
+      },
+      {
+        "symptomName": "Abdominal or back pain",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "notes": "Common with retroperitoneal tumors",
+        "searchTerms": [
+          "stomach or back pain",
+          "abdominal discomfort or backache",
+          "pain in belly or lower back"
+        ]
+      },
+      {
+        "symptomName": "Elevated serum alpha-fetoprotein (AFP)",
+        "frequency": 0.6,
+        "bodySystem": "hematological",
+        "notes": "Marker for nonseminomatous germ cell tumors",
+        "searchTerms": [
+          "high alpha-fetoprotein blood levels",
+          "elevated AFP in blood tests",
+          "increased AFP serum marker"
+        ]
+      },
+      {
+        "symptomName": "Elevated serum beta-human chorionic gonadotropin (β-hCG)",
+        "frequency": 0.55,
+        "bodySystem": "endocrine",
+        "notes": "Marker for choriocarcinoma and some seminomas",
+        "searchTerms": [
+          "high pregnancy hormone levels",
+          "elevated beta-hCG in blood",
+          "increased pregnancy hormone marker"
+        ]
+      },
+      {
+        "symptomName": "Weight loss and night sweats",
+        "frequency": 0.5,
+        "bodySystem": "constitutional",
+        "notes": "Systemic symptoms related to malignancy",
+        "searchTerms": [
+          "unexplained weight loss",
+          "night sweats",
+          "losing weight and sweating at night"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Gynecomastia",
+        "frequency": 0.3,
+        "bodySystem": "endocrine",
+        "notes": "Due to β-hCG secretion causing hormonal imbalance"
+      },
+      {
+        "symptomName": "Headache and nausea",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Common in intracranial germ cell tumors with increased intracranial pressure",
+        "searchTerms": [
+          "headache with nausea",
+          "head pain and feeling sick",
+          "migraine with vomiting"
+        ]
+      },
+      {
+        "symptomName": "Lower extremity edema",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to venous compression by mediastinal or retroperitoneal mass",
+        "searchTerms": [
+          "swelling in legs",
+          "leg fluid buildup",
+          "ankle and foot swelling"
+        ]
+      },
+      {
+        "symptomName": "Testicular microlithiasis",
+        "frequency": 0.15,
+        "bodySystem": "reproductive",
+        "notes": "May be detected on ultrasound despite absence of primary tumor"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Paraneoplastic neurological syndromes",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Rare immune-mediated neurological complications",
+        "searchTerms": [
+          "nerve problems caused by cancer",
+          "paraneoplastic neurological symptoms",
+          "cancer-related nerve syndromes"
+        ]
+      },
+      {
+        "symptomName": "Superior mesenteric artery syndrome",
+        "frequency": 0.04,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to retroperitoneal mass compressing duodenum",
+        "searchTerms": [
+          "intestinal artery compression syndrome",
+          "blockage of artery to intestines",
+          "superior mesenteric artery narrowing"
+        ]
+      },
+      {
+        "symptomName": "Pericardial effusion",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to mediastinal tumor invasion"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "cardiovascular",
+    "respiratory",
+    "gastrointestinal",
+    "endocrine",
+    "hematological",
+    "reproductive",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum alpha-fetoprotein (AFP)",
+      "Elevated serum beta-human chorionic gonadotropin (β-hCG)",
+      "Elevated lactate dehydrogenase (LDH)"
+    ],
+    "imaging": [
+      "CT or MRI showing midline mass in mediastinum, retroperitoneum, or pineal region",
+      "Ultrasound of testes/ovaries negative for primary tumor",
+      "Chest X-ray showing mediastinal widening"
+    ],
+    "genetic": [
+      "Isochromosome 12p (i12p) commonly detected in tumor cells",
+      "No specific germline mutations identified"
+    ],
+    "other": [
+      "Histopathology confirming germ cell tumor subtype",
+      "Immunohistochemistry positive for placental alkaline phosphatase (PLAP), OCT3/4"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "gonadal-germ-cell-tumor",
+      "distinguishingFeatures": [
+        "Presence of primary tumor in testes or ovaries",
+        "Different imaging findings with gonadal mass",
+        "Histopathology localized to gonads"
+      ]
+    },
+    {
+      "diseaseId": "mediastinal-lymphoma",
+      "distinguishingFeatures": [
+        "Lymphadenopathy rather than solid tumor mass",
+        "Different immunophenotype on biopsy",
+        "Absence of germ cell tumor markers elevation"
+      ]
+    },
+    {
+      "diseaseId": "thymoma",
+      "distinguishingFeatures": [
+        "Thymic origin confirmed by histology",
+        "Lack of germ cell tumor markers",
+        "Different clinical presentation and imaging"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging mediastinal or retroperitoneal mass",
+    "Signs of superior vena cava syndrome",
+    "Neurological deficits related to intracranial mass"
+  ],
+  "specialistType": [
+    "Oncologist",
+    "Radiologist",
+    "Pathologist",
+    "Neurologist",
+    "Thoracic Surgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Moran CA, Suster S. Extragonadal germ cell tumors: a review and update. Adv Anat Pathol. 2015;22(6):343-357.",
+    "International Germ Cell Cancer Collaborative Group (IGCCCG) classification and guidelines.",
+    "Orphanet: Extragonadal germ cell tumor - ORPHA:363579"
+  ],
+  "confidenceInData": "ai-generated"
+}

@@ -1,0 +1,260 @@
+{
+  "id": "inflammatory-breast-cancer",
+  "name": "Inflammatory Breast Cancer",
+  "aliases": [
+    "IBC",
+    "Inflammatory carcinoma of the breast"
+  ],
+  "icd10Codes": [
+    "C50.9"
+  ],
+  "orphanetId": "ORPHA:694963",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "1-5%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "female",
+    "ethnicAssociations": [
+      "African American ethnicity has higher incidence"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "AJCC Inflammatory Breast Cancer Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clinical-edema-erythema",
+        "description": "Diffuse erythema and edema (peau d’orange) involving at least one-third of the breast",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "rapid-onset",
+        "description": "Rapid onset of breast swelling and erythema over less than 6 months",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pathologic-confirmation",
+        "description": "Histologic confirmation of invasive carcinoma with dermal lymphatic invasion",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-mass",
+        "description": "Absence or presence of an underlying palpable mass",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of diffuse erythema and edema involving at least one-third of the breast with rapid onset plus histologic confirmation of invasive carcinoma with dermal lymphatic invasion",
+    "notes": "Diagnosis is clinical and pathological; imaging supports but does not confirm diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Diffuse breast erythema involving at least one-third of the breast",
+        "frequency": 0.85,
+        "bodySystem": "dermatological",
+        "notes": "Characteristic peau d’orange appearance",
+        "searchTerms": [
+          "redness over large breast area",
+          "breast skin redness covering one-third",
+          "diffuse breast skin inflammation"
+        ]
+      },
+      {
+        "symptomName": "Breast skin edema (peau d’orange)",
+        "frequency": 0.9,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "breast skin swelling with orange peel look",
+          "skin dimpling on breast",
+          "breast edema causing bumpy skin"
+        ]
+      },
+      {
+        "symptomName": "Rapidly progressive breast enlargement",
+        "frequency": 0.8,
+        "bodySystem": "reproductive",
+        "searchTerms": [
+          "fast breast size increase",
+          "rapid breast swelling",
+          "quick breast enlargement"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Tenderness or breast pain",
+        "frequency": 0.7,
+        "bodySystem": "reproductive",
+        "searchTerms": [
+          "breast tenderness",
+          "breast pain",
+          "sore breasts"
+        ]
+      },
+      {
+        "symptomName": "Nipple retraction",
+        "frequency": 0.65,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Palpable axillary lymphadenopathy",
+        "frequency": 0.6,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "lumps in armpit",
+          "swollen lymph nodes under arm",
+          "axillary lymph node swelling"
+        ]
+      },
+      {
+        "symptomName": "Warmth of affected breast skin",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "warm breast skin",
+          "breast skin heat",
+          "increased temperature of breast skin"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Nipple discharge",
+        "frequency": 0.3,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Fatigue related to systemic illness",
+        "frequency": 0.25,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from systemic illness",
+          "fatigue related to overall disease",
+          "generalized weakness and exhaustion"
+        ]
+      },
+      {
+        "symptomName": "Low-grade fever",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skin ulceration",
+        "frequency": 0.4,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Breast peau d’orange without erythema",
+        "frequency": 0.05,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "breast skin swelling without redness",
+          "orange peel breast skin without redness",
+          "breast edema without inflammation"
+        ]
+      },
+      {
+        "symptomName": "Distant metastasis symptoms at presentation",
+        "frequency": 0.07,
+        "bodySystem": "various",
+        "notes": "May include bone pain or respiratory symptoms",
+        "searchTerms": [
+          "symptoms from cancer spread",
+          "signs of distant tumor spread",
+          "metastasis symptoms"
+        ]
+      },
+      {
+        "symptomName": "Breast ulceration with secondary infection",
+        "frequency": 0.02,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "breast sore with infection",
+          "breast ulcer with pus",
+          "open breast wound with infection"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "reproductive",
+    "immunological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated inflammatory markers (ESR, CRP) in some cases",
+      "Histopathology showing invasive carcinoma with dermal lymphatic invasion"
+    ],
+    "imaging": [
+      "Mammography showing skin thickening and increased breast density",
+      "Ultrasound revealing diffuse edema and possible underlying mass",
+      "MRI demonstrating skin and stromal enhancement"
+    ],
+    "genetic": [
+      "BRCA1 (susceptibility)",
+      "BRCA2 (susceptibility)"
+    ],
+    "other": [
+      "Clinical rapid progression of breast changes",
+      "Dermal lymphatic tumor emboli on biopsy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "mastitis",
+      "distinguishingFeatures": [
+        "Usually associated with lactation or infection",
+        "Responds to antibiotics",
+        "Absence of dermal lymphatic invasion on biopsy"
+      ]
+    },
+    {
+      "diseaseId": "breast-abscess",
+      "distinguishingFeatures": [
+        "Localized fluctuant mass",
+        "Fever and systemic signs of infection",
+        "Improvement with drainage and antibiotics"
+      ]
+    },
+    {
+      "diseaseId": "non-inflammatory locally advanced breast cancer",
+      "distinguishingFeatures": [
+        "Lack of diffuse erythema and edema",
+        "Slower progression",
+        "No peau d’orange skin changes"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid onset of breast erythema and edema",
+    "Failure to respond to antibiotics",
+    "Presence of dermal lymphatic invasion on biopsy"
+  ],
+  "specialistType": [
+    "Oncologist",
+    "Breast Surgeon",
+    "Radiologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "American Joint Committee on Cancer (AJCC) Cancer Staging Manual, 8th Edition",
+    "National Comprehensive Cancer Network (NCCN) Guidelines for Breast Cancer",
+    "Dawood S, et al. Inflammatory breast cancer: what progress have we made? Oncologist. 2011"
+  ],
+  "confidenceInData": "ai-generated"
+}

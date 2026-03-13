@@ -1,0 +1,145 @@
+{
+  "id": "his-bundle-tachycardia",
+  "name": "His Bundle Tachycardia",
+  "aliases": [
+    "Bundle of His Tachycardia",
+    "His-Purkinje System Tachycardia"
+  ],
+  "icd10Codes": [
+    "I47.1"
+  ],
+  "orphanetId": "ORPHA:3283",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 2,
+      "peak": 1
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Electrophysiological Diagnostic Criteria for His Bundle Tachycardia",
+    "criteria": [
+      {
+        "id": "ecg-characteristics",
+        "description": "Narrow QRS tachycardia with a rate typically between 120-180 bpm and absence of AV dissociation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "electrophysiology-study",
+        "description": "Demonstration of tachycardia originating from the His bundle region during invasive electrophysiological study",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "response-to-adenosine",
+        "description": "Termination or transient slowing of tachycardia with adenosine administration",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "absence-of-structural-heart-disease",
+        "description": "No evidence of underlying structural heart disease on imaging",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of characteristic ECG findings plus confirmation by electrophysiological study",
+    "notes": "Diagnosis relies heavily on invasive electrophysiological testing due to similarity with other narrow complex tachycardias."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Arrhythmia",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Junctional ectopic tachycardia",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "fast heart rhythm from junction",
+          "junctional ectopic tachycardia",
+          "abnormal fast heartbeat near AV node"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Cardiomyopathy",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Neoplasm of the heart",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "tumor in the heart",
+          "heart mass",
+          "abnormal growth in heart"
+        ]
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal routine blood tests; cardiac biomarkers typically normal unless secondary ischemia occurs"
+    ],
+    "imaging": [
+      "Normal echocardiogram excluding structural heart disease; Holter monitoring showing narrow complex tachycardia episodes"
+    ],
+    "genetic": [
+      "No well-established genetic mutations identified; idiopathic in most cases"
+    ],
+    "other": [
+      "Electrophysiological study demonstrating tachycardia originating from the His bundle region"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "atrioventricular-nodal-reentrant-tachycardia",
+      "distinguishingFeatures": [
+        "Typical AVNRT shows AV dissociation and different response to adenosine",
+        "Electrophysiological study localizes reentry circuit to AV node rather than His bundle"
+      ]
+    },
+    {
+      "diseaseId": "bundle-branch-reentrant-tachycardia",
+      "distinguishingFeatures": [
+        "Wider QRS complexes on ECG",
+        "Usually associated with structural heart disease",
+        "Different electrophysiological characteristics"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Syncope during tachycardia episodes",
+    "Signs of heart failure or cardiomyopathy",
+    "Sudden onset of chest pain or ischemic symptoms"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Electrophysiologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Orphanet: His Bundle Tachycardia - ORPHA:3283",
+    "Zipes DP, Jalife J. Cardiac Electrophysiology: From Cell to Bedside. 7th Edition. 2018.",
+    "Wellens HJ, et al. Electrophysiologic characteristics of His bundle tachycardia. Circulation. 1981."
+  ],
+  "confidenceInData": "medium"
+}

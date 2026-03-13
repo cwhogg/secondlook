@@ -1,0 +1,253 @@
+{
+  "id": "pulmonary-arterial-hypertension-associated-with-another-disease",
+  "name": "Pulmonary arterial hypertension associated with another disease",
+  "aliases": [
+    "Secondary pulmonary arterial hypertension",
+    "PAH associated with systemic disease"
+  ],
+  "icd10Codes": [
+    "I27.2"
+  ],
+  "orphanetId": "275791",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.001%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": [
+      "Caucasian",
+      "African descent"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ESC/ERS Guidelines for the diagnosis and treatment of pulmonary hypertension",
+    "criteria": [
+      {
+        "id": "mean-pap",
+        "description": "Mean pulmonary arterial pressure (mPAP) ≥ 25 mmHg at rest measured by right heart catheterization",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pulmonary-capillary-wedge-pressure",
+        "description": "Pulmonary capillary wedge pressure (PCWP) ≤ 15 mmHg to exclude left heart disease",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "associated-disease",
+        "description": "Presence of an associated systemic disease known to cause PAH (e.g., connective tissue disease, HIV infection, portal hypertension)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-other-causes",
+        "description": "Exclusion of other causes of pulmonary hypertension such as chronic thromboembolic disease",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "echocardiographic-findings",
+        "description": "Echocardiographic evidence of elevated pulmonary artery pressure and right ventricular dysfunction",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria (mPAP ≥ 25 mmHg, PCWP ≤ 15 mmHg, and presence of an associated disease) plus exclusion of other causes",
+    "notes": "Right heart catheterization is mandatory for definitive diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Exertional dyspnea",
+        "frequency": 0.85,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Fatigue related to reduced cardiac output",
+        "frequency": 0.75,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from weak heart pumping",
+          "fatigue due to low cardiac output",
+          "low energy from heart failure"
+        ]
+      },
+      {
+        "symptomName": "Syncope on exertion",
+        "frequency": 0.7,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "fainting during exercise",
+          "passing out on exertion",
+          "exercise-induced syncope"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chest pain of angina-like quality",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "chest pain like angina",
+          "heart-related chest discomfort",
+          "pressure or tightness in chest"
+        ]
+      },
+      {
+        "symptomName": "Peripheral edema due to right heart failure",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "swelling in legs from heart problems",
+          "ankle puffiness due to heart failure",
+          "leg swelling from fluid retention"
+        ]
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Non-productive cough",
+        "frequency": 0.52,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abdominal distension due to hepatomegaly",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "belly swelling from enlarged liver",
+          "abdominal bloating due to hepatomegaly",
+          "stomach distension from liver enlargement"
+        ]
+      },
+      {
+        "symptomName": "Jugular venous distension",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "bulging neck veins",
+          "enlarged jugular veins",
+          "neck vein swelling"
+        ]
+      },
+      {
+        "symptomName": "Raynaud phenomenon (if associated with connective tissue disease)",
+        "frequency": 0.15,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "fingers turn white/blue with cold",
+          "Raynaud's phenomenon with connective tissue disease",
+          "vascular color changes in fingers"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cyanosis",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hoarseness due to recurrent laryngeal nerve compression",
+        "frequency": 0.05,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "hoarse voice from nerve compression",
+          "voice changes due to nerve pressure",
+          "laryngeal nerve causing hoarseness"
+        ]
+      },
+      {
+        "symptomName": "Ascites secondary to right heart failure",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "fluid buildup in abdomen from heart failure",
+          "abdominal swelling due to fluid",
+          "ascites caused by right heart failure"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "respiratory",
+    "gastrointestinal",
+    "immunological",
+    "constitutional",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated brain natriuretic peptide (BNP) or NT-proBNP levels",
+      "Autoantibodies if associated with connective tissue disease",
+      "HIV serology if applicable"
+    ],
+    "imaging": [
+      "Echocardiography showing right ventricular hypertrophy and elevated pulmonary artery pressure",
+      "Chest CT or V/Q scan to exclude thromboembolic disease",
+      "Right heart catheterization confirming elevated mPAP"
+    ],
+    "genetic": [
+      "BMPR2 mutations may be present in some cases but less common in associated PAH"
+    ],
+    "other": [
+      "6-minute walk test showing reduced exercise capacity",
+      "Pulmonary function tests may show reduced diffusing capacity"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "idiopathic-pulmonary-arterial-hypertension",
+      "distinguishingFeatures": [
+        "No associated systemic disease",
+        "Often younger patients",
+        "Genetic mutations more common"
+      ]
+    },
+    {
+      "diseaseId": "chronic-thromboembolic-pulmonary-hypertension",
+      "distinguishingFeatures": [
+        "History of pulmonary embolism",
+        "V/Q scan showing mismatched perfusion defects",
+        "Surgical treatment options"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of exertional dyspnea",
+    "Syncope episodes during minimal exertion",
+    "Signs of right heart failure such as severe peripheral edema or ascites"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Cardiologist",
+    "Rheumatologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Galiè N, Humbert M, Vachiery JL, et al. 2015 ESC/ERS Guidelines for the diagnosis and treatment of pulmonary hypertension. Eur Heart J. 2016 Jan 1;37(1):67-119.",
+    "Simonneau G, Montani D, Celermajer DS, et al. Haemodynamic definitions and updated clinical classification of pulmonary hypertension. Eur Respir J. 2019 Jan;53(1):1801913.",
+    "Orphanet: Pulmonary arterial hypertension associated with another disease (ORPHA:275791)"
+  ],
+  "confidenceInData": "ai-generated"
+}

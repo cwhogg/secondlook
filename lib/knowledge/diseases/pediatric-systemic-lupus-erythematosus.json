@@ -1,0 +1,495 @@
+{
+  "id": "pediatric-systemic-lupus-erythematosus",
+  "name": "Pediatric Systemic Lupus Erythematosus",
+  "aliases": [
+    "Childhood-onset systemic lupus erythematosus",
+    "Juvenile systemic lupus erythematosus"
+  ],
+  "icd10Codes": [
+    "M32.1"
+  ],
+  "orphanetId": "ORPHA:93552",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 18,
+      "peak": 14
+    },
+    "sexPredilection": "female",
+    "ethnicAssociations": [
+      "African American",
+      "Hispanic",
+      "Asian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "2019 EULAR/ACR Classification Criteria for SLE",
+    "criteria": [
+      {
+        "id": "antinuclear-antibody",
+        "description": "Positive antinuclear antibody (ANA) test at a titer of ≥1:80",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "acute-cutaneous-lupus",
+        "description": "Presence of acute cutaneous lupus manifestations such as malar rash",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "renal-involvement",
+        "description": "Biopsy-proven lupus nephritis compatible with SLE",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hematologic-abnormalities",
+        "description": "Hemolytic anemia, leukopenia, lymphopenia, or thrombocytopenia attributable to SLE",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "neuropsychiatric-symptoms",
+        "description": "Seizures or psychosis not explained by other causes",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "immunologic-markers",
+        "description": "Anti-dsDNA, anti-Sm antibodies, or antiphospholipid antibodies positivity",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Positive ANA plus a total of ≥10 points from clinical and immunologic criteria according to 2019 EULAR/ACR guidelines",
+    "notes": "Diagnosis requires exclusion of other mimicking conditions and consideration of pediatric-specific manifestations."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "high inflammation blood test",
+          "elevated sedimentation rate",
+          "increased ESR indicating inflammation"
+        ]
+      },
+      {
+        "symptomName": "Decreased circulating complement C3 concentration",
+        "frequency": 0.9,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "low blood complement C3 levels",
+          "decreased immune protein C3",
+          "reduced complement in blood"
+        ]
+      },
+      {
+        "symptomName": "Decreased circulating complement C4 concentration",
+        "frequency": 0.9,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "low complement C4 blood levels",
+          "decreased immune protein C4",
+          "reduced C4 in blood"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abnormality of the urinary system",
+        "frequency": 0.55,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "kidney or bladder problems",
+          "urinary tract abnormalities",
+          "abnormal urine system"
+        ]
+      },
+      {
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Proteinuria",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Nephrotic syndrome",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Nephritis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Abnormality of the skin",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin abnormalities",
+          "unusual skin changes",
+          "skin problems or lesions"
+        ]
+      },
+      {
+        "symptomName": "Edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pericardial effusion",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Leukopenia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Lymphopenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Microangiopathic hemolytic anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "anemia from small blood vessel damage",
+          "red blood cell destruction in tiny vessels",
+          "hemolytic anemia due to microvascular injury"
+        ]
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pleural effusion",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Antinuclear antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "positive antinuclear antibodies",
+          "ANA blood test positive",
+          "autoimmune antibody detected"
+        ]
+      },
+      {
+        "symptomName": "Antiphospholipid antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "presence of blood clotting antibodies",
+          "antibodies causing clot risk",
+          "autoimmune clotting markers"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the gastrointestinal tract",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "digestive tract problems",
+          "stomach or intestine abnormalities",
+          "gut malformations"
+        ]
+      },
+      {
+        "symptomName": "Increased circulating lactate dehydrogenase concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high lactate dehydrogenase enzyme levels",
+          "elevated LDH in blood",
+          "increased tissue damage marker LDH"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Oral ulcer",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Abnormality of the nervous system",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "nervous system abnormalities",
+          "neurological problems",
+          "brain and nerve system issues"
+        ]
+      },
+      {
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormality of the respiratory system",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing system abnormality",
+          "lung or airway problems",
+          "respiratory system defects"
+        ]
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemiplegia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Systemic lupus erythematosus",
+        "frequency": 0.17,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "autoimmune disease affecting multiple organs",
+          "systemic autoimmune symptoms",
+          "chronic inflammatory autoimmune condition"
+        ]
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abdominal distention",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Reduced consciousness/confusion",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Discoid lupus rash",
+        "frequency": 0.17,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "round scaly red rash",
+          "discoid lupus skin patches",
+          "chronic red scaly skin lesions"
+        ]
+      },
+      {
+        "symptomName": "Malar rash",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lupus anticoagulant",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Dark urine",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Alopecia",
+        "frequency": 0.03,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Language impairment",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Antineutrophil antibody positivity",
+        "frequency": 0.03,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "antibody attacking white blood cells",
+          "immune response targeting neutrophils"
+        ]
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Myositis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "renal",
+    "constitutional",
+    "dermatological",
+    "cardiovascular",
+    "respiratory",
+    "gastrointestinal",
+    "psychiatric",
+    "neurological",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive ANA at ≥1:80 titer",
+      "Anti-dsDNA and anti-Sm antibodies positivity",
+      "Low complement levels (C3, C4)",
+      "Hematologic abnormalities: anemia, leukopenia, thrombocytopenia",
+      "Proteinuria and cellular casts in urine"
+    ],
+    "imaging": [
+      "Renal ultrasound showing increased echogenicity in lupus nephritis",
+      "Chest X-ray or echocardiogram detecting pleuritis or pericarditis",
+      "MRI brain for neuropsychiatric manifestations"
+    ],
+    "genetic": [
+      "SAT1 (causative, loss-of-function)",
+      "STAT4 (susceptibility)",
+      "SPP1 (susceptibility)",
+      "IRAK1 (susceptibility)"
+    ],
+    "other": [
+      "Skin biopsy showing interface dermatitis in cutaneous lupus",
+      "Renal biopsy confirming lupus nephritis class"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "juvenile-rheumatoid-arthritis",
+      "distinguishingFeatures": [
+        "Absence of ANA positivity",
+        "Erosive arthritis common",
+        "Lack of multi-organ involvement typical of SLE"
+      ]
+    },
+    {
+      "diseaseId": "mixed-connective-tissue-disease",
+      "distinguishingFeatures": [
+        "Presence of anti-U1 RNP antibodies",
+        "Overlap features of SLE, scleroderma, and polymyositis",
+        "Distinct clinical course and treatment response"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive glomerulonephritis",
+    "Neuropsychiatric symptoms including seizures or psychosis",
+    "Severe hematologic cytopenias (e.g., hemolytic anemia, thrombocytopenia)"
+  ],
+  "specialistType": [
+    "Pediatric Rheumatologist",
+    "Nephrologist",
+    "Dermatologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Aringer M, et al. 2019 EULAR/ACR Classification Criteria for Systemic Lupus Erythematosus. Arthritis Rheumatol. 2019.",
+    "Petri M, et al. Clinical features of childhood-onset systemic lupus erythematosus. Lupus. 2012.",
+    "Orphanet: Pediatric systemic lupus erythematosus (ORPHA:93552)"
+  ],
+  "confidenceInData": "medium"
+}

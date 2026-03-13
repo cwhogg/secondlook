@@ -1,0 +1,218 @@
+{
+  "id": "polyendocrinopathy",
+  "name": "Polyendocrinopathy",
+  "aliases": [
+    "Multiple Endocrine Dysfunction Syndrome",
+    "Polyglandular Autoimmune Syndrome"
+  ],
+  "icd10Codes": [
+    "E31.8"
+  ],
+  "orphanetId": "ORPHA:101956",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 50,
+      "peak": 25
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Autoimmune Polyglandular Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "autoimmune-endocrinopathy",
+        "description": "Presence of two or more autoimmune endocrine gland failures",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "autoimmune-nonendocrine",
+        "description": "Presence of autoimmune non-endocrine manifestations such as chronic mucocutaneous candidiasis or pernicious anemia",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "autoantibodies",
+        "description": "Detection of circulating organ-specific autoantibodies",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "At least two major criteria including autoimmune endocrine gland failures",
+    "notes": "Diagnosis often supported by autoantibody testing and clinical presentation"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Autoimmune adrenal insufficiency",
+        "frequency": 0.85,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "autoimmune destruction of adrenal glands",
+          "immune-related adrenal failure",
+          "adrenal insufficiency from autoimmunity"
+        ]
+      },
+      {
+        "symptomName": "Autoimmune thyroiditis",
+        "frequency": 0.75,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Type 1 diabetes mellitus due to autoimmune beta-cell destruction",
+        "frequency": 0.7,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "autoimmune diabetes",
+          "insulin-dependent diabetes",
+          "high blood sugar from immune attack"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chronic mucocutaneous candidiasis",
+        "frequency": 0.65,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "chronic yeast infections on skin and mucous",
+          "persistent candidiasis",
+          "long-lasting fungal infections"
+        ]
+      },
+      {
+        "symptomName": "Hypoparathyroidism",
+        "frequency": 0.6,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Pernicious anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Vitiligo",
+        "frequency": 0.52,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Alopecia areata",
+        "frequency": 0.3,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Gastrointestinal malabsorption",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Autoimmune hepatitis",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hypogonadism",
+        "frequency": 0.15,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Interstitial lung disease",
+        "frequency": 0.07,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "lung tissue scarring",
+          "interstitial lung inflammation",
+          "thickened lung tissue"
+        ]
+      },
+      {
+        "symptomName": "Autoimmune gastritis",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Neurological manifestations (e.g., peripheral neuropathy)",
+        "frequency": 0.04,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "nerve problems causing numbness or tingling",
+          "peripheral nerve damage symptoms",
+          "neuropathy signs"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "endocrine",
+    "immunological",
+    "dermatological",
+    "hematological",
+    "gastrointestinal",
+    "reproductive",
+    "respiratory",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated ACTH with low cortisol levels indicating adrenal insufficiency",
+      "Positive anti-thyroid peroxidase (anti-TPO) antibodies",
+      "Presence of anti-glutamic acid decarboxylase (anti-GAD) antibodies",
+      "Low serum calcium and elevated phosphate in hypoparathyroidism",
+      "Autoantibodies against parietal cells and intrinsic factor"
+    ],
+    "imaging": [
+      "Adrenal gland atrophy on CT or MRI",
+      "Thyroid gland hypoechogenicity on ultrasound"
+    ],
+    "genetic": [
+      "Mutations in AIRE gene in autoimmune polyendocrine syndrome type 1",
+      "HLA-DR3 and HLA-DR4 associations in type 2"
+    ],
+    "other": [
+      "Histopathology showing lymphocytic infiltration of affected endocrine glands"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "addisons-disease",
+      "distinguishingFeatures": [
+        "Isolated adrenal insufficiency without multiple gland involvement",
+        "Absence of other autoimmune endocrine failures"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-thyroiditis",
+      "distinguishingFeatures": [
+        "Thyroid-specific autoimmune disease without other endocrine gland involvement",
+        "Normal adrenal and pancreatic function"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid onset adrenal crisis symptoms (hypotension, shock)",
+    "Severe hypocalcemia with tetany or seizures",
+    "Unexplained hypoglycemia in a patient with known autoimmune endocrinopathies"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Immunologist",
+    "Rheumatologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Betterle C, Dal Pra C, Mantero F, Zanchetta R. Autoimmune polyglandular syndrome type 1. J Clin Endocrinol Metab. 1998;83(4):1049-1055.",
+    "Husebye ES, Anderson MS, Kämpe O. Autoimmune Polyendocrine Syndromes. N Engl J Med. 2018;378(12):1132-1141.",
+    "Orphanet: Polyendocrinopathy - ORPHA:101956"
+  ],
+  "confidenceInData": "ai-generated"
+}

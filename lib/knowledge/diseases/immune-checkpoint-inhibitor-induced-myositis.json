@@ -1,0 +1,315 @@
+{
+  "id": "immune-checkpoint-inhibitor-induced-myositis",
+  "name": "Immune Checkpoint Inhibitor-Induced Myositis",
+  "aliases": [
+    "ICI-induced myositis",
+    "Checkpoint inhibitor-associated myositis"
+  ],
+  "icd10Codes": [
+    "M60.9",
+    "T88.7"
+  ],
+  "orphanetId": "ORPHA:714829",
+  "prevalence": {
+    "estimate": "1 in 10,000",
+    "range": "0.01-0.05%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 85,
+      "peak": 60
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Proposed Diagnostic Criteria for ICI-Induced Myositis",
+    "criteria": [
+      {
+        "id": "clinical-myopathy",
+        "description": "Subacute onset of proximal muscle weakness with or without oculomotor involvement",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "elevated-muscle-enzymes",
+        "description": "Elevated serum creatine kinase (CK) levels above normal range",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology",
+        "description": "Muscle biopsy showing inflammatory infiltrates consistent with myositis",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "temporal-association",
+        "description": "Onset of symptoms temporally related to immune checkpoint inhibitor therapy",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "electromyography",
+        "description": "Electromyographic evidence of myopathic changes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "autoantibodies",
+        "description": "Presence of myositis-specific or myositis-associated autoantibodies (may be absent)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of subacute proximal muscle weakness with elevated CK and temporal association with immune checkpoint inhibitor therapy",
+    "notes": "Muscle biopsy and EMG support diagnosis but are not mandatory; exclusion of other causes is essential."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Subacute proximal muscle weakness",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness in upper arm muscles",
+          "difficulty lifting arms",
+          "proximal muscle weakness developing over weeks"
+        ]
+      },
+      {
+        "symptomName": "Elevated serum creatine kinase levels",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "high muscle enzyme levels",
+          "elevated creatine kinase",
+          "muscle damage blood test"
+        ]
+      },
+      {
+        "symptomName": "Oculomotor muscle involvement (ptosis, diplopia)",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "notes": "Distinctive feature compared to other myositis forms",
+        "searchTerms": [
+          "drooping eyelids and double vision",
+          "eye muscle weakness",
+          "ptosis and seeing double"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Dysphagia due to oropharyngeal muscle weakness",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "difficulty swallowing from throat muscle weakness",
+          "oropharyngeal muscle weakness causing dysphagia",
+          "trouble swallowing due to muscle problems"
+        ]
+      },
+      {
+        "symptomName": "Myalgia (muscle pain)",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle aches",
+          "muscle soreness or pain",
+          "myalgia symptoms"
+        ]
+      },
+      {
+        "symptomName": "Fatigue related to muscle weakness",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from weak muscles",
+          "fatigue due to muscle weakness",
+          "muscle weakness causing exhaustion"
+        ]
+      },
+      {
+        "symptomName": "Respiratory muscle weakness causing dyspnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing difficulty from weak respiratory muscles",
+          "shortness of breath due to muscle weakness",
+          "respiratory muscle weakness causing dyspnea"
+        ]
+      },
+      {
+        "symptomName": "Elevated serum aldolase",
+        "frequency": 0.5,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "high aldolase enzyme in blood",
+          "elevated serum aldolase levels",
+          "increased muscle enzyme aldolase"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Cardiac involvement (myocarditis, arrhythmias)",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "May coexist or present concurrently",
+        "searchTerms": [
+          "heart muscle inflammation and irregular heartbeat",
+          "heart rhythm problems with heart inflammation",
+          "heart involvement causing arrhythmias and myocarditis"
+        ]
+      },
+      {
+        "symptomName": "Skin rash resembling dermatomyositis",
+        "frequency": 0.2,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin rash like muscle inflammation",
+          "reddish rash similar to dermatomyositis",
+          "rash with muscle disease appearance"
+        ]
+      },
+      {
+        "symptomName": "Arthralgia or arthritis",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "joint pain or swelling",
+          "arthritis symptoms",
+          "painful or inflamed joints"
+        ]
+      },
+      {
+        "symptomName": "Electromyographic myopathic changes",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "abnormal muscle electrical activity",
+          "myopathic EMG changes",
+          "muscle function test abnormalities"
+        ]
+      },
+      {
+        "symptomName": "Presence of myositis-specific autoantibodies",
+        "frequency": 0.25,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "presence of muscle inflammation antibodies",
+          "autoantibodies linked to myositis",
+          "specific antibodies causing muscle disease"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Severe respiratory failure due to diaphragmatic paralysis",
+        "frequency": 0.05,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "severe breathing failure from diaphragm paralysis",
+          "respiratory failure due to weak diaphragm",
+          "difficulty breathing from diaphragm weakness"
+        ]
+      },
+      {
+        "symptomName": "Neurological symptoms due to concurrent myasthenia gravis",
+        "frequency": 0.07,
+        "bodySystem": "neurological",
+        "notes": "Overlap syndrome reported",
+        "searchTerms": [
+          "nerve symptoms from myasthenia gravis",
+          "muscle weakness due to autoimmune nerve disease",
+          "neurological signs of myasthenia"
+        ]
+      },
+      {
+        "symptomName": "Rhabdomyolysis with acute kidney injury",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "muscle breakdown causing kidney injury",
+          "rhabdomyolysis with acute renal failure",
+          "muscle damage leading to kidney problems"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "respiratory",
+    "cardiovascular",
+    "gastrointestinal",
+    "dermatological",
+    "neurological",
+    "renal",
+    "immunological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Markedly elevated serum creatine kinase (CK)",
+      "Elevated serum aldolase",
+      "Possible presence of myositis-specific autoantibodies",
+      "Elevated inflammatory markers (ESR, CRP)"
+    ],
+    "imaging": [
+      "Muscle MRI showing edema and inflammation",
+      "Cardiac MRI if myocarditis suspected"
+    ],
+    "genetic": [],
+    "other": [
+      "Muscle biopsy demonstrating inflammatory infiltrates with necrosis",
+      "Electromyography showing myopathic motor unit potentials"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "idiopathic-inflammatory-myopathies",
+      "distinguishingFeatures": [
+        "Lack of temporal association with immune checkpoint inhibitor therapy",
+        "Different autoantibody profiles",
+        "Slower onset in some cases"
+      ]
+    },
+    {
+      "diseaseId": "myasthenia-gravis",
+      "distinguishingFeatures": [
+        "Predominant ocular and bulbar weakness without elevated CK",
+        "Presence of acetylcholine receptor antibodies",
+        "Characteristic decremental response on repetitive nerve stimulation"
+      ]
+    },
+    {
+      "diseaseId": "rhabdomyolysis",
+      "distinguishingFeatures": [
+        "Acute muscle breakdown with severe CK elevation",
+        "Often related to trauma, drugs, or toxins rather than immunotherapy",
+        "Absence of inflammatory infiltrates on biopsy"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive muscle weakness with respiratory compromise",
+    "Concurrent myocarditis or cardiac arrhythmias",
+    "Severe dysphagia with risk of aspiration"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Rheumatologist",
+    "Oncologist",
+    "Immunologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Puzanov I, et al. Immune checkpoint inhibitor-induced myositis: clinical features and management. J Immunother Cancer. 2021;9(6):e002553.",
+    "Suzuki S, et al. Immune checkpoint inhibitor-associated myositis: clinical and pathological features. Neurology. 2019;92(10):e1228-e1237.",
+    "Orphanet: Immune checkpoint inhibitor-induced myositis. ORPHA:714829."
+  ],
+  "confidenceInData": "ai-generated"
+}

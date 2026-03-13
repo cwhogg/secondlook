@@ -1,0 +1,253 @@
+{
+  "id": "thymic-epithelial-neoplasm",
+  "name": "Thymic Epithelial Neoplasm",
+  "aliases": [
+    "Thymoma",
+    "Thymic Tumor"
+  ],
+  "icd10Codes": [
+    "C37"
+  ],
+  "orphanetId": "ORPHA:3398",
+  "prevalence": {
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Thymic Epithelial Tumors",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation of thymic epithelial tumor subtype",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging",
+        "description": "CT or MRI showing anterior mediastinal mass consistent with thymic tumor",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Presence of paraneoplastic syndromes such as myasthenia gravis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation combined with imaging evidence of an anterior mediastinal mass",
+    "notes": "Diagnosis requires exclusion of metastatic disease and other mediastinal masses"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Anterior mediastinal mass detected on imaging",
+        "frequency": 0.85,
+        "bodySystem": "respiratory",
+        "notes": "Often asymptomatic and found incidentally",
+        "searchTerms": [
+          "mass in front of chest detected by scan",
+          "tumor in anterior mediastinum",
+          "chest imaging showing mass"
+        ]
+      },
+      {
+        "symptomName": "Myasthenia gravis with fluctuating skeletal muscle weakness",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Common paraneoplastic syndrome associated with thymoma",
+        "searchTerms": [
+          "muscle weakness that fluctuates",
+          "weakness in skeletal muscles varying over time",
+          "muscle fatigue that changes"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chest pain localized to anterior mediastinum",
+        "frequency": 0.65,
+        "bodySystem": "respiratory",
+        "notes": "Due to tumor invasion or compression",
+        "searchTerms": [
+          "chest pain in front of chest",
+          "pain behind breastbone",
+          "anterior chest discomfort"
+        ]
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.6,
+        "bodySystem": "respiratory",
+        "notes": "From mass effect or pleural effusion",
+        "searchTerms": [
+          "shortness of breath when active",
+          "breathlessness on exertion",
+          "difficulty breathing with activity"
+        ]
+      },
+      {
+        "symptomName": "Cough, non-productive",
+        "frequency": 0.55,
+        "bodySystem": "respiratory",
+        "notes": "Due to airway irritation"
+      },
+      {
+        "symptomName": "Superior vena cava syndrome",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular",
+        "notes": "Compression of superior vena cava by tumor",
+        "searchTerms": [
+          "swelling from blocked chest vein",
+          "vein blockage causing face/neck swelling",
+          "superior vena cava blockage symptoms"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hoarseness due to recurrent laryngeal nerve involvement",
+        "frequency": 0.3,
+        "bodySystem": "otolaryngological",
+        "notes": "Tumor invasion or compression",
+        "searchTerms": [
+          "voice changes from nerve damage",
+          "hoarse voice due to nerve involvement",
+          "recurrent nerve causing hoarseness"
+        ]
+      },
+      {
+        "symptomName": "Pericardial effusion",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to tumor invasion"
+      },
+      {
+        "symptomName": "Weight loss and anorexia",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "notes": "Systemic effects of malignancy",
+        "searchTerms": [
+          "unintentional weight loss and poor appetite",
+          "losing weight with decreased hunger",
+          "weight reduction and anorexia"
+        ]
+      },
+      {
+        "symptomName": "Anemia of chronic disease",
+        "frequency": 0.15,
+        "bodySystem": "hematological",
+        "notes": "Paraneoplastic or chronic inflammation",
+        "searchTerms": [
+          "low red blood cells from chronic illness",
+          "anemia due to long-term disease",
+          "chronic disease causing low blood count"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pure red cell aplasia",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "notes": "Rare paraneoplastic syndrome",
+        "searchTerms": [
+          "failure to produce red blood cells",
+          "pure red cell aplasia causing anemia"
+        ]
+      },
+      {
+        "symptomName": "Hypogammaglobulinemia",
+        "frequency": 0.04,
+        "bodySystem": "immunological",
+        "notes": "Good syndrome associated with thymoma"
+      },
+      {
+        "symptomName": "Superior mediastinal syndrome with facial edema",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Severe venous obstruction",
+        "searchTerms": [
+          "swelling of face from upper chest vein blockage",
+          "facial edema due to mediastinal compression",
+          "superior mediastinal syndrome with facial swelling"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "neurological",
+    "cardiovascular",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated acetylcholine receptor antibodies in myasthenia gravis",
+      "Anemia or cytopenias in paraneoplastic syndromes",
+      "Hypogammaglobulinemia in Good syndrome"
+    ],
+    "imaging": [
+      "CT scan showing well-defined anterior mediastinal mass",
+      "MRI to assess local invasion",
+      "PET scan for metabolic activity and staging"
+    ],
+    "genetic": [
+      "No specific germline mutations identified",
+      "Somatic mutations occasionally found in thymic carcinoma subtypes",
+      "Autosomal recessive inheritance"
+    ],
+    "other": [
+      "Histopathological classification per WHO criteria",
+      "Immunohistochemistry positive for cytokeratins"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "lymphoma-mediastinal",
+      "distinguishingFeatures": [
+        "Lymphadenopathy with systemic B symptoms",
+        "Histology showing lymphoid malignancy",
+        "Different immunophenotype on biopsy"
+      ]
+    },
+    {
+      "diseaseId": "germ-cell-tumor-mediastinal",
+      "distinguishingFeatures": [
+        "Elevated serum alpha-fetoprotein or beta-hCG",
+        "Histology showing germ cell elements",
+        "Younger age group predominance"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive respiratory distress",
+    "Signs of superior vena cava syndrome",
+    "New onset or worsening myasthenic crisis"
+  ],
+  "specialistType": [
+    "Thoracic Surgeon",
+    "Oncologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Travis WD, Brambilla E, Burke AP, Marx A, Nicholson AG. WHO Classification of Tumours of the Lung, Pleura, Thymus and Heart. IARC; 2015.",
+    "Detterbeck FC, Zeeshan A. Thymoma: current diagnosis and treatment. Chin J Cancer Res. 2013;25(1):19-29.",
+    "Engels EA. Epidemiology of thymoma and associated malignancies. J Thorac Oncol. 2010;5(10 Suppl 4):S260-5."
+  ],
+  "confidenceInData": "ai-generated"
+}

@@ -1,0 +1,208 @@
+{
+  "id": "pyomyositis",
+  "name": "Pyomyositis",
+  "aliases": [
+    "Tropical pyomyositis",
+    "Suppurative myositis"
+  ],
+  "icd10Codes": [
+    "M60.0"
+  ],
+  "orphanetId": "ORPHA:764",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.001%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "More common in tropical regions and immunocompromised populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Imaging Diagnostic Criteria for Pyomyositis",
+    "criteria": [
+      {
+        "id": "clinical-presentation",
+        "description": "Localized muscle swelling, tenderness, and erythema",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-evidence",
+        "description": "MRI or ultrasound showing intramuscular abscess or muscle edema",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "microbiological-confirmation",
+        "description": "Positive culture from muscle aspirate or blood culture",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "systemic-features",
+        "description": "Fever and elevated inflammatory markers (e.g., CRP, ESR)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of localized muscle signs plus imaging evidence of abscess or muscle inflammation",
+    "notes": "Microbiological confirmation supports diagnosis but is not mandatory if clinical and imaging findings are conclusive."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Subcutaneous nodule",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Myositis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Recurrent cutaneous abscess formation",
+        "frequency": 0.9,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "frequent skin abscesses",
+          "recurrent pus-filled skin infections",
+          "repeated cutaneous boils"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Leukocytosis",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Recurrent infections",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Testicular teratoma",
+        "frequency": 0.55,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Sudden cardiac death",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "sudden heart-related death",
+          "unexpected cardiac arrest"
+        ]
+      },
+      {
+        "symptomName": "Sepsis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "renal",
+    "dermatological",
+    "cardiovascular",
+    "constitutional",
+    "hematological",
+    "immunological",
+    "musculoskeletal",
+    "reproductive"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated C-reactive protein (CRP) and erythrocyte sedimentation rate (ESR)",
+      "Leukocytosis with neutrophilia",
+      "Positive blood cultures in some cases"
+    ],
+    "imaging": [
+      "MRI showing muscle edema and abscess formation",
+      "Ultrasound demonstrating intramuscular fluid collections",
+      "CT scan may show muscle swelling and abscess"
+    ],
+    "genetic": [
+      "No known genetic mutations associated"
+    ],
+    "other": [
+      "Positive culture from muscle aspirate confirming causative organism (commonly Staphylococcus aureus)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "necrotizing-fasciitis",
+      "distinguishingFeatures": [
+        "Rapidly progressing soft tissue necrosis",
+        "Severe systemic toxicity",
+        "Involvement of fascia rather than isolated muscle"
+      ]
+    },
+    {
+      "diseaseId": "deep-vein-thrombosis",
+      "distinguishingFeatures": [
+        "Absence of muscle abscess on imaging",
+        "Presence of venous thrombosis on Doppler ultrasound",
+        "No systemic signs of infection"
+      ]
+    },
+    {
+      "diseaseId": "infectious-myopathy",
+      "distinguishingFeatures": [
+        "Diffuse muscle involvement without abscess formation",
+        "May be viral or parasitic etiology",
+        "Less localized swelling compared to pyomyositis"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly worsening muscle swelling with systemic toxicity",
+    "Signs of septic shock",
+    "Neurological deficits indicating possible compartment syndrome or nerve involvement"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Orthopedic Surgeon",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Chiedozi LC. Pyomyositis. Review of 205 cases in 112 patients. Am J Surg. 1979.",
+    "Crum NF. Bacterial pyomyositis in the United States. Am J Med. 2004.",
+    "Orphanet: Pyomyositis - https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=764"
+  ],
+  "confidenceInData": "medium"
+}

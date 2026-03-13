@@ -1,0 +1,255 @@
+{
+  "id": "infectious-disease-with-peripheral-neuropathy",
+  "name": "Infectious Disease with Peripheral Neuropathy",
+  "aliases": [
+    "Infectious Neuropathy",
+    "Infection-Associated Peripheral Neuropathy"
+  ],
+  "icd10Codes": [
+    "G62.9"
+  ],
+  "orphanetId": "ORPHA:206613",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 70,
+      "peak": 40
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Infectious Peripheral Neuropathy Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clinical-neuropathy",
+        "description": "Presence of clinical signs and symptoms consistent with peripheral neuropathy including sensory and/or motor deficits",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "infectious-agent-evidence",
+        "description": "Laboratory or microbiological evidence of an infectious agent known to cause neuropathy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "electrodiagnostic-confirmation",
+        "description": "Electrodiagnostic studies confirming peripheral nerve involvement",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-other-causes",
+        "description": "Exclusion of other common causes of peripheral neuropathy such as diabetes, toxins, or hereditary neuropathies",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria must be met: clinical neuropathy, evidence of infectious agent, and electrodiagnostic confirmation",
+    "notes": "Diagnosis requires careful exclusion of other neuropathy etiologies and correlation with infectious disease history or testing."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Distal symmetric sensory loss",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "loss of feeling in hands and feet",
+          "numbness in fingers and toes",
+          "reduced sensation in distal limbs"
+        ]
+      },
+      {
+        "symptomName": "Peripheral nerve conduction slowing",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "slow nerve signal transmission",
+          "delayed nerve conduction",
+          "peripheral nerve slowing"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Paresthesia in distal extremities",
+        "frequency": 0.8,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "tingling in fingers and toes",
+          "pins and needles in distal extremities",
+          "distal limb paresthesia"
+        ]
+      },
+      {
+        "symptomName": "Muscle weakness in distal limbs",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "weak muscles in hands and feet",
+          "loss of strength in distal limbs",
+          "muscle weakness in arms and legs"
+        ]
+      },
+      {
+        "symptomName": "Hyporeflexia or areflexia",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "reduced or absent reflexes",
+          "weak or missing tendon reflexes",
+          "hyporeflexia or areflexia"
+        ]
+      },
+      {
+        "symptomName": "Autonomic dysfunction (e.g., orthostatic hypotension)",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "autonomic nervous system problems",
+          "low blood pressure on standing",
+          "orthostatic hypotension"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Cranial nerve involvement",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "problems with facial and head nerves",
+          "nerve issues affecting face and head",
+          "cranial nerve dysfunction"
+        ]
+      },
+      {
+        "symptomName": "Neuropathic pain with burning or shooting quality",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "burning or shooting nerve pain",
+          "sharp nerve pain in limbs",
+          "tingling burning pain in arms or legs"
+        ]
+      },
+      {
+        "symptomName": "Muscle atrophy in chronic cases",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle wasting over time",
+          "shrinking muscles in chronic cases",
+          "loss of muscle bulk"
+        ]
+      },
+      {
+        "symptomName": "Mild sensory ataxia",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "mild problems with balance and coordination",
+          "slight unsteady walking",
+          "impaired coordination due to sensory loss"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Vasculitic skin lesions",
+        "frequency": 0.05,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin inflammation from vessel damage",
+          "vasculitis rash",
+          "red or purple skin spots"
+        ]
+      },
+      {
+        "symptomName": "Respiratory muscle weakness",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "weak breathing muscles",
+          "difficulty breathing due to muscle weakness",
+          "respiratory muscle fatigue"
+        ]
+      },
+      {
+        "symptomName": "Severe autonomic failure with urinary retention",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "severe autonomic failure",
+          "urinary retention from nerve dysfunction",
+          "loss of autonomic control with bladder problems"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "musculoskeletal",
+    "dermatological",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive serology or PCR for infectious agents (e.g., HIV, Hepatitis C, Lyme disease)",
+      "Elevated inflammatory markers (ESR, CRP) in some cases",
+      "CSF analysis may show elevated protein without pleocytosis"
+    ],
+    "imaging": [
+      "MRI may show nerve root or plexus enhancement in some cases",
+      "Ultrasound of peripheral nerves may reveal enlargement or hypoechogenicity"
+    ],
+    "genetic": [
+      "No specific genetic markers; genetic testing used to exclude hereditary neuropathies"
+    ],
+    "other": [
+      "Nerve biopsy may show inflammatory infiltrates or vasculitis",
+      "Electrodiagnostic studies demonstrate demyelination or axonal loss"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "diabetic-peripheral-neuropathy",
+      "distinguishingFeatures": [
+        "History of diabetes mellitus",
+        "Symmetric distal neuropathy without infectious markers",
+        "Elevated blood glucose or HbA1c"
+      ]
+    },
+    {
+      "diseaseId": "hereditary-sensory-and-motor-neuropathy",
+      "distinguishingFeatures": [
+        "Family history of neuropathy",
+        "Genetic testing positive for causative mutations",
+        "Chronic progressive course without infectious etiology"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive weakness or paralysis",
+    "Respiratory compromise or failure",
+    "Severe autonomic instability (e.g., arrhythmias, urinary retention)"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Infectious Disease Specialist",
+    "Rheumatologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Dyck PJ, Thomas PK. Peripheral Neuropathy. 4th ed. Elsevier; 2005.",
+    "Hughes RA, Cornblath DR. Guillain-Barré syndrome. Lancet. 2005 Nov 5;366(9497):1653-66.",
+    "Orphanet: Infectious disease with peripheral neuropathy. ORPHA:206613"
+  ],
+  "confidenceInData": "ai-generated"
+}

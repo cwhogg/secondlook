@@ -1,0 +1,259 @@
+{
+  "id": "rickettsial-disease",
+  "name": "Rickettsial Disease",
+  "aliases": [
+    "Spotted Fever Group Rickettsioses",
+    "Typhus Group Rickettsioses"
+  ],
+  "icd10Codes": [
+    "A77",
+    "A75"
+  ],
+  "orphanetId": "ORPHA:102021",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.01%-0.1%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "CDC Rickettsial Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "fever",
+        "description": "Acute onset of fever ≥38.0°C (100.4°F)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "rash",
+        "description": "Characteristic maculopapular or petechial rash appearing 3-5 days after fever onset",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "eschar",
+        "description": "Presence of inoculation eschar at tick bite site",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "serology",
+        "description": "Serologic evidence of Rickettsial infection by indirect immunofluorescence assay (IFA)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exposureHistory",
+        "description": "History of tick exposure or endemic area travel",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Fever plus either rash or eschar, and confirmatory serology or PCR",
+    "notes": "PCR testing of blood or tissue samples can aid early diagnosis; serology may be negative early in disease."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Inoculation eschar",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Necrotic lesion at tick bite site, highly specific"
+      },
+      {
+        "symptomName": "Maculopapular or petechial rash",
+        "frequency": 0.85,
+        "bodySystem": "dermatological",
+        "notes": "Typically appears 3-5 days after fever onset",
+        "searchTerms": [
+          "rash with small red bumps",
+          "maculopapular or petechial rash",
+          "red spotty skin rash"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "High-grade fever",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "notes": "Usually sudden onset"
+      },
+      {
+        "symptomName": "Severe headache",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Common early symptom"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal",
+        "notes": "Muscle aches and pains"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "notes": "May accompany systemic illness",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.55,
+        "bodySystem": "immunological",
+        "notes": "Regional lymph node enlargement"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological",
+        "notes": "Light sensitivity"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.3,
+        "bodySystem": "respiratory",
+        "notes": "Nonproductive cough"
+      },
+      {
+        "symptomName": "Confusion or altered mental status",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "May indicate CNS involvement",
+        "searchTerms": [
+          "confused thinking",
+          "altered mental state"
+        ]
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Enlarged liver on examination"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal",
+        "notes": "Joint pain without inflammation"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Myocarditis",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Inflammation of heart muscle"
+      },
+      {
+        "symptomName": "Acute renal failure",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "notes": "Severe kidney impairment",
+        "searchTerms": [
+          "sudden kidney failure",
+          "acute loss of kidney function",
+          "rapid kidney impairment"
+        ]
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "notes": "Rare complication"
+      },
+      {
+        "symptomName": "Pulmonary edema",
+        "frequency": 0.01,
+        "bodySystem": "respiratory",
+        "notes": "Fluid accumulation in lungs"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "constitutional",
+    "neurological",
+    "musculoskeletal",
+    "gastrointestinal",
+    "immunological",
+    "respiratory",
+    "cardiovascular",
+    "renal",
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Thrombocytopenia",
+      "Elevated liver transaminases",
+      "Hyponatremia",
+      "Positive serology by indirect immunofluorescence assay",
+      "PCR detection of Rickettsial DNA"
+    ],
+    "imaging": [
+      "Chest X-ray may show interstitial infiltrates or pulmonary edema",
+      "Brain imaging rarely shows meningoencephalitis"
+    ],
+    "genetic": [],
+    "other": [
+      "History of tick exposure or travel to endemic areas",
+      "Presence of inoculation eschar"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "infectious-mononucleosis",
+      "distinguishingFeatures": [
+        "Heterophile antibody positive",
+        "Pharyngitis and lymphadenopathy without rash or eschar"
+      ]
+    },
+    {
+      "diseaseId": "meningococcemia",
+      "distinguishingFeatures": [
+        "Rapid progression with purpura fulminans",
+        "Positive blood cultures for Neisseria meningitidis"
+      ]
+    },
+    {
+      "diseaseId": "leptospirosis",
+      "distinguishingFeatures": [
+        "Exposure to contaminated water",
+        "Jaundice and conjunctival suffusion"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid onset of altered mental status",
+    "Signs of multi-organ failure",
+    "Severe hypotension or shock"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Dermatologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Centers for Disease Control and Prevention. Rickettsial Diseases. CDC.gov",
+    "Parola P, Raoult D. Tick-borne bacterial diseases emerging in Europe. Clin Microbiol Infect. 2001",
+    "Walker DH. Rickettsiae and Rickettsial Infections: The Current State of Knowledge. Clin Infect Dis. 2007"
+  ],
+  "confidenceInData": "ai-generated"
+}

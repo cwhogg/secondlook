@@ -1,0 +1,236 @@
+{
+  "id": "acute-endophthalmitis",
+  "name": "Acute Endophthalmitis",
+  "aliases": [
+    "Postoperative Endophthalmitis",
+    "Infectious Endophthalmitis"
+  ],
+  "icd10Codes": [
+    "H44.0"
+  ],
+  "orphanetId": "ORPHA:279888",
+  "prevalence": {
+    "estimate": "1 in 5,000 to 1 in 10,000 intraocular surgeries",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical Diagnostic Criteria for Acute Endophthalmitis",
+    "criteria": [
+      {
+        "id": "intraocular-inflammation",
+        "description": "Presence of marked intraocular inflammation including hypopyon and vitritis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "recent-ocular-surgery-or-trauma",
+        "description": "History of recent intraocular surgery, penetrating ocular trauma, or intravitreal injection",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "microbiological-evidence",
+        "description": "Positive culture or PCR from aqueous or vitreous samples",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "ocular-pain",
+        "description": "Severe ocular pain and redness",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "decreased-visual-acuity",
+        "description": "Rapidly progressive decrease in visual acuity",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of marked intraocular inflammation plus history of recent intraocular surgery or trauma; microbiological confirmation supports diagnosis but is not mandatory.",
+    "notes": "Diagnosis is primarily clinical; early vitreous sampling is recommended for microbiological confirmation."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hypopyon",
+        "frequency": 0.85,
+        "bodySystem": "ophthalmological",
+        "notes": "Layering of pus in the anterior chamber"
+      },
+      {
+        "symptomName": "Severe vitritis",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological",
+        "notes": "Inflammation of the vitreous body causing hazy media"
+      },
+      {
+        "symptomName": "Marked conjunctival injection",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "red eyes with swollen blood vessels",
+          "bloodshot eyes",
+          "conjunctival redness"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Severe ocular pain",
+        "frequency": 0.8,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "intense eye pain",
+          "severe ocular discomfort",
+          "sharp pain in the eye"
+        ]
+      },
+      {
+        "symptomName": "Rapidly decreased visual acuity",
+        "frequency": 0.85,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "sudden worsening vision",
+          "quick loss of eyesight",
+          "rapid decline in visual clarity"
+        ]
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.7,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Eyelid edema",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Corneal edema",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hypotony (low intraocular pressure)",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "low pressure inside the eye",
+          "decreased eye fluid pressure",
+          "soft eye condition"
+        ]
+      },
+      {
+        "symptomName": "Anterior chamber flare",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "inflammation causing flare in eye chamber",
+          "protein flare in front eye chamber",
+          "cloudy fluid in eye anterior chamber"
+        ]
+      },
+      {
+        "symptomName": "Floaters",
+        "frequency": 0.35,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Mild fever",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Orbital cellulitis",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Panophthalmitis",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Systemic sepsis",
+        "frequency": 0.02,
+        "bodySystem": "constitutional"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "ophthalmological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive Gram stain or culture from aqueous or vitreous humor",
+      "PCR detection of bacterial or fungal DNA in intraocular fluids",
+      "Elevated inflammatory markers (e.g., ESR, CRP) may be present"
+    ],
+    "imaging": [
+      "B-scan ocular ultrasonography showing vitreous opacities and membrane formation",
+      "Optical coherence tomography (OCT) may show retinal edema and detachment"
+    ],
+    "genetic": [],
+    "other": [
+      "Slit-lamp examination revealing hypopyon and anterior chamber cells",
+      "Fundoscopic examination showing vitreous haze and retinal involvement"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "toxic-anterior-segment-syndrome",
+      "distinguishingFeatures": [
+        "Absence of infectious organisms on culture",
+        "Rapid onset after surgery but less severe vitritis",
+        "Usually no hypopyon"
+      ]
+    },
+    {
+      "diseaseId": "uveitis",
+      "distinguishingFeatures": [
+        "Chronic or recurrent inflammation",
+        "Lack of recent surgery or trauma",
+        "Negative microbiological studies"
+      ]
+    },
+    {
+      "diseaseId": "retinal-detachment",
+      "distinguishingFeatures": [
+        "Visual symptoms without significant intraocular inflammation",
+        "Characteristic fundoscopic findings",
+        "No hypopyon or vitritis"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly worsening vision loss",
+    "Severe ocular pain with hypopyon",
+    "Signs of systemic infection or sepsis"
+  ],
+  "specialistType": [
+    "Ophthalmologist",
+    "Infectious Disease Specialist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Endophthalmitis Vitrectomy Study Group. Results of the Endophthalmitis Vitrectomy Study. Arch Ophthalmol. 1995.",
+    "American Academy of Ophthalmology Preferred Practice Pattern: Endophthalmitis. 2019.",
+    "Kumar A, et al. Acute Endophthalmitis: Diagnosis and Management. Indian J Ophthalmol. 2020."
+  ],
+  "confidenceInData": "ai-generated"
+}

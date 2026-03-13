@@ -1,0 +1,227 @@
+{
+  "id": "chronic-intestinal-failure",
+  "name": "Chronic Intestinal Failure",
+  "aliases": [
+    "Intestinal Failure",
+    "Chronic Intestinal Insufficiency"
+  ],
+  "icd10Codes": [
+    "K91.2"
+  ],
+  "orphanetId": "294422",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "European Society for Clinical Nutrition and Metabolism (ESPEN) Criteria for Intestinal Failure",
+    "criteria": [
+      {
+        "id": "intestinal-insufficiency",
+        "description": "Inability of the gut to maintain protein-energy, fluid, electrolyte, or micronutrient balance",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "dependency-parenteral-nutrition",
+        "description": "Requirement for intravenous supplementation of fluids and/or nutrients for more than 3 months",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "malabsorption-symptoms",
+        "description": "Clinical evidence of malabsorption including diarrhea, steatorrhea, or weight loss",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of intestinal insufficiency with dependency on parenteral nutrition for over 3 months",
+    "notes": "Diagnosis is clinical and supported by nutritional assessment and exclusion of other causes of malabsorption."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Dependence on parenteral nutrition",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal",
+        "notes": "Essential for survival due to inadequate intestinal absorption",
+        "searchTerms": [
+          "need for intravenous nutrition",
+          "dependence on feeding through veins",
+          "parenteral feeding reliance"
+        ]
+      },
+      {
+        "symptomName": "Severe malabsorption syndrome",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Manifested by chronic diarrhea and nutrient deficiencies",
+        "searchTerms": [
+          "severe nutrient absorption problems",
+          "major digestive malabsorption",
+          "inability to absorb nutrients properly"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chronic diarrhea",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Steatorrhea",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Weight loss due to malnutrition",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "weight loss from poor nutrition",
+          "losing weight due to malnutrition",
+          "nutritional weight loss"
+        ]
+      },
+      {
+        "symptomName": "Electrolyte imbalances",
+        "frequency": 0.55,
+        "bodySystem": "endocrine",
+        "notes": "Including hypokalemia and hyponatremia"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Bacterial overgrowth syndrome",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "excess bacteria in small intestine",
+          "bacterial overgrowth in gut",
+          "too many bacteria causing symptoms"
+        ]
+      },
+      {
+        "symptomName": "Fatigue related to malnutrition",
+        "frequency": 0.25,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from poor nutrition",
+          "fatigue related to malnourishment",
+          "weakness due to lack of nutrients"
+        ]
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Liver dysfunction secondary to parenteral nutrition",
+        "frequency": 0.08,
+        "bodySystem": "gastrointestinal",
+        "notes": "May progress to fibrosis or cirrhosis",
+        "searchTerms": [
+          "liver problems from IV nutrition",
+          "parenteral nutrition causing liver damage",
+          "liver dysfunction linked to feeding method"
+        ]
+      },
+      {
+        "symptomName": "Venous thrombosis related to central venous catheter",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "blood clots from central catheter",
+          "venous thrombosis related to IV line",
+          "clot formation near catheter site"
+        ]
+      },
+      {
+        "symptomName": "Osteomalacia due to vitamin D deficiency",
+        "frequency": 0.04,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "soft bones from vitamin D lack",
+          "bone weakening due to vitamin deficiency",
+          "osteomalacia from low vitamin D"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "constitutional",
+    "endocrine",
+    "hematological",
+    "musculoskeletal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low serum albumin and prealbumin",
+      "Electrolyte disturbances (hypokalemia, hyponatremia)",
+      "Vitamin and micronutrient deficiencies (e.g., B12, fat-soluble vitamins)"
+    ],
+    "imaging": [
+      "Abdominal CT or MRI showing short bowel or structural abnormalities",
+      "Doppler ultrasound for catheter-related thrombosis"
+    ],
+    "genetic": [],
+    "other": [
+      "Dependence on long-term parenteral nutrition",
+      "Evidence of malabsorption on stool studies (e.g., fecal fat test)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "short-bowel-syndrome",
+      "distinguishingFeatures": [
+        "History of extensive bowel resection",
+        "Anatomical loss of absorptive surface"
+      ]
+    },
+    {
+      "diseaseId": "chronic-pancreatitis",
+      "distinguishingFeatures": [
+        "Pancreatic enzyme insufficiency",
+        "Imaging evidence of pancreatic calcifications"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid onset of severe dehydration and electrolyte imbalance",
+    "Signs of catheter-related bloodstream infection",
+    "Progressive liver dysfunction in parenteral nutrition-dependent patients"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Nutrition Specialist",
+    "Hepatologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Pironi L, et al. ESPEN guidelines on chronic intestinal failure in adults. Clin Nutr. 2015.",
+    "Crenn P, et al. Chronic intestinal failure: definition and classification. Clin Nutr. 2010.",
+    "Orphanet: Chronic Intestinal Failure. Orphanet Report Series. 2023."
+  ],
+  "confidenceInData": "ai-generated"
+}

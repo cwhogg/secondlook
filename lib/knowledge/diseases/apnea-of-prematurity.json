@@ -1,0 +1,168 @@
+{
+  "id": "apnea-of-prematurity",
+  "name": "Apnea of Prematurity",
+  "aliases": [
+    "Prematurity apnea",
+    "Neonatal apnea"
+  ],
+  "icd10Codes": [
+    "P28.3"
+  ],
+  "orphanetId": "ORPHA:99981",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 2,
+      "peak": 1
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical diagnosis based on neonatal apnea episodes",
+    "criteria": [
+      {
+        "id": "apnea-episode",
+        "description": "Cessation of breathing lasting 20 seconds or longer, or shorter if accompanied by bradycardia or oxygen desaturation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "prematurity",
+        "description": "Gestational age less than 37 weeks at birth",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-other-causes",
+        "description": "Exclusion of other causes of apnea such as infection, metabolic disturbances, or neurological disorders",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "associated-bradycardia",
+        "description": "Presence of bradycardia during apnea episodes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "oxygen-desaturation",
+        "description": "Oxygen desaturation accompanying apnea episodes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "At least one apnea episode in a premature infant with exclusion of other causes",
+    "notes": "Diagnosis is primarily clinical; polysomnography may be used in complex cases"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Cyanosis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Bradycardia",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hypoxemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Failure to thrive in infancy",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "poor infant growth",
+          "failure to gain weight as baby",
+          "slow growth in infancy"
+        ]
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "respiratory",
+    "constitutional",
+    "cardiovascular",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal metabolic panel unless secondary complications",
+      "Blood gas analysis may show hypoxemia and hypercapnia during episodes"
+    ],
+    "imaging": [
+      "Chest X-ray typically normal or shows prematurity-related lung changes",
+      "Brain ultrasound to exclude intracranial pathology if indicated"
+    ],
+    "genetic": [
+      "No specific genetic markers identified; multifactorial etiology"
+    ],
+    "other": [
+      "Polysomnography shows central apnea with associated bradycardia and oxygen desaturation",
+      "Cardiorespiratory monitoring detects apnea episodes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "bronchopulmonary-dysplasia",
+      "distinguishingFeatures": [
+        "Chronic lung disease with persistent oxygen requirement",
+        "Radiographic evidence of lung injury",
+        "Apnea often accompanied by increased work of breathing"
+      ]
+    },
+    {
+      "diseaseId": "sepsis-in-neonate",
+      "distinguishingFeatures": [
+        "Systemic signs of infection",
+        "Positive blood cultures",
+        "Apnea accompanied by temperature instability and lethargy"
+      ]
+    },
+    {
+      "diseaseId": "gastroesophageal-reflux-disease",
+      "distinguishingFeatures": [
+        "Apnea episodes temporally related to feeding",
+        "Presence of regurgitation or vomiting",
+        "Improvement with anti-reflux therapy"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Apnea episodes lasting longer than 20 seconds with severe bradycardia",
+    "Apnea associated with seizures or altered consciousness",
+    "Failure to respond to standard supportive care and methylxanthine therapy"
+  ],
+  "specialistType": [
+    "Neonatologist",
+    "Pediatric Pulmonologist",
+    "Pediatric Neurologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Martin RJ, et al. Apnea of prematurity: pathophysiology and management. Pediatr Pulmonol. 2019.",
+    "Orphanet: Apnea of prematurity (ORPHA:99981)",
+    "American Academy of Pediatrics Clinical Report on Apnea of Prematurity, 2020"
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,229 @@
+{
+  "id": "atrial-septal-aneurysm",
+  "name": "Atrial Septal Aneurysm",
+  "aliases": [
+    "ASA",
+    "Aneurysmal Interatrial Septum"
+  ],
+  "icd10Codes": [
+    "I31.3"
+  ],
+  "orphanetId": "ORPHA:99107",
+  "prevalence": {
+    "estimate": "1 in 1,000",
+    "range": "0.2-2%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Echocardiographic Diagnostic Criteria for Atrial Septal Aneurysm",
+    "criteria": [
+      {
+        "id": "septal-bulging",
+        "description": "Bulging of the interatrial septum into either atrium exceeding 10 mm beyond the plane of the atrial septum",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "septal-motion",
+        "description": "Phasic excursion of the septum with a total excursion amplitude of at least 15 mm",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "echocardiographic-visualization",
+        "description": "Visualization of the aneurysmal septum by transthoracic or transesophageal echocardiography",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "associated-patent-foramen-ovale",
+        "description": "Presence of patent foramen ovale or atrial septal defect detected by contrast echocardiography",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of bulging interatrial septum exceeding 10 mm with phasic excursion of at least 15 mm confirmed by echocardiography",
+    "notes": "Diagnosis is primarily echocardiographic; transesophageal echocardiography provides higher sensitivity."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Interatrial septal bulging detected on echocardiography",
+        "frequency": 0.95,
+        "bodySystem": "cardiovascular",
+        "notes": "Defining feature visualized on imaging",
+        "searchTerms": [
+          "bulging wall between heart chambers",
+          "echocardiogram shows septal bulge",
+          "heart wall protrusion on ultrasound"
+        ]
+      },
+      {
+        "symptomName": "Phasic excursion of interatrial septum exceeding 15 mm",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "large movement of heart septum",
+          "septum moves more than 15 mm",
+          "excessive septal motion"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Paradoxical embolism-related transient ischemic attacks",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "notes": "Due to right-to-left shunting",
+        "searchTerms": [
+          "mini strokes from paradoxical clots",
+          "temporary brain ischemia from embolism",
+          "TIA caused by unusual embolism"
+        ]
+      },
+      {
+        "symptomName": "Cryptogenic stroke",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrial arrhythmias",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.3,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "shortness of breath when active",
+          "breathlessness on exertion",
+          "difficulty breathing with activity"
+        ]
+      },
+      {
+        "symptomName": "Fatigue related to reduced cardiac efficiency",
+        "frequency": 0.25,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from weak heart",
+          "fatigue due to poor heart pumping",
+          "low energy from heart problems"
+        ]
+      },
+      {
+        "symptomName": "Migraine with aura",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Associated with right-to-left shunting",
+        "searchTerms": [
+          "headache with visual disturbances",
+          "migraine with warning signs",
+          "aura before headache"
+        ]
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Systemic embolism to peripheral organs",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "blood clots in organs",
+          "embolism affecting limbs or organs",
+          "blockage in peripheral vessels"
+        ]
+      },
+      {
+        "symptomName": "Heart failure symptoms",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "symptoms of heart pumping failure",
+          "fluid buildup from heart failure",
+          "shortness of breath and swelling"
+        ]
+      },
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "respiratory",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [],
+    "imaging": [
+      "Echocardiographic visualization of aneurysmal interatrial septum",
+      "Contrast bubble study demonstrating right-to-left shunting",
+      "Transesophageal echocardiography for detailed septal assessment"
+    ],
+    "genetic": [],
+    "other": [
+      "Association with patent foramen ovale or atrial septal defect",
+      "Potential embolic phenomena secondary to shunting"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "patent-foramen-ovale",
+      "distinguishingFeatures": [
+        "Smaller septal excursion (<10 mm)",
+        "Lack of aneurysmal bulging",
+        "Typically no septal redundancy"
+      ]
+    },
+    {
+      "diseaseId": "atrial-septal-defect",
+      "distinguishingFeatures": [
+        "Presence of fixed interatrial communication",
+        "Absence of septal aneurysm morphology",
+        "Shunting usually left-to-right"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Cryptogenic stroke in young patient",
+    "Recurrent transient ischemic attacks without other cause",
+    "Systemic embolism of unknown origin"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Neurologist",
+    "Echocardiography Specialist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Olivares-Reyes A et al. Atrial Septal Aneurysm: Clinical and Echocardiographic Features. J Am Soc Echocardiogr. 2020.",
+    "Orphanet: Atrial Septal Aneurysm (ORPHA:99107)",
+    "Shah MJ et al. Clinical Significance of Atrial Septal Aneurysm. Circulation. 2019."
+  ],
+  "confidenceInData": "ai-generated"
+}

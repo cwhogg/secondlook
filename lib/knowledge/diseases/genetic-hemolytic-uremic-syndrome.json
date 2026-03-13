@@ -1,0 +1,278 @@
+{
+  "id": "genetic-hemolytic-uremic-syndrome",
+  "name": "Genetic Hemolytic Uremic Syndrome",
+  "aliases": [
+    "Hereditary Hemolytic Uremic Syndrome",
+    "Familial Hemolytic Uremic Syndrome"
+  ],
+  "icd10Codes": [
+    "D59.3"
+  ],
+  "omimId": "235400",
+  "orphanetId": "576742",
+  "prevalence": {
+    "estimate": "1 in 500,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 40,
+      "peak": 5
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Diagnostic Criteria for Atypical Hemolytic Uremic Syndrome (aHUS)",
+    "criteria": [
+      {
+        "id": "microangiopathic-hemolytic-anemia",
+        "description": "Presence of microangiopathic hemolytic anemia evidenced by schistocytes on blood smear and elevated LDH",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "thrombocytopenia",
+        "description": "Thrombocytopenia with platelet count below normal reference range",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "acute-renal-failure",
+        "description": "Acute kidney injury with elevated serum creatinine and reduced glomerular filtration rate",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "complement-gene-mutation",
+        "description": "Identification of pathogenic mutations in complement regulatory genes (e.g., CFH, CFI, MCP)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-of-shiga-toxin",
+        "description": "Exclusion of Shiga toxin-producing Escherichia coli infection",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of microangiopathic hemolytic anemia, thrombocytopenia, and acute renal failure in the absence of Shiga toxin infection; genetic testing supportive but not mandatory.",
+    "notes": "Genetic testing aids in confirming diagnosis and guiding treatment but clinical presentation is paramount."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Microangiopathic hemolytic anemia",
+        "frequency": 0.95,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "anemia from small blood vessel damage",
+          "red blood cell destruction in tiny vessels",
+          "hemolytic anemia due to microvascular injury"
+        ]
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Acute kidney injury",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "sudden kidney failure",
+          "acute loss of kidney function",
+          "rapid kidney injury"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hypertension secondary to renal impairment",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "high blood pressure from kidney problems",
+          "renal-related hypertension",
+          "blood pressure increase due to kidney issues"
+        ]
+      },
+      {
+        "symptomName": "Oliguria or anuria",
+        "frequency": 0.7,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "very low urine output",
+          "little or no urine production",
+          "reduced kidney urine output"
+        ]
+      },
+      {
+        "symptomName": "Elevated lactate dehydrogenase (LDH)",
+        "frequency": 0.65,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "high LDH enzyme levels",
+          "elevated lactate dehydrogenase",
+          "increased LDH blood test"
+        ]
+      },
+      {
+        "symptomName": "Proteinuria",
+        "frequency": 0.6,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Neurological manifestations (e.g., seizures, confusion)",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "brain symptoms like seizures or confusion",
+          "neurological problems including convulsions",
+          "mental status changes with seizures"
+        ]
+      },
+      {
+        "symptomName": "Gastrointestinal symptoms (e.g., abdominal pain, diarrhea)",
+        "frequency": 0.35,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "stomach pain and diarrhea",
+          "digestive symptoms like abdominal cramps",
+          "gastrointestinal upset with diarrhea"
+        ]
+      },
+      {
+        "symptomName": "Fatigue related to anemia",
+        "frequency": 0.3,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from anemia",
+          "fatigue related to low red blood cells",
+          "weakness due to anemia"
+        ]
+      },
+      {
+        "symptomName": "Edema due to renal dysfunction",
+        "frequency": 0.25,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "swelling from kidney problems",
+          "fluid retention due to kidney issues",
+          "edema related to renal dysfunction"
+        ]
+      },
+      {
+        "symptomName": "Mild fever",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pulmonary edema secondary to fluid overload",
+        "frequency": 0.08,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "fluid in lungs from overload",
+          "lung swelling due to excess fluid",
+          "pulmonary fluid accumulation"
+        ]
+      },
+      {
+        "symptomName": "Visual disturbances due to hypertensive retinopathy",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "vision problems from high blood pressure damage",
+          "eye changes due to hypertensive retinopathy",
+          "blurred vision from blood vessel damage in eyes"
+        ]
+      },
+      {
+        "symptomName": "Cardiac involvement (e.g., heart failure)",
+        "frequency": 0.04,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart failure symptoms",
+          "heart muscle involvement",
+          "cardiac dysfunction signs"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "renal",
+    "cardiovascular",
+    "neurological",
+    "gastrointestinal",
+    "constitutional",
+    "respiratory",
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Schistocytes on peripheral blood smear",
+      "Elevated serum creatinine",
+      "Low platelet count",
+      "Elevated LDH",
+      "Decreased haptoglobin",
+      "Normal ADAMTS13 activity"
+    ],
+    "imaging": [
+      "Renal ultrasound showing normal or enlarged kidneys",
+      "Brain MRI in cases with neurological symptoms"
+    ],
+    "genetic": [
+      "Pathogenic mutations in complement regulatory genes such as CFH, CFI, MCP (CD46), C3, and CFB"
+    ],
+    "other": [
+      "Exclusion of Shiga toxin-producing E. coli infection by stool culture or PCR"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "shiga-toxin-associated-hemolytic-uremic-syndrome",
+      "distinguishingFeatures": [
+        "Presence of Shiga toxin-producing E. coli infection",
+        "Typically follows diarrheal illness",
+        "No complement gene mutations"
+      ]
+    },
+    {
+      "diseaseId": "thrombotic-thrombocytopenic-purpura",
+      "distinguishingFeatures": [
+        "Severe ADAMTS13 deficiency (<10% activity)",
+        "Prominent neurological symptoms",
+        "Less severe renal involvement"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive acute kidney injury",
+    "Severe thrombocytopenia with bleeding tendency",
+    "Neurological deterioration including seizures or coma"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Hematologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Noris M, Remuzzi G. Atypical hemolytic-uremic syndrome. N Engl J Med. 2009 Oct 22;361(17):1676-87.",
+    "Fremeaux-Bacchi V, et al. Genetics and complement in atypical hemolytic uremic syndrome: a review. Kidney Int. 2013 Mar;83(3):495-503.",
+    "Orphanet: Genetic Hemolytic Uremic Syndrome. ORPHA:576742."
+  ],
+  "confidenceInData": "ai-generated"
+}

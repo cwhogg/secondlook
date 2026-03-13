@@ -1,0 +1,240 @@
+{
+  "id": "adult-hepatocellular-carcinoma",
+  "name": "Adult Hepatocellular Carcinoma",
+  "aliases": [
+    "Hepatocellular Carcinoma",
+    "HCC",
+    "Liver Cell Carcinoma"
+  ],
+  "icd10Codes": [
+    "C22.0"
+  ],
+  "orphanetId": "ORPHA:210159",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 120,
+      "peak": 42
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "East Asian",
+      "Sub-Saharan African",
+      "Hispanic"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "American Association for the Study of Liver Diseases (AASLD) Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "imaging",
+        "description": "Characteristic arterial phase hyperenhancement with washout in venous or delayed phases on contrast-enhanced imaging (CT or MRI)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "serum-afp",
+        "description": "Elevated serum alpha-fetoprotein (AFP) levels above 400 ng/mL",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation of malignant hepatocellular tumor cells by biopsy",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cirrhosis-history",
+        "description": "Underlying chronic liver disease or cirrhosis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Typical imaging features on contrast-enhanced CT or MRI with or without elevated AFP; biopsy if imaging and AFP are inconclusive",
+    "notes": "Biopsy is reserved for atypical imaging or when non-invasive criteria are not met"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Palpable hepatic mass",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "notes": "Firm, irregular liver enlargement",
+        "searchTerms": [
+          "liver lump felt on exam",
+          "palpable mass in liver area",
+          "detectable liver swelling"
+        ]
+      },
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal",
+        "notes": "Yellow discoloration of skin and sclera due to bile duct obstruction or liver failure"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Right upper quadrant abdominal pain",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Dull or sharp pain localized to liver area",
+        "searchTerms": [
+          "pain in right upper belly",
+          "right side abdominal pain",
+          "upper right stomach ache"
+        ]
+      },
+      {
+        "symptomName": "Unintentional weight loss",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Significant cachexia in advanced disease",
+        "searchTerms": [
+          "unplanned weight loss",
+          "losing weight without trying",
+          "involuntary weight reduction"
+        ]
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.58,
+        "bodySystem": "gastrointestinal",
+        "notes": "Enlarged liver on physical exam"
+      },
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "notes": "Abdominal fluid accumulation secondary to portal hypertension or liver failure"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fever of unknown origin",
+        "frequency": 0.3,
+        "bodySystem": "constitutional",
+        "notes": "Low-grade fever due to tumor necrosis or inflammation",
+        "searchTerms": [
+          "unexplained fever",
+          "fever with no known cause",
+          "persistent high temperature without diagnosis"
+        ]
+      },
+      {
+        "symptomName": "Hepatic encephalopathy",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Confusion or altered mental status due to liver failure"
+      },
+      {
+        "symptomName": "Gynecomastia",
+        "frequency": 0.15,
+        "bodySystem": "endocrine",
+        "notes": "Hormonal imbalance due to liver dysfunction"
+      },
+      {
+        "symptomName": "Spider angiomas",
+        "frequency": 0.12,
+        "bodySystem": "dermatological",
+        "notes": "Vascular lesions associated with liver disease"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Paraneoplastic hypercalcemia",
+        "frequency": 0.05,
+        "bodySystem": "endocrine",
+        "notes": "Due to ectopic production of parathyroid hormone-related protein"
+      },
+      {
+        "symptomName": "Erythrocytosis",
+        "frequency": 0.04,
+        "bodySystem": "hematological",
+        "notes": "Increased red blood cell mass from ectopic erythropoietin production"
+      },
+      {
+        "symptomName": "Thrombocytosis",
+        "frequency": 0.03,
+        "bodySystem": "hematological",
+        "notes": "Elevated platelet count as a paraneoplastic phenomenon"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "constitutional",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "hematological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum alpha-fetoprotein (AFP)",
+      "Abnormal liver function tests (elevated ALT, AST, bilirubin)",
+      "Coagulopathy with prolonged INR"
+    ],
+    "imaging": [
+      "Contrast-enhanced CT or MRI showing arterial phase hyperenhancement and venous washout",
+      "Ultrasound with Doppler showing hepatic mass with increased vascularity"
+    ],
+    "genetic": [
+      "AXIN1 (somatic)",
+      "PIK3CA (somatic)",
+      "CASP8 (somatic)",
+      "TP53 (candidate)",
+      "PDGFRL (candidate)",
+      "CTNNB1 (candidate)",
+      "TSC2 (candidate)",
+      "TSC1 (candidate)",
+      "EGF (susceptibility)"
+    ],
+    "other": [
+      "Underlying cirrhosis or chronic hepatitis B/C infection",
+      "Portal vein thrombosis in advanced cases"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "cholangiocarcinoma",
+      "distinguishingFeatures": [
+        "Bile duct origin with delayed contrast enhancement",
+        "Elevated CA 19-9 tumor marker",
+        "More common biliary obstruction symptoms"
+      ]
+    },
+    {
+      "diseaseId": "hepatic-metastases",
+      "distinguishingFeatures": [
+        "Multiple liver lesions rather than solitary mass",
+        "History of primary malignancy elsewhere",
+        "Different enhancement patterns on imaging"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging liver mass",
+    "Sudden onset of jaundice",
+    "Severe abdominal pain with signs of hemorrhage"
+  ],
+  "specialistType": [
+    "Hepatologist",
+    "Oncologist",
+    "Gastroenterologist",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "American Association for the Study of Liver Diseases Practice Guidelines, 2018",
+    "European Association for the Study of the Liver Clinical Practice Guidelines, 2018",
+    "UpToDate: Hepatocellular carcinoma: Epidemiology, etiology, and screening"
+  ],
+  "confidenceInData": "ai-generated"
+}

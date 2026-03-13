@@ -1,0 +1,711 @@
+{
+  "id": "meningioma",
+  "name": "Meningioma",
+  "aliases": [
+    "Meningeal tumor",
+    "Benign meningioma"
+  ],
+  "icd10Codes": [
+    "D32.0",
+    "D32.1",
+    "D32.9"
+  ],
+  "orphanetId": "ORPHA:2495",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of the Central Nervous System",
+    "criteria": [
+      {
+        "id": "imaging",
+        "description": "Characteristic extra-axial mass with dural attachment on MRI or CT",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation showing meningothelial cell proliferation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Neurological symptoms consistent with mass effect or location",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Radiological evidence of dural-based mass plus histopathological confirmation",
+    "notes": "Diagnosis relies primarily on imaging and histopathology; clinical features support but are not definitive."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chromosomal breakage induced by ionizing radiation",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "chromosome breaks from radiation",
+          "DNA damage caused by ionizing rays",
+          "radiation-induced chromosome damage"
+        ]
+      },
+      {
+        "symptomName": "Increased sensitivity to ionizing radiation",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high sensitivity to radiation",
+          "increased radiation damage risk",
+          "radiation hypersensitivity"
+        ]
+      },
+      {
+        "symptomName": "Intracranial meningioma",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hypogonadotropic hypogonadism",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Amenorrhea",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Impotence",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased circulating prolactin concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high blood prolactin levels",
+          "elevated prolactin hormone",
+          "increased circulating prolactin"
+        ]
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Decreased circulating ACTH level",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "low stress hormone stimulating hormone",
+          "decreased ACTH hormone level",
+          "reduced pituitary hormone controlling cortisol"
+        ]
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Decreased circulating cortisol level",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "low cortisol hormone",
+          "reduced stress hormone",
+          "decreased circulating cortisol"
+        ]
+      },
+      {
+        "symptomName": "Decreased serum estradiol",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "low estrogen hormone levels",
+          "decreased estradiol in blood",
+          "reduced female sex hormone"
+        ]
+      },
+      {
+        "symptomName": "Secondary growth hormone deficiency",
+        "frequency": 0.55,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "low growth hormone levels",
+          "growth hormone deficiency symptoms",
+          "reduced growth hormone production"
+        ]
+      },
+      {
+        "symptomName": "Pituitary hypothyroidism",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Abnormal brain FDG positron emission tomography",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "abnormal brain metabolism scan",
+          "FDG PET showing brain changes",
+          "brain glucose uptake abnormalities"
+        ]
+      },
+      {
+        "symptomName": "Focal T2 hypointense thalamic lesion",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "small dark spot in thalamus on MRI",
+          "thalamic lesion with low T2 signal",
+          "focal brain area with abnormal MRI signal"
+        ]
+      },
+      {
+        "symptomName": "Decreased circulating follicle stimulating hormone concentration",
+        "frequency": 0.55,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "low levels of follicle stimulating hormone",
+          "reduced FSH in blood",
+          "decreased reproductive hormone"
+        ]
+      },
+      {
+        "symptomName": "Decreased circulating luteinizing hormone level",
+        "frequency": 0.55,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "low luteinizing hormone levels",
+          "decreased LH hormone in blood",
+          "reduced LH hormone circulation"
+        ]
+      },
+      {
+        "symptomName": "Bitemporal hemianopia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased serum testosterone concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "low male hormone levels",
+          "decreased testosterone in blood",
+          "reduced male sex hormone"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ophthalmoplegia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Neurofibromas",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Papilledema",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cerebellum morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "abnormal shape or size of cerebellum",
+          "unusual cerebellum structure",
+          "cerebellum malformation"
+        ]
+      },
+      {
+        "symptomName": "Obesity",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Memory impairment",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "increased pressure inside the skull",
+          "raised intracranial pressure",
+          "brain swelling causing high pressure"
+        ]
+      },
+      {
+        "symptomName": "Upper limb muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness in arms",
+          "reduced strength in upper limbs",
+          "arm muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Functional motor deficit",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "difficulty moving muscles",
+          "loss of motor function",
+          "weakness affecting movement"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the sense of smell",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "impaired sense of smell",
+          "reduced smell ability",
+          "abnormal olfaction"
+        ]
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "paralysis of cranial nerves",
+          "loss of nerve function in head",
+          "facial or eye muscle paralysis"
+        ]
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness in legs",
+          "lower limb muscle weakness",
+          "difficulty moving legs"
+        ]
+      },
+      {
+        "symptomName": "Weak extraocular muscles",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "weak eye muscles",
+          "extraocular muscle weakness",
+          "difficulty moving eyes"
+        ]
+      },
+      {
+        "symptomName": "Slow decrease in visual acuity",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "gradual vision loss",
+          "slowly worsening eyesight",
+          "progressive decrease in vision"
+        ]
+      },
+      {
+        "symptomName": "Reduced circulating prolactin concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "low blood prolactin levels",
+          "reduced prolactin hormone",
+          "decreased circulating prolactin"
+        ]
+      },
+      {
+        "symptomName": "Hypothalamic hypothyroidism",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Facial palsy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of central motor function",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "central nervous system motor problems",
+          "impaired brain motor control",
+          "abnormal movement from brain"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of central sensory function",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal central sensory processing",
+          "impaired central sensation",
+          "central nervous system sensory dysfunction"
+        ]
+      },
+      {
+        "symptomName": "Neoplasm of the anterior pituitary",
+        "frequency": 0.17,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "tumor in front pituitary gland",
+          "pituitary gland growth",
+          "anterior pituitary mass"
+        ]
+      },
+      {
+        "symptomName": "Oculomotor nerve palsy",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "eye movement nerve weakness",
+          "paralysis of eye muscles",
+          "difficulty moving eyes"
+        ]
+      },
+      {
+        "symptomName": "Abnormal hypothalamus physiology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal hypothalamus function",
+          "dysregulated hypothalamic activity",
+          "hypothalamic physiological disturbance"
+        ]
+      },
+      {
+        "symptomName": "Enlarged pituitary gland",
+        "frequency": 0.17,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "enlarged pituitary gland",
+          "swollen pituitary",
+          "pituitary gland enlargement"
+        ]
+      },
+      {
+        "symptomName": "Visual acuity test abnormality",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "poor vision test results",
+          "abnormal eye acuity test",
+          "reduced sharpness of vision"
+        ]
+      },
+      {
+        "symptomName": "Abnormal kinetic perimetry test",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "visual field test abnormality",
+          "problems with peripheral vision test",
+          "kinetic perimetry defects"
+        ]
+      },
+      {
+        "symptomName": "Spinal meningioma",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Trigeminal neuralgia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gait disturbance",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Urinary incontinence",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Tinnitus",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Proptosis",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Blindness",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Emotional lability",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Excessive daytime somnolence",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "excessive daytime sleepiness",
+          "feeling very sleepy during the day",
+          "daytime drowsiness"
+        ]
+      },
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cerebral hemorrhage",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of speech or vocalization",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "speech problems",
+          "difficulty talking",
+          "abnormal voice sounds"
+        ]
+      },
+      {
+        "symptomName": "Brain stem compression",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "pressure on brainstem",
+          "brainstem compressed",
+          "brainstem squeezed causing symptoms"
+        ]
+      },
+      {
+        "symptomName": "Back pain",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Progressive pulmonary function impairment",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "worsening lung function over time",
+          "progressive breathing difficulty",
+          "gradual decline in pulmonary capacity"
+        ]
+      },
+      {
+        "symptomName": "Neoplasm of the skin",
+        "frequency": 0.03,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin tumor or growth",
+          "skin lump or mass",
+          "abnormal skin growth"
+        ]
+      },
+      {
+        "symptomName": "Transient global amnesia",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "temporary memory loss",
+          "sudden short-term amnesia",
+          "brief global amnesia episode"
+        ]
+      },
+      {
+        "symptomName": "Hemifacial spasm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Neoplasm of the posterior pituitary",
+        "frequency": 0.03,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "tumor in back part of pituitary",
+          "posterior pituitary growth",
+          "pituitary gland neoplasm"
+        ]
+      },
+      {
+        "symptomName": "Ear pain",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Abnormality on pulmonary function testing",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "abnormal lung function test",
+          "impaired breathing test results",
+          "lung capacity changes"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the mediastinum",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal chest cavity area between lungs",
+          "unusual mediastinum shape or size",
+          "mediastinum structural changes"
+        ]
+      },
+      {
+        "symptomName": "Neoplasm of the tongue",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tongue tumor",
+          "growth on tongue",
+          "tongue mass"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "constitutional",
+    "endocrine",
+    "neurological",
+    "gastrointestinal",
+    "ophthalmological",
+    "musculoskeletal",
+    "renal",
+    "otolaryngological",
+    "respiratory",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [],
+    "imaging": [
+      "MRI showing extra-axial, dural-based mass with homogeneous contrast enhancement",
+      "CT scan demonstrating hyperostosis of adjacent skull in some cases"
+    ],
+    "genetic": [
+      "SMARCB1 (causative)",
+      "PDGFB (causative)",
+      "SUFU (causative)",
+      "NF2 (somatic)",
+      "PIK3CA (somatic)",
+      "AKT1 (causative)",
+      "TERT (somatic)",
+      "BAP1 (causative)",
+      "BAP1 (somatic)",
+      "SMARCE1 (causative, loss-of-function)",
+      "TRAF7 (somatic)",
+      "SMO (somatic)"
+    ],
+    "other": [
+      "Histopathology revealing meningothelial whorls and psammoma bodies"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "glioma",
+      "distinguishingFeatures": [
+        "Intra-axial tumor location",
+        "Different histopathological features",
+        "Less common dural attachment"
+      ]
+    },
+    {
+      "diseaseId": "schwannoma",
+      "distinguishingFeatures": [
+        "Origin from Schwann cells of cranial nerves",
+        "Distinct Antoni A and B areas on histology",
+        "Typically located at cerebellopontine angle"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid neurological deterioration",
+    "New onset seizures in adult",
+    "Signs of increased intracranial pressure such as papilledema"
+  ],
+  "specialistType": [
+    "Neurosurgeon",
+    "Neurologist",
+    "Neuro-oncologist",
+    "Radiologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Louis DN, Perry A, Reifenberger G, et al. The 2021 WHO Classification of Tumors of the Central Nervous System: a summary. Neuro Oncol. 2021.",
+    "Wiemels J, Wrensch M, Claus EB. Epidemiology and etiology of meningioma. J Neurooncol. 2010.",
+    "Orphanet: Meningioma - ORPHA:2495"
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,205 @@
+{
+  "id": "thrombocytopenia-with-congenital-dyserythropoietic-anemia",
+  "name": "Thrombocytopenia with Congenital Dyserythropoietic Anemia",
+  "aliases": [
+    "CDA with thrombocytopenia",
+    "Congenital dyserythropoietic anemia type with thrombocytopenia"
+  ],
+  "icd10Codes": [
+    "D61.8",
+    "D69.6"
+  ],
+  "omimId": "615740",
+  "orphanetId": "67044",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 2,
+      "peak": 1
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Diagnostic criteria for Thrombocytopenia with Congenital Dyserythropoietic Anemia",
+    "criteria": [
+      {
+        "id": "dyserythropoiesis",
+        "description": "Presence of congenital dyserythropoiesis confirmed by bone marrow examination showing multinuclear erythroblasts and abnormal erythroid precursors",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "thrombocytopenia",
+        "description": "Persistent thrombocytopenia documented by platelet counts below normal reference range without evidence of immune-mediated destruction",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-confirmation",
+        "description": "Identification of pathogenic variants in genes associated with CDA and thrombocytopenia (e.g., KIF23 mutations)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hemolytic-anemia",
+        "description": "Evidence of hemolytic anemia with elevated reticulocyte count and indirect hyperbilirubinemia",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "absence-immune-thrombocytopenia",
+        "description": "Exclusion of immune thrombocytopenic purpura and other acquired causes of thrombocytopenia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria (dyserythropoiesis on marrow exam, persistent thrombocytopenia, and genetic confirmation) must be met",
+    "notes": "Diagnosis requires exclusion of acquired causes of anemia and thrombocytopenia"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Cryptorchidism",
+        "frequency": 0.9,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Hypochromic anemia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Poikilocytosis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anemia of inadequate production",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "anemia from low blood cell production",
+          "low red blood cells due to bone marrow failure",
+          "inadequate red cell formation"
+        ]
+      },
+      {
+        "symptomName": "Anisocytosis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal megakaryocyte morphology",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal platelet precursor cells",
+          "megakaryocyte shape changes",
+          "irregular platelet-producing cells"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of multiple cell lineages in the bone marrow",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "multiple blood cell types abnormal in marrow",
+          "bone marrow affecting several cell lines",
+          "multilineage bone marrow disorder"
+        ]
+      },
+      {
+        "symptomName": "Macrothrombocytopenia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal lactate dehydrogenase activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal LDH enzyme activity",
+          "high lactate dehydrogenase levels",
+          "enzyme changes indicating tissue damage"
+        ]
+      }
+    ],
+    "common": [],
+    "occasional": [],
+    "rare": []
+  },
+  "systemsAffected": [
+    "reproductive",
+    "hematological",
+    "constitutional",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Peripheral blood smear showing anisopoikilocytosis and thrombocytopenia",
+      "Bone marrow biopsy revealing multinuclear erythroblasts and dyserythropoiesis",
+      "Elevated lactate dehydrogenase (LDH) and indirect bilirubin indicating hemolysis",
+      "Low reticulocyte count despite anemia"
+    ],
+    "imaging": [
+      "Ultrasound showing splenomegaly and occasional hepatomegaly",
+      "Chest X-ray may reveal cardiomegaly in chronic severe anemia"
+    ],
+    "genetic": [
+      "GATA1 (causative)",
+      "X-linked recessive inheritance"
+    ],
+    "other": [
+      "Exclusion of immune thrombocytopenic purpura by negative platelet antibody testing"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "immune-thrombocytopenic-purpura",
+      "distinguishingFeatures": [
+        "Presence of platelet autoantibodies",
+        "Absence of dyserythropoiesis on bone marrow examination",
+        "Typically normal erythroid lineage"
+      ]
+    },
+    {
+      "diseaseId": "congenital-dyserythropoietic-anemia-type-i",
+      "distinguishingFeatures": [
+        "Dyserythropoiesis without thrombocytopenia",
+        "Characteristic chromatin abnormalities in erythroblasts",
+        "Different genetic mutations (e.g., CDAN1 gene)"
+      ]
+    },
+    {
+      "diseaseId": "myelodysplastic-syndrome",
+      "distinguishingFeatures": [
+        "Typically adult onset",
+        "Dysplasia in multiple hematopoietic lineages",
+        "Presence of cytogenetic abnormalities"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe thrombocytopenia with bleeding diathesis",
+    "Progressive anemia refractory to supportive care",
+    "Signs of bone marrow failure or transformation"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Geneticist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Bain BJ. Congenital dyserythropoietic anemias. Haematologica. 2006;91(4):482-6.",
+    "Orphanet: Thrombocytopenia with congenital dyserythropoietic anemia. ORPHA:67044.",
+    "OMIM Entry - # 615740 - THROMBOCYTOPENIA WITH CONGENITAL DYSEERYTHROPOIETIC ANEMIA."
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,237 @@
+{
+  "id": "pneumococcal-meningitis",
+  "name": "Pneumococcal Meningitis",
+  "aliases": [
+    "Streptococcus pneumoniae meningitis",
+    "Pneumococcal bacterial meningitis"
+  ],
+  "icd10Codes": [
+    "G00.1"
+  ],
+  "orphanetId": "ORPHA:55655",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 2
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Laboratory Diagnostic Criteria for Bacterial Meningitis",
+    "criteria": [
+      {
+        "id": "csf-culture",
+        "description": "Isolation of Streptococcus pneumoniae from cerebrospinal fluid culture",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "csf-pleocytosis",
+        "description": "Cerebrospinal fluid pleocytosis with neutrophilic predominance",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Presence of clinical signs consistent with meningitis such as fever, neck stiffness, and altered mental status",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "csf-gram-stain",
+        "description": "Gram stain of CSF showing gram-positive diplococci",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "blood-culture",
+        "description": "Positive blood culture for Streptococcus pneumoniae",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of clinical features consistent with meningitis plus either positive CSF culture for Streptococcus pneumoniae or CSF pleocytosis with neutrophilic predominance",
+    "notes": "Rapid diagnosis is critical; PCR testing may assist in cases with negative cultures."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Nuchal rigidity",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Altered mental status",
+        "frequency": 0.8,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "confused thinking",
+          "altered consciousness",
+          "mental status changes"
+        ]
+      },
+      {
+        "symptomName": "Positive Kernig's sign",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "neck stiffness causing leg pain",
+          "pain on straightening leg with bent knee",
+          "positive leg stretch test for meningitis"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "High-grade fever",
+        "frequency": 0.88,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache of acute onset",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "sudden severe headache",
+          "acute onset head pain",
+          "rapidly developing headache"
+        ]
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Positive Brudzinski's sign",
+        "frequency": 0.52,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "neck bending causes knee/hip flexion",
+          "involuntary leg movement when neck flexed",
+          "meningitis neck sign"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.4,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tachycardia",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Petechial rash",
+        "frequency": 0.15,
+        "bodySystem": "dermatological",
+        "notes": "May indicate concurrent bacteremia or sepsis"
+      },
+      {
+        "symptomName": "Lethargy",
+        "frequency": 0.2,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hearing loss",
+        "frequency": 0.08,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Cranial nerve palsies",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "weakness of cranial nerves",
+          "cranial nerve palsies causing facial or eye problems"
+        ]
+      },
+      {
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "constitutional",
+    "cardiovascular",
+    "ophthalmological",
+    "dermatological",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF pleocytosis with neutrophilic predominance",
+      "Low CSF glucose concentration",
+      "Elevated CSF protein",
+      "Positive CSF culture for Streptococcus pneumoniae",
+      "Positive blood cultures"
+    ],
+    "imaging": [
+      "CT or MRI may show meningeal enhancement or complications such as hydrocephalus or cerebral edema"
+    ],
+    "genetic": [],
+    "other": [
+      "Positive Gram stain of CSF showing gram-positive diplococci",
+      "PCR detection of pneumococcal DNA in CSF"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "neisseria-meningitidis-meningitis",
+      "distinguishingFeatures": [
+        "Presence of petechial or purpuric rash more common",
+        "Gram-negative diplococci on CSF Gram stain",
+        "More common in adolescents and young adults"
+      ]
+    },
+    {
+      "diseaseId": "viral-meningitis",
+      "distinguishingFeatures": [
+        "CSF pleocytosis with lymphocytic predominance",
+        "Generally milder clinical course",
+        "Negative bacterial cultures"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression to coma",
+    "Seizures refractory to treatment",
+    "Signs of increased intracranial pressure"
+  ],
+  "specialistType": [
+    "Infectious disease specialist",
+    "Neurologist",
+    "Critical care physician"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Tunkel AR, et al. Practice Guidelines for the Management of Bacterial Meningitis. Clin Infect Dis. 2004.",
+    "van de Beek D, et al. Community-acquired bacterial meningitis in adults. N Engl J Med. 2006.",
+    "CDC. Pneumococcal Disease. Epidemiology and Prevention of Vaccine-Preventable Diseases. 2023."
+  ],
+  "confidenceInData": "ai-generated"
+}

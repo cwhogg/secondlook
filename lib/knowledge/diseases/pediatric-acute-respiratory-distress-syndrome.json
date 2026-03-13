@@ -1,0 +1,215 @@
+{
+  "id": "pediatric-acute-respiratory-distress-syndrome",
+  "name": "Pediatric Acute Respiratory Distress Syndrome",
+  "aliases": [
+    "PARDS",
+    "Acute Lung Injury in Children"
+  ],
+  "icd10Codes": [
+    "J80"
+  ],
+  "orphanetId": "ORPHA:685082",
+  "prevalence": {
+    "estimate": "1 in 10,000 pediatric hospital admissions",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 18,
+      "peak": 2
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "PALICC (Pediatric Acute Lung Injury Consensus Conference) Criteria",
+    "criteria": [
+      {
+        "id": "acute-onset",
+        "description": "Acute onset of respiratory symptoms within 7 days of a known clinical insult",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hypoxemia",
+        "description": "Impaired oxygenation defined by oxygenation index (OI) ≥4 or oxygen saturation index (OSI) ≥5",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bilateral-infiltrates",
+        "description": "Bilateral infiltrates on chest imaging not fully explained by effusions, lobar/lung collapse, or nodules",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "no-cardiogenic-edema",
+        "description": "Respiratory failure not fully explained by cardiac failure or fluid overload",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "All major criteria must be met including acute onset, hypoxemia, bilateral infiltrates, and exclusion of cardiac failure",
+    "notes": "PALICC criteria adapted specifically for pediatric patients to improve diagnostic accuracy"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hypoxemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abnormal thorax morphology",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "chest shape abnormality",
+          "unusual rib cage structure",
+          "abnormal chest wall shape"
+        ]
+      },
+      {
+        "symptomName": "Cyanosis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Premature birth",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Tachypnea",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Nasal flaring",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pulmonary edema",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Atelectasis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Tachycardia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bradycardia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Cardiac arrest",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pneumonia",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Respiratory tract infection",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "lung or throat infection",
+          "respiratory tract infection",
+          "chest or airway infection"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sepsis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "constitutional",
+    "respiratory",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Arterial blood gas showing hypoxemia and respiratory acidosis",
+      "Elevated inflammatory markers (CRP, procalcitonin) if infectious etiology",
+      "Normal or low brain natriuretic peptide (BNP) to exclude cardiogenic edema"
+    ],
+    "imaging": [
+      "Chest X-ray showing bilateral diffuse alveolar infiltrates",
+      "Chest CT scan may show ground-glass opacities and consolidation"
+    ],
+    "genetic": [
+      "ABCA3 (candidate)",
+      "SFTPB (susceptibility)",
+      "SFTPC (susceptibility)"
+    ],
+    "other": [
+      "Echocardiography to exclude cardiac causes of pulmonary edema"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pediatric-cardiogenic-pulmonary-edema",
+      "distinguishingFeatures": [
+        "Elevated BNP levels",
+        "Echocardiographic evidence of cardiac dysfunction",
+        "Rapid improvement with diuretics"
+      ]
+    },
+    {
+      "diseaseId": "pediatric-pneumonia",
+      "distinguishingFeatures": [
+        "Localized infiltrates on imaging",
+        "Fever and leukocytosis",
+        "Positive microbiological cultures"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive hypoxemia despite maximal oxygen support",
+    "Development of multi-organ dysfunction syndrome",
+    "Hemodynamic instability requiring vasopressor support"
+  ],
+  "specialistType": [
+    "Pediatric Pulmonologist",
+    "Pediatric Intensivist",
+    "Pediatric Critical Care Specialist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Pediatric Acute Lung Injury Consensus Conference Group. Pediatric acute respiratory distress syndrome: consensus recommendations from the Pediatric Acute Lung Injury Consensus Conference. Pediatr Crit Care Med. 2015 Jun;16(5):428-39.",
+    "Khemani RG, Smith L, Lopez-Fernandez YM, et al. Pediatric acute respiratory distress syndrome: definition, incidence, and epidemiology: proceedings from the Pediatric Acute Lung Injury Consensus Conference. Pediatr Crit Care Med. 2015 Jun;16(5 Suppl 1):S23-40.",
+    "Flori HR, Glidden DV, Rutherford GW, Matthay MA. Pediatric acute lung injury: prospective evaluation of risk factors associated with mortality. Am J Respir Crit Care Med. 2005 Sep 1;171(9):995-1001."
+  ],
+  "confidenceInData": "medium"
+}

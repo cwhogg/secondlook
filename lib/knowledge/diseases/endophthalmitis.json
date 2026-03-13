@@ -1,0 +1,219 @@
+{
+  "id": "endophthalmitis",
+  "name": "Endophthalmitis",
+  "aliases": [
+    "Intraocular infection",
+    "Purulent endophthalmitis"
+  ],
+  "icd10Codes": [
+    "H44.0"
+  ],
+  "orphanetId": "ORPHA:199323",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 90,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Microbiological Diagnostic Criteria for Endophthalmitis",
+    "criteria": [
+      {
+        "id": "clinical-presentation",
+        "description": "Presence of ocular pain, decreased vision, and redness",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "intraocular-inflammation",
+        "description": "Evidence of vitritis or hypopyon on slit-lamp examination",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "microbiological-confirmation",
+        "description": "Positive culture or PCR from aqueous or vitreous humor",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "imaging-support",
+        "description": "Ultrasound evidence of vitreous opacities or membrane formation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of clinical presentation and intraocular inflammation; microbiological confirmation supports diagnosis but is not mandatory",
+    "notes": "Diagnosis is primarily clinical; microbiological and imaging studies aid confirmation and management."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hypopyon",
+        "frequency": 0.85,
+        "bodySystem": "ophthalmological",
+        "notes": "Layering of pus in the anterior chamber"
+      },
+      {
+        "symptomName": "Severe intraocular inflammation (vitritis)",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "severe eye inflammation inside the eye",
+          "intense vitritis causing eye pain",
+          "intraocular inflammation with vision issues"
+        ]
+      },
+      {
+        "symptomName": "Marked decrease in visual acuity",
+        "frequency": 0.8,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "significant vision loss",
+          "marked decrease in eyesight",
+          "poor visual clarity"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Ocular pain",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Conjunctival injection",
+        "frequency": 0.7,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Eyelid edema",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Floaters",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Corneal edema",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hypersensitivity to light",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "sensitivity to bright light",
+          "light causes eye discomfort",
+          "photophobia"
+        ]
+      },
+      {
+        "symptomName": "Mild anterior chamber flare",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "mild inflammation in front eye chamber",
+          "slight flare in eye fluid",
+          "anterior chamber irritation"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Retinal detachment",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Endogenous systemic signs (fever, malaise)",
+        "frequency": 0.07,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "fever and feeling unwell from internal illness",
+          "systemic symptoms like malaise and fever",
+          "body-wide signs of infection or inflammation"
+        ]
+      },
+      {
+        "symptomName": "Optic nerve dysfunction",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "optic nerve problems affecting vision",
+          "damage to nerve connecting eye to brain",
+          "vision loss from optic nerve dysfunction"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "ophthalmological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive Gram stain or culture from aqueous or vitreous samples",
+      "PCR detection of bacterial or fungal DNA"
+    ],
+    "imaging": [
+      "B-scan ocular ultrasound showing vitreous opacities or membranes",
+      "Optical coherence tomography (OCT) showing retinal edema or detachment"
+    ],
+    "genetic": [],
+    "other": [
+      "Slit-lamp examination revealing hypopyon and anterior chamber inflammation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "uveitis",
+      "distinguishingFeatures": [
+        "Usually non-infectious etiology",
+        "Lack of hypopyon or purulent inflammation",
+        "Absence of positive microbiological cultures"
+      ]
+    },
+    {
+      "diseaseId": "toxic-ocular-inflammatory-syndrome",
+      "distinguishingFeatures": [
+        "Non-infectious inflammation after surgery",
+        "Negative cultures",
+        "Rapid response to corticosteroids"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly worsening vision loss",
+    "Severe ocular pain with hypopyon",
+    "Signs of systemic infection or sepsis"
+  ],
+  "specialistType": [
+    "Ophthalmologist",
+    "Infectious disease specialist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Endophthalmitis Vitrectomy Study Group. Results of the Endophthalmitis Vitrectomy Study. Arch Ophthalmol. 1995.",
+    "American Academy of Ophthalmology Preferred Practice Pattern: Endophthalmitis. 2018.",
+    "Kuhn F, et al. Endophthalmitis: diagnosis and treatment. Dev Ophthalmol. 2016."
+  ],
+  "confidenceInData": "ai-generated"
+}

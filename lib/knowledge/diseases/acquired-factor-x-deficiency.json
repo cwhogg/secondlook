@@ -1,0 +1,224 @@
+{
+  "id": "acquired-factor-x-deficiency",
+  "name": "Acquired Factor X Deficiency",
+  "aliases": [
+    "Acquired Factor X Deficiency due to Amyloidosis",
+    "Acquired Coagulation Factor X Deficiency"
+  ],
+  "icd10Codes": [
+    "D68.1"
+  ],
+  "orphanetId": "599501",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No formal standardized criteria",
+    "criteria": [
+      {
+        "id": "prolonged-pt-apt",
+        "description": "Prolonged prothrombin time (PT) and activated partial thromboplastin time (aPTT) not corrected by mixing studies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "factor-x-activity",
+        "description": "Reduced Factor X activity levels in coagulation assays",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-congenital-causes",
+        "description": "Exclusion of congenital Factor X deficiency and other acquired coagulopathies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "amyloidosis-association",
+        "description": "Presence of systemic amyloidosis or other underlying disorders causing acquired deficiency",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Prolonged PT/aPTT with reduced Factor X activity and exclusion of congenital deficiency or other causes",
+    "notes": "Diagnosis often requires correlation with clinical bleeding and underlying disease such as amyloidosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Spontaneous mucocutaneous bleeding",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Includes epistaxis, gum bleeding",
+        "searchTerms": [
+          "bleeding from mucous membranes without injury",
+          "spontaneous bleeding in mouth or nose",
+          "unprovoked mucosal bleeding"
+        ]
+      },
+      {
+        "symptomName": "Severe bleeding following invasive procedures",
+        "frequency": 0.7,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "heavy bleeding after medical procedures",
+          "severe bleeding post-surgery",
+          "excessive hemorrhage following invasive treatment"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Easy bruising",
+        "frequency": 0.65,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hemarthrosis",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Prolonged bleeding from minor cuts",
+        "frequency": 0.58,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "long-lasting bleeding from small cuts",
+          "minor cuts bleed for a long time",
+          "prolonged bleeding from minor skin injuries"
+        ]
+      },
+      {
+        "symptomName": "Menorrhagia",
+        "frequency": 0.55,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Gastrointestinal bleeding",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.25,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Intramuscular hematomas",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue secondary to anemia",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness due to low blood count",
+          "fatigue from anemia",
+          "weakness related to anemia"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Intracranial hemorrhage",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.04,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Retinal hemorrhages",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "musculoskeletal",
+    "gastrointestinal",
+    "renal",
+    "neurological",
+    "respiratory",
+    "reproductive",
+    "constitutional",
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Prolonged PT and aPTT not corrected by mixing studies",
+      "Reduced Factor X activity levels (<50%)",
+      "Normal platelet count and function",
+      "Normal levels of other coagulation factors"
+    ],
+    "imaging": [
+      "Imaging to identify bleeding sites such as MRI for intracranial hemorrhage or ultrasound for hematomas"
+    ],
+    "genetic": [
+      "No genetic mutations as it is an acquired deficiency"
+    ],
+    "other": [
+      "Evidence of systemic amyloidosis or other underlying conditions (e.g., biopsy confirmation)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "congenital-factor-x-deficiency",
+      "distinguishingFeatures": [
+        "Early onset in childhood",
+        "Family history of bleeding",
+        "No association with amyloidosis or other systemic diseases"
+      ]
+    },
+    {
+      "diseaseId": "acquired-factor-viii-deficiency",
+      "distinguishingFeatures": [
+        "Presence of factor VIII inhibitors",
+        "Isolated prolonged aPTT",
+        "No reduction in Factor X activity"
+      ]
+    },
+    {
+      "diseaseId": "vitamin-k-deficiency",
+      "distinguishingFeatures": [
+        "Multiple factor deficiencies (II, VII, IX, X)",
+        "History of malnutrition or malabsorption",
+        "Correction with vitamin K administration"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe spontaneous bleeding without trauma",
+    "Intracranial hemorrhage",
+    "Bleeding refractory to standard plasma transfusions"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Coagulation specialist",
+    "Internal medicine physician"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Franchini M, Lippi G. Acquired factor X deficiency: a systematic review. Blood Transfus. 2010;8(3):149-54.",
+    "Orphanet: Acquired factor X deficiency. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=599501",
+    "Kumar S, et al. Acquired factor X deficiency in amyloidosis: clinical and laboratory features. Am J Hematol. 2013;88(6):E117-9."
+  ],
+  "confidenceInData": "ai-generated"
+}

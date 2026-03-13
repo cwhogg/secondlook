@@ -1,0 +1,219 @@
+{
+  "id": "insulin-autoimmune-syndrome",
+  "name": "Insulin Autoimmune Syndrome",
+  "aliases": [
+    "Hirata disease",
+    "Insulin antibody syndrome"
+  ],
+  "icd10Codes": [
+    "E16.2"
+  ],
+  "orphanetId": "411593",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 120,
+      "peak": 42
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Japanese",
+      "East Asian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Diagnostic criteria for Insulin Autoimmune Syndrome",
+    "criteria": [
+      {
+        "id": "hypoglycemia",
+        "description": "Documented spontaneous hypoglycemia with neuroglycopenic symptoms",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "high-insulin-levels",
+        "description": "Elevated serum insulin levels disproportionate to glucose concentration",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "insulin-autoantibodies",
+        "description": "Presence of high titers of insulin autoantibodies in serum",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-exogenous-insulin",
+        "description": "No history of exogenous insulin administration or insulinoma",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of spontaneous hypoglycemia, elevated insulin levels, and positive insulin autoantibodies",
+    "notes": "Exclusion of insulinoma and exogenous insulin use is essential"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hyperinsulinemic hypoglycemia",
+        "frequency": 1,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Insulin-resistant diabetes mellitus",
+        "frequency": 0.9,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "diabetes resistant to insulin treatment",
+          "high blood sugar despite insulin",
+          "insulin-resistant diabetes"
+        ]
+      },
+      {
+        "symptomName": "Insulin resistance",
+        "frequency": 0.9,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Systemic lupus erythematosus",
+        "frequency": 0.9,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "autoimmune disease affecting multiple organs",
+          "systemic autoimmune symptoms",
+          "chronic inflammatory autoimmune condition"
+        ]
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "high antibody levels in blood",
+          "increased circulating antibodies",
+          "elevated immune proteins"
+        ]
+      },
+      {
+        "symptomName": "Autoimmune antibody positivity",
+        "frequency": 0.9,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "presence of autoimmune antibodies",
+          "immune system attacking body tissues"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Acanthosis nigricans",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Nonketotic hypoglycemia",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Autoimmunity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Fasting hypoglycemia",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Arthralgia/arthritis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Reactive hypoglycemia",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "occasional": [],
+    "rare": []
+  },
+  "systemsAffected": [
+    "endocrine",
+    "dermatological",
+    "immunological",
+    "constitutional",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum insulin levels during hypoglycemia",
+      "High titers of insulin autoantibodies",
+      "Low C-peptide levels relative to insulin",
+      "Hypoglycemia confirmed by plasma glucose measurement"
+    ],
+    "imaging": [
+      "Negative pancreatic imaging excluding insulinoma (CT/MRI)"
+    ],
+    "genetic": [
+      "Association with HLA-DR4 and HLA-DRB1*0406 alleles in some populations"
+    ],
+    "other": [
+      "History of exposure to sulfhydryl-containing drugs (e.g., methimazole) in some cases"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "insulinoma",
+      "distinguishingFeatures": [
+        "Presence of pancreatic tumor on imaging",
+        "Elevated C-peptide and proinsulin levels",
+        "Absence of insulin autoantibodies"
+      ]
+    },
+    {
+      "diseaseId": "factitious-hypoglycemia",
+      "distinguishingFeatures": [
+        "History of exogenous insulin administration",
+        "Low C-peptide levels",
+        "Negative insulin autoantibodies"
+      ]
+    },
+    {
+      "diseaseId": "non-insulinoma-pancreatogenous-hypoglycemia-syndrome",
+      "distinguishingFeatures": [
+        "Postprandial hypoglycemia without insulin autoantibodies",
+        "Negative imaging for insulinoma",
+        "Normal or low insulin levels"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe neuroglycopenic episodes with seizures or loss of consciousness",
+    "Recurrent spontaneous hypoglycemia without clear cause",
+    "Failure to respond to standard hypoglycemia management"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Immunologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Hirata Y, Ishizu H, et al. Insulin autoimmune syndrome: a study of 73 Japanese patients. Diabetes. 1970.",
+    "Matsushita S, et al. Clinical features and treatment of insulin autoimmune syndrome. Endocr J. 2018.",
+    "Orphanet: Insulin Autoimmune Syndrome (ORPHA:411593)"
+  ],
+  "confidenceInData": "medium"
+}

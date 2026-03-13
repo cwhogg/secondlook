@@ -1,0 +1,258 @@
+{
+  "id": "acquired-human-prion-disease",
+  "name": "Acquired Human Prion Disease",
+  "aliases": [
+    "Acquired Prion Encephalopathy",
+    "Transmissible Spongiform Encephalopathy (Acquired)"
+  ],
+  "icd10Codes": [
+    "A81.0"
+  ],
+  "orphanetId": "ORPHA:576360",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Diagnostic Criteria for Creutzfeldt-Jakob Disease (adapted for acquired forms)",
+    "criteria": [
+      {
+        "id": "rapid-progressive-dementia",
+        "description": "Rapidly progressive dementia with cognitive decline",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "myoclonus",
+        "description": "Presence of myoclonus or other characteristic movement disorders",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "eeg-periodic-sharp-waves",
+        "description": "Periodic sharp wave complexes on electroencephalogram (EEG)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "positive-prp-scintigraphy",
+        "description": "Positive prion protein detection in cerebrospinal fluid or brain biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "mri-diffusion-restriction",
+        "description": "MRI showing diffusion restriction in basal ganglia or cortical ribboning",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Rapidly progressive dementia plus either myoclonus or positive prion protein detection; supportive findings from EEG or MRI strengthen diagnosis",
+    "notes": "Definitive diagnosis requires neuropathological confirmation or detection of prion protein in brain tissue or CSF."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Rapidly progressive dementia",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "rapidly worsening memory loss",
+          "quickly progressing dementia symptoms",
+          "fast cognitive decline"
+        ]
+      },
+      {
+        "symptomName": "Myoclonus",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Visual disturbances including cortical blindness",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "vision problems including cortical blindness",
+          "loss of sight due to brain issues",
+          "visual disturbances from brain dysfunction"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Ataxia and gait disturbances",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "balance problems",
+          "unsteady walking",
+          "coordination difficulties while walking"
+        ]
+      },
+      {
+        "symptomName": "Extrapyramidal signs (rigidity, bradykinesia)",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "muscle stiffness and slow movements",
+          "rigid muscles with slowed motion",
+          "movement problems with rigidity and slowness"
+        ]
+      },
+      {
+        "symptomName": "Behavioral and personality changes",
+        "frequency": 0.6,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "changes in behavior and personality",
+          "altered mood and social behavior",
+          "personality and behavioral shifts"
+        ]
+      },
+      {
+        "symptomName": "Sleep disturbances including insomnia",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "trouble falling or staying asleep",
+          "difficulty sleeping",
+          "insomnia or poor sleep quality"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Pyramidal signs (spasticity, hyperreflexia)",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "spasticity and overactive reflexes",
+          "pyramidal tract signs like muscle stiffness",
+          "increased reflexes and muscle tightness"
+        ]
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria and dysphagia",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "slurred speech",
+          "difficulty swallowing",
+          "problems speaking and swallowing"
+        ]
+      },
+      {
+        "symptomName": "Autonomic dysfunction (orthostatic hypotension, urinary incontinence)",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "low blood pressure when standing",
+          "urine leakage",
+          "problems with automatic body functions"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cerebellar tremor",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychosis (hallucinations, delusions)",
+        "frequency": 0.04,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "seeing or hearing things that aren't there",
+          "false beliefs",
+          "hallucinations and delusions"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "psychiatric",
+    "ophthalmological",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Detection of 14-3-3 protein in cerebrospinal fluid",
+      "Elevated tau protein in CSF",
+      "Positive RT-QuIC assay for prion protein"
+    ],
+    "imaging": [
+      "MRI diffusion-weighted imaging showing cortical ribboning and basal ganglia hyperintensity",
+      "Periodic sharp wave complexes on EEG"
+    ],
+    "genetic": [
+      "No consistent germline mutations; PRNP gene mutations typically absent in acquired forms"
+    ],
+    "other": [
+      "Neuropathological spongiform changes and prion protein deposition on brain biopsy or autopsy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "sporadic-creutzfeldt-jakob-disease",
+      "distinguishingFeatures": [
+        "No history of exposure to contaminated tissue or medical procedures",
+        "Older age at onset",
+        "Absence of iatrogenic or variant prion disease features"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-encephalitis",
+      "distinguishingFeatures": [
+        "Presence of autoantibodies",
+        "Response to immunotherapy",
+        "Slower progression"
+      ]
+    },
+    {
+      "diseaseId": "rapidly-progressive-alzheimer-disease",
+      "distinguishingFeatures": [
+        "Typical Alzheimer pathology on biomarkers",
+        "Slower progression",
+        "Lack of myoclonus and periodic EEG changes"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive cognitive decline over weeks to months",
+    "Myoclonus triggered by startle or spontaneous",
+    "MRI showing cortical ribboning or basal ganglia hyperintensity"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Infectious Disease Specialist",
+    "Neuropsychiatrist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "World Health Organization. Diagnostic criteria for Creutzfeldt-Jakob disease.",
+    "Centers for Disease Control and Prevention. Prion Diseases Fact Sheet.",
+    "Zerr I, et al. Updated clinical diagnostic criteria for sporadic Creutzfeldt-Jakob disease. Brain. 2009."
+  ],
+  "confidenceInData": "ai-generated"
+}

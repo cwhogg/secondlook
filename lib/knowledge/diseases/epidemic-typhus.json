@@ -1,0 +1,248 @@
+{
+  "id": "epidemic-typhus",
+  "name": "Epidemic Typhus",
+  "aliases": [
+    "Louse-borne typhus",
+    "Typhus fever"
+  ],
+  "icd10Codes": [
+    "A75.0"
+  ],
+  "orphanetId": "ORPHA:83314",
+  "prevalence": {
+    "estimate": "rare in developed countries, outbreaks in crowded conditions",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and epidemiological criteria for Epidemic Typhus",
+    "criteria": [
+      {
+        "id": "fever",
+        "description": "Sudden onset of high fever (>39°C)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "rash",
+        "description": "Maculopapular rash starting on the trunk and spreading to limbs",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "epidemiological-link",
+        "description": "History of exposure to body lice or living in overcrowded, unhygienic conditions",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "headache",
+        "description": "Severe frontal headache",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "delirium",
+        "description": "Altered mental status or delirium in severe cases",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of sudden high fever, characteristic rash, and epidemiological exposure",
+    "notes": "Serologic testing and PCR can confirm diagnosis but clinical and epidemiological criteria are primary"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Maculopapular rash with centripetal distribution",
+        "frequency": 0.85,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "red rash with small bumps spreading inward",
+          "maculopapular rash moving towards center",
+          "skin rash with flat and raised spots"
+        ]
+      },
+      {
+        "symptomName": "High-grade sudden onset fever",
+        "frequency": 0.95,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high fever starting suddenly",
+          "rapid onset high temperature",
+          "sudden severe fever"
+        ]
+      },
+      {
+        "symptomName": "Severe frontal headache",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "intense forehead headache",
+          "severe head pain front",
+          "strong pain in forehead"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Myalgia and generalized muscle tenderness",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle pain all over",
+          "body muscle soreness",
+          "general muscle tenderness"
+        ]
+      },
+      {
+        "symptomName": "Delirium or altered mental status",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "confusion and disorientation",
+          "altered consciousness",
+          "mental status changes"
+        ]
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nonproductive cough",
+        "frequency": 0.5,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Conjunctival injection",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      },
+      {
+        "symptomName": "Tachycardia disproportionate to fever",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "fast heartbeat not due to fever",
+          "rapid pulse unrelated to temperature",
+          "heart rate faster than expected"
+        ]
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.15,
+        "bodySystem": "immunological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pulmonary edema",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.07,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "constitutional",
+    "neurological",
+    "musculoskeletal",
+    "ophthalmological",
+    "respiratory",
+    "cardiovascular",
+    "gastrointestinal",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated liver enzymes (AST, ALT)",
+      "Thrombocytopenia",
+      "Leukocytosis or leukopenia",
+      "Positive Weil-Felix test (OX19 agglutination)",
+      "PCR detection of Rickettsia prowazekii DNA"
+    ],
+    "imaging": [
+      "Chest X-ray may show interstitial infiltrates or pulmonary edema in severe cases"
+    ],
+    "genetic": [],
+    "other": [
+      "Identification of body lice or nits on clothing",
+      "Epidemiological link to outbreaks in crowded, unhygienic conditions"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "scrub-typhus",
+      "distinguishingFeatures": [
+        "Presence of eschar at bite site",
+        "Geographic distribution (Asia-Pacific)",
+        "Different vector (chigger mite)"
+      ]
+    },
+    {
+      "diseaseId": "rocky-mountain-spotted-fever",
+      "distinguishingFeatures": [
+        "Tick exposure history",
+        "Rash starts on wrists and ankles spreading centrally",
+        "More common in North America"
+      ]
+    },
+    {
+      "diseaseId": "measles",
+      "distinguishingFeatures": [
+        "Koplik spots in oral mucosa",
+        "Cough, coryza, conjunctivitis triad",
+        "Rash starts on face and spreads downward"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression to coma or delirium",
+    "Development of pulmonary edema or respiratory distress",
+    "Severe hypotension or shock"
+  ],
+  "specialistType": [
+    "Infectious disease specialist",
+    "Dermatologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Raoult D, Roux V. Rickettsioses as paradigms of new or emerging infectious diseases. Clin Microbiol Rev. 1997 Oct;10(4):694-719.",
+    "Centers for Disease Control and Prevention (CDC). Epidemic Typhus. https://www.cdc.gov/typhus/epidemic/index.html",
+    "Parola P, Raoult D. Tick-borne bacterial diseases emerging in Europe. Clin Microbiol Infect. 2001 Apr;7(4):80-83."
+  ],
+  "confidenceInData": "ai-generated"
+}

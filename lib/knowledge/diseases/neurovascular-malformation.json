@@ -1,0 +1,240 @@
+{
+  "id": "neurovascular-malformation",
+  "name": "Neurovascular Malformation",
+  "aliases": [
+    "Cerebral Vascular Malformation",
+    "Intracranial Vascular Malformation"
+  ],
+  "icd10Codes": [
+    "Q28.2"
+  ],
+  "orphanetId": "ORPHA:102006",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Neurovascular Malformation Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "imaging-confirmation",
+        "description": "Identification of abnormal vascular structures on MRI, MRA, or cerebral angiography",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-symptoms",
+        "description": "Presence of neurological symptoms attributable to vascular malformation such as seizures or focal neurological deficits",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-other-causes",
+        "description": "Exclusion of other causes of neurological symptoms such as tumors or infections",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of neurovascular malformations or related syndromes",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Imaging confirmation of vascular malformation plus presence of neurological symptoms and exclusion of other causes",
+    "notes": "Diagnosis relies heavily on neuroimaging and clinical correlation."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Intracranial vascular nidus on imaging",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Characteristic finding on MRI or angiography",
+        "searchTerms": [
+          "abnormal blood vessel tangle in brain",
+          "brain vascular malformation on imaging",
+          "cluster of blood vessels in brain scan"
+        ]
+      },
+      {
+        "symptomName": "Seizures secondary to vascular malformation",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "seizures caused by blood vessel problems",
+          "epileptic episodes from vascular malformation",
+          "brain seizures linked to vessel abnormalities"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Focal neurological deficits",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "notes": "Depends on lesion location",
+        "searchTerms": [
+          "localized nerve problems",
+          "specific area neurological symptoms",
+          "focal weakness or numbness"
+        ]
+      },
+      {
+        "symptomName": "Headache associated with vascular malformation",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "headaches linked to blood vessel malformations",
+          "vascular-related head pain",
+          "headache from abnormal brain vessels"
+        ]
+      },
+      {
+        "symptomName": "Intracranial hemorrhage",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "notes": "May present as sudden neurological deterioration"
+      },
+      {
+        "symptomName": "Progressive neurological decline",
+        "frequency": 0.5,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "gradual worsening of neurological function",
+          "progressive brain or nerve decline",
+          "slow loss of neurological abilities"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Visual field defects",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "loss of part of vision",
+          "blind spots",
+          "partial visual field loss"
+        ]
+      },
+      {
+        "symptomName": "Dizziness or vertigo",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "feeling dizzy",
+          "spinning sensation",
+          "lightheadedness"
+        ]
+      },
+      {
+        "symptomName": "Transient ischemic attacks",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "mini strokes",
+          "temporary brain blood flow blockage"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hydrocephalus secondary to vascular malformation",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "fluid buildup in brain from vessel issues",
+          "brain swelling due to vascular malformation",
+          "hydrocephalus caused by abnormal vessels"
+        ]
+      },
+      {
+        "symptomName": "Cranial nerve palsies",
+        "frequency": 0.04,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "weakness of cranial nerves",
+          "cranial nerve palsies causing facial or eye problems"
+        ]
+      },
+      {
+        "symptomName": "Intracranial hypertension",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [],
+    "imaging": [
+      "MRI showing abnormal vascular tangles or nidus",
+      "Cerebral angiography demonstrating arteriovenous shunting",
+      "MRA revealing vascular malformations"
+    ],
+    "genetic": [
+      "Mutations in RASA1, KRIT1, CCM2, or PDCD10 genes in familial cases"
+    ],
+    "other": [
+      "Histopathology showing abnormal vessel architecture if biopsy performed"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "cerebral-arteriovenous-malformation",
+      "distinguishingFeatures": [
+        "Presence of high-flow arteriovenous shunts",
+        "More aggressive hemorrhage risk"
+      ]
+    },
+    {
+      "diseaseId": "cavernous-malformation",
+      "distinguishingFeatures": [
+        "Low-flow vascular lesions",
+        "Characteristic popcorn-like appearance on MRI"
+      ]
+    },
+    {
+      "diseaseId": "brain-tumor",
+      "distinguishingFeatures": [
+        "Mass effect with solid tumor characteristics on imaging",
+        "Absence of abnormal vascular nidus"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset of severe headache with neurological deficit",
+    "Rapid neurological deterioration",
+    "Intracranial hemorrhage on imaging"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neurosurgeon",
+    "Interventional Radiologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Orphanet: Neurovascular Malformations - ORPHA:102006",
+    "Friedlander RM. Clinical practice. Arteriovenous malformations of the brain. N Engl J Med. 2007;356(26):2704-2712.",
+    "Al-Shahi Salman R, et al. Hemorrhage from cerebral cavernous malformations: a systematic review. Neurology. 2008;71(17):1307-1313."
+  ],
+  "confidenceInData": "ai-generated"
+}

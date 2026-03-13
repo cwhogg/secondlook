@@ -1,0 +1,184 @@
+{
+  "id": "idiopathic-achalasia",
+  "name": "Idiopathic Achalasia",
+  "aliases": [
+    "Primary Achalasia",
+    "Esophageal Achalasia"
+  ],
+  "icd10Codes": [
+    "K22.0"
+  ],
+  "orphanetId": "ORPHA:930",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Chicago Classification Criteria for Achalasia",
+    "criteria": [
+      {
+        "id": "impaired-lower-esophageal-sphincter-relaxation",
+        "description": "Incomplete or absent relaxation of the lower esophageal sphincter (LES) on esophageal manometry",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "aperistalsis-of-esophageal-body",
+        "description": "Absence of normal esophageal peristalsis on manometry",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "esophageal-dilation",
+        "description": "Radiographic evidence of esophageal dilation with narrowed gastroesophageal junction on barium swallow",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "symptoms-of-dysphagia",
+        "description": "Progressive dysphagia for solids and liquids",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Presence of impaired LES relaxation and aperistalsis on manometry combined with clinical symptoms of dysphagia",
+    "notes": "Diagnosis requires exclusion of secondary causes such as Chagas disease."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gastroesophageal reflux",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Bronchitis",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Recurrent aspiration pneumonia",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "repeated lung infections from aspiration",
+          "recurrent pneumonia due to inhaled food or liquids"
+        ]
+      },
+      {
+        "symptomName": "Malnutrition",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Wheezing",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased prealbumin level",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "low blood protein prealbumin",
+          "decreased nutritional protein level",
+          "reduced prealbumin in blood"
+        ]
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "constitutional",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Exclusion of secondary causes such as negative serology for Chagas disease"
+    ],
+    "imaging": [
+      "Barium esophagram showing 'bird-beak' tapering of distal esophagus and esophageal dilation",
+      "Chest X-ray may show esophageal dilation"
+    ],
+    "genetic": [
+      "CRLF1 (causative)",
+      "HLA-DQA1 (susceptibility)",
+      "HLA-DQB1 (susceptibility)",
+      "NOS1 (causative)",
+      "Autosomal recessive inheritance"
+    ],
+    "other": [
+      "High-resolution esophageal manometry demonstrating absent peristalsis and impaired LES relaxation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chagas-disease-esophageal-involvement",
+      "distinguishingFeatures": [
+        "Positive serology for Trypanosoma cruzi",
+        "Endemic exposure history",
+        "Similar manometric findings but infectious etiology"
+      ]
+    },
+    {
+      "diseaseId": "esophageal-cancer",
+      "distinguishingFeatures": [
+        "Progressive dysphagia with weight loss",
+        "Mass or stricture on endoscopy",
+        "Histopathological confirmation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive dysphagia",
+    "Unexplained significant weight loss",
+    "Evidence of esophageal perforation or mediastinitis"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Esophageal Surgeon",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Kahrilas PJ, et al. The Chicago Classification of esophageal motility disorders, v3.0. Neurogastroenterol Motil. 2015.",
+    "Vaezi MF, et al. Achalasia: a systematic review. JAMA. 2013.",
+    "Orphanet: Idiopathic Achalasia (ORPHA:930)"
+  ],
+  "confidenceInData": "medium"
+}

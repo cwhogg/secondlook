@@ -1,0 +1,233 @@
+{
+  "id": "watson-syndrome",
+  "name": "Watson Syndrome",
+  "aliases": [
+    "Watson's Syndrome",
+    "Neurofibromatosis type 1 with pulmonic stenosis"
+  ],
+  "icd10Codes": [
+    "Q85.0"
+  ],
+  "orphanetId": "ORPHA:3444",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 20,
+      "peak": 5
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Watson Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "pulmonic-stenosis",
+        "description": "Presence of pulmonic valve stenosis confirmed by echocardiography",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cafe-au-lait-spots",
+        "description": "Multiple café-au-lait macules (≥6, each >5 mm in prepubertal individuals or >15 mm in postpubertal individuals)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "axillary-freckling",
+        "description": "Freckling in the axillary or inguinal regions",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "neurofibromas",
+        "description": "Presence of cutaneous neurofibromas",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "lisch-nodules",
+        "description": "Iris hamartomas (Lisch nodules) detected by slit-lamp examination",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of pulmonic stenosis plus at least two other major criteria including café-au-lait spots or neurofibromas",
+    "notes": "Diagnosis overlaps with Neurofibromatosis type 1 but distinguished by pulmonic stenosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Pulmonic valve stenosis",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Characteristic cardiac anomaly in Watson syndrome",
+        "searchTerms": [
+          "narrowing of pulmonary valve",
+          "pulmonic valve obstruction",
+          "heart valve stenosis affecting lungs"
+        ]
+      },
+      {
+        "symptomName": "Multiple café-au-lait macules",
+        "frequency": 0.9,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "multiple light brown skin spots",
+          "many café-au-lait spots",
+          "numerous pigmented skin patches"
+        ]
+      },
+      {
+        "symptomName": "Cutaneous neurofibromas",
+        "frequency": 0.75,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Axillary and inguinal freckling",
+        "frequency": 0.65,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "freckles in armpits and groin",
+          "axillary and inguinal freckling",
+          "small pigmented spots in underarm and groin areas"
+        ]
+      },
+      {
+        "symptomName": "Lisch nodules (iris hamartomas)",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "small iris spots",
+          "colored eye nodules",
+          "iris hamartomas seen in eye"
+        ]
+      },
+      {
+        "symptomName": "Short stature",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Learning difficulties",
+        "frequency": 0.5,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Macrocephaly",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Optic pathway glioma",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "tumor along optic nerve pathway",
+          "optic nerve glioma",
+          "vision pathway brain tumor"
+        ]
+      },
+      {
+        "symptomName": "Pheochromocytoma",
+        "frequency": 0.03,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Malignant peripheral nerve sheath tumors",
+        "frequency": 0.02,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "aggressive nerve tumors",
+          "cancerous nerve sheath growths",
+          "malignant nerve tumors"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "dermatological",
+    "neurological",
+    "ophthalmological",
+    "musculoskeletal",
+    "constitutional",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Normal routine blood tests",
+      "Possible elevated catecholamines if pheochromocytoma present"
+    ],
+    "imaging": [
+      "Echocardiography showing pulmonic valve stenosis",
+      "MRI brain may show optic pathway gliomas"
+    ],
+    "genetic": [
+      "Mutations in NF1 gene on chromosome 17q11.2"
+    ],
+    "other": [
+      "Slit-lamp examination revealing Lisch nodules"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "neurofibromatosis-type-1",
+      "distinguishingFeatures": [
+        "Absence of pulmonic stenosis",
+        "More frequent neurofibromas and optic gliomas"
+      ]
+    },
+    {
+      "diseaseId": "noonan-syndrome",
+      "distinguishingFeatures": [
+        "Pulmonic stenosis present but lacks café-au-lait spots and neurofibromas",
+        "Distinct facial features and short stature"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive pulmonic valve obstruction causing heart failure",
+    "Development of malignant peripheral nerve sheath tumors",
+    "Optic pathway glioma with vision loss"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Dermatologist",
+    "Geneticist",
+    "Neurologist",
+    "Ophthalmologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "National Organization for Rare Disorders (NORD) - Watson Syndrome",
+    "Orphanet Report Series - Watson Syndrome, ORPHA:3444",
+    "Neurofibromatosis: Phenotype, Natural History, and Pathogenesis, UpToDate"
+  ],
+  "confidenceInData": "ai-generated"
+}

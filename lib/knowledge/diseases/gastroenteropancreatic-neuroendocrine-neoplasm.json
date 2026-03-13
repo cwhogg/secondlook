@@ -1,0 +1,274 @@
+{
+  "id": "gastroenteropancreatic-neuroendocrine-neoplasm",
+  "name": "Gastroenteropancreatic Neuroendocrine Neoplasm",
+  "aliases": [
+    "GEP-NEN",
+    "Gastroenteropancreatic Neuroendocrine Tumor"
+  ],
+  "icd10Codes": [
+    "C7A.0",
+    "C7A.1",
+    "C7A.2"
+  ],
+  "orphanetId": "ORPHA:100092",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "range": "0.00002% - 0.002%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Higher incidence reported in Caucasian populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Gastroenteropancreatic Neuroendocrine Neoplasms",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histopathological confirmation of neuroendocrine differentiation with immunohistochemical markers (chromogranin A, synaptophysin)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "grading",
+        "description": "Tumor grading based on mitotic count and Ki-67 proliferation index",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging",
+        "description": "Radiological evidence of tumor localization and extent via CT, MRI, or somatostatin receptor scintigraphy/PET",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "biochemical",
+        "description": "Elevated serum markers such as chromogranin A and specific hormone levels depending on functional status",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation with immunohistochemical markers plus tumor grading is required for diagnosis.",
+    "notes": "Functional tumors may require additional biochemical testing for hormone secretion profiles."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Flushing episodes due to carcinoid syndrome",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Typically seen in serotonin-secreting tumors",
+        "searchTerms": [
+          "episodes of skin flushing",
+          "carcinoid flushing attacks",
+          "redness flare-ups from hormone release"
+        ]
+      },
+      {
+        "symptomName": "Secretory diarrhea associated with hormone secretion",
+        "frequency": 0.72,
+        "bodySystem": "gastrointestinal",
+        "notes": "Common in functional tumors producing serotonin or vasoactive intestinal peptide",
+        "searchTerms": [
+          "watery diarrhea from hormone secretion",
+          "secretory diarrhea",
+          "diarrhea caused by tumor hormones"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abdominal pain or discomfort",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Often nonspecific and related to tumor mass effect",
+        "searchTerms": [
+          "stomach pain",
+          "belly discomfort",
+          "abdominal ache"
+        ]
+      },
+      {
+        "symptomName": "Weight loss and anorexia",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "May reflect advanced disease",
+        "searchTerms": [
+          "unintentional weight loss and poor appetite",
+          "losing weight with decreased hunger",
+          "weight reduction and anorexia"
+        ]
+      },
+      {
+        "symptomName": "Hypoglycemia episodes (in insulinoma subtype)",
+        "frequency": 0.55,
+        "bodySystem": "endocrine",
+        "notes": "Seen in insulin-secreting tumors",
+        "searchTerms": [
+          "low blood sugar episodes",
+          "hypoglycemia in insulinoma",
+          "blood sugar drops from tumor"
+        ]
+      },
+      {
+        "symptomName": "Jaundice due to biliary obstruction",
+        "frequency": 0.58,
+        "bodySystem": "gastrointestinal",
+        "notes": "May occur with tumors obstructing bile ducts",
+        "searchTerms": [
+          "yellow skin from bile blockage",
+          "jaundice caused by bile duct obstruction",
+          "skin and eye yellowing due to blocked bile"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Heart valve lesions (carcinoid heart disease)",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Occurs secondary to serotonin-induced fibrosis",
+        "searchTerms": [
+          "heart valve damage from carcinoid",
+          "valve lesions in carcinoid heart disease",
+          "heart valve abnormalities"
+        ]
+      },
+      {
+        "symptomName": "Hypokalemia due to hormone secretion",
+        "frequency": 0.25,
+        "bodySystem": "endocrine",
+        "notes": "Seen in VIPomas causing secretory diarrhea",
+        "searchTerms": [
+          "low potassium levels",
+          "hypokalemia from hormone secretion",
+          "potassium deficiency due to tumor"
+        ]
+      },
+      {
+        "symptomName": "Peptic ulcer disease secondary to gastrin secretion",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal",
+        "notes": "Typical of gastrinoma subtype",
+        "searchTerms": [
+          "stomach ulcers from excess gastrin",
+          "peptic ulcers caused by hormone",
+          "gastrin-related stomach ulcers"
+        ]
+      },
+      {
+        "symptomName": "Palpitations and tachycardia",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "May be related to hormone secretion",
+        "searchTerms": [
+          "fast heartbeat",
+          "palpitations and rapid pulse",
+          "heart racing sensations"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cushingoid features due to ectopic ACTH secretion",
+        "frequency": 0.08,
+        "bodySystem": "endocrine",
+        "notes": "Rare ectopic hormone production",
+        "searchTerms": [
+          "Cushing-like features from excess ACTH",
+          "symptoms of high cortisol due to ectopic hormone",
+          "signs of cortisol excess from tumor hormone"
+        ]
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Paraneoplastic phenomenon"
+      },
+      {
+        "symptomName": "Hypotension related to vasoactive hormone secretion",
+        "frequency": 0.06,
+        "bodySystem": "cardiovascular",
+        "notes": "May occur during carcinoid crisis",
+        "searchTerms": [
+          "low blood pressure from hormones",
+          "hypotension due to vasoactive substances",
+          "blood pressure drops from tumor secretions"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "endocrine",
+    "cardiovascular",
+    "dermatological",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum chromogranin A",
+      "Increased specific hormone levels (e.g., serotonin, gastrin, insulin, VIP)",
+      "Elevated 5-HIAA in 24-hour urine for serotonin-secreting tumors"
+    ],
+    "imaging": [
+      "CT or MRI showing primary tumor and metastases",
+      "Somatostatin receptor scintigraphy (Octreoscan) or PET with Ga-68 DOTATATE",
+      "Endoscopic ultrasound for pancreatic lesions"
+    ],
+    "genetic": [
+      "Mutations in MEN1 gene in familial cases",
+      "Alterations in DAXX, ATRX, and mTOR pathway genes in sporadic tumors"
+    ],
+    "other": [
+      "Histopathology with immunohistochemistry positive for synaptophysin and chromogranin A",
+      "Ki-67 proliferation index for tumor grading"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pancreatic-adenocarcinoma",
+      "distinguishingFeatures": [
+        "Lacks neuroendocrine markers chromogranin A and synaptophysin",
+        "Typically presents with more aggressive local invasion",
+        "Different imaging characteristics and tumor markers (e.g., CA 19-9 elevated)"
+      ]
+    },
+    {
+      "diseaseId": "gastrointestinal-stromal-tumor",
+      "distinguishingFeatures": [
+        "Positive for c-KIT (CD117) and DOG1 immunostaining",
+        "Different histological appearance (spindle or epithelioid cells)",
+        "Usually negative for neuroendocrine markers"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid onset of carcinoid crisis with flushing, bronchospasm, and hypotension",
+    "Unexplained hypoglycemia episodes in non-diabetic patients",
+    "New onset heart murmurs suggestive of carcinoid heart disease"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Oncologist",
+    "Gastroenterologist",
+    "Pathologist",
+    "Cardiologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "WHO Classification of Tumours of the Digestive System, 5th Edition, 2019",
+    "Orphanet Report on Gastroenteropancreatic Neuroendocrine Neoplasms, ORPHA:100092",
+    "National Comprehensive Cancer Network (NCCN) Guidelines for Neuroendocrine Tumors, 2024"
+  ],
+  "confidenceInData": "ai-generated"
+}

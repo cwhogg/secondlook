@@ -1,0 +1,238 @@
+{
+  "id": "diphtheria",
+  "name": "Diphtheria",
+  "aliases": [
+    "Loeffler's disease",
+    "Diphtheritic angina"
+  ],
+  "icd10Codes": [
+    "A36"
+  ],
+  "orphanetId": "ORPHA:1679",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Diphtheria Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clinical-pseudomembrane",
+        "description": "Presence of a thick, gray-white pseudomembrane on the tonsils, pharynx, or nasal mucosa",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "culture-corynebacterium",
+        "description": "Isolation of Corynebacterium diphtheriae from a clinical specimen",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "toxin-detection",
+        "description": "Demonstration of diphtheria toxin production by the isolated strain (Elek test or PCR)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "clinical-symptoms",
+        "description": "Symptoms such as sore throat, low-grade fever, and cervical lymphadenopathy",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of pseudomembrane plus isolation of Corynebacterium diphtheriae from clinical specimen",
+    "notes": "Toxin detection confirms toxigenic strain but is not always required for diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Pharyngeal pseudomembrane formation",
+        "frequency": 0.9,
+        "bodySystem": "otolaryngological",
+        "notes": "Gray-white adherent membrane that bleeds on removal",
+        "searchTerms": [
+          "false membrane in throat",
+          "pharyngeal pseudomembrane",
+          "membrane formation in throat"
+        ]
+      },
+      {
+        "symptomName": "Bull neck appearance due to cervical lymphadenopathy and soft tissue edema",
+        "frequency": 0.75,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "swollen neck with enlarged lymph nodes",
+          "bull neck from lymph swelling",
+          "neck swelling and edema"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Sore throat",
+        "frequency": 0.85,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Low-grade fever",
+        "frequency": 0.8,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.7,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Cervical lymphadenopathy",
+        "frequency": 0.7,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hoarseness or voice changes",
+        "frequency": 0.4,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "hoarse voice",
+          "voice changes",
+          "loss of normal voice"
+        ]
+      },
+      {
+        "symptomName": "Nasal discharge or obstruction",
+        "frequency": 0.3,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "runny or blocked nose",
+          "nasal congestion or discharge",
+          "stuffy or dripping nose"
+        ]
+      },
+      {
+        "symptomName": "Myocarditis symptoms (e.g., chest pain, palpitations)",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart inflammation symptoms",
+          "chest pain and palpitations",
+          "myocarditis signs"
+        ]
+      },
+      {
+        "symptomName": "Peripheral neuropathy (e.g., paresthesias)",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "nerve damage causing tingling",
+          "peripheral neuropathy symptoms",
+          "numbness and paresthesias"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Respiratory obstruction due to pseudomembrane extension",
+        "frequency": 0.08,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing blockage from throat membrane",
+          "airway obstruction due to pseudomembrane",
+          "respiratory blockage from throat lining"
+        ]
+      },
+      {
+        "symptomName": "Paralysis (e.g., palatal or limb paralysis)",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "loss of muscle movement",
+          "paralysis of palate or limbs",
+          "unable to move certain muscles"
+        ]
+      },
+      {
+        "symptomName": "Acute renal failure secondary to toxin effects",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "sudden kidney failure from toxins",
+          "acute renal failure due to poison",
+          "rapid kidney injury from toxins"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "otolaryngological",
+    "respiratory",
+    "cardiovascular",
+    "neurological",
+    "renal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Isolation of Corynebacterium diphtheriae on selective media",
+      "Positive Elek test for diphtheria toxin",
+      "Elevated inflammatory markers (e.g., ESR, CRP)"
+    ],
+    "imaging": [
+      "Chest X-ray showing cardiomegaly in myocarditis",
+      "Soft tissue neck X-ray may show thickened pharyngeal tissues"
+    ],
+    "genetic": [],
+    "other": [
+      "Electrocardiogram abnormalities consistent with myocarditis",
+      "Electromyography showing neuropathy in advanced cases"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "streptococcal-pharyngitis",
+      "distinguishingFeatures": [
+        "Absence of pseudomembrane",
+        "Positive rapid strep test or culture for Streptococcus pyogenes",
+        "Typically higher fever"
+      ]
+    },
+    {
+      "diseaseId": "infectious-mononucleosis",
+      "distinguishingFeatures": [
+        "Presence of generalized lymphadenopathy",
+        "Positive heterophile antibody test",
+        "Absence of pseudomembrane"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Airway obstruction due to expanding pseudomembrane",
+    "Signs of myocarditis (chest pain, arrhythmias)",
+    "Neurological paralysis indicating toxin spread"
+  ],
+  "specialistType": [
+    "Infectious disease specialist",
+    "Otolaryngologist",
+    "Cardiologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "World Health Organization. Diphtheria: WHO position paper, August 2017.",
+    "Centers for Disease Control and Prevention (CDC). Diphtheria Clinical Overview.",
+    "Mandell, Douglas, and Bennett's Principles and Practice of Infectious Diseases, 9th Edition."
+  ],
+  "confidenceInData": "ai-generated"
+}

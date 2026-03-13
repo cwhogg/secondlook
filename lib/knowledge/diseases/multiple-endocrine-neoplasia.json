@@ -1,0 +1,249 @@
+{
+  "id": "multiple-endocrine-neoplasia",
+  "name": "Multiple Endocrine Neoplasia",
+  "aliases": [
+    "MEN",
+    "Multiple Endocrine Neoplasia Syndrome"
+  ],
+  "icd10Codes": [
+    "E31.0"
+  ],
+  "orphanetId": "ORPHA:276161",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "MEN Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "men1-major-tumors",
+        "description": "Presence of two or more primary endocrine tumors involving parathyroid, pancreatic islets, or anterior pituitary",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "men2-medullary-thyroid-carcinoma",
+        "description": "Medullary thyroid carcinoma confirmed by histology",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "men2-pheochromocytoma",
+        "description": "Presence of pheochromocytoma confirmed biochemically or radiologically",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic RET or MEN1 gene mutation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Diagnosis requires either two or more primary endocrine tumors characteristic of MEN1 or medullary thyroid carcinoma with or without pheochromocytoma for MEN2, or identification of pathogenic mutation in MEN1 or RET genes.",
+    "notes": "MEN syndromes are classified primarily into MEN1 and MEN2 subtypes with distinct tumor profiles."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Medullary thyroid carcinoma",
+        "frequency": 0.85,
+        "bodySystem": "endocrine",
+        "notes": "Characteristic of MEN2",
+        "searchTerms": [
+          "aggressive thyroid cancer",
+          "medullary thyroid tumor",
+          "thyroid cancer from C cells"
+        ]
+      },
+      {
+        "symptomName": "Primary hyperparathyroidism due to parathyroid hyperplasia or adenoma",
+        "frequency": 0.8,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "overactive parathyroid glands",
+          "parathyroid gland enlargement causing high calcium",
+          "parathyroid tumors causing calcium imbalance"
+        ]
+      },
+      {
+        "symptomName": "Pancreatic neuroendocrine tumors (e.g., gastrinoma, insulinoma)",
+        "frequency": 0.75,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "pancreatic hormone tumors",
+          "tumors causing excess insulin or gastrin",
+          "pancreatic neuroendocrine growths"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Pituitary adenomas (prolactinoma, somatotroph adenoma)",
+        "frequency": 0.65,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "pituitary gland tumors",
+          "hormone-secreting pituitary adenomas",
+          "pituitary tumors causing hormone imbalance"
+        ]
+      },
+      {
+        "symptomName": "Pheochromocytoma",
+        "frequency": 0.6,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Hypercalcemia symptoms (e.g., nephrolithiasis, bone pain)",
+        "frequency": 0.55,
+        "bodySystem": "renal",
+        "notes": "Due to hyperparathyroidism",
+        "searchTerms": [
+          "kidney stones from high calcium",
+          "bone pain due to calcium buildup",
+          "symptoms from elevated blood calcium"
+        ]
+      },
+      {
+        "symptomName": "Diarrhea secondary to gastrinoma",
+        "frequency": 0.52,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "diarrhea caused by gastrin tumor",
+          "frequent stools from stomach hormone tumor",
+          "loose bowel movements linked to gastrinoma"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Cutaneous angiofibromas",
+        "frequency": 0.3,
+        "bodySystem": "dermatological",
+        "notes": "More common in MEN1"
+      },
+      {
+        "symptomName": "Lipomas",
+        "frequency": 0.25,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Cushing syndrome due to ACTH-secreting pituitary adenoma",
+        "frequency": 0.2,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "Cushing's syndrome from pituitary tumor",
+          "high cortisol from pituitary adenoma",
+          "pituitary-related cortisol excess"
+        ]
+      },
+      {
+        "symptomName": "Hypertension secondary to pheochromocytoma",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "high blood pressure from adrenal tumor",
+          "pheochromocytoma causing hypertension",
+          "secondary hypertension from tumor"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Carcinoid tumors",
+        "frequency": 0.08,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Mucosal neuromas",
+        "frequency": 0.05,
+        "bodySystem": "dermatological",
+        "notes": "Seen in MEN2B subtype"
+      },
+      {
+        "symptomName": "Marfanoid habitus",
+        "frequency": 0.04,
+        "bodySystem": "musculoskeletal",
+        "notes": "Associated with MEN2B"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "endocrine",
+    "dermatological",
+    "renal",
+    "gastrointestinal",
+    "cardiovascular",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum calcium and parathyroid hormone levels",
+      "Elevated calcitonin in medullary thyroid carcinoma",
+      "Elevated catecholamines/metanephrines in pheochromocytoma",
+      "Hormonal assays indicating pituitary or pancreatic neuroendocrine tumors"
+    ],
+    "imaging": [
+      "Ultrasound and sestamibi scan for parathyroid adenomas",
+      "MRI/CT for pituitary adenomas and pancreatic tumors",
+      "CT/MRI for adrenal pheochromocytomas",
+      "Neck ultrasound for thyroid nodules"
+    ],
+    "genetic": [
+      "Pathogenic MEN1 gene mutations for MEN1",
+      "RET proto-oncogene mutations for MEN2",
+      "Autosomal dominant inheritance"
+    ],
+    "other": [
+      "Histopathological confirmation of tumors",
+      "Family history of MEN syndromes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "carney-complex",
+      "distinguishingFeatures": [
+        "Presence of cardiac myxomas",
+        "Spotty skin pigmentation",
+        "Endocrine tumors but different genetic basis (PRKAR1A mutations)"
+      ]
+    },
+    {
+      "diseaseId": "von-hippel-lindau-disease",
+      "distinguishingFeatures": [
+        "Hemangioblastomas of CNS and retina",
+        "Renal cell carcinoma",
+        "Pheochromocytoma but absence of medullary thyroid carcinoma"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging thyroid nodule with calcitonin elevation",
+    "Severe hypercalcemia with renal impairment",
+    "Hypertensive crisis with episodic headaches and palpitations"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Oncologist",
+    "Geneticist",
+    "Surgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Thakker RV et al. Multiple endocrine neoplasia type 1 (MEN1). Nat Rev Dis Primers. 2018.",
+    "Brandi ML et al. Multiple endocrine neoplasia type 1: clinical and genetic features. Endocr Rev. 2001.",
+    "Wells SA Jr et al. Multiple endocrine neoplasia type 2 and RET proto-oncogene. Endocr Relat Cancer. 2013."
+  ],
+  "confidenceInData": "ai-generated"
+}

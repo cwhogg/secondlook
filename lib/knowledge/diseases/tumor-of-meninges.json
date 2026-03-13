@@ -1,0 +1,222 @@
+{
+  "id": "tumor-of-meninges",
+  "name": "Tumor of Meninges",
+  "aliases": [
+    "Meningeal Tumor",
+    "Meningioma"
+  ],
+  "icd10Codes": [
+    "D32",
+    "D33"
+  ],
+  "orphanetId": "ORPHA:252025",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of the Central Nervous System",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histopathological confirmation of meningeal tumor cells with characteristic whorled patterns and psammoma bodies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging",
+        "description": "MRI or CT showing extra-axial, dural-based mass with homogeneous contrast enhancement and dural tail sign",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Neurological symptoms consistent with mass effect or focal neurological deficits",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation plus characteristic imaging findings",
+    "notes": "Diagnosis often requires integration of clinical, radiological, and pathological data."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Dural tail sign on MRI",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Characteristic imaging feature",
+        "searchTerms": [
+          "MRI showing thickened dura tail",
+          "dural tail sign on brain scan",
+          "imaging feature of dural thickening"
+        ]
+      },
+      {
+        "symptomName": "Psammoma bodies on histopathology",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "microscopic calcified bodies in tissue",
+          "psammoma bodies seen in biopsy",
+          "round calcifications on histology"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Focal neurological deficits",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Depends on tumor location",
+        "searchTerms": [
+          "localized nerve problems",
+          "specific area neurological symptoms",
+          "focal weakness or numbness"
+        ]
+      },
+      {
+        "symptomName": "Headache due to increased intracranial pressure",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "headache caused by brain swelling",
+          "pressure headache worsening with time",
+          "head pain from increased intracranial pressure"
+        ]
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cranial nerve palsies",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "weakness of cranial nerves",
+          "cranial nerve palsies causing facial or eye problems"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.4,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Visual field defects",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "loss of part of vision",
+          "blind spots",
+          "partial visual field loss"
+        ]
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Endocrine dysfunction due to hypothalamic involvement",
+        "frequency": 0.05,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "hormone problems from brain area damage",
+          "endocrine issues due to hypothalamus involvement",
+          "hormonal imbalance caused by brain tumor"
+        ]
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological",
+    "gastrointestinal",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [],
+    "imaging": [
+      "MRI showing extra-axial mass with dural tail sign",
+      "CT scan revealing calcifications and hyperostosis adjacent to tumor"
+    ],
+    "genetic": [
+      "NF2 gene mutations commonly associated with meningiomas"
+    ],
+    "other": [
+      "Histopathology demonstrating meningothelial cells with whorled architecture and psammoma bodies"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "glioma",
+      "distinguishingFeatures": [
+        "Intra-axial tumor location",
+        "Lack of dural tail sign",
+        "Different histopathological features"
+      ]
+    },
+    {
+      "diseaseId": "metastatic-brain-tumor",
+      "distinguishingFeatures": [
+        "Multiple lesions often present",
+        "History of primary malignancy",
+        "Variable imaging characteristics without dural attachment"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid neurological deterioration",
+    "New onset seizures in adult",
+    "Signs of increased intracranial pressure such as papilledema"
+  ],
+  "specialistType": [
+    "Neurosurgeon",
+    "Neurologist",
+    "Neuroradiologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Louis DN, et al. WHO Classification of Tumors of the Central Nervous System. 2016.",
+    "Wiemels J, Wrensch M, Claus EB. Epidemiology and etiology of meningioma. J Neurooncol. 2010.",
+    "Orphanet: Tumor of meninges - ORPHA:252025"
+  ],
+  "confidenceInData": "ai-generated"
+}

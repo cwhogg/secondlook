@@ -1,0 +1,170 @@
+{
+  "id": "idiopathic-hypercalciuria",
+  "name": "Idiopathic Hypercalciuria",
+  "aliases": [
+    "Primary Hypercalciuria",
+    "Idiopathic Hypercalcemia with Hypercalciuria"
+  ],
+  "icd10Codes": [
+    "E83.52"
+  ],
+  "orphanetId": "ORPHA:2197",
+  "prevalence": {
+    "estimate": "1 in 100",
+    "range": "2-5%",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 2,
+      "max": 65,
+      "peak": 14
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Idiopathic Hypercalciuria Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "hypercalciuria",
+        "description": "Elevated urinary calcium excretion (>4 mg/kg/day) in the absence of hypercalcemia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "normal-serum-calcium",
+        "description": "Normal serum calcium concentration",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-secondary-causes",
+        "description": "Exclusion of secondary causes of hypercalciuria such as hyperparathyroidism, vitamin D intoxication, or malignancy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of hypercalciuria or nephrolithiasis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "normal-renal-function",
+        "description": "Normal renal function tests",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of elevated urinary calcium excretion with normal serum calcium and exclusion of secondary causes",
+    "notes": "Diagnosis is primarily clinical and biochemical after ruling out other causes of hypercalciuria."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hypercalciuria",
+        "frequency": 1,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Renal calcium wasting",
+        "frequency": 1,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "excess calcium in urine",
+          "kidney calcium loss",
+          "high urinary calcium levels"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Osteopenia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Calcium oxalate nephrolithiasis",
+        "frequency": 0.55,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "kidney stones from calcium oxalate",
+          "calcium kidney stones",
+          "common kidney stone type"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Osteoporosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "endocrine",
+    "renal",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated 24-hour urinary calcium excretion (>4 mg/kg/day)",
+      "Normal serum calcium and parathyroid hormone levels",
+      "Normal renal function tests"
+    ],
+    "imaging": [
+      "Renal ultrasound showing nephrolithiasis or nephrocalcinosis",
+      "Non-contrast CT scan for stone detection"
+    ],
+    "genetic": [
+      "ADCY10 (susceptibility)",
+      "Autosomal dominant inheritance"
+    ],
+    "other": [
+      "Exclusion of secondary causes such as hyperparathyroidism, vitamin D intoxication, malignancy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "primary-hyperparathyroidism",
+      "distinguishingFeatures": [
+        "Elevated serum calcium and parathyroid hormone levels",
+        "Bone resorption and systemic symptoms"
+      ]
+    },
+    {
+      "diseaseId": "vitamin-d-intoxication",
+      "distinguishingFeatures": [
+        "Elevated serum calcium and 25-hydroxyvitamin D levels",
+        "History of excessive vitamin D intake"
+      ]
+    },
+    {
+      "diseaseId": "renal-tubular-acidosis",
+      "distinguishingFeatures": [
+        "Metabolic acidosis with normal anion gap",
+        "Hypokalemia and alkaline urine pH"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe recurrent nephrolithiasis causing obstruction",
+    "Progressive renal impairment or chronic kidney disease",
+    "Hypercalcemia suggesting alternative diagnosis"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Endocrinologist",
+    "Urologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Moe OW. Kidney stones: pathophysiology and medical management. Lancet. 2006;367(9507):333-344.",
+    "Orphanet: Idiopathic hypercalciuria. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=2197",
+    "Coe FL, Evan A, Worcester E. Kidney stone disease. J Clin Invest. 2005;115(10):2598-2608."
+  ],
+  "confidenceInData": "medium"
+}

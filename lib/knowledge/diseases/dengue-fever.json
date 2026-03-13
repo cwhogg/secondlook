@@ -1,0 +1,254 @@
+{
+  "id": "dengue-fever",
+  "name": "Dengue Fever",
+  "aliases": [
+    "Breakbone fever",
+    "Dengue virus infection"
+  ],
+  "icd10Codes": [
+    "A90"
+  ],
+  "orphanetId": "ORPHA:99828",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Dengue Case Classification",
+    "criteria": [
+      {
+        "id": "fever",
+        "description": "Acute febrile illness lasting 2-7 days",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hemorrhagicManifestations",
+        "description": "Presence of hemorrhagic signs such as petechiae, mucosal bleeding, or positive tourniquet test",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "thrombocytopenia",
+        "description": "Platelet count less than 100,000/mm³",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "leukopenia",
+        "description": "White blood cell count below normal range",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "positiveSerology",
+        "description": "Detection of dengue virus antigen or IgM antibodies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Acute febrile illness plus positive serology or detection of dengue virus, with or without thrombocytopenia or hemorrhagic manifestations",
+    "notes": "Diagnosis is supported by epidemiological context and exclusion of other febrile illnesses"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Fever",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pruritus",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Gingival bleeding",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Epistaxis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Petechiae",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Bruising susceptibility",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cerebral hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Leukopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      },
+      {
+        "symptomName": "Gastrointestinal hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypoproteinemia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cardiorespiratory arrest",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "hematological",
+    "constitutional",
+    "dermatological",
+    "neurological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Thrombocytopenia (platelet count <100,000/mm³)",
+      "Leukopenia",
+      "Elevated liver transaminases",
+      "Positive dengue NS1 antigen test or IgM serology"
+    ],
+    "imaging": [
+      "Ultrasound showing pleural effusion or ascites in severe cases"
+    ],
+    "genetic": [],
+    "other": [
+      "Positive tourniquet test indicating capillary fragility"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chikungunya-fever",
+      "distinguishingFeatures": [
+        "More prominent and persistent polyarthritis",
+        "Less frequent hemorrhagic manifestations",
+        "Different serological markers"
+      ]
+    },
+    {
+      "diseaseId": "malaria",
+      "distinguishingFeatures": [
+        "Paroxysmal fever pattern",
+        "Presence of Plasmodium parasites on blood smear",
+        "Response to antimalarial treatment"
+      ]
+    },
+    {
+      "diseaseId": "leptospirosis",
+      "distinguishingFeatures": [
+        "Jaundice and renal involvement more common",
+        "Exposure to contaminated water",
+        "Positive leptospira serology"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe abdominal pain or persistent vomiting",
+    "Rapid drop in platelet count with bleeding manifestations",
+    "Signs of plasma leakage such as pleural effusion or ascites"
+  ],
+  "specialistType": [
+    "Infectious disease specialist",
+    "Hematologist",
+    "Tropical medicine specialist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "World Health Organization. Dengue: Guidelines for Diagnosis, Treatment, Prevention and Control. 2009.",
+    "Guzman MG, Harris E. Dengue. Lancet. 2015;385(9966):453-465.",
+    "Centers for Disease Control and Prevention (CDC). Dengue Clinical Guidance. 2023."
+  ],
+  "confidenceInData": "medium"
+}

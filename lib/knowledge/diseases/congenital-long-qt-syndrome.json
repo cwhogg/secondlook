@@ -1,0 +1,254 @@
+{
+  "id": "congenital-long-qt-syndrome",
+  "name": "Congenital Long QT Syndrome",
+  "aliases": [
+    "LQTS",
+    "Romano-Ward Syndrome",
+    "Jervell and Lange-Nielsen Syndrome"
+  ],
+  "icd10Codes": [
+    "I45.81"
+  ],
+  "omimId": "192500",
+  "orphanetId": "768",
+  "prevalence": {
+    "estimate": "1 in 2,000 to 1 in 5,000",
+    "range": "0.02%-0.05%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 2,
+      "max": 65,
+      "peak": 14
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Schwartz Score for Long QT Syndrome",
+    "criteria": [
+      {
+        "id": "prolonged-qt-interval",
+        "description": "QTc interval ≥ 480 ms on repeated 12-lead ECGs",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "torsades-de-pointes",
+        "description": "Documented torsades de pointes ventricular tachycardia",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Family history of definite LQTS or sudden cardiac death under age 30",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "syncope-with-exercise",
+        "description": "Syncope triggered by exercise or emotional stress",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "QTc interval ≥ 480 ms alone or QTc 460-479 ms with additional clinical or family criteria",
+    "notes": "Genetic testing supports diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Prolonged corrected QT interval (QTc) on ECG",
+        "frequency": 0.95,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "long heart electrical recovery time",
+          "prolonged QT interval on heart test",
+          "delayed heart rhythm reset"
+        ]
+      },
+      {
+        "symptomName": "Torsades de pointes ventricular tachycardia",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "twisting ventricular tachycardia",
+          "irregular fast heartbeats",
+          "dangerous rapid heart rhythm"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Syncope triggered by exercise or emotional stress",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "fainting during exercise or stress",
+          "passing out with physical or emotional triggers",
+          "exercise or stress-induced syncope"
+        ]
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Sudden cardiac arrest",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "sudden heart stoppage",
+          "unexpected cardiac arrest",
+          "heart suddenly stops beating"
+        ]
+      },
+      {
+        "symptomName": "Seizure-like episodes due to cerebral hypoperfusion",
+        "frequency": 0.5,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "seizure-like fainting spells",
+          "episodes of brain blood flow loss",
+          "temporary loss of consciousness mimicking seizures"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Nocturnal agonal respirations",
+        "frequency": 0.3,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "gasping breathing at night",
+          "struggling to breathe during sleep",
+          "noisy or labored nighttime breathing"
+        ]
+      },
+      {
+        "symptomName": "Congenital sensorineural hearing loss (Jervell and Lange-Nielsen subtype)",
+        "frequency": 0.2,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "hearing loss from birth with heart issues",
+          "congenital deafness with cardiac symptoms",
+          "sensorineural deafness present at birth"
+        ]
+      },
+      {
+        "symptomName": "Fatigue secondary to arrhythmia episodes",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from irregular heartbeat",
+          "fatigue due to heart rhythm problems",
+          "weakness after arrhythmia episodes"
+        ]
+      },
+      {
+        "symptomName": "Chest discomfort or angina-like symptoms",
+        "frequency": 0.1,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "chest pain like angina",
+          "discomfort in chest area",
+          "heart-related chest tightness"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden infant death syndrome (SIDS) association",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "unexpected infant death risk",
+          "sudden unexplained baby death",
+          "infant death during sleep"
+        ]
+      },
+      {
+        "symptomName": "Congenital deafness without cardiac symptoms (rare variant)",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "birth deafness without heart problems",
+          "congenital hearing loss only",
+          "deafness at birth without cardiac signs"
+        ]
+      },
+      {
+        "symptomName": "Exercise-induced ventricular fibrillation",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "exercise-triggered dangerous heart rhythm",
+          "ventricular fibrillation during activity",
+          "fast irregular heartbeat with exercise"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "neurological",
+    "otolaryngological",
+    "respiratory",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Genetic testing identifying pathogenic variants in KCNQ1, KCNH2, SCN5A genes"
+    ],
+    "imaging": [
+      "12-lead ECG showing prolonged QTc interval",
+      "Holter monitoring detecting ventricular arrhythmias"
+    ],
+    "genetic": [
+      "Autosomal dominant mutations in ion channel genes (e.g., KCNQ1, KCNH2, SCN5A)",
+      "Autosomal recessive inheritance"
+    ],
+    "other": [
+      "Family history of sudden cardiac death or syncope"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "acquired-long-qt-syndrome",
+      "distinguishingFeatures": [
+        "QT prolongation due to drugs, electrolyte imbalances, or systemic illness rather than genetic mutations"
+      ]
+    },
+    {
+      "diseaseId": "brugada-syndrome",
+      "distinguishingFeatures": [
+        "Characteristic ECG pattern with ST elevation in V1-V3, absence of QT prolongation"
+      ]
+    },
+    {
+      "diseaseId": "catecholaminergic-polymorphic-ventricular-tachycardia",
+      "distinguishingFeatures": [
+        "Normal resting ECG with exercise-induced polymorphic ventricular tachycardia, no QT prolongation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Syncope during exercise or emotional stress",
+    "Family history of sudden cardiac death under age 30",
+    "Documented torsades de pointes or ventricular fibrillation"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Geneticist",
+    "Electrophysiologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Schwartz PJ, Crotti L, Insolia R. Long-QT syndrome: from genetics to management. Circ Arrhythm Electrophysiol. 2012;5(4):868-877.",
+    "Moss AJ. Long QT syndrome. JAMA. 2003;289(16):2041-2044.",
+    "Orphanet: Congenital long QT syndrome. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=768"
+  ],
+  "confidenceInData": "ai-generated"
+}

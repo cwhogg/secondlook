@@ -1,0 +1,215 @@
+{
+  "id": "2-hydroxyglutaric-aciduria",
+  "name": "2-Hydroxyglutaric Aciduria",
+  "aliases": [
+    "2-Hydroxyglutaric Aciduria",
+    "2-HGA"
+  ],
+  "icd10Codes": [
+    "E72.8"
+  ],
+  "omimId": "613657",
+  "orphanetId": "19",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 2,
+      "max": 12,
+      "peak": 7
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Diagnostic criteria for 2-Hydroxyglutaric Aciduria",
+    "criteria": [
+      {
+        "id": "elevated-2hg",
+        "description": "Elevated levels of 2-hydroxyglutaric acid in urine or cerebrospinal fluid",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "neurological-symptoms",
+        "description": "Presence of progressive neurological symptoms including developmental delay and hypotonia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic variants in IDH2 or D2HGDH genes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "brain-mri",
+        "description": "Characteristic MRI findings such as white matter abnormalities and basal ganglia involvement",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Elevated 2-hydroxyglutaric acid levels plus either pathogenic genetic variants or characteristic neurological symptoms",
+    "notes": "Genetic testing is recommended to confirm diagnosis and differentiate between D- and L-2-hydroxyglutaric aciduria subtypes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Elevated urinary 2-hydroxyglutaric acid",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "notes": "Detected via organic acid analysis",
+        "searchTerms": [
+          "high 2-hydroxyglutaric acid in urine",
+          "elevated organic acid in urine",
+          "increased urinary 2-hydroxyglutarate"
+        ]
+      },
+      {
+        "symptomName": "Progressive developmental delay",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "slow developmental progress",
+          "gradual loss of skills",
+          "worsening developmental milestones"
+        ]
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychomotor retardation",
+        "frequency": 0.58,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Macrocephaly",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cerebellar atrophy on imaging",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "shrunken cerebellum on scan",
+          "cerebellar tissue loss",
+          "brain imaging shows cerebellum atrophy"
+        ]
+      },
+      {
+        "symptomName": "Visual impairment",
+        "frequency": 0.2,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Spasticity",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiomyopathy",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.04,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "renal",
+    "ophthalmological",
+    "cardiovascular",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated 2-hydroxyglutaric acid in urine and cerebrospinal fluid",
+      "Normal routine metabolic panels"
+    ],
+    "imaging": [
+      "MRI showing white matter abnormalities",
+      "Basal ganglia involvement",
+      "Cerebellar atrophy"
+    ],
+    "genetic": [
+      "Pathogenic variants in IDH2 gene (D-2-hydroxyglutaric aciduria)",
+      "Pathogenic variants in D2HGDH gene (L-2-hydroxyglutaric aciduria)",
+      "Autosomal dominant inheritance",
+      "Autosomal recessive inheritance"
+    ],
+    "other": [
+      "Organic acid chromatography for metabolite detection"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "glutaric-aciduria-type-1",
+      "distinguishingFeatures": [
+        "Elevated glutaric acid instead of 2-hydroxyglutaric acid",
+        "Macrocephaly with subdural hemorrhages",
+        "Different genetic mutations (GCDH gene)"
+      ]
+    },
+    {
+      "diseaseId": "canavan-disease",
+      "distinguishingFeatures": [
+        "Elevated N-acetylaspartic acid in urine",
+        "Spongiform leukodystrophy on MRI",
+        "Mutations in ASPA gene"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive neurological deterioration",
+    "Onset of seizures in infancy or early childhood",
+    "Marked developmental regression"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Metabolic specialist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Muntau AC, et al. 2-Hydroxyglutaric Acidurias: Clinical and Molecular Aspects. J Inherit Metab Dis. 2012.",
+    "Kranendijk M, et al. IDH2 mutations in D-2-hydroxyglutaric aciduria. Nat Genet. 2010.",
+    "Orphanet: 2-Hydroxyglutaric Aciduria. Orphanet Report Series. 2020."
+  ],
+  "confidenceInData": "ai-generated"
+}

@@ -1,0 +1,278 @@
+{
+  "id": "streptococcal-toxic-shock-syndrome",
+  "name": "Streptococcal Toxic-Shock Syndrome",
+  "aliases": [
+    "Streptococcal TSS",
+    "Group A Streptococcal Toxic Shock Syndrome"
+  ],
+  "icd10Codes": [
+    "A48.3"
+  ],
+  "orphanetId": "ORPHA:99918",
+  "prevalence": {
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "CDC Streptococcal Toxic Shock Syndrome Criteria",
+    "criteria": [
+      {
+        "id": "hypotension",
+        "description": "Systolic blood pressure ≤90 mm Hg in adults or less than fifth percentile for age in children",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "multiorgan-involvement",
+        "description": "Involvement of two or more organ systems (renal impairment, coagulopathy, liver involvement, ARDS, rash, soft tissue necrosis)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "group-a-streptococcus-isolation",
+        "description": "Isolation of Group A Streptococcus from a normally sterile site",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "rash",
+        "description": "Diffuse erythematous macular rash",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "soft-tissue-infection",
+        "description": "Presence of necrotizing fasciitis or myositis",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Hypotension plus isolation of Group A Streptococcus from sterile site and involvement of two or more organ systems",
+    "notes": "Diagnosis requires exclusion of other causes of shock and multiorgan failure."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hypotension (systolic blood pressure ≤90 mm Hg)",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "low blood pressure",
+          "systolic pressure below 90 mm Hg",
+          "hypotension causing dizziness"
+        ]
+      },
+      {
+        "symptomName": "Diffuse erythematous macular rash",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "May progress to desquamation",
+        "searchTerms": [
+          "widespread red flat rash",
+          "diffuse erythematous macules",
+          "red skin rash covering large area"
+        ]
+      },
+      {
+        "symptomName": "Isolation of Group A Streptococcus from sterile site",
+        "frequency": 0.9,
+        "bodySystem": "immunological",
+        "notes": "Blood, CSF, or deep tissue cultures",
+        "searchTerms": [
+          "group A strep bacteria found in sterile site",
+          "positive culture for strep infection",
+          "group A streptococcus isolated from blood or tissue"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fever (temperature ≥38.9°C)",
+        "frequency": 0.8,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high fever above 38.9°C",
+          "elevated body temperature",
+          "fever with temperature over 101°F"
+        ]
+      },
+      {
+        "symptomName": "Tachycardia",
+        "frequency": 0.7,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Renal impairment (elevated creatinine or oliguria)",
+        "frequency": 0.65,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "kidney problems with high creatinine",
+          "reduced urine output",
+          "renal impairment signs"
+        ]
+      },
+      {
+        "symptomName": "Coagulopathy (prolonged PT/PTT, thrombocytopenia)",
+        "frequency": 0.6,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "blood clotting problems",
+          "prolonged clotting times and low platelets",
+          "coagulopathy with bleeding risk"
+        ]
+      },
+      {
+        "symptomName": "Acute respiratory distress syndrome (ARDS)",
+        "frequency": 0.55,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "severe lung failure",
+          "breathing difficulty with lung inflammation",
+          "acute respiratory distress"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Soft tissue necrosis (necrotizing fasciitis or myositis)",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "severe soft tissue death",
+          "necrotizing fasciitis or muscle infection",
+          "rapid tissue destruction in skin and muscles"
+        ]
+      },
+      {
+        "symptomName": "Altered mental status",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "confused thinking",
+          "altered consciousness",
+          "mental status changes"
+        ]
+      },
+      {
+        "symptomName": "Liver dysfunction (elevated transaminases)",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Considered under constitutional system if hepatic not valid",
+        "searchTerms": [
+          "liver problems with high liver enzymes",
+          "elevated transaminases indicating liver injury",
+          "liver dysfunction signs"
+        ]
+      },
+      {
+        "symptomName": "Vomiting and diarrhea",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "vomiting with diarrhea",
+          "nausea and loose stools",
+          "throwing up and diarrhea"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Desquamation of skin (peeling)",
+        "frequency": 0.08,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin peeling or shedding",
+          "desquamation of skin",
+          "peeling skin rash"
+        ]
+      },
+      {
+        "symptomName": "Hypocalcemia",
+        "frequency": 0.05,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "dermatological",
+    "renal",
+    "hematological",
+    "respiratory",
+    "musculoskeletal",
+    "neurological",
+    "gastrointestinal",
+    "constitutional",
+    "endocrine",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive blood or sterile site cultures for Group A Streptococcus",
+      "Elevated creatinine and blood urea nitrogen indicating renal impairment",
+      "Thrombocytopenia and prolonged coagulation times",
+      "Elevated liver enzymes",
+      "Metabolic acidosis"
+    ],
+    "imaging": [
+      "Soft tissue imaging (MRI or CT) showing necrotizing fasciitis or myositis",
+      "Chest X-ray showing ARDS or pulmonary infiltrates"
+    ],
+    "genetic": [],
+    "other": [
+      "Hemodynamic instability requiring vasopressor support",
+      "Skin biopsy may show epidermal necrosis and inflammatory infiltrate"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "staphylococcal-toxic-shock-syndrome",
+      "distinguishingFeatures": [
+        "Staphylococcal TSS often associated with tampon use or surgical wounds",
+        "More prominent mucous membrane involvement",
+        "Different bacterial culture results (Staphylococcus aureus)"
+      ]
+    },
+    {
+      "diseaseId": "septic-shock-from-other-bacterial-pathogens",
+      "distinguishingFeatures": [
+        "Absence of Group A Streptococcus in cultures",
+        "Different clinical source of infection",
+        "Variable rash and organ involvement"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid onset of hypotension and multiorgan failure",
+    "Necrotizing soft tissue infection",
+    "Failure to respond to initial fluid resuscitation"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Critical Care Specialist",
+    "Emergency Medicine Physician",
+    "Surgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Centers for Disease Control and Prevention. Streptococcal Toxic Shock Syndrome (STSS) Case Definition.",
+    "Stevens DL. Streptococcal toxic-shock syndrome: spectrum of disease, pathogenesis, and new concepts in treatment. Emerg Infect Dis. 1995.",
+    "Bisno AL, Stevens DL. Streptococcal infections of skin and soft tissues. N Engl J Med. 1996."
+  ],
+  "confidenceInData": "ai-generated"
+}

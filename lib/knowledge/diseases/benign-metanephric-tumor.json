@@ -1,0 +1,217 @@
+{
+  "id": "benign-metanephric-tumor",
+  "name": "Benign Metanephric Tumor",
+  "aliases": [
+    "Metanephric Adenoma",
+    "Benign Metanephric Adenoma"
+  ],
+  "icd10Codes": [
+    "D41.0"
+  ],
+  "orphanetId": "ORPHA:464359",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Histopathological and Immunohistochemical Diagnostic Criteria for Metanephric Adenoma",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Presence of small, uniform epithelial cells arranged in tightly packed acini and tubules with scant cytoplasm",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunohistochemistry",
+        "description": "Positive staining for WT1 and negative for CK7 and AMACR",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "radiologic-imaging",
+        "description": "Well-circumscribed, hypovascular renal mass on CT or MRI without evidence of local invasion or metastasis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation with characteristic immunohistochemical profile; imaging supportive but not definitive",
+    "notes": "Molecular testing for BRAF V600E mutation may aid in diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Asymptomatic renal mass detected incidentally",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "kidney mass found without symptoms",
+          "incidental kidney lump detected",
+          "asymptomatic renal growth found"
+        ]
+      },
+      {
+        "symptomName": "Well-circumscribed, non-invasive renal tumor on imaging",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "well-defined kidney tumor not invading nearby tissue",
+          "non-aggressive kidney mass on imaging",
+          "kidney tumor with clear borders and no spread"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hematuria (microscopic or gross)",
+        "frequency": 0.65,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "blood in urine",
+          "visible blood when urinating",
+          "urine with red tint",
+          "microscopic blood in urine"
+        ]
+      },
+      {
+        "symptomName": "Flank pain or discomfort",
+        "frequency": 0.6,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "side or back pain",
+          "pain in the flank area",
+          "discomfort in kidney region"
+        ]
+      },
+      {
+        "symptomName": "Palpable abdominal mass",
+        "frequency": 0.55,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "lump in abdomen",
+          "palpable belly mass",
+          "abdominal swelling felt by hand"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hypertension secondary to renal mass effect",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "high blood pressure from kidney mass",
+          "hypertension caused by kidney tumor",
+          "blood pressure increase due to renal growth"
+        ]
+      },
+      {
+        "symptomName": "Polycythemia due to erythropoietin production",
+        "frequency": 0.25,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "high red blood cell count",
+          "increased blood thickness",
+          "too many red blood cells"
+        ]
+      },
+      {
+        "symptomName": "Mild constitutional symptoms such as fatigue",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "feeling tired",
+          "general weakness",
+          "low energy"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Paraneoplastic syndromes",
+        "frequency": 0.05,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Renal function impairment",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "reduced kidney function",
+          "impaired kidney filtering",
+          "kidney not working well"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "cardiovascular",
+    "hematological",
+    "constitutional",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Microscopic or gross hematuria on urinalysis",
+      "Elevated hematocrit in cases with polycythemia"
+    ],
+    "imaging": [
+      "Well-defined, hypovascular renal mass on CT or MRI",
+      "Absence of local invasion or metastasis on imaging"
+    ],
+    "genetic": [
+      "Presence of BRAF V600E mutation in tumor cells"
+    ],
+    "other": [
+      "Histopathology showing small uniform epithelial cells with acinar and tubular architecture",
+      "Immunohistochemistry positive for WT1, negative for CK7 and AMACR"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "renal-cell-carcinoma",
+      "distinguishingFeatures": [
+        "Malignant behavior with potential for metastasis",
+        "Positive staining for CK7 and AMACR",
+        "More heterogeneous cellular morphology"
+      ]
+    },
+    {
+      "diseaseId": "wilms-tumor",
+      "distinguishingFeatures": [
+        "Occurs predominantly in children",
+        "Triphasic histology with blastemal, epithelial, and stromal components",
+        "More aggressive clinical course"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid increase in tumor size",
+    "Evidence of local invasion or metastasis on imaging",
+    "Persistent or worsening hematuria"
+  ],
+  "specialistType": [
+    "Nephrologist",
+    "Oncologist",
+    "Pathologist",
+    "Radiologist",
+    "Urologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Argani P, et al. Metanephric adenoma: a clinicopathologic study of 28 cases. Am J Surg Pathol. 2001.",
+    "Tickoo SK, et al. Metanephric adenoma: a clinicopathologic study of 48 cases. Am J Surg Pathol. 2006.",
+    "Orphanet: Benign metanephric tumor (ORPHA:464359)"
+  ],
+  "confidenceInData": "ai-generated"
+}

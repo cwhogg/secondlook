@@ -1,0 +1,295 @@
+{
+  "id": "hemoglobinopathy",
+  "name": "Hemoglobinopathy",
+  "aliases": [
+    "Hemoglobin disorders",
+    "Hemoglobin variants"
+  ],
+  "icd10Codes": [
+    "D56",
+    "D57",
+    "D58",
+    "D59"
+  ],
+  "orphanetId": "ORPHA:68364",
+  "prevalence": {
+    "estimate": "1 in 1000",
+    "range": "0.05%-0.1%",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 50,
+      "peak": 5
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "African",
+      "Mediterranean",
+      "Middle Eastern",
+      "Southeast Asian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Hemoglobinopathy Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "abnormal-hemoglobin-electrophoresis",
+        "description": "Presence of abnormal hemoglobin variants detected by hemoglobin electrophoresis or HPLC",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-hemolytic-anemia",
+        "description": "Clinical evidence of chronic hemolytic anemia including pallor, jaundice, and anemia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of hemoglobinopathy or related hemolytic anemia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in globin genes (HBB, HBA1, HBA2)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "reticulocytosis",
+        "description": "Elevated reticulocyte count indicating increased erythropoiesis",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of abnormal hemoglobin variant by electrophoresis or genetic testing plus clinical evidence of hemolytic anemia",
+    "notes": "Diagnosis may be confirmed by molecular genetic testing and family studies."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Sickled erythrocytes on peripheral blood smear",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Characteristic of sickle cell disease variant",
+        "searchTerms": [
+          "sickle-shaped red blood cells",
+          "crescent-shaped erythrocytes",
+          "abnormal sickled blood cells"
+        ]
+      },
+      {
+        "symptomName": "Chronic hemolytic anemia",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "long-term destruction of red blood cells",
+          "chronic anemia from red cell breakdown",
+          "ongoing hemolytic anemia"
+        ]
+      },
+      {
+        "symptomName": "Elevated levels of HbS or other abnormal hemoglobin fractions",
+        "frequency": 0.8,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "high levels of sickle hemoglobin",
+          "elevated abnormal hemoglobin fractions",
+          "increased HbS or variants"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Jaundice due to increased bilirubin",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "yellowing of skin from high bilirubin",
+          "jaundice caused by red cell breakdown",
+          "skin and eye yellowing"
+        ]
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.7,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Bone pain crises",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "episodes of bone pain",
+          "pain crises in bones",
+          "severe bone pain attacks"
+        ]
+      },
+      {
+        "symptomName": "Fatigue related to anemia",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from anemia",
+          "fatigue related to low red blood cells",
+          "weakness due to anemia"
+        ]
+      },
+      {
+        "symptomName": "Delayed growth and development in children",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "slow growth and development",
+          "delayed physical and mental growth",
+          "growth retardation in children"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Leg ulcers",
+        "frequency": 0.3,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Priapism",
+        "frequency": 0.25,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Pulmonary hypertension",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Avascular necrosis of bone",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "bone tissue death from poor blood supply",
+          "bone collapse due to lack of blood flow",
+          "dead bone areas causing pain and fractures"
+        ]
+      },
+      {
+        "symptomName": "Gallstones secondary to chronic hemolysis",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "gallstones caused by chronic red cell breakdown",
+          "stones in gallbladder from hemolysis",
+          "pigment gallstones secondary to anemia"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Stroke due to vaso-occlusive events",
+        "frequency": 0.08,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "stroke from blocked blood vessels",
+          "brain infarction due to vaso-occlusion",
+          "stroke caused by blood vessel blockage"
+        ]
+      },
+      {
+        "symptomName": "Retinopathy",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Splenic sequestration crisis",
+        "frequency": 0.07,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "spleen enlargement with blood trapping",
+          "splenic sequestration crisis",
+          "sudden spleen swelling with anemia"
+        ]
+      },
+      {
+        "symptomName": "Chronic kidney disease",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "long-term kidney failure",
+          "chronic kidney disease",
+          "progressive loss of kidney function"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "musculoskeletal",
+    "cardiovascular",
+    "neurological",
+    "gastrointestinal",
+    "dermatological",
+    "reproductive",
+    "constitutional",
+    "ophthalmological",
+    "renal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Abnormal hemoglobin electrophoresis pattern",
+      "Elevated reticulocyte count",
+      "Increased indirect bilirubin",
+      "Anemia with normocytic or microcytic indices"
+    ],
+    "imaging": [
+      "Bone infarcts and marrow hyperplasia on MRI",
+      "Splenomegaly on ultrasound",
+      "Evidence of stroke or ischemic lesions on brain MRI"
+    ],
+    "genetic": [
+      "Mutations in HBB gene (e.g., HbS mutation)",
+      "Alpha globin gene deletions or mutations",
+      "Beta globin gene point mutations or deletions"
+    ],
+    "other": [
+      "Peripheral blood smear showing sickled cells or target cells",
+      "Positive family history of hemoglobinopathy"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "thalassemia",
+      "distinguishingFeatures": [
+        "Microcytic anemia with normal hemoglobin electrophoresis in some cases",
+        "Genetic mutations primarily in alpha or beta globin genes causing reduced synthesis"
+      ]
+    },
+    {
+      "diseaseId": "hereditary-spherocytosis",
+      "distinguishingFeatures": [
+        "Presence of spherocytes on peripheral smear",
+        "Negative hemoglobin electrophoresis abnormalities",
+        "Increased osmotic fragility test"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Acute chest syndrome with respiratory distress",
+    "Severe vaso-occlusive pain crisis unresponsive to analgesics",
+    "Sudden neurological deficits suggestive of stroke"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Geneticist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Hoffman R et al. Hematology: Basic Principles and Practice. 7th Edition. 2018.",
+    "Orphanet: Hemoglobinopathy. ORPHA68364.",
+    "National Heart, Lung, and Blood Institute. Evidence-Based Management of Sickle Cell Disease. 2014."
+  ],
+  "confidenceInData": "ai-generated"
+}

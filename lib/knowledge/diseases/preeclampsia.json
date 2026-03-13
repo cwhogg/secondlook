@@ -1,0 +1,358 @@
+{
+  "id": "preeclampsia",
+  "name": "Preeclampsia",
+  "aliases": [
+    "Pregnancy-induced hypertension with proteinuria",
+    "Toxemia of pregnancy"
+  ],
+  "icd10Codes": [
+    "O14"
+  ],
+  "orphanetId": "ORPHA:275555",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "female",
+    "ethnicAssociations": [
+      "African descent",
+      "Hispanic",
+      "South Asian"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "American College of Obstetricians and Gynecologists (ACOG) 2019 Criteria",
+    "criteria": [
+      {
+        "id": "hypertension",
+        "description": "Systolic blood pressure ≥140 mmHg or diastolic blood pressure ≥90 mmHg on two occasions at least 4 hours apart after 20 weeks of gestation in a previously normotensive woman",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "proteinuria",
+        "description": "Proteinuria ≥300 mg per 24-hour urine collection or protein/creatinine ratio ≥0.3, or dipstick reading of 1+ if other methods not available",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "severe_features",
+        "description": "Presence of severe features such as thrombocytopenia (<100,000/µL), impaired liver function, renal insufficiency, pulmonary edema, or new-onset cerebral or visual disturbances",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Hypertension after 20 weeks gestation plus either proteinuria or presence of severe features",
+    "notes": "Diagnosis requires exclusion of other hypertensive disorders of pregnancy"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Proteinuria",
+        "frequency": 0.9,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Elevated systolic blood pressure",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "high top blood pressure number",
+          "elevated systolic blood pressure",
+          "increased upper blood pressure reading"
+        ]
+      },
+      {
+        "symptomName": "Elevated diastolic blood pressure",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "high bottom number blood pressure",
+          "elevated diastolic blood pressure"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the placenta",
+        "frequency": 0.9,
+        "bodySystem": "reproductive",
+        "searchTerms": [
+          "placenta abnormalities",
+          "unusual placenta structure",
+          "abnormal placental development"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Pulmonary edema",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Abnormality of the kidney",
+        "frequency": 0.17,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "kidney malformation",
+          "abnormal kidney shape or size",
+          "kidney structural defect"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of vision",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "vision problems",
+          "eye abnormalities",
+          "difficulty seeing"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the nervous system",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "nervous system abnormalities",
+          "neurological problems",
+          "brain and nerve system issues"
+        ]
+      },
+      {
+        "symptomName": "Intrauterine growth retardation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "poor fetal growth",
+          "baby smaller than expected in womb",
+          "slow growth before birth"
+        ]
+      },
+      {
+        "symptomName": "Small for gestational age",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "small baby size",
+          "low birth weight",
+          "baby smaller than expected at birth"
+        ]
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Elevated circulating hepatic transaminase concentration",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "high liver enzyme levels",
+          "elevated hepatic transaminases",
+          "increased liver function tests"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the hepatic vasculature",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "abnormal liver blood vessels",
+          "unusual hepatic vasculature",
+          "liver vessel malformations"
+        ]
+      },
+      {
+        "symptomName": "Increased body mass index",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "overweight or obesity",
+          "high body mass index",
+          "excess body weight"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Acute kidney injury",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "sudden kidney failure",
+          "acute loss of kidney function",
+          "rapid kidney injury"
+        ]
+      },
+      {
+        "symptomName": "Sleep abnormality",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "sleep problems",
+          "abnormal sleep patterns",
+          "sleep disturbances"
+        ]
+      },
+      {
+        "symptomName": "Autoimmunity",
+        "frequency": 0.03,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Elevated circulating creatinine concentration",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high blood creatinine levels",
+          "elevated kidney function test",
+          "increased serum creatinine"
+        ]
+      },
+      {
+        "symptomName": "Helicobacter pylori infection",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "stomach infection with bacteria",
+          "Helicobacter pylori stomach bug",
+          "bacterial infection causing ulcers"
+        ]
+      },
+      {
+        "symptomName": "Chronic kidney disease",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "long-term kidney failure",
+          "chronic kidney disease",
+          "progressive loss of kidney function"
+        ]
+      },
+      {
+        "symptomName": "Type I diabetes mellitus",
+        "frequency": 0.03,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "type 1 diabetes",
+          "insulin-dependent diabetes mellitus"
+        ]
+      },
+      {
+        "symptomName": "Polycystic ovaries",
+        "frequency": 0.03,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.03,
+        "bodySystem": "hematological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "neurological",
+    "immunological",
+    "constitutional",
+    "endocrine",
+    "cardiovascular",
+    "hematological",
+    "reproductive",
+    "respiratory",
+    "ophthalmological",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Proteinuria ≥300 mg/24 hours",
+      "Elevated liver transaminases (AST, ALT)",
+      "Thrombocytopenia (<100,000/µL)",
+      "Elevated serum creatinine",
+      "Hemolysis markers in severe cases"
+    ],
+    "imaging": [
+      "Ultrasound for fetal growth restriction",
+      "Chest X-ray showing pulmonary edema in severe cases"
+    ],
+    "genetic": [
+      "FLT1 (susceptibility)",
+      "STOX1 (susceptibility)",
+      "CORIN (susceptibility)"
+    ],
+    "other": [
+      "Elevated blood pressure measurements",
+      "Urinalysis showing proteinuria"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "gestational-hypertension",
+      "distinguishingFeatures": [
+        "Hypertension after 20 weeks gestation without proteinuria or severe features",
+        "No end-organ damage"
+      ]
+    },
+    {
+      "diseaseId": "chronic-hypertension-in-pregnancy",
+      "distinguishingFeatures": [
+        "Hypertension predating pregnancy or before 20 weeks gestation",
+        "Absence of new-onset proteinuria"
+      ]
+    },
+    {
+      "diseaseId": "hemolysis-elevated-liver-enzymes-low-platelets-syndrome",
+      "distinguishingFeatures": [
+        "Severe preeclampsia variant with hemolysis, elevated liver enzymes, and low platelets",
+        "More pronounced laboratory abnormalities"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe hypertension (≥160/110 mmHg)",
+    "New-onset neurological symptoms (seizures, visual loss)",
+    "Signs of organ failure (renal insufficiency, pulmonary edema, liver dysfunction)"
+  ],
+  "specialistType": [
+    "Obstetrician",
+    "Maternal-fetal medicine specialist",
+    "Nephrologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "American College of Obstetricians and Gynecologists. Hypertension in Pregnancy. ACOG Practice Bulletin No. 222. Obstet Gynecol. 2020.",
+    "Roberts JM, Hubel CA. The Two Stage Model of Preeclampsia: Variations on the Theme. Placenta. 2009.",
+    "Orphanet: Preeclampsia ORPHA:275555"
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,229 @@
+{
+  "id": "factor-v-amsterdam-bleeding-disorder",
+  "name": "Factor V Amsterdam Bleeding Disorder",
+  "aliases": [
+    "Factor V Amsterdam Deficiency",
+    "Amsterdam Factor V Deficiency"
+  ],
+  "icd10Codes": [
+    "D68.1"
+  ],
+  "orphanetId": "599579",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 60,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Amsterdam Factor V Deficiency Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "prolonged-pt-apt",
+        "description": "Prolonged prothrombin time (PT) and activated partial thromboplastin time (aPTT)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "low-factor-v-activity",
+        "description": "Markedly reduced Factor V activity levels in plasma",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in the F5 gene consistent with Amsterdam variant",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bleeding-history",
+        "description": "Personal or family history of bleeding diathesis including mucocutaneous bleeding",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of prolonged PT/aPTT, low Factor V activity, and confirmatory genetic testing",
+    "notes": "Diagnosis requires exclusion of other coagulation factor deficiencies and inhibitors."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Severe mucocutaneous bleeding",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Includes spontaneous bruising and epistaxis",
+        "searchTerms": [
+          "severe bleeding from skin and mucous membranes",
+          "heavy bleeding in mouth and skin",
+          "extensive mucocutaneous bleeding"
+        ]
+      },
+      {
+        "symptomName": "Prolonged bleeding after trauma or surgery",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "bleeding that lasts after surgery",
+          "prolonged bleeding after injury",
+          "excessive bleeding following trauma"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Menorrhagia in affected females",
+        "frequency": 0.65,
+        "bodySystem": "reproductive",
+        "searchTerms": [
+          "heavy menstrual bleeding",
+          "excessive periods",
+          "prolonged menstrual flow"
+        ]
+      },
+      {
+        "symptomName": "Gingival bleeding",
+        "frequency": 0.6,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Easy bruising",
+        "frequency": 0.58,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hemarthrosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Postpartum hemorrhage",
+        "frequency": 0.3,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Gastrointestinal bleeding",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.2,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Intracranial hemorrhage",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Rare but life-threatening complication"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Anemia secondary to chronic bleeding",
+        "frequency": 0.08,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "low red blood cells from bleeding",
+          "anemia due to chronic blood loss",
+          "blood deficiency from ongoing bleeding"
+        ]
+      },
+      {
+        "symptomName": "Delayed wound healing due to hematoma formation",
+        "frequency": 0.05,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "slow wound healing",
+          "bleeding under skin",
+          "blood collection in wound"
+        ]
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.04,
+        "bodySystem": "hematological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "dermatological",
+    "musculoskeletal",
+    "reproductive",
+    "gastrointestinal",
+    "renal",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Prolonged PT and aPTT",
+      "Reduced Factor V activity (<10%)",
+      "Normal levels of other coagulation factors"
+    ],
+    "imaging": [
+      "Imaging may reveal hematomas or bleeding complications such as intracranial hemorrhage"
+    ],
+    "genetic": [
+      "F5 (causative, gain-of-function)",
+      "Autosomal dominant inheritance"
+    ],
+    "other": [
+      "Family history of bleeding disorder",
+      "Absence of Factor V inhibitors"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "factor-viii-deficiency-hemophilia-a",
+      "distinguishingFeatures": [
+        "Factor VIII deficiency instead of Factor V",
+        "X-linked inheritance pattern",
+        "Normal Factor V activity"
+      ]
+    },
+    {
+      "diseaseId": "factor-vii-deficiency",
+      "distinguishingFeatures": [
+        "Isolated prolonged PT with normal aPTT",
+        "Low Factor VII activity",
+        "Different genetic mutations"
+      ]
+    },
+    {
+      "diseaseId": "acquired-factor-v-inhibitor",
+      "distinguishingFeatures": [
+        "Presence of Factor V inhibitors detected by mixing studies",
+        "Often associated with autoimmune or drug-induced causes",
+        "Sudden onset in previously healthy individuals"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Spontaneous intracranial hemorrhage",
+    "Severe postpartum hemorrhage",
+    "Unexplained prolonged bleeding after minor trauma or surgery"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Geneticist",
+    "Coagulation specialist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Orphanet: Factor V Amsterdam Bleeding Disorder - ORPHA:599579",
+    "Mannucci PM, Tuddenham EG. The hemophilias—from royal genes to gene therapy. N Engl J Med. 2001;344(23):1773-9.",
+    "Lusher JM. Factor V deficiency. Semin Thromb Hemost. 1998;24(3):271-8."
+  ],
+  "confidenceInData": "ai-generated"
+}

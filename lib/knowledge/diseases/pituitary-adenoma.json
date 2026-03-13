@@ -1,0 +1,247 @@
+{
+  "id": "pituitary-adenoma",
+  "name": "Pituitary Adenoma",
+  "aliases": [
+    "Pituitary Tumor",
+    "Pituitary Microadenoma",
+    "Pituitary Macroadenoma"
+  ],
+  "icd10Codes": [
+    "D35.2"
+  ],
+  "omimId": "615063",
+  "orphanetId": "ORPHA:99408",
+  "prevalence": {
+    "estimate": "1 in 1000",
+    "range": "0.1%-0.2%",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 60,
+      "peak": 35
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Endocrine Society Clinical Practice Guidelines",
+    "criteria": [
+      {
+        "id": "imaging",
+        "description": "Presence of pituitary mass on MRI or CT scan",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hormonal-dysfunction",
+        "description": "Evidence of pituitary hormone hypersecretion or hyposecretion",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Clinical signs and symptoms consistent with pituitary hormone excess or deficiency",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Radiological identification of pituitary mass plus biochemical evidence of hormone imbalance",
+    "notes": "Diagnosis requires exclusion of other sellar masses and confirmation of hormone secretion status"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Visual field defect (bitemporal hemianopsia)",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological",
+        "notes": "Due to optic chiasm compression",
+        "searchTerms": [
+          "loss of side vision in both eyes",
+          "tunnel vision affecting outer fields"
+        ]
+      },
+      {
+        "symptomName": "Hyperprolactinemia-induced galactorrhea",
+        "frequency": 0.7,
+        "bodySystem": "endocrine",
+        "notes": "Common in prolactin-secreting adenomas"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Headache localized to frontal or retro-orbital region",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "notes": "Due to mass effect",
+        "searchTerms": [
+          "head pain in forehead or behind eyes",
+          "frontal or eye socket headaches"
+        ]
+      },
+      {
+        "symptomName": "Amenorrhea or oligomenorrhea",
+        "frequency": 0.6,
+        "bodySystem": "reproductive",
+        "notes": "Resulting from hormonal imbalance",
+        "searchTerms": [
+          "missed or irregular periods",
+          "absence or infrequent menstruation",
+          "menstrual cycle irregularities"
+        ]
+      },
+      {
+        "symptomName": "Fatigue related to hypopituitarism",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "notes": "Secondary to hormone deficiencies",
+        "searchTerms": [
+          "tiredness from low pituitary hormones",
+          "fatigue due to hormone deficiency"
+        ]
+      },
+      {
+        "symptomName": "Acromegalic features (enlarged hands and feet)",
+        "frequency": 0.55,
+        "bodySystem": "endocrine",
+        "notes": "In growth hormone-secreting adenomas",
+        "searchTerms": [
+          "enlarged hands and feet",
+          "coarse facial features with big extremities"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hypopituitarism leading to secondary hypothyroidism",
+        "frequency": 0.3,
+        "bodySystem": "endocrine",
+        "notes": "Due to pituitary insufficiency",
+        "searchTerms": [
+          "low pituitary function causing thyroid problems",
+          "secondary hypothyroidism from pituitary failure"
+        ]
+      },
+      {
+        "symptomName": "Cushingoid appearance",
+        "frequency": 0.25,
+        "bodySystem": "endocrine",
+        "notes": "In ACTH-secreting adenomas"
+      },
+      {
+        "symptomName": "Sexual dysfunction (decreased libido, erectile dysfunction)",
+        "frequency": 0.2,
+        "bodySystem": "reproductive",
+        "notes": "Due to gonadotropin deficiency or hyperprolactinemia",
+        "searchTerms": [
+          "low sex drive",
+          "difficulty with erections",
+          "reduced sexual desire"
+        ]
+      },
+      {
+        "symptomName": "Visual acuity reduction",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological",
+        "notes": "From optic nerve compression",
+        "searchTerms": [
+          "reduced sharpness of vision",
+          "blurred or decreased eyesight",
+          "difficulty seeing clearly"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Diabetes insipidus",
+        "frequency": 0.05,
+        "bodySystem": "endocrine",
+        "notes": "Rare, usually with stalk involvement"
+      },
+      {
+        "symptomName": "Pituitary apoplexy presenting with sudden headache and ophthalmoplegia",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Acute hemorrhage or infarction of adenoma",
+        "searchTerms": [
+          "sudden severe headache with eye muscle weakness",
+          "abrupt headache and double vision",
+          "rapid onset headache and eye movement problems"
+        ]
+      },
+      {
+        "symptomName": "Hyponatremia secondary to adrenal insufficiency",
+        "frequency": 0.02,
+        "bodySystem": "endocrine",
+        "notes": "Due to secondary adrenal failure",
+        "searchTerms": [
+          "low blood sodium from adrenal gland failure",
+          "salt imbalance due to adrenal problems",
+          "hyponatremia caused by adrenal insufficiency"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "endocrine",
+    "ophthalmological",
+    "reproductive",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum prolactin, growth hormone, or ACTH depending on adenoma subtype",
+      "Low levels of pituitary-dependent hormones in hypopituitarism",
+      "Abnormal dynamic hormone testing (e.g., dexamethasone suppression test)"
+    ],
+    "imaging": [
+      "MRI showing sellar mass with or without suprasellar extension",
+      "CT scan may show sellar enlargement or erosion"
+    ],
+    "genetic": [
+      "Rare familial syndromes such as MEN1 mutations",
+      "AIP gene mutations in familial isolated pituitary adenomas"
+    ],
+    "other": [
+      "Visual field testing showing bitemporal hemianopsia",
+      "Histopathology confirming adenoma subtype after surgery"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "craniopharyngioma",
+      "distinguishingFeatures": [
+        "Calcifications on imaging",
+        "Cystic components",
+        "More common in children and adolescents"
+      ]
+    },
+    {
+      "diseaseId": "rathke-cleft-cyst",
+      "distinguishingFeatures": [
+        "Non-enhancing cystic lesion on MRI",
+        "Lack of hormone hypersecretion",
+        "Usually asymptomatic or mild symptoms"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset severe headache with visual loss (pituitary apoplexy)",
+    "Rapidly progressive visual field defects",
+    "Signs of acute adrenal insufficiency (hypotension, hyponatremia)"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Neurosurgeon",
+    "Ophthalmologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Melmed S. Pituitary Tumors. Endocrinol Metab Clin North Am. 2015;44(1):1-15.",
+    "Endocrine Society Clinical Practice Guidelines: Diagnosis and Treatment of Pituitary Adenomas, 2011.",
+    "Orphanet: Pituitary adenoma - ORPHA:99408"
+  ],
+  "confidenceInData": "ai-generated"
+}

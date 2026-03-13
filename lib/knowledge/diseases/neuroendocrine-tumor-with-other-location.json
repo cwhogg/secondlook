@@ -1,0 +1,271 @@
+{
+  "id": "neuroendocrine-tumor-with-other-location",
+  "name": "Neuroendocrine Tumor with Other Location",
+  "aliases": [
+    "NET with atypical site",
+    "Extra-pancreatic neuroendocrine tumor"
+  ],
+  "icd10Codes": [
+    "C7A.9"
+  ],
+  "orphanetId": "100101",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.001%-0.005%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Neuroendocrine Tumors",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histopathological confirmation of neuroendocrine differentiation by immunohistochemistry (chromogranin A, synaptophysin positivity)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging",
+        "description": "Identification of tumor location and extent by cross-sectional imaging (CT, MRI) or functional imaging (68Ga-DOTATATE PET/CT)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "biochemical",
+        "description": "Elevated serum or urine markers such as chromogranin A or 5-HIAA depending on tumor secretory status",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation plus imaging evidence of tumor location",
+    "notes": "Diagnosis requires exclusion of primary pancreatic or pulmonary NET to confirm other location"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Flushing episodes due to carcinoid syndrome",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Typically seen in serotonin-secreting tumors",
+        "searchTerms": [
+          "episodes of skin flushing",
+          "carcinoid flushing attacks",
+          "redness flare-ups from hormone release"
+        ]
+      },
+      {
+        "symptomName": "Secretory diarrhea associated with hormone secretion",
+        "frequency": 0.72,
+        "bodySystem": "gastrointestinal",
+        "notes": "Common in functional NETs producing vasoactive substances",
+        "searchTerms": [
+          "watery diarrhea from hormone secretion",
+          "secretory diarrhea",
+          "diarrhea caused by tumor hormones"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abdominal pain localized to tumor site",
+        "frequency": 0.68,
+        "bodySystem": "gastrointestinal",
+        "notes": "Often due to mass effect or local invasion",
+        "searchTerms": [
+          "pain at tumor location",
+          "localized belly pain",
+          "abdominal pain over growth"
+        ]
+      },
+      {
+        "symptomName": "Unintentional weight loss",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Reflects systemic illness",
+        "searchTerms": [
+          "unplanned weight loss",
+          "losing weight without trying",
+          "involuntary weight reduction"
+        ]
+      },
+      {
+        "symptomName": "Fatigue related to chronic disease",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Non-specific but frequent",
+        "searchTerms": [
+          "tiredness from chronic illness",
+          "fatigue linked to long-term disease",
+          "low energy from ongoing health issues"
+        ]
+      },
+      {
+        "symptomName": "Palpable mass in affected region",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "notes": "Depends on tumor size and location",
+        "searchTerms": [
+          "lump you can feel",
+          "palpable tumor or mass",
+          "detectable swelling"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Bronchospasm triggered by hormone secretion",
+        "frequency": 0.3,
+        "bodySystem": "respiratory",
+        "notes": "Seen in carcinoid syndrome",
+        "searchTerms": [
+          "wheezing from hormone effects",
+          "bronchospasm triggered by tumor",
+          "breathing tightness from hormone secretion"
+        ]
+      },
+      {
+        "symptomName": "Peripheral edema due to carcinoid heart disease",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to right-sided heart failure",
+        "searchTerms": [
+          "swelling from carcinoid heart disease",
+          "fluid buildup in legs from heart valve damage",
+          "peripheral edema due to heart tumor effects"
+        ]
+      },
+      {
+        "symptomName": "Hypoglycemia from insulin secretion in functional tumors",
+        "frequency": 0.15,
+        "bodySystem": "endocrine",
+        "notes": "Rare in non-pancreatic NETs but possible",
+        "searchTerms": [
+          "low blood sugar from insulin tumor",
+          "hypoglycemia from functional tumor",
+          "insulin-secreting tumor causing low glucose"
+        ]
+      },
+      {
+        "symptomName": "Neurological symptoms from paraneoplastic syndromes",
+        "frequency": 0.12,
+        "bodySystem": "neurological",
+        "notes": "Includes neuropathy or encephalopathy",
+        "searchTerms": [
+          "nerve symptoms from tumor syndrome",
+          "neurological signs due to paraneoplastic effects",
+          "brain or nerve problems from tumor"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cushingoid features due to ectopic ACTH secretion",
+        "frequency": 0.07,
+        "bodySystem": "endocrine",
+        "notes": "Rare ectopic hormone production",
+        "searchTerms": [
+          "Cushing-like features from excess ACTH",
+          "symptoms of high cortisol due to ectopic hormone",
+          "signs of cortisol excess from tumor hormone"
+        ]
+      },
+      {
+        "symptomName": "Carcinoid heart valve fibrosis",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Leads to valvular dysfunction",
+        "searchTerms": [
+          "heart valve scarring from carcinoid",
+          "carcinoid causing valve fibrosis",
+          "valve damage due to tumor"
+        ]
+      },
+      {
+        "symptomName": "Hypotension from vasoactive peptide secretion",
+        "frequency": 0.04,
+        "bodySystem": "cardiovascular",
+        "notes": "May cause syncope",
+        "searchTerms": [
+          "low blood pressure from vasoactive peptides",
+          "hypotension caused by tumor hormones",
+          "vasoactive peptide-related low BP"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "dermatological",
+    "cardiovascular",
+    "endocrine",
+    "respiratory",
+    "neurological",
+    "musculoskeletal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum chromogranin A",
+      "Increased 24-hour urinary 5-HIAA",
+      "Hormone assays depending on secretory profile (e.g., insulin, ACTH)"
+    ],
+    "imaging": [
+      "CT or MRI showing mass in atypical neuroendocrine tumor location",
+      "68Ga-DOTATATE PET/CT demonstrating somatostatin receptor expression",
+      "Echocardiography for carcinoid heart disease assessment"
+    ],
+    "genetic": [
+      "Somatic mutations in MEN1, DAXX, ATRX genes in some cases",
+      "No consistent germline mutation unless associated with hereditary syndromes"
+    ],
+    "other": [
+      "Histopathology with immunohistochemical staining positive for synaptophysin and chromogranin A",
+      "Ki-67 proliferation index for grading tumor aggressiveness"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pancreatic-neuroendocrine-tumor",
+      "distinguishingFeatures": [
+        "Primary tumor located in pancreas",
+        "Distinct imaging findings localized to pancreas",
+        "Different hormonal secretion profile"
+      ]
+    },
+    {
+      "diseaseId": "small-cell-lung-carcinoma",
+      "distinguishingFeatures": [
+        "Primary tumor in lung",
+        "High mitotic rate and necrosis on histology",
+        "Different immunohistochemical markers (e.g., TTF-1 positivity)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging mass with local invasion",
+    "Signs of carcinoid heart disease (e.g., right heart failure)",
+    "Severe secretory diarrhea causing dehydration and electrolyte imbalance"
+  ],
+  "specialistType": [
+    "Oncologist",
+    "Endocrinologist",
+    "Gastroenterologist",
+    "Pathologist",
+    "Cardiologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "WHO Classification of Tumors of Endocrine Organs, 4th Edition, 2017",
+    "Orphanet: Neuroendocrine Tumor with Other Location (ORPHA:100101)",
+    "National Comprehensive Cancer Network (NCCN) Guidelines for Neuroendocrine Tumors, 2024"
+  ],
+  "confidenceInData": "ai-generated"
+}

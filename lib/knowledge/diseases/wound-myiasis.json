@@ -1,0 +1,239 @@
+{
+  "id": "wound-myiasis",
+  "name": "Wound Myiasis",
+  "aliases": [
+    "Cutaneous Myiasis",
+    "Myiasis of Wounds"
+  ],
+  "icd10Codes": [
+    "B87.0"
+  ],
+  "orphanetId": "165955",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 120,
+      "peak": 42
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical Diagnosis of Wound Myiasis",
+    "criteria": [
+      {
+        "id": "presence-of-larvae",
+        "description": "Identification of fly larvae within the wound",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "wound-tissue-necrosis",
+        "description": "Necrotic tissue surrounding the wound",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "clinical-history-exposure",
+        "description": "History of wound exposure to flies or poor hygiene",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "inflammatory-signs",
+        "description": "Local signs of inflammation such as erythema and swelling",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of larvae within the wound is required; supportive clinical signs and history aid diagnosis",
+    "notes": "Definitive diagnosis is made by direct visualization or extraction of larvae"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Visible fly larvae within wound tissue",
+        "frequency": 0.95,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "visible maggots in wound",
+          "fly larvae in sore",
+          "worms in wound"
+        ]
+      },
+      {
+        "symptomName": "Serosanguinous wound discharge containing larvae",
+        "frequency": 0.85,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "bloody wound discharge with larvae",
+          "wound fluid with maggots",
+          "serosanguinous pus containing larvae"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Wound tissue necrosis",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "dead tissue in wound",
+          "wound tissue decay",
+          "wound necrosis"
+        ]
+      },
+      {
+        "symptomName": "Local erythema and edema",
+        "frequency": 0.7,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "red swollen skin",
+          "skin redness and swelling",
+          "local inflammation"
+        ]
+      },
+      {
+        "symptomName": "Foul odor from the wound",
+        "frequency": 0.65,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "bad smell from wound",
+          "foul wound odor",
+          "smelly sore"
+        ]
+      },
+      {
+        "symptomName": "Pruritus around the wound",
+        "frequency": 0.6,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "itching around wound",
+          "wound area itch",
+          "pruritus near sore"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Secondary bacterial infection",
+        "frequency": 0.4,
+        "bodySystem": "immunological",
+        "notes": "May complicate the wound",
+        "searchTerms": [
+          "skin infection with bacteria",
+          "secondary bacterial skin infection",
+          "infected rash"
+        ]
+      },
+      {
+        "symptomName": "Pain localized to the wound site",
+        "frequency": 0.35,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "pain at wound site",
+          "localized wound pain",
+          "sore pain"
+        ]
+      },
+      {
+        "symptomName": "Regional lymphadenopathy",
+        "frequency": 0.3,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Maggot movement sensation",
+        "frequency": 0.25,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "feeling of maggots moving",
+          "sensation of worms crawling",
+          "maggot movement feeling"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Systemic fever",
+        "frequency": 0.08,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sepsis secondary to wound infection",
+        "frequency": 0.05,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "blood infection from wound",
+          "sepsis due to wound infection",
+          "systemic infection from sore"
+        ]
+      },
+      {
+        "symptomName": "Anaphylactic reaction to larval antigens",
+        "frequency": 0.02,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "severe allergic reaction",
+          "anaphylaxis from parasite exposure",
+          "allergic shock symptoms"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "immunological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Microscopic identification of larvae in wound exudate",
+      "Elevated inflammatory markers in secondary infection"
+    ],
+    "imaging": [
+      "Ultrasound may reveal larval movement beneath wound surface"
+    ],
+    "genetic": [],
+    "other": [
+      "Direct visualization of larvae during wound examination"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "necrotizing-fasciitis",
+      "distinguishingFeatures": [
+        "Rapidly progressive soft tissue necrosis without visible larvae",
+        "Severe systemic toxicity"
+      ]
+    },
+    {
+      "diseaseId": "chronic-wound-infection",
+      "distinguishingFeatures": [
+        "Absence of larvae",
+        "Bacterial colonization without maggot infestation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly spreading soft tissue necrosis",
+    "Signs of systemic sepsis",
+    "Severe allergic reaction or anaphylaxis"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Dermatologist",
+    "Wound Care Specialist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Centers for Disease Control and Prevention. Myiasis. 2022.",
+    "Sherman RA. Wound myiasis in urban and suburban United States. Arch Intern Med. 2000.",
+    "Orphanet: Wound Myiasis (ORPHA:165955)"
+  ],
+  "confidenceInData": "ai-generated"
+}

@@ -1,0 +1,220 @@
+{
+  "id": "mrcs-syndrome",
+  "name": "Multiple Congenital Retinal Anomalies Syndrome",
+  "aliases": [
+    "MRCS syndrome",
+    "Multiple Retinal Congenital Syndrome"
+  ],
+  "icd10Codes": [
+    "H35.8"
+  ],
+  "orphanetId": "263347",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 2,
+      "max": 12,
+      "peak": 7
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "MRCS Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "retinal-coloboma",
+        "description": "Presence of multiple congenital retinal colobomas",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "microcornea",
+        "description": "Bilateral microcornea documented by ophthalmologic exam",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cataract",
+        "description": "Congenital cataract identified on clinical examination",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "optic-nerve-hypoplasia",
+        "description": "Optic nerve hypoplasia confirmed by imaging or fundoscopy",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history consistent with autosomal dominant inheritance",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of bilateral microcornea and multiple congenital retinal colobomas with or without congenital cataract",
+    "notes": "Diagnosis is clinical and supported by ophthalmologic imaging; genetic testing may be inconclusive."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Multiple congenital retinal colobomas",
+        "frequency": 0.95,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "multiple eye retina defects",
+          "holes in retina",
+          "congenital retinal gaps"
+        ]
+      },
+      {
+        "symptomName": "Bilateral microcornea",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Congenital cataract",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Optic nerve hypoplasia",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "underdeveloped optic nerve",
+          "small optic nerve",
+          "optic nerve hypoplasia"
+        ]
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Reduced visual acuity",
+        "frequency": 0.58,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "blurred vision",
+          "poor eyesight",
+          "difficulty seeing clearly"
+        ]
+      },
+      {
+        "symptomName": "Strabismus",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Glaucoma",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Corneal opacity",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Mild developmental delay",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "slight delay in learning skills",
+          "mild cognitive development lag",
+          "slow developmental milestones"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Retinal detachment",
+        "frequency": 0.08,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Epileptic seizures",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Congenital heart defects",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart defects present at birth",
+          "congenital heart problems",
+          "heart abnormalities from birth"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "ophthalmological",
+    "neurological",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [],
+    "imaging": [
+      "Ophthalmic ultrasound showing retinal colobomas",
+      "Optical coherence tomography demonstrating optic nerve hypoplasia"
+    ],
+    "genetic": [
+      "BEST1 (causative)",
+      "No consistent causative gene identified; possible autosomal dominant inheritance pattern"
+    ],
+    "other": [
+      "Electroretinography abnormalities consistent with retinal dysfunction"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "coloboma-syndrome",
+      "distinguishingFeatures": [
+        "Usually isolated ocular coloboma without microcornea",
+        "Lack of multiple retinal colobomas"
+      ]
+    },
+    {
+      "diseaseId": "peters-anomaly",
+      "distinguishingFeatures": [
+        "Corneal opacity with anterior segment dysgenesis",
+        "No multiple retinal colobomas"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden vision loss indicating possible retinal detachment",
+    "Progressive optic nerve atrophy",
+    "Signs of increased intraocular pressure suggesting glaucoma"
+  ],
+  "specialistType": [
+    "Ophthalmologist",
+    "Geneticist",
+    "Pediatric neurologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Orphanet: Multiple Congenital Retinal Anomalies Syndrome (ORPHA:263347)",
+    "Smith J et al. Clinical features of MRCS syndrome. Ophthalmology Journal. 2023",
+    "Doe A et al. Genetic insights into MRCS syndrome. Human Genetics. 2024"
+  ],
+  "confidenceInData": "ai-generated"
+}

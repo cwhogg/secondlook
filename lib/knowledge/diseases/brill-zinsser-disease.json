@@ -1,0 +1,238 @@
+{
+  "id": "brill-zinsser-disease",
+  "name": "Brill-Zinsser disease",
+  "aliases": [
+    "Recrudescent epidemic typhus",
+    "Relapsing typhus"
+  ],
+  "icd10Codes": [
+    "A75.0"
+  ],
+  "orphanetId": "ORPHA:99990",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 80,
+      "peak": 40
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Brill-Zinsser disease diagnostic criteria",
+    "criteria": [
+      {
+        "id": "history-epidemic-typhus",
+        "description": "Prior history of epidemic typhus infection",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "febrile-illness",
+        "description": "Acute febrile illness with sudden onset",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "rash-characteristic",
+        "description": "Maculopapular rash appearing after fever onset",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "serologic-evidence",
+        "description": "Positive serologic tests for Rickettsia prowazekii antibodies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-other-typhus",
+        "description": "Exclusion of other febrile illnesses and typhus-like diseases",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "History of prior epidemic typhus infection, acute febrile illness, and positive serologic evidence for Rickettsia prowazekii",
+    "notes": "Diagnosis is often clinical supported by serology; PCR may be used in specialized centers."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recrudescence of epidemic typhus rash",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Maculopapular rash typically involving trunk and extremities",
+        "searchTerms": [
+          "return of rash from epidemic typhus",
+          "rash flare-up",
+          "reappearance of typhus skin rash"
+        ]
+      },
+      {
+        "symptomName": "Sudden onset high-grade fever",
+        "frequency": 0.85,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "sudden high fever",
+          "rapid onset of fever",
+          "quickly developing high temperature"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Severe headache",
+        "frequency": 0.7,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Myalgia and arthralgia",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle pain",
+          "joint aches",
+          "body pain and soreness"
+        ]
+      },
+      {
+        "symptomName": "Chills and rigors",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "shaking chills",
+          "intense shivering",
+          "rigors with fever"
+        ]
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Nonproductive cough",
+        "frequency": 0.4,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Confusion or altered mental status",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "confused thinking",
+          "altered mental state"
+        ]
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.25,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Myocarditis",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "neurological",
+    "musculoskeletal",
+    "constitutional",
+    "respiratory",
+    "ophthalmological",
+    "immunological",
+    "gastrointestinal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated liver enzymes",
+      "Leukocytosis or leukopenia",
+      "Positive Weil-Felix test (OX19 agglutination)",
+      "Serologic detection of Rickettsia prowazekii antibodies (IgG and IgM)"
+    ],
+    "imaging": [
+      "Chest X-ray may show interstitial infiltrates in pulmonary involvement",
+      "Brain imaging generally normal unless complications"
+    ],
+    "genetic": [],
+    "other": [
+      "History of prior epidemic typhus infection",
+      "Epidemiological exposure to louse-infested environments"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "epidemic-typhus",
+      "distinguishingFeatures": [
+        "Primary infection rather than recrudescence",
+        "More severe systemic symptoms",
+        "Higher mortality if untreated"
+      ]
+    },
+    {
+      "diseaseId": "murine-typhus",
+      "distinguishingFeatures": [
+        "Caused by Rickettsia typhi",
+        "Usually milder illness",
+        "Different epidemiological exposure (fleas vs lice)"
+      ]
+    },
+    {
+      "diseaseId": "rocky-mountain-spotted-fever",
+      "distinguishingFeatures": [
+        "Caused by Rickettsia rickettsii",
+        "Distinct rash distribution including palms and soles",
+        "Tick exposure history"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression to encephalitis or altered mental status",
+    "Severe myocarditis or cardiac complications",
+    "Persistent high-grade fever unresponsive to doxycycline"
+  ],
+  "specialistType": [
+    "Infectious disease specialist",
+    "Dermatologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Raoult D, Roux V. The body louse as a vector of reemerging human diseases. Clin Infect Dis. 1999;29(4):888-911.",
+    "Parola P, Raoult D. Tick-borne bacterial diseases emerging in Europe. Clin Microbiol Infect. 2001;7(2):80-83.",
+    "Centers for Disease Control and Prevention (CDC). Epidemic Typhus. https://www.cdc.gov/typhus/epidemic/index.html"
+  ],
+  "confidenceInData": "ai-generated"
+}

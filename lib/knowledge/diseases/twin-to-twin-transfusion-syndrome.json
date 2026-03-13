@@ -1,0 +1,280 @@
+{
+  "id": "twin-to-twin-transfusion-syndrome",
+  "name": "Twin to Twin Transfusion Syndrome",
+  "aliases": [
+    "TTTS",
+    "Feto-fetal transfusion syndrome"
+  ],
+  "icd10Codes": [
+    "O43.1"
+  ],
+  "orphanetId": "ORPHA:95431",
+  "prevalence": {
+    "estimate": "1 in 10,000 pregnancies",
+    "range": "0.1-15% of monochorionic twin pregnancies",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 16,
+      "max": 26,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Quintero Staging System",
+    "criteria": [
+      {
+        "id": "polyhydramnios-recipient",
+        "description": "Polyhydramnios in the recipient twin with deepest vertical pocket >8 cm before 20 weeks or >10 cm after 20 weeks",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "oligohydramnios-donor",
+        "description": "Oligohydramnios in the donor twin with deepest vertical pocket <2 cm",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bladder-visibility-donor",
+        "description": "Absent or small bladder in the donor twin on ultrasound",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "doppler-abnormalities",
+        "description": "Abnormal Doppler studies in either twin (e.g., absent or reversed end-diastolic flow)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "discordant-fetal-growth",
+        "description": "Significant discordance in fetal size or growth between twins",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of polyhydramnios in recipient twin and oligohydramnios in donor twin (major criteria) on ultrasound",
+    "notes": "Diagnosis is primarily based on ultrasound findings in monochorionic diamniotic twin pregnancies."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Polyhydramnios in recipient twin",
+        "frequency": 0.95,
+        "bodySystem": "reproductive",
+        "notes": "Excess amniotic fluid accumulation around recipient twin",
+        "searchTerms": [
+          "too much amniotic fluid in recipient twin",
+          "recipient twin polyhydramnios",
+          "excess fluid around recipient twin"
+        ]
+      },
+      {
+        "symptomName": "Oligohydramnios in donor twin",
+        "frequency": 0.92,
+        "bodySystem": "reproductive",
+        "notes": "Reduced amniotic fluid volume around donor twin",
+        "searchTerms": [
+          "low amniotic fluid in donor twin",
+          "donor twin oligohydramnios",
+          "reduced fluid around donor twin"
+        ]
+      },
+      {
+        "symptomName": "Absent or small bladder in donor twin",
+        "frequency": 0.75,
+        "bodySystem": "reproductive",
+        "notes": "Indicative of decreased urine output due to hypovolemia",
+        "searchTerms": [
+          "missing or small bladder in donor twin",
+          "donor twin bladder abnormality",
+          "absent fetal bladder in donor"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Discordant fetal growth",
+        "frequency": 0.85,
+        "bodySystem": "reproductive",
+        "notes": "Significant size difference between twins",
+        "searchTerms": [
+          "unequal fetal growth",
+          "different sizes between fetuses",
+          "fetal growth mismatch"
+        ]
+      },
+      {
+        "symptomName": "Abnormal Doppler velocimetry in umbilical artery",
+        "frequency": 0.8,
+        "bodySystem": "cardiovascular",
+        "notes": "May show absent or reversed end-diastolic flow",
+        "searchTerms": [
+          "abnormal blood flow in umbilical artery",
+          "umbilical artery Doppler changes",
+          "poor umbilical artery circulation"
+        ]
+      },
+      {
+        "symptomName": "Cardiomegaly in recipient twin",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to volume overload",
+        "searchTerms": [
+          "enlarged heart in recipient twin",
+          "recipient twin cardiomegaly",
+          "big heart in recipient fetus"
+        ]
+      },
+      {
+        "symptomName": "Hydrops fetalis in recipient twin",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "notes": "Fluid accumulation in fetal compartments",
+        "searchTerms": [
+          "fluid buildup in recipient twin",
+          "recipient twin hydrops",
+          "swelling in recipient twin"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Preterm labor",
+        "frequency": 0.4,
+        "bodySystem": "reproductive",
+        "notes": "Often due to polyhydramnios and uterine overdistension"
+      },
+      {
+        "symptomName": "Fetal anemia in donor twin",
+        "frequency": 0.35,
+        "bodySystem": "hematological",
+        "notes": "Due to hypovolemia and blood loss",
+        "searchTerms": [
+          "low fetal blood count in donor twin",
+          "anemic donor twin",
+          "donor twin with low red cells"
+        ]
+      },
+      {
+        "symptomName": "Fetal hydrops in donor twin",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Less common than in recipient twin",
+        "searchTerms": [
+          "fluid buildup in donor twin",
+          "donor twin hydrops",
+          "swelling in donor twin"
+        ]
+      },
+      {
+        "symptomName": "Maternal dyspnea",
+        "frequency": 0.2,
+        "bodySystem": "respiratory",
+        "notes": "Secondary to polyhydramnios causing diaphragmatic elevation"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Fetal demise of one or both twins",
+        "frequency": 0.08,
+        "bodySystem": "reproductive",
+        "notes": "Severe cases may result in intrauterine death",
+        "searchTerms": [
+          "death of one or both twins before birth",
+          "fetal loss of twins",
+          "intrauterine twin demise"
+        ]
+      },
+      {
+        "symptomName": "Neurological injury in surviving twin",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Due to hypoxia or ischemia following acute hemodynamic changes",
+        "searchTerms": [
+          "brain injury in surviving twin",
+          "neurological damage after twin loss",
+          "brain problems in surviving fetus"
+        ]
+      },
+      {
+        "symptomName": "Maternal mirror syndrome",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "notes": "Maternal edema and preeclampsia-like symptoms",
+        "searchTerms": [
+          "mother develops mirror syndrome",
+          "maternal swelling and symptoms",
+          "pregnancy-related maternal illness"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "reproductive",
+    "cardiovascular",
+    "hematological",
+    "respiratory",
+    "neurological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated maternal serum alpha-fetoprotein may be present",
+      "No specific maternal laboratory markers diagnostic"
+    ],
+    "imaging": [
+      "Ultrasound showing discordant amniotic fluid volumes (polyhydramnios and oligohydramnios)",
+      "Absent or small bladder in donor twin on ultrasound",
+      "Doppler studies showing abnormal umbilical artery flow",
+      "Cardiomegaly and hydrops fetalis on fetal ultrasound"
+    ],
+    "genetic": [
+      "No specific genetic mutations identified; condition related to placental vascular anastomoses"
+    ],
+    "other": [
+      "Monochorionic diamniotic twin pregnancy is a prerequisite",
+      "Placental vascular anastomoses between twins"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "selective-intrauterine-growth-restriction",
+      "distinguishingFeatures": [
+        "Absence of polyhydramnios-oligohydramnios sequence",
+        "No significant amniotic fluid discordance",
+        "Growth restriction primarily in one twin without volume imbalance"
+      ]
+    },
+    {
+      "diseaseId": "twin-anemia-polycythemia-sequence",
+      "distinguishingFeatures": [
+        "No significant amniotic fluid discordance",
+        "Marked hemoglobin difference between twins",
+        "Doppler studies showing middle cerebral artery peak systolic velocity differences"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressing polyhydramnios in recipient twin",
+    "Absent bladder in donor twin on ultrasound",
+    "Signs of fetal hydrops or cardiomegaly in recipient twin"
+  ],
+  "specialistType": [
+    "Maternal-Fetal Medicine Specialist",
+    "Obstetrician",
+    "Fetal Medicine Specialist",
+    "Neonatologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Quintero RA, et al. Staging of twin-twin transfusion syndrome. J Perinatol. 1999.",
+    "American College of Obstetricians and Gynecologists. Practice Bulletin No. 169: Multifetal Gestations. Obstet Gynecol. 2016.",
+    "Orphanet: Twin to twin transfusion syndrome. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=95431"
+  ],
+  "confidenceInData": "ai-generated"
+}

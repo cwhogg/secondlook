@@ -1,0 +1,241 @@
+{
+  "id": "medullar-disease",
+  "name": "Medullar Disease",
+  "aliases": [
+    "Spinal Cord Disease",
+    "Medullary Disorder"
+  ],
+  "icd10Codes": [
+    "G95.9"
+  ],
+  "orphanetId": "ORPHA:102000",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 70,
+      "peak": 40
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Medullar Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clinical-presentation",
+        "description": "Progressive signs of spinal cord dysfunction including motor weakness and sensory deficits",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-evidence",
+        "description": "MRI showing spinal cord lesions or atrophy consistent with medullar involvement",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-other-causes",
+        "description": "Exclusion of alternative diagnoses such as multiple sclerosis or compressive myelopathy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "electrophysiology",
+        "description": "Abnormal somatosensory evoked potentials indicating spinal cord dysfunction",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of causative mutations if hereditary form suspected",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of progressive spinal cord dysfunction with supportive MRI findings and exclusion of other causes",
+    "notes": "Diagnosis relies heavily on clinical and imaging correlation; biopsy rarely performed."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Sensory level deficit",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "loss of sensation below certain level",
+          "numbness in specific body region",
+          "sensory loss patch"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Bladder dysfunction with urinary urgency or retention",
+        "frequency": 0.65,
+        "bodySystem": "renal",
+        "notes": "Considered under neurological dysfunction affecting autonomic pathways",
+        "searchTerms": [
+          "difficulty controlling bladder",
+          "urgent need to urinate",
+          "trouble emptying bladder"
+        ]
+      },
+      {
+        "symptomName": "Lower limb hyperreflexia",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "overactive reflexes in legs",
+          "increased leg reflex responses",
+          "hyperactive lower limb reflexes"
+        ]
+      },
+      {
+        "symptomName": "Gait disturbance due to spasticity",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "walking problems due to muscle stiffness",
+          "spasticity causing gait issues",
+          "difficulty walking from muscle tightness"
+        ]
+      },
+      {
+        "symptomName": "Lhermitte's sign (electric shock sensation on neck flexion)",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "electric shock feeling when bending neck",
+          "neck flexion causes tingling",
+          "shock-like sensation down spine"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Muscle atrophy in advanced stages",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle wasting",
+          "muscle shrinking over time",
+          "loss of muscle bulk"
+        ]
+      },
+      {
+        "symptomName": "Painful dysesthesia in lower limbs",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "burning pain in legs",
+          "tingling painful sensation in lower limbs",
+          "unpleasant leg sensations"
+        ]
+      },
+      {
+        "symptomName": "Sexual dysfunction",
+        "frequency": 0.2,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Orthostatic hypotension",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Respiratory muscle weakness",
+        "frequency": 0.05,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "weak breathing muscles",
+          "difficulty breathing due to muscle weakness",
+          "respiratory muscle fatigue"
+        ]
+      },
+      {
+        "symptomName": "Cranial nerve involvement",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "problems with facial and head nerves",
+          "nerve issues affecting face and head",
+          "cranial nerve dysfunction"
+        ]
+      },
+      {
+        "symptomName": "Autonomic dysreflexia",
+        "frequency": 0.02,
+        "bodySystem": "autonomic",
+        "notes": "Autonomic system involvement may rarely occur"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "musculoskeletal",
+    "reproductive",
+    "cardiovascular",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF analysis may show mild pleocytosis or elevated protein",
+      "Exclusion of infectious or inflammatory markers"
+    ],
+    "imaging": [
+      "MRI spinal cord showing focal or diffuse lesions, atrophy, or signal changes"
+    ],
+    "genetic": [
+      "Mutations in genes associated with hereditary spastic paraplegia or other medullary disorders"
+    ],
+    "other": [
+      "Electrophysiological studies showing delayed somatosensory evoked potentials"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "multiple-sclerosis",
+      "distinguishingFeatures": [
+        "Disseminated CNS lesions on MRI",
+        "Relapsing-remitting course",
+        "Oligoclonal bands in CSF"
+      ]
+    },
+    {
+      "diseaseId": "compressive-myelopathy",
+      "distinguishingFeatures": [
+        "Identifiable extrinsic spinal cord compression on imaging",
+        "Rapid symptom progression",
+        "Improvement after surgical decompression"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive paralysis",
+    "Loss of sphincter control",
+    "Signs of spinal cord compression requiring urgent intervention"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neurosurgeon",
+    "Physical Medicine and Rehabilitation Specialist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Orphanet: Medullar Disease - ORPHA:102000",
+    "Neurology Textbook: Spinal Cord Disorders",
+    "Recent Review Articles on Medullar Disease Pathophysiology and Diagnosis"
+  ],
+  "confidenceInData": "ai-generated"
+}

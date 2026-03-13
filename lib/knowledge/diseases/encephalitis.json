@@ -1,0 +1,256 @@
+{
+  "id": "encephalitis",
+  "name": "Encephalitis",
+  "aliases": [
+    "Inflammation of the brain",
+    "Acute encephalitis"
+  ],
+  "icd10Codes": [
+    "G04"
+  ],
+  "orphanetId": "ORPHA:97275",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.001% - 0.002%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 90,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "International Encephalitis Consortium Criteria",
+    "criteria": [
+      {
+        "id": "altered-mental-status",
+        "description": "Altered mental status lasting ≥24 hours with no alternative cause identified",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "fever",
+        "description": "Fever ≥38°C within 72 hours before or after presentation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "new-onset-seizures",
+        "description": "New onset of seizures not explained by a preexisting seizure disorder",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "csf-pleocytosis",
+        "description": "Cerebrospinal fluid pleocytosis (>5 white blood cells/mm³)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "brain-imaging-abnormalities",
+        "description": "Brain MRI showing abnormalities consistent with encephalitis",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of altered mental status lasting ≥24 hours plus at least two additional criteria (fever, seizures, CSF pleocytosis, or brain imaging abnormalities)",
+    "notes": "Diagnosis requires exclusion of alternative causes such as metabolic or toxic encephalopathies."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Altered level of consciousness",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Ranges from confusion to coma",
+        "searchTerms": [
+          "reduced alertness",
+          "drowsiness or unconsciousness",
+          "altered consciousness level"
+        ]
+      },
+      {
+        "symptomName": "Fever ≥38°C",
+        "frequency": 0.8,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "New-onset focal neurological deficits",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Includes hemiparesis, aphasia",
+        "searchTerms": [
+          "new localized neurological problems",
+          "sudden focal nerve deficits",
+          "recent onset of specific neurological symptoms"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Headache of moderate to severe intensity",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "moderate to severe headache pain",
+          "strong head pain",
+          "intense headache"
+        ]
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nuchal rigidity",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Behavioral changes including agitation or psychosis",
+        "frequency": 0.5,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "changes in behavior like agitation or psychosis",
+          "mental status changes with agitation",
+          "psychotic or agitated behavior"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.4,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Visual disturbances",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hypersomnia",
+        "frequency": 0.2,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Autonomic dysfunction",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Myoclonus",
+        "frequency": 0.07,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypotension due to autonomic instability",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "low blood pressure from autonomic dysfunction",
+          "hypotension due to nervous system instability",
+          "unstable blood pressure causing dizziness"
+        ]
+      },
+      {
+        "symptomName": "Rash associated with viral encephalitis",
+        "frequency": 0.03,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin rash with viral brain infection",
+          "rash associated with viral encephalitis",
+          "viral infection causing skin changes"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "psychiatric",
+    "constitutional",
+    "ophthalmological",
+    "cardiovascular",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Cerebrospinal fluid pleocytosis with lymphocytic predominance",
+      "Elevated CSF protein",
+      "PCR detection of viral DNA/RNA in CSF (e.g., HSV, enteroviruses)"
+    ],
+    "imaging": [
+      "MRI brain showing hyperintense lesions on T2/FLAIR in temporal lobes or other affected regions",
+      "Possible contrast enhancement of affected brain areas"
+    ],
+    "genetic": [
+      "No specific genetic markers; some autoimmune encephalitis forms associated with HLA subtypes"
+    ],
+    "other": [
+      "Electroencephalogram (EEG) showing diffuse slowing or epileptiform discharges",
+      "Brain biopsy rarely performed but may show inflammatory infiltrates"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "meningitis",
+      "distinguishingFeatures": [
+        "Predominant meningeal signs rather than brain parenchymal involvement",
+        "CSF findings with neutrophilic predominance in bacterial meningitis"
+      ]
+    },
+    {
+      "diseaseId": "acute-disseminated-encephalomyelitis",
+      "distinguishingFeatures": [
+        "Usually follows infection or vaccination",
+        "MRI shows multifocal demyelinating lesions rather than viral encephalitis pattern"
+      ]
+    },
+    {
+      "diseaseId": "brain-tumor",
+      "distinguishingFeatures": [
+        "Progressive focal neurological deficits without fever",
+        "Imaging shows mass lesion with mass effect"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid deterioration of consciousness",
+    "New-onset seizures or status epilepticus",
+    "Signs of increased intracranial pressure (e.g., papilledema, vomiting)"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Infectious Disease Specialist",
+    "Neuroimmunologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Granerod J, et al. Causes of encephalitis and differences in their clinical presentations in England: a multicentre, population-based prospective study. Lancet Infect Dis. 2010.",
+    "Venkatesan A, et al. Case Definitions, Diagnostic Algorithms, and Priorities in Encephalitis: Consensus Statement of the International Encephalitis Consortium. Clin Infect Dis. 2013.",
+    "Kennedy PGE. Viral encephalitis: causes, differential diagnosis, and management. J Neurol Neurosurg Psychiatry. 2004."
+  ],
+  "confidenceInData": "ai-generated"
+}

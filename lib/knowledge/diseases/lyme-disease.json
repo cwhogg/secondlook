@@ -1,0 +1,266 @@
+{
+  "id": "lyme-disease",
+  "name": "Lyme Disease",
+  "aliases": [
+    "Borrelia burgdorferi infection",
+    "Lyme borreliosis"
+  ],
+  "icd10Codes": [
+    "A69.2"
+  ],
+  "orphanetId": "ORPHA:91546",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "CDC Lyme Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "erythema-migrans",
+        "description": "Presence of erythema migrans rash",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "serologic-testing",
+        "description": "Positive two-tier serologic testing (ELISA followed by Western blot)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "clinical-features",
+        "description": "Presence of objective clinical signs such as arthritis, facial palsy, or meningitis",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exposure-history",
+        "description": "History of potential exposure to Ixodes tick in endemic area",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Erythema migrans rash alone or positive serology with compatible clinical features",
+    "notes": "Serologic testing may be negative early in disease; clinical diagnosis important in early localized stage."
+  },
+  "symptoms": {
+    "pathognomonic": [],
+    "common": [
+      {
+        "symptomName": "Meningitis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Joint swelling",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "paralysis of cranial nerves",
+          "loss of nerve function in head",
+          "facial or eye muscle paralysis"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Uveitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Atypical behavior",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Atrioventricular block",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Memory impairment",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Infectious encephalitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Paresthesia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dermal atrophy",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arrhythmia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Amaurosis fugax",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Insomnia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skin nodule",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "constitutional",
+    "ophthalmological",
+    "psychiatric",
+    "musculoskeletal",
+    "gastrointestinal",
+    "neurological",
+    "cardiovascular",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive Borrelia burgdorferi serology (ELISA and Western blot)",
+      "CSF lymphocytic pleocytosis in neuroborreliosis",
+      "Elevated inflammatory markers (ESR, CRP) in arthritis"
+    ],
+    "imaging": [
+      "MRI brain may show white matter lesions in neuroborreliosis",
+      "Joint effusion on ultrasound or MRI in Lyme arthritis"
+    ],
+    "genetic": [],
+    "other": [
+      "Isolation of Borrelia burgdorferi from skin biopsy or synovial fluid (rare)",
+      "Electrocardiogram showing atrioventricular block in Lyme carditis"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "multiple-sclerosis",
+      "distinguishingFeatures": [
+        "MRI lesions typical for MS",
+        "Oligoclonal bands in CSF",
+        "Absence of erythema migrans and tick exposure"
+      ]
+    },
+    {
+      "diseaseId": "rheumatoid-arthritis",
+      "distinguishingFeatures": [
+        "Symmetric small joint involvement",
+        "Positive rheumatoid factor and anti-CCP antibodies",
+        "Chronic joint damage on imaging"
+      ]
+    },
+    {
+      "diseaseId": "viral-meningitis",
+      "distinguishingFeatures": [
+        "Acute onset with viral prodrome",
+        "Negative Borrelia serology",
+        "CSF viral PCR positive"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressing atrioventricular heart block",
+    "Severe neurological deficits including encephalopathy",
+    "Persistent arthritis with joint destruction"
+  ],
+  "specialistType": [
+    "Infectious disease specialist",
+    "Rheumatologist",
+    "Neurologist",
+    "Dermatologist",
+    "Cardiologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Centers for Disease Control and Prevention. Lyme Disease Diagnosis and Testing. 2023.",
+    "Steere AC. Lyme disease. N Engl J Med. 2001;345(2):115-125.",
+    "Wormser GP, et al. The clinical assessment, treatment, and prevention of Lyme disease, human granulocytic anaplasmosis, and babesiosis. Clin Infect Dis. 2006;43(9):1089-1134."
+  ],
+  "confidenceInData": "medium"
+}

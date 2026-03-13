@@ -1,0 +1,218 @@
+{
+  "id": "infant-acute-respiratory-distress-syndrome",
+  "name": "Infant Acute Respiratory Distress Syndrome",
+  "aliases": [
+    "Infant ARDS",
+    "Neonatal Acute Respiratory Distress Syndrome"
+  ],
+  "icd10Codes": [
+    "P22.0"
+  ],
+  "orphanetId": "70587",
+  "prevalence": {
+    "estimate": "1 in 10,000 live births",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 365,
+      "peak": 7
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Montreux Definition for Neonatal ARDS",
+    "criteria": [
+      {
+        "id": "acute-onset",
+        "description": "Acute onset of respiratory failure within 7 days of a known clinical insult",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "oxygenation-impairment",
+        "description": "Impaired oxygenation defined by oxygenation index (OI) ≥ 4 or oxygen saturation index (OSI) ≥ 5",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "bilateral-infiltrates",
+        "description": "Bilateral pulmonary infiltrates on chest imaging not fully explained by cardiac failure or fluid overload",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-cardiogenic-edema",
+        "description": "No evidence of left atrial hypertension or cardiogenic pulmonary edema",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria (acute onset, oxygenation impairment, bilateral infiltrates) must be met with exclusion of cardiogenic causes",
+    "notes": "Diagnosis requires exclusion of other causes of respiratory distress such as congenital heart disease or primary pulmonary hypertension."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Severe hypoxemia refractory to oxygen therapy",
+        "frequency": 0.85,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "severe low oxygen levels",
+          "oxygen deficiency not improved by oxygen",
+          "critical breathing difficulty"
+        ]
+      },
+      {
+        "symptomName": "Diffuse bilateral pulmonary infiltrates on imaging",
+        "frequency": 0.8,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "widespread lung infiltrates on scan",
+          "lung imaging showing diffuse spots",
+          "bilateral lung abnormalities"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Tachypnea (rapid breathing)",
+        "frequency": 0.75,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "fast breathing",
+          "rapid respiratory rate",
+          "breathing quickly"
+        ]
+      },
+      {
+        "symptomName": "Intercostal and subcostal retractions",
+        "frequency": 0.7,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "chest muscle retractions when breathing",
+          "skin pulling between ribs during breath",
+          "visible chest indentations on breathing"
+        ]
+      },
+      {
+        "symptomName": "Cyanosis (central)",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Grunting respirations",
+        "frequency": 0.6,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Nasal flaring",
+        "frequency": 0.4,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lethargy",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Poor feeding",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pulmonary hemorrhage",
+        "frequency": 0.07,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Seizures secondary to hypoxia",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "seizures caused by low oxygen",
+          "hypoxia-induced seizures",
+          "brain seizures from oxygen deprivation"
+        ]
+      },
+      {
+        "symptomName": "Persistent pulmonary hypertension of the newborn",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "persistent high blood pressure in lungs of newborn",
+          "newborn pulmonary hypertension",
+          "lung blood vessel pressure problems after birth"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "cardiovascular",
+    "neurological",
+    "constitutional",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Arterial blood gas showing hypoxemia and respiratory acidosis",
+      "Elevated inflammatory markers (e.g. CRP) if secondary infection present"
+    ],
+    "imaging": [
+      "Chest X-ray showing bilateral diffuse alveolar infiltrates",
+      "Lung ultrasound demonstrating B-lines and consolidation"
+    ],
+    "genetic": [],
+    "other": [
+      "Exclusion of cardiac causes by echocardiography",
+      "Oxygenation index calculation for severity assessment"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "neonatal-respiratory-distress-syndrome",
+      "distinguishingFeatures": [
+        "Occurs primarily in preterm infants due to surfactant deficiency",
+        "Chest X-ray shows ground-glass appearance without bilateral infiltrates",
+        "Improves with surfactant replacement therapy"
+      ]
+    },
+    {
+      "diseaseId": "persistent-pulmonary-hypertension-of-the-newborn",
+      "distinguishingFeatures": [
+        "Marked right-to-left shunting on echocardiography",
+        "Severe hypoxemia with normal lung parenchyma on imaging",
+        "Responds to inhaled nitric oxide therapy"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of respiratory failure despite maximal oxygen support",
+    "Development of multi-organ dysfunction",
+    "Refractory hypoxemia with oxygenation index > 20"
+  ],
+  "specialistType": [
+    "Neonatologist",
+    "Pediatric Pulmonologist",
+    "Pediatric Intensivist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "De Luca D, et al. The Montreux definition of neonatal ARDS: biological and clinical background. Pediatr Res. 2017.",
+    "Khemani RG, et al. Pediatric acute respiratory distress syndrome: definition, incidence, and epidemiology. Pediatr Crit Care Med. 2015.",
+    "Orphanet: Infant Acute Respiratory Distress Syndrome (ORPHA:70587)"
+  ],
+  "confidenceInData": "ai-generated"
+}

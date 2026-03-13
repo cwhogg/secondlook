@@ -1,0 +1,289 @@
+{
+  "id": "adult-onset-myasthenia-gravis",
+  "name": "Adult-onset Myasthenia Gravis",
+  "aliases": [
+    "Late-onset Myasthenia Gravis",
+    "AOMG"
+  ],
+  "icd10Codes": [
+    "G70.0"
+  ],
+  "omimId": "254300",
+  "orphanetId": "391490",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Myasthenia Gravis Foundation of America (MGFA) Clinical Classification",
+    "criteria": [
+      {
+        "id": "clinical-presentation",
+        "description": "Presence of fluctuating skeletal muscle weakness, typically worsening with activity and improving with rest",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "autoantibody-detection",
+        "description": "Detection of acetylcholine receptor (AChR) antibodies or muscle-specific kinase (MuSK) antibodies in serum",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "electrophysiological-testing",
+        "description": "Abnormal decremental response on repetitive nerve stimulation or increased jitter on single-fiber electromyography",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "response-to-anticholinesterase",
+        "description": "Clinical improvement after administration of anticholinesterase agents (e.g., edrophonium test)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of characteristic fluctuating muscle weakness plus either positive autoantibody testing or electrophysiological evidence of neuromuscular transmission defect",
+    "notes": "Diagnosis may be supported by thymic imaging and response to therapy"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Fluctuating ptosis",
+        "frequency": 0.85,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Fluctuating diplopia",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Fatigable skeletal muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle weakness that worsens with activity",
+          "easily tired muscles",
+          "fatigue-related muscle weakness"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Dysarthria due to bulbar muscle weakness",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "slurred speech from weak throat muscles",
+          "difficulty talking due to bulbar weakness",
+          "speech problems from muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Dysphagia from oropharyngeal muscle involvement",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "difficulty swallowing due to throat muscle weakness",
+          "trouble swallowing food",
+          "swallowing problems from muscle issues"
+        ]
+      },
+      {
+        "symptomName": "Neck extensor muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness in neck extensor muscles",
+          "difficulty holding head up",
+          "neck muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Proximal limb muscle weakness",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness in upper arm and thigh muscles",
+          "proximal limb muscle weakness",
+          "difficulty lifting arms or legs"
+        ]
+      },
+      {
+        "symptomName": "Respiratory muscle weakness causing dyspnea on exertion",
+        "frequency": 0.5,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "shortness of breath with activity",
+          "breathing weakness during exercise",
+          "respiratory muscle fatigue"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Facial muscle weakness",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weak facial muscles",
+          "difficulty moving face muscles",
+          "facial muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Neck flexor muscle weakness",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness in neck flexor muscles",
+          "difficulty bending neck forward",
+          "neck muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Dysphonia due to laryngeal muscle involvement",
+        "frequency": 0.25,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "hoarseness from voice muscle weakness",
+          "weak or breathy voice",
+          "voice changes due to muscle problems"
+        ]
+      },
+      {
+        "symptomName": "Mild limb muscle atrophy",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "mild muscle wasting in limbs",
+          "slight loss of muscle bulk in arms or legs",
+          "early muscle shrinkage"
+        ]
+      },
+      {
+        "symptomName": "Autonomic symptoms such as dry mouth",
+        "frequency": 0.1,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "dry mouth and other autonomic symptoms",
+          "problems with automatic body functions",
+          "autonomic nervous system issues"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Respiratory failure requiring mechanical ventilation (myasthenic crisis)",
+        "frequency": 0.05,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "severe breathing failure needing ventilator",
+          "respiratory crisis requiring machine breathing",
+          "life-threatening breathing weakness"
+        ]
+      },
+      {
+        "symptomName": "Thymoma-associated symptoms (e.g., chest pain, cough)",
+        "frequency": 0.03,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "chest pain and cough from chest tumor",
+          "symptoms related to thymus tumor",
+          "mediastinal mass causing chest symptoms"
+        ]
+      },
+      {
+        "symptomName": "Sensory symptoms (rarely reported)",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "unusual sensory feelings",
+          "tingling or numbness rarely reported",
+          "sensory disturbances"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "musculoskeletal",
+    "ophthalmological",
+    "gastrointestinal",
+    "respiratory",
+    "otolaryngological",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Presence of serum acetylcholine receptor antibodies",
+      "Presence of muscle-specific kinase (MuSK) antibodies",
+      "Elevated anti-striational antibodies in some cases"
+    ],
+    "imaging": [
+      "Chest CT or MRI showing thymic hyperplasia or thymoma"
+    ],
+    "genetic": [
+      "TNFRSF11A (susceptibility)",
+      "CTLA4 (susceptibility)",
+      "HLA-DQA1 (susceptibility)",
+      "Multigenic/multifactorial inheritance"
+    ],
+    "other": [
+      "Electrophysiological evidence of neuromuscular junction transmission defect (repetitive nerve stimulation, single-fiber EMG)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "lambert-eaton-myasthenic-syndrome",
+      "distinguishingFeatures": [
+        "Autonomic symptoms more prominent",
+        "Improvement of weakness with repeated use",
+        "Associated with small cell lung cancer"
+      ]
+    },
+    {
+      "diseaseId": "congenital-myasthenic-syndromes",
+      "distinguishingFeatures": [
+        "Onset in infancy or childhood",
+        "No autoantibodies detected",
+        "Genetic mutations affecting neuromuscular junction proteins"
+      ]
+    },
+    {
+      "diseaseId": "botulism",
+      "distinguishingFeatures": [
+        "Rapid onset after toxin exposure",
+        "Descending paralysis",
+        "Absent autoantibodies"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive respiratory muscle weakness",
+    "Dysphagia with risk of aspiration",
+    "Sudden onset of severe bulbar weakness"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Immunologist",
+    "Pulmonologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Gilhus NE. Myasthenia Gravis. N Engl J Med. 2016;375(26):2570-2581.",
+    "Myasthenia Gravis Foundation of America Clinical Classification.",
+    "Orphanet: Adult-onset Myasthenia Gravis (ORPHA:391490)."
+  ],
+  "confidenceInData": "ai-generated"
+}

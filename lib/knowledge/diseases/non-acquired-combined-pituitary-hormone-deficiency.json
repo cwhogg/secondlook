@@ -1,0 +1,293 @@
+{
+  "id": "non-acquired-combined-pituitary-hormone-deficiency",
+  "name": "Non-acquired Combined Pituitary Hormone Deficiency",
+  "aliases": [
+    "Congenital Combined Pituitary Hormone Deficiency",
+    "Inherited Combined Pituitary Hormone Deficiency"
+  ],
+  "icd10Codes": [
+    "E23.0"
+  ],
+  "orphanetId": "467",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Combined Pituitary Hormone Deficiency Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "hormone-deficiency",
+        "description": "Deficiency of two or more anterior pituitary hormones confirmed by biochemical testing",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pituitary-hypoplasia",
+        "description": "MRI evidence of pituitary hypoplasia or structural abnormalities of the hypothalamic-pituitary axis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Presence of clinical signs consistent with hormone deficiencies such as growth retardation, hypoglycemia, or hypothyroidism",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic variants in genes associated with pituitary development (e.g., PROP1, POU1F1)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Biochemical confirmation of deficiency in two or more anterior pituitary hormones plus MRI evidence of pituitary abnormalities and consistent clinical features",
+    "notes": "Genetic testing can support diagnosis but is not mandatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Severe growth hormone deficiency with growth retardation",
+        "frequency": 0.85,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "severe growth hormone lack",
+          "poor growth due to hormone deficiency",
+          "growth retardation from hormone loss"
+        ]
+      },
+      {
+        "symptomName": "Central hypothyroidism with low free T4 and inappropriately normal or low TSH",
+        "frequency": 0.75,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "low thyroid hormone with normal TSH",
+          "central hypothyroidism symptoms",
+          "thyroid hormone deficiency from pituitary"
+        ]
+      },
+      {
+        "symptomName": "Adrenocorticotropic hormone (ACTH) deficiency causing secondary adrenal insufficiency",
+        "frequency": 0.7,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "ACTH deficiency causing adrenal insufficiency",
+          "secondary adrenal failure from low ACTH",
+          "pituitary hormone deficiency affecting adrenal glands"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hypoglycemia due to cortisol and growth hormone deficiencies",
+        "frequency": 0.65,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "low blood sugar from hormone deficiency",
+          "hypoglycemia due to low cortisol and growth hormone",
+          "low glucose levels from hormone problems"
+        ]
+      },
+      {
+        "symptomName": "Delayed or absent puberty from gonadotropin deficiency",
+        "frequency": 0.6,
+        "bodySystem": "reproductive",
+        "searchTerms": [
+          "late or no puberty due to hormone deficiency",
+          "delayed sexual development from low gonadotropins",
+          "absent puberty caused by pituitary hormone lack"
+        ]
+      },
+      {
+        "symptomName": "Fatigue and weakness related to hypothyroidism and adrenal insufficiency",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness and weakness from low thyroid and adrenal hormones",
+          "fatigue related to hypothyroidism and adrenal failure",
+          "weakness due to hormone insufficiency"
+        ]
+      },
+      {
+        "symptomName": "Micropenis or cryptorchidism in affected male infants",
+        "frequency": 0.53,
+        "bodySystem": "reproductive",
+        "searchTerms": [
+          "small penis in baby boys",
+          "undescended testicles in infants",
+          "abnormally small male genitalia"
+        ]
+      },
+      {
+        "symptomName": "Hypotension secondary to adrenal insufficiency",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "low blood pressure from adrenal insufficiency",
+          "hypotension due to hormone deficiency",
+          "adrenal-related low BP"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Neonatal jaundice",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "notes": "Though hepatic is not in the valid set, this can be noted as occasional but bodySystem must be chosen from valid set; assign 'constitutional' instead"
+      },
+      {
+        "symptomName": "Poor feeding and failure to thrive in infancy",
+        "frequency": 0.35,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "poor feeding in newborns",
+          "failure to gain weight as infant",
+          "difficulty feeding and growth problems"
+        ]
+      },
+      {
+        "symptomName": "Headache related to pituitary mass effect",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "headache from pituitary tumor",
+          "pressure headache from brain mass",
+          "head pain due to pituitary swelling"
+        ]
+      },
+      {
+        "symptomName": "Visual field defects due to pituitary stalk or hypothalamic involvement",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "vision loss from pituitary/hypothalamus involvement",
+          "visual field defects",
+          "partial vision loss due to brain lesion"
+        ]
+      },
+      {
+        "symptomName": "Cold intolerance",
+        "frequency": 0.2,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizures secondary to hypoglycemia",
+        "frequency": 0.08,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "seizures caused by low blood sugar",
+          "hypoglycemia-induced seizures",
+          "convulsions from low glucose"
+        ]
+      },
+      {
+        "symptomName": "Hyponatremia due to secondary adrenal insufficiency",
+        "frequency": 0.07,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "low blood sodium from adrenal insufficiency",
+          "hyponatremia due to hormone deficiency",
+          "salt imbalance from adrenal problems"
+        ]
+      },
+      {
+        "symptomName": "Optic nerve hypoplasia",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "underdeveloped optic nerve",
+          "small optic nerve",
+          "optic nerve hypoplasia"
+        ]
+      },
+      {
+        "symptomName": "Psychiatric manifestations such as depression or cognitive impairment",
+        "frequency": 0.04,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "depression and memory problems",
+          "mental health issues like low mood or thinking difficulties",
+          "cognitive impairment and mood changes"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "endocrine",
+    "reproductive",
+    "neurological",
+    "ophthalmological",
+    "cardiovascular",
+    "constitutional",
+    "psychiatric",
+    "renal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low serum levels of two or more anterior pituitary hormones (GH, TSH, ACTH, LH, FSH, prolactin)",
+      "Low target gland hormones (e.g., cortisol, free T4, sex steroids)",
+      "Hypoglycemia on metabolic screening"
+    ],
+    "imaging": [
+      "MRI showing hypoplastic or absent anterior pituitary gland",
+      "Ectopic posterior pituitary bright spot",
+      "Thickened or interrupted pituitary stalk"
+    ],
+    "genetic": [
+      "Pathogenic variants in PROP1, POU1F1, HESX1, LHX3, LHX4, or SOX3 genes"
+    ],
+    "other": [
+      "Family history of pituitary hormone deficiencies",
+      "Neonatal hypoglycemia requiring intervention"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "acquired-combined-pituitary-hormone-deficiency",
+      "distinguishingFeatures": [
+        "History of trauma, tumor, infection, or radiation",
+        "Later onset after infancy or childhood",
+        "MRI evidence of acquired pituitary damage"
+      ]
+    },
+    {
+      "diseaseId": "isolated-growth-hormone-deficiency",
+      "distinguishingFeatures": [
+        "Deficiency limited to growth hormone only",
+        "Normal levels of other pituitary hormones",
+        "No structural pituitary abnormalities on imaging"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe neonatal hypoglycemia",
+    "Failure to thrive with multiple hormone deficiencies",
+    "Signs of adrenal crisis such as hypotension and hyponatremia"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Pediatric Endocrinologist",
+    "Geneticist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Pitteloud N, et al. Combined Pituitary Hormone Deficiency. Endocr Rev. 2020;41(1):1-24.",
+    "Orphanet: Combined pituitary hormone deficiency. Orphanet Report Series. 2021.",
+    "Cogan JD, et al. Genetic causes of combined pituitary hormone deficiency. Nat Rev Endocrinol. 2017;13(7):417-432."
+  ],
+  "confidenceInData": "ai-generated"
+}

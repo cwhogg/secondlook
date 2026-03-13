@@ -1,0 +1,236 @@
+{
+  "id": "renal-cell-carcinoma",
+  "name": "Renal Cell Carcinoma",
+  "aliases": [
+    "Hypernephroma",
+    "Renal Adenocarcinoma"
+  ],
+  "icd10Codes": [
+    "C64"
+  ],
+  "orphanetId": "ORPHA:217071",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": [
+      "Caucasian",
+      "African American"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Renal Cell Carcinoma Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "imaging-evidence",
+        "description": "Presence of a solid renal mass on contrast-enhanced CT or MRI",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology-confirmation",
+        "description": "Histological confirmation of malignant renal epithelial cells consistent with RCC",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Clinical symptoms such as hematuria, flank pain, or palpable abdominal mass",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation of malignant renal epithelial tumor with supportive imaging findings",
+    "notes": "Biopsy may be deferred if imaging and clinical presentation are highly suggestive."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Gross hematuria",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "notes": "Visible blood in urine, often intermittent"
+      },
+      {
+        "symptomName": "Palpable abdominal/flank mass",
+        "frequency": 0.7,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "lump felt in abdomen or side",
+          "abdominal or flank mass",
+          "palpable mass near kidney area"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Flank pain",
+        "frequency": 0.65,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Unintentional weight loss",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "unplanned weight loss",
+          "losing weight without trying",
+          "involuntary weight reduction"
+        ]
+      },
+      {
+        "symptomName": "Fever of unknown origin",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "unexplained fever",
+          "fever with no known cause",
+          "persistent high temperature without diagnosis"
+        ]
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.5,
+        "bodySystem": "hematological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to increased renin secretion"
+      },
+      {
+        "symptomName": "Varicocele (especially left-sided)",
+        "frequency": 0.25,
+        "bodySystem": "reproductive",
+        "notes": "Due to renal vein involvement",
+        "searchTerms": [
+          "enlarged veins in scrotum",
+          "varicocele especially on left side",
+          "swollen scrotal veins"
+        ]
+      },
+      {
+        "symptomName": "Erythrocytosis",
+        "frequency": 0.2,
+        "bodySystem": "hematological",
+        "notes": "Paraneoplastic polycythemia from erythropoietin secretion"
+      },
+      {
+        "symptomName": "Hypercalcemia",
+        "frequency": 0.15,
+        "bodySystem": "endocrine",
+        "notes": "Paraneoplastic syndrome"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Paraneoplastic Stauffer syndrome (hepatic dysfunction)",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "liver dysfunction linked to cancer",
+          "paraneoplastic liver problems",
+          "hepatic issues caused by tumor"
+        ]
+      },
+      {
+        "symptomName": "Metastatic bone pain",
+        "frequency": 0.04,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "bone pain from cancer spread",
+          "painful bones due to metastasis",
+          "cancer-related bone discomfort"
+        ]
+      },
+      {
+        "symptomName": "Cough or hemoptysis due to lung metastases",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "coughing up blood from lung spread",
+          "lung symptoms from metastases",
+          "hemoptysis due to lung cancer spread"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "renal",
+    "hematological",
+    "cardiovascular",
+    "reproductive",
+    "constitutional",
+    "gastrointestinal",
+    "musculoskeletal",
+    "respiratory",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated erythropoietin levels",
+      "Anemia of chronic disease",
+      "Hypercalcemia"
+    ],
+    "imaging": [
+      "Contrast-enhanced CT showing enhancing renal mass",
+      "MRI demonstrating tumor extent and vascular invasion",
+      "Ultrasound showing solid renal lesion"
+    ],
+    "genetic": [
+      "Mutations in VHL gene (von Hippel-Lindau tumor suppressor gene)",
+      "Alterations in PBRM1, SETD2, BAP1 genes"
+    ],
+    "other": [
+      "Histopathology showing clear cell carcinoma or other RCC subtypes",
+      "Paraneoplastic syndromes (e.g., Stauffer syndrome)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "urothelial-carcinoma-of-renal-pelvis",
+      "distinguishingFeatures": [
+        "Originates from renal pelvis urothelium",
+        "Usually presents with hematuria but imaging shows filling defect in collecting system",
+        "Histology shows urothelial carcinoma cells"
+      ]
+    },
+    {
+      "diseaseId": "angiomyolipoma",
+      "distinguishingFeatures": [
+        "Benign renal tumor with fat, muscle, and blood vessels",
+        "Characteristic fat density on imaging",
+        "No malignant histological features"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Gross hematuria persisting beyond initial evaluation",
+    "Rapidly enlarging renal mass on imaging",
+    "Unexplained paraneoplastic syndromes (e.g., erythrocytosis, hypercalcemia)"
+  ],
+  "specialistType": [
+    "Urologist",
+    "Oncologist",
+    "Radiologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "National Comprehensive Cancer Network (NCCN) Guidelines for Kidney Cancer",
+    "American Cancer Society: Kidney Cancer Overview",
+    "UpToDate: Renal Cell Carcinoma"
+  ],
+  "confidenceInData": "ai-generated"
+}

@@ -1,0 +1,263 @@
+{
+  "id": "familial-hyperaldosteronism",
+  "name": "Familial Hyperaldosteronism",
+  "aliases": [
+    "FH",
+    "Familial Hyperaldosteronism Type I",
+    "Glucocorticoid-Remediable Aldosteronism"
+  ],
+  "icd10Codes": [
+    "E26.1"
+  ],
+  "omimId": "103900",
+  "orphanetId": "235936",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 5,
+      "max": 40,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Familial Hyperaldosteronism Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "hypertension",
+        "description": "Early-onset hypertension, often resistant to conventional therapy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "aldosterone-renin-ratio",
+        "description": "Elevated aldosterone-to-renin ratio indicating primary aldosteronism",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "glucocorticoid-suppression-test",
+        "description": "Suppression of aldosterone production with dexamethasone administration",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of early-onset hypertension or hyperaldosteronism",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Detection of chimeric CYP11B1/CYP11B2 gene confirming diagnosis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Presence of early-onset hypertension with elevated aldosterone-renin ratio plus either glucocorticoid suppression test positivity or confirmatory genetic testing",
+    "notes": "Genetic testing is considered the gold standard for definitive diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Glucocorticoid-remediable hypertension",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Hypertension that improves with glucocorticoid therapy"
+      },
+      {
+        "symptomName": "Hypokalemia due to renal potassium wasting",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "notes": "Low serum potassium levels despite normal intake",
+        "searchTerms": [
+          "low potassium from kidney loss",
+          "potassium wasting causing low levels",
+          "hypokalemia due to kidney issues"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Muscle weakness related to hypokalemia",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal",
+        "notes": "Proximal muscle weakness and cramps",
+        "searchTerms": [
+          "muscle weakness due to low potassium",
+          "weakness linked to hypokalemia",
+          "muscle fatigue from electrolyte imbalance"
+        ]
+      },
+      {
+        "symptomName": "Polyuria secondary to hypokalemia-induced nephrogenic diabetes insipidus",
+        "frequency": 0.6,
+        "bodySystem": "renal",
+        "notes": "Increased urine output",
+        "searchTerms": [
+          "excessive urination from kidney issues due to low potassium",
+          "polyuria caused by hypokalemia",
+          "increased urine output from kidney resistance"
+        ]
+      },
+      {
+        "symptomName": "Headache associated with hypertension",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Recurrent headaches due to elevated blood pressure",
+        "searchTerms": [
+          "headache caused by high blood pressure",
+          "hypertension-related headaches",
+          "pressure-induced head pain"
+        ]
+      },
+      {
+        "symptomName": "Fatigue related to electrolyte imbalance",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "notes": "Generalized tiredness",
+        "searchTerms": [
+          "fatigue from electrolyte imbalance",
+          "tiredness due to low minerals",
+          "weakness related to salt or mineral problems"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Paresthesias due to hypokalemia",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Tingling or numbness sensations",
+        "searchTerms": [
+          "tingling sensations from low potassium",
+          "numbness due to hypokalemia",
+          "abnormal skin feelings related to potassium loss"
+        ]
+      },
+      {
+        "symptomName": "Cardiac arrhythmias secondary to electrolyte disturbances",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Palpitations or irregular heartbeat",
+        "searchTerms": [
+          "irregular heartbeats from electrolyte imbalance",
+          "cardiac arrhythmias due to low minerals",
+          "heart rhythm problems linked to electrolytes"
+        ]
+      },
+      {
+        "symptomName": "Nocturia related to polyuria",
+        "frequency": 0.4,
+        "bodySystem": "renal",
+        "notes": "Frequent nighttime urination",
+        "searchTerms": [
+          "frequent nighttime urination",
+          "waking at night to urinate",
+          "nocturia from excess urine production"
+        ]
+      },
+      {
+        "symptomName": "Muscle cramps",
+        "frequency": 0.35,
+        "bodySystem": "musculoskeletal",
+        "notes": "Involuntary muscle contractions"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Metabolic alkalosis",
+        "frequency": 0.08,
+        "bodySystem": "endocrine",
+        "notes": "Elevated blood pH due to aldosterone excess"
+      },
+      {
+        "symptomName": "Visual disturbances due to hypertensive retinopathy",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological",
+        "notes": "Blurred vision or visual field defects",
+        "searchTerms": [
+          "vision problems from high blood pressure damage",
+          "eye changes due to hypertensive retinopathy",
+          "blurred vision from blood vessel damage in eyes"
+        ]
+      },
+      {
+        "symptomName": "Stroke secondary to uncontrolled hypertension",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Ischemic or hemorrhagic cerebrovascular events",
+        "searchTerms": [
+          "stroke caused by uncontrolled high blood pressure",
+          "brain attack from hypertension",
+          "cerebrovascular event due to high BP"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "renal",
+    "musculoskeletal",
+    "neurological",
+    "endocrine",
+    "ophthalmological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated plasma aldosterone concentration",
+      "Suppressed plasma renin activity",
+      "Hypokalemia with low urinary potassium excretion",
+      "Metabolic alkalosis"
+    ],
+    "imaging": [
+      "Adrenal CT or MRI typically normal or showing bilateral adrenal hyperplasia"
+    ],
+    "genetic": [
+      "Presence of chimeric CYP11B1/CYP11B2 gene fusion detected by PCR or sequencing"
+    ],
+    "other": [
+      "Suppression of aldosterone secretion with dexamethasone administration"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "primary-aldosteronism",
+      "distinguishingFeatures": [
+        "Usually sporadic rather than familial",
+        "Not glucocorticoid-remediable",
+        "May have unilateral adrenal adenoma"
+      ]
+    },
+    {
+      "diseaseId": "secondary-hyperaldosteronism",
+      "distinguishingFeatures": [
+        "Elevated renin levels",
+        "Caused by renal artery stenosis or volume depletion",
+        "Not responsive to glucocorticoid suppression"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe, treatment-resistant hypertension in young patients",
+    "Hypokalemia refractory to potassium supplementation",
+    "Family history of early-onset hypertension or stroke"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Nephrologist",
+    "Cardiologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Funder JW et al. The management of primary aldosteronism: case detection, diagnosis, and treatment: an Endocrine Society clinical practice guideline. J Clin Endocrinol Metab. 2016.",
+    "Mulatero P et al. Genetics of primary aldosteronism: a clinical update. J Hypertens. 2013.",
+    "Williams TA, Reincke M. Primary aldosteronism: a clinical update. Lancet Diabetes Endocrinol. 2016."
+  ],
+  "confidenceInData": "ai-generated"
+}

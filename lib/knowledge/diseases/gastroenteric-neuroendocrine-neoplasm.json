@@ -1,0 +1,263 @@
+{
+  "id": "gastroenteric-neuroendocrine-neoplasm",
+  "name": "Gastroenteric Neuroendocrine Neoplasm",
+  "aliases": [
+    "Gastrointestinal Neuroendocrine Tumor",
+    "Enteric Neuroendocrine Carcinoma"
+  ],
+  "icd10Codes": [
+    "C7A.0",
+    "C7A.1",
+    "C7A.2"
+  ],
+  "orphanetId": "481508",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Gastroenteric Neuroendocrine Neoplasms",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation of neuroendocrine differentiation with immunohistochemical markers (chromogranin A, synaptophysin)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging",
+        "description": "Radiological evidence of a primary tumor in the gastrointestinal tract via CT, MRI, or somatostatin receptor scintigraphy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "biochemical-markers",
+        "description": "Elevated serum or urine neuroendocrine markers such as chromogranin A or 5-HIAA",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "mitotic-index",
+        "description": "Ki-67 proliferation index used to grade tumor aggressiveness",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation with immunohistochemistry plus imaging evidence of a gastrointestinal primary tumor",
+    "notes": "Grading and staging are essential for prognosis and treatment planning"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Carcinoid syndrome with flushing",
+        "frequency": 0.75,
+        "bodySystem": "endocrine",
+        "notes": "Occurs due to serotonin secretion by tumor",
+        "searchTerms": [
+          "flushing with carcinoid syndrome",
+          "skin redness with hormone tumor",
+          "carcinoid flushing episodes"
+        ]
+      },
+      {
+        "symptomName": "Secretory diarrhea",
+        "frequency": 0.72,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal mass palpable on examination",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "lump felt in abdomen",
+          "palpable belly mass",
+          "abdominal swelling detected by touch"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abdominal pain localized to tumor site",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "pain at tumor location",
+          "localized belly pain",
+          "abdominal pain over growth"
+        ]
+      },
+      {
+        "symptomName": "Weight loss due to malabsorption or tumor burden",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "weight loss from poor absorption",
+          "losing weight due to illness",
+          "unintentional weight loss"
+        ]
+      },
+      {
+        "symptomName": "Intermittent bowel obstruction symptoms",
+        "frequency": 0.58,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "occasional bowel blockage symptoms",
+          "intermittent intestinal obstruction",
+          "repeated bowel blockage episodes"
+        ]
+      },
+      {
+        "symptomName": "Elevated serum chromogranin A levels",
+        "frequency": 0.55,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "high blood chromogranin A",
+          "elevated tumor marker levels",
+          "increased serum neuroendocrine marker"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hepatomegaly from liver metastases",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "enlarged liver from cancer spread",
+          "liver swelling due to metastases",
+          "hepatomegaly from tumor"
+        ]
+      },
+      {
+        "symptomName": "Flushing-associated wheezing or bronchospasm",
+        "frequency": 0.3,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "flushing with wheezing",
+          "skin redness and breathing difficulty",
+          "carcinoid-related bronchospasm"
+        ]
+      },
+      {
+        "symptomName": "Peripheral edema secondary to carcinoid heart disease",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "swelling in legs from heart disease",
+          "peripheral edema due to carcinoid heart",
+          "leg swelling from heart valve problems"
+        ]
+      },
+      {
+        "symptomName": "Hypotension episodes related to vasoactive substances",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "low blood pressure episodes",
+          "hypotension from hormone effects",
+          "blood pressure drops related to tumor substances"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Carcinoid heart disease with right-sided valvular lesions",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "right heart valve damage",
+          "carcinoid heart valve disease",
+          "right-sided heart valve lesions"
+        ]
+      },
+      {
+        "symptomName": "Hyperglycemia due to ectopic hormone secretion",
+        "frequency": 0.05,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "high blood sugar from hormone tumor",
+          "hyperglycemia due to ectopic secretion",
+          "blood sugar elevation from tumor"
+        ]
+      },
+      {
+        "symptomName": "Cutaneous telangiectasia",
+        "frequency": 0.04,
+        "bodySystem": "dermatological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "endocrine",
+    "cardiovascular",
+    "respiratory",
+    "constitutional",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum chromogranin A",
+      "Increased 24-hour urinary 5-HIAA",
+      "Abnormal liver function tests in metastatic disease"
+    ],
+    "imaging": [
+      "Contrast-enhanced CT or MRI showing primary tumor and metastases",
+      "Somatostatin receptor scintigraphy (Octreoscan) demonstrating receptor-positive lesions",
+      "Endoscopic ultrasound for tumor localization"
+    ],
+    "genetic": [
+      "No consistent germline mutations; sporadic cases predominate",
+      "Rare association with MEN1 gene mutations in familial cases"
+    ],
+    "other": [
+      "Histopathology showing neuroendocrine differentiation with positive chromogranin A and synaptophysin staining",
+      "Ki-67 proliferation index for grading"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "gastrointestinal-adenocarcinoma",
+      "distinguishingFeatures": [
+        "Lack of neuroendocrine markers on immunohistochemistry",
+        "Different histological appearance",
+        "Absence of carcinoid syndrome"
+      ]
+    },
+    {
+      "diseaseId": "gastrointestinal-lymphoma",
+      "distinguishingFeatures": [
+        "Lymphoid cell markers positive",
+        "Different clinical presentation with systemic B symptoms",
+        "No hormone secretion causing carcinoid syndrome"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid onset of flushing with diarrhea",
+    "Signs of carcinoid heart disease (e.g., right-sided heart failure)",
+    "Unexplained weight loss with abdominal mass"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Oncologist",
+    "Endocrinologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "WHO Classification of Tumors of the Digestive System, 5th Edition, 2019",
+    "Orphanet: Gastroenteric Neuroendocrine Neoplasm (ORPHA:481508)",
+    "Modlin IM et al. Gastroenteropancreatic neuroendocrine tumors. Lancet Oncol. 2008"
+  ],
+  "confidenceInData": "ai-generated"
+}

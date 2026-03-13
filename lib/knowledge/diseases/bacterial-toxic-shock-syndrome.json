@@ -1,0 +1,523 @@
+{
+  "id": "bacterial-toxic-shock-syndrome",
+  "name": "Bacterial Toxic-Shock Syndrome",
+  "aliases": [
+    "Toxic Shock Syndrome",
+    "Staphylococcal Toxic Shock Syndrome",
+    "Streptococcal Toxic Shock Syndrome"
+  ],
+  "icd10Codes": [
+    "A48.3"
+  ],
+  "orphanetId": "ORPHA:36234",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "CDC Toxic Shock Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "fever",
+        "description": "Fever ≥ 38.9°C (102°F)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "rash",
+        "description": "Diffuse macular erythroderma",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hypotension",
+        "description": "Systolic blood pressure ≤ 90 mm Hg for adults or less than fifth percentile by age for children",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "multi-organ-involvement",
+        "description": "Involvement of three or more organ systems (gastrointestinal, muscular, mucous membrane, renal, hepatic, hematologic, central nervous system)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "desquamation",
+        "description": "Desquamation of skin, especially palms and soles, 1-2 weeks after onset",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Fever, rash, hypotension, and involvement of at least three organ systems",
+    "notes": "Exclusion of other causes such as staphylococcal scalded skin syndrome and other septic shock etiologies is essential."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Shock",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Severe infection",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Confusion",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Recurrent skin infections",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "frequent skin infections",
+          "repeated skin bacterial infections",
+          "chronic skin infections"
+        ]
+      },
+      {
+        "symptomName": "Tachycardia",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Metabolic acidosis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Respiratory distress",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Increased circulating lactate concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high blood lactate levels",
+          "increased lactic acid in blood",
+          "elevated lactate concentration"
+        ]
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of facial soft tissue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal soft tissue in face",
+          "facial tissue irregularity",
+          "unusual facial skin or muscle"
+        ]
+      },
+      {
+        "symptomName": "Pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fasciitis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Glomerulonephritis",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Sinusitis",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Meningitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nausea",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pneumonia",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Infectious encephalitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peritonitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Osteomyelitis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Tachypnea",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of the lower limb",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "lower leg or foot abnormality",
+          "leg deformity or malformation"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the upper limb",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "upper limb deformities or malformations",
+          "abnormal arm structure",
+          "congenital arm abnormalities"
+        ]
+      },
+      {
+        "symptomName": "Hypocalcemia",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Hypoalbuminemia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Septic arthritis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated circulating creatine kinase concentration",
+        "frequency": 0.17,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "high muscle enzyme levels",
+          "elevated creatine kinase in blood",
+          "muscle damage marker increase"
+        ]
+      },
+      {
+        "symptomName": "Elevated circulating creatinine concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high blood creatinine levels",
+          "elevated kidney function test",
+          "increased serum creatinine"
+        ]
+      },
+      {
+        "symptomName": "Disseminated intravascular coagulation",
+        "frequency": 0.17,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "widespread blood clotting and bleeding",
+          "disseminated intravascular coagulation",
+          "DIC causing clotting and hemorrhage"
+        ]
+      },
+      {
+        "symptomName": "Abnormal blistering of the skin",
+        "frequency": 0.17,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin blisters that form abnormally",
+          "unusual skin blistering"
+        ]
+      },
+      {
+        "symptomName": "Localized skin lesion",
+        "frequency": 0.17,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "small skin sore",
+          "localized skin spot",
+          "skin lesion in one area"
+        ]
+      },
+      {
+        "symptomName": "Respiratory tract infection",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "lung or throat infection",
+          "respiratory tract infection",
+          "chest or airway infection"
+        ]
+      },
+      {
+        "symptomName": "Hepatitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Myocarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Chills",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pharyngitis",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Abscess",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Capillary leak",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ecchymosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Severe viral infection",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "severe viral illness",
+          "serious virus infection",
+          "intense viral disease"
+        ]
+      },
+      {
+        "symptomName": "Bacteremia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Severe varicella zoster infection",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "severe chickenpox or shingles",
+          "serious varicella zoster infection",
+          "life-threatening shingles or chickenpox"
+        ]
+      },
+      {
+        "symptomName": "Increased circulating myelocyte count",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high immature white cells",
+          "increased myelocytes in blood",
+          "elevated immature white blood cells"
+        ]
+      },
+      {
+        "symptomName": "Increased circulating metamyelocyte count",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "raised metamyelocyte count",
+          "more immature white cells",
+          "increased metamyelocytes in blood"
+        ]
+      },
+      {
+        "symptomName": "Acute cutaneous wound",
+        "frequency": 0.17,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "fresh skin wound",
+          "recent cut or scrape",
+          "acute skin injury"
+        ]
+      },
+      {
+        "symptomName": "Scaling skin",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Myositis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cellulitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sepsis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Recurrent urinary tract infections",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "frequent urinary infections",
+          "recurrent bladder infections",
+          "repeated UTIs"
+        ]
+      },
+      {
+        "symptomName": "Edema",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "constitutional",
+    "dermatological",
+    "cardiovascular",
+    "gastrointestinal",
+    "respiratory",
+    "musculoskeletal",
+    "renal",
+    "otolaryngological",
+    "hematological",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated white blood cell count with left shift",
+      "Elevated liver transaminases",
+      "Elevated creatinine and blood urea nitrogen",
+      "Thrombocytopenia",
+      "Positive blood cultures for Staphylococcus aureus or Streptococcus pyogenes"
+    ],
+    "imaging": [
+      "Chest X-ray may show pulmonary edema or ARDS",
+      "Ultrasound or CT to identify source of infection"
+    ],
+    "genetic": [
+      "No specific genetic markers; susceptibility may be influenced by host immune response genes"
+    ],
+    "other": [
+      "Detection of bacterial superantigens (toxic shock syndrome toxin-1 or streptococcal pyrogenic exotoxins) in some cases"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "staphylococcal-scalded-skin-syndrome",
+      "distinguishingFeatures": [
+        "Absence of hypotension",
+        "Skin peeling without systemic multi-organ involvement",
+        "More common in neonates and young children"
+      ]
+    },
+    {
+      "diseaseId": "septic-shock",
+      "distinguishingFeatures": [
+        "Positive blood cultures with other pathogens",
+        "Lack of characteristic diffuse erythroderma rash",
+        "More gradual onset of symptoms"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid onset of hypotension and shock",
+    "Multi-organ failure",
+    "Diffuse erythroderma with desquamation"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Critical Care Specialist",
+    "Dermatologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Centers for Disease Control and Prevention (CDC) Toxic Shock Syndrome Fact Sheet",
+    "Stevens DL, et al. Toxic shock syndrome: pathogenesis, clinical features, and management. Clin Infect Dis. 2017.",
+    "Orphanet: Bacterial Toxic-Shock Syndrome (ORPHA:36234)"
+  ],
+  "confidenceInData": "medium"
+}

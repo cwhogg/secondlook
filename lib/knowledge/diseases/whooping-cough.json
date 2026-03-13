@@ -1,0 +1,260 @@
+{
+  "id": "whooping-cough",
+  "name": "Pertussis",
+  "aliases": [
+    "Whooping cough",
+    "100-day cough"
+  ],
+  "icd10Codes": [
+    "A37"
+  ],
+  "orphanetId": "ORPHA:1489",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "CDC Clinical Case Definition for Pertussis",
+    "criteria": [
+      {
+        "id": "paroxysmal-cough",
+        "description": "Paroxysmal coughing episodes lasting at least 2 weeks",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "whoop",
+        "description": "Inspiratory 'whoop' following coughing paroxysms",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "post-tussive-vomiting",
+        "description": "Vomiting immediately after coughing episodes",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "lymphocytosis",
+        "description": "Peripheral blood lymphocytosis on laboratory testing",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "positive-pcr",
+        "description": "Positive Bordetella pertussis PCR or culture",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Paroxysmal cough lasting at least 2 weeks plus either a positive PCR/culture or presence of whooping cough",
+    "notes": "Laboratory confirmation is important especially in vaccinated individuals or atypical presentations."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Paroxysmal coughing episodes",
+        "frequency": 0.9,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "sudden coughing fits",
+          "paroxysmal cough episodes",
+          "intense coughing spells"
+        ]
+      },
+      {
+        "symptomName": "Inspiratory whooping sound post-cough",
+        "frequency": 0.75,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "whooping sound after cough",
+          "inspiratory whoop after coughing",
+          "noisy breath after cough"
+        ]
+      },
+      {
+        "symptomName": "Post-tussive vomiting",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Coryza (nasal congestion and rhinorrhea)",
+        "frequency": 0.85,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "nasal congestion and runny nose",
+          "stuffy nose with discharge",
+          "cold-like nasal symptoms"
+        ]
+      },
+      {
+        "symptomName": "Mild fever",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Apnea (especially in infants)",
+        "frequency": 0.6,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing pauses in infants",
+          "temporary stopped breathing",
+          "infant apnea episodes"
+        ]
+      },
+      {
+        "symptomName": "Fatigue following coughing episodes",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness after coughing",
+          "fatigue following cough spells",
+          "exhaustion after coughing"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Conjunctival hemorrhages due to coughing",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "red eye bleeding from cough",
+          "blood spots in eyes after coughing",
+          "conjunctival bleeding due to cough"
+        ]
+      },
+      {
+        "symptomName": "Subconjunctival petechiae",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Rib fractures from severe coughing",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "broken ribs from coughing",
+          "rib fractures caused by cough",
+          "cough-induced rib injuries"
+        ]
+      },
+      {
+        "symptomName": "Syncope following coughing paroxysms",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "fainting after coughing",
+          "passing out post-cough",
+          "syncope triggered by cough"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizures secondary to hypoxia",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "seizures caused by low oxygen",
+          "hypoxia-induced seizures",
+          "brain seizures from oxygen deprivation"
+        ]
+      },
+      {
+        "symptomName": "Pneumothorax due to severe coughing",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "collapsed lung from coughing",
+          "lung air leak due to cough",
+          "pneumothorax after severe cough"
+        ]
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.02,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "gastrointestinal",
+    "constitutional",
+    "otolaryngological",
+    "neurological",
+    "ophthalmological",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Lymphocytosis with absolute lymphocyte count elevation",
+      "Positive PCR for Bordetella pertussis",
+      "Positive culture for Bordetella pertussis"
+    ],
+    "imaging": [
+      "Chest X-ray may show perihilar infiltrates or atelectasis in complicated cases"
+    ],
+    "genetic": [],
+    "other": [
+      "Prolonged cough lasting more than 2 weeks",
+      "Characteristic paroxysmal cough with inspiratory whoop"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "bronchiolitis",
+      "distinguishingFeatures": [
+        "Typically affects infants under 2 years",
+        "Wheezing and crackles on lung auscultation",
+        "No characteristic whooping cough"
+      ]
+    },
+    {
+      "diseaseId": "croup",
+      "distinguishingFeatures": [
+        "Barking cough with stridor",
+        "Usually accompanied by hoarseness",
+        "Rapid onset and short duration"
+      ]
+    },
+    {
+      "diseaseId": "asthma",
+      "distinguishingFeatures": [
+        "Recurrent wheezing and dyspnea",
+        "Response to bronchodilators",
+        "No paroxysmal whooping cough"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Apnea in infants",
+    "Seizures or encephalopathy",
+    "Severe hypoxia or respiratory distress"
+  ],
+  "specialistType": [
+    "Infectious disease specialist",
+    "Pulmonologist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Centers for Disease Control and Prevention. Pertussis (Whooping Cough) Clinical Guidance.",
+    "World Health Organization. Pertussis Fact Sheet.",
+    "Cherry JD. Pertussis in the preantibiotic and prevaccine era, with emphasis on adult pertussis. Clin Infect Dis. 1999."
+  ],
+  "confidenceInData": "ai-generated"
+}

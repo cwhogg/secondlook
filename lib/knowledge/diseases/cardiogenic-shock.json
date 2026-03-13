@@ -1,0 +1,341 @@
+{
+  "id": "cardiogenic-shock",
+  "name": "Cardiogenic Shock",
+  "aliases": [
+    "Cardiac Shock",
+    "Pump Failure Shock"
+  ],
+  "icd10Codes": [
+    "R57.0"
+  ],
+  "orphanetId": "ORPHA:97292",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 2,
+      "max": 120,
+      "peak": 14
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Hemodynamic Criteria for Cardiogenic Shock",
+    "criteria": [
+      {
+        "id": "hypotension",
+        "description": "Systolic blood pressure <90 mmHg for at least 30 minutes or requiring vasopressors to maintain ≥90 mmHg",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "signs-of-hypoperfusion",
+        "description": "Clinical signs of end-organ hypoperfusion such as cold extremities, oliguria, altered mental status",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "elevated-filling-pressures",
+        "description": "Elevated left ventricular filling pressures evidenced by pulmonary congestion or elevated pulmonary capillary wedge pressure (>15 mmHg)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "reduced-cardiac-index",
+        "description": "Cardiac index <2.2 L/min/m² measured by invasive hemodynamic monitoring",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "evidence-of-myocardial-dysfunction",
+        "description": "Echocardiographic evidence of severe left ventricular systolic dysfunction",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of hypotension plus signs of hypoperfusion and evidence of elevated filling pressures or reduced cardiac output",
+    "notes": "Diagnosis is clinical and supported by hemodynamic measurements and imaging."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal EKG",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "irregular heart rhythm on EKG",
+          "abnormal heart electrical activity"
+        ]
+      },
+      {
+        "symptomName": "Abnormal left ventricular function",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "poor left heart pumping",
+          "impaired left ventricle function",
+          "left heart muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Low-output congestive heart failure",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart failure with low output",
+          "weak heart pumping",
+          "reduced blood flow heart failure"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Cyanosis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Congestive heart failure",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart failure symptoms",
+          "fluid buildup from weak heart",
+          "heart pumping failure"
+        ]
+      },
+      {
+        "symptomName": "Myocardial infarction",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Cardiac arrest",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Reduced consciousness/confusion",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Impaired myocardial contractility",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "weak heart muscle contraction",
+          "poor heart pumping",
+          "reduced heart muscle strength"
+        ]
+      },
+      {
+        "symptomName": "Arrhythmia",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hypoxemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Orthopnea",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Crackles",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated jugular venous pressure",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high neck vein pressure",
+          "raised jugular vein pulsation",
+          "distended neck veins"
+        ]
+      },
+      {
+        "symptomName": "Low pulse pressure",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "narrow pulse pressure",
+          "low difference between systolic and diastolic pressure",
+          "small blood pressure gap"
+        ]
+      },
+      {
+        "symptomName": "Increased pulmonary capillary wedge pressure",
+        "frequency": 0.55,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "high pressure in lung capillaries",
+          "increased lung wedge pressure",
+          "elevated pulmonary capillary pressure"
+        ]
+      },
+      {
+        "symptomName": "Oliguria",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Confusion",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mitral regurgitation",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Metabolic acidosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased circulating lactate concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high blood lactate levels",
+          "increased lactic acid in blood",
+          "elevated lactate concentration"
+        ]
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Elevated circulating creatinine concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high blood creatinine levels",
+          "elevated kidney function test",
+          "increased serum creatinine"
+        ]
+      },
+      {
+        "symptomName": "ST segment elevation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "heart ECG ST elevation",
+          "ST segment rise on EKG",
+          "heart attack ECG changes"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Coma",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Right ventricular failure",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "right heart failure",
+          "right side heart weakness",
+          "right ventricle pumping problems"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "constitutional",
+    "cardiovascular",
+    "respiratory",
+    "gastrointestinal",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum lactate indicating tissue hypoperfusion",
+      "Elevated cardiac biomarkers (troponin) if myocardial infarction is underlying cause",
+      "Metabolic acidosis on arterial blood gas"
+    ],
+    "imaging": [
+      "Echocardiogram showing reduced left ventricular ejection fraction",
+      "Chest X-ray demonstrating pulmonary congestion or edema",
+      "Hemodynamic monitoring showing low cardiac output and elevated filling pressures"
+    ],
+    "genetic": [],
+    "other": [
+      "Electrocardiogram abnormalities consistent with ischemia or infarction",
+      "Hemodynamic parameters from pulmonary artery catheterization"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "septic-shock",
+      "distinguishingFeatures": [
+        "Presence of infection and systemic inflammatory response",
+        "Warm extremities and vasodilation rather than cold extremities",
+        "Elevated or normal cardiac output rather than low"
+      ]
+    },
+    {
+      "diseaseId": "hypovolemic-shock",
+      "distinguishingFeatures": [
+        "History of hemorrhage or fluid loss",
+        "Low central venous pressure and absence of elevated filling pressures",
+        "Rapid improvement with fluid resuscitation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Persistent hypotension despite fluid resuscitation",
+    "Signs of multi-organ failure (renal, neurological deterioration)",
+    "Rapid progression to cardiac arrest"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Intensivist",
+    "Emergency Medicine Physician"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Hollenberg SM. Cardiogenic shock: a clinical perspective. Heart Fail Clin. 2019;15(3):281-289.",
+    "Hochman JS, et al. Cardiogenic shock complicating acute myocardial infarction—etiologies, management and outcome. Circulation. 2001;104(2): 156-161.",
+    "Orphanet: Cardiogenic shock ORPHA:97292"
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,241 @@
+{
+  "id": "idiopathic-gastroparesis",
+  "name": "Idiopathic Gastroparesis",
+  "aliases": [
+    "Chronic Idiopathic Gastroparesis",
+    "Non-Diabetic Gastroparesis"
+  ],
+  "icd10Codes": [
+    "K31.84"
+  ],
+  "orphanetId": "ORPHA:558411",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 14
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Gastroparesis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "symptom-duration",
+        "description": "Presence of chronic symptoms of delayed gastric emptying such as nausea, vomiting, early satiety, and postprandial fullness for at least 3 months",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "gastric-emptying-study",
+        "description": "Demonstration of delayed gastric emptying on scintigraphic gastric emptying study (gastric retention >10% at 4 hours)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-mechanical-obstruction",
+        "description": "Exclusion of mechanical gastric outlet obstruction by upper endoscopy or imaging",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-secondary-causes",
+        "description": "No identifiable secondary causes such as diabetes mellitus, postsurgical status, or medications known to delay gastric emptying",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All three major criteria (chronic symptoms, delayed gastric emptying on scintigraphy, exclusion of mechanical obstruction) must be met",
+    "notes": "Idiopathic gastroparesis is a diagnosis of exclusion after ruling out secondary causes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chronic nausea",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Postprandial vomiting",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Early satiety",
+        "frequency": 0.72,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abdominal bloating",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Upper abdominal discomfort",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "upper stomach discomfort",
+          "pain in upper abdomen",
+          "epigastric unease"
+        ]
+      },
+      {
+        "symptomName": "Weight loss due to poor oral intake",
+        "frequency": 0.58,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "weight loss from poor eating",
+          "losing weight due to low appetite",
+          "unintentional weight loss"
+        ]
+      },
+      {
+        "symptomName": "Gastroesophageal reflux symptoms",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "acid reflux symptoms",
+          "heartburn and regurgitation",
+          "gastroesophageal reflux discomfort"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Abdominal distension",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Early morning nausea",
+        "frequency": 0.35,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "morning nausea",
+          "feeling sick early in day",
+          "nausea on waking"
+        ]
+      },
+      {
+        "symptomName": "Fatigue secondary to malnutrition",
+        "frequency": 0.3,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from poor nutrition",
+          "fatigue due to malnourishment",
+          "weakness from lack of nutrients"
+        ]
+      },
+      {
+        "symptomName": "Erratic blood glucose levels",
+        "frequency": 0.2,
+        "bodySystem": "endocrine",
+        "notes": "May occur due to impaired gastric emptying affecting glucose absorption",
+        "searchTerms": [
+          "unstable blood sugar levels",
+          "fluctuating glucose readings",
+          "erratic blood sugar control"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Mallory-Weiss tears from severe vomiting",
+        "frequency": 0.07,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "tears in stomach lining from vomiting",
+          "Mallory-Weiss syndrome",
+          "vomiting-related esophageal tears"
+        ]
+      },
+      {
+        "symptomName": "Electrolyte imbalances due to vomiting",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "electrolyte loss from vomiting",
+          "imbalanced body salts due to vomiting",
+          "low potassium and sodium from vomiting"
+        ]
+      },
+      {
+        "symptomName": "Gastric bezoar formation",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "stomach blockage from swallowed material",
+          "gastric bezoar formation",
+          "mass of undigested material in stomach"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "constitutional",
+    "endocrine",
+    "hematological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Electrolyte disturbances secondary to vomiting (hypokalemia, hypochloremia)",
+      "Nutritional deficiencies (e.g., vitamin B12, iron) in chronic cases"
+    ],
+    "imaging": [
+      "Delayed gastric emptying on gastric emptying scintigraphy",
+      "Normal upper endoscopy excluding mechanical obstruction"
+    ],
+    "genetic": [
+      "No specific genetic markers identified for idiopathic gastroparesis"
+    ],
+    "other": [
+      "Electrogastrography may show abnormal gastric myoelectrical activity",
+      "Gastric manometry may demonstrate impaired antral contractility"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "diabetic-gastroparesis",
+      "distinguishingFeatures": [
+        "History of diabetes mellitus",
+        "Associated peripheral neuropathy",
+        "Elevated HbA1c"
+      ]
+    },
+    {
+      "diseaseId": "mechanical-gastric-outlet-obstruction",
+      "distinguishingFeatures": [
+        "Evidence of obstruction on imaging or endoscopy",
+        "Rapid symptom onset",
+        "Possible history of gastric surgery or malignancy"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Persistent severe vomiting with dehydration",
+    "Unintentional significant weight loss (>10% body weight)",
+    "Evidence of gastrointestinal bleeding"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Motility Specialist",
+    "Nutritionist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Camilleri M, Parkman HP, Shafi MA, Abell TL, Gerson L. Clinical Guideline: Management of Gastroparesis. Am J Gastroenterol. 2013 Jan;108(1):18-37.",
+    "Orphanet: Idiopathic gastroparesis - ORPHA:558411",
+    "American Gastroenterological Association Medical Position Statement on Gastroparesis. Gastroenterology. 2013."
+  ],
+  "confidenceInData": "ai-generated"
+}

@@ -1,0 +1,220 @@
+{
+  "id": "acquired-neutropenia",
+  "name": "Acquired Neutropenia",
+  "aliases": [
+    "Secondary Neutropenia",
+    "Non-congenital Neutropenia"
+  ],
+  "icd10Codes": [
+    "D70"
+  ],
+  "orphanetId": "ORPHA:178996",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 90,
+      "peak": 50
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Acquired Neutropenia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "neutrophil-count",
+        "description": "Absolute neutrophil count (ANC) less than 1500 cells/µL on at least two occasions",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-congenital",
+        "description": "Exclusion of congenital neutropenia by history and genetic testing",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "secondary-cause-identification",
+        "description": "Identification of an underlying cause such as infection, drug exposure, autoimmune disease, or malignancy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-infection-signs",
+        "description": "Presence of recurrent or severe infections consistent with neutropenia",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bone-marrow-examination",
+        "description": "Bone marrow biopsy showing decreased neutrophil precursors or maturation arrest",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Persistent neutropenia (ANC <1500/µL) with exclusion of congenital causes and identification of an acquired etiology",
+    "notes": "Diagnosis requires ruling out congenital neutropenia and other causes of neutropenia."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Recurrent bacterial infections",
+        "frequency": 0.85,
+        "bodySystem": "immunological",
+        "notes": "Especially involving skin, oral mucosa, and respiratory tract",
+        "searchTerms": [
+          "frequent bacterial infections",
+          "repeated infections",
+          "susceptibility to infections"
+        ]
+      },
+      {
+        "symptomName": "Severe neutropenia (ANC <500 cells/µL)",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "very low neutrophil count",
+          "severe low white blood cells",
+          "neutropenia with risk of infection"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Oral ulcerations",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Painful mucosal ulcers in the mouth"
+      },
+      {
+        "symptomName": "Fever associated with infection",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "fever with infection",
+          "high temperature due to infection",
+          "infection-related fever"
+        ]
+      },
+      {
+        "symptomName": "Pharyngitis",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Skin abscesses",
+        "frequency": 0.52,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.3,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Gingivitis",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Sinusitis",
+        "frequency": 0.2,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Fatigue related to infection",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from infection",
+          "fatigue during infection",
+          "weakness related to illness"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sepsis",
+        "frequency": 0.08,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Pneumonia",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Necrotizing fasciitis",
+        "frequency": 0.03,
+        "bodySystem": "dermatological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "dermatological",
+    "gastrointestinal",
+    "otolaryngological",
+    "constitutional",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Absolute neutrophil count <1500 cells/µL",
+      "Bone marrow biopsy showing decreased neutrophil precursors or maturation arrest",
+      "Elevated inflammatory markers during infection episodes"
+    ],
+    "imaging": [
+      "Chest X-ray or CT showing pneumonia or abscess formation",
+      "Sinus imaging in cases of recurrent sinusitis"
+    ],
+    "genetic": [
+      "Negative for congenital neutropenia-associated mutations"
+    ],
+    "other": [
+      "Identification of causative drugs, infections, or autoimmune markers"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "congenital-neutropenia",
+      "distinguishingFeatures": [
+        "Early childhood onset",
+        "Genetic mutations identified",
+        "Persistent severe neutropenia from birth"
+      ]
+    },
+    {
+      "diseaseId": "aplastic-anemia",
+      "distinguishingFeatures": [
+        "Pancytopenia affecting multiple cell lines",
+        "Bone marrow hypocellularity",
+        "Absence of isolated neutropenia"
+      ]
+    }
+  ],
+  "redFlags": [
+    "ANC less than 500 cells/µL with fever",
+    "Rapid onset of severe infections",
+    "Signs of sepsis or systemic inflammatory response"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Immunologist",
+    "Infectious Disease Specialist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Newburger PE, Dale DC. Evaluation and management of patients with isolated neutropenia. Semin Hematol. 2013.",
+    "Orphanet: Acquired Neutropenia (ORPHA:178996)",
+    "Fischer A, et al. Neutropenia and neutrophil disorders. Hematology Am Soc Hematol Educ Program. 2017."
+  ],
+  "confidenceInData": "ai-generated"
+}

@@ -1,0 +1,352 @@
+{
+  "id": "multiple-myeloma",
+  "name": "Multiple Myeloma",
+  "aliases": [
+    "Plasma Cell Myeloma",
+    "Kahler Disease"
+  ],
+  "icd10Codes": [
+    "C90.0"
+  ],
+  "omimId": "254500",
+  "orphanetId": "ORPHA:29073",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "African descent (higher incidence)"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "International Myeloma Working Group (IMWG) Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clonal-plasma-cells",
+        "description": "Clonal bone marrow plasma cells ≥10% or biopsy-proven plasmacytoma",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "myeloma-defining-events",
+        "description": "Presence of one or more myeloma-defining events (CRAB features or biomarkers)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "CRAB-features",
+        "description": "Evidence of hyperCalcemia, Renal failure, Anemia, or Bone lesions attributable to plasma cell disorder",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "biomarkers",
+        "description": "Biomarkers of malignancy including involved/uninvolved serum free light chain ratio ≥100, >1 focal lesion on MRI, or clonal plasma cells ≥60%",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Clonal plasma cells ≥10% plus at least one myeloma-defining event (CRAB feature or biomarker)",
+    "notes": "Diagnosis requires exclusion of other plasma cell dyscrasias and correlation with clinical findings."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Osteopenia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pathologic fracture",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Nephrotic syndrome",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Nephropathy",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Pallor",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Acute kidney injury",
+        "frequency": 0.55,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "sudden kidney failure",
+          "acute loss of kidney function",
+          "rapid kidney injury"
+        ]
+      },
+      {
+        "symptomName": "Hyperproteinemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Bone pain",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Osteolysis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Increased circulating IgG level",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high IgG antibody levels",
+          "increased IgG in blood",
+          "elevated IgG immune proteins"
+        ]
+      },
+      {
+        "symptomName": "Elevated circulating creatinine concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high blood creatinine levels",
+          "elevated kidney function test",
+          "increased serum creatinine"
+        ]
+      },
+      {
+        "symptomName": "Generalized muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "overall muscle weakness",
+          "generalized loss of muscle strength",
+          "weak muscles throughout body"
+        ]
+      },
+      {
+        "symptomName": "Decreased circulating antibody level",
+        "frequency": 0.55,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "low antibody levels in blood",
+          "decreased immune antibodies",
+          "reduced protective antibodies"
+        ]
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Abnormality of the bladder",
+        "frequency": 0.17,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "bladder abnormalities or malformations",
+          "problems with bladder structure",
+          "unusual bladder shape or function"
+        ]
+      },
+      {
+        "symptomName": "Tall stature",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spinal cord compression",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "pressure on spinal cord",
+          "spinal cord squeezing",
+          "compressed spinal nerves"
+        ]
+      },
+      {
+        "symptomName": "Kyphosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Vertebral compression fracture",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "collapsed vertebra",
+          "spinal bone compression fracture",
+          "fractured vertebral body"
+        ]
+      },
+      {
+        "symptomName": "Hypercalcemia",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Increased circulating IgA level",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high IgA antibody levels",
+          "increased IgA in blood",
+          "elevated IgA immune proteins"
+        ]
+      },
+      {
+        "symptomName": "Paresthesia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of vitamin B12 metabolism",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "vitamin B12 metabolism problems",
+          "abnormal B12 processing",
+          "vitamin B12 deficiency symptoms"
+        ]
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Constrictive median neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "median nerve compression",
+          "nerve pressure in wrist",
+          "constrictive neuropathy of median nerve"
+        ]
+      },
+      {
+        "symptomName": "Functional abnormality of the gastrointestinal tract",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "digestive system function problems",
+          "stomach or intestine issues",
+          "abnormal gut function"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pleural effusion",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.03,
+        "bodySystem": "immunological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "renal",
+    "constitutional",
+    "hematological",
+    "immunological",
+    "neurological",
+    "endocrine",
+    "gastrointestinal",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Monoclonal protein spike (M protein) on serum or urine electrophoresis",
+      "Elevated serum free light chain ratio",
+      "Anemia with normocytic normochromic features",
+      "Elevated serum calcium",
+      "Elevated creatinine indicating renal impairment"
+    ],
+    "imaging": [
+      "Lytic bone lesions on skeletal survey or CT",
+      "MRI showing focal bone marrow lesions",
+      "PET-CT for extramedullary disease detection"
+    ],
+    "genetic": [
+      "CCND1 (susceptibility)"
+    ],
+    "other": [
+      "Bone marrow biopsy showing clonal plasma cell infiltration",
+      "Serum beta-2 microglobulin elevation as a prognostic marker"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "monoclonal-gammopathy-of-undetermined-significance",
+      "distinguishingFeatures": [
+        "Lower plasma cell percentage (<10%)",
+        "Absence of CRAB features",
+        "No end-organ damage"
+      ]
+    },
+    {
+      "diseaseId": "waldenstrom-macroglobulinemia",
+      "distinguishingFeatures": [
+        "IgM monoclonal gammopathy instead of IgG or IgA",
+        "Lymphoplasmacytic infiltration rather than plasma cell predominance",
+        "Hyperviscosity symptoms more prominent"
+      ]
+    }
+  ],
+  "redFlags": [
+    "New onset bone pain with lytic lesions on imaging",
+    "Rapidly progressive renal failure",
+    "Severe hypercalcemia with neurological symptoms"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Oncologist",
+    "Nephrologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Rajkumar SV. Multiple myeloma: 2020 update on diagnosis, risk-stratification and management. Am J Hematol. 2020.",
+    "International Myeloma Working Group criteria for diagnosis of multiple myeloma. Leukemia. 2014.",
+    "Kyle RA, Rajkumar SV. Multiple myeloma. Blood. 2008."
+  ],
+  "confidenceInData": "medium"
+}

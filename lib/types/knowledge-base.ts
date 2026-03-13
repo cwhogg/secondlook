@@ -23,6 +23,7 @@ export interface SymptomFrequency {
   frequency: number; // 0.0-1.0 proportion of patients who present with this
   bodySystem: BodySystem;
   notes?: string;
+  searchTerms?: string[]; // Patient-friendly aliases for HPO/medical symptom names
 }
 
 export interface DiagnosticCriterion {

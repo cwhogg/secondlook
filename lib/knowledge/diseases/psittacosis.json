@@ -1,0 +1,243 @@
+{
+  "id": "psittacosis",
+  "name": "Psittacosis",
+  "aliases": [
+    "Parrot fever",
+    "Ornithosis"
+  ],
+  "icd10Codes": [
+    "A70"
+  ],
+  "orphanetId": "ORPHA:660053",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 40
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Psittacosis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "exposure-history",
+        "description": "History of exposure to birds or bird droppings",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Acute febrile illness with pneumonia symptoms including cough and dyspnea",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "laboratory-confirmation",
+        "description": "Detection of Chlamydia psittaci by PCR, serology, or culture",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-findings",
+        "description": "Chest radiograph showing patchy infiltrates or consolidation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "response-to-treatment",
+        "description": "Clinical improvement with appropriate antibiotic therapy (e.g., doxycycline)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of exposure history, compatible clinical presentation, and laboratory confirmation",
+    "notes": "Diagnosis may be challenging due to nonspecific symptoms; laboratory testing is essential."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "High-grade fever with chills",
+        "frequency": 0.85,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high fever with chills",
+          "severe fever and shaking",
+          "spiking temperature with chills"
+        ]
+      },
+      {
+        "symptomName": "Dry cough with dyspnea",
+        "frequency": 0.75,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "dry cough with shortness of breath",
+          "non-productive cough and breathing difficulty",
+          "cough and breathlessness"
+        ]
+      },
+      {
+        "symptomName": "Headache with retro-orbital pain",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "headache behind eyes",
+          "pain around the eye socket",
+          "retro-orbital headache"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Myalgia and generalized malaise",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle aches and tiredness",
+          "body pain with fatigue",
+          "general muscle soreness and malaise"
+        ]
+      },
+      {
+        "symptomName": "Sweating (diaphoresis)",
+        "frequency": 0.6,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Non-productive cough",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain, pleuritic in nature",
+        "frequency": 0.52,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "sharp chest pain worsened by breathing",
+          "pain on deep breaths",
+          "pleuritic chest discomfort"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.25,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Conjunctivitis",
+        "frequency": 0.2,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Endocarditis",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Meningoencephalitis",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Rash (maculopapular)",
+        "frequency": 0.02,
+        "bodySystem": "dermatological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "constitutional",
+    "respiratory",
+    "neurological",
+    "musculoskeletal",
+    "gastrointestinal",
+    "hematological",
+    "ophthalmological",
+    "cardiovascular",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated liver transaminases",
+      "Leukocytosis or leukopenia",
+      "Positive serology for Chlamydia psittaci (complement fixation or microimmunofluorescence)",
+      "PCR detection of C. psittaci DNA in respiratory specimens"
+    ],
+    "imaging": [
+      "Chest X-ray showing unilateral or bilateral patchy infiltrates or consolidation",
+      "Possible pleural effusion"
+    ],
+    "genetic": [],
+    "other": [
+      "History of bird exposure (parrots, pigeons, poultry)",
+      "Rapid clinical response to tetracycline-class antibiotics"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "community-acquired-pneumonia",
+      "distinguishingFeatures": [
+        "Etiology usually bacterial (Streptococcus pneumoniae) or viral",
+        "Lack of bird exposure history",
+        "Different antibiotic response"
+      ]
+    },
+    {
+      "diseaseId": "legionellosis",
+      "distinguishingFeatures": [
+        "Exposure to contaminated water sources",
+        "Hyponatremia more common",
+        "Different serological and PCR testing"
+      ]
+    },
+    {
+      "diseaseId": "influenza",
+      "distinguishingFeatures": [
+        "Rapid onset with upper respiratory symptoms",
+        "Seasonal outbreaks",
+        "Positive influenza viral testing"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression to severe pneumonia or respiratory failure",
+    "Neurological complications such as meningoencephalitis",
+    "Development of endocarditis or systemic emboli"
+  ],
+  "specialistType": [
+    "Infectious disease specialist",
+    "Pulmonologist",
+    "Clinical microbiologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Centers for Disease Control and Prevention (CDC). Psittacosis (Parrot Fever).",
+    "Mandell, Douglas, and Bennett's Principles and Practice of Infectious Diseases, 9th Edition.",
+    "Orphanet: Psittacosis - ORPHA:660053"
+  ],
+  "confidenceInData": "ai-generated"
+}

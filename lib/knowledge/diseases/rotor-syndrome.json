@@ -1,0 +1,176 @@
+{
+  "id": "rotor-syndrome",
+  "name": "Rotor Syndrome",
+  "aliases": [
+    "Familial benign conjugated hyperbilirubinemia",
+    "Rotor type hyperbilirubinemia"
+  ],
+  "icd10Codes": [
+    "E80.6"
+  ],
+  "omimId": "237450",
+  "orphanetId": "3111",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Rotor Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "chronic-conjugated-hyperbilirubinemia",
+        "description": "Chronic, predominantly conjugated hyperbilirubinemia without evidence of hemolysis or liver enzyme elevation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "normal-hepatic-function-tests",
+        "description": "Normal liver function tests aside from elevated bilirubin",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-hemolysis",
+        "description": "No signs of hemolysis or other causes of hyperbilirubinemia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "impaired-hepatocellular-bilirubin-uptake",
+        "description": "Demonstration of impaired hepatic bilirubin uptake on specialized tests (e.g., bromsulphthalein clearance)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of mutations in SLCO1B1 and SLCO1B3 genes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of chronic conjugated hyperbilirubinemia with normal liver enzymes and absence of hemolysis",
+    "notes": "Diagnosis is often confirmed by exclusion and genetic testing"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Conjugated hyperbilirubinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "enzyme activity abnormalities",
+          "abnormal coenzyme function",
+          "defective enzyme or coenzyme function"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hyperbilirubinemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Porphyrinuria",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Bilirubinuria",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Intermittent jaundice",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Conjunctival icterus",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "constitutional",
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated conjugated (direct) bilirubin with normal liver enzymes",
+      "Normal hemoglobin and reticulocyte count (no hemolysis)",
+      "Normal coagulation profile"
+    ],
+    "imaging": [
+      "Normal liver ultrasound without biliary obstruction"
+    ],
+    "genetic": [
+      "SLCO1B1 (causative)",
+      "SLCO1B3 (causative)",
+      "Autosomal recessive inheritance"
+    ],
+    "other": [
+      "Delayed clearance of bromsulphthalein dye on hepatic function testing"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "gilbert-syndrome",
+      "distinguishingFeatures": [
+        "Predominantly unconjugated hyperbilirubinemia",
+        "Normal conjugated bilirubin levels",
+        "No impairment in hepatic uptake of bilirubin"
+      ]
+    },
+    {
+      "diseaseId": "dubin-johnson-syndrome",
+      "distinguishingFeatures": [
+        "Conjugated hyperbilirubinemia with darkly pigmented liver",
+        "Impaired hepatic excretion of conjugated bilirubin",
+        "Presence of melanin-like pigment in hepatocytes"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive jaundice",
+    "Elevated liver enzymes indicating hepatocellular injury",
+    "Signs of hemolysis or anemia"
+  ],
+  "specialistType": [
+    "Hepatologist",
+    "Geneticist",
+    "Gastroenterologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Sticova E, Jirsa M. Rotor syndrome: a rare cause of conjugated hyperbilirubinemia. World J Hepatol. 2015;7(28):2969-2974.",
+    "van de Steeg E, et al. Complete OATP1B1 and OATP1B3 deficiency causes human Rotor syndrome by interrupting conjugated bilirubin reuptake into the liver. J Clin Invest. 2012;122(2):519-528.",
+    "Orphanet: Rotor syndrome. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=3111"
+  ],
+  "confidenceInData": "medium"
+}

@@ -1,0 +1,252 @@
+{
+  "id": "paracetamol-poisoning",
+  "name": "Paracetamol (Acetaminophen) Poisoning",
+  "aliases": [
+    "Acetaminophen Overdose",
+    "Paracetamol Toxicity"
+  ],
+  "icd10Codes": [
+    "T39.1"
+  ],
+  "orphanetId": "ORPHA:464458",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Rumack-Matthew Nomogram Criteria",
+    "criteria": [
+      {
+        "id": "history-ingestion",
+        "description": "History of ingestion of potentially toxic dose of paracetamol within 24 hours",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "serum-paracetamol-level",
+        "description": "Serum paracetamol concentration above treatment threshold on Rumack-Matthew nomogram",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "elevated-liver-enzymes",
+        "description": "Elevated serum transaminases (ALT, AST) indicating hepatocellular injury",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "clinical-features",
+        "description": "Presence of clinical signs such as nausea, vomiting, right upper quadrant tenderness",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "History of toxic paracetamol ingestion plus serum paracetamol level above treatment threshold",
+    "notes": "Diagnosis is supported by liver function tests and clinical presentation; Rumack-Matthew nomogram is used for risk stratification."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Elevated serum alanine aminotransferase (ALT)",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Indicative of hepatocellular injury",
+        "searchTerms": [
+          "raised ALT liver enzyme",
+          "high alanine aminotransferase",
+          "elevated ALT blood levels"
+        ]
+      },
+      {
+        "symptomName": "Right upper quadrant abdominal tenderness",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "notes": "Reflects liver inflammation",
+        "searchTerms": [
+          "pain in right upper belly",
+          "tenderness in right abdomen",
+          "right upper quadrant stomach pain",
+          "RUQ abdominal tenderness"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "notes": "Early symptoms post-ingestion",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      },
+      {
+        "symptomName": "Malaise and fatigue",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Non-specific systemic symptoms",
+        "searchTerms": [
+          "feeling tired and unwell",
+          "general weakness and fatigue",
+          "low energy and malaise"
+        ]
+      },
+      {
+        "symptomName": "Elevated serum aspartate aminotransferase (AST)",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal",
+        "notes": "Marker of liver injury",
+        "searchTerms": [
+          "raised AST liver enzyme",
+          "high aspartate aminotransferase",
+          "elevated AST blood levels"
+        ]
+      },
+      {
+        "symptomName": "Increased prothrombin time (PT)",
+        "frequency": 0.6,
+        "bodySystem": "hematological",
+        "notes": "Indicates impaired liver synthetic function",
+        "searchTerms": [
+          "prolonged blood clotting time",
+          "increased prothrombin time",
+          "slow blood clot formation",
+          "blood takes longer to clot"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.4,
+        "bodySystem": "dermatological",
+        "notes": "Yellowing of skin and sclera due to hyperbilirubinemia"
+      },
+      {
+        "symptomName": "Hypoglycemia",
+        "frequency": 0.3,
+        "bodySystem": "endocrine",
+        "notes": "Due to impaired gluconeogenesis"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Resulting from liver failure"
+      },
+      {
+        "symptomName": "Metabolic acidosis",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "notes": "Due to systemic toxicity"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Acute renal failure",
+        "frequency": 0.08,
+        "bodySystem": "renal",
+        "notes": "Secondary to hepatorenal syndrome or direct toxicity",
+        "searchTerms": [
+          "sudden kidney failure",
+          "acute loss of kidney function",
+          "rapid kidney impairment"
+        ]
+      },
+      {
+        "symptomName": "Coagulopathy with bleeding tendency",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "notes": "Severe liver synthetic dysfunction",
+        "searchTerms": [
+          "bleeding due to clotting problems",
+          "blood clotting disorder with bleeding",
+          "easy bruising and bleeding"
+        ]
+      },
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.04,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to systemic inflammatory response or shock"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "neurological",
+    "renal",
+    "cardiovascular",
+    "constitutional",
+    "dermatological",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum paracetamol concentration",
+      "Increased ALT and AST levels",
+      "Prolonged prothrombin time (PT/INR)",
+      "Elevated bilirubin",
+      "Hypoglycemia",
+      "Metabolic acidosis"
+    ],
+    "imaging": [
+      "Ultrasound may show hepatomegaly or fatty infiltration",
+      "CT scan rarely used but may show liver necrosis in severe cases"
+    ],
+    "genetic": [],
+    "other": [
+      "Rumack-Matthew nomogram for risk stratification",
+      "Clinical history of overdose"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "viral-hepatitis",
+      "distinguishingFeatures": [
+        "Positive viral serologies",
+        "No history of paracetamol overdose",
+        "Different pattern of liver enzyme elevation"
+      ]
+    },
+    {
+      "diseaseId": "ischemic-hepatopathy",
+      "distinguishingFeatures": [
+        "History of hypotension or shock",
+        "Rapid onset liver enzyme elevation",
+        "No paracetamol ingestion history"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Serum paracetamol level above treatment threshold",
+    "Rapidly rising transaminases",
+    "Development of hepatic encephalopathy",
+    "Prolonged prothrombin time indicating liver failure"
+  ],
+  "specialistType": [
+    "Toxicologist",
+    "Hepatologist",
+    "Emergency Medicine Physician"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Rumack BH, Matthew H. Acetaminophen poisoning and toxicity. Pediatrics. 1975;55(6):871-876.",
+    "Lee WM. Acetaminophen (APAP) hepatotoxicity—Isn't it time for APAP to go away? J Hepatol. 2017;67(6):1324-1331.",
+    "American Academy of Clinical Toxicology Practice Guidelines on Acetaminophen Poisoning."
+  ],
+  "confidenceInData": "ai-generated"
+}

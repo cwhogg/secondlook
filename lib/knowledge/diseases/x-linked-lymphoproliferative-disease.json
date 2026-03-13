@@ -1,0 +1,247 @@
+{
+  "id": "x-linked-lymphoproliferative-disease",
+  "name": "X-linked lymphoproliferative disease",
+  "aliases": [
+    "Duncan disease",
+    "XLP1"
+  ],
+  "icd10Codes": [
+    "D76.8"
+  ],
+  "omimId": "308240",
+  "orphanetId": "2442",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 65,
+      "peak": 14
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "XLP Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "genetic-confirmation",
+        "description": "Identification of pathogenic mutation in SH2D1A gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "fulminant-epstein-barr-virus-infection",
+        "description": "Severe or fatal infectious mononucleosis caused by Epstein-Barr virus",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hypogammaglobulinemia",
+        "description": "Low serum immunoglobulin levels (IgG, IgA, and/or IgM)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "hemophagocytic-lymphohistiocytosis",
+        "description": "Clinical and laboratory evidence of HLH episodes",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Family history of male relatives with severe EBV infection or lymphoma",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Pathogenic SH2D1A mutation plus clinical features consistent with EBV-related lymphoproliferation or immunodeficiency",
+    "notes": "Diagnosis is confirmed by genetic testing; clinical presentation varies widely."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Fulminant infectious mononucleosis due to Epstein-Barr virus",
+        "frequency": 0.85,
+        "bodySystem": "immunological",
+        "notes": "Severe, often fatal EBV infection in affected males",
+        "searchTerms": [
+          "severe mono caused by EBV",
+          "fulminant Epstein-Barr infection",
+          "acute infectious mononucleosis"
+        ]
+      },
+      {
+        "symptomName": "Hemophagocytic lymphohistiocytosis (HLH) episodes",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Life-threatening hyperinflammatory syndrome",
+        "searchTerms": [
+          "episodes of immune system overactivation",
+          "HLH flare-ups",
+          "hemophagocytic lymphohistiocytosis attacks"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hypogammaglobulinemia",
+        "frequency": 0.65,
+        "bodySystem": "immunological",
+        "notes": "Reduced immunoglobulin levels leading to recurrent infections"
+      },
+      {
+        "symptomName": "Lymphoma development",
+        "frequency": 0.6,
+        "bodySystem": "hematological",
+        "notes": "Predisposition to B-cell lymphomas, especially Hodgkin and non-Hodgkin types"
+      },
+      {
+        "symptomName": "Chronic dysgammaglobulinemia",
+        "frequency": 0.55,
+        "bodySystem": "immunological",
+        "notes": "Persistent abnormal immunoglobulin profiles"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.58,
+        "bodySystem": "hematological",
+        "notes": "Enlarged spleen due to lymphoproliferation"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Liver dysfunction with hepatitis",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "notes": "Elevated liver enzymes and hepatomegaly",
+        "searchTerms": [
+          "liver inflammation",
+          "hepatitis with liver dysfunction",
+          "impaired liver function"
+        ]
+      },
+      {
+        "symptomName": "Neurological complications (e.g., ataxia, seizures)",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Secondary to HLH or CNS infiltration",
+        "searchTerms": [
+          "neurological problems like ataxia and seizures",
+          "brain coordination and seizure issues",
+          "nervous system complications"
+        ]
+      },
+      {
+        "symptomName": "Autoimmune cytopenias",
+        "frequency": 0.2,
+        "bodySystem": "hematological",
+        "notes": "Autoimmune hemolytic anemia or thrombocytopenia"
+      },
+      {
+        "symptomName": "Chronic diarrhea",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to immune dysregulation"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pulmonary lymphoid interstitial pneumonia",
+        "frequency": 0.05,
+        "bodySystem": "respiratory",
+        "notes": "Rare lung involvement with lymphoid infiltration",
+        "searchTerms": [
+          "lung inflammation with lymphoid tissue",
+          "lymphoid interstitial pneumonia",
+          "pulmonary lymph tissue disease"
+        ]
+      },
+      {
+        "symptomName": "Cutaneous vasculitis",
+        "frequency": 0.04,
+        "bodySystem": "dermatological",
+        "notes": "Inflammation of blood vessels in the skin"
+      },
+      {
+        "symptomName": "Endocrine abnormalities (e.g., growth retardation)",
+        "frequency": 0.03,
+        "bodySystem": "endocrine",
+        "notes": "Secondary to chronic illness",
+        "searchTerms": [
+          "hormone problems causing growth delay",
+          "endocrine issues with short stature",
+          "growth retardation due to hormone imbalance"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "immunological",
+    "hematological",
+    "gastrointestinal",
+    "neurological",
+    "respiratory",
+    "dermatological",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low or absent SAP protein expression in lymphocytes",
+      "Hypogammaglobulinemia (low IgG, IgA, and/or IgM)",
+      "Elevated ferritin and triglycerides during HLH episodes",
+      "Cytopenias (anemia, thrombocytopenia)"
+    ],
+    "imaging": [
+      "Splenomegaly and hepatomegaly on abdominal ultrasound or CT",
+      "Lymphadenopathy on CT or MRI",
+      "CNS imaging may show inflammatory changes during HLH"
+    ],
+    "genetic": [
+      "Pathogenic mutations in SH2D1A gene on X chromosome",
+      "X-linked inheritance pattern",
+      "X-linked recessive inheritance"
+    ],
+    "other": [
+      "Bone marrow hemophagocytosis during HLH episodes",
+      "Histopathology of lymph nodes showing lymphoma or reactive hyperplasia"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hemophagocytic-lymphohistiocytosis",
+      "distinguishingFeatures": [
+        "HLH can be familial or secondary; XLP is specifically linked to SH2D1A mutations and EBV susceptibility",
+        "XLP predominantly affects males with X-linked inheritance"
+      ]
+    },
+    {
+      "diseaseId": "common-variable-immunodeficiency",
+      "distinguishingFeatures": [
+        "CVID presents with hypogammaglobulinemia but lacks fulminant EBV infection and X-linked inheritance",
+        "Onset usually later in childhood or adulthood"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe or fatal infectious mononucleosis caused by Epstein-Barr virus",
+    "Recurrent episodes of hemophagocytic lymphohistiocytosis",
+    "Early onset lymphoma in male child"
+  ],
+  "specialistType": [
+    "Immunologist",
+    "Hematologist",
+    "Geneticist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Sumegi J, et al. X-linked lymphoproliferative disease: clinical and molecular features. Hematology Am Soc Hematol Educ Program. 2006.",
+    "Nichols KE, et al. X-linked lymphoproliferative disease: a model for understanding EBV immunity. Immunol Rev. 2011.",
+    "Orphanet: X-linked lymphoproliferative disease (ORPHA:2442)"
+  ],
+  "confidenceInData": "ai-generated"
+}

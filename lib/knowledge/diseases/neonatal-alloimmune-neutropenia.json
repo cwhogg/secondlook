@@ -1,0 +1,208 @@
+{
+  "id": "neonatal-alloimmune-neutropenia",
+  "name": "Neonatal Alloimmune Neutropenia",
+  "aliases": [
+    "NAIN",
+    "Neonatal alloimmune neutropenia syndrome"
+  ],
+  "icd10Codes": [
+    "D70.8"
+  ],
+  "orphanetId": "ORPHA:464370",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 0.08,
+      "peak": 0
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Neonatal Alloimmune Neutropenia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "neutropenia",
+        "description": "Absolute neutrophil count (ANC) less than 1500/µL in the neonate",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "maternal-alloantibodies",
+        "description": "Detection of maternal anti-neutrophil antibodies reactive against neonatal neutrophils",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-infections",
+        "description": "Exclusion of congenital infections or other causes of neonatal neutropenia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-infections",
+        "description": "Presence of bacterial or fungal infections in the neonate",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "maternal-history",
+        "description": "History of maternal sensitization or previous affected pregnancies",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of neonatal neutropenia with detection of maternal anti-neutrophil antibodies and exclusion of other causes",
+    "notes": "Diagnosis relies heavily on laboratory confirmation of maternal antibodies and clinical exclusion of other etiologies."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Neutropenia in presence of anti-neutropil antibodies",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "low neutrophil count with antibodies",
+          "immune-related low white blood cells"
+        ]
+      },
+      {
+        "symptomName": "Antineutrophil antibody positivity",
+        "frequency": 0.9,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "antibody attacking white blood cells",
+          "immune response targeting neutrophils"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Pneumonia",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Severe infection",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Meningitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spontaneous abortion",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Temperature instability",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Maternal diabetes",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Neonatal omphalitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sepsis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "respiratory",
+    "constitutional",
+    "gastrointestinal",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Absolute neutrophil count <1500/µL, often <500/µL",
+      "Positive maternal anti-neutrophil antibody testing (e.g., granulocyte immunofluorescence test)",
+      "Normal bone marrow with normal or increased myeloid precursors"
+    ],
+    "imaging": [
+      "Imaging may reveal localized infections such as abscesses or osteomyelitis"
+    ],
+    "genetic": [
+      "FCGR3B (biomarker)"
+    ],
+    "other": [
+      "Maternal history of alloimmunization or previous affected neonates"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "congenital-neutropenia",
+      "distinguishingFeatures": [
+        "Genetic mutations causing neutropenia",
+        "Persistent neutropenia beyond neonatal period",
+        "Absence of maternal anti-neutrophil antibodies"
+      ]
+    },
+    {
+      "diseaseId": "neonatal-sepsis",
+      "distinguishingFeatures": [
+        "Infectious cause of neutropenia",
+        "Positive blood cultures",
+        "No maternal alloantibodies"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-neutropenia-of-infancy",
+      "distinguishingFeatures": [
+        "Autoantibodies produced by infant rather than maternal origin",
+        "Later onset beyond neonatal period",
+        "Usually milder clinical course"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Severe neutropenia with ANC <500/µL",
+    "Recurrent or severe bacterial infections in neonate",
+    "Failure to respond to standard antibiotic therapy"
+  ],
+  "specialistType": [
+    "Neonatologist",
+    "Hematologist",
+    "Immunologist",
+    "Pediatric Infectious Disease Specialist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Newburger PE, Dale DC. Neonatal alloimmune neutropenia. Blood. 2013;122(10):1613-1619.",
+    "Orphanet: Neonatal alloimmune neutropenia - ORPHA:464370",
+    "Friedman DF, et al. Neonatal alloimmune neutropenia: clinical and laboratory features. J Pediatr. 2010;157(5):789-793."
+  ],
+  "confidenceInData": "medium"
+}

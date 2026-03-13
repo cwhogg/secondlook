@@ -1,0 +1,226 @@
+{
+  "id": "l1-syndrome",
+  "name": "L1 Syndrome",
+  "aliases": [
+    "L1CAM Syndrome",
+    "CRASH Syndrome"
+  ],
+  "icd10Codes": [
+    "Q87.8"
+  ],
+  "omimId": "308840",
+  "orphanetId": "275543",
+  "prevalence": {
+    "estimate": "1 in 100,000 to 1 in 200,000 male births",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 2,
+      "peak": 0
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "L1 Syndrome Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "l1cam-mutation",
+        "description": "Presence of pathogenic mutation in the L1CAM gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hydrocephalus",
+        "description": "Congenital hydrocephalus due to stenosis of the aqueduct of Sylvius",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "adducted-thumb",
+        "description": "Congenital adducted thumbs",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "spasticity",
+        "description": "Spasticity of the lower limbs",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "intellectual-disability",
+        "description": "Variable intellectual disability",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Pathogenic L1CAM mutation plus at least two major clinical features (hydrocephalus and adducted thumbs)",
+    "notes": "Genetic testing is confirmatory; clinical presentation may vary in severity."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Depression",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Intellectual disability",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Global developmental delay",
+        "frequency": 0.9,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "delayed overall development",
+          "slow developmental milestones",
+          "global delay in growth and skills"
+        ]
+      },
+      {
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hyperreflexia",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Aqueductal stenosis",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Language impairment",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hemiplegia/hemiparesis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Adducted thumb",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Aganglionic megacolon",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skeletal muscle atrophy",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle wasting",
+          "muscle loss",
+          "shrinking muscles"
+        ]
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "neurological",
+    "psychiatric",
+    "constitutional",
+    "gastrointestinal",
+    "cardiovascular",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [],
+    "imaging": [
+      "MRI showing hydrocephalus with aqueductal stenosis",
+      "Corpus callosum hypoplasia or agenesis on brain MRI",
+      "Adducted thumbs visible on physical exam and X-ray"
+    ],
+    "genetic": [
+      "Pathogenic variants in the L1CAM gene (X-linked inheritance)",
+      "X-linked recessive inheritance"
+    ],
+    "other": [
+      "Elevated intracranial pressure signs",
+      "Spasticity and hyperreflexia on neurological exam"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "x-linked-hydrocephalus",
+      "distinguishingFeatures": [
+        "May lack adducted thumbs",
+        "Different gene mutations involved"
+      ]
+    },
+    {
+      "diseaseId": "spastic-paraplegia-type-2",
+      "distinguishingFeatures": [
+        "Later onset",
+        "No congenital hydrocephalus",
+        "Different genetic etiology"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive hydrocephalus in male infants",
+    "Congenital adducted thumbs with neurological deficits",
+    "Family history of X-linked hydrocephalus or L1CAM mutations"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Geneticist",
+    "Pediatrician",
+    "Neurosurgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Orphanet: L1 Syndrome - ORPHA:275543",
+    "OMIM Entry - L1CAM, L1 Syndrome (308840)",
+    "Neurogenetics of L1 Syndrome, Journal of Medical Genetics, 2020"
+  ],
+  "confidenceInData": "medium"
+}

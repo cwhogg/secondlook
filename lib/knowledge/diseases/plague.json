@@ -1,0 +1,454 @@
+{
+  "id": "plague",
+  "name": "Plague",
+  "aliases": [
+    "Black Death",
+    "Bubonic Plague",
+    "Pneumonic Plague",
+    "Septicemic Plague"
+  ],
+  "icd10Codes": [
+    "A20"
+  ],
+  "orphanetId": "ORPHA:707",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "CDC Plague Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clinical-presentation",
+        "description": "Presence of characteristic clinical syndromes such as buboes, severe pneumonia, or septicemia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "laboratory-confirmation",
+        "description": "Isolation of Yersinia pestis from clinical specimens or positive PCR",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "epidemiological-link",
+        "description": "History of exposure to endemic areas, contact with infected animals or fleas",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Clinical presentation consistent with plague plus laboratory confirmation of Yersinia pestis",
+    "notes": "Rapid diagnosis and treatment are critical due to high mortality if untreated"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Fever",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lymphadenitis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Dry skin",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Tachycardia",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anorexia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Reduced consciousness/confusion",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal blistering of the skin",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin blisters that form abnormally",
+          "unusual skin blistering"
+        ]
+      },
+      {
+        "symptomName": "Localized skin lesion",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "small skin sore",
+          "localized skin spot",
+          "skin lesion in one area"
+        ]
+      },
+      {
+        "symptomName": "Carbuncle",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chills",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Conjunctival hyperemia",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Delirium",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Bacteremia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skin ulcer",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Glossitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Depression",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Edema",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Coma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Slurred speech",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal bleeding",
+        "frequency": 0.17,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "excessive bleeding",
+          "unusual bleeding episodes",
+          "bleeding problems"
+        ]
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Inflammation of the large intestine",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "large intestine inflammation",
+          "colon swelling",
+          "colitis symptoms"
+        ]
+      },
+      {
+        "symptomName": "Respiratory distress",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hematemesis",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Unsteady gait",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Enterocolitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of the elbow",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "elbow abnormality",
+          "unusual elbow shape",
+          "elbow joint deformity"
+        ]
+      },
+      {
+        "symptomName": "Mydriasis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arrhythmia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Acute infectious pneumonia",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "sudden lung infection",
+          "acute pneumonia symptoms",
+          "rapid onset chest infection"
+        ]
+      },
+      {
+        "symptomName": "Erythema nodosum",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Enlarged mesenteric lymph node",
+        "frequency": 0.17,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "enlarged lymph node in abdomen",
+          "swollen mesenteric lymph node",
+          "abdominal lymph node swelling"
+        ]
+      },
+      {
+        "symptomName": "Bloody diarrhea",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Ileitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chapped lip",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sepsis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Meningitis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pharyngitis",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Inflammatory abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "eye inflammation",
+          "red and irritated eye",
+          "ocular inflammatory condition"
+        ]
+      },
+      {
+        "symptomName": "Endocarditis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "constitutional",
+    "psychiatric",
+    "dermatological",
+    "cardiovascular",
+    "gastrointestinal",
+    "neurological",
+    "ophthalmological",
+    "otolaryngological",
+    "hematological",
+    "respiratory",
+    "musculoskeletal",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Isolation of Yersinia pestis in blood, bubo aspirate, sputum, or other sterile sites",
+      "Gram-negative bipolar staining coccobacilli on microscopy",
+      "Leukocytosis or leukopenia",
+      "Elevated inflammatory markers (CRP, ESR)",
+      "Thrombocytopenia and coagulopathy in septicemic cases"
+    ],
+    "imaging": [
+      "Chest X-ray showing bilateral patchy infiltrates or lobar pneumonia in pneumonic plague",
+      "Ultrasound or CT showing enlarged lymph nodes (buboes)"
+    ],
+    "genetic": [
+      "No known inherited genetic predisposition"
+    ],
+    "other": [
+      "Positive serology for Yersinia pestis antibodies (supportive)",
+      "Rapid diagnostic tests (F1 antigen detection)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "tularemia",
+      "distinguishingFeatures": [
+        "Ulceroglandular lesions with less severe systemic symptoms",
+        "Different epidemiology and exposure history",
+        "Negative Yersinia pestis cultures"
+      ]
+    },
+    {
+      "diseaseId": "septicemic-anthrax",
+      "distinguishingFeatures": [
+        "Presence of characteristic black eschar",
+        "Exposure to animal products or spores",
+        "Positive Bacillus anthracis cultures"
+      ]
+    },
+    {
+      "diseaseId": "severe-streptococcal-lymphadenitis",
+      "distinguishingFeatures": [
+        "Absence of systemic septicemia",
+        "Positive streptococcal cultures",
+        "Different response to antibiotics"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression to septic shock",
+    "Hemoptysis indicating pneumonic plague",
+    "Presence of painful buboes with systemic toxicity"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Epidemiologist",
+    "Critical Care Specialist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Centers for Disease Control and Prevention. Plague: Clinical Overview. CDC.gov",
+    "World Health Organization. Plague Fact Sheet. WHO.int",
+    "Mandell, Douglas, and Bennett's Principles and Practice of Infectious Diseases, 9th Edition"
+  ],
+  "confidenceInData": "medium"
+}

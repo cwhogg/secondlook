@@ -1,0 +1,238 @@
+{
+  "id": "infectious-encephalitis",
+  "name": "Infectious Encephalitis",
+  "aliases": [
+    "Infective Encephalitis",
+    "Viral Encephalitis"
+  ],
+  "icd10Codes": [
+    "G04.9"
+  ],
+  "orphanetId": "ORPHA:98252",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 90,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "International Encephalitis Consortium Criteria",
+    "criteria": [
+      {
+        "id": "altered-mental-status",
+        "description": "Altered mental status lasting ≥24 hours with no alternative cause identified",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "fever",
+        "description": "Fever ≥38°C within 72 hours before or after presentation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "csf-pleocytosis",
+        "description": "Cerebrospinal fluid pleocytosis (WBC count ≥5/mm³)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "neuroimaging",
+        "description": "Neuroimaging abnormalities consistent with encephalitis",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "electroencephalogram",
+        "description": "Electroencephalogram abnormalities consistent with encephalitis",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of altered mental status lasting ≥24 hours and fever ≥38°C, plus at least one minor criterion (CSF pleocytosis, neuroimaging, or EEG abnormalities)",
+    "notes": "Diagnosis requires exclusion of alternative causes such as metabolic or toxic encephalopathy."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Altered level of consciousness",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "reduced alertness",
+          "drowsiness or unconsciousness",
+          "altered consciousness level"
+        ]
+      },
+      {
+        "symptomName": "Fever ≥38°C",
+        "frequency": 0.8,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Headache of acute onset",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "sudden severe headache",
+          "acute onset head pain",
+          "rapidly developing headache"
+        ]
+      },
+      {
+        "symptomName": "Focal neurological deficits",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "localized nerve problems",
+          "specific area neurological symptoms",
+          "focal weakness or numbness"
+        ]
+      },
+      {
+        "symptomName": "Nuchal rigidity",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Confusion",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Behavioral changes",
+        "frequency": 0.4,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Memory impairment",
+        "frequency": 0.35,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysphasia",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cranial nerve palsies",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "weakness of cranial nerves",
+          "cranial nerve palsies causing facial or eye problems"
+        ]
+      },
+      {
+        "symptomName": "Respiratory failure secondary to brainstem involvement",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing problems from brainstem damage",
+          "respiratory failure due to brain injury",
+          "difficulty breathing from brainstem involvement"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "constitutional",
+    "psychiatric",
+    "gastrointestinal",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Cerebrospinal fluid pleocytosis with lymphocytic predominance",
+      "Elevated CSF protein",
+      "PCR detection of viral DNA/RNA in CSF (e.g., HSV, enteroviruses)"
+    ],
+    "imaging": [
+      "MRI showing hyperintense lesions on T2/FLAIR in temporal lobes or other affected regions",
+      "CT scan may show hypodense areas in severe cases"
+    ],
+    "genetic": [],
+    "other": [
+      "Electroencephalogram showing diffuse slowing or periodic lateralized epileptiform discharges"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "autoimmune-encephalitis",
+      "distinguishingFeatures": [
+        "Presence of specific autoantibodies in serum or CSF",
+        "Subacute onset with prominent psychiatric symptoms",
+        "Lack of fever or infectious prodrome"
+      ]
+    },
+    {
+      "diseaseId": "bacterial-meningitis",
+      "distinguishingFeatures": [
+        "Marked neutrophilic CSF pleocytosis",
+        "Positive bacterial cultures",
+        "Rapid progression with meningeal signs predominating"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid deterioration of consciousness",
+    "New onset seizures refractory to treatment",
+    "Signs of increased intracranial pressure (e.g., papilledema, bradycardia)"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Infectious Disease Specialist",
+    "Intensivist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Granerod J, et al. Causes of encephalitis and differences in their clinical presentations in England: a multicentre, population-based prospective study. Lancet Infect Dis. 2010.",
+    "Venkatesan A, et al. Case definitions, diagnostic algorithms, and priorities in encephalitis: consensus statement of the International Encephalitis Consortium. Clin Infect Dis. 2013.",
+    "Kennedy PGE. Viral encephalitis: causes, differential diagnosis, and management. J Neurol Neurosurg Psychiatry. 2004."
+  ],
+  "confidenceInData": "ai-generated"
+}

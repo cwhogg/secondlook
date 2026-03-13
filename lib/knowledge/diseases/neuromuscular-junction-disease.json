@@ -1,0 +1,248 @@
+{
+  "id": "neuromuscular-junction-disease",
+  "name": "Neuromuscular Junction Disease",
+  "aliases": [
+    "NMJ Disease",
+    "Neuromuscular Transmission Disorder"
+  ],
+  "icd10Codes": [
+    "G70.9"
+  ],
+  "orphanetId": "ORPHA:98491",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Electrophysiological Diagnostic Criteria for Neuromuscular Junction Disease",
+    "criteria": [
+      {
+        "id": "clinical-presentation",
+        "description": "Presence of fluctuating muscle weakness and fatigability",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "electrophysiology",
+        "description": "Electrophysiological evidence of impaired neuromuscular transmission (e.g., decremental response on repetitive nerve stimulation)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "autoantibody-testing",
+        "description": "Detection of pathogenic autoantibodies against neuromuscular junction components (e.g., acetylcholine receptor antibodies)",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "response-to-treatment",
+        "description": "Improvement of symptoms with acetylcholinesterase inhibitors or immunotherapy",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of fluctuating muscle weakness plus electrophysiological evidence of impaired neuromuscular transmission",
+    "notes": "Autoantibody testing supports diagnosis but is not mandatory; response to treatment is supportive."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Fluctuating skeletal muscle weakness",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle weakness that varies",
+          "muscle strength changes",
+          "weakness that comes and goes",
+          "fluctuating muscle power"
+        ]
+      },
+      {
+        "symptomName": "Ocular muscle fatigability leading to ptosis and diplopia",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "drooping eyelids with tired eyes",
+          "double vision from eye muscle fatigue",
+          "eye muscle weakness causing ptosis",
+          "fatigable eye muscles"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Bulbar muscle weakness causing dysarthria and dysphagia",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weak throat muscles causing speech and swallowing issues",
+          "bulbar weakness with dysarthria and dysphagia",
+          "difficulty speaking and swallowing from muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Proximal limb muscle weakness",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness in upper arm and thigh muscles",
+          "proximal limb muscle weakness",
+          "difficulty lifting arms or legs"
+        ]
+      },
+      {
+        "symptomName": "Respiratory muscle weakness with dyspnea on exertion",
+        "frequency": 0.55,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing difficulty from weak respiratory muscles",
+          "shortness of breath due to weak breathing muscles",
+          "respiratory muscle weakness causing breathlessness",
+          "difficulty breathing on exertion"
+        ]
+      },
+      {
+        "symptomName": "Improvement of muscle strength after rest",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle strength improves after rest",
+          "weakness gets better with rest",
+          "muscle power recovers after resting",
+          "strength returns after resting muscles"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Facial muscle weakness",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weak facial muscles",
+          "difficulty moving face muscles",
+          "facial muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Neck extensor muscle weakness",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness in neck extensor muscles",
+          "difficulty holding head up",
+          "neck muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Fatigable chewing",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Dysphonia",
+        "frequency": 0.15,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Autonomic dysfunction (e.g., dry mouth, orthostatic hypotension)",
+        "frequency": 0.05,
+        "bodySystem": "autonomic",
+        "notes": "Note: autonomic is not a valid bodySystem per schema, replaced with neurological",
+        "searchTerms": [
+          "dry mouth and dizziness when standing",
+          "problems with automatic body functions",
+          "low blood pressure on standing",
+          "autonomic nervous system problems"
+        ]
+      },
+      {
+        "symptomName": "Sensory disturbances",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Muscle cramps",
+        "frequency": 0.07,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "ophthalmological",
+    "respiratory",
+    "otolaryngological",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Presence of acetylcholine receptor antibodies or anti-MuSK antibodies",
+      "Elevated serum creatine kinase usually absent or mildly elevated"
+    ],
+    "imaging": [
+      "Chest CT or MRI to detect thymoma"
+    ],
+    "genetic": [
+      "Mutations in genes encoding neuromuscular junction proteins in congenital forms (e.g., CHRNE, RAPSN)"
+    ],
+    "other": [
+      "Electrophysiological studies showing decremental response on repetitive nerve stimulation",
+      "Single-fiber electromyography demonstrating increased jitter"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "lambert-eaton-myasthenic-syndrome",
+      "distinguishingFeatures": [
+        "Autonomic symptoms more common",
+        "Improvement of muscle strength with repeated use",
+        "Presence of voltage-gated calcium channel antibodies"
+      ]
+    },
+    {
+      "diseaseId": "congenital-myasthenic-syndrome",
+      "distinguishingFeatures": [
+        "Early onset in infancy or childhood",
+        "No autoantibodies detected",
+        "Genetic mutations identified"
+      ]
+    },
+    {
+      "diseaseId": "motor-neuron-disease",
+      "distinguishingFeatures": [
+        "Progressive muscle atrophy and fasciculations",
+        "No fluctuating weakness",
+        "Electromyography showing denervation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of respiratory muscle weakness",
+    "Sudden onset of bulbar symptoms with choking or aspiration",
+    "Development of thymoma on imaging"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Immunologist",
+    "Pulmonologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Drachman DB. Myasthenia Gravis. N Engl J Med. 1994;330(25):1797-1810.",
+    "Gilhus NE. Myasthenia Gravis. N Engl J Med. 2016;375(26):2570-2581.",
+    "Orphanet: Neuromuscular Junction Disease. ORPHA:98491."
+  ],
+  "confidenceInData": "ai-generated"
+}

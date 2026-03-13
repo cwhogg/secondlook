@@ -1,0 +1,235 @@
+{
+  "id": "skeletal-muscle-disease",
+  "name": "Skeletal Muscle Disease",
+  "aliases": [
+    "Myopathy",
+    "Muscle Disorder"
+  ],
+  "icd10Codes": [
+    "G72.9"
+  ],
+  "orphanetId": "ORPHA:98472",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 20
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Histopathological Diagnostic Criteria for Skeletal Muscle Disease",
+    "criteria": [
+      {
+        "id": "clinical-presentation",
+        "description": "Progressive muscle weakness predominantly affecting skeletal muscles",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "muscle-biopsy",
+        "description": "Histopathological evidence of muscle fiber degeneration or inflammation on muscle biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "electromyography",
+        "description": "Electromyographic findings consistent with myopathic changes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic mutations in genes associated with skeletal muscle disease",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of progressive muscle weakness with confirmatory muscle biopsy findings",
+    "notes": "Genetic testing and electromyography support diagnosis but are not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Proximal skeletal muscle weakness",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness in upper arm muscles",
+          "difficulty lifting objects",
+          "shoulder and hip muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Muscle fiber necrosis on biopsy",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle cell death on biopsy",
+          "muscle fiber damage",
+          "necrosis seen in muscle tissue"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Muscle atrophy",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated serum creatine kinase levels",
+        "frequency": 0.65,
+        "bodySystem": "laboratory",
+        "searchTerms": [
+          "high muscle enzyme levels",
+          "elevated creatine kinase",
+          "muscle damage blood test"
+        ]
+      },
+      {
+        "symptomName": "Fatigable muscle weakness",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle weakness that worsens with use",
+          "fatigue-related muscle weakness",
+          "weakness increasing with activity"
+        ]
+      },
+      {
+        "symptomName": "Difficulty climbing stairs or rising from a chair",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "trouble climbing stairs",
+          "difficulty standing up from chair",
+          "weakness going upstairs"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Myalgia (muscle pain)",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle aches",
+          "muscle soreness or pain",
+          "myalgia symptoms"
+        ]
+      },
+      {
+        "symptomName": "Dysphagia due to oropharyngeal muscle involvement",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "difficulty swallowing",
+          "swallowing problems",
+          "dysphagia from throat muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Respiratory muscle weakness",
+        "frequency": 0.25,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "weak breathing muscles",
+          "difficulty breathing due to muscle weakness",
+          "respiratory muscle fatigue"
+        ]
+      },
+      {
+        "symptomName": "Muscle cramps",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cardiomyopathy secondary to skeletal muscle disease",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart muscle disease from muscle disorder",
+          "cardiac problems linked to muscle disease",
+          "heart weakness due to muscle condition"
+        ]
+      },
+      {
+        "symptomName": "Rhabdomyolysis episodes",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "respiratory",
+    "cardiovascular",
+    "gastrointestinal",
+    "neurological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum creatine kinase (CK) levels",
+      "Abnormal lactate dehydrogenase (LDH) elevation"
+    ],
+    "imaging": [
+      "Muscle MRI showing fatty infiltration and edema",
+      "Ultrasound demonstrating muscle atrophy"
+    ],
+    "genetic": [
+      "Pathogenic mutations in genes such as DMD, CAPN3, or RYR1"
+    ],
+    "other": [
+      "Muscle biopsy showing fiber necrosis, regeneration, and inflammatory infiltrates",
+      "Electromyography demonstrating myopathic motor unit potentials"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "motor-neuron-disease",
+      "distinguishingFeatures": [
+        "Upper and lower motor neuron signs",
+        "Absence of muscle inflammation on biopsy",
+        "Progressive spasticity"
+      ]
+    },
+    {
+      "diseaseId": "peripheral-neuropathy",
+      "distinguishingFeatures": [
+        "Sensory deficits predominant",
+        "Nerve conduction studies showing demyelination or axonal loss",
+        "Lack of primary muscle pathology"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive muscle weakness over weeks",
+    "Respiratory failure requiring ventilatory support",
+    "Cardiac arrhythmias or heart failure symptoms"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Rheumatologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Orphanet: Skeletal Muscle Diseases - ORPHA:98472",
+    "Moxley RT. Skeletal Muscle Disease. In: Harrison's Principles of Internal Medicine. 20th ed. 2018.",
+    "Dubowitz V, Sewry CA. Muscle Biopsy: A Practical Approach. 4th ed. 2013."
+  ],
+  "confidenceInData": "ai-generated"
+}

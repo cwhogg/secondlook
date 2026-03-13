@@ -1,0 +1,719 @@
+{
+  "id": "alg9-cdg",
+  "name": "ALG9-congenital disorder of glycosylation",
+  "aliases": [
+    "ALG9-CDG",
+    "Congenital disorder of glycosylation type IL"
+  ],
+  "icd10Codes": [
+    "E77.8"
+  ],
+  "omimId": "615715",
+  "orphanetId": "79328",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 2,
+      "peak": 0
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ALG9-CDG Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clinical-features",
+        "description": "Presence of multisystem involvement including neurological impairment and dysmorphic features",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "transferrin-glycosylation",
+        "description": "Abnormal serum transferrin glycosylation pattern consistent with type I CDG",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of biallelic pathogenic variants in the ALG9 gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "supportive-laboratory",
+        "description": "Additional biochemical abnormalities such as elevated liver enzymes or coagulation defects",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of characteristic clinical features plus abnormal transferrin glycosylation and confirmation by genetic testing identifying biallelic ALG9 pathogenic variants",
+    "notes": "Diagnosis requires integration of clinical, biochemical, and molecular findings."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Intellectual disability",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Global developmental delay",
+        "frequency": 0.9,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "delayed overall development",
+          "slow developmental milestones",
+          "global delay in growth and skills"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Progressive microcephaly",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal heart morphology",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "abnormal heart shape",
+          "heart structure problems",
+          "unusual heart anatomy"
+        ]
+      },
+      {
+        "symptomName": "Pericardial effusion",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Skeletal dysplasia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Inverted nipples",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Posteriorly rotated ears",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "ears rotated backwards",
+          "ears positioned abnormally",
+          "posteriorly turned ears"
+        ]
+      },
+      {
+        "symptomName": "Enlarged kidney",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hydronephrosis",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Wide mouth",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Bifid uvula",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Thin upper lip vermilion",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "thin upper lip",
+          "narrow upper lip border",
+          "slim upper lip vermilion"
+        ]
+      },
+      {
+        "symptomName": "Brachycephaly",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Wide anterior fontanel",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "large soft spot on head",
+          "wide gap between skull bones",
+          "big fontanelle"
+        ]
+      },
+      {
+        "symptomName": "Delayed cranial suture closure",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "delayed skull bone fusion",
+          "late closing of head sutures",
+          "slow cranial suture closure"
+        ]
+      },
+      {
+        "symptomName": "Microretrognathia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypertelorism",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Smooth philtrum",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Long philtrum",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Micrognathia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Low-set ears",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Underdeveloped nasal alae",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "underdeveloped sides of nose",
+          "small nasal wings",
+          "narrow nose sides"
+        ]
+      },
+      {
+        "symptomName": "Convex nasal ridge",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "nose bridge curves outward",
+          "convex nasal profile",
+          "prominent curved nose ridge"
+        ]
+      },
+      {
+        "symptomName": "Short neck",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Torticollis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Thickened nuchal skin fold",
+        "frequency": 0.17,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "thick skin fold on back of neck",
+          "extra skin at neck crease",
+          "skin thickening at nape of neck"
+        ]
+      },
+      {
+        "symptomName": "Telecanthus",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Proptosis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Esotropia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Shallow orbits",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Irritability",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Bicornuate uterus",
+        "frequency": 0.17,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Hypertrichosis",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hitchhiker thumb",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cerebellar atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hyperreflexia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Periportal fibrosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Omphalocele",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased fetal movement",
+        "frequency": 0.17,
+        "bodySystem": "reproductive",
+        "searchTerms": [
+          "less movement in womb",
+          "reduced fetal activity",
+          "baby moves less before birth"
+        ]
+      },
+      {
+        "symptomName": "Oligohydramnios",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ventricular septal defect",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "hole between heart chambers",
+          "ventricular septal defect",
+          "abnormal heart wall opening"
+        ]
+      },
+      {
+        "symptomName": "Atrial septal defect",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "hole in atrial heart wall",
+          "atrial septal defect",
+          "abnormal opening between heart atria"
+        ]
+      },
+      {
+        "symptomName": "Talipes equinovarus",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hydrops fetalis",
+        "frequency": 0.17,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Frontal bossing",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Gastroesophageal reflux",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cerebral atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "stiffness in legs",
+          "tight leg muscles",
+          "increased muscle tone in lower limbs"
+        ]
+      },
+      {
+        "symptomName": "Pulmonary hypoplasia",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Asthma",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormal lung lobation",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "lung lobe malformation",
+          "unusual lung segmentation",
+          "abnormal lung lobes"
+        ]
+      },
+      {
+        "symptomName": "Low posterior hairline",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "low hairline at back of neck",
+          "hairline positioned unusually low",
+          "short neck hairline"
+        ]
+      },
+      {
+        "symptomName": "Large fleshy ears",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "large thick ears",
+          "big fleshy ear lobes",
+          "prominent soft ears"
+        ]
+      },
+      {
+        "symptomName": "Hypoplastic nipples",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Flared metaphysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Short long bone",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "short arm and leg bones",
+          "shortened long bones in limbs",
+          "limb bones shorter than normal"
+        ]
+      },
+      {
+        "symptomName": "Short nose",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Narrow greater sciatic notch",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "narrow pelvic bone notch",
+          "small greater sciatic notch",
+          "tight pelvic opening"
+        ]
+      },
+      {
+        "symptomName": "Right ventricular dilatation",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "enlarged right heart ventricle",
+          "right ventricular enlargement",
+          "right heart chamber dilation"
+        ]
+      },
+      {
+        "symptomName": "Tricuspid regurgitation",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Depressed nasal bridge",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "flat bridge of the nose",
+          "low nasal bridge",
+          "nose bridge appears sunken"
+        ]
+      },
+      {
+        "symptomName": "Hypoplasia of the bladder",
+        "frequency": 0.17,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "underdeveloped bladder",
+          "small bladder size",
+          "bladder hypoplasia"
+        ]
+      },
+      {
+        "symptomName": "Prominent metopic ridge",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "prominent forehead ridge",
+          "raised midline forehead bone",
+          "visible metopic suture ridge"
+        ]
+      },
+      {
+        "symptomName": "Aplasia cutis congenita of scalp",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "missing scalp skin at birth",
+          "congenital scalp skin defect",
+          "birth scalp skin absence"
+        ]
+      },
+      {
+        "symptomName": "Hypoplasia of the ovary",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "underdeveloped ovary",
+          "small ovary size",
+          "ovarian hypoplasia"
+        ]
+      },
+      {
+        "symptomName": "Abnormal renal artery morphology",
+        "frequency": 0.17,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "abnormal kidney artery shape",
+          "irregular renal artery structure",
+          "kidney blood vessel defect"
+        ]
+      },
+      {
+        "symptomName": "Rhizomelia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypoplasia of the musculature",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "underdeveloped muscles",
+          "muscle hypoplasia",
+          "small muscle mass"
+        ]
+      },
+      {
+        "symptomName": "Lipodystrophy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ulnar deviation of the hand",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "hand bent towards pinky",
+          "ulnar hand deviation",
+          "hand angled outward"
+        ]
+      },
+      {
+        "symptomName": "Low insertion of columella",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "low placed nose tip skin",
+          "columella positioned lower",
+          "nose skin between nostrils set low"
+        ]
+      },
+      {
+        "symptomName": "Abnormal left ventricular outflow tract morphology",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "abnormal heart outflow tract",
+          "left ventricular outlet defect",
+          "irregular heart blood flow area"
+        ]
+      },
+      {
+        "symptomName": "Villous atrophy",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal bone ossification",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "improper bone hardening",
+          "abnormal bone formation",
+          "defective bone mineralization"
+        ]
+      },
+      {
+        "symptomName": "Delayed myelination",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Widened subarachnoid space",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "enlarged space around brain",
+          "increased fluid space under brain membrane",
+          "widened brain fluid area"
+        ]
+      },
+      {
+        "symptomName": "Inappropriate crying",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ureteral hypoplasia",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Broad ischia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "constitutional",
+    "neurological",
+    "cardiovascular",
+    "gastrointestinal",
+    "musculoskeletal",
+    "renal",
+    "dermatological",
+    "ophthalmological",
+    "psychiatric",
+    "reproductive",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Type I serum transferrin glycosylation pattern abnormality",
+      "Elevated liver transaminases",
+      "Coagulation factor deficiencies (e.g., factor XI, antithrombin III)"
+    ],
+    "imaging": [
+      "Brain MRI showing cerebral and cerebellar atrophy",
+      "Echocardiogram revealing cardiomyopathy"
+    ],
+    "genetic": [
+      "ALG9 (causative, loss-of-function)",
+      "Autosomal recessive inheritance"
+    ],
+    "other": [
+      "Abnormal glycosylation of serum glycoproteins detected by mass spectrometry"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pmm2-cdg",
+      "distinguishingFeatures": [
+        "PMM2-CDG typically presents with inverted nipples and abnormal fat distribution",
+        "Different genetic mutation in PMM2 gene",
+        "Distinct transferrin glycosylation pattern"
+      ]
+    },
+    {
+      "diseaseId": "alg6-cdg",
+      "distinguishingFeatures": [
+        "ALG6-CDG often has more prominent liver involvement",
+        "Different mutation in ALG6 gene",
+        "Variable neurological impairment"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Early onset hypotonia with multisystem involvement",
+    "Abnormal transferrin glycosylation pattern",
+    "Progressive neurological deterioration with seizures"
+  ],
+  "specialistType": [
+    "Geneticist",
+    "Neurologist",
+    "Metabolic specialist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Freeze HH, et al. Congenital disorders of glycosylation: a primer for clinicians. J Clin Invest. 2015.",
+    "Ng BG, et al. ALG9-CDG: Clinical and molecular characterization of a congenital disorder of glycosylation. Hum Mutat. 2018.",
+    "Orphanet: ALG9-congenital disorder of glycosylation. Available from: https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=79328"
+  ],
+  "confidenceInData": "medium"
+}

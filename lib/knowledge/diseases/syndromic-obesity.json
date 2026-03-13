@@ -1,0 +1,237 @@
+{
+  "id": "syndromic-obesity",
+  "name": "Syndromic Obesity",
+  "aliases": [
+    "Obesity with syndromic features",
+    "Genetic syndromic obesity"
+  ],
+  "icd10Codes": [
+    "E66.8"
+  ],
+  "orphanetId": "ORPHA:240371",
+  "prevalence": {
+    "estimate": "1 in 50,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 10,
+      "peak": 2
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical diagnostic criteria for syndromic obesity",
+    "criteria": [
+      {
+        "id": "early-onset-obesity",
+        "description": "Onset of obesity in early childhood (usually before 5 years of age)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "developmental-delay",
+        "description": "Presence of developmental delay or intellectual disability",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "dysmorphic-features",
+        "description": "Characteristic dysmorphic facial or physical features associated with specific syndromes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "endocrine-abnormalities",
+        "description": "Presence of endocrine abnormalities such as hypogonadism or growth hormone deficiency",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history",
+        "description": "Family history of syndromic obesity or related genetic syndromes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of early-onset obesity plus at least two major criteria including developmental delay and dysmorphic features",
+    "notes": "Diagnosis often requires genetic testing to confirm specific syndromic causes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Early-onset severe obesity",
+        "frequency": 0.95,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "severe obesity starting young",
+          "early childhood extreme weight gain",
+          "rapid weight gain in early life"
+        ]
+      },
+      {
+        "symptomName": "Intellectual disability or developmental delay",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "learning difficulties",
+          "developmental delays",
+          "intellectual challenges"
+        ]
+      },
+      {
+        "symptomName": "Characteristic craniofacial dysmorphism",
+        "frequency": 0.75,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "distinctive facial features",
+          "unusual head and face shape",
+          "typical facial appearance changes"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Hypogonadism or delayed puberty",
+        "frequency": 0.65,
+        "bodySystem": "reproductive",
+        "searchTerms": [
+          "delayed puberty or low sex hormone levels",
+          "underdeveloped sexual characteristics",
+          "hypogonadism symptoms"
+        ]
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Short stature",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Behavioral abnormalities including hyperphagia",
+        "frequency": 0.7,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "unusual behaviors including overeating",
+          "excessive appetite with behavior changes",
+          "behavior problems with increased hunger"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Sleep apnea",
+        "frequency": 0.4,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hypothyroidism",
+        "frequency": 0.3,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cardiac anomalies",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Visual impairment",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Renal malformations",
+        "frequency": 0.08,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hepatic steatosis",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "endocrine",
+    "neurological",
+    "musculoskeletal",
+    "reproductive",
+    "psychiatric",
+    "respiratory",
+    "cardiovascular",
+    "ophthalmological",
+    "renal",
+    "gastrointestinal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated leptin levels in some syndromes",
+      "Abnormal hormone profiles including growth hormone deficiency",
+      "Dysmorphic chromosomal microarray or gene panel results"
+    ],
+    "imaging": [
+      "Brain MRI may show structural abnormalities",
+      "Skeletal X-rays may reveal bone dysplasia",
+      "Echocardiogram for cardiac anomalies"
+    ],
+    "genetic": [
+      "Mutations in genes such as LEPR, MC4R, POMC, or chromosomal abnormalities",
+      "Confirmed diagnosis by targeted gene panels or whole exome sequencing"
+    ],
+    "other": [
+      "Neurodevelopmental assessments",
+      "Endocrine function tests",
+      "Sleep studies for apnea evaluation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "prader-willi-syndrome",
+      "distinguishingFeatures": [
+        "Characteristic genetic deletion on chromosome 15q11-q13",
+        "Hypotonia in infancy",
+        "Hyperphagia with insatiable appetite"
+      ]
+    },
+    {
+      "diseaseId": "bardet-biedl-syndrome",
+      "distinguishingFeatures": [
+        "Retinal dystrophy leading to vision loss",
+        "Polydactyly",
+        "Renal anomalies"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid weight gain in infancy with developmental delay",
+    "Presence of dysmorphic features suggesting genetic syndrome",
+    "Signs of endocrine dysfunction such as hypogonadism or growth failure"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Geneticist",
+    "Neurologist",
+    "Pediatrician"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Orphanet: Syndromic Obesity - ORPHA:240371",
+    "Farooqi IS, O'Rahilly S. Genetics of obesity in humans. Endocr Rev. 2006;27(7):710-718.",
+    "Müller TD, et al. Syndromic obesity: clinical and molecular aspects. Nat Rev Endocrinol. 2020;16(2):75-88."
+  ],
+  "confidenceInData": "ai-generated"
+}

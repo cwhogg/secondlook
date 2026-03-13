@@ -1,0 +1,232 @@
+{
+  "id": "genetic-dementia",
+  "name": "Genetic Dementia",
+  "aliases": [
+    "Hereditary Dementia",
+    "Familial Dementia"
+  ],
+  "icd10Codes": [
+    "F02.8"
+  ],
+  "orphanetId": "ORPHA:158124",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 65,
+      "peak": 45
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Genetic Dementia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "family-history",
+        "description": "Presence of dementia in two or more first-degree relatives",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-mutation",
+        "description": "Identification of pathogenic mutation in dementia-associated gene (e.g., PSEN1, APP, MAPT)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-dementia",
+        "description": "Progressive cognitive decline consistent with dementia syndrome",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "neuroimaging-support",
+        "description": "Neuroimaging evidence of cerebral atrophy or white matter changes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-other-causes",
+        "description": "Exclusion of other causes of dementia such as vascular or infectious etiologies",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of progressive dementia with a positive family history and identification of a pathogenic genetic mutation",
+    "notes": "Genetic testing is essential for definitive diagnosis; clinical presentation may vary depending on specific gene involved."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive memory impairment",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "worsening memory loss",
+          "gradual decline in memory",
+          "progressive forgetfulness"
+        ]
+      },
+      {
+        "symptomName": "Early-onset cognitive decline",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "early mental decline",
+          "young onset cognitive problems",
+          "early dementia symptoms"
+        ]
+      },
+      {
+        "symptomName": "Familial aggregation of dementia",
+        "frequency": 0.8,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "dementia running in family",
+          "family history of memory loss",
+          "inherited cognitive decline"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Executive dysfunction",
+        "frequency": 0.7,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Language impairment (aphasia)",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "difficulty speaking",
+          "language problems",
+          "trouble understanding or using words"
+        ]
+      },
+      {
+        "symptomName": "Behavioral changes including apathy and disinhibition",
+        "frequency": 0.6,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "changes in behavior like apathy",
+          "loss of motivation and disinhibition",
+          "altered personality and actions"
+        ]
+      },
+      {
+        "symptomName": "Visuospatial deficits",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Myoclonus",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Parkinsonism features",
+        "frequency": 0.2,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Depression",
+        "frequency": 0.15,
+        "bodySystem": "psychiatric"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Severe autonomic dysfunction",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "severe autonomic nervous system issues",
+          "problems with automatic body functions",
+          "dysfunction of involuntary body control"
+        ]
+      },
+      {
+        "symptomName": "Psychosis including hallucinations",
+        "frequency": 0.07,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "psychotic symptoms",
+          "hallucinations and delusions",
+          "mental disorder with false perceptions"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "psychiatric"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF biomarkers showing decreased amyloid-beta and increased tau protein",
+      "Exclusion of metabolic and infectious causes of dementia"
+    ],
+    "imaging": [
+      "MRI showing cortical and hippocampal atrophy",
+      "FDG-PET demonstrating hypometabolism in temporal and parietal lobes"
+    ],
+    "genetic": [
+      "Pathogenic mutations in PSEN1, PSEN2, APP, MAPT, GRN genes"
+    ],
+    "other": [
+      "Neuropsychological testing confirming progressive cognitive decline"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "alzheimers-disease",
+      "distinguishingFeatures": [
+        "Sporadic onset typically after age 65",
+        "Lack of clear familial inheritance pattern",
+        "Later age of onset compared to genetic dementia"
+      ]
+    },
+    {
+      "diseaseId": "vascular-dementia",
+      "distinguishingFeatures": [
+        "History of cerebrovascular disease",
+        "Stepwise cognitive decline",
+        "Imaging showing multiple infarcts or extensive white matter changes"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive cognitive decline",
+    "Positive family history of early-onset dementia",
+    "Presence of seizures or myoclonus in dementia patient"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Geneticist",
+    "Psychiatrist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Bird TD. Genetic aspects of Alzheimer disease. Genet Med. 2008;10(4):231-239.",
+    "Ryman DC, Acosta-Baena N, Aisen PS, et al. Symptom onset in autosomal dominant Alzheimer disease: a systematic review and meta-analysis. Neurology. 2014;83(3):253-260.",
+    "Orphanet: Genetic Dementia. ORPHA:158124."
+  ],
+  "confidenceInData": "ai-generated"
+}

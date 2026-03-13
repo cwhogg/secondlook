@@ -1,0 +1,183 @@
+{
+  "id": "mantle-cell-lymphoma",
+  "name": "Mantle Cell Lymphoma",
+  "aliases": [
+    "MCL",
+    "Mantle Zone Lymphoma"
+  ],
+  "icd10Codes": [
+    "C83.1"
+  ],
+  "omimId": "120845",
+  "orphanetId": "52416",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of Hematopoietic and Lymphoid Tissues",
+    "criteria": [
+      {
+        "id": "cyclin-d1-overexpression",
+        "description": "Overexpression of cyclin D1 protein detected by immunohistochemistry",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "t11-14-translocation",
+        "description": "Presence of t(11;14)(q13;q32) translocation detected by FISH or PCR",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "morphology",
+        "description": "Morphologic features consistent with small to medium-sized lymphoid cells with irregular nuclei",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunophenotype",
+        "description": "Expression of B-cell markers CD20, CD5 positive, CD23 negative",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of characteristic morphology plus cyclin D1 overexpression or t(11;14) translocation",
+    "notes": "Diagnosis requires integration of morphology, immunophenotyping, and genetic studies."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "B-cell lymphoma",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anorexia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of bone marrow cell morphology",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "abnormal bone marrow cell shapes",
+          "irregular blood cell development",
+          "bone marrow cell abnormalities"
+        ]
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Abnormality of the gastrointestinal tract",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "digestive tract problems",
+          "stomach or intestine abnormalities",
+          "gut malformations"
+        ]
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "constitutional",
+    "immunological",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Peripheral blood lymphocytosis",
+      "Elevated LDH",
+      "Cytopenias on complete blood count"
+    ],
+    "imaging": [
+      "CT scan showing generalized lymphadenopathy and splenomegaly",
+      "PET-CT demonstrating metabolically active lymph nodes"
+    ],
+    "genetic": [
+      "CCND1 (somatic)",
+      "ATM (somatic)",
+      "IGH (somatic)",
+      "Multigenic/multifactorial inheritance"
+    ],
+    "other": [
+      "Bone marrow biopsy showing lymphomatous infiltration",
+      "Immunophenotyping positive for CD20, CD5; negative for CD23"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "chronic-lymphocytic-leukemia",
+      "distinguishingFeatures": [
+        "CD23 positive immunophenotype",
+        "Absence of t(11;14) translocation",
+        "Typically older adults with lymphocytosis but less aggressive course"
+      ]
+    },
+    {
+      "diseaseId": "follicular-lymphoma",
+      "distinguishingFeatures": [
+        "BCL2 gene rearrangement",
+        "CD10 positive immunophenotype",
+        "Lack of cyclin D1 overexpression"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging lymph nodes",
+    "Unexplained night sweats and weight loss",
+    "Signs of bone marrow failure (e.g., anemia, thrombocytopenia)"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Oncologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Swerdlow SH, Campo E, Harris NL, et al. WHO Classification of Tumours of Haematopoietic and Lymphoid Tissues. IARC; 2017.",
+    "Vose JM. Mantle cell lymphoma: 2017 update on diagnosis, risk-stratification, and clinical management. Am J Hematol. 2017;92(8):806-813.",
+    "Orphanet: Mantle cell lymphoma - ORPHA:52416"
+  ],
+  "confidenceInData": "medium"
+}

@@ -13,6 +13,7 @@ const symptomFrequencySchema = z.object({
   frequency: z.number().min(0).max(1),
   bodySystem: bodySystemEnum,
   notes: z.string().optional(),
+  searchTerms: z.array(z.string()).optional(),
 });
 
 const diagnosticCriterionSchema = z.object({

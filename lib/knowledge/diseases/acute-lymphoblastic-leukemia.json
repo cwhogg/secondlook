@@ -1,0 +1,265 @@
+{
+  "id": "acute-lymphoblastic-leukemia",
+  "name": "Acute lymphoblastic leukemia",
+  "aliases": [
+    "ALL",
+    "Acute lymphocytic leukemia",
+    "Precursor B-cell or T-cell lymphoblastic leukemia"
+  ],
+  "icd10Codes": [
+    "C91.0"
+  ],
+  "omimId": "613065",
+  "orphanetId": "513",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Higher incidence in Hispanic populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of Hematopoietic and Lymphoid Tissues",
+    "criteria": [
+      {
+        "id": "blast-percentage",
+        "description": "Presence of ≥20% lymphoblasts in bone marrow or peripheral blood",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunophenotyping",
+        "description": "Immunophenotypic confirmation of lymphoid lineage by flow cytometry (B-cell or T-cell markers)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cytogenetics",
+        "description": "Detection of characteristic genetic abnormalities (e.g., t(12;21), t(9;22))",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "≥20% lymphoblasts in bone marrow or blood with immunophenotypic confirmation of lymphoid lineage",
+    "notes": "Cytogenetic and molecular studies aid in subclassification and prognosis but are not mandatory for diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Lymphoblast proliferation in bone marrow",
+        "frequency": 0.95,
+        "bodySystem": "hematological",
+        "notes": "Definitive pathological hallmark",
+        "searchTerms": [
+          "excess immature lymphoblasts in marrow",
+          "lymphoblast overgrowth in bone marrow",
+          "bone marrow lymphoblast proliferation"
+        ]
+      },
+      {
+        "symptomName": "Pancytopenia due to marrow infiltration",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "low blood counts from marrow crowding",
+          "pancytopenia with fatigue and bleeding",
+          "reduced red, white cells and platelets"
+        ]
+      },
+      {
+        "symptomName": "Bone marrow failure symptoms (e.g., bleeding, infections)",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "symptoms from bone marrow failure like bleeding and infections",
+          "bone marrow insufficiency causing bruising and infections",
+          "low blood cell symptoms including bleeding and infection"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Anemia-related pallor and fatigue",
+        "frequency": 0.8,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "pale skin and tiredness from anemia",
+          "fatigue and pallor due to low red blood cells",
+          "anemia causing weakness and paleness"
+        ]
+      },
+      {
+        "symptomName": "Fever due to infection",
+        "frequency": 0.75,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "fever caused by infection",
+          "infectious fever",
+          "high temperature from infection"
+        ]
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.7,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.65,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Bone pain and tenderness",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "bone discomfort and soreness",
+          "pain and tenderness in bones",
+          "aching bones"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Mediastinal mass causing respiratory symptoms",
+        "frequency": 0.4,
+        "bodySystem": "respiratory",
+        "notes": "More common in T-cell ALL",
+        "searchTerms": [
+          "chest mass causing breathing problems",
+          "mediastinal tumor with respiratory issues",
+          "mass in chest causing cough or shortness of breath"
+        ]
+      },
+      {
+        "symptomName": "Central nervous system involvement (headache, cranial nerve palsies)",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "brain involvement with headaches",
+          "nerve palsies causing facial weakness",
+          "central nervous system symptoms like headache and nerve problems"
+        ]
+      },
+      {
+        "symptomName": "Petechiae and ecchymoses",
+        "frequency": 0.25,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "small red or purple skin spots",
+          "bruising and pinpoint bleeding",
+          "skin bleeding spots and bruises"
+        ]
+      },
+      {
+        "symptomName": "Testicular enlargement",
+        "frequency": 0.15,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Leukemic infiltration causing gingival hypertrophy",
+        "frequency": 0.08,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "swollen gums due to leukemia",
+          "gum enlargement from cancer cells",
+          "gingival swelling caused by blood cancer"
+        ]
+      },
+      {
+        "symptomName": "Hypercalcemia-related symptoms",
+        "frequency": 0.05,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Tumor lysis syndrome at presentation",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "metabolic complications after tumor breakdown",
+          "chemical imbalance from cancer cell death",
+          "tumor lysis causing kidney and electrolyte problems"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "constitutional",
+    "musculoskeletal",
+    "respiratory",
+    "neurological",
+    "dermatological",
+    "reproductive",
+    "otolaryngological",
+    "endocrine",
+    "renal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Peripheral blood smear showing lymphoblasts",
+      "Bone marrow biopsy with ≥20% lymphoblasts",
+      "Cytopenias (anemia, thrombocytopenia, neutropenia)",
+      "Elevated lactate dehydrogenase (LDH)"
+    ],
+    "imaging": [
+      "Chest X-ray showing mediastinal mass",
+      "Ultrasound or CT showing hepatosplenomegaly"
+    ],
+    "genetic": [
+      "t(12;21)(p13;q22) ETV6-RUNX1 fusion",
+      "t(9;22)(q34;q11) BCR-ABL1 fusion",
+      "MLL gene rearrangements"
+    ],
+    "other": [
+      "Flow cytometry immunophenotyping confirming lymphoid lineage",
+      "CSF analysis for CNS involvement"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "acute-myeloid-leukemia",
+      "distinguishingFeatures": [
+        "Myeloblast predominance instead of lymphoblasts",
+        "Different immunophenotypic markers (myeloid lineage)",
+        "Distinct cytogenetic abnormalities"
+      ]
+    },
+    {
+      "diseaseId": "lymphoma-with-leukemic-phase",
+      "distinguishingFeatures": [
+        "Presence of lymph node masses without predominant bone marrow blasts",
+        "Different clinical presentation with localized lymphadenopathy",
+        "Histopathology showing mature lymphoid cells"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive pancytopenia",
+    "Signs of central nervous system involvement",
+    "Mediastinal mass causing airway compromise"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Oncologist",
+    "Pediatric hematologist-oncologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "WHO Classification of Tumors of Hematopoietic and Lymphoid Tissues, 2016",
+    "Pui CH, et al. Acute lymphoblastic leukemia. Lancet. 2015;385(9976):1436-1448.",
+    "Orphanet: Acute lymphoblastic leukemia (ORPHA:513)"
+  ],
+  "confidenceInData": "ai-generated"
+}

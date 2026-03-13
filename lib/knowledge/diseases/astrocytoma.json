@@ -1,0 +1,227 @@
+{
+  "id": "astrocytoma",
+  "name": "Astrocytoma",
+  "aliases": [
+    "Astrocytic tumor",
+    "Glioma"
+  ],
+  "icd10Codes": [
+    "C71"
+  ],
+  "orphanetId": "ORPHA:94",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of the Central Nervous System",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histological confirmation of astrocytic tumor cells with characteristic morphology",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging",
+        "description": "MRI showing infiltrative lesion with variable contrast enhancement in brain parenchyma",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "molecularMarkers",
+        "description": "Presence or absence of IDH mutation and 1p/19q codeletion status for tumor classification",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation of astrocytic tumor cells combined with compatible neuroimaging findings",
+    "notes": "Molecular genetic testing is increasingly important for tumor grading and prognosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Focal neurological deficits",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Depends on tumor location",
+        "searchTerms": [
+          "localized nerve problems",
+          "specific area neurological symptoms",
+          "focal weakness or numbness"
+        ]
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Common presenting symptom"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Headache with increased intracranial pressure",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "notes": "Often worse in the morning",
+        "searchTerms": [
+          "headache from high brain pressure",
+          "pressure-related headache with nausea",
+          "head pain due to increased fluid in brain"
+        ]
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "notes": "Memory and executive function deficits"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to raised intracranial pressure",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      },
+      {
+        "symptomName": "Visual disturbances",
+        "frequency": 0.5,
+        "bodySystem": "ophthalmological",
+        "notes": "Depends on tumor location"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Personality changes",
+        "frequency": 0.4,
+        "bodySystem": "psychiatric",
+        "notes": "May be subtle initially"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Weakness on one side of the body"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Impaired coordination if cerebellar involvement"
+      },
+      {
+        "symptomName": "Speech difficulties (aphasia or dysarthria)",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "If dominant hemisphere affected",
+        "searchTerms": [
+          "difficulty speaking clearly",
+          "problems with language or slurred speech",
+          "speech impairment or trouble finding words"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Endocrine dysfunction",
+        "frequency": 0.08,
+        "bodySystem": "endocrine",
+        "notes": "If hypothalamic or pituitary involvement"
+      },
+      {
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Due to obstruction of CSF pathways"
+      },
+      {
+        "symptomName": "Cranial nerve palsies",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Rare, depending on tumor location",
+        "searchTerms": [
+          "weakness of cranial nerves",
+          "cranial nerve palsies causing facial or eye problems"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "gastrointestinal",
+    "ophthalmological",
+    "psychiatric",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF analysis typically non-specific; may show elevated protein",
+      "No specific blood biomarkers"
+    ],
+    "imaging": [
+      "MRI with T1 hypointense and T2 hyperintense lesion",
+      "Contrast enhancement variable depending on grade",
+      "Peritumoral edema on FLAIR sequences"
+    ],
+    "genetic": [
+      "IDH1/IDH2 mutation status",
+      "1p/19q codeletion absent in pure astrocytomas",
+      "ATRX loss and TP53 mutations common"
+    ],
+    "other": [
+      "Histopathology showing astrocytic tumor cells with varying degrees of anaplasia",
+      "Ki-67 proliferation index used for grading"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "oligodendroglioma",
+      "distinguishingFeatures": [
+        "1p/19q codeletion present",
+        "More calcifications on imaging",
+        "Better prognosis"
+      ]
+    },
+    {
+      "diseaseId": "glioblastoma-multiforme",
+      "distinguishingFeatures": [
+        "Higher grade with necrosis and microvascular proliferation",
+        "More aggressive clinical course",
+        "Ring-enhancing lesion on MRI"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid neurological deterioration",
+    "New onset seizures in adult",
+    "Signs of increased intracranial pressure (papilledema, vomiting)"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neurosurgeon",
+    "Neuro-oncologist",
+    "Radiologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Louis DN et al. WHO Classification of Tumors of the Central Nervous System, 5th Edition, 2021",
+    "Ostrom QT et al. CBTRUS Statistical Report: Primary Brain and Other Central Nervous System Tumors Diagnosed in the United States, 2014-2018",
+    "Orphanet: Astrocytoma (ORPHA:94)"
+  ],
+  "confidenceInData": "ai-generated"
+}

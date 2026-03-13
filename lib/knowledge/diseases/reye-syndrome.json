@@ -1,0 +1,247 @@
+{
+  "id": "reye-syndrome",
+  "name": "Reye syndrome",
+  "aliases": [
+    "Reye's syndrome",
+    "Reye's disease"
+  ],
+  "icd10Codes": [
+    "G93.7"
+  ],
+  "omimId": "266860",
+  "orphanetId": "3096",
+  "prevalence": {
+    "estimate": "1 in 100,000 to 1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 65,
+      "peak": 14
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Reye syndrome diagnostic criteria",
+    "criteria": [
+      {
+        "id": "acute-encephalopathy",
+        "description": "Acute non-inflammatory encephalopathy with altered level of consciousness",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "hepatic-dysfunction",
+        "description": "Elevated serum transaminases and ammonia indicating hepatic dysfunction without significant inflammation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-infection",
+        "description": "No evidence of viral or bacterial infection causing encephalopathy",
+        "category": "minor",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "history-of-viral-illness",
+        "description": "Recent history of viral illness, often with aspirin use",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cerebral-edema",
+        "description": "Evidence of cerebral edema on imaging or autopsy",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of acute encephalopathy and hepatic dysfunction without evidence of infection",
+    "notes": "Diagnosis is clinical and supported by laboratory and imaging findings; liver biopsy may be confirmatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Acute non-inflammatory encephalopathy",
+        "frequency": 0.9,
+        "bodySystem": "neurological",
+        "notes": "Rapid onset of altered consciousness without signs of infection",
+        "searchTerms": [
+          "sudden brain dysfunction without infection",
+          "acute brain failure",
+          "non-inflammatory encephalopathy"
+        ]
+      },
+      {
+        "symptomName": "Elevated serum ammonia levels",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Indicative of hepatic metabolic dysfunction",
+        "searchTerms": [
+          "high ammonia in blood",
+          "elevated blood ammonia levels",
+          "ammonia buildup causing symptoms"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Lethargy progressing to coma",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "extreme tiredness leading to coma",
+          "progressive sleepiness to unconsciousness",
+          "lethargy worsening to coma",
+          "decreasing alertness ending in coma"
+        ]
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypoglycemia",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hyperventilation",
+        "frequency": 0.4,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Irritability",
+        "frequency": 0.35,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Elevated liver transaminases",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "high liver enzyme levels",
+          "elevated liver function tests",
+          "liver inflammation markers increased"
+        ]
+      },
+      {
+        "symptomName": "Coagulopathy",
+        "frequency": 0.25,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Papilledema",
+        "frequency": 0.2,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Rash",
+        "frequency": 0.08,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Renal impairment",
+        "frequency": 0.05,
+        "bodySystem": "renal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "gastrointestinal",
+    "hematological",
+    "endocrine",
+    "respiratory",
+    "ophthalmological",
+    "cardiovascular",
+    "renal",
+    "psychiatric",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum ammonia",
+      "Elevated liver transaminases (AST, ALT)",
+      "Hypoglycemia",
+      "Prolonged prothrombin time",
+      "Elevated serum bilirubin"
+    ],
+    "imaging": [
+      "Cerebral edema on CT or MRI",
+      "No focal lesions or inflammation"
+    ],
+    "genetic": [
+      "No specific genetic mutation identified; rare familial cases reported"
+    ],
+    "other": [
+      "History of recent viral illness with aspirin use",
+      "Liver biopsy showing microvesicular steatosis without inflammation"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "acute-viral-encephalitis",
+      "distinguishingFeatures": [
+        "Presence of fever",
+        "CSF pleocytosis",
+        "Focal neurological signs"
+      ]
+    },
+    {
+      "diseaseId": "metabolic-encephalopathy",
+      "distinguishingFeatures": [
+        "Underlying metabolic disorder identified",
+        "Chronic or recurrent episodes",
+        "Specific metabolic markers"
+      ]
+    },
+    {
+      "diseaseId": "toxic-hepatic-encephalopathy",
+      "distinguishingFeatures": [
+        "History of toxin exposure",
+        "Elevated liver enzymes with inflammatory markers",
+        "Different clinical course"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression to coma",
+    "Severe hypoglycemia refractory to treatment",
+    "Signs of increased intracranial pressure (e.g., papilledema)"
+  ],
+  "specialistType": [
+    "Pediatric neurologist",
+    "Hepatologist",
+    "Intensivist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "National Organization for Rare Disorders (NORD) - Reye Syndrome",
+    "Orphanet: Reye syndrome - ORPHA:3096",
+    "UpToDate: Reye Syndrome",
+    "Fisher CJ Jr. Reye syndrome. Pediatr Rev. 1990"
+  ],
+  "confidenceInData": "ai-generated"
+}

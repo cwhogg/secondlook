@@ -1,0 +1,542 @@
+{
+  "id": "tick-borne-encephalitis",
+  "name": "Tick-borne encephalitis",
+  "aliases": [
+    "TBE",
+    "Tick-borne meningoencephalitis"
+  ],
+  "icd10Codes": [
+    "A84"
+  ],
+  "orphanetId": "297",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.001%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "European",
+      "Asian populations in endemic areas"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "European Centre for Disease Prevention and Control (ECDC) case definition",
+    "criteria": [
+      {
+        "id": "clinical-manifestation",
+        "description": "Presence of clinical signs of central nervous system involvement such as meningitis, meningoencephalitis, or meningoencephalomyelitis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "laboratory-confirmation",
+        "description": "Detection of specific IgM and IgG antibodies against TBE virus in serum or cerebrospinal fluid",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "epidemiological-link",
+        "description": "History of tick exposure or residence/travel in endemic areas",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Clinical signs of CNS involvement plus laboratory confirmation of TBE virus-specific antibodies",
+    "notes": "PCR testing may be supportive but is often negative in CNS phase"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "CSF pleocytosis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Leukopenia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Nausea",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anorexia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of serum cytokine level",
+        "frequency": 0.55,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "abnormal immune signaling proteins",
+          "unusual inflammation markers",
+          "cytokine imbalance"
+        ]
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Viremia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Tinnitus",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Visual impairment",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Ophthalmoplegia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Atypical behavior",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Depression",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Personality changes",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Excessive daytime somnolence",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "excessive daytime sleepiness",
+          "feeling very sleepy during the day",
+          "daytime drowsiness"
+        ]
+      },
+      {
+        "symptomName": "Meningitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cranial nerve morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "abnormal cranial nerve structure",
+          "nerve abnormalities in head",
+          "cranial nerve malformations"
+        ]
+      },
+      {
+        "symptomName": "Tongue fasciculations",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Tremor",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Leukocytosis",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Incoordination",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Sleep abnormality",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "sleep problems",
+          "abnormal sleep patterns",
+          "sleep disturbances"
+        ]
+      },
+      {
+        "symptomName": "Hyperkinetic movements",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skeletal muscle atrophy",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle wasting",
+          "muscle loss",
+          "shrinking muscles"
+        ]
+      },
+      {
+        "symptomName": "Increased circulating IgG level",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high IgG antibody levels",
+          "increased IgG in blood",
+          "elevated IgG immune proteins"
+        ]
+      },
+      {
+        "symptomName": "Back pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Paralysis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Somatic sensory dysfunction",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "loss of body sensation",
+          "numbness and tingling",
+          "reduced touch feeling"
+        ]
+      },
+      {
+        "symptomName": "Increased circulating IgM level",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "increased IgM antibody levels",
+          "high circulating IgM",
+          "elevated IgM in blood tests"
+        ]
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.17,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "high inflammation blood test",
+          "elevated sedimentation rate",
+          "increased ESR indicating inflammation"
+        ]
+      },
+      {
+        "symptomName": "Reduced consciousness/confusion",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Limb pain",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Speech apraxia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Elevated circulating C-reactive protein concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "raised C-reactive protein in blood",
+          "high CRP indicating inflammation",
+          "increased inflammatory marker CRP"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the vestibular nerve",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "vestibular nerve dysfunction",
+          "balance nerve abnormality",
+          "inner ear nerve problem affecting balance"
+        ]
+      },
+      {
+        "symptomName": "Unusual CNS infection",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "rare brain infection",
+          "uncommon central nervous system infection",
+          "unusual brain infection symptoms"
+        ]
+      },
+      {
+        "symptomName": "Abnormal autonomic nervous system physiology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal autonomic nervous system function",
+          "dysregulated autonomic responses",
+          "autonomic system abnormalities"
+        ]
+      },
+      {
+        "symptomName": "Stiff neck",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Diminished ability to concentrate",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "difficulty focusing",
+          "poor concentration",
+          "trouble paying attention"
+        ]
+      },
+      {
+        "symptomName": "Decreased vigilance",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal glossopharyngeal nerve morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal nerve controlling throat and tongue",
+          "unusual glossopharyngeal nerve shape",
+          "nerve affecting swallowing and taste altered"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Psychosis",
+        "frequency": 0.03,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Coma",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal myocardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "abnormal heart muscle structure",
+          "myocardium shape changes",
+          "unusual heart muscle morphology"
+        ]
+      },
+      {
+        "symptomName": "Generalized-onset seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Elevated circulating hepatic transaminase concentration",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "high liver enzyme levels",
+          "elevated hepatic transaminases",
+          "increased liver function tests"
+        ]
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Facial palsy",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of the medulla oblongata",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "medulla oblongata abnormality",
+          "brainstem medulla structural changes",
+          "medulla morphological defect"
+        ]
+      },
+      {
+        "symptomName": "Myelitis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal brainstem MRI signal intensity",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal MRI signals in brainstem",
+          "brainstem changes on MRI",
+          "unusual brainstem imaging findings"
+        ]
+      },
+      {
+        "symptomName": "Fatigable weakness of respiratory muscles",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing muscle weakness",
+          "respiratory muscle fatigue",
+          "shortness of breath from weak breathing muscles"
+        ]
+      },
+      {
+        "symptomName": "Polyneuritis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Delirium",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "constitutional",
+    "hematological",
+    "gastrointestinal",
+    "neurological",
+    "musculoskeletal",
+    "immunological",
+    "otolaryngological",
+    "ophthalmological",
+    "psychiatric",
+    "cardiovascular",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated cerebrospinal fluid (CSF) lymphocytic pleocytosis",
+      "Elevated CSF protein",
+      "Positive TBE virus-specific IgM and IgG antibodies in serum and/or CSF"
+    ],
+    "imaging": [
+      "MRI brain may show hyperintense lesions in basal ganglia, thalamus, brainstem, or cerebellum on T2-weighted and FLAIR sequences"
+    ],
+    "genetic": [],
+    "other": [
+      "History of tick bite or exposure in endemic area",
+      "Seasonal occurrence in spring to early autumn"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "west-nile-virus-encephalitis",
+      "distinguishingFeatures": [
+        "Serology positive for West Nile virus",
+        "More common in North America and Africa",
+        "Often associated with rash"
+      ]
+    },
+    {
+      "diseaseId": "herpes-simplex-virus-encephalitis",
+      "distinguishingFeatures": [
+        "PCR positive for HSV DNA in CSF",
+        "Typically involves temporal lobes on imaging",
+        "Rapid progression with focal neurological deficits"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressing altered consciousness",
+    "Signs of brainstem dysfunction (e.g., respiratory compromise)",
+    "New onset seizures"
+  ],
+  "specialistType": [
+    "Infectious disease specialist",
+    "Neurologist",
+    "Epidemiologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "European Centre for Disease Prevention and Control. Tick-borne encephalitis factsheet.",
+    "Lindquist L, Vapalahti O. Tick-borne encephalitis. Lancet. 2008.",
+    "Orphanet: Tick-borne encephalitis (ORPHA:297)"
+  ],
+  "confidenceInData": "medium"
+}

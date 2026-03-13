@@ -1,0 +1,212 @@
+{
+  "id": "classic-medulloblastoma",
+  "name": "Classic Medulloblastoma",
+  "aliases": [
+    "Medulloblastoma, Classic Type",
+    "Classic Cerebellar Medulloblastoma"
+  ],
+  "icd10Codes": [
+    "C71.6"
+  ],
+  "orphanetId": "ORPHA:251867",
+  "prevalence": {
+    "estimate": "1 in 200,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 2,
+      "max": 12,
+      "peak": 7
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of the Central Nervous System",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Presence of densely packed small round blue cells with high nuclear-to-cytoplasmic ratio and Homer Wright rosettes on histopathology",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging",
+        "description": "MRI showing a midline cerebellar mass with heterogeneous enhancement and possible hydrocephalus",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "molecular-subgrouping",
+        "description": "Molecular classification consistent with classic medulloblastoma subgroup (non-WNT, non-SHH)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation of classic medulloblastoma features with supportive imaging findings",
+    "notes": "Molecular subgrouping aids prognosis and treatment planning but is not mandatory for diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Truncal ataxia",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Due to cerebellar vermis involvement"
+      },
+      {
+        "symptomName": "Headache with morning worsening",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Related to increased intracranial pressure",
+        "searchTerms": [
+          "headache worse in the morning",
+          "morning headaches",
+          "head pain that intensifies after waking"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Secondary to raised intracranial pressure",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      },
+      {
+        "symptomName": "Papilledema",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological",
+        "notes": "Indicative of increased intracranial pressure"
+      },
+      {
+        "symptomName": "Diplopia",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological",
+        "notes": "Due to cranial nerve VI palsy"
+      },
+      {
+        "symptomName": "Gait instability",
+        "frequency": 0.58,
+        "bodySystem": "neurological",
+        "notes": "Resulting from cerebellar dysfunction"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hydrocephalus-related lethargy",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Due to obstruction of CSF flow"
+      },
+      {
+        "symptomName": "Cranial nerve VII weakness",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Facial asymmetry may be present",
+        "searchTerms": [
+          "facial muscle weakness",
+          "weakness of muscles controlling face",
+          "cranial nerve seven palsy causing facial droop"
+        ]
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Rare in classic medulloblastoma"
+      },
+      {
+        "symptomName": "Cognitive decline",
+        "frequency": 0.4,
+        "bodySystem": "psychiatric",
+        "notes": "May occur with tumor progression"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Endocrine dysfunction",
+        "frequency": 0.05,
+        "bodySystem": "endocrine",
+        "notes": "Due to hypothalamic-pituitary axis involvement in advanced disease"
+      },
+      {
+        "symptomName": "Hearing loss",
+        "frequency": 0.07,
+        "bodySystem": "neurological",
+        "notes": "Possible with brainstem involvement"
+      },
+      {
+        "symptomName": "Ataxic dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Speech disturbance from cerebellar damage"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological",
+    "gastrointestinal",
+    "psychiatric",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF cytology may reveal tumor cells in metastatic cases",
+      "Elevated intracranial pressure on lumbar puncture (if performed)"
+    ],
+    "imaging": [
+      "MRI showing midline posterior fossa mass with heterogeneous contrast enhancement",
+      "Obstructive hydrocephalus on imaging"
+    ],
+    "genetic": [
+      "Absence of WNT and SHH pathway mutations characteristic of classic subtype",
+      "Chromosome 17p loss and isochromosome 17q common"
+    ],
+    "other": [
+      "Histopathology demonstrating classic medulloblastoma morphology with small round blue cells and Homer Wright rosettes"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "atypical-teratoid-rhabdoid-tumor",
+      "distinguishingFeatures": [
+        "Younger age of onset",
+        "Loss of INI1 expression on immunohistochemistry",
+        "More heterogeneous histology"
+      ]
+    },
+    {
+      "diseaseId": "ependymoma",
+      "distinguishingFeatures": [
+        "Perivascular pseudorosettes on histology",
+        "Different MRI location and enhancement pattern",
+        "Less aggressive clinical course"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly worsening headache and vomiting",
+    "Sudden onset of cranial nerve palsies",
+    "Signs of increased intracranial pressure with altered consciousness"
+  ],
+  "specialistType": [
+    "Neuro-oncologist",
+    "Pediatric Neurologist",
+    "Neurosurgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Louis DN et al. WHO Classification of Tumors of the Central Nervous System, 5th Edition, 2021",
+    "Taylor MD et al. Molecular subgroups of medulloblastoma: the current consensus. Acta Neuropathol. 2012",
+    "Orphanet: Classic Medulloblastoma (ORPHA:251867)"
+  ],
+  "confidenceInData": "ai-generated"
+}

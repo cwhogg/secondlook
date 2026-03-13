@@ -1,0 +1,182 @@
+{
+  "id": "cholangiocarcinoma",
+  "name": "Cholangiocarcinoma",
+  "aliases": [
+    "Bile duct cancer",
+    "Biliary tract carcinoma"
+  ],
+  "icd10Codes": [
+    "C22.1",
+    "C24.0"
+  ],
+  "orphanetId": "ORPHA:70567",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Higher incidence in Southeast Asian populations",
+      "Increased risk in patients with primary sclerosing cholangitis"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No universally accepted formal criteria; diagnosis based on clinical, radiological, and histopathological findings",
+    "criteria": [
+      {
+        "id": "imaging-evidence",
+        "description": "Imaging demonstrating bile duct mass or stricture consistent with malignancy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology-confirmation",
+        "description": "Histopathological confirmation of adenocarcinoma from bile duct biopsy or resected specimen",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cholestatic-liver-function-tests",
+        "description": "Laboratory evidence of cholestasis such as elevated alkaline phosphatase and gamma-glutamyl transferase",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation plus compatible imaging findings",
+    "notes": "Diagnosis often requires multidisciplinary evaluation including imaging, biopsy, and laboratory tests"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Acholic stools",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary tract neoplasm",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "tumor in bile ducts",
+          "growth in biliary tract",
+          "cancer of bile duct area"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Pruritus",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fever",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anorexia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "dermatological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated alkaline phosphatase and gamma-glutamyl transferase",
+      "Elevated conjugated bilirubin",
+      "Mildly elevated transaminases",
+      "CA 19-9 tumor marker elevation (nonspecific)"
+    ],
+    "imaging": [
+      "Ultrasound showing bile duct dilatation",
+      "CT or MRI demonstrating bile duct mass or stricture",
+      "MRCP showing biliary tree obstruction",
+      "ERCP with brush cytology or biopsy"
+    ],
+    "genetic": [
+      "BRCA1 (somatic)",
+      "BRCA2 (somatic)",
+      "ROS1 (fusion gene)",
+      "PTPN3 (somatic)"
+    ],
+    "other": [
+      "Histopathology showing adenocarcinoma with glandular differentiation",
+      "Immunohistochemistry positive for CK7 and CK19"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "primary-sclerosing-cholangitis",
+      "distinguishingFeatures": [
+        "Chronic inflammatory strictures without mass lesion",
+        "Associated with inflammatory bowel disease",
+        "Lack of malignant cells on biopsy"
+      ]
+    },
+    {
+      "diseaseId": "gallbladder-carcinoma",
+      "distinguishingFeatures": [
+        "Mass centered in gallbladder rather than bile ducts",
+        "Different imaging characteristics",
+        "Histopathology distinct from cholangiocarcinoma"
+      ]
+    },
+    {
+      "diseaseId": "pancreatic-head-adenocarcinoma",
+      "distinguishingFeatures": [
+        "Mass located in pancreatic head",
+        "Obstructive jaundice with pancreatic duct involvement",
+        "Different tumor markers (e.g. CA 19-9 elevated but imaging distinct)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive painless jaundice",
+    "Unexplained weight loss with cholestatic liver function tests",
+    "New onset pruritus with bile duct obstruction on imaging"
+  ],
+  "specialistType": [
+    "Hepatologist",
+    "Gastroenterologist",
+    "Oncologist",
+    "Hepatobiliary surgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Bridgewater J, Galle PR, Khan SA, et al. Guidelines for the diagnosis and management of intrahepatic cholangiocarcinoma. J Hepatol. 2014;60(6):1268-1289.",
+    "Razumilava N, Gores GJ. Cholangiocarcinoma. Lancet. 2014;383(9935):2168-2179.",
+    "Orphanet: Cholangiocarcinoma - ORPHA:70567"
+  ],
+  "confidenceInData": "medium"
+}

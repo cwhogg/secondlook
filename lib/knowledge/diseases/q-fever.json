@@ -1,0 +1,533 @@
+{
+  "id": "q-fever",
+  "name": "Q fever",
+  "aliases": [
+    "Query fever",
+    "Coxiellosis"
+  ],
+  "icd10Codes": [
+    "A78"
+  ],
+  "orphanetId": "ORPHA:781",
+  "prevalence": {
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "CDC Q Fever Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "serology",
+        "description": "Detection of phase II IgG antibodies to Coxiella burnetii by immunofluorescence assay",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Acute febrile illness with compatible symptoms such as high fever, severe headache, and myalgia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "PCR-detection",
+        "description": "Detection of Coxiella burnetii DNA by PCR in blood or tissue samples",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "epidemiological-link",
+        "description": "Exposure to livestock or animal products known to harbor Coxiella burnetii",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of acute febrile illness with compatible symptoms plus positive phase II IgG serology",
+    "notes": "PCR can be used for early diagnosis before seroconversion; epidemiological exposure supports diagnosis but is not mandatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Granuloma",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Elevated circulating hepatic transaminase concentration",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "high liver enzyme levels",
+          "elevated hepatic transaminases",
+          "increased liver function tests"
+        ]
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.55,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "high inflammation blood test",
+          "elevated sedimentation rate",
+          "increased ESR indicating inflammation"
+        ]
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Depression",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Purpura",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Abnormality of the liver",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "liver abnormality",
+          "unusual liver structure",
+          "liver size or shape defect"
+        ]
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Intrauterine growth retardation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "poor fetal growth",
+          "baby smaller than expected in womb",
+          "slow growth before birth"
+        ]
+      },
+      {
+        "symptomName": "Small for gestational age",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "small baby size",
+          "low birth weight",
+          "baby smaller than expected at birth"
+        ]
+      },
+      {
+        "symptomName": "Oligohydramnios",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Premature birth",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of the cardiovascular system",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart and blood vessel abnormalities",
+          "cardiovascular system problems",
+          "heart and vessel malformations"
+        ]
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hemolytic anemia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Anorexia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pneumonia",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Sleep abnormality",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "sleep problems",
+          "abnormal sleep patterns",
+          "sleep disturbances"
+        ]
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Increased CSF protein concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high protein levels in cerebrospinal fluid",
+          "increased CSF protein concentration",
+          "elevated spinal fluid protein"
+        ]
+      },
+      {
+        "symptomName": "Rheumatoid factor positive",
+        "frequency": 0.17,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "positive rheumatoid factor blood test",
+          "autoantibody associated with arthritis",
+          "RF positive serology"
+        ]
+      },
+      {
+        "symptomName": "Smooth muscle antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "antibody against smooth muscle",
+          "immune reaction to muscle proteins"
+        ]
+      },
+      {
+        "symptomName": "Antiphospholipid antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "presence of blood clotting antibodies",
+          "antibodies causing clot risk",
+          "autoimmune clotting markers"
+        ]
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.17,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "high antibody levels in blood",
+          "increased circulating antibodies",
+          "elevated immune proteins"
+        ]
+      },
+      {
+        "symptomName": "Elevated circulating C-reactive protein concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "raised C-reactive protein in blood",
+          "high CRP indicating inflammation",
+          "increased inflammatory marker CRP"
+        ]
+      },
+      {
+        "symptomName": "Hepatitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anticardiolipin IgG antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "anticardiolipin antibody positive",
+          "blood clotting antibody present",
+          "autoimmune clotting antibodies"
+        ]
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Non-infectious meningitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Maculopapular exanthema",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Endocarditis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Cholecystitis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Meningitis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pericardial effusion",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Respiratory distress",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pleural effusion",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Infectious encephalitis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.03,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Osteomyelitis",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal left ventricular function",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "poor left heart pumping",
+          "impaired left ventricle function",
+          "left heart muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Abnormal pulmonary interstitial morphology",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "lung tissue scarring and thickening",
+          "abnormal lung tissue structure",
+          "interstitial lung disease changes"
+        ]
+      },
+      {
+        "symptomName": "Amyloidosis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myocarditis",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lupus anticoagulant",
+        "frequency": 0.03,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Cryoglobulinemia",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "constitutional",
+    "ophthalmological",
+    "dermatological",
+    "musculoskeletal",
+    "gastrointestinal",
+    "neurological",
+    "hematological",
+    "psychiatric",
+    "cardiovascular",
+    "respiratory",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated phase II IgG and IgM antibodies to Coxiella burnetii",
+      "Elevated liver transaminases",
+      "Leukopenia or leukocytosis"
+    ],
+    "imaging": [
+      "Chest X-ray showing patchy infiltrates or pneumonitis",
+      "Echocardiography for detection of endocarditis in chronic cases"
+    ],
+    "genetic": [],
+    "other": [
+      "Positive PCR for Coxiella burnetii DNA in blood or tissue",
+      "Exposure history to livestock or animal products"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "typhoid-fever",
+      "distinguishingFeatures": [
+        "Salmonella typhi bacteremia",
+        "Characteristic rose spots rash",
+        "Positive blood cultures for Salmonella"
+      ]
+    },
+    {
+      "diseaseId": "legionnaires-disease",
+      "distinguishingFeatures": [
+        "Legionella pneumophila infection",
+        "Hyponatremia",
+        "Positive urinary antigen test"
+      ]
+    },
+    {
+      "diseaseId": "influenza",
+      "distinguishingFeatures": [
+        "Rapid onset respiratory symptoms",
+        "Positive influenza viral testing",
+        "Seasonal epidemic pattern"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Development of culture-negative endocarditis",
+    "Neurological complications such as meningoencephalitis",
+    "Severe pneumonia with respiratory failure"
+  ],
+  "specialistType": [
+    "Infectious disease specialist",
+    "Pulmonologist",
+    "Cardiologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Maurin M, Raoult D. Q fever. Clin Microbiol Rev. 1999 Apr;12(2):518-53.",
+    "CDC. Q Fever: Diagnosis and Management. Centers for Disease Control and Prevention.",
+    "Raoult D, Marrie T, Mege J. Natural history and pathophysiology of Q fever. Lancet Infect Dis. 2005 Apr;5(4):219-26."
+  ],
+  "confidenceInData": "medium"
+}

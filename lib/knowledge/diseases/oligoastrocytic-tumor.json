@@ -1,0 +1,257 @@
+{
+  "id": "oligoastrocytic-tumor",
+  "name": "Oligoastrocytic Tumor",
+  "aliases": [
+    "Mixed Glioma",
+    "Oligoastrocytoma"
+  ],
+  "icd10Codes": [
+    "C71.9"
+  ],
+  "orphanetId": "251651",
+  "prevalence": {
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 70,
+      "peak": 40
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of the Central Nervous System",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Presence of mixed neoplastic cells showing both astrocytic and oligodendroglial differentiation on histological examination",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunohistochemistry",
+        "description": "Immunohistochemical staining positive for GFAP (glial fibrillary acidic protein) and OLIG2 markers",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "molecular-genetics",
+        "description": "Detection of combined 1p/19q codeletion absence and IDH1/IDH2 mutation status to differentiate from pure oligodendrogliomas or astrocytomas",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological evidence of mixed astrocytic and oligodendroglial tumor cells with supportive immunohistochemical and molecular genetic findings",
+    "notes": "Molecular classification has reduced the frequency of oligoastrocytoma diagnosis; integrated diagnosis using histology and genetics is essential."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Focal neurological deficits corresponding to tumor location",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "nerve problems near tumor",
+          "localized neurological symptoms",
+          "weakness matching tumor site"
+        ]
+      },
+      {
+        "symptomName": "Seizures of new onset",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "new onset seizures or convulsions",
+          "first-time seizure episodes",
+          "sudden seizures starting recently"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Headache with progressive worsening",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "headache that gradually worsens",
+          "progressive worsening head pain",
+          "increasing intensity headache"
+        ]
+      },
+      {
+        "symptomName": "Cognitive dysfunction including memory impairment",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "memory problems",
+          "thinking difficulties",
+          "cognitive impairment"
+        ]
+      },
+      {
+        "symptomName": "Motor weakness or hemiparesis",
+        "frequency": 0.58,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "muscle weakness or partial paralysis",
+          "weakness affecting one side",
+          "hemiparesis or decreased strength"
+        ]
+      },
+      {
+        "symptomName": "Speech disturbances such as aphasia",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "speech problems",
+          "difficulty speaking",
+          "loss of language ability"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Visual field deficits",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "loss of part of the vision field",
+          "blind spots or missing areas in vision",
+          "partial vision loss"
+        ]
+      },
+      {
+        "symptomName": "Nausea and vomiting due to increased intracranial pressure",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "nausea from brain pressure",
+          "vomiting due to head swelling",
+          "feeling sick from increased brain pressure",
+          "throwing up from brain swelling"
+        ]
+      },
+      {
+        "symptomName": "Personality changes or mood disturbances",
+        "frequency": 0.2,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "mood swings",
+          "personality changes",
+          "emotional disturbances"
+        ]
+      },
+      {
+        "symptomName": "Ataxia or coordination difficulties",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "poor balance and coordination problems",
+          "difficulty walking steadily",
+          "clumsiness and unsteady movements"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Endocrine dysfunction secondary to hypothalamic involvement",
+        "frequency": 0.08,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "hormone problems from hypothalamus tumor",
+          "endocrine dysfunction caused by brain lesion",
+          "hormonal imbalance from brain involvement"
+        ]
+      },
+      {
+        "symptomName": "Hydrocephalus due to tumor obstruction",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "brain fluid buildup from tumor blockage",
+          "hydrocephalus caused by tumor",
+          "water accumulation in brain due to tumor"
+        ]
+      },
+      {
+        "symptomName": "Cranial nerve palsies",
+        "frequency": 0.04,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "weakness of cranial nerves",
+          "cranial nerve palsies causing facial or eye problems"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological",
+    "psychiatric",
+    "gastrointestinal",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF analysis typically non-specific; may show mild protein elevation",
+      "No specific blood biomarkers identified"
+    ],
+    "imaging": [
+      "MRI showing mixed solid and cystic mass with heterogeneous contrast enhancement",
+      "T2-weighted hyperintense lesion with ill-defined margins in cerebral hemispheres"
+    ],
+    "genetic": [
+      "IDH1 or IDH2 mutation present",
+      "Absence of 1p/19q codeletion differentiates from pure oligodendroglioma"
+    ],
+    "other": [
+      "Histopathology demonstrating mixed astrocytic and oligodendroglial features",
+      "Immunohistochemistry positive for GFAP and OLIG2"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "astrocytoma",
+      "distinguishingFeatures": [
+        "Predominantly astrocytic cell population without oligodendroglial components",
+        "IDH mutation status and absence of 1p/19q codeletion"
+      ]
+    },
+    {
+      "diseaseId": "oligodendroglioma",
+      "distinguishingFeatures": [
+        "Presence of 1p/19q codeletion",
+        "Uniform oligodendroglial morphology without astrocytic features"
+      ]
+    },
+    {
+      "diseaseId": "glioblastoma-multiforme",
+      "distinguishingFeatures": [
+        "High-grade features with necrosis and microvascular proliferation",
+        "Rapid clinical progression and poor prognosis"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid neurological deterioration",
+    "New onset seizures in adult without prior history",
+    "Signs of increased intracranial pressure such as papilledema"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neuro-oncologist",
+    "Neurosurgeon",
+    "Neuropathologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Louis DN, et al. WHO Classification of Tumors of the Central Nervous System, 5th Edition. IARC, 2021.",
+    "Wesseling P, Capper D. WHO 2016 Classification of gliomas. Neuropathol Appl Neurobiol. 2018.",
+    "Orphanet: Oligoastrocytic tumor - ORPHA:251651"
+  ],
+  "confidenceInData": "ai-generated"
+}

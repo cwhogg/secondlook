@@ -1,0 +1,265 @@
+{
+  "id": "ependymal-tumor",
+  "name": "Ependymal Tumor",
+  "aliases": [
+    "Ependymoma",
+    "Ependymal Neoplasm"
+  ],
+  "icd10Codes": [
+    "C71.7",
+    "C72.3"
+  ],
+  "orphanetId": "ORPHA:301",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of the Central Nervous System",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histological identification of ependymal rosettes or perivascular pseudorosettes",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging",
+        "description": "MRI showing well-demarcated intraventricular or spinal cord mass with heterogeneous enhancement",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunohistochemistry",
+        "description": "Positive staining for GFAP and EMA with dot-like pattern",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "molecular",
+        "description": "Detection of RELA fusion or other molecular alterations in specific subtypes",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation with characteristic imaging and immunohistochemical findings",
+    "notes": "Molecular testing aids in subclassification and prognosis but is not mandatory for diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hydrocephalus due to obstructive intraventricular mass",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Common in intracranial ependymomas causing increased intracranial pressure",
+        "searchTerms": [
+          "fluid buildup in brain from blocked ventricle",
+          "brain swelling due to mass blocking fluid",
+          "hydrocephalus caused by brain tumor"
+        ]
+      },
+      {
+        "symptomName": "Perivascular pseudorosette formation on histology",
+        "frequency": 0.9,
+        "bodySystem": "neurological",
+        "notes": "Characteristic microscopic feature",
+        "searchTerms": [
+          "tumor cells arranged around blood vessels",
+          "perivascular pseudorosette pattern",
+          "ring of cells around vessels in biopsy"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Headache secondary to raised intracranial pressure",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "headache from high brain pressure",
+          "pressure-related headache",
+          "head pain due to raised intracranial pressure"
+        ]
+      },
+      {
+        "symptomName": "Gait disturbance due to spinal cord involvement",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "walking problems from spinal cord damage",
+          "difficulty walking due to spine issues",
+          "gait changes from spinal involvement"
+        ]
+      },
+      {
+        "symptomName": "Nausea and vomiting related to increased intracranial pressure",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "nausea from increased brain pressure",
+          "vomiting caused by brain swelling",
+          "pressure-related nausea and vomiting"
+        ]
+      },
+      {
+        "symptomName": "Sensory deficits in affected spinal segments",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "loss of sensation in spinal nerve areas",
+          "numbness in affected spinal segments",
+          "sensory loss along spine"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Seizures in supratentorial tumors",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "seizures caused by brain tumors",
+          "tumor-related convulsions",
+          "epileptic episodes from supratentorial mass"
+        ]
+      },
+      {
+        "symptomName": "Bladder dysfunction in spinal ependymomas",
+        "frequency": 0.25,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "bladder control problems from spinal tumor",
+          "urinary dysfunction due to spine tumor",
+          "difficulty urinating from spinal ependymoma"
+        ]
+      },
+      {
+        "symptomName": "Diplopia due to cranial nerve involvement",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "double vision from nerve damage",
+          "seeing two images",
+          "cranial nerve-related eye movement issues"
+        ]
+      },
+      {
+        "symptomName": "Ataxia from cerebellar compression",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "loss of coordination from cerebellar pressure",
+          "balance problems due to brain compression",
+          "ataxia from cerebellum swelling"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Paraneoplastic syndromes",
+        "frequency": 0.05,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Spinal cord syrinx formation",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "fluid-filled cavity in spinal cord",
+          "spinal cord cyst formation",
+          "syrinx in spinal cord"
+        ]
+      },
+      {
+        "symptomName": "Cognitive decline in long-standing tumors",
+        "frequency": 0.07,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "memory and thinking decline from tumors",
+          "cognitive problems with long-term brain tumors",
+          "mental decline due to tumor growth"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "gastrointestinal",
+    "renal",
+    "ophthalmological",
+    "immunological",
+    "psychiatric"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF cytology may show tumor cells in disseminated disease",
+      "Elevated CSF protein in some cases"
+    ],
+    "imaging": [
+      "MRI showing well-circumscribed intraventricular or spinal cord mass",
+      "Heterogeneous contrast enhancement",
+      "Possible cystic components or calcifications"
+    ],
+    "genetic": [
+      "RELA fusion gene in supratentorial ependymomas",
+      "Chromosome 1q gain associated with poor prognosis"
+    ],
+    "other": [
+      "Histopathology demonstrating ependymal rosettes and perivascular pseudorosettes",
+      "Immunohistochemistry positive for GFAP and EMA"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "astrocytoma",
+      "distinguishingFeatures": [
+        "Lack of perivascular pseudorosettes",
+        "Different immunohistochemical profile (GFAP positive but EMA negative)",
+        "More infiltrative growth pattern"
+      ]
+    },
+    {
+      "diseaseId": "medulloblastoma",
+      "distinguishingFeatures": [
+        "Typically midline cerebellar location",
+        "Primitive neuroectodermal tumor histology",
+        "Different molecular markers"
+      ]
+    },
+    {
+      "diseaseId": "choroid-plexus papilloma",
+      "distinguishingFeatures": [
+        "Papillary architecture on histology",
+        "Arises from choroid plexus rather than ependymal lining",
+        "Distinct immunohistochemical staining"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive neurological deficits",
+    "Signs of increased intracranial pressure (papilledema, severe headache, vomiting)",
+    "New onset seizures in a child or young adult"
+  ],
+  "specialistType": [
+    "Neuro-oncologist",
+    "Neuropathologist",
+    "Neurosurgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Louis DN, et al. WHO Classification of Tumors of the Central Nervous System, 5th Edition. IARC, 2021.",
+    "Orphanet: Ependymal Tumor - ORPHA:301",
+    "Louis DN, et al. The 2021 WHO Classification of Tumors of the Central Nervous System: a summary. Neuro Oncol. 2021."
+  ],
+  "confidenceInData": "ai-generated"
+}

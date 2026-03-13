@@ -1,0 +1,237 @@
+{
+  "id": "spinal-cord-injury",
+  "name": "Spinal Cord Injury",
+  "aliases": [
+    "SCI",
+    "Spinal trauma",
+    "Spinal cord trauma"
+  ],
+  "icd10Codes": [
+    "S14.1",
+    "S24.1",
+    "S34.1"
+  ],
+  "orphanetId": "ORPHA:90058",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "American Spinal Injury Association (ASIA) Impairment Scale",
+    "criteria": [
+      {
+        "id": "neurological-level",
+        "description": "Identification of the neurological level of injury by clinical examination",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "motor-function-assessment",
+        "description": "Assessment of motor function below the level of injury",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "sensory-function-assessment",
+        "description": "Assessment of sensory function including light touch and pinprick below the level of injury",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-confirmation",
+        "description": "Radiological confirmation of spinal cord damage via MRI or CT",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Clinical evidence of neurological deficit consistent with spinal cord trauma confirmed by imaging",
+    "notes": "ASIA Impairment Scale grades severity and completeness of injury"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Spinal cord lesion",
+        "frequency": 0.9,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "spinal cord damage",
+          "lesion in spinal cord",
+          "spinal cord injury"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Spasticity",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Urinary bladder sphincter dysfunction",
+        "frequency": 0.55,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "bladder control problems",
+          "difficulty relaxing urinary sphincter",
+          "urine leakage due to sphincter issues"
+        ]
+      },
+      {
+        "symptomName": "Somatic sensory dysfunction",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "loss of body sensation",
+          "numbness and tingling",
+          "reduced touch feeling"
+        ]
+      },
+      {
+        "symptomName": "Weakness due to upper motor neuron dysfunction",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "weakness from upper motor neuron damage",
+          "muscle weakness due to nerve injury",
+          "upper motor neuron related weakness"
+        ]
+      },
+      {
+        "symptomName": "Abnormal autonomic nervous system physiology",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal autonomic nervous system function",
+          "dysregulated autonomic responses",
+          "autonomic system abnormalities"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Urinary retention",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Paralytic ileus",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Vertebral compression fracture",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "collapsed vertebra",
+          "spinal bone compression fracture",
+          "fractured vertebral body"
+        ]
+      },
+      {
+        "symptomName": "Hypercalcemia",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Syringomyelia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Loss of consciousness",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "passing out",
+          "fainting episode",
+          "temporary loss of awareness"
+        ]
+      },
+      {
+        "symptomName": "Allodynia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dysesthesia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "neurological",
+    "renal",
+    "constitutional",
+    "musculoskeletal",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated creatine kinase due to muscle injury",
+      "Urinalysis showing urinary tract infections secondary to neurogenic bladder"
+    ],
+    "imaging": [
+      "MRI showing spinal cord edema, hemorrhage, or transection",
+      "CT scan demonstrating vertebral fractures or dislocations"
+    ],
+    "genetic": [],
+    "other": [
+      "ASIA Impairment Scale grading",
+      "Electrophysiological studies showing loss of conduction"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "transverse-myelitis",
+      "distinguishingFeatures": [
+        "Inflammatory etiology with subacute onset",
+        "MRI showing spinal cord inflammation without trauma",
+        "CSF pleocytosis or oligoclonal bands"
+      ]
+    },
+    {
+      "diseaseId": "spinal-cord-tumor",
+      "distinguishingFeatures": [
+        "Gradual onset of symptoms",
+        "MRI showing mass lesion compressing spinal cord",
+        "Absence of traumatic history"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset of paralysis or sensory loss",
+    "Loss of sphincter control",
+    "Progressive neurological deterioration"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neurosurgeon",
+    "Rehabilitation medicine specialist",
+    "Physiatrist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "National Spinal Cord Injury Statistical Center. Facts and Figures at a Glance. 2023.",
+    "American Spinal Injury Association (ASIA) Impairment Scale. Journal of Spinal Cord Medicine. 2019.",
+    "Norton J, et al. Spinal Cord Injury: Pathophysiology and Clinical Management. Lancet Neurology. 2021."
+  ],
+  "confidenceInData": "medium"
+}

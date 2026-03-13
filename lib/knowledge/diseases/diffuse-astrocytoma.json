@@ -1,0 +1,229 @@
+{
+  "id": "diffuse-astrocytoma",
+  "name": "Diffuse Astrocytoma",
+  "aliases": [
+    "Low-grade astrocytoma",
+    "WHO Grade II astrocytoma"
+  ],
+  "icd10Codes": [
+    "C71.9"
+  ],
+  "orphanetId": "ORPHA:251595",
+  "prevalence": {
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 2,
+      "max": 65,
+      "peak": 14
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of the Central Nervous System (2021)",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histological evidence of diffuse infiltration by neoplastic astrocytes with low mitotic activity",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging",
+        "description": "MRI showing poorly circumscribed, infiltrative lesion without contrast enhancement",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "molecular",
+        "description": "Presence of IDH1 or IDH2 mutation and absence of 1p/19q codeletion",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical",
+        "description": "Neurological symptoms consistent with tumor location",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation of diffuse astrocytic infiltration with IDH mutation and compatible MRI findings",
+    "notes": "Diagnosis requires integration of histology, molecular markers, and imaging per WHO CNS tumor classification."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Focal neurological deficits",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "localized nerve problems",
+          "specific area neurological symptoms",
+          "focal weakness or numbness"
+        ]
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Headache with increased intracranial pressure",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "headache from high brain pressure",
+          "pressure-related headache with nausea",
+          "head pain due to increased fluid in brain"
+        ]
+      },
+      {
+        "symptomName": "Cognitive dysfunction",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Motor weakness",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Speech disturbances",
+        "frequency": 0.52,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Visual field deficits",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "loss of part of the vision field",
+          "blind spots or missing areas in vision",
+          "partial vision loss"
+        ]
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Personality changes",
+        "frequency": 0.2,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Endocrine dysfunction due to hypothalamic involvement",
+        "frequency": 0.07,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "hormone problems from brain area damage",
+          "endocrine issues due to hypothalamus involvement",
+          "hormonal imbalance caused by brain tumor"
+        ]
+      },
+      {
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cranial nerve palsies",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "weakness of cranial nerves",
+          "cranial nerve palsies causing facial or eye problems"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological",
+    "psychiatric",
+    "gastrointestinal",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF analysis typically non-specific; may show mild protein elevation",
+      "Molecular testing for IDH1/IDH2 mutations and 1p/19q codeletion"
+    ],
+    "imaging": [
+      "MRI: T2 hyperintense, non-enhancing, infiltrative lesion with poorly defined margins",
+      "Absence of contrast enhancement differentiates from higher grade gliomas"
+    ],
+    "genetic": [
+      "IDH1 or IDH2 mutation present",
+      "ATRX loss of expression",
+      "No 1p/19q codeletion"
+    ],
+    "other": [
+      "Histopathology showing diffuse astrocytic infiltration with low mitotic index",
+      "Low Ki-67 proliferation index"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "anaplastic-astrocytoma",
+      "distinguishingFeatures": [
+        "Higher mitotic activity and contrast enhancement on MRI",
+        "More aggressive clinical course"
+      ]
+    },
+    {
+      "diseaseId": "oligodendroglioma",
+      "distinguishingFeatures": [
+        "Presence of 1p/19q codeletion",
+        "Typically shows calcifications on imaging"
+      ]
+    },
+    {
+      "diseaseId": "glioblastoma-multiforme",
+      "distinguishingFeatures": [
+        "Marked contrast enhancement and necrosis on MRI",
+        "Rapid clinical progression"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid neurological deterioration",
+    "New onset of seizures in adult",
+    "Signs of increased intracranial pressure such as papilledema"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neuro-oncologist",
+    "Neurosurgeon",
+    "Neuropathologist",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Louis DN et al. WHO Classification of Tumors of the Central Nervous System, 5th Edition, 2021",
+    "Ostrom QT et al. CBTRUS Statistical Report: Primary Brain and Other Central Nervous System Tumors Diagnosed in the United States, 2014-2018",
+    "Weller M et al. EANO guidelines on the diagnosis and treatment of diffuse gliomas of adulthood, 2021"
+  ],
+  "confidenceInData": "ai-generated"
+}

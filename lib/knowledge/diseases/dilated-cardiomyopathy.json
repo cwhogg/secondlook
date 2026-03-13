@@ -1,0 +1,279 @@
+{
+  "id": "dilated-cardiomyopathy",
+  "name": "Dilated Cardiomyopathy",
+  "aliases": [
+    "DCM",
+    "Congestive Cardiomyopathy"
+  ],
+  "icd10Codes": [
+    "I42.0"
+  ],
+  "omimId": "115200",
+  "orphanetId": "217604",
+  "prevalence": {
+    "estimate": "1 in 2500",
+    "range": "0.02%-0.04%",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "ESC Diagnostic Criteria for Dilated Cardiomyopathy",
+    "criteria": [
+      {
+        "id": "left-ventricular-dilation",
+        "description": "Left ventricular dilation as evidenced by echocardiography or cardiac MRI",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "left-ventricular-systolic-dysfunction",
+        "description": "Left ventricular systolic dysfunction with reduced ejection fraction (<45%)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-of-other-causes",
+        "description": "Exclusion of significant coronary artery disease, valvular disease, or hypertension as cause of ventricular dysfunction",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Family history of dilated cardiomyopathy or sudden cardiac death",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "arrhythmias",
+        "description": "Presence of ventricular arrhythmias or conduction abnormalities",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of left ventricular dilation and systolic dysfunction with exclusion of other causes",
+    "notes": "Diagnosis is primarily based on imaging and clinical exclusion of other etiologies."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Left ventricular systolic dysfunction",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Detected by echocardiography or MRI",
+        "searchTerms": [
+          "weak left heart pumping",
+          "left ventricular systolic failure",
+          "reduced heart contraction strength"
+        ]
+      },
+      {
+        "symptomName": "Left ventricular dilation",
+        "frequency": 0.8,
+        "bodySystem": "cardiovascular",
+        "notes": "Enlarged left ventricular chamber size",
+        "searchTerms": [
+          "enlarged left heart chamber",
+          "left ventricle dilation",
+          "heart chamber enlargement"
+        ]
+      },
+      {
+        "symptomName": "Reduced left ventricular ejection fraction",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Ejection fraction typically below 45%",
+        "searchTerms": [
+          "weak heart pumping",
+          "reduced heart output",
+          "low heart ejection fraction"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Exertional dyspnea",
+        "frequency": 0.7,
+        "bodySystem": "respiratory",
+        "notes": "Shortness of breath on physical activity"
+      },
+      {
+        "symptomName": "Fatigue related to reduced cardiac output",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Generalized tiredness due to poor perfusion",
+        "searchTerms": [
+          "tiredness from weak heart pumping",
+          "fatigue due to low cardiac output",
+          "low energy from heart failure"
+        ]
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "notes": "Swelling of lower limbs due to fluid retention"
+      },
+      {
+        "symptomName": "Orthopnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory",
+        "notes": "Difficulty breathing when lying flat"
+      },
+      {
+        "symptomName": "Palpitations",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular",
+        "notes": "Awareness of irregular or rapid heartbeat"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Syncope or presyncope",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Transient loss or near loss of consciousness",
+        "searchTerms": [
+          "fainting or near fainting spells",
+          "passing out or feeling lightheaded",
+          "episodes of syncope or presyncope"
+        ]
+      },
+      {
+        "symptomName": "Ascites",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Abdominal fluid accumulation in advanced cases"
+      },
+      {
+        "symptomName": "Nocturnal cough",
+        "frequency": 0.2,
+        "bodySystem": "respiratory",
+        "notes": "Cough worsening at night due to pulmonary congestion"
+      },
+      {
+        "symptomName": "Chest discomfort",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "Non-anginal chest pain or pressure"
+      },
+      {
+        "symptomName": "Conduction abnormalities",
+        "frequency": 0.1,
+        "bodySystem": "cardiovascular",
+        "notes": "ECG changes including bundle branch blocks",
+        "searchTerms": [
+          "heart electrical signal problems",
+          "abnormal heart rhythm conduction",
+          "irregular heartbeat signals"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Thromboembolic events",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "notes": "Stroke or peripheral embolism due to intracardiac thrombi"
+      },
+      {
+        "symptomName": "Sudden cardiac death",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Fatal arrhythmias in advanced disease",
+        "searchTerms": [
+          "sudden heart-related death",
+          "unexpected cardiac arrest"
+        ]
+      },
+      {
+        "symptomName": "Hepatomegaly due to right heart failure",
+        "frequency": 0.02,
+        "bodySystem": "gastrointestinal",
+        "notes": "Enlarged liver secondary to congestion",
+        "searchTerms": [
+          "enlarged liver from right heart failure",
+          "hepatomegaly due to heart problems",
+          "liver swelling from heart failure"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "respiratory",
+    "neurological",
+    "gastrointestinal",
+    "hematological",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated B-type natriuretic peptide (BNP) or NT-proBNP",
+      "Elevated liver enzymes in congestive hepatopathy",
+      "Possible mild elevation of troponins in acute decompensation"
+    ],
+    "imaging": [
+      "Echocardiography showing left ventricular dilation and reduced ejection fraction",
+      "Cardiac MRI demonstrating ventricular volumes and fibrosis",
+      "Chest X-ray showing cardiomegaly and pulmonary congestion"
+    ],
+    "genetic": [
+      "Mutations in genes encoding cytoskeletal, sarcomeric, or mitochondrial proteins (e.g., TTN, LMNA, MYH7)"
+    ],
+    "other": [
+      "Electrocardiogram abnormalities including arrhythmias and conduction delays",
+      "Endomyocardial biopsy may show nonspecific myocardial fibrosis"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "ischemic-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Presence of significant coronary artery disease",
+        "Regional wall motion abnormalities on imaging",
+        "History of myocardial infarction"
+      ]
+    },
+    {
+      "diseaseId": "hypertrophic-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Asymmetric left ventricular hypertrophy",
+        "Preserved or increased ejection fraction",
+        "Family history of hypertrophic cardiomyopathy"
+      ]
+    },
+    {
+      "diseaseId": "restrictive-cardiomyopathy",
+      "distinguishingFeatures": [
+        "Normal or reduced ventricular volumes with impaired diastolic filling",
+        "Biatrial enlargement",
+        "Absence of significant ventricular dilation"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of heart failure symptoms",
+    "Recurrent ventricular arrhythmias or syncope",
+    "Family history of sudden cardiac death"
+  ],
+  "specialistType": [
+    "Cardiologist",
+    "Geneticist",
+    "Heart failure specialist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Elliott P, et al. Classification of the cardiomyopathies: a position statement from the European Society of Cardiology Working Group on Myocardial and Pericardial Diseases. Eur Heart J. 2008;29(2):270-276.",
+    "Towbin JA, et al. Dilated cardiomyopathy. Lancet. 2019;393(10174):757-773.",
+    "Orphanet: Dilated cardiomyopathy - ORPHA:217604"
+  ],
+  "confidenceInData": "ai-generated"
+}

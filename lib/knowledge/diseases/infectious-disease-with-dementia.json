@@ -1,0 +1,241 @@
+{
+  "id": "infectious-disease-with-dementia",
+  "name": "Infectious Disease with Dementia",
+  "aliases": [
+    "Infectious Dementia",
+    "Infection-Associated Dementia"
+  ],
+  "icd10Codes": [
+    "A81.0",
+    "G31.8"
+  ],
+  "orphanetId": "ORPHA:98542",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.001%-0.01%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 30,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Infectious Dementia Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "clinical-dementia",
+        "description": "Progressive cognitive decline consistent with dementia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "evidence-infection",
+        "description": "Laboratory or imaging evidence of central nervous system infection",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-other-causes",
+        "description": "Exclusion of other primary neurodegenerative or metabolic causes of dementia",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "supportive-neuroimaging",
+        "description": "Neuroimaging findings suggestive of infectious etiology (e.g., inflammation, lesions)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "supportive-csf",
+        "description": "Cerebrospinal fluid abnormalities consistent with infection or inflammation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of progressive dementia with confirmed CNS infection and exclusion of other causes",
+    "notes": "Diagnosis often requires multidisciplinary evaluation including infectious disease and neurology specialists."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive cognitive impairment with memory loss",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "gradual memory loss and thinking decline",
+          "progressive cognitive deterioration",
+          "worsening memory and cognition"
+        ]
+      },
+      {
+        "symptomName": "Subacute onset of neuropsychiatric symptoms",
+        "frequency": 0.75,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "sudden neuropsychiatric symptoms",
+          "rapid onset of mental and behavioral changes",
+          "subacute brain and psychiatric problems"
+        ]
+      },
+      {
+        "symptomName": "Focal neurological deficits consistent with CNS infection",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "localized neurological symptoms",
+          "weakness or numbness in one area",
+          "speech or vision problems from infection"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Headache of moderate intensity",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "moderate headache pain",
+          "medium intensity head pain",
+          "persistent moderate headache"
+        ]
+      },
+      {
+        "symptomName": "Fever or history of recent febrile illness",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high temperature recently",
+          "recent fever or chills",
+          "history of fever"
+        ]
+      },
+      {
+        "symptomName": "Behavioral changes including agitation and apathy",
+        "frequency": 0.58,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "mood changes like agitation",
+          "lack of interest or apathy",
+          "behavioral disturbances"
+        ]
+      },
+      {
+        "symptomName": "Sleep disturbances",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.35,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia or gait disturbances",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "poor balance and coordination",
+          "difficulty walking",
+          "ataxia symptoms"
+        ]
+      },
+      {
+        "symptomName": "Visual hallucinations",
+        "frequency": 0.25,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.15,
+        "bodySystem": "immunological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.07,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Meningismus (neck stiffness)",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "neck stiffness",
+          "difficulty bending neck",
+          "painful neck movement"
+        ]
+      },
+      {
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "psychiatric",
+    "constitutional",
+    "immunological",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF pleocytosis with elevated protein",
+      "Positive PCR or culture for infectious agent in CSF or blood",
+      "Elevated inflammatory markers (e.g., ESR, CRP)"
+    ],
+    "imaging": [
+      "MRI showing white matter lesions, inflammation, or abscesses",
+      "Contrast-enhancing lesions on brain MRI or CT"
+    ],
+    "genetic": [],
+    "other": [
+      "Electroencephalogram (EEG) showing diffuse slowing or epileptiform activity"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "alzheimers-disease",
+      "distinguishingFeatures": [
+        "Gradual onset without infectious signs",
+        "Absence of fever or inflammatory CSF findings",
+        "Characteristic amyloid and tau pathology on imaging or biopsy"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-encephalitis",
+      "distinguishingFeatures": [
+        "Presence of autoantibodies in serum or CSF",
+        "Rapid onset with prominent psychiatric symptoms",
+        "Response to immunotherapy"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive cognitive decline over weeks to months",
+    "New onset seizures or focal neurological signs",
+    "Signs of systemic infection or immunosuppression"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Infectious Disease Specialist",
+    "Psychiatrist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Davis LE, et al. Infectious causes of dementia. Neurol Clin. 2020;38(3):551-567.",
+    "Orphanet: Infectious disease with dementia. ORPHA:98542.",
+    "Johnson RT. Viral infections of the nervous system. 4th ed. 2014."
+  ],
+  "confidenceInData": "ai-generated"
+}

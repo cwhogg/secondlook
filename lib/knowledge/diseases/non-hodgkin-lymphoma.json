@@ -1,0 +1,258 @@
+{
+  "id": "non-hodgkin-lymphoma",
+  "name": "Non-Hodgkin Lymphoma",
+  "aliases": [
+    "NHL",
+    "Non-Hodgkin's lymphoma",
+    "Malignant lymphoma, non-Hodgkin type"
+  ],
+  "icd10Codes": [
+    "C82",
+    "C83",
+    "C84",
+    "C85"
+  ],
+  "omimId": "605314",
+  "orphanetId": "547",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 14
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Caucasian",
+      "African American (higher incidence)"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumours of Haematopoietic and Lymphoid Tissues",
+    "criteria": [
+      {
+        "id": "lymph-node-biopsy",
+        "description": "Histopathological confirmation of malignant lymphoid cells on lymph node or extranodal tissue biopsy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunophenotyping",
+        "description": "Immunophenotypic analysis demonstrating B-cell or T-cell lineage markers consistent with NHL subtype",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-evidence",
+        "description": "Radiological evidence of lymphadenopathy or extranodal masses on CT, PET-CT, or MRI",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "bone-marrow-involvement",
+        "description": "Bone marrow biopsy showing infiltration by malignant lymphoid cells",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation with immunophenotyping is required; imaging and bone marrow biopsy are supportive but not mandatory.",
+    "notes": "Diagnosis requires integration of morphology, immunophenotyping, and clinical findings per WHO guidelines."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Painless peripheral lymphadenopathy",
+        "frequency": 0.85,
+        "bodySystem": "immunological",
+        "notes": "Typically firm, non-tender enlarged lymph nodes",
+        "searchTerms": [
+          "painless swollen lymph nodes",
+          "non-tender lymph node enlargement",
+          "enlarged lymph nodes without pain"
+        ]
+      },
+      {
+        "symptomName": "B symptoms (fever >38°C, drenching night sweats, unexplained weight loss >10%)",
+        "frequency": 0.75,
+        "bodySystem": "constitutional",
+        "notes": "Indicative of systemic disease activity",
+        "searchTerms": [
+          "fever over 38°C",
+          "night sweats soaking clothes",
+          "unexplained weight loss over 10%"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.65,
+        "bodySystem": "hematological",
+        "notes": "Enlarged spleen detectable on physical exam or imaging"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.55,
+        "bodySystem": "hematological",
+        "notes": "Liver enlargement may be present in advanced disease"
+      },
+      {
+        "symptomName": "Extranodal mass lesions",
+        "frequency": 0.6,
+        "bodySystem": "varied",
+        "notes": "Common sites include gastrointestinal tract, skin, and CNS",
+        "searchTerms": [
+          "tumor masses outside lymph nodes",
+          "growths in organs or tissues",
+          "extranodal tumor lesions"
+        ]
+      },
+      {
+        "symptomName": "Fatigue related to anemia",
+        "frequency": 0.58,
+        "bodySystem": "constitutional",
+        "notes": "Secondary to bone marrow involvement or chronic disease",
+        "searchTerms": [
+          "tiredness from anemia",
+          "fatigue related to low red blood cells",
+          "weakness due to anemia"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Pruritus",
+        "frequency": 0.3,
+        "bodySystem": "dermatological",
+        "notes": "May be associated with cytokine release"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Due to nerve infiltration or paraneoplastic phenomena"
+      },
+      {
+        "symptomName": "Abdominal pain or discomfort",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "notes": "From extranodal involvement or organomegaly",
+        "searchTerms": [
+          "stomach pain",
+          "belly discomfort",
+          "abdominal ache"
+        ]
+      },
+      {
+        "symptomName": "Recurrent infections",
+        "frequency": 0.15,
+        "bodySystem": "immunological",
+        "notes": "Due to immunosuppression or marrow failure"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Superior vena cava syndrome",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Compression by mediastinal masses",
+        "searchTerms": [
+          "swelling from blocked chest vein",
+          "vein blockage causing face/neck swelling",
+          "superior vena cava blockage symptoms"
+        ]
+      },
+      {
+        "symptomName": "Paraneoplastic autoimmune hemolytic anemia",
+        "frequency": 0.07,
+        "bodySystem": "hematological",
+        "notes": "Autoimmune destruction of red blood cells",
+        "searchTerms": [
+          "autoimmune destruction of red blood cells",
+          "anemia caused by immune attack",
+          "hemolytic anemia linked to cancer"
+        ]
+      },
+      {
+        "symptomName": "Central nervous system involvement",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "notes": "Rare but severe extranodal manifestation",
+        "searchTerms": [
+          "brain and spinal cord symptoms",
+          "neurological involvement",
+          "central nervous system problems"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "constitutional",
+    "gastrointestinal",
+    "dermatological",
+    "neurological",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated lactate dehydrogenase (LDH)",
+      "Anemia and cytopenias on complete blood count",
+      "Abnormal peripheral blood smear in leukemic phase"
+    ],
+    "imaging": [
+      "CT or PET-CT showing widespread lymphadenopathy",
+      "Extranodal mass lesions on MRI or CT",
+      "Splenomegaly and hepatomegaly on ultrasound or CT"
+    ],
+    "genetic": [
+      "Chromosomal translocations such as t(14;18)(q32;q21) in follicular lymphoma",
+      "MYC gene rearrangements in aggressive subtypes",
+      "Clonal immunoglobulin or T-cell receptor gene rearrangements"
+    ],
+    "other": [
+      "Histopathology demonstrating malignant lymphoid proliferation",
+      "Immunohistochemistry positive for CD20 (B-cell NHL) or CD3 (T-cell NHL)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hodgkin-lymphoma",
+      "distinguishingFeatures": [
+        "Presence of Reed-Sternberg cells on biopsy",
+        "More predictable contiguous lymph node spread",
+        "Different immunophenotypic markers (CD15+, CD30+)"
+      ]
+    },
+    {
+      "diseaseId": "chronic-lymphocytic-leukemia",
+      "distinguishingFeatures": [
+        "Peripheral blood lymphocytosis with mature small lymphocytes",
+        "Smudge cells on peripheral smear",
+        "Typically indolent clinical course"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly enlarging lymph nodes",
+    "Unexplained persistent fever and night sweats",
+    "Sudden onset of severe cytopenias or organ dysfunction"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Oncologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Swerdlow SH, Campo E, Harris NL, et al. WHO Classification of Tumours of Haematopoietic and Lymphoid Tissues. IARC; 2017.",
+    "National Comprehensive Cancer Network (NCCN) Guidelines for Non-Hodgkin Lymphomas, Version 6.2023.",
+    "Armitage JO. Non-Hodgkin lymphoma. Lancet. 2017;390(10091):298-310."
+  ],
+  "confidenceInData": "ai-generated"
+}

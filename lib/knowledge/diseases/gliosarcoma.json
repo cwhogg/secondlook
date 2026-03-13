@@ -1,0 +1,254 @@
+{
+  "id": "gliosarcoma",
+  "name": "Gliosarcoma",
+  "aliases": [
+    "Glioblastoma with sarcomatous component",
+    "Sarcomatous glioblastoma"
+  ],
+  "icd10Codes": [
+    "C71.9"
+  ],
+  "orphanetId": "ORPHA:251576",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of the Central Nervous System",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Presence of biphasic tissue pattern with both gliomatous and sarcomatous components on histopathological examination",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "immunohistochemistry",
+        "description": "Immunohistochemical staining showing glial fibrillary acidic protein (GFAP) positivity in gliomatous areas and vimentin positivity in sarcomatous areas",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "radiologicalFeatures",
+        "description": "MRI showing a heterogeneously enhancing mass with necrosis and edema in the cerebral hemispheres",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation of biphasic gliomatous and sarcomatous components with supportive immunohistochemical findings",
+    "notes": "Molecular testing may assist but is not mandatory for diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Focal neurological deficits correlating with tumor location",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "weakness matching tumor site",
+          "neurological symptoms near tumor",
+          "localized nerve deficits"
+        ]
+      },
+      {
+        "symptomName": "Rapidly progressive hemiparesis",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "sudden weakness on one side",
+          "rapid onset hemiparesis",
+          "quickly worsening one-sided weakness"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "New-onset seizures",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Headache with increased intracranial pressure features",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "headache with signs of high brain pressure",
+          "headache with nausea and vision changes",
+          "headache from increased intracranial pressure"
+        ]
+      },
+      {
+        "symptomName": "Cognitive decline including memory impairment",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "memory loss",
+          "declining thinking skills",
+          "problems with cognition"
+        ]
+      },
+      {
+        "symptomName": "Nausea and vomiting secondary to raised intracranial pressure",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "vomiting from high brain pressure",
+          "nausea due to brain swelling",
+          "vomiting caused by increased intracranial pressure"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Visual field deficits",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "loss of part of the vision field",
+          "blind spots or missing areas in vision",
+          "partial vision loss"
+        ]
+      },
+      {
+        "symptomName": "Speech disturbances (aphasia or dysarthria)",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "difficulty speaking or slurred speech",
+          "language problems or speech impairment",
+          "aphasia or dysarthria symptoms"
+        ]
+      },
+      {
+        "symptomName": "Personality changes or behavioral disturbances",
+        "frequency": 0.25,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "changes in mood or behavior",
+          "personality shifts or unusual actions",
+          "behavioral disturbances or irritability"
+        ]
+      },
+      {
+        "symptomName": "Ataxia or coordination difficulties",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "poor balance and coordination problems",
+          "difficulty walking steadily",
+          "clumsiness and unsteady movements"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hydrocephalus due to tumor obstruction",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "brain fluid buildup from tumor blockage",
+          "hydrocephalus caused by tumor",
+          "water accumulation in brain due to tumor"
+        ]
+      },
+      {
+        "symptomName": "Endocrine dysfunction secondary to hypothalamic involvement",
+        "frequency": 0.03,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "hormone problems from hypothalamus tumor",
+          "endocrine dysfunction caused by brain lesion",
+          "hormonal imbalance from brain involvement"
+        ]
+      },
+      {
+        "symptomName": "Cranial nerve palsies",
+        "frequency": 0.07,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "weakness of cranial nerves",
+          "cranial nerve palsies causing facial or eye problems"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "gastrointestinal",
+    "ophthalmological",
+    "psychiatric",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated intracranial pressure on lumbar puncture (if performed)",
+      "No specific blood biomarkers"
+    ],
+    "imaging": [
+      "MRI showing heterogeneously enhancing mass with necrosis and peritumoral edema",
+      "Mass typically located in cerebral hemispheres, often temporal or frontal lobes"
+    ],
+    "genetic": [
+      "NFKBIA (biomarker)",
+      "MGMT (biomarker)",
+      "EGFR (fusion gene)",
+      "FGFR1 (fusion gene)",
+      "FGFR3 (fusion gene)",
+      "TP53 (biomarker)",
+      "TACC3 (fusion gene)",
+      "TACC1 (fusion gene)",
+      "PPARG (biomarker)",
+      "LZTR1 (somatic)",
+      "SEPTIN14 (fusion gene)",
+      "IDH1 (biomarker)"
+    ],
+    "other": [
+      "Histopathology demonstrating biphasic pattern with glial and sarcomatous components",
+      "Immunohistochemistry positive for GFAP and vimentin in respective tumor areas"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "glioblastoma-multiforme",
+      "distinguishingFeatures": [
+        "Lack of sarcomatous component on histology",
+        "More uniform glial tumor cells without biphasic pattern"
+      ]
+    },
+    {
+      "diseaseId": "primary-cerebral-sarcoma",
+      "distinguishingFeatures": [
+        "Absence of glial tumor component",
+        "Negative GFAP staining"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid neurological deterioration",
+    "New-onset seizures in adult",
+    "Signs of increased intracranial pressure (severe headache, vomiting, papilledema)"
+  ],
+  "specialistType": [
+    "Neuro-oncologist",
+    "Neuropathologist",
+    "Neurosurgeon",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Louis DN, et al. WHO Classification of Tumors of the Central Nervous System, 5th Edition, 2021.",
+    "Wesseling P, Capper D. WHO 2016 Classification of gliomas. Neuropathol Appl Neurobiol. 2018.",
+    "Orphanet: Gliosarcoma (ORPHA:251576)"
+  ],
+  "confidenceInData": "ai-generated"
+}

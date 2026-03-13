@@ -1,0 +1,256 @@
+{
+  "id": "genetic-digestive-tract-tumor",
+  "name": "Genetic Digestive Tract Tumor",
+  "aliases": [
+    "Hereditary Digestive Tract Neoplasm",
+    "Inherited Gastrointestinal Tumor Syndrome"
+  ],
+  "icd10Codes": [
+    "C48.0",
+    "C48.1",
+    "C48.2"
+  ],
+  "orphanetId": "ORPHA:271835",
+  "prevalence": {
+    "estimate": "1 in 200,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 70,
+      "peak": 40
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Genetic Digestive Tract Tumor Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "family-history",
+        "description": "Presence of first-degree relative with confirmed digestive tract tumor",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "genetic-mutation",
+        "description": "Identification of pathogenic germline mutation associated with digestive tract tumors",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "multiple-tumors",
+        "description": "Occurrence of multiple primary tumors within the digestive tract",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "early-onset",
+        "description": "Tumor onset before age 50",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of pathogenic germline mutation plus either family history or multiple primary tumors",
+    "notes": "Genetic testing is essential for confirmation; clinical presentation may vary."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Multiple synchronous gastrointestinal adenomas",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "multiple bowel polyps",
+          "many gastrointestinal adenomas",
+          "numerous digestive tract growths"
+        ]
+      },
+      {
+        "symptomName": "Familial clustering of digestive tract malignancies",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "family history of digestive cancers",
+          "hereditary digestive tract tumors",
+          "clustering of GI malignancies in family"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chronic abdominal pain localized to tumor site",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "chronic stomach pain at tumor site",
+          "persistent abdominal pain",
+          "long-term pain near tumor"
+        ]
+      },
+      {
+        "symptomName": "Unexplained weight loss",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "unexplained weight loss",
+          "losing weight without trying",
+          "unexpected weight reduction"
+        ]
+      },
+      {
+        "symptomName": "Occult gastrointestinal bleeding",
+        "frequency": 0.58,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "hidden blood loss in digestive tract",
+          "occult GI bleeding",
+          "unseen gastrointestinal bleeding"
+        ]
+      },
+      {
+        "symptomName": "Altered bowel habits including diarrhea or constipation",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "changes in bowel habits",
+          "diarrhea or constipation",
+          "altered stool patterns"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Anemia secondary to chronic blood loss",
+        "frequency": 0.4,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "low red blood cells from ongoing blood loss",
+          "anemia caused by chronic bleeding",
+          "blood loss anemia"
+        ]
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      },
+      {
+        "symptomName": "Abdominal distension",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Dysphagia if tumor involves esophagus",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "difficulty swallowing due to tumor",
+          "esophageal blockage symptoms",
+          "trouble eating from throat tumor"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Jaundice due to biliary obstruction",
+        "frequency": 0.08,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "yellow skin from bile blockage",
+          "jaundice caused by bile duct obstruction",
+          "skin and eye yellowing due to blocked bile"
+        ]
+      },
+      {
+        "symptomName": "Paraneoplastic dermatological manifestations",
+        "frequency": 0.05,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin problems related to cancer",
+          "paraneoplastic skin symptoms",
+          "dermatological signs from tumors"
+        ]
+      },
+      {
+        "symptomName": "Cachexia in advanced disease",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "severe weight loss",
+          "muscle wasting",
+          "extreme thinness in illness"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "constitutional",
+    "dermatological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Microcytic anemia on complete blood count",
+      "Elevated carcinoembryonic antigen (CEA) levels",
+      "Positive fecal occult blood test"
+    ],
+    "imaging": [
+      "Multiple polypoid lesions on endoscopic ultrasound",
+      "CT scan showing localized masses in digestive tract",
+      "MRI demonstrating tumor infiltration depth"
+    ],
+    "genetic": [
+      "Pathogenic germline mutations in genes such as APC, MUTYH, or mismatch repair genes",
+      "Loss of heterozygosity in tumor tissue",
+      "Microsatellite instability testing positive"
+    ],
+    "other": [
+      "Histopathological confirmation of adenocarcinoma or adenoma",
+      "Immunohistochemistry showing mismatch repair protein loss"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "sporadic-digestive-tract-tumor",
+      "distinguishingFeatures": [
+        "Lack of family history",
+        "Absence of germline mutations",
+        "Typically later onset age"
+      ]
+    },
+    {
+      "diseaseId": "inflammatory-bowel-disease-associated-cancer",
+      "distinguishingFeatures": [
+        "History of chronic inflammatory bowel disease",
+        "Presence of mucosal inflammation",
+        "Different genetic mutation profile"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression of gastrointestinal symptoms",
+    "Presence of multiple primary tumors in digestive tract",
+    "Positive family history of early-onset digestive tract cancers"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Medical Geneticist",
+    "Oncologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Orphanet: Genetic Digestive Tract Tumor (ORPHA:271835)",
+    "National Comprehensive Cancer Network Guidelines on Hereditary Gastrointestinal Cancers",
+    "Genetics in Medicine, 2023: Germline Mutations in Digestive Tract Tumors"
+  ],
+  "confidenceInData": "ai-generated"
+}

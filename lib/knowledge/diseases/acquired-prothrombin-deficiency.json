@@ -1,0 +1,221 @@
+{
+  "id": "acquired-prothrombin-deficiency",
+  "name": "Acquired Prothrombin Deficiency",
+  "aliases": [
+    "Acquired Factor II Deficiency",
+    "Acquired Hypoprothrombinemia"
+  ],
+  "icd10Codes": [
+    "D68.8"
+  ],
+  "orphanetId": "ORPHA:26348",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 50
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No formal standardized criteria",
+    "criteria": [
+      {
+        "id": "prolonged-pt-ptt",
+        "description": "Prolonged prothrombin time (PT) and activated partial thromboplastin time (aPTT) not corrected by mixing studies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "low-factor-ii-activity",
+        "description": "Markedly reduced plasma prothrombin (Factor II) activity levels",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "presence-of-inhibitors",
+        "description": "Detection of acquired inhibitors (autoantibodies) against prothrombin",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-bleeding",
+        "description": "Clinical evidence of bleeding disproportionate to other coagulation abnormalities",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of prolonged PT/aPTT not corrected by mixing studies, low Factor II activity, and detection of inhibitors against prothrombin",
+    "notes": "Diagnosis requires exclusion of congenital prothrombin deficiency and other causes of acquired coagulopathy."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Severe mucocutaneous bleeding",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Includes spontaneous bruising and bleeding from mucous membranes",
+        "searchTerms": [
+          "severe bleeding from skin and mucous membranes",
+          "heavy bleeding in mouth and skin",
+          "extensive mucocutaneous bleeding"
+        ]
+      },
+      {
+        "symptomName": "Prolonged bleeding after invasive procedures",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "long bleeding after medical procedures",
+          "prolonged post-procedure bleeding",
+          "excessive bleeding following invasive treatments"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Gastrointestinal hemorrhage",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hemarthrosis",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Epistaxis",
+        "frequency": 0.58,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Menorrhagia",
+        "frequency": 0.55,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Intracranial hemorrhage",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "May be life-threatening"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.25,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Petechiae",
+        "frequency": 0.2,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Fatigue secondary to anemia",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness due to low blood count",
+          "fatigue from anemia",
+          "weakness related to anemia"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Retroperitoneal hemorrhage",
+        "frequency": 0.07,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pulmonary hemorrhage",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemorrhagic shock",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "neurological",
+    "dermatological",
+    "renal",
+    "reproductive",
+    "otolaryngological",
+    "respiratory",
+    "cardiovascular",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Prolonged PT and aPTT not corrected by mixing studies",
+      "Low Factor II activity (<10%)",
+      "Presence of circulating prothrombin inhibitors (autoantibodies)",
+      "Normal platelet count and function"
+    ],
+    "imaging": [
+      "Imaging to identify bleeding sites (e.g., CT for intracranial hemorrhage, ultrasound for internal bleeding)"
+    ],
+    "genetic": [
+      "No known genetic mutations; acquired condition"
+    ],
+    "other": [
+      "History of underlying conditions such as autoimmune diseases, malignancies, or drug exposure"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "congenital-prothrombin-deficiency",
+      "distinguishingFeatures": [
+        "Congenital onset",
+        "Family history positive",
+        "No inhibitors detected"
+      ]
+    },
+    {
+      "diseaseId": "acquired-factor-viii-inhibitor",
+      "distinguishingFeatures": [
+        "Isolated prolonged aPTT",
+        "Low Factor VIII activity",
+        "Presence of Factor VIII inhibitors"
+      ]
+    },
+    {
+      "diseaseId": "vitamin-k-deficiency-coagulopathy",
+      "distinguishingFeatures": [
+        "History of malnutrition or malabsorption",
+        "Multiple vitamin K-dependent factors reduced",
+        "Correction with vitamin K administration"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset of severe bleeding without prior bleeding history",
+    "Prolonged PT and aPTT not corrected by mixing studies",
+    "Detection of prothrombin inhibitors"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Immunologist",
+    "Internal Medicine Specialist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Franchini M, Lippi G. Acquired inhibitors of coagulation factors: a review. Am J Hematol. 2008;83(4):288-297.",
+    "Orphanet: Acquired prothrombin deficiency - ORPHA:26348",
+    "Katz U, et al. Acquired factor II deficiency due to inhibitors: clinical and laboratory features. Haemophilia. 2012;18(3):e228-e232."
+  ],
+  "confidenceInData": "ai-generated"
+}

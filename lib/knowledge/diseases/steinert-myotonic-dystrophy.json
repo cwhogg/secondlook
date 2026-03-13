@@ -1,0 +1,944 @@
+{
+  "id": "steinert-myotonic-dystrophy",
+  "name": "Myotonic Dystrophy Type 1 (Steinert Disease)",
+  "aliases": [
+    "Steinert myotonic dystrophy",
+    "DM1",
+    "Dystrophia Myotonica"
+  ],
+  "icd10Codes": [
+    "G71.11"
+  ],
+  "omimId": "160900",
+  "orphanetId": "273",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 65,
+      "peak": 14
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "European descent",
+      "Mediterranean populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Clinical and Genetic Diagnostic Criteria for Myotonic Dystrophy Type 1",
+    "criteria": [
+      {
+        "id": "myotonia",
+        "description": "Presence of clinical myotonia demonstrated by delayed muscle relaxation after contraction",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "muscle-weakness",
+        "description": "Distal muscle weakness and atrophy, especially in hand and facial muscles",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ctg-repeat-expansion",
+        "description": "Detection of expanded CTG trinucleotide repeat in the DMPK gene by molecular genetic testing",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cataracts",
+        "description": "Early-onset posterior subcapsular cataracts",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "cardiac-conduction",
+        "description": "Cardiac conduction defects identified on ECG",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of clinical myotonia and muscle weakness combined with molecular confirmation of CTG repeat expansion in DMPK gene",
+    "notes": "Genetic testing is definitive; clinical features support diagnosis and guide management."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 1,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Excessive daytime somnolence",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "excessive daytime sleepiness",
+          "feeling very sleepy during the day",
+          "daytime drowsiness"
+        ]
+      },
+      {
+        "symptomName": "Distal muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness in farthest muscles",
+          "muscle weakness in hands or feet",
+          "distal limb muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Myotonia with warm-up phenomenon",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle stiffness that improves with activity",
+          "warm-up phenomenon in myotonia",
+          "stiffness lessens after repeated movement"
+        ]
+      },
+      {
+        "symptomName": "Posterior subcapsular cataract",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "cloudy spot under lens capsule back",
+          "posterior lens clouding",
+          "blurred vision from back lens capsule cataract"
+        ]
+      },
+      {
+        "symptomName": "Cardiac conduction abnormality",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart rhythm problems",
+          "abnormal heart electrical signals",
+          "irregular heartbeat conduction"
+        ]
+      },
+      {
+        "symptomName": "EMG: myotonic discharges",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "EMG detects myotonic muscle discharges",
+          "muscle electrical activity with myotonia"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Atrial fibrillation",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Prolonged QRS complex",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "widened QRS on ECG",
+          "prolonged heart electrical conduction",
+          "abnormal heart rhythm duration"
+        ]
+      },
+      {
+        "symptomName": "Poor fine motor coordination",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "poor hand coordination",
+          "difficulty with fine motor skills",
+          "trouble with precise hand movements"
+        ]
+      },
+      {
+        "symptomName": "Foot dorsiflexor weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "difficulty lifting foot upwards",
+          "weak foot dorsiflexion",
+          "foot drop weakness"
+        ]
+      },
+      {
+        "symptomName": "Prolonged PR interval",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "longer PR interval on ECG",
+          "delayed heart electrical signal",
+          "prolonged atrioventricular conduction"
+        ]
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigable weakness of bulbar muscles",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness in muscles controlling speech and swallowing",
+          "fatigue in throat muscles",
+          "bulbar muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Weakness of facial musculature",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "facial muscle weakness",
+          "weak face muscles",
+          "difficulty moving facial muscles"
+        ]
+      },
+      {
+        "symptomName": "Impairment in personality functioning",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "difficulty with personality functions",
+          "impaired social behavior",
+          "problems with personality skills"
+        ]
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypersomnia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of masticatory muscle",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "abnormal chewing muscle structure",
+          "masticatory muscle malformation"
+        ]
+      },
+      {
+        "symptomName": "Atypical behavior",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Gait disturbance",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal rapid eye movement sleep",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "unusual rapid eye movement during sleep",
+          "abnormal REM sleep patterns",
+          "disrupted rapid eye movement sleep"
+        ]
+      },
+      {
+        "symptomName": "Obstructive sleep apnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing stops during sleep",
+          "sleep breathing blockage",
+          "obstructive sleep pauses"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Male hypogonadism",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Testicular atrophy",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Decreased fertility",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Neck muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weak neck muscles",
+          "difficulty holding up head",
+          "neck muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Astigmatism",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hypermetropia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ophthalmoplegia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Emotional lability",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Depression",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Autistic behavior",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Short attention span",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "difficulty maintaining attention",
+          "short focus span",
+          "easily distracted"
+        ]
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Impotence",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypergonadotropic hypogonadism",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Diabetes mellitus",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Hyperinsulinemia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Insulin resistance",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Secondary hyperparathyroidism",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cholelithiasis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Intellectual disability, mild",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "mild intellectual disability",
+          "slight cognitive impairment",
+          "mild learning difficulties"
+        ]
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "delayed overall development",
+          "slow developmental milestones",
+          "global delay in growth and skills"
+        ]
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "learning difficulties",
+          "specific learning problems",
+          "difficulty with certain academic skills"
+        ]
+      },
+      {
+        "symptomName": "Facial diplegia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Bilateral ptosis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Decreased fetal movement",
+        "frequency": 0.17,
+        "bodySystem": "reproductive",
+        "searchTerms": [
+          "less movement in womb",
+          "reduced fetal activity",
+          "baby moves less before birth"
+        ]
+      },
+      {
+        "symptomName": "Polyhydramnios",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Alopecia",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Talipes equinovarus",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Constipation",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cerebral cortical atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "brain tissue shrinkage",
+          "loss of brain cortex",
+          "thinning of brain outer layer"
+        ]
+      },
+      {
+        "symptomName": "Early balding",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "unusual brain white matter shape",
+          "abnormal brain white matter structure",
+          "irregular white matter appearance"
+        ]
+      },
+      {
+        "symptomName": "Falls",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Respiratory insufficiency due to muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing problems from weak muscles",
+          "respiratory insufficiency due to muscle weakness",
+          "difficulty breathing caused by muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Elevated circulating hepatic transaminase concentration",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "high liver enzyme levels",
+          "elevated hepatic transaminases",
+          "increased liver function tests"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of thyroid physiology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "thyroid gland function problems",
+          "abnormal thyroid hormone levels",
+          "thyroid hormone imbalance"
+        ]
+      },
+      {
+        "symptomName": "Hypercholesterolemia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skeletal muscle atrophy",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle wasting",
+          "muscle loss",
+          "shrinking muscles"
+        ]
+      },
+      {
+        "symptomName": "Distal amyotrophy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Proximal muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness in upper arm and thigh muscles",
+          "proximal muscle weakness",
+          "difficulty lifting objects"
+        ]
+      },
+      {
+        "symptomName": "Neck flexor weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness bending neck forward",
+          "difficulty flexing neck muscles",
+          "neck flexor muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Intestinal pseudo-obstruction",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Supraventricular tachycardia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Respiratory failure requiring assisted ventilation",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing failure needing ventilator",
+          "respiratory support required",
+          "lung failure with assisted breathing"
+        ]
+      },
+      {
+        "symptomName": "Intellectual disability, borderline",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "borderline intellectual function",
+          "mild cognitive impairment",
+          "slightly reduced intelligence"
+        ]
+      },
+      {
+        "symptomName": "Reduced visual acuity",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "blurred vision",
+          "poor eyesight",
+          "difficulty seeing clearly"
+        ]
+      },
+      {
+        "symptomName": "Limited extraocular movements",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "limited eye movement",
+          "difficulty moving eyes fully",
+          "restricted eye motion"
+        ]
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "trouble feeding as baby",
+          "difficulty sucking or swallowing",
+          "infant feeding problems"
+        ]
+      },
+      {
+        "symptomName": "Diaphragmatic weakness",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Impaired visuospatial constructive cognition",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "difficulty with spatial tasks",
+          "trouble drawing or building shapes",
+          "problems with visual construction"
+        ]
+      },
+      {
+        "symptomName": "Tented upper lip vermilion",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "upper lip with pointed shape",
+          "arched upper lip edge",
+          "curved upper lip border"
+        ]
+      },
+      {
+        "symptomName": "Mild fetal ventriculomegaly",
+        "frequency": 0.17,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "slightly enlarged brain ventricles before birth",
+          "mild fluid buildup in fetal brain",
+          "fetal brain ventricle enlargement",
+          "prenatal brain fluid increase"
+        ]
+      },
+      {
+        "symptomName": "Nasogastric tube feeding in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "feeding tube in baby",
+          "nasogastric feeding as infant",
+          "tube feeding through nose in infancy"
+        ]
+      },
+      {
+        "symptomName": "Paranoia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Handgrip myotonia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Myotonia of the jaw",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "jaw muscle stiffness",
+          "difficulty relaxing jaw muscles",
+          "tight jaw muscles"
+        ]
+      },
+      {
+        "symptomName": "Myotonia of the upper limb",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "delayed muscle relaxation in arms",
+          "upper limb muscle stiffness",
+          "myotonia affecting arms"
+        ]
+      },
+      {
+        "symptomName": "Left ventricular systolic dysfunction",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "weak left heart pumping",
+          "left ventricular systolic failure",
+          "reduced heart contraction strength"
+        ]
+      },
+      {
+        "symptomName": "Decreased serum testosterone concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "low male hormone levels",
+          "decreased testosterone in blood",
+          "reduced male sex hormone"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the tongue muscle",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "tongue muscle weakness",
+          "abnormal tongue movement",
+          "tongue muscle problems"
+        ]
+      },
+      {
+        "symptomName": "Oral-pharyngeal dysphagia",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Autism",
+        "frequency": 0.03,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Aggressive behavior",
+        "frequency": 0.03,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Decreased response to growth hormone stimulation test",
+        "frequency": 0.03,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "poor growth hormone response",
+          "low stimulation test result for growth hormone",
+          "decreased GH secretion test"
+        ]
+      },
+      {
+        "symptomName": "Dilated cardiomyopathy",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Inability to walk",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "unable to walk",
+          "loss of walking ability",
+          "cannot stand or walk"
+        ]
+      },
+      {
+        "symptomName": "Colon cancer",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Peripheral axonal neuropathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "nerve damage affecting limbs",
+          "peripheral nerve loss",
+          "axon neuropathy in limbs"
+        ]
+      },
+      {
+        "symptomName": "Shoulder girdle muscle weakness",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weak shoulder muscles",
+          "shoulder muscle loss",
+          "difficulty lifting arms"
+        ]
+      },
+      {
+        "symptomName": "Pelvic girdle muscle weakness",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness in pelvic muscles",
+          "trouble lifting legs or hips",
+          "muscle weakness around pelvis"
+        ]
+      },
+      {
+        "symptomName": "Neoplasm of the skin",
+        "frequency": 0.03,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin tumor or growth",
+          "skin lump or mass",
+          "abnormal skin growth"
+        ]
+      },
+      {
+        "symptomName": "Obsessive-compulsive trait",
+        "frequency": 0.03,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Choroidal melanoma",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Endometrial carcinoma",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ovarian carcinoma",
+        "frequency": 0.03,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Brain neoplasm",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Non-medullary thyroid carcinoma",
+        "frequency": 0.03,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "thyroid cancer not from medulla",
+          "non-papillary thyroid tumor",
+          "thyroid gland malignant tumor"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "cardiovascular",
+    "constitutional",
+    "neurological",
+    "endocrine",
+    "ophthalmological",
+    "psychiatric",
+    "respiratory",
+    "reproductive",
+    "dermatological",
+    "gastrointestinal",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum creatine kinase (mild to moderate)",
+      "Abnormal glucose tolerance tests",
+      "Hormonal assays showing hypogonadism"
+    ],
+    "imaging": [
+      "Muscle MRI showing fatty infiltration and atrophy",
+      "Echocardiogram may show conduction abnormalities or cardiomyopathy"
+    ],
+    "genetic": [
+      "Expanded CTG trinucleotide repeat in DMPK gene detected by PCR or Southern blot",
+      "Repeat length correlates with disease severity and anticipation",
+      "Autosomal dominant inheritance"
+    ],
+    "other": [
+      "Electromyography demonstrating myotonic discharges",
+      "ECG showing conduction defects such as AV block"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "myotonic-dystrophy-type-2",
+      "distinguishingFeatures": [
+        "Proximal muscle weakness predominates",
+        "CCTG repeat expansion in CNBP gene",
+        "Later onset and milder phenotype"
+      ]
+    },
+    {
+      "diseaseId": "congenital-myotonia",
+      "distinguishingFeatures": [
+        "Absence of CTG repeat expansion",
+        "Non-progressive myotonia",
+        "Normal cardiac and systemic involvement"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Progressive cardiac conduction block with syncope",
+    "Respiratory failure due to diaphragmatic weakness",
+    "Severe dysphagia with risk of aspiration pneumonia"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Cardiologist",
+    "Geneticist",
+    "Ophthalmologist",
+    "Endocrinologist",
+    "Pulmonologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Harper PS. Myotonic Dystrophy. 3rd ed. Saunders; 2001.",
+    "Udd B, Krahe R. The myotonic dystrophies: molecular, clinical, and therapeutic challenges. Lancet Neurol. 2012;11(10):891-905.",
+    "Orphanet Report Series: Myotonic Dystrophy Type 1. Orphanet; 2023."
+  ],
+  "confidenceInData": "medium"
+}

@@ -221,21 +221,31 @@ function computeSymptomScoreSemantic(
     symptom: SymptomFrequency;
     weight: number;
     tier: string;
-    embedding: EmbeddingVector | null;
+    embeddings: EmbeddingVector[]; // symptomName + searchTerms embeddings
   }> = [];
 
   for (const [tier, weight] of Object.entries(TIER_WEIGHTS)) {
     const tierSymptoms = disease.symptoms[tier as keyof typeof disease.symptoms] || [];
     for (const s of tierSymptoms) {
-      // Find the matching embedding entry and read its vector from binary
-      const embEntry = diseaseEmbeddings.find(
-        (e) => e.symptomName === s.symptomName && e.tier === tier
-      );
+      // Collect all embedding entries for this symptom: symptomName + searchTerms
+      const textsToMatch = [s.symptomName];
+      if (s.searchTerms) textsToMatch.push(...s.searchTerms);
+
+      const embeddings: EmbeddingVector[] = [];
+      for (const text of textsToMatch) {
+        const embEntry = diseaseEmbeddings.find(
+          (e) => e.symptomName === text && e.tier === tier
+        );
+        if (embEntry != null) {
+          embeddings.push(getVector(index, embEntry.vectorIndex));
+        }
+      }
+
       allDiseaseSymptoms.push({
         symptom: s,
         weight,
         tier,
-        embedding: embEntry != null ? getVector(index, embEntry.vectorIndex) : null,
+        embeddings,
       });
       totalWeight += weight;
     }
@@ -256,7 +266,7 @@ function computeSymptomScoreSemantic(
     for (let dIdx = 0; dIdx < allDiseaseSymptoms.length; dIdx++) {
       if (usedDiseaseSymptoms.has(dIdx)) continue;
 
-      const { symptom: diseaseSymptom, embedding: diseaseEmbedding } = allDiseaseSymptoms[dIdx];
+      const { symptom: diseaseSymptom, embeddings: diseaseEmbeddings2 } = allDiseaseSymptoms[dIdx];
 
       // First try string matching (cheap, handles exact matches well)
       const stringMatch = matchSymptomTermsString(patientTerms, diseaseSymptom);
@@ -267,13 +277,13 @@ function computeSymptomScoreSemantic(
         break; // Can't do better than exact
       }
 
-      // Then try semantic matching via embeddings
-      if (diseaseEmbedding) {
+      // Then try semantic matching via embeddings (all embeddings for this symptom)
+      for (const diseaseEmb of diseaseEmbeddings2) {
         for (const term of patientTerms) {
           const patientEmb = patientEmbeddings.get(term);
           if (!patientEmb) continue;
 
-          const similarity = cosineSimilarity(patientEmb, diseaseEmbedding);
+          const similarity = cosineSimilarity(patientEmb, diseaseEmb);
           if (similarity > bestSimilarity) {
             bestSimilarity = similarity;
             bestMatchIdx = dIdx;
@@ -380,25 +390,40 @@ function getSearchTerms(symptom: MappedSymptom): string[] {
 
 /**
  * String-based symptom matching (used as fallback and for exact match detection).
+ * Checks both symptomName and searchTerms for the best match.
  */
 function matchSymptomTermsString(
   patientTerms: string[],
   diseaseSymptom: SymptomFrequency
 ): 'exact' | 'partial' | 'semantic' | null {
-  const diseaseName = diseaseSymptom.symptomName.toLowerCase();
-  const diseaseWords = new Set(diseaseName.split(/\s+/));
-
-  for (const term of patientTerms) {
-    if (term === diseaseName) return 'exact';
-    if (term.includes(diseaseName) || diseaseName.includes(term)) return 'partial';
-
-    const termWords = new Set(term.split(/\s+/));
-    const overlap = [...termWords].filter((w) => diseaseWords.has(w)).length;
-    const overlapRatio = overlap / Math.max(diseaseWords.size, 1);
-    if (overlapRatio >= 0.5 && overlap >= 1) return 'semantic';
+  // Build list of disease terms to match against: symptomName + searchTerms
+  const diseaseTerms = [diseaseSymptom.symptomName];
+  if (diseaseSymptom.searchTerms) {
+    diseaseTerms.push(...diseaseSymptom.searchTerms);
   }
 
-  return null;
+  let bestMatch: 'exact' | 'partial' | 'semantic' | null = null;
+
+  for (const diseaseTerm of diseaseTerms) {
+    const diseaseNameLower = diseaseTerm.toLowerCase();
+    const diseaseWords = new Set(diseaseNameLower.split(/\s+/));
+
+    for (const term of patientTerms) {
+      if (term === diseaseNameLower) return 'exact'; // Can't beat exact
+      if (term.includes(diseaseNameLower) || diseaseNameLower.includes(term)) {
+        if (!bestMatch || bestMatch === 'semantic') bestMatch = 'partial';
+      }
+
+      const termWords = new Set(term.split(/\s+/));
+      const overlap = [...termWords].filter((w) => diseaseWords.has(w)).length;
+      const overlapRatio = overlap / Math.max(diseaseWords.size, 1);
+      if (overlapRatio >= 0.5 && overlap >= 1) {
+        if (!bestMatch) bestMatch = 'semantic';
+      }
+    }
+  }
+
+  return bestMatch;
 }
 
 function computeSystemOverlap(disease: DiseaseProfile, symptoms: MappedSymptom[]): BodySystem[] {

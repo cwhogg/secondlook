@@ -1,0 +1,233 @@
+{
+  "id": "sporadic-human-prion-disease",
+  "name": "Sporadic Human Prion Disease",
+  "aliases": [
+    "Sporadic Creutzfeldt-Jakob Disease",
+    "sCJD"
+  ],
+  "icd10Codes": [
+    "A81.0"
+  ],
+  "orphanetId": "ORPHA:576356",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 45,
+      "max": 75,
+      "peak": 65
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "World Health Organization Diagnostic Criteria for Sporadic Creutzfeldt-Jakob Disease",
+    "criteria": [
+      {
+        "id": "rapid-progressive-dementia",
+        "description": "Rapidly progressive dementia with cognitive decline",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "myoclonus",
+        "description": "Myoclonus or other movement disorders",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "eeg-periodic-sharp-waves",
+        "description": "Periodic sharp wave complexes on EEG",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "positive-14-3-3-protein",
+        "description": "Detection of 14-3-3 protein in cerebrospinal fluid",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "brain-mri",
+        "description": "MRI showing hyperintensity in caudate nucleus and putamen or cortical ribboning",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Rapidly progressive dementia plus at least one major or two supportive criteria",
+    "notes": "Definitive diagnosis requires neuropathological confirmation post-mortem"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Rapidly progressive dementia",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "rapidly worsening memory loss",
+          "quickly progressing dementia symptoms",
+          "fast cognitive decline"
+        ]
+      },
+      {
+        "symptomName": "Myoclonus",
+        "frequency": 0.85,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Periodic sharp wave complexes on EEG",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Electroencephalographic finding",
+        "searchTerms": [
+          "sharp wave patterns on brain EEG",
+          "periodic brain electrical discharges",
+          "EEG showing periodic sharp waves"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Visual disturbances including cortical blindness",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "vision problems including cortical blindness",
+          "loss of sight due to brain issues",
+          "visual disturbances from brain dysfunction"
+        ]
+      },
+      {
+        "symptomName": "Extrapyramidal symptoms (rigidity, bradykinesia)",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "movement problems like stiffness and slow motion",
+          "rigidity and slow movements",
+          "extrapyramidal motor symptoms"
+        ]
+      },
+      {
+        "symptomName": "Akinetic mutism",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Pyramidal signs",
+        "frequency": 0.4,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Sleep disturbances",
+        "frequency": 0.3,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Mood changes including depression and anxiety",
+        "frequency": 0.25,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "feeling depressed",
+          "anxiety symptoms",
+          "mood swings",
+          "emotional changes"
+        ]
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.15,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Autonomic dysfunction",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cerebellar tremor",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological",
+    "psychiatric"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Presence of 14-3-3 protein in cerebrospinal fluid",
+      "Elevated tau protein in CSF"
+    ],
+    "imaging": [
+      "MRI with diffusion-weighted imaging showing hyperintensity in basal ganglia and cortical ribboning",
+      "Periodic sharp wave complexes on EEG"
+    ],
+    "genetic": [
+      "No consistent genetic mutations; PRNP gene polymorphisms may influence susceptibility"
+    ],
+    "other": [
+      "Definitive diagnosis by brain biopsy or autopsy showing spongiform changes and prion protein deposition"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "alzheimer-disease",
+      "distinguishingFeatures": [
+        "Slower progression of dementia",
+        "Absence of myoclonus and periodic sharp waves on EEG",
+        "MRI shows hippocampal atrophy rather than basal ganglia involvement"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-encephalitis",
+      "distinguishingFeatures": [
+        "Presence of autoantibodies",
+        "Response to immunotherapy",
+        "MRI shows inflammatory changes rather than spongiform degeneration"
+      ]
+    },
+    {
+      "diseaseId": "paraneoplastic-neurological-syndrome",
+      "distinguishingFeatures": [
+        "Associated with underlying malignancy",
+        "Presence of paraneoplastic antibodies",
+        "Variable clinical presentation with subacute onset"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive cognitive decline over weeks to months",
+    "Myoclonus or sudden jerky movements",
+    "Characteristic MRI and EEG findings suggestive of prion disease"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neuropsychiatrist",
+    "Infectious disease specialist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "World Health Organization. Diagnostic criteria for sporadic Creutzfeldt-Jakob disease. WHO Bulletin, 1998.",
+    "Zerr I, et al. Updated clinical diagnostic criteria for sporadic Creutzfeldt-Jakob disease. Brain, 2009.",
+    "Parchi P, et al. Classification of sporadic Creutzfeldt-Jakob disease based on molecular and phenotypic analysis. Ann Neurol, 1999."
+  ],
+  "confidenceInData": "ai-generated"
+}

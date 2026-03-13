@@ -1,0 +1,290 @@
+{
+  "id": "tuberculosis",
+  "name": "Tuberculosis",
+  "aliases": [
+    "TB",
+    "Mycobacterium tuberculosis infection",
+    "Phthisis"
+  ],
+  "icd10Codes": [
+    "A15",
+    "A16"
+  ],
+  "orphanetId": "ORPHA:3389",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Higher prevalence in sub-Saharan African, South Asian, and Southeast Asian populations"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Tuberculosis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "microbiological-confirmation",
+        "description": "Detection of Mycobacterium tuberculosis complex by culture or nucleic acid amplification test (NAAT) from clinical specimen",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Presence of clinical symptoms consistent with tuberculosis such as chronic cough, hemoptysis, night sweats, and weight loss",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "radiological-evidence",
+        "description": "Chest X-ray or CT scan showing typical findings such as upper lobe infiltrates, cavitation, or miliary pattern",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "tuberculin-skin-test",
+        "description": "Positive Mantoux test or interferon-gamma release assay (IGRA) supportive of latent or active infection",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "At least microbiological confirmation or a combination of clinical features and radiological evidence consistent with tuberculosis",
+    "notes": "Diagnosis may be challenging in extrapulmonary TB and immunocompromised patients; microbiological confirmation is gold standard."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Chronic productive cough lasting more than 3 weeks",
+        "frequency": 0.85,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "long-lasting cough with mucus",
+          "productive cough over 3 weeks",
+          "chronic wet cough"
+        ]
+      },
+      {
+        "symptomName": "Hemoptysis (coughing up blood)",
+        "frequency": 0.75,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "coughing up blood",
+          "blood in sputum",
+          "hemorrhagic cough"
+        ]
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Unintentional weight loss",
+        "frequency": 0.75,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "unplanned weight loss",
+          "losing weight without trying",
+          "involuntary weight reduction"
+        ]
+      },
+      {
+        "symptomName": "Fever, often low-grade and intermittent",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "fever that is low-grade and comes and goes",
+          "intermittent mild fever"
+        ]
+      },
+      {
+        "symptomName": "Fatigue and malaise",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "extreme tiredness",
+          "general feeling of unwellness",
+          "lack of energy and malaise"
+        ]
+      },
+      {
+        "symptomName": "Chest pain, pleuritic in nature",
+        "frequency": 0.55,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "sharp chest pain worsened by breathing",
+          "pain on deep breaths",
+          "pleuritic chest discomfort"
+        ]
+      },
+      {
+        "symptomName": "Lymphadenopathy, especially cervical",
+        "frequency": 0.5,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "swollen lymph nodes in neck",
+          "cervical lymph node enlargement",
+          "neck lymph swelling"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Dyspnea (shortness of breath)",
+        "frequency": 0.4,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "shortness of breath",
+          "difficulty breathing",
+          "feeling breathless"
+        ]
+      },
+      {
+        "symptomName": "Anorexia",
+        "frequency": 0.35,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Night-time chills",
+        "frequency": 0.3,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain (in extrapulmonary TB)",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "belly pain from abdominal TB",
+          "abdominal discomfort with TB",
+          "stomach pain due to infection"
+        ]
+      },
+      {
+        "symptomName": "Neurological deficits (in tuberculous meningitis)",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "neurological problems from TB meningitis",
+          "brain and nerve symptoms in TB",
+          "TB-related nervous system deficits"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pericardial effusion with cardiac tamponade",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "fluid around heart causing pressure",
+          "pericardial fluid buildup with tamponade",
+          "heart compression from fluid"
+        ]
+      },
+      {
+        "symptomName": "Cutaneous tuberculosis lesions",
+        "frequency": 0.03,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin tuberculosis lesions",
+          "cutaneous TB skin sores",
+          "tuberculous skin nodules"
+        ]
+      },
+      {
+        "symptomName": "Ocular tuberculosis manifestations (uveitis, choroiditis)",
+        "frequency": 0.02,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "eye inflammation from TB",
+          "uveitis or choroiditis symptoms",
+          "ocular TB signs"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "constitutional",
+    "immunological",
+    "neurological",
+    "gastrointestinal",
+    "cardiovascular",
+    "dermatological",
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive acid-fast bacilli (AFB) smear microscopy",
+      "Culture growth of Mycobacterium tuberculosis",
+      "Positive nucleic acid amplification test (NAAT)",
+      "Elevated erythrocyte sedimentation rate (ESR) and C-reactive protein (CRP)"
+    ],
+    "imaging": [
+      "Chest X-ray showing upper lobe infiltrates, cavitary lesions, or miliary pattern",
+      "CT scan of chest for detailed pulmonary and mediastinal assessment",
+      "MRI brain in suspected tuberculous meningitis"
+    ],
+    "genetic": [
+      "SLC11A1 (susceptibility)"
+    ],
+    "other": [
+      "Positive tuberculin skin test (Mantoux) or interferon-gamma release assay (IGRA)",
+      "Histopathological evidence of caseating granulomas in biopsy specimens"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "lung-cancer",
+      "distinguishingFeatures": [
+        "Rapidly progressive mass lesion on imaging",
+        "Absence of acid-fast bacilli in sputum",
+        "No systemic symptoms like night sweats"
+      ]
+    },
+    {
+      "diseaseId": "sarcoidosis",
+      "distinguishingFeatures": [
+        "Non-caseating granulomas on biopsy",
+        "Bilateral hilar lymphadenopathy without cavitation",
+        "Negative microbiological tests for Mycobacterium tuberculosis"
+      ]
+    },
+    {
+      "diseaseId": "bacterial-pneumonia",
+      "distinguishingFeatures": [
+        "Acute onset with high fever",
+        "Positive bacterial cultures other than Mycobacterium tuberculosis",
+        "Rapid response to antibiotics"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Hemoptysis with large volume bleeding",
+    "Progressive neurological deficits indicating tuberculous meningitis",
+    "Signs of disseminated or miliary tuberculosis (e.g., multi-organ involvement)"
+  ],
+  "specialistType": [
+    "Infectious disease specialist",
+    "Pulmonologist",
+    "Neurologist",
+    "Radiologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "World Health Organization. Global Tuberculosis Report 2023.",
+    "Centers for Disease Control and Prevention. Tuberculosis (TB) Fact Sheet.",
+    "Murray PR, Rosenthal KS, Pfaller MA. Medical Microbiology. 9th Edition. 2020."
+  ],
+  "confidenceInData": "ai-generated"
+}

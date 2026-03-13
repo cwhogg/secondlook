@@ -1,0 +1,574 @@
+{
+  "id": "cushing-disease",
+  "name": "Cushing Disease",
+  "aliases": [
+    "Pituitary Cushing Syndrome",
+    "ACTH-dependent Cushing Syndrome"
+  ],
+  "icd10Codes": [
+    "E24.0"
+  ],
+  "omimId": "218000",
+  "orphanetId": "ORPHA:96253",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Endocrine Society Clinical Practice Guideline for Cushing Syndrome",
+    "criteria": [
+      {
+        "id": "hypercortisolism-confirmation",
+        "description": "Elevated 24-hour urinary free cortisol or elevated late-night salivary cortisol",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "lack-of-cortisol-suppression",
+        "description": "Failure to suppress serum cortisol after low-dose dexamethasone suppression test",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "elevated-acth",
+        "description": "Inappropriately normal or elevated plasma ACTH indicating ACTH-dependent hypercortisolism",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pituitary-mri",
+        "description": "Detection of pituitary adenoma on MRI",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "inferior-petrosal-sinus-sampling",
+        "description": "Central to peripheral ACTH gradient confirming pituitary source",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of biochemical evidence of hypercortisolism with elevated or inappropriately normal ACTH levels consistent with ACTH-dependent Cushing syndrome, plus pituitary source confirmation by imaging or inferior petrosal sinus sampling",
+    "notes": "Diagnosis requires exclusion of ectopic ACTH secretion and adrenal causes"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Increased circulating cortisol level",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high cortisol levels in blood",
+          "excess cortisol hormone",
+          "increased stress hormone"
+        ]
+      },
+      {
+        "symptomName": "Paradoxical increased cortisol secretion on dexamethasone suppression test",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "cortisol increases despite dexamethasone",
+          "paradoxical cortisol rise on suppression test",
+          "unexpected cortisol secretion pattern"
+        ]
+      },
+      {
+        "symptomName": "Pituitary corticotropic cell adenoma",
+        "frequency": 0.9,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "pituitary gland tumor producing cortisol",
+          "cortisol-secreting pituitary growth",
+          "pituitary adenoma causing hormone excess"
+        ]
+      },
+      {
+        "symptomName": "Increased urinary cortisol level",
+        "frequency": 0.9,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "high cortisol in urine",
+          "increased urinary cortisol excretion",
+          "excess cortisol elimination in urine"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Osteoporosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hyperpigmentation of the skin",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "dark patches on skin",
+          "skin hyperpigmentation",
+          "areas of increased skin color"
+        ]
+      },
+      {
+        "symptomName": "Thin skin",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Bruising susceptibility",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hirsutism",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Plethora",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Poor wound healing",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "slow or poor healing of wounds",
+          "wounds that heal poorly",
+          "delayed skin healing"
+        ]
+      },
+      {
+        "symptomName": "Acne",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Striae distensae",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of the cardiovascular system",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart and blood vessel abnormalities",
+          "cardiovascular system problems",
+          "heart and vessel malformations"
+        ]
+      },
+      {
+        "symptomName": "Lymphopenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Truncal obesity",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Leukocytosis",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Immunodeficiency",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Increased circulating ACTH level",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high ACTH hormone",
+          "increased adrenal stimulating hormone",
+          "elevated adrenocorticotropic hormone"
+        ]
+      },
+      {
+        "symptomName": "Increased body weight",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "weight gain",
+          "increased body mass",
+          "excessive body weight"
+        ]
+      },
+      {
+        "symptomName": "Proximal amyotrophy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Adrenal hyperplasia",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Intra-oral hyperpigmentation",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Abdominal obesity",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Capillary fragility",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dorsocervical fat pad",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "fat buildup on upper back",
+          "fatty hump between shoulders",
+          "buffalo hump on neck"
+        ]
+      },
+      {
+        "symptomName": "Amenorrhea",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Atypical behavior",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Emotional lability",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Diabetes mellitus",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Decreased eosinophil count",
+        "frequency": 0.55,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "low eosinophil white blood cells",
+          "decreased allergy-fighting cells",
+          "reduced eosinophil count"
+        ]
+      },
+      {
+        "symptomName": "Impaired glucose tolerance",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "borderline high blood sugar",
+          "impaired sugar metabolism",
+          "pre-diabetes"
+        ]
+      },
+      {
+        "symptomName": "Moon facies",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatiguable weakness of proximal limb muscles",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weakness in upper arms and thighs that worsens with use",
+          "muscle tiredness in shoulders and hips",
+          "proximal muscle weakness that gets worse with activity"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Depression",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Psychotic episodes",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Secondary amenorrhea",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Oligomenorrhea",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Purpura",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myocardial infarction",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormality of the respiratory system",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing system abnormality",
+          "lung or airway problems",
+          "respiratory system defects"
+        ]
+      },
+      {
+        "symptomName": "Sparse scalp hair",
+        "frequency": 0.17,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "thin scalp hair",
+          "sparse hair on head",
+          "less hair density on scalp"
+        ]
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Memory impairment",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Large sella turcica",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "enlarged pituitary fossa",
+          "big sella turcica bone",
+          "large depression in skull base"
+        ]
+      },
+      {
+        "symptomName": "Vertebral compression fracture",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "collapsed vertebra",
+          "spinal bone compression fracture",
+          "fractured vertebral body"
+        ]
+      },
+      {
+        "symptomName": "Recurrent cutaneous fungal infections",
+        "frequency": 0.17,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "repeated skin fungal infections",
+          "chronic fungal skin problems",
+          "frequent fungal rashes"
+        ]
+      },
+      {
+        "symptomName": "Flushing",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ecchymosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Suicidal ideation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal libido",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "changes in sexual desire",
+          "low or high sex drive",
+          "abnormal libido levels"
+        ]
+      },
+      {
+        "symptomName": "Livedo reticularis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skin ulcer",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Psychosis",
+        "frequency": 0.03,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Dementia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Visual field defect",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "loss of part of visual field",
+          "blind spots in vision",
+          "visual field defect or gap"
+        ]
+      },
+      {
+        "symptomName": "Optic nerve compression",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "pressure on optic nerve",
+          "optic nerve squeezing",
+          "optic nerve being compressed"
+        ]
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Avascular necrosis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Paranoia",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Panic attack",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "dermatological",
+    "constitutional",
+    "cardiovascular",
+    "endocrine",
+    "hematological",
+    "immunological",
+    "gastrointestinal",
+    "renal",
+    "psychiatric",
+    "respiratory",
+    "neurological",
+    "ophthalmological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated 24-hour urinary free cortisol",
+      "Elevated late-night salivary cortisol",
+      "Failure to suppress cortisol on low-dose dexamethasone test",
+      "Elevated or inappropriately normal plasma ACTH",
+      "Hypokalemia in some cases"
+    ],
+    "imaging": [
+      "Pituitary MRI showing microadenoma or macroadenoma",
+      "Inferior petrosal sinus sampling demonstrating central ACTH gradient"
+    ],
+    "genetic": [
+      "CDH23 (susceptibility)",
+      "USP48 (somatic)",
+      "BRAF (somatic)",
+      "USP8 (somatic)",
+      "NR3C1 (somatic)",
+      "TP53 (somatic)",
+      "ATRX (somatic)"
+    ],
+    "other": [
+      "Histopathology confirming ACTH-secreting pituitary adenoma after surgery"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "ectopic-acth-syndrome",
+      "distinguishingFeatures": [
+        "High ACTH with no pituitary adenoma on MRI",
+        "No central to peripheral ACTH gradient on inferior petrosal sinus sampling",
+        "Presence of ectopic ACTH-secreting tumor"
+      ]
+    },
+    {
+      "diseaseId": "adrenal-cushing-syndrome",
+      "distinguishingFeatures": [
+        "Low ACTH levels",
+        "Adrenal mass on imaging",
+        "Cortisol secretion independent of ACTH"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid onset of severe hypercortisolism symptoms",
+    "Visual field defects indicating pituitary macroadenoma",
+    "Severe hypokalemia refractory to treatment"
+  ],
+  "specialistType": [
+    "Endocrinologist",
+    "Neurosurgeon",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Nieman LK, et al. The diagnosis of Cushing's syndrome: an Endocrine Society Clinical Practice Guideline. J Clin Endocrinol Metab. 2008.",
+    "Lacroix A, et al. Cushing's syndrome. Lancet. 2015.",
+    "Newell-Price J, et al. Cushing's syndrome. Lancet. 2006."
+  ],
+  "confidenceInData": "medium"
+}

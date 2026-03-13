@@ -1,0 +1,233 @@
+{
+  "id": "pilocytic-astrocytoma",
+  "name": "Pilocytic Astrocytoma",
+  "aliases": [
+    "Juvenile Pilocytic Astrocytoma",
+    "Grade I Astrocytoma"
+  ],
+  "icd10Codes": [
+    "D43.0"
+  ],
+  "orphanetId": "ORPHA:251612",
+  "prevalence": {
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of the Central Nervous System (2021)",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Presence of biphasic pattern with compacted bipolar cells and loose microcystic areas",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "rosenthal-fibers",
+        "description": "Identification of Rosenthal fibers on histological examination",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "radiologic-features",
+        "description": "MRI showing cystic lesion with an enhancing mural nodule, typically in cerebellum or optic pathways",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "molecular-markers",
+        "description": "Presence of KIAA1549-BRAF fusion or BRAF V600E mutation (supportive)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation with characteristic biphasic pattern and Rosenthal fibers, supported by typical MRI findings",
+    "notes": "Molecular testing for BRAF alterations can aid diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive cerebellar ataxia",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Common in cerebellar tumors",
+        "searchTerms": [
+          "progressive loss of coordination",
+          "cerebellar ataxia worsening over time"
+        ]
+      },
+      {
+        "symptomName": "Visual field defects due to optic pathway involvement",
+        "frequency": 0.75,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "blind spots from optic nerve damage",
+          "visual field loss due to nerve involvement",
+          "partial vision loss"
+        ]
+      },
+      {
+        "symptomName": "Headache with signs of increased intracranial pressure",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "headache with high brain pressure signs",
+          "headache from increased intracranial pressure",
+          "pressure-related headache"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Nausea and vomiting secondary to raised intracranial pressure",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "vomiting from high brain pressure",
+          "nausea due to brain swelling",
+          "vomiting caused by increased intracranial pressure"
+        ]
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Diplopia",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Focal neurological deficits (e.g., hemiparesis)",
+        "frequency": 0.5,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "weakness on one side of body",
+          "localized nerve deficits",
+          "partial paralysis or numbness"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Endocrine dysfunction (e.g., precocious puberty) in hypothalamic tumors",
+        "frequency": 0.3,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "early puberty symptoms",
+          "hormone imbalance from brain tumor",
+          "abnormal hormone levels causing early sexual development"
+        ]
+      },
+      {
+        "symptomName": "Cranial nerve palsies",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "weakness of cranial nerves",
+          "cranial nerve palsies causing facial or eye problems"
+        ]
+      },
+      {
+        "symptomName": "Ataxic gait",
+        "frequency": 0.4,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hydrocephalus-related symptoms",
+        "frequency": 0.35,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Behavioral changes or cognitive impairment",
+        "frequency": 0.08,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "changes in behavior",
+          "memory problems",
+          "difficulty thinking clearly"
+        ]
+      },
+      {
+        "symptomName": "Hypothalamic obesity",
+        "frequency": 0.05,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Papilledema",
+        "frequency": 0.07,
+        "bodySystem": "ophthalmological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological",
+    "endocrine",
+    "gastrointestinal",
+    "psychiatric"
+  ],
+  "keyFindings": {
+    "laboratory": [],
+    "imaging": [
+      "MRI showing cystic lesion with enhancing mural nodule, often in cerebellum or optic pathways",
+      "Mass effect with possible hydrocephalus"
+    ],
+    "genetic": [
+      "KIAA1549-BRAF gene fusion",
+      "BRAF V600E mutation (less common)"
+    ],
+    "other": [
+      "Histopathology demonstrating biphasic pattern and Rosenthal fibers"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pilomyxoid-astrocytoma",
+      "distinguishingFeatures": [
+        "More aggressive clinical course",
+        "Monomorphous piloid cells without Rosenthal fibers",
+        "Typically lacks cystic component"
+      ]
+    },
+    {
+      "diseaseId": "diffuse-infiltrating-astrocytoma",
+      "distinguishingFeatures": [
+        "Diffuse infiltration without well-demarcated cystic nodule",
+        "Higher grade histology",
+        "Absence of biphasic pattern and Rosenthal fibers"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid neurological deterioration",
+    "Signs of increased intracranial pressure (severe headache, vomiting, papilledema)",
+    "New onset seizures or focal neurological deficits"
+  ],
+  "specialistType": [
+    "Neuro-oncologist",
+    "Neurologist",
+    "Neurosurgeon",
+    "Pediatric Oncologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Louis DN, et al. WHO Classification of Tumors of the Central Nervous System, 5th Edition, 2021.",
+    "Orphanet: Pilocytic Astrocytoma. ORPHA:251612.",
+    "Louis DN, et al. The 2016 World Health Organization Classification of Tumors of the Central Nervous System: a summary. Acta Neuropathol. 2016."
+  ],
+  "confidenceInData": "ai-generated"
+}

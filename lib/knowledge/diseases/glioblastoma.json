@@ -1,0 +1,225 @@
+{
+  "id": "glioblastoma",
+  "name": "Glioblastoma Multiforme",
+  "aliases": [
+    "GBM",
+    "Grade IV Astrocytoma",
+    "Glioblastoma"
+  ],
+  "icd10Codes": [
+    "C71"
+  ],
+  "omimId": "137800",
+  "orphanetId": "360",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of the Central Nervous System (2021)",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histological evidence of necrosis and microvascular proliferation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging",
+        "description": "MRI showing ring-enhancing lesion with central necrosis and surrounding edema",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "molecular-markers",
+        "description": "Presence of IDH wild-type status and/or TERT promoter mutation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Rapidly progressive neurological deficits or signs of increased intracranial pressure",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation of necrosis and microvascular proliferation combined with characteristic MRI findings and molecular markers consistent with IDH wild-type glioblastoma",
+    "notes": "Molecular profiling is essential for accurate classification according to WHO 2021 guidelines."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Glioblastoma multiforme",
+        "frequency": 1,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cell morphology",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal cell shapes",
+          "irregular cell appearance",
+          "cells with unusual morphology"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of nervous system physiology",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal nerve function",
+          "impaired nervous system activity",
+          "irregular brain or nerve signals"
+        ]
+      },
+      {
+        "symptomName": "Visual loss",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Emotional lability",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal corpus callosum morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "abnormal brain bridge shape",
+          "misshapen corpus callosum",
+          "brain connection deformity"
+        ]
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cerebral edema",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Language impairment",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "unusual brain white matter shape",
+          "abnormal brain white matter structure",
+          "irregular white matter appearance"
+        ]
+      },
+      {
+        "symptomName": "Paralysis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Memory impairment",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "constitutional",
+    "neurological",
+    "ophthalmological",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF analysis typically non-specific; may show elevated protein",
+      "Elevated serum markers not diagnostic"
+    ],
+    "imaging": [
+      "MRI with contrast showing ring-enhancing lesion with central necrosis and surrounding edema",
+      "Mass effect with midline shift on imaging"
+    ],
+    "genetic": [
+      "IDH wild-type mutation status",
+      "TERT promoter mutations",
+      "EGFR amplification",
+      "Multigenic/multifactorial inheritance"
+    ],
+    "other": [
+      "Histopathology showing pseudopalisading necrosis and microvascular proliferation",
+      "Rapid tumor growth on serial imaging"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "anaplastic-astrocytoma",
+      "distinguishingFeatures": [
+        "Lower grade tumor without necrosis or microvascular proliferation",
+        "Slower progression",
+        "Different molecular profile (often IDH-mutant)"
+      ]
+    },
+    {
+      "diseaseId": "brain-metastasis",
+      "distinguishingFeatures": [
+        "Multiple lesions common",
+        "Primary cancer identified elsewhere",
+        "Different enhancement patterns on MRI"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid neurological deterioration",
+    "New onset seizures in adult",
+    "Signs of increased intracranial pressure (e.g., papilledema, vomiting)"
+  ],
+  "specialistType": [
+    "Neuro-oncologist",
+    "Neurosurgeon",
+    "Neurologist",
+    "Radiation Oncologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Louis DN, et al. WHO Classification of Tumors of the Central Nervous System, 5th Edition, 2021.",
+    "Ostrom QT, et al. CBTRUS Statistical Report: Primary Brain and Other Central Nervous System Tumors Diagnosed in the United States, 2014–2018.",
+    "Weller M, et al. EANO guidelines on the diagnosis and treatment of diffuse gliomas of adulthood. Nat Rev Clin Oncol. 2021."
+  ],
+  "confidenceInData": "medium"
+}

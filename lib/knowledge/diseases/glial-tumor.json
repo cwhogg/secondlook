@@ -1,0 +1,249 @@
+{
+  "id": "glial-tumor",
+  "name": "Glial Tumor",
+  "aliases": [
+    "Glioma",
+    "Glial Neoplasm"
+  ],
+  "icd10Codes": [
+    "C71"
+  ],
+  "orphanetId": "ORPHA:182067",
+  "prevalence": {
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 80,
+      "peak": 45
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Tumors of the Central Nervous System",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histopathological confirmation of glial cell origin and tumor grading",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging",
+        "description": "MRI showing characteristic features of glial tumor such as contrast enhancement and infiltrative growth",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "molecular-markers",
+        "description": "Presence of molecular markers such as IDH mutation, 1p/19q codeletion, or ATRX loss",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation plus compatible imaging findings",
+    "notes": "Molecular markers assist in tumor classification and prognosis but are not mandatory for diagnosis."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Focal neurological deficits",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "localized nerve problems",
+          "specific area neurological symptoms",
+          "focal weakness or numbness"
+        ]
+      },
+      {
+        "symptomName": "Seizures of new onset",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "new onset seizures or convulsions",
+          "first-time seizure episodes",
+          "sudden seizures starting recently"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Headache with progressive worsening",
+        "frequency": 0.65,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "headache that gradually worsens",
+          "progressive worsening head pain",
+          "increasing intensity headache"
+        ]
+      },
+      {
+        "symptomName": "Cognitive impairment including memory loss",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "memory problems and thinking difficulties",
+          "trouble remembering and concentrating",
+          "decline in cognitive abilities"
+        ]
+      },
+      {
+        "symptomName": "Nausea and vomiting due to increased intracranial pressure",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "nausea from brain pressure",
+          "vomiting due to head swelling",
+          "feeling sick from increased brain pressure",
+          "throwing up from brain swelling"
+        ]
+      },
+      {
+        "symptomName": "Visual field deficits",
+        "frequency": 0.52,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "loss of part of the vision field",
+          "blind spots or missing areas in vision",
+          "partial vision loss"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Personality and behavioral changes",
+        "frequency": 0.4,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "changes in personality and behavior",
+          "altered mood and conduct",
+          "behavioral and personality shifts"
+        ]
+      },
+      {
+        "symptomName": "Motor weakness or hemiparesis",
+        "frequency": 0.35,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "muscle weakness or partial paralysis",
+          "weakness affecting one side",
+          "hemiparesis or decreased strength"
+        ]
+      },
+      {
+        "symptomName": "Speech difficulties (aphasia or dysarthria)",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "difficulty speaking clearly",
+          "problems with language or slurred speech",
+          "speech impairment or trouble finding words"
+        ]
+      },
+      {
+        "symptomName": "Ataxia or coordination problems",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "poor coordination",
+          "difficulty with balance",
+          "clumsiness"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Endocrine dysfunction due to hypothalamic involvement",
+        "frequency": 0.08,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "hormone problems from brain area damage",
+          "endocrine issues due to hypothalamus involvement",
+          "hormonal imbalance caused by brain tumor"
+        ]
+      },
+      {
+        "symptomName": "Hydrocephalus-related symptoms",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cranial nerve palsies",
+        "frequency": 0.04,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "weakness of cranial nerves",
+          "cranial nerve palsies causing facial or eye problems"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "gastrointestinal",
+    "ophthalmological",
+    "psychiatric",
+    "endocrine"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "CSF analysis typically non-specific but may show elevated protein",
+      "Molecular genetic testing for IDH1/2 mutations, 1p/19q codeletion"
+    ],
+    "imaging": [
+      "MRI with contrast showing infiltrative mass with variable enhancement",
+      "T2/FLAIR hyperintensity surrounding tumor indicating edema"
+    ],
+    "genetic": [
+      "IDH1/IDH2 mutations",
+      "1p/19q codeletion in oligodendrogliomas",
+      "ATRX loss and TP53 mutations in astrocytomas"
+    ],
+    "other": [
+      "Histopathology showing glial cell origin with variable cellularity and mitotic activity",
+      "Immunohistochemistry positive for GFAP (glial fibrillary acidic protein)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "metastatic-brain-tumor",
+      "distinguishingFeatures": [
+        "Multiple lesions on imaging",
+        "History of primary malignancy",
+        "Different immunohistochemical profile"
+      ]
+    },
+    {
+      "diseaseId": "primary-central-nervous-system-lymphoma",
+      "distinguishingFeatures": [
+        "Homogeneous enhancement on MRI",
+        "Positive CSF cytology for lymphoma cells",
+        "Different treatment approach"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid neurological deterioration",
+    "New onset seizures in adult without prior history",
+    "Signs of increased intracranial pressure such as papilledema"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neuro-oncologist",
+    "Neurosurgeon",
+    "Radiologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Louis DN et al. WHO Classification of Tumors of the Central Nervous System, 5th Edition, 2021.",
+    "Omuro A, DeAngelis LM. Glioblastoma and other malignant gliomas: a clinical review. JAMA. 2013.",
+    "Orphanet: Glial tumor - ORPHA:182067"
+  ],
+  "confidenceInData": "ai-generated"
+}

@@ -1,0 +1,250 @@
+{
+  "id": "primary-pulmonary-tuberculosis",
+  "name": "Primary Pulmonary Tuberculosis",
+  "aliases": [
+    "Primary TB",
+    "Initial Pulmonary Tuberculosis"
+  ],
+  "icd10Codes": [
+    "A15.0"
+  ],
+  "orphanetId": "ORPHA:645814",
+  "prevalence": {
+    "estimate": "1 in 250",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 60,
+      "peak": 25
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Higher incidence in low-income populations",
+      "Higher prevalence in certain ethnic groups with endemic TB"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Diagnostic Criteria for Tuberculosis",
+    "criteria": [
+      {
+        "id": "microbiological-confirmation",
+        "description": "Isolation of Mycobacterium tuberculosis from sputum or other respiratory specimens",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "chest-xray-consistent",
+        "description": "Chest radiograph showing primary complex or infiltrates consistent with tuberculosis",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Presence of clinical symptoms consistent with pulmonary tuberculosis such as persistent cough and hemoptysis",
+        "category": "minor",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "tuberculin-skin-test",
+        "description": "Positive tuberculin skin test or interferon-gamma release assay supportive of infection",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Microbiological confirmation or compatible chest X-ray plus clinical features consistent with tuberculosis",
+    "notes": "Diagnosis may be supported by molecular testing such as PCR for M. tuberculosis DNA."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Persistent productive cough lasting more than 3 weeks",
+        "frequency": 0.85,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "long-lasting cough with mucus over 3 weeks",
+          "persistent productive cough"
+        ]
+      },
+      {
+        "symptomName": "Hemoptysis (coughing up blood)",
+        "frequency": 0.75,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "coughing up blood",
+          "blood in sputum",
+          "hemorrhagic cough"
+        ]
+      },
+      {
+        "symptomName": "Night sweats",
+        "frequency": 0.7,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Unintentional weight loss",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "unplanned weight loss",
+          "losing weight without trying",
+          "involuntary weight reduction"
+        ]
+      },
+      {
+        "symptomName": "Fever, often low-grade and intermittent",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "fever that is low-grade and comes and goes",
+          "intermittent mild fever"
+        ]
+      },
+      {
+        "symptomName": "Chest pain, pleuritic in nature",
+        "frequency": 0.55,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "sharp chest pain worsened by breathing",
+          "pain on deep breaths",
+          "pleuritic chest discomfort"
+        ]
+      },
+      {
+        "symptomName": "Fatigue and malaise",
+        "frequency": 0.58,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "extreme tiredness",
+          "general feeling of unwellness",
+          "lack of energy and malaise"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.35,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "shortness of breath when active",
+          "breathlessness on exertion",
+          "difficulty breathing with activity"
+        ]
+      },
+      {
+        "symptomName": "Lymphadenopathy, especially hilar or mediastinal",
+        "frequency": 0.3,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "swollen lymph nodes near lungs or chest",
+          "enlarged hilar or mediastinal lymph nodes"
+        ]
+      },
+      {
+        "symptomName": "Anorexia",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Night-time chills",
+        "frequency": 0.15,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Clubbing of fingers",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "enlarged fingertips",
+          "clubbing of fingers",
+          "rounded finger tips"
+        ]
+      },
+      {
+        "symptomName": "Hoarseness due to laryngeal involvement",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "hoarse voice",
+          "voice changes",
+          "larynx inflammation causing voice problems"
+        ]
+      },
+      {
+        "symptomName": "Pericardial friction rub from tuberculous pericarditis",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart rubbing sound from pericarditis",
+          "pericardial friction rub due to infection"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "constitutional",
+    "immunological",
+    "musculoskeletal",
+    "otolaryngological",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive acid-fast bacilli (AFB) smear from sputum",
+      "Positive culture for Mycobacterium tuberculosis",
+      "Elevated erythrocyte sedimentation rate (ESR)"
+    ],
+    "imaging": [
+      "Chest X-ray showing Ghon focus or primary complex",
+      "Hilar and mediastinal lymphadenopathy",
+      "Cavitary lesions in progressive disease"
+    ],
+    "genetic": [],
+    "other": [
+      "Positive tuberculin skin test (Mantoux test)",
+      "Positive interferon-gamma release assay (IGRA)"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "lung-cancer",
+      "distinguishingFeatures": [
+        "Mass lesion on imaging rather than primary complex",
+        "Absence of acid-fast bacilli in sputum",
+        "Different risk factors such as smoking history"
+      ]
+    },
+    {
+      "diseaseId": "bacterial-pneumonia",
+      "distinguishingFeatures": [
+        "Acute onset with high fever",
+        "Positive bacterial cultures",
+        "Rapid response to antibiotics"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Hemoptysis with large volume blood loss",
+    "Progressive respiratory distress",
+    "Failure to respond to standard anti-tuberculous therapy"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Infectious Disease Specialist",
+    "Respiratory Physician"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "World Health Organization. Global Tuberculosis Report 2023.",
+    "Centers for Disease Control and Prevention. Tuberculosis (TB) Fact Sheet.",
+    "Murray PR, et al. Medical Microbiology. 9th Edition. 2020."
+  ],
+  "confidenceInData": "ai-generated"
+}

@@ -1,0 +1,277 @@
+{
+  "id": "autoimmune-heparin-induced-thrombocytopenia",
+  "name": "Autoimmune Heparin-Induced Thrombocytopenia",
+  "aliases": [
+    "Autoimmune HIT",
+    "Spontaneous Heparin-Induced Thrombocytopenia"
+  ],
+  "icd10Codes": [
+    "D69.5"
+  ],
+  "orphanetId": "ORPHA:698945",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 80,
+      "peak": 50
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "4T Score and Serologic Testing for HIT",
+    "criteria": [
+      {
+        "id": "thrombocytopenia",
+        "description": "Platelet count drop >50% from baseline or nadir <150,000/µL",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "heparin-independent-platelet-activation",
+        "description": "Positive platelet activation assay in absence of heparin",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "anti-pf4-antibodies",
+        "description": "Presence of platelet factor 4 (PF4) antibodies detected by ELISA",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "thrombosis",
+        "description": "New onset thrombosis or thrombotic complications",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "absence-of-heparin-exposure",
+        "description": "Thrombocytopenia occurring without prior heparin exposure",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of thrombocytopenia with positive PF4 antibodies and heparin-independent platelet activation assay",
+    "notes": "Diagnosis requires exclusion of classical HIT and confirmation of autoimmune mechanism"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Severe thrombocytopenia with platelet count <50,000/µL",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "very low platelet count",
+          "severe low blood platelets",
+          "platelets under 50,000"
+        ]
+      },
+      {
+        "symptomName": "Heparin-independent platelet activation",
+        "frequency": 0.75,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "platelet activation without heparin",
+          "blood clotting triggered without heparin",
+          "platelets activated independently"
+        ]
+      },
+      {
+        "symptomName": "Spontaneous thrombosis without prior heparin exposure",
+        "frequency": 0.7,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "blood clots forming spontaneously",
+          "clotting without heparin exposure",
+          "unexpected thrombosis"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Venous thromboembolism including deep vein thrombosis",
+        "frequency": 0.65,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "blood clots in veins",
+          "deep vein blood clots",
+          "venous thromboembolism events"
+        ]
+      },
+      {
+        "symptomName": "Arterial thrombosis including limb ischemia",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "blood clots in arteries",
+          "arterial blockage causing limb pain",
+          "limb ischemia from clots"
+        ]
+      },
+      {
+        "symptomName": "Skin necrosis at injection sites",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin tissue death at injection sites",
+          "skin ulcers after injections",
+          "injection site skin damage"
+        ]
+      },
+      {
+        "symptomName": "Dyspnea secondary to pulmonary embolism",
+        "frequency": 0.52,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "shortness of breath from lung clots",
+          "breathing difficulty due to pulmonary embolism",
+          "chest breathing problems from clots"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fever associated with immune activation",
+        "frequency": 0.3,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "fever with immune response",
+          "high temperature from inflammation",
+          "fever due to immune activation"
+        ]
+      },
+      {
+        "symptomName": "Petechiae or mucosal bleeding",
+        "frequency": 0.25,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "small red skin spots",
+          "bleeding under skin or mucous membranes",
+          "petechiae and mucosal bleeding"
+        ]
+      },
+      {
+        "symptomName": "Transient ischemic attacks or stroke",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "temporary stroke symptoms",
+          "mini strokes or TIAs",
+          "brief neurological deficits"
+        ]
+      },
+      {
+        "symptomName": "Renal vein thrombosis",
+        "frequency": 0.15,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "blood clot in kidney vein",
+          "renal vein blockage",
+          "kidney blood vessel clot"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Adrenal hemorrhage due to adrenal vein thrombosis",
+        "frequency": 0.07,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "bleeding in adrenal glands",
+          "adrenal gland hemorrhage",
+          "adrenal bleeding from vein clots"
+        ]
+      },
+      {
+        "symptomName": "Disseminated intravascular coagulation",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "widespread blood clotting and bleeding",
+          "disseminated intravascular coagulation",
+          "DIC causing clotting and hemorrhage"
+        ]
+      },
+      {
+        "symptomName": "Myocardial infarction secondary to coronary thrombosis",
+        "frequency": 0.04,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart attack from artery clots",
+          "myocardial infarction due to thrombosis",
+          "heart tissue damage from blocked artery"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "immunological",
+    "cardiovascular",
+    "respiratory",
+    "dermatological",
+    "neurological",
+    "endocrine",
+    "renal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Marked thrombocytopenia with platelet count often <50,000/µL",
+      "Positive PF4/heparin ELISA antibody test",
+      "Positive serotonin release assay or platelet activation assay without heparin"
+    ],
+    "imaging": [
+      "Ultrasound Doppler for detection of deep vein thrombosis",
+      "CT pulmonary angiography for pulmonary embolism",
+      "MRI or CT for cerebral or adrenal infarcts"
+    ],
+    "genetic": [
+      "No specific genetic markers identified"
+    ],
+    "other": [
+      "Exclusion of other causes of thrombocytopenia and thrombosis",
+      "Clinical history of thrombocytopenia without heparin exposure"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "classical-heparin-induced-thrombocytopenia",
+      "distinguishingFeatures": [
+        "Requires prior heparin exposure",
+        "Heparin-dependent platelet activation",
+        "Typically resolves after heparin cessation"
+      ]
+    },
+    {
+      "diseaseId": "antiphospholipid-syndrome",
+      "distinguishingFeatures": [
+        "Presence of antiphospholipid antibodies",
+        "Thrombosis without thrombocytopenia or mild thrombocytopenia",
+        "No PF4 antibody positivity"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid onset severe thrombocytopenia without heparin exposure",
+    "New or progressive thrombosis despite anticoagulation",
+    "Skin necrosis or limb ischemia"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Immunologist",
+    "Vascular Medicine Specialist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Warkentin TE. Autoimmune heparin-induced thrombocytopenia. Hematology Am Soc Hematol Educ Program. 2015;2015:123-8.",
+    "Greinacher A, et al. Spontaneous HIT syndrome: knee replacement, infection, and parallels with vaccine-induced immune thrombotic thrombocytopenia. Blood. 2021;137(10):1342-1351.",
+    "Orphanet: Autoimmune heparin-induced thrombocytopenia ORPHA:698945"
+  ],
+  "confidenceInData": "ai-generated"
+}

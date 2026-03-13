@@ -1,0 +1,224 @@
+{
+  "id": "spontaneous-intracranial-hypotension",
+  "name": "Spontaneous Intracranial Hypotension",
+  "aliases": [
+    "Spontaneous CSF Leak",
+    "Spontaneous Low CSF Pressure Syndrome"
+  ],
+  "icd10Codes": [
+    "G96.0"
+  ],
+  "orphanetId": "ORPHA:443180",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 2,
+      "max": 120,
+      "peak": 14
+    },
+    "sexPredilection": "slight-female",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "International Classification of Headache Disorders (ICHD-3) Criteria for Spontaneous Intracranial Hypotension",
+    "criteria": [
+      {
+        "id": "orthostatic-headache",
+        "description": "Headache that worsens within 15 minutes of standing and improves within 15 minutes of lying down",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "low-csf-pressure",
+        "description": "Low cerebrospinal fluid pressure (<60 mmH2O) measured by lumbar puncture",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "imaging-findings",
+        "description": "MRI evidence of CSF leak or characteristic brain sagging",
+        "category": "major",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "csf-leak-confirmation",
+        "description": "Demonstration of CSF leak on myelography or radionuclide cisternography",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "symptom-resolution",
+        "description": "Improvement of symptoms after epidural blood patch or conservative treatment",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Orthostatic headache plus either low CSF pressure or characteristic imaging findings",
+    "notes": "Diagnosis is clinical supported by imaging and CSF studies; invasive testing reserved for uncertain cases"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Orthostatic Headache",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "notes": "Headache worsens upon standing and improves when lying down"
+      },
+      {
+        "symptomName": "Neck Stiffness",
+        "frequency": 0.75,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nausea Associated with Headache",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "nausea along with headache",
+          "feeling sick with head pain",
+          "vomiting sensation with headache"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.65,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tinnitus",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Diplopia due to Cranial Nerve VI Palsy",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological",
+        "notes": "Abducens nerve palsy causing double vision",
+        "searchTerms": [
+          "double vision from sixth nerve palsy",
+          "eye movement problem causing diplopia",
+          "cranial nerve VI causing double vision"
+        ]
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.52,
+        "bodySystem": "neurological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hearing Loss",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Cognitive Dysfunction",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Mild memory or concentration difficulties"
+      },
+      {
+        "symptomName": "Back Pain",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Photopsia",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological",
+        "notes": "Visual flashes or flickering"
+      },
+      {
+        "symptomName": "Facial Numbness",
+        "frequency": 0.12,
+        "bodySystem": "neurological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Subdural Hematoma",
+        "frequency": 0.04,
+        "bodySystem": "neurological",
+        "notes": "Complication due to brain sagging"
+      },
+      {
+        "symptomName": "Hypotension-Induced Syncope",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "ophthalmological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Low opening pressure on lumbar puncture (<60 mmH2O)"
+    ],
+    "imaging": [
+      "MRI brain showing diffuse pachymeningeal enhancement",
+      "Brain sagging with descent of cerebellar tonsils",
+      "CT or MR myelography demonstrating CSF leak site"
+    ],
+    "genetic": [],
+    "other": [
+      "Improvement of symptoms after epidural blood patch"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "post-lumbar-puncture-headache",
+      "distinguishingFeatures": [
+        "History of recent lumbar puncture or spinal procedure",
+        "Symptoms typically resolve within days to weeks"
+      ]
+    },
+    {
+      "diseaseId": "migraine",
+      "distinguishingFeatures": [
+        "Headache not consistently orthostatic",
+        "No low CSF pressure or imaging abnormalities"
+      ]
+    },
+    {
+      "diseaseId": "chiari-malformation",
+      "distinguishingFeatures": [
+        "Congenital cerebellar tonsillar herniation",
+        "No CSF leak or low opening pressure"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset severe headache",
+    "Neurological deficits such as cranial nerve palsies",
+    "Signs of subdural hematoma or brain herniation"
+  ],
+  "specialistType": [
+    "Neurologist",
+    "Neuroradiologist",
+    "Neurosurgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Schievink WI. Spontaneous spinal cerebrospinal fluid leaks and intracranial hypotension. JAMA. 2006;295(19):2286-2296.",
+    "International Headache Society. The International Classification of Headache Disorders, 3rd edition (ICHD-3). Cephalalgia. 2018.",
+    "Kranz PG, Gray L, Malinzak MD, Amrhein TJ, Luetmer PH. Spontaneous Intracranial Hypotension: Imaging Findings and Clinical Features. AJNR Am J Neuroradiol. 2016;37(9):1673-1679."
+  ],
+  "confidenceInData": "ai-generated"
+}

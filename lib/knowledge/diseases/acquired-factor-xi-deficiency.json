@@ -1,0 +1,229 @@
+{
+  "id": "acquired-factor-xi-deficiency",
+  "name": "Acquired Factor XI Deficiency",
+  "aliases": [
+    "Acquired Factor XI Inhibitor",
+    "Acquired Factor XI Defect"
+  ],
+  "icd10Codes": [
+    "D68.3"
+  ],
+  "orphanetId": "ORPHA:599507",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 10,
+      "max": 65,
+      "peak": 14
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Acquired Factor XI Deficiency Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "prolonged-aptt",
+        "description": "Prolonged activated partial thromboplastin time (aPTT) not corrected by mixing studies",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "reduced-factor-xi-activity",
+        "description": "Reduced Factor XI activity levels in plasma",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "presence-of-inhibitor",
+        "description": "Detection of acquired Factor XI inhibitors (autoantibodies) by Bethesda assay or similar",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "absence-of-congenital-deficiency",
+        "description": "Exclusion of congenital Factor XI deficiency by patient history and family studies",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "clinical-bleeding",
+        "description": "Clinical evidence of bleeding disproportionate to trauma or surgery",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of prolonged aPTT not corrected by mixing studies, reduced Factor XI activity, and detection of acquired Factor XI inhibitors",
+    "notes": "Diagnosis requires exclusion of congenital Factor XI deficiency and other coagulopathies."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Spontaneous mucocutaneous bleeding",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Includes epistaxis, gum bleeding",
+        "searchTerms": [
+          "bleeding from mucous membranes without injury",
+          "spontaneous bleeding in mouth or nose",
+          "unprovoked mucosal bleeding"
+        ]
+      },
+      {
+        "symptomName": "Postoperative hemorrhage disproportionate to surgical trauma",
+        "frequency": 0.72,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "bleeding after surgery more than expected",
+          "post-surgical hemorrhage disproportionate to trauma",
+          "excessive bleeding after operation"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Menorrhagia",
+        "frequency": 0.65,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Easy bruising",
+        "frequency": 0.6,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hemarthrosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Prolonged bleeding from minor cuts",
+        "frequency": 0.58,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "long-lasting bleeding from small cuts",
+          "minor cuts bleed for a long time",
+          "prolonged bleeding from minor skin injuries"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Gastrointestinal bleeding",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Intracranial hemorrhage",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Rare but severe complication"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.2,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Postpartum hemorrhage",
+        "frequency": 0.18,
+        "bodySystem": "reproductive"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Retroperitoneal hematoma",
+        "frequency": 0.05,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Anaphylactoid reactions to plasma products",
+        "frequency": 0.03,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "allergic-like reactions to plasma transfusions",
+          "anaphylactoid response to plasma products",
+          "hypersensitivity to plasma infusions"
+        ]
+      },
+      {
+        "symptomName": "Purpura fulminans",
+        "frequency": 0.02,
+        "bodySystem": "dermatological"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "musculoskeletal",
+    "reproductive",
+    "gastrointestinal",
+    "neurological",
+    "renal",
+    "dermatological",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Prolonged activated partial thromboplastin time (aPTT) not corrected by mixing studies",
+      "Reduced Factor XI activity levels",
+      "Presence of Factor XI inhibitors detected by Bethesda assay"
+    ],
+    "imaging": [
+      "Imaging to identify bleeding sites such as CT or MRI for intracranial or retroperitoneal hemorrhage"
+    ],
+    "genetic": [
+      "No known genetic mutations associated with acquired form; distinguishes from congenital Factor XI deficiency"
+    ],
+    "other": [
+      "Clinical history of bleeding without prior personal or family history of bleeding disorders"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "congenital-factor-xi-deficiency",
+      "distinguishingFeatures": [
+        "Family history of bleeding",
+        "Normal mixing study correction of aPTT",
+        "No detectable inhibitors"
+      ]
+    },
+    {
+      "diseaseId": "acquired-factor-viii-inhibitor",
+      "distinguishingFeatures": [
+        "Prolonged aPTT with Factor VIII inhibitor presence",
+        "Different coagulation factor affected",
+        "More common spontaneous severe bleeding"
+      ]
+    },
+    {
+      "diseaseId": "lupus-anticoagulant-hypoprothrombinemia-syndrome",
+      "distinguishingFeatures": [
+        "Presence of lupus anticoagulant antibodies",
+        "Associated hypoprothrombinemia",
+        "Variable bleeding and thrombosis risk"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset of severe bleeding without prior history",
+    "Prolonged aPTT uncorrected by mixing studies",
+    "Failure to respond to standard hemostatic treatments"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Immunologist",
+    "Coagulation specialist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Franchini M, Lippi G. Acquired factor XI inhibitors: a systematic review. Semin Thromb Hemost. 2011;37(7):767-773.",
+    "Orphanet: Acquired factor XI deficiency - ORPHA599507",
+    "Katz U, et al. Acquired factor XI inhibitors: clinical and laboratory features. Haemophilia. 2006;12(6):637-641."
+  ],
+  "confidenceInData": "ai-generated"
+}

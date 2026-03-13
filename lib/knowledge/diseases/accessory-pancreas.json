@@ -1,0 +1,218 @@
+{
+  "id": "accessory-pancreas",
+  "name": "Accessory Pancreas",
+  "aliases": [
+    "Ectopic Pancreas",
+    "Heterotopic Pancreas"
+  ],
+  "icd10Codes": [
+    "K86.8"
+  ],
+  "orphanetId": "ORPHA:674",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 2,
+      "peak": 1
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No formal diagnostic criteria established",
+    "criteria": [
+      {
+        "id": "histopathologic-confirmation",
+        "description": "Histopathologic identification of pancreatic tissue outside the normal pancreas without anatomical or vascular continuity",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-identification",
+        "description": "Imaging evidence (CT, MRI, or endoscopic ultrasound) showing a submucosal lesion with features consistent with pancreatic tissue",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Presence of symptoms or incidental finding consistent with accessory pancreatic tissue",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathologic confirmation or characteristic imaging findings demonstrating ectopic pancreatic tissue",
+    "notes": "Diagnosis is often incidental; symptomatic cases require exclusion of other causes."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Submucosal pancreatic tissue nodule",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "notes": "Typically found in the stomach, duodenum, or jejunum",
+        "searchTerms": [
+          "small lump of pancreatic tissue",
+          "pancreatic tissue nodule under mucosa"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Epigastric discomfort related to lesion",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "upper stomach pain",
+          "discomfort above stomach"
+        ]
+      },
+      {
+        "symptomName": "Nausea associated with lesion",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick",
+          "nausea related to lesion"
+        ]
+      },
+      {
+        "symptomName": "Gastrointestinal bleeding from ulceration over ectopic tissue",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "bleeding in digestive tract",
+          "gastrointestinal bleeding from ulcer"
+        ]
+      },
+      {
+        "symptomName": "Pancreatitis localized to ectopic tissue",
+        "frequency": 0.5,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "inflammation of pancreas near lesion",
+          "localized pancreatitis"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Obstructive symptoms due to mass effect",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "blockage symptoms from mass",
+          "obstruction caused by growth"
+        ]
+      },
+      {
+        "symptomName": "Weight loss secondary to chronic symptoms",
+        "frequency": 0.25,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "unintended weight loss",
+          "weight loss from chronic illness"
+        ]
+      },
+      {
+        "symptomName": "Jaundice if lesion compresses bile duct",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "yellowing of skin and eyes",
+          "jaundice from bile duct compression"
+        ]
+      },
+      {
+        "symptomName": "Dyspepsia",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Malignant transformation of accessory pancreatic tissue",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "cancerous change in pancreatic tissue",
+          "malignant transformation of accessory tissue"
+        ]
+      },
+      {
+        "symptomName": "Intestinal obstruction due to ectopic pancreas",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "intestinal blockage",
+          "bowel obstruction from ectopic pancreas"
+        ]
+      },
+      {
+        "symptomName": "Pancreatic enzyme leakage causing localized inflammation",
+        "frequency": 0.07,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "pancreatic enzyme leakage causing inflammation",
+          "localized tissue inflammation from enzyme release"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated serum amylase or lipase if pancreatitis occurs in ectopic tissue",
+      "Anemia if gastrointestinal bleeding is present"
+    ],
+    "imaging": [
+      "CT or MRI showing submucosal mass with pancreatic tissue characteristics",
+      "Endoscopic ultrasound demonstrating heterotopic pancreatic tissue"
+    ],
+    "genetic": [],
+    "other": [
+      "Histopathology confirming pancreatic acini, ducts, and islets in ectopic location"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "gastrointestinal-stromal-tumor",
+      "distinguishingFeatures": [
+        "GIST typically shows spindle cell morphology on biopsy",
+        "Lacks pancreatic acinar and islet cells histologically"
+      ]
+    },
+    {
+      "diseaseId": "carcinoid-tumor",
+      "distinguishingFeatures": [
+        "Neuroendocrine tumor markers positive",
+        "Different histopathologic and immunohistochemical profile"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Gastrointestinal bleeding with hemodynamic instability",
+    "Rapid increase in size of lesion suggesting malignancy",
+    "Severe pancreatitis localized to ectopic tissue"
+  ],
+  "specialistType": [
+    "Gastroenterologist",
+    "Pathologist",
+    "Radiologist",
+    "General Surgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Orphanet: Accessory Pancreas (ORPHA:674)",
+    "Sasaki et al. Ectopic Pancreas: Clinical and Pathological Features. World J Gastroenterol. 2017",
+    "Makhlouf HR et al. Heterotopic Pancreas: A Clinicopathologic Study of 30 Cases. Am J Surg Pathol. 2000"
+  ],
+  "confidenceInData": "ai-generated"
+}

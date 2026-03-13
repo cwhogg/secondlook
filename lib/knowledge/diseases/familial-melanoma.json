@@ -1,0 +1,230 @@
+{
+  "id": "familial-melanoma",
+  "name": "Familial Melanoma",
+  "aliases": [
+    "Hereditary Melanoma",
+    "Familial Atypical Multiple Mole Melanoma Syndrome"
+  ],
+  "icd10Codes": [
+    "C43"
+  ],
+  "orphanetId": "618",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Caucasian",
+      "Ashkenazi Jewish"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "GenoMEL Diagnostic Criteria for Familial Melanoma",
+    "criteria": [
+      {
+        "id": "family-history",
+        "description": "Presence of melanoma in two or more first-degree relatives",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "multiple-primary-melanomas",
+        "description": "Individual with two or more primary melanomas",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "atypical-moles",
+        "description": "Presence of multiple clinically atypical nevi (dysplastic nevi)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "early-onset",
+        "description": "Melanoma diagnosis before age 40",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "family-history-other-cancers",
+        "description": "Family history of pancreatic or other associated cancers",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "At least two major criteria or one major and two minor criteria must be met",
+    "notes": "Genetic testing for CDKN2A mutations supports diagnosis but is not mandatory"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Melanoma",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Nevus",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Dry skin",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Freckling",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of the hair",
+        "frequency": 0.55,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "hair abnormalities",
+          "unusual hair texture or growth",
+          "abnormal hair appearance"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the lymphatic system",
+        "frequency": 0.55,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "problems with lymph vessels",
+          "abnormal lymphatic circulation",
+          "swollen lymphatic system"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Retinopathy",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Abnormality of extrapyramidal motor function",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "problems with involuntary movements",
+          "extrapyramidal movement issues",
+          "difficulty with muscle control"
+        ]
+      },
+      {
+        "symptomName": "Neoplasm of the pancreas",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "pancreatic tumor",
+          "mass in pancreas",
+          "pancreas growth"
+        ]
+      },
+      {
+        "symptomName": "Neoplasm of the stomach",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "tumor in the stomach",
+          "stomach cancer",
+          "malignant growth in stomach"
+        ]
+      },
+      {
+        "symptomName": "Neoplasm of the breast",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "breast lump or mass",
+          "breast tumor",
+          "abnormal growth in breast"
+        ]
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "ophthalmological",
+    "dermatological",
+    "constitutional",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Histopathological confirmation of melanoma",
+      "Immunohistochemistry positive for S-100, HMB-45, Melan-A"
+    ],
+    "imaging": [
+      "Dermatoscopic imaging of atypical nevi",
+      "PET-CT or MRI for metastatic workup"
+    ],
+    "genetic": [
+      "CDK4 (susceptibility)",
+      "CDKN2A (susceptibility)",
+      "MITF (susceptibility)",
+      "TERT (susceptibility)",
+      "MC1R (susceptibility)",
+      "BAP1 (susceptibility)",
+      "CDKN2B (candidate)",
+      "MGMT (susceptibility)",
+      "POT1 (susceptibility)",
+      "ACD (susceptibility)",
+      "TERF2IP (susceptibility)",
+      "Autosomal dominant inheritance",
+      "Multigenic/multifactorial inheritance"
+    ],
+    "other": [
+      "Family pedigree analysis showing autosomal dominant inheritance",
+      "Clinical skin examination revealing multiple atypical nevi"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "sporadic-melanoma",
+      "distinguishingFeatures": [
+        "Lack of family history",
+        "Usually single primary melanoma",
+        "Later age of onset"
+      ]
+    },
+    {
+      "diseaseId": "xeroderma-pigmentosum",
+      "distinguishingFeatures": [
+        "Extreme UV sensitivity",
+        "Early onset of multiple skin cancers including melanoma",
+        "Neurological abnormalities"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Multiple primary melanomas diagnosed before age 40",
+    "Rapidly changing pigmented lesions with irregular borders",
+    "Family history of melanoma and pancreatic cancer"
+  ],
+  "specialistType": [
+    "Dermatologist",
+    "Oncologist",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Goldstein AM, et al. Familial melanoma: clinical features and genetic epidemiology. J Natl Cancer Inst. 1998.",
+    "Bishop DT, et al. Genome-wide association study identifies three loci associated with melanoma risk. Nat Genet. 2009.",
+    "Orphanet: Familial melanoma - ORPHA:618"
+  ],
+  "confidenceInData": "medium"
+}

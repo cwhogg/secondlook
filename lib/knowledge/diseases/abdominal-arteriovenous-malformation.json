@@ -1,0 +1,247 @@
+{
+  "id": "abdominal-arteriovenous-malformation",
+  "name": "Abdominal Arteriovenous Malformation",
+  "aliases": [
+    "Abdominal AVM",
+    "Visceral Arteriovenous Malformation"
+  ],
+  "icd10Codes": [
+    "Q27.3"
+  ],
+  "orphanetId": "ORPHA:714702",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 30
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Abdominal Arteriovenous Malformation Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "imaging-confirmation",
+        "description": "Radiologic evidence of abnormal direct arterial to venous communication within the abdominal vasculature",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-presentation",
+        "description": "Presence of abdominal bruit or palpable pulsatile mass",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "symptomatology",
+        "description": "Symptoms consistent with AVM such as gastrointestinal bleeding or high-output cardiac failure",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-other-vascular-malformations",
+        "description": "Exclusion of other vascular malformations or tumors by imaging and clinical evaluation",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of radiologic confirmation of abdominal AVM plus at least one major clinical criterion",
+    "notes": "Diagnosis relies heavily on imaging modalities such as CT angiography or MRI angiography."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Abdominal bruit",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Audible turbulent blood flow over the abdomen"
+      },
+      {
+        "symptomName": "Palpable pulsatile abdominal mass",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "notes": "Detectable on physical examination",
+        "searchTerms": [
+          "pulsing belly lump",
+          "abdominal mass you can feel",
+          "heartbeat felt in belly lump"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Gastrointestinal bleeding",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "May present as melena or hematochezia"
+      },
+      {
+        "symptomName": "Abdominal pain localized to the affected region",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "notes": "Often intermittent and related to ischemia or venous hypertension",
+        "searchTerms": [
+          "pain in specific belly area",
+          "localized stomach pain",
+          "abdominal discomfort in one spot"
+        ]
+      },
+      {
+        "symptomName": "High-output cardiac failure",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to shunting of blood through the AVM",
+        "searchTerms": [
+          "heart failure with high blood flow",
+          "excessive blood flow heart failure",
+          "high-output heart failure symptoms"
+        ]
+      },
+      {
+        "symptomName": "Abdominal distension",
+        "frequency": 0.5,
+        "bodySystem": "gastrointestinal",
+        "notes": "Secondary to mass effect or venous congestion"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "notes": "Resulting from altered portal venous flow"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to mass effect or ischemia",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      },
+      {
+        "symptomName": "Lower extremity edema",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to venous congestion",
+        "searchTerms": [
+          "swelling in legs",
+          "leg fluid buildup",
+          "ankle and foot swelling"
+        ]
+      },
+      {
+        "symptomName": "Fatigue related to anemia",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "notes": "Due to chronic blood loss",
+        "searchTerms": [
+          "tiredness from anemia",
+          "fatigue related to low red blood cells",
+          "weakness due to anemia"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Intestinal ischemia",
+        "frequency": 0.08,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to steal phenomenon from AVM"
+      },
+      {
+        "symptomName": "Spontaneous rupture with intra-abdominal hemorrhage",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Life-threatening complication",
+        "searchTerms": [
+          "sudden internal bleeding in abdomen",
+          "spontaneous belly hemorrhage",
+          "rupture causing internal bleeding"
+        ]
+      },
+      {
+        "symptomName": "Secondary renal impairment",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "notes": "Due to hemodynamic changes",
+        "searchTerms": [
+          "kidney problems secondary to disease",
+          "reduced kidney function",
+          "impaired renal function"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "cardiovascular",
+    "gastrointestinal",
+    "constitutional",
+    "renal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Anemia secondary to chronic gastrointestinal bleeding",
+      "Elevated serum lactate in cases of intestinal ischemia"
+    ],
+    "imaging": [
+      "CT angiography showing direct arteriovenous shunting in abdominal vessels",
+      "MRI angiography demonstrating nidus of abnormal vessels",
+      "Doppler ultrasound revealing turbulent flow and arterialization of veins"
+    ],
+    "genetic": [
+      "No specific genetic markers identified; sporadic cases predominate"
+    ],
+    "other": [
+      "Physical exam findings of abdominal bruit and pulsatile mass"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "abdominal-arteriovenous-fistula",
+      "distinguishingFeatures": [
+        "Typically post-traumatic or iatrogenic",
+        "Single fistulous connection rather than a nidus of vessels"
+      ]
+    },
+    {
+      "diseaseId": "hepatic-hemangioma",
+      "distinguishingFeatures": [
+        "Benign vascular tumor with different imaging characteristics",
+        "Lack of direct arteriovenous shunting"
+      ]
+    },
+    {
+      "diseaseId": "portal-hypertension",
+      "distinguishingFeatures": [
+        "Usually secondary to liver disease",
+        "Absence of direct arteriovenous malformation on imaging"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset of severe abdominal pain with hypotension",
+    "Signs of high-output cardiac failure",
+    "Massive gastrointestinal hemorrhage"
+  ],
+  "specialistType": [
+    "Vascular Surgeon",
+    "Interventional Radiologist",
+    "Gastroenterologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Lee BB, et al. Diagnosis and treatment of arteriovenous malformations. J Vasc Surg. 2018;67(1):1-12.",
+    "Orphanet: Abdominal arteriovenous malformation. ORPHA:714702.",
+    "Mulliken JB, Glowacki J. Hemangiomas and vascular malformations in infants and children: a classification based on endothelial characteristics. Plast Reconstr Surg. 1982;69(3):412-422."
+  ],
+  "confidenceInData": "ai-generated"
+}

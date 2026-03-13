@@ -1,0 +1,237 @@
+{
+  "id": "spotted-fever-rickettsiosis",
+  "name": "Spotted Fever Rickettsiosis",
+  "aliases": [
+    "Spotted Fever Group Rickettsiosis",
+    "Tick-borne Rickettsiosis"
+  ],
+  "icd10Codes": [
+    "A77.0"
+  ],
+  "orphanetId": "ORPHA:102022",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 70,
+      "peak": 30
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "CDC Spotted Fever Rickettsiosis Case Definition",
+    "criteria": [
+      {
+        "id": "fever",
+        "description": "Acute onset of fever ≥38.0°C (100.4°F)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "rash",
+        "description": "Maculopapular or petechial rash appearing 2-5 days after fever onset",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "tick-exposure",
+        "description": "History of tick bite or exposure to tick habitat",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "serology",
+        "description": "Serologic evidence of Rickettsia infection (fourfold rise in antibody titer)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "eschar",
+        "description": "Presence of inoculation eschar at tick bite site",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Fever plus rash with either serologic confirmation or epidemiologic evidence of tick exposure",
+    "notes": "Diagnosis is supported by PCR or immunohistochemical detection of Rickettsia species in tissue samples."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Maculopapular or petechial rash",
+        "frequency": 0.85,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "rash with small red bumps",
+          "maculopapular or petechial rash",
+          "red spotty skin rash"
+        ]
+      },
+      {
+        "symptomName": "Inoculation eschar at tick bite site",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "More common in some Rickettsia species",
+        "searchTerms": [
+          "scab at tick bite site",
+          "black crusted sore from tick bite",
+          "inoculation eschar at bite area"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "High-grade fever (≥38°C)",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high fever over 38°C",
+          "fever with chills",
+          "elevated body temperature"
+        ]
+      },
+      {
+        "symptomName": "Severe headache",
+        "frequency": 0.7,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "feeling sick with vomiting",
+          "upset stomach with throwing up",
+          "nausea and throwing up"
+        ]
+      },
+      {
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Conjunctival injection",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Photophobia",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Meningoencephalitis",
+        "frequency": 0.08,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Myocarditis",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Acute renal failure",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "sudden kidney failure",
+          "acute loss of kidney function",
+          "rapid kidney impairment"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "dermatological",
+    "constitutional",
+    "neurological",
+    "musculoskeletal",
+    "gastrointestinal",
+    "ophthalmological",
+    "respiratory",
+    "immunological",
+    "cardiovascular",
+    "renal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Thrombocytopenia",
+      "Elevated liver transaminases",
+      "Hyponatremia",
+      "Leukopenia or leukocytosis"
+    ],
+    "imaging": [
+      "Chest X-ray may show interstitial infiltrates in pulmonary involvement",
+      "Brain MRI may show meningeal enhancement in meningoencephalitis"
+    ],
+    "genetic": [],
+    "other": [
+      "Positive indirect immunofluorescence antibody (IFA) test for Rickettsia species",
+      "PCR detection of Rickettsia DNA in blood or tissue samples"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "rocky-mountain-spotted-fever",
+      "distinguishingFeatures": [
+        "More severe clinical course",
+        "Higher incidence of petechial rash",
+        "Geographic distribution primarily in North America"
+      ]
+    },
+    {
+      "diseaseId": "typhus-fever",
+      "distinguishingFeatures": [
+        "Absence of eschar",
+        "Rash typically starts on the trunk and spreads centrifugally",
+        "Different vector (fleas or lice)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression to multi-organ failure",
+    "Neurological deterioration including altered mental status",
+    "Severe thrombocytopenia with bleeding manifestations"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Dermatologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "CDC. Spotted Fever Rickettsiosis (including Rocky Mountain spotted fever): Epidemiology and Clinical Features. https://www.cdc.gov/rmsf/index.html",
+    "Parola P, Raoult D. Tick-borne rickettsioses around the world: emerging diseases challenging old concepts. Clin Microbiol Rev. 2001 Oct;14(4):719-56.",
+    "Walker DH. Rickettsiae and rickettsial infections: the current state of knowledge. Clin Infect Dis. 2007 Nov 15;45 Suppl 1:S39-44."
+  ],
+  "confidenceInData": "ai-generated"
+}

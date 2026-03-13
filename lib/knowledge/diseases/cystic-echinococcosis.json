@@ -1,0 +1,446 @@
+{
+  "id": "cystic-echinococcosis",
+  "name": "Cystic echinococcosis",
+  "aliases": [
+    "Hydatid disease",
+    "Echinococcosis granulosus infection"
+  ],
+  "icd10Codes": [
+    "B67.0"
+  ],
+  "orphanetId": "ORPHA:400",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "Populations in endemic regions such as Mediterranean, Middle East, South America, Central Asia"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Informal Working Group on Echinococcosis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "imaging-cystic-lesion",
+        "description": "Identification of characteristic cystic lesions on ultrasound or CT scan",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "serology-positive",
+        "description": "Positive serological tests for Echinococcus antibodies (ELISA, indirect hemagglutination)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "epidemiological-exposure",
+        "description": "History of exposure to endemic areas or contact with definitive hosts (dogs, canids)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "histopathology",
+        "description": "Histopathological confirmation of hydatid cyst material after biopsy or surgery",
+        "category": "major",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Presence of characteristic cystic lesions on imaging plus positive serology or histopathological confirmation",
+    "notes": "Biopsy is generally avoided due to risk of cyst rupture and anaphylaxis"
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cholestatic liver disease",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "liver disease with bile flow problems",
+          "cholestatic liver condition",
+          "bile-related liver disorder"
+        ]
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.55,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "high antibody levels in blood",
+          "increased circulating antibodies",
+          "elevated immune proteins"
+        ]
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "diaphragm abnormal shape or position",
+          "defect or malformation of diaphragm muscle",
+          "diaphragm structural problems"
+        ]
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hyperbilirubinemia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated circulating hepatic transaminase concentration",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "high liver enzyme levels",
+          "elevated hepatic transaminases",
+          "increased liver function tests"
+        ]
+      },
+      {
+        "symptomName": "Elevated circulating alkaline phosphatase concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high alkaline phosphatase blood levels",
+          "elevated bone or liver enzyme",
+          "increased ALP in blood tests"
+        ]
+      },
+      {
+        "symptomName": "Biliary tract obstruction",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "blocked bile ducts",
+          "bile flow obstruction",
+          "jaundice from bile blockage"
+        ]
+      },
+      {
+        "symptomName": "Multiple pulmonary cysts",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "multiple lung cysts",
+          "several air-filled lung spaces",
+          "lung cystic lesions"
+        ]
+      },
+      {
+        "symptomName": "Abdominal symptom",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abscess",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated gamma-glutamyltransferase level",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high liver enzyme levels",
+          "elevated GGT blood test",
+          "increased gamma-glutamyltransferase"
+        ]
+      },
+      {
+        "symptomName": "Abnormal pulmonary thoracic imaging finding",
+        "frequency": 0.17,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "unusual lung or chest imaging results",
+          "abnormal chest X-ray or scan"
+        ]
+      },
+      {
+        "symptomName": "Unusual infection",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Anaphylactic shock",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Renal cyst",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Ovarian cyst",
+        "frequency": 0.03,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "eye abnormality",
+          "eye malformation",
+          "unusual eye appearance"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the vertebral column",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "spine abnormalities",
+          "vertebral column defects",
+          "backbone malformations"
+        ]
+      },
+      {
+        "symptomName": "Jaundice",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Urticaria",
+        "frequency": 0.03,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Abnormal heart morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "abnormal heart shape",
+          "heart structure problems",
+          "unusual heart anatomy"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the pancreas",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "pancreas abnormalities",
+          "problems with pancreas structure",
+          "pancreatic malformations"
+        ]
+      },
+      {
+        "symptomName": "Asthma",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormality of the peritoneum",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "abnormal lining of abdominal cavity",
+          "peritoneal changes",
+          "abnormal abdominal membrane"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the musculature",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "muscle structure abnormalities",
+          "unusual muscle formation",
+          "muscle tissue irregularities"
+        ]
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "fluid-filled brain cyst",
+          "brain cavity lesion",
+          "intracranial fluid sac"
+        ]
+      },
+      {
+        "symptomName": "Localized skin lesion",
+        "frequency": 0.03,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "small skin sore",
+          "localized skin spot",
+          "skin lesion in one area"
+        ]
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Membranous nephropathy",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Splenic cyst",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal subpleural morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "abnormal lung surface near pleura",
+          "subpleural lung changes",
+          "lung edge abnormalities"
+        ]
+      },
+      {
+        "symptomName": "Invasive parasitic infection",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "spread of parasitic infection",
+          "deep tissue parasite invasion",
+          "severe parasite infection"
+        ]
+      },
+      {
+        "symptomName": "Abnormality of the testis size",
+        "frequency": 0.03,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "testicle size abnormality",
+          "unusually small or large testis",
+          "testicular size difference"
+        ]
+      },
+      {
+        "symptomName": "Peritoneal abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "constitutional",
+    "immunological",
+    "respiratory",
+    "renal",
+    "reproductive",
+    "ophthalmological",
+    "musculoskeletal",
+    "dermatological",
+    "cardiovascular"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Eosinophilia in peripheral blood",
+      "Positive serology for Echinococcus antibodies (ELISA, indirect hemagglutination)"
+    ],
+    "imaging": [
+      "Ultrasound showing cystic lesions with daughter cysts and hydatid sand",
+      "CT scan demonstrating well-defined cystic masses with internal septations",
+      "MRI for cerebral or spinal cyst localization"
+    ],
+    "genetic": [],
+    "other": [
+      "Histopathology showing laminated cyst wall with protoscoleces",
+      "Risk of anaphylaxis upon cyst rupture"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "simple-hepatic-cyst",
+      "distinguishingFeatures": [
+        "Lack of daughter cysts",
+        "Negative serology for Echinococcus",
+        "No epidemiological exposure"
+      ]
+    },
+    {
+      "diseaseId": "hepatic-abscess",
+      "distinguishingFeatures": [
+        "Presence of systemic infection signs",
+        "Positive bacterial cultures",
+        "Irregular cyst wall and internal debris on imaging"
+      ]
+    },
+    {
+      "diseaseId": "pulmonary-bronchogenic-cyst",
+      "distinguishingFeatures": [
+        "Congenital cystic lesion without serological evidence",
+        "No daughter cysts",
+        "Different imaging characteristics"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset anaphylaxis or allergic reaction",
+    "Rapid cyst enlargement causing organ compression",
+    "Signs of cyst rupture with secondary infection or dissemination"
+  ],
+  "specialistType": [
+    "Infectious disease specialist",
+    "Hepatologist",
+    "Radiologist",
+    "Surgeon"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "WHO Informal Working Group on Echinococcosis. Guidelines for treatment of cystic and alveolar echinococcosis in humans. Bull World Health Organ. 1996.",
+    "Brunetti E, Kern P, Vuitton DA; Writing Panel for the WHO-IWGE. Expert consensus for the diagnosis and treatment of cystic and alveolar echinococcosis in humans. Acta Trop. 2010.",
+    "McManus DP, Zhang W, Li J, Bartley PB. Echinococcosis. Lancet. 2003."
+  ],
+  "confidenceInData": "medium"
+}

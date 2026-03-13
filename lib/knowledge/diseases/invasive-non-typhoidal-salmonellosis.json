@@ -1,0 +1,207 @@
+{
+  "id": "invasive-non-typhoidal-salmonellosis",
+  "name": "Invasive Non-Typhoidal Salmonellosis",
+  "aliases": [
+    "iNTS",
+    "Invasive NTS Infection"
+  ],
+  "icd10Codes": [
+    "A02.2"
+  ],
+  "orphanetId": "324648",
+  "prevalence": {
+    "estimate": "1 in 100,000",
+    "range": "0.01%-0.05%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": [
+      "Sub-Saharan African populations",
+      "Immunocompromised individuals"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Invasive Non-Typhoidal Salmonellosis Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "blood-culture-positivity",
+        "description": "Isolation of non-typhoidal Salmonella species from sterile sites such as blood or cerebrospinal fluid",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-fever",
+        "description": "Fever >38°C persisting for more than 48 hours without an alternative source",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "risk-factors",
+        "description": "Presence of predisposing conditions such as HIV infection, malaria, or immunosuppression",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "exclusion-of-typhoidal-salmonella",
+        "description": "Exclusion of typhoidal Salmonella species by serotyping or molecular methods",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Isolation of non-typhoidal Salmonella from sterile sites plus clinical signs of systemic infection and exclusion of typhoidal Salmonella",
+    "notes": "Diagnosis relies heavily on microbiological confirmation from sterile sites due to overlapping clinical features with other systemic infections."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Bacteremia with non-typhoidal Salmonella",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Confirmed by positive blood cultures",
+        "searchTerms": [
+          "blood infection with non-typhoidal Salmonella",
+          "Salmonella bacteremia",
+          "Salmonella bloodstream infection"
+        ]
+      },
+      {
+        "symptomName": "Persistent high-grade fever",
+        "frequency": 0.8,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "ongoing high fever",
+          "continuous severe fever",
+          "persistent elevated temperature"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Septic arthritis",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Osteomyelitis",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.58,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Meningitis",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Endocarditis",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.18,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Skin abscesses",
+        "frequency": 0.15,
+        "bodySystem": "dermatological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Septic shock",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pulmonary infiltrates",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Osteonecrosis",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "musculoskeletal",
+    "constitutional",
+    "gastrointestinal",
+    "neurological",
+    "cardiovascular",
+    "dermatological",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Positive blood cultures for non-typhoidal Salmonella",
+      "Elevated inflammatory markers (CRP, ESR)",
+      "Leukocytosis or leukopenia depending on immune status"
+    ],
+    "imaging": [
+      "MRI or X-ray showing osteomyelitis or septic arthritis",
+      "Ultrasound evidence of hepatosplenomegaly"
+    ],
+    "genetic": [],
+    "other": [
+      "Serotyping to differentiate non-typhoidal from typhoidal Salmonella",
+      "HIV testing due to strong association with immunosuppression"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "typhoidal-salmonellosis",
+      "distinguishingFeatures": [
+        "Positive blood cultures for Salmonella Typhi or Paratyphi",
+        "Characteristic rose spots rash",
+        "More prominent gastrointestinal symptoms"
+      ]
+    },
+    {
+      "diseaseId": "bacterial-sepsis-other-causes",
+      "distinguishingFeatures": [
+        "Isolation of other bacterial pathogens in blood cultures",
+        "Different antibiotic susceptibility patterns",
+        "Absence of Salmonella species"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapid progression to septic shock",
+    "Neurological signs suggestive of meningitis",
+    "Persistent high-grade fever despite antibiotic therapy"
+  ],
+  "specialistType": [
+    "Infectious Disease Specialist",
+    "Hematologist",
+    "Rheumatologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Feasey NA, et al. Invasive non-typhoidal Salmonella disease: an emerging and neglected tropical disease in Africa. Lancet. 2012.",
+    "Gordon MA. Invasive non-typhoidal Salmonella disease: epidemiology, pathogenesis and diagnosis. Curr Opin Infect Dis. 2011.",
+    "Crump JA, et al. Epidemiology, clinical presentation, laboratory diagnosis, antimicrobial resistance, and antimicrobial management of invasive Salmonella infections. Clin Microbiol Rev. 2015."
+  ],
+  "confidenceInData": "ai-generated"
+}

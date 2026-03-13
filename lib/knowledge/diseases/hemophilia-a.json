@@ -1,0 +1,225 @@
+{
+  "id": "hemophilia-a",
+  "name": "Hemophilia A",
+  "aliases": [
+    "Factor VIII Deficiency",
+    "Classic Hemophilia"
+  ],
+  "icd10Codes": [
+    "D66"
+  ],
+  "omimId": "306700",
+  "orphanetId": "ORPHA:98878",
+  "prevalence": {
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 12,
+      "peak": 7
+    },
+    "sexPredilection": "male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Hemophilia A Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "factor-viii-activity",
+        "description": "Reduced factor VIII clotting activity levels (<40%)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "prolonged-aptt",
+        "description": "Prolonged activated partial thromboplastin time (aPTT) with normal prothrombin time (PT)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of hemophilia A or bleeding diathesis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "genetic-testing",
+        "description": "Identification of pathogenic variants in the F8 gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Reduced factor VIII activity with prolonged aPTT and/or identification of pathogenic F8 gene mutation",
+    "notes": "Diagnosis is confirmed by coagulation factor assays and genetic testing; family history supports but is not mandatory."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Joint swelling",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Reduced factor VIII activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "low clotting factor VIII",
+          "reduced blood clotting protein VIII",
+          "factor VIII deficiency"
+        ]
+      },
+      {
+        "symptomName": "Bleeding with minor or no trauma",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "bleeding easily",
+          "bruises or bleeds with little injury",
+          "excessive bleeding from minor trauma"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Thromboembolism",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spontaneous hematomas",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Oral cavity bleeding",
+        "frequency": 0.55,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "bleeding inside mouth",
+          "oral bleeding or gum bleeding",
+          "blood from mouth tissues"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Joint hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Gastrointestinal hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormality of the elbow",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "elbow abnormality",
+          "unusual elbow shape",
+          "elbow joint deformity"
+        ]
+      },
+      {
+        "symptomName": "Intramuscular hematoma",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Intraventricular hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Intracranial hemorrhage",
+        "frequency": 0.03,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Splenic rupture",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "musculoskeletal",
+    "constitutional",
+    "hematological",
+    "gastrointestinal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Reduced factor VIII activity levels",
+      "Prolonged activated partial thromboplastin time (aPTT)",
+      "Normal prothrombin time (PT)",
+      "Normal platelet count"
+    ],
+    "imaging": [
+      "MRI or ultrasound showing hemarthrosis or muscle hematomas",
+      "CT scan for intracranial hemorrhage"
+    ],
+    "genetic": [
+      "Pathogenic variants in the F8 gene on X chromosome",
+      "X-linked recessive inheritance"
+    ],
+    "other": [
+      "Family history of X-linked recessive bleeding disorder"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "hemophilia-b",
+      "distinguishingFeatures": [
+        "Factor IX deficiency instead of factor VIII",
+        "Similar clinical presentation but different coagulation factor assay"
+      ]
+    },
+    {
+      "diseaseId": "von-willebrand-disease",
+      "distinguishingFeatures": [
+        "Deficiency or dysfunction of von Willebrand factor",
+        "Prolonged bleeding time and variable aPTT",
+        "Both males and females affected equally"
+      ]
+    },
+    {
+      "diseaseId": "acquired-hemophilia",
+      "distinguishingFeatures": [
+        "Autoantibodies against factor VIII",
+        "Typically presents later in life without family history",
+        "Prolonged aPTT not corrected by mixing studies"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Spontaneous intracranial hemorrhage",
+    "Severe joint bleeding causing loss of function",
+    "Unexplained prolonged bleeding after minor procedures"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Pediatrician",
+    "Geneticist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "National Hemophilia Foundation. Guidelines for the Management of Hemophilia.",
+    "Orphanet Report Series: Hemophilia A. Orphanet Journal of Rare Diseases.",
+    "Mannucci PM, Tuddenham EG. The hemophilias—from royal genes to gene therapy. N Engl J Med. 2001."
+  ],
+  "confidenceInData": "medium"
+}

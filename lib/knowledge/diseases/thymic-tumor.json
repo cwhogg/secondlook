@@ -1,0 +1,256 @@
+{
+  "id": "thymic-tumor",
+  "name": "Thymic Tumor",
+  "aliases": [
+    "Thymoma",
+    "Thymic Neoplasm"
+  ],
+  "icd10Codes": [
+    "C37"
+  ],
+  "orphanetId": "ORPHA:100100",
+  "prevalence": {
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 20,
+      "max": 70,
+      "peak": 50
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "WHO Classification of Thymic Epithelial Tumors",
+    "criteria": [
+      {
+        "id": "imaging-evidence",
+        "description": "Presence of anterior mediastinal mass on chest imaging (CT or MRI)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "histopathology-confirmation",
+        "description": "Histopathological confirmation of thymic epithelial tumor subtype",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-syndrome-association",
+        "description": "Association with paraneoplastic syndromes such as myasthenia gravis",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Radiologic evidence of anterior mediastinal mass plus histopathological confirmation of thymic epithelial tumor",
+    "notes": "Diagnosis requires tissue biopsy for definitive classification; imaging guides surgical planning."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Anterior mediastinal mass detected on imaging",
+        "frequency": 0.85,
+        "bodySystem": "respiratory",
+        "notes": "Often asymptomatic, discovered incidentally",
+        "searchTerms": [
+          "mass in front of chest detected by scan",
+          "tumor in anterior mediastinum",
+          "chest imaging showing mass"
+        ]
+      },
+      {
+        "symptomName": "Myasthenia gravis with fluctuating skeletal muscle weakness",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Occurs in approximately 30-50% of thymoma cases",
+        "searchTerms": [
+          "muscle weakness that fluctuates",
+          "weakness in skeletal muscles varying over time",
+          "muscle fatigue that changes"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Chest pain localized to anterior mediastinum",
+        "frequency": 0.65,
+        "bodySystem": "respiratory",
+        "notes": "Due to tumor invasion or compression",
+        "searchTerms": [
+          "chest pain in front of chest",
+          "pain behind breastbone",
+          "anterior chest discomfort"
+        ]
+      },
+      {
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.6,
+        "bodySystem": "respiratory",
+        "notes": "From mass effect on lungs or airways",
+        "searchTerms": [
+          "shortness of breath when active",
+          "breathlessness on exertion",
+          "difficulty breathing with activity"
+        ]
+      },
+      {
+        "symptomName": "Cough, non-productive",
+        "frequency": 0.55,
+        "bodySystem": "respiratory",
+        "notes": "Due to airway irritation"
+      },
+      {
+        "symptomName": "Superior vena cava syndrome",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular",
+        "notes": "Venous congestion from tumor compression",
+        "searchTerms": [
+          "swelling from blocked chest vein",
+          "vein blockage causing face/neck swelling",
+          "superior vena cava blockage symptoms"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hoarseness due to recurrent laryngeal nerve involvement",
+        "frequency": 0.3,
+        "bodySystem": "otolaryngological",
+        "notes": "Indicates local nerve invasion",
+        "searchTerms": [
+          "voice changes from nerve damage",
+          "hoarse voice due to nerve involvement",
+          "recurrent nerve causing hoarseness"
+        ]
+      },
+      {
+        "symptomName": "Weight loss and anorexia",
+        "frequency": 0.25,
+        "bodySystem": "constitutional",
+        "notes": "Systemic effects of malignancy",
+        "searchTerms": [
+          "unintentional weight loss and poor appetite",
+          "losing weight with decreased hunger",
+          "weight reduction and anorexia"
+        ]
+      },
+      {
+        "symptomName": "Fever of unknown origin",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "notes": "Paraneoplastic or inflammatory response",
+        "searchTerms": [
+          "unexplained fever",
+          "fever with no known cause",
+          "persistent high temperature without diagnosis"
+        ]
+      },
+      {
+        "symptomName": "Pericardial effusion",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to tumor invasion or inflammation"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pure red cell aplasia",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "notes": "Paraneoplastic autoimmune complication",
+        "searchTerms": [
+          "failure to produce red blood cells",
+          "pure red cell aplasia causing anemia"
+        ]
+      },
+      {
+        "symptomName": "Hypogammaglobulinemia (Good syndrome)",
+        "frequency": 0.03,
+        "bodySystem": "immunological",
+        "notes": "Immunodeficiency associated with thymoma",
+        "searchTerms": [
+          "low antibody levels causing immune deficiency",
+          "reduced immunoglobulins",
+          "immune system weakness from low antibodies"
+        ]
+      },
+      {
+        "symptomName": "Superior phrenic nerve palsy causing diaphragmatic paralysis",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "notes": "Rare nerve involvement",
+        "searchTerms": [
+          "nerve paralysis causing diaphragm weakness",
+          "phrenic nerve damage leading to breathing problems",
+          "diaphragm paralysis from nerve palsy"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "neurological",
+    "cardiovascular",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "otolaryngological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Elevated acetylcholine receptor antibodies in myasthenia gravis",
+      "Anemia or pure red cell aplasia on complete blood count",
+      "Hypogammaglobulinemia in Good syndrome"
+    ],
+    "imaging": [
+      "CT scan showing anterior mediastinal mass with possible invasion",
+      "MRI for soft tissue characterization and local extent",
+      "Chest X-ray may show widened mediastinum"
+    ],
+    "genetic": [
+      "No specific germline mutations routinely identified",
+      "Somatic mutations in GTF2I gene reported in some thymomas"
+    ],
+    "other": [
+      "Histopathological classification per WHO criteria",
+      "Immunohistochemistry positive for cytokeratin and CD5 in thymic carcinoma"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "lymphoma-mediastinal",
+      "distinguishingFeatures": [
+        "More rapid onset",
+        "B symptoms (fever, night sweats, weight loss)",
+        "Different histopathology and immunophenotype"
+      ]
+    },
+    {
+      "diseaseId": "germ-cell-tumor-mediastinal",
+      "distinguishingFeatures": [
+        "Serum tumor markers elevated (AFP, beta-hCG)",
+        "Younger age group predominance",
+        "Distinct histology on biopsy"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive respiratory distress",
+    "Signs of superior vena cava syndrome",
+    "New onset or worsening myasthenic crisis"
+  ],
+  "specialistType": [
+    "Thoracic surgeon",
+    "Oncologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "Travis WD et al. WHO Classification of Tumors of the Lung, Pleura, Thymus and Heart. IARC, 2021.",
+    "Detterbeck FC et al. The Masaoka-Koga stage classification for thymic malignancies. J Thorac Oncol. 2011.",
+    "Marx A et al. The 2021 WHO classification of thymic epithelial tumors. Virchows Arch. 2021."
+  ],
+  "confidenceInData": "ai-generated"
+}

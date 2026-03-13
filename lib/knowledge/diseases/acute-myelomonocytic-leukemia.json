@@ -1,0 +1,186 @@
+{
+  "id": "acute-myelomonocytic-leukemia",
+  "name": "Acute Myelomonocytic Leukemia",
+  "aliases": [
+    "AMML",
+    "Acute Myelomonocytic Leukemia (FAB M4)"
+  ],
+  "icd10Codes": [
+    "C92.4"
+  ],
+  "orphanetId": "ORPHA:517",
+  "prevalence": {
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "slight-male",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "FAB Classification for AML M4",
+    "criteria": [
+      {
+        "id": "blast-percentage",
+        "description": "Presence of ≥20% myeloblasts and monoblasts in bone marrow or peripheral blood",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "monocytic-differentiation",
+        "description": "Evidence of both granulocytic and monocytic differentiation in leukemic cells",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "cytochemical-staining",
+        "description": "Positive myeloperoxidase and nonspecific esterase staining in blasts",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "immunophenotyping",
+        "description": "Expression of myeloid (CD13, CD33) and monocytic markers (CD14, CD11b)",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "≥20% blasts in marrow or blood with evidence of both granulocytic and monocytic differentiation",
+    "notes": "Diagnosis is based on morphology, cytochemistry, and immunophenotyping according to FAB criteria."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Leukocytosis",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Pallor",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal bleeding",
+        "frequency": 0.55,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "excessive bleeding",
+          "unusual bleeding episodes",
+          "bleeding problems"
+        ]
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Abnormality of the gingiva",
+        "frequency": 0.17,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "gum swelling or abnormal gums",
+          "gum inflammation or changes",
+          "gingival overgrowth or lesions",
+          "unusual gum appearance"
+        ]
+      },
+      {
+        "symptomName": "Eosinophilia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      }
+    ],
+    "rare": []
+  },
+  "systemsAffected": [
+    "hematological",
+    "constitutional",
+    "respiratory"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Peripheral blood smear showing myeloblasts and monoblasts",
+      "Bone marrow biopsy with ≥20% blasts and myelomonocytic proliferation",
+      "Cytochemical staining positive for myeloperoxidase and nonspecific esterase",
+      "Complete blood count showing anemia, thrombocytopenia, and leukocytosis or leukopenia"
+    ],
+    "imaging": [
+      "Chest X-ray may show leukostasis-related infiltrates",
+      "Ultrasound or CT showing hepatosplenomegaly"
+    ],
+    "genetic": [
+      "Cytogenetic abnormalities such as inv(16)(p13q22) or t(16;16)(p13;q22) commonly associated",
+      "Molecular mutations including CBFβ-MYH11 fusion gene"
+    ],
+    "other": [
+      "Immunophenotyping confirming myeloid and monocytic markers",
+      "Coagulation abnormalities in some cases"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "acute-monocytic-leukemia",
+      "distinguishingFeatures": [
+        "Predominance of monocytic cells (>80%) without significant granulocytic differentiation",
+        "Different immunophenotypic profile lacking granulocytic markers"
+      ]
+    },
+    {
+      "diseaseId": "acute-myeloid-leukemia-with-maturation",
+      "distinguishingFeatures": [
+        "Predominance of granulocytic differentiation without monocytic lineage involvement",
+        "Different cytochemical staining pattern"
+      ]
+    },
+    {
+      "diseaseId": "chronic-myelomonocytic-leukemia",
+      "distinguishingFeatures": [
+        "Chronic course with persistent monocytosis >1x10^9/L for >3 months",
+        "Less than 20% blasts in blood and marrow"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive cytopenias with bleeding and infections",
+    "Presence of >20% blasts in peripheral blood or bone marrow",
+    "Signs of leukostasis such as respiratory distress or neurological symptoms"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Oncologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Arber DA, et al. The 2016 revision to the World Health Organization classification of myeloid neoplasms and acute leukemia. Blood. 2016.",
+    "Swerdlow SH, et al. WHO Classification of Tumours of Haematopoietic and Lymphoid Tissues. IARC; 2017.",
+    "Orphanet: Acute myelomonocytic leukemia - ORPHA:517"
+  ],
+  "confidenceInData": "medium"
+}

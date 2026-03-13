@@ -1,0 +1,254 @@
+{
+  "id": "invasive-mole",
+  "name": "Invasive Mole",
+  "aliases": [
+    "Chorioadenoma destruens",
+    "Invasive hydatidiform mole"
+  ],
+  "icd10Codes": [
+    "O01.1"
+  ],
+  "orphanetId": "ORPHA:99925",
+  "prevalence": {
+    "estimate": "1 in 40,000 pregnancies",
+    "range": "0.01%-0.05%",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 18,
+      "max": 65,
+      "peak": 42
+    },
+    "sexPredilection": "female",
+    "ethnicAssociations": [
+      "Asian",
+      "African"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "FIGO criteria for gestational trophoblastic neoplasia",
+    "criteria": [
+      {
+        "id": "persistent-hcg",
+        "description": "Persistently elevated or rising serum human chorionic gonadotropin (hCG) levels after molar evacuation",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "myometrial-invasion",
+        "description": "Histopathological evidence of trophoblastic invasion into the myometrium",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "ultrasound-findings",
+        "description": "Ultrasound showing invasive mass with cystic spaces extending beyond endometrium",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "absence-metastasis",
+        "description": "No evidence of distant metastasis on imaging",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation of myometrial invasion by molar tissue with persistently elevated hCG levels post-evacuation",
+    "notes": "Diagnosis often requires correlation of clinical, biochemical, imaging, and histopathological data."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Persistent elevated serum hCG levels post molar evacuation",
+        "frequency": 0.95,
+        "bodySystem": "endocrine",
+        "notes": "Indicative of trophoblastic proliferation",
+        "searchTerms": [
+          "high hCG levels after molar pregnancy",
+          "persistent elevated pregnancy hormone",
+          "continued hCG elevation post-evacuation"
+        ]
+      },
+      {
+        "symptomName": "Myometrial invasion by trophoblastic tissue",
+        "frequency": 0.85,
+        "bodySystem": "reproductive",
+        "notes": "Confirmed by histopathology",
+        "searchTerms": [
+          "invasion of uterine muscle by trophoblast",
+          "myometrial trophoblastic invasion",
+          "growth into uterine muscle"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Abnormal uterine bleeding",
+        "frequency": 0.75,
+        "bodySystem": "reproductive",
+        "notes": "Often irregular and prolonged",
+        "searchTerms": [
+          "irregular or heavy menstrual bleeding",
+          "abnormal periods",
+          "unusual uterine bleeding"
+        ]
+      },
+      {
+        "symptomName": "Enlarged uterus disproportionate to gestational age",
+        "frequency": 0.7,
+        "bodySystem": "reproductive",
+        "notes": "Due to invasive trophoblastic tissue",
+        "searchTerms": [
+          "uterus bigger than expected for pregnancy",
+          "disproportionately enlarged womb",
+          "large uterus for gestational age"
+        ]
+      },
+      {
+        "symptomName": "Pelvic pain or cramping",
+        "frequency": 0.65,
+        "bodySystem": "reproductive",
+        "notes": "Secondary to myometrial invasion",
+        "searchTerms": [
+          "pelvic pain or cramps",
+          "lower abdominal discomfort",
+          "pelvic cramping"
+        ]
+      },
+      {
+        "symptomName": "Hyperemesis gravidarum-like symptoms",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "notes": "Nausea and vomiting due to elevated hCG",
+        "searchTerms": [
+          "severe pregnancy nausea and vomiting",
+          "symptoms like hyperemesis gravidarum",
+          "excessive vomiting during pregnancy"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Anemia secondary to uterine bleeding",
+        "frequency": 0.4,
+        "bodySystem": "hematological",
+        "notes": "May require transfusion",
+        "searchTerms": [
+          "anemia caused by heavy uterine bleeding",
+          "low blood count from bleeding",
+          "blood loss anemia due to uterine bleeding"
+        ]
+      },
+      {
+        "symptomName": "Lower abdominal tenderness",
+        "frequency": 0.35,
+        "bodySystem": "reproductive",
+        "notes": "Due to uterine distension",
+        "searchTerms": [
+          "pain in lower abdomen",
+          "tenderness below belly button",
+          "lower belly soreness"
+        ]
+      },
+      {
+        "symptomName": "Vaginal discharge",
+        "frequency": 0.3,
+        "bodySystem": "reproductive",
+        "notes": "May be watery or blood-tinged"
+      },
+      {
+        "symptomName": "Mild fever",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "notes": "Occasionally present"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pulmonary symptoms from metastasis (e.g., hemoptysis)",
+        "frequency": 0.05,
+        "bodySystem": "respiratory",
+        "notes": "Rare in invasive mole but possible if metastasis occurs",
+        "searchTerms": [
+          "lung symptoms from cancer spread",
+          "coughing blood from lung metastasis",
+          "pulmonary symptoms with hemoptysis"
+        ]
+      },
+      {
+        "symptomName": "Hyperthyroidism symptoms",
+        "frequency": 0.03,
+        "bodySystem": "endocrine",
+        "notes": "Due to hCG cross-reactivity with TSH receptor"
+      },
+      {
+        "symptomName": "Pre-eclampsia-like syndrome",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare complication"
+      }
+    ]
+  },
+  "systemsAffected": [
+    "reproductive",
+    "endocrine",
+    "hematological",
+    "gastrointestinal",
+    "respiratory",
+    "cardiovascular",
+    "constitutional"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Persistently elevated or rising serum hCG levels after molar evacuation",
+      "Anemia due to uterine bleeding",
+      "Normal thyroid function tests or mild hyperthyroidism"
+    ],
+    "imaging": [
+      "Ultrasound showing invasive mass with cystic spaces extending into myometrium",
+      "Chest X-ray or CT to exclude pulmonary metastases"
+    ],
+    "genetic": [
+      "No specific genetic mutation; related to abnormal trophoblastic proliferation"
+    ],
+    "other": [
+      "Histopathological confirmation of myometrial invasion by molar tissue"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "choriocarcinoma",
+      "distinguishingFeatures": [
+        "More aggressive with early metastasis",
+        "Higher and rapidly rising hCG levels",
+        "Histology shows absence of villi"
+      ]
+    },
+    {
+      "diseaseId": "non-invasive-hydatidiform-mole",
+      "distinguishingFeatures": [
+        "Confined to endometrium without myometrial invasion",
+        "Usually resolves after evacuation",
+        "Lower risk of persistent disease"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly rising or plateauing serum hCG levels after molar evacuation",
+    "Severe abnormal uterine bleeding",
+    "Signs of distant metastasis such as hemoptysis or neurological symptoms"
+  ],
+  "specialistType": [
+    "Gynecologic oncologist",
+    "Pathologist",
+    "Radiologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Seckl MJ, Sebire NJ, Berkowitz RS. Gestational trophoblastic disease: ESMO Clinical Practice Guidelines for diagnosis, treatment and follow-up. Ann Oncol. 2013.",
+    "Goldstein DP, Berkowitz RS. Gestational trophoblastic neoplasia: clinical and pathologic features. Hematol Oncol Clin North Am. 1990.",
+    "Orphanet: Invasive mole ORPHA:99925"
+  ],
+  "confidenceInData": "ai-generated"
+}

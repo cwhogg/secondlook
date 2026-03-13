@@ -1,0 +1,295 @@
+{
+  "id": "sickle-cell-disease",
+  "name": "Sickle Cell Disease",
+  "aliases": [
+    "Sickle Cell Anemia",
+    "HbSS Disease"
+  ],
+  "icd10Codes": [
+    "D57.0"
+  ],
+  "omimId": "603903",
+  "orphanetId": "ORPHA:275752",
+  "prevalence": {
+    "estimate": "1 in 365 African-American births",
+    "range": "0.01%-0.1%",
+    "classification": "common"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 5,
+      "peak": 1
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": [
+      "African",
+      "Mediterranean",
+      "Middle Eastern",
+      "Indian",
+      "Caribbean"
+    ]
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "Sickle Cell Disease Diagnostic Criteria",
+    "criteria": [
+      {
+        "id": "hemoglobin-electrophoresis",
+        "description": "Presence of hemoglobin S on hemoglobin electrophoresis or HPLC",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "clinical-features",
+        "description": "Recurrent vaso-occlusive crises or hemolytic anemia symptoms",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "family-history",
+        "description": "Positive family history of sickle cell disease or trait",
+        "category": "supportive",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "newborn-screening",
+        "description": "Newborn screening positive for HbS",
+        "category": "major",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Presence of hemoglobin S confirmed by electrophoresis or HPLC plus clinical features consistent with sickle cell disease or positive newborn screening",
+    "notes": "Genetic testing for HBB gene mutations can confirm diagnosis in ambiguous cases."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Sickled erythrocytes on peripheral blood smear",
+        "frequency": 0.95,
+        "bodySystem": "hematological",
+        "notes": "Characteristic crescent-shaped red blood cells",
+        "searchTerms": [
+          "sickle-shaped red blood cells",
+          "crescent-shaped erythrocytes",
+          "abnormal sickled blood cells"
+        ]
+      },
+      {
+        "symptomName": "Vaso-occlusive pain crises",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "notes": "Episodes of severe bone and joint pain",
+        "searchTerms": [
+          "episodes of severe pain from blocked vessels",
+          "pain crises due to blood flow blockage",
+          "vascular pain episodes"
+        ]
+      },
+      {
+        "symptomName": "Chronic hemolytic anemia",
+        "frequency": 0.9,
+        "bodySystem": "hematological",
+        "notes": "Low hemoglobin with reticulocytosis",
+        "searchTerms": [
+          "long-term destruction of red blood cells",
+          "chronic anemia from red cell breakdown",
+          "ongoing hemolytic anemia"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Splenomegaly",
+        "frequency": 0.7,
+        "bodySystem": "hematological",
+        "notes": "Enlarged spleen common in early childhood"
+      },
+      {
+        "symptomName": "Jaundice due to hemolysis",
+        "frequency": 0.65,
+        "bodySystem": "hematological",
+        "notes": "Yellowing of skin and sclera",
+        "searchTerms": [
+          "yellow skin from red blood cell breakdown",
+          "jaundice caused by hemolysis",
+          "bilirubin buildup due to hemolysis"
+        ]
+      },
+      {
+        "symptomName": "Acute chest syndrome",
+        "frequency": 0.6,
+        "bodySystem": "respiratory",
+        "notes": "Pulmonary infiltrates with fever and respiratory symptoms",
+        "searchTerms": [
+          "acute lung syndrome with chest pain",
+          "sudden chest pain and breathing trouble",
+          "acute chest syndrome"
+        ]
+      },
+      {
+        "symptomName": "Delayed growth and puberty",
+        "frequency": 0.55,
+        "bodySystem": "endocrine",
+        "notes": "Growth retardation common in children",
+        "searchTerms": [
+          "slow growth and puberty delay",
+          "delayed physical development",
+          "late onset of puberty"
+        ]
+      },
+      {
+        "symptomName": "Frequent infections",
+        "frequency": 0.5,
+        "bodySystem": "immunological",
+        "notes": "Due to functional asplenia"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Leg ulcers",
+        "frequency": 0.3,
+        "bodySystem": "dermatological",
+        "notes": "Chronic non-healing ulcers on lower extremities"
+      },
+      {
+        "symptomName": "Avascular necrosis of femoral head",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal",
+        "notes": "Bone infarction leading to joint destruction",
+        "searchTerms": [
+          "dead bone tissue in hip",
+          "loss of blood supply to femoral head",
+          "hip bone death"
+        ]
+      },
+      {
+        "symptomName": "Priapism",
+        "frequency": 0.2,
+        "bodySystem": "reproductive",
+        "notes": "Painful prolonged penile erection"
+      },
+      {
+        "symptomName": "Retinopathy",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological",
+        "notes": "Vascular changes in retina"
+      },
+      {
+        "symptomName": "Gallstones",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to chronic hemolysis"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Ischemic or hemorrhagic cerebrovascular events"
+      },
+      {
+        "symptomName": "Pulmonary hypertension",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular",
+        "notes": "Elevated pulmonary artery pressures"
+      },
+      {
+        "symptomName": "Cholecystitis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "notes": "Inflammation of gallbladder secondary to gallstones"
+      },
+      {
+        "symptomName": "Splenic sequestration crisis",
+        "frequency": 0.02,
+        "bodySystem": "hematological",
+        "notes": "Sudden pooling of blood in spleen causing acute anemia",
+        "searchTerms": [
+          "spleen enlargement with blood trapping",
+          "splenic sequestration crisis",
+          "sudden spleen swelling with anemia"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "hematological",
+    "musculoskeletal",
+    "respiratory",
+    "gastrointestinal",
+    "dermatological",
+    "neurological",
+    "cardiovascular",
+    "ophthalmological",
+    "reproductive",
+    "endocrine",
+    "immunological"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Hemoglobin electrophoresis showing HbS predominance",
+      "Peripheral blood smear with sickled red cells",
+      "Elevated reticulocyte count",
+      "Elevated lactate dehydrogenase (LDH)",
+      "Indirect hyperbilirubinemia"
+    ],
+    "imaging": [
+      "MRI brain showing ischemic infarcts in stroke",
+      "X-ray or MRI showing avascular necrosis of femoral head",
+      "Chest X-ray showing acute chest syndrome infiltrates"
+    ],
+    "genetic": [
+      "Mutation in HBB gene causing glutamic acid to valine substitution at position 6 (Glu6Val)",
+      "Autosomal recessive inheritance pattern"
+    ],
+    "other": [
+      "Newborn screening programs detect HbS",
+      "Functional asplenia demonstrated by Howell-Jolly bodies on blood smear"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "thalassemia-major",
+      "distinguishingFeatures": [
+        "Microcytic hypochromic anemia",
+        "Absence of sickled cells on blood smear",
+        "Different hemoglobin electrophoresis pattern (e.g. HbF predominance)"
+      ]
+    },
+    {
+      "diseaseId": "hereditary-spherocytosis",
+      "distinguishingFeatures": [
+        "Spherocytes on peripheral smear",
+        "Positive osmotic fragility test",
+        "No hemoglobin S detected"
+      ]
+    },
+    {
+      "diseaseId": "autoimmune-hemolytic-anemia",
+      "distinguishingFeatures": [
+        "Positive direct antiglobulin (Coombs) test",
+        "No sickled cells",
+        "Variable hemoglobin electrophoresis"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Sudden onset severe anemia with splenomegaly (splenic sequestration crisis)",
+    "Acute chest syndrome with respiratory distress and hypoxia",
+    "Neurological deficits suggestive of stroke"
+  ],
+  "specialistType": [
+    "Hematologist",
+    "Pediatrician",
+    "Pulmonologist",
+    "Neurologist"
+  ],
+  "lastUpdated": "2026-03-10",
+  "references": [
+    "National Heart, Lung, and Blood Institute. Evidence-Based Management of Sickle Cell Disease. 2014.",
+    "Rees DC, Williams TN, Gladwin MT. Sickle-cell disease. Lancet. 2010;376(9757):2018-31.",
+    "Orphanet: Sickle cell disease - ORPHA:275752"
+  ],
+  "confidenceInData": "ai-generated"
+}

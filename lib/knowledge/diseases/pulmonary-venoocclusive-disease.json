@@ -1,0 +1,238 @@
+{
+  "id": "pulmonary-venoocclusive-disease",
+  "name": "Pulmonary Veno-Occlusive Disease",
+  "aliases": [
+    "PVOD",
+    "Pulmonary Capillary Hemangiomatosis (related condition)"
+  ],
+  "icd10Codes": [
+    "I27.89"
+  ],
+  "orphanetId": "31837",
+  "prevalence": {
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 0,
+      "max": 120,
+      "peak": 60
+    },
+    "sexPredilection": "equal",
+    "ethnicAssociations": []
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "No standardized formal criteria; diagnosis based on clinical, radiological, and histopathological findings",
+    "criteria": [
+      {
+        "id": "histopathology",
+        "description": "Histological evidence of widespread occlusion of small pulmonary veins by fibrous tissue",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "pulmonary-hypertension",
+        "description": "Presence of pulmonary arterial hypertension confirmed by right heart catheterization",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "imaging-findings",
+        "description": "Characteristic high-resolution CT findings including centrilobular ground-glass opacities, septal lines, and mediastinal lymphadenopathy",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "exclusion-other-causes",
+        "description": "Exclusion of other causes of pulmonary hypertension such as left heart disease or chronic thromboembolic disease",
+        "category": "supportive",
+        "requiredForDiagnosis": true
+      }
+    ],
+    "minimumForDiagnosis": "Histopathological confirmation of venous occlusion plus clinical and imaging evidence of pulmonary hypertension with exclusion of other causes",
+    "notes": "Lung biopsy is definitive but often high risk; diagnosis may be presumptive based on clinical and imaging features."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Progressive exertional dyspnea",
+        "frequency": 0.85,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "worsening shortness of breath with activity",
+          "progressive exercise breathlessness",
+          "increasing exertional dyspnea"
+        ]
+      },
+      {
+        "symptomName": "Severe hypoxemia refractory to oxygen therapy",
+        "frequency": 0.75,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "severe low oxygen levels",
+          "oxygen deficiency not improved by oxygen",
+          "critical breathing difficulty"
+        ]
+      },
+      {
+        "symptomName": "Pulmonary arterial hypertension confirmed by right heart catheterization",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "confirmed high pressure in lung arteries by catheter",
+          "pulmonary arterial hypertension diagnosed via heart catheter",
+          "lung artery hypertension verified by catheter test"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Non-productive cough",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Fatigue related to hypoxia",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from low oxygen",
+          "fatigue due to poor oxygen levels",
+          "exhaustion related to hypoxia"
+        ]
+      },
+      {
+        "symptomName": "Exertional syncope",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Peripheral edema",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.3,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest discomfort or chest pain",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "chest tightness",
+          "pain or discomfort in chest",
+          "pressure in chest area"
+        ]
+      },
+      {
+        "symptomName": "Digital clubbing",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Orthopnea",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Syncope unrelated to exertion",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "fainting not caused by activity",
+          "passing out without exercise",
+          "sudden loss of consciousness at rest"
+        ]
+      },
+      {
+        "symptomName": "Recurrent pleural effusions",
+        "frequency": 0.07,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "repeated fluid buildup around lungs",
+          "frequent pleural effusions"
+        ]
+      },
+      {
+        "symptomName": "Pulmonary edema following vasodilator therapy",
+        "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "notes": "Occurs due to increased capillary pressure",
+        "searchTerms": [
+          "lung swelling after vasodilator treatment",
+          "pulmonary edema following blood vessel dilator use",
+          "fluid accumulation in lungs post-vasodilator"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "respiratory",
+    "cardiovascular",
+    "constitutional",
+    "musculoskeletal"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "Hypoxemia on arterial blood gas analysis",
+      "Elevated brain natriuretic peptide (BNP) indicating right heart strain"
+    ],
+    "imaging": [
+      "High-resolution CT showing centrilobular ground-glass opacities",
+      "Interlobular septal thickening",
+      "Mediastinal lymphadenopathy",
+      "Right ventricular enlargement on echocardiogram"
+    ],
+    "genetic": [
+      "BMPR2 (candidate)",
+      "EIF2AK4 (causative, loss-of-function)",
+      "Autosomal recessive inheritance"
+    ],
+    "other": [
+      "Right heart catheterization demonstrating elevated pulmonary arterial pressures with normal pulmonary capillary wedge pressure"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "pulmonary-arterial-hypertension",
+      "distinguishingFeatures": [
+        "Absence of venous occlusion on histology",
+        "Different response to vasodilator therapy",
+        "Lack of characteristic CT findings such as septal lines"
+      ]
+    },
+    {
+      "diseaseId": "chronic-thromboembolic-pulmonary-hypertension",
+      "distinguishingFeatures": [
+        "Presence of chronic thromboembolic material on imaging",
+        "Improvement after pulmonary thromboendarterectomy",
+        "Different hemodynamic profile on catheterization"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Rapidly progressive dyspnea with hypoxemia",
+    "Pulmonary edema triggered by vasodilator therapy",
+    "Severe pulmonary hypertension with right heart failure signs"
+  ],
+  "specialistType": [
+    "Pulmonologist",
+    "Cardiologist",
+    "Pathologist"
+  ],
+  "lastUpdated": "2026-03-12",
+  "references": [
+    "Montani D, et al. Pulmonary veno-occlusive disease. Eur Respir J. 2009;33(1):189-200.",
+    "Eyries M, et al. EIF2AK4 mutations cause pulmonary veno-occlusive disease, a recessive form of pulmonary hypertension. Nat Genet. 2014;46(1):65-69.",
+    "Simonneau G, et al. Updated clinical classification of pulmonary hypertension. J Am Coll Cardiol. 2013;62(25 Suppl):D34-41."
+  ],
+  "confidenceInData": "ai-generated"
+}

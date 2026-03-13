@@ -82,7 +82,7 @@ export class TriageAgent extends BaseAgent {
       patientCase.symptoms,
       patientCase.demographics,
       {
-        maxResults: 30,
+        maxResults: 75,
         minScore: 0.03,
         filterSystems: bodySystems,
       }

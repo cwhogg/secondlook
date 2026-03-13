@@ -2,7 +2,7 @@ import { BaseAgent } from './base-agent';
 import { AgentInput, AgentOutput, EvidenceEvaluation } from './types';
 import { DiagnosisHypothesis, CriteriaFulfillment, PatientCase } from '../types';
 import { DiseaseMatch, DiseaseProfile } from '../types/knowledge-base';
-import { getDiseaseCount } from '../knowledge';
+import { getDiseaseCount, loadDiseaseDatabase } from '../knowledge';
 
 function buildEvidenceEvaluatorPrompt(): string {
   return `You are a senior clinical evidence evaluator. Your role is to systematically assess each diagnostic hypothesis against available evidence and diagnostic criteria, producing a structured analysis that a senior diagnostician will use to make final probability assessments.
@@ -34,7 +34,7 @@ YOUR APPROACH FOR EACH HYPOTHESIS:
 5. CONTRADICTIONS:
    - What in the patient's presentation argues against this diagnosis?
 
-IMPORTANT: Our knowledge base covers ${getDiseaseCount()} of an estimated 10,000+ known rare diseases. The absence of a disease from our database is NOT evidence against it. Evaluate all hypotheses with equal rigor regardless of KB status.
+IMPORTANT: Our knowledge base covers ${getDiseaseCount()} profiled rare diseases. The absence of a disease from our database is NOT evidence against it. Evaluate all hypotheses with equal rigor regardless of KB status.
 
 Be RIGOROUS and HONEST. Clearly distinguish between what the evidence supports and what remains unknown.`;
 }
@@ -185,43 +185,64 @@ export class EvidenceEvaluator extends BaseAgent {
   }
 
   /**
-   * Classify hypotheses as KB-matched or non-KB based on whether they match
-   * a disease in the candidate list.
+   * Classify hypotheses as KB-matched or non-KB.
+   * First checks retrieval candidates, then falls back to the full KB
+   * so that diseases which exist in the KB but weren't retrieved still
+   * get criteria-grounded evaluation.
    */
   private classifyHypotheses(
     hypotheses: DiagnosisHypothesis[],
     kbDiseases: DiseaseMatch[]
   ): Array<{ hypothesis: DiagnosisHypothesis; kbMatch: DiseaseProfile | null }> {
+    // Load full KB for fallback reconciliation
+    const fullKb = loadDiseaseDatabase();
+
     return hypotheses.map((h) => {
       const diagLower = h.diagnosis.toLowerCase();
       const diagNormalized = diagLower.replace(/[^a-z0-9]/g, '');
 
-      // Try to find a matching KB disease
-      const match = kbDiseases.find((dm) => {
-        const d = dm.disease;
-        const nameLower = d.name.toLowerCase();
-        const nameNormalized = nameLower.replace(/[^a-z0-9]/g, '');
+      // Try retrieval candidates first (already have match scores, etc.)
+      const candidateMatch = kbDiseases.find((dm) =>
+        this.matchesDiseaseProfile(diagNormalized, dm.disease)
+      );
 
-        // Direct name match
-        if (diagNormalized === nameNormalized) return true;
-        // Substring match
-        if (diagNormalized.includes(nameNormalized) || nameNormalized.includes(diagNormalized)) return true;
-        // Check aliases
-        if (d.aliases.some((a) => {
-          const aliasNorm = a.toLowerCase().replace(/[^a-z0-9]/g, '');
-          return aliasNorm === diagNormalized || aliasNorm.includes(diagNormalized) || diagNormalized.includes(aliasNorm);
-        })) return true;
-        // Check disease ID
-        if (d.id.replace(/-/g, '') === diagNormalized) return true;
+      if (candidateMatch) {
+        return { hypothesis: h, kbMatch: candidateMatch.disease };
+      }
 
-        return false;
-      });
+      // Fallback: search the full KB for diseases that weren't in retrieval candidates
+      const fullKbMatch = fullKb.find((d) =>
+        this.matchesDiseaseProfile(diagNormalized, d)
+      );
 
       return {
         hypothesis: h,
-        kbMatch: match ? match.disease : null,
+        kbMatch: fullKbMatch || null,
       };
     });
+  }
+
+  /**
+   * Check if a normalized diagnosis name matches a DiseaseProfile
+   * by name, aliases, or ID.
+   */
+  private matchesDiseaseProfile(diagNormalized: string, d: DiseaseProfile): boolean {
+    const nameLower = d.name.toLowerCase();
+    const nameNormalized = nameLower.replace(/[^a-z0-9]/g, '');
+
+    // Direct name match
+    if (diagNormalized === nameNormalized) return true;
+    // Substring match
+    if (diagNormalized.includes(nameNormalized) || nameNormalized.includes(diagNormalized)) return true;
+    // Check aliases
+    if (d.aliases.some((a) => {
+      const aliasNorm = a.toLowerCase().replace(/[^a-z0-9]/g, '');
+      return aliasNorm === diagNormalized || aliasNorm.includes(diagNormalized) || diagNormalized.includes(aliasNorm);
+    })) return true;
+    // Check disease ID
+    if (d.id.replace(/-/g, '') === diagNormalized) return true;
+
+    return false;
   }
 
   private deduplicateHypotheses(hypotheses: DiagnosisHypothesis[]): DiagnosisHypothesis[] {

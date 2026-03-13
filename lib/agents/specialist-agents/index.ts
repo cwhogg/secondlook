@@ -151,7 +151,7 @@ YOUR DIAGNOSTIC APPROACH:
 5. Consider mimics, overlapping conditions, and atypical presentations
 6. Think about what is COMMONLY MISSED by generalists in your specialty area
 
-CRITICAL: You are NOT limited to the diseases shown in the knowledge base profiles below. Our knowledge base covers ${getDiseaseCount()} diseases out of an estimated 10,000+ known rare diseases. If the patient's presentation suggests a condition NOT in the provided profiles, you MUST still propose it. A disease being absent from our database says nothing about its likelihood — it only means we lack structured criteria for it. Use your clinical training and expertise for any condition you consider relevant.
+CRITICAL: You are NOT limited to the diseases shown in the knowledge base profiles below. Our knowledge base covers ${getDiseaseCount()} profiled rare diseases. If the patient's presentation suggests a condition NOT in the provided profiles, you MUST still propose it. A disease being absent from our database says nothing about its likelihood — it only means we lack structured criteria for it. Use your clinical training and expertise for any condition you consider relevant.
 
 OUTPUT RULES:
 - Generate 2-4 diagnostic hypotheses ranked by likelihood
@@ -361,7 +361,7 @@ Red flags: ${d.redFlags.join(', ')}`;
 
       kbSection = `
 ===== KNOWLEDGE BASE: CANDIDATE DISEASES =====
-The following diseases from our curated knowledge base (${getDiseaseCount()} of ~10,000+ known rare diseases) match this patient's symptoms.
+The following diseases from our curated knowledge base (${getDiseaseCount()} profiled rare diseases) match this patient's symptoms.
 Reference these profiles where relevant, but also consider diseases NOT listed here.
 ${diseaseProfiles}`;
     } else if (isGeneralInternist) {

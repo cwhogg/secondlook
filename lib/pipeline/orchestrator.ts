@@ -310,7 +310,7 @@ export class DiagnosticPipeline {
             totalProfiledDiseases: getDiseaseCount(),
             criteriaGroundedCount: reportResult.hypotheses.filter((h) => h.knowledgeBaseMatch).length,
             reasoningEvaluatedCount: reportResult.hypotheses.filter((h) => !h.knowledgeBaseMatch).length,
-            disclaimer: `This analysis was evaluated against a knowledge base of ${getDiseaseCount()} profiled diseases out of an estimated 10,000+ known rare diseases. Diagnoses marked as "reasoning-evaluated" were assessed using specialist clinical knowledge rather than structured diagnostic criteria from our database.`,
+            disclaimer: `This analysis was evaluated against a knowledge base of ${getDiseaseCount()} profiled rare diseases. Diagnoses marked as "reasoning-evaluated" were assessed using specialist clinical knowledge rather than structured diagnostic criteria from our database.`,
           },
         },
       };

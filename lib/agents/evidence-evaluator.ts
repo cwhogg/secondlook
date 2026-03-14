@@ -43,9 +43,10 @@ export class EvidenceEvaluator extends BaseAgent {
   constructor() {
     super({
       name: 'evidence-evaluator',
-      model: 'gpt-4.1',
-      temperature: 0.1,
-      maxTokens: 10000, // needs headroom for multi-hypothesis two-track evaluation
+      model: 'o3',
+      temperature: 0.1, // ignored for reasoning models
+      maxTokens: 40000, // needs headroom for reasoning tokens + multi-hypothesis two-track evaluation
+      reasoningEffort: 'high',
       systemPrompt: buildEvidenceEvaluatorPrompt(),
     });
   }

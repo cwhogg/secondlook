@@ -15,7 +15,7 @@ export class DiagnosticPipeline {
   private budgetTracker: BudgetTracker;
   private maxBudgetCents: number;
 
-  constructor(maxBudgetCents: number = 200) {
+  constructor(maxBudgetCents: number = 2500) {
     this.budgetTracker = new BudgetTracker();
     this.maxBudgetCents = maxBudgetCents;
   }
@@ -64,12 +64,13 @@ export class DiagnosticPipeline {
         },
       });
 
-      this.budgetTracker.addUsage('gpt-4.1-nano', triageResult.tokensUsed);
+      const triageModel = 'gpt-4.1-nano'; // triage agent model
+      this.budgetTracker.addUsage(triageModel, triageResult.tokensUsed);
       stages.push({
         stageName: 'triage',
         durationMs: triageResult.durationMs,
         tokensUsed: triageResult.tokensUsed,
-        model: 'gpt-4.1-nano',
+        model: triageModel,
         agentName: 'triage-agent',
         inputSummary: `${patientCase.symptoms.length} symptoms, ${patientCase.demographics.age}yo ${patientCase.demographics.sex}`,
         outputSummary: `Systems: ${triageResult.bodySystems.join(', ')}. Specialists: ${triageResult.relevantSpecialties.join(', ')}. ${triageResult.candidateDiseases.length} candidate diseases.`,

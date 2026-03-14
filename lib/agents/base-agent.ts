@@ -19,6 +19,11 @@ export abstract class BaseAgent {
     this.config = config;
   }
 
+  /** Whether this agent uses a reasoning model (o3, o4-mini, etc.) */
+  private isReasoningModel(): boolean {
+    return this.config.model.startsWith('o');
+  }
+
   get name(): string {
     return this.config.name;
   }
@@ -65,19 +70,28 @@ export abstract class BaseAgent {
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) throw new Error('OPENAI_API_KEY not configured');
 
-    const requestBody = {
+    const reasoning = this.isReasoningModel();
+    const requestBody: Record<string, any> = {
       model: this.config.model,
       messages: [
-        { role: 'system', content: this.config.systemPrompt },
+        { role: reasoning ? 'developer' : 'system', content: this.config.systemPrompt },
         { role: 'user', content: userPrompt },
       ],
       tools,
       tool_choice: toolChoice,
-      temperature: this.config.temperature,
-      max_tokens: this.config.maxTokens,
     };
 
-    this.log('REQUEST', `callWithTools — model: ${this.config.model}`);
+    if (reasoning) {
+      requestBody.max_completion_tokens = this.config.maxTokens;
+      if (this.config.reasoningEffort) {
+        requestBody.reasoning_effort = this.config.reasoningEffort;
+      }
+    } else {
+      requestBody.temperature = this.config.temperature;
+      requestBody.max_tokens = this.config.maxTokens;
+    }
+
+    this.log('REQUEST', `callWithTools — model: ${this.config.model}${reasoning ? ` (reasoning, effort: ${this.config.reasoningEffort || 'default'})` : ''}`);
     this.log('SYSTEM_PROMPT', this.config.systemPrompt);
     this.log('USER_PROMPT', userPrompt);
     this.log('TOOLS', JSON.stringify(tools.map((t: any) => t.function?.name || t.name || 'unknown')));
@@ -103,6 +117,9 @@ export abstract class BaseAgent {
     this.log('RESPONSE', `${durationMs}ms, ${data.usage?.total_tokens || '?'} tokens`);
     this.log('RESPONSE_BODY', JSON.stringify(data.choices[0]?.message, null, 2));
     this.log('USAGE', JSON.stringify(data.usage));
+    if (data.usage?.completion_tokens_details?.reasoning_tokens) {
+      this.log('REASONING_TOKENS', `${data.usage.completion_tokens_details.reasoning_tokens} reasoning tokens`);
+    }
 
     const toolCall = data.choices[0]?.message?.tool_calls?.[0];
     if (!toolCall?.function?.arguments) {
@@ -132,18 +149,27 @@ export abstract class BaseAgent {
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) throw new Error('OPENAI_API_KEY not configured');
 
-    const requestBody = {
+    const reasoning = this.isReasoningModel();
+    const requestBody: Record<string, any> = {
       model: this.config.model,
       messages: [
-        { role: 'system', content: this.config.systemPrompt },
-        { role: 'user', content: userPrompt },
+        { role: reasoning ? 'developer' : 'system', content: this.config.systemPrompt },
+        { role: 'user', content: reasoning ? userPrompt + '\n\nRespond with valid JSON only.' : userPrompt },
       ],
-      temperature: this.config.temperature,
-      max_tokens: this.config.maxTokens,
-      response_format: { type: 'json_object' },
     };
 
-    this.log('REQUEST', `callPlain — model: ${this.config.model}`);
+    if (reasoning) {
+      requestBody.max_completion_tokens = this.config.maxTokens;
+      if (this.config.reasoningEffort) {
+        requestBody.reasoning_effort = this.config.reasoningEffort;
+      }
+    } else {
+      requestBody.temperature = this.config.temperature;
+      requestBody.max_tokens = this.config.maxTokens;
+      requestBody.response_format = { type: 'json_object' };
+    }
+
+    this.log('REQUEST', `callPlain — model: ${this.config.model}${reasoning ? ` (reasoning, effort: ${this.config.reasoningEffort || 'default'})` : ''}`);
     this.log('SYSTEM_PROMPT', this.config.systemPrompt);
     this.log('USER_PROMPT', userPrompt);
 
@@ -169,6 +195,9 @@ export abstract class BaseAgent {
     this.log('RESPONSE', `${durationMs}ms, ${data.usage?.total_tokens || '?'} tokens`);
     this.log('RESPONSE_BODY', rawContent);
     this.log('USAGE', JSON.stringify(data.usage));
+    if (data.usage?.completion_tokens_details?.reasoning_tokens) {
+      this.log('REASONING_TOKENS', `${data.usage.completion_tokens_details.reasoning_tokens} reasoning tokens`);
+    }
 
     let content: any;
     try {

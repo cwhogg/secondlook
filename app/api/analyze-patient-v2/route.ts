@@ -139,7 +139,7 @@ export async function POST(request: NextRequest) {
           sendEvent({ type: 'log', requestId, agent, phase, message });
         };
 
-        const pipeline = new DiagnosticPipeline(100); // $1.00 budget cap
+        const pipeline = new DiagnosticPipeline(2500); // $25.00 budget cap (o3 reasoning models)
 
         const result = await pipeline.execute(patientCase as any, (progress) => {
           sendEvent({ type: 'progress', requestId, ...progress });

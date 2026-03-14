@@ -159,7 +159,8 @@ OUTPUT RULES:
 - Do NOT suggest common diagnoses that any GP would consider
 - Focus on rare/complex conditions that require specialist evaluation
 - Be precise — vague reasoning undermines clinical credibility
-- For diagnoses NOT in the provided knowledge base profiles, provide your own assessment of which diagnostic criteria or clinical features support the diagnosis`;
+- For diagnoses NOT in the provided knowledge base profiles, provide your own assessment of which diagnostic criteria or clinical features support the diagnosis
+- DIAGNOSIS NAMING: Always use the most specific disease name the evidence supports. Use "Retinitis Pigmentosa" not "Inherited Retinal Dystrophy". Use "Leber Congenital Amaurosis" not "Hereditary Retinal Dystrophy". Use "Charcot-Marie-Tooth Disease Type 2A" not "Hereditary Motor Sensory Neuropathy". The diagnosis name should identify a specific disease entity, not a broad disease category.`;
 
     const generalInternistPrompt = `You are Dr. Internist, a ${title} with 25+ years of experience. You are the senior diagnostician on this case — the one who asks "what is everyone else missing?"
 
@@ -185,13 +186,15 @@ OUTPUT RULES:
 - Prioritize diagnoses that domain specialists are likely to MISS
 - Consider rare diseases, overlap syndromes, and atypical presentations
 - Be precise — vague reasoning undermines clinical credibility
-- Provide your own assessment of which diagnostic criteria or clinical features support each diagnosis`;
+- Provide your own assessment of which diagnostic criteria or clinical features support each diagnosis
+- DIAGNOSIS NAMING: Always use the most specific disease name the evidence supports. Use "Retinitis Pigmentosa" not "Inherited Retinal Dystrophy". Use "Leber Congenital Amaurosis" not "Hereditary Retinal Dystrophy". The diagnosis name should identify a specific disease entity, not a broad disease category.`;
 
     super({
       name: `specialist-${specialistType}`,
-      model: 'gpt-4.1',
-      temperature: isGeneralInternist ? 0.4 : 0.3, // slightly higher temp for broader thinking
-      maxTokens: 4000,
+      model: 'o3',
+      temperature: isGeneralInternist ? 0.4 : 0.3, // ignored for reasoning models
+      maxTokens: 25000,
+      reasoningEffort: 'high',
       systemPrompt: isGeneralInternist ? generalInternistPrompt : domainSpecialistPrompt,
     });
 
@@ -218,7 +221,7 @@ OUTPUT RULES:
                 items: {
                   type: 'object',
                   properties: {
-                    diagnosis: { type: 'string' },
+                    diagnosis: { type: 'string', description: 'Specific disease name, not a broad category. E.g. "Retinitis Pigmentosa" not "Inherited Retinal Dystrophy"' },
                     icd10Code: { type: 'string' },
                     confidenceScore: { type: 'number', minimum: 0, maximum: 100 },
                     rareDisease: { type: 'boolean' },

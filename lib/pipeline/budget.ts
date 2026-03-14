@@ -5,6 +5,8 @@ const MODEL_COSTS: Record<string, { input: number; output: number }> = {
   'gpt-4.1-nano': { input: 0.01, output: 0.04 },
   'gpt-4o': { input: 0.25, output: 1.0 },
   'gpt-4o-mini': { input: 0.015, output: 0.06 },
+  'o3': { input: 1.0, output: 4.0 },
+  'o4-mini': { input: 0.11, output: 0.44 },
 };
 
 export class BudgetTracker {

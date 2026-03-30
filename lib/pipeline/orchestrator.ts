@@ -1,4 +1,4 @@
-import { PatientCase, AnalysisResult, StageResult } from '../types';
+import { PatientCase, AnalysisResult, StageResult, FamilyEnrichment } from '../types';
 import { TriageAgent } from '../agents/triage-agent';
 import { getSpecialistAgent } from '../agents/specialist-agents';
 import { EvidenceEvaluator } from '../agents/evidence-evaluator';
@@ -6,7 +6,7 @@ import { SynthesisAgent } from '../agents/synthesizer';
 import { ReportGenerator } from '../agents/report-generator';
 import { AgentOutput } from '../agents/types';
 import { BudgetTracker } from './budget';
-import { getDiseaseCount } from '../knowledge';
+import { getDiseaseCount, findFamilySiblings, computeDifferentiatingTests, loadDiseaseDatabase } from '../knowledge';
 import { PipelineProgress, ProgressCallback } from '../types/pipeline';
 
 export type { PipelineProgress, ProgressCallback };
@@ -244,6 +244,47 @@ export class DiagnosticPipeline {
           `academic undiagnosed disease program (e.g., NIH UDP).`;
       }
 
+      // ===== FAMILY ENRICHMENT (deterministic, zero LLM calls) =====
+      const familyEnrichments: FamilyEnrichment[] = [];
+      const seenFamilies = new Set<string>();
+      const patientSymptomTerms = patientCase.symptoms.map(s => s.medicalTerm || s.originalPhrase || '');
+
+      for (const hypothesis of synthesisResult.hypotheses.slice(0, 5)) {
+        if (familyEnrichments.length >= 2) break;
+
+        const familyResult = findFamilySiblings(hypothesis.diagnosis, patientSymptomTerms);
+        if (!familyResult || familyResult.totalInFamily < 3) continue;
+        if (seenFamilies.has(familyResult.familyName)) continue;
+        seenFamilies.add(familyResult.familyName);
+
+        // Include the hypothesis itself in the siblings list for differentiating test computation
+        const db = loadDiseaseDatabase();
+        const diagNorm = hypothesis.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const selfProfile = db.find(d => {
+          const nameNorm = d.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+          return nameNorm === diagNorm || nameNorm.includes(diagNorm) || diagNorm.includes(nameNorm);
+        });
+
+        const profilesForTest = selfProfile
+          ? [selfProfile, ...familyResult.siblings.slice(0, 9)]
+          : familyResult.siblings.slice(0, 10);
+
+        const diffTest = computeDifferentiatingTests(profilesForTest);
+
+        familyEnrichments.push({
+          familyName: familyResult.familyName,
+          totalSubtypes: familyResult.totalInFamily,
+          topDiagnosisInFamily: hypothesis.diagnosis,
+          differentiatingTest: diffTest,
+        });
+      }
+
+      // Attach enrichments to synthesis data for report generator
+      if (familyEnrichments.length > 0) {
+        if (!(synthesisResult as any).synthesisData) (synthesisResult as any).synthesisData = {};
+        (synthesisResult as any).synthesisData.familyEnrichments = familyEnrichments;
+      }
+
       // ===== STAGE 5: REPORT GENERATION =====
       onProgress?.({
         stage: 'report',
@@ -288,6 +329,7 @@ export class DiagnosticPipeline {
       const analysisResult: AnalysisResult = {
         differentialDiagnoses: reportResult.hypotheses,
         differentialClusters: synthesisData.differentialClusters || [],
+        familyEnrichments: familyEnrichments.length > 0 ? familyEnrichments : undefined,
         excludedCommonDiagnoses: synthesisData.excludedCommonDiagnoses || reportData.excludedCommonDiagnoses || [],
         dataGaps: reportData.dataGaps || [],
         recommendedTesting: reportData.recommendedTesting || [],
@@ -307,6 +349,17 @@ export class DiagnosticPipeline {
           totalCostEstimate: this.budgetTracker.estimatedCostDollars(),
           knowledgeBaseVersion: '1.0.0',
           diseasesConsidered: triageResult.candidateDiseases.length,
+          retrievalScores: triageResult.candidateDiseases.slice(0, 30).map((d) => ({
+            diseaseId: d.disease.id,
+            diseaseName: d.disease.name,
+            matchScore: d.matchScore,
+            componentScores: d.componentScores ?? {
+              symptom: 0,
+              system: d.systemOverlap.length / Math.max(d.disease.systemsAffected.length, 1),
+              demographic: d.demographicFit,
+              prevalence: 0,
+            },
+          })),
           knowledgeBaseCoverage: {
             totalProfiledDiseases: getDiseaseCount(),
             criteriaGroundedCount: reportResult.hypotheses.filter((h) => h.knowledgeBaseMatch).length,

@@ -5,6 +5,20 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, Share2, Printer, Download, Brain, Activity, AlertTriangle } from "lucide-react"
 
+interface FamilyEnrichmentData {
+  familyName: string
+  totalSubtypes: number
+  topDiagnosisInFamily: string
+  differentiatingTest: {
+    modality: string
+    modalityLabel: string
+    perSubtype: Array<{
+      diseaseName: string
+      uniqueFindings: string[]
+    }>
+  } | null
+}
+
 interface AnalysisData {
   timestamp: string
   status: string
@@ -30,6 +44,7 @@ interface AnalysisData {
     avgConfidence: number
     complexConditionsCount: number
   }
+  familyEnrichments?: FamilyEnrichmentData[]
 }
 
 export default function AnalysisResultsPage() {
@@ -90,6 +105,7 @@ export default function AnalysisResultsPage() {
               avgConfidence: avgConf,
               complexConditionsCount: conditions.filter((c: any) => c.confidence < 0.5).length,
             },
+            familyEnrichments: raw.familyEnrichments || undefined,
           }
           setAnalysisData(transformed)
         } else {
@@ -299,6 +315,38 @@ export default function AnalysisResultsPage() {
               </div>
 
               <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">{condition.description}</p>
+
+              {/* Family enrichment callout */}
+              {(() => {
+                const enrichment = analysisData.familyEnrichments?.find(
+                  (fe) => fe.topDiagnosisInFamily.toLowerCase() === condition.name.toLowerCase()
+                    || condition.name.toLowerCase().includes(fe.topDiagnosisInFamily.toLowerCase())
+                    || fe.topDiagnosisInFamily.toLowerCase().includes(condition.name.toLowerCase())
+                )
+                if (!enrichment?.differentiatingTest) return null
+                const dt = enrichment.differentiatingTest
+                const subtypes = dt.perSubtype.filter((s) => s.uniqueFindings.length > 0).slice(0, 4)
+                if (subtypes.length === 0) return null
+                return (
+                  <div className="bg-[#faf6f0] border border-[#d4c5b0] p-4 mb-4 sm:mb-6">
+                    <div className="text-sm font-semibold text-[#8b2500] mb-2">
+                      This condition belongs to a family of {enrichment.totalSubtypes} related subtypes.{" "}
+                      {dt.modalityLabel} can determine the exact subtype:
+                    </div>
+                    <ul className="space-y-1 ml-1">
+                      {subtypes.map((s, idx) => (
+                        <li key={idx} className="text-xs sm:text-sm text-[#5a5a5a] flex items-start">
+                          <span className="mr-2 text-[#8b2500]">&bull;</span>
+                          <span>
+                            <span className="font-medium">{s.diseaseName}</span>
+                            {s.uniqueFindings[0] && <span> &mdash; {s.uniqueFindings[0]}</span>}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )
+              })()}
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>

@@ -37,6 +37,12 @@ export interface GeneratedPatient {
   };
 }
 
+export interface NearMiss {
+  diagnosis: string;
+  creditLevel: 'variant' | 'family';
+  reason?: string;
+}
+
 export interface GroundTruth {
   diagnosis: string;
   icd10?: string;
@@ -45,11 +51,38 @@ export interface GroundTruth {
   expectedBodySystems: string[];
   expectedSpecialists: string[];
   difficultyFactors?: string[];
+  nearMisses?: NearMiss[];
 }
 
 // ===== GRADING TYPES =====
 
 export type LetterGrade = 'A+' | 'A' | 'A-' | 'B+' | 'B' | 'B-' | 'C+' | 'C' | 'C-' | 'D' | 'F';
+
+export type MatchTier =
+  | 'exact-top1'
+  | 'exact-top3'
+  | 'exact-top5'
+  | 'exact-beyond5'
+  | 'variant-top3'
+  | 'variant-top5'
+  | 'variant-beyond5'
+  | 'family-test-top5'
+  | 'family-test-beyond5'
+  | 'family-top3'
+  | 'family-top5'
+  | 'family-beyond5'
+  | 'icd10-match'
+  | 'organ-system'
+  | 'complete-miss';
+
+export interface TierMatch {
+  tier: MatchTier;
+  matchedDiagnosis?: string;
+  matchedRank?: number;
+  matchedNearMiss?: NearMiss;
+  icd10Match?: boolean;
+  scoreRange: [number, number];
+}
 
 export interface TestGrading {
   score: number;
@@ -63,6 +96,9 @@ export interface TestGrading {
   missedFindings: string[];
   falseLeads: string[];
   partialCreditReason: string | null;
+  tierMatch?: TierMatch;
+  nearMissMatch?: string | null;
+  gradingVersion?: 'v1' | 'v2';
 }
 
 // ===== API METADATA =====
@@ -85,6 +121,7 @@ export interface PreviousRunSnapshot {
   inTop3: boolean;
   inTop5: boolean;
   ranAt: string; // ISO timestamp of when this run happened
+  gradingVersion?: 'v1' | 'v2';
 }
 
 // ===== TEST CASE LIFECYCLE =====
@@ -96,7 +133,7 @@ export interface TestCase {
   createdAt: string;
   difficulty: number;
   categoryHint?: string;
-  testVersion?: 'v1' | 'v2' | 'v3' | 'v4';
+  testVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v7' | 'v8' | 'Eval';
   status: TestCaseStatus;
   source?: 'generated';
   groundTruth: GroundTruth;
@@ -119,6 +156,8 @@ export interface TestSuiteStats {
   top1Rate: number;
   top3Rate: number;
   top5Rate: number;
+  clinicalTop5Rate: number;  // exact + variant matches in top 5
+  familyTop5Rate: number;    // exact + variant + family matches in top 5
   byDifficultySource: Record<string, {
     difficulty: number;
     version: string;

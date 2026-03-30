@@ -191,10 +191,9 @@ OUTPUT RULES:
 
     super({
       name: `specialist-${specialistType}`,
-      model: 'o3',
-      temperature: isGeneralInternist ? 0.4 : 0.3, // ignored for reasoning models
-      maxTokens: 25000,
-      reasoningEffort: 'high',
+      model: 'gpt-4.1',
+      temperature: isGeneralInternist ? 0.4 : 0.3,
+      maxTokens: 4000,
       systemPrompt: isGeneralInternist ? generalInternistPrompt : domainSpecialistPrompt,
     });
 

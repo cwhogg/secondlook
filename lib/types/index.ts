@@ -146,6 +146,22 @@ export interface DifferentialCluster {
   reasoning: string;
 }
 
+export interface FamilyEnrichment {
+  familyName: string;
+  totalSubtypes: number;
+  topDiagnosisInFamily: string;
+  differentiatingTest: {
+    modality: string;
+    modalityLabel: string;
+    convergenceRatio: number;
+    perSubtype: Array<{
+      diseaseName: string;
+      uniqueFindings: string[];
+    }>;
+    sharedFindings: string[];
+  } | null;
+}
+
 export interface StageResult {
   stageName: string;
   durationMs: number;
@@ -170,11 +186,24 @@ export interface PipelineMetadata {
     reasoningEvaluatedCount: number; // how many were scored on reasoning alone
     disclaimer: string;
   };
+  /** Top retrieval candidates with per-component scores (from triage stage) */
+  retrievalScores?: Array<{
+    diseaseId: string;
+    diseaseName: string;
+    matchScore: number;
+    componentScores: {
+      symptom: number;
+      system: number;
+      demographic: number;
+      prevalence: number;
+    };
+  }>;
 }
 
 export interface AnalysisResult {
   differentialDiagnoses: DiagnosisHypothesis[];
   differentialClusters?: DifferentialCluster[];
+  familyEnrichments?: FamilyEnrichment[];
   excludedCommonDiagnoses: Array<{
     diagnosis: string;
     reasonExcluded: string;

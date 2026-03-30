@@ -11,6 +11,7 @@ import type {
   GenerationMetadata,
   PreviousRunSnapshot,
   PatientArchetype,
+  NearMiss,
 } from "@/lib/types/admin"
 import type { AnalysisResult, DiagnosisHypothesis, MappedSymptom } from "@/lib/types/index"
 import type { PipelineProgress } from "@/lib/types/pipeline"
@@ -110,6 +111,20 @@ function computeStats(cases: TestCase[]): TestSuiteStats | null {
   const top3 = graded.filter((c) => c.grading!.inTop3).length
   const top5 = graded.filter((c) => c.grading!.inTop5).length
 
+  // Clinical accuracy: exact + variant matches in top 5
+  const exactOrVariantTiers = new Set(['exact-top1', 'exact-top3', 'exact-top5', 'variant-top3', 'variant-top5'])
+  const clinicalTop5 = graded.filter((c) => {
+    const tier = c.grading!.tierMatch?.tier
+    return tier && exactOrVariantTiers.has(tier)
+  }).length
+
+  // Family accuracy: exact + variant + family matches in top 5
+  const familyTiers = new Set([...exactOrVariantTiers, 'family-top3', 'family-top5'])
+  const familyTop5 = graded.filter((c) => {
+    const tier = c.grading!.tierMatch?.tier
+    return tier && familyTiers.has(tier)
+  }).length
+
   // Combined difficulty + version breakdown
   const getVersion = (tc: TestCase) => tc.testVersion ?? 'v1'
 
@@ -153,6 +168,8 @@ function computeStats(cases: TestCase[]): TestSuiteStats | null {
     top1Rate: top1 / graded.length,
     top3Rate: top3 / graded.length,
     top5Rate: top5 / graded.length,
+    clinicalTop5Rate: clinicalTop5 / graded.length,
+    familyTop5Rate: familyTop5 / graded.length,
     byDifficultySource,
     byVersion,
   }
@@ -223,24 +240,36 @@ function pct(n: number): string {
 
 // ===== COMPONENTS =====
 
-const VERSION_LABELS: Record<string, string> = { v1: "v1", v2: "v2", v3: "v3", v4: "v4" }
+const VERSION_LABELS: Record<string, string> = { v1: "v1", v2: "v2", v3: "v3", v4: "v4", v7: "v7", v8: "v8", Eval: "Eval" }
 const VERSION_COLORS: Record<string, string> = {
   v1: "bg-gray-50 text-gray-700 border-gray-300",
   v2: "bg-blue-50 text-blue-800 border-blue-300",
   v3: "bg-emerald-50 text-emerald-800 border-emerald-300",
   v4: "bg-purple-50 text-purple-800 border-purple-300",
+  v7: "bg-cyan-50 text-cyan-800 border-cyan-300",
+  v8: "bg-teal-50 text-teal-800 border-teal-300",
+  Eval: "bg-amber-50 text-amber-800 border-amber-300",
 }
 
 function StatsBanner({ stats }: { stats: TestSuiteStats }) {
   const breakdownEntries = Object.values(stats.byDifficultySource)
-    .sort((a, b) => a.difficulty - b.difficulty || a.version.localeCompare(b.version))
+    .sort((a, b) => {
+      if (a.difficulty !== b.difficulty) return a.difficulty - b.difficulty
+      const numA = parseInt(a.version.replace(/\D/g, ''), 10) || 0
+      const numB = parseInt(b.version.replace(/\D/g, ''), 10) || 0
+      return numA - numB || a.version.localeCompare(b.version)
+    })
   const versionEntries = Object.values(stats.byVersion)
-    .sort((a, b) => a.version.localeCompare(b.version))
+    .sort((a, b) => {
+      const numA = parseInt(a.version.replace(/\D/g, ''), 10) || 0
+      const numB = parseInt(b.version.replace(/\D/g, ''), 10) || 0
+      return numA - numB || a.version.localeCompare(b.version)
+    })
 
   return (
     <div className="border border-[#d4c5b0] bg-white mb-6">
       {/* Overall metrics */}
-      <div className="grid grid-cols-2 sm:grid-cols-5 divide-x divide-[#e8ddd0]">
+      <div className="grid grid-cols-2 sm:grid-cols-7 divide-x divide-[#e8ddd0]">
         <div className="p-4 sm:p-5">
           <div className="text-[10px] uppercase tracking-wider text-[#8b7355] mb-1.5">Tests</div>
           <div className="text-2xl font-bold font-serif text-[#2a2a2a]">
@@ -262,6 +291,14 @@ function StatsBanner({ stats }: { stats: TestSuiteStats }) {
         <div className="p-4 sm:p-5">
           <div className="text-[10px] uppercase tracking-wider text-[#8b7355] mb-1.5">Top-5</div>
           <div className="text-2xl font-bold font-serif text-[#2a2a2a]">{pct(stats.top5Rate)}</div>
+        </div>
+        <div className="p-4 sm:p-5">
+          <div className="text-[10px] uppercase tracking-wider text-[#8b7355] mb-1.5">Clin Top-5</div>
+          <div className="text-2xl font-bold font-serif text-[#2a2a2a]">{pct(stats.clinicalTop5Rate)}</div>
+        </div>
+        <div className="p-4 sm:p-5">
+          <div className="text-[10px] uppercase tracking-wider text-[#8b7355] mb-1.5">Fam Top-5</div>
+          <div className="text-2xl font-bold font-serif text-[#2a2a2a]">{pct(stats.familyTop5Rate)}</div>
         </div>
       </div>
 
@@ -425,6 +462,26 @@ function GroundTruthSection({ groundTruth, collapsed }: { groundTruth: GroundTru
                   <li key={i}>{f}</li>
                 ))}
               </ul>
+            </div>
+          )}
+          {groundTruth.nearMisses && groundTruth.nearMisses.length > 0 && (
+            <div>
+              <span className="font-semibold text-[#5a5a5a]">Near Misses:</span>
+              <div className="ml-2 mt-1 space-y-1">
+                {groundTruth.nearMisses.map((nm: NearMiss, i: number) => (
+                  <div key={i} className="flex items-center gap-2 text-[#5a5a5a]">
+                    <span className={`inline-block px-1.5 py-0.5 text-[10px] font-medium border ${
+                      nm.creditLevel === 'variant'
+                        ? 'bg-violet-50 text-violet-700 border-violet-300'
+                        : 'bg-teal-50 text-teal-700 border-teal-300'
+                    }`}>
+                      {nm.creditLevel}
+                    </span>
+                    <span>{nm.diagnosis}</span>
+                    {nm.reason && <span className="text-xs text-[#8b7355]">({nm.reason})</span>}
+                  </div>
+                ))}
+              </div>
             </div>
           )}
           <div>
@@ -699,6 +756,45 @@ function PipelineResultsSection({ result }: { result: AnalysisResult }) {
         </div>
       </div>
 
+      {/* Family Enrichment */}
+      {result.familyEnrichments && result.familyEnrichments.length > 0 && (
+        <div>
+          <div className="text-sm font-semibold text-[#5a5a5a] mb-2">Family Enrichment:</div>
+          <div className="space-y-2">
+            {result.familyEnrichments.map((fe, i) => (
+              <div key={i} className="border border-purple-200 bg-purple-50 p-3">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="px-1.5 py-0.5 bg-purple-100 text-purple-700 text-xs font-medium rounded">Family</span>
+                  <span className="text-sm font-serif text-[#2a2a2a]">&ldquo;{fe.familyName}&rdquo;</span>
+                  <span className="text-xs text-[#8b7355]">({fe.totalSubtypes} subtypes in KB)</span>
+                </div>
+                <div className="text-xs text-[#5a5a5a]">
+                  Triggered by: {fe.topDiagnosisInFamily}
+                </div>
+                {fe.differentiatingTest ? (
+                  <div className="text-xs text-[#5a5a5a] mt-1">
+                    <span className="font-medium">Differentiating test:</span> {fe.differentiatingTest.modalityLabel}
+                    <span className="text-[#8b7355]"> (convergence: {Math.round(fe.differentiatingTest.convergenceRatio * 100)}%)</span>
+                    <div className="mt-1 ml-2 space-y-0.5">
+                      {fe.differentiatingTest.perSubtype
+                        .filter(s => s.uniqueFindings.length > 0)
+                        .slice(0, 4)
+                        .map((s, j) => (
+                          <div key={j} className="text-[#5a5a5a]">
+                            &bull; {s.diseaseName}: {s.uniqueFindings.slice(0, 2).join("; ")}
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-xs text-[#8b7355] mt-1">No single differentiating test (mixed modalities)</div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {result.overallAssessment && (
         <div className="text-sm text-[#5a5a5a]">
           <span className="font-semibold">Assessment:</span> {result.overallAssessment}
@@ -731,6 +827,20 @@ function GradingSection({ grading, previousRun }: { grading: TestGrading; previo
             {grading.inTop3 && " (top 3)"}
             {grading.inTop5 && !grading.inTop3 && " (top 5)"}
           </div>
+          {grading.tierMatch && (
+            <div className="text-xs text-[#8b7355] mt-0.5">
+              Tier: <span className="font-medium text-[#5a5a5a]">{grading.tierMatch.tier}</span>
+              {grading.tierMatch.matchedDiagnosis && (
+                <span> &middot; matched &ldquo;{grading.tierMatch.matchedDiagnosis}&rdquo; at #{grading.tierMatch.matchedRank}</span>
+              )}
+              <span> &middot; range [{grading.tierMatch.scoreRange[0]}-{grading.tierMatch.scoreRange[1]}]</span>
+            </div>
+          )}
+          {grading.nearMissMatch && (
+            <div className="text-xs text-violet-600 mt-0.5">
+              Near-miss: {grading.nearMissMatch}
+            </div>
+          )}
         </div>
       </div>
 
@@ -983,7 +1093,7 @@ export default function AdminPage() {
         createdAt: new Date().toISOString(),
         difficulty,
         categoryHint: categoryHint || undefined,
-        testVersion: 'v4' as const,
+        testVersion: 'v7' as const,
         status: "generated",
         source: "generated",
         groundTruth: data.groundTruth,
@@ -1130,6 +1240,7 @@ export default function AdminPage() {
           groundTruth,
           differentialDiagnoses: pipelineResult.differentialDiagnoses,
           pipelineMetadata: pipelineResult.pipelineMetadata,
+          familyEnrichments: pipelineResult.familyEnrichments,
           difficulty: testDifficulty,
         }),
       })
@@ -1193,6 +1304,7 @@ export default function AdminPage() {
         inTop3: tc.grading.inTop3,
         inTop5: tc.grading.inTop5,
         ranAt: new Date().toISOString(),
+        gradingVersion: tc.grading.gradingVersion,
       }
       updateTestCases((prev) =>
         prev.map((c) => (c.id === tc.id ? { ...c, previousRun: snapshot, pipelineResult: undefined, grading: undefined, gradingMetadata: undefined, pipelineError: undefined } : c))

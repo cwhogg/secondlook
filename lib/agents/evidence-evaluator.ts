@@ -2,7 +2,7 @@ import { BaseAgent } from './base-agent';
 import { AgentInput, AgentOutput, EvidenceEvaluation } from './types';
 import { DiagnosisHypothesis, CriteriaFulfillment, PatientCase } from '../types';
 import { DiseaseMatch, DiseaseProfile } from '../types/knowledge-base';
-import { getDiseaseCount, loadDiseaseDatabase } from '../knowledge';
+import { getDiseaseCount, loadDiseaseDatabase, findFamilySiblings } from '../knowledge';
 
 function buildEvidenceEvaluatorPrompt(): string {
   return `You are a senior clinical evidence evaluator. Your role is to systematically assess each diagnostic hypothesis against available evidence and diagnostic criteria, producing a structured analysis that a senior diagnostician will use to make final probability assessments.
@@ -65,7 +65,10 @@ export class EvidenceEvaluator extends BaseAgent {
     const kbDiseases = candidateDiseases || [];
     const classified = this.classifyHypotheses(deduped, kbDiseases);
 
-    const userPrompt = this.buildPrompt(patientCase, classified, kbDiseases);
+    // Subtype enrichment: find family siblings for each hypothesis
+    const subtypeContext = this.buildSubtypeContext(deduped, patientCase);
+
+    const userPrompt = this.buildPrompt(patientCase, classified, kbDiseases, subtypeContext);
 
     const result = await this.callWithTools(userPrompt, [
       {
@@ -148,41 +151,84 @@ export class EvidenceEvaluator extends BaseAgent {
 
       if (!evaluation) return h;
 
-      const fulfillment: CriteriaFulfillment = {
-        criteriaName: evaluation.criteriaFulfillment?.criteriaName || 'Clinical assessment',
-        totalCriteria: evaluation.criteriaFulfillment?.totalCriteria || 0,
-        metCriteria: evaluation.criteriaFulfillment?.metCriteria || 0,
-        criteriaDetails: evaluation.criteriaFulfillment?.criteriaDetails || [],
-        fulfillmentPercentage: evaluation.criteriaFulfillment?.totalCriteria > 0
-          ? Math.round((evaluation.criteriaFulfillment.metCriteria / evaluation.criteriaFulfillment.totalCriteria) * 100)
-          : 0,
-      };
-
-      const isKbMatch = evaluation.evaluationType === 'criteria-grounded';
-
-      return {
-        ...h,
-        // evidenceScore stays at 0 — will be set by synthesizer as the LLM-assessed probability
-        diagnosticCriteria: fulfillment,
-        evaluationType: isKbMatch ? 'criteria-grounded' as const : 'reasoning-evaluated' as const,
-        knowledgeBaseMatch: isKbMatch,
-        // Store evidence quality and assessment for the synthesizer to review
-        _evidenceQuality: evaluation.evidenceQuality,
-        _strengthAssessment: evaluation.strengthAssessment,
-        _informationGaps: evaluation.informationGaps,
-        _contradictions: evaluation.contradictions,
-      } as DiagnosisHypothesis;
+      return this.applyEvaluation(h, evaluation);
     });
+
+    // Handle bonus subtype evaluations — evaluations the model added for subtypes
+    // that weren't in the original hypotheses
+    const existingDiagNorms = new Set(
+      deduped.map((h) => h.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, ''))
+    );
+    const bonusEvaluations = (result.content.evaluations || []).filter((e: any) => {
+      const evalNorm = e.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '');
+      return !existingDiagNorms.has(evalNorm);
+    });
+
+    for (const bonus of bonusEvaluations) {
+      const isKbMatch = bonus.evaluationType === 'criteria-grounded';
+      const skeleton: DiagnosisHypothesis = {
+        diagnosis: bonus.diagnosis,
+        confidenceScore: 0,
+        evidenceScore: 0,
+        rareDisease: true,
+        supportingEvidence: [],
+        contradictoryEvidence: [],
+        clinicalReasoning: bonus.strengthAssessment || '',
+        typicalPresentation: '',
+        specialistRequired: '',
+        sourceAgent: 'evidence-evaluator (subtype refinement)',
+        evaluationType: isKbMatch ? 'criteria-grounded' : 'reasoning-evaluated',
+        knowledgeBaseMatch: isKbMatch,
+        diagnosticCriteria: {
+          criteriaName: 'Clinical assessment',
+          totalCriteria: 0,
+          metCriteria: 0,
+          criteriaDetails: [],
+          fulfillmentPercentage: 0,
+        },
+      };
+      evaluatedHypotheses.push(this.applyEvaluation(skeleton, bonus));
+    }
+
+    const subtypeCount = bonusEvaluations.length;
 
     return {
       agentName: this.name,
       hypotheses: evaluatedHypotheses,
-      reasoning: `Evaluated ${evaluatedHypotheses.length} hypotheses: ${evaluatedHypotheses.filter((h) => h.knowledgeBaseMatch).length} against KB criteria, ${evaluatedHypotheses.filter((h) => !h.knowledgeBaseMatch).length} via clinical reasoning`,
+      reasoning: `Evaluated ${deduped.length} hypotheses: ${evaluatedHypotheses.filter((h) => h.knowledgeBaseMatch).length} against KB criteria, ${evaluatedHypotheses.filter((h) => !h.knowledgeBaseMatch).length} via clinical reasoning${subtypeCount > 0 ? `. Added ${subtypeCount} subtype refinement(s)` : ''}`,
       confidence: 0,
       tokensUsed: result.tokensUsed,
       durationMs: result.durationMs,
       model: result.model,
     };
+  }
+
+  /**
+   * Apply an LLM evaluation result to a hypothesis, returning the enriched hypothesis.
+   */
+  private applyEvaluation(h: DiagnosisHypothesis, evaluation: any): DiagnosisHypothesis {
+    const fulfillment: CriteriaFulfillment = {
+      criteriaName: evaluation.criteriaFulfillment?.criteriaName || 'Clinical assessment',
+      totalCriteria: evaluation.criteriaFulfillment?.totalCriteria || 0,
+      metCriteria: evaluation.criteriaFulfillment?.metCriteria || 0,
+      criteriaDetails: evaluation.criteriaFulfillment?.criteriaDetails || [],
+      fulfillmentPercentage: evaluation.criteriaFulfillment?.totalCriteria > 0
+        ? Math.round((evaluation.criteriaFulfillment.metCriteria / evaluation.criteriaFulfillment.totalCriteria) * 100)
+        : 0,
+    };
+
+    const isKbMatch = evaluation.evaluationType === 'criteria-grounded';
+
+    return {
+      ...h,
+      diagnosticCriteria: fulfillment,
+      evaluationType: isKbMatch ? 'criteria-grounded' as const : 'reasoning-evaluated' as const,
+      knowledgeBaseMatch: isKbMatch,
+      _evidenceQuality: evaluation.evidenceQuality,
+      _strengthAssessment: evaluation.strengthAssessment,
+      _informationGaps: evaluation.informationGaps,
+      _contradictions: evaluation.contradictions,
+    } as DiagnosisHypothesis;
   }
 
   /**
@@ -246,6 +292,69 @@ export class EvidenceEvaluator extends BaseAgent {
     return false;
   }
 
+  /**
+   * For each hypothesis, find sibling diseases from the same family in the KB.
+   * Returns a formatted string to inject into the evaluation prompt, or empty
+   * string if no families with multiple subtypes are found.
+   */
+  private buildSubtypeContext(
+    hypotheses: DiagnosisHypothesis[],
+    patientCase: PatientCase
+  ): string {
+    const patientTerms = patientCase.symptoms.map(
+      (s) => s.selectedConcept?.name || s.medicalTerm || s.originalPhrase
+    );
+
+    const sections: string[] = [];
+    const seenFamilies = new Set<string>();
+
+    for (const h of hypotheses) {
+      const result = findFamilySiblings(h.diagnosis, patientTerms, 10);
+      if (!result || result.siblings.length < 2) continue;
+
+      // Avoid duplicate family sections
+      if (seenFamilies.has(result.familyName)) continue;
+      seenFamilies.add(result.familyName);
+
+      const siblingDescriptions = result.siblings.slice(0, 10).map((d) => {
+        const pathognomonicSymptoms = d.symptoms.pathognomonic
+          .map((s) => s.symptomName)
+          .slice(0, 5);
+        const commonSymptoms = d.symptoms.common
+          .map((s) => s.symptomName)
+          .slice(0, 5);
+        const geneticFindings = d.keyFindings.genetic.slice(0, 3);
+
+        const parts = [`  - ${d.name}`];
+        if (pathognomonicSymptoms.length > 0) {
+          parts.push(`    Pathognomonic: ${pathognomonicSymptoms.join('; ')}`);
+        }
+        if (commonSymptoms.length > 0) {
+          parts.push(`    Common: ${commonSymptoms.join('; ')}`);
+        }
+        if (geneticFindings.length > 0) {
+          parts.push(`    Genetic: ${geneticFindings.join('; ')}`);
+        }
+        return parts.join('\n');
+      });
+
+      sections.push(
+        `"${h.diagnosis}" — family "${result.familyName}" has ${result.totalInFamily} subtypes in KB.\n` +
+          `Most relevant subtypes:\n${siblingDescriptions.join('\n')}`
+      );
+    }
+
+    if (sections.length === 0) return '';
+
+    return (
+      `\n===== SUBTYPE CONTEXT =====\n` +
+      `Some hypotheses below belong to disease families with multiple subtypes in our knowledge base.\n` +
+      `For these, evaluate whether a more specific subtype better matches the patient's presentation.\n` +
+      `If a subtype is a clearly better match, add an evaluation for it as an ADDITIONAL entry in your output.\n\n` +
+      sections.join('\n\n')
+    );
+  }
+
   private deduplicateHypotheses(hypotheses: DiagnosisHypothesis[]): DiagnosisHypothesis[] {
     const seen = new Map<string, DiagnosisHypothesis>();
 
@@ -281,7 +390,8 @@ export class EvidenceEvaluator extends BaseAgent {
   private buildPrompt(
     patientCase: PatientCase,
     classified: Array<{ hypothesis: DiagnosisHypothesis; kbMatch: DiseaseProfile | null }>,
-    candidateDiseases: DiseaseMatch[]
+    candidateDiseases: DiseaseMatch[],
+    subtypeContext: string = ''
   ): string {
     const symptomSummary = patientCase.symptoms
       .map((s) => `- "${s.originalPhrase}" → ${s.selectedConcept?.name || s.medicalTerm || s.originalPhrase}`)
@@ -365,7 +475,7 @@ ${diseaseRefStr ? `
 (Only for KB-matched hypotheses above)
 ${diseaseRefStr}` : ''}
 
-===== YOUR TASK =====
+${subtypeContext ? `${subtypeContext}\n` : ''}===== YOUR TASK =====
 Produce a structured evidence review for ALL hypotheses above — both KB-matched and non-KB.
 
 For KB-matched hypotheses: check each diagnostic criterion against the patient's presentation.

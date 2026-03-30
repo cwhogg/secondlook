@@ -180,6 +180,29 @@ ${synthesisData.differentialClusters.map((c: any) => `Cluster: ${c.clusterName}
   Reasoning: ${c.reasoning}`).join('\n\n')}
 
 IMPORTANT: In the overall assessment, present clustered diagnoses as a unified group rather than independent alternatives. Explain that they share the same clinical presentation and recommend the specific discriminating tests prominently. The patient should understand that the answer likely lives within this cluster.
+` : ''}${ synthesisData.familyEnrichments?.length > 0 ? `===== KB-GROUNDED FAMILY ANALYSIS =====
+The following top diagnoses belong to disease families with multiple subtypes
+in our knowledge base. A specific test has been identified that differentiates them.
+
+${synthesisData.familyEnrichments.map((fe: any) => {
+  if (!fe.differentiatingTest) return `"${fe.topDiagnosisInFamily}" — family "${fe.familyName}" (${fe.totalSubtypes} subtypes in KB)\nNo single differentiating test identified (mixed modalities).`;
+  const dt = fe.differentiatingTest;
+  const subtypeLines = dt.perSubtype
+    .filter((s: any) => s.uniqueFindings.length > 0)
+    .slice(0, 5)
+    .map((s: any) => `  - ${s.diseaseName}: ${s.uniqueFindings.slice(0, 2).join('; ')}`)
+    .join('\n');
+  return `"${fe.topDiagnosisInFamily}" — family "${fe.familyName}" (${fe.totalSubtypes} subtypes in KB)
+Differentiating test: ${dt.modalityLabel}
+${subtypeLines}
+Shared across all subtypes: ${dt.sharedFindings.slice(0, 3).join('; ') || 'none identified'}`;
+}).join('\n\n')}
+
+Consider including the differentiating test in your recommendedTesting with appropriate
+priority. If clinically relevant, frame it as: "To determine the exact subtype,
+[test] may help differentiate between subtypes." You may incorporate this into
+the overallAssessment narrative where appropriate.
+
 ` : ''}${ synthesisData.escalationContext ? `===== LOW DIAGNOSTIC CERTAINTY FLAG =====
 ${synthesisData.escalationContext}
 

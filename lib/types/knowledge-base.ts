@@ -113,4 +113,11 @@ export interface DiseaseMatch {
   matchedSymptoms: SymptomMatch[];
   systemOverlap: BodySystem[];
   demographicFit: number; // 0-1
+  /** Per-component retrieval scores (0-1 each, before weighting) */
+  componentScores?: {
+    symptom: number;
+    system: number;
+    demographic: number;
+    prevalence: number;
+  };
 }

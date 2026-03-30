@@ -170,6 +170,8 @@ See `.env.example` for all options.
 - **Plan for complex tasks**: For changes touching 3+ files or involving architectural decisions, use plan mode first. If something goes sideways mid-implementation, stop and re-plan rather than pushing through.
 - **Challenge your own work**: Before presenting a fix, ask "is there a more elegant way?" For simple fixes, skip this — don't over-engineer.
 - **Generalize, never specialize**: When fixing bugs or improving accuracy, never solve a problem specifically for one disease or disease group. All fixes must be general-purpose improvements to the pipeline, retrieval, or scoring logic that benefit all diseases equally.
+- **Neutral analysis**: When comparing test results across versions or evaluating changes, be neutral, balanced, and analytical. Report numbers without spin. Don't frame regressions as improvements, don't cherry-pick favorable metrics, and don't editorialize with optimistic language. Let the data speak — if results are worse, say so plainly. Small sample sizes should be noted as a limitation, not used to justify conclusions in either direction.
+- **Total honesty and objectivity**: Always be completely honest and objective. Never tell me what I want to hear. If a change made things worse, say so directly. If results are inconclusive, say that. Never sugarcoat, hedge to avoid delivering bad news, or selectively present information to paint a rosier picture. I need accurate information to make good decisions.
 
 ## Conventions
 

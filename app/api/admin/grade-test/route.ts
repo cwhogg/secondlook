@@ -1,6 +1,30 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { callAnthropic } from '@/lib/anthropic';
+import { determineTier, isDiagnosisMatch, scoreToGrade, tierDescription } from '@/lib/grading/deterministic-match';
+import type { TierMatch } from '@/lib/types/admin';
+
+const nearMissSchema = z.object({
+  diagnosis: z.string(),
+  creditLevel: z.enum(['variant', 'family']),
+  reason: z.string().optional(),
+});
+
+const familyEnrichmentSchema = z.object({
+  familyName: z.string(),
+  totalSubtypes: z.number(),
+  topDiagnosisInFamily: z.string(),
+  differentiatingTest: z.object({
+    modality: z.string(),
+    modalityLabel: z.string(),
+    convergenceRatio: z.number(),
+    perSubtype: z.array(z.object({
+      diseaseName: z.string(),
+      uniqueFindings: z.array(z.string()),
+    })),
+    sharedFindings: z.array(z.string()),
+  }).nullable(),
+});
 
 const inputSchema = z.object({
   groundTruth: z.object({
@@ -10,6 +34,7 @@ const inputSchema = z.object({
     keyFindings: z.array(z.string()),
     expectedBodySystems: z.array(z.string()),
     expectedSpecialists: z.array(z.string()),
+    nearMisses: z.array(nearMissSchema).optional(),
   }),
   differentialDiagnoses: z.array(z.object({
     diagnosis: z.string(),
@@ -20,8 +45,10 @@ const inputSchema = z.object({
     sourceAgent: z.string(),
     evaluationType: z.string(),
     knowledgeBaseMatch: z.boolean(),
+    icd10Code: z.string().optional(),
   }).passthrough()),
   pipelineMetadata: z.any().optional(),
+  familyEnrichments: z.array(familyEnrichmentSchema).optional(),
   difficulty: z.number().min(1).max(5),
 });
 
@@ -50,6 +77,32 @@ export async function POST(request: NextRequest) {
     // Take top 10 diagnoses for grading
     const topDiagnoses = input.differentialDiagnoses.slice(0, 10);
 
+    // ===== PASS 1: Deterministic tier matching =====
+    const tierMatch = determineTier(
+      input.groundTruth,
+      topDiagnoses.map(d => ({ diagnosis: d.diagnosis, icd10Code: d.icd10Code })),
+      input.familyEnrichments,
+    );
+
+    // Compute backward-compat fields deterministically using same fuzzy matching
+    let correctDiagnosisRank: number | null = null;
+    for (let i = 0; i < topDiagnoses.length; i++) {
+      if (isDiagnosisMatch(topDiagnoses[i].diagnosis, input.groundTruth.diagnosis)) {
+        correctDiagnosisRank = i + 1;
+        break;
+      }
+    }
+    const inTop3 = correctDiagnosisRank !== null && correctDiagnosisRank <= 3;
+    const inTop5 = correctDiagnosisRank !== null && correctDiagnosisRank <= 5;
+
+    // Near-miss match description for response
+    const nearMissMatch = tierMatch.matchedNearMiss
+      ? `${tierMatch.matchedNearMiss.diagnosis} (${tierMatch.matchedNearMiss.creditLevel})`
+      : null;
+
+    // ===== PASS 2: LLM scoring within constrained range =====
+    const [scoreMin, scoreMax] = tierMatch.scoreRange;
+
     const diagnosisListForPrompt = topDiagnoses.map((d, i) => {
       const evidenceList = d.supportingEvidence
         ?.slice(0, 5)
@@ -61,33 +114,38 @@ export async function POST(request: NextRequest) {
   Evidence:\n${evidenceList}`;
     }).join('\n\n');
 
+    const tierContext = tierMatch.matchedDiagnosis
+      ? `Matched "${tierMatch.matchedDiagnosis}" at rank #${tierMatch.matchedRank}.`
+      : 'No diagnosis match was found.';
+    const nearMissContext = tierMatch.matchedNearMiss
+      ? ` Near-miss: "${tierMatch.matchedNearMiss.diagnosis}" (${tierMatch.matchedNearMiss.creditLevel} — ${tierMatch.matchedNearMiss.reason || 'related disease'}).`
+      : '';
+    const familyTestContext = tierMatch.tier.startsWith('family-test')
+      ? ` Family-test match: the pipeline identified the correct disease family and a differentiating test that would resolve to the ground truth diagnosis.`
+      : '';
+
+    const promotionClause = tierMatch.tier === 'complete-miss'
+      ? `\n\nPROMOTION: If the pipeline identified the correct organ system or disease category (even without a diagnosis match), you may promote from "complete-miss" to "organ-system" (score range 25-45). Set "promotedToOrganSystem" to true and explain why in "promotionReason". Otherwise set "promotedToOrganSystem" to false.`
+      : '';
+
     const systemPrompt = `You are a clinical diagnostics evaluator grading an AI diagnostic pipeline's performance on a synthetic patient case.
 
-SCORING RUBRIC:
-- 90-100 (A): Correct diagnosis ranked #1 with strong reasoning and key findings identified
-- 80-89 (B): Correct diagnosis in top 3 with reasonable reasoning
-- 70-79 (C): Correct diagnosis in top 5 with adequate reasoning
-- 55-69 (D): Correct diagnosis present but ranked >5, OR absent but a closely related diagnosis in the same disease family/mechanism is in top 3
-- 40-54 (F): Diagnosis absent, but pipeline identified the correct disease category, organ system, or specialist pathway that would lead a clinician toward the right diagnosis. The differential would get the patient closer to an answer.
-- 20-39 (F): Diagnosis absent, partially relevant differential but significant reasoning errors or misleading false leads
-- 0-19 (F): Complete miss — wrong organ system, wrong disease category, misleading differential that would send a clinician in the wrong direction
+A deterministic pre-check has already established the scoring tier:
+- Tier: ${tierMatch.tier} (${tierDescription(tierMatch.tier)})
+- ${tierContext}${nearMissContext}${familyTestContext}
+- Your score MUST be between ${scoreMin} and ${scoreMax} (inclusive).
 
-LETTER GRADE MAPPING:
-- 97-100: A+, 93-96: A, 90-92: A-
-- 87-89: B+, 83-86: B, 80-82: B-
-- 77-79: C+, 73-76: C, 70-72: C-
-- 55-69: D
-- Below 55: F
+Your job is to evaluate REASONING QUALITY within that fixed range. Assess:
+1. Quality of clinical reasoning and evidence identification
+2. Whether key diagnostic findings were recognized in supporting evidence
+3. Whether appropriate body systems and specialists were engaged
+4. Safety — were there false leads that could mislead a clinician?
+5. Coverage of key findings from the ground truth
 
-EVALUATION CRITERIA:
-1. Was the correct diagnosis identified? At what rank?
-2. Were the key diagnostic findings recognized in the supporting evidence?
-3. Were appropriate body systems and specialists engaged?
-4. Were there false leads that could mislead a clinician?
+Score toward the HIGH end of the range (${scoreMax}) for excellent reasoning, evidence coverage, and specialist routing.
+Score toward the LOW end of the range (${scoreMin}) for poor reasoning, missed evidence, or dangerous false leads.
 
-Grade the same regardless of difficulty level. Do NOT give bonus credit for hard cases.
-
-PARTIAL CREDIT: When the correct diagnosis is absent but the pipeline identified useful directions (correct disease category, organ system, or related conditions), explain what partial credit was given and why in the partialCreditReason field. Set partialCreditReason to null when the correct diagnosis was found.
+Grade the same regardless of difficulty level. Do NOT give bonus credit for hard cases.${promotionClause}
 
 You must respond with valid JSON only (no markdown fences, no extra text).`;
 
@@ -105,17 +163,15 @@ ${diagnosisListForPrompt}
 
 Respond with this exact JSON structure:
 {
-  "score": <0-100>,
-  "grade": "<letter grade>",
-  "correctDiagnosisRank": <1-based rank or null if not found>,
-  "inTop3": <boolean>,
-  "inTop5": <boolean>,
+  "score": <${scoreMin}-${scoreMax}>,
   "feedback": "2-3 sentence overall assessment",
   "strengths": ["strength 1", "strength 2"],
   "weaknesses": ["weakness 1", "weakness 2"],
   "missedFindings": ["finding that was in key findings but not in evidence"],
   "falseLeads": ["diagnosis or evidence that was misleading"],
-  "partialCreditReason": "explanation of partial credit given, or null if correct diagnosis was found"
+  "partialCreditReason": "explanation of partial credit given, or null if correct diagnosis was found"${tierMatch.tier === 'complete-miss' ? `,
+  "promotedToOrganSystem": false,
+  "promotionReason": null` : ''}
 }`;
 
     const result = await callAnthropic({
@@ -125,7 +181,7 @@ Respond with this exact JSON structure:
       temperature: 0.3,
     });
 
-    if (typeof result.content?.score !== 'number' || !result.content?.grade) {
+    if (typeof result.content?.score !== 'number') {
       console.error(`[${requestId}] Invalid grading response:`, JSON.stringify(result.content).substring(0, 500));
       return NextResponse.json(
         { error: `Failed to generate valid grading — unexpected response format (got ${typeof result.content})`, requestId },
@@ -133,8 +189,38 @@ Respond with this exact JSON structure:
       );
     }
 
+    // Handle promotion from complete-miss to organ-system
+    let finalTierMatch: TierMatch = tierMatch;
+    if (tierMatch.tier === 'complete-miss' && result.content.promotedToOrganSystem) {
+      finalTierMatch = {
+        ...tierMatch,
+        tier: 'organ-system',
+        scoreRange: [25, 45],
+      };
+    }
+
+    // Clamp score to final tier range
+    const [finalMin, finalMax] = finalTierMatch.scoreRange;
+    const clampedScore = Math.max(finalMin, Math.min(finalMax, Math.round(result.content.score)));
+    const grade = scoreToGrade(clampedScore);
+
     return NextResponse.json({
-      grading: result.content,
+      grading: {
+        score: clampedScore,
+        grade,
+        correctDiagnosisRank,
+        inTop3,
+        inTop5,
+        feedback: result.content.feedback,
+        strengths: result.content.strengths || [],
+        weaknesses: result.content.weaknesses || [],
+        missedFindings: result.content.missedFindings || [],
+        falseLeads: result.content.falseLeads || [],
+        partialCreditReason: result.content.partialCreditReason || null,
+        tierMatch: finalTierMatch,
+        nearMissMatch,
+        gradingVersion: 'v2' as const,
+      },
       gradingMetadata: {
         model: result.model,
         tokensUsed: result.tokensUsed,

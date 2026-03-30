@@ -326,15 +326,24 @@ export async function POST(request: NextRequest) {
 
     let diseaseInstruction: string;
     if (input.difficulty <= 2) {
+      // Include full profile + differential diagnoses for near-miss context
+      let diffContext = '';
+      if (preSelectedDisease.differentialDiagnoses && preSelectedDisease.differentialDiagnoses.length > 0) {
+        const diffList = preSelectedDisease.differentialDiagnoses
+          .map(d => `- ${d.diseaseId}: ${d.distinguishingFeatures}`)
+          .join('\n');
+        diffContext = `\n\nDifferential diagnoses (use these to help construct the nearMisses list):\n${diffList}`;
+      }
       diseaseInstruction = `Generate a patient case for the following disease. Use the profile below to create an accurate presentation.
 
-${formatDiseaseProfile(preSelectedDisease)}`;
+${formatDiseaseProfile(preSelectedDisease)}${diffContext}`;
     } else {
       diseaseInstruction = `Generate a patient case for the following disease. Use your own medical knowledge to create an accurate presentation — do NOT rely on any provided profile.
 
 Disease: ${preSelectedDisease.name}
 
-Use your knowledge of this disease to generate accurate symptoms, demographics, and clinical features.`;
+Use your knowledge of this disease to generate accurate symptoms, demographics, and clinical features.
+Consider related subtypes and disease family members for nearMisses.`;
     }
 
     const systemPrompt = `You are a clinical simulation specialist creating synthetic rare disease patient presentations for a diagnostic AI testing framework.
@@ -355,6 +364,12 @@ IMPORTANT RULES:
 - Include relevant medical history, family history, and medications where appropriate
 - The ground truth must include the correct diagnosis, key findings, expected body systems, and which specialists should be consulted
 - You MUST include "difficultyFactors" listing which specific factors make this case hard
+- Include a "nearMisses" array in the ground truth with 2-5 diseases that should receive partial credit if the pipeline suggests them instead of the correct diagnosis
+- Two credit levels:
+  - "variant": Same disease, different subtype (e.g., EDS vascular vs EDS classical). Same fundamental mechanism.
+  - "family": Different disease, same mechanism/pathway/clinical group (e.g., Marfan vs Loeys-Dietz)
+- Include at least one "variant" if subtypes exist, and 1-3 "family" entries
+- Each entry needs a brief "reason" explaining the relationship
 
 You must respond with valid JSON only (no markdown fences, no extra text).`;
 
@@ -371,7 +386,11 @@ Respond with this exact JSON structure:
     "keyFindings": ["finding 1", "finding 2", ...],
     "expectedBodySystems": ["musculoskeletal", "neurological", ...],
     "expectedSpecialists": ["rheumatologist", "neurologist", ...],
-    "difficultyFactors": ["nonspecific symptoms", "high diagnostic overlap with X and Y", ...]
+    "difficultyFactors": ["nonspecific symptoms", "high diagnostic overlap with X and Y", ...],
+    "nearMisses": [
+      { "diagnosis": "Related Disease A", "creditLevel": "variant", "reason": "Same disease, different subtype" },
+      { "diagnosis": "Related Disease B", "creditLevel": "family", "reason": "Same pathway/mechanism" }
+    ]
   },
   "patient": {
     "narrative": "First-person patient narrative following the ${archetype.name} archetype rules...",

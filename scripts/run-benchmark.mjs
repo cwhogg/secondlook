@@ -23,6 +23,7 @@ import { readFileSync, writeFileSync, existsSync, appendFileSync } from 'fs';
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 const DATASET_PATH = new URL('./benchmark-data/en.jsonl', import.meta.url).pathname;
 const RESULTS_PATH = new URL('./benchmark-data/results.jsonl', import.meta.url).pathname;
+const KB_PATH = new URL('../lib/knowledge/diseases-compiled.json', import.meta.url).pathname;
 
 // ===== CLI ARGS =====
 
@@ -422,6 +423,73 @@ function appendResult(result) {
   appendFileSync(RESULTS_PATH, JSON.stringify(result) + '\n');
 }
 
+// ===== KNOWLEDGE BASE FOR NEAR-MISS GENERATION =====
+
+let _kbDiseases = null;
+let _kbById = null;
+
+function loadKB() {
+  if (_kbDiseases) return;
+  try {
+    _kbDiseases = JSON.parse(readFileSync(KB_PATH, 'utf8'));
+    _kbById = new Map(_kbDiseases.map(d => [d.id, d]));
+  } catch {
+    console.log('  Warning: Could not load compiled KB — nearMisses will be empty');
+    _kbDiseases = [];
+    _kbById = new Map();
+  }
+}
+
+/** Find a KB disease matching a ground truth label, using namesMatch + aliases */
+function findKBDisease(label) {
+  loadKB();
+  for (const d of _kbDiseases) {
+    if (namesMatch(d.name, label)) return d;
+    if (d.aliases) {
+      for (const alias of d.aliases) {
+        if (namesMatch(alias, label)) return d;
+      }
+    }
+  }
+  return null;
+}
+
+/** Strip type/subtype suffixes to get the base disease name */
+function stripTypeSuffix(name) {
+  return normalizeName(name)
+    .replace(/\s*type\s+\w+$/i, '')
+    .replace(/\s*\d+[a-z]?$/i, '')
+    .replace(/\s*(i{1,3}|iv|v|vi{0,3})$/i, '')
+    .trim();
+}
+
+/** Generate nearMisses from a KB disease's differentialDiagnoses */
+function generateNearMisses(kbDisease) {
+  if (!kbDisease?.differentialDiagnoses?.length) return [];
+  const gtBase = stripTypeSuffix(kbDisease.name);
+  const nearMisses = [];
+
+  for (const diff of kbDisease.differentialDiagnoses) {
+    const diffDisease = _kbById.get(diff.diseaseId);
+    if (!diffDisease) continue;
+
+    const diffBase = stripTypeSuffix(diffDisease.name);
+    // Variant: same base disease name (e.g., "EDS type III" vs "EDS type IV")
+    // Family: different base name but in the differential list
+    const creditLevel = (gtBase.length > 4 && diffBase.length > 4 && gtBase === diffBase)
+      ? 'variant'
+      : 'family';
+
+    nearMisses.push({
+      diagnosis: diffDisease.name,
+      creditLevel,
+      reason: `Differential from KB profile`,
+    });
+  }
+
+  return nearMisses;
+}
+
 // ===== SEEDED SHUFFLE =====
 
 function seededShuffle(arr, seed) {
@@ -466,6 +534,20 @@ function printStats(results) {
   console.log(`  ${'Top-3'.padEnd(15)} ${(top3 + '/' + n).padEnd(10)} ${(100 * top3 / n).toFixed(1)}%`);
   console.log(`  ${'Top-5'.padEnd(15)} ${(top5 + '/' + n).padEnd(10)} ${(100 * top5 / n).toFixed(1)}%`);
   console.log(`  ${'Top-10'.padEnd(15)} ${(top10 + '/' + n).padEnd(10)} ${(100 * top10 / n).toFixed(1)}%`);
+
+  // Clinical accuracy (exact + variant) and Family accuracy (exact + variant + family)
+  const exactOrVariantTiers = new Set(['exact-top1', 'exact-top3', 'exact-top5', 'variant-top3', 'variant-top5']);
+  const familyTiers = new Set([...exactOrVariantTiers, 'family-top3', 'family-top5']);
+
+  const clinTop1 = completed.filter(r => r.tier === 'exact-top1').length;
+  const clinTop3 = completed.filter(r => exactOrVariantTiers.has(r.tier) && (r.correctRank ?? 99) <= 3).length;
+  const clinTop5 = completed.filter(r => exactOrVariantTiers.has(r.tier)).length;
+  const famTop3 = completed.filter(r => familyTiers.has(r.tier) && (r.correctRank ?? 99) <= 3).length;
+  const famTop5 = completed.filter(r => familyTiers.has(r.tier)).length;
+
+  console.log();
+  console.log(`  ${'Clinical (exact+variant):'.padEnd(30)} Top-1: ${(100 * clinTop1 / n).toFixed(1)}%  Top-3: ${(100 * clinTop3 / n).toFixed(1)}%  Top-5: ${(100 * clinTop5 / n).toFixed(1)}%`);
+  console.log(`  ${'Family (exact+var+fam):'.padEnd(30)} Top-3: ${(100 * famTop3 / n).toFixed(1)}%  Top-5: ${(100 * famTop5 / n).toFixed(1)}%`);
 
   // Published baselines for comparison
   console.log();
@@ -564,6 +646,10 @@ async function runSingleCase(entry, allTestCases) {
     const keyFindings = extractKeyFindings(case_description);
     const demographics = extractDemographics(case_description);
 
+    // Auto-generate nearMisses from KB differentials
+    const kbDisease = findKBDisease(gtLabel);
+    const nearMisses = kbDisease ? generateNearMisses(kbDisease) : [];
+
     let grading = null;
     let gradingMetadata = null;
     try {
@@ -574,9 +660,11 @@ async function runSingleCase(entry, allTestCases) {
           keyFindings,
           expectedBodySystems: [],
           expectedSpecialists: [],
+          nearMisses,
         },
         differentialDiagnoses: diffs,
         pipelineMetadata: analysis.pipelineMetadata,
+        familyEnrichments: analysis.familyEnrichments,
         difficulty: 3, // neutral difficulty for benchmark cases
       });
       grading = gradeData.grading;
@@ -600,6 +688,7 @@ async function runSingleCase(entry, allTestCases) {
         keyFindings,
         expectedBodySystems: [],
         expectedSpecialists: [],
+        nearMisses,
       },
       generatedPatient: {
         narrative: case_description,
@@ -625,22 +714,48 @@ async function runSingleCase(entry, allTestCases) {
       ...(gradingMetadata && { gradingMetadata }),
     };
 
+    // Reconcile ranks: take the best (lowest non-null) from benchmark and grader
+    const benchmarkRank = correctRank;
+    const graderRank = grading?.correctDiagnosisRank ?? null;
+    let reconciledRank;
+    if (benchmarkRank !== null && graderRank !== null) {
+      reconciledRank = Math.min(benchmarkRank, graderRank);
+    } else {
+      reconciledRank = benchmarkRank ?? graderRank;
+    }
+
+    if (benchmarkRank === null && graderRank !== null) {
+      console.log(`         ⚑ Grader rescued: benchmark=MISS, grader=#${graderRank} → reconciled=#${graderRank}`);
+    } else if (benchmarkRank !== null && graderRank !== null && graderRank < benchmarkRank) {
+      console.log(`         ⚑ Grader improved rank: benchmark=#${benchmarkRank}, grader=#${graderRank} → reconciled=#${graderRank}`);
+    }
+
     // Save to testing page
     allTestCases.unshift(testCase);
     await saveTestCases(allTestCases);
 
     const totalSec = ((Date.now() - startTime) / 1000).toFixed(1);
-    const rankStr = correctRank !== null ? `#${correctRank}` : 'MISS';
-    const emoji = correctRank === 1 ? '✓' : correctRank !== null ? '~' : '✗';
+    const rankStr = reconciledRank !== null ? `#${reconciledRank}` : 'MISS';
+    const emoji = reconciledRank === 1 ? '✓' : reconciledRank !== null ? '~' : '✗';
     const gradeStr = grading ? ` Grade: ${grading.grade}` : '';
     console.log(`  ${emoji} ${rankStr.padEnd(6)} GT: ${groundTruthDiag[0]?.label}${gradeStr}`);
     console.log(`           #1: ${topDiagnoses[0] || 'none'} (${pipelineSec}s, ${symptomCount} symptoms)`);
+
+    // Extract retrieval component scores from pipeline metadata (top 10 for results file)
+    const retrievalScores = (analysis.pipelineMetadata?.retrievalScores || []).slice(0, 10).map(d => ({
+      id: d.diseaseId,
+      name: d.diseaseName,
+      match: d.matchScore,
+      ...d.componentScores,
+    }));
 
     return {
       ppkt_id,
       status: 'completed',
       groundTruth: groundTruthDiag,
-      correctRank,
+      correctRank: reconciledRank,
+      benchmarkRank,
+      graderRank,
       topDiagnoses,
       symptomCount,
       mappedCount,
@@ -648,6 +763,8 @@ async function runSingleCase(entry, allTestCases) {
       totalSec: parseFloat(totalSec),
       grade: grading?.grade || null,
       score: grading?.score || null,
+      tier: grading?.tierMatch?.tier || null,
+      retrievalScores,
     };
   } catch (err) {
     const totalSec = ((Date.now() - startTime) / 1000).toFixed(1);

@@ -182,9 +182,11 @@ function scoreDisease(
   const demographicFit = computeDemographicFit(disease, demographics);
   const prevalenceBonus = computePrevalenceBonus(disease);
 
+  const systemScore = systemOverlap.length / Math.max(disease.systemsAffected.length, 1);
+
   const matchScore =
     SCORE_WEIGHTS.symptom * symptomScore +
-    SCORE_WEIGHTS.system * (systemOverlap.length / Math.max(disease.systemsAffected.length, 1)) +
+    SCORE_WEIGHTS.system * systemScore +
     SCORE_WEIGHTS.demographic * demographicFit +
     SCORE_WEIGHTS.prevalence * prevalenceBonus;
 
@@ -194,6 +196,12 @@ function scoreDisease(
     matchedSymptoms,
     systemOverlap,
     demographicFit,
+    componentScores: {
+      symptom: symptomScore,
+      system: systemScore,
+      demographic: demographicFit,
+      prevalence: prevalenceBonus,
+    },
   };
 }
 

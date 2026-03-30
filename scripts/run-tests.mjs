@@ -15,7 +15,7 @@ const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
 function parseArgs() {
   const args = process.argv.slice(2);
-  const opts = { difficulties: [3, 4, 5], count: 3, version: 'v4' };
+  const opts = { difficulties: [3, 4, 5], count: 3, version: 'v9' };
 
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--difficulties' && args[i + 1]) {
@@ -244,6 +244,7 @@ async function runSingleTest(difficulty, version, existingCases) {
     groundTruth: genData.groundTruth,
     differentialDiagnoses: analysis.differentialDiagnoses || [],
     pipelineMetadata: analysis.pipelineMetadata,
+    familyEnrichments: analysis.familyEnrichments,
     difficulty,
   });
   testCase.grading = gradeData.grading;
@@ -281,27 +282,49 @@ async function main() {
   let allCases = await loadTestCases();
   console.log(`\nLoaded ${allCases.length} existing test cases`);
 
+  // Count existing tests for this version per difficulty (for resume support)
+  const existingByDiff = {};
+  for (const tc of allCases) {
+    if ((tc.testVersion || 'v1') === opts.version) {
+      existingByDiff[tc.difficulty] = (existingByDiff[tc.difficulty] || 0) + 1;
+    }
+  }
+
+  // Build the run plan: skip difficulties that already have enough tests
+  const runPlan = [];
+  for (const diff of opts.difficulties) {
+    const existing = existingByDiff[diff] || 0;
+    const remaining = Math.max(0, opts.count - existing);
+    if (existing > 0) {
+      console.log(`  D${diff}: ${existing} already completed, ${remaining} remaining`);
+    }
+    for (let i = 0; i < remaining; i++) {
+      runPlan.push(diff);
+    }
+  }
+
+  if (runPlan.length === 0) {
+    console.log(`\nAll ${opts.difficulties.length * opts.count} tests already completed for ${opts.version}. Nothing to do.`);
+  }
+
   const results = [];
-  const totalTests = opts.difficulties.length * opts.count;
   let completed = 0;
 
-  for (const diff of opts.difficulties) {
-    for (let i = 0; i < opts.count; i++) {
-      completed++;
-      console.log(`\n>>> Test ${completed}/${totalTests}`);
+  for (const diff of runPlan) {
+    completed++;
+    console.log(`\n>>> Test ${completed}/${runPlan.length}`);
 
-      try {
-        const tc = await runSingleTest(diff, opts.version, allCases);
-        results.push(tc);
-        allCases = [tc, ...allCases];
+    try {
+      const tc = await runSingleTest(diff, opts.version, allCases);
+      results.push(tc);
+      allCases = [tc, ...allCases];
 
-        // Save after each test so progress isn't lost
-        await saveTestCases(allCases);
-        console.log(`  ✓ Saved (${allCases.length} total cases)`);
-      } catch (err) {
-        console.error(`\n  ✗ FAILED: ${err.message}`);
-        // Continue with next test
-      }
+      // Save after each test so progress isn't lost
+      await saveTestCases(allCases);
+      console.log(`  ✓ Saved (${allCases.length} total cases)`);
+    } catch (err) {
+      console.error(`\n  ✗ FAILED: ${err.message}`);
+      // Continue with next test
     }
   }
 

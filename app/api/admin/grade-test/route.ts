@@ -29,8 +29,8 @@ const familyEnrichmentSchema = z.object({
 const inputSchema = z.object({
   groundTruth: z.object({
     diagnosis: z.string(),
-    icd10: z.string().optional(),
-    prevalence: z.string().optional(),
+    icd10: z.string().nullable().optional(),
+    prevalence: z.string().nullable().optional(),
     keyFindings: z.array(z.string()),
     expectedBodySystems: z.array(z.string()),
     expectedSpecialists: z.array(z.string()),

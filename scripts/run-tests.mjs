@@ -282,49 +282,71 @@ async function main() {
   let allCases = await loadTestCases();
   console.log(`\nLoaded ${allCases.length} existing test cases`);
 
-  // Count existing tests for this version per difficulty (for resume support)
+  // Count existing GRADED tests for this version per difficulty (for resume support)
   const existingByDiff = {};
   for (const tc of allCases) {
-    if ((tc.testVersion || 'v1') === opts.version) {
+    if ((tc.testVersion || 'v1') === opts.version && tc.status === 'graded') {
       existingByDiff[tc.difficulty] = (existingByDiff[tc.difficulty] || 0) + 1;
     }
   }
 
-  // Build the run plan: skip difficulties that already have enough tests
-  const runPlan = [];
+  // Build the run plan: skip difficulties that already have enough graded tests
+  const targetByDiff = {};
   for (const diff of opts.difficulties) {
     const existing = existingByDiff[diff] || 0;
     const remaining = Math.max(0, opts.count - existing);
+    targetByDiff[diff] = opts.count;
     if (existing > 0) {
-      console.log(`  D${diff}: ${existing} already completed, ${remaining} remaining`);
-    }
-    for (let i = 0; i < remaining; i++) {
-      runPlan.push(diff);
+      console.log(`  D${diff}: ${existing} already graded, ${remaining} remaining`);
     }
   }
 
-  if (runPlan.length === 0) {
-    console.log(`\nAll ${opts.difficulties.length * opts.count} tests already completed for ${opts.version}. Nothing to do.`);
+  const totalPlanned = Object.entries(targetByDiff).reduce((sum, [diff, target]) => {
+    return sum + Math.max(0, target - (existingByDiff[diff] || 0));
+  }, 0);
+
+  if (totalPlanned === 0) {
+    console.log(`\nAll ${opts.difficulties.length * opts.count} tests already graded for ${opts.version}. Nothing to do.`);
   }
 
   const results = [];
   let completed = 0;
+  const MAX_RETRIES = 2; // max retries per failed test
 
-  for (const diff of runPlan) {
-    completed++;
-    console.log(`\n>>> Test ${completed}/${runPlan.length}`);
+  // Run tests per difficulty, retrying on technical failures
+  for (const diff of opts.difficulties) {
+    const target = targetByDiff[diff];
+    let graded = existingByDiff[diff] || 0;
+    let retries = 0;
 
-    try {
-      const tc = await runSingleTest(diff, opts.version, allCases);
-      results.push(tc);
-      allCases = [tc, ...allCases];
+    while (graded < target) {
+      completed++;
+      const totalRemaining = Object.entries(targetByDiff).reduce((sum, [d, t]) => {
+        const done = d < String(diff) ? t : d === String(diff) ? graded : (existingByDiff[d] || 0);
+        return sum + Math.max(0, t - done);
+      }, 0);
+      console.log(`\n>>> Test ${completed}/${completed + totalRemaining - 1}`);
 
-      // Save after each test so progress isn't lost
-      await saveTestCases(allCases);
-      console.log(`  ✓ Saved (${allCases.length} total cases)`);
-    } catch (err) {
-      console.error(`\n  ✗ FAILED: ${err.message}`);
-      // Continue with next test
+      try {
+        const tc = await runSingleTest(diff, opts.version, allCases);
+        results.push(tc);
+        allCases = [tc, ...allCases];
+        graded++;
+        retries = 0; // reset retries on success
+
+        // Save after each test so progress isn't lost
+        await saveTestCases(allCases);
+        console.log(`  ✓ Saved (${allCases.length} total cases)`);
+      } catch (err) {
+        console.error(`\n  ✗ FAILED: ${err.message}`);
+        retries++;
+        if (retries <= MAX_RETRIES) {
+          console.log(`  ↻ Retrying D${diff} (attempt ${retries + 1}/${MAX_RETRIES + 1})...`);
+        } else {
+          console.error(`  ✗ Max retries reached for D${diff}, moving on`);
+          break;
+        }
+      }
     }
   }
 

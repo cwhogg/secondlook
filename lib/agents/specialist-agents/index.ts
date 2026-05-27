@@ -156,8 +156,8 @@ CRITICAL: You are NOT limited to the diseases shown in the knowledge base profil
 OUTPUT RULES:
 - Generate 2-4 diagnostic hypotheses ranked by likelihood
 - Each hypothesis MUST include specific evidence mapping
-- Do NOT suggest common diagnoses that any GP would consider
-- Focus on rare/complex conditions that require specialist evaluation
+- Prioritize rare/complex conditions that require specialist evaluation — that is this tool's value
+- A common diagnosis MAY be proposed when it is clearly the most parsimonious fit for the full presentation. Do NOT omit a common diagnosis if it is the leading consideration; when you include one, briefly note why rarer alternatives are less likely given the available evidence
 - Be precise — vague reasoning undermines clinical credibility
 - For diagnoses NOT in the provided knowledge base profiles, provide your own assessment of which diagnostic criteria or clinical features support the diagnosis
 - DIAGNOSIS NAMING: Always use the most specific disease name the evidence supports. Use "Retinitis Pigmentosa" not "Inherited Retinal Dystrophy". Use "Leber Congenital Amaurosis" not "Hereditary Retinal Dystrophy". Use "Charcot-Marie-Tooth Disease Type 2A" not "Hereditary Motor Sensory Neuropathy". The diagnosis name should identify a specific disease entity, not a broad disease category.`;

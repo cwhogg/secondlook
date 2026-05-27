@@ -631,6 +631,54 @@ export default function NextStepsPage() {
             Here's what we recommend you do next:
           </p>
 
+          {(() => {
+            const investigations = [
+              ...(categorizedTesting.laboratory || []),
+              ...(categorizedTesting.genetic_testing || []),
+              ...(categorizedTesting.imaging || []),
+            ]
+            if (investigations.length === 0) return null
+
+            const iconFor = (testType: string) => {
+              if (testType === "genetic_testing") return Dna
+              if (testType === "imaging") return ScanLine
+              return TestTubes
+            }
+
+            return (
+              <div className="mb-6 sm:mb-8">
+                <h3 className="font-bold text-[#1a1a1a] mb-4 sm:mb-6 text-lg sm:text-xl">
+                  Recommended Labs & Testing
+                </h3>
+                <ul className="space-y-3 sm:space-y-4">
+                  {investigations.map((test, index) => {
+                    const Icon = iconFor(test.testType)
+                    return (
+                      <li
+                        key={`investigation-${index}`}
+                        className="flex items-start gap-3 sm:gap-4 bg-white p-3 sm:p-4 border border-[#d4c5b0]"
+                      >
+                        <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#8b2500] flex items-center justify-center flex-shrink-0">
+                          <Icon className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="font-semibold text-[#1a1a1a] text-sm sm:text-base leading-snug">
+                            {test.testName}
+                          </div>
+                          {test.rationale && (
+                            <div className="text-xs sm:text-sm text-[#6d1d00]/80 mt-1 leading-relaxed">
+                              {test.rationale}
+                            </div>
+                          )}
+                        </div>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            )
+          })()}
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             <div className="space-y-6 sm:space-y-8">
               <div>

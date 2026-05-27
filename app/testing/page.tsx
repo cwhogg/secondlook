@@ -191,12 +191,14 @@ async function buildPatientCase(
     }),
   })
 
+  const parsed = await parseResponse.json().catch(() => null)
+
   if (!parseResponse.ok) {
-    throw new Error(`Symptom parsing failed: ${parseResponse.statusText}`)
+    const detail = parsed?.error || parseResponse.statusText || `HTTP ${parseResponse.status}`
+    throw new Error(`Symptom parsing failed: ${detail}`)
   }
 
-  const parsed = await parseResponse.json()
-  const parsedSymptoms: any[] = parsed.symptoms || []
+  const parsedSymptoms: any[] = parsed?.symptoms || []
 
   if (parsedSymptoms.length === 0) {
     throw new Error("Symptom parsing returned no symptoms from narrative")

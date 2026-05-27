@@ -1,5 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 
+export const maxDuration = 90
+
 const MAX_RETRIES = 3
 const BASE_DELAY_MS = 2000
 
@@ -18,7 +20,8 @@ async function callOpenAIWithRetry(
         model: "gpt-4.1-mini",
         messages,
         temperature: 0.3,
-        max_tokens: 1500,
+        max_tokens: 8000,
+        response_format: { type: "json_object" },
       }),
     })
 

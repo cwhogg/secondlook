@@ -81,13 +81,15 @@ export default function AnalysisPage() {
           }),
         })
 
+        const parseData = await parseResponse.json().catch(() => null)
+
         if (!parseResponse.ok) {
-          throw new Error(`Symptom parsing failed: ${parseResponse.statusText}`)
+          const detail = parseData?.error || parseResponse.statusText || `HTTP ${parseResponse.status}`
+          throw new Error(`Symptom parsing failed: ${detail}`)
         }
 
-        const parseData = await parseResponse.json()
-        if (parseData.error || !parseData.symptoms?.length) {
-          throw new Error(parseData.error || "No symptoms could be extracted from your description.")
+        if (!parseData || parseData.error || !parseData.symptoms?.length) {
+          throw new Error(parseData?.error || "No symptoms could be extracted from your description.")
         }
 
         // Map each parsed symptom to UMLS concepts

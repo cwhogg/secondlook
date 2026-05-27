@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-export const maxDuration = 90
+export const maxDuration = 300
 
 const MAX_RETRIES = 3
 const BASE_DELAY_MS = 2000

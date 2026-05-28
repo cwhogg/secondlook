@@ -14,13 +14,7 @@ export async function GET() {
   }
 
   try {
-    const { blobs } = await list({ prefix: BLOB_PATH })
-    if (blobs.length === 0) {
-      return NextResponse.json({ testCases: [] })
-    }
-
-    const response = await fetch(blobs[0].url)
-    const testCases: TestCase[] = await response.json()
+    const testCases = await loadExistingTestCases()
     return NextResponse.json({ testCases })
   } catch (error) {
     console.error("Failed to load test cases from Blob:", error)
@@ -31,7 +25,13 @@ export async function GET() {
 async function loadExistingTestCases(): Promise<TestCase[]> {
   const { blobs } = await list({ prefix: BLOB_PATH })
   if (blobs.length === 0) return []
-  const response = await fetch(blobs[0].url)
+  // The blob's public URL is CDN-cached. Without `cache: 'no-store'` plus a
+  // cache-busting query param the server reads stale content and the next
+  // upsert merges against an out-of-date baseline, silently overwriting
+  // freshly-saved testCases. Both layers needed: 'no-store' bypasses fetch's
+  // own cache, the query param forces a fresh origin pull at the CDN layer.
+  const cacheBust = `?_t=${Date.now()}`
+  const response = await fetch(blobs[0].url + cacheBust, { cache: "no-store" })
   return (await response.json()) as TestCase[]
 }
 

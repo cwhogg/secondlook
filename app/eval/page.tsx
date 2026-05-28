@@ -71,8 +71,16 @@ const MODEL_DISPLAY: Record<ModelTab, string> = {
   claude: "Claude opus-4-7",
 }
 
+interface MatchedTrio {
+  ppkt_id: string
+  diagnosis: string
+  secondlook: TestCase
+  openai: TestCase
+  claude: TestCase
+}
+
 // A trio is a categoryHint (ppkt_id) where all three models have graded testCases.
-function getTrioCohort(testCases: TestCase[]): Record<ModelTab, TestCase[]> {
+function getMatchedTrios(testCases: TestCase[]): MatchedTrio[] {
   const byHint = new Map<string, Partial<Record<ModelTab, TestCase>>>()
   for (const tc of testCases) {
     if (tc.testVersion !== "Eval") continue
@@ -83,21 +91,36 @@ function getTrioCohort(testCases: TestCase[]): Record<ModelTab, TestCase[]> {
     if (!byHint.has(hint)) byHint.set(hint, {})
     byHint.get(hint)![mode] = tc
   }
-  const out: Record<ModelTab, TestCase[]> = { secondlook: [], openai: [], claude: [] }
-  for (const entry of byHint.values()) {
+  const trios: MatchedTrio[] = []
+  for (const [ppkt_id, entry] of byHint) {
     if (entry.secondlook && entry.openai && entry.claude) {
-      out.secondlook.push(entry.secondlook)
-      out.openai.push(entry.openai)
-      out.claude.push(entry.claude)
+      trios.push({
+        ppkt_id,
+        diagnosis: entry.secondlook.groundTruth?.diagnosis || "(unknown)",
+        secondlook: entry.secondlook,
+        openai: entry.openai,
+        claude: entry.claude,
+      })
     }
   }
-  return out
+  // Newest first by SecondLook createdAt (the trio's three testCases share a
+  // common timestamp within a few ms, so SecondLook is a fine proxy).
+  trios.sort((a, b) => b.secondlook.createdAt.localeCompare(a.secondlook.createdAt))
+  return trios
+}
+
+function getTrioCohort(testCases: TestCase[]): Record<ModelTab, TestCase[]> {
+  const trios = getMatchedTrios(testCases)
+  return {
+    secondlook: trios.map((t) => t.secondlook),
+    openai: trios.map((t) => t.openai),
+    claude: trios.map((t) => t.claude),
+  }
 }
 
 // ppkt_ids that already have a complete graded trio (so the next batch can exclude them).
 function getCompleteTrioHints(testCases: TestCase[]): Set<string> {
-  const trio = getTrioCohort(testCases)
-  return new Set(trio.secondlook.map((tc) => tc.categoryHint || "").filter(Boolean))
+  return new Set(getMatchedTrios(testCases).map((t) => t.ppkt_id))
 }
 
 function synthesizeBaselineResult(
@@ -1017,6 +1040,7 @@ export default function EvalPage() {
                 )}
               </div>
             )}
+            <TrioDetailsTable testCases={testCases} />
           </>
         )}
 
@@ -1196,6 +1220,84 @@ export default function EvalPage() {
       </div>
     </div>
   )
+}
+
+function TrioDetailsTable({ testCases }: { testCases: TestCase[] }) {
+  const trios = getMatchedTrios(testCases)
+  if (trios.length === 0) return null
+  return (
+    <div className="border border-[#d4c5b0] bg-white mb-6">
+      <div className="px-4 py-3 border-b border-[#e8ddd0]">
+        <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
+          Per-trio results ({trios.length})
+        </div>
+        <div className="text-xs text-[#8b7355] mt-1 italic">
+          Grade and 0-100 score from each model on each shared case, newest first.
+        </div>
+      </div>
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm min-w-[640px]">
+          <thead>
+            <tr className="border-b border-[#e8ddd0] bg-[#faf7f2]">
+              <th className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">
+                Disease (ground truth)
+              </th>
+              {MODEL_TABS.map((m) => (
+                <th
+                  key={m}
+                  className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium whitespace-nowrap"
+                >
+                  {MODEL_DISPLAY[m]}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {trios.map((trio) => (
+              <tr key={trio.ppkt_id} className="border-b border-[#e8ddd0] last:border-b-0 align-top">
+                <td className="py-2.5 px-4 sm:px-5 text-[#2a2a2a] font-serif">
+                  {trio.diagnosis}
+                  <div className="text-[10px] text-[#8b7355] font-sans mt-0.5">{trio.ppkt_id}</div>
+                </td>
+                {MODEL_TABS.map((m) => {
+                  const tc = trio[m]
+                  const g = tc.grading
+                  if (!g) return (
+                    <td key={m} className="py-2.5 px-4 sm:px-5 text-right text-xs text-[#8b7355]">—</td>
+                  )
+                  return (
+                    <td key={m} className="py-2.5 px-4 sm:px-5 text-right whitespace-nowrap">
+                      <span className={`font-bold font-serif ${GRADE_COLOR[g.grade] || "text-gray-600"}`}>
+                        {g.grade}
+                      </span>
+                      <span className="text-[#5a5a5a] tabular-nums ml-2">({g.score})</span>
+                      {g.correctDiagnosisRank !== null && g.correctDiagnosisRank !== undefined && (
+                        <div className="text-[10px] text-[#8b7355] mt-0.5">rank #{g.correctDiagnosisRank}</div>
+                      )}
+                    </td>
+                  )
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
+}
+
+const GRADE_COLOR: Record<string, string> = {
+  "A+": "text-green-700",
+  A: "text-green-700",
+  "A-": "text-green-600",
+  "B+": "text-blue-700",
+  B: "text-blue-600",
+  "B-": "text-blue-500",
+  "C+": "text-yellow-700",
+  C: "text-yellow-600",
+  "C-": "text-yellow-500",
+  D: "text-orange-600",
+  F: "text-red-600",
 }
 
 function TrioStatusChip({ label, status }: { label: string; status: "pending" | "running" | "done" | "error" }) {

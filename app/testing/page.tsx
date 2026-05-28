@@ -273,25 +273,39 @@ export default function AdminPage() {
     }
   }
 
+  // Baseline for the post-commit diff. Initialized when the blob load
+  // completes so the initial cohort isn't diffed against [] and pushed as a
+  // single multi-MB upsert that fails Vercel's body-size limit.
+  const persistedRef = useRef<TestCase[] | null>(null)
+
   // Load from KV on mount
   useEffect(() => {
-    loadTestCases().then(setTestCases)
-  }, [])
-
-  // Persist to KV on every change. Ship only the diff so we don't blow past
-  // Vercel's request-body limit on the test-cases POST.
-  const updateTestCases = useCallback((updater: (prev: TestCase[]) => TestCase[]) => {
-    setTestCases((prev) => {
-      const next = updater(prev)
-      const prevById = new Map(prev.map((tc) => [tc.id, tc]))
-      const nextIds = new Set(next.map((tc) => tc.id))
-      const upserts = next.filter((tc) => prevById.get(tc.id) !== tc)
-      const removedIds = prev.filter((tc) => !nextIds.has(tc.id)).map((tc) => tc.id)
-      if (upserts.length > 0) upsertTestCases(upserts)
-      if (removedIds.length > 0) deleteTestCases(removedIds)
-      return next
+    loadTestCases().then((loaded) => {
+      persistedRef.current = loaded
+      setTestCases(loaded)
     })
   }, [])
+
+  // Diff in a post-commit effect, NEVER inside a setState updater. React 19's
+  // concurrent renderer can call state updaters more than once per logical
+  // update; side effects belong in useEffect where they only fire after the
+  // state actually commits.
+  useEffect(() => {
+    const prev = persistedRef.current
+    if (prev === null) return
+    const prevById = new Map(prev.map((tc) => [tc.id, tc]))
+    const nextIds = new Set(testCases.map((tc) => tc.id))
+    const upserts = testCases.filter((tc) => prevById.get(tc.id) !== tc)
+    const removedIds = prev.filter((tc) => !nextIds.has(tc.id)).map((tc) => tc.id)
+    if (upserts.length > 0) upsertTestCases(upserts)
+    if (removedIds.length > 0) deleteTestCases(removedIds)
+    persistedRef.current = testCases
+  }, [testCases])
+
+  const updateTestCases = useCallback(
+    (updater: (prev: TestCase[]) => TestCase[]) => setTestCases(updater),
+    [],
+  )
 
   const activeTest = testCases.find((tc) => tc.id === activeTestId) || null
   const stats = computeStats(testCases)

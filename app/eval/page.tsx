@@ -224,24 +224,40 @@ export default function EvalPage() {
     }
   }
 
-  useEffect(() => {
-    loadTestCases().then(setTestCases)
-  }, [])
+  // Baseline for the diff. Initialized when the blob load completes so the
+  // initial 333-case load is NOT diffed against [] (which would push every
+  // loaded case into a single huge upsert).
+  const persistedRef = useRef<TestCase[] | null>(null)
 
-  const updateTestCases = useCallback((updater: (prev: TestCase[]) => TestCase[]) => {
-    setTestCases((prev) => {
-      const next = updater(prev)
-      // Diff prev vs next so we only ship the changed cases instead of the
-      // full ~28MB array (Vercel rejects >4.5MB request bodies → silent 413).
-      const prevById = new Map(prev.map((tc) => [tc.id, tc]))
-      const nextIds = new Set(next.map((tc) => tc.id))
-      const upserts = next.filter((tc) => prevById.get(tc.id) !== tc)
-      const removedIds = prev.filter((tc) => !nextIds.has(tc.id)).map((tc) => tc.id)
-      if (upserts.length > 0) upsertTestCases(upserts)
-      if (removedIds.length > 0) deleteTestCases(removedIds)
-      return next
+  useEffect(() => {
+    loadTestCases().then((loaded) => {
+      // Set the baseline BEFORE updating state so the resulting diff effect
+      // run sees prev === next and dispatches nothing.
+      persistedRef.current = loaded
+      setTestCases(loaded)
     })
   }, [])
+
+  // Diff happens AFTER commit — never inside a setState updater. React 19's
+  // concurrent renderer can call state updaters more than once per logical
+  // update, and side effects in updaters fire each time. The old approach
+  // was triggering a 134-case fat upsert during render.
+  useEffect(() => {
+    const prev = persistedRef.current
+    if (prev === null) return // pre-load; nothing to diff yet
+    const prevById = new Map(prev.map((tc) => [tc.id, tc]))
+    const nextIds = new Set(testCases.map((tc) => tc.id))
+    const upserts = testCases.filter((tc) => prevById.get(tc.id) !== tc)
+    const removedIds = prev.filter((tc) => !nextIds.has(tc.id)).map((tc) => tc.id)
+    if (upserts.length > 0) upsertTestCases(upserts)
+    if (removedIds.length > 0) deleteTestCases(removedIds)
+    persistedRef.current = testCases
+  }, [testCases])
+
+  const updateTestCases = useCallback(
+    (updater: (prev: TestCase[]) => TestCase[]) => setTestCases(updater),
+    [],
+  )
 
   const evalCases = testCases.filter((tc) => tc.testVersion === "Eval")
   const tabCases = evalCases.filter((tc) => tabOf(tc) === activeTab)

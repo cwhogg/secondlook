@@ -859,9 +859,12 @@ export default function EvalPage() {
           </div>
         )}
 
-        {/* Eval history list for the active tab */}
+        {/* Eval history list for the active tab. Keyed on activeTab so
+            React tears down the entire history subtree when switching
+            tabs and rebuilds from scratch — defends against any stale
+            DOM reuse that might leak rows from a previously-active tab. */}
         {tabCases.length > 0 && (
-          <div className="border border-[#d4c5b0] bg-white">
+          <div key={`history-${activeTab}`} className="border border-[#d4c5b0] bg-white">
             <div className="px-4 py-3 border-b border-[#e8ddd0]">
               <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
                 {TAB_LABEL[activeTab]} Eval History ({tabCases.length})
@@ -870,7 +873,7 @@ export default function EvalPage() {
             <div>
               {tabCases.map((tc) => (
                 <EvalHistoryRow
-                  key={tc.id}
+                  key={`${activeTab}-${tc.id}`}
                   tc={tc}
                   isActive={tc.id === activeTestId}
                   onClick={() => setActiveTestId(tc.id === activeTestId ? null : tc.id)}

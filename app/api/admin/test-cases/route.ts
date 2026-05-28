@@ -26,14 +26,37 @@ function createdAtScore(tc: TestCase): number {
   return Number.isFinite(t) ? t : Date.now()
 }
 
+// Upstash's REST API caps each request/response at 10 MB (pay-as-you-go) or
+// 1 MB (free). A single MGET of all 500+ cases blows past that — observed
+// 24 MB for our current corpus. Batch the MGET into chunks small enough that
+// no single response can exceed the cap even when individual cases are large.
+// 30 keys × worst-case ~200 KB per case ≈ 6 MB per batch; well-under cap and
+// the batches run in parallel so the extra round-trips don't add user-visible
+// latency.
+const MGET_BATCH = 30
+
 async function loadAllTestCases(redis: Redis): Promise<TestCase[]> {
   // Newest first — same ordering as the old Blob-backed implementation, which
   // unshifted new cases to the front of the array.
   const ids = (await redis.zrange<string[]>(KEY_INDEX, 0, -1, { rev: true })) || []
   if (ids.length === 0) return []
-  const keys = ids.map(caseKey)
-  const values = await redis.mget<(TestCase | null)[]>(...keys)
-  return values.filter((v): v is TestCase => v !== null && typeof v === "object")
+
+  const batches: string[][] = []
+  for (let i = 0; i < ids.length; i += MGET_BATCH) {
+    batches.push(ids.slice(i, i + MGET_BATCH).map(caseKey))
+  }
+  const batchResults = await Promise.all(
+    batches.map((keys) => redis.mget<(TestCase | null)[]>(...keys))
+  )
+
+  const out: TestCase[] = []
+  for (const arr of batchResults) {
+    if (!arr) continue
+    for (const v of arr) {
+      if (v && typeof v === "object") out.push(v as TestCase)
+    }
+  }
+  return out
 }
 
 export async function GET() {

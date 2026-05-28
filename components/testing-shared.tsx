@@ -167,6 +167,23 @@ export function deleteTestCases(ids: string[]): void {
   flush()
 }
 
+// Resolves when the save queue is fully drained (no in-flight POST, no
+// pending delta). Callers that need a guaranteed-persisted state — e.g.
+// the trio runner's failure cleanup before it moves to the next case —
+// should await this instead of returning while saves are still queued.
+export async function awaitTestCaseSaves(): Promise<void> {
+  // Drain whatever is queued already.
+  if (!hasPending(pendingDelta) && !saveInFlight) return
+  while (saveInFlight || hasPending(pendingDelta)) {
+    if (saveInFlight) {
+      try { await saveInFlight } catch {}
+    }
+    // After the in-flight POST resolves, dispatchDelta will have either
+    // queued the next batch or set saveInFlight=null. Loop again to be
+    // sure both are empty before returning.
+  }
+}
+
 
 export function computeStats(cases: TestCase[]): TestSuiteStats | null {
   const graded = cases.filter((c) => c.status === "graded" && c.grading)

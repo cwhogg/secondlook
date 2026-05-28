@@ -1,4 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
+
+// Grade-test calls Claude Sonnet; under three parallel trio runs this can
+// occasionally take 30-60s. Default Vercel timeout would kill it and the
+// failing trio would orphan its testCases. 300s is generous; o3/Opus
+// baseline routes already use the same ceiling.
+export const maxDuration = 300;
 import { z } from 'zod';
 import { callAnthropic } from '@/lib/anthropic';
 import { determineTier, isDiagnosisMatch, scoreToGrade, tierDescription } from '@/lib/grading/deterministic-match';

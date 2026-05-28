@@ -8,6 +8,7 @@ import {
   loadTestCases,
   upsertTestCases,
   deleteTestCases,
+  awaitTestCaseSaves,
   subscribeToTestCaseSaveErrors,
   computeStats,
   buildPatientCase,
@@ -752,14 +753,23 @@ export default function EvalPage() {
         const results = await Promise.allSettled([slP, oaP, clP])
         const anyFailed = results.some((r) => r.status === "rejected")
         if (anyFailed) {
-          // Skip whole case — clean up all three testCases.
+          // Skip whole case — clean up all three testCases. Awaiting the
+          // save queue here makes the deletes guaranteed-persisted before
+          // we move on, even if the user hits refresh right after; without
+          // this the deletes can be lost in flight and the cases hang
+          // around in storage as partial trios.
           removeCaseById(slTC.id)
           removeCaseById(oaTC.id)
           removeCaseById(clTC.id)
-          // Log the actual errors for visibility.
+          await awaitTestCaseSaves()
           for (const r of results) {
             if (r.status === "rejected") console.error(`Trio case ${ec.ppkt_id} failed:`, r.reason)
           }
+        } else {
+          // Also wait for all three graded saves to land before moving on,
+          // so the matched-trio comparison reflects this case immediately
+          // and a mid-batch refresh never leaves a half-saved trio.
+          await awaitTestCaseSaves()
         }
       }
     } catch (err: any) {

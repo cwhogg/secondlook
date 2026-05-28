@@ -7,12 +7,14 @@ const TRIAGE_SYSTEM_PROMPT = `You are a clinical triage specialist responsible f
 
 1. Identify which body systems are DIRECTLY involved based on the patient's symptoms
 2. Assess clinical acuity (emergent, urgent, or non-urgent)
-3. Determine which medical specialties should evaluate this patient
+3. Rank ALL 11 specialist types by relevance to this patient — most relevant first, least relevant last. Every specialist is consulted regardless, but the ranking controls the display order shown to the user
 4. Provide brief clinical reasoning for your triage decisions
 
 You are triaging for a rare disease diagnostic service. Consider uncommon and complex presentations, not just obvious diagnoses.
 
 IMPORTANT: Only select body systems that the symptoms directly implicate. Typically 2-4 systems are involved, rarely more than 5. Do NOT tag every possible system — focus on the systems where there is concrete symptom evidence. A symptom should map to at most 1-2 body systems, not all systems it could theoretically affect.
+
+When ranking specialists, the geneticist should usually rank highly (rare diseases are disproportionately genetic) and the general-internist serves as an un-anchored counterweight — rank it where it best fits the presentation. The full list of 11 must appear in your ranking exactly once each.
 
 Return your analysis as structured JSON.`;
 
@@ -63,8 +65,18 @@ export class TriageAgent extends BaseAgent {
                 type: 'string',
                 description: 'Brief clinical reasoning for triage decisions',
               },
+              specialistRelevanceRanking: {
+                type: 'array',
+                items: {
+                  type: 'string',
+                  enum: [...SPECIALIST_TYPES],
+                },
+                description: 'All 11 specialist types in order of relevance to this patient — most relevant first, least relevant last. Must include every specialist exactly once. Controls the display order of specialist differentials shown to the user.',
+                minItems: 11,
+                maxItems: 11,
+              },
             },
-            required: ['bodySystems', 'acuityLevel', 'triageReasoning'],
+            required: ['bodySystems', 'acuityLevel', 'triageReasoning', 'specialistRelevanceRanking'],
           },
         },
       },
@@ -75,7 +87,14 @@ export class TriageAgent extends BaseAgent {
     // Run all 11 specialists for every case — eliminates triage routing failures
     // as a source of diagnostic misses. Cost increase is negligible (~$0.01)
     // since specialists run in parallel and use the same model.
-    const relevantSpecialties: SpecialistType[] = [...SPECIALIST_TYPES];
+    // Order them by the LLM's relevance ranking when valid; otherwise fall back
+    // to the canonical constant order so consultation still proceeds.
+    const ranking = (result.content.specialistRelevanceRanking ?? []) as SpecialistType[];
+    const rankingIsValid =
+      ranking.length === SPECIALIST_TYPES.length &&
+      new Set(ranking).size === SPECIALIST_TYPES.length &&
+      ranking.every((s) => (SPECIALIST_TYPES as readonly string[]).includes(s));
+    const relevantSpecialties: SpecialistType[] = rankingIsValid ? ranking : [...SPECIALIST_TYPES];
 
     // Retrieve candidate diseases from knowledge base (async — uses semantic search if embeddings available)
     const candidateDiseases = await findMatchingDiseases(

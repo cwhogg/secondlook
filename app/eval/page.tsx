@@ -160,6 +160,7 @@ export default function EvalPage() {
   const [authError, setAuthError] = useState("")
 
   const [testCases, setTestCases] = useState<TestCase[]>([])
+  const [activeTab, setActiveTab] = useState<EvalTab>("secondlook")
   const [activeTestId, setActiveTestId] = useState<string | null>(null)
   const [count, setCount] = useState(5)
   const [isFetchingCases, setIsFetchingCases] = useState(false)
@@ -243,13 +244,14 @@ export default function EvalPage() {
   }, [])
 
   const evalCases = testCases.filter((tc) => tc.testVersion === "Eval")
+  const tabCases = evalCases.filter((tc) => tabOf(tc) === activeTab)
   // Re-key by evalVersion so the StatsBanner's "Version Summary" splits the
-  // Eval cohort into v1 (pre-2026-05-27 pipeline) and v2 (current).
-  const evalCasesForStats = evalCases.map((tc) => ({
+  // current tab's cohort into v1 / v2 / v3.
+  const tabCasesForStats = tabCases.map((tc) => ({
     ...tc,
     testVersion: (tc.evalVersion ?? "v1") as TestCase["testVersion"],
   }))
-  const evalStats: TestSuiteStats | null = computeStats(evalCasesForStats)
+  const evalStats: TestSuiteStats | null = computeStats(tabCasesForStats)
 
   const activeTest = testCases.find((tc) => tc.id === activeTestId) || null
 
@@ -273,7 +275,10 @@ export default function EvalPage() {
   const fetchEvalCases = async (n: number): Promise<EvalCase[]> => {
     setIsFetchingCases(true)
     try {
-      const existingIds = evalCases.map((tc) => tc.categoryHint).filter(Boolean).join(",")
+      // Exclude only ppkt_ids already run on the current tab — each tab samples
+      // its own cohort, so SecondLook + OpenAI + Claude can all be measured on
+      // overlapping cases when desired.
+      const existingIds = tabCases.map((tc) => tc.categoryHint).filter(Boolean).join(",")
       const url = `/api/admin/eval-case?count=${n}&exclude=${encodeURIComponent(existingIds)}`
       const res = await fetch(url)
       if (!res.ok) {
@@ -428,6 +433,66 @@ export default function EvalPage() {
     }
   }
 
+  const runBaseline = async (
+    testId: string,
+    evalCase: EvalCase,
+    model: "openai" | "claude",
+  ): Promise<AnalysisResult> => {
+    setIsRunning(true)
+    setPipelineEvents([])
+    setProgressPercent(0)
+    setExtractionStatus(`Calling ${model === "openai" ? "OpenAI (o3)" : "Claude (opus-4-7)"} ...`)
+
+    updateTestCases((prev) =>
+      prev.map((tc) =>
+        tc.id === testId
+          ? { ...tc, status: "running" as const, pipelineResult: undefined, grading: undefined, gradingMetadata: undefined, pipelineError: undefined }
+          : tc,
+      ),
+    )
+
+    try {
+      const response = await fetch("/api/admin/eval-baseline", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ppkt_id: evalCase.ppkt_id,
+          caseDescription: evalCase.case_description,
+          model,
+        }),
+      })
+      if (!response.ok) {
+        const errBody = await response.json().catch(() => ({}))
+        throw new Error(errBody.error || `Baseline call failed: ${response.statusText}`)
+      }
+      const data = await response.json()
+      const sourceAgent = `${model}-baseline`
+      const synth = synthesizeBaselineResult(
+        data.diagnoses || [],
+        sourceAgent,
+        data.generationMetadata || { model, tokensUsed: 0, durationMs: 0 },
+      )
+      setExtractionStatus(null)
+      setProgressPercent(100)
+      updateTestCases((prev) =>
+        prev.map((tc) =>
+          tc.id === testId ? { ...tc, status: "completed" as const, pipelineResult: synth } : tc,
+        ),
+      )
+      return synth
+    } catch (err: any) {
+      setExtractionStatus(null)
+      updateTestCases((prev) =>
+        prev.map((tc) =>
+          tc.id === testId ? { ...tc, status: "error" as const, pipelineError: err.message } : tc,
+        ),
+      )
+      throw err
+    } finally {
+      setIsRunning(false)
+    }
+  }
+
   const handleRun = async () => {
     setError(null)
     setActiveTestId(null)
@@ -437,6 +502,7 @@ export default function EvalPage() {
     setStopRequested(false)
     stopRequestedRef.current = false
     setBatchProgress({ current: 1, total: count })
+    const tab = activeTab
     try {
       const cases = await fetchEvalCases(count)
       if (cases.length === 0) {
@@ -455,12 +521,13 @@ export default function EvalPage() {
         const patient = caseDescriptionToPatient(evalCase.case_description, evalCase.demographics)
         const groundTruth = buildGroundTruth(evalCase)
         const testCase: TestCase = {
-          id: `eval_${evalCase.ppkt_id}_${Date.now()}`,
+          id: `eval_${evalCase.ppkt_id}_${tab}_${Date.now()}`,
           createdAt: new Date().toISOString(),
           difficulty: 3,
           categoryHint: evalCase.ppkt_id,
           testVersion: "Eval",
           evalVersion: "v3",
+          evalRunMode: tab,
           status: "generated",
           source: "generated",
           groundTruth,
@@ -475,7 +542,10 @@ export default function EvalPage() {
         updateTestCases((prev) => [testCase, ...prev])
         setActiveTestId(testCase.id)
         try {
-          const result = await runPipeline(testCase.id, patient)
+          const result =
+            tab === "secondlook"
+              ? await runPipeline(testCase.id, patient)
+              : await runBaseline(testCase.id, evalCase, tab)
           if (stopRequestedRef.current) break
           await gradeCase(testCase.id, groundTruth, result)
         } catch (err: any) {
@@ -547,11 +617,34 @@ export default function EvalPage() {
   return (
     <div className="min-h-screen bg-[#f5f0eb]">
       <div className="max-w-5xl mx-auto px-4 py-8">
-        <div className="mb-8">
+        <div className="mb-6">
           <h1 className="text-2xl sm:text-3xl font-bold font-serif text-[#2a2a2a]">Clinical Eval Framework</h1>
-          <p className="text-sm text-[#8b7355] mt-1">
-            Run real clinical vignettes from the Phenopacket2Prompt dataset (9,587 cases) through the diagnostic pipeline
-          </p>
+          <p className="text-sm text-[#8b7355] mt-1">{TAB_SUBTITLE[activeTab]}</p>
+        </div>
+
+        {/* Tab switcher */}
+        <div className="border-b border-[#d4c5b0] mb-6 flex flex-wrap gap-1">
+          {(["secondlook", "openai", "claude"] as EvalTab[]).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => {
+                if (isAnyRunning) return
+                setActiveTab(tab)
+                setActiveTestId(null)
+              }}
+              disabled={isAnyRunning}
+              className={`px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
+                activeTab === tab
+                  ? "border-[#8b2500] text-[#8b2500]"
+                  : "border-transparent text-[#8b7355] hover:text-[#5a5a5a] hover:border-[#d4c5b0]"
+              }`}
+            >
+              {TAB_LABEL[tab]}
+              <span className="ml-2 text-xs text-[#8b7355]">
+                ({evalCases.filter((tc) => tabOf(tc) === tab).length})
+              </span>
+            </button>
+          ))}
         </div>
 
         {evalStats && <StatsBanner stats={evalStats} hideDifficultyBreakdown />}
@@ -609,7 +702,7 @@ export default function EvalPage() {
               </button>
             )}
             <div className="text-xs text-[#8b7355] flex items-center">
-              <span>Already run: {evalCases.length}</span>
+              <span>Already run on {TAB_LABEL[activeTab]}: {tabCases.length}</span>
             </div>
           </div>
         </div>
@@ -749,16 +842,16 @@ export default function EvalPage() {
           </div>
         )}
 
-        {/* Eval history list */}
-        {evalCases.length > 0 && (
+        {/* Eval history list for the active tab */}
+        {tabCases.length > 0 && (
           <div className="border border-[#d4c5b0] bg-white">
             <div className="px-4 py-3 border-b border-[#e8ddd0]">
               <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
-                Eval History ({evalCases.length})
+                {TAB_LABEL[activeTab]} Eval History ({tabCases.length})
               </div>
             </div>
             <div>
-              {evalCases.map((tc) => (
+              {tabCases.map((tc) => (
                 <EvalHistoryRow
                   key={tc.id}
                   tc={tc}
@@ -770,9 +863,9 @@ export default function EvalPage() {
           </div>
         )}
 
-        {evalCases.length === 0 && !isAnyRunning && (
+        {tabCases.length === 0 && !isAnyRunning && (
           <div className="text-center py-16 text-[#8b7355]">
-            <div className="text-lg font-serif mb-2">No eval cases yet</div>
+            <div className="text-lg font-serif mb-2">No {TAB_LABEL[activeTab]} eval cases yet</div>
             <div className="text-sm">Run some evals above to get started</div>
           </div>
         )}

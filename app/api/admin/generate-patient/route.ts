@@ -181,58 +181,6 @@ function shuffleArray<T>(arr: T[]): T[] {
   return arr;
 }
 
-function formatSymptomList(symptoms: DiseaseProfile['symptoms']['pathognomonic']): string {
-  if (symptoms.length === 0) return 'none';
-  return symptoms
-    .map(s => `${s.symptomName} (${Math.round(s.frequency * 100)}%, ${s.bodySystem})`)
-    .join('; ');
-}
-
-function formatDiseaseProfile(disease: DiseaseProfile): string {
-  const lines = [
-    `Disease: ${disease.name}`,
-    `Aliases: ${disease.aliases.length > 0 ? disease.aliases.join(', ') : 'none'}`,
-    `ICD-10: ${disease.icd10Codes.join(', ') || 'unknown'}`,
-    `Prevalence: ${disease.prevalence.estimate}${disease.prevalence.range ? ` (range: ${disease.prevalence.range})` : ''}`,
-    `Typical onset: age ${disease.demographics.typicalOnsetAge.min}-${disease.demographics.typicalOnsetAge.max}${disease.demographics.typicalOnsetAge.peak ? `, peak ~${disease.demographics.typicalOnsetAge.peak}` : ''}, sex predilection: ${disease.demographics.sexPredilection}`,
-    `Body systems: ${disease.systemsAffected.join(', ')}`,
-    `Pathognomonic symptoms (>90%): ${formatSymptomList(disease.symptoms.pathognomonic)}`,
-    `Common symptoms (>50%): ${formatSymptomList(disease.symptoms.common)}`,
-    `Occasional symptoms (10-50%): ${formatSymptomList(disease.symptoms.occasional)}`,
-    `Rare symptoms (<10%): ${formatSymptomList(disease.symptoms.rare)}`,
-  ];
-
-  if (disease.diagnosticCriteria.formalCriteriaName) {
-    lines.push(`Diagnostic criteria: ${disease.diagnosticCriteria.formalCriteriaName}`);
-    if (disease.diagnosticCriteria.minimumForDiagnosis) {
-      lines.push(`  Minimum for diagnosis: ${disease.diagnosticCriteria.minimumForDiagnosis}`);
-    }
-    const majors = disease.diagnosticCriteria.criteria.filter(c => c.category === 'major');
-    const minors = disease.diagnosticCriteria.criteria.filter(c => c.category === 'minor');
-    if (majors.length > 0) {
-      lines.push(`  Major criteria: ${majors.map(c => c.description).join('; ')}`);
-    }
-    if (minors.length > 0) {
-      lines.push(`  Minor criteria: ${minors.map(c => c.description).join('; ')}`);
-    }
-  }
-
-  const findings = [];
-  if (disease.keyFindings.laboratory.length > 0) findings.push(`Lab: ${disease.keyFindings.laboratory.join(', ')}`);
-  if (disease.keyFindings.imaging.length > 0) findings.push(`Imaging: ${disease.keyFindings.imaging.join(', ')}`);
-  if (disease.keyFindings.genetic.length > 0) findings.push(`Genetic: ${disease.keyFindings.genetic.join(', ')}`);
-  if (disease.keyFindings.other.length > 0) findings.push(`Other: ${disease.keyFindings.other.join(', ')}`);
-  if (findings.length > 0) {
-    lines.push(`Key findings: ${findings.join(' | ')}`);
-  }
-
-  if (disease.redFlags.length > 0) {
-    lines.push(`Red flags: ${disease.redFlags.join('; ')}`);
-  }
-
-  return lines.join('\n');
-}
-
 export async function POST(request: NextRequest) {
   const requestId = `gen_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
@@ -314,9 +262,8 @@ export async function POST(request: NextRequest) {
       : '';
 
     // Build disease context for the prompt
-    // Low difficulty (1-2): send full KB profile so Claude generates textbook presentations
-    // High difficulty (3+): send name only so the patient reflects Claude's own medical
-    //   knowledge rather than mirroring our stored criteria (harder, more realistic test)
+    // All difficulties get disease name only — Claude uses its own medical knowledge
+    // to generate the case. Difficulty only affects patient communication quality.
     if (!preSelectedDisease) {
       return NextResponse.json(
         { error: 'No candidate diseases available after filtering', requestId },
@@ -324,27 +271,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    let diseaseInstruction: string;
-    if (input.difficulty <= 2) {
-      // Include full profile + differential diagnoses for near-miss context
-      let diffContext = '';
-      if (preSelectedDisease.differentialDiagnoses && preSelectedDisease.differentialDiagnoses.length > 0) {
-        const diffList = preSelectedDisease.differentialDiagnoses
-          .map(d => `- ${d.diseaseId}: ${d.distinguishingFeatures}`)
-          .join('\n');
-        diffContext = `\n\nDifferential diagnoses (use these to help construct the nearMisses list):\n${diffList}`;
-      }
-      diseaseInstruction = `Generate a patient case for the following disease. Use the profile below to create an accurate presentation.
-
-${formatDiseaseProfile(preSelectedDisease)}${diffContext}`;
-    } else {
-      diseaseInstruction = `Generate a patient case for the following disease. Use your own medical knowledge to create an accurate presentation — do NOT rely on any provided profile.
+    const diseaseInstruction = `Generate a patient case for the following disease. Use your own medical knowledge to create an accurate presentation — do NOT rely on any provided profile.
 
 Disease: ${preSelectedDisease.name}
 
 Use your knowledge of this disease to generate accurate symptoms, demographics, and clinical features.
 Consider related subtypes and disease family members for nearMisses.`;
-    }
 
     const systemPrompt = `You are a clinical simulation specialist creating synthetic rare disease patient presentations for a diagnostic AI testing framework.
 

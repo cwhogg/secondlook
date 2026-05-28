@@ -1095,7 +1095,7 @@ export default function AdminPage() {
         createdAt: new Date().toISOString(),
         difficulty,
         categoryHint: categoryHint || undefined,
-        testVersion: 'v7' as const,
+        testVersion: 'v13' as const,
         status: "generated",
         source: "generated",
         groundTruth: data.groundTruth,

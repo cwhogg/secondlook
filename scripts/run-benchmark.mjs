@@ -18,7 +18,7 @@
  *   - Published baselines: GPT-4o ~20% Top-1, o1-preview 23.6% Top-1
  */
 
-import { readFileSync, writeFileSync, existsSync, appendFileSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, appendFileSync, copyFileSync } from 'fs';
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 const DATASET_PATH = new URL('./benchmark-data/en.jsonl', import.meta.url).pathname;
@@ -29,12 +29,13 @@ const KB_PATH = new URL('../lib/knowledge/diseases-compiled.json', import.meta.u
 
 function parseArgs() {
   const args = process.argv.slice(2);
-  const opts = { count: 20, offset: 0, resume: false, stats: false, shuffle: false, seed: null };
+  const opts = { count: 20, offset: 0, resume: false, rerun: false, stats: false, shuffle: false, seed: null };
 
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--count' && args[i + 1]) opts.count = parseInt(args[++i], 10);
     else if (args[i] === '--offset' && args[i + 1]) opts.offset = parseInt(args[++i], 10);
     else if (args[i] === '--resume') opts.resume = true;
+    else if (args[i] === '--rerun') opts.rerun = true;
     else if (args[i] === '--stats') opts.stats = true;
     else if (args[i] === '--shuffle') opts.shuffle = true;
     else if (args[i] === '--seed' && args[i + 1]) opts.seed = parseInt(args[++i], 10);
@@ -820,9 +821,27 @@ async function main() {
     console.log(`  Shuffled with seed: ${seed}`);
   }
 
-  // Resume mode: skip already-completed cases
+  // Rerun mode: re-run exactly the same cases from the previous results file
   const completedIds = loadCompletedIds();
-  if (opts.resume && completedIds.size > 0) {
+  let rerunIds = null;
+  if (opts.rerun) {
+    if (completedIds.size === 0) {
+      console.error('ERROR: --rerun requires existing results in results.jsonl');
+      process.exit(1);
+    }
+    // Capture the IDs to rerun before clearing
+    rerunIds = new Set(completedIds);
+    // Back up old results
+    const backupPath = RESULTS_PATH.replace('.jsonl', `-backup-${Date.now()}.jsonl`);
+    copyFileSync(RESULTS_PATH, backupPath);
+    console.log(`  Backed up ${rerunIds.size} previous results to ${backupPath}`);
+    // Clear results file so new results are fresh
+    writeFileSync(RESULTS_PATH, '');
+    // Filter dataset to only the previously-run cases
+    dataset = dataset.filter(entry => rerunIds.has(entry.ppkt_id));
+    console.log(`  Rerun mode: ${dataset.length} cases to re-run`);
+    opts.count = dataset.length; // override count to run all of them
+  } else if (opts.resume && completedIds.size > 0) {
     console.log(`  Resuming: ${completedIds.size} cases already completed`);
     dataset = dataset.filter(entry => !completedIds.has(entry.ppkt_id));
   } else if (!opts.resume) {

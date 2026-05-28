@@ -36,6 +36,18 @@ export async function callAnthropic(options: AnthropicCallOptions): Promise<Anth
 
   const startTime = Date.now();
 
+  // Claude Opus 4.x and later reasoning models reject `temperature` —
+  // omit it for those models. Sonnet / Haiku still accept it.
+  const supportsTemperature = !/^claude-opus-4/.test(model);
+
+  const requestBody: Record<string, unknown> = {
+    model,
+    max_tokens: maxTokens,
+    system: systemPrompt,
+    messages: [{ role: 'user', content: userPrompt }],
+  };
+  if (supportsTemperature) requestBody.temperature = temperature;
+
   const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
@@ -43,13 +55,7 @@ export async function callAnthropic(options: AnthropicCallOptions): Promise<Anth
       'anthropic-version': '2023-06-01',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      model,
-      max_tokens: maxTokens,
-      temperature,
-      system: systemPrompt,
-      messages: [{ role: 'user', content: userPrompt }],
-    }),
+    body: JSON.stringify(requestBody),
   });
 
   if (!response.ok) {

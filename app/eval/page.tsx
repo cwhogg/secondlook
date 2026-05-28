@@ -6,7 +6,8 @@ import type { AnalysisResult, MappedSymptom } from "@/lib/types/index"
 import type { PipelineProgress } from "@/lib/types/pipeline"
 import {
   loadTestCases,
-  saveTestCases,
+  upsertTestCases,
+  deleteTestCases,
   computeStats,
   buildPatientCase,
   StatsBanner,
@@ -145,7 +146,14 @@ export default function EvalPage() {
   const updateTestCases = useCallback((updater: (prev: TestCase[]) => TestCase[]) => {
     setTestCases((prev) => {
       const next = updater(prev)
-      saveTestCases(next)
+      // Diff prev vs next so we only ship the changed cases instead of the
+      // full ~28MB array (Vercel rejects >4.5MB request bodies → silent 413).
+      const prevById = new Map(prev.map((tc) => [tc.id, tc]))
+      const nextIds = new Set(next.map((tc) => tc.id))
+      const upserts = next.filter((tc) => prevById.get(tc.id) !== tc)
+      const removedIds = prev.filter((tc) => !nextIds.has(tc.id)).map((tc) => tc.id)
+      if (upserts.length > 0) upsertTestCases(upserts)
+      if (removedIds.length > 0) deleteTestCases(removedIds)
       return next
     })
   }, [])

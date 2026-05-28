@@ -13,7 +13,8 @@ import type { AnalysisResult } from "@/lib/types/index"
 import type { PipelineProgress } from "@/lib/types/pipeline"
 import {
   loadTestCases,
-  saveTestCases,
+  upsertTestCases,
+  deleteTestCases,
   computeStats,
   buildPatientCase,
   StatsBanner,
@@ -166,11 +167,17 @@ export default function AdminPage() {
     loadTestCases().then(setTestCases)
   }, [])
 
-  // Persist to KV on every change
+  // Persist to KV on every change. Ship only the diff so we don't blow past
+  // Vercel's request-body limit on the test-cases POST.
   const updateTestCases = useCallback((updater: (prev: TestCase[]) => TestCase[]) => {
     setTestCases((prev) => {
       const next = updater(prev)
-      saveTestCases(next)
+      const prevById = new Map(prev.map((tc) => [tc.id, tc]))
+      const nextIds = new Set(next.map((tc) => tc.id))
+      const upserts = next.filter((tc) => prevById.get(tc.id) !== tc)
+      const removedIds = prev.filter((tc) => !nextIds.has(tc.id)).map((tc) => tc.id)
+      if (upserts.length > 0) upsertTestCases(upserts)
+      if (removedIds.length > 0) deleteTestCases(removedIds)
       return next
     })
   }, [])
@@ -223,7 +230,7 @@ export default function AdminPage() {
         createdAt: new Date().toISOString(),
         difficulty,
         categoryHint: categoryHint || undefined,
-        testVersion: 'v13' as const,
+        testVersion: 'v15' as const,
         status: "generated",
         source: "generated",
         groundTruth: data.groundTruth,

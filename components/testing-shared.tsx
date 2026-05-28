@@ -48,7 +48,10 @@ export const GRADE_COLORS: Record<string, string> = {
   F: "text-red-600",
 }
 
-export const VERSION_LABELS: Record<string, string> = { v1: "v1", v2: "v2", v3: "v3", v4: "v4", v7: "v7", v8: "v8", Eval: "Eval" }
+export const VERSION_LABELS: Record<string, string> = {
+  v1: "v1", v2: "v2", v3: "v3", v4: "v4", v7: "v7", v8: "v8",
+  v13: "v13", v14: "v14", v15: "v15", Eval: "Eval",
+}
 export const VERSION_COLORS: Record<string, string> = {
   v1: "bg-gray-50 text-gray-700 border-gray-300",
   v2: "bg-blue-50 text-blue-800 border-blue-300",
@@ -56,6 +59,9 @@ export const VERSION_COLORS: Record<string, string> = {
   v4: "bg-purple-50 text-purple-800 border-purple-300",
   v7: "bg-cyan-50 text-cyan-800 border-cyan-300",
   v8: "bg-teal-50 text-teal-800 border-teal-300",
+  v13: "bg-orange-50 text-orange-800 border-orange-300",
+  v14: "bg-rose-50 text-rose-800 border-rose-300",
+  v15: "bg-fuchsia-50 text-fuchsia-800 border-fuchsia-300",
   Eval: "bg-amber-50 text-amber-800 border-amber-300",
 }
 
@@ -72,41 +78,80 @@ export async function loadTestCases(): Promise<TestCase[]> {
   }
 }
 
-// Serialized save coordinator. Each call schedules a save with the most
-// recent testCases snapshot; if a save is already in flight, the new payload
-// is held and dispatched when the current one returns. This protects against
-// rapid sequential calls (e.g. /eval running multiple cases, each emitting
-// 4+ state updates) racing at the server such that an older snapshot lands
-// after a newer one and wipes out the newer data.
+// Serialized upsert coordinator. Each call to upsertTestCases / deleteTestCases
+// merges its payload into a single in-flight POST against the upsert endpoint
+// so we never blow past Vercel's ~4.5MB request body limit by shipping the
+// entire ~28MB testCases array (every save would silently 413 and the catch
+// here would swallow it). The server merges by id; we only send what changed.
+interface PendingDelta {
+  upsert: Map<string, TestCase>
+  deleteIds: Set<string>
+}
 let saveInFlight: Promise<void> | null = null
-let pendingPayload: TestCase[] | null = null
+let pendingDelta: PendingDelta = { upsert: new Map(), deleteIds: new Set() }
 
-async function dispatchSave(cases: TestCase[]): Promise<void> {
+function hasPending(d: PendingDelta): boolean {
+  return d.upsert.size > 0 || d.deleteIds.size > 0
+}
+
+async function dispatchDelta(delta: PendingDelta): Promise<void> {
   try {
     await fetch("/api/admin/test-cases", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ testCases: cases }),
+      body: JSON.stringify({
+        upsert: Array.from(delta.upsert.values()),
+        deleteIds: Array.from(delta.deleteIds),
+      }),
     })
   } catch {
-    // Network/server errors are surfaced separately by the calling page;
-    // suppress here so a transient failure does not abort the queue.
+    // Surface separately; do not abort the queue on a transient failure.
   }
-  if (pendingPayload) {
-    const next = pendingPayload
-    pendingPayload = null
-    saveInFlight = dispatchSave(next)
+  if (hasPending(pendingDelta)) {
+    const next = pendingDelta
+    pendingDelta = { upsert: new Map(), deleteIds: new Set() }
+    saveInFlight = dispatchDelta(next)
     return saveInFlight
   }
   saveInFlight = null
 }
 
-export function saveTestCases(cases: TestCase[]) {
-  if (saveInFlight) {
-    pendingPayload = cases
-    return
+function flush(): void {
+  if (saveInFlight) return
+  if (!hasPending(pendingDelta)) return
+  const next = pendingDelta
+  pendingDelta = { upsert: new Map(), deleteIds: new Set() }
+  saveInFlight = dispatchDelta(next)
+}
+
+export function upsertTestCases(cases: TestCase[]): void {
+  for (const tc of cases) {
+    if (!tc || typeof tc.id !== "string") continue
+    pendingDelta.upsert.set(tc.id, tc)
+    pendingDelta.deleteIds.delete(tc.id)
   }
-  saveInFlight = dispatchSave(cases)
+  flush()
+}
+
+export function deleteTestCases(ids: string[]): void {
+  for (const id of ids) {
+    if (typeof id !== "string") continue
+    pendingDelta.deleteIds.add(id)
+    pendingDelta.upsert.delete(id)
+  }
+  flush()
+}
+
+// Legacy full-array save. Kept for migration scripts that build an entirely
+// new cohort. NEVER call from the UI for large cohorts — Vercel will 413.
+export function saveTestCases(cases: TestCase[]) {
+  fetch("/api/admin/test-cases", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ testCases: cases }),
+  }).catch(() => {
+    /* legacy fire-and-forget — callers know the risk */
+  })
 }
 
 export function computeStats(cases: TestCase[]): TestSuiteStats | null {

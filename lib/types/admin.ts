@@ -133,7 +133,7 @@ export interface TestCase {
   createdAt: string;
   difficulty: number;
   categoryHint?: string;
-  testVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12' | 'v13' | 'Eval';
+  testVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12' | 'v13' | 'v14' | 'v15' | 'Eval';
   // For Eval-tagged testCases: which version of the pipeline produced them.
   // v1 = pre-2026-05-27 pipeline (5-cap on diagnoses, no family expansion).
   // v2 = 2026-05-27 pipeline: 10-cap synth + KB-linked family expansion.

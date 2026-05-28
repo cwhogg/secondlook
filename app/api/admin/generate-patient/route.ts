@@ -294,6 +294,13 @@ IMPORTANT RULES:
 - Generate 5-10 symptoms with proper medical terms AND the lay descriptions the patient would use
 - For each symptom, set "mentionedInNarrative" to true if it appears in the narrative, or false if the patient would NOT mention it unprompted (omitted symptoms). At least 60% should be true.
 - Include relevant medical history, family history, and medications where appropriate
+- Where it fits the archetype, weave in 0-3 EXPLICITLY RULED-OUT findings the patient knows they DON'T have. Real patients on diagnostic journeys often know what they've already been tested for, what an imaging study was clear of, or what a relative has that they don't. Examples of natural phrasings to use:
+    "I tested negative for celiac and lupus"
+    "My MRI was clean — no MS lesions"
+    "I don't get the rash my sister has, just the joint stuff"
+    "ANA was negative and TSH was normal"
+    "They checked for [condition] but ruled it out"
+  Calibrate frequency to the archetype: 'researcher' and 'frustrated-chronic' patients often know their negatives; 'stoic', 'minimizer', 'elderly-vague', and 'caregiver-proxy' less so. Include negatives ONLY when they would plausibly come up in this patient's voice — never as a list. Use clinical terms inside the negation so a parser can recognize the ruled-out finding (e.g., "no peripheral neuropathy" reads better than "no nerve stuff"). Difficulty 1-2 cases should rarely include them; 3-5 cases benefit from 1-3 well-placed negatives.
 - The ground truth must include the correct diagnosis, key findings, expected body systems, and which specialists should be consulted
 - You MUST include "difficultyFactors" listing which specific factors make this case hard
 - Include a "nearMisses" array in the ground truth with 2-5 diseases that should receive partial credit if the pipeline suggests them instead of the correct diagnosis

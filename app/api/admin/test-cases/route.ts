@@ -1,53 +1,59 @@
 import { NextResponse } from "next/server"
-import { put, list } from "@vercel/blob"
+import { Redis } from "@upstash/redis"
 import type { TestCase } from "@/lib/types/admin"
 
-const BLOB_PATH = "test-cases.json"
+// ===== Storage layout =====
+// Each TestCase is stored at its own Redis key (`tc:<id>`) and indexed in a
+// single sorted set (`tc:index`, score = createdAt ms). Per-key writes are
+// atomic, so the read-merge-write race that plagued the Vercel Blob backend
+// is gone: concurrent saves no longer overwrite each other's progress.
+const KEY_INDEX = "tc:index"
+const KEY_PREFIX = "tc:"
+const caseKey = (id: string) => `${KEY_PREFIX}${id}`
 
-function blobConfigured(): boolean {
-  return !!process.env.BLOB_READ_WRITE_TOKEN
+let cachedRedis: Redis | null = null
+function getRedis(): Redis | null {
+  if (cachedRedis) return cachedRedis
+  const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL
+  const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN
+  if (!url || !token) return null
+  cachedRedis = new Redis({ url, token })
+  return cachedRedis
+}
+
+function createdAtScore(tc: TestCase): number {
+  const t = Date.parse(tc.createdAt)
+  return Number.isFinite(t) ? t : Date.now()
+}
+
+async function loadAllTestCases(redis: Redis): Promise<TestCase[]> {
+  // Newest first — same ordering as the old Blob-backed implementation, which
+  // unshifted new cases to the front of the array.
+  const ids = (await redis.zrange<string[]>(KEY_INDEX, 0, -1, { rev: true })) || []
+  if (ids.length === 0) return []
+  const keys = ids.map(caseKey)
+  const values = await redis.mget<(TestCase | null)[]>(...keys)
+  return values.filter((v): v is TestCase => v !== null && typeof v === "object")
 }
 
 export async function GET() {
-  if (!blobConfigured()) {
-    return NextResponse.json({ testCases: [] })
-  }
+  const redis = getRedis()
+  if (!redis) return NextResponse.json({ testCases: [] })
 
   try {
-    const testCases = await loadExistingTestCases()
+    const testCases = await loadAllTestCases(redis)
     return NextResponse.json({ testCases })
   } catch (error) {
-    console.error("Failed to load test cases from Blob:", error)
+    console.error("Failed to load test cases from KV:", error)
     return NextResponse.json({ testCases: [] }, { status: 500 })
   }
 }
 
-async function loadExistingTestCases(): Promise<TestCase[]> {
-  const { blobs } = await list({ prefix: BLOB_PATH })
-  if (blobs.length === 0) return []
-  // The blob's public URL is CDN-cached. Without `cache: 'no-store'` plus a
-  // cache-busting query param the server reads stale content and the next
-  // upsert merges against an out-of-date baseline, silently overwriting
-  // freshly-saved testCases. Both layers needed: 'no-store' bypasses fetch's
-  // own cache, the query param forces a fresh origin pull at the CDN layer.
-  const cacheBust = `?_t=${Date.now()}`
-  const response = await fetch(blobs[0].url + cacheBust, { cache: "no-store" })
-  return (await response.json()) as TestCase[]
-}
-
-async function writeTestCases(testCases: TestCase[]): Promise<void> {
-  await put(BLOB_PATH, JSON.stringify(testCases), {
-    contentType: "application/json",
-    addRandomSuffix: false,
-    allowOverwrite: true,
-    access: "public",
-  })
-}
-
 export async function POST(request: Request) {
-  if (!blobConfigured()) {
+  const redis = getRedis()
+  if (!redis) {
     return NextResponse.json(
-      { error: "Blob storage not configured" },
+      { error: "KV storage not configured" },
       { status: 503 }
     )
   }
@@ -55,39 +61,33 @@ export async function POST(request: Request) {
   try {
     const body = await request.json()
 
-    // ===== Upsert / delete mode =====
-    // Used by the active /eval and /testing UIs so each state update only
-    // ships the changed cases (~100KB) instead of the full ~28MB array,
-    // which exceeded Vercel's ~4.5MB serverless request-body limit and
-    // caused silent 413 failures on every save.
+    // ===== Upsert / delete mode (primary path) =====
     if (Array.isArray(body.upsert) || Array.isArray(body.deleteIds)) {
       const upserts: TestCase[] = Array.isArray(body.upsert) ? body.upsert : []
       const deleteIds: string[] = Array.isArray(body.deleteIds) ? body.deleteIds : []
-      const upsertById = new Map<string, TestCase>()
+
+      const pipe = redis.pipeline()
+      let cmds = 0
       for (const tc of upserts) {
-        if (tc && typeof tc.id === "string") upsertById.set(tc.id, tc)
+        if (!tc || typeof tc.id !== "string") continue
+        pipe.set(caseKey(tc.id), tc)
+        pipe.zadd(KEY_INDEX, { score: createdAtScore(tc), member: tc.id })
+        cmds += 2
       }
-      const deleteSet = new Set(deleteIds)
-
-      const existing = await loadExistingTestCases()
-      const existingIds = new Set(existing.map((tc) => tc.id))
-
-      const merged: TestCase[] = existing
-        .filter((tc) => !deleteSet.has(tc.id))
-        .map((tc) => upsertById.get(tc.id) ?? tc)
-
-      // Append newly-created cases at the front (matches client prepend semantics)
-      for (const [id, tc] of upsertById) {
-        if (!existingIds.has(id)) merged.unshift(tc)
+      for (const id of deleteIds) {
+        if (typeof id !== "string") continue
+        pipe.del(caseKey(id))
+        pipe.zrem(KEY_INDEX, id)
+        cmds += 2
       }
-
-      await writeTestCases(merged)
-      return NextResponse.json({ success: true, total: merged.length })
+      if (cmds > 0) await pipe.exec()
+      const total = await redis.zcard(KEY_INDEX)
+      return NextResponse.json({ success: true, total })
     }
 
     // ===== Legacy full-replace mode =====
-    // Kept for migration scripts. Subject to the 4.5MB body limit; do not
-    // use from the client UI on large cohorts.
+    // Kept for migration scripts that ship the entire array. Diffs the
+    // current key set against the incoming one and only touches what changed.
     const testCases: TestCase[] = body.testCases
     if (!Array.isArray(testCases)) {
       return NextResponse.json(
@@ -96,10 +96,31 @@ export async function POST(request: Request) {
       )
     }
 
-    await writeTestCases(testCases)
-    return NextResponse.json({ success: true, total: testCases.length })
+    const incomingIds = new Set(
+      testCases.filter((tc) => tc && typeof tc.id === "string").map((tc) => tc.id)
+    )
+    const existingIds = (await redis.zrange<string[]>(KEY_INDEX, 0, -1)) || []
+
+    const pipe = redis.pipeline()
+    let cmds = 0
+    for (const id of existingIds) {
+      if (!incomingIds.has(id)) {
+        pipe.del(caseKey(id))
+        pipe.zrem(KEY_INDEX, id)
+        cmds += 2
+      }
+    }
+    for (const tc of testCases) {
+      if (!tc || typeof tc.id !== "string") continue
+      pipe.set(caseKey(tc.id), tc)
+      pipe.zadd(KEY_INDEX, { score: createdAtScore(tc), member: tc.id })
+      cmds += 2
+    }
+    if (cmds > 0) await pipe.exec()
+    const total = await redis.zcard(KEY_INDEX)
+    return NextResponse.json({ success: true, total })
   } catch (error: any) {
-    console.error("Failed to save test cases to Blob:", error)
+    console.error("Failed to save test cases to KV:", error)
     return NextResponse.json(
       { error: `Failed to save test cases: ${error.message || "unknown error"}` },
       { status: 500 }

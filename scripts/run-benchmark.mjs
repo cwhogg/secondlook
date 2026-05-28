@@ -752,6 +752,7 @@ async function runSingleCase(entry, allTestCases) {
 
     return {
       ppkt_id,
+      runTimestamp: new Date().toISOString(),
       status: 'completed',
       groundTruth: groundTruthDiag,
       correctRank: reconciledRank,
@@ -774,6 +775,7 @@ async function runSingleCase(entry, allTestCases) {
 
     return {
       ppkt_id,
+      runTimestamp: new Date().toISOString(),
       status: 'error',
       groundTruth: groundTruthDiag,
       correctRank: null,

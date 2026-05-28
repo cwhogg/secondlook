@@ -99,37 +99,69 @@ export async function findMatchingDiseases(
   const maxResults = options?.maxResults ?? 30;
   const minScore = options?.minScore ?? 0.05;
   const index = loadEmbeddingsIndex();
+  const patientBodySystems: BodySystem[] = options?.filterSystems ?? [];
 
-  let candidates = db;
+  // Generate patient symptom embeddings if index is available
+  let patientEmbeddings: Map<string, EmbeddingVector> | null = null;
+  if (index) {
+    patientEmbeddings = await embedPatientSymptoms(symptoms);
+  }
 
-  // Optional pre-filtering
+  const scoreFn = (disease: DiseaseProfile) =>
+    scoreDisease(disease, symptoms, demographics, index, patientEmbeddings, patientBodySystems);
+
+  // --- Pass 1: Filtered by body systems / specialists ---
+  let filteredCandidates = db;
   if (options?.filterSystems?.length) {
-    candidates = candidates.filter((d) =>
+    filteredCandidates = filteredCandidates.filter((d) =>
       d.systemsAffected.some((s) => options.filterSystems!.includes(s))
     );
   }
   if (options?.filterSpecialists?.length) {
-    candidates = candidates.filter((d) =>
+    filteredCandidates = filteredCandidates.filter((d) =>
       d.specialistType.some((s) =>
         options.filterSpecialists!.some((fs) => s.toLowerCase().includes(fs.toLowerCase()))
       )
     );
   }
 
-  // Generate patient symptom embeddings if index is available
-  let patientEmbeddings: Map<string, EmbeddingVector> | null = null;
+  const filteredMatches: DiseaseMatch[] = filteredCandidates
+    .map(scoreFn)
+    .filter((m) => m.matchScore >= minScore);
 
-  if (index) {
-    patientEmbeddings = await embedPatientSymptoms(symptoms);
+  // --- Pass 2: Unfiltered second pass (catches triage misclassification) ---
+  const UNFILTERED_MIN_SCORE = 0.10;
+  const filteredIds = new Set(filteredCandidates.map((d) => d.id));
+  const unfilteredCandidates = db.filter((d) => !filteredIds.has(d.id));
+  const unfilteredMatches: DiseaseMatch[] = unfilteredCandidates
+    .map(scoreFn)
+    .filter((m) => m.matchScore >= UNFILTERED_MIN_SCORE);
+
+  // Merge filtered + unfiltered
+  let allMatches = [...filteredMatches, ...unfilteredMatches]
+    .sort((a, b) => b.matchScore - a.matchScore);
+
+  // --- Pass 3: Differential-graph expansion ---
+  const resultIds = new Set(allMatches.map((m) => m.disease.id));
+  const diffIds = new Set<string>();
+  for (const match of allMatches.slice(0, 20)) {
+    for (const diff of match.disease.differentialDiagnoses) {
+      if (!resultIds.has(diff.diseaseId) && !diffIds.has(diff.diseaseId)) {
+        diffIds.add(diff.diseaseId);
+      }
+    }
   }
 
-  const matches: DiseaseMatch[] = candidates
-    .map((disease) => scoreDisease(disease, symptoms, demographics, index, patientEmbeddings))
-    .filter((m) => m.matchScore >= minScore)
-    .sort((a, b) => b.matchScore - a.matchScore)
-    .slice(0, maxResults);
+  if (diffIds.size > 0) {
+    const diffDiseases = db.filter((d) => diffIds.has(d.id));
+    const diffMatches = diffDiseases
+      .map(scoreFn)
+      .filter((m) => m.matchScore >= minScore);
+    allMatches = [...allMatches, ...diffMatches]
+      .sort((a, b) => b.matchScore - a.matchScore);
+  }
 
-  return matches;
+  return allMatches.slice(0, maxResults);
 }
 
 /**
@@ -172,13 +204,14 @@ function scoreDisease(
   symptoms: MappedSymptom[],
   demographics: Demographics,
   index: EmbeddingsIndex | null,
-  patientEmbeddings: Map<string, EmbeddingVector> | null
+  patientEmbeddings: Map<string, EmbeddingVector> | null,
+  patientBodySystems: BodySystem[]
 ): DiseaseMatch {
   const { symptomScore, matchedSymptoms } = index && patientEmbeddings && patientEmbeddings.size > 0
     ? computeSymptomScoreSemantic(disease, symptoms, index, patientEmbeddings)
     : computeSymptomScoreFallback(disease, symptoms);
 
-  const systemOverlap = computeSystemOverlap(disease, symptoms);
+  const systemOverlap = computeSystemOverlap(disease, patientBodySystems);
   const demographicFit = computeDemographicFit(disease, demographics);
   const prevalenceBonus = computePrevalenceBonus(disease);
 
@@ -330,8 +363,13 @@ function computeSymptomScoreSemantic(
     }
   }
 
+  // Blend disease-centric score with patient coverage ratio (Bug 3 fix)
+  const diseaseScore = matchedWeight / totalWeight;
+  const coverageScore = matchedSymptoms.length / Math.max(symptoms.length, 1);
+  const blendedScore = 0.6 * diseaseScore + 0.4 * coverageScore;
+
   return {
-    symptomScore: Math.min(matchedWeight / totalWeight, 1.0),
+    symptomScore: Math.min(blendedScore, 1.0),
     matchedSymptoms,
   };
 }
@@ -375,8 +413,13 @@ function computeSymptomScoreFallback(
     }
   }
 
+  // Blend disease-centric score with patient coverage ratio (Bug 3 fix)
+  const diseaseScore = matchedWeight / totalWeight;
+  const coverageScore = matchedSymptoms.length / Math.max(symptoms.length, 1);
+  const blendedScore = 0.6 * diseaseScore + 0.4 * coverageScore;
+
   return {
-    symptomScore: Math.min(matchedWeight / totalWeight, 1.0),
+    symptomScore: Math.min(blendedScore, 1.0),
     matchedSymptoms,
   };
 }
@@ -434,23 +477,8 @@ function matchSymptomTermsString(
   return bestMatch;
 }
 
-function computeSystemOverlap(disease: DiseaseProfile, symptoms: MappedSymptom[]): BodySystem[] {
-  const categoryToSystem: Record<string, BodySystem> = {
-    motor: 'neurological',
-    sensory: 'neurological',
-    cognitive: 'neurological',
-    pain: 'musculoskeletal',
-    autonomic: 'cardiovascular',
-    constitutional: 'constitutional',
-  };
-
-  const patientSystems = new Set<BodySystem>();
-  for (const s of symptoms) {
-    if (s.category && categoryToSystem[s.category]) {
-      patientSystems.add(categoryToSystem[s.category]);
-    }
-  }
-
+function computeSystemOverlap(disease: DiseaseProfile, patientBodySystems: BodySystem[]): BodySystem[] {
+  const patientSystems = new Set<BodySystem>(patientBodySystems);
   return disease.systemsAffected.filter((sys) => patientSystems.has(sys));
 }
 
@@ -482,12 +510,6 @@ function computeDemographicFit(disease: DiseaseProfile, demographics: Demographi
   return score;
 }
 
-function computePrevalenceBonus(disease: DiseaseProfile): number {
-  switch (disease.prevalence.classification) {
-    case 'common': return 0.8;
-    case 'uncommon': return 0.6;
-    case 'rare': return 0.4;
-    case 'ultra-rare': return 0.2;
-    default: return 0.3;
-  }
+function computePrevalenceBonus(_disease: DiseaseProfile): number {
+  return 0.5;
 }

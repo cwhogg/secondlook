@@ -18,7 +18,7 @@ import {
   StepIndicator,
   PipelineResultsSection,
   GradingSection,
-} from "@/app/testing/page"
+} from "@/components/testing-shared"
 
 interface EvalCase {
   ppkt_id: string
@@ -203,7 +203,7 @@ export default function EvalPage() {
 
     try {
       setExtractionStatus("Parsing symptoms from narrative...")
-      const { patientCase, extractedSymptoms } = await buildPatientCase(patient, (msg) => setExtractionStatus(msg))
+      const { patientCase, extractedSymptoms } = await buildPatientCase(patient, (msg: string) => setExtractionStatus(msg))
       setExtractionStatus(null)
 
       updateTestCases((prev) => prev.map((tc) => (tc.id === testId ? { ...tc, extractedSymptoms } : tc)))

@@ -150,9 +150,8 @@ function flush(): void {
 }
 
 export function upsertTestCases(cases: TestCase[]): void {
+  const before = pendingDelta.upsert.size
   if (cases.length > 5) {
-    // Diagnostic: surface unexpectedly-fat upserts so we can see the call
-    // pattern in the browser console instead of guessing from the banner.
     console.warn(
       `[upsertTestCases] caller pushed ${cases.length} cases in one batch`,
       cases.map((tc) => tc.id),
@@ -163,6 +162,16 @@ export function upsertTestCases(cases: TestCase[]): void {
     if (!tc || typeof tc.id !== "string") continue
     pendingDelta.upsert.set(tc.id, tc)
     pendingDelta.deleteIds.delete(tc.id)
+  }
+  // Log every time the queue jumps by >5 in a single call OR crosses key
+  // thresholds — tells us whether 134 came from one fat call or accumulated
+  // across many.
+  const delta = pendingDelta.upsert.size - before
+  if (delta > 5 || (before < 10 && pendingDelta.upsert.size >= 10)) {
+    console.warn(
+      `[upsertTestCases] pendingDelta.upsert.size = ${pendingDelta.upsert.size} (+${delta} this call, saveInFlight=${saveInFlight !== null})`,
+      new Error("trace").stack,
+    )
   }
   flush()
 }

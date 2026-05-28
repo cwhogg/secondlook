@@ -139,7 +139,11 @@ export interface TestCase {
   // v2 = 2026-05-27 pipeline: 10-cap synth + KB-linked family expansion.
   // v3 = v2 + excluded-findings integration (retrieval penalty, specialist
   //      + evidence-evaluator negative-evidence handling).
-  evalVersion?: 'v1' | 'v2' | 'v3';
+  // v4 = v3 + parsimonious-common rule reverted + KB matcher tightened
+  //      (short generic KB names no longer matched as substrings of long
+  //      specialist phrases — prevents family expansion pulling in unrelated
+  //      KB entries like Cystic Fibrosis under an Optic Atrophy case).
+  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4';
   // Which "engine" produced this Eval case. secondlook = the full V2 pipeline;
   // openai / claude = single-shot baseline calls to the respective top model.
   // Unset entries are treated as 'secondlook' for backward compatibility.

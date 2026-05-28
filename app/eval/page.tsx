@@ -150,7 +150,13 @@ export default function EvalPage() {
   }, [])
 
   const evalCases = testCases.filter((tc) => tc.testVersion === "Eval")
-  const evalStats: TestSuiteStats | null = computeStats(evalCases)
+  // Re-key by evalVersion so the StatsBanner's "Version Summary" splits the
+  // Eval cohort into v1 (pre-2026-05-27 pipeline) and v2 (current).
+  const evalCasesForStats = evalCases.map((tc) => ({
+    ...tc,
+    testVersion: (tc.evalVersion ?? "v1") as TestCase["testVersion"],
+  }))
+  const evalStats: TestSuiteStats | null = computeStats(evalCasesForStats)
 
   const activeTest = testCases.find((tc) => tc.id === activeTestId) || null
 

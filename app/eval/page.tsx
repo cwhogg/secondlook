@@ -224,35 +224,46 @@ export default function EvalPage() {
     }
   }
 
+  // Synchronous mirror of testCases. React 18+ defers setState updaters to
+  // the next render commit, so any value computed *inside* an updater
+  // function is unavailable on the immediately-following line. Reading and
+  // writing through this ref instead gives us a guaranteed-current view
+  // and a guaranteed-defined value to save.
+  const testCasesRef = useRef<TestCase[]>([])
+
   useEffect(() => {
-    loadTestCases().then(setTestCases)
+    loadTestCases().then((loaded) => {
+      testCasesRef.current = loaded
+      setTestCases(loaded)
+    })
   }, [])
 
-  // EXPLICIT save: every state mutation fires upsertTestCases for the SPECIFIC
-  // case it touched. No diff, no reference equality games, no possibility of
-  // accidentally sweeping 130+ untouched cases into a single 5.76MB POST.
-  // patchCase reads prev *inside* the setState updater so a freshly-added
-  // case can be patched in the same tick. The side effect captures the
-  // computed value via closure and fires once outside the updater.
+  // EXPLICIT save: every helper computes the next array from the ref, writes
+  // the ref synchronously, calls setTestCases for the display, and fires
+  // upsertTestCases / deleteTestCases with the concrete computed value. No
+  // closure-captured nulls, no reference-equality diff.
   const upsertCase = useCallback((tc: TestCase) => {
-    setTestCases((prev) => {
-      const exists = prev.some((t) => t.id === tc.id)
-      return exists ? prev.map((t) => (t.id === tc.id ? tc : t)) : [tc, ...prev]
-    })
+    const cur = testCasesRef.current
+    const idx = cur.findIndex((t) => t.id === tc.id)
+    const next = idx === -1 ? [tc, ...cur] : cur.map((t) => (t.id === tc.id ? tc : t))
+    testCasesRef.current = next
+    setTestCases(next)
     upsertTestCases([tc])
   }, [])
   const patchCase = useCallback((id: string, patch: Partial<TestCase>) => {
-    let updated: TestCase | null = null
-    setTestCases((prev) => {
-      const current = prev.find((t) => t.id === id)
-      if (!current) return prev
-      updated = { ...current, ...patch }
-      return prev.map((t) => (t.id === id ? updated! : t))
-    })
-    if (updated) upsertTestCases([updated])
+    const cur = testCasesRef.current
+    const current = cur.find((t) => t.id === id)
+    if (!current) return
+    const updated = { ...current, ...patch }
+    const next = cur.map((t) => (t.id === id ? updated : t))
+    testCasesRef.current = next
+    setTestCases(next)
+    upsertTestCases([updated])
   }, [])
   const removeCaseById = useCallback((id: string) => {
-    setTestCases((prev) => prev.filter((t) => t.id !== id))
+    const next = testCasesRef.current.filter((t) => t.id !== id)
+    testCasesRef.current = next
+    setTestCases(next)
     deleteTestCases([id])
   }, [])
 

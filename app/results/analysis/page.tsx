@@ -31,6 +31,7 @@ interface AnalysisData {
     symptoms: string[]
     riskFactors: string[]
     recommendations: string[]
+    expansionSource?: 'family' | 'variant'
   }>
   recommendations: {
     immediateActions: string[]
@@ -81,6 +82,7 @@ export default function AnalysisResultsPage() {
                   : null,
               d.specialistRequired ? `See specialist: ${d.specialistRequired}` : null,
             ].filter(Boolean),
+            expansionSource: d.expansionSource,
           }))
 
           const rareCount = (raw.differentialDiagnoses || []).filter((d: any) => d.rareDisease).length
@@ -286,7 +288,11 @@ export default function AnalysisResultsPage() {
           {analysisData.conditions.map((condition, index) => (
             <div
               key={index}
-              className="bg-white rounded-none border border-gray-100 p-5 md:p-6"
+              className={`rounded-none border p-5 md:p-6 ${
+                condition.expansionSource
+                  ? "bg-gray-50 border-dashed border-gray-300"
+                  : "bg-white border-gray-100"
+              }`}
             >
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 sm:mb-6 gap-3 sm:gap-0">
                 <div className="flex-1">
@@ -295,17 +301,23 @@ export default function AnalysisResultsPage() {
                     <span className="px-2 sm:px-3 py-1 bg-[#faf6f0] text-[#8b2500] rounded-none text-xs sm:text-sm font-medium">
                       {condition.icdCode}
                     </span>
-                    <span
-                      className={`px-2 sm:px-3 py-1 rounded-none text-xs sm:text-sm font-medium ${
-                        condition.severity === "high"
-                          ? "bg-red-100 text-red-700"
-                          : condition.severity === "moderate"
-                            ? "bg-amber-100 text-amber-700"
-                            : "bg-green-100 text-green-700"
-                      }`}
-                    >
-                      {condition.severity} severity
-                    </span>
+                    {condition.expansionSource ? (
+                      <span className="px-2 sm:px-3 py-1 rounded-none text-xs sm:text-sm font-medium bg-gray-200 text-gray-700">
+                        KB-linked variant
+                      </span>
+                    ) : (
+                      <span
+                        className={`px-2 sm:px-3 py-1 rounded-none text-xs sm:text-sm font-medium ${
+                          condition.severity === "high"
+                            ? "bg-red-100 text-red-700"
+                            : condition.severity === "moderate"
+                              ? "bg-amber-100 text-amber-700"
+                              : "bg-green-100 text-green-700"
+                        }`}
+                      >
+                        {condition.severity} severity
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div className="text-right flex-shrink-0">

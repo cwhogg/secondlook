@@ -112,6 +112,9 @@ export interface DiagnosisHypothesis {
   sourceAgent: string; // which specialist agent proposed this
   evaluationType: 'criteria-grounded' | 'reasoning-evaluated'; // whether KB criteria were available
   knowledgeBaseMatch: boolean; // whether this disease exists in the KB
+  // Marker set only on KB-linked entries appended after synthesis (positions 11-15);
+  // synthesizer-ranked diagnoses leave this undefined.
+  expansionSource?: 'family' | 'variant';
 }
 
 export interface DataGap {

@@ -5,6 +5,7 @@ import { rerankCandidatesForSpecialty } from '../agents/specialty-reference/kb-r
 import { EvidenceEvaluator } from '../agents/evidence-evaluator';
 import { SynthesisAgent } from '../agents/synthesizer';
 import { ReportGenerator } from '../agents/report-generator';
+import { expandFamilyVariants } from './family-expansion';
 import { AgentOutput } from '../agents/types';
 import { BudgetTracker } from './budget';
 import { getDiseaseCount, findFamilySiblings, computeDifferentiatingTests, loadDiseaseDatabase } from '../knowledge';
@@ -330,8 +331,12 @@ export class DiagnosticPipeline {
       const synthesisData = (synthesisResult as any).synthesisData || {};
       const budgetSummary = this.budgetTracker.getSummary();
 
+      // Family expansion: deterministically append up to 5 KB-linked variants
+      // of the top ranked diagnoses at positions 11-15. No LLM calls.
+      const familyExpansions = expandFamilyVariants(reportResult.hypotheses);
+
       const analysisResult: AnalysisResult = {
-        differentialDiagnoses: reportResult.hypotheses,
+        differentialDiagnoses: [...reportResult.hypotheses, ...familyExpansions],
         differentialClusters: synthesisData.differentialClusters || [],
         familyEnrichments: familyEnrichments.length > 0 ? familyEnrichments : undefined,
         excludedCommonDiagnoses: synthesisData.excludedCommonDiagnoses || reportData.excludedCommonDiagnoses || [],

@@ -57,6 +57,32 @@ export function getDiseaseById(id: string): DiseaseProfile | undefined {
   return db.find((d) => d.id === id);
 }
 
+/**
+ * Find a KB disease whose name or alias matches the given diagnosis string.
+ * Uses normalized exact match first, then substring containment in either
+ * direction (both sides >4 chars). Returns null when nothing matches.
+ */
+export function findDiseaseByName(name: string): DiseaseProfile | null {
+  const target = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+  if (target.length < 4) return null;
+
+  const db = loadDiseaseDatabase();
+  for (const d of db) {
+    const dNorm = d.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (dNorm === target) return d;
+    for (const alias of d.aliases) {
+      if (alias.toLowerCase().replace(/[^a-z0-9]/g, '') === target) return d;
+    }
+  }
+  for (const d of db) {
+    const dNorm = d.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (dNorm.length > 4 && (dNorm.includes(target) || target.includes(dNorm))) {
+      return d;
+    }
+  }
+  return null;
+}
+
 export function getDiseasesBySystem(system: string): DiseaseProfile[] {
   const db = loadDiseaseDatabase();
   return db.filter((d) => d.systemsAffected.includes(system as any));

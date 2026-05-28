@@ -451,7 +451,7 @@ export default function EvalPage() {
           </p>
         </div>
 
-        {evalStats && <StatsBanner stats={evalStats} />}
+        {evalStats && <StatsBanner stats={evalStats} hideDifficultyBreakdown />}
 
         {error && (
           <div className="border border-red-300 bg-red-50 p-3 mb-6 text-sm text-red-700 flex items-center justify-between">

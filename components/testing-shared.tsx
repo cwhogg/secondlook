@@ -217,14 +217,16 @@ export function pct(n: number): string {
 
 // ===== COMPONENTS =====
 
-export function StatsBanner({ stats }: { stats: TestSuiteStats }) {
-  const breakdownEntries = Object.values(stats.byDifficultySource)
-    .sort((a, b) => {
-      if (a.difficulty !== b.difficulty) return a.difficulty - b.difficulty
-      const numA = parseInt(a.version.replace(/\D/g, ''), 10) || 0
-      const numB = parseInt(b.version.replace(/\D/g, ''), 10) || 0
-      return numA - numB || a.version.localeCompare(b.version)
-    })
+export function StatsBanner({ stats, hideDifficultyBreakdown }: { stats: TestSuiteStats; hideDifficultyBreakdown?: boolean }) {
+  const breakdownEntries = hideDifficultyBreakdown
+    ? []
+    : Object.values(stats.byDifficultySource)
+        .sort((a, b) => {
+          if (a.difficulty !== b.difficulty) return a.difficulty - b.difficulty
+          const numA = parseInt(a.version.replace(/\D/g, ''), 10) || 0
+          const numB = parseInt(b.version.replace(/\D/g, ''), 10) || 0
+          return numA - numB || a.version.localeCompare(b.version)
+        })
   const versionEntries = Object.values(stats.byVersion)
     .sort((a, b) => {
       const numA = parseInt(a.version.replace(/\D/g, ''), 10) || 0

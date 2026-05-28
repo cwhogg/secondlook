@@ -150,6 +150,15 @@ function flush(): void {
 }
 
 export function upsertTestCases(cases: TestCase[]): void {
+  if (cases.length > 5) {
+    // Diagnostic: surface unexpectedly-fat upserts so we can see the call
+    // pattern in the browser console instead of guessing from the banner.
+    console.warn(
+      `[upsertTestCases] caller pushed ${cases.length} cases in one batch`,
+      cases.map((tc) => tc.id),
+      new Error("trace").stack,
+    )
+  }
   for (const tc of cases) {
     if (!tc || typeof tc.id !== "string") continue
     pendingDelta.upsert.set(tc.id, tc)

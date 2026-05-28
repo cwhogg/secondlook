@@ -2,12 +2,13 @@
 
 import { useState, useEffect, useCallback, useRef } from "react"
 import type { TestCase, TestSuiteStats, GroundTruth, GeneratedPatient } from "@/lib/types/admin"
-import type { AnalysisResult, MappedSymptom } from "@/lib/types/index"
+import type { AnalysisResult, DiagnosisHypothesis } from "@/lib/types/index"
 import type { PipelineProgress } from "@/lib/types/pipeline"
 import {
   loadTestCases,
   upsertTestCases,
   deleteTestCases,
+  subscribeToTestCaseSaveErrors,
   computeStats,
   buildPatientCase,
   StatsBanner,
@@ -42,6 +43,84 @@ function EvalVersionBadge({ version }: { version?: 'v1' | 'v2' | 'v3' }) {
       Eval {version}
     </span>
   )
+}
+
+type EvalTab = "secondlook" | "openai" | "claude"
+
+const TAB_LABEL: Record<EvalTab, string> = {
+  secondlook: "SecondLook",
+  openai: "OpenAI",
+  claude: "Claude",
+}
+
+const TAB_SUBTITLE: Record<EvalTab, string> = {
+  secondlook: "Run real clinical vignettes from the Phenopacket2Prompt dataset through the full SecondLook diagnostic pipeline.",
+  openai: "Send each vignette verbatim to OpenAI's top reasoning model (o3, reasoning effort high) and ask for the top 5 differential diagnoses. No pipeline, no KB.",
+  claude: "Send each vignette verbatim to Anthropic's top model (claude-opus-4-7) and ask for the top 5 differential diagnoses. No pipeline, no KB.",
+}
+
+const tabOf = (tc: TestCase): EvalTab => (tc.evalRunMode as EvalTab) ?? "secondlook"
+
+function synthesizeBaselineResult(
+  diagnoses: Array<{ diagnosis: string; reasoning?: string }>,
+  sourceAgent: string,
+  generationMeta: { model: string; tokensUsed: number; durationMs: number },
+): AnalysisResult {
+  const hypotheses: DiagnosisHypothesis[] = diagnoses.slice(0, 5).map((d, i) => ({
+    diagnosis: d.diagnosis,
+    confidenceScore: Math.max(20, 95 - i * 15),
+    evidenceScore: Math.max(20, 95 - i * 15),
+    rareDisease: false,
+    supportingEvidence: [],
+    contradictoryEvidence: [],
+    clinicalReasoning: d.reasoning || "",
+    typicalPresentation: "",
+    specialistRequired: "",
+    diagnosticCriteria: {
+      criteriaName: "Clinical assessment",
+      totalCriteria: 0,
+      metCriteria: 0,
+      criteriaDetails: [],
+      fulfillmentPercentage: 0,
+    },
+    sourceAgent,
+    evaluationType: "reasoning-evaluated",
+    knowledgeBaseMatch: false,
+  }))
+  return {
+    differentialDiagnoses: hypotheses,
+    differentialClusters: [],
+    excludedCommonDiagnoses: [],
+    dataGaps: [],
+    recommendedTesting: [],
+    nextSteps: {
+      immediateActions: [],
+      specialistReferrals: [],
+      followUpTiming: "",
+      redFlags: [],
+    },
+    overallAssessment: "",
+    pipelineMetadata: {
+      pipelineVersion: `baseline-${sourceAgent}`,
+      stages: [
+        {
+          stageName: "baseline-call",
+          durationMs: generationMeta.durationMs,
+          tokensUsed: generationMeta.tokensUsed,
+          model: generationMeta.model,
+          agentName: sourceAgent,
+          inputSummary: "Verbatim clinical vignette",
+          outputSummary: `${hypotheses.length} ranked differential diagnoses`,
+        },
+      ],
+      totalDurationMs: generationMeta.durationMs,
+      totalTokensUsed: generationMeta.tokensUsed,
+      totalCostEstimate: 0,
+      knowledgeBaseVersion: "n/a",
+      diseasesConsidered: 0,
+      retrievalScores: [],
+    },
+  } as unknown as AnalysisResult
 }
 
 function caseDescriptionToPatient(
@@ -92,8 +171,13 @@ export default function EvalPage() {
   const [error, setError] = useState<string | null>(null)
   const [batchProgress, setBatchProgress] = useState<{ current: number; total: number } | null>(null)
   const [stopRequested, setStopRequested] = useState(false)
+  const [saveError, setSaveError] = useState<string | null>(null)
   const abortRef = useRef<AbortController | null>(null)
   const stopRequestedRef = useRef(false)
+
+  // Surface save failures (HTTP 4xx/5xx or network) so silent data loss is
+  // visible instead of leaving the user trusting in-memory state.
+  useEffect(() => subscribeToTestCaseSaveErrors(setSaveError), [])
 
   useEffect(() => {
     const authorized = sessionStorage.getItem("testingAuthorized")
@@ -471,6 +555,17 @@ export default function EvalPage() {
         </div>
 
         {evalStats && <StatsBanner stats={evalStats} hideDifficultyBreakdown />}
+
+        {saveError && (
+          <div className="border border-red-300 bg-red-50 p-3 mb-6 text-sm text-red-700 flex items-center justify-between gap-3">
+            <span>
+              <span className="font-semibold">Save failed.</span> Your in-memory runs are NOT being persisted to storage. {saveError}. Hard-refresh the page (Cmd+Shift+R) to reload the latest bundle.
+            </span>
+            <button onClick={() => setSaveError(null)} className="text-red-500 hover:text-red-700 text-xs flex-shrink-0">
+              Dismiss
+            </button>
+          </div>
+        )}
 
         {error && (
           <div className="border border-red-300 bg-red-50 p-3 mb-6 text-sm text-red-700 flex items-center justify-between">

@@ -87,6 +87,117 @@ function PatientSection({ patient, archetype }: { patient: GeneratedPatient; arc
 
 // ===== MAIN PAGE =====
 
+interface RunNewTestCardProps {
+  difficulty: number
+  setDifficulty: (d: number) => void
+  categoryHint: string
+  setCategoryHint: (c: string) => void
+  testCount: number
+  setTestCount: (updater: (c: number) => number) => void
+  isAnyRunning: boolean
+  isGenerating: boolean
+  isRunning: boolean
+  isGrading: boolean
+  batchProgress: { current: number; total: number } | null
+  onRun: () => void
+}
+
+function RunNewTestCard(props: RunNewTestCardProps) {
+  const {
+    difficulty,
+    setDifficulty,
+    categoryHint,
+    setCategoryHint,
+    testCount,
+    setTestCount,
+    isAnyRunning,
+    isGenerating,
+    isRunning,
+    isGrading,
+    batchProgress,
+    onRun,
+  } = props
+  const runLabel = isGenerating
+    ? batchProgress && batchProgress.total > 1
+      ? `Test ${batchProgress.current}/${batchProgress.total}: Generating...`
+      : "Generating Patient..."
+    : isRunning
+      ? batchProgress && batchProgress.total > 1
+        ? `Test ${batchProgress.current}/${batchProgress.total}: Pipeline...`
+        : "Running Pipeline..."
+      : isGrading
+        ? batchProgress && batchProgress.total > 1
+          ? `Test ${batchProgress.current}/${batchProgress.total}: Grading...`
+          : "Grading..."
+        : testCount === 1
+          ? "Run New Test"
+          : `Run ${testCount} New Tests`
+  return (
+    <div className="flex flex-wrap items-end gap-4">
+      <div className="flex-1 min-w-[200px]">
+        <label className="block text-xs text-[#8b7355] mb-1">
+          Difficulty: {DIFFICULTY_LABELS[difficulty]} ({difficulty})
+        </label>
+        <input
+          type="range"
+          min={1}
+          max={5}
+          step={1}
+          value={difficulty}
+          onChange={(e) => setDifficulty(parseInt(e.target.value))}
+          className="w-full accent-[#8b2500]"
+        />
+        <div className="flex justify-between text-xs text-[#8b7355] mt-0.5">
+          <span>Easy</span>
+          <span>Expert</span>
+        </div>
+      </div>
+
+      <div className="min-w-[160px]">
+        <label className="block text-xs text-[#8b7355] mb-1">Category (optional)</label>
+        <select
+          value={categoryHint}
+          onChange={(e) => setCategoryHint(e.target.value)}
+          className="w-full border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500]"
+        >
+          <option value="">Any</option>
+          {CATEGORY_OPTIONS.filter(Boolean).map((c) => (
+            <option key={c} value={c}>
+              {c.charAt(0).toUpperCase() + c.slice(1)}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="flex items-center">
+        <button
+          onClick={() => setTestCount((c) => Math.max(1, c - 1))}
+          disabled={isAnyRunning || testCount <= 1}
+          className="px-2.5 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors border-r border-[#6d1d00]"
+          aria-label="Decrease test count"
+        >
+          −
+        </button>
+        <button
+          onClick={onRun}
+          disabled={isAnyRunning}
+          className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        >
+          {runLabel}
+        </button>
+        <button
+          onClick={() => setTestCount((c) => Math.min(10, c + 1))}
+          disabled={isAnyRunning || testCount >= 10}
+          className="px-2.5 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors border-l border-[#6d1d00]"
+          aria-label="Increase test count"
+        >
+          +
+        </button>
+      </div>
+    </div>
+  )
+}
+
 export default function AdminPage() {
   const [isAuthorized, setIsAuthorized] = useState(false)
   const [authChecked, setAuthChecked] = useState(false)
@@ -540,8 +651,48 @@ export default function AdminPage() {
           </p>
         </div>
 
-        {/* Stats Banner */}
-        {stats && <StatsBanner stats={stats} />}
+        {/* Stats Banner — Run New Test card sits inside it, between the
+            top metric row and the difficulty-vs-version breakdown table */}
+        {stats ? (
+          <StatsBanner
+            stats={stats}
+            slotBetween={
+              <div className="p-4 sm:p-6">
+                <RunNewTestCard
+                  difficulty={difficulty}
+                  setDifficulty={setDifficulty}
+                  categoryHint={categoryHint}
+                  setCategoryHint={setCategoryHint}
+                  testCount={testCount}
+                  setTestCount={setTestCount}
+                  isAnyRunning={isAnyRunning}
+                  isGenerating={isGenerating}
+                  isRunning={isRunning}
+                  isGrading={isGrading}
+                  batchProgress={batchProgress}
+                  onRun={handleRunNewTest}
+                />
+              </div>
+            }
+          />
+        ) : (
+          <div className="border border-[#d4c5b0] bg-white p-4 sm:p-6 mb-6">
+            <RunNewTestCard
+              difficulty={difficulty}
+              setDifficulty={setDifficulty}
+              categoryHint={categoryHint}
+              setCategoryHint={setCategoryHint}
+              testCount={testCount}
+              setTestCount={setTestCount}
+              isAnyRunning={isAnyRunning}
+              isGenerating={isGenerating}
+              isRunning={isRunning}
+              isGrading={isGrading}
+              batchProgress={batchProgress}
+              onRun={handleRunNewTest}
+            />
+          </div>
+        )}
 
         {/* Error Banner */}
         {error && (
@@ -552,86 +703,6 @@ export default function AdminPage() {
             </button>
           </div>
         )}
-
-        {/* Generation Controls */}
-        <div className="border border-[#d4c5b0] bg-white p-4 sm:p-6 mb-6">
-          <div className="flex flex-wrap items-end gap-4">
-            <div className="flex-1 min-w-[200px]">
-              <label className="block text-xs text-[#8b7355] mb-1">
-                Difficulty: {DIFFICULTY_LABELS[difficulty]} ({difficulty})
-              </label>
-              <input
-                type="range"
-                min={1}
-                max={5}
-                step={1}
-                value={difficulty}
-                onChange={(e) => setDifficulty(parseInt(e.target.value))}
-                className="w-full accent-[#8b2500]"
-              />
-              <div className="flex justify-between text-xs text-[#8b7355] mt-0.5">
-                <span>Easy</span>
-                <span>Expert</span>
-              </div>
-            </div>
-
-            <div className="min-w-[160px]">
-              <label className="block text-xs text-[#8b7355] mb-1">Category (optional)</label>
-              <select
-                value={categoryHint}
-                onChange={(e) => setCategoryHint(e.target.value)}
-                className="w-full border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500]"
-              >
-                <option value="">Any</option>
-                {CATEGORY_OPTIONS.filter(Boolean).map((c) => (
-                  <option key={c} value={c}>
-                    {c.charAt(0).toUpperCase() + c.slice(1)}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="flex items-center">
-              <button
-                onClick={() => setTestCount((c) => Math.max(1, c - 1))}
-                disabled={isAnyRunning || testCount <= 1}
-                className="px-2.5 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors border-r border-[#6d1d00]"
-                aria-label="Decrease test count"
-              >
-                −
-              </button>
-              <button
-                onClick={handleRunNewTest}
-                disabled={isAnyRunning}
-                className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              >
-                {isGenerating
-                  ? batchProgress && batchProgress.total > 1
-                    ? `Test ${batchProgress.current}/${batchProgress.total}: Generating...`
-                    : "Generating Patient..."
-                  : isRunning
-                    ? batchProgress && batchProgress.total > 1
-                      ? `Test ${batchProgress.current}/${batchProgress.total}: Pipeline...`
-                      : "Running Pipeline..."
-                    : isGrading
-                      ? batchProgress && batchProgress.total > 1
-                        ? `Test ${batchProgress.current}/${batchProgress.total}: Grading...`
-                        : "Grading..."
-                      : testCount === 1
-                        ? "Run New Test"
-                        : `Run ${testCount} New Tests`}
-              </button>
-              <button
-                onClick={() => setTestCount((c) => Math.min(10, c + 1))}
-                disabled={isAnyRunning || testCount >= 10}
-                className="px-2.5 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors border-l border-[#6d1d00]"
-                aria-label="Increase test count"
-              >
-                +
-              </button>
-            </div>
-          </div>
-        </div>
 
         {/* Inline progress when running */}
         {isAnyRunning && (

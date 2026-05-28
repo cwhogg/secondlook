@@ -140,6 +140,10 @@ export interface TestCase {
   // v3 = v2 + excluded-findings integration (retrieval penalty, specialist
   //      + evidence-evaluator negative-evidence handling).
   evalVersion?: 'v1' | 'v2' | 'v3';
+  // Which "engine" produced this Eval case. secondlook = the full V2 pipeline;
+  // openai / claude = single-shot baseline calls to the respective top model.
+  // Unset entries are treated as 'secondlook' for backward compatibility.
+  evalRunMode?: 'secondlook' | 'openai' | 'claude';
   status: TestCaseStatus;
   source?: 'generated';
   groundTruth: GroundTruth;

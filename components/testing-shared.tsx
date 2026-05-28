@@ -94,9 +94,24 @@ function hasPending(d: PendingDelta): boolean {
   return d.upsert.size > 0 || d.deleteIds.size > 0
 }
 
+// Listeners notified whenever a save fails so the UI can surface a banner
+// instead of silently swallowing 413 / 500 / network errors.
+type SaveErrorListener = (msg: string) => void
+const saveErrorListeners = new Set<SaveErrorListener>()
+export function subscribeToTestCaseSaveErrors(fn: SaveErrorListener): () => void {
+  saveErrorListeners.add(fn)
+  return () => saveErrorListeners.delete(fn)
+}
+function emitSaveError(msg: string): void {
+  console.error("[saveTestCases]", msg)
+  for (const fn of saveErrorListeners) {
+    try { fn(msg) } catch {}
+  }
+}
+
 async function dispatchDelta(delta: PendingDelta): Promise<void> {
   try {
-    await fetch("/api/admin/test-cases", {
+    const res = await fetch("/api/admin/test-cases", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -104,8 +119,14 @@ async function dispatchDelta(delta: PendingDelta): Promise<void> {
         deleteIds: Array.from(delta.deleteIds),
       }),
     })
-  } catch {
-    // Surface separately; do not abort the queue on a transient failure.
+    if (!res.ok) {
+      // fetch() does NOT throw on HTTP error responses, so we have to read
+      // the status explicitly. Surface to the UI so the user is not left
+      // believing data was saved when in fact it was rejected.
+      emitSaveError(`Save failed: HTTP ${res.status} ${res.statusText}`)
+    }
+  } catch (err: any) {
+    emitSaveError(`Save failed: ${err?.message || "network error"}`)
   }
   if (hasPending(pendingDelta)) {
     const next = pendingDelta
@@ -322,7 +343,18 @@ export function pct(n: number): string {
 
 // ===== COMPONENTS =====
 
-export function StatsBanner({ stats, hideDifficultyBreakdown }: { stats: TestSuiteStats; hideDifficultyBreakdown?: boolean }) {
+export function StatsBanner({
+  stats,
+  hideDifficultyBreakdown,
+  slotBetween,
+}: {
+  stats: TestSuiteStats
+  hideDifficultyBreakdown?: boolean
+  // Optional content rendered between the top metric row and the breakdown
+  // tables — used by /testing and /eval to sandwich the Run controls card
+  // inside the aggregated-results area.
+  slotBetween?: React.ReactNode
+}) {
   const breakdownEntries = hideDifficultyBreakdown
     ? []
     : Object.values(stats.byDifficultySource)
@@ -373,6 +405,10 @@ export function StatsBanner({ stats, hideDifficultyBreakdown }: { stats: TestSui
           <div className="text-2xl font-bold font-serif text-[#2a2a2a]">{pct(stats.familyTop5Rate)}</div>
         </div>
       </div>
+
+      {slotBetween && (
+        <div className="border-t border-[#d4c5b0]">{slotBetween}</div>
+      )}
 
       {breakdownEntries.length > 0 && (
         <div className="border-t border-[#d4c5b0] overflow-x-auto">

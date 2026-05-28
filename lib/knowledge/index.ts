@@ -59,8 +59,17 @@ export function getDiseaseById(id: string): DiseaseProfile | undefined {
 
 /**
  * Find a KB disease whose name or alias matches the given diagnosis string.
- * Uses normalized exact match first, then substring containment in either
- * direction (both sides >4 chars). Returns null when nothing matches.
+ * Tries normalized exact match on name + aliases first, then a tightened
+ * substring fallback. Returns null when nothing matches.
+ *
+ * Substring matching only fires when the KB name is at least 12 normalized
+ * characters long. Without that floor, short generic KB names (e.g.
+ * "Ciliopathy", "Glaucoma", "Anemia") get matched as substrings inside long
+ * specialist diagnoses ("Retinal ciliopathy due to mutation in the RPGR
+ * gene...") and pull in unrelated KB data — e.g. the "Ciliopathy" profile
+ * lists Cystic Fibrosis as a differential, which then surfaces inside an
+ * optic-atrophy case via family expansion. Short-name lookups must come
+ * through exact match or aliases instead.
  */
 export function findDiseaseByName(name: string): DiseaseProfile | null {
   const target = name.toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -76,9 +85,8 @@ export function findDiseaseByName(name: string): DiseaseProfile | null {
   }
   for (const d of db) {
     const dNorm = d.name.toLowerCase().replace(/[^a-z0-9]/g, '');
-    if (dNorm.length > 4 && (dNorm.includes(target) || target.includes(dNorm))) {
-      return d;
-    }
+    if (dNorm.length < 12) continue;
+    if (dNorm.includes(target) || target.includes(dNorm)) return d;
   }
   return null;
 }

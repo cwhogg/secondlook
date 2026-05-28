@@ -68,7 +68,7 @@ const TAB_SUBTITLE: Record<EvalTab, string> = {
 const tabOf = (tc: TestCase): ModelTab => (tc.evalRunMode as ModelTab) ?? "secondlook"
 
 const MODEL_DISPLAY: Record<ModelTab, string> = {
-  secondlook: "SecondLook v3",
+  secondlook: "SecondLook",
   openai: "OpenAI o3",
   claude: "Claude opus-4-7",
 }

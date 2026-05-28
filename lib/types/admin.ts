@@ -147,8 +147,9 @@ export interface TestCase {
   generationMetadata: GenerationMetadata;
   extractedSymptoms?: MappedSymptom[];
   // Findings the source explicitly ruled out / denied — parsed alongside
-  // symptoms by /api/parse-symptoms and fed to the pipeline as negative evidence.
-  extractedExcludedFindings?: string[];
+  // symptoms by /api/parse-symptoms, UMLS-mapped like symptoms, and fed to
+  // the pipeline as negative evidence. Older records may still hold string[].
+  extractedExcludedFindings?: MappedSymptom[] | string[];
   pipelineResult?: AnalysisResult;
   pipelineError?: string;
   grading?: TestGrading;

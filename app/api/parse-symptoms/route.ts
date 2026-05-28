@@ -77,7 +77,13 @@ Extract symptoms AND explicitly excluded/denied findings, returning them as a JS
     }
   ],
   "excludedFindings": [
-    "clinical-term-for-an-explicitly-absent-or-ruled-out-finding"
+    {
+      "originalPhrase": "the exact phrase that referenced the absent finding (e.g., 'I tested negative for celiac')",
+      "medicalTerm": "SNOMED CT-compatible medical term for the absent finding (e.g., 'celiac disease')",
+      "alternativeSearchTerms": ["synonym 1", "synonym 2"],
+      "bodyPart": "affected body part or null",
+      "category": "motor|sensory|pain|cognitive|autonomic|constitutional"
+    }
   ]
 }
 
@@ -114,10 +120,12 @@ A finding is "excluded" when the description explicitly says it is ABSENT, NEGAT
 - "no chest pain or shortness of breath" → excludedFindings: ["chest pain", "shortness of breath"]
 - "normal vision, hearing intact" → excludedFindings: ["vision loss", "hearing loss"]
 
-Rules for excludedFindings:
-- Use clinical / SNOMED-style terms, NOT the raw negated phrase ("fever" not "no fever").
-- Keep one finding per array entry — split compound denials.
-- ONLY include findings that are clearly stated as absent. Do not infer.
+Rules for excludedFindings (same shape as symptoms, minus severity/duration):
+- "originalPhrase" is the exact patient/source phrase that referenced the absent finding, NEGATION INCLUDED. Example: "denies fever" — that's the originalPhrase. The medicalTerm strips the negation.
+- "medicalTerm" is the clinical / SNOMED-style term for the finding itself, WITHOUT the negation ("fever", not "no fever").
+- "alternativeSearchTerms" follows the same UMLS-friendly rules as for symptoms — provide 2-3 synonyms. The FIRST alternative MUST be a simple 1-2 word SNOMED concept.
+- Split compound denials into separate entries.
+- ONLY include findings that are clearly stated as absent / negative / normal / denied / ruled out. Do not infer.
 - If nothing is explicitly excluded, return excludedFindings: [].
 - Excluded findings must NEVER also appear in the symptoms array.
 `

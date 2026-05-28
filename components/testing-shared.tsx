@@ -227,7 +227,7 @@ export function computeStats(cases: TestCase[]): TestSuiteStats | null {
 export async function buildPatientCase(
   patient: GeneratedPatient,
   onProgress?: (msg: string) => void
-): Promise<{ patientCase: any; extractedSymptoms: MappedSymptom[]; extractedExcludedFindings: string[] }> {
+): Promise<{ patientCase: any; extractedSymptoms: MappedSymptom[]; extractedExcludedFindings: MappedSymptom[] }> {
   onProgress?.("Parsing symptoms from narrative...")
   const parseResponse = await fetch("/api/parse-symptoms", {
     method: "POST",
@@ -247,15 +247,29 @@ export async function buildPatientCase(
   }
 
   const parsedSymptoms: any[] = parsed?.symptoms || []
-  const excludedFindings: string[] = Array.isArray(parsed?.excludedFindings)
-    ? parsed.excludedFindings.filter((s: unknown): s is string => typeof s === "string" && s.trim().length > 0)
+  // Excluded findings now arrive as full objects (same shape as symptoms,
+  // minus severity/duration). Tolerate legacy responses that returned plain
+  // strings by promoting them to objects with just originalPhrase + medicalTerm.
+  const parsedExcluded: any[] = Array.isArray(parsed?.excludedFindings)
+    ? parsed.excludedFindings
+        .map((entry: unknown) => {
+          if (typeof entry === "string") {
+            const trimmed = entry.trim()
+            return trimmed
+              ? { originalPhrase: trimmed, medicalTerm: trimmed, alternativeSearchTerms: [] }
+              : null
+          }
+          if (entry && typeof entry === "object") return entry
+          return null
+        })
+        .filter((e: any) => e && (e.medicalTerm || e.originalPhrase))
     : []
 
   if (parsedSymptoms.length === 0) {
     throw new Error("Symptom parsing returned no symptoms from narrative")
   }
 
-  onProgress?.(`Parsed ${parsedSymptoms.length} symptoms${excludedFindings.length > 0 ? ` (${excludedFindings.length} excluded findings)` : ''}, mapping to UMLS...`)
+  onProgress?.(`Parsed ${parsedSymptoms.length} symptoms${parsedExcluded.length > 0 ? ` (${parsedExcluded.length} excluded findings)` : ''}, mapping to UMLS...`)
 
   const mappedSymptoms: MappedSymptom[] = []
   for (let i = 0; i < parsedSymptoms.length; i++) {
@@ -264,12 +278,26 @@ export async function buildPatientCase(
     mappedSymptoms.push(mapped)
   }
 
+  const mappedExcluded: MappedSymptom[] = []
+  for (let i = 0; i < parsedExcluded.length; i++) {
+    onProgress?.(`Mapping excluded finding ${i + 1}/${parsedExcluded.length}: ${parsedExcluded[i].medicalTerm || parsedExcluded[i].originalPhrase}`)
+    const mapped = await mapSingleSymptom(parsedExcluded[i])
+    mappedExcluded.push(mapped)
+  }
+
   const successCount = mappedSymptoms.filter((s) => !s.mappingError).length
-  onProgress?.(`UMLS mapping complete: ${successCount}/${mappedSymptoms.length} mapped successfully`)
+  const excludedSuccess = mappedExcluded.filter((s) => !s.mappingError).length
+  onProgress?.(`UMLS mapping complete: ${successCount}/${mappedSymptoms.length} symptoms${mappedExcluded.length > 0 ? `, ${excludedSuccess}/${mappedExcluded.length} excluded` : ''} mapped successfully`)
+
+  // Pipeline consumes the term names of excluded findings; UI displays the
+  // full MappedSymptom rows.
+  const excludedFindings: string[] = mappedExcluded
+    .map((s) => s.selectedConcept?.name || s.medicalTerm || s.originalPhrase)
+    .filter((s): s is string => typeof s === "string" && s.trim().length > 0)
 
   return {
     extractedSymptoms: mappedSymptoms,
-    extractedExcludedFindings: excludedFindings,
+    extractedExcludedFindings: mappedExcluded,
     patientCase: {
       demographics: patient.demographics,
       symptoms: mappedSymptoms,
@@ -540,10 +568,39 @@ export function GroundTruthSection({ groundTruth, collapsed }: { groundTruth: Gr
   )
 }
 
-export function ExtractedSymptomsSection({ symptoms, excludedFindings }: { symptoms: MappedSymptom[]; excludedFindings?: string[] }) {
+function isMappedSymptomLike(v: unknown): v is MappedSymptom {
+  return !!v && typeof v === "object" && "originalPhrase" in (v as any)
+}
+
+export function ExtractedSymptomsSection({
+  symptoms,
+  excludedFindings,
+}: {
+  symptoms: MappedSymptom[]
+  // Legacy callers passed string[]; new callers pass MappedSymptom[]. Render both.
+  excludedFindings?: MappedSymptom[] | string[]
+}) {
   const mapped = symptoms.filter((s) => !s.mappingError)
   const failed = symptoms.filter((s) => s.mappingError)
-  const excluded = (excludedFindings || []).filter((s) => s && s.trim().length > 0)
+  const excluded: MappedSymptom[] = (excludedFindings || [])
+    .map((entry: unknown): MappedSymptom | null => {
+      if (isMappedSymptomLike(entry)) return entry
+      if (typeof entry === "string" && entry.trim().length > 0) {
+        return {
+          originalPhrase: entry,
+          medicalTerm: entry,
+          umlsConcepts: [],
+          selectedConcept: null,
+          confidence: 0,
+          confirmed: false,
+          mappingError: true,
+          feedbackStatus: "none",
+        } as MappedSymptom
+      }
+      return null
+    })
+    .filter((e): e is MappedSymptom => e !== null)
+  const excludedMapped = excluded.filter((s) => !s.mappingError).length
 
   return (
     <div className="border border-[#d4c5b0] bg-white p-4 space-y-3">
@@ -590,18 +647,47 @@ export function ExtractedSymptomsSection({ symptoms, excludedFindings }: { sympt
         </div>
       )}
       {excluded.length > 0 && (
-        <div className="pt-3 border-t border-[#e8ddd0] space-y-1.5">
+        <div className="pt-3 border-t border-[#e8ddd0] space-y-2">
           <div className="text-xs font-semibold text-[#8b7355] uppercase tracking-wider">
-            Excluded Findings ({excluded.length})
+            Excluded Findings ({excludedMapped}/{excluded.length} mapped)
           </div>
           <div className="text-xs text-[#8b7355] italic mb-1">
             Findings the patient or source explicitly ruled out / denied. Used as negative evidence by retrieval and the specialist + evidence-evaluator agents.
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1">
-            {excluded.map((f, i) => (
-              <div key={i} className="text-sm flex items-start gap-2 text-[#5a5a5a]">
-                <span className="text-[#8b7355]">&minus;</span>
-                <span>{f}</span>
+          <div className="space-y-1.5">
+            {excluded.map((s, i) => (
+              <div key={i} className="text-sm flex items-start gap-2">
+                <span className={`font-mono text-xs mt-0.5 ${s.mappingError ? "text-red-400" : "text-[#8b7355]"}`}>
+                  {i + 1}.
+                </span>
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-baseline gap-2">
+                    <span className="inline-block px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-[#e8ddd0] text-[#8b2500] border border-[#d4c5b0]">
+                      Excluded
+                    </span>
+                    <span className="text-[#2a2a2a]">&ldquo;{s.originalPhrase}&rdquo;</span>
+                    <span className="text-[#8b7355]">&rarr;</span>
+                    <span className="font-medium text-[#5a5a5a]">{s.medicalTerm}</span>
+                  </div>
+                  {s.selectedConcept && (
+                    <div className="text-xs text-[#8b7355]">
+                      UMLS: {s.selectedConcept.name}
+                      {s.selectedConcept.cui && ` (${s.selectedConcept.cui})`}
+                      {s.searchTermUsed && s.searchTermUsed !== s.medicalTerm && (
+                        <span> &middot; matched via &ldquo;{s.searchTermUsed}&rdquo;</span>
+                      )}
+                      <span> &middot; conf: {(s.confidence * 100).toFixed(0)}%</span>
+                    </div>
+                  )}
+                  {s.mappingError && (
+                    <div className="text-xs text-red-500">UMLS mapping failed</div>
+                  )}
+                  {(s.bodyPart || s.category) && (
+                    <div className="text-xs text-[#8b7355]">
+                      {[s.bodyPart, s.category].filter(Boolean).join(" · ")}
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>

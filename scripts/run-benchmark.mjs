@@ -333,8 +333,17 @@ async function buildPatientCase(caseDescription) {
   });
 
   const parsedSymptoms = parseData.symptoms || [];
+  // parse-symptoms now returns excludedFindings as full objects (matching the
+  // symptoms shape). Map each to a clinical-term string; tolerate legacy
+  // string entries.
   const excludedFindings = Array.isArray(parseData.excludedFindings)
-    ? parseData.excludedFindings.filter((s) => typeof s === 'string' && s.trim().length > 0)
+    ? parseData.excludedFindings
+        .map((e) => {
+          if (typeof e === 'string') return e.trim();
+          if (e && typeof e === 'object') return (e.medicalTerm || e.originalPhrase || '').toString().trim();
+          return '';
+        })
+        .filter((s) => s.length > 0)
     : [];
   if (parsedSymptoms.length === 0) throw new Error('No symptoms parsed');
 

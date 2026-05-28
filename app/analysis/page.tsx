@@ -151,8 +151,17 @@ export default function AnalysisPage() {
             severity: parsedStep3.severity || 5,
           },
           symptoms,
+          // parse-symptoms now returns excludedFindings as full objects; map
+          // each to a clinical term string for the pipeline. Tolerate legacy
+          // string entries for backward compatibility.
           excludedFindings: Array.isArray(parseData.excludedFindings)
-            ? parseData.excludedFindings.filter((s: unknown): s is string => typeof s === "string" && s.trim().length > 0)
+            ? parseData.excludedFindings
+                .map((e: any) => {
+                  if (typeof e === "string") return e.trim()
+                  if (e && typeof e === "object") return (e.medicalTerm || e.originalPhrase || "").toString().trim()
+                  return ""
+                })
+                .filter((s: string) => s.length > 0)
             : [],
           patientHypothesis: parsedStep2.noIdea ? null : parsedStep2.patientHypothesis || null,
           medicalHistory: {

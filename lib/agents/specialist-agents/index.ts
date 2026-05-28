@@ -3,130 +3,7 @@ import { AgentInput, AgentOutput, SpecialistType } from '../types';
 import { PatientCase, DiagnosisHypothesis } from '../../types';
 import { DiseaseMatch } from '../../types/knowledge-base';
 import { getDiseaseCount } from '../../knowledge';
-
-// ===== SPECIALIST PROMPTS =====
-
-const SPECIALIST_PROMPTS: Record<SpecialistType, { title: string; expertise: string }> = {
-  neurologist: {
-    title: 'Board-Certified Neurologist',
-    expertise: `- Demyelinating diseases (MS, NMO, MOG antibody disease)
-- Neuromuscular disorders (myasthenia gravis, CIDP, motor neuron diseases, myopathies)
-- Small fiber neuropathy and autonomic disorders
-- Movement disorders, ataxias, and hereditary spastic paraplegias
-- Autoimmune and paraneoplastic encephalitis
-- Headache disorders and cranial neuropathies
-- Neurodegenerative conditions with atypical presentations`,
-  },
-  rheumatologist: {
-    title: 'Board-Certified Rheumatologist',
-    expertise: `- Systemic autoimmune diseases (SLE, Sjogren's, scleroderma, myositis)
-- Vasculitis syndromes (ANCA-associated, large vessel, small vessel)
-- Connective tissue disorders (EDS, Marfan, mixed CTD)
-- Inflammatory arthritis (RA, PsA, reactive, ankylosing spondylitis)
-- Autoinflammatory syndromes (FMF, TRAPS, Still's disease)
-- IgG4-related disease, sarcoidosis, Behcet's
-- Overlap syndromes and undifferentiated CTD`,
-  },
-  cardiologist: {
-    title: 'Board-Certified Cardiologist',
-    expertise: `- Dysautonomia (POTS, neurocardiogenic syncope, orthostatic hypotension)
-- Cardiomyopathies (hypertrophic, dilated, restrictive, arrhythmogenic)
-- Inherited arrhythmia syndromes (Long QT, Brugada, CPVT)
-- Cardiac manifestations of systemic diseases
-- Pulmonary hypertension
-- Cardiac amyloidosis and infiltrative diseases
-- Vascular anomalies (fibromuscular dysplasia, vasculitis)`,
-  },
-  immunologist: {
-    title: 'Board-Certified Clinical Immunologist',
-    expertise: `- Primary immunodeficiencies (CVID, selective IgA deficiency, 22q11.2 deletion)
-- Mast cell disorders (MCAS, mastocytosis, hereditary alpha-tryptasemia)
-- Autoinflammatory syndromes
-- Allergic and eosinophilic disorders
-- Immune dysregulation syndromes
-- Complement deficiencies
-- Recurrent infections with underlying immune defects`,
-  },
-  endocrinologist: {
-    title: 'Board-Certified Endocrinologist',
-    expertise: `- Adrenal disorders (Addison's, Cushing's, pheochromocytoma, CAH)
-- Thyroid disorders (Hashimoto's, Graves', thyroid nodules, MEN syndromes)
-- Pituitary disorders (acromegaly, prolactinoma, hypopituitarism)
-- Calcium/parathyroid disorders
-- Metabolic bone diseases
-- Rare metabolic conditions (porphyrias, storage diseases)
-- Polyglandular autoimmune syndromes`,
-  },
-  gastroenterologist: {
-    title: 'Board-Certified Gastroenterologist',
-    expertise: `- Inflammatory bowel disease (Crohn's, UC, microscopic colitis)
-- Eosinophilic GI disorders (EoE, eosinophilic gastroenteritis)
-- Motility disorders (gastroparesis, achalasia, intestinal pseudo-obstruction)
-- Autoimmune liver diseases (AIH, PBC, PSC)
-- Celiac disease and malabsorption syndromes
-- Rare GI conditions (Whipple's, intestinal lymphangiectasia)
-- GI manifestations of systemic diseases`,
-  },
-  geneticist: {
-    title: 'Board-Certified Medical Geneticist',
-    expertise: `- Hereditary connective tissue disorders (EDS subtypes, Marfan, Loeys-Dietz)
-- Chromosomal abnormalities (Turner, Klinefelter, 22q11.2 deletion)
-- Neurocutaneous syndromes (NF1, NF2, tuberous sclerosis, VHL)
-- Inborn errors of metabolism (storage diseases, aminoacidopathies)
-- Trinucleotide/repeat expansion disorders (NIID, Huntington's, myotonic dystrophy, FXTAS, SCA subtypes)
-- Hereditary neuropathies (CMT subtypes, HSAN, familial amyloid polyneuropathy)
-- Hereditary ataxias and hereditary spastic paraplegias
-- Mitochondrial DNA disorders and nuclear-encoded mitochondrial diseases
-- Hereditary cancer syndromes
-- Skeletal dysplasias
-- Undiagnosed hereditary multi-system conditions — the "diagnostic odyssey" patient`,
-  },
-  hematologist: {
-    title: 'Board-Certified Hematologist',
-    expertise: `- Myeloproliferative neoplasms (PV, ET, myelofibrosis)
-- Inherited anemias and hemoglobin disorders
-- Coagulation disorders and thrombophilias
-- Bone marrow failure syndromes
-- Monoclonal gammopathies and amyloidosis
-- Hemolytic anemias (PNH, TTP, hereditary spherocytosis)
-- Hemophagocytic syndromes (HLH)`,
-  },
-  psychiatrist: {
-    title: 'Board-Certified Psychiatrist',
-    expertise: `- Somatic symptom disorders and functional neurological disorder (conversion disorder)
-- Neuropsychiatric manifestations of autoimmune diseases (autoimmune encephalitis, lupus cerebritis)
-- Psychiatric presentations of metabolic and endocrine diseases (Wilson's disease, porphyria, thyroid)
-- Catatonia and its medical mimics
-- Psychosis secondary to medical conditions (anti-NMDA receptor encephalitis, SLE)
-- Chronic fatigue, fibromyalgia, and central sensitization syndromes
-- Mast cell activation syndrome psychiatric manifestations (anxiety, cognitive dysfunction)
-- Medication-induced psychiatric syndromes
-- Dissociative disorders and their neurological differential diagnoses`,
-  },
-  oncologist: {
-    title: 'Board-Certified Medical Oncologist',
-    expertise: `- Paraneoplastic syndromes (neurological, endocrine, dermatological, hematological)
-- Hereditary cancer syndromes (Lynch, Li-Fraumeni, BRCA, MEN, VHL, Cowden)
-- Myeloproliferative and lymphoproliferative disorders with systemic manifestations
-- Carcinoid syndrome and neuroendocrine tumors
-- Cancer-related constitutional symptoms (unexplained weight loss, fevers, night sweats)
-- Tumor-induced osteomalacia and other oncogenic metabolic syndromes
-- Langerhans cell histiocytosis and other histiocytic disorders
-- Castleman disease (unicentric and multicentric)
-- Occult malignancy presenting as dermatomyositis, vasculitis, or neuropathy`,
-  },
-  'general-internist': {
-    title: 'Board-Certified Internal Medicine Specialist (Diagnostician)',
-    expertise: `- Multi-system diseases that cross specialty boundaries
-- Undifferentiated presentations requiring broad differential thinking
-- Chronic fatigue, pain syndromes, and functional disorders
-- Systemic manifestations of rare diseases
-- Complex cases with overlapping conditions
-- Periodic fever syndromes and autoinflammatory conditions
-- Drug-related and environmental causes of complex presentations
-- Identifying diagnoses that domain specialists may overlook due to tunnel vision`,
-  },
-};
+import { SPECIALTY_REFERENCES, renderSpecialtyReference } from '../specialty-reference';
 
 // ===== SPECIALIST AGENT =====
 
@@ -134,24 +11,27 @@ class SpecialistAgent extends BaseAgent {
   private specialistType: SpecialistType;
 
   constructor(specialistType: SpecialistType) {
-    const { title, expertise } = SPECIALIST_PROMPTS[specialistType];
+    const { title, expertise } = SPECIALTY_REFERENCES[specialistType];
     const isGeneralInternist = specialistType === 'general-internist';
+    const referenceBody = renderSpecialtyReference(specialistType);
 
-    const domainSpecialistPrompt = `You are Dr. ${specialistType.charAt(0).toUpperCase() + specialistType.slice(1)}, a ${title} with 25+ years of experience specializing in complex and rare diseases. Your areas of deep expertise include:
+    const domainSpecialistPrompt = `You are Dr. ${specialistType.charAt(0).toUpperCase() + specialistType.slice(1)}, a ${title} with 25+ years of experience specializing in complex and rare diseases.
 
 ${expertise}
 
-You are reviewing a patient case as part of a multi-specialist diagnostic consultation. You have been provided with disease profiles from a curated knowledge base that match this patient's presentation.
+${referenceBody}
+
+You are reviewing a patient case as part of a multi-specialist diagnostic consultation. You have been provided with disease profiles from a curated knowledge base that match this patient's presentation, reranked for relevance to your specialty.
 
 YOUR DIAGNOSTIC APPROACH:
-1. Consider conditions within or adjacent to your area of expertise
-2. For each hypothesis, map EVERY piece of supporting evidence to a SPECIFIC patient symptom
-3. Where disease profiles are provided from our knowledge base, reference their diagnostic criteria
-4. Honestly note contradictory evidence and information gaps
-5. Consider mimics, overlapping conditions, and atypical presentations
+1. Apply the diagnostic frameworks above to the patient's presentation — name the criterion you are applying
+2. Use the pattern-recognition heuristics to anchor hypotheses; explicitly consider the listed common mimics before settling
+3. For each hypothesis, map EVERY piece of supporting evidence to a SPECIFIC patient symptom
+4. Where disease profiles are provided from the knowledge base, reference their diagnostic criteria
+5. Honestly note contradictory evidence and information gaps
 6. Think about what is COMMONLY MISSED by generalists in your specialty area
 
-CRITICAL: You are NOT limited to the diseases shown in the knowledge base profiles below. Our knowledge base covers ${getDiseaseCount()} profiled rare diseases. If the patient's presentation suggests a condition NOT in the provided profiles, you MUST still propose it. A disease being absent from our database says nothing about its likelihood — it only means we lack structured criteria for it. Use your clinical training and expertise for any condition you consider relevant.
+CRITICAL: You are NOT limited to the diseases shown in the knowledge base profiles below. Our knowledge base covers ${getDiseaseCount()} profiled rare diseases. If the patient's presentation suggests a condition NOT in the provided profiles, you MUST still propose it. A disease being absent from our database says nothing about its likelihood — it only means we lack structured criteria for it. Use your clinical training and the frameworks above for any condition you consider relevant.
 
 OUTPUT RULES:
 - Generate 2-4 diagnostic hypotheses ranked by likelihood
@@ -164,9 +44,9 @@ OUTPUT RULES:
 
     const generalInternistPrompt = `You are Dr. Internist, a ${title} with 25+ years of experience. You are the senior diagnostician on this case — the one who asks "what is everyone else missing?"
 
-Your areas of deep expertise include:
-
 ${expertise}
+
+${referenceBody}
 
 You are reviewing a patient case as part of a multi-specialist diagnostic consultation. Other domain specialists (neurologist, rheumatologist, cardiologist, etc.) are also reviewing this case. They have access to a curated knowledge base of ${getDiseaseCount()} rare disease profiles. YOUR role is different:
 
@@ -174,11 +54,12 @@ YOU ARE THE UN-ANCHORED DIAGNOSTICIAN. You are intentionally NOT given structure
 
 YOUR DIAGNOSTIC APPROACH:
 1. Think across ALL specialties and body systems — you are not confined to one domain
-2. Consider diseases that fall between specialties or are easily misattributed
-3. Think about atypical presentations of both common and rare diseases
-4. Consider diagnoses that require connecting symptoms across multiple organ systems
-5. Ask "what if the obvious specialty framing is wrong?" — e.g., what if neurological symptoms are actually metabolic?
-6. For each hypothesis, map EVERY piece of supporting evidence to a SPECIFIC patient symptom
+2. Apply the cross-specialty patterns and treatable-masquerade list above before settling
+3. Consider diseases that fall between specialties or are easily misattributed
+4. Think about atypical presentations of both common and rare diseases
+5. Consider diagnoses that require connecting symptoms across multiple organ systems
+6. Ask "what if the obvious specialty framing is wrong?" — e.g., what if neurological symptoms are actually metabolic?
+7. For each hypothesis, map EVERY piece of supporting evidence to a SPECIFIC patient symptom
 
 OUTPUT RULES:
 - Generate 2-4 diagnostic hypotheses ranked by likelihood
@@ -378,7 +259,7 @@ As the senior diagnostician, generate your differential diagnosis hypotheses.
 Think broadly. Consider what domain specialists anchored to a small disease database might overlook.
 Map evidence to specific patient symptoms.`
       : `===== YOUR TASK =====
-As a ${SPECIALIST_PROMPTS[this.specialistType].title}, generate your differential diagnosis hypotheses.
+As a ${SPECIALTY_REFERENCES[this.specialistType].title}, generate your differential diagnosis hypotheses.
 Reference the disease profiles above where relevant, but also consider conditions not in the database.
 Map evidence to specific patient symptoms.`;
 
@@ -410,7 +291,7 @@ ${taskSection}`;
 // ===== FACTORY =====
 
 export function getSpecialistAgent(specialistType: string): SpecialistAgent {
-  if (!SPECIALIST_PROMPTS[specialistType as SpecialistType]) {
+  if (!SPECIALTY_REFERENCES[specialistType as SpecialistType]) {
     throw new Error(`Unknown specialist type: ${specialistType}`);
   }
   return new SpecialistAgent(specialistType as SpecialistType);

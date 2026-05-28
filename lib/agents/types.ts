@@ -35,7 +35,7 @@ export interface AgentOutput {
 export interface TriageOutput {
   bodySystems: string[];
   acuityLevel: 'emergent' | 'urgent' | 'non-urgent';
-  relevantSpecialties: string[];
+  relevantSpecialties: SpecialistType[];
   candidateDiseases: DiseaseMatch[];
   triageReasoning: string;
   tokensUsed: number;

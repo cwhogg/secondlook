@@ -1,6 +1,7 @@
 import { PatientCase, AnalysisResult, StageResult, FamilyEnrichment } from '../types';
 import { TriageAgent } from '../agents/triage-agent';
 import { getSpecialistAgent } from '../agents/specialist-agents';
+import { rerankCandidatesForSpecialty } from '../agents/specialty-reference/kb-rerank';
 import { EvidenceEvaluator } from '../agents/evidence-evaluator';
 import { SynthesisAgent } from '../agents/synthesizer';
 import { ReportGenerator } from '../agents/report-generator';
@@ -90,11 +91,14 @@ export class DiagnosticPipeline {
 
       const specialistPromises = triageResult.relevantSpecialties.map((specialty) => {
         const agent = getSpecialistAgent(specialty);
-        const domainDiseases = triageResult.candidateDiseases.filter((d) =>
-          d.disease.specialistType.some((s) => s.toLowerCase().includes(specialty.toLowerCase()))
+        // Rerank the triage candidates per specialty: existing retrieval matchScore
+        // multiplied by a domain-fit weight (explicit specialistType > body-system
+        // mapping > fallback). Each specialist gets the deepest, most domain-aligned
+        // slice of the candidate pool, sorted by their own relevance.
+        const diseases = rerankCandidatesForSpecialty(
+          triageResult.candidateDiseases,
+          specialty,
         );
-        // If no domain-specific diseases, give them all candidates
-        const diseases = domainDiseases.length > 0 ? domainDiseases : triageResult.candidateDiseases.slice(0, 10);
         return agent.execute({ patientCase, candidateDiseases: diseases });
       });
 

@@ -134,6 +134,10 @@ export interface TestCase {
   difficulty: number;
   categoryHint?: string;
   testVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12' | 'v13' | 'Eval';
+  // For Eval-tagged testCases: which version of the pipeline produced them.
+  // v1 = pre-2026-05-27 pipeline (5-cap on diagnoses, no family expansion).
+  // v2 = pipeline including the 2026-05-27 changes (10-cap synth + family expansion).
+  evalVersion?: 'v1' | 'v2';
   status: TestCaseStatus;
   source?: 'generated';
   groundTruth: GroundTruth;

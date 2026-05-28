@@ -80,7 +80,7 @@ const ARCHETYPE_LABELS: Record<PatientArchetype, string> = {
 
 // ===== HELPERS =====
 
-async function loadTestCases(): Promise<TestCase[]> {
+export async function loadTestCases(): Promise<TestCase[]> {
   try {
     const res = await fetch("/api/admin/test-cases")
     if (!res.ok) return []
@@ -91,7 +91,7 @@ async function loadTestCases(): Promise<TestCase[]> {
   }
 }
 
-function saveTestCases(cases: TestCase[]) {
+export function saveTestCases(cases: TestCase[]) {
   fetch("/api/admin/test-cases", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -101,7 +101,7 @@ function saveTestCases(cases: TestCase[]) {
   })
 }
 
-function computeStats(cases: TestCase[]): TestSuiteStats | null {
+export function computeStats(cases: TestCase[]): TestSuiteStats | null {
   const graded = cases.filter((c) => c.status === "graded" && c.grading)
   if (graded.length === 0) return null
 
@@ -175,7 +175,7 @@ function computeStats(cases: TestCase[]): TestSuiteStats | null {
   }
 }
 
-async function buildPatientCase(
+export async function buildPatientCase(
   patient: GeneratedPatient,
   onProgress?: (msg: string) => void
 ): Promise<{ patientCase: any; extractedSymptoms: MappedSymptom[] }> {
@@ -236,14 +236,14 @@ async function buildPatientCase(
   }
 }
 
-function pct(n: number): string {
+export function pct(n: number): string {
   return `${Math.round(n * 100)}%`
 }
 
 // ===== COMPONENTS =====
 
-const VERSION_LABELS: Record<string, string> = { v1: "v1", v2: "v2", v3: "v3", v4: "v4", v7: "v7", v8: "v8", Eval: "Eval" }
-const VERSION_COLORS: Record<string, string> = {
+export const VERSION_LABELS: Record<string, string> = { v1: "v1", v2: "v2", v3: "v3", v4: "v4", v7: "v7", v8: "v8", Eval: "Eval" }
+export const VERSION_COLORS: Record<string, string> = {
   v1: "bg-gray-50 text-gray-700 border-gray-300",
   v2: "bg-blue-50 text-blue-800 border-blue-300",
   v3: "bg-emerald-50 text-emerald-800 border-emerald-300",
@@ -253,7 +253,7 @@ const VERSION_COLORS: Record<string, string> = {
   Eval: "bg-amber-50 text-amber-800 border-amber-300",
 }
 
-function StatsBanner({ stats }: { stats: TestSuiteStats }) {
+export function StatsBanner({ stats }: { stats: TestSuiteStats }) {
   const breakdownEntries = Object.values(stats.byDifficultySource)
     .sort((a, b) => {
       if (a.difficulty !== b.difficulty) return a.difficulty - b.difficulty
@@ -381,7 +381,7 @@ function StatsBanner({ stats }: { stats: TestSuiteStats }) {
   )
 }
 
-function DifficultyBadge({ difficulty }: { difficulty: number }) {
+export function DifficultyBadge({ difficulty }: { difficulty: number }) {
   if (difficulty === 0) {
     return (
       <span className="inline-block px-2 py-0.5 border text-xs font-medium bg-gray-100 text-gray-600 border-gray-300">
@@ -396,7 +396,7 @@ function DifficultyBadge({ difficulty }: { difficulty: number }) {
   )
 }
 
-function StatusBadge({ status }: { status: TestCaseStatus }) {
+export function StatusBadge({ status }: { status: TestCaseStatus }) {
   const styles: Record<TestCaseStatus, string> = {
     generated: "bg-gray-100 text-gray-700 border-gray-300",
     running: "bg-blue-100 text-blue-700 border-blue-300",
@@ -411,7 +411,7 @@ function StatusBadge({ status }: { status: TestCaseStatus }) {
   )
 }
 
-function GradeBadge({ grading }: { grading: TestGrading }) {
+export function GradeBadge({ grading }: { grading: TestGrading }) {
   return (
     <span className={`text-lg font-bold font-serif ${GRADE_COLORS[grading.grade] || "text-gray-600"}`}>
       {grading.grade} ({grading.score})
@@ -419,7 +419,7 @@ function GradeBadge({ grading }: { grading: TestGrading }) {
   )
 }
 
-function GroundTruthSection({ groundTruth, collapsed }: { groundTruth: GroundTruth; collapsed: boolean }) {
+export function GroundTruthSection({ groundTruth, collapsed }: { groundTruth: GroundTruth; collapsed: boolean }) {
   const [open, setOpen] = useState(!collapsed)
   return (
     <div className="border border-[#d4c5b0] bg-[#faf7f3]">
@@ -523,7 +523,7 @@ function PatientSection({ patient, archetype }: { patient: GeneratedPatient; arc
   )
 }
 
-function ExtractedSymptomsSection({ symptoms }: { symptoms: MappedSymptom[] }) {
+export function ExtractedSymptomsSection({ symptoms }: { symptoms: MappedSymptom[] }) {
   const mapped = symptoms.filter((s) => !s.mappingError)
   const failed = symptoms.filter((s) => s.mappingError)
 
@@ -575,7 +575,7 @@ function ExtractedSymptomsSection({ symptoms }: { symptoms: MappedSymptom[] }) {
   )
 }
 
-function PipelineProgressDisplay({ events, percent }: { events: PipelineProgress[]; percent: number }) {
+export function PipelineProgressDisplay({ events, percent }: { events: PipelineProgress[]; percent: number }) {
   const stageNames: Record<string, string> = {
     triage: "Triage",
     specialists: "Specialists",
@@ -676,7 +676,7 @@ function PipelineProgressDisplay({ events, percent }: { events: PipelineProgress
   )
 }
 
-function StepIndicator({ label, status }: { label: string; status: "pending" | "active" | "done" }) {
+export function StepIndicator({ label, status }: { label: string; status: "pending" | "active" | "done" }) {
   return (
     <div className="flex items-center gap-2">
       <div className={cn(
@@ -697,7 +697,7 @@ function StepIndicator({ label, status }: { label: string; status: "pending" | "
   )
 }
 
-function PipelineResultsSection({ result }: { result: AnalysisResult }) {
+export function PipelineResultsSection({ result }: { result: AnalysisResult }) {
   const meta = result.pipelineMetadata
   const topDx = result.differentialDiagnoses.slice(0, 5)
 
@@ -806,14 +806,14 @@ function PipelineResultsSection({ result }: { result: AnalysisResult }) {
   )
 }
 
-function ScoreDelta({ delta }: { delta: number }) {
+export function ScoreDelta({ delta }: { delta: number }) {
   if (delta === 0) return <span className="text-xs text-[#8b7355]">(no change)</span>
   const color = delta > 0 ? "text-green-600" : "text-red-600"
   const sign = delta > 0 ? "+" : ""
   return <span className={`text-xs font-bold ${color}`}>{sign}{delta}</span>
 }
 
-function GradingSection({ grading, previousRun }: { grading: TestGrading; previousRun?: PreviousRunSnapshot }) {
+export function GradingSection({ grading, previousRun }: { grading: TestGrading; previousRun?: PreviousRunSnapshot }) {
   return (
     <div className="border border-[#d4c5b0] bg-white p-4 space-y-3">
       <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">Grading</div>
@@ -910,7 +910,7 @@ function GradingSection({ grading, previousRun }: { grading: TestGrading; previo
   )
 }
 
-function TestHistoryRow({
+export function TestHistoryRow({
   tc,
   isActive,
   onClick,

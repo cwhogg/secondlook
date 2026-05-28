@@ -681,6 +681,7 @@ async function runSingleCase(entry, allTestCases) {
       difficulty: 3,
       categoryHint: ppkt_id,
       testVersion: 'Eval',
+      evalVersion: 'v2',
       status: grading ? 'graded' : 'completed',
       source: 'generated',
       groundTruth: {

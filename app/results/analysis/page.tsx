@@ -138,13 +138,15 @@ export default function AnalysisResultsPage() {
   }
 
   const handleDownload = () => {
-    const dataStr = JSON.stringify(analysisData, null, 2)
-    const dataBlob = new Blob([dataStr], { type: "application/json" })
-    const url = URL.createObjectURL(dataBlob)
-    const link = document.createElement("a")
-    link.href = url
-    link.download = `secondlook-analysis-${new Date().toISOString()}.json`
-    link.click()
+    const originalTitle = document.title
+    const date = new Date().toISOString().split("T")[0]
+    document.title = `secondlook-analysis-${date}`
+    const restore = () => {
+      document.title = originalTitle
+      window.removeEventListener("afterprint", restore)
+    }
+    window.addEventListener("afterprint", restore)
+    window.print()
   }
 
   if (isLoading) {

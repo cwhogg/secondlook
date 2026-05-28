@@ -217,7 +217,7 @@ export class DiagnosticPipeline {
         detail: `Final ranking complete — ${synthesisResult.hypotheses.length} diagnoses ranked by evidence`,
         percentage: 85,
         data: {
-          topDiagnoses: synthesisResult.hypotheses.slice(0, 5).map((h) => ({
+          topDiagnoses: synthesisResult.hypotheses.slice(0, 10).map((h) => ({
             diagnosis: h.diagnosis,
             probabilityScore: h.confidenceScore,
           })),

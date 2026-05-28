@@ -8,9 +8,9 @@ function buildSynthesisPrompt(): string {
 
 You are reviewing a patient case where multiple specialist consultations have been completed and an evidence evaluator has systematically checked each hypothesis against diagnostic criteria. ALL of this information is now in front of you.
 
-YOUR JOB: Make the final clinical judgment.
+YOUR JOB: Make the final clinical judgment and produce a deep differential.
 
-1. RANK the diagnoses by how likely they are to be correct, based on EVERYTHING:
+1. Produce 10 RANKED DIAGNOSES (most likely first). Pull from the evaluated hypotheses provided to you; rank exactly 10 if at least 10 distinct evaluated hypotheses exist, otherwise rank all of them. Do not invent diagnoses that were not evaluated. Each must be a distinct disease — no duplicates. RANK by how likely each is to be correct, based on EVERYTHING:
    - The specialist reasoning and clinical arguments
    - The criteria fulfillment data (how many diagnostic criteria are met)
    - The quality and specificity of supporting evidence
@@ -79,12 +79,14 @@ export class SynthesisAgent extends BaseAgent {
             properties: {
               rankedDiagnoses: {
                 type: 'array',
+                minItems: 1,
+                maxItems: 10,
                 items: {
                   type: 'object',
                   properties: {
                     diagnosis: {
                       type: 'string',
-                      description: 'Use the EXACT diagnosis name from the hypotheses list',
+                      description: 'Prefer the EXACT diagnosis name from the hypotheses list; if you add a diagnosis to round out the differential to 10, use a standard clinical name',
                     },
                     probabilityScore: {
                       type: 'number',
@@ -99,7 +101,7 @@ export class SynthesisAgent extends BaseAgent {
                   },
                   required: ['diagnosis', 'probabilityScore', 'reasoning'],
                 },
-                description: 'Diagnoses ranked by probability (most likely first)',
+                description: '10 diagnoses ranked by probability (most likely first)',
               },
               consensusLevel: {
                 type: 'string',
@@ -177,15 +179,15 @@ export class SynthesisAgent extends BaseAgent {
       }
     }
 
-    // Take top 5
-    const finalTop5 = rankedHypotheses.slice(0, 5);
+    // Take top 10
+    const finalTopN = rankedHypotheses.slice(0, 10);
 
     // Store synthesis metadata in the output
     const agentOutput: AgentOutput = {
       agentName: this.name,
-      hypotheses: finalTop5,
+      hypotheses: finalTopN,
       reasoning: synthesis.overallAssessment,
-      confidence: finalTop5.length > 0 ? finalTop5[0].confidenceScore : 0,
+      confidence: finalTopN.length > 0 ? finalTopN[0].confidenceScore : 0,
       tokensUsed: result.tokensUsed,
       durationMs: result.durationMs,
       model: result.model,

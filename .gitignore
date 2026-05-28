@@ -34,8 +34,10 @@ scripts/expansion-rejected.json
 # Orphanet data files (download via enrich-from-orphanet.js)
 scripts/orphanet-data/
 
-# Benchmark data files (Phenopacket2Prompt dataset + results)
-scripts/benchmark-data/
+# Benchmark data: ignore everything in this dir except the source dataset,
+# which is bundled into the eval-case serverless function for production.
+scripts/benchmark-data/*
+!scripts/benchmark-data/en.jsonl
 
 # test case data
 /data/

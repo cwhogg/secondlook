@@ -110,20 +110,24 @@ function emitSaveError(msg: string): void {
 }
 
 async function dispatchDelta(delta: PendingDelta): Promise<void> {
+  const upsertArr = Array.from(delta.upsert.values())
+  const deleteIdsArr = Array.from(delta.deleteIds)
+  const body = JSON.stringify({ upsert: upsertArr, deleteIds: deleteIdsArr })
   try {
     const res = await fetch("/api/admin/test-cases", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        upsert: Array.from(delta.upsert.values()),
-        deleteIds: Array.from(delta.deleteIds),
-      }),
+      body,
     })
     if (!res.ok) {
       // fetch() does NOT throw on HTTP error responses, so we have to read
-      // the status explicitly. Surface to the UI so the user is not left
-      // believing data was saved when in fact it was rejected.
-      emitSaveError(`Save failed: HTTP ${res.status} ${res.statusText}`)
+      // the status explicitly. Include the payload count + size so the
+      // diagnosis is immediate instead of guessed.
+      const mb = (body.length / 1024 / 1024).toFixed(2)
+      emitSaveError(
+        `Save failed: HTTP ${res.status} ${res.statusText} ` +
+          `(payload: ${upsertArr.length} upserts, ${deleteIdsArr.length} deletes, ${mb}MB)`,
+      )
     }
   } catch (err: any) {
     emitSaveError(`Save failed: ${err?.message || "network error"}`)

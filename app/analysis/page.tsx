@@ -151,6 +151,9 @@ export default function AnalysisPage() {
             severity: parsedStep3.severity || 5,
           },
           symptoms,
+          excludedFindings: Array.isArray(parseData.excludedFindings)
+            ? parseData.excludedFindings.filter((s: unknown): s is string => typeof s === "string" && s.trim().length > 0)
+            : [],
           patientHypothesis: parsedStep2.noIdea ? null : parsedStep2.patientHypothesis || null,
           medicalHistory: {
             currentMedications: [],

@@ -333,6 +333,9 @@ async function buildPatientCase(caseDescription) {
   });
 
   const parsedSymptoms = parseData.symptoms || [];
+  const excludedFindings = Array.isArray(parseData.excludedFindings)
+    ? parseData.excludedFindings.filter((s) => typeof s === 'string' && s.trim().length > 0)
+    : [];
   if (parsedSymptoms.length === 0) throw new Error('No symptoms parsed');
 
   // UMLS map each symptom
@@ -378,6 +381,7 @@ async function buildPatientCase(caseDescription) {
   return {
     demographics,
     symptoms: mappedSymptoms,
+    excludedFindings,
     symptomPatterns: null,
     patientHypothesis: null,
     medicalHistory: {

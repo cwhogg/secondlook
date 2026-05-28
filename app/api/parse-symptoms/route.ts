@@ -63,7 +63,7 @@ Patient Information:
 
 Patient Description: "${text}"
 
-Extract symptoms and return them as a JSON object with this exact structure:
+Extract symptoms AND explicitly excluded/denied findings, returning them as a JSON object with this exact structure:
 {
   "symptoms": [
     {
@@ -75,6 +75,9 @@ Extract symptoms and return them as a JSON object with this exact structure:
       "bodyPart": "affected body part or null",
       "category": "motor|sensory|pain|cognitive|autonomic|constitutional"
     }
+  ],
+  "excludedFindings": [
+    "clinical-term-for-an-explicitly-absent-or-ruled-out-finding"
   ]
 }
 
@@ -103,6 +106,20 @@ FIELD REQUIREMENTS:
 - "category": classify as motor, sensory, pain, cognitive, autonomic, or constitutional
 
 Every distinct symptom or functional complaint MUST be extracted as a separate entry. Do not skip descriptions just because they are colloquial or anecdotal.
+
+EXCLUDED FINDINGS — these are equally important:
+A finding is "excluded" when the description explicitly says it is ABSENT, NEGATIVE, NORMAL, DENIED, or RULED OUT. Examples that produce excludedFindings entries:
+- "However, the following features were excluded: Pericardial effusion, Bicuspid aortic valve, ..." → excludedFindings: ["Pericardial effusion", "Bicuspid aortic valve", ...]
+- "denies fever, chills, or weight loss" → excludedFindings: ["fever", "chills", "weight loss"]
+- "no chest pain or shortness of breath" → excludedFindings: ["chest pain", "shortness of breath"]
+- "normal vision, hearing intact" → excludedFindings: ["vision loss", "hearing loss"]
+
+Rules for excludedFindings:
+- Use clinical / SNOMED-style terms, NOT the raw negated phrase ("fever" not "no fever").
+- Keep one finding per array entry — split compound denials.
+- ONLY include findings that are clearly stated as absent. Do not infer.
+- If nothing is explicitly excluded, return excludedFindings: [].
+- Excluded findings must NEVER also appear in the symptoms array.
 `
 
     const response = await callOpenAIWithRetry(openaiApiKey, [

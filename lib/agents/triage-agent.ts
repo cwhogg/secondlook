@@ -104,6 +104,7 @@ export class TriageAgent extends BaseAgent {
         maxResults: 75,
         minScore: 0.03,
         filterSystems: bodySystems,
+        excludedFindings: patientCase.excludedFindings,
       }
     );
 

@@ -93,6 +93,7 @@ export async function findMatchingDiseases(
     minScore?: number;
     filterSystems?: BodySystem[];
     filterSpecialists?: string[];
+    excludedFindings?: string[];
   }
 ): Promise<DiseaseMatch[]> {
   const db = loadDiseaseDatabase();
@@ -100,6 +101,9 @@ export async function findMatchingDiseases(
   const minScore = options?.minScore ?? 0.05;
   const index = loadEmbeddingsIndex();
   const patientBodySystems: BodySystem[] = options?.filterSystems ?? [];
+  const normalizedExclusions = (options?.excludedFindings ?? [])
+    .map((s) => s.toLowerCase().trim())
+    .filter((s) => s.length > 2);
 
   // Generate patient symptom embeddings if index is available
   let patientEmbeddings: Map<string, EmbeddingVector> | null = null;
@@ -108,7 +112,10 @@ export async function findMatchingDiseases(
   }
 
   const scoreFn = (disease: DiseaseProfile) =>
-    scoreDisease(disease, symptoms, demographics, index, patientEmbeddings, patientBodySystems);
+    applyExclusionPenalty(
+      scoreDisease(disease, symptoms, demographics, index, patientEmbeddings, patientBodySystems),
+      normalizedExclusions,
+    );
 
   // --- Pass 1: Filtered by body systems / specialists ---
   let filteredCandidates = db;
@@ -512,4 +519,37 @@ function computeDemographicFit(disease: DiseaseProfile, demographics: Demographi
 
 function computePrevalenceBonus(_disease: DiseaseProfile): number {
   return 0.5;
+}
+
+/**
+ * Penalize a disease match when the patient's excluded findings list
+ * contains symptoms the disease lists as pathognomonic (>90%) or common
+ * (>50%). One excluded pathognomonic feature is a major contradiction;
+ * an excluded common feature is a minor one.
+ *
+ * Multiplicative penalty applied to the existing matchScore in place. No
+ * effect when no exclusions are present.
+ */
+function applyExclusionPenalty(
+  match: DiseaseMatch,
+  normalizedExclusions: string[],
+): DiseaseMatch {
+  if (normalizedExclusions.length === 0) return match;
+
+  const findingNormalized = (s: string) => s.toLowerCase().trim();
+  const isPresent = (target: string) =>
+    normalizedExclusions.some(
+      (ex) => ex === target || ex.includes(target) || target.includes(ex),
+    );
+
+  let penalty = 1.0;
+  for (const s of match.disease.symptoms.pathognomonic) {
+    if (isPresent(findingNormalized(s.symptomName))) penalty *= 0.4;
+  }
+  for (const s of match.disease.symptoms.common) {
+    if (isPresent(findingNormalized(s.symptomName))) penalty *= 0.7;
+  }
+
+  if (penalty === 1.0) return match;
+  return { ...match, matchScore: match.matchScore * penalty };
 }

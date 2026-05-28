@@ -463,8 +463,17 @@ ${d.diagnosticCriteria.minimumForDiagnosis ? `Minimum: ${d.diagnosticCriteria.mi
       }).join('\n---');
     }
 
+    const excludedSection = patientCase.excludedFindings && patientCase.excludedFindings.length > 0
+      ? `
+
+EXPLICITLY EXCLUDED FINDINGS (absent / denied / ruled out):
+${patientCase.excludedFindings.map((f) => `- ${f}`).join('\n')}
+
+These are negative evidence with diagnostic weight, not missing data. When evaluating each hypothesis, check whether any of the disease's pathognomonic or common features appears in this excluded list — if so, that is a strong contradiction. Reflect it in the contradictions array AND lower the criteriaFulfillment if a required/major criterion is on the excluded list.`
+      : '';
+
     return `PATIENT SYMPTOMS:
-${symptomSummary}
+${symptomSummary}${excludedSection}
 
 Demographics: Age ${patientCase.demographics.age}, ${patientCase.demographics.sex}
 

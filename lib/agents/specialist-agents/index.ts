@@ -270,10 +270,15 @@ Demographics: Age ${patientCase.demographics.age}, ${patientCase.demographics.se
 ${patientCase.chiefComplaint?.description ? `Chief Complaint: "${patientCase.chiefComplaint.description}"
 Duration: ${patientCase.chiefComplaint.duration || 'unknown'}
 Severity: ${patientCase.chiefComplaint.severity || 'unknown'}/10
-` : ''}Symptoms:
+` : ''}Symptoms (present):
 ${symptomList}
 
-${patientCase.medicalHistory?.familyHistory?.length ? `Family History: ${patientCase.medicalHistory.familyHistory.join(', ')}` : ''}
+${patientCase.excludedFindings && patientCase.excludedFindings.length > 0 ? `Findings EXPLICITLY EXCLUDED (denied / absent / ruled out):
+${patientCase.excludedFindings.map((f) => `- ${f}`).join('\n')}
+
+These are NOT missing data — they are negative evidence. A diagnosis whose pathognomonic or expected common feature appears in this list should be downranked or ruled out; cite the absent feature as contradictory evidence in your reasoning.
+
+` : ''}${patientCase.medicalHistory?.familyHistory?.length ? `Family History: ${patientCase.medicalHistory.familyHistory.join(', ')}` : ''}
 ${patientCase.medicalHistory?.pastMedicalHistory?.length ? `Past Medical History: ${patientCase.medicalHistory.pastMedicalHistory.join(', ')}` : ''}
 ${patientCase.medicalHistory?.currentMedications?.length ? `Current Medications: ${JSON.stringify(patientCase.medicalHistory.currentMedications)}` : ''}
 ${patientCase.patientHypothesis ? `Patient suspects: "${patientCase.patientHypothesis}"` : ''}

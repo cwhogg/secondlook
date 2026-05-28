@@ -61,6 +61,9 @@ export interface PatientCase {
   demographics: Demographics;
   chiefComplaint?: ChiefComplaint;
   symptoms: MappedSymptom[];
+  // Clinical findings the source explicitly marked absent/denied/ruled-out.
+  // Used as negative evidence by retrieval and downstream agents.
+  excludedFindings?: string[];
   symptomPatterns: SymptomPatternData | null;
   patientHypothesis: string | null;
   medicalHistory: {

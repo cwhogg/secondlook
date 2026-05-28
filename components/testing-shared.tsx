@@ -175,12 +175,15 @@ export async function buildPatientCase(
   }
 
   const parsedSymptoms: any[] = parsed?.symptoms || []
+  const excludedFindings: string[] = Array.isArray(parsed?.excludedFindings)
+    ? parsed.excludedFindings.filter((s: unknown): s is string => typeof s === "string" && s.trim().length > 0)
+    : []
 
   if (parsedSymptoms.length === 0) {
     throw new Error("Symptom parsing returned no symptoms from narrative")
   }
 
-  onProgress?.(`Parsed ${parsedSymptoms.length} symptoms, mapping to UMLS...`)
+  onProgress?.(`Parsed ${parsedSymptoms.length} symptoms${excludedFindings.length > 0 ? ` (${excludedFindings.length} excluded findings)` : ''}, mapping to UMLS...`)
 
   const mappedSymptoms: MappedSymptom[] = []
   for (let i = 0; i < parsedSymptoms.length; i++) {
@@ -197,6 +200,7 @@ export async function buildPatientCase(
     patientCase: {
       demographics: patient.demographics,
       symptoms: mappedSymptoms,
+      excludedFindings,
       symptomPatterns: null,
       patientHypothesis: null,
       medicalHistory: {

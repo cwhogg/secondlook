@@ -9,7 +9,14 @@ interface DocumentUploadProps {
   disabled?: boolean
 }
 
-type UploadState = "idle" | "processing" | "done" | "error"
+type ItemState = "processing" | "done" | "error"
+
+interface UploadItem {
+  id: string
+  fileName: string
+  state: ItemState
+  error?: string
+}
 
 const ACCEPTED_TYPES = [".pdf", ".jpg", ".jpeg", ".png", ".txt"]
 const ACCEPTED_MIME_TYPES = [
@@ -114,52 +121,44 @@ async function extractViaApi(
 }
 
 export function DocumentUpload({ onTextExtracted, disabled }: DocumentUploadProps) {
-  const [state, setState] = useState<UploadState>("idle")
-  const [fileName, setFileName] = useState("")
-  const [error, setError] = useState("")
+  const [items, setItems] = useState<UploadItem[]>([])
   const [isDragOver, setIsDragOver] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  const resetState = useCallback(() => {
-    setState("idle")
-    setFileName("")
-    setError("")
-    if (fileInputRef.current) fileInputRef.current.value = ""
+  const updateItem = useCallback((id: string, patch: Partial<UploadItem>) => {
+    setItems((prev) => prev.map((it) => (it.id === id ? { ...it, ...patch } : it)))
+  }, [])
+
+  const removeItem = useCallback((id: string) => {
+    setItems((prev) => prev.filter((it) => it.id !== id))
   }, [])
 
   const processFile = useCallback(
-    async (file: File) => {
-      // Validate file type
+    async (file: File, id: string) => {
       const ext = "." + file.name.split(".").pop()?.toLowerCase()
+
       if (!ACCEPTED_TYPES.includes(ext) && !ACCEPTED_MIME_TYPES.includes(file.type)) {
-        setError(`Unsupported file type. Please upload a PDF, image (JPG/PNG), or text file.`)
-        setState("error")
+        updateItem(id, { state: "error", error: "Unsupported file type (PDF, JPG/PNG, or text only)" })
         return
       }
 
-      // Validate file size
       if (file.size > MAX_FILE_SIZE) {
-        setError(`File too large (${formatFileSize(file.size)}). Maximum size is 20MB.`)
-        setState("error")
+        updateItem(id, {
+          state: "error",
+          error: `File too large (${formatFileSize(file.size)}). Maximum 20MB.`,
+        })
         return
       }
-
-      setFileName(file.name)
-      setState("processing")
-      setError("")
 
       try {
         let extractedText: string
 
         if (file.type === "text/plain" || ext === ".txt") {
-          // Plain text: read directly, no API call
           extractedText = await file.text()
         } else if (file.type === "application/pdf" || ext === ".pdf") {
-          // PDF: render pages to images, send to API
           const images = await renderPdfToImages(file)
           extractedText = await extractViaApi(images, file.name)
         } else {
-          // Image: compress and send to API
           const compressed = await compressImage(file)
           extractedText = await extractViaApi([compressed], file.name)
         }
@@ -168,33 +167,49 @@ export function DocumentUpload({ onTextExtracted, disabled }: DocumentUploadProp
           throw new Error("No text could be extracted from this document.")
         }
 
-        setState("done")
+        updateItem(id, { state: "done" })
         onTextExtracted(extractedText)
       } catch (err: any) {
         console.error("[document-upload] Error:", err)
-        setError(err.message || "Failed to extract text from document.")
-        setState("error")
+        updateItem(id, { state: "error", error: err.message || "Failed to extract text." })
       }
     },
-    [onTextExtracted]
+    [onTextExtracted, updateItem]
+  )
+
+  const processFiles = useCallback(
+    async (files: File[]) => {
+      const newItems: UploadItem[] = files.map((f) => ({
+        id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}-${f.name}`,
+        fileName: f.name,
+        state: "processing" as const,
+      }))
+      setItems((prev) => [...prev, ...newItems])
+
+      for (let i = 0; i < files.length; i++) {
+        await processFile(files[i], newItems[i].id)
+      }
+    },
+    [processFile]
   )
 
   const handleFileSelect = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0]
-      if (file) processFile(file)
+      const files = Array.from(e.target.files || [])
+      if (files.length) processFiles(files)
+      if (fileInputRef.current) fileInputRef.current.value = ""
     },
-    [processFile]
+    [processFiles]
   )
 
   const handleDrop = useCallback(
     (e: React.DragEvent) => {
       e.preventDefault()
       setIsDragOver(false)
-      const file = e.dataTransfer.files?.[0]
-      if (file) processFile(file)
+      const files = Array.from(e.dataTransfer.files || [])
+      if (files.length) processFiles(files)
     },
-    [processFile]
+    [processFiles]
   )
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
@@ -207,40 +222,61 @@ export function DocumentUpload({ onTextExtracted, disabled }: DocumentUploadProp
     setIsDragOver(false)
   }, [])
 
-  if (state === "done") {
-    return (
-      <div className="flex items-center justify-between bg-[#faf6f0] border border-[#d4c5b0] rounded-none px-4 py-3">
-        <div className="flex items-center space-x-2 min-w-0">
-          <FileText className="h-4 w-4 text-[#8b2500] flex-shrink-0" />
-          <span className="text-sm text-gray-700 truncate">
-            Text extracted from <span className="font-medium">{fileName}</span>
-          </span>
-        </div>
-        <button
-          type="button"
-          onClick={resetState}
-          className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 ml-2"
-          aria-label="Remove uploaded document"
-        >
-          <X className="h-4 w-4" />
-        </button>
-      </div>
-    )
-  }
-
-  if (state === "processing") {
-    return (
-      <div className="flex items-center space-x-3 bg-[#faf6f0] border border-[#d4c5b0] rounded-none px-4 py-3">
-        <Loader2 className="h-4 w-4 text-[#8b2500] animate-spin flex-shrink-0" />
-        <span className="text-sm text-gray-700">
-          Extracting text from <span className="font-medium">{fileName}</span>...
-        </span>
-      </div>
-    )
-  }
+  const hasItems = items.length > 0
 
   return (
     <div className="space-y-2">
+      {hasItems && (
+        <ul className="space-y-2">
+          {items.map((item) => (
+            <li
+              key={item.id}
+              className={cn(
+                "flex items-center justify-between border rounded-none px-4 py-3",
+                item.state === "error"
+                  ? "bg-red-50 border-red-200"
+                  : "bg-[#faf6f0] border-[#d4c5b0]"
+              )}
+            >
+              <div className="flex items-center space-x-2 min-w-0 flex-1">
+                {item.state === "processing" ? (
+                  <Loader2 className="h-4 w-4 text-[#8b2500] animate-spin flex-shrink-0" />
+                ) : item.state === "error" ? (
+                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0" />
+                ) : (
+                  <FileText className="h-4 w-4 text-[#8b2500] flex-shrink-0" />
+                )}
+                <span className={cn("text-sm truncate", item.state === "error" ? "text-red-700" : "text-gray-700")}>
+                  {item.state === "processing" ? (
+                    <>
+                      Extracting text from <span className="font-medium">{item.fileName}</span>...
+                    </>
+                  ) : item.state === "error" ? (
+                    <>
+                      <span className="font-medium">{item.fileName}</span>: {item.error}
+                    </>
+                  ) : (
+                    <>
+                      Text extracted from <span className="font-medium">{item.fileName}</span>
+                    </>
+                  )}
+                </span>
+              </div>
+              {item.state !== "processing" && (
+                <button
+                  type="button"
+                  onClick={() => removeItem(item.id)}
+                  className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 ml-2"
+                  aria-label={`Remove ${item.fileName}`}
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+
       <div
         role="button"
         tabIndex={0}
@@ -260,41 +296,27 @@ export function DocumentUpload({ onTextExtracted, disabled }: DocumentUploadProp
             ? "border-gray-200 bg-gray-50 cursor-not-allowed opacity-60"
             : isDragOver
               ? "border-[#8b2500] bg-[#faf6f0]"
-              : state === "error"
-                ? "border-red-300 bg-red-50 hover:border-red-400"
-                : "border-gray-300 hover:border-[#d4c5b0] hover:bg-[#faf6f0]"
+              : "border-gray-300 hover:border-[#d4c5b0] hover:bg-[#faf6f0]"
         )}
       >
         <input
           ref={fileInputRef}
           type="file"
           accept={ACCEPTED_TYPES.join(",")}
+          multiple
           onChange={handleFileSelect}
           className="hidden"
           disabled={disabled}
         />
         <div className="flex items-center justify-center space-x-2">
-          {state === "error" ? (
-            <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0" />
-          ) : (
-            <Upload className="h-5 w-5 text-gray-400 flex-shrink-0" />
-          )}
-          <span className={cn("text-sm", state === "error" ? "text-red-600" : "text-gray-500")}>
-            {state === "error"
-              ? error
-              : "Upload a medical document (PDF, image, or text file)"}
+          <Upload className="h-5 w-5 text-gray-400 flex-shrink-0" />
+          <span className="text-sm text-gray-500">
+            {hasItems
+              ? "Add more documents (PDF, image, or text file)"
+              : "Upload medical documents (PDF, image, or text file) — you can add multiple"}
           </span>
         </div>
       </div>
-      {state === "error" && (
-        <button
-          type="button"
-          onClick={resetState}
-          className="text-sm text-[#8b2500] hover:underline"
-        >
-          Try again
-        </button>
-      )}
     </div>
   )
 }

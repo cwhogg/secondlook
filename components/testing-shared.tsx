@@ -167,17 +167,6 @@ export function deleteTestCases(ids: string[]): void {
   flush()
 }
 
-// Legacy full-array save. Kept for migration scripts that build an entirely
-// new cohort. NEVER call from the UI for large cohorts — Vercel will 413.
-export function saveTestCases(cases: TestCase[]) {
-  fetch("/api/admin/test-cases", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ testCases: cases }),
-  }).catch(() => {
-    /* legacy fire-and-forget — callers know the risk */
-  })
-}
 
 export function computeStats(cases: TestCase[]): TestSuiteStats | null {
   const graded = cases.filter((c) => c.status === "graded" && c.grading)

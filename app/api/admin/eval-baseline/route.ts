@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
 import { callAnthropic } from "@/lib/anthropic"
 
+// o3 reasoning:high and claude-opus-4-7 both take 30-90s on dense vignettes;
+// Vercel's default 10s timeout would kill the request mid-think.
+export const maxDuration = 300
+
 const inputSchema = z.object({
   ppkt_id: z.string(),
   caseDescription: z.string().min(20, "caseDescription too short"),

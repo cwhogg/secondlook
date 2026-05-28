@@ -726,7 +726,16 @@ export default function EvalPage() {
             <div className="flex items-center gap-3 mb-4">
               <StepIndicator label="Fetch" status={getStepStatus("fetch")} />
               <div className="flex-1 h-px bg-[#e8ddd0]" />
-              <StepIndicator label="Pipeline" status={getStepStatus("pipeline")} />
+              <StepIndicator
+                label={
+                  activeTab === "openai"
+                    ? "OpenAI (o3)"
+                    : activeTab === "claude"
+                      ? "Claude (opus-4-7)"
+                      : "Pipeline"
+                }
+                status={getStepStatus("pipeline")}
+              />
               <div className="flex-1 h-px bg-[#e8ddd0]" />
               <StepIndicator label="Grade" status={getStepStatus("grade")} />
             </div>

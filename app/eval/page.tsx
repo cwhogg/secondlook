@@ -224,40 +224,37 @@ export default function EvalPage() {
     }
   }
 
-  // Baseline for the diff. Initialized when the blob load completes so the
-  // initial 333-case load is NOT diffed against [] (which would push every
-  // loaded case into a single huge upsert).
-  const persistedRef = useRef<TestCase[] | null>(null)
-
   useEffect(() => {
-    loadTestCases().then((loaded) => {
-      // Set the baseline BEFORE updating state so the resulting diff effect
-      // run sees prev === next and dispatches nothing.
-      persistedRef.current = loaded
-      setTestCases(loaded)
-    })
+    loadTestCases().then(setTestCases)
   }, [])
 
-  // Diff happens AFTER commit — never inside a setState updater. React 19's
-  // concurrent renderer can call state updaters more than once per logical
-  // update, and side effects in updaters fire each time. The old approach
-  // was triggering a 134-case fat upsert during render.
-  useEffect(() => {
-    const prev = persistedRef.current
-    if (prev === null) return // pre-load; nothing to diff yet
-    const prevById = new Map(prev.map((tc) => [tc.id, tc]))
-    const nextIds = new Set(testCases.map((tc) => tc.id))
-    const upserts = testCases.filter((tc) => prevById.get(tc.id) !== tc)
-    const removedIds = prev.filter((tc) => !nextIds.has(tc.id)).map((tc) => tc.id)
-    if (upserts.length > 0) upsertTestCases(upserts)
-    if (removedIds.length > 0) deleteTestCases(removedIds)
-    persistedRef.current = testCases
-  }, [testCases])
-
-  const updateTestCases = useCallback(
-    (updater: (prev: TestCase[]) => TestCase[]) => setTestCases(updater),
-    [],
-  )
+  // EXPLICIT save: every state mutation fires upsertTestCases for the SPECIFIC
+  // case it touched. No diff, no reference equality games, no possibility of
+  // accidentally sweeping 130+ untouched cases into a single 5.76MB POST.
+  // patchCase reads prev *inside* the setState updater so a freshly-added
+  // case can be patched in the same tick. The side effect captures the
+  // computed value via closure and fires once outside the updater.
+  const upsertCase = useCallback((tc: TestCase) => {
+    setTestCases((prev) => {
+      const exists = prev.some((t) => t.id === tc.id)
+      return exists ? prev.map((t) => (t.id === tc.id ? tc : t)) : [tc, ...prev]
+    })
+    upsertTestCases([tc])
+  }, [])
+  const patchCase = useCallback((id: string, patch: Partial<TestCase>) => {
+    let updated: TestCase | null = null
+    setTestCases((prev) => {
+      const current = prev.find((t) => t.id === id)
+      if (!current) return prev
+      updated = { ...current, ...patch }
+      return prev.map((t) => (t.id === id ? updated! : t))
+    })
+    if (updated) upsertTestCases([updated])
+  }, [])
+  const removeCaseById = useCallback((id: string) => {
+    setTestCases((prev) => prev.filter((t) => t.id !== id))
+    deleteTestCases([id])
+  }, [])
 
   const evalCases = testCases.filter((tc) => tc.testVersion === "Eval")
   const tabCases = evalCases.filter((tc) => tabOf(tc) === activeTab)
@@ -313,24 +310,20 @@ export default function EvalPage() {
     setPipelineEvents([])
     setProgressPercent(0)
 
-    updateTestCases((prev) =>
-      prev.map((tc) =>
-        tc.id === testId
-          ? { ...tc, status: "running" as const, pipelineResult: undefined, grading: undefined, gradingMetadata: undefined, pipelineError: undefined }
-          : tc,
-      ),
-    )
+    patchCase(testId, {
+      status: "running",
+      pipelineResult: undefined,
+      grading: undefined,
+      gradingMetadata: undefined,
+      pipelineError: undefined,
+    })
 
     try {
       setExtractionStatus("Parsing symptoms from narrative...")
       const { patientCase, extractedSymptoms, extractedExcludedFindings } = await buildPatientCase(patient, (msg: string) => setExtractionStatus(msg))
       setExtractionStatus(null)
 
-      updateTestCases((prev) =>
-        prev.map((tc) =>
-          tc.id === testId ? { ...tc, extractedSymptoms, extractedExcludedFindings } : tc,
-        ),
-      )
+      patchCase(testId, { extractedSymptoms, extractedExcludedFindings })
 
       const abortController = new AbortController()
       abortRef.current = abortController
@@ -389,11 +382,7 @@ export default function EvalPage() {
           } else if (event.type === "result") {
             if (!event.success || !event.analysis) throw new Error("Invalid analysis result from pipeline")
             pipelineResult = event.analysis
-            updateTestCases((prev) =>
-              prev.map((tc) =>
-                tc.id === testId ? { ...tc, status: "completed" as const, pipelineResult: pipelineResult! } : tc,
-              ),
-            )
+            patchCase(testId, { status: "completed", pipelineResult: pipelineResult! })
           } else if (event.type === "error") {
             throw new Error(event.error || "Pipeline error")
           }
@@ -405,11 +394,7 @@ export default function EvalPage() {
       return pipelineResult
     } catch (err: any) {
       if (!(err instanceof DOMException && err.name === "AbortError")) {
-        updateTestCases((prev) =>
-          prev.map((tc) =>
-            tc.id === testId ? { ...tc, status: "error" as const, pipelineError: err.message } : tc,
-          ),
-        )
+        patchCase(testId, { status: "error", pipelineError: err.message })
       }
       throw err
     } finally {
@@ -437,13 +422,7 @@ export default function EvalPage() {
         throw new Error(err.error || `Grading failed: ${response.statusText}`)
       }
       const data = await response.json()
-      updateTestCases((prev) =>
-        prev.map((tc) =>
-          tc.id === testId
-            ? { ...tc, status: "graded" as const, grading: data.grading, gradingMetadata: data.gradingMetadata }
-            : tc,
-        ),
-      )
+      patchCase(testId, { status: "graded", grading: data.grading, gradingMetadata: data.gradingMetadata })
     } finally {
       setIsGrading(false)
     }
@@ -459,13 +438,13 @@ export default function EvalPage() {
     setProgressPercent(0)
     setExtractionStatus(`Calling ${model === "openai" ? "OpenAI (o3)" : "Claude (opus-4-7)"} ...`)
 
-    updateTestCases((prev) =>
-      prev.map((tc) =>
-        tc.id === testId
-          ? { ...tc, status: "running" as const, pipelineResult: undefined, grading: undefined, gradingMetadata: undefined, pipelineError: undefined }
-          : tc,
-      ),
-    )
+    patchCase(testId, {
+      status: "running",
+      pipelineResult: undefined,
+      grading: undefined,
+      gradingMetadata: undefined,
+      pipelineError: undefined,
+    })
 
     try {
       const response = await fetch("/api/admin/eval-baseline", {
@@ -490,19 +469,11 @@ export default function EvalPage() {
       )
       setExtractionStatus(null)
       setProgressPercent(100)
-      updateTestCases((prev) =>
-        prev.map((tc) =>
-          tc.id === testId ? { ...tc, status: "completed" as const, pipelineResult: synth } : tc,
-        ),
-      )
+      patchCase(testId, { status: "completed", pipelineResult: synth })
       return synth
     } catch (err: any) {
       setExtractionStatus(null)
-      updateTestCases((prev) =>
-        prev.map((tc) =>
-          tc.id === testId ? { ...tc, status: "error" as const, pipelineError: err.message } : tc,
-        ),
-      )
+      patchCase(testId, { status: "error", pipelineError: err.message })
       throw err
     } finally {
       setIsRunning(false)
@@ -555,7 +526,7 @@ export default function EvalPage() {
             source: "generated",
           },
         }
-        updateTestCases((prev) => [testCase, ...prev])
+        upsertCase(testCase)
         setActiveTestId(testCase.id)
         try {
           const result =
@@ -588,7 +559,7 @@ export default function EvalPage() {
   }
 
   const handleDelete = (id: string) => {
-    updateTestCases((prev) => prev.filter((tc) => tc.id !== id))
+    removeCaseById(id)
     if (activeTestId === id) setActiveTestId(null)
   }
 

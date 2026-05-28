@@ -273,39 +273,37 @@ export default function AdminPage() {
     }
   }
 
-  // Baseline for the post-commit diff. Initialized when the blob load
-  // completes so the initial cohort isn't diffed against [] and pushed as a
-  // single multi-MB upsert that fails Vercel's body-size limit.
-  const persistedRef = useRef<TestCase[] | null>(null)
-
-  // Load from KV on mount
   useEffect(() => {
-    loadTestCases().then((loaded) => {
-      persistedRef.current = loaded
-      setTestCases(loaded)
-    })
+    loadTestCases().then(setTestCases)
   }, [])
 
-  // Diff in a post-commit effect, NEVER inside a setState updater. React 19's
-  // concurrent renderer can call state updaters more than once per logical
-  // update; side effects belong in useEffect where they only fire after the
-  // state actually commits.
-  useEffect(() => {
-    const prev = persistedRef.current
-    if (prev === null) return
-    const prevById = new Map(prev.map((tc) => [tc.id, tc]))
-    const nextIds = new Set(testCases.map((tc) => tc.id))
-    const upserts = testCases.filter((tc) => prevById.get(tc.id) !== tc)
-    const removedIds = prev.filter((tc) => !nextIds.has(tc.id)).map((tc) => tc.id)
-    if (upserts.length > 0) upsertTestCases(upserts)
-    if (removedIds.length > 0) deleteTestCases(removedIds)
-    persistedRef.current = testCases
-  }, [testCases])
-
-  const updateTestCases = useCallback(
-    (updater: (prev: TestCase[]) => TestCase[]) => setTestCases(updater),
-    [],
-  )
+  // EXPLICIT save helpers — each state change calls upsertTestCases for
+  // exactly the case it touched. No diff, no reference equality, no risk of
+  // mass-upserting untouched cases past Vercel's request size limit.
+  // patchCase reads prev inside the setState updater so a freshly-added
+  // case can be patched in the same tick. The side effect captures the
+  // computed value via closure and fires once outside the updater.
+  const upsertCase = useCallback((tc: TestCase) => {
+    setTestCases((prev) => {
+      const exists = prev.some((t) => t.id === tc.id)
+      return exists ? prev.map((t) => (t.id === tc.id ? tc : t)) : [tc, ...prev]
+    })
+    upsertTestCases([tc])
+  }, [])
+  const patchCase = useCallback((id: string, patch: Partial<TestCase>) => {
+    let updated: TestCase | null = null
+    setTestCases((prev) => {
+      const current = prev.find((t) => t.id === id)
+      if (!current) return prev
+      updated = { ...current, ...patch }
+      return prev.map((t) => (t.id === id ? updated! : t))
+    })
+    if (updated) upsertTestCases([updated])
+  }, [])
+  const removeCaseById = useCallback((id: string) => {
+    setTestCases((prev) => prev.filter((t) => t.id !== id))
+    deleteTestCases([id])
+  }, [])
 
   const activeTest = testCases.find((tc) => tc.id === activeTestId) || null
   const stats = computeStats(testCases)
@@ -363,7 +361,7 @@ export default function AdminPage() {
         generationMetadata: data.generationMetadata,
       }
 
-      updateTestCases((prev) => [newCase, ...prev])
+      upsertCase(newCase)
       setActiveTestId(newCase.id)
       return newCase
     } finally {
@@ -376,9 +374,13 @@ export default function AdminPage() {
     setPipelineEvents([])
     setProgressPercent(0)
 
-    updateTestCases((prev) =>
-      prev.map((tc) => (tc.id === testId ? { ...tc, status: "running" as const, pipelineResult: undefined, grading: undefined, gradingMetadata: undefined, pipelineError: undefined } : tc))
-    )
+    patchCase(testId, {
+      status: "running",
+      pipelineResult: undefined,
+      grading: undefined,
+      gradingMetadata: undefined,
+      pipelineError: undefined,
+    })
 
     try {
       setExtractionStatus("Starting symptom extraction...")
@@ -387,11 +389,7 @@ export default function AdminPage() {
       })
       setExtractionStatus(null)
 
-      updateTestCases((prev) =>
-        prev.map((tc) =>
-          tc.id === testId ? { ...tc, extractedSymptoms, extractedExcludedFindings } : tc,
-        ),
-      )
+      patchCase(testId, { extractedSymptoms, extractedExcludedFindings })
 
       const abortController = new AbortController()
       abortRef.current = abortController
@@ -457,11 +455,7 @@ export default function AdminPage() {
 
             pipelineResult = event.analysis
 
-            updateTestCases((prev) =>
-              prev.map((tc) =>
-                tc.id === testId ? { ...tc, status: "completed" as const, pipelineResult: pipelineResult! } : tc
-              )
-            )
+            patchCase(testId, { status: "completed", pipelineResult: pipelineResult! })
           } else if (event.type === "error") {
             throw new Error(event.error || "Pipeline error")
           }
@@ -476,11 +470,7 @@ export default function AdminPage() {
       return pipelineResult
     } catch (err: any) {
       if (!(err instanceof DOMException && err.name === "AbortError")) {
-        updateTestCases((prev) =>
-          prev.map((tc) =>
-            tc.id === testId ? { ...tc, status: "error" as const, pipelineError: err.message } : tc
-          )
-        )
+        patchCase(testId, { status: "error", pipelineError: err.message })
       }
       throw err
     } finally {
@@ -516,13 +506,7 @@ export default function AdminPage() {
 
       const data = await response.json()
 
-      updateTestCases((prev) =>
-        prev.map((tc) =>
-          tc.id === testId
-            ? { ...tc, status: "graded" as const, grading: data.grading, gradingMetadata: data.gradingMetadata }
-            : tc
-        )
-      )
+      patchCase(testId, { status: "graded", grading: data.grading, gradingMetadata: data.gradingMetadata })
     } finally {
       setIsGrading(false)
     }
@@ -570,9 +554,13 @@ export default function AdminPage() {
         ranAt: new Date().toISOString(),
         gradingVersion: tc.grading.gradingVersion,
       }
-      updateTestCases((prev) =>
-        prev.map((c) => (c.id === tc.id ? { ...c, previousRun: snapshot, pipelineResult: undefined, grading: undefined, gradingMetadata: undefined, pipelineError: undefined } : c))
-      )
+      patchCase(tc.id, {
+        previousRun: snapshot,
+        pipelineResult: undefined,
+        grading: undefined,
+        gradingMetadata: undefined,
+        pipelineError: undefined,
+      })
     }
   }
 
@@ -611,7 +599,7 @@ export default function AdminPage() {
 
   // ===== DELETE =====
   const handleDelete = (id: string) => {
-    updateTestCases((prev) => prev.filter((tc) => tc.id !== id))
+    removeCaseById(id)
     if (activeTestId === id) setActiveTestId(null)
   }
 

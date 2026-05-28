@@ -182,7 +182,7 @@ export function computeStats(cases: TestCase[]): TestSuiteStats | null {
 export async function buildPatientCase(
   patient: GeneratedPatient,
   onProgress?: (msg: string) => void
-): Promise<{ patientCase: any; extractedSymptoms: MappedSymptom[] }> {
+): Promise<{ patientCase: any; extractedSymptoms: MappedSymptom[]; extractedExcludedFindings: string[] }> {
   onProgress?.("Parsing symptoms from narrative...")
   const parseResponse = await fetch("/api/parse-symptoms", {
     method: "POST",
@@ -224,6 +224,7 @@ export async function buildPatientCase(
 
   return {
     extractedSymptoms: mappedSymptoms,
+    extractedExcludedFindings: excludedFindings,
     patientCase: {
       demographics: patient.demographics,
       symptoms: mappedSymptoms,
@@ -494,9 +495,10 @@ export function GroundTruthSection({ groundTruth, collapsed }: { groundTruth: Gr
   )
 }
 
-export function ExtractedSymptomsSection({ symptoms }: { symptoms: MappedSymptom[] }) {
+export function ExtractedSymptomsSection({ symptoms, excludedFindings }: { symptoms: MappedSymptom[]; excludedFindings?: string[] }) {
   const mapped = symptoms.filter((s) => !s.mappingError)
   const failed = symptoms.filter((s) => s.mappingError)
+  const excluded = (excludedFindings || []).filter((s) => s && s.trim().length > 0)
 
   return (
     <div className="border border-[#d4c5b0] bg-white p-4 space-y-3">
@@ -540,6 +542,24 @@ export function ExtractedSymptomsSection({ symptoms }: { symptoms: MappedSymptom
       {failed.length > 0 && (
         <div className="text-xs text-red-500">
           {failed.length} symptom{failed.length > 1 ? "s" : ""} failed UMLS mapping
+        </div>
+      )}
+      {excluded.length > 0 && (
+        <div className="pt-3 border-t border-[#e8ddd0] space-y-1.5">
+          <div className="text-xs font-semibold text-[#8b7355] uppercase tracking-wider">
+            Excluded Findings ({excluded.length})
+          </div>
+          <div className="text-xs text-[#8b7355] italic mb-1">
+            Findings the patient or source explicitly ruled out / denied. Used as negative evidence by retrieval and the specialist + evidence-evaluator agents.
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1">
+            {excluded.map((f, i) => (
+              <div key={i} className="text-sm flex items-start gap-2 text-[#5a5a5a]">
+                <span className="text-[#8b7355]">&minus;</span>
+                <span>{f}</span>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

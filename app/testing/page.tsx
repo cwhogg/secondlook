@@ -250,13 +250,15 @@ export default function AdminPage() {
 
     try {
       setExtractionStatus("Starting symptom extraction...")
-      const { patientCase, extractedSymptoms } = await buildPatientCase(patient, (msg) => {
+      const { patientCase, extractedSymptoms, extractedExcludedFindings } = await buildPatientCase(patient, (msg) => {
         setExtractionStatus(msg)
       })
       setExtractionStatus(null)
 
       updateTestCases((prev) =>
-        prev.map((tc) => (tc.id === testId ? { ...tc, extractedSymptoms } : tc))
+        prev.map((tc) =>
+          tc.id === testId ? { ...tc, extractedSymptoms, extractedExcludedFindings } : tc,
+        ),
       )
 
       const abortController = new AbortController()
@@ -718,7 +720,10 @@ export default function AdminPage() {
 
               {/* Extracted Symptoms (after pipeline has run extraction) */}
               {currentActiveTest.extractedSymptoms && currentActiveTest.extractedSymptoms.length > 0 && (
-                <ExtractedSymptomsSection symptoms={currentActiveTest.extractedSymptoms} />
+                <ExtractedSymptomsSection
+                  symptoms={currentActiveTest.extractedSymptoms}
+                  excludedFindings={currentActiveTest.extractedExcludedFindings}
+                />
               )}
 
               {/* Rerun — for completed, graded, or error states */}

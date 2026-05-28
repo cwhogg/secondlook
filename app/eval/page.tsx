@@ -210,10 +210,14 @@ export default function EvalPage() {
 
     try {
       setExtractionStatus("Parsing symptoms from narrative...")
-      const { patientCase, extractedSymptoms } = await buildPatientCase(patient, (msg: string) => setExtractionStatus(msg))
+      const { patientCase, extractedSymptoms, extractedExcludedFindings } = await buildPatientCase(patient, (msg: string) => setExtractionStatus(msg))
       setExtractionStatus(null)
 
-      updateTestCases((prev) => prev.map((tc) => (tc.id === testId ? { ...tc, extractedSymptoms } : tc)))
+      updateTestCases((prev) =>
+        prev.map((tc) =>
+          tc.id === testId ? { ...tc, extractedSymptoms, extractedExcludedFindings } : tc,
+        ),
+      )
 
       const abortController = new AbortController()
       abortRef.current = abortController
@@ -593,7 +597,10 @@ export default function EvalPage() {
               </div>
 
               {currentActiveTest.extractedSymptoms && currentActiveTest.extractedSymptoms.length > 0 && (
-                <ExtractedSymptomsSection symptoms={currentActiveTest.extractedSymptoms} />
+                <ExtractedSymptomsSection
+                  symptoms={currentActiveTest.extractedSymptoms}
+                  excludedFindings={currentActiveTest.extractedExcludedFindings}
+                />
               )}
 
               {isRunning && activeTestId === currentActiveTest.id && (

@@ -146,6 +146,9 @@ export interface TestCase {
   generatedPatient: GeneratedPatient;
   generationMetadata: GenerationMetadata;
   extractedSymptoms?: MappedSymptom[];
+  // Findings the source explicitly ruled out / denied — parsed alongside
+  // symptoms by /api/parse-symptoms and fed to the pipeline as negative evidence.
+  extractedExcludedFindings?: string[];
   pipelineResult?: AnalysisResult;
   pipelineError?: string;
   grading?: TestGrading;

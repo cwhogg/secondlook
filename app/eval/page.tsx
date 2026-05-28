@@ -30,9 +30,10 @@ interface EvalCase {
 const EVAL_VERSION_COLORS: Record<string, string> = {
   v1: "bg-gray-50 text-gray-700 border-gray-300",
   v2: "bg-blue-50 text-blue-800 border-blue-300",
+  v3: "bg-emerald-50 text-emerald-800 border-emerald-300",
 }
 
-function EvalVersionBadge({ version }: { version?: 'v1' | 'v2' }) {
+function EvalVersionBadge({ version }: { version?: 'v1' | 'v2' | 'v3' }) {
   if (!version) return null
   const cls = EVAL_VERSION_COLORS[version] ?? "bg-gray-50 text-gray-700 border-gray-300"
   return (
@@ -363,7 +364,7 @@ export default function EvalPage() {
           difficulty: 3,
           categoryHint: evalCase.ppkt_id,
           testVersion: "Eval",
-          evalVersion: "v2",
+          evalVersion: "v3",
           status: "generated",
           source: "generated",
           groundTruth,

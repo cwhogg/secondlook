@@ -136,8 +136,10 @@ export interface TestCase {
   testVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12' | 'v13' | 'Eval';
   // For Eval-tagged testCases: which version of the pipeline produced them.
   // v1 = pre-2026-05-27 pipeline (5-cap on diagnoses, no family expansion).
-  // v2 = pipeline including the 2026-05-27 changes (10-cap synth + family expansion).
-  evalVersion?: 'v1' | 'v2';
+  // v2 = 2026-05-27 pipeline: 10-cap synth + KB-linked family expansion.
+  // v3 = v2 + excluded-findings integration (retrieval penalty, specialist
+  //      + evidence-evaluator negative-evidence handling).
+  evalVersion?: 'v1' | 'v2' | 'v3';
   status: TestCaseStatus;
   source?: 'generated';
   groundTruth: GroundTruth;

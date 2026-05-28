@@ -72,14 +72,41 @@ export async function loadTestCases(): Promise<TestCase[]> {
   }
 }
 
+// Serialized save coordinator. Each call schedules a save with the most
+// recent testCases snapshot; if a save is already in flight, the new payload
+// is held and dispatched when the current one returns. This protects against
+// rapid sequential calls (e.g. /eval running multiple cases, each emitting
+// 4+ state updates) racing at the server such that an older snapshot lands
+// after a newer one and wipes out the newer data.
+let saveInFlight: Promise<void> | null = null
+let pendingPayload: TestCase[] | null = null
+
+async function dispatchSave(cases: TestCase[]): Promise<void> {
+  try {
+    await fetch("/api/admin/test-cases", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ testCases: cases }),
+    })
+  } catch {
+    // Network/server errors are surfaced separately by the calling page;
+    // suppress here so a transient failure does not abort the queue.
+  }
+  if (pendingPayload) {
+    const next = pendingPayload
+    pendingPayload = null
+    saveInFlight = dispatchSave(next)
+    return saveInFlight
+  }
+  saveInFlight = null
+}
+
 export function saveTestCases(cases: TestCase[]) {
-  fetch("/api/admin/test-cases", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ testCases: cases }),
-  }).catch(() => {
-    // Fire-and-forget — state is source of truth
-  })
+  if (saveInFlight) {
+    pendingPayload = cases
+    return
+  }
+  saveInFlight = dispatchSave(cases)
 }
 
 export function computeStats(cases: TestCase[]): TestSuiteStats | null {

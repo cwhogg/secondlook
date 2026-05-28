@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback, useRef } from "react"
+import { Fragment, useState, useEffect, useCallback, useRef } from "react"
 import type { TestCase, TestSuiteStats, GroundTruth, GeneratedPatient } from "@/lib/types/admin"
 import type { AnalysisResult, DiagnosisHypothesis } from "@/lib/types/index"
 import type { PipelineProgress } from "@/lib/types/pipeline"
@@ -1329,20 +1329,32 @@ function TrioStatusChip({ label, status }: { label: string; status: "pending" | 
 }
 
 function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
-  const trio = getTrioCohort(testCases)
-  const n = trio.secondlook.length
-  const rows = MODEL_TABS.map((mode) => ({ mode, stats: computeStats(trio[mode]) }))
+  const trios = getMatchedTrios(testCases)
+  const totalN = trios.length
+
+  // Group trios by evalVersion so each pipeline revision gets its own
+  // rows-block. Without this, a 1-case v4 sample silently averages into the
+  // 30-case v3 cohort and the regression test becomes meaningless.
+  const byVersion = new Map<string, MatchedTrio[]>()
+  for (const t of trios) {
+    const v = t.secondlook.evalVersion ?? "unknown"
+    if (!byVersion.has(v)) byVersion.set(v, [])
+    byVersion.get(v)!.push(t)
+  }
+  // Newest version first (v4 > v3 > v2 > v1 > unknown).
+  const versions = Array.from(byVersion.keys()).sort((a, b) => b.localeCompare(a))
+
   return (
     <div className="border border-[#d4c5b0] bg-white mb-6">
       <div className="px-4 py-3 border-b border-[#e8ddd0]">
         <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
-          Matched-trio comparison ({n} case{n === 1 ? "" : "s"} run on all three models)
+          Matched-trio comparison ({totalN} case{totalN === 1 ? "" : "s"} run on all three models)
         </div>
         <div className="text-xs text-[#8b7355] mt-1 italic">
-          Same case denominator per row — only cases where SecondLook, OpenAI, and Claude all returned a graded result.
+          Same case denominator per row within each version block — only cases where SecondLook, OpenAI, and Claude all returned a graded result.
         </div>
       </div>
-      {n === 0 ? (
+      {totalN === 0 ? (
         <div className="px-4 py-8 text-center text-sm text-[#8b7355]">
           No matched trios yet. Run a batch below to populate this table.
         </div>
@@ -1360,24 +1372,45 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
               </tr>
             </thead>
             <tbody>
-              {rows.map(({ mode, stats }) => (
-                <tr key={mode} className="border-b border-[#e8ddd0] last:border-b-0">
-                  <td className="py-2.5 px-4 sm:px-5 text-[#2a2a2a] font-medium">{MODEL_DISPLAY[mode]}</td>
-                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#5a5a5a] tabular-nums">{stats?.gradedTests ?? 0}</td>
-                  <td className="py-2.5 px-4 sm:px-5 text-right font-medium text-[#2a2a2a] tabular-nums">
-                    {stats ? stats.avgScore.toFixed(1) : "—"}
-                  </td>
-                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">
-                    {stats ? `${Math.round(stats.top1Rate * 100)}%` : "—"}
-                  </td>
-                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">
-                    {stats ? `${Math.round(stats.top3Rate * 100)}%` : "—"}
-                  </td>
-                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">
-                    {stats ? `${Math.round(stats.top5Rate * 100)}%` : "—"}
-                  </td>
-                </tr>
-              ))}
+              {versions.map((v) => {
+                const subTrios = byVersion.get(v)!
+                const subN = subTrios.length
+                const cohort: Record<ModelTab, TestCase[]> = {
+                  secondlook: subTrios.map((t) => t.secondlook),
+                  openai: subTrios.map((t) => t.openai),
+                  claude: subTrios.map((t) => t.claude),
+                }
+                return (
+                  <Fragment key={v}>
+                    <tr className="bg-[#fbf6ec] border-b border-[#e8ddd0]">
+                      <td colSpan={6} className="py-1.5 px-4 sm:px-5 text-[11px] uppercase tracking-wider text-[#8b7355] font-semibold">
+                        Eval {v} — {subN} case{subN === 1 ? "" : "s"}
+                      </td>
+                    </tr>
+                    {MODEL_TABS.map((mode) => {
+                      const stats = computeStats(cohort[mode])
+                      return (
+                        <tr key={`${v}-${mode}`} className="border-b border-[#e8ddd0] last:border-b-0">
+                          <td className="py-2.5 px-4 sm:px-5 text-[#2a2a2a] font-medium">{MODEL_DISPLAY[mode]} {v}</td>
+                          <td className="py-2.5 px-4 sm:px-5 text-right text-[#5a5a5a] tabular-nums">{stats?.gradedTests ?? 0}</td>
+                          <td className="py-2.5 px-4 sm:px-5 text-right font-medium text-[#2a2a2a] tabular-nums">
+                            {stats ? stats.avgScore.toFixed(1) : "—"}
+                          </td>
+                          <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">
+                            {stats ? `${Math.round(stats.top1Rate * 100)}%` : "—"}
+                          </td>
+                          <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">
+                            {stats ? `${Math.round(stats.top3Rate * 100)}%` : "—"}
+                          </td>
+                          <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">
+                            {stats ? `${Math.round(stats.top5Rate * 100)}%` : "—"}
+                          </td>
+                        </tr>
+                      )
+                    })}
+                  </Fragment>
+                )
+              })}
             </tbody>
           </table>
         </div>

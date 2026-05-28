@@ -638,29 +638,39 @@ export default function EvalPage() {
           <p className="text-sm text-[#8b7355] mt-1">{TAB_SUBTITLE[activeTab]}</p>
         </div>
 
-        {/* Tab switcher */}
+        {/* Tab switcher — always navigable. The current run continues in
+            the background; tab disable was wrong UX. Single-run semantics
+            still apply (only one batch at a time); concurrent-runs across
+            tabs is a follow-up. */}
         <div className="border-b border-[#d4c5b0] mb-6 flex flex-wrap gap-1">
-          {(["secondlook", "openai", "claude"] as EvalTab[]).map((tab) => (
-            <button
-              key={tab}
-              onClick={() => {
-                if (isAnyRunning) return
-                setActiveTab(tab)
-                setActiveTestId(null)
-              }}
-              disabled={isAnyRunning}
-              className={`px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
-                activeTab === tab
-                  ? "border-[#8b2500] text-[#8b2500]"
-                  : "border-transparent text-[#8b7355] hover:text-[#5a5a5a] hover:border-[#d4c5b0]"
-              }`}
-            >
-              {TAB_LABEL[tab]}
-              <span className="ml-2 text-xs text-[#8b7355]">
-                ({evalCases.filter((tc) => tabOf(tc) === tab).length})
-              </span>
-            </button>
-          ))}
+          {(["secondlook", "openai", "claude"] as EvalTab[]).map((tab) => {
+            const isRunningTab = isAnyRunning && tab === activeTab
+            return (
+              <button
+                key={tab}
+                onClick={() => {
+                  setActiveTab(tab)
+                  setActiveTestId(null)
+                }}
+                className={`px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ${
+                  activeTab === tab
+                    ? "border-[#8b2500] text-[#8b2500]"
+                    : "border-transparent text-[#8b7355] hover:text-[#5a5a5a] hover:border-[#d4c5b0]"
+                }`}
+              >
+                {TAB_LABEL[tab]}
+                {isRunningTab && (
+                  <span
+                    title="A run is in progress on this tab"
+                    className="ml-2 inline-block w-1.5 h-1.5 bg-[#8b2500] rounded-full animate-pulse align-middle"
+                  />
+                )}
+                <span className="ml-2 text-xs text-[#8b7355]">
+                  ({evalCases.filter((tc) => tabOf(tc) === tab).length})
+                </span>
+              </button>
+            )
+          })}
         </div>
 
         {evalStats && <StatsBanner stats={evalStats} hideDifficultyBreakdown />}

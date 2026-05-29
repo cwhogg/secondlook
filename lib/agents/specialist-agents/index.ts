@@ -285,7 +285,12 @@ ${patientCase.excludedFindings.map((f) => `- ${f}`).join('\n')}
 
 These are NOT missing data — they are negative evidence. A diagnosis whose pathognomonic or expected common feature appears in this list should be downranked or ruled out; cite the absent feature as contradictory evidence in your reasoning.
 
-` : ''}${patientCase.medicalHistory?.familyHistory?.length ? `Family History: ${patientCase.medicalHistory.familyHistory.join(', ')}` : ''}
+` : ''}${(() => {
+  // Lazy require so this module doesn't grow a circular dep with the pipeline layer.
+  const { formatLabsForPrompt } = require('../../pipeline/lab-utils');
+  return formatLabsForPrompt(patientCase.labResults);
+})()}
+${patientCase.medicalHistory?.familyHistory?.length ? `Family History: ${patientCase.medicalHistory.familyHistory.join(', ')}` : ''}
 ${patientCase.medicalHistory?.pastMedicalHistory?.length ? `Past Medical History: ${patientCase.medicalHistory.pastMedicalHistory.join(', ')}` : ''}
 ${patientCase.medicalHistory?.currentMedications?.length ? `Current Medications: ${JSON.stringify(patientCase.medicalHistory.currentMedications)}` : ''}
 ${patientCase.patientHypothesis ? `Patient suspects: "${patientCase.patientHypothesis}"` : ''}

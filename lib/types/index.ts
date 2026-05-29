@@ -57,6 +57,45 @@ export interface SymptomPatternData {
   symptomsThatDontFitPatterns: number[];
 }
 
+// Patient-uploaded structured lab result. Extracted from PDF/image lab
+// reports by /api/extract-labs (Phase 1), or entered manually. Carried
+// through PatientCase so specialists, evidence-evaluator, and retrieval can
+// use the actual numbers instead of only the verbalized symptom narrative.
+export interface LabResult {
+  // What the patient sees on their report. Canonical analyte name where the
+  // extractor recognized it (e.g. "Alanine aminotransferase (ALT)"); raw
+  // text otherwise.
+  testName: string;
+  // Raw value as printed. Kept as string so qualitative results
+  // ("positive", "negative", "trace") survive without forcing a number.
+  value: string;
+  // Parsed numeric form when value is numeric. NaN/undefined otherwise.
+  numericValue?: number;
+  unit?: string;
+  // The reference range printed on the report itself — we trust the lab's
+  // own range, which already accounts for patient age/sex.
+  referenceRange?: {
+    low?: number;
+    high?: number;
+    raw: string;
+  };
+  // H = high, L = low, HH/LL = critical high/low, CRIT = critical value.
+  // null when the value is in-range; undefined when the report did not flag.
+  flag?: 'H' | 'L' | 'HH' | 'LL' | 'CRIT' | null;
+  dateDrawn?: string; // ISO date when the specimen was drawn
+  labName?: string;   // e.g. "LabCorp", "Quest Diagnostics"
+  // Phase 2: best-guess LOINC code. Not all results will have one; used for
+  // mechanical KB criteria matching when present.
+  loincCode?: string;
+  source: 'extracted' | 'manual';
+  // 0-1 — how confident the extractor is in this row. Low confidence rows
+  // should be highlighted in the verification UI.
+  confidence: number;
+  // Filename of the source upload, so the verification UI can show which
+  // file each row came from when the user uploaded multiple.
+  sourceFile?: string;
+}
+
 export interface PatientCase {
   demographics: Demographics;
   chiefComplaint?: ChiefComplaint;
@@ -64,6 +103,9 @@ export interface PatientCase {
   // Clinical findings the source explicitly marked absent/denied/ruled-out.
   // Used as negative evidence by retrieval and downstream agents.
   excludedFindings?: string[];
+  // User-uploaded structured lab values; populated from PDF/image uploads
+  // on step-2 after the user reviews and confirms the extraction.
+  labResults?: LabResult[];
   symptomPatterns: SymptomPatternData | null;
   patientHypothesis: string | null;
   medicalHistory: {

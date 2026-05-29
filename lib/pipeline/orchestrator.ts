@@ -7,6 +7,7 @@ import { SynthesisAgent } from '../agents/synthesizer';
 import { ReportGenerator } from '../agents/report-generator';
 import { expandFamilyVariants } from './family-expansion';
 import { applyFamilyExpansionScoring } from './evidence-scoring';
+import { deriveSymptomsFromLabs } from './lab-utils';
 import { AgentOutput } from '../agents/types';
 import { BudgetTracker } from './budget';
 import { getDiseaseCount, findFamilySiblings, computeDifferentiatingTests, loadDiseaseDatabase } from '../knowledge';
@@ -31,6 +32,22 @@ export class DiagnosticPipeline {
     const pipelineStart = Date.now();
 
     try {
+      // ===== STAGE 0: Lab-derived findings =====
+      // Convert uploaded labs flagged H/L/HH/LL/CRIT into MappedSymptom-shaped
+      // entries that retrieval and downstream agents see alongside the user-
+      // narrated symptoms. Without this, labs are visible to specialists in
+      // their prompt (Phase 1) but invisible to the symptom-overlap retrieval
+      // scoring, which means we miss the rare-disease cases where the only
+      // strong clue is a specific lab abnormality the patient never thought
+      // to verbalize ("low ceruloplasmin" -> Wilson's).
+      const derivedLabSymptoms = deriveSymptomsFromLabs(patientCase.labResults);
+      if (derivedLabSymptoms.length > 0) {
+        patientCase = {
+          ...patientCase,
+          symptoms: [...patientCase.symptoms, ...derivedLabSymptoms],
+        };
+      }
+
       // ===== STAGE 1: TRIAGE =====
       const triageAgent = new TriageAgent();
       const triageResult = await triageAgent.execute({ patientCase });

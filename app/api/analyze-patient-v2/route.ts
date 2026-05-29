@@ -43,11 +43,34 @@ const symptomSchema = z.object({
   text: z.string().nullable().optional(),
 });
 
+const labResultSchema = z.object({
+  testName: z.string().min(1),
+  value: z.string(),
+  numericValue: z.number().nullable().optional(),
+  unit: z.string().nullable().optional(),
+  referenceRange: z
+    .object({
+      low: z.number().nullable().optional(),
+      high: z.number().nullable().optional(),
+      raw: z.string(),
+    })
+    .nullable()
+    .optional(),
+  flag: z.enum(['H', 'L', 'HH', 'LL', 'CRIT']).nullable().optional(),
+  dateDrawn: z.string().nullable().optional(),
+  labName: z.string().nullable().optional(),
+  loincCode: z.string().nullable().optional(),
+  source: z.enum(['extracted', 'manual']).optional().default('extracted'),
+  confidence: z.number().optional().default(0.5),
+  sourceFile: z.string().nullable().optional(),
+});
+
 const patientCaseSchema = z.object({
   demographics: demographicsSchema,
   chiefComplaint: chiefComplaintSchema.optional().default({ description: '', bodyRegions: [] }),
   symptoms: z.array(symptomSchema).min(1, 'At least one symptom is required'),
   excludedFindings: z.array(z.string()).optional().default([]),
+  labResults: z.array(labResultSchema).optional().default([]),
   symptomPatterns: z.any().nullable().optional().default(null),
   patientHypothesis: z.string().nullable().optional().default(null),
   medicalHistory: z.object({

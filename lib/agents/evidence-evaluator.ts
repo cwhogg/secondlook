@@ -156,7 +156,7 @@ export class EvidenceEvaluator extends BaseAgent {
 
       if (!evaluation) return h;
 
-      return this.applyEvaluation(h, evaluation);
+      return this.applyEvaluation(h, evaluation, patientCase.labResults);
     });
 
     // Handle bonus subtype evaluations — evaluations the model added for subtypes
@@ -192,7 +192,7 @@ export class EvidenceEvaluator extends BaseAgent {
           fulfillmentPercentage: 0,
         },
       };
-      evaluatedHypotheses.push(this.applyEvaluation(skeleton, bonus));
+      evaluatedHypotheses.push(this.applyEvaluation(skeleton, bonus, patientCase.labResults));
     }
 
     const subtypeCount = bonusEvaluations.length;
@@ -211,16 +211,38 @@ export class EvidenceEvaluator extends BaseAgent {
   /**
    * Apply an LLM evaluation result to a hypothesis, returning the enriched hypothesis.
    */
-  private applyEvaluation(h: DiagnosisHypothesis, evaluation: any): DiagnosisHypothesis {
+  private applyEvaluation(h: DiagnosisHypothesis, evaluation: any, patientLabs?: any[]): DiagnosisHypothesis {
+    // Mechanical post-step: scan each criterion's text for recognizable lab
+    // markers and confirm any criterion the patient's uploaded labs prove,
+    // even if the LLM evaluator missed it. Never demotes a met criterion;
+    // only promotes false -> true based on hard data. This is the main payoff
+    // of letting users upload bloodwork — criteria that previously required
+    // LLM inference can now be deterministically satisfied.
+    const { mechanicallyCheckLabCriteria } = require('../pipeline/lab-utils');
+    const initialDetails = evaluation.criteriaFulfillment?.criteriaDetails || [];
+    const { updated: detailsAfterLabs, findings: labFindings } = mechanicallyCheckLabCriteria(
+      initialDetails,
+      patientLabs,
+    );
+    const evaluatorMetCount = evaluation.criteriaFulfillment?.metCriteria || 0;
+    const labConfirmedMetCount = detailsAfterLabs.filter((cd: any) => cd.met).length;
+    // The mechanical pass can only push the count up; respect whichever is
+    // larger so we never undercount what the LLM already confirmed.
+    const finalMetCount = Math.max(evaluatorMetCount, labConfirmedMetCount);
+
     const fulfillment: CriteriaFulfillment = {
       criteriaName: evaluation.criteriaFulfillment?.criteriaName || 'Clinical assessment',
       totalCriteria: evaluation.criteriaFulfillment?.totalCriteria || 0,
-      metCriteria: evaluation.criteriaFulfillment?.metCriteria || 0,
-      criteriaDetails: evaluation.criteriaFulfillment?.criteriaDetails || [],
+      metCriteria: finalMetCount,
+      criteriaDetails: detailsAfterLabs,
       fulfillmentPercentage: evaluation.criteriaFulfillment?.totalCriteria > 0
-        ? Math.round((evaluation.criteriaFulfillment.metCriteria / evaluation.criteriaFulfillment.totalCriteria) * 100)
+        ? Math.round((finalMetCount / evaluation.criteriaFulfillment.totalCriteria) * 100)
         : 0,
     };
+
+    if (labFindings.length > 0) {
+      console.log(`[evidence-evaluator] mechanically confirmed ${labFindings.length} criterion(s) for "${h.diagnosis}" via patient labs`);
+    }
 
     const isKbMatch = evaluation.evaluationType === 'criteria-grounded';
 
@@ -478,11 +500,16 @@ ${patientCase.excludedFindings.map((f) => `- ${f}`).join('\n')}
 These are negative evidence with diagnostic weight, not missing data. When evaluating each hypothesis, check whether any of the disease's pathognomonic or common features appears in this excluded list — if so, that is a strong contradiction. Reflect it in the contradictions array AND lower the criteriaFulfillment if a required/major criterion is on the excluded list.`
       : '';
 
+    const labsBlock = (() => {
+      const { formatLabsForPrompt } = require('../pipeline/lab-utils');
+      return formatLabsForPrompt(patientCase.labResults);
+    })();
+
     return `PATIENT SYMPTOMS:
 ${symptomSummary}${excludedSection}
 
 Demographics: Age ${patientCase.demographics.age}, ${patientCase.demographics.sex}
-
+${labsBlock ? '\n' + labsBlock + '\n' : ''}
 ===== HYPOTHESES TO EVALUATE =====
 ${hypothesesStr}
 ${diseaseRefStr ? `

@@ -5,13 +5,17 @@ import { useRouter } from "next/navigation"
 import { Layout } from "@/components/layout"
 import { CharacterCounter } from "@/components/character-counter"
 import { DocumentUpload } from "@/components/document-upload"
+import { LabUpload } from "@/components/lab-upload"
+import { LabVerification } from "@/components/lab-verification"
 import { ArrowRight, ArrowLeft, CheckCircle, Sparkles } from "lucide-react"
+import type { LabResult } from "@/lib/types/index"
 import { cn } from "@/lib/utils"
 
 interface Step2Data {
   primaryConcern: string
   patientHypothesis: string
   noIdea: boolean
+  labResults: LabResult[]
 }
 
 export default function Step2() {
@@ -20,6 +24,7 @@ export default function Step2() {
     primaryConcern: "",
     patientHypothesis: "",
     noIdea: false,
+    labResults: [],
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [autoSaved, setAutoSaved] = useState(false)
@@ -40,6 +45,7 @@ export default function Step2() {
           primaryConcern: typeof parsed.primaryConcern === "string" ? parsed.primaryConcern : "",
           patientHypothesis: typeof parsed.patientHypothesis === "string" ? parsed.patientHypothesis : "",
           noIdea: typeof parsed.noIdea === "boolean" ? parsed.noIdea : false,
+          labResults: Array.isArray(parsed.labResults) ? parsed.labResults : [],
         }))
       } catch {
         // ignore
@@ -49,7 +55,7 @@ export default function Step2() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (formData.primaryConcern || formData.patientHypothesis) {
+      if (formData.primaryConcern || formData.patientHypothesis || formData.labResults.length > 0) {
         localStorage.setItem("step2Data", JSON.stringify(formData))
         setAutoSaved(true)
         setTimeout(() => setAutoSaved(false), 1500)
@@ -140,6 +146,24 @@ export default function Step2() {
                 <CharacterCounter current={formData.primaryConcern.length} max={10000} />
               </div>
               {errors.primaryConcern && <p className="text-red-600 text-sm">{errors.primaryConcern}</p>}
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-xl font-bold text-gray-900">
+                Bloodwork or lab reports <span className="text-gray-500 text-base font-normal">(optional)</span>
+              </h2>
+              <p className="text-sm text-gray-600">
+                Upload any recent lab PDFs or photos. The actual numeric values feed the analysis — you'll see and confirm everything that's extracted before continuing.
+              </p>
+              <LabUpload
+                onLabsExtracted={(newLabs) => {
+                  setFormData((prev) => ({ ...prev, labResults: [...prev.labResults, ...newLabs] }))
+                }}
+              />
+              <LabVerification
+                labs={formData.labResults}
+                onChange={(next) => setFormData((prev) => ({ ...prev, labResults: next }))}
+              />
             </div>
 
             <div className="space-y-4">

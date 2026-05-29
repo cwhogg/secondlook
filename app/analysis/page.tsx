@@ -15,6 +15,7 @@ interface Step2Data {
   primaryConcern: string
   patientHypothesis?: string
   noIdea?: boolean
+  labResults?: any[]
 }
 
 interface Step3Data {
@@ -163,6 +164,7 @@ export default function AnalysisPage() {
                 })
                 .filter((s: string) => s.length > 0)
             : [],
+          labResults: Array.isArray(parsedStep2.labResults) ? parsedStep2.labResults : [],
           patientHypothesis: parsedStep2.noIdea ? null : parsedStep2.patientHypothesis || null,
           medicalHistory: {
             currentMedications: [],

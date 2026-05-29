@@ -70,11 +70,18 @@ OUTPUT RULES:
 - Provide your own assessment of which diagnostic criteria or clinical features support each diagnosis
 - DIAGNOSIS NAMING: Always use the most specific disease name the evidence supports. Use "Retinitis Pigmentosa" not "Inherited Retinal Dystrophy". Use "Leber Congenital Amaurosis" not "Hereditary Retinal Dystrophy". The diagnosis name should identify a specific disease entity, not a broad disease category.`;
 
+    // Experiment v5: specialists upgraded gpt-4.1 -> o3 reasoning:high to
+    // match the single-shot o3 baseline. If the pipeline still loses head-to-
+    // head against eval-baseline OpenAI o3, the architecture itself is the
+    // problem (not specialist model power). temperature is ignored for
+    // reasoning models — base-agent skips it — but the type still requires
+    // a value.
     super({
       name: `specialist-${specialistType}`,
-      model: 'gpt-4.1',
-      temperature: isGeneralInternist ? 0.4 : 0.3,
-      maxTokens: 4000,
+      model: 'o3',
+      reasoningEffort: 'high',
+      temperature: 0,
+      maxTokens: 8000,
       systemPrompt: isGeneralInternist ? generalInternistPrompt : domainSpecialistPrompt,
     });
 

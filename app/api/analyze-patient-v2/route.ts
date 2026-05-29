@@ -3,6 +3,13 @@ import { DiagnosticPipeline } from '@/lib/pipeline/orchestrator';
 import { BaseAgent } from '@/lib/agents/base-agent';
 import { z } from 'zod';
 
+// v5: specialists are o3 reasoning:high (was gpt-4.1) plus the existing o3
+// reasoning:high at evidence-evaluator and synthesizer. With 6-8 specialists
+// firing in parallel per case and each call now taking 30-60s, total wall
+// time can easily exceed the default Vercel 60s timeout. Bump explicitly to
+// the platform max so the experiment doesn't get truncated mid-pipeline.
+export const maxDuration = 300;
+
 // Input validation schema
 const demographicsSchema = z.object({
   age: z.string().min(1),

@@ -38,9 +38,10 @@ const EVAL_VERSION_COLORS: Record<string, string> = {
   v5: "bg-orange-50 text-orange-800 border-orange-300",
   v6: "bg-rose-50 text-rose-800 border-rose-300",
   v7: "bg-amber-50 text-amber-900 border-amber-400",
+  v8: "bg-cyan-50 text-cyan-800 border-cyan-300",
 }
 
-function EvalVersionBadge({ version }: { version?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' }) {
+function EvalVersionBadge({ version }: { version?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' }) {
   if (!version) return null
   const cls = EVAL_VERSION_COLORS[version] ?? "bg-gray-50 text-gray-700 border-gray-300"
   return (
@@ -418,73 +419,114 @@ export default function EvalPage() {
 
       patchCase(testId, { extractedSymptoms, extractedExcludedFindings })
 
+      // Two timeouts protect against the previously-invisible failure mode
+      // where Vercel kills the function but the SSE connection stays open
+      // and reader.read() hangs forever — neither completion nor error ever
+      // fires, the testCase stays at status='running' for hours, and we get
+      // no diagnostic message. Both throw real errors so the existing catch
+      // patches status='error' with a useful pipelineError.
+      const PIPELINE_MAX_MS = 280_000 // just below Vercel's 300s function cap
+      const SSE_IDLE_MAX_MS = 90_000  // any 90s gap with zero bytes = dead stream
+
       const abortController = new AbortController()
       abortRef.current = abortController
 
-      const response = await fetch("/api/analyze-patient-v2", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(patientCase),
-        signal: abortController.signal,
-      })
+      const pipelineStart = Date.now()
+      const overallDeadlineTimer = setTimeout(() => {
+        abortController.abort()
+      }, PIPELINE_MAX_MS)
 
-      if (!response.ok) {
-        const errorBody = await response.text()
-        let errorMessage = `Pipeline failed: ${response.statusText}`
-        try {
-          const parsed = JSON.parse(errorBody)
-          if (parsed.error) errorMessage = parsed.error
-        } catch {}
-        throw new Error(errorMessage)
-      }
+      try {
+        const response = await fetch("/api/analyze-patient-v2", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(patientCase),
+          signal: abortController.signal,
+        })
 
-      const reader = response.body!.getReader()
-      const decoder = new TextDecoder()
-      let buffer = ""
-      let pipelineResult: AnalysisResult | null = null
-
-      while (true) {
-        const { done, value } = await reader.read()
-        if (done) break
-        buffer += decoder.decode(value, { stream: true })
-        const lines = buffer.split("\n\n")
-        buffer = lines.pop() || ""
-
-        for (const chunk of lines) {
-          const dataLine = chunk.trim()
-          if (!dataLine.startsWith("data: ")) continue
-          const jsonStr = dataLine.slice(6)
-          let event: any
+        if (!response.ok) {
+          const errorBody = await response.text()
+          let errorMessage = `Pipeline failed: ${response.statusText}`
           try {
-            event = JSON.parse(jsonStr)
-          } catch {
-            continue
-          }
-
-          if (event.type === "progress") {
-            const progressEvent: PipelineProgress = {
-              stage: event.stage,
-              stageNumber: event.stageNumber,
-              totalStages: event.totalStages,
-              percentage: event.percentage,
-              detail: event.detail,
-              data: event.data,
-            } as PipelineProgress
-            setPipelineEvents((prev) => [...prev, progressEvent])
-            setProgressPercent(event.percentage)
-          } else if (event.type === "result") {
-            if (!event.success || !event.analysis) throw new Error("Invalid analysis result from pipeline")
-            pipelineResult = event.analysis
-            patchCase(testId, { status: "completed", pipelineResult: pipelineResult! })
-          } else if (event.type === "error") {
-            throw new Error(event.error || "Pipeline error")
-          }
+            const parsed = JSON.parse(errorBody)
+            if (parsed.error) errorMessage = parsed.error
+          } catch {}
+          throw new Error(errorMessage)
         }
-        if (pipelineResult) break
-      }
 
-      if (!pipelineResult) throw new Error("Pipeline stream ended without a result")
-      return pipelineResult
+        const reader = response.body!.getReader()
+        const decoder = new TextDecoder()
+        let buffer = ""
+        let pipelineResult: AnalysisResult | null = null
+
+        while (true) {
+          // Race the next chunk against an idle timer. If 90 seconds pass
+          // with no bytes from the server we assume the function died and
+          // throw — without this the loop blocks indefinitely because
+          // reader.read() has no built-in timeout and a half-open TCP
+          // connection looks identical to a slow stream.
+          let idleTimer: ReturnType<typeof setTimeout> | null = null
+          const idlePromise = new Promise<never>((_, reject) => {
+            idleTimer = setTimeout(() => reject(new Error(
+              `SSE idle timeout: no data for ${SSE_IDLE_MAX_MS / 1000}s (pipeline probably died server-side)`
+            )), SSE_IDLE_MAX_MS)
+          })
+          let readResult: ReadableStreamReadResult<Uint8Array>
+          try {
+            readResult = await Promise.race([reader.read(), idlePromise])
+          } finally {
+            if (idleTimer) clearTimeout(idleTimer)
+          }
+
+          const elapsedMs = Date.now() - pipelineStart
+          if (elapsedMs > PIPELINE_MAX_MS) {
+            throw new Error(`Pipeline exceeded max duration (${Math.round(elapsedMs / 1000)}s > ${PIPELINE_MAX_MS / 1000}s)`)
+          }
+
+          const { done, value } = readResult
+          if (done) break
+          buffer += decoder.decode(value, { stream: true })
+          const lines = buffer.split("\n\n")
+          buffer = lines.pop() || ""
+
+          for (const chunk of lines) {
+            const dataLine = chunk.trim()
+            if (!dataLine.startsWith("data: ")) continue
+            const jsonStr = dataLine.slice(6)
+            let event: any
+            try {
+              event = JSON.parse(jsonStr)
+            } catch {
+              continue
+            }
+
+            if (event.type === "progress") {
+              const progressEvent: PipelineProgress = {
+                stage: event.stage,
+                stageNumber: event.stageNumber,
+                totalStages: event.totalStages,
+                percentage: event.percentage,
+                detail: event.detail,
+                data: event.data,
+              } as PipelineProgress
+              setPipelineEvents((prev) => [...prev, progressEvent])
+              setProgressPercent(event.percentage)
+            } else if (event.type === "result") {
+              if (!event.success || !event.analysis) throw new Error("Invalid analysis result from pipeline")
+              pipelineResult = event.analysis
+              patchCase(testId, { status: "completed", pipelineResult: pipelineResult! })
+            } else if (event.type === "error") {
+              throw new Error(event.error || "Pipeline error")
+            }
+          }
+          if (pipelineResult) break
+        }
+
+        if (!pipelineResult) throw new Error("Pipeline stream ended without a result")
+        return pipelineResult
+      } finally {
+        clearTimeout(overallDeadlineTimer)
+      }
     } catch (err: any) {
       if (!(err instanceof DOMException && err.name === "AbortError")) {
         patchCase(testId, { status: "error", pipelineError: err.message })
@@ -722,7 +764,7 @@ export default function EvalPage() {
           difficulty: 3,
           categoryHint: ec.ppkt_id,
           testVersion: "Eval" as const,
-          evalVersion: "v7" as const,
+          evalVersion: "v8" as const,
           evalSamplingMode: samplingMode,
           status: "generated" as const,
           source: "generated" as const,
@@ -827,7 +869,7 @@ export default function EvalPage() {
           difficulty: 3,
           categoryHint: evalCase.ppkt_id,
           testVersion: "Eval",
-          evalVersion: "v7",
+          evalVersion: "v8",
           evalRunMode: tab,
           evalSamplingMode: samplingMode,
           status: "generated",
@@ -982,10 +1024,13 @@ export default function EvalPage() {
           </div>
         )}
 
-        {/* Run controls — only visible on the Run Evals tab. */}
+        {/* Run controls — only visible on the Run Evals tab. The control
+            box + in-progress card sit ABOVE the ComparisonTable so the
+            live state of the batch (and the action to start one) is the
+            first thing visible without scrolling past the (often long)
+            history of cohort stats. */}
         {activeTab === "runevals" && (
           <>
-            <ComparisonTable testCases={testCases} />
             <div className="border border-[#d4c5b0] bg-white p-4 sm:p-6 mb-6">
               <div className="flex flex-wrap items-end gap-4">
                 <div className="min-w-[200px]">
@@ -1065,6 +1110,7 @@ export default function EvalPage() {
                 )}
               </div>
             )}
+            <ComparisonTable testCases={testCases} />
             <TrioDetailsTable testCases={testCases} />
           </>
         )}
@@ -1382,7 +1428,7 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full text-sm min-w-[480px]">
+          <table className="w-full text-sm min-w-[560px]">
             <thead>
               <tr className="border-b border-[#e8ddd0] bg-[#faf7f2]">
                 <th className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Model</th>
@@ -1391,6 +1437,7 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
                 <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-1</th>
                 <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-3</th>
                 <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-5</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-10</th>
               </tr>
             </thead>
             <tbody>
@@ -1405,7 +1452,7 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
                 return (
                   <Fragment key={v}>
                     <tr className="bg-[#fbf6ec] border-b border-[#e8ddd0]">
-                      <td colSpan={6} className="py-1.5 px-4 sm:px-5 text-[11px] uppercase tracking-wider text-[#8b7355] font-semibold">
+                      <td colSpan={7} className="py-1.5 px-4 sm:px-5 text-[11px] uppercase tracking-wider text-[#8b7355] font-semibold">
                         Eval {v} — {subN} case{subN === 1 ? "" : "s"}
                       </td>
                     </tr>
@@ -1426,6 +1473,9 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
                           </td>
                           <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">
                             {stats ? `${Math.round(stats.top5Rate * 100)}%` : "—"}
+                          </td>
+                          <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">
+                            {stats ? `${Math.round(stats.top10Rate * 100)}%` : "—"}
                           </td>
                         </tr>
                       )

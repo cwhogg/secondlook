@@ -71,15 +71,22 @@ OUTPUT RULES:
 - DIAGNOSIS NAMING: Always use the most specific disease name the evidence supports. Use "Retinitis Pigmentosa" not "Inherited Retinal Dystrophy". Use "Leber Congenital Amaurosis" not "Hereditary Retinal Dystrophy". The diagnosis name should identify a specific disease entity, not a broad disease category.`;
 
     // Experiment v5: specialists upgraded gpt-4.1 -> o3 reasoning:high to
-    // match the single-shot o3 baseline. If the pipeline still loses head-to-
-    // head against eval-baseline OpenAI o3, the architecture itself is the
-    // problem (not specialist model power). temperature is ignored for
-    // reasoning models — base-agent skips it — but the type still requires
-    // a value.
+    // match the single-shot o3 baseline. v7 confirmed the harness works at
+    // that reasoning level (52% Top-1 vs ~40% single-shot baseline).
+    // v8 optimization: drop specialist reasoning from 'high' to 'medium'.
+    // The bottleneck observed in v7 was wall-clock — 11 parallel o3:high
+    // specialists + o3:high evidence-eval + o3:high synth pushed many cases
+    // past the 300s Vercel function ceiling. Medium reasoning roughly halves
+    // per-call latency. We keep evidence-evaluator and synthesizer at
+    // reasoning:high since they are the ranking-critical stages; specialist
+    // output diversity matters more than per-specialist reasoning depth, so
+    // medium is a better cost/latency trade for the parallel fanout.
+    // temperature is ignored for reasoning models — base-agent skips it —
+    // but the AgentConfig type still requires a value.
     super({
       name: `specialist-${specialistType}`,
       model: 'o3',
-      reasoningEffort: 'high',
+      reasoningEffort: 'medium',
       temperature: 0,
       maxTokens: 8000,
       systemPrompt: isGeneralInternist ? generalInternistPrompt : domainSpecialistPrompt,

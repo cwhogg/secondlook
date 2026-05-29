@@ -158,7 +158,12 @@ export interface TestCase {
   //      meaningful scores for family-expansion entries, and persistence of
   //      per-component score breakdowns so ground-truth-vs-score
   //      calibration can be fit offline later.
-  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7';
+  // v8 = v7 + specialist reasoning effort dropped o3:high -> o3:medium.
+  //      Evidence-evaluator and synthesizer stay at o3:high (ranking-
+  //      critical). v7 hit the 300s Vercel wall on a meaningful slice of
+  //      complex cases; v8 trades a small per-specialist reasoning-depth
+  //      cut for ~50% wall-time reduction on the parallel specialist stage.
+  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8';
   // Which "engine" produced this Eval case. secondlook = the full V2 pipeline;
   // openai / claude = single-shot baseline calls to the respective top model.
   // Unset entries are treated as 'secondlook' for backward compatibility.
@@ -199,6 +204,10 @@ export interface TestSuiteStats {
   top1Rate: number;
   top3Rate: number;
   top5Rate: number;
+  // Grader processes top 10 diagnoses; correctDiagnosisRank <= 10 = a Top-10
+  // hit. For pre-v6 baselines that only emitted 5 diagnoses, Top-10 equals
+  // Top-5 by construction.
+  top10Rate: number;
   clinicalTop5Rate: number;  // exact + variant matches in top 5
   familyTop5Rate: number;    // exact + variant + family matches in top 5
   byDifficultySource: Record<string, {

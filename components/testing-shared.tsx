@@ -195,6 +195,13 @@ export function computeStats(cases: TestCase[]): TestSuiteStats | null {
   const top1 = graded.filter((c) => c.grading!.correctDiagnosisRank === 1).length
   const top3 = graded.filter((c) => c.grading!.inTop3).length
   const top5 = graded.filter((c) => c.grading!.inTop5).length
+  // Grader processes top 10; any non-null correctDiagnosisRank is therefore
+  // a Top-10 hit by construction. Baselines that emitted only 5 diagnoses
+  // get Top-10 = Top-5 automatically (no extra rows to fill in).
+  const top10 = graded.filter((c) => {
+    const r = c.grading!.correctDiagnosisRank
+    return typeof r === "number" && r <= 10
+  }).length
 
   const exactOrVariantTiers = new Set(['exact-top1', 'exact-top3', 'exact-top5', 'variant-top3', 'variant-top5'])
   const clinicalTop5 = graded.filter((c) => {
@@ -249,6 +256,7 @@ export function computeStats(cases: TestCase[]): TestSuiteStats | null {
     top1Rate: top1 / graded.length,
     top3Rate: top3 / graded.length,
     top5Rate: top5 / graded.length,
+    top10Rate: top10 / graded.length,
     clinicalTop5Rate: clinicalTop5 / graded.length,
     familyTop5Rate: familyTop5 / graded.length,
     byDifficultySource,

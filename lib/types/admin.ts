@@ -190,6 +190,16 @@ export interface TestCase {
   extractedExcludedFindings?: MappedSymptom[] | string[];
   pipelineResult?: AnalysisResult;
   pipelineError?: string;
+  // Persistent trail of SSE progress events from the analysis pipeline,
+  // patched in as each event arrives. Lets us see "last known position"
+  // for stuck cases (status='running' that never advances) — without this,
+  // a stuck pipeline leaves zero metadata in KV.
+  pipelineProgressLog?: Array<{
+    t: number; // ms since pipeline start
+    stage: string;
+    detail: string;
+    data?: any;
+  }>;
   grading?: TestGrading;
   gradingMetadata?: GenerationMetadata;
   previousRun?: PreviousRunSnapshot;

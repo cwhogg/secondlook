@@ -410,7 +410,14 @@ export default function EvalPage() {
       grading: undefined,
       gradingMetadata: undefined,
       pipelineError: undefined,
+      pipelineProgressLog: undefined,
     })
+
+    // Hoisted out of the try blocks so the catch can persist them with
+    // the error status — without this the trail-to-failure is invisible.
+    const pipelineStart = Date.now()
+    const progressLog: NonNullable<TestCase["pipelineProgressLog"]> = []
+    let lastFlushedStage: string | null = null
 
     try {
       setExtractionStatus("Parsing symptoms from narrative...")
@@ -431,7 +438,6 @@ export default function EvalPage() {
       const abortController = new AbortController()
       abortRef.current = abortController
 
-      const pipelineStart = Date.now()
       const overallDeadlineTimer = setTimeout(() => {
         abortController.abort()
       }, PIPELINE_MAX_MS)
@@ -511,11 +517,37 @@ export default function EvalPage() {
               } as PipelineProgress
               setPipelineEvents((prev) => [...prev, progressEvent])
               setProgressPercent(event.percentage)
+              // Append to persistent trail with elapsed-ms-from-start. Keep
+              // a single-line trimmed `data` so we don't pollute KV blobs.
+              progressLog.push({
+                t: Date.now() - pipelineStart,
+                stage: event.stage,
+                detail: (event.detail || "").substring(0, 200),
+                data: event.data,
+              })
+              // Flush to KV when stage changes (e.g. specialists -> evidence).
+              // Per-specialist sub-events fall under the same stage so they
+              // accumulate in memory but don't hammer the save queue; the
+              // stage transition save covers them all in one upsert.
+              if (event.stage !== lastFlushedStage) {
+                lastFlushedStage = event.stage
+                patchCase(testId, { pipelineProgressLog: progressLog.slice() })
+              }
             } else if (event.type === "result") {
               if (!event.success || !event.analysis) throw new Error("Invalid analysis result from pipeline")
               pipelineResult = event.analysis
-              patchCase(testId, { status: "completed", pipelineResult: pipelineResult! })
+              patchCase(testId, {
+                status: "completed",
+                pipelineResult: pipelineResult!,
+                pipelineProgressLog: progressLog.slice(),
+              })
             } else if (event.type === "error") {
+              progressLog.push({
+                t: Date.now() - pipelineStart,
+                stage: "error",
+                detail: (event.error || "Pipeline error").substring(0, 200),
+              })
+              patchCase(testId, { pipelineProgressLog: progressLog.slice() })
               throw new Error(event.error || "Pipeline error")
             }
           }
@@ -529,7 +561,14 @@ export default function EvalPage() {
       }
     } catch (err: any) {
       if (!(err instanceof DOMException && err.name === "AbortError")) {
-        patchCase(testId, { status: "error", pipelineError: err.message })
+        // Append the failure point to the trail so the persisted log shows
+        // exactly where the pipeline got stuck before the catch fired.
+        progressLog.push({
+          t: Date.now() - pipelineStart,
+          stage: "client-error",
+          detail: (err?.message || "unknown error").substring(0, 200),
+        })
+        patchCase(testId, { status: "error", pipelineError: err.message, pipelineProgressLog: progressLog.slice() })
       }
       throw err
     } finally {

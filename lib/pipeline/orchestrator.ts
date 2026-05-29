@@ -30,6 +30,16 @@ export class DiagnosticPipeline {
   ): Promise<AnalysisResult> {
     const stages: StageResult[] = [];
     const pipelineStart = Date.now();
+    // Tagged log helper. Vercel function logs end up grep-able by event name
+    // (orch.start, orch.stage.specialist.start/done/timeout, etc.) so a stuck
+    // case can be diagnosed from the log stream alone.
+    const elapsed = () => `${Date.now() - pipelineStart}ms`;
+    const log = (event: string, extra: Record<string, any> = {}) => {
+      const fields = { event, t: elapsed(), ...extra };
+      const tail = Object.entries(fields).map(([k, v]) => `${k}=${typeof v === "string" ? v : JSON.stringify(v)}`).join(" ");
+      console.log(`[orch] ${tail}`);
+    };
+    log("orch.start", { age: patientCase.demographics.age, sex: patientCase.demographics.sex, symptomCount: patientCase.symptoms.length });
 
     try {
       // ===== STAGE 0: Lab-derived findings =====
@@ -99,6 +109,7 @@ export class DiagnosticPipeline {
       this.checkBudget();
 
       // ===== STAGE 2: SPECIALIST CONSULTATION (PARALLEL) =====
+      log("orch.stage.specialists.start", { count: triageResult.relevantSpecialties.length });
       onProgress?.({
         stage: 'specialists',
         stageNumber: 2,
@@ -108,20 +119,74 @@ export class DiagnosticPipeline {
         data: { specialties: triageResult.relevantSpecialties },
       });
 
-      const specialistPromises = triageResult.relevantSpecialties.map((specialty) => {
+      // Each specialist gets its own bounded promise. A 180s timeout per
+      // call means one stuck specialist never deadlocks the whole pipeline
+      // (this was the strongest candidate explanation for the v7 24% stuck-
+      // running rate). Promise.allSettled below means a timeout/error on
+      // 1-2 specialists is recovered from gracefully — the remaining
+      // specialists' hypotheses still feed evidence-eval and synth.
+      const SPECIALIST_TIMEOUT_MS = 180_000;
+      const specialistPromises = triageResult.relevantSpecialties.map(async (specialty) => {
+        const specStart = Date.now();
+        log("orch.specialist.start", { specialty });
         const agent = getSpecialistAgent(specialty);
-        // Rerank the triage candidates per specialty: existing retrieval matchScore
-        // multiplied by a domain-fit weight (explicit specialistType > body-system
-        // mapping > fallback). Each specialist gets the deepest, most domain-aligned
-        // slice of the candidate pool, sorted by their own relevance.
         const diseases = rerankCandidatesForSpecialty(
           triageResult.candidateDiseases,
           specialty,
         );
-        return agent.execute({ patientCase, candidateDiseases: diseases });
+        let timeoutHandle: ReturnType<typeof setTimeout> | null = null;
+        const timeoutPromise = new Promise<never>((_, reject) => {
+          timeoutHandle = setTimeout(
+            () => reject(new Error(`specialist ${specialty} exceeded ${SPECIALIST_TIMEOUT_MS / 1000}s timeout`)),
+            SPECIALIST_TIMEOUT_MS,
+          );
+        });
+        try {
+          const result = await Promise.race([
+            agent.execute({ patientCase, candidateDiseases: diseases }),
+            timeoutPromise,
+          ]);
+          const dur = Date.now() - specStart;
+          log("orch.specialist.done", { specialty, dur, hyp: result.hypotheses.length, tokens: result.tokensUsed });
+          onProgress?.({
+            stage: 'specialist-done',
+            stageNumber: 2,
+            totalStages: 6,
+            detail: `${specialty} completed in ${(dur / 1000).toFixed(1)}s with ${result.hypotheses.length} hypotheses`,
+            percentage: 30,
+            data: { specialty, durationMs: dur, hypothesisCount: result.hypotheses.length },
+          });
+          return { ok: true as const, specialty, result };
+        } catch (err: any) {
+          const dur = Date.now() - specStart;
+          const isTimeout = err?.message?.includes("exceeded");
+          log("orch.specialist.fail", { specialty, dur, kind: isTimeout ? "timeout" : "error", msg: (err?.message || "").substring(0, 200) });
+          onProgress?.({
+            stage: 'specialist-failed',
+            stageNumber: 2,
+            totalStages: 6,
+            detail: `${specialty} ${isTimeout ? "timed out" : "errored"} after ${(dur / 1000).toFixed(1)}s`,
+            percentage: 30,
+            data: { specialty, durationMs: dur, kind: isTimeout ? "timeout" : "error", error: err?.message },
+          });
+          return { ok: false as const, specialty, error: err?.message || "unknown error" };
+        } finally {
+          if (timeoutHandle) clearTimeout(timeoutHandle);
+        }
       });
 
-      const specialistResults = await Promise.all(specialistPromises);
+      const settledResults = await Promise.all(specialistPromises);
+      const specialistResults = settledResults
+        .filter((r): r is Extract<typeof r, { ok: true }> => r.ok)
+        .map((r) => r.result);
+      const failedSpecialists = settledResults
+        .filter((r): r is Extract<typeof r, { ok: false }> => !r.ok)
+        .map((r) => ({ specialty: r.specialty, error: r.error }));
+      log("orch.stage.specialists.done", { completed: specialistResults.length, failed: failedSpecialists.length, failedList: failedSpecialists.map((f) => f.specialty) });
+
+      if (specialistResults.length === 0) {
+        throw new Error(`All ${triageResult.relevantSpecialties.length} specialists failed; cannot proceed.`);
+      }
 
       for (const sr of specialistResults) {
         this.budgetTracker.addUsage(sr.model, sr.tokensUsed);
@@ -135,6 +200,20 @@ export class DiagnosticPipeline {
           outputSummary: `${sr.hypotheses.length} hypotheses: ${sr.hypotheses.map((h) => h.diagnosis).join(', ')}`,
         });
       }
+      // Record any specialist failures as zero-duration stages too so the
+      // pipelineMetadata trail shows them in post-mortem analysis even
+      // though they did not contribute hypotheses.
+      for (const f of failedSpecialists) {
+        stages.push({
+          stageName: 'specialist-failed',
+          durationMs: 0,
+          tokensUsed: 0,
+          model: 'o3',
+          agentName: `specialist-${f.specialty}`,
+          inputSummary: `Patient case + candidate diseases`,
+          outputSummary: `FAILED: ${f.error.substring(0, 200)}`,
+        });
+      }
 
       this.checkBudget();
 
@@ -142,7 +221,7 @@ export class DiagnosticPipeline {
         stage: 'specialists-complete',
         stageNumber: 2,
         totalStages: 6,
-        detail: `${specialistResults.reduce((sum, sr) => sum + sr.hypotheses.length, 0)} hypotheses generated from ${specialistResults.length} specialists`,
+        detail: `${specialistResults.reduce((sum, sr) => sum + sr.hypotheses.length, 0)} hypotheses generated from ${specialistResults.length} of ${triageResult.relevantSpecialties.length} specialists` + (failedSpecialists.length > 0 ? ` (${failedSpecialists.length} failed: ${failedSpecialists.map((f) => f.specialty).join(", ")})` : ""),
         percentage: 50,
         data: {
           results: specialistResults.map((sr) => ({
@@ -153,10 +232,12 @@ export class DiagnosticPipeline {
               confidenceScore: h.confidenceScore,
             })),
           })),
+          failedSpecialists,
         },
       });
 
       // ===== STAGE 3: EVIDENCE EVALUATION =====
+      log("orch.stage.evidence.start", { hypotheses: specialistResults.reduce((sum, sr) => sum + sr.hypotheses.length, 0) });
       onProgress?.({
         stage: 'evidence',
         stageNumber: 3,
@@ -168,12 +249,14 @@ export class DiagnosticPipeline {
         },
       });
 
+      const evidenceStart = Date.now();
       const evaluator = new EvidenceEvaluator();
       const evaluationResult = await evaluator.execute({
         patientCase,
         previousStageOutput: specialistResults,
         candidateDiseases: triageResult.candidateDiseases,
       });
+      log("orch.stage.evidence.done", { dur: Date.now() - evidenceStart, evaluated: evaluationResult.hypotheses.length });
 
       this.budgetTracker.addUsage(evaluationResult.model, evaluationResult.tokensUsed);
       stages.push({
@@ -202,6 +285,7 @@ export class DiagnosticPipeline {
       this.checkBudget();
 
       // ===== STAGE 4: SYNTHESIS =====
+      log("orch.stage.synthesis.start");
       onProgress?.({
         stage: 'synthesis',
         stageNumber: 4,
@@ -211,11 +295,13 @@ export class DiagnosticPipeline {
         data: null,
       });
 
+      const synthStart = Date.now();
       const synthesizer = new SynthesisAgent();
       const synthesisResult = await synthesizer.execute({
         patientCase,
         previousStageOutput: { specialistResults, evaluationResult },
       });
+      log("orch.stage.synthesis.done", { dur: Date.now() - synthStart, top: synthesisResult.hypotheses[0]?.diagnosis?.substring(0, 80) });
 
       this.budgetTracker.addUsage(synthesisResult.model, synthesisResult.tokensUsed);
       stages.push({
@@ -309,6 +395,7 @@ export class DiagnosticPipeline {
       }
 
       // ===== STAGE 5: REPORT GENERATION =====
+      log("orch.stage.report.start");
       onProgress?.({
         stage: 'report',
         stageNumber: 5,
@@ -318,11 +405,13 @@ export class DiagnosticPipeline {
         data: null,
       });
 
+      const reportStart = Date.now();
       const reportGenerator = new ReportGenerator();
       const reportResult = await reportGenerator.execute({
         patientCase,
         previousStageOutput: synthesisResult,
       });
+      log("orch.stage.report.done", { dur: Date.now() - reportStart });
 
       this.budgetTracker.addUsage(reportResult.model, reportResult.tokensUsed);
       stages.push({
@@ -402,12 +491,13 @@ export class DiagnosticPipeline {
         },
       };
 
+      log("orch.done", { totalDur: elapsed(), stages: stages.length });
       return analysisResult;
 
     } catch (error: any) {
       // If we have partial results, include them in the error
       const budgetSummary = this.budgetTracker.getSummary();
-      console.error('[Pipeline] Error:', error.message);
+      log("orch.error", { totalDur: elapsed(), msg: (error?.message || "").substring(0, 200) });
       console.error('[Pipeline] Budget at failure:', budgetSummary);
       throw error;
     }

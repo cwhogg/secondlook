@@ -73,7 +73,27 @@ export type PipelineProgress =
           specialty: string;
           hypotheses: Array<{ diagnosis: string; confidenceScore: number }>;
         }>;
+        failedSpecialists?: Array<{ specialty: string; error: string }>;
       };
+    }
+  | {
+      // Emitted as each specialist finishes inside the parallel stage so
+      // the client can persist per-agent progress for diagnosing hangs.
+      stage: 'specialist-done';
+      stageNumber: 2;
+      totalStages: 6;
+      percentage: number;
+      detail: string;
+      data: { specialty: string; durationMs: number; hypothesisCount: number };
+    }
+  | {
+      // Emitted when a specialist times out or errors.
+      stage: 'specialist-failed';
+      stageNumber: 2;
+      totalStages: 6;
+      percentage: number;
+      detail: string;
+      data: { specialty: string; durationMs: number; kind: 'timeout' | 'error'; error: string };
     }
   | {
       stage: 'evidence';

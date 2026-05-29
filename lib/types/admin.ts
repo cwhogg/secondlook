@@ -157,6 +157,16 @@ export interface TestCase {
   // openai / claude = single-shot baseline calls to the respective top model.
   // Unset entries are treated as 'secondlook' for backward compatibility.
   evalRunMode?: 'secondlook' | 'openai' | 'claude';
+  // How the case was sampled from the Phenopacket2Prompt corpus.
+  // uniform     = standard random-row sampling (matches the published
+  //               benchmark protocol; keeps the dataset's natural
+  //               concentration on common rare diseases).
+  // diversified = sample uniformly across distinct primary-diagnosis labels
+  //               first, then pick one random representative case per label.
+  //               Use this for pipeline-quality evaluation when corpus
+  //               concentration is contaminating the per-disease signal.
+  // Unset = uniform (back-compat with all runs prior to the field landing).
+  evalSamplingMode?: 'uniform' | 'diversified';
   status: TestCaseStatus;
   source?: 'generated';
   groundTruth: GroundTruth;

@@ -229,6 +229,7 @@ export default function EvalPage() {
   const [activeTab, setActiveTab] = useState<EvalTab>("runevals")
   const [activeTestId, setActiveTestId] = useState<string | null>(null)
   const [count, setCount] = useState(5)
+  const [samplingMode, setSamplingMode] = useState<'uniform' | 'diversified'>('uniform')
   const [isFetchingCases, setIsFetchingCases] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
   const [isGrading, setIsGrading] = useState(false)
@@ -696,7 +697,7 @@ export default function EvalPage() {
     try {
       const completeHints = getCompleteTrioHints(testCases)
       const exclude = [...completeHints].join(",")
-      const url = `/api/admin/eval-case?count=${count}&exclude=${encodeURIComponent(exclude)}`
+      const url = `/api/admin/eval-case?count=${count}&exclude=${encodeURIComponent(exclude)}&mode=${samplingMode}`
       const res = await fetch(url)
       if (!res.ok) {
         const err = await res.json().catch(() => ({}))
@@ -721,6 +722,7 @@ export default function EvalPage() {
           categoryHint: ec.ppkt_id,
           testVersion: "Eval" as const,
           evalVersion: "v6" as const,
+          evalSamplingMode: samplingMode,
           status: "generated" as const,
           source: "generated" as const,
           groundTruth,
@@ -830,6 +832,7 @@ export default function EvalPage() {
           testVersion: "Eval",
           evalVersion: "v6",
           evalRunMode: tab,
+          evalSamplingMode: samplingMode,
           status: "generated",
           source: "generated",
           groundTruth,
@@ -999,6 +1002,18 @@ export default function EvalPage() {
                     disabled={isTrioRunning}
                     className="w-32 border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500] disabled:opacity-50"
                   />
+                </div>
+                <div className="min-w-[260px]">
+                  <label className="block text-xs text-[#8b7355] mb-1">Sampling mode</label>
+                  <select
+                    value={samplingMode}
+                    onChange={(e) => setSamplingMode(e.target.value as 'uniform' | 'diversified')}
+                    disabled={isTrioRunning}
+                    className="w-full border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500] disabled:opacity-50"
+                  >
+                    <option value="uniform">Uniform — matches published benchmarks (DEE4/NF1/KBG over-represented)</option>
+                    <option value="diversified">Diversified — one random case per unique diagnosis</option>
+                  </select>
                 </div>
                 {!isTrioRunning ? (
                   <button
@@ -1334,17 +1349,25 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
   const trios = getMatchedTrios(testCases)
   const totalN = trios.length
 
-  // Group trios by evalVersion so each pipeline revision gets its own
-  // rows-block. Without this, a 1-case v4 sample silently averages into the
-  // 30-case v3 cohort and the regression test becomes meaningless.
-  const byVersion = new Map<string, MatchedTrio[]>()
-  for (const t of trios) {
+  // Group trios by (evalVersion + evalSamplingMode) so each combination of
+  // pipeline revision AND sampling protocol gets its own rows-block. Without
+  // this, a diversified-sampled cohort silently averages into a uniform-
+  // sampled cohort and the comparison-vs-published-baselines story is lost
+  // (because uniform matches published; diversified intentionally doesn't).
+  const cohortLabel = (t: MatchedTrio) => {
     const v = t.secondlook.evalVersion ?? "unknown"
-    if (!byVersion.has(v)) byVersion.set(v, [])
-    byVersion.get(v)!.push(t)
+    const m = t.secondlook.evalSamplingMode
+    return m === "diversified" ? `${v} (diversified)` : v
   }
-  // Newest version first (v4 > v3 > v2 > v1 > unknown).
-  const versions = Array.from(byVersion.keys()).sort((a, b) => b.localeCompare(a))
+  const byCohort = new Map<string, MatchedTrio[]>()
+  for (const t of trios) {
+    const key = cohortLabel(t)
+    if (!byCohort.has(key)) byCohort.set(key, [])
+    byCohort.get(key)!.push(t)
+  }
+  // Newest first (descending lexical). Diversified suffixes sort after the
+  // bare version, so "v6 (diversified)" lands just under "v6".
+  const versions = Array.from(byCohort.keys()).sort((a, b) => b.localeCompare(a))
 
   return (
     <div className="border border-[#d4c5b0] bg-white mb-6">
@@ -1375,7 +1398,7 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
             </thead>
             <tbody>
               {versions.map((v) => {
-                const subTrios = byVersion.get(v)!
+                const subTrios = byCohort.get(v)!
                 const subN = subTrios.length
                 const cohort: Record<ModelTab, TestCase[]> = {
                   secondlook: subTrios.map((t) => t.secondlook),

@@ -60,7 +60,9 @@ export async function GET(request: NextRequest) {
   const url = new URL(request.url)
   const countParam = url.searchParams.get("count")
   const excludeParam = url.searchParams.get("exclude") || ""
+  const modeParam = url.searchParams.get("mode") || "uniform"
   const count = countParam ? Math.max(1, Math.min(100, parseInt(countParam, 10))) : 1
+  const mode = modeParam === "diversified" ? "diversified" : "uniform"
 
   const dataset = loadDataset()
   if (dataset.length === 0) {
@@ -80,10 +82,36 @@ export async function GET(request: NextRequest) {
   }
 
   const picked: EvalCaseRow[] = []
-  const remaining = available.slice()
-  for (let i = 0; i < count && remaining.length > 0; i++) {
-    const idx = Math.floor(Math.random() * remaining.length)
-    picked.push(remaining.splice(idx, 1)[0])
+
+  if (mode === "diversified") {
+    // Diagnosis-stratified sampling: the corpus is heavily concentrated
+    // (top-15 diagnoses cover ~28% of the 9,587 rows; DEE4 alone is 462
+    // rows / ~4.8%). Uniform row sampling repeatedly hits the same handful
+    // of diseases and biases pipeline-quality evaluation toward how we
+    // handle those few. Diversified mode buckets rows by primary diagnosis
+    // label first, then picks distinct labels uniformly at random and
+    // returns one random representative case per label.
+    const byLabel = new Map<string, EvalCaseRow[]>()
+    for (const row of available) {
+      const label = row.diagnosis?.[0]?.label?.trim()
+      if (!label) continue
+      if (!byLabel.has(label)) byLabel.set(label, [])
+      byLabel.get(label)!.push(row)
+    }
+    const labels = Array.from(byLabel.keys())
+    for (let i = 0; i < count && labels.length > 0; i++) {
+      const labelIdx = Math.floor(Math.random() * labels.length)
+      const label = labels.splice(labelIdx, 1)[0]
+      const candidates = byLabel.get(label)!
+      const caseIdx = Math.floor(Math.random() * candidates.length)
+      picked.push(candidates[caseIdx])
+    }
+  } else {
+    const remaining = available.slice()
+    for (let i = 0; i < count && remaining.length > 0; i++) {
+      const idx = Math.floor(Math.random() * remaining.length)
+      picked.push(remaining.splice(idx, 1)[0])
+    }
   }
 
   const cases = picked.map((row) => ({
@@ -97,5 +125,6 @@ export async function GET(request: NextRequest) {
     cases,
     totalAvailable: available.length,
     totalDataset: dataset.length,
+    samplingMode: mode,
   })
 }

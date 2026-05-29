@@ -12,15 +12,22 @@ const inputSchema = z.object({
   model: z.enum(["openai", "claude"]),
 })
 
-const SYSTEM_PROMPT = `You are a senior diagnostician asked to produce a differential diagnosis from a clinical vignette. Return STRICT JSON only, no prose. The vignette may include excluded findings ("the following features were excluded: ..."); treat those as absent. The user message contains exactly the vignette text and nothing else — interpret it as the entire clinical presentation.`
+// Prompt aligned with the Phenopacket2Prompt official protocol (Robinson et
+// al., Zenodo 15324355). The official protocol asks for "as many diagnoses
+// as you think are reasonable" and grades at Top-1 / Top-3 / Top-10; we cap
+// at 10 since that is the benchmark grading cutoff and our grader also
+// processes top 10. JSON output is retained (the official protocol uses a
+// numbered list) so the response is mechanically parsable — content of the
+// list is the same.
+const SYSTEM_PROMPT = `You are a clinical diagnostician asked to produce a differential diagnosis from a clinical vignette. There is a single definitive diagnosis for this case, and it is a diagnosis that is known today to exist in humans (almost always confirmable by a genetic test, occasionally by validated clinical criteria). The vignette may include excluded findings ("however, the following features were excluded: ..."); treat those features as absent. Return STRICT JSON only, no prose.`
 
-const USER_INSTRUCTION_PREFIX = `What are your top 5 differential diagnoses for what disease this patient might have. Return only this JSON:
+const USER_INSTRUCTION_PREFIX = `Give a differential diagnosis as a list of candidate diagnoses ranked by probability starting with the most likely candidate. Each candidate should be a specific real disease name. Return only this JSON:
 {
   "diagnoses": [
     { "diagnosis": "Disease name", "reasoning": "one-sentence justification" }
   ]
 }
-Exactly 5 entries, ranked most likely first, distinct diseases. The diagnosis field must be a real clinical disease name.
+Exactly 10 entries, ranked most likely first, distinct diseases.
 
 CLINICAL VIGNETTE:
 `
@@ -86,7 +93,7 @@ async function callClaudeBaseline(caseDescription: string): Promise<BaselineResu
   const result = await callAnthropic({
     systemPrompt: SYSTEM_PROMPT,
     userPrompt: USER_INSTRUCTION_PREFIX + caseDescription,
-    maxTokens: 4096,
+    maxTokens: 8192,
     temperature: 0.2,
     model: CLAUDE_MODEL,
   })
@@ -123,7 +130,7 @@ function parseDiagnosesJson(text: string): BaselineDiagnosis[] {
       reasoning: typeof d?.reasoning === "string" ? d.reasoning : undefined,
     }))
     .filter((d: BaselineDiagnosis) => d.diagnosis.length > 0)
-    .slice(0, 5)
+    .slice(0, 10)
 }
 
 export async function POST(request: NextRequest) {

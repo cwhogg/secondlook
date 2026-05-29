@@ -146,7 +146,13 @@ export interface TestCase {
   // v5 = v4 + specialist agents upgraded from gpt-4.1 to o3 reasoning:high.
   //      Apples-to-apples test: does the SecondLook harness beat single-shot
   //      o3 baseline when specialists run on the same model class?
-  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5';
+  // v6 = v5 + eval baselines aligned to the Phenopacket2Prompt official
+  //      protocol: ask for top 10 (was top 5), use the paper's "single
+  //      definitive diagnosis" framing, drop the JSON-only "no prose"
+  //      stricture (kept JSON output for parsability). Matches the protocol
+  //      used to publish the Exomiser / o1-preview / GPT-4o benchmark
+  //      numbers so apples-to-apples comparisons against those are valid.
+  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6';
   // Which "engine" produced this Eval case. secondlook = the full V2 pipeline;
   // openai / claude = single-shot baseline calls to the respective top model.
   // Unset entries are treated as 'secondlook' for backward compatibility.

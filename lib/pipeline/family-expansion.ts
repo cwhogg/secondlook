@@ -43,6 +43,8 @@ export function expandFamilyVariants(
         diagnosis: variantDisease.name,
         icd10Code: variantDisease.icd10Codes[0],
         orphanetId: variantDisease.orphanetId,
+        // Real scores are filled in by applyFamilyExpansionScoring after
+        // ranking is complete (inherits half the parent's evidenceScore).
         confidenceScore: 0,
         evidenceScore: 0,
         rareDisease: true,
@@ -64,6 +66,7 @@ export function expandFamilyVariants(
           fulfillmentPercentage: 0,
         },
         sourceAgent: 'family-expansion',
+        parentDiagnosis: h.diagnosis,
         evaluationType: 'reasoning-evaluated',
         knowledgeBaseMatch: true,
         expansionSource: 'family',

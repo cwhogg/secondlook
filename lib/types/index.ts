@@ -97,13 +97,34 @@ export interface CriteriaFulfillment {
   fulfillmentPercentage: number;
 }
 
+// Mechanical scoring breakdown (per-component) so we can audit *why* a
+// diagnosis got the evidenceScore it did and so we can fit a calibration
+// curve against ground truth from historical graded eval data.
+export interface EvidenceScoreBreakdown {
+  evidenceScoreRaw: number; // pre-rounding 0-100
+  trackUsed: 'kb-grounded' | 'non-kb-reasoning';
+  components: {
+    criteriaFulfillmentRatio?: number;
+    symptomMatchScore: number;
+    specialistAgreementScore: number;
+    contradictionPenalty: number;
+    excludedFindingPenalty: number;
+    evidenceQualityScore?: number;
+  };
+}
+
 export interface DiagnosisHypothesis {
   diagnosis: string;
   icd10Code?: string;
   omimId?: string;
   orphanetId?: string;
-  confidenceScore: number; // LLM-assessed (legacy compatibility)
-  evidenceScore: number; // grounded in diagnostic criteria fulfillment
+  confidenceScore: number; // LLM-assigned probability from the synthesizer
+  evidenceScore: number; // deterministic from signals (v7+); same as confidenceScore on pre-v7 data
+  // v7+ — set when evidenceScore was computed by the deterministic formula;
+  // absent on older data where evidenceScore was just the synth LLM score.
+  evidenceScoreRaw?: number;
+  evidenceScoreBreakdown?: EvidenceScoreBreakdown;
+  scoringVersion?: string; // e.g. 'v1-2026-05-29' — which formula produced the score
   rareDisease: boolean;
   prevalence?: string;
   supportingEvidence: EvidenceItem[];
@@ -112,7 +133,12 @@ export interface DiagnosisHypothesis {
   typicalPresentation: string;
   specialistRequired: string;
   diagnosticCriteria: CriteriaFulfillment;
-  sourceAgent: string; // which specialist agent proposed this
+  sourceAgent: string; // legacy: comma-joined specialist agents
+  sourceAgents?: string[]; // v7+: structured array (split of sourceAgent for back-compat)
+  // For family-expansion entries, the synth-ranked diagnosis whose KB profile
+  // listed this variant — used so expansions inherit a discounted score
+  // instead of showing zero.
+  parentDiagnosis?: string;
   evaluationType: 'criteria-grounded' | 'reasoning-evaluated'; // whether KB criteria were available
   knowledgeBaseMatch: boolean; // whether this disease exists in the KB
   // Marker set only on KB-linked entries appended after synthesis (positions 11-15);

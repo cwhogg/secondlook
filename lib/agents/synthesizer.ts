@@ -2,6 +2,12 @@ import { BaseAgent } from './base-agent';
 import { AgentInput, AgentOutput, SynthesisOutput } from './types';
 import { DiagnosisHypothesis, PatientCase } from '../types';
 import { getDiseaseCount } from '../knowledge';
+import {
+  computeMechanicalEvidenceScore,
+  applyDownstreamPenalty,
+  sourceAgentList,
+  SCORING_VERSION,
+} from '../pipeline/evidence-scoring';
 
 function buildSynthesisPrompt(): string {
   return `You are the senior diagnostician and department chief — the final decision-maker on this case. You have 30+ years of experience in complex diagnostic medicine, specializing in rare and multi-system diseases.
@@ -160,14 +166,15 @@ export class SynthesisAgent extends BaseAgent {
 
     const synthesis = result.content;
 
-    // Reorder hypotheses according to synthesis ranking and apply LLM-assigned probability scores
+    // Reorder hypotheses according to synthesis ranking and apply LLM-assigned probability scores.
+    // confidenceScore = synth's LLM clinical judgment (kept as-is); evidenceScore is replaced
+    // downstream by a deterministic mechanical formula so the rank ordering is auditable and
+    // not subject to the LLM's own ranking biases (see lib/pipeline/evidence-scoring.ts).
     const rankedHypotheses: DiagnosisHypothesis[] = [];
     for (const ranked of synthesis.rankedDiagnoses) {
       const match = this.findHypothesisByName(evaluatedHypotheses, ranked.diagnosis);
       if (match && !rankedHypotheses.includes(match)) {
-        // Apply the LLM's probability assessment as both confidenceScore and evidenceScore
         match.confidenceScore = ranked.probabilityScore;
-        match.evidenceScore = ranked.probabilityScore;
         rankedHypotheses.push(match);
       }
     }
@@ -179,8 +186,38 @@ export class SynthesisAgent extends BaseAgent {
       }
     }
 
+    // ===== Mechanical evidence scoring (v7+) =====
+    // Compute deterministic evidenceScore + breakdown for each hypothesis,
+    // promote the legacy comma-joined sourceAgent string into a structured
+    // sourceAgents array, then re-rank by the mechanical score.
+    const scoredHypotheses = rankedHypotheses.map((h) => {
+      const { score, breakdown } = computeMechanicalEvidenceScore(h, patientCase);
+      const sources = sourceAgentList(h);
+      return {
+        ...h,
+        evidenceScore: score,
+        evidenceScoreRaw: breakdown.evidenceScoreRaw,
+        evidenceScoreBreakdown: breakdown,
+        sourceAgents: sources.length > 0 ? sources : undefined,
+        scoringVersion: SCORING_VERSION,
+      } as DiagnosisHypothesis;
+    });
+
+    // Apply downstream-condition penalty: a diagnosis that is a downstream
+    // consequence of another (higher-scored) diagnosis in the same differential
+    // gets halved so the effect cannot outrank its cause.
+    const adjustedHypotheses = applyDownstreamPenalty(scoredHypotheses);
+
+    // Final rank is by mechanical evidenceScore, descending. Stable sort on
+    // ties uses the synth's confidenceScore as a tiebreaker so the LLM's
+    // judgment still influences ordering when mechanical signals agree.
+    adjustedHypotheses.sort((a, b) => {
+      if (b.evidenceScore !== a.evidenceScore) return b.evidenceScore - a.evidenceScore;
+      return (b.confidenceScore || 0) - (a.confidenceScore || 0);
+    });
+
     // Take top 10
-    const finalTopN = rankedHypotheses.slice(0, 10);
+    const finalTopN = adjustedHypotheses.slice(0, 10);
 
     // Store synthesis metadata in the output
     const agentOutput: AgentOutput = {

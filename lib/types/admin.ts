@@ -152,7 +152,13 @@ export interface TestCase {
   //      stricture (kept JSON output for parsability). Matches the protocol
   //      used to publish the Exomiser / o1-preview / GPT-4o benchmark
   //      numbers so apples-to-apples comparisons against those are valid.
-  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6';
+  // v7 = v6 + deterministic mechanical evidenceScore (replaces synth's
+  //      probabilityScore as the rank key). confidenceScore still carries
+  //      the LLM clinical judgment. Adds downstream-condition penalty,
+  //      meaningful scores for family-expansion entries, and persistence of
+  //      per-component score breakdowns so ground-truth-vs-score
+  //      calibration can be fit offline later.
+  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7';
   // Which "engine" produced this Eval case. secondlook = the full V2 pipeline;
   // openai / claude = single-shot baseline calls to the respective top model.
   // Unset entries are treated as 'secondlook' for backward compatibility.

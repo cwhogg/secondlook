@@ -14,6 +14,7 @@ import type {
 import type { AnalysisResult, MappedSymptom } from "@/lib/types/index"
 import type { PipelineProgress } from "@/lib/types/pipeline"
 import { mapSingleSymptom } from "@/lib/symptom-parser"
+import { qualitativeLabel } from "@/lib/pipeline/score-labels"
 import { cn } from "@/lib/utils"
 
 // ===== CONSTANTS =====
@@ -906,7 +907,10 @@ export function PipelineResultsSection({ result }: { result: AnalysisResult }) {
                 </div>
                 <div className="text-right shrink-0">
                   <div className="text-sm font-bold text-[#8b2500]">{dx.evidenceScore}</div>
-                  <div className="text-xs text-[#8b7355]">evidence</div>
+                  <div className="text-[10px] text-[#8b7355]">{qualitativeLabel(dx.evidenceScore).label}</div>
+                  {typeof dx.confidenceScore === "number" && dx.confidenceScore !== dx.evidenceScore && (
+                    <div className="text-[10px] text-[#8b7355] mt-0.5">LLM conf: {dx.confidenceScore}</div>
+                  )}
                 </div>
               </div>
               <div className="text-xs text-[#8b7355] mt-1">

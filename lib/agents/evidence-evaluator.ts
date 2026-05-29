@@ -130,8 +130,13 @@ export class EvidenceEvaluator extends BaseAgent {
                       type: 'string',
                       description: 'Narrative assessment of evidence strength, reasoning quality, and clinical fit',
                     },
+                    downstreamOf: {
+                      type: 'array',
+                      items: { type: 'string' },
+                      description: 'Names of OTHER diagnoses in this same differential that this diagnosis is a downstream consequence/complication of (e.g. "Secondary hyperparathyroidism due to CKD" is downstreamOf "ADTKD-1" when both appear). Empty array if not downstream of anything in the list.',
+                    },
                   },
-                  required: ['diagnosis', 'evaluationType', 'criteriaFulfillment', 'evidenceQuality', 'informationGaps', 'contradictions', 'strengthAssessment'],
+                  required: ['diagnosis', 'evaluationType', 'criteriaFulfillment', 'evidenceQuality', 'informationGaps', 'contradictions', 'strengthAssessment', 'downstreamOf'],
                 },
               },
             },
@@ -228,6 +233,7 @@ export class EvidenceEvaluator extends BaseAgent {
       _strengthAssessment: evaluation.strengthAssessment,
       _informationGaps: evaluation.informationGaps,
       _contradictions: evaluation.contradictions,
+      _downstreamOf: evaluation.downstreamOf,
     } as DiagnosisHypothesis;
   }
 

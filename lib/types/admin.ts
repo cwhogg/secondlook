@@ -179,7 +179,15 @@ export interface TestCase {
   //       scoring (positions 11-15 had silent zeros). v10 still applied
   //       both. v11 removes them to test whether the v5-vs-v10 SL gap
   //       was these post-processors or just cohort variance.
-  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11';
+  // v12 = v11 + sampler exclusion disabled. The pipeline is unchanged
+  //       from v11; the only difference is that batches now draw fresh
+  //       from the full 9,587-case Phenopacket2Prompt pool instead of
+  //       filtering out ppkt_ids with already-completed trios. Fixes
+  //       the depletion-induced cohort drift documented in the
+  //       2026-05-29-30 session report (v11 was 88% long-tail vs v5's
+  //       65% because top-15 corpus-concentrated diseases had been
+  //       progressively consumed by earlier batches).
+  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12';
   // Which "engine" produced this Eval case. secondlook = the full V2 pipeline;
   // openai / claude = single-shot baseline calls to the respective top model.
   // Unset entries are treated as 'secondlook' for backward compatibility.

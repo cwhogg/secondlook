@@ -154,17 +154,35 @@ All infrastructure preserved from v8+:
 
 **Results**: TBD
 
-## v12 (planned) — dual-model generation + adversarial critique
+## v12 — sampler exclusion disabled (fresh-pool draws)
 
-Originally sketched as v11; renumbered here to make room for the v5-revert experiment. Behind a feature flag, drops the 11-specialist parallel fanout in favor of two foundation-model generators (opus-4-7 + o3:high) running in parallel with no KB filter, an adversarial critique stage that reconciles their outputs, and KB augmentation as a post-hoc citation source.
+Pipeline behaviour is **identical to v11**. Only the eval-case sampler changes: the `exclude` query parameter (which filtered out ppkt_ids with already-completed graded trios) is now ignored. Each batch draws fresh from the full 9,587-case Phenopacket2Prompt pool.
+
+Motivation: the v5-vs-v11 cohort composition analysis (see docs/session-reports/2026-05-29-30) revealed that the exclude logic was progressively depleting the corpus-concentrated top-15 diseases (DEE4, NF1, KBG, ADTKD-1, etc.) from the available pool. v5 drew 35% corpus-concentrated cases; v11 drew only 12%. SL's measured Top-1 was changing across batches partly because the underlying sample composition was drifting — a measurement artifact, not an architectural shift.
+
+What changed in code:
+- `app/api/admin/eval-case/route.ts` — the `available = dataset.filter(...)` step no longer filters by excluded ppkt_ids. The full dataset is the available pool for every batch.
+
+What this means in practice:
+- Batches may now redraw ppkt_ids that prior runs already completed. Within a single (version, samplingMode) cohort key, a redraw overwrites the older record in the matched-trio grouping. Across version+samplingMode keys (e.g. v5 vs v12), records sit in separate cohort blocks and don't conflict.
+- Top-1 measurements on v12 batches are directly comparable to published Phenopacket2Prompt benchmark numbers (Exomiser 35.5%, o1-preview 23.6%, GPT-4o ~20%), which were also measured on freshly randomized samples.
+
+What v12 is NOT:
+- Not the dual-model architecture experiment (that shifts to v13). v12 carries the v11 pipeline exactly — 11 specialists, KB-anchored, synth LLM ranking, mechanical formula as audit data, no downstream/family-expansion post-processors.
+
+**Results**: TBD.
+
+## v13 (planned) — dual-model generation + adversarial critique
+
+Originally sketched as v11 then v12; renumbered here after the v12 sampler-reset experiment took the v12 slot. Behind a feature flag, drops the 11-specialist parallel fanout in favor of two foundation-model generators (opus-4-7 + o3:high) running in parallel with no KB filter, an adversarial critique stage that reconciles their outputs, and KB augmentation as a post-hoc citation source.
 
 - **Stages**: parse/extract → opus + o3 parallel generation → KB augmentation (deterministic) → adversarial critique (o3) → mechanical scoring (persisted, not rank-driving) → report
-- **Per-case load**: ~4 LLM calls (vs ~14 in v11)
+- **Per-case load**: ~4 LLM calls (vs ~14 in v12)
 - **Expected wall time**: 60–80s median
-- **Expected cost**: ~$0.30/case (vs ~$1.50 in v11)
+- **Expected cost**: ~$0.30/case (vs ~$1.50 in v12)
 - **Provider note**: crosses the AI Provider Separation rule for the analysis flow (uses both OpenAI and Anthropic). Tradeoff worth taking given Claude's measured long-tail advantage; testing-framework objectivity concern is small for published-dataset eval where the headline metric is deterministic OMIM/name match.
 - **Status**: not built. Engine flag (`evalEngine: 'classic' | 'dual'`) to land in orchestrator first; specialty agents and synthesizer stay in tree behind the flag for revertability.
-- **Decision criterion**: build v12 only if v11 demonstrates the harness genuinely beats single-shot baselines. If v11 ties baselines (no positive delta), v12's "is the harness theatre?" hypothesis becomes the strongest path forward; if v11 wins, v12 becomes "can we win more cheaply?"
+- **Decision criterion**: build v13 if v12 (fresh-pool measurement) shows the harness ties or loses to single-shot baselines on a clean cohort. If v12 wins meaningfully on the fresh pool, v13 becomes "can we win more cheaply?"; if it ties, v13 becomes "is the harness theatre?"
 
 ---
 
@@ -182,8 +200,9 @@ Originally sketched as v11; renumbered here to make room for the v5-revert exper
 | v8 | o3 | medium | top 10 | yes | yes | 180s → 120s | yes | yes |
 | v9 | o3 | high | top 10 | yes | yes | 120s | yes (heartbeat + 180s SSE) | yes |
 | v10 | o3 | high | top 10 | yes | audit data only — synth LLM probability is rank key | 120s | yes (heartbeat + 180s SSE) | yes |
-| v11 | o3 | high | top 10 | yes | audit data only; **also drops downstream-of penalty + family-expansion scoring** (full v5-ranking parity) | 120s | yes (heartbeat + 180s SSE) | yes |
-| v12 (planned) | n/a (opus-4-7 + o3 generators) | n/a | top 10 | as post-hoc citation only | as audit data | n/a | yes (heartbeat + 180s SSE) | yes |
+| v11 | o3 | high | top 10 | yes | audit data only; also drops downstream-of penalty + family-expansion scoring (full v5-ranking parity) | 120s | yes (heartbeat + 180s SSE) | yes |
+| v12 | o3 | high | top 10 | yes | audit data only (same as v11) | 120s | yes (heartbeat + 180s SSE) | yes; **sampler exclusion disabled — draws fresh from full pool** |
+| v13 (planned) | n/a (opus-4-7 + o3 generators) | n/a | top 10 | as post-hoc citation only | as audit data | n/a | yes (heartbeat + 180s SSE) | yes |
 
 ## Reading the headline numbers
 

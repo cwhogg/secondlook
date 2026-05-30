@@ -72,12 +72,21 @@ export async function GET(request: NextRequest) {
     )
   }
 
-  const excluded = new Set(excludeParam.split(",").map((s) => s.trim()).filter(Boolean))
-  const available = dataset.filter((row) => !excluded.has(row.ppkt_id))
+  // Sampler exclusion intentionally disabled as of v12. The previous
+  // behaviour filtered out ppkt_ids with already-completed trios, which
+  // progressively depleted the corpus-concentrated top-15 diseases from
+  // the pool and drifted later cohorts toward the long tail (see the
+  // session report at docs/session-reports/2026-05-29-30 for the full
+  // analysis). Sampling now draws from the full 9,587-case pool every
+  // batch — matching the published Phenopacket2Prompt benchmark
+  // methodology and keeping accuracy measurements composition-stable
+  // across batches.
+  void excludeParam
+  const available = dataset
   if (available.length === 0) {
     return NextResponse.json(
-      { error: "All eval cases have been run; nothing left to sample" },
-      { status: 409 },
+      { error: "Eval dataset is empty" },
+      { status: 503 },
     )
   }
 

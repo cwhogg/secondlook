@@ -127,16 +127,44 @@ Bundled with v8 specialist drop and shipped together:
 - **Why**: v5 SL uniform Top-1 = 54% (N=48, LLM ranking). v7-v9 SL uniform Top-1 = 13% (N=52, mechanical ranking). Baselines moved <5 pts across the same versions. **41-point SL-only regression** pinpointed to the mechanical formula introduced in v7. The formula's 0.40 weight on criteriaFulfillmentRatio systematically penalizes rare-disease correct answers (rare-disease vignettes rarely include the genetic/biopsy confirmations the formal criteria require) while rewarding common-disease distractors with easy-to-verify lab/clinical criteria. Synth's LLM probability was using soft judgment the formula throws away.
 - **Results**: TBD — first batch will tell us whether we recover the v5 territory (~50% Top-1 uniform).
 
-## v11 (planned) — dual-model generation + adversarial critique
+## v11 — complete revert to v5 ranking pipeline
 
-Behind a feature flag, drops the 11-specialist parallel fanout in favor of two foundation-model generators (opus-4-7 + o3:high) running in parallel with no KB filter, an adversarial critique stage that reconciles their outputs, and KB augmentation as a post-hoc citation source. Detailed architecture sketch in the team conversation. Goal: test the "specialty perspective at 11-agent scale is theatre; foundation models capture the long tail better than KB-anchored specialists" hypothesis.
+Motivation: v10 (LLM ranking restored, mechanical formula demoted to audit data) landed SL Top-1 at 42% on N=26 uniform — stat-tied with the o3 baseline. v5 hit 54% Top-1 on N=48 uniform with what *should* have been the same ranking logic. Two v7-era post-processors were still active in v10 that v5 did not have:
 
-- **Stages**: parse/extract → opus + o3 parallel generation → KB augmentation (deterministic) → adversarial critique (o3) → mechanical scoring (persisted but not rank-driving in v11, matching v10 semantics) → report
-- **Per-case load**: ~4 LLM calls (vs ~14 in v10)
+1. **Downstream-condition penalty** (synth post-processor) — halved `evidenceScore` of any diagnosis listed as `downstreamOf` a higher-scored peer.
+2. **Family-expansion scoring** (orchestrator post-processor) — gave positions 11–15 `parent.evidenceScore × 0.5` instead of v5's silent zeros.
+
+v11 removes both. Synth sorts by raw LLM `probabilityScore` desc with no penalty; family expansions inherit score=0 like v5.
+
+What changed in code:
+- `lib/agents/synthesizer.ts` — drops the `applyDownstreamPenalty` call. Mechanical formula still computed and persisted on each hypothesis as `evidenceScoreRaw` and `evidenceScoreBreakdown` for audit and the LLM-vs-formula divergence diagnostic — no algorithmic role.
+- `lib/pipeline/orchestrator.ts` — drops the `applyFamilyExpansionScoring` call. Family expansions land as `expandFamilyVariants` produces them (score=0 by construction).
+- `lib/agents/evidence-evaluator.ts` — removes the `downstreamOf` field from the structured-output schema (added in v7 to feed the downstream penalty). v5 evaluator prompt parity restored. The `_downstreamOf` stash field is also dropped since nothing consumes it in v11.
+
+All infrastructure preserved from v8+:
+- Per-specialist 120s timeout, persisted `pipelineProgressLog`, structured `[orch]` Vercel logs
+- 30s heartbeat during evidence-eval and synth (keeps SSE alive while o3 reasons)
+- 180s SSE idle timeout, 280s pipeline cap
+- Mechanical formula computation and persistence (audit only)
+- Baseline-error persistence (recently fixed)
+- Lab integration (no-op on Phenopacket eval cases — they contain no uploaded labs)
+- Top-10 comparison column, diversified-sampling option, version-split matched-trio table
+
+**Test design:** if v11 lands close to v5's 54% Top-1 uniform on a comparable N, the two post-processors were doing real harm to ranking on rare-disease vignettes. If v11 ties v10 (~42%), the v5-vs-v10 gap was cohort variance, not a real architectural issue, and v5's 54% was an unrepresentative draw.
+
+**Results**: TBD
+
+## v12 (planned) — dual-model generation + adversarial critique
+
+Originally sketched as v11; renumbered here to make room for the v5-revert experiment. Behind a feature flag, drops the 11-specialist parallel fanout in favor of two foundation-model generators (opus-4-7 + o3:high) running in parallel with no KB filter, an adversarial critique stage that reconciles their outputs, and KB augmentation as a post-hoc citation source.
+
+- **Stages**: parse/extract → opus + o3 parallel generation → KB augmentation (deterministic) → adversarial critique (o3) → mechanical scoring (persisted, not rank-driving) → report
+- **Per-case load**: ~4 LLM calls (vs ~14 in v11)
 - **Expected wall time**: 60–80s median
-- **Expected cost**: ~$0.30/case (vs ~$1.50 in v10)
+- **Expected cost**: ~$0.30/case (vs ~$1.50 in v11)
 - **Provider note**: crosses the AI Provider Separation rule for the analysis flow (uses both OpenAI and Anthropic). Tradeoff worth taking given Claude's measured long-tail advantage; testing-framework objectivity concern is small for published-dataset eval where the headline metric is deterministic OMIM/name match.
 - **Status**: not built. Engine flag (`evalEngine: 'classic' | 'dual'`) to land in orchestrator first; specialty agents and synthesizer stay in tree behind the flag for revertability.
+- **Decision criterion**: build v12 only if v11 demonstrates the harness genuinely beats single-shot baselines. If v11 ties baselines (no positive delta), v12's "is the harness theatre?" hypothesis becomes the strongest path forward; if v11 wins, v12 becomes "can we win more cheaply?"
 
 ---
 
@@ -153,8 +181,9 @@ Behind a feature flag, drops the 11-specialist parallel fanout in favor of two f
 | v7 | o3 | high | top 10 | yes | yes | none | none | no |
 | v8 | o3 | medium | top 10 | yes | yes | 180s → 120s | yes | yes |
 | v9 | o3 | high | top 10 | yes | yes | 120s | yes (heartbeat + 180s SSE) | yes |
-| v10 | o3 | high | top 10 | yes | **as audit data only — synth LLM probability is rank key** | 120s | yes (heartbeat + 180s SSE) | yes |
-| v11 (planned) | n/a (opus-4-7 + o3 generators) | n/a | top 10 | as post-hoc citation only | as audit data | n/a | yes (heartbeat + 180s SSE) | yes |
+| v10 | o3 | high | top 10 | yes | audit data only — synth LLM probability is rank key | 120s | yes (heartbeat + 180s SSE) | yes |
+| v11 | o3 | high | top 10 | yes | audit data only; **also drops downstream-of penalty + family-expansion scoring** (full v5-ranking parity) | 120s | yes (heartbeat + 180s SSE) | yes |
+| v12 (planned) | n/a (opus-4-7 + o3 generators) | n/a | top 10 | as post-hoc citation only | as audit data | n/a | yes (heartbeat + 180s SSE) | yes |
 
 ## Reading the headline numbers
 

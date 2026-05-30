@@ -4,7 +4,6 @@ import { DiagnosisHypothesis, PatientCase } from '../types';
 import { getDiseaseCount } from '../knowledge';
 import {
   computeMechanicalEvidenceScore,
-  applyDownstreamPenalty,
   sourceAgentList,
   SCORING_VERSION,
 } from '../pipeline/evidence-scoring';
@@ -220,15 +219,16 @@ export class SynthesisAgent extends BaseAgent {
       } as DiagnosisHypothesis;
     });
 
-    // Downstream-condition penalty still applies — a diagnosis listed as
-    // downstreamOf a higher-scored peer in the same differential gets halved.
-    // Now operates on the LLM-derived evidenceScore but the structural
-    // intent (effect never outranks cause) is unchanged.
-    const adjustedHypotheses = applyDownstreamPenalty(scoredHypotheses);
+    // v11: drop the v7 downstream-condition penalty post-processor.
+    // v5 (which we are trying to reproduce) had no such penalty — the
+    // synth's LLM judgment alone decided ordering. Mechanical formula is
+    // still computed above and persisted as audit data, but no longer
+    // mutates evidenceScore for ranking.
+    const adjustedHypotheses = scoredHypotheses;
 
-    // Final rank is by evidenceScore (LLM probability) descending. Ties
-    // broken by confidenceScore (identical in v10 but kept for safety in
-    // case downstream penalty halves evidenceScore without confidenceScore).
+    // Final rank is by evidenceScore (= synth's LLM probabilityScore)
+    // descending. Tie-break on confidenceScore which is identical now;
+    // kept for safety against any future post-processor that diverges them.
     adjustedHypotheses.sort((a, b) => {
       if (b.evidenceScore !== a.evidenceScore) return b.evidenceScore - a.evidenceScore;
       return (b.confidenceScore || 0) - (a.confidenceScore || 0);

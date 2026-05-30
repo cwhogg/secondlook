@@ -6,7 +6,6 @@ import { EvidenceEvaluator } from '../agents/evidence-evaluator';
 import { SynthesisAgent } from '../agents/synthesizer';
 import { ReportGenerator } from '../agents/report-generator';
 import { expandFamilyVariants } from './family-expansion';
-import { applyFamilyExpansionScoring } from './evidence-scoring';
 import { deriveSymptomsFromLabs } from './lab-utils';
 import { AgentOutput } from '../agents/types';
 import { BudgetTracker } from './budget';
@@ -484,13 +483,12 @@ export class DiagnosticPipeline {
 
       // Family expansion: deterministically append up to 5 KB-linked variants
       // of the top ranked diagnoses at positions 11-15. No LLM calls.
-      // Score them by inheriting half their parent diagnosis's evidenceScore,
-      // so users see a meaningful tier instead of a silent zero.
-      const familyExpansionsRaw = expandFamilyVariants(reportResult.hypotheses);
-      const familyExpansions = applyFamilyExpansionScoring(
-        reportResult.hypotheses,
-        familyExpansionsRaw,
-      );
+      // v11: revert to v5 behavior — expansions keep their initial score=0
+      // rather than inheriting parent*0.5. v7's applyFamilyExpansionScoring
+      // is dropped to test whether the v5-vs-v9 SL regression was due to
+      // post-synthesis scoring changes (in combination with the synth
+      // downstream-penalty drop in synthesizer.ts).
+      const familyExpansions = expandFamilyVariants(reportResult.hypotheses);
 
       const analysisResult: AnalysisResult = {
         differentialDiagnoses: [...reportResult.hypotheses, ...familyExpansions],

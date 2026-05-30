@@ -668,48 +668,105 @@ export default function EvalPage() {
         grading: undefined,
         gradingMetadata: undefined,
         pipelineError: undefined,
+        pipelineProgressLog: undefined,
       })
       const { patientCase, extractedSymptoms, extractedExcludedFindings } = await buildPatientCase(patient)
       patchCase(testId, { extractedSymptoms, extractedExcludedFindings })
 
-      const response = await fetch("/api/analyze-patient-v2", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(patientCase),
-      })
-      if (!response.ok) {
-        const body = await response.text()
-        let msg = `Pipeline ${response.status}`
-        try { const j = JSON.parse(body); if (j.error) msg = j.error } catch {}
-        throw new Error(msg)
-      }
-      const reader = response.body!.getReader()
-      const decoder = new TextDecoder()
-      let buffer = ""
-      let result: AnalysisResult | null = null
-      while (true) {
-        const { done, value } = await reader.read()
-        if (done) break
-        buffer += decoder.decode(value, { stream: true })
-        const lines = buffer.split("\n\n")
-        buffer = lines.pop() || ""
-        for (const chunk of lines) {
-          const dataLine = chunk.trim()
-          if (!dataLine.startsWith("data: ")) continue
-          let event: any
-          try { event = JSON.parse(dataLine.slice(6)) } catch { continue }
-          if (event.type === "result") {
-            if (!event.success || !event.analysis) throw new Error("Invalid analysis result")
-            result = event.analysis
-          } else if (event.type === "error") {
-            throw new Error(event.error || "Pipeline error")
-          }
+      // Same safety nets + progress trail as runPipeline. The trio runner
+      // ALWAYS comes through this function, so this is where diagnostics
+      // need to live for batch eval runs.
+      const PIPELINE_MAX_MS = 280_000
+      const SSE_IDLE_MAX_MS = 90_000
+      const pipelineStart = Date.now()
+      const progressLog: NonNullable<TestCase["pipelineProgressLog"]> = []
+      let lastFlushedStage: string | null = null
+      const abortController = new AbortController()
+      const overallDeadlineTimer = setTimeout(() => abortController.abort(), PIPELINE_MAX_MS)
+      try {
+        const response = await fetch("/api/analyze-patient-v2", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(patientCase),
+          signal: abortController.signal,
+        })
+        if (!response.ok) {
+          const body = await response.text()
+          let msg = `Pipeline ${response.status}`
+          try { const j = JSON.parse(body); if (j.error) msg = j.error } catch {}
+          throw new Error(msg)
         }
-        if (result) break
+        const reader = response.body!.getReader()
+        const decoder = new TextDecoder()
+        let buffer = ""
+        let result: AnalysisResult | null = null
+        while (true) {
+          let idleTimer: ReturnType<typeof setTimeout> | null = null
+          const idlePromise = new Promise<never>((_, reject) => {
+            idleTimer = setTimeout(() => reject(new Error(
+              `SSE idle timeout: no data for ${SSE_IDLE_MAX_MS / 1000}s (pipeline probably died server-side)`
+            )), SSE_IDLE_MAX_MS)
+          })
+          let readResult: ReadableStreamReadResult<Uint8Array>
+          try {
+            readResult = await Promise.race([reader.read(), idlePromise])
+          } finally {
+            if (idleTimer) clearTimeout(idleTimer)
+          }
+          const elapsedMs = Date.now() - pipelineStart
+          if (elapsedMs > PIPELINE_MAX_MS) {
+            throw new Error(`Pipeline exceeded max duration (${Math.round(elapsedMs / 1000)}s > ${PIPELINE_MAX_MS / 1000}s)`)
+          }
+          const { done, value } = readResult
+          if (done) break
+          buffer += decoder.decode(value, { stream: true })
+          const lines = buffer.split("\n\n")
+          buffer = lines.pop() || ""
+          for (const chunk of lines) {
+            const dataLine = chunk.trim()
+            if (!dataLine.startsWith("data: ")) continue
+            let event: any
+            try { event = JSON.parse(dataLine.slice(6)) } catch { continue }
+            if (event.type === "progress") {
+              progressLog.push({
+                t: Date.now() - pipelineStart,
+                stage: event.stage,
+                detail: (event.detail || "").substring(0, 200),
+                data: event.data,
+              })
+              if (event.stage !== lastFlushedStage) {
+                lastFlushedStage = event.stage
+                patchCase(testId, { pipelineProgressLog: progressLog.slice() })
+              }
+            } else if (event.type === "result") {
+              if (!event.success || !event.analysis) throw new Error("Invalid analysis result")
+              result = event.analysis
+            } else if (event.type === "error") {
+              progressLog.push({
+                t: Date.now() - pipelineStart,
+                stage: "error",
+                detail: (event.error || "Pipeline error").substring(0, 200),
+              })
+              patchCase(testId, { pipelineProgressLog: progressLog.slice() })
+              throw new Error(event.error || "Pipeline error")
+            }
+          }
+          if (result) break
+        }
+        if (!result) throw new Error("Pipeline stream ended without a result")
+        patchCase(testId, { status: "completed", pipelineResult: result, pipelineProgressLog: progressLog.slice() })
+        await gradeForTrio(testId, groundTruth, result)
+      } catch (err: any) {
+        progressLog.push({
+          t: Date.now() - pipelineStart,
+          stage: "client-error",
+          detail: (err?.message || "unknown error").substring(0, 200),
+        })
+        patchCase(testId, { status: "error", pipelineError: err.message, pipelineProgressLog: progressLog.slice() })
+        throw err
+      } finally {
+        clearTimeout(overallDeadlineTimer)
       }
-      if (!result) throw new Error("Pipeline stream ended without a result")
-      patchCase(testId, { status: "completed", pipelineResult: result })
-      await gradeForTrio(testId, groundTruth, result)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [patchCase],

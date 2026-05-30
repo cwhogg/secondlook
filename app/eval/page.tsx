@@ -123,23 +123,30 @@ interface MatchedTrio {
   claude: TestCase
 }
 
-// A trio is a categoryHint (ppkt_id) where all three models have graded testCases.
+// A trio is one (ppkt_id, evalVersion) combination where all three models
+// have graded testCases. Keying by ppkt_id ALONE would let a newer v13
+// trio collide with an older v5 trio for the same ppkt_id, and whichever
+// landed second in iteration order would overwrite the other — silently
+// dropping the newer version from the comparison table. Keying by the
+// (hint, version) pair keeps each replay-vs-original cohort separable.
 function getMatchedTrios(testCases: TestCase[]): MatchedTrio[] {
-  const byHint = new Map<string, Partial<Record<ModelTab, TestCase>>>()
+  const byHintVer = new Map<string, Partial<Record<ModelTab, TestCase>>>()
   for (const tc of testCases) {
     if (tc.testVersion !== "Eval") continue
     if (tc.status !== "graded" || !tc.grading) continue
     const mode = tabOf(tc)
     const hint = tc.categoryHint || ""
     if (!hint) continue
-    if (!byHint.has(hint)) byHint.set(hint, {})
-    byHint.get(hint)![mode] = tc
+    const ver = tc.evalVersion ?? "unknown"
+    const key = `${hint}|${ver}`
+    if (!byHintVer.has(key)) byHintVer.set(key, {})
+    byHintVer.get(key)![mode] = tc
   }
   const trios: MatchedTrio[] = []
-  for (const [ppkt_id, entry] of byHint) {
+  for (const [, entry] of byHintVer) {
     if (entry.secondlook && entry.openai && entry.claude) {
       trios.push({
-        ppkt_id,
+        ppkt_id: entry.secondlook.categoryHint || "",
         diagnosis: entry.secondlook.groundTruth?.diagnosis || "(unknown)",
         secondlook: entry.secondlook,
         openai: entry.openai,

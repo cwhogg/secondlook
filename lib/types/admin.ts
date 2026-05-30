@@ -187,7 +187,15 @@ export interface TestCase {
   //       2026-05-29-30 session report (v11 was 88% long-tail vs v5's
   //       65% because top-15 corpus-concentrated diseases had been
   //       progressively consumed by earlier batches).
-  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12';
+  //
+  // The union below names the canonical versions for type-narrowing in
+  // existing code. The trailing `string & {}` keeps autocomplete on the
+  // named versions while allowing the /eval UI to tag a run as any
+  // string (e.g. "v13" or "experiment-foo") before the next canonical
+  // version is bumped in this file. Components that switch on the
+  // version string (color map, badge type) fall back to a neutral
+  // styling for unrecognized values.
+  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12' | (string & {});
   // Which "engine" produced this Eval case. secondlook = the full V2 pipeline;
   // openai / claude = single-shot baseline calls to the respective top model.
   // Unset entries are treated as 'secondlook' for backward compatibility.

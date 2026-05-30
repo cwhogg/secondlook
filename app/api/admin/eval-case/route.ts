@@ -61,6 +61,7 @@ export async function GET(request: NextRequest) {
   const countParam = url.searchParams.get("count")
   const excludeParam = url.searchParams.get("exclude") || ""
   const modeParam = url.searchParams.get("mode") || "uniform"
+  const idsParam = url.searchParams.get("ids") || ""
   const count = countParam ? Math.max(1, Math.min(100, parseInt(countParam, 10))) : 1
   const mode = modeParam === "diversified" ? "diversified" : "uniform"
 
@@ -70,6 +71,42 @@ export async function GET(request: NextRequest) {
       { error: "Eval dataset not available on this server" },
       { status: 503 },
     )
+  }
+
+  // ===== Explicit-ID replay mode =====
+  // When the client sends ?ids=PMID_A,PMID_B,... the sampler returns those
+  // specific rows in the order requested, ignoring count, mode, and exclude.
+  // Used by the "Replay specific cases" UI on /eval to re-run the exact
+  // cohort from a prior version (e.g. v5's 26 Top-1 hits) under the
+  // current pipeline. Lets us answer "did the architecture regress on the
+  // same cases" rather than just "did the cohort distribution drift".
+  if (idsParam) {
+    const requestedIds = idsParam.split(",").map((s) => s.trim()).filter(Boolean)
+    const requestedSet = new Set(requestedIds)
+    const byId = new Map(dataset.map((row) => [row.ppkt_id, row]))
+    const matched: EvalCaseRow[] = []
+    const missing: string[] = []
+    // Preserve the caller-supplied order so the runner batch progresses
+    // in the order the user pasted.
+    for (const id of requestedIds) {
+      const row = byId.get(id)
+      if (row) matched.push(row)
+      else missing.push(id)
+    }
+    const cases = matched.map((row) => ({
+      ppkt_id: row.ppkt_id,
+      diagnosis: row.diagnosis,
+      case_description: row.case_description,
+      demographics: extractDemographics(row.case_description),
+    }))
+    return NextResponse.json({
+      cases,
+      totalAvailable: cases.length,
+      totalDataset: dataset.length,
+      samplingMode: "explicit-ids",
+      requested: requestedIds.length,
+      missing: missing.length > 0 ? missing : undefined,
+    })
   }
 
   // Sampler exclusion intentionally disabled as of v12. The previous

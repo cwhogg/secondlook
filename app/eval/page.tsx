@@ -45,7 +45,7 @@ const EVAL_VERSION_COLORS: Record<string, string> = {
   v12: "bg-indigo-50 text-indigo-800 border-indigo-300",
 }
 
-function EvalVersionBadge({ version }: { version?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12' }) {
+function EvalVersionBadge({ version }: { version?: string }) {
   if (!version) return null
   const cls = EVAL_VERSION_COLORS[version] ?? "bg-gray-50 text-gray-700 border-gray-300"
   return (
@@ -54,6 +54,40 @@ function EvalVersionBadge({ version }: { version?: 'v1' | 'v2' | 'v3' | 'v4' | '
     </span>
   )
 }
+
+// 26 ppkt_ids that SecondLook got Top-1 on under the v5 architecture.
+// Used by the "Replay v5 Top-1 hits" preset on the Run Evals tab to
+// re-run those exact cases under the current pipeline so we can
+// attribute v5-vs-v12 changes to cohort drift vs architectural
+// regression on the same case set.
+const V5_TOP1_HIT_PPKT_IDS = [
+  "PMID_29290338_Family_UG_R665_F_individual_F",
+  "PMID_11175294_Patient_B15",
+  "PMID_29290338_Family_UAB_R4624_individual_RS",
+  "PMID_35190816_STX_31394400_P1",
+  "PMID_20513137_individual_NF00886_GSM_GSM492682",
+  "PMID_23993194_Family_4_Case_6",
+  "PMID_31337854_Patient_55",
+  "PMID_24736735_G028",
+  "PMID_9199560_Maslen_1997_Patient_CS971736",
+  "PMID_26178382_MADR_690_I1",
+  "PMID_14569098_F9_individual_1",
+  "PMID_33674768_Patient_70_Miyake_2012_Hum_Mutat_34_108",
+  "PMID_30804983_9_month_old_girl",
+  "PMID_26178382_UAB_R7464",
+  "PMID_28513613_family_2",
+  "PMID_37843397_Patient_UM38",
+  "PMID_32219868_F2_IV_1",
+  "PMID_28782633_Family_1_14_year_old_male_P8",
+  "PMID_27764983_Family_1_individual_TJ",
+  "PMID_37843397_Patient_UM49",
+  "PMID_15781812_individual_104",
+  "PMID_26981933_Family_F_individual_F2",
+  "PMID_38284454_Patient_13",
+  "PMID_33674768_Patient_32_This_study",
+  "PMID_12203992_Patient_D30",
+  "PMID_17160901_family_C_individual_2",
+] as const
 
 type ModelTab = "secondlook" | "openai" | "claude"
 type EvalTab = ModelTab | "runevals"
@@ -236,6 +270,15 @@ export default function EvalPage() {
   const [activeTestId, setActiveTestId] = useState<string | null>(null)
   const [count, setCount] = useState(5)
   const [samplingMode, setSamplingMode] = useState<'uniform' | 'diversified'>('uniform')
+  const [replayMode, setReplayMode] = useState(false)
+  const [replayIds, setReplayIds] = useState("")
+  // Version the current batch will tag onto each testCase. Defaults to the
+  // latest known version. The user can pick any prior version (re-tag a
+  // measurement) or define a new version inline (e.g. "v13" before the
+  // type / docs are bumped).
+  const [selectedVersion, setSelectedVersion] = useState<string>("v12")
+  const [customVersions, setCustomVersions] = useState<string[]>([])
+  const [newVersionInput, setNewVersionInput] = useState("")
   const [isFetchingCases, setIsFetchingCases] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
   const [isGrading, setIsGrading] = useState(false)
@@ -857,12 +900,30 @@ export default function EvalPage() {
     setError(null)
     setTrioStopRequested(false)
     trioStopRequestedRef.current = false
-    setTrioBatchProgress({ current: 1, total: count })
     setIsTrioRunning(true)
     try {
-      const completeHints = getCompleteTrioHints(testCases)
-      const exclude = [...completeHints].join(",")
-      const url = `/api/admin/eval-case?count=${count}&exclude=${encodeURIComponent(exclude)}&mode=${samplingMode}`
+      let url: string
+      let expectedCount: number
+      if (replayMode) {
+        // Replay-specific-cases mode — pull rows from the eval-case API by
+        // their exact ppkt_ids, in the order pasted, ignoring count + mode.
+        const parsedIds = Array.from(new Set(
+          replayIds.split(/[\s,]+/).map((s) => s.trim()).filter(Boolean)
+        ))
+        if (parsedIds.length === 0) {
+          setError("Replay mode requires at least one ppkt_id in the textarea")
+          setIsTrioRunning(false)
+          return
+        }
+        expectedCount = parsedIds.length
+        url = `/api/admin/eval-case?ids=${encodeURIComponent(parsedIds.join(","))}`
+      } else {
+        const completeHints = getCompleteTrioHints(testCases)
+        const exclude = [...completeHints].join(",")
+        expectedCount = count
+        url = `/api/admin/eval-case?count=${count}&exclude=${encodeURIComponent(exclude)}&mode=${samplingMode}`
+      }
+      setTrioBatchProgress({ current: 1, total: expectedCount })
       const res = await fetch(url)
       if (!res.ok) {
         const err = await res.json().catch(() => ({}))
@@ -871,8 +932,11 @@ export default function EvalPage() {
       const data = await res.json()
       const cases = data.cases as EvalCase[]
       if (cases.length === 0) {
-        setError("No eval cases returned")
+        setError(replayMode ? "None of the pasted ppkt_ids matched a row in the Phenopacket2Prompt dataset" : "No eval cases returned")
         return
+      }
+      if (replayMode && Array.isArray(data.missing) && data.missing.length > 0) {
+        console.warn(`[replay] ${data.missing.length} requested ppkt_ids were not found:`, data.missing)
       }
       for (let i = 0; i < cases.length; i++) {
         if (trioStopRequestedRef.current) break
@@ -886,7 +950,7 @@ export default function EvalPage() {
           difficulty: 3,
           categoryHint: ec.ppkt_id,
           testVersion: "Eval" as const,
-          evalVersion: "v12" as const,
+          evalVersion: selectedVersion,
           evalSamplingMode: samplingMode,
           status: "generated" as const,
           source: "generated" as const,
@@ -991,7 +1055,7 @@ export default function EvalPage() {
           difficulty: 3,
           categoryHint: evalCase.ppkt_id,
           testVersion: "Eval",
-          evalVersion: "v12",
+          evalVersion: selectedVersion,
           evalRunMode: tab,
           evalSamplingMode: samplingMode,
           status: "generated",
@@ -1154,51 +1218,202 @@ export default function EvalPage() {
         {activeTab === "runevals" && (
           <>
             <div className="border border-[#d4c5b0] bg-white p-4 sm:p-6 mb-6">
-              <div className="flex flex-wrap items-end gap-4">
-                <div className="min-w-[200px]">
-                  <label className="block text-xs text-[#8b7355] mb-1">Number of evals to run (randomized)</label>
+              {/* Version selector — tags every testCase the next batch creates */}
+              {(() => {
+                const KNOWN_VERSIONS = ["v1","v2","v3","v4","v5","v6","v7","v8","v9","v10","v11","v12"] as const
+                const allVersions = Array.from(new Set([...KNOWN_VERSIONS, ...customVersions]))
+                const trimmedNewVersion = newVersionInput.trim()
+                const addNewVersion = () => {
+                  if (!trimmedNewVersion) return
+                  if (!customVersions.includes(trimmedNewVersion) && !(KNOWN_VERSIONS as readonly string[]).includes(trimmedNewVersion)) {
+                    setCustomVersions((prev) => [...prev, trimmedNewVersion])
+                  }
+                  setSelectedVersion(trimmedNewVersion)
+                  setNewVersionInput("")
+                }
+                return (
+                  <div className="flex flex-wrap items-end gap-3 mb-4 pb-3 border-b border-[#e8ddd0]">
+                    <div className="min-w-[160px]">
+                      <label className="block text-xs text-[#8b7355] mb-1">Tag run as version</label>
+                      <select
+                        value={selectedVersion}
+                        onChange={(e) => setSelectedVersion(e.target.value)}
+                        disabled={isTrioRunning}
+                        className="border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500] disabled:opacity-50"
+                      >
+                        {allVersions.map((v) => (
+                          <option key={v} value={v}>
+                            {v}{customVersions.includes(v) ? " (custom)" : ""}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs text-[#8b7355] mb-1">Add new version</label>
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="text"
+                          value={newVersionInput}
+                          onChange={(e) => setNewVersionInput(e.target.value)}
+                          onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addNewVersion() } }}
+                          disabled={isTrioRunning}
+                          placeholder="e.g. v13"
+                          className="w-28 border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] font-mono focus:outline-none focus:border-[#8b2500] disabled:opacity-50"
+                        />
+                        <button
+                          type="button"
+                          onClick={addNewVersion}
+                          disabled={isTrioRunning || !trimmedNewVersion}
+                          className="px-3 py-2 border border-[#d4c5b0] bg-[#faf7f2] text-xs font-medium text-[#2a2a2a] hover:bg-[#f0eadd] disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                          Add &amp; select
+                        </button>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-[#8b7355] ml-auto self-end max-w-[280px] leading-tight">
+                      The batch tags every saved testCase with this version. Unknown versions render with a neutral badge until added to the color map in code.
+                    </p>
+                  </div>
+                )
+              })()}
+
+              {/* Mode toggle — random-sample vs replay-specific-cases */}
+              <div className="flex items-center gap-4 mb-4 pb-3 border-b border-[#e8ddd0]">
+                <label className={`flex items-center gap-2 text-sm cursor-pointer ${isTrioRunning ? "opacity-50 cursor-not-allowed" : ""}`}>
                   <input
-                    type="number"
-                    min={1}
-                    max={50}
-                    value={count}
-                    onChange={(e) => setCount(Math.max(1, Math.min(50, parseInt(e.target.value) || 1)))}
+                    type="radio"
+                    checked={!replayMode}
+                    onChange={() => setReplayMode(false)}
                     disabled={isTrioRunning}
-                    className="w-32 border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500] disabled:opacity-50"
                   />
-                </div>
-                <div className="min-w-[260px]">
-                  <label className="block text-xs text-[#8b7355] mb-1">Sampling mode</label>
-                  <select
-                    value={samplingMode}
-                    onChange={(e) => setSamplingMode(e.target.value as 'uniform' | 'diversified')}
+                  <span className="font-medium text-[#2a2a2a]">Random sample from corpus</span>
+                </label>
+                <label className={`flex items-center gap-2 text-sm cursor-pointer ${isTrioRunning ? "opacity-50 cursor-not-allowed" : ""}`}>
+                  <input
+                    type="radio"
+                    checked={replayMode}
+                    onChange={() => setReplayMode(true)}
                     disabled={isTrioRunning}
-                    className="w-full border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500] disabled:opacity-50"
-                  >
-                    <option value="uniform">Uniform — matches published benchmarks (DEE4/NF1/KBG over-represented)</option>
-                    <option value="diversified">Diversified — one random case per unique diagnosis</option>
-                  </select>
-                </div>
-                {!isTrioRunning ? (
-                  <button
-                    onClick={handleTrioRun}
-                    className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                  >
-                    Run {count} eval{count === 1 ? "" : "s"} on all three models
-                  </button>
-                ) : (
-                  <button
-                    onClick={handleTrioStop}
-                    disabled={trioStopRequested}
-                    className="px-6 py-2 bg-[#5a5a5a] text-white text-sm font-medium hover:bg-[#3a3a3a] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                  >
-                    {trioStopRequested ? "Stopping after current case..." : "Stop"}
-                  </button>
-                )}
-                <div className="text-xs text-[#8b7355] flex items-center">
-                  <span>Matched trios so far: {getTrioCohort(testCases).secondlook.length}</span>
-                </div>
+                  />
+                  <span className="font-medium text-[#2a2a2a]">Replay specific ppkt_ids</span>
+                </label>
               </div>
+
+              {!replayMode && (
+                <div className="flex flex-wrap items-end gap-4">
+                  <div className="min-w-[200px]">
+                    <label className="block text-xs text-[#8b7355] mb-1">Number of evals to run (randomized)</label>
+                    <input
+                      type="number"
+                      min={1}
+                      max={50}
+                      value={count}
+                      onChange={(e) => setCount(Math.max(1, Math.min(50, parseInt(e.target.value) || 1)))}
+                      disabled={isTrioRunning}
+                      className="w-32 border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500] disabled:opacity-50"
+                    />
+                  </div>
+                  <div className="min-w-[260px]">
+                    <label className="block text-xs text-[#8b7355] mb-1">Sampling mode</label>
+                    <select
+                      value={samplingMode}
+                      onChange={(e) => setSamplingMode(e.target.value as 'uniform' | 'diversified')}
+                      disabled={isTrioRunning}
+                      className="w-full border border-[#d4c5b0] px-3 py-2 text-sm bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500] disabled:opacity-50"
+                    >
+                      <option value="uniform">Uniform — matches published benchmarks (DEE4/NF1/KBG over-represented)</option>
+                      <option value="diversified">Diversified — one random case per unique diagnosis</option>
+                    </select>
+                  </div>
+                  {!isTrioRunning ? (
+                    <button
+                      onClick={handleTrioRun}
+                      className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    >
+                      Run {count} eval{count === 1 ? "" : "s"} on all three models
+                    </button>
+                  ) : (
+                    <button
+                      onClick={handleTrioStop}
+                      disabled={trioStopRequested}
+                      className="px-6 py-2 bg-[#5a5a5a] text-white text-sm font-medium hover:bg-[#3a3a3a] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    >
+                      {trioStopRequested ? "Stopping after current case..." : "Stop"}
+                    </button>
+                  )}
+                  <div className="text-xs text-[#8b7355] flex items-center">
+                    <span>Matched trios so far: {getTrioCohort(testCases).secondlook.length}</span>
+                  </div>
+                </div>
+              )}
+
+              {replayMode && (() => {
+                const parsedIds = Array.from(new Set(replayIds.split(/[\s,]+/).map((s) => s.trim()).filter(Boolean)))
+                return (
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <button
+                        type="button"
+                        onClick={() => setReplayIds(V5_TOP1_HIT_PPKT_IDS.join("\n"))}
+                        disabled={isTrioRunning}
+                        className="px-3 py-1.5 border border-[#d4c5b0] bg-[#faf7f2] text-xs font-medium text-[#2a2a2a] hover:bg-[#f0eadd] disabled:opacity-50"
+                      >
+                        Load 26 v5 Top-1 hits
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setReplayIds("")}
+                        disabled={isTrioRunning || replayIds.length === 0}
+                        className="px-3 py-1.5 border border-[#d4c5b0] bg-white text-xs font-medium text-[#5a5a5a] hover:bg-[#faf7f2] disabled:opacity-50"
+                      >
+                        Clear
+                      </button>
+                      <span className="text-xs text-[#8b7355] ml-auto">
+                        {parsedIds.length} unique ppkt_id{parsedIds.length === 1 ? "" : "s"} parsed
+                      </span>
+                    </div>
+                    <div>
+                      <label className="block text-xs text-[#8b7355] mb-1">
+                        ppkt_ids to replay (one per line, or comma-separated)
+                      </label>
+                      <textarea
+                        value={replayIds}
+                        onChange={(e) => setReplayIds(e.target.value)}
+                        disabled={isTrioRunning}
+                        rows={6}
+                        spellCheck={false}
+                        className="w-full border border-[#d4c5b0] px-3 py-2 text-xs font-mono bg-white text-[#2a2a2a] focus:outline-none focus:border-[#8b2500] disabled:opacity-50 resize-y"
+                        placeholder="PMID_29290338_Family_UG_R665_F_individual_F&#10;PMID_11175294_Patient_B15&#10;..."
+                      />
+                      <p className="text-[11px] text-[#8b7355] mt-1">
+                        IDs not found in the Phenopacket2Prompt dataset are silently dropped; the run proceeds with whatever matched.
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      {!isTrioRunning ? (
+                        <button
+                          onClick={handleTrioRun}
+                          disabled={parsedIds.length === 0}
+                          className="px-6 py-2 bg-[#8b2500] text-white text-sm font-medium hover:bg-[#6d1d00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        >
+                          Replay {parsedIds.length} case{parsedIds.length === 1 ? "" : "s"} on all three models
+                        </button>
+                      ) : (
+                        <button
+                          onClick={handleTrioStop}
+                          disabled={trioStopRequested}
+                          className="px-6 py-2 bg-[#5a5a5a] text-white text-sm font-medium hover:bg-[#3a3a3a] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        >
+                          {trioStopRequested ? "Stopping after current case..." : "Stop"}
+                        </button>
+                      )}
+                      <span className="text-xs text-[#8b7355]">
+                        Matched trios so far: {getTrioCohort(testCases).secondlook.length}
+                      </span>
+                    </div>
+                  </div>
+                )
+              })()}
             </div>
             {isTrioRunning && trioBatchProgress && (
               <div className="border border-[#d4c5b0] bg-white p-5 mb-6">

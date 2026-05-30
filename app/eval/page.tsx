@@ -1528,9 +1528,23 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
     if (!byCohort.has(key)) byCohort.set(key, [])
     byCohort.get(key)!.push(t)
   }
-  // Newest first (descending lexical). Diversified suffixes sort after the
-  // bare version, so "v6 (diversified)" lands just under "v6".
-  const versions = Array.from(byCohort.keys()).sort((a, b) => b.localeCompare(a))
+  // Newest first by version *number*, not lexical — without parsing,
+  // "v10" sorts between "v2" and "v1" because string-compare treats "10"
+  // as starting with "1". Diversified suffix is the secondary key so
+  // "v6 (diversified)" lands just under "v6".
+  const parseCohort = (key: string): { ver: number; diversified: 0 | 1 } => {
+    const match = key.match(/^v(\d+)(\s*\(diversified\))?$/i)
+    return {
+      ver: match ? parseInt(match[1], 10) : -1,
+      diversified: match && match[2] ? 1 : 0,
+    }
+  }
+  const versions = Array.from(byCohort.keys()).sort((a, b) => {
+    const pa = parseCohort(a)
+    const pb = parseCohort(b)
+    if (pb.ver !== pa.ver) return pb.ver - pa.ver
+    return pa.diversified - pb.diversified
+  })
 
   return (
     <div className="border border-[#d4c5b0] bg-white mb-6">

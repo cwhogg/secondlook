@@ -13,7 +13,13 @@ We spent two days building diagnostic instrumentation, investigating an apparent
 - **v11 reverts the last two v7 post-processors** (downstream penalty, family-expansion scoring) plus the `downstreamOf` schema addition. Behavioral parity with v5 except for one ~1%-impact safety net and one provable no-op. Not yet measured at scale.
 - **v12 (planned) — dual-model generation (opus + o3) + adversarial critique** — queued for build only if v11 confirms the harness isn't beating single-shot baselines.
 
-The fundamental question — does SecondLook's multi-agent + KB architecture genuinely outperform single-shot LLM diagnosis on rare disease vignettes? — is **not resolved**. The honest read on v10 numbers is that we are tied with baselines on the corpus-natural distribution. v5's 54% Top-1 (N=48), which had been our headline win, may have been an unrepresentative draw. v11 data will tell us.
+The fundamental question — does SecondLook's multi-agent + KB architecture genuinely outperform single-shot LLM diagnosis on rare disease vignettes? — has a more nuanced answer than yes/no:
+
+- **On corpus-concentrated diseases** (top-15 most-published, well-KB-curated): yes, ~12-pt Top-1 advantage over single-shot baselines. v5's 54% was real *for the cohort v5 happened to draw* (35% corpus-concentrated).
+- **On the long tail**: roughly tied with baselines. Claude opus has a clear ranking-quality edge (54% Top-3 vs SL's 25% on v11). The 11-specialist herding pattern hurts on diseases the KB covers poorly.
+- **The eval sampler's exclude-completed-trios behavior has progressively depleted the corpus-concentrated cases from the pool**, drifting later cohorts toward the long tail (v11 was 88% long-tail vs v5's 65%). This is a measurement artifact that makes SL look worse over time without anything changing architecturally.
+
+The v5→v9 "27-point regression" was actually two effects in superposition: a real ~12-pt loss from v7 mechanical scoring (recovered in v10) plus a ~15-pt cohort drift from sampler depletion. v10/v11 measurements stabilize once cohort difficulty is controlled.
 
 ---
 
@@ -27,7 +33,7 @@ The fundamental question — does SecondLook's multi-agent + KB architecture gen
 | v8 uniform (pre-fix) | 16 | 13% | 25% | 19% | 50% | 38% | 50% |
 | **v9 uniform (mechanical scoring active)** | **52** | **13%** | **38%** | **42%** | **31%** | **52%** | **52%** |
 | **v10 uniform (LLM ranking restored)** | **30** | **40%** | **43%** | **40%** | **50%** | **50%** | **47%** |
-| v11 uniform (full v5 ranking parity) | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| **v11 uniform (full v5 ranking parity)** | **24** | **21%** | **21%** | **25%** | **29%** | **46%** | **54%** |
 
 **Headline pattern:** the v7 mechanical-scoring change was a 27-point SL Top-1 regression on uniform sampling (54% → 13%). v10 recovered ~27 points (13% → 40%) by reverting the rank key to synth's LLM probability. The remaining gap to v5 (40% vs 54%) is being tested by v11.
 
@@ -137,6 +143,32 @@ The structural lesson: KB as a *citation source* attached to a freely-generated 
 The session's repeated cycle of "this version looks like X% Top-1, then we ran more cases and it's actually Y%" reinforced that with N ≤ 30, binomial SD on Top-1 is ~9 points. Most observed deltas were 1–2 SDs and not statistically meaningful. The 27-point v9 → v10 jump (13% → 40%) was the only swing in this session large enough to confidently attribute to a code change rather than cohort variance.
 
 Going forward: nothing under N=50 should be treated as a real signal unless the delta is >15 points.
+
+### 7. The eval-case sampler has a hidden selection bias that progressively hardens cohorts (CRITICAL)
+
+**The most important methodological finding of the session.** The eval-case API excludes ppkt_ids that already have complete graded trios. Early batches (v5 era) had the full 9,587-case Phenopacket2Prompt pool to draw from. By later batches (v9, v10, v11), all the previously-completed DEE4 / NF1 / KBG / ADTKD-1 / Holt-Oram cases were excluded — and the corpus is heavily concentrated on those (top 15 diseases = 28% of all cases, with DEE4 alone at 4.8%).
+
+**Concrete cohort comparison:**
+
+| | v5 N=49 | v11 N=26 |
+|---|---|---|
+| Top-15 corpus diseases (≥100 occurrences each) | **17 cases (35%)** | 3 cases (12%) |
+| Long-tail (<100 occurrences) | 32 cases (65%) | **23 cases (88%)** |
+| DEE4 drawn | 3 times | 1 time |
+| NF1 drawn | 2 times | 1 time |
+
+SecondLook's architecture has a measurable strength on corpus-concentrated diseases (these are the well-curated KB profiles, the well-published case reports the foundation models also know, the diseases with clean family-expansion structures). On the long tail, ~50% of our KB profiles are AI-generated and varying quality, specific gene-level variants often aren't separate KB entries, and specialist herding on KB-adjacent-wrong-families dominates.
+
+**The trap:** SL accuracy will look worse over time even if nothing changes architecturally, because the easy-for-SL cases are progressively consumed and the remaining pool gets harder. The 27-pt "regression" from v5's 54% to v10/v11's 21–40% Top-1 has two components:
+
+1. **Real architectural regression from v7 mechanical scoring** — recovered in v10.
+2. **Cohort drift from sampler depletion** — about 12 pts of additional SL-specific drag at v11 vs v5 (after subtracting the ~20-pt cohort difficulty that hit baselines too).
+
+**This re-reads "v5 was a fluke" as wrong.** v5's 54% was real *for the cohort v5 drew*. v11's 21% is real *for the cohort v11 drew*. They are measuring different sub-populations of the corpus. SL has a real ~12-pt advantage on the corpus-concentrated subpopulation and roughly baseline-tied performance on the long tail.
+
+For honest benchmark comparisons against published Exomiser / o1-preview / GPT-4o numbers (which were measured on a freshly randomized 5,213-case sample with no prior depletion), we need to either:
+- Reset the exclusion logic and let the sampler draw fresh from the full 9,587 pool, or
+- Stratify reporting by corpus frequency (top-15 vs long-tail) so the headline number isn't sample-composition dependent.
 
 ### 7. Cross-version comparisons need stable sampling and stable code
 

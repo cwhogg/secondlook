@@ -119,13 +119,17 @@ export class DiagnosticPipeline {
         data: { specialties: triageResult.relevantSpecialties },
       });
 
-      // Each specialist gets its own bounded promise. A 180s timeout per
-      // call means one stuck specialist never deadlocks the whole pipeline
-      // (this was the strongest candidate explanation for the v7 24% stuck-
-      // running rate). Promise.allSettled below means a timeout/error on
-      // 1-2 specialists is recovered from gracefully — the remaining
-      // specialists' hypotheses still feed evidence-eval and synth.
-      const SPECIALIST_TIMEOUT_MS = 180_000;
+      // Each specialist gets its own bounded promise. 120s comfortably
+      // covers the observed distribution — across 616 specialist calls
+      // we've persisted, the longest was 84.7s (v7 at o3:high) and p99
+      // was 81.9s. 120s = ~1.4x max-ever-observed; expected real-
+      // reasoning kill rate is 0%. The threshold's job is to distinguish
+      // "almost done" from "never coming back" (hung OpenAI request,
+      // network drop, mid-stream 5xx), not to bound legitimate reasoning.
+      // One stuck specialist never deadlocks the pipeline; below
+      // recovers gracefully when 1-2 fail and remaining hypotheses still
+      // feed evidence-eval and synth.
+      const SPECIALIST_TIMEOUT_MS = 120_000;
       const specialistPromises = triageResult.relevantSpecialties.map(async (specialty) => {
         const specStart = Date.now();
         log("orch.specialist.start", { specialty });

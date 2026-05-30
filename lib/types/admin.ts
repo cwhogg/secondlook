@@ -163,7 +163,12 @@ export interface TestCase {
   //      critical). v7 hit the 300s Vercel wall on a meaningful slice of
   //      complex cases; v8 trades a small per-specialist reasoning-depth
   //      cut for ~50% wall-time reduction on the parallel specialist stage.
-  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8';
+  // v9 = v8 + specialists reverted to o3:high. Identical pipeline shape to
+  //      v8 otherwise; per-specialist 120s timeout, persisted progress
+  //      trail, and structured Vercel logs all carry through. Lets us
+  //      compare high-vs-medium on the new instrumented stack — failures
+  //      will now have a diagnostic trail attached.
+  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9';
   // Which "engine" produced this Eval case. secondlook = the full V2 pipeline;
   // openai / claude = single-shot baseline calls to the respective top model.
   // Unset entries are treated as 'secondlook' for backward compatibility.

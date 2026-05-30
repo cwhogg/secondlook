@@ -73,20 +73,18 @@ OUTPUT RULES:
     // Experiment v5: specialists upgraded gpt-4.1 -> o3 reasoning:high to
     // match the single-shot o3 baseline. v7 confirmed the harness works at
     // that reasoning level (52% Top-1 vs ~40% single-shot baseline).
-    // v8 optimization: drop specialist reasoning from 'high' to 'medium'.
-    // The bottleneck observed in v7 was wall-clock — 11 parallel o3:high
-    // specialists + o3:high evidence-eval + o3:high synth pushed many cases
-    // past the 300s Vercel function ceiling. Medium reasoning roughly halves
-    // per-call latency. We keep evidence-evaluator and synthesizer at
-    // reasoning:high since they are the ranking-critical stages; specialist
-    // output diversity matters more than per-specialist reasoning depth, so
-    // medium is a better cost/latency trade for the parallel fanout.
+    // v8 dropped to 'medium' as a cost/latency optimization. v9 reverts
+    // specialists to 'high' for a clean comparison run on the new
+    // instrumented stack (per-specialist 120s timeout, persisted progress
+    // trail, structured Vercel logs) — lets us see whether high reasoning
+    // specifically causes more stuck cases, with the diagnostic data to
+    // attribute failures instead of guessing.
     // temperature is ignored for reasoning models — base-agent skips it —
     // but the AgentConfig type still requires a value.
     super({
       name: `specialist-${specialistType}`,
       model: 'o3',
-      reasoningEffort: 'medium',
+      reasoningEffort: 'high',
       temperature: 0,
       maxTokens: 8000,
       systemPrompt: isGeneralInternist ? generalInternistPrompt : domainSpecialistPrompt,

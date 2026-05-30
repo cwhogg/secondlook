@@ -429,6 +429,39 @@ export function StatsBanner({
         <div className="border-t border-[#d4c5b0]">{slotBetween}</div>
       )}
 
+      {versionEntries.length > 0 && (
+        <div className="border-t border-[#d4c5b0] overflow-x-auto">
+          <table className="w-full text-sm min-w-[480px]">
+            <thead>
+              <tr className="border-b border-[#e8ddd0] bg-[#faf7f2]">
+                <th className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium" colSpan={2}>Version Summary</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">n</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Avg Score</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-1</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-3</th>
+                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-5</th>
+              </tr>
+            </thead>
+            <tbody>
+              {versionEntries.map((entry) => (
+                <tr key={entry.version} className="border-b border-[#e8ddd0] last:border-b-0">
+                  <td className="py-2.5 px-4 sm:px-5" colSpan={2}>
+                    <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${VERSION_COLORS[entry.version] || "bg-gray-100 text-gray-700 border-gray-300"}`}>
+                      {VERSION_LABELS[entry.version] || entry.version}
+                    </span>
+                  </td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#5a5a5a] tabular-nums">{entry.count}</td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right font-medium text-[#2a2a2a] tabular-nums">{entry.avgScore.toFixed(1)}</td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top1Rate)}</td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top3Rate)}</td>
+                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top5Rate)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
       {breakdownEntries.length > 0 && (
         <div className="border-t border-[#d4c5b0] overflow-x-auto">
           <table className="w-full text-sm min-w-[480px]">
@@ -452,39 +485,6 @@ export function StatsBanner({
                     </span>
                   </td>
                   <td className="py-2.5 px-4 sm:px-5">
-                    <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${VERSION_COLORS[entry.version] || "bg-gray-100 text-gray-700 border-gray-300"}`}>
-                      {VERSION_LABELS[entry.version] || entry.version}
-                    </span>
-                  </td>
-                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#5a5a5a] tabular-nums">{entry.count}</td>
-                  <td className="py-2.5 px-4 sm:px-5 text-right font-medium text-[#2a2a2a] tabular-nums">{entry.avgScore.toFixed(1)}</td>
-                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top1Rate)}</td>
-                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top3Rate)}</td>
-                  <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">{pct(entry.top5Rate)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-
-      {versionEntries.length > 0 && (
-        <div className="border-t border-[#d4c5b0] overflow-x-auto">
-          <table className="w-full text-sm min-w-[480px]">
-            <thead>
-              <tr className="border-b border-[#e8ddd0] bg-[#faf7f2]">
-                <th className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium" colSpan={2}>Version Summary</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">n</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Avg Score</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-1</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-3</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-5</th>
-              </tr>
-            </thead>
-            <tbody>
-              {versionEntries.map((entry) => (
-                <tr key={entry.version} className="border-b border-[#e8ddd0] last:border-b-0">
-                  <td className="py-2.5 px-4 sm:px-5" colSpan={2}>
                     <span className={`inline-block px-2 py-0.5 border text-xs font-medium ${VERSION_COLORS[entry.version] || "bg-gray-100 text-gray-700 border-gray-300"}`}>
                       {VERSION_LABELS[entry.version] || entry.version}
                     </span>

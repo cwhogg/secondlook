@@ -254,12 +254,34 @@ export class DiagnosticPipeline {
       });
 
       const evidenceStart = Date.now();
+      // Heartbeat keeps the SSE stream alive every 30s while the o3:high
+      // evidence-evaluator is reasoning. Without this, evidence-eval emits
+      // exactly one event (the start above) then goes silent for 80-100s
+      // while o3 thinks, and the client's 180s idle timeout would otherwise
+      // be the only thing distinguishing "long reasoning" from "dead
+      // function." Heartbeat preserves the safety net for genuine hangs.
+      const evidenceHeartbeat = setInterval(() => {
+        const elapsedMs = Date.now() - evidenceStart;
+        onProgress?.({
+          stage: 'heartbeat',
+          stageNumber: 3,
+          totalStages: 6,
+          detail: `evidence-evaluator still reasoning... ${Math.round(elapsedMs / 1000)}s`,
+          percentage: 60,
+          data: { stage: 'evidence', elapsedMs },
+        });
+      }, 30_000);
       const evaluator = new EvidenceEvaluator();
-      const evaluationResult = await evaluator.execute({
-        patientCase,
-        previousStageOutput: specialistResults,
-        candidateDiseases: triageResult.candidateDiseases,
-      });
+      let evaluationResult;
+      try {
+        evaluationResult = await evaluator.execute({
+          patientCase,
+          previousStageOutput: specialistResults,
+          candidateDiseases: triageResult.candidateDiseases,
+        });
+      } finally {
+        clearInterval(evidenceHeartbeat);
+      }
       log("orch.stage.evidence.done", { dur: Date.now() - evidenceStart, evaluated: evaluationResult.hypotheses.length });
 
       this.budgetTracker.addUsage(evaluationResult.model, evaluationResult.tokensUsed);
@@ -300,11 +322,29 @@ export class DiagnosticPipeline {
       });
 
       const synthStart = Date.now();
+      // Same heartbeat protection for the o3:high synthesizer — it's the
+      // second long sequential stage and produces no intermediate events.
+      const synthHeartbeat = setInterval(() => {
+        const elapsedMs = Date.now() - synthStart;
+        onProgress?.({
+          stage: 'heartbeat',
+          stageNumber: 4,
+          totalStages: 6,
+          detail: `synthesizer still reasoning... ${Math.round(elapsedMs / 1000)}s`,
+          percentage: 75,
+          data: { stage: 'synthesis', elapsedMs },
+        });
+      }, 30_000);
       const synthesizer = new SynthesisAgent();
-      const synthesisResult = await synthesizer.execute({
-        patientCase,
-        previousStageOutput: { specialistResults, evaluationResult },
-      });
+      let synthesisResult;
+      try {
+        synthesisResult = await synthesizer.execute({
+          patientCase,
+          previousStageOutput: { specialistResults, evaluationResult },
+        });
+      } finally {
+        clearInterval(synthHeartbeat);
+      }
       log("orch.stage.synthesis.done", { dur: Date.now() - synthStart, top: synthesisResult.hypotheses[0]?.diagnosis?.substring(0, 80) });
 
       this.budgetTracker.addUsage(synthesisResult.model, synthesisResult.tokensUsed);

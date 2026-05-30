@@ -434,7 +434,12 @@ export default function EvalPage() {
       // no diagnostic message. Both throw real errors so the existing catch
       // patches status='error' with a useful pipelineError.
       const PIPELINE_MAX_MS = 280_000 // just below Vercel's 300s function cap
-      const SSE_IDLE_MAX_MS = 90_000  // any 90s gap with zero bytes = dead stream
+      // 180s idle threshold — the orchestrator now emits a heartbeat
+      // progress event every 30s during evidence-eval and synth, so any
+      // idle period longer than ~3 heartbeats means the server is
+      // genuinely dead, not just thinking. Was 90s and that killed
+      // legitimate long-reasoning evidence-eval calls at o3:high.
+      const SSE_IDLE_MAX_MS = 180_000
 
       const abortController = new AbortController()
       abortRef.current = abortController
@@ -677,7 +682,7 @@ export default function EvalPage() {
       // ALWAYS comes through this function, so this is where diagnostics
       // need to live for batch eval runs.
       const PIPELINE_MAX_MS = 280_000
-      const SSE_IDLE_MAX_MS = 90_000
+      const SSE_IDLE_MAX_MS = 180_000  // 30s heartbeat × ≥3 missed = genuinely dead
       const pipelineStart = Date.now()
       const progressLog: NonNullable<TestCase["pipelineProgressLog"]> = []
       let lastFlushedStage: string | null = null

@@ -149,6 +149,18 @@ export type PipelineProgress =
       percentage: 100;
       detail: string;
       data: null;
+    }
+  | {
+      // Emitted periodically (every 30s) while a long sequential stage
+      // (evidence-eval or synth) is in flight. Pure keepalive — no semantic
+      // progress — but it keeps the SSE stream non-idle so the client's
+      // idle-timeout doesn't kill legitimate long o3:high reasoning.
+      stage: 'heartbeat';
+      stageNumber: number;
+      totalStages: 6;
+      percentage: number;
+      detail: string;
+      data: { stage: string; elapsedMs: number };
     };
 
 export type ProgressCallback = (progress: PipelineProgress) => void;

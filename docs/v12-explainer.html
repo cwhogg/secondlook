@@ -630,7 +630,7 @@
   <div class="tab-panel" id="panel-v13">
 
     <div class="summary-box">
-      <strong>v13 in one paragraph.</strong> A patient vignette enters as text. Symptoms and explicit excluded findings are parsed into structured form. Two foundation-model generators (Claude opus-4-7 and OpenAI o3 reasoning:high) run in parallel on the full case with no KB candidate filter; each independently emits a ranked top-10 differential with clinical reasoning. A deterministic KB augmentation step looks up every unique diagnosis across both lists in the knowledge base and attaches structured citation data (diagnostic criteria, red flags, recommended confirmatory testing, family variants). An adversarial-critique agent (o3 reasoning:high) receives both ranked lists plus the case plus the KB-augmented data and produces a final reconciled top-10 with explicit deltas: what's missing, what's misranked, what should be deduped or clustered. The mechanical formula runs as audit data only. A report-generator (gpt-4.1-mini) formats the patient-facing output.
+      <strong>v13 in one paragraph.</strong> A patient vignette enters as text. Symptoms and explicit excluded findings are parsed into structured form. Two foundation-model generators (Claude opus-4-7 and OpenAI o3 reasoning:high) run in parallel on the full case with no KB candidate filter; each independently emits a ranked top-10 differential with clinical reasoning. A deterministic KB augmentation step looks up every unique diagnosis across both lists in the knowledge base and attaches structured citation data (diagnostic criteria, red flags, recommended confirmatory testing, family variants). An adversarial-critique agent (Claude opus-4-7) receives both ranked lists plus the case plus the KB-augmented data and produces a final reconciled top-10 with explicit deltas: what's missing, what's misranked, what should be deduped or clustered. The mechanical formula runs as audit data only. A report-generator (gpt-4.1-mini) formats the patient-facing output.
     </div>
 
     <div class="spec-strip">
@@ -753,7 +753,7 @@
       <div class="stage-header">
         <span class="stage-num">4</span>
         <span class="stage-name">Adversarial Critique &amp; Reconciliation</span>
-        <span class="stage-meta">o3 reasoning:high<br>~20–30s</span>
+        <span class="stage-meta">Claude opus-4-7<br>~10–20s</span>
       </div>
       <div class="stage-section">
         <span class="stage-label">Input</span>
@@ -769,12 +769,12 @@
             <li><strong>Identify near-duplicates and clusters</strong>: phenotypic-sibling diagnoses that should be deduplicated or grouped into a "family cluster" (e.g. multiple DEE subtypes, multiple OI types).</li>
             <li><strong>Produce a reconciled top-10 ranking</strong> with explicit per-entry deltas: "kept opus #1", "promoted o3 #4 → #2 because…", "dropped opus #6 as duplicate of #3", "added new #7: X (suggested by KB family variant of opus #2)".</li>
           </ul>
-          Heartbeat events fire every 30s during the call.
+          Critic role uses Claude opus-4-7 specifically. Empirically opus has shown stronger ranking quality than o3 on long-tail rare diseases (v11 cohort: 54% Top-3 vs SL's 25%) — putting it in the critic seat leverages that ranking-judgment edge to reconcile the two generator outputs. No reasoning-tokens stage means typical latency is meaningfully shorter than an o3:high call.
         </span>
       </div>
       <div class="stage-section">
         <span class="stage-label">Output</span>
-        <span class="stage-content">Final ranked top-10 <code>DiagnosisHypothesis</code> array with per-entry critic rationale and a delta-explanation log. Probability scores are the critic's clinical-judgment scores (0–100). <span class="tag tag-llm">LLM critique (o3:high)</span></span>
+        <span class="stage-content">Final ranked top-10 <code>DiagnosisHypothesis</code> array with per-entry critic rationale and a delta-explanation log. Probability scores are the critic's clinical-judgment scores (0–100). <span class="tag tag-llm">LLM critique (claude-opus-4-7)</span></span>
       </div>
     </div>
 
@@ -817,8 +817,8 @@
           <td>v12's KB-anchored specialist shortlists demonstrated specialist herding on KB-adjacent wrong families (the OI-IX failure: 3 specialists converged on Bruck, 6 on Hypophosphatasia, none on Osteogenesis Imperfecta). v13 lets the foundation models generate from full medical knowledge unconstrained, then uses KB to document and validate what was generated.</td>
         </tr>
         <tr>
-          <td>Single synth-as-judge → adversarial critic</td>
-          <td>v12's synthesizer takes one perspective and ranks. v13's critic explicitly looks for what the generators missed and where they ranked badly. The structure of "two independent generations + one explicit reconciler" forces the critic to address disagreement rather than smooth over it.</td>
+          <td>Single synth-as-judge → adversarial critic (Claude opus-4-7)</td>
+          <td>v12's synthesizer takes one perspective and ranks. v13's critic explicitly looks for what the generators missed and where they ranked badly. The structure of "two independent generations + one explicit reconciler" forces the critic to address disagreement rather than smooth over it. The critic role is filled by opus-4-7 because empirical measurements showed opus has stronger ranking quality than o3 on long-tail rare diseases — placing it in the judgment seat (rather than the generation seat) leverages that edge.</td>
         </tr>
         <tr>
           <td>Mechanical formula as audit, mechanical formula as audit</td>
@@ -828,7 +828,8 @@
     </table>
 
     <h2>Provider boundary</h2>
-    <p>v13 deliberately uses both OpenAI and Anthropic in the analysis path. This crosses the AI Provider Separation rule documented in <code>CLAUDE.md</code>, which previously kept analysis on OpenAI-only and testing on Anthropic-only as quota isolation. The tradeoff: real long-tail accuracy gain from Claude opus's measured advantage vs. coupling analysis quota to Anthropic. For published-dataset eval where the headline metric is deterministic OMIM/name matching, the cross-provider objectivity concern is small.</p>
+    <p>v13 deliberately uses both OpenAI and Anthropic in the analysis path. This crosses the AI Provider Separation rule documented in <code>CLAUDE.md</code>, which previously kept analysis on OpenAI-only and testing on Anthropic-only as quota isolation.</p>
+    <p>The per-case provider split: <strong>2 Anthropic calls</strong> (opus generator + opus critic) and <strong>2 OpenAI calls</strong> (o3 generator + gpt-4.1-mini report). Anthropic load is meaningful and warrants monitoring against the grading-flow's separate Sonnet usage on the testing framework side. The tradeoff: real long-tail accuracy gain from Claude opus's measured advantage in both generation breadth and ranking judgment vs. coupling analysis quota to Anthropic. For published-dataset eval where the headline metric is deterministic OMIM/name matching, the cross-provider objectivity concern is small.</p>
 
     <h2>Operational characteristics (estimated)</h2>
     <table>
@@ -848,7 +849,7 @@
     <ul>
       <li><strong>1. <code>lib/agents/dual-generator.ts</code></strong> — fires opus and o3 in parallel, normalizes outputs to the existing <code>DiagnosisHypothesis</code> shape, marks <code>modelsThatProposed</code>.</li>
       <li><strong>2. <code>lib/pipeline/kb-augmentation.ts</code></strong> — pure function, no LLM. Walks each unique diagnosis and attaches KB metadata. Reuses the tightened <code>findDiseaseByName</code>.</li>
-      <li><strong>3. <code>lib/agents/critic-agent.ts</code></strong> — single o3:high call with structured output (final ranking + dropped + added + downstream flags + clusters).</li>
+      <li><strong>3. <code>lib/agents/critic-agent.ts</code></strong> — single Claude opus-4-7 call (via the existing <code>callAnthropic</code> helper) with structured JSON output (final ranking + dropped + added + downstream flags + clusters). No reasoning-effort knob (opus has no extended-reasoning mode); typical latency 10–20s without heartbeats needed.</li>
       <li><strong>4. <code>lib/pipeline/orchestrator.ts</code></strong> — top-level branch reads <code>evalEngine</code>. Classic path (existing) or dual path (new modules). Engine choice persisted on test cases (<code>evalEngine: 'classic' | 'dual'</code>) so the matched-trio table can split that dimension the way it already splits sampling mode.</li>
     </ul>
     <p>Mechanical scoring + report stages are reused from v12 as-is.</p>

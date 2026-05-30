@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SecondLook v11 / v12 — Pipeline + Analysis Plan</title>
+<title>SecondLook v12 / v13 — Implementation Reference</title>
 <style>
   :root {
     --bg: #f5f0eb;
@@ -18,10 +18,11 @@
     --warn: #b07033;
     --bad: #a64b0a;
     --kb-color: #2c5e8c;
+    --kb-soft: #eaf2fa;
     --llm-color: #6d2c8c;
+    --llm-soft: #f3eaf7;
     --determin-color: #2d6a4f;
-    --v11-tint: #d8eae0;
-    --v12-tint: #dde2f3;
+    --determin-soft: #eaf5ef;
   }
   * { box-sizing: border-box; }
   body {
@@ -54,49 +55,35 @@
     padding-bottom: 8px;
   }
   h3 {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
     margin: 28px 0 10px;
     color: var(--text);
+  }
+  h4 {
+    font-size: 14px;
+    margin: 14px 0 6px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
   }
   .lede {
     color: var(--muted);
     font-size: 17px;
     margin: 0 0 8px;
   }
-  .tldr {
+  .summary-box {
     background: var(--surface);
     border: 1px solid var(--border);
     border-left: 4px solid var(--accent);
     padding: 20px 24px;
-    margin: 24px 0 16px;
+    margin: 24px 0;
   }
-  .tldr strong { color: var(--accent); }
   p { margin: 0 0 14px; }
   .small { color: var(--muted); font-size: 13px; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    margin: 12px 0;
-  }
-  th, td {
-    text-align: left;
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--border-soft);
-    font-size: 14px;
-    vertical-align: top;
-  }
-  th {
-    background: var(--accent-soft);
-    color: var(--muted);
-    text-transform: uppercase;
-    font-size: 11px;
-    letter-spacing: 0.05em;
-    font-weight: 600;
-  }
-  tr:last-child td { border-bottom: none; }
+
+  /* Tags */
   .tag {
     display: inline-block;
     padding: 2px 8px;
@@ -107,15 +94,14 @@
     text-transform: uppercase;
     letter-spacing: 0.04em;
     margin-right: 4px;
+    vertical-align: middle;
   }
-  .tag-kb { color: var(--kb-color); border-color: var(--kb-color); background: #eaf2fa; }
-  .tag-llm { color: var(--llm-color); border-color: var(--llm-color); background: #f3eaf7; }
-  .tag-det { color: var(--determin-color); border-color: var(--determin-color); background: #eaf5ef; }
-  .tag-good { color: var(--good); border-color: var(--good); background: #eaf5ef; }
+  .tag-kb { color: var(--kb-color); border-color: var(--kb-color); background: var(--kb-soft); }
+  .tag-llm { color: var(--llm-color); border-color: var(--llm-color); background: var(--llm-soft); }
+  .tag-det { color: var(--determin-color); border-color: var(--determin-color); background: var(--determin-soft); }
+  .tag-good { color: var(--good); border-color: var(--good); background: var(--determin-soft); }
   .tag-warn { color: var(--warn); border-color: var(--warn); background: #faf2e8; }
   .tag-bad { color: var(--bad); border-color: var(--bad); background: #f9ebe1; }
-  .tag-add { color: #4e7c34; border-color: #4e7c34; background: #ecf6e2; }
-  .tag-rm { color: #b03333; border-color: #b03333; background: #f7e6e6; }
 
   /* Tabs */
   .tabs {
@@ -143,8 +129,8 @@
     color: var(--accent);
     border-bottom: 2px solid var(--bg);
   }
-  .tab.active.tab-v11 { border-top: 3px solid #2d6a4f; }
   .tab.active.tab-v12 { border-top: 3px solid #4a5db8; }
+  .tab.active.tab-v13 { border-top: 3px solid #b07033; }
   .tab-subtitle {
     font-weight: 400;
     font-size: 12px;
@@ -156,58 +142,68 @@
   .tab-panel { display: none; padding-top: 24px; }
   .tab-panel.active { display: block; }
 
-  /* Pipeline diagram */
-  .pipeline {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 24px 0 8px;
-  }
+  /* Stage cards */
   .stage {
     background: var(--surface);
     border: 1px solid var(--border);
-    padding: 14px 18px;
-    position: relative;
+    padding: 18px 20px;
+    margin: 12px 0;
   }
   .stage-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 6px;
+    gap: 12px;
+    margin-bottom: 10px;
   }
   .stage-num {
     background: var(--accent);
     color: white;
-    width: 26px;
-    height: 26px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 13px;
+    font-size: 14px;
     flex-shrink: 0;
   }
   .stage-name {
     font-weight: 700;
-    font-size: 15px;
+    font-size: 17px;
   }
   .stage-meta {
     color: var(--muted);
     font-size: 12px;
     margin-left: auto;
     font-family: monospace;
+    text-align: right;
   }
-  .stage-desc {
-    color: var(--text-soft);
+  .stage-section {
+    margin-top: 10px;
     font-size: 14px;
-    margin: 4px 0 0;
+  }
+  .stage-section .stage-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    width: 80px;
+    vertical-align: top;
+  }
+  .stage-section .stage-content {
+    display: inline-block;
+    width: calc(100% - 90px);
+    color: var(--text-soft);
   }
   .arrow {
     text-align: center;
     color: var(--border);
-    font-size: 20px;
+    font-size: 22px;
     line-height: 1;
+    margin: 0;
   }
   .parallel {
     display: grid;
@@ -224,120 +220,68 @@
     text-align: center;
   }
 
-  /* Side-by-side comparison */
-  .compare {
+  /* Two-column generators (v13) */
+  .generators {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 20px 0;
+    gap: 12px;
+    margin: 12px 0;
   }
-  .compare > div {
+  .gen-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    padding: 16px;
+    padding: 14px;
   }
-  .compare h4 {
-    margin: 0 0 8px;
+  .gen-card h5 {
+    margin: 0 0 6px;
     font-size: 14px;
+    font-weight: 700;
+  }
+  .gen-card.opus { border-left: 4px solid var(--llm-color); }
+  .gen-card.o3 { border-left: 4px solid var(--kb-color); }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin: 12px 0;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 14px;
+    vertical-align: top;
+  }
+  th {
+    background: var(--accent-soft);
     color: var(--muted);
     text-transform: uppercase;
+    font-size: 11px;
     letter-spacing: 0.05em;
-  }
-  .compare .big {
-    font-size: 22px;
-    font-weight: 700;
-    font-family: Georgia, serif;
-  }
-
-  /* Decision block */
-  .decision {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 4px 16px;
-    margin: 12px 0;
-  }
-  .decision-row {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 16px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border-soft);
-  }
-  .decision-row:last-child { border-bottom: none; }
-  .decision-condition {
     font-weight: 600;
-    color: var(--text);
-    font-family: monospace;
-    font-size: 13px;
   }
-  .decision-outcome {
-    color: var(--text-soft);
-    font-size: 14px;
-  }
+  tr:last-child td { border-bottom: none; }
 
-  /* Bars */
-  .bar-chart {
+  /* Output spec block */
+  .output-spec {
     background: var(--surface);
     border: 1px solid var(--border);
     padding: 16px;
     margin: 12px 0;
-  }
-  .bar-row {
-    display: grid;
-    grid-template-columns: 280px 1fr 60px;
-    gap: 12px;
-    align-items: center;
-    padding: 6px 0;
-    font-size: 13px;
-  }
-  .bar-track {
-    background: var(--border-soft);
-    height: 22px;
-    position: relative;
-  }
-  .bar-fill {
-    background: var(--accent);
-    height: 100%;
-  }
-  .bar-value {
-    text-align: right;
-    font-weight: 700;
-    color: var(--text);
-  }
-
-  /* Diff summary */
-  .diff-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 14px 16px;
-    margin: 10px 0;
-  }
-  .diff-line {
-    display: grid;
-    grid-template-columns: 110px 1fr;
-    gap: 12px;
-    padding: 6px 0;
-    font-size: 14px;
-    border-bottom: 1px dashed var(--border-soft);
-  }
-  .diff-line:last-child { border-bottom: none; }
-  .diff-line code {
-    background: var(--accent-soft);
-    padding: 2px 6px;
     font-family: monospace;
-    font-size: 12px;
+    font-size: 12.5px;
+    color: var(--text);
+    white-space: pre-wrap;
+    overflow-x: auto;
+    line-height: 1.6;
   }
+  .output-spec .comment { color: var(--muted); }
+  .output-spec .field { color: var(--accent); font-weight: 600; }
+  .output-spec .type { color: var(--kb-color); }
 
-  .footnote {
-    color: var(--muted);
-    font-size: 12px;
-    margin-top: 8px;
-  }
-  hr {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 32px 0;
-  }
   code {
     background: var(--accent-soft);
     padding: 2px 6px;
@@ -347,397 +291,576 @@
   }
   ul { padding-left: 22px; margin: 6px 0 14px; }
   li { margin-bottom: 4px; }
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+  }
+  .footnote {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 8px;
+  }
+
+  /* Spec strip — top-level model/cost stats */
+  .spec-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin: 16px 0 24px;
+  }
+  .spec-cell {
+    padding: 14px 16px;
+    border-right: 1px solid var(--border-soft);
+  }
+  .spec-cell:last-child { border-right: none; }
+  .spec-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .spec-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    font-family: Georgia, serif;
+  }
 </style>
 </head>
 <body>
 <div class="container">
 
-  <p class="lede">SecondLook eval framework</p>
-  <h1>v11 / v12 — Pipeline &amp; Analysis Plan</h1>
-  <p class="lede" style="margin-top: 8px;">Two consecutive eval versions explained side-by-side. Pipeline architecture, what changed at each step, what we're measuring, what we'll decide.</p>
+  <p class="lede">SecondLook eval framework — implementation reference</p>
+  <h1>v12 (current) &amp; v13 (planned)</h1>
+  <p class="lede" style="margin-top: 8px;">End-to-end walkthrough of how each version processes a patient vignette from input to final ranked differential.</p>
 
   <div class="tabs">
-    <div class="tab tab-v11 active" data-tab="v11">
-      v11 — Ranking parity revert
-      <div class="tab-subtitle">Drops two v7 post-processors</div>
+    <div class="tab tab-v12 active" data-tab="v12">
+      v12 — Current implementation
+      <div class="tab-subtitle">Multi-specialist + KB pipeline, fresh sampling</div>
     </div>
-    <div class="tab tab-v12" data-tab="v12">
-      v12 — Fresh-pool sampling
-      <div class="tab-subtitle">Pipeline unchanged from v11</div>
+    <div class="tab tab-v13" data-tab="v13">
+      v13 — Planned dual-model architecture
+      <div class="tab-subtitle">Two foundation models + adversarial critique</div>
     </div>
   </div>
 
-  <!-- ============== v11 TAB ============== -->
-  <div class="tab-panel active" id="panel-v11">
-
-    <div class="tldr">
-      <strong>TL;DR — v11:</strong> Same multi-agent pipeline as v10. Three things removed from the post-synthesis path so the rank order matches v5 exactly: the downstream-condition penalty (halved the score of any diagnosis listed as a downstream consequence of another), the family-expansion scoring (positions 11–15 used to inherit half the parent's score; now back to silent zeros), and the <code>downstreamOf</code> field from the evidence-evaluator's structured-output schema. Mechanical scoring still runs and is persisted as audit data, but doesn't drive ranking. Tested whether the v10→v11 gap to v5's 54% Top-1 was these processors or just cohort variance.
-    </div>
-
-    <h2>What v11 removed (and why)</h2>
-    <p>v7 introduced a deterministic mechanical scoring layer that ran after synth's LLM ranking. v10 already restored the LLM <code>probabilityScore</code> as the rank key. v11 removes the last three v7 additions that were still in the path:</p>
-
-    <div class="diff-block">
-      <div class="diff-line">
-        <span class="tag tag-rm">REMOVED</span>
-        <div>
-          <strong><code>applyDownstreamPenalty()</code></strong>
-          <p class="small" style="margin: 4px 0 0;">Halved <code>evidenceScore</code> for any diagnosis the evidence-evaluator listed as a downstream consequence of another diagnosis in the same differential. Designed to fix the ADTKD-1 failure pattern (Secondary HPT outranking the underlying ADTKD). Specific bug fix; v5 didn't have it.</p>
-        </div>
-      </div>
-      <div class="diff-line">
-        <span class="tag tag-rm">REMOVED</span>
-        <div>
-          <strong><code>applyFamilyExpansionScoring()</code></strong>
-          <p class="small" style="margin: 4px 0 0;">Gave positions 11–15 (KB-linked family variants appended after synthesis) a score of <code>parent.evidenceScore × 0.5</code>. v5 had these at silent zero. v11 reverts to zero so the UI tier ("Weak fit") matches v5 expectations.</p>
-        </div>
-      </div>
-      <div class="diff-line">
-        <span class="tag tag-rm">REMOVED</span>
-        <div>
-          <strong><code>downstreamOf</code> field on evaluator schema</strong>
-          <p class="small" style="margin: 4px 0 0;">The evidence-evaluator's structured-output schema previously required the LLM to emit, for each hypothesis, a <code>downstreamOf: string[]</code> array naming other diagnoses in the differential that this one is a complication of. Used by <code>applyDownstreamPenalty</code>. Removing the field gives the evaluator a prompt identical to v5's, eliminating any subtle effect on the LLM's reasoning from having to produce that field.</p>
-        </div>
-      </div>
-      <div class="diff-line">
-        <span class="tag tag-add">KEPT (audit only)</span>
-        <div>
-          <strong><code>computeMechanicalEvidenceScore()</code> + breakdown persistence</strong>
-          <p class="small" style="margin: 4px 0 0;">The mechanical formula still runs for every hypothesis and persists per-component data (<code>evidenceScoreRaw</code>, <code>evidenceScoreBreakdown</code>, <code>sourceAgents</code>, <code>scoringVersion</code>). Useful as audit data and as the "LLM vs mechanical formula divergence" diagnostic. Does not feed into the rank key.</p>
-        </div>
-      </div>
-    </div>
-
-    <h2>The pipeline at v11</h2>
-    <p>Six stages. KB lookups at retrieval (stage 1), per-specialist KB shortlists (stage 2), and the deterministic family expansion (stage 6). Synthesizer's LLM probability is the rank key.</p>
-
-    <div class="pipeline">
-
-      <div class="stage">
-        <div class="stage-header">
-          <span class="stage-num">1</span>
-          <span class="stage-name">Symptom Extraction &amp; Triage</span>
-          <span class="stage-meta">gpt-4.1-mini + gpt-4.1-nano · ~1–3s</span>
-        </div>
-        <div class="stage-desc">
-          Parse vignette → structured symptoms + explicit excluded findings. Classify body systems and retrieve KB candidate-disease shortlist. Triage ranks all 11 specialists by relevance (every specialist runs regardless; the ranking only controls display order).
-          <span class="tag tag-kb">KB lookup</span><span class="tag tag-llm">LLM</span>
-        </div>
-      </div>
-      <div class="arrow">▼</div>
-
-      <div class="stage">
-        <div class="stage-header">
-          <span class="stage-num">2</span>
-          <span class="stage-name">11 Specialist Agents (parallel)</span>
-          <span class="stage-meta">o3 reasoning:high · ~50–80s slowest</span>
-        </div>
-        <div class="stage-desc">
-          Each specialist sees the case plus a KB candidate shortlist re-ranked by domain fit. Each emits 2–4 ranked hypotheses with evidence mapping. Per-specialist 120s timeout; if 1–2 specialists fail, the pipeline continues.
-          <span class="tag tag-kb">KB-anchored</span><span class="tag tag-llm">LLM × 11</span>
-        </div>
-        <div class="parallel">
-          <div class="specialist">neurologist</div>
-          <div class="specialist">rheumatologist</div>
-          <div class="specialist">cardiologist</div>
-          <div class="specialist">immunologist</div>
-          <div class="specialist">endocrinologist</div>
-          <div class="specialist">gastroenterologist</div>
-          <div class="specialist">geneticist</div>
-          <div class="specialist">hematologist</div>
-          <div class="specialist">psychiatrist</div>
-          <div class="specialist">oncologist</div>
-          <div class="specialist">general-internist</div>
-        </div>
-      </div>
-      <div class="arrow">▼</div>
-
-      <div class="stage">
-        <div class="stage-header">
-          <span class="stage-num">3</span>
-          <span class="stage-name">Evidence Evaluator</span>
-          <span class="stage-meta">o3 reasoning:high · ~80–110s</span>
-        </div>
-        <div class="stage-desc">
-          Deduplicates hypotheses, then evaluates each against KB diagnostic criteria where available (criteria-grounded) or clinical reasoning quality where not (reasoning-evaluated). v11 schema matches v5 exactly — no <code>downstreamOf</code> field requested.
-          <span class="tag tag-kb">KB criteria</span><span class="tag tag-llm">LLM</span>
-        </div>
-      </div>
-      <div class="arrow">▼</div>
-
-      <div class="stage">
-        <div class="stage-header">
-          <span class="stage-num">4</span>
-          <span class="stage-name">Synthesizer (rank key)</span>
-          <span class="stage-meta">o3 reasoning:high · ~30–60s</span>
-        </div>
-        <div class="stage-desc">
-          Senior-diagnostician role. Reviews all evaluated hypotheses + criteria data and outputs the top-10 ranked diagnoses with LLM-assigned probability scores. <strong>The LLM probability is the rank key.</strong> The mechanical formula still runs in parallel and persists per-component breakdown as audit data, but does not change the order. Downstream-of penalty has been dropped (was halving downstream conditions in v10).
-          <span class="tag tag-llm">LLM clinical judgment</span>
-        </div>
-      </div>
-      <div class="arrow">▼</div>
-
-      <div class="stage">
-        <div class="stage-header">
-          <span class="stage-num">5</span>
-          <span class="stage-name">Report Generator</span>
-          <span class="stage-meta">gpt-4.1-mini · ~20–35s</span>
-        </div>
-        <div class="stage-desc">
-          Formats the ranked differential into the patient-facing structure: ranked diagnoses, evidence per diagnosis, recommended testing, next steps, data gaps, red flags.
-          <span class="tag tag-llm">LLM formatting</span>
-        </div>
-      </div>
-      <div class="arrow">▼</div>
-
-      <div class="stage">
-        <div class="stage-header">
-          <span class="stage-num">6</span>
-          <span class="stage-name">Family Expansion (deterministic)</span>
-          <span class="stage-meta">no LLM · &lt;1s</span>
-        </div>
-        <div class="stage-desc">
-          For each top-10 diagnosis, look up KB-linked sibling diseases (from the KB profile's <code>differentialDiagnoses</code> field) and append up to 5 at positions 11–15. v11 assigns these score=0 to match v5 behavior (v10 used parent × 0.5).
-          <span class="tag tag-kb">KB lookup</span><span class="tag tag-det">deterministic</span>
-        </div>
-      </div>
-
-    </div>
-
-    <h2>What v11 measured</h2>
-    <div class="bar-chart">
-      <div class="bar-row">
-        <span><strong>SL v11</strong> Top-1 (N=24)</span>
-        <div class="bar-track"><div class="bar-fill" style="width: 21%;"></div></div>
-        <span class="bar-value">21%</span>
-      </div>
-      <div class="bar-row">
-        <span>OpenAI o3 v11 Top-1 (N=24)</span>
-        <div class="bar-track"><div class="bar-fill" style="width: 21%; background: var(--kb-color);"></div></div>
-        <span class="bar-value">21%</span>
-      </div>
-      <div class="bar-row">
-        <span>Claude opus-4-7 v11 Top-1 (N=24)</span>
-        <div class="bar-track"><div class="bar-fill" style="width: 25%; background: var(--llm-color);"></div></div>
-        <span class="bar-value">25%</span>
-      </div>
-      <div class="bar-row">
-        <span><strong>SL v11 Top-3</strong> (note jump for Claude)</span>
-        <div class="bar-track"><div class="bar-fill" style="width: 25%;"></div></div>
-        <span class="bar-value">25%</span>
-      </div>
-      <div class="bar-row">
-        <span>Claude v11 Top-3</span>
-        <div class="bar-track"><div class="bar-fill" style="width: 54%; background: var(--llm-color);"></div></div>
-        <span class="bar-value">54%</span>
-      </div>
-    </div>
-
-    <h2>How to read the v11 numbers</h2>
-    <ul>
-      <li><strong>OAI dropped from 43% (v10) to 21% (v11) Top-1</strong> on an unchanged model — that's a cohort-difficulty signal of about 22 pts. The v11 cohort was meaningfully harder for everyone.</li>
-      <li><strong>SL dropped from 40% (v10) to 21% (v11) Top-1</strong> — 19 pts drop, slightly less than OAI's 22 pts. Adjusted for cohort drag, SL improved ~3 pts relative to OAI from the architectural revert. Within noise.</li>
-      <li><strong>Claude opus has a clear ranking-quality edge</strong>: 54% Top-3 vs SL's 25%. Claude finds the right answer in its top three twice as often. SL's hits are spread across rank 6–10 (Top-10 = 50%, Top-5 = 29%). Specialist herding pattern visible at the cohort level.</li>
-      <li><strong>The architectural revert didn't recover v5's 54% Top-1.</strong> Two possibilities: either v5 was an unrepresentative draw, or the v11 cohort had a much harder composition than v5's did. v12 tests this by removing the sampler depletion bias.</li>
-    </ul>
-
-    <h2>The key v11 finding (not from numbers but from cohort analysis)</h2>
-    <div class="compare">
-      <div>
-        <h4>v5 cohort makeup</h4>
-        <p class="small">N = 48 uniform</p>
-        <div class="big" style="color: var(--good);">35% top-15 corpus diseases</div>
-        <p class="small" style="margin-top: 4px;">Drew DEE4 three times, NF1 twice. SL has strong KB coverage on these.</p>
-      </div>
-      <div>
-        <h4>v11 cohort makeup</h4>
-        <p class="small">N = 24 uniform</p>
-        <div class="big" style="color: var(--warn);">12% top-15 corpus diseases</div>
-        <p class="small" style="margin-top: 4px;">88% long-tail. KB coverage there is variable AI-generated quality.</p>
-      </div>
-    </div>
-    <p>The eval-case sampler had been excluding ppkt_ids with already-completed graded trios. Early batches drew freely from the corpus-concentrated diseases; by later batches those had all been consumed. The v5-vs-v11 measurement was partially measuring different sub-populations of the corpus, not the same architecture on the same data. This finding is what motivates v12.</p>
-
-  </div>
-
+  <!-- ===================================================== -->
   <!-- ============== v12 TAB ============== -->
-  <div class="tab-panel" id="panel-v12">
+  <!-- ===================================================== -->
+  <div class="tab-panel active" id="panel-v12">
 
-    <div class="tldr">
-      <strong>TL;DR — v12:</strong> The v11 diagnosis pipeline unchanged. The only change is a single line in the eval-case sampler: it no longer excludes ppkt_ids that already have completed trios. Each batch now draws fresh from the full 9,587-case Phenopacket2Prompt corpus, matching the methodology published benchmarks used. The goal is one clean apples-to-apples measurement of the SL pipeline on a sampling-stable cohort.
+    <div class="summary-box">
+      <strong>v12 in one paragraph.</strong> A patient vignette enters as text. Symptoms and explicit excluded findings are parsed into structured form. A triage agent retrieves a knowledge-base candidate-disease shortlist. Eleven domain-specialist agents (all running on o3 reasoning:high in parallel) each see the case and a domain-tuned slice of the KB shortlist, and each emit 2–4 ranked diagnostic hypotheses with evidence mapping. An evidence-evaluator agent (o3 reasoning:high) deduplicates the hypotheses across specialists and scores each against KB diagnostic criteria where available. A synthesizer agent (o3 reasoning:high) reviews all hypotheses + criteria data and outputs a final top-10 ranking with LLM-assigned probability scores. A report-generator (gpt-4.1-mini) formats the patient-facing output. A deterministic family-expansion step appends up to 5 KB-linked sibling diseases at positions 11–15.
     </div>
 
-    <h2>What v12 changes (just one line of code)</h2>
-    <div class="compare">
-      <div>
-        <h4>v11 sampler</h4>
-        <p class="small">Excluded ppkt_ids with already-completed graded trios</p>
-        <div class="big" style="color: var(--bad);">↓ pool shrinks every batch</div>
-        <p class="small" style="margin-top: 8px;">Effect: the corpus-concentrated top-15 diseases (DEE4×462, NF1×405, KBG×333…) got consumed by early batches. Later batches drew disproportionately from the long tail, where SL's KB has weaker coverage. Apparent accuracy declined over time even though no architectural code changed.</p>
+    <div class="spec-strip">
+      <div class="spec-cell">
+        <div class="spec-label">LLM calls / case</div>
+        <div class="spec-value">~15</div>
       </div>
-      <div>
-        <h4>v12 sampler</h4>
-        <p class="small">Draws from the full 9,587-row corpus, no exclusion</p>
-        <div class="big" style="color: var(--good);">→ pool is the same every batch</div>
-        <p class="small" style="margin-top: 8px;">Effect: cohort composition is statistically stable across batches. Measurements are directly comparable to published Phenopacket2Prompt benchmarks (Exomiser 35.5%, o1-preview 23.6%, GPT-4o ~20%), which also sampled without depletion.</p>
+      <div class="spec-cell">
+        <div class="spec-label">Median wall time</div>
+        <div class="spec-value">~120s</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Estimated OpenAI cost</div>
+        <div class="spec-value">~$1.50</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Output length</div>
+        <div class="spec-value">15 ranked Dx</div>
+      </div>
+    </div>
+
+    <h2>Input</h2>
+    <p>A <code>PatientCase</code> object containing:</p>
+    <ul>
+      <li><strong>Demographics</strong>: age (string), sex (male / female / other)</li>
+      <li><strong>Symptoms</strong>: array of <code>MappedSymptom</code> — each has an <code>originalPhrase</code>, a normalized <code>medicalTerm</code>, optional UMLS concept, severity, body part</li>
+      <li><strong>Excluded findings</strong>: array of strings the source explicitly marked absent / denied / ruled out (used as negative evidence)</li>
+      <li><strong>Patient hypothesis</strong> (optional): what the patient thinks they might have</li>
+      <li><strong>Medical history</strong>: family history, past medical history, current medications, recent tests</li>
+      <li><strong>Lab results</strong> (optional, real-user path only): structured <code>LabResult[]</code> from uploaded reports. No-op on eval cases.</li>
+    </ul>
+    <p>For eval runs, the input is a Phenopacket2Prompt vignette converted to this shape. Lab fields are empty since the source vignettes don't include uploaded labs.</p>
+
+    <h3>Sampling (eval path only)</h3>
+    <p>For eval runs, the trio runner fetches a case via <code>/api/admin/eval-case?count=N&amp;mode=uniform</code>. v12's sampler ignores any exclusion list and draws uniformly at random from all 9,587 Phenopacket2Prompt rows. This is the only behavior that differs from v11.</p>
+
+    <h2>The 6-stage pipeline</h2>
+
+    <div class="stage">
+      <div class="stage-header">
+        <span class="stage-num">1</span>
+        <span class="stage-name">Symptom Extraction &amp; Triage</span>
+        <span class="stage-meta">gpt-4.1-mini + gpt-4.1-nano<br>~1–3s</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Input</span>
+        <span class="stage-content">PatientCase (with symptoms already parsed for eval; for real users, parse-symptoms runs first against the narrative text)</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Work</span>
+        <span class="stage-content">
+          <strong>(a)</strong> Triage agent classifies body systems involved in the presentation (musculoskeletal / neurological / cardiovascular / immunological / etc.) and emits an acuity rating.<br>
+          <strong>(b)</strong> Knowledge-base retrieval runs against the 9,263-disease KB. Multi-pass strategy: first pass filters by predicted body systems with a relevance threshold; second pass does an unfiltered KB sweep at a stricter threshold to catch triage misclassifications; third pass expands via KB-defined differential diagnoses of the top matches. Scoring blends disease-centric coverage (which of the disease's expected symptoms appear) with patient-coverage (what fraction of the patient's symptoms map to this disease).<br>
+          <strong>(c)</strong> Triage ranks all 11 specialist types by case relevance. The ranking only controls display order; every specialist is consulted regardless.
+        </span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Output</span>
+        <span class="stage-content"><code>TriageOutput</code>: body systems, acuity, top KB candidate diseases with per-disease match score and matched symptoms, specialist ranking. <span class="tag tag-kb">KB retrieval</span><span class="tag tag-llm">LLM (nano)</span></span>
       </div>
     </div>
 
-    <p>One change in <code>app/api/admin/eval-case/route.ts</code>: the <code>exclude</code> query parameter is now ignored. Pipeline is identical to v11.</p>
+    <div class="arrow">▼</div>
 
-    <h2>The pipeline at v12 (same as v11)</h2>
-    <p>All 6 stages run unchanged. Refer to the v11 tab for the per-stage breakdown — v12 does not modify any of it. The fresh-pool sampling change happens before the pipeline is ever invoked.</p>
-
-    <h2>Why the sampler change matters</h2>
-    <p>The Phenopacket2Prompt corpus has 9,587 vignettes but only 694 unique diagnoses. The distribution is heavily skewed:</p>
-
-    <div class="bar-chart">
-      <div class="bar-row">
-        <span>DEE4 (epileptic encephalopathy 4)</span>
-        <div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div>
-        <span class="bar-value">462</span>
+    <div class="stage">
+      <div class="stage-header">
+        <span class="stage-num">2</span>
+        <span class="stage-name">11 Specialist Agents (parallel)</span>
+        <span class="stage-meta">o3 reasoning:high × 11<br>~50–80s slowest</span>
       </div>
-      <div class="bar-row">
-        <span>Neurofibromatosis type 1</span>
-        <div class="bar-track"><div class="bar-fill" style="width: 87.7%;"></div></div>
-        <span class="bar-value">405</span>
+      <div class="stage-section">
+        <span class="stage-label">Input</span>
+        <span class="stage-content">Each specialist receives the full PatientCase plus a domain-tuned slice of the triage KB candidates. The slice is computed by <code>rerankCandidatesForSpecialty</code>: the triage match score is multiplied by a domain-fit weight (explicit specialistType match = 1.0, body-system mapping = 0.45, fallback = 0.12).</span>
       </div>
-      <div class="bar-row">
-        <span>KBG syndrome</span>
-        <div class="bar-track"><div class="bar-fill" style="width: 72.1%;"></div></div>
-        <span class="bar-value">333</span>
+      <div class="stage-section">
+        <span class="stage-label">Work</span>
+        <span class="stage-content">
+          Each specialist's prompt embeds (i) a specialty reference card with clinical frameworks, pattern-recognition heuristics, red flags, and common mimics drawn from established standards (ACR/EULAR, McDonald, Ghent, IUIS, etc.); (ii) the case demographics + symptoms + excluded findings; (iii) the KB candidate diseases with diagnostic criteria, prevalence, demographics, key symptoms by frequency tier. The general-internist is intentionally given <em>no</em> KB profiles — it serves as un-anchored counterweight.<br><br>
+          Each agent emits 2–4 ranked diagnostic hypotheses with evidence mapping per hypothesis (supporting findings → patient symptoms, contradictory evidence, diagnostic criteria fit, typical presentation, clinical reasoning).
+        </span>
       </div>
-      <div class="bar-row">
-        <span>ADTKD type 1</span>
-        <div class="bar-track"><div class="bar-fill" style="width: 43.1%;"></div></div>
-        <span class="bar-value">199</span>
+      <div class="parallel">
+        <div class="specialist">neurologist</div>
+        <div class="specialist">rheumatologist</div>
+        <div class="specialist">cardiologist</div>
+        <div class="specialist">immunologist</div>
+        <div class="specialist">endocrinologist</div>
+        <div class="specialist">gastroenterologist</div>
+        <div class="specialist">geneticist</div>
+        <div class="specialist">hematologist</div>
+        <div class="specialist">psychiatrist</div>
+        <div class="specialist">oncologist</div>
+        <div class="specialist">general-internist</div>
       </div>
-      <div class="bar-row">
-        <span>Glass syndrome</span>
-        <div class="bar-track"><div class="bar-fill" style="width: 34.0%;"></div></div>
-        <span class="bar-value">157</span>
+      <div class="stage-section">
+        <span class="stage-label">Reliability</span>
+        <span class="stage-content">Each specialist call is wrapped in a 120s timeout. If 1–2 specialists time out or error, the pipeline continues with the survivors. If all 11 fail, the pipeline throws. Per-specialist outcomes are persisted (start time, completion time, hypothesis count, failure reason) to the testCase's <code>pipelineProgressLog</code>.</span>
       </div>
-      <div class="bar-row">
-        <span>...long tail (~680 more diseases, &lt;100 each)</span>
-        <div class="bar-track"><div class="bar-fill" style="width: 5%; background: var(--border);"></div></div>
-        <span class="bar-value">~6800</span>
+      <div class="stage-section">
+        <span class="stage-label">Output</span>
+        <span class="stage-content">Array of <code>AgentOutput</code> — one per specialist that completed. Each contains 2–4 <code>DiagnosisHypothesis</code> objects. <span class="tag tag-kb">KB-anchored</span><span class="tag tag-llm">LLM × 11 (o3:high)</span></span>
       </div>
     </div>
-    <p class="footnote">Top 15 diseases = 28% of the corpus. DEE4 alone is 4.8%.</p>
 
+    <div class="arrow">▼</div>
+
+    <div class="stage">
+      <div class="stage-header">
+        <span class="stage-num">3</span>
+        <span class="stage-name">Evidence Evaluator</span>
+        <span class="stage-meta">o3 reasoning:high<br>~80–110s</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Input</span>
+        <span class="stage-content">All specialist outputs + the triage KB candidates + the full PatientCase.</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Work</span>
+        <span class="stage-content">
+          <strong>(a)</strong> Deduplicate hypotheses across specialists (same disease proposed by multiple specialists merges into one entry; sourceAgent becomes comma-joined).<br>
+          <strong>(b)</strong> Classify each hypothesis as KB-matched (its diagnosis name resolves to a KB disease profile via the tightened <code>findDiseaseByName</code> matcher, which requires ≥12-char name matches for substring fallback) or non-KB.<br>
+          <strong>(c)</strong> For each hypothesis, evaluate against KB diagnostic criteria where available (criteria-grounded track) or via clinical reasoning quality where not (reasoning-evaluated track). Output structured criteria-fulfillment data: each formal criterion marked met / unmet with supporting evidence. Also emit evidenceQuality (strong / moderate / weak / insufficient), information gaps, contradictions, narrative strength assessment.<br>
+          <strong>(d)</strong> Optionally add bonus subtype evaluations — variants the evaluator considers worth surfacing that weren't in the original specialist hypotheses.<br><br>
+          A 30-second heartbeat progress event is emitted while the o3 call is in flight, keeping the SSE stream alive even when the underlying reasoning is silent.
+        </span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Output</span>
+        <span class="stage-content"><code>EvaluationResult</code> with deduplicated hypotheses, each enriched with <code>diagnosticCriteria</code> (totalCriteria / metCriteria / per-criterion details), evaluationType, knowledgeBaseMatch, evidenceQuality enum, contradictions array, strength assessment. <span class="tag tag-kb">KB criteria</span><span class="tag tag-llm">LLM (o3:high)</span></span>
+      </div>
+    </div>
+
+    <div class="arrow">▼</div>
+
+    <div class="stage">
+      <div class="stage-header">
+        <span class="stage-num">4</span>
+        <span class="stage-name">Synthesizer (rank decision)</span>
+        <span class="stage-meta">o3 reasoning:high<br>~30–60s</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Input</span>
+        <span class="stage-content">All evaluated hypotheses with criteria data + specialist outputs + the full PatientCase.</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Work</span>
+        <span class="stage-content">
+          Senior-diagnostician system prompt. The LLM reviews all hypotheses and the criteria-fulfillment data, applies its own clinical judgment + Bayesian reasoning + demographic fit, and produces a top-10 ranking with a probability score per diagnosis (0–100), a reasoning string per diagnosis, a consensus level for the differential (strong / moderate / weak / divergent), critical information gaps, common diagnoses explicitly excluded with reasons, and differential clusters (groups of phenotypically indistinguishable siblings with their distinguishing tests).<br><br>
+          <strong>The synth's probabilityScore becomes the rank key.</strong> It is stored in both <code>confidenceScore</code> and <code>evidenceScore</code> on each hypothesis. The mechanical formula is computed in parallel and persisted as <code>evidenceScoreRaw</code> / <code>evidenceScoreBreakdown</code> for audit and as the LLM-vs-formula divergence signal — but it does not change the ranking.<br><br>
+          If all top-5 scores fall below 40 OR specialist consensus is weak/divergent OR top-diagnosis reliability is rated low, an escalation context is injected into the report generator's prompt recommending broader investigative pathways (WES/WGS, geneticist referral, undiagnosed disease programs).<br><br>
+          Heartbeat events fire every 30s during the call.
+        </span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Output</span>
+        <span class="stage-content">Top-10 ranked <code>DiagnosisHypothesis</code> array sorted by evidenceScore desc, plus a SynthesisOutput record containing consensus level, escalation context, differential clusters, excluded common diagnoses. <span class="tag tag-llm">LLM clinical judgment (o3:high)</span></span>
+      </div>
+    </div>
+
+    <div class="arrow">▼</div>
+
+    <div class="stage">
+      <div class="stage-header">
+        <span class="stage-num">5</span>
+        <span class="stage-name">Report Generator</span>
+        <span class="stage-meta">gpt-4.1-mini<br>~20–35s</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Input</span>
+        <span class="stage-content">Synthesis output (ranked hypotheses + clinical narrative + clusters + escalation context if any).</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Work</span>
+        <span class="stage-content">
+          Formats the patient-facing report. Output structure: top-10 ranked diagnoses (preserving synth's order), per-diagnosis recommended testing, next steps (immediate actions / specialist referrals / follow-up timing / red flags), data gaps, recommended labs section, overall assessment.<br><br>
+          When the escalation context is injected, the report acknowledges low diagnostic certainty and recommends broader pathways.
+        </span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Output</span>
+        <span class="stage-content"><code>ReportResult</code> with patient-facing report data plus the same top-10 hypotheses ready for family expansion. <span class="tag tag-llm">LLM formatting (gpt-4.1-mini)</span></span>
+      </div>
+    </div>
+
+    <div class="arrow">▼</div>
+
+    <div class="stage">
+      <div class="stage-header">
+        <span class="stage-num">6</span>
+        <span class="stage-name">Family Expansion (deterministic)</span>
+        <span class="stage-meta">no LLM<br>&lt;1s</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Input</span>
+        <span class="stage-content">The top-10 ranked diagnoses from the report stage.</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Work</span>
+        <span class="stage-content">
+          For each of the top-10 diagnoses, look up the disease in the KB via <code>findDiseaseByName</code>. If it resolves to a KB profile that has a non-empty <code>differentialDiagnoses</code> field (KB-defined sibling diseases), append up to 3 of those siblings to the output, capped at 5 total expansions across the top 10. Skip variants whose normalized name is already present in the top 10 or among already-added expansions.<br><br>
+          Expansions are tagged <code>sourceAgent: 'family-expansion'</code> and <code>expansionSource: 'family'</code>. Scores are set to 0 (silent zero — the user sees the expansion as a related variant but not as a ranked competitor to the LLM-ranked top 10).
+        </span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Output</span>
+        <span class="stage-content">Up to 5 additional <code>DiagnosisHypothesis</code> entries for positions 11–15 with score=0 and a <code>parentDiagnosis</code> back-reference. <span class="tag tag-kb">KB lookup</span><span class="tag tag-det">deterministic</span></span>
+      </div>
+    </div>
+
+    <h2>Final output</h2>
+    <p>The pipeline assembles an <code>AnalysisResult</code>:</p>
+
+    <div class="output-spec">{
+  <span class="field">differentialDiagnoses</span>: <span class="type">DiagnosisHypothesis[]</span>,           <span class="comment">// up to 15 entries: top-10 LLM-ranked + up to 5 family expansions</span>
+  <span class="field">differentialClusters</span>: <span class="type">DifferentialCluster[]</span>,            <span class="comment">// phenotypic-sibling groups with distinguishing tests</span>
+  <span class="field">familyEnrichments</span>: <span class="type">FamilyEnrichment[]</span>,                 <span class="comment">// optional KB-grounded family-of-disease enrichment</span>
+  <span class="field">excludedCommonDiagnoses</span>: <span class="type">ExcludedCommonDiagnosis[]</span>,    <span class="comment">// common conditions explicitly ruled out, with reasons</span>
+  <span class="field">dataGaps</span>: <span class="type">string[]</span>,                                  <span class="comment">// missing information that would clarify the differential</span>
+  <span class="field">recommendedTesting</span>: <span class="type">string[]</span>,                        <span class="comment">// labs / imaging / genetic tests to order</span>
+  <span class="field">nextSteps</span>: {                                            <span class="comment">// immediate actions, specialist referrals, follow-up timing</span>
+    <span class="field">immediateActions</span>: <span class="type">string[]</span>,
+    <span class="field">specialistReferrals</span>: <span class="type">string[]</span>,
+    <span class="field">followUpTiming</span>: <span class="type">string</span>,
+    <span class="field">redFlags</span>: <span class="type">string[]</span>
+  },
+  <span class="field">overallAssessment</span>: <span class="type">string</span>,                          <span class="comment">// synth's honest summary of the diagnostic picture</span>
+  <span class="field">pipelineMetadata</span>: {
+    <span class="field">stages</span>: <span class="type">StageResult[]</span>,                          <span class="comment">// per-stage duration, tokens, model — including any specialist-failed entries</span>
+    <span class="field">budgetSummary</span>: { <span class="field">estimatedCostUsd</span>: <span class="type">number</span>, ... },
+    <span class="field">pipelineVersion</span>: <span class="type">"2.1.0"</span>
+  }
+}</div>
+
+    <p>Each <code>DiagnosisHypothesis</code> carries: diagnosis name, ICD-10 / OMIM / Orphanet IDs, <code>confidenceScore</code> = synth's LLM probability = the rank key, <code>evidenceScore</code> identical to confidenceScore, <code>evidenceScoreRaw</code> and <code>evidenceScoreBreakdown</code> from the mechanical formula (audit data only), <code>rareDisease</code> flag, prevalence string, supporting and contradictory evidence arrays, clinical reasoning, typical presentation, specialist required, full diagnosticCriteria object (criteriaName / totalCriteria / metCriteria / per-criterion details / fulfillmentPercentage), sourceAgent (or sourceAgents array if multiple specialists proposed it), evaluationType (criteria-grounded / reasoning-evaluated), knowledgeBaseMatch flag, scoringVersion tag, parentDiagnosis back-reference if a family-expansion entry.</p>
+
+    <h2>Eval-specific grading flow</h2>
+    <p>For eval-mode runs, after the pipeline returns its AnalysisResult the trio runner sends the top-10 diagnoses plus the ground-truth diagnosis to <code>/api/admin/grade-test</code>. Grading runs in two passes:</p>
+    <ul>
+      <li><strong>Pass 1 (deterministic)</strong>: tier-match against ground-truth by name normalization, ICD-10, and Orphanet ID. Determines the tier (exact-top1 / exact-top3 / exact-top5 / variant-top3 / variant-top5 / family-top3 / family-top5 / organ-system / complete-miss) which constrains the score range.</li>
+      <li><strong>Pass 2 (LLM, Claude Sonnet)</strong>: scores reasoning quality within the tier's allowed range. Awards 0–100, qualitative grade A+ through F, plus strengths / weaknesses / missed findings / false leads / partial-credit reason.</li>
+    </ul>
+
+    <h2>Operational characteristics</h2>
     <table>
-      <thead>
-        <tr><th>Cohort</th><th>N</th><th>% Top-15 corpus diseases</th><th>SL Top-1</th><th>OAI Top-1</th><th>Claude Top-1</th></tr>
-      </thead>
+      <thead><tr><th>Property</th><th>Value</th></tr></thead>
       <tbody>
-        <tr><td>v5 (early sampler)</td><td>48</td><td>35%</td><td>54%</td><td>42%</td><td>44%</td></tr>
-        <tr><td>v10</td><td>30</td><td>~20% (est.)</td><td>40%</td><td>43%</td><td>40%</td></tr>
-        <tr><td>v11 (depleted sampler)</td><td>24</td><td>12%</td><td>21%</td><td>21%</td><td>25%</td></tr>
-        <tr><td><strong>v12 (fresh sampler — pending)</strong></td><td>TBD</td><td>~28% (corpus expectation)</td><td>TBD</td><td>TBD</td><td>TBD</td></tr>
+        <tr><td>Per-case wall time</td><td>~120s median, ~150s p90, ~250s p99</td></tr>
+        <tr><td>Per-case cost</td><td>~$1.50 (dominated by 11×o3:high specialists + 2×o3:high sequential)</td></tr>
+        <tr><td>Per-case LLM calls</td><td>15 (1 triage nano, 11 specialist, 1 evaluator, 1 synth, 1 report)</td></tr>
+        <tr><td>Failure surface</td><td>~5–10% case failure rate. Most failures are real Vercel function terminations during long evidence-eval calls; ~0% from per-specialist timeouts (specialists max out at 85s observed across 600+ calls).</td></tr>
+        <tr><td>Vercel function maxDuration</td><td>300s (analyze-patient-v2 route)</td></tr>
+        <tr><td>SSE client-side safety</td><td>180s idle timeout (heartbeats keep stream alive), 280s overall pipeline cap</td></tr>
+        <tr><td>Persistence</td><td>Every pipeline stage event + per-specialist outcome is appended to <code>pipelineProgressLog</code> on the testCase and flushed to KV on stage transitions. Failure cases retain the trail.</td></tr>
+        <tr><td>Observability</td><td>Server logs tagged <code>[orch] event=…</code> grepable in Vercel function logs. Tags include orch.start, orch.specialist.start/done/fail, orch.stage.evidence.start/done, orch.stage.synthesis.start/done, orch.done, orch.error.</td></tr>
       </tbody>
     </table>
-    <p class="footnote">The "v5 win" was real for its corpus-concentrated cohort. The "v11 loss" was the same architecture on a depleted (long-tail-heavy) cohort. Neither captured the corpus-natural composition.</p>
 
-    <h2>The v12 analysis plan</h2>
-
-    <h3>Step 1 — run a batch (target N ≥ 30 uniform)</h3>
-    <p>Trio runner draws fresh from the full pool. Expected composition mirrors the corpus distribution: ~28% top-15 cases, ~72% long-tail.</p>
-
-    <h3>Step 2 — three measurements</h3>
+    <h2>Key knowledge-base interactions</h2>
     <ul>
-      <li><strong>Headline Top-1 / Top-3 / Top-5 / Top-10</strong> across SL, OpenAI o3, Claude opus-4-7. Same case denominator across all three (matched-trio comparison).</li>
-      <li><strong>Comparison to published baselines</strong>. v12 methodology now matches Exomiser / o1-preview / GPT-4o's measurement protocol.</li>
-      <li><strong>Stratified by corpus frequency</strong> — split graded cases into "top-15 corpus disease" vs "long tail" and compute Top-1 on each. Reveals where the architecture wins and where it doesn't.</li>
+      <li><strong>Triage retrieval</strong>: multi-pass scoring across ~9,263 KB diseases with embeddings + symptom-tier matching + demographic fit.</li>
+      <li><strong>Per-specialist rerank</strong>: each specialist's KB shortlist is filtered + ranked by domain-fit weight against the specialty mapping.</li>
+      <li><strong>Evidence evaluator</strong>: criteria-grounded evaluation requires resolving each hypothesis to a KB profile via <code>findDiseaseByName</code> (tightened matcher: ≥12-char min for substring fallback to prevent the Ciliopathy bug class).</li>
+      <li><strong>Family expansion</strong>: deterministic lookup of each top-10 diagnosis's KB-defined sibling diseases.</li>
+      <li><strong>Mechanical formula (audit only)</strong>: per-component score for each hypothesis based on criteriaFulfillmentRatio, symptomMatchScore, specialistAgreement, contradiction penalty, excluded-finding penalty.</li>
     </ul>
 
-    <h3>Step 3 — decision branch for v13</h3>
-    <div class="decision">
-      <div class="decision-row">
-        <span class="decision-condition">SL ≥ baselines by ≥10 pts</span>
-        <span class="decision-outcome">
-          <span class="tag tag-good">v13 = optimize for cost</span><br>
-          Pipeline is genuinely strong on representative data. v13 explores whether we can keep the win while cutting per-case wall time (~120s) and cost (~$1.50). Likely: replace redundant specialist role-plays with shared embeddings + critique pass.
-        </span>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- ============== v13 TAB ============== -->
+  <!-- ===================================================== -->
+  <div class="tab-panel" id="panel-v13">
+
+    <div class="summary-box">
+      <strong>v13 in one paragraph.</strong> A patient vignette enters as text. Symptoms and explicit excluded findings are parsed into structured form. Two foundation-model generators (Claude opus-4-7 and OpenAI o3 reasoning:high) run in parallel on the full case with no KB candidate filter; each independently emits a ranked top-10 differential with clinical reasoning. A deterministic KB augmentation step looks up every unique diagnosis across both lists in the knowledge base and attaches structured citation data (diagnostic criteria, red flags, recommended confirmatory testing, family variants). An adversarial-critique agent (o3 reasoning:high) receives both ranked lists plus the case plus the KB-augmented data and produces a final reconciled top-10 with explicit deltas: what's missing, what's misranked, what should be deduped or clustered. The mechanical formula runs as audit data only. A report-generator (gpt-4.1-mini) formats the patient-facing output.
+    </div>
+
+    <div class="spec-strip">
+      <div class="spec-cell">
+        <div class="spec-label">LLM calls / case</div>
+        <div class="spec-value">~4</div>
       </div>
-      <div class="decision-row">
-        <span class="decision-condition">SL ≈ baselines<br>(within 5 pts either way)</span>
-        <span class="decision-outcome">
-          <span class="tag tag-warn">v13 = dual-model architecture</span><br>
-          The 11-specialty mechanism is theatre at the scale we're using it. v13 ships the queued dual-model + adversarial critique design (opus-4-7 + o3 generators, KB as post-hoc citation only). Behind feature flag; specialty agents kept in tree for revertability.
-        </span>
+      <div class="spec-cell">
+        <div class="spec-label">Expected wall time</div>
+        <div class="spec-value">~60–80s</div>
       </div>
-      <div class="decision-row">
-        <span class="decision-condition">SL &lt; baselines by ≥5 pts</span>
-        <span class="decision-outcome">
-          <span class="tag tag-bad">urgent v13 = redesign</span><br>
-          Architecture is actively hurting on representative data. Same dual-model direction, plus deeper investigation of KB-anchored failure modes. KB curation may need triage before further architectural work.
-        </span>
+      <div class="spec-cell">
+        <div class="spec-label">Expected cost</div>
+        <div class="spec-value">~$0.30</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Output length</div>
+        <div class="spec-value">10 ranked Dx</div>
       </div>
     </div>
 
-    <h3>Step 4 — disaggregate the why</h3>
-    <p>For cases SL missed but at least one baseline hit, walk the persisted pipeline trail (<code>pipelineProgressLog</code>, per-specialist hypotheses, evidence-evaluator output) and classify the failure mode:</p>
-    <ul>
-      <li><strong>Specialist herding</strong> — all 11 converged on a KB-adjacent wrong family (OI-IX pattern)</li>
-      <li><strong>KB variant absence</strong> — specific gene-level variant isn't in the KB (OPA12 pattern)</li>
-      <li><strong>Synth ranking bias</strong> — correct answer was in the candidate pool but mis-ranked (Loeys-Dietz pattern)</li>
-      <li><strong>Routing failure</strong> — vignette type pushed specialists toward wrong domain (Netherton pattern)</li>
-      <li><strong>Grader miss</strong> — pipeline got it right; grader nomenclature failed (Complex IV ≡ Cytochrome c Oxidase pattern)</li>
-    </ul>
-    <p>The mix of failure modes determines whether v13 should change agent architecture, KB, scoring, or all three.</p>
+    <p class="footnote">Status: planned, not built. Will land behind an <code>evalEngine: 'classic' | 'dual'</code> feature flag in the orchestrator. v12's 11-specialist pipeline stays in tree as the <code>classic</code> path; v13 is the <code>dual</code> path. Either engine can be toggled per analyze-patient-v2 call.</p>
 
-    <h2>What to look at on the results table</h2>
+    <h2>Input</h2>
+    <p>Same <code>PatientCase</code> shape as v12. Same eval sampler behavior (fresh-pool, full 9,587-case corpus). No change to the data the pipeline receives.</p>
+
+    <h2>The 5-stage pipeline</h2>
+
+    <div class="stage">
+      <div class="stage-header">
+        <span class="stage-num">1</span>
+        <span class="stage-name">Symptom Extraction</span>
+        <span class="stage-meta">gpt-4.1-mini<br>~1–2s</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Input</span>
+        <span class="stage-content">PatientCase (with symptoms pre-parsed for eval; for real users, parse-symptoms runs first).</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Work</span>
+        <span class="stage-content">Identical to v12 stage 1's parsing leg. No KB retrieval at this stage in v13 (KB is consulted post-generation, not pre-generation).</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Output</span>
+        <span class="stage-content">Structured PatientCase with mapped symptoms and excluded findings. <span class="tag tag-llm">LLM (parsing)</span></span>
+      </div>
+    </div>
+
+    <div class="arrow">▼</div>
+
+    <div class="stage">
+      <div class="stage-header">
+        <span class="stage-num">2</span>
+        <span class="stage-name">Dual-Model Generation (parallel)</span>
+        <span class="stage-meta">opus-4-7 + o3 reasoning:high<br>~30–50s</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Input</span>
+        <span class="stage-content">Both generators receive the same prompt: the full structured PatientCase (demographics, symptoms, excluded findings, medical history, optional labs). <strong>No KB candidate shortlist.</strong> Each model generates from its own training-weight medical knowledge unconstrained.</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Work</span>
+        <span class="stage-content">
+          Two independent calls run in parallel. Each model is instructed to produce a ranked top-10 differential with a one-sentence clinical reasoning per diagnosis, ranked by probability descending. Output structure mirrors the Phenopacket2Prompt official benchmark protocol.<br><br>
+          Each call is wrapped in a per-model timeout (estimated 90s ceiling; opus-4-7 typically completes faster than o3:high). If one of the two errors or times out, the pipeline still continues with the survivor.
+        </span>
+      </div>
+      <div class="generators">
+        <div class="gen-card opus">
+          <h5>Claude opus-4-7</h5>
+          <p class="small">Broad medical training; measured ranking-quality edge on long-tail rare diseases (54% Top-3 vs SL's 25% in v11). Tends to surface the obvious-correct answer near the top when it has it.</p>
+        </div>
+        <div class="gen-card o3">
+          <h5>OpenAI o3 reasoning:high</h5>
+          <p class="small">Same model that powers v12's specialists, evaluator, and synthesizer. Strong reasoning depth; consistent single-shot performance (~40% Top-1 across cohorts). Different training distribution than opus.</p>
+        </div>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Output</span>
+        <span class="stage-content">Two <code>RankedDifferential</code> arrays (one per generator), each with 10 diagnoses + reasoning + probability score. <span class="tag tag-llm">LLM × 2 generators</span></span>
+      </div>
+    </div>
+
+    <div class="arrow">▼</div>
+
+    <div class="stage">
+      <div class="stage-header">
+        <span class="stage-num">3</span>
+        <span class="stage-name">KB Augmentation (deterministic)</span>
+        <span class="stage-meta">no LLM<br>&lt;2s</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Input</span>
+        <span class="stage-content">Union of unique diagnoses across both generators' top-10 lists (expected: 12–18 unique entries after dedupe across the two models).</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Work</span>
+        <span class="stage-content">
+          For each unique diagnosis, look up the KB via <code>findDiseaseByName</code>. If a KB profile resolves, attach:
+          <ul>
+            <li>Formal diagnostic criteria (criterion name, criteria array, minimum-for-diagnosis statement)</li>
+            <li>Red flags</li>
+            <li>Recommended confirmatory testing (laboratory / imaging / genetic / other from the KB's <code>keyFindings</code> structure)</li>
+            <li>Prevalence classification (ultra-rare / rare / uncommon / common)</li>
+            <li>KB-defined family-variant siblings (from <code>differentialDiagnoses</code> field)</li>
+            <li>Which generator(s) proposed it (modelsThatProposed: 'opus' | 'o3' or both)</li>
+          </ul>
+          Diagnoses without a KB match are kept with empty augmentation. <strong>The KB does not filter or constrain candidates</strong> — it only attaches citation data to what the generators already produced.
+        </span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Output</span>
+        <span class="stage-content">Augmented <code>CandidateDiagnosis</code> array with full KB-grounded clinical-citation metadata per entry. <span class="tag tag-kb">KB lookup</span><span class="tag tag-det">deterministic</span></span>
+      </div>
+    </div>
+
+    <div class="arrow">▼</div>
+
+    <div class="stage">
+      <div class="stage-header">
+        <span class="stage-num">4</span>
+        <span class="stage-name">Adversarial Critique &amp; Reconciliation</span>
+        <span class="stage-meta">o3 reasoning:high<br>~20–30s</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Input</span>
+        <span class="stage-content">The full PatientCase + both generators' top-10 lists side-by-side + the augmented KB data per unique diagnosis.</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Work</span>
+        <span class="stage-content">
+          The critic system prompt frames the task as:
+          <ul>
+            <li><strong>Identify missing candidates</strong>: diagnoses that the vignette pattern strongly suggests but neither generator surfaced. Use the KB's family-variant siblings of generator candidates as suggestion seeds.</li>
+            <li><strong>Identify ranking errors</strong>: candidates where the generators disagreed on rank meaningfully, or where one generator placed a downstream-condition above its cause (e.g. Secondary HPT above ADTKD-1), or where a vague umbrella diagnosis outranks a specific variant.</li>
+            <li><strong>Identify near-duplicates and clusters</strong>: phenotypic-sibling diagnoses that should be deduplicated or grouped into a "family cluster" (e.g. multiple DEE subtypes, multiple OI types).</li>
+            <li><strong>Produce a reconciled top-10 ranking</strong> with explicit per-entry deltas: "kept opus #1", "promoted o3 #4 → #2 because…", "dropped opus #6 as duplicate of #3", "added new #7: X (suggested by KB family variant of opus #2)".</li>
+          </ul>
+          Heartbeat events fire every 30s during the call.
+        </span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Output</span>
+        <span class="stage-content">Final ranked top-10 <code>DiagnosisHypothesis</code> array with per-entry critic rationale and a delta-explanation log. Probability scores are the critic's clinical-judgment scores (0–100). <span class="tag tag-llm">LLM critique (o3:high)</span></span>
+      </div>
+    </div>
+
+    <div class="arrow">▼</div>
+
+    <div class="stage">
+      <div class="stage-header">
+        <span class="stage-num">5</span>
+        <span class="stage-name">Mechanical Scoring &amp; Report</span>
+        <span class="stage-meta">no LLM + gpt-4.1-mini<br>~15–25s</span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Work</span>
+        <span class="stage-content">
+          <strong>(a)</strong> Mechanical formula runs over the critic's top-10 and persists per-component scores (criteriaFulfillmentRatio from the augmented KB data, symptomMatchScore from KB symptom overlap, modelAgreementScore based on whether both generators or only one proposed each diagnosis, contradictionPenalty, excludedFindingPenalty). Audit data only — does not change the critic's ranking.<br>
+          <strong>(b)</strong> Report generator formats the patient-facing structure (ranked diagnoses with criteria documentation, recommended testing pulled from KB, next steps, red flags). Same output schema as v12 stage 5.
+        </span>
+      </div>
+      <div class="stage-section">
+        <span class="stage-label">Output</span>
+        <span class="stage-content">Same <code>AnalysisResult</code> shape as v12. <span class="tag tag-det">deterministic</span><span class="tag tag-llm">LLM formatting</span></span>
+      </div>
+    </div>
+
+    <h2>Final output</h2>
+    <p>Identical <code>AnalysisResult</code> schema as v12 so downstream consumers (the grading pipeline, the user-facing UI, the testing-shared display, the matched-trio comparison) don't need to change. v13 outputs 10 diagnoses (positions 1–10); no family expansion at positions 11–15 is needed because the dual-generator panel + KB augmentation already broadens the candidate pool.</p>
+
+    <p>Each <code>DiagnosisHypothesis</code> in v13 carries the same fields as v12 plus three v13-specific additions: <code>modelsThatProposed: ('opus' | 'o3')[]</code>, <code>criticDelta: string</code> (the critic's per-entry rationale), and <code>finalRank: number</code>.</p>
+
+    <h2>Architectural rationale</h2>
     <table>
-      <thead>
-        <tr><th>Metric</th><th>What to compare it to</th><th>What it means</th></tr>
-      </thead>
+      <thead><tr><th>What changed from v12 (philosophically)</th><th>Why</th></tr></thead>
       <tbody>
         <tr>
-          <td><strong>v12 OAI o3 Top-1</strong></td>
-          <td>OAI Top-1 on v10 (43%) and v11 (21%)</td>
-          <td>The unchanged single-shot baseline. Where v12 lands relative to v10/v11 tells us how much cohort difficulty changed under fresh sampling vs depleted sampling.</td>
+          <td>11 same-model specialists → 2 different foundation models</td>
+          <td>11 specialists in v12 are all the same base model (o3) with different prompts. Diversity comes from prompt variation, not training distribution. v13 uses two genuinely different models (opus-4-7 + o3) to get real distribution diversity. Empirically, Claude opus and OpenAI o3 have measured different strengths on different sub-populations of rare diseases.</td>
         </tr>
         <tr>
-          <td><strong>v12 SL Top-1</strong></td>
-          <td>v12 OAI o3 Top-1 (same cohort)</td>
-          <td>Same-case denominator. Whatever gap exists here is the actual SL-vs-single-shot delta on a sampling-stable cohort.</td>
+          <td>KB as candidate-filter → KB as post-hoc citation</td>
+          <td>v12's KB-anchored specialist shortlists demonstrated specialist herding on KB-adjacent wrong families (the OI-IX failure: 3 specialists converged on Bruck, 6 on Hypophosphatasia, none on Osteogenesis Imperfecta). v13 lets the foundation models generate from full medical knowledge unconstrained, then uses KB to document and validate what was generated.</td>
         </tr>
         <tr>
-          <td><strong>v12 SL Top-1 by stratum</strong></td>
-          <td>v5 results (35% concentrated) and prior measurements</td>
-          <td>If SL wins big on the top-15 stratum and ties on long-tail, the "selective win" story is confirmed. If SL ties on both, the architecture isn't winning anywhere on representative data.</td>
+          <td>Single synth-as-judge → adversarial critic</td>
+          <td>v12's synthesizer takes one perspective and ranks. v13's critic explicitly looks for what the generators missed and where they ranked badly. The structure of "two independent generations + one explicit reconciler" forces the critic to address disagreement rather than smooth over it.</td>
         </tr>
         <tr>
-          <td><strong>v12 SL Top-10</strong></td>
-          <td>v12 SL Top-5 and Top-1</td>
-          <td>Tells us whether the right answer is in the differential at all (Top-10) but mis-ranked (Top-5 &lt;&lt; Top-10), vs not in the differential at all. The ranking-quality vs candidate-generation question.</td>
-        </tr>
-        <tr>
-          <td><strong>v12 Failure rate</strong></td>
-          <td>v11 failure rate (~10% post-heartbeat)</td>
-          <td>Healthy is ≤10%. If higher, check the persisted <code>pipelineProgressLog</code> for stage-specific issues. SSE timeouts and per-specialist hangs should still be near zero.</td>
+          <td>Mechanical formula as audit, mechanical formula as audit</td>
+          <td>v13 keeps the v10/v11/v12 decision that LLM judgment, not a formula, ranks. The mechanical formula's diagnostic value as an audit signal is preserved.</td>
         </tr>
       </tbody>
     </table>
 
-    <h2>What v12 deliberately doesn't try to do</h2>
+    <h2>Provider boundary</h2>
+    <p>v13 deliberately uses both OpenAI and Anthropic in the analysis path. This crosses the AI Provider Separation rule documented in <code>CLAUDE.md</code>, which previously kept analysis on OpenAI-only and testing on Anthropic-only as quota isolation. The tradeoff: real long-tail accuracy gain from Claude opus's measured advantage vs. coupling analysis quota to Anthropic. For published-dataset eval where the headline metric is deterministic OMIM/name matching, the cross-provider objectivity concern is small.</p>
+
+    <h2>Operational characteristics (estimated)</h2>
+    <table>
+      <thead><tr><th>Property</th><th>v13 estimate</th><th>v12 actual (for reference)</th></tr></thead>
+      <tbody>
+        <tr><td>Per-case wall time</td><td>~60–80s median</td><td>~120s median</td></tr>
+        <tr><td>Per-case cost</td><td>~$0.30</td><td>~$1.50</td></tr>
+        <tr><td>Per-case LLM calls</td><td>4 (parse + 2 generators + critic + report)</td><td>15</td></tr>
+        <tr><td>Failure surface</td><td>Smaller — 4 LLM calls vs 15. Cross-provider rate-limit independence (Anthropic + OpenAI quotas are separate).</td><td>~5–10% case failure rate</td></tr>
+        <tr><td>Persistence / observability</td><td>Same <code>pipelineProgressLog</code> + <code>[orch]</code> Vercel log infrastructure. Trail event types extended for dual-generator stages.</td><td>15 stage events per case</td></tr>
+        <tr><td>Feature flag</td><td><code>evalEngine: 'classic' | 'dual'</code> — toggled per analyze call</td><td>n/a</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Implementation plan</h2>
+    <p>Four small modules land sequentially, each behind the feature flag so v12 stays intact:</p>
     <ul>
-      <li><strong>Doesn't change the architecture.</strong> Specialty agents, KB-grounded retrieval, multi-pass scoring, synth-as-ranker — all unchanged from v11.</li>
-      <li><strong>Doesn't try to win on the long tail.</strong> If v12 confirms SL is tied or losing there, that's a v13 problem.</li>
-      <li><strong>Doesn't try to optimize cost or latency.</strong> Same ~$1.50/case and ~120s wall time as v11.</li>
-      <li><strong>Doesn't reset previously-saved test cases.</strong> v5 / v10 / v11 historical data stays in KV and remains queryable; v12 results sit in a separate cohort block in the comparison table.</li>
+      <li><strong>1. <code>lib/agents/dual-generator.ts</code></strong> — fires opus and o3 in parallel, normalizes outputs to the existing <code>DiagnosisHypothesis</code> shape, marks <code>modelsThatProposed</code>.</li>
+      <li><strong>2. <code>lib/pipeline/kb-augmentation.ts</code></strong> — pure function, no LLM. Walks each unique diagnosis and attaches KB metadata. Reuses the tightened <code>findDiseaseByName</code>.</li>
+      <li><strong>3. <code>lib/agents/critic-agent.ts</code></strong> — single o3:high call with structured output (final ranking + dropped + added + downstream flags + clusters).</li>
+      <li><strong>4. <code>lib/pipeline/orchestrator.ts</code></strong> — top-level branch reads <code>evalEngine</code>. Classic path (existing) or dual path (new modules). Engine choice persisted on test cases (<code>evalEngine: 'classic' | 'dual'</code>) so the matched-trio table can split that dimension the way it already splits sampling mode.</li>
     </ul>
+    <p>Mechanical scoring + report stages are reused from v12 as-is.</p>
 
   </div>
 
   <hr>
-  <p class="footnote">Eval-versions log (canonical version history): <code>docs/eval-versions.md</code> · Session report covering v6–v12: <code>docs/session-reports/2026-05-29-30-eval-investigation.md</code></p>
+  <p class="footnote">Eval-versions log: <code>docs/eval-versions.md</code> · Session report: <code>docs/session-reports/2026-05-29-30-eval-investigation.md</code></p>
 
 </div>
 
 <script>
-  // Tab switcher
   document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => {
       const id = tab.dataset.tab;

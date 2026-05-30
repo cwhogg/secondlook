@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SecondLook v11 / v12 — Pipeline + Analysis Plan</title>
+<style>
+  :root {
+    --bg: #f5f0eb;
+    --surface: #ffffff;
+    --border: #d4c5b0;
+    --border-soft: #e8ddd0;
+    --accent: #8b2500;
+    --accent-soft: #faf3eb;
+    --muted: #8b7355;
+    --text: #2a2a2a;
+    --text-soft: #5a5a5a;
+    --good: #2d6a4f;
+    --warn: #b07033;
+    --bad: #a64b0a;
+    --kb-color: #2c5e8c;
+    --llm-color: #6d2c8c;
+    --determin-color: #2d6a4f;
+    --v11-tint: #d8eae0;
+    --v12-tint: #dde2f3;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.55;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: var(--text);
+  }
+  h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 48px 0 14px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 28px 0 10px;
+    color: var(--text);
+  }
+  .lede {
+    color: var(--muted);
+    font-size: 17px;
+    margin: 0 0 8px;
+  }
+  .tldr {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    padding: 20px 24px;
+    margin: 24px 0 16px;
+  }
+  .tldr strong { color: var(--accent); }
+  p { margin: 0 0 14px; }
+  .small { color: var(--muted); font-size: 13px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin: 12px 0;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 14px;
+    vertical-align: top;
+  }
+  th {
+    background: var(--accent-soft);
+    color: var(--muted);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  tr:last-child td { border-bottom: none; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border: 1px solid;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-right: 4px;
+  }
+  .tag-kb { color: var(--kb-color); border-color: var(--kb-color); background: #eaf2fa; }
+  .tag-llm { color: var(--llm-color); border-color: var(--llm-color); background: #f3eaf7; }
+  .tag-det { color: var(--determin-color); border-color: var(--determin-color); background: #eaf5ef; }
+  .tag-good { color: var(--good); border-color: var(--good); background: #eaf5ef; }
+  .tag-warn { color: var(--warn); border-color: var(--warn); background: #faf2e8; }
+  .tag-bad { color: var(--bad); border-color: var(--bad); background: #f9ebe1; }
+  .tag-add { color: #4e7c34; border-color: #4e7c34; background: #ecf6e2; }
+  .tag-rm { color: #b03333; border-color: #b03333; background: #f7e6e6; }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin: 32px 0 0;
+    border-bottom: 2px solid var(--border);
+  }
+  .tab {
+    padding: 12px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: -2px;
+    transition: background 0.1s, color 0.1s;
+    user-select: none;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active {
+    background: var(--bg);
+    color: var(--accent);
+    border-bottom: 2px solid var(--bg);
+  }
+  .tab.active.tab-v11 { border-top: 3px solid #2d6a4f; }
+  .tab.active.tab-v12 { border-top: 3px solid #4a5db8; }
+  .tab-subtitle {
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: none;
+    letter-spacing: 0;
+    margin-top: 2px;
+  }
+  .tab-panel { display: none; padding-top: 24px; }
+  .tab-panel.active { display: block; }
+
+  /* Pipeline diagram */
+  .pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 24px 0 8px;
+  }
+  .stage {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 14px 18px;
+    position: relative;
+  }
+  .stage-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .stage-num {
+    background: var(--accent);
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .stage-name {
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .stage-meta {
+    color: var(--muted);
+    font-size: 12px;
+    margin-left: auto;
+    font-family: monospace;
+  }
+  .stage-desc {
+    color: var(--text-soft);
+    font-size: 14px;
+    margin: 4px 0 0;
+  }
+  .arrow {
+    text-align: center;
+    color: var(--border);
+    font-size: 20px;
+    line-height: 1;
+  }
+  .parallel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .specialist {
+    background: var(--accent-soft);
+    border: 1px solid var(--border-soft);
+    padding: 6px 8px;
+    font-size: 11px;
+    color: var(--text);
+    text-align: center;
+  }
+
+  /* Side-by-side comparison */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .compare > div {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 16px;
+  }
+  .compare h4 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .compare .big {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: Georgia, serif;
+  }
+
+  /* Decision block */
+  .decision {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 4px 16px;
+    margin: 12px 0;
+  }
+  .decision-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .decision-row:last-child { border-bottom: none; }
+  .decision-condition {
+    font-weight: 600;
+    color: var(--text);
+    font-family: monospace;
+    font-size: 13px;
+  }
+  .decision-outcome {
+    color: var(--text-soft);
+    font-size: 14px;
+  }
+
+  /* Bars */
+  .bar-chart {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 16px;
+    margin: 12px 0;
+  }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 280px 1fr 60px;
+    gap: 12px;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 13px;
+  }
+  .bar-track {
+    background: var(--border-soft);
+    height: 22px;
+    position: relative;
+  }
+  .bar-fill {
+    background: var(--accent);
+    height: 100%;
+  }
+  .bar-value {
+    text-align: right;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* Diff summary */
+  .diff-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    margin: 10px 0;
+  }
+  .diff-line {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 12px;
+    padding: 6px 0;
+    font-size: 14px;
+    border-bottom: 1px dashed var(--border-soft);
+  }
+  .diff-line:last-child { border-bottom: none; }
+  .diff-line code {
+    background: var(--accent-soft);
+    padding: 2px 6px;
+    font-family: monospace;
+    font-size: 12px;
+  }
+
+  .footnote {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+  }
+  code {
+    background: var(--accent-soft);
+    padding: 2px 6px;
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--text);
+  }
+  ul { padding-left: 22px; margin: 6px 0 14px; }
+  li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <p class="lede">SecondLook eval framework</p>
+  <h1>v11 / v12 — Pipeline &amp; Analysis Plan</h1>
+  <p class="lede" style="margin-top: 8px;">Two consecutive eval versions explained side-by-side. Pipeline architecture, what changed at each step, what we're measuring, what we'll decide.</p>
+
+  <div class="tabs">
+    <div class="tab tab-v11 active" data-tab="v11">
+      v11 — Ranking parity revert
+      <div class="tab-subtitle">Drops two v7 post-processors</div>
+    </div>
+    <div class="tab tab-v12" data-tab="v12">
+      v12 — Fresh-pool sampling
+      <div class="tab-subtitle">Pipeline unchanged from v11</div>
+    </div>
+  </div>
+
+  <!-- ============== v11 TAB ============== -->
+  <div class="tab-panel active" id="panel-v11">
+
+    <div class="tldr">
+      <strong>TL;DR — v11:</strong> Same multi-agent pipeline as v10. Three things removed from the post-synthesis path so the rank order matches v5 exactly: the downstream-condition penalty (halved the score of any diagnosis listed as a downstream consequence of another), the family-expansion scoring (positions 11–15 used to inherit half the parent's score; now back to silent zeros), and the <code>downstreamOf</code> field from the evidence-evaluator's structured-output schema. Mechanical scoring still runs and is persisted as audit data, but doesn't drive ranking. Tested whether the v10→v11 gap to v5's 54% Top-1 was these processors or just cohort variance.
+    </div>
+
+    <h2>What v11 removed (and why)</h2>
+    <p>v7 introduced a deterministic mechanical scoring layer that ran after synth's LLM ranking. v10 already restored the LLM <code>probabilityScore</code> as the rank key. v11 removes the last three v7 additions that were still in the path:</p>
+
+    <div class="diff-block">
+      <div class="diff-line">
+        <span class="tag tag-rm">REMOVED</span>
+        <div>
+          <strong><code>applyDownstreamPenalty()</code></strong>
+          <p class="small" style="margin: 4px 0 0;">Halved <code>evidenceScore</code> for any diagnosis the evidence-evaluator listed as a downstream consequence of another diagnosis in the same differential. Designed to fix the ADTKD-1 failure pattern (Secondary HPT outranking the underlying ADTKD). Specific bug fix; v5 didn't have it.</p>
+        </div>
+      </div>
+      <div class="diff-line">
+        <span class="tag tag-rm">REMOVED</span>
+        <div>
+          <strong><code>applyFamilyExpansionScoring()</code></strong>
+          <p class="small" style="margin: 4px 0 0;">Gave positions 11–15 (KB-linked family variants appended after synthesis) a score of <code>parent.evidenceScore × 0.5</code>. v5 had these at silent zero. v11 reverts to zero so the UI tier ("Weak fit") matches v5 expectations.</p>
+        </div>
+      </div>
+      <div class="diff-line">
+        <span class="tag tag-rm">REMOVED</span>
+        <div>
+          <strong><code>downstreamOf</code> field on evaluator schema</strong>
+          <p class="small" style="margin: 4px 0 0;">The evidence-evaluator's structured-output schema previously required the LLM to emit, for each hypothesis, a <code>downstreamOf: string[]</code> array naming other diagnoses in the differential that this one is a complication of. Used by <code>applyDownstreamPenalty</code>. Removing the field gives the evaluator a prompt identical to v5's, eliminating any subtle effect on the LLM's reasoning from having to produce that field.</p>
+        </div>
+      </div>
+      <div class="diff-line">
+        <span class="tag tag-add">KEPT (audit only)</span>
+        <div>
+          <strong><code>computeMechanicalEvidenceScore()</code> + breakdown persistence</strong>
+          <p class="small" style="margin: 4px 0 0;">The mechanical formula still runs for every hypothesis and persists per-component data (<code>evidenceScoreRaw</code>, <code>evidenceScoreBreakdown</code>, <code>sourceAgents</code>, <code>scoringVersion</code>). Useful as audit data and as the "LLM vs mechanical formula divergence" diagnostic. Does not feed into the rank key.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>The pipeline at v11</h2>
+    <p>Six stages. KB lookups at retrieval (stage 1), per-specialist KB shortlists (stage 2), and the deterministic family expansion (stage 6). Synthesizer's LLM probability is the rank key.</p>
+
+    <div class="pipeline">
+
+      <div class="stage">
+        <div class="stage-header">
+          <span class="stage-num">1</span>
+          <span class="stage-name">Symptom Extraction &amp; Triage</span>
+          <span class="stage-meta">gpt-4.1-mini + gpt-4.1-nano · ~1–3s</span>
+        </div>
+        <div class="stage-desc">
+          Parse vignette → structured symptoms + explicit excluded findings. Classify body systems and retrieve KB candidate-disease shortlist. Triage ranks all 11 specialists by relevance (every specialist runs regardless; the ranking only controls display order).
+          <span class="tag tag-kb">KB lookup</span><span class="tag tag-llm">LLM</span>
+        </div>
+      </div>
+      <div class="arrow">▼</div>
+
+      <div class="stage">
+        <div class="stage-header">
+          <span class="stage-num">2</span>
+          <span class="stage-name">11 Specialist Agents (parallel)</span>
+          <span class="stage-meta">o3 reasoning:high · ~50–80s slowest</span>
+        </div>
+        <div class="stage-desc">
+          Each specialist sees the case plus a KB candidate shortlist re-ranked by domain fit. Each emits 2–4 ranked hypotheses with evidence mapping. Per-specialist 120s timeout; if 1–2 specialists fail, the pipeline continues.
+          <span class="tag tag-kb">KB-anchored</span><span class="tag tag-llm">LLM × 11</span>
+        </div>
+        <div class="parallel">
+          <div class="specialist">neurologist</div>
+          <div class="specialist">rheumatologist</div>
+          <div class="specialist">cardiologist</div>
+          <div class="specialist">immunologist</div>
+          <div class="specialist">endocrinologist</div>
+          <div class="specialist">gastroenterologist</div>
+          <div class="specialist">geneticist</div>
+          <div class="specialist">hematologist</div>
+          <div class="specialist">psychiatrist</div>
+          <div class="specialist">oncologist</div>
+          <div class="specialist">general-internist</div>
+        </div>
+      </div>
+      <div class="arrow">▼</div>
+
+      <div class="stage">
+        <div class="stage-header">
+          <span class="stage-num">3</span>
+          <span class="stage-name">Evidence Evaluator</span>
+          <span class="stage-meta">o3 reasoning:high · ~80–110s</span>
+        </div>
+        <div class="stage-desc">
+          Deduplicates hypotheses, then evaluates each against KB diagnostic criteria where available (criteria-grounded) or clinical reasoning quality where not (reasoning-evaluated). v11 schema matches v5 exactly — no <code>downstreamOf</code> field requested.
+          <span class="tag tag-kb">KB criteria</span><span class="tag tag-llm">LLM</span>
+        </div>
+      </div>
+      <div class="arrow">▼</div>
+
+      <div class="stage">
+        <div class="stage-header">
+          <span class="stage-num">4</span>
+          <span class="stage-name">Synthesizer (rank key)</span>
+          <span class="stage-meta">o3 reasoning:high · ~30–60s</span>
+        </div>
+        <div class="stage-desc">
+          Senior-diagnostician role. Reviews all evaluated hypotheses + criteria data and outputs the top-10 ranked diagnoses with LLM-assigned probability scores. <strong>The LLM probability is the rank key.</strong> The mechanical formula still runs in parallel and persists per-component breakdown as audit data, but does not change the order. Downstream-of penalty has been dropped (was halving downstream conditions in v10).
+          <span class="tag tag-llm">LLM clinical judgment</span>
+        </div>
+      </div>
+      <div class="arrow">▼</div>
+
+      <div class="stage">
+        <div class="stage-header">
+          <span class="stage-num">5</span>
+          <span class="stage-name">Report Generator</span>
+          <span class="stage-meta">gpt-4.1-mini · ~20–35s</span>
+        </div>
+        <div class="stage-desc">
+          Formats the ranked differential into the patient-facing structure: ranked diagnoses, evidence per diagnosis, recommended testing, next steps, data gaps, red flags.
+          <span class="tag tag-llm">LLM formatting</span>
+        </div>
+      </div>
+      <div class="arrow">▼</div>
+
+      <div class="stage">
+        <div class="stage-header">
+          <span class="stage-num">6</span>
+          <span class="stage-name">Family Expansion (deterministic)</span>
+          <span class="stage-meta">no LLM · &lt;1s</span>
+        </div>
+        <div class="stage-desc">
+          For each top-10 diagnosis, look up KB-linked sibling diseases (from the KB profile's <code>differentialDiagnoses</code> field) and append up to 5 at positions 11–15. v11 assigns these score=0 to match v5 behavior (v10 used parent × 0.5).
+          <span class="tag tag-kb">KB lookup</span><span class="tag tag-det">deterministic</span>
+        </div>
+      </div>
+
+    </div>
+
+    <h2>What v11 measured</h2>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span><strong>SL v11</strong> Top-1 (N=24)</span>
+        <div class="bar-track"><div class="bar-fill" style="width: 21%;"></div></div>
+        <span class="bar-value">21%</span>
+      </div>
+      <div class="bar-row">
+        <span>OpenAI o3 v11 Top-1 (N=24)</span>
+        <div class="bar-track"><div class="bar-fill" style="width: 21%; background: var(--kb-color);"></div></div>
+        <span class="bar-value">21%</span>
+      </div>
+      <div class="bar-row">
+        <span>Claude opus-4-7 v11 Top-1 (N=24)</span>
+        <div class="bar-track"><div class="bar-fill" style="width: 25%; background: var(--llm-color);"></div></div>
+        <span class="bar-value">25%</span>
+      </div>
+      <div class="bar-row">
+        <span><strong>SL v11 Top-3</strong> (note jump for Claude)</span>
+        <div class="bar-track"><div class="bar-fill" style="width: 25%;"></div></div>
+        <span class="bar-value">25%</span>
+      </div>
+      <div class="bar-row">
+        <span>Claude v11 Top-3</span>
+        <div class="bar-track"><div class="bar-fill" style="width: 54%; background: var(--llm-color);"></div></div>
+        <span class="bar-value">54%</span>
+      </div>
+    </div>
+
+    <h2>How to read the v11 numbers</h2>
+    <ul>
+      <li><strong>OAI dropped from 43% (v10) to 21% (v11) Top-1</strong> on an unchanged model — that's a cohort-difficulty signal of about 22 pts. The v11 cohort was meaningfully harder for everyone.</li>
+      <li><strong>SL dropped from 40% (v10) to 21% (v11) Top-1</strong> — 19 pts drop, slightly less than OAI's 22 pts. Adjusted for cohort drag, SL improved ~3 pts relative to OAI from the architectural revert. Within noise.</li>
+      <li><strong>Claude opus has a clear ranking-quality edge</strong>: 54% Top-3 vs SL's 25%. Claude finds the right answer in its top three twice as often. SL's hits are spread across rank 6–10 (Top-10 = 50%, Top-5 = 29%). Specialist herding pattern visible at the cohort level.</li>
+      <li><strong>The architectural revert didn't recover v5's 54% Top-1.</strong> Two possibilities: either v5 was an unrepresentative draw, or the v11 cohort had a much harder composition than v5's did. v12 tests this by removing the sampler depletion bias.</li>
+    </ul>
+
+    <h2>The key v11 finding (not from numbers but from cohort analysis)</h2>
+    <div class="compare">
+      <div>
+        <h4>v5 cohort makeup</h4>
+        <p class="small">N = 48 uniform</p>
+        <div class="big" style="color: var(--good);">35% top-15 corpus diseases</div>
+        <p class="small" style="margin-top: 4px;">Drew DEE4 three times, NF1 twice. SL has strong KB coverage on these.</p>
+      </div>
+      <div>
+        <h4>v11 cohort makeup</h4>
+        <p class="small">N = 24 uniform</p>
+        <div class="big" style="color: var(--warn);">12% top-15 corpus diseases</div>
+        <p class="small" style="margin-top: 4px;">88% long-tail. KB coverage there is variable AI-generated quality.</p>
+      </div>
+    </div>
+    <p>The eval-case sampler had been excluding ppkt_ids with already-completed graded trios. Early batches drew freely from the corpus-concentrated diseases; by later batches those had all been consumed. The v5-vs-v11 measurement was partially measuring different sub-populations of the corpus, not the same architecture on the same data. This finding is what motivates v12.</p>
+
+  </div>
+
+  <!-- ============== v12 TAB ============== -->
+  <div class="tab-panel" id="panel-v12">
+
+    <div class="tldr">
+      <strong>TL;DR — v12:</strong> The v11 diagnosis pipeline unchanged. The only change is a single line in the eval-case sampler: it no longer excludes ppkt_ids that already have completed trios. Each batch now draws fresh from the full 9,587-case Phenopacket2Prompt corpus, matching the methodology published benchmarks used. The goal is one clean apples-to-apples measurement of the SL pipeline on a sampling-stable cohort.
+    </div>
+
+    <h2>What v12 changes (just one line of code)</h2>
+    <div class="compare">
+      <div>
+        <h4>v11 sampler</h4>
+        <p class="small">Excluded ppkt_ids with already-completed graded trios</p>
+        <div class="big" style="color: var(--bad);">↓ pool shrinks every batch</div>
+        <p class="small" style="margin-top: 8px;">Effect: the corpus-concentrated top-15 diseases (DEE4×462, NF1×405, KBG×333…) got consumed by early batches. Later batches drew disproportionately from the long tail, where SL's KB has weaker coverage. Apparent accuracy declined over time even though no architectural code changed.</p>
+      </div>
+      <div>
+        <h4>v12 sampler</h4>
+        <p class="small">Draws from the full 9,587-row corpus, no exclusion</p>
+        <div class="big" style="color: var(--good);">→ pool is the same every batch</div>
+        <p class="small" style="margin-top: 8px;">Effect: cohort composition is statistically stable across batches. Measurements are directly comparable to published Phenopacket2Prompt benchmarks (Exomiser 35.5%, o1-preview 23.6%, GPT-4o ~20%), which also sampled without depletion.</p>
+      </div>
+    </div>
+
+    <p>One change in <code>app/api/admin/eval-case/route.ts</code>: the <code>exclude</code> query parameter is now ignored. Pipeline is identical to v11.</p>
+
+    <h2>The pipeline at v12 (same as v11)</h2>
+    <p>All 6 stages run unchanged. Refer to the v11 tab for the per-stage breakdown — v12 does not modify any of it. The fresh-pool sampling change happens before the pipeline is ever invoked.</p>
+
+    <h2>Why the sampler change matters</h2>
+    <p>The Phenopacket2Prompt corpus has 9,587 vignettes but only 694 unique diagnoses. The distribution is heavily skewed:</p>
+
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span>DEE4 (epileptic encephalopathy 4)</span>
+        <div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div>
+        <span class="bar-value">462</span>
+      </div>
+      <div class="bar-row">
+        <span>Neurofibromatosis type 1</span>
+        <div class="bar-track"><div class="bar-fill" style="width: 87.7%;"></div></div>
+        <span class="bar-value">405</span>
+      </div>
+      <div class="bar-row">
+        <span>KBG syndrome</span>
+        <div class="bar-track"><div class="bar-fill" style="width: 72.1%;"></div></div>
+        <span class="bar-value">333</span>
+      </div>
+      <div class="bar-row">
+        <span>ADTKD type 1</span>
+        <div class="bar-track"><div class="bar-fill" style="width: 43.1%;"></div></div>
+        <span class="bar-value">199</span>
+      </div>
+      <div class="bar-row">
+        <span>Glass syndrome</span>
+        <div class="bar-track"><div class="bar-fill" style="width: 34.0%;"></div></div>
+        <span class="bar-value">157</span>
+      </div>
+      <div class="bar-row">
+        <span>...long tail (~680 more diseases, &lt;100 each)</span>
+        <div class="bar-track"><div class="bar-fill" style="width: 5%; background: var(--border);"></div></div>
+        <span class="bar-value">~6800</span>
+      </div>
+    </div>
+    <p class="footnote">Top 15 diseases = 28% of the corpus. DEE4 alone is 4.8%.</p>
+
+    <table>
+      <thead>
+        <tr><th>Cohort</th><th>N</th><th>% Top-15 corpus diseases</th><th>SL Top-1</th><th>OAI Top-1</th><th>Claude Top-1</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>v5 (early sampler)</td><td>48</td><td>35%</td><td>54%</td><td>42%</td><td>44%</td></tr>
+        <tr><td>v10</td><td>30</td><td>~20% (est.)</td><td>40%</td><td>43%</td><td>40%</td></tr>
+        <tr><td>v11 (depleted sampler)</td><td>24</td><td>12%</td><td>21%</td><td>21%</td><td>25%</td></tr>
+        <tr><td><strong>v12 (fresh sampler — pending)</strong></td><td>TBD</td><td>~28% (corpus expectation)</td><td>TBD</td><td>TBD</td><td>TBD</td></tr>
+      </tbody>
+    </table>
+    <p class="footnote">The "v5 win" was real for its corpus-concentrated cohort. The "v11 loss" was the same architecture on a depleted (long-tail-heavy) cohort. Neither captured the corpus-natural composition.</p>
+
+    <h2>The v12 analysis plan</h2>
+
+    <h3>Step 1 — run a batch (target N ≥ 30 uniform)</h3>
+    <p>Trio runner draws fresh from the full pool. Expected composition mirrors the corpus distribution: ~28% top-15 cases, ~72% long-tail.</p>
+
+    <h3>Step 2 — three measurements</h3>
+    <ul>
+      <li><strong>Headline Top-1 / Top-3 / Top-5 / Top-10</strong> across SL, OpenAI o3, Claude opus-4-7. Same case denominator across all three (matched-trio comparison).</li>
+      <li><strong>Comparison to published baselines</strong>. v12 methodology now matches Exomiser / o1-preview / GPT-4o's measurement protocol.</li>
+      <li><strong>Stratified by corpus frequency</strong> — split graded cases into "top-15 corpus disease" vs "long tail" and compute Top-1 on each. Reveals where the architecture wins and where it doesn't.</li>
+    </ul>
+
+    <h3>Step 3 — decision branch for v13</h3>
+    <div class="decision">
+      <div class="decision-row">
+        <span class="decision-condition">SL ≥ baselines by ≥10 pts</span>
+        <span class="decision-outcome">
+          <span class="tag tag-good">v13 = optimize for cost</span><br>
+          Pipeline is genuinely strong on representative data. v13 explores whether we can keep the win while cutting per-case wall time (~120s) and cost (~$1.50). Likely: replace redundant specialist role-plays with shared embeddings + critique pass.
+        </span>
+      </div>
+      <div class="decision-row">
+        <span class="decision-condition">SL ≈ baselines<br>(within 5 pts either way)</span>
+        <span class="decision-outcome">
+          <span class="tag tag-warn">v13 = dual-model architecture</span><br>
+          The 11-specialty mechanism is theatre at the scale we're using it. v13 ships the queued dual-model + adversarial critique design (opus-4-7 + o3 generators, KB as post-hoc citation only). Behind feature flag; specialty agents kept in tree for revertability.
+        </span>
+      </div>
+      <div class="decision-row">
+        <span class="decision-condition">SL &lt; baselines by ≥5 pts</span>
+        <span class="decision-outcome">
+          <span class="tag tag-bad">urgent v13 = redesign</span><br>
+          Architecture is actively hurting on representative data. Same dual-model direction, plus deeper investigation of KB-anchored failure modes. KB curation may need triage before further architectural work.
+        </span>
+      </div>
+    </div>
+
+    <h3>Step 4 — disaggregate the why</h3>
+    <p>For cases SL missed but at least one baseline hit, walk the persisted pipeline trail (<code>pipelineProgressLog</code>, per-specialist hypotheses, evidence-evaluator output) and classify the failure mode:</p>
+    <ul>
+      <li><strong>Specialist herding</strong> — all 11 converged on a KB-adjacent wrong family (OI-IX pattern)</li>
+      <li><strong>KB variant absence</strong> — specific gene-level variant isn't in the KB (OPA12 pattern)</li>
+      <li><strong>Synth ranking bias</strong> — correct answer was in the candidate pool but mis-ranked (Loeys-Dietz pattern)</li>
+      <li><strong>Routing failure</strong> — vignette type pushed specialists toward wrong domain (Netherton pattern)</li>
+      <li><strong>Grader miss</strong> — pipeline got it right; grader nomenclature failed (Complex IV ≡ Cytochrome c Oxidase pattern)</li>
+    </ul>
+    <p>The mix of failure modes determines whether v13 should change agent architecture, KB, scoring, or all three.</p>
+
+    <h2>What to look at on the results table</h2>
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>What to compare it to</th><th>What it means</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>v12 OAI o3 Top-1</strong></td>
+          <td>OAI Top-1 on v10 (43%) and v11 (21%)</td>
+          <td>The unchanged single-shot baseline. Where v12 lands relative to v10/v11 tells us how much cohort difficulty changed under fresh sampling vs depleted sampling.</td>
+        </tr>
+        <tr>
+          <td><strong>v12 SL Top-1</strong></td>
+          <td>v12 OAI o3 Top-1 (same cohort)</td>
+          <td>Same-case denominator. Whatever gap exists here is the actual SL-vs-single-shot delta on a sampling-stable cohort.</td>
+        </tr>
+        <tr>
+          <td><strong>v12 SL Top-1 by stratum</strong></td>
+          <td>v5 results (35% concentrated) and prior measurements</td>
+          <td>If SL wins big on the top-15 stratum and ties on long-tail, the "selective win" story is confirmed. If SL ties on both, the architecture isn't winning anywhere on representative data.</td>
+        </tr>
+        <tr>
+          <td><strong>v12 SL Top-10</strong></td>
+          <td>v12 SL Top-5 and Top-1</td>
+          <td>Tells us whether the right answer is in the differential at all (Top-10) but mis-ranked (Top-5 &lt;&lt; Top-10), vs not in the differential at all. The ranking-quality vs candidate-generation question.</td>
+        </tr>
+        <tr>
+          <td><strong>v12 Failure rate</strong></td>
+          <td>v11 failure rate (~10% post-heartbeat)</td>
+          <td>Healthy is ≤10%. If higher, check the persisted <code>pipelineProgressLog</code> for stage-specific issues. SSE timeouts and per-specialist hangs should still be near zero.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>What v12 deliberately doesn't try to do</h2>
+    <ul>
+      <li><strong>Doesn't change the architecture.</strong> Specialty agents, KB-grounded retrieval, multi-pass scoring, synth-as-ranker — all unchanged from v11.</li>
+      <li><strong>Doesn't try to win on the long tail.</strong> If v12 confirms SL is tied or losing there, that's a v13 problem.</li>
+      <li><strong>Doesn't try to optimize cost or latency.</strong> Same ~$1.50/case and ~120s wall time as v11.</li>
+      <li><strong>Doesn't reset previously-saved test cases.</strong> v5 / v10 / v11 historical data stays in KV and remains queryable; v12 results sit in a separate cohort block in the comparison table.</li>
+    </ul>
+
+  </div>
+
+  <hr>
+  <p class="footnote">Eval-versions log (canonical version history): <code>docs/eval-versions.md</code> · Session report covering v6–v12: <code>docs/session-reports/2026-05-29-30-eval-investigation.md</code></p>
+
+</div>
+
+<script>
+  // Tab switcher
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const id = tab.dataset.tab;
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+  });
+</script>
+</body>
+</html>

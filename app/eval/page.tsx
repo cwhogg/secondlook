@@ -787,28 +787,45 @@ export default function EvalPage() {
         gradingMetadata: undefined,
         pipelineError: undefined,
       })
-      const response = await fetch("/api/admin/eval-baseline", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ppkt_id: evalCase.ppkt_id,
-          caseDescription: evalCase.case_description,
-          model,
-        }),
-      })
-      if (!response.ok) {
-        const body = await response.json().catch(() => ({}))
-        throw new Error(body.error || `${model} ${response.status}`)
+      try {
+        const response = await fetch("/api/admin/eval-baseline", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ppkt_id: evalCase.ppkt_id,
+            caseDescription: evalCase.case_description,
+            model,
+          }),
+        })
+        if (!response.ok) {
+          const text = await response.text()
+          let detail = `HTTP ${response.status}`
+          try {
+            const parsed = JSON.parse(text)
+            if (parsed?.error) detail = `${response.status}: ${parsed.error}`
+          } catch {
+            if (text) detail = `${response.status}: ${text.substring(0, 300)}`
+          }
+          throw new Error(`${model} baseline ${detail}`)
+        }
+        const data = await response.json()
+        const sourceAgent = `${model}-baseline`
+        const synth = synthesizeBaselineResult(
+          data.diagnoses || [],
+          sourceAgent,
+          data.generationMetadata || { model, tokensUsed: 0, durationMs: 0 },
+        )
+        patchCase(testId, { status: "completed", pipelineResult: synth })
+        await gradeForTrio(testId, groundTruth, synth)
+      } catch (err: any) {
+        // Without this patch the testCase stays silently at status='running'
+        // when the baseline endpoint returns 5xx — so 4 visible 500s in the
+        // browser console end up as 0 error records in KV. The trio runner's
+        // outer .catch only updates UI state; the testCase persistence has
+        // to happen here.
+        patchCase(testId, { status: "error", pipelineError: err?.message || "unknown error" })
+        throw err
       }
-      const data = await response.json()
-      const sourceAgent = `${model}-baseline`
-      const synth = synthesizeBaselineResult(
-        data.diagnoses || [],
-        sourceAgent,
-        data.generationMetadata || { model, tokensUsed: 0, durationMs: 0 },
-      )
-      patchCase(testId, { status: "completed", pipelineResult: synth })
-      await gradeForTrio(testId, groundTruth, synth)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [patchCase],

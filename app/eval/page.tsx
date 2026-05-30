@@ -40,9 +40,10 @@ const EVAL_VERSION_COLORS: Record<string, string> = {
   v7: "bg-amber-50 text-amber-900 border-amber-400",
   v8: "bg-cyan-50 text-cyan-800 border-cyan-300",
   v9: "bg-fuchsia-50 text-fuchsia-800 border-fuchsia-300",
+  v10: "bg-lime-50 text-lime-800 border-lime-300",
 }
 
-function EvalVersionBadge({ version }: { version?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' }) {
+function EvalVersionBadge({ version }: { version?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' }) {
   if (!version) return null
   const cls = EVAL_VERSION_COLORS[version] ?? "bg-gray-50 text-gray-700 border-gray-300"
   return (
@@ -866,7 +867,7 @@ export default function EvalPage() {
           difficulty: 3,
           categoryHint: ec.ppkt_id,
           testVersion: "Eval" as const,
-          evalVersion: "v9" as const,
+          evalVersion: "v10" as const,
           evalSamplingMode: samplingMode,
           status: "generated" as const,
           source: "generated" as const,
@@ -971,7 +972,7 @@ export default function EvalPage() {
           difficulty: 3,
           categoryHint: evalCase.ppkt_id,
           testVersion: "Eval",
-          evalVersion: "v9",
+          evalVersion: "v10",
           evalRunMode: tab,
           evalSamplingMode: samplingMode,
           status: "generated",

@@ -168,7 +168,13 @@ export interface TestCase {
   //      trail, and structured Vercel logs all carry through. Lets us
   //      compare high-vs-medium on the new instrumented stack — failures
   //      will now have a diagnostic trail attached.
-  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9';
+  // v10 = v9 + reverted to v5-style ranking. synth's LLM probabilityScore
+  //       is the evidenceScore rank key again. Mechanical formula still
+  //       runs and is persisted as evidenceScoreRaw + evidenceScoreBreakdown
+  //       for audit / diagnostic use, but no longer drives ranking. v5
+  //       (LLM ranking) hit 54% Top-1 uniform; v7-v9 (mechanical ranking)
+  //       hit 13% on the same dataset.
+  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10';
   // Which "engine" produced this Eval case. secondlook = the full V2 pipeline;
   // openai / claude = single-shot baseline calls to the respective top model.
   // Unset entries are treated as 'secondlook' for backward compatibility.

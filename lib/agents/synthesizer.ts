@@ -186,16 +186,33 @@ export class SynthesisAgent extends BaseAgent {
       }
     }
 
-    // ===== Mechanical evidence scoring (v7+) =====
-    // Compute deterministic evidenceScore + breakdown for each hypothesis,
-    // promote the legacy comma-joined sourceAgent string into a structured
-    // sourceAgents array, then re-rank by the mechanical score.
+    // ===== v10: LLM probability is the rank key; mechanical formula is
+    //              diagnostic data only =====
+    //
+    // v7 introduced mechanical evidenceScore as the rank primary. Empirical
+    // measurement on 52 v9 uniform cases vs 48 v5 uniform cases showed SL
+    // Top-1 collapsed from 54% (v5, LLM-ranked) to 13% (v9, mechanically-
+    // ranked) with baselines stable across both — pinpointing the
+    // mechanical formula as the regression cause.
+    //
+    // The root issue: the formula weights criteriaFulfillmentRatio at 0.40
+    // of the score, but real rare-disease vignettes rarely contain the
+    // genetic/biopsy confirmations the formal criteria require. Rare-but-
+    // correct answers systematically get low mechanical scores while
+    // common-but-wrong distractors with easy-to-verify lab criteria score
+    // high. Synth's LLM probability used soft judgment that absorbed
+    // vignette context the formula throws away.
+    //
+    // v10 restores LLM ranking. Mechanical scoring still runs and is
+    // persisted as evidenceScoreRaw + evidenceScoreBreakdown — divergence
+    // between the two is the most clinically informative signal (LLM
+    // gestalt vs criteria check) and remains visible in the UI.
     const scoredHypotheses = rankedHypotheses.map((h) => {
-      const { score, breakdown } = computeMechanicalEvidenceScore(h, patientCase);
+      const { breakdown } = computeMechanicalEvidenceScore(h, patientCase);
       const sources = sourceAgentList(h);
       return {
         ...h,
-        evidenceScore: score,
+        evidenceScore: h.confidenceScore,
         evidenceScoreRaw: breakdown.evidenceScoreRaw,
         evidenceScoreBreakdown: breakdown,
         sourceAgents: sources.length > 0 ? sources : undefined,
@@ -203,14 +220,15 @@ export class SynthesisAgent extends BaseAgent {
       } as DiagnosisHypothesis;
     });
 
-    // Apply downstream-condition penalty: a diagnosis that is a downstream
-    // consequence of another (higher-scored) diagnosis in the same differential
-    // gets halved so the effect cannot outrank its cause.
+    // Downstream-condition penalty still applies — a diagnosis listed as
+    // downstreamOf a higher-scored peer in the same differential gets halved.
+    // Now operates on the LLM-derived evidenceScore but the structural
+    // intent (effect never outranks cause) is unchanged.
     const adjustedHypotheses = applyDownstreamPenalty(scoredHypotheses);
 
-    // Final rank is by mechanical evidenceScore, descending. Stable sort on
-    // ties uses the synth's confidenceScore as a tiebreaker so the LLM's
-    // judgment still influences ordering when mechanical signals agree.
+    // Final rank is by evidenceScore (LLM probability) descending. Ties
+    // broken by confidenceScore (identical in v10 but kept for safety in
+    // case downstream penalty halves evidenceScore without confidenceScore).
     adjustedHypotheses.sort((a, b) => {
       if (b.evidenceScore !== a.evidenceScore) return b.evidenceScore - a.evidenceScore;
       return (b.confidenceScore || 0) - (a.confidenceScore || 0);

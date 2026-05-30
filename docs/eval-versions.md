@@ -105,9 +105,38 @@ Bundled with v8 specialist drop and shipped together:
 ## v9 — specialists back to o3 reasoning:high
 
 - **Specialist reasoning**: high (reverted from medium)
-- **All v8 instrumentation carries through**: 120s per-specialist timeout, persisted progressLog, structured logs, SSE idle + 280s cap
-- **Purpose**: clean high-vs-medium comparison on the new instrumented stack. Failures should now have diagnostic data attached so we can attribute the v7 24% / v8 10% (or worse on bad batches) failure rate to a specific cause.
-- **Results**: TBD
+- **All v8 instrumentation carries through**: 120s per-specialist timeout, persisted progressLog, structured logs, SSE idle + 280s cap (later raised to 180s with heartbeats — see below)
+- **Purpose**: clean high-vs-medium comparison on the new instrumented stack
+- **Results** (uniform N=52, post-fixes): SL Top-1 13%, OAI 38%, CL 42%; SL Top-5 31%, Top-10 48%
+- **Key data point**: v9 uniform matched v8 uniform (13% Top-1 at both medium and high reasoning) — proving reasoning effort wasn't the regression cause; the mechanical scoring change in v7 was.
+- **Failure-rate post-heartbeat fix**: 10% (1 in 10 — and that one was a real Vercel function termination, not a false SSE timeout).
+
+## v9 mid-version fixes (no version bump, all carry forward)
+
+- **SSE-timeout false-positive fix** — investigation of the v9 batch revealed that historical "stuck cases" weren't true hangs. Evidence-evaluator at o3:high routinely takes 80–112s of pure reasoning during which it emits zero progress events. The original 90s SSE idle timeout was killing legitimate evidence-eval calls. Two-part fix:
+  1. **Server-side heartbeat** every 30s during evidence-eval and synth (`stage: 'heartbeat'`). Keeps the SSE stream non-idle while o3 is reasoning.
+  2. **Client SSE idle threshold raised** 90s → 180s. With 30s heartbeats, ~180s of true silence means the server is actually dead.
+- **Impact**: failure rate dropped from ~24% (v7-v9 pre-heartbeat) to ~10% (post-heartbeat). Most of what we previously called "stuck cases" was the safety net killing valid runs. Headline accuracy numbers from pre-fix versions were biased upward by silently excluding the slowest cases — this re-frames the v5 → v9 comparison: both ran at o3:high, but v5 was measured before SSE timeouts existed, so its accuracy reflects whatever cases happened to complete on the original (unbounded) read loop.
+
+## v10 — restore v5-style ranking; mechanical formula becomes audit data
+
+- **Same pipeline as v9** otherwise — all instrumentation carries through
+- **Change**: `evidenceScore` rank key reverts to synth's LLM `probabilityScore`. The mechanical formula (criteriaFulfillmentRatio + symptomMatchScore + specialistAgreementScore − contradictionPenalty − excludedFindingPenalty) still runs and is persisted as `evidenceScoreRaw` and `evidenceScoreBreakdown` per hypothesis — useful as audit data, qualitative-label source, and as the "LLM vs formula divergence" diagnostic signal — but no longer drives the rank order.
+- **Downstream-of penalty** still applies (now on the LLM-derived score) — keeps the structural intent that an effect cannot outrank its cause in the same differential.
+- **Family-expansion scoring** unchanged (positions 11–15 inherit parent score × 0.5).
+- **Why**: v5 SL uniform Top-1 = 54% (N=48, LLM ranking). v7-v9 SL uniform Top-1 = 13% (N=52, mechanical ranking). Baselines moved <5 pts across the same versions. **41-point SL-only regression** pinpointed to the mechanical formula introduced in v7. The formula's 0.40 weight on criteriaFulfillmentRatio systematically penalizes rare-disease correct answers (rare-disease vignettes rarely include the genetic/biopsy confirmations the formal criteria require) while rewarding common-disease distractors with easy-to-verify lab/clinical criteria. Synth's LLM probability was using soft judgment the formula throws away.
+- **Results**: TBD — first batch will tell us whether we recover the v5 territory (~50% Top-1 uniform).
+
+## v11 (planned) — dual-model generation + adversarial critique
+
+Behind a feature flag, drops the 11-specialist parallel fanout in favor of two foundation-model generators (opus-4-7 + o3:high) running in parallel with no KB filter, an adversarial critique stage that reconciles their outputs, and KB augmentation as a post-hoc citation source. Detailed architecture sketch in the team conversation. Goal: test the "specialty perspective at 11-agent scale is theatre; foundation models capture the long tail better than KB-anchored specialists" hypothesis.
+
+- **Stages**: parse/extract → opus + o3 parallel generation → KB augmentation (deterministic) → adversarial critique (o3) → mechanical scoring (persisted but not rank-driving in v11, matching v10 semantics) → report
+- **Per-case load**: ~4 LLM calls (vs ~14 in v10)
+- **Expected wall time**: 60–80s median
+- **Expected cost**: ~$0.30/case (vs ~$1.50 in v10)
+- **Provider note**: crosses the AI Provider Separation rule for the analysis flow (uses both OpenAI and Anthropic). Tradeoff worth taking given Claude's measured long-tail advantage; testing-framework objectivity concern is small for published-dataset eval where the headline metric is deterministic OMIM/name match.
+- **Status**: not built. Engine flag (`evalEngine: 'classic' | 'dual'`) to land in orchestrator first; specialty agents and synthesizer stay in tree behind the flag for revertability.
 
 ---
 
@@ -123,15 +152,18 @@ Bundled with v8 specialist drop and shipped together:
 | v6 | o3 | high | top 10 (P2P-aligned) | yes | no | none | none | no |
 | v7 | o3 | high | top 10 | yes | yes | none | none | no |
 | v8 | o3 | medium | top 10 | yes | yes | 180s → 120s | yes | yes |
-| v9 | o3 | high | top 10 | yes | yes | 120s | yes | yes |
+| v9 | o3 | high | top 10 | yes | yes | 120s | yes (heartbeat + 180s SSE) | yes |
+| v10 | o3 | high | top 10 | yes | **as audit data only — synth LLM probability is rank key** | 120s | yes (heartbeat + 180s SSE) | yes |
+| v11 (planned) | n/a (opus-4-7 + o3 generators) | n/a | top 10 | as post-hoc citation only | as audit data | n/a | yes (heartbeat + 180s SSE) | yes |
 
 ## Reading the headline numbers
 
-- **v3 → v5**: +19 pts SL Top-1 uniform (gpt-4.1 → o3 specialists). The single biggest accuracy improvement on record.
-- **v5 / v7**: equivalent uniform performance, +0 net from mechanical scoring. The mechanical formula was a structural fix (ADTKD downstream-condition, OPA12 family-expansion) not a Top-1 lift.
-- **v7 diversified vs uniform**: 30% vs 52% — confirms corpus-concentration bias. Uniform sampling oversamples DEE4/NF1/KBG (we're good at those); diversified hits the long tail (we lose to Claude).
-- **v8 wall-time**: unambiguous −20–25% improvement on specialist stage. Accuracy delta vs v7 still unclear due to cohort variance.
-- **v9**: about to be measured.
+- **v3 → v5**: +21 pts SL Top-1 uniform (gpt-4.1 → o3 specialists). The single biggest accuracy improvement on record.
+- **v5 → v7**: when re-measured at scale (v5 N=48 uniform vs v9 N=52 uniform, both at o3:high), there is a **41-point SL Top-1 regression** (54% → 13%) entirely attributable to the v7 mechanical-evidenceScore change. Baselines move <5 pts across the same versions, ruling out cohort drift. My earlier claim that "v5 / v7 are equivalent" was wrong — it was based on small partial samples; the full data refutes it.
+- **v7 diversified vs uniform**: 30% vs 13% — confirms corpus-concentration bias on top of the mechanical-scoring regression. Mechanical scoring hurts on both cohorts but hits long-tail diversified harder.
+- **v8 wall-time**: unambiguous −20–25% improvement on specialist stage. Accuracy delta vs v7 confounded with cohort variance at the sample sizes we ran.
+- **v9 stuck-case mystery resolved**: the historical "stuck cases" (24% v7, 10% v8) were largely cases where evidence-eval at o3:high took 80–112s of pure reasoning, tripping the 90s SSE idle timeout. Real hang rate post-heartbeat-fix is closer to 5–10% and corresponds to genuine Vercel function terminations.
+- **v10**: about to be measured. Expected to recover ~50% Top-1 uniform on the same dataset if the regression diagnosis is correct.
 
 ## Process notes / instrumentation lessons
 

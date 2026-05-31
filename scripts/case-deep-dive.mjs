@@ -495,8 +495,13 @@ function renderKBRetrieval(slCase) {
 
 function renderSpecialists(slCase) {
   const stages = slCase.pipelineResult?.pipelineMetadata?.stages || [];
-  const sps = stages.filter((s) => s.stageName === 'specialist');
+  const v15Sps = stages.filter((s) => s.stageName === 'specialist');
+  const v16Sps = stages.filter((s) => s.stageName === 'specialist-annotation');
   const failed = stages.filter((s) => s.stageName === 'specialist-failed');
+
+  // v16 architecture: annotation cards + per-hypothesis annotations rendered below
+  const isV16Annotation = v16Sps.length > 0;
+  const sps = isV16Annotation ? v16Sps : v15Sps;
 
   const sCards = sps.map((sp) => `
     <div class="specialist-card">
@@ -518,18 +523,86 @@ function renderSpecialists(slCase) {
     `).join('')}
   ` : '';
 
-  return section('specialists', `6. Specialist Consultation — ${sps.length} parallel agents`, `
-    <div class="stage-meta">
-      Each specialist runs o3:reasoning=high on the patient case + KB candidates filtered/reranked
-      for its domain. Outputs ~3-5 hypotheses with evidence per specialist.
-    </div>
+  // v16-architecture per-hypothesis annotation drill-downs. Each hypothesis
+  // carries the annotations array if it was produced via the v16 annotator
+  // flow. Show the per-specialist breakdown per candidate.
+  let perHypothesisAnnotations = '';
+  if (isV16Annotation) {
+    const diffs = slCase.pipelineResult?.differentialDiagnoses || [];
+    const annotatedHyps = diffs.filter((d) => Array.isArray(d.annotations) && d.annotations.length > 0).slice(0, 20);
+    if (annotatedHyps.length > 0) {
+      perHypothesisAnnotations = `
+        <h3>Per-candidate specialist annotations (${annotatedHyps.length} hypotheses shown)</h3>
+        ${annotatedHyps.map((h) => `
+          <details class="json-details" style="border:1px solid var(--light-border); padding:8px 12px; margin-bottom:8px; background:#fefdfb;">
+            <summary class="json-summary">
+              <strong>${esc(h.diagnosis)}</strong>
+              <span class="badge">${h.annotations.length} specialist annotations</span>
+              <span class="badge">avg conf ${Math.round(h.annotations.reduce((s, a) => s + (a.domainConfidence || 0), 0) / h.annotations.length)}</span>
+              ${h.knowledgeBaseMatch ? '<span class="badge badge-ok">KB</span>' : ''}
+            </summary>
+            <div style="padding: 8px 12px;">
+              ${h.aggregatedTests?.length > 0 ? `
+                <h4 style="margin: 8px 0 4px;">Tests to order (aggregated across specialists)</h4>
+                <ul class="evidence-list">${h.aggregatedTests.slice(0, 12).map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+              ` : ''}
+              ${h.aggregatedCardinal?.length > 0 ? `
+                <h4 style="margin: 8px 0 4px;">Cardinal features to look for</h4>
+                <ul class="evidence-list">${h.aggregatedCardinal.slice(0, 12).map((f) => `<li>${esc(f)}</li>`).join('')}</ul>
+              ` : ''}
+              ${h.aggregatedRuleOut?.length > 0 ? `
+                <h4 style="margin: 8px 0 4px;">Rule-out features</h4>
+                <ul class="evidence-list">${h.aggregatedRuleOut.slice(0, 12).map((f) => `<li>${esc(f)}</li>`).join('')}</ul>
+              ` : ''}
+              <h4 style="margin: 12px 0 4px;">Per-specialist annotations</h4>
+              <table>
+                <thead><tr><th>Specialist</th><th>Conf</th><th>Reasoning</th><th>Tests</th><th>Cardinal</th><th>Rule-out</th></tr></thead>
+                <tbody>
+                  ${h.annotations.map((a) => `
+                    <tr>
+                      <td><strong>${esc(a.specialty)}</strong></td>
+                      <td class="score">${a.domainConfidence}</td>
+                      <td><small>${esc(a.clinicalReasoning || '')}</small></td>
+                      <td><small>${(a.diagnosticTests || []).slice(0, 3).map((t) => esc(t)).join('<br/>')}</small></td>
+                      <td><small>${(a.cardinalFeatures || []).slice(0, 3).map((f) => esc(f)).join('<br/>')}</small></td>
+                      <td><small>${(a.ruleOutFeatures || []).slice(0, 3).map((f) => esc(f)).join('<br/>')}</small></td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </details>
+        `).join('')}
+      `;
+    }
+  }
+
+  const header = isV16Annotation
+    ? `6. Specialist Annotation (v16) — ${sps.length} specialists annotating ${slCase.pipelineResult?.differentialDiagnoses?.length || '?'} candidates`
+    : `6. Specialist Consultation (v15) — ${sps.length} parallel hypothesis-generation agents`;
+
+  const intro = isV16Annotation
+    ? `<div class="stage-meta">
+        v16 architecture: hypothesis pool fixed upstream (triage + candidate generation union).
+        ${sps.length} specialists (top 5 by triage + geneticist + general-internist) each annotate
+        all candidates with per-candidate diagnosticTests, cardinalFeatures, ruleOutFeatures,
+        supporting/contradictory evidence, and domainConfidence.
+      </div>`
+    : `<div class="stage-meta">
+        v15 architecture: each specialist runs o3:reasoning=high on the patient case + KB candidates
+        filtered/reranked for its domain. Outputs ~3-5 hypotheses with evidence per specialist.
+      </div>`;
+
+  return section('specialists', header, `
+    ${intro}
     ${sCards}
     ${failCards}
-    <div class="note">
+    ${perHypothesisAnnotations}
+    ${!isV16Annotation ? `<div class="note">
       Per-specialist hypothesis-level evidence is aggregated into the evidence-evaluator stage below
       (the source-of-truth merged view). Individual specialist hypotheses aren't persisted separately
       after the merge — the next stage shows them combined.
-    </div>
+    </div>` : ''}
   `);
 }
 

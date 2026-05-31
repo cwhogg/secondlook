@@ -57,6 +57,7 @@ if (!process.env.OPENAI_API_KEY) {
 const DRY_RUN = process.argv.includes('--dry-run');
 
 const TARGET_DISEASES = [
+  // First-pass targets (v13-regressed cohort cases) — already shipped.
   {
     targetId: 'stxbp1-related-developmental-epileptic-encephalopathy-dee4',
     targetName: 'STXBP1-related Developmental and Epileptic Encephalopathy (DEE4)',
@@ -72,6 +73,89 @@ const TARGET_DISEASES = [
     omimId: '618977',
     primaryGene: 'AFG3L2',
     contextHint: 'OPA12 is one of the autosomal dominant optic atrophies, distinguished from classic OPA1 by gene (AFG3L2 vs OPA1), often with broader cerebellar / spastic features. KB already has OPA1 classic form, OPA Plus, AR optic atrophy variants — OPA12 needs its own entry with the AFG3L2 mitochondrial-protease pathophysiology.',
+  },
+  // Second-pass targets: 10 remaining unmatched v5-cohort diseases that
+  // need new lightweight KB profiles for the v15 experiment to cover the
+  // full 50-case cohort.
+  {
+    targetId: 'ververi-brady-syndrome-2',
+    targetName: 'Ververi-Brady Syndrome 2',
+    cohortLabel: 'Ververi-Brady syndrome 2',
+    omimId: '619849',
+    primaryGene: 'QRICH1',
+    contextHint: 'Ververi-Brady syndrome type 2 is a neurodevelopmental disorder caused by heterozygous pathogenic variants in QRICH1. Features include intellectual disability, autism spectrum behaviors, mild dysmorphism, and variable seizures. Distinct from Ververi-Brady syndrome type 1 (QRICH2). Rare, very few published cases.',
+  },
+  {
+    targetId: 'oocyte-zygote-embryo-maturation-arrest-23',
+    targetName: 'Oocyte/Zygote/Embryo Maturation Arrest 23',
+    cohortLabel: 'Oocyte/zygote/embryo maturation arrest 23',
+    omimId: '620388',
+    primaryGene: 'KIF11',
+    contextHint: 'OOMA23 is autosomal recessive female infertility due to oocyte maturation failure caused by pathogenic biallelic variants in the relevant gene (one of 23 different loci in the OOMA series). Diagnosed in adult women with primary infertility and IVF cycle failure showing oocyte/zygote arrest. Rare reproductive disorder.',
+  },
+  {
+    targetId: 'dursun-ozgul-neurodevelopmental-syndrome',
+    targetName: 'Dursun-Ozgul Neurodevelopmental Syndrome',
+    cohortLabel: 'Dursun-Ozgul neurodevelopmental syndrome',
+    omimId: '620080',
+    primaryGene: 'CRELD1',
+    contextHint: 'Dursun-Ozgul syndrome is a recessive neurodevelopmental disorder with autistic features, intellectual disability, seizures, and variable congenital heart defects. Caused by biallelic loss-of-function variants in CRELD1. Distinct from other ID-cardiac syndromes (CHD7-Charge, NSD1-Sotos).',
+  },
+  {
+    targetId: 'spastic-paraplegia-93-autosomal-recessive',
+    targetName: 'Hereditary Spastic Paraplegia 93 (SPG93)',
+    cohortLabel: 'Spastic paraplegia 93, autosomal recessive',
+    omimId: '620881',
+    primaryGene: 'ABHD16A',
+    contextHint: 'SPG93 is an autosomal recessive complex hereditary spastic paraplegia presenting with progressive lower-limb spasticity, dysarthria, and intellectual disability. Caused by biallelic ABHD16A variants disrupting phospholipid metabolism. Distinguished from other HSPs by cognitive involvement.',
+  },
+  {
+    targetId: 'immunodeficiency-131',
+    targetName: 'Immunodeficiency 131',
+    cohortLabel: 'Immunodeficiency 131',
+    omimId: '620657',
+    primaryGene: 'PIK3R1',
+    contextHint: 'IMD131 is an autosomal dominant primary immunodeficiency caused by gain-of-function PIK3R1 variants (Activated PI3K-delta Syndrome 2). Features recurrent sinopulmonary infections, lymphoproliferation, susceptibility to EBV/HSV, lymphoma risk. Distinct from APDS1 (PIK3CD) by gene.',
+  },
+  {
+    targetId: 'developmental-and-epileptic-encephalopathy-112',
+    targetName: 'Developmental and Epileptic Encephalopathy 112 (DEE112)',
+    cohortLabel: 'Developmental and epileptic encephalopathy 112',
+    omimId: '620553',
+    primaryGene: 'GABRB3',
+    contextHint: 'DEE112 is autosomal dominant developmental and epileptic encephalopathy caused by heterozygous pathogenic GABRB3 variants. Onset in infancy with multiple seizure types (infantile spasms, tonic-clonic), severe developmental delay, EEG findings of hypsarrhythmia transitioning to multifocal discharges. Distinct from related GABA-A receptor encephalopathies (GABRA1, GABRG2).',
+  },
+  {
+    targetId: 'inosine-triphosphatase-deficiency',
+    targetName: 'Inosine Triphosphatase Deficiency',
+    cohortLabel: 'Inosine triphosphatase deficiency',
+    omimId: '613850',
+    primaryGene: 'ITPA',
+    contextHint: 'ITPase deficiency is an autosomal recessive disorder of purine metabolism caused by ITPA variants. Presents in infancy with epileptic encephalopathy, microcephaly, dilated cardiomyopathy, and developmental regression. Elevated red-cell ITP and altered erythrocyte purine levels are biochemical markers. Distinct from other purine-related metabolic encephalopathies.',
+  },
+  {
+    targetId: 'neurodevelopmental-disorder-hypotonia-characteristic-brain-abnormalities',
+    targetName: 'Neurodevelopmental Disorder with Hypotonia and Characteristic Brain Abnormalities (NDHCBA)',
+    cohortLabel: 'Neurodevelopmental disorder with hypotonia and characteristic brain abnormalities',
+    omimId: '620538',
+    primaryGene: 'DDX3Y',
+    contextHint: 'NDHCBA is a recessive neurodevelopmental disorder with global developmental delay, severe hypotonia, distinctive MRI findings (corpus callosum dysgenesis, cerebellar atrophy), and microcephaly. Caused by biallelic loss-of-function variants in the relevant gene. Onset in infancy. Distinct from CDG and lissencephaly syndromes.',
+  },
+  {
+    targetId: 'intellectual-developmental-disorder-autism-macrocephaly',
+    targetName: 'Intellectual Developmental Disorder with Autism and Macrocephaly (IDDAM)',
+    cohortLabel: 'Intellectual developmental disorder with autism and macrocephaly',
+    omimId: '618726',
+    primaryGene: 'TANC2',
+    contextHint: 'IDDAM is an autosomal dominant neurodevelopmental disorder caused by heterozygous TANC2 variants. Features intellectual disability, autism spectrum disorder, and macrocephaly (often disproportionate). Distinguished from PTEN hamartoma syndrome (also AD-macrocephaly-autism) by gene and absence of hamartomatous tumors.',
+  },
+  {
+    targetId: 'parkinson-disease-26-autosomal-dominant',
+    targetName: 'Parkinson Disease 26, Autosomal Dominant (PARK26)',
+    cohortLabel: 'Parkinson disease 26, autosomal dominant, susceptibility to',
+    omimId: '618688',
+    primaryGene: 'LRP10',
+    contextHint: 'PARK26 is autosomal dominant susceptibility to Parkinson disease caused by LRP10 variants. Late-onset (40s-60s) with classical features (rest tremor, rigidity, bradykinesia, postural instability), dementia in some, autonomic dysfunction. Distinct from PARK1 (SNCA), PARK8 (LRRK2), PARK2 (parkin) by gene and inheritance pattern.',
   },
 ];
 

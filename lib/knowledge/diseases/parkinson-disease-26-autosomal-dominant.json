@@ -1,0 +1,257 @@
+{
+  "id": "parkinson-disease-26-autosomal-dominant",
+  "name": "Parkinson Disease 26, Autosomal Dominant",
+  "aliases": [
+    "PARK26",
+    "Parkinson disease 26, autosomal dominant, susceptibility to",
+    "Autosomal dominant Parkinson disease 26"
+  ],
+  "icd10Codes": [
+    "G20"
+  ],
+  "omimId": "618688",
+  "orphanetId": "",
+  "prevalence": {
+    "estimate": "Unknown; considered rare, accounting for a small subset of familial Parkinson disease.",
+    "classification": "rare"
+  },
+  "demographics": {
+    "typicalOnsetAge": {
+      "min": 40,
+      "max": 70,
+      "peak": 55
+    },
+    "sexPredilection": "equal"
+  },
+  "diagnosticCriteria": {
+    "formalCriteriaName": "",
+    "criteria": [
+      {
+        "id": "major1",
+        "description": "Presence of parkinsonism (bradykinesia plus either rest tremor or rigidity)",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "major2",
+        "description": "Autosomal dominant inheritance pattern with affected first-degree relatives",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "major3",
+        "description": "Pathogenic or likely pathogenic variant in LRP10 gene",
+        "category": "major",
+        "requiredForDiagnosis": true
+      },
+      {
+        "id": "minor1",
+        "description": "Late-onset (age >40 years) of motor symptoms",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "minor2",
+        "description": "Cognitive decline or dementia",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      },
+      {
+        "id": "minor3",
+        "description": "Autonomic dysfunction (e.g., orthostatic hypotension, constipation)",
+        "category": "minor",
+        "requiredForDiagnosis": false
+      }
+    ],
+    "minimumForDiagnosis": "All major criteria required. Minor criteria supportive but not required.",
+    "notes": "Diagnosis is confirmed by genetic testing for LRP10 variants in the context of compatible clinical and family history."
+  },
+  "symptoms": {
+    "pathognomonic": [
+      {
+        "symptomName": "Bradykinesia with rest tremor and/or rigidity in a patient with LRP10 variant and family history",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "parkinsonism",
+          "bradykinesia",
+          "rest tremor",
+          "rigidity"
+        ]
+      }
+    ],
+    "common": [
+      {
+        "symptomName": "Rest tremor",
+        "frequency": 0.8,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "tremor"
+        ]
+      },
+      {
+        "symptomName": "Rigidity",
+        "frequency": 0.8,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "muscle stiffness"
+        ]
+      },
+      {
+        "symptomName": "Bradykinesia",
+        "frequency": 0.9,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "slowness of movement"
+        ]
+      },
+      {
+        "symptomName": "Postural instability",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "balance problems"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Cognitive decline or dementia",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "dementia",
+          "memory loss"
+        ]
+      },
+      {
+        "symptomName": "Autonomic dysfunction (orthostatic hypotension, constipation, urinary symptoms)",
+        "frequency": 0.2,
+        "bodySystem": "autonomic",
+        "searchTerms": [
+          "autonomic dysfunction",
+          "orthostatic hypotension",
+          "constipation",
+          "urinary symptoms"
+        ]
+      },
+      {
+        "symptomName": "Depression or anxiety",
+        "frequency": 0.2,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "depression",
+          "anxiety"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Hallucinations",
+        "frequency": 0.05,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "visual hallucinations"
+        ]
+      },
+      {
+        "symptomName": "Rapid eye movement (REM) sleep behavior disorder",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "REM sleep disorder"
+        ]
+      }
+    ]
+  },
+  "systemsAffected": [
+    "neurological",
+    "psychiatric",
+    "constitutional",
+    "autonomic"
+  ],
+  "keyFindings": {
+    "laboratory": [
+      "No disease-specific laboratory abnormalities; routine labs typically normal"
+    ],
+    "imaging": [
+      "Dopaminergic deficit on DaTscan (reduced striatal uptake)",
+      "Normal brain MRI or mild atrophy in advanced cases"
+    ],
+    "genetic": [
+      "Pathogenic or likely pathogenic variant in LRP10 gene (heterozygous)"
+    ],
+    "other": [
+      "Positive family history consistent with autosomal dominant inheritance"
+    ]
+  },
+  "differentialDiagnoses": [
+    {
+      "diseaseId": "parkinson-disease-1-autosomal-dominant",
+      "distinguishingFeatures": [
+        "Caused by SNCA gene mutations",
+        "May present with earlier onset and more rapid progression"
+      ]
+    },
+    {
+      "diseaseId": "parkinson-disease-8-autosomal-dominant",
+      "distinguishingFeatures": [
+        "Caused by LRRK2 gene mutations",
+        "LRRK2 mutations are more common and may have variable penetrance"
+      ]
+    },
+    {
+      "diseaseId": "parkinson-disease-2-autosomal-recessive",
+      "distinguishingFeatures": [
+        "Caused by PARK2 (parkin) gene mutations",
+        "Autosomal recessive inheritance and typically earlier onset (<40 years)"
+      ]
+    }
+  ],
+  "redFlags": [
+    "Absence of family history or negative LRP10 genetic testing",
+    "Early onset (<40 years) or rapid progression suggesting alternative genetic forms"
+  ],
+  "specialistType": [
+    "Neurology",
+    "Movement disorder specialist",
+    "Medical genetics"
+  ],
+  "references": [
+    "OMIM #618688: Parkinson Disease 26, Autosomal Dominant",
+    "Klein C, Westenberger A. Genetics of Parkinson's Disease. Cold Spring Harb Perspect Med. 2012 Jan;2(1):a008888.",
+    "Hernandez DG, Reed X, Singleton AB. Genetics in Parkinson disease: Mendelian versus non-Mendelian inheritance. J Neurochem. 2016;139(Suppl 1):59-74.",
+    "Trinh J, Farrer M. Advances in the genetics of Parkinson disease. Nat Rev Neurol. 2013 Aug;9(8):445-54."
+  ],
+  "commonPitfalls": [
+    "Assuming all familial Parkinson disease is due to LRRK2 or SNCA mutations",
+    "Overlooking LRP10 testing in familial cases with negative common gene panels",
+    "Misattributing cognitive decline to Alzheimer's disease rather than Parkinson disease",
+    "Failure to recognize autosomal dominant inheritance pattern",
+    "Relying solely on imaging without genetic confirmation"
+  ],
+  "extendedDiscriminators": [
+    {
+      "vsCondition": "PARK1 (SNCA-related Parkinson disease)",
+      "feature": "LRP10 mutations, not SNCA; typically later onset and less rapid progression"
+    },
+    {
+      "vsCondition": "PARK8 (LRRK2-related Parkinson disease)",
+      "feature": "LRP10 gene involvement; LRRK2 is more common and has variable penetrance"
+    },
+    {
+      "vsCondition": "PARK2 (parkin-related Parkinson disease)",
+      "feature": "Autosomal dominant inheritance and later onset in PARK26 vs. autosomal recessive and early onset in PARK2"
+    }
+  ],
+  "ruleOutCriteria": [
+    "Absence of pathogenic or likely pathogenic LRP10 variant",
+    "No family history of parkinsonism or evidence of autosomal dominant inheritance",
+    "Presence of alternative genetic cause (e.g., SNCA, LRRK2, PARK2 mutation)",
+    "Atypical features inconsistent with Parkinson disease (e.g., prominent early cognitive decline, cerebellar signs)"
+  ],
+  "lastUpdated": "2026-05-31",
+  "confidenceInData": "medium",
+  "cohortEnrichedAt": "2026-05-31T07:52:20.301Z",
+  "createdBy": "v15-cohort-experiment-add-missing-profiles"
+}

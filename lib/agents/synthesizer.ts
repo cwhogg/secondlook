@@ -1,7 +1,8 @@
 import { BaseAgent } from './base-agent';
 import { AgentInput, AgentOutput, SynthesisOutput } from './types';
 import { DiagnosisHypothesis, PatientCase } from '../types';
-import { getDiseaseCount } from '../knowledge';
+import { getDiseaseCount, findDiseaseByName, getDiseaseById } from '../knowledge';
+import { DiseaseProfile } from '../types/knowledge-base';
 import {
   computeMechanicalEvidenceScore,
   sourceAgentList,
@@ -286,6 +287,112 @@ export class SynthesisAgent extends BaseAgent {
     return match;
   }
 
+  /**
+   * v15 step 3: format KB-derived per-hypothesis context for the synth prompt.
+   * Pulls from the KB profile fields that the synth had no prior visibility
+   * into despite the data being curated and structured. Concretely:
+   *   - differentialDiagnoses[].distinguishingFeatures — sibling discriminators
+   *   - symptoms.pathognomonic — cardinal features (>=90% frequency)
+   *   - symptoms.common[].symptomName (top entries) — common features
+   *   - redFlags — clinical traps that should be considered when ranking
+   *   - keyFindings.imaging / .genetic — discriminating workup findings
+   *
+   * The v15 cohort enrichment (step 4) adds three more KB fields when present
+   * for the cohort diseases: commonPitfalls, extendedDiscriminators,
+   * ruleOutCriteria. This formatter surfaces them if attached to the profile.
+   *
+   * Returns a multi-line block ready to append to the hypothesis's per-entry
+   * formatting, or empty string when the KB profile isn't found.
+   */
+  private formatKbBlock(diagnosisName: string): string {
+    const profile = findDiseaseByName(diagnosisName);
+    if (!profile) return '';
+
+    const lines: string[] = [];
+
+    // Sibling discriminators — the single highest-leverage KB field for the
+    // v13 wrong-sibling failure mode. Pull each diff-dx with its
+    // distinguishing features. Resolve diseaseId references to canonical
+    // names when possible.
+    if (profile.differentialDiagnoses && profile.differentialDiagnoses.length > 0) {
+      const discriminatorLines: string[] = [];
+      for (const dd of profile.differentialDiagnoses.slice(0, 6)) {
+        const siblingProfile = getDiseaseById(dd.diseaseId);
+        const siblingName = siblingProfile?.name || dd.diseaseId;
+        const features = (dd.distinguishingFeatures || []).slice(0, 3).join('; ');
+        if (features) {
+          discriminatorLines.push(`     vs ${siblingName}: ${features}`);
+        }
+      }
+      if (discriminatorLines.length > 0) {
+        lines.push('   Sibling discriminators (use to distinguish from close mimics):');
+        lines.push(...discriminatorLines);
+      }
+    }
+
+    // Cardinal features — pathognomonic-tier (>=90% in disease).
+    if (profile.symptoms?.pathognomonic && profile.symptoms.pathognomonic.length > 0) {
+      const cardinals = profile.symptoms.pathognomonic
+        .slice(0, 8)
+        .map((s) => s.symptomName)
+        .join('; ');
+      lines.push(`   Cardinal features (>90% of cases): ${cardinals}`);
+    }
+
+    // Common features — top tier-2 entries by frequency. Keep tight to avoid
+    // bloating the prompt; only the most-frequent half-dozen.
+    if (profile.symptoms?.common && profile.symptoms.common.length > 0) {
+      const commons = profile.symptoms.common
+        .slice(0, 6)
+        .map((s) => s.symptomName)
+        .join('; ');
+      lines.push(`   Common features (50-90%): ${commons}`);
+    }
+
+    // Red flags — emergent or atypical features the disease can present with.
+    if (profile.redFlags && profile.redFlags.length > 0) {
+      const flags = profile.redFlags.slice(0, 5).join('; ');
+      lines.push(`   Red flags / atypical presentations: ${flags}`);
+    }
+
+    // Key diagnostic findings — imaging + genetic, the two highest-yield workup
+    // categories for rare-disease confirmation.
+    const imagingFindings = profile.keyFindings?.imaging?.slice(0, 3) || [];
+    const geneticFindings = profile.keyFindings?.genetic?.slice(0, 3) || [];
+    const workupBits: string[] = [];
+    if (imagingFindings.length > 0) {
+      workupBits.push(`imaging: ${imagingFindings.join('; ')}`);
+    }
+    if (geneticFindings.length > 0) {
+      workupBits.push(`genetic: ${geneticFindings.join('; ')}`);
+    }
+    if (workupBits.length > 0) {
+      lines.push(`   Discriminating workup: ${workupBits.join(' | ')}`);
+    }
+
+    // v15 step 4 cohort-enriched fields (present when the disease is in the
+    // enriched set). Cheap to check; absent for diseases we haven't enriched
+    // yet.
+    const enriched = profile as any;
+    if (Array.isArray(enriched.commonPitfalls) && enriched.commonPitfalls.length > 0) {
+      lines.push(`   Common clinical pitfalls: ${(enriched.commonPitfalls as string[]).slice(0, 4).join('; ')}`);
+    }
+    if (Array.isArray(enriched.extendedDiscriminators) && enriched.extendedDiscriminators.length > 0) {
+      const extended = (enriched.extendedDiscriminators as Array<{ vsCondition?: string; feature?: string }>)
+        .slice(0, 4)
+        .map((d) => (d.vsCondition && d.feature ? `vs ${d.vsCondition}: ${d.feature}` : ''))
+        .filter(Boolean);
+      if (extended.length > 0) {
+        lines.push(`   Extended discriminators: ${extended.join(' | ')}`);
+      }
+    }
+    if (Array.isArray(enriched.ruleOutCriteria) && enriched.ruleOutCriteria.length > 0) {
+      lines.push(`   Rule-out criteria (presence essentially excludes diagnosis): ${(enriched.ruleOutCriteria as string[]).slice(0, 3).join('; ')}`);
+    }
+
+    return lines.join('\n');
+  }
+
   private buildPrompt(
     patientCase: PatientCase,
     hypotheses: DiagnosisHypothesis[],
@@ -311,6 +418,15 @@ export class SynthesisAgent extends BaseAgent {
         const infoGaps = (h as any)._informationGaps || [];
         const contradictionsList = (h as any)._contradictions || [];
 
+        // v15 step 3: surface existing KB data per hypothesis. KB profiles
+        // already contain sibling discriminators, tier-categorized symptoms,
+        // red flags, and key diagnostic findings — the synth wasn't seeing
+        // any of this before. The v13 wrong-sibling failure mode was
+        // specifically that the synth had no discriminator information
+        // between siblings; the KB literally has it written down in
+        // differentialDiagnoses[].distinguishingFeatures.
+        const kbBlock = h.knowledgeBaseMatch ? this.formatKbBlock(h.diagnosis) : '';
+
         return `${i + 1}. ${h.diagnosis} [${evalLabel}, ${evalMethod}]
    Source: ${h.sourceAgent}
    Specialist confidence: ${h.confidenceScore}/100
@@ -325,7 +441,7 @@ ${h.contradictoryEvidence.map((e) => `     - [${e.strength}] ${e.finding} ← "$
    Information gaps: ${infoGaps.length > 0 ? infoGaps.join('; ') : 'none identified'}
    Contradictions from evaluator: ${contradictionsList.length > 0 ? contradictionsList.join('; ') : 'none'}
    Clinical reasoning: ${h.clinicalReasoning}
-   Evidence evaluator assessment: ${strengthAssessment || '(not available)'}`;
+   Evidence evaluator assessment: ${strengthAssessment || '(not available)'}${kbBlock ? '\n' + kbBlock : ''}`;
       })
       .join('\n\n');
 

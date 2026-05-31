@@ -6,6 +6,7 @@ import { rerankCandidatesForSpecialty } from '../agents/specialty-reference/kb-r
 import { EvidenceEvaluator } from '../agents/evidence-evaluator';
 import { SynthesisAgent } from '../agents/synthesizer';
 import { ClaudeSynthAgent } from '../agents/claude-synthesizer';
+import { reconcileRankings, type ReconciliationResult } from './reconciliation';
 import { ReportGenerator } from '../agents/report-generator';
 import { expandFamilyVariants } from './family-expansion';
 import { deriveSymptomsFromLabs } from './lab-utils';
@@ -468,8 +469,6 @@ export class DiagnosticPipeline {
       });
 
       // v15 step 5: record Claude synth as its own stage for budget/metadata.
-      // The Claude ranking itself isn't yet used for downstream output —
-      // step 6 wires reconciliation in.
       if (claudeSynthResult) {
         this.budgetTracker.addUsage(claudeSynthResult.model, claudeSynthResult.tokensUsed);
         stages.push({
@@ -482,6 +481,96 @@ export class DiagnosticPipeline {
           outputSummary: `Top: ${claudeSynthResult.hypotheses[0]?.diagnosis || 'none'} (probability: ${claudeSynthResult.hypotheses[0]?.confidenceScore || 0}%)`,
         });
       }
+
+      // ===== v15 step 6: structured iterative reconciliation =====
+      // If o3 and Claude agree on top-1 at Round 1: trivial — use o3's
+      // ranking with high confidence. If they disagree: run up to 2 more
+      // rounds of structured information exchange where each model is
+      // asked to genuinely reconsider given the other's reasoning. If
+      // unresolved after Round 3: criteria-fulfillment ratio tiebreak with
+      // low confidence flag. See lib/pipeline/reconciliation.ts and
+      // docs/v15-experiment-plan.md decision 4.
+      log("orch.stage.reconciliation.start");
+      const reconcileStart = Date.now();
+      let reconciliation: ReconciliationResult;
+      try {
+        reconciliation = await reconcileRankings(
+          synthesisResult,
+          claudeSynthResult,
+          patientCase,
+          evaluationResult.hypotheses,
+          (event, extra) => log(event, extra || {}),
+        );
+      } catch (err: any) {
+        log("orch.stage.reconciliation.fail", { msg: (err?.message || "").substring(0, 200) });
+        // Degrade gracefully: if reconciliation throws (network, JSON
+        // parse, etc.), use o3's ranking as the final answer with a
+        // descriptive confidence flag.
+        reconciliation = {
+          hypotheses: synthesisResult.hypotheses,
+          confidence: 'o3-only-claude-unavailable',
+          reconciliationData: {
+            initialAgreement: false,
+            finalAgreement: false,
+            roundsRun: 1,
+            o3InitialTop1: synthesisResult.hypotheses[0]?.diagnosis || '',
+            claudeInitialTop1: claudeSynthResult?.hypotheses[0]?.diagnosis || null,
+            finalTop1: synthesisResult.hypotheses[0]?.diagnosis || '',
+            finalTop1Source: 'o3-after-reconsideration',
+            o3RoundHistory: [],
+            claudeRoundHistory: [],
+            tokensUsed: 0,
+            durationMs: Date.now() - reconcileStart,
+          },
+        };
+      }
+      log("orch.stage.reconciliation.done", {
+        dur: Date.now() - reconcileStart,
+        rounds: reconciliation.reconciliationData.roundsRun,
+        confidence: reconciliation.confidence,
+        finalTop1: reconciliation.reconciliationData.finalTop1,
+      });
+
+      // Replace synthesisResult.hypotheses with the reconciled top-10 so
+      // every downstream consumer (report generator, family expansion,
+      // final result) sees the reconciled ranking. Budget tracking and
+      // model attribution remain the o3 synth's — the reconciliation
+      // rounds are tracked separately below.
+      synthesisResult.hypotheses = reconciliation.hypotheses;
+
+      // Track reconciliation token usage as its own stage. The model
+      // attribution is "mixed" since both o3 and Claude were called in
+      // each round.
+      if (reconciliation.reconciliationData.tokensUsed > 0) {
+        this.budgetTracker.addUsage('o3', Math.round(reconciliation.reconciliationData.tokensUsed / 2));
+        this.budgetTracker.addUsage('claude-opus-4-7', Math.round(reconciliation.reconciliationData.tokensUsed / 2));
+        stages.push({
+          stageName: 'reconciliation',
+          durationMs: reconciliation.reconciliationData.durationMs,
+          tokensUsed: reconciliation.reconciliationData.tokensUsed,
+          model: 'mixed (o3 + claude-opus-4-7)',
+          agentName: 'reconciliation',
+          inputSummary: `o3 top-1: ${reconciliation.reconciliationData.o3InitialTop1}; claude top-1: ${reconciliation.reconciliationData.claudeInitialTop1 || 'n/a'}`,
+          outputSummary: `Converged at round ${reconciliation.reconciliationData.roundsRun}: ${reconciliation.reconciliationData.finalTop1} [${reconciliation.confidence}]`,
+        });
+      } else if (reconciliation.reconciliationData.initialAgreement) {
+        // Track the round-1 agreement explicitly even though no extra LLM
+        // tokens were spent.
+        stages.push({
+          stageName: 'reconciliation',
+          durationMs: reconciliation.reconciliationData.durationMs,
+          tokensUsed: 0,
+          model: 'n/a (round-1 consensus)',
+          agentName: 'reconciliation',
+          inputSummary: `o3 + claude agreed on top-1 at round 1`,
+          outputSummary: `${reconciliation.reconciliationData.finalTop1} [${reconciliation.confidence}]`,
+        });
+      }
+
+      // Attach the reconciliation metadata to the synthesis output so it
+      // flows through into the AnalysisResult for /eval visibility and
+      // post-hoc analysis.
+      (synthesisResult as any).reconciliation = reconciliation;
 
       const synthesisData_ = (synthesisResult as any).synthesisData || {};
       onProgress?.({

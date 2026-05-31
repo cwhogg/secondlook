@@ -420,18 +420,51 @@ function renderTriageStage(slCase) {
 function renderCandidateGen(slCase) {
   const stages = slCase.pipelineResult?.pipelineMetadata?.stages || [];
   const cg = stages.find((s) => s.stageName === 'candidate-generation');
-  if (!cg) return section('candidate-gen', '4. LLM Candidate Generation', '<div class="note">Not run on this case (v12 or earlier).</div>');
-  return section('candidate-gen', '4. LLM Candidate Generation — Stage 1b', `
+  const detail = slCase.pipelineResult?.pipelineMetadata?.candidateGeneration;
+  if (!cg && !detail) return section('candidate-gen', '4. LLM Candidate Generation', '<div class="note">Not run on this case (v12 or earlier).</div>');
+
+  const head = `
     <div class="stage-meta">
-      <span class="badge">${esc(cg.model)}</span>
-      <span class="badge">${cg.tokensUsed.toLocaleString()} tokens</span>
-      <span class="badge">${Math.round(cg.durationMs / 1000)}s</span>
+      ${cg ? `<span class="badge">${esc(cg.model)}</span> <span class="badge">${cg.tokensUsed.toLocaleString()} tokens</span> <span class="badge">${Math.round(cg.durationMs / 1000)}s</span>` : ''}
+      ${detail ? `<span class="badge badge-info">${detail.totalGenerated} generated</span><span class="badge badge-info">${detail.addedToPool} added to pool</span><span class="badge">${detail.duplicateOfTriage ?? 0} dup of triage</span><span class="badge">${detail.noKbMatch} no KB match</span>` : ''}
     </div>
-    <p>${esc(cg.outputSummary)}</p>
-    <div class="note">
-      <strong>Note:</strong> raw list of LLM-generated candidate names isn't persisted —
-      only the counts (40 generated → 30 added to KB-retrieved pool → 3 had no KB match).
-    </div>
+    ${cg ? `<p>${esc(cg.outputSummary)}</p>` : ''}
+  `;
+
+  if (!detail || !detail.candidates?.length) {
+    return section('candidate-gen', '4. LLM Candidate Generation — Stage 1b', head + `
+      <div class="note">
+        Per-candidate detail not persisted for this case. Re-run with the v15+
+        pipeline (post-2026-05-31 commit a0073d1+) to capture every LLM
+        candidate name and rationale.
+      </div>
+    `);
+  }
+
+  const dispoBadge = (d) => {
+    if (d === 'added-to-pool') return '<span class="badge badge-ok">added</span>';
+    if (d === 'duplicate-of-triage') return '<span class="badge">duplicate</span>';
+    if (d === 'no-kb-match') return '<span class="badge badge-err">no KB</span>';
+    return `<span class="badge">${esc(d)}</span>`;
+  };
+  const rows = detail.candidates.map((c, i) => `
+    <tr>
+      <td class="rank">${i + 1}</td>
+      <td><strong>${esc(c.name)}</strong>${c.resolvedKbName && c.resolvedKbName !== c.name ? `<br/><small style="color: var(--muted)">→ KB: ${esc(c.resolvedKbName)}</small>` : ''}</td>
+      <td>${dispoBadge(c.disposition)}</td>
+      <td><small>${esc(c.rationale || '(no rationale captured)')}</small></td>
+    </tr>
+  `).join('');
+
+  return section('candidate-gen', '4. LLM Candidate Generation — Stage 1b', head + `
+    <p>o3 reasoning:high generates a broad differential of ${detail.totalGenerated} candidate diagnoses
+    from raw symptoms (parallel with triage). Each is matched against the KB.
+    ${detail.addedToPool} were added to the candidate pool; ${detail.duplicateOfTriage ?? 0}
+    duplicated triage's retrieval; ${detail.noKbMatch} had no matching KB profile and were dropped.</p>
+    <table>
+      <thead><tr><th>#</th><th>Diagnosis</th><th>Disposition</th><th>Rationale</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
   `);
 }
 

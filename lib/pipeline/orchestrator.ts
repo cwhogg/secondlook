@@ -152,6 +152,34 @@ export class DiagnosticPipeline {
       triageResult.candidateDiseases = unionCandidates;
 
       // Record Stage 1b as a separate stage for accounting / metadata.
+      // Persist the full list of LLM candidate names, their rationales, and
+      // the per-candidate disposition (added to pool / duplicate of triage /
+      // no KB match) into a top-level pipelineMetadata.candidateGeneration
+      // field below. The stages-array summary is the short version for the
+      // existing UI; the detailed breakdown is the source of truth.
+      const addedDiseaseIds = new Set(addedFromLLM.map((m) => m.disease.id));
+      const noKbMatchSet = new Set(llmCandidatesNoKbMatch);
+      const rationalesMap: Map<string, string> | undefined =
+        (candidateGenResult as any)?.rationales ?? (candidateGenResult as any)?.candidateRationales;
+      const llmCandidateDetail = llmCandidateNames.map((name) => {
+        let disposition: 'added-to-pool' | 'duplicate-of-triage' | 'no-kb-match' = 'added-to-pool';
+        const profile = findDiseaseByName(name);
+        if (!profile) disposition = 'no-kb-match';
+        else if (!addedDiseaseIds.has(profile.id)) disposition = 'duplicate-of-triage';
+        let rationale = '';
+        if (rationalesMap && typeof rationalesMap.get === 'function') {
+          rationale = rationalesMap.get(name) || '';
+        }
+        return {
+          name,
+          rationale,
+          resolvedKbProfile: profile?.id || null,
+          resolvedKbName: profile?.name || null,
+          disposition,
+        };
+      });
+      void noKbMatchSet;
+
       if (candidateGenResult) {
         this.budgetTracker.addUsage(candidateGenResult.model || 'o3', candidateGenResult.tokensUsed || 0);
         stages.push({
@@ -763,6 +791,20 @@ export class DiagnosticPipeline {
             reasoningEvaluatedCount: reportResult.hypotheses.filter((h) => !h.knowledgeBaseMatch).length,
             disclaimer: `This analysis was evaluated against a knowledge base of ${getDiseaseCount()} profiled rare diseases. Diagnoses marked as "reasoning-evaluated" were assessed using specialist clinical knowledge rather than structured diagnostic criteria from our database.`,
           },
+          // v15: surface the full LLM-candidate-generation detail so deep-dive
+          // tooling can see exactly which diagnoses the o3 candidate generator
+          // proposed, each one's rationale, whether it matched a KB profile,
+          // and whether it was added to the pool or de-duplicated against
+          // triage's KB retrieval.
+          candidateGeneration: candidateGenResult ? {
+            totalGenerated: llmCandidateNames.length,
+            addedToPool: addedFromLLM.length,
+            duplicateOfTriage: llmCandidateNames.length - addedFromLLM.length - llmCandidatesNoKbMatch.length,
+            noKbMatch: llmCandidatesNoKbMatch.length,
+            unionSize: unionCandidates.length,
+            triageCandidateCount: triageResult.candidateDiseases.length - addedFromLLM.length, // back out the additions
+            candidates: llmCandidateDetail,
+          } : undefined,
           // v15: surface the reconciliation outcome so per-case analysis can
           // tell how often the two synths agreed at round 1, how often they
           // converged after information exchange, and how often they hit

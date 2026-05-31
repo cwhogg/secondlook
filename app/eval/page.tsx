@@ -89,6 +89,64 @@ const V5_TOP1_HIT_PPKT_IDS = [
   "PMID_17160901_family_C_individual_2",
 ] as const
 
+// Every ppkt_id that has been run under v5 (50 unique cases across all v5
+// batches). Used as the v15 architectural-experiment replay cohort so we
+// compare like-for-like against the historical v5 numbers. Larger and more
+// representative than V5_TOP1_HIT_PPKT_IDS (which is just the 26 SL Top-1
+// hits from the v5 cohort).
+const V5_FULL_COHORT_PPKT_IDS = [
+  "PMID_11175294_Patient_B15",
+  "PMID_12203992_Patient_D30",
+  "PMID_12384777_Family_3_3A",
+  "PMID_14569098_F9_individual_1",
+  "PMID_15761194_II_2",
+  "PMID_15781812_individual_104",
+  "PMID_17160901_family_C_individual_2",
+  "PMID_20513137_individual_NF00886_GSM_GSM492682",
+  "PMID_23993194_Family_4_Case_6",
+  "PMID_24736735_G028",
+  "PMID_24791903_Patient_2",
+  "PMID_26178382_MADR_690_I1",
+  "PMID_26178382_UAB_R7464",
+  "PMID_26242992_III_30",
+  "PMID_26981933_Family_F_individual_F2",
+  "PMID_27148574_Patient_7",
+  "PMID_27250695_Family_11_patient_15",
+  "PMID_27764983_Family_1_individual_TJ",
+  "PMID_28513613_family_2",
+  "PMID_28782633_Family_1_14_year_old_male_P8",
+  "PMID_28984260_child",
+  "PMID_29290338_Family_UAB_R2837_individual_F",
+  "PMID_29290338_Family_UAB_R4624_individual_RS",
+  "PMID_29290338_Family_UG_R665_F_individual_F",
+  "PMID_29537367_Patient_1",
+  "PMID_30804983_9_month_old_girl",
+  "PMID_30968594_individual_15",
+  "PMID_31021519_SATB2_79_from_Zarate_et_al_2018a_Scott_et_al",
+  "PMID_31021519_individual_SATB2_139",
+  "PMID_31337854_Patient_55",
+  "PMID_32219868_F2_IV_1",
+  "PMID_33674768_Patient_32_This_study",
+  "PMID_33674768_Patient_70_Miyake_2012_Hum_Mutat_34_108",
+  "PMID_34890546_M199_Mayo_II_4",
+  "PMID_35190816_STX_31344879_Patient6",
+  "PMID_35190816_STX_31394400_P1",
+  "PMID_35190816_STX_31780880_Patient1233",
+  "PMID_36256512_F4_II_6",
+  "PMID_36307226_Proband_4",
+  "PMID_37843397_Patient_UM38",
+  "PMID_37843397_Patient_UM49",
+  "PMID_37964426_Individual_R269W_4",
+  "PMID_38054405_Family_4_individual_P7",
+  "PMID_38284454_Patient_13",
+  "PMID_38441608_Patient_1",
+  "PMID_38531365_Individual_3",
+  "PMID_38614108_TUN3_II_1",
+  "PMID_39872894_proband_in_Trio1",
+  "PMID_40576023_Family_5_II_1",
+  "PMID_9199560_Maslen_1997_Patient_CS971736",
+] as const
+
 type ModelTab = "secondlook" | "openai" | "claude"
 type EvalTab = ModelTab | "runevals"
 const MODEL_TABS: ModelTab[] = ["secondlook", "openai", "claude"]
@@ -283,7 +341,7 @@ export default function EvalPage() {
   // latest known version. The user can pick any prior version (re-tag a
   // measurement) or define a new version inline (e.g. "v13" before the
   // type / docs are bumped).
-  const [selectedVersion, setSelectedVersion] = useState<string>("v12")
+  const [selectedVersion, setSelectedVersion] = useState<string>("v15")
   const [customVersions, setCustomVersions] = useState<string[]>([])
   const [newVersionInput, setNewVersionInput] = useState("")
   const [isFetchingCases, setIsFetchingCases] = useState(false)
@@ -1227,7 +1285,7 @@ export default function EvalPage() {
             <div className="border border-[#d4c5b0] bg-white p-4 sm:p-6 mb-6">
               {/* Version selector — tags every testCase the next batch creates */}
               {(() => {
-                const KNOWN_VERSIONS = ["v1","v2","v3","v4","v5","v6","v7","v8","v9","v10","v11","v12"] as const
+                const KNOWN_VERSIONS = ["v1","v2","v3","v4","v5","v6","v7","v8","v9","v10","v11","v12","v13","v14","v15"] as const
                 const allVersions = Array.from(new Set([...KNOWN_VERSIONS, ...customVersions]))
                 const trimmedNewVersion = newVersionInput.trim()
                 const addNewVersion = () => {
@@ -1366,6 +1424,14 @@ export default function EvalPage() {
                         className="px-3 py-1.5 border border-[#d4c5b0] bg-[#faf7f2] text-xs font-medium text-[#2a2a2a] hover:bg-[#f0eadd] disabled:opacity-50"
                       >
                         Load 26 v5 Top-1 hits
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setReplayIds(V5_FULL_COHORT_PPKT_IDS.join("\n"))}
+                        disabled={isTrioRunning}
+                        className="px-3 py-1.5 border border-[#d4c5b0] bg-[#faf7f2] text-xs font-medium text-[#2a2a2a] hover:bg-[#f0eadd] disabled:opacity-50"
+                      >
+                        Load 50 v5 full cohort
                       </button>
                       <button
                         type="button"

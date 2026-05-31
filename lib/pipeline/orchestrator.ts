@@ -7,6 +7,7 @@ import { EvidenceEvaluator } from '../agents/evidence-evaluator';
 import { SynthesisAgent } from '../agents/synthesizer';
 import { ClaudeSynthAgent } from '../agents/claude-synthesizer';
 import { reconcileRankings, type ReconciliationResult } from './reconciliation';
+import { withLlmCallLog } from './llm-call-log';
 import { ReportGenerator } from '../agents/report-generator';
 import { expandFamilyVariants } from './family-expansion';
 import { deriveSymptomsFromLabs } from './lab-utils';
@@ -28,6 +29,23 @@ export class DiagnosticPipeline {
   }
 
   async execute(
+    patientCase: PatientCase,
+    onProgress?: ProgressCallback
+  ): Promise<AnalysisResult> {
+    // Wrap the entire pipeline in an LLM-call log context so every LLM call
+    // pushed during execution is captured into a single per-case log. The
+    // captured calls are appended to pipelineMetadata.llmCalls below.
+    const { result, calls } = await withLlmCallLog(() =>
+      this.executeInner(patientCase, onProgress),
+    );
+    try {
+      (result as any).pipelineMetadata.llmCalls = calls;
+      (result as any).pipelineMetadata.llmCallsCount = calls.length;
+    } catch { /* result may not have pipelineMetadata if error path; safe to skip */ }
+    return result;
+  }
+
+  private async executeInner(
     patientCase: PatientCase,
     onProgress?: ProgressCallback
   ): Promise<AnalysisResult> {

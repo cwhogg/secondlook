@@ -165,7 +165,7 @@ Return JSON with no markdown fences:
 { "topOne": "<diagnosis name from hypothesis pool>", "probabilityScore": <0-100>, "reasoning": "<your final evidence-cited position>" }`;
 }
 
-async function callO3Reconsider(systemPrompt: string, userPrompt: string): Promise<{ content: any; tokensUsed: number; durationMs: number }> {
+async function callO3Reconsider(systemPrompt: string, userPrompt: string, round?: number): Promise<{ content: any; tokensUsed: number; durationMs: number }> {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error('OPENAI_API_KEY not configured');
 
@@ -193,20 +193,56 @@ async function callO3Reconsider(systemPrompt: string, userPrompt: string): Promi
   } catch {
     throw new Error(`o3 reconsider returned non-JSON: ${text.slice(0, 200)}`);
   }
+  const durationMs = Date.now() - start;
+
+  try {
+    const { pushLlmCall } = require('./llm-call-log');
+    pushLlmCall({
+      agentName: 'reconciliation-o3' + (round ? `-r${round}` : ''),
+      stageName: 'reconciliation',
+      provider: 'openai',
+      model: O3_MODEL,
+      reasoningEffort: 'high',
+      maxTokens: 8000,
+      systemPrompt,
+      userPrompt,
+      rawResponseText: text,
+      structuredOutput: content,
+      reasoningTokens: data.usage?.completion_tokens_details?.reasoning_tokens,
+      finishReason: data.choices?.[0]?.finish_reason,
+      tokensIn: data.usage?.prompt_tokens,
+      tokensOut: data.usage?.completion_tokens,
+      durationMs,
+    });
+  } catch { /* optional */ }
+
   return {
     content,
     tokensUsed: (data.usage?.total_tokens as number) || 0,
-    durationMs: Date.now() - start,
+    durationMs,
   };
 }
 
-async function callClaudeReconsider(systemPrompt: string, userPrompt: string): Promise<{ content: any; tokensUsed: number; durationMs: number }> {
+async function callClaudeReconsider(systemPrompt: string, userPrompt: string, round?: number): Promise<{ content: any; tokensUsed: number; durationMs: number }> {
+  // callAnthropic itself pushes to the LLM call log; we'd otherwise duplicate
+  // the entry. Tag it via a one-shot context override so the log entry
+  // shows up under reconciliation rather than as an unattributed Anthropic
+  // call.
+  try {
+    const { setLogContext } = require('./llm-call-log');
+    setLogContext({ agentName: 'reconciliation-claude' + (round ? `-r${round}` : ''), stageName: 'reconciliation' });
+  } catch {}
   const result = await callAnthropic({
     systemPrompt,
     userPrompt,
     maxTokens: 8000,
     model: CLAUDE_MODEL,
   });
+  // Restore default context so subsequent stages aren't mis-attributed
+  try {
+    const { setLogContext } = require('./llm-call-log');
+    setLogContext({ agentName: undefined, stageName: undefined });
+  } catch {}
   return {
     content: result.content,
     tokensUsed: result.tokensUsed,
@@ -357,8 +393,8 @@ export async function reconcileRankings(
   });
 
   const [o3R2, claudeR2] = await Promise.all([
-    callO3Reconsider(RECONSIDERATION_SYSTEM_PROMPT, o3R2Prompt),
-    callClaudeReconsider(RECONSIDERATION_SYSTEM_PROMPT, claudeR2Prompt),
+    callO3Reconsider(RECONSIDERATION_SYSTEM_PROMPT, o3R2Prompt, 2),
+    callClaudeReconsider(RECONSIDERATION_SYSTEM_PROMPT, claudeR2Prompt, 2),
   ]);
   totalTokens += o3R2.tokensUsed + claudeR2.tokensUsed;
 
@@ -417,8 +453,8 @@ export async function reconcileRankings(
   });
 
   const [o3R3, claudeR3] = await Promise.all([
-    callO3Reconsider(RECONSIDERATION_SYSTEM_PROMPT, o3R3Prompt),
-    callClaudeReconsider(RECONSIDERATION_SYSTEM_PROMPT, claudeR3Prompt),
+    callO3Reconsider(RECONSIDERATION_SYSTEM_PROMPT, o3R3Prompt, 3),
+    callClaudeReconsider(RECONSIDERATION_SYSTEM_PROMPT, claudeR3Prompt, 3),
   ]);
   totalTokens += o3R3.tokensUsed + claudeR3.tokensUsed;
 

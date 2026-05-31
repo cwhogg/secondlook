@@ -133,6 +133,30 @@ export abstract class BaseAgent {
       throw new Error(`Failed to parse tool call arguments from ${this.config.name}: ${err}`);
     }
 
+    // Persist call into per-pipeline log if enabled
+    try {
+      const { pushLlmCall } = require('../pipeline/llm-call-log');
+      pushLlmCall({
+        agentName: this.config.name,
+        provider: 'openai',
+        model: data.model || this.config.model,
+        reasoningEffort: this.config.reasoningEffort,
+        temperature: reasoning ? undefined : this.config.temperature,
+        maxTokens: this.config.maxTokens,
+        systemPrompt: this.config.systemPrompt,
+        userPrompt,
+        toolNames: tools.map((t: any) => t.function?.name || t.name || 'unknown'),
+        toolChoice: typeof toolChoice === 'string' ? toolChoice : (toolChoice?.function?.name || 'auto'),
+        rawResponseText: data.choices?.[0]?.message?.content || undefined,
+        structuredOutput: content,
+        reasoningTokens: data.usage?.completion_tokens_details?.reasoning_tokens,
+        finishReason: data.choices?.[0]?.finish_reason,
+        tokensIn: data.usage?.prompt_tokens,
+        tokensOut: data.usage?.completion_tokens,
+        durationMs,
+      });
+    } catch { /* logger optional; never break the pipeline */ }
+
     return {
       content,
       tokensUsed: data.usage?.total_tokens || 0,
@@ -205,6 +229,27 @@ export abstract class BaseAgent {
     } catch {
       content = rawContent;
     }
+
+    try {
+      const { pushLlmCall } = require('../pipeline/llm-call-log');
+      pushLlmCall({
+        agentName: this.config.name,
+        provider: 'openai',
+        model: data.model || this.config.model,
+        reasoningEffort: this.config.reasoningEffort,
+        temperature: reasoning ? undefined : this.config.temperature,
+        maxTokens: this.config.maxTokens,
+        systemPrompt: this.config.systemPrompt,
+        userPrompt,
+        rawResponseText: rawContent,
+        structuredOutput: content,
+        reasoningTokens: data.usage?.completion_tokens_details?.reasoning_tokens,
+        finishReason: data.choices?.[0]?.finish_reason,
+        tokensIn: data.usage?.prompt_tokens,
+        tokensOut: data.usage?.completion_tokens,
+        durationMs,
+      });
+    } catch { /* logger optional */ }
 
     return {
       content,

@@ -91,6 +91,24 @@ export async function callAnthropic(options: AnthropicCallOptions): Promise<Anth
     }
   }
 
+  try {
+    const { pushLlmCall } = require('./pipeline/llm-call-log');
+    pushLlmCall({
+      provider: 'anthropic',
+      model: data.model || model,
+      temperature: supportsTemperature ? temperature : undefined,
+      maxTokens,
+      systemPrompt,
+      userPrompt,
+      rawResponseText: rawText,
+      structuredOutput: content,
+      finishReason: data.stop_reason,
+      tokensIn: data.usage?.input_tokens,
+      tokensOut: data.usage?.output_tokens,
+      durationMs,
+    });
+  } catch { /* logger optional */ }
+
   return {
     content,
     rawText,

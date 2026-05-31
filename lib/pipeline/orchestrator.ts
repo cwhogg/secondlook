@@ -1,5 +1,6 @@
 import { PatientCase, AnalysisResult, StageResult, FamilyEnrichment } from '../types';
 import { TriageAgent } from '../agents/triage-agent';
+import { CandidateGeneratorAgent } from '../agents/candidate-generator';
 import { getSpecialistAgent } from '../agents/specialist-agents';
 import { rerankCandidatesForSpecialty } from '../agents/specialty-reference/kb-rerank';
 import { EvidenceEvaluator } from '../agents/evidence-evaluator';
@@ -9,7 +10,8 @@ import { expandFamilyVariants } from './family-expansion';
 import { deriveSymptomsFromLabs } from './lab-utils';
 import { AgentOutput } from '../agents/types';
 import { BudgetTracker } from './budget';
-import { getDiseaseCount, findFamilySiblings, computeDifferentiatingTests, loadDiseaseDatabase } from '../knowledge';
+import { getDiseaseCount, findFamilySiblings, findDiseaseByName, computeDifferentiatingTests, loadDiseaseDatabase } from '../knowledge';
+import { DiseaseMatch } from '../types/knowledge-base';
 import { PipelineProgress, ProgressCallback } from '../types/pipeline';
 
 export type { PipelineProgress, ProgressCallback };
@@ -57,9 +59,91 @@ export class DiagnosticPipeline {
         };
       }
 
-      // ===== STAGE 1: TRIAGE =====
+      // ===== STAGES 1 + 1b (parallel) =====
+      // Stage 1 (triage) and Stage 1b (LLM-generated wide differential)
+      // run in parallel because neither depends on the other. Stage 1b is the
+      // v15 union candidate pool addition: an o3:high call producing 30-50
+      // candidate diagnoses from the patient case directly. Names that match
+      // KB profiles are unioned with triage's KB-retrieved candidates so the
+      // specialists see a wider, more inclusive pool. Names without a KB
+      // match are dropped at this stage — specialists may still independently
+      // propose them downstream but they don't enter the KB-grounded
+      // candidate flow. See docs/v15-experiment-plan.md decision 1.
+      log("orch.stage.triage_and_candidates.start");
       const triageAgent = new TriageAgent();
-      const triageResult = await triageAgent.execute({ patientCase });
+      const candidateGenAgent = new CandidateGeneratorAgent();
+      const triagePromise = triageAgent.execute({ patientCase });
+      const candidateGenPromise = candidateGenAgent
+        .generate(patientCase)
+        .catch((err: any) => {
+          // If candidate generation fails, fall back to triage-only — better
+          // to lose the union breadth than to fail the whole analysis.
+          log("orch.stage.candidates.fail", { msg: (err?.message || "").substring(0, 200) });
+          return null;
+        });
+      const [triageResult, candidateGenResult] = await Promise.all([triagePromise, candidateGenPromise]);
+      log("orch.stage.triage.done", { candidates: triageResult.candidateDiseases.length });
+
+      // Union: look up each LLM-generated candidate name in the KB; append
+      // any KB matches not already present in the triage pool. Track stats
+      // for measurement.
+      const triageCandidateIds = new Set(triageResult.candidateDiseases.map((m) => m.disease.id));
+      const addedFromLLM: DiseaseMatch[] = [];
+      const llmCandidatesNoKbMatch: string[] = [];
+      let llmCandidateNames: string[] = [];
+      if (candidateGenResult && candidateGenResult.diagnosisNames) {
+        llmCandidateNames = candidateGenResult.diagnosisNames;
+        for (const name of llmCandidateNames) {
+          const profile = findDiseaseByName(name);
+          if (!profile) {
+            llmCandidatesNoKbMatch.push(name);
+            continue;
+          }
+          if (triageCandidateIds.has(profile.id)) {
+            // Already in triage's pool — no need to add a duplicate.
+            continue;
+          }
+          // Synthetic DiseaseMatch for the LLM-surfaced candidate. matchScore
+          // 0.4 places it below typical strong KB-retrieval hits (which range
+          // 0.5-1.0) but high enough that per-specialty reranking still
+          // considers it. systemOverlap pulled from the disease's own
+          // declared systems; demographicFit neutral.
+          addedFromLLM.push({
+            disease: profile,
+            matchScore: 0.4,
+            matchedSymptoms: [],
+            systemOverlap: profile.systemsAffected,
+            demographicFit: 0.5,
+          });
+          triageCandidateIds.add(profile.id);
+        }
+      }
+      const unionCandidates = [...triageResult.candidateDiseases, ...addedFromLLM];
+      log("orch.stage.candidates.union", {
+        triage: triageResult.candidateDiseases.length,
+        llmGenerated: llmCandidateNames.length,
+        llmAddedToPool: addedFromLLM.length,
+        llmNoKbMatch: llmCandidatesNoKbMatch.length,
+        union: unionCandidates.length,
+      });
+
+      // Replace triageResult.candidateDiseases with the union for downstream
+      // consumers. The triage object itself is otherwise unchanged.
+      triageResult.candidateDiseases = unionCandidates;
+
+      // Record Stage 1b as a separate stage for accounting / metadata.
+      if (candidateGenResult) {
+        this.budgetTracker.addUsage(candidateGenResult.model || 'o3', candidateGenResult.tokensUsed || 0);
+        stages.push({
+          stageName: 'candidate-generation',
+          durationMs: candidateGenResult.durationMs || 0,
+          tokensUsed: candidateGenResult.tokensUsed || 0,
+          model: candidateGenResult.model || 'o3',
+          agentName: 'candidate-generator',
+          inputSummary: `${patientCase.symptoms.length} symptoms, ${patientCase.demographics.age}yo ${patientCase.demographics.sex}`,
+          outputSummary: `${llmCandidateNames.length} LLM candidates → ${addedFromLLM.length} added to KB-retrieved pool (${llmCandidatesNoKbMatch.length} not in KB)`,
+        });
+      }
 
       onProgress?.({
         stage: 'triage',

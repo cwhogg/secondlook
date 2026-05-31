@@ -19,11 +19,13 @@ The v5 result is not reproducible on the same cohort. On the 26 cases where SL h
 
 **On a cohort hand-selected to favor SL, OAI now beats SL by 8 pp and Claude beats SL by ~11 pp on graded.** This inverts v5's headline finding.
 
-**Cause (revised after deeper investigation): a specific mechanism, not a generic "o3 drift."** OpenAI's o3 has shifted toward producing more verbose / variant diagnosis names ("Neurofibromatosis Type 1 (NF1, von Recklinghausen disease)" rather than v5's cleaner "Neurofibromatosis Type 1 (NF1)"). The verbose names defeat the KB name matcher's strict-match logic, causing diseases that v5 evaluated against structured KB criteria to fall through to clinical-reasoning evaluation in v13. With no criteria-grounded evidence to anchor the synth, the new more-confident o3 gestalt picks the wrong sibling on close-call cases.
+**Cause (corrected after direct matcher testing): the LLM evaluator is overriding the deterministic KB-match annotation.** Earlier in the investigation I hypothesized that the KB name matcher had broken on verbose specialist names. Direct testing of the matcher against actual v13 verbose names ("Neurofibromatosis Type 1 (NF1, von Recklinghausen disease)" etc.) found that **the matcher succeeds** — it uses bidirectional substring matching after normalization, which handles parenthetical clarifications correctly. 8 of 9 v13 verbose names tested matched their canonical KB profile.
 
-On the NF1 case (where SL still hit #1): **v5 had 5 of 10 top entries criteria-grounded against KB criteria; v13 had 0 of 10.** Same disease, same case, same code. The KB grounding evaporated entirely because the specialists named NF1 with parenthetical clarifications the KB matcher rejected.
+The actual mechanism: the `evaluationType` field (criteria-grounded vs reasoning-evaluated) is set by the **LLM evaluator's output**, not the deterministic matcher's result. The matcher's role is only to put `[KB MATCH: <kb-name>]` in the prompt and inject the diagnostic criteria as a reference block. The LLM is then *instructed* to label KB-matched hypotheses as criteria-grounded, but nothing on the server side enforces that — the LLM's chosen label is taken at face value.
 
-This narrows the bottleneck precisely. The fix is code-side after all — but in **KB name matching robustness**, not in reverting v5→v12 changes. The v13 architectural plan (Claude critic + reconciler) was still targeting the wrong layer; the actual repair point is one layer earlier, in the evaluator's KB-profile lookup.
+In v13, o3-as-evaluator is choosing `reasoning-evaluated` for hypotheses that *are* annotated `[KB MATCH: ...]` in the prompt. The NF1 case had 5 hypotheses with verbose NF1 names, all flagged as KB-matched by the deterministic classifier — yet the LLM labeled all 5 as reasoning-evaluated and produced narrative `strengthAssessment` strings instead of going through the criteria checklist. v5-era o3 followed the prompt instruction; v13-era o3 doesn't.
+
+This is a real LLM behavior change, but the fix is straightforward and code-side: **don't let the LLM set the label**. The `isKbMatch` boolean at `evidence-evaluator.ts:242` should come from the deterministic classifier's `kbMatch !== null` result, not from `evaluation.evaluationType === 'criteria-grounded'`. The LLM's job becomes filling in the per-criterion checklist; the label itself is set server-side. One line of code; closes the mechanism completely.
 
 ---
 
@@ -116,9 +118,9 @@ The score-inflation pattern (every top-1 +5 to +37 points) cannot be explained b
 
 ---
 
-## The smoking gun: KB name matcher breakdown
+## The smoking gun: criteria-grounded entries vanished
 
-Pulling the full v5 vs v13 differential lists for the same case lets us see exactly *what kind* of evidence the synth was working from.
+Pulling the full v5 vs v13 differential lists for the same case lets us see exactly *what kind* of evidence the synth was working from. Recall: every hypothesis carries an `evaluationType` of either `criteria-grounded` (evaluated against the disease's formal KB criteria — auditable checklist of "4 of 7 NIH NF1 criteria met") or `reasoning-evaluated` (evaluated via LLM clinical-reasoning narrative — soft prose without structured criteria). Criteria-grounded entries provide hard evidence the synth can't easily override; reasoning-evaluated entries let LLM gestalt dominate.
 
 ### NF1 (PMID_29290338_Family_UG, SL held #1 in both versions)
 
@@ -129,7 +131,7 @@ Pulling the full v5 vs v13 differential lists for the same case lets us see exac
 | Distinct specialists picking NF1 in top-5 | 2 | **5** |
 | Naming examples (v13) | — | "(NF1, von Recklinghausen disease)", "(von Recklinghausen disease)", "Neurofibromatosis Type 1", "(NF1)", "(possible segmental or oligosymptomatic form)" |
 
-**The KB grounding disappeared.** Same disease, same KB profile present in `lib/knowledge/diseases/`, same code path. v5 evaluated 5 of the top 10 against structured KB criteria; v13 evaluated zero. The synth still landed NF1 at #1 because the clinical gestalt is overwhelming on this case — but it did so without any of the structured evidence v5 had.
+**The KB grounding disappeared.** Same disease, same KB profile present in `lib/knowledge/diseases/neurofibromatosis-type-1.json`, same code path. v5 evaluated 5 of the top 10 against structured KB criteria; v13 evaluated zero. The synth still landed NF1 at #1 because the clinical gestalt is overwhelming on this case — but it did so without any of the structured evidence v5 had.
 
 ### ADTKD-1 (PMID_14569098_F9_individual_1, SL #1 → #8)
 
@@ -142,17 +144,49 @@ Pulling the full v5 vs v13 differential lists for the same case lets us see exac
 
 On ADTKD-1, the correct disease *did* get criteria-grounded (one of the two ADTKD-MUC1 duplicates was matched). But Fabry, NPHP1, FAN1, AApoA-IV, MPGN, and IgG4-TIN all also competed at scores ≥30, and the synth's gestalt picked Fabry.
 
-### The mechanism explained
+### Why the KB matcher was initially suspected, and why that's wrong
 
-1. **o3-era 2026-05-30 specialists produce more verbose / variant diagnosis names** than o3-era 2026-05-28 specialists did. Specifically, they append parenthetical synonyms, gene/clinical variants, and clarifying notes ("(NF1, von Recklinghausen disease)", "(possible segmental or oligosymptomatic form)", "Combined Oxidative Phosphorylation Defect Type 11 (FBXL...)") instead of using the canonical KB-profile name.
+The initial reading was that the KB name matcher (`matchesDiseaseProfile` in `lib/agents/evidence-evaluator.ts:298`) had become too strict for the verbose v13-era specialist names. To test, I ran the actual matcher logic against the observed v13 verbose names:
 
-2. **The KB name matcher** (the logic that decides whether a specialist hypothesis matches a KB profile and therefore gets evaluated against structured criteria) is too strict for these verbose names. A hypothesis named "Neurofibromatosis Type 1 (von Recklinghausen disease)" fails to match the KB entry keyed under "Neurofibromatosis Type 1 (NF1)", and the evaluator falls back to `evaluationType: 'reasoning-evaluated'` with no criteria-fulfillment data attached.
+| Specialist hypothesis name (v13) | KB profile | Match |
+|---|---|---|
+| "Neurofibromatosis Type 1 (NF1, von Recklinghausen disease)" | "Neurofibromatosis Type 1" | ✓ substring |
+| "Neurofibromatosis Type 1 (von Recklinghausen disease)" | "Neurofibromatosis Type 1" | ✓ substring |
+| "Generalised Neurofibromatosis Type 1 (Classical NF1)" | "Neurofibromatosis Type 1" | ✓ substring |
+| "Neurofibromatosis Type 1 (possible segmental or oligosymptomatic form)" | "Neurofibromatosis Type 1" | ✓ substring |
+| "Fabry Disease (X-linked α-galactosidase A deficiency)" | "Fabry Disease" | ✓ substring |
+| "Fabry Disease (GLA deficiency, Classic or Later-Onset)" | "Fabry Disease" | ✓ substring |
+| "ADTKD, MUC1-related (ADTKD-MUC1)" | "ADTKD – MUC1-related" | ✓ substring |
+| "ADTKD due to MUC1 (ADTKD-MUC1)" | "ADTKD – MUC1-related" | NO MATCH (the "due to" phrasing) |
 
-3. **The synth, given few or no criteria-grounded entries, has no structured evidence to anchor its probability assignments.** It defaults to clinical-gestalt probability — and the new more-confident o3 produces higher scores across the board.
+**8 of 9 verbose names match.** The matcher's bidirectional substring logic (`diagN.includes(nameN) || nameN.includes(diagN)`) correctly handles parenthetical clarifications after normalization (`.toLowerCase().replace(/[^a-z0-9]/g, '')`). The matcher is not the bottleneck. The earlier "matcher fails on verbose names" hypothesis is empirically false.
 
-4. **On classic cases (NF1, Marfan)**, the gestalt agrees with the right answer anyway. Multiple specialists pick the same disease. The synth ranks it #1 even without criteria. Score inflated but #1 preserved.
+Git diff also confirms the matcher code is byte-identical between v5 (`887fbf3`) and HEAD — it could not have regressed even in principle.
 
-5. **On close-call sibling cases (ADTKD-1, Mito 13, DEE4, Lafora 2)**, the gestalt can't break the tie without criteria evidence. The new o3 picks the wrong sibling confidently. The correct disease is still in the top-10, just outranked.
+### The actual mechanism
+
+The `evaluationType` field on each hypothesis is set by the **LLM evaluator's output**, not by the deterministic matcher's result. The flow is:
+
+1. `classifyHypotheses` runs `matchesDiseaseProfile` for each hypothesis against the KB. Sets `kbMatch: DiseaseProfile | null`.
+2. `buildPrompt` annotates each hypothesis line with `[KB MATCH: <kb-name>]` or `[NOT IN KB]` based on `kbMatch`.
+3. The diagnostic criteria block for matched KB profiles is appended as reference.
+4. The prompt instructs the LLM: *"Set evaluationType to 'criteria-grounded' for KB-matched and 'reasoning-evaluated' for non-KB."*
+5. The LLM evaluator (o3:high) returns its evaluation including a chosen `evaluationType` per hypothesis.
+6. `applyEvaluation` at line 242 sets `isKbMatch = (evaluation.evaluationType === 'criteria-grounded')` — i.e., it trusts the LLM's label, ignoring the deterministic classifier's `kbMatch` result.
+
+In v5, o3 followed the prompt instruction and labeled KB-matched hypotheses as criteria-grounded. In v13, **o3 chooses `reasoning-evaluated` on hypotheses that are annotated `[KB MATCH: ...]` in the prompt.** All 5 NF1 hypotheses in v13 had `[KB MATCH: Neurofibromatosis Type 1]` in their prompt lines, yet all 5 came back labeled reasoning-evaluated with narrative `strengthAssessment` instead of per-criterion checklists.
+
+This is an LLM behavior change, but the consequence is purely in the *label*. The LLM still had access to the structured criteria block (it's in the prompt reference section); it just chose not to formally evaluate against them.
+
+### Why this hurts ranking
+
+1. **Reasoning-evaluated entries don't include `criteriaFulfillment.criteriaDetails` data.** When the synth iterates hypotheses in its own prompt (`synthesizer.ts:303-330`), each criteria-grounded entry shows a per-criterion `[MET]` / `[NOT MET]` checklist with the patient evidence. Reasoning-evaluated entries show "(none assessed)" instead.
+
+2. **The synth's tool-output schema asks for `probabilityScore`** based on "criteria fulfillment data" among other inputs. When that data is absent, the synth defaults to clinical gestalt — and the new more-confident o3 produces inflated scores.
+
+3. **On classic cases (NF1, Marfan)**, the gestalt agrees with the right answer anyway. Multiple specialists pick the same disease. The synth ranks it #1 even without criteria. Score inflated but #1 preserved.
+
+4. **On close-call sibling cases (ADTKD-1, Mito 13, DEE4, Lafora 2)**, the gestalt can't break the tie without criteria evidence. The new o3 picks the wrong sibling confidently. The correct disease is still in the top-10, just outranked.
 
 This explains every observed pattern: the score inflation on held cases, the regression on close-call cases, the duplicates, the systematic move from criteria-grounded to reasoning-evaluated, and the wrong-sibling failure mode.
 
@@ -188,13 +222,14 @@ The v13 plan (Claude opus-4-7 as adversarial critic on synth output) was based o
    - The synth's prompt allows the LLM to override criteria evidence with priors
    - There is no architectural step that explicitly disambiguates between siblings using KB criteria (vs LLM priors)
 
-4. **Plausible interventions, ranked by expected impact and evidence:**
-   - **[Highest priority] KB name matcher robustness.** Loosen the evaluator's matching to tolerate parenthetical variations and gene/synonym clarifications. Most concretely: strip parentheticals before matching; or add explicit alias lists on KB profiles; or use embeddings-based similarity with a tight threshold instead of strict-string matching. The NF1 case shows the matcher dropped from 5/10 criteria-grounded to 0/10 due purely to naming verbosity. Restoring criteria-grounded coverage is the single highest-leverage fix the data identifies.
-   - **Specialist naming constraint.** Add an explicit instruction in the specialist system prompt: "use the diagnosis name from your candidate list verbatim, with no clarifying parentheticals or synonyms." Complementary to the matcher fix — narrows the input distribution rather than widening the matcher.
-   - **Family-cluster collapse pre-synth.** Detect KB siblings in the candidate pool, present them to synth as a single cluster with the question "if it's in this family, which member?" rather than as parallel candidates. Useful after the matcher fix to ensure structured evidence reaches the synth even when siblings compete.
-   - **Two-pass synth.** First pick the disease family; then pick the subtype using only that family's KB criteria. Heavier intervention but most architecturally aligned with the failure mode.
-   - **Criteria-override constraint in synth prompt.** Require the synth to explicitly cite contradicting criteria evidence when ranking a non-leading sibling above a criteria-supported one. Cheap to try; uncertain effect because the synth currently has nothing to cite if matcher fails.
-   - **Pin OAI checkpoint.** If a versioned `o3-2026-05-15` API is available, lock the SL pipeline to it. Addresses symptom not root cause; risky long-term because checkpoint pinning blocks security/perf updates and the underlying matcher fragility remains.
+4. **Interventions, ranked by expected impact and surgical scope:**
+   - **[Highest priority — single line of code] Force the criteria-grounded label deterministically.** In `lib/agents/evidence-evaluator.ts:242`, change `isKbMatch = (evaluation.evaluationType === 'criteria-grounded')` to derive `isKbMatch` from the matching `classified[].kbMatch !== null` result computed earlier in `classifyHypotheses`. Stop letting the LLM choose the label on a question that's already been answered deterministically. The LLM's job remains filling in the `criteriaFulfillment.criteriaDetails` checklist against the criteria block already in the prompt; the label is no longer its decision. Closes the v13 mechanism completely on the NF1-style cases.
+   - **Specialist naming constraint (defense in depth).** Add an explicit instruction in the specialist system prompt: "use the diagnosis name from your candidate list verbatim, with no clarifying parentheticals or synonyms." Reduces verbosity at the source so dedup works and the LLM evaluator has less excuse to label as variant-of-KB.
+   - **Tighten the evaluator prompt as well.** Add an explicit rule: "If a hypothesis line contains `[KB MATCH: X]`, you MUST evaluate it against the criteria for X listed below, and MUST set evaluationType to 'criteria-grounded'. Do not substitute clinical reasoning even if the specialist's name differs from the KB name." Belt-and-braces with the deterministic label fix.
+   - **Hypothesis dedup on the KB-canonical name.** When multiple verbose specialist hypotheses match the same KB profile, merge them into one hypothesis named after the KB profile rather than carrying duplicates through to synth. Addresses the v13 ADTKD-MUC1 duplication and the 5-way NF1 split.
+   - **Family-cluster collapse pre-synth.** Detect KB siblings in the candidate pool, present them to synth as a single cluster with the question "if it's in this family, which member?" rather than as parallel candidates. Useful even after the label fix, for cases where multiple sibling diseases all have legitimate criteria-grounded entries.
+   - **Two-pass synth.** First pick the disease family; then pick the subtype using only that family's KB criteria. Heavier intervention; consider if the above don't recover the v5 gap.
+   - **Pin OAI checkpoint.** If a versioned `o3-2026-05-15` API is available, lock the SL pipeline to it. Addresses one symptom (label drift) but not others (verbose naming, dedup failures) and adds operational risk. Defer.
 
 5. **For honest evaluation of any future architecture change**: stop using v5 numbers as the bar. v5's o3 doesn't exist on the API any more. Re-baseline against current single-shot OAI and CL. The success criterion has to be "beats current baselines on the same cohort," not "matches v5."
 
@@ -219,15 +254,17 @@ These are differentiators worth testing on their own merits, but they are not wh
 
 ## What needs to happen before any v13 commit
 
-1. **[Confirmed by NF1 evidence — do this first] Investigate and fix the KB name matcher.** Pull the actual matcher implementation (whichever function turns specialist hypothesis names into KB profile lookups in `lib/agents/evidence-evaluator.ts` and/or its helpers). Add coverage for parenthetical-stripping and synonym matching. Re-run a few of the 6 regressed cases — if criteria-grounded counts rise from 0/10 toward 5/10 (NF1-case-like), the fix is confirmed. Expected impact: recovers most of the v5-vs-v13 SL gap on these cases.
+1. **[Do this first — one-line code fix] Force `isKbMatch` deterministically in `evidence-evaluator.ts:242`.** Replace the LLM-controlled label with the deterministic `classifyHypotheses` result. Re-run the same NF1 ppkt_id and confirm criteria-grounded count rises from 0/10 toward 5/10. Expected impact: recovers most of the v5-vs-v13 SL gap on the close-call cases where the correct disease was already in the candidate pool but was reasoning-evaluated instead of criteria-grounded.
 
-2. **Test the specialist naming constraint independently.** Add "use the diagnosis name from the candidate list verbatim, no clarifying parentheticals" to the specialist system prompt. Re-run a regressed case. This is complementary to (1) — closing the gap from both sides — and the prompt change is the cheaper test.
+2. **Test the specialist naming constraint independently.** Add "use the diagnosis name from the candidate list verbatim, no clarifying parentheticals" to the specialist system prompt. Reduces verbosity at source so dedup works.
 
-3. **Re-baseline current OAI/CL on a fresh uniform N=50 cohort.** All comparison going forward needs to be against today's foundation models, not the v5-era ones. Independent of the matcher fix.
+3. **Add KB-canonical-name dedup at the evaluator's input stage.** Multiple specialists naming the same KB disease in different verbose ways should be merged before classifyHypotheses runs. Closes the duplicate-in-top-10 failure mode (ADTKD-MUC1 ×2 in v13).
 
-4. **Re-run the v13 replay after (1) and (2) ship.** If SL recovers toward 22-24/26 on the same 26 ppkt_ids, the matcher-drift hypothesis is fully validated and we're back at "best v5-equivalent." If SL stays near 18/26 even with the matcher fix, the o3 sibling-confusion mechanism is independent and the family-cluster / two-pass synth interventions become next priority.
+4. **Re-baseline current OAI/CL on a fresh uniform N=50 cohort.** All comparison going forward needs to be against today's foundation models, not the v5-era ones. Independent of the label fix.
 
-5. **Decide explicitly whether SecondLook's value proposition is Top-1 accuracy or something else.** If the former, the matcher fix is the load-bearing intervention before any v13 architecture change. If the latter, write down what the actual value is and measure that instead.
+5. **Re-run the v13 replay after (1), (2), (3) ship.** If SL recovers toward 22-24/26 on the same 26 ppkt_ids, the label-drift mechanism is fully validated and we're back at "best v5-equivalent." If SL stays near 18/26 even with the deterministic label, there's an additional o3 ranking-quality drift downstream of evaluation, and the family-cluster / two-pass synth interventions become next priority.
+
+6. **Decide explicitly whether SecondLook's value proposition is Top-1 accuracy or something else.** The KB-grounded criteria checking is what differentiates SL from single-shot LLM diagnosis. Maximizing criteria-grounded coverage (when the disease is in the KB) is exactly where the architectural advantage lives. The (1)+(2)+(3) interventions all serve that goal. If the data after these fixes still doesn't show SL beating current baselines, the value proposition needs to be rewritten — likely toward explainability + auditable evidence trails + multi-specialist disagreement surfacing rather than raw Top-1 accuracy.
 
 ---
 

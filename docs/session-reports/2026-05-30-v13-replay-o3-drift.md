@@ -19,9 +19,11 @@ The v5 result is not reproducible on the same cohort. On the 26 cases where SL h
 
 **On a cohort hand-selected to favor SL, OAI now beats SL by 8 pp and Claude beats SL by ~11 pp on graded.** This inverts v5's headline finding.
 
-**Cause: OpenAI's o3 model drifted between v5 (2026-05-28) and the replay (2026-05-30).** The code that calls o3 is the same; o3's behavior changed under us. The drift makes o3 more confident in its top picks across the board — which helps single-shot baselines but actively hurts SL's KB-grounded pipeline because SL has to disambiguate among KB-retrieved siblings and the new o3 is more confidently wrong on sibling picks.
+**Cause (revised after deeper investigation): a specific mechanism, not a generic "o3 drift."** OpenAI's o3 has shifted toward producing more verbose / variant diagnosis names ("Neurofibromatosis Type 1 (NF1, von Recklinghausen disease)" rather than v5's cleaner "Neurofibromatosis Type 1 (NF1)"). The verbose names defeat the KB name matcher's strict-match logic, causing diseases that v5 evaluated against structured KB criteria to fall through to clinical-reasoning evaluation in v13. With no criteria-grounded evidence to anchor the synth, the new more-confident o3 gestalt picks the wrong sibling on close-call cases.
 
-This rules out a code-side fix to "get back to v5." It also reframes the v13 architectural plan (Claude critic + reconciler), which assumed v12's ranking was the problem to solve — when the actual problem is sibling disambiguation in the synth/specialist stages.
+On the NF1 case (where SL still hit #1): **v5 had 5 of 10 top entries criteria-grounded against KB criteria; v13 had 0 of 10.** Same disease, same case, same code. The KB grounding evaporated entirely because the specialists named NF1 with parenthetical clarifications the KB matcher rejected.
+
+This narrows the bottleneck precisely. The fix is code-side after all — but in **KB name matching robustness**, not in reverting v5→v12 changes. The v13 architectural plan (Claude critic + reconciler) was still targeting the wrong layer; the actual repair point is one layer earlier, in the evaluator's KB-profile lookup.
 
 ---
 
@@ -114,6 +116,48 @@ The score-inflation pattern (every top-1 +5 to +37 points) cannot be explained b
 
 ---
 
+## The smoking gun: KB name matcher breakdown
+
+Pulling the full v5 vs v13 differential lists for the same case lets us see exactly *what kind* of evidence the synth was working from.
+
+### NF1 (PMID_29290338_Family_UG, SL held #1 in both versions)
+
+| | v5 top 10 | v13 top 10 |
+|---|---|---|
+| Top-1 | NF1, score **60**, **criteria-grounded**, src: immunologist + neurologist | NF1, score **90**, **reasoning-evaluated**, src: gastroenterologist + endocrinologist |
+| Criteria-grounded entries | **5 of 10** | **0 of 10** |
+| Distinct specialists picking NF1 in top-5 | 2 | **5** |
+| Naming examples (v13) | — | "(NF1, von Recklinghausen disease)", "(von Recklinghausen disease)", "Neurofibromatosis Type 1", "(NF1)", "(possible segmental or oligosymptomatic form)" |
+
+**The KB grounding disappeared.** Same disease, same KB profile present in `lib/knowledge/diseases/`, same code path. v5 evaluated 5 of the top 10 against structured KB criteria; v13 evaluated zero. The synth still landed NF1 at #1 because the clinical gestalt is overwhelming on this case — but it did so without any of the structured evidence v5 had.
+
+### ADTKD-1 (PMID_14569098_F9_individual_1, SL #1 → #8)
+
+| | v5 top 10 | v13 top 10 |
+|---|---|---|
+| Top-1 | ADTKD-MUC1, score 28, reasoning-evaluated | Fabry Disease, score 42, **criteria-grounded** |
+| Correct disease rank | #1 (single entry) | #8 AND #9 (duplicated with naming variants: "ADTKD, MUC1-related (ADTKD-MUC1)" and "ADTKD due to MUC1 (ADTKD-MUC1)") |
+| Criteria-grounded entries | 2 of 10 (FAN1, Alport) | 3 of 10 (Fabry, AApoA-IV, one of the ADTKD-MUC1 duplicates) |
+| Score spread | 28 → 3 | 42 → 25 |
+
+On ADTKD-1, the correct disease *did* get criteria-grounded (one of the two ADTKD-MUC1 duplicates was matched). But Fabry, NPHP1, FAN1, AApoA-IV, MPGN, and IgG4-TIN all also competed at scores ≥30, and the synth's gestalt picked Fabry.
+
+### The mechanism explained
+
+1. **o3-era 2026-05-30 specialists produce more verbose / variant diagnosis names** than o3-era 2026-05-28 specialists did. Specifically, they append parenthetical synonyms, gene/clinical variants, and clarifying notes ("(NF1, von Recklinghausen disease)", "(possible segmental or oligosymptomatic form)", "Combined Oxidative Phosphorylation Defect Type 11 (FBXL...)") instead of using the canonical KB-profile name.
+
+2. **The KB name matcher** (the logic that decides whether a specialist hypothesis matches a KB profile and therefore gets evaluated against structured criteria) is too strict for these verbose names. A hypothesis named "Neurofibromatosis Type 1 (von Recklinghausen disease)" fails to match the KB entry keyed under "Neurofibromatosis Type 1 (NF1)", and the evaluator falls back to `evaluationType: 'reasoning-evaluated'` with no criteria-fulfillment data attached.
+
+3. **The synth, given few or no criteria-grounded entries, has no structured evidence to anchor its probability assignments.** It defaults to clinical-gestalt probability — and the new more-confident o3 produces higher scores across the board.
+
+4. **On classic cases (NF1, Marfan)**, the gestalt agrees with the right answer anyway. Multiple specialists pick the same disease. The synth ranks it #1 even without criteria. Score inflated but #1 preserved.
+
+5. **On close-call sibling cases (ADTKD-1, Mito 13, DEE4, Lafora 2)**, the gestalt can't break the tie without criteria evidence. The new o3 picks the wrong sibling confidently. The correct disease is still in the top-10, just outranked.
+
+This explains every observed pattern: the score inflation on held cases, the regression on close-call cases, the duplicates, the systematic move from criteria-grounded to reasoning-evaluated, and the wrong-sibling failure mode.
+
+---
+
 ## Why this hurts SL but helps OAI baseline
 
 **The OAI single-shot baseline** is one o3 call with the patient case → produces 10 ranked diagnoses from training memory. It names them generically ("Neurofibromatosis Type 1"). The grader matches loosely. The "more confident" drift mostly helps it because there's no KB candidate pool to disambiguate from — o3 just picks the most-famous member of the disease family it recognized.
@@ -144,11 +188,13 @@ The v13 plan (Claude opus-4-7 as adversarial critic on synth output) was based o
    - The synth's prompt allows the LLM to override criteria evidence with priors
    - There is no architectural step that explicitly disambiguates between siblings using KB criteria (vs LLM priors)
 
-4. **Plausible alternative interventions** (not yet validated):
-   - **Family-cluster collapse pre-synth**: detect KB siblings in the candidate pool, present them to synth as a single cluster with the question "if it's in this family, which member?" rather than as parallel candidates
-   - **Two-pass synth**: first pick the disease family; then pick the subtype using only that family's KB criteria
-   - **Criteria-override constraint in synth prompt**: require the synth to explicitly cite contradicting criteria evidence when ranking a non-leading sibling above a criteria-supported one
-   - **Pin OAI checkpoint**: if a versioned `o3-2026-05-15` API is available, lock the SL pipeline to it (would address symptom; not root cause)
+4. **Plausible interventions, ranked by expected impact and evidence:**
+   - **[Highest priority] KB name matcher robustness.** Loosen the evaluator's matching to tolerate parenthetical variations and gene/synonym clarifications. Most concretely: strip parentheticals before matching; or add explicit alias lists on KB profiles; or use embeddings-based similarity with a tight threshold instead of strict-string matching. The NF1 case shows the matcher dropped from 5/10 criteria-grounded to 0/10 due purely to naming verbosity. Restoring criteria-grounded coverage is the single highest-leverage fix the data identifies.
+   - **Specialist naming constraint.** Add an explicit instruction in the specialist system prompt: "use the diagnosis name from your candidate list verbatim, with no clarifying parentheticals or synonyms." Complementary to the matcher fix — narrows the input distribution rather than widening the matcher.
+   - **Family-cluster collapse pre-synth.** Detect KB siblings in the candidate pool, present them to synth as a single cluster with the question "if it's in this family, which member?" rather than as parallel candidates. Useful after the matcher fix to ensure structured evidence reaches the synth even when siblings compete.
+   - **Two-pass synth.** First pick the disease family; then pick the subtype using only that family's KB criteria. Heavier intervention but most architecturally aligned with the failure mode.
+   - **Criteria-override constraint in synth prompt.** Require the synth to explicitly cite contradicting criteria evidence when ranking a non-leading sibling above a criteria-supported one. Cheap to try; uncertain effect because the synth currently has nothing to cite if matcher fails.
+   - **Pin OAI checkpoint.** If a versioned `o3-2026-05-15` API is available, lock the SL pipeline to it. Addresses symptom not root cause; risky long-term because checkpoint pinning blocks security/perf updates and the underlying matcher fragility remains.
 
 5. **For honest evaluation of any future architecture change**: stop using v5 numbers as the bar. v5's o3 doesn't exist on the API any more. Re-baseline against current single-shot OAI and CL. The success criterion has to be "beats current baselines on the same cohort," not "matches v5."
 
@@ -173,13 +219,15 @@ These are differentiators worth testing on their own merits, but they are not wh
 
 ## What needs to happen before any v13 commit
 
-1. **Run the family-cluster collapse experiment** against the 6 regressed cases. If pre-synth sibling consolidation lifts SL Top-1 back toward v5 levels, that's the actual fix to ship — and the v13 critic step becomes either unnecessary or a smaller polish on top.
+1. **[Confirmed by NF1 evidence — do this first] Investigate and fix the KB name matcher.** Pull the actual matcher implementation (whichever function turns specialist hypothesis names into KB profile lookups in `lib/agents/evidence-evaluator.ts` and/or its helpers). Add coverage for parenthetical-stripping and synonym matching. Re-run a few of the 6 regressed cases — if criteria-grounded counts rise from 0/10 toward 5/10 (NF1-case-like), the fix is confirmed. Expected impact: recovers most of the v5-vs-v13 SL gap on these cases.
 
-2. **Verify the o3-drift hypothesis with one held-stable case.** Pull the synth-input hypothesis list (intermediate stage data) for a v5 vs v13 NF1 case where SL still hit #1. If the input hypotheses are similar but the synth's probability scores rose +20 across the board, the "model drift, not code drift" claim is confirmed beyond reasonable doubt.
+2. **Test the specialist naming constraint independently.** Add "use the diagnosis name from the candidate list verbatim, no clarifying parentheticals" to the specialist system prompt. Re-run a regressed case. This is complementary to (1) — closing the gap from both sides — and the prompt change is the cheaper test.
 
-3. **Re-baseline current OAI/CL on a fresh uniform N=50 cohort.** All comparison going forward needs to be against today's foundation models, not the v5-era ones.
+3. **Re-baseline current OAI/CL on a fresh uniform N=50 cohort.** All comparison going forward needs to be against today's foundation models, not the v5-era ones. Independent of the matcher fix.
 
-4. **Decide explicitly whether SecondLook's value proposition is Top-1 accuracy or something else.** If the former, the current architecture isn't winning; either fix sibling disambiguation or change the bar. If the latter, write down what the actual value is and measure that instead.
+4. **Re-run the v13 replay after (1) and (2) ship.** If SL recovers toward 22-24/26 on the same 26 ppkt_ids, the matcher-drift hypothesis is fully validated and we're back at "best v5-equivalent." If SL stays near 18/26 even with the matcher fix, the o3 sibling-confusion mechanism is independent and the family-cluster / two-pass synth interventions become next priority.
+
+5. **Decide explicitly whether SecondLook's value proposition is Top-1 accuracy or something else.** If the former, the matcher fix is the load-bearing intervention before any v13 architecture change. If the latter, write down what the actual value is and measure that instead.
 
 ---
 

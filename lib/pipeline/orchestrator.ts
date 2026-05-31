@@ -745,7 +745,25 @@ export class DiagnosticPipeline {
             reasoningEvaluatedCount: reportResult.hypotheses.filter((h) => !h.knowledgeBaseMatch).length,
             disclaimer: `This analysis was evaluated against a knowledge base of ${getDiseaseCount()} profiled rare diseases. Diagnoses marked as "reasoning-evaluated" were assessed using specialist clinical knowledge rather than structured diagnostic criteria from our database.`,
           },
-        },
+          // v15: surface the reconciliation outcome so per-case analysis can
+          // tell how often the two synths agreed at round 1, how often they
+          // converged after information exchange, and how often they hit
+          // persistent disagreement (criteria-fulfillment tiebreak).
+          reconciliation: (synthesisResult as any).reconciliation
+            ? {
+                confidence: (synthesisResult as any).reconciliation.confidence,
+                roundsRun: (synthesisResult as any).reconciliation.reconciliationData.roundsRun,
+                initialAgreement: (synthesisResult as any).reconciliation.reconciliationData.initialAgreement,
+                finalAgreement: (synthesisResult as any).reconciliation.reconciliationData.finalAgreement,
+                o3InitialTop1: (synthesisResult as any).reconciliation.reconciliationData.o3InitialTop1,
+                claudeInitialTop1: (synthesisResult as any).reconciliation.reconciliationData.claudeInitialTop1,
+                finalTop1: (synthesisResult as any).reconciliation.reconciliationData.finalTop1,
+                finalTop1Source: (synthesisResult as any).reconciliation.reconciliationData.finalTop1Source,
+                tokensUsed: (synthesisResult as any).reconciliation.reconciliationData.tokensUsed,
+                durationMs: (synthesisResult as any).reconciliation.reconciliationData.durationMs,
+              }
+            : undefined,
+        } as any,
       };
 
       log("orch.done", { totalDur: elapsed(), stages: stages.length });

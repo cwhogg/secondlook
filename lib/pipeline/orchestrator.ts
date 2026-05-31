@@ -2,6 +2,7 @@ import { PatientCase, AnalysisResult, StageResult, FamilyEnrichment } from '../t
 import { TriageAgent } from '../agents/triage-agent';
 import { CandidateGeneratorAgent } from '../agents/candidate-generator';
 import { getSpecialistAgent } from '../agents/specialist-agents';
+import { getSpecialistAnnotator, type SpecialistAnnotation, type AnnotationCandidate } from '../agents/specialist-annotator';
 import { rerankCandidatesForSpecialty } from '../agents/specialty-reference/kb-rerank';
 import { EvidenceEvaluator } from '../agents/evidence-evaluator';
 import { SynthesisAgent } from '../agents/synthesizer';
@@ -239,36 +240,55 @@ export class DiagnosticPipeline {
 
       this.checkBudget();
 
-      // ===== STAGE 2: SPECIALIST CONSULTATION (PARALLEL) =====
-      log("orch.stage.specialists.start", { count: triageResult.relevantSpecialties.length });
+      // ===== STAGE 2 (v16 architecture): SPECIALIST ANNOTATION =====
+      // v16 architectural change: specialists are no longer the source of
+      // hypothesis generation. The hypothesis pool is the union of triage's
+      // KB retrieval and the candidate-generator's broad LLM differential.
+      // Each candidate is annotated by the top 5 most-relevant specialists
+      // (per triage's ranking) plus the geneticist + general-internist when
+      // not already in the top 5 — so we always have the genetic perspective
+      // and the cross-specialty counterweight.
+      //
+      // Each specialist sees ALL union candidates and provides per-candidate:
+      //   - diagnosticTests, cardinalFeatures, ruleOutFeatures
+      //   - supportingEvidence / contradictoryEvidence mapped to patient findings
+      //   - clinicalReasoning, domainConfidence
+      // Multiple specialists' annotations per candidate are merged into one
+      // DiagnosisHypothesis object before the evidence evaluator runs.
+      //
+      // Cost: ~5-7 LLM calls (down from 11), each producing more structured
+      // output. The hypothesis pool size stays the same as the union (~30-80).
+      const topSpecialists = (() => {
+        const ranked = [...triageResult.relevantSpecialties];
+        const top = ranked.slice(0, 5);
+        // Always include geneticist and general-internist
+        if (!top.includes('geneticist' as any)) top.push('geneticist' as any);
+        if (!top.includes('general-internist' as any)) top.push('general-internist' as any);
+        return top;
+      })();
+      log("orch.stage.specialists.start", { count: topSpecialists.length, mode: 'annotation' });
       onProgress?.({
         stage: 'specialists',
         stageNumber: 2,
         totalStages: 6,
-        detail: `Consulting ${triageResult.relevantSpecialties.length} specialist agents in parallel`,
+        detail: `${topSpecialists.length} specialists annotating ${triageResult.candidateDiseases.length} candidate diagnoses`,
         percentage: 20,
-        data: { specialties: triageResult.relevantSpecialties },
+        data: { specialties: topSpecialists },
       });
 
-      // Each specialist gets its own bounded promise. 120s comfortably
-      // covers the observed distribution — across 616 specialist calls
-      // we've persisted, the longest was 84.7s (v7 at o3:high) and p99
-      // was 81.9s. 120s = ~1.4x max-ever-observed; expected real-
-      // reasoning kill rate is 0%. The threshold's job is to distinguish
-      // "almost done" from "never coming back" (hung OpenAI request,
-      // network drop, mid-stream 5xx), not to bound legitimate reasoning.
-      // One stuck specialist never deadlocks the pipeline; below
-      // recovers gracefully when 1-2 fail and remaining hypotheses still
-      // feed evidence-eval and synth.
-      const SPECIALIST_TIMEOUT_MS = 120_000;
-      const specialistPromises = triageResult.relevantSpecialties.map(async (specialty) => {
+      // Build annotation candidates from the union pool. Each candidate carries
+      // its KB profile (if any) so the specialist can leverage the structured
+      // criteria + cardinal features + discriminators.
+      const annotationCandidates: AnnotationCandidate[] = triageResult.candidateDiseases.map((dm) => ({
+        diagnosis: dm.disease.name,
+        kbProfile: dm.disease,
+      }));
+
+      const SPECIALIST_TIMEOUT_MS = 180_000; // annotators are slower than generators because they output more structured per-candidate data
+      const specialistPromises = topSpecialists.map(async (specialty) => {
         const specStart = Date.now();
-        log("orch.specialist.start", { specialty });
-        const agent = getSpecialistAgent(specialty);
-        const diseases = rerankCandidatesForSpecialty(
-          triageResult.candidateDiseases,
-          specialty,
-        );
+        log("orch.specialist.start", { specialty, mode: 'annotation' });
+        const annotator = getSpecialistAnnotator(specialty);
         let timeoutHandle: ReturnType<typeof setTimeout> | null = null;
         const timeoutPromise = new Promise<never>((_, reject) => {
           timeoutHandle = setTimeout(
@@ -278,18 +298,18 @@ export class DiagnosticPipeline {
         });
         try {
           const result = await Promise.race([
-            agent.execute({ patientCase, candidateDiseases: diseases }),
+            annotator.annotate(patientCase, annotationCandidates),
             timeoutPromise,
           ]);
           const dur = Date.now() - specStart;
-          log("orch.specialist.done", { specialty, dur, hyp: result.hypotheses.length, tokens: result.tokensUsed });
+          log("orch.specialist.done", { specialty, dur, annotations: result.annotations.length, tokens: result.tokensUsed });
           onProgress?.({
             stage: 'specialist-done',
             stageNumber: 2,
             totalStages: 6,
-            detail: `${specialty} completed in ${(dur / 1000).toFixed(1)}s with ${result.hypotheses.length} hypotheses`,
+            detail: `${specialty} annotated ${result.annotations.length} candidates in ${(dur / 1000).toFixed(1)}s`,
             percentage: 30,
-            data: { specialty, durationMs: dur, hypothesisCount: result.hypotheses.length },
+            data: { specialty, durationMs: dur, hypothesisCount: result.annotations.length },
           });
           return { ok: true as const, specialty, result };
         } catch (err: any) {
@@ -311,30 +331,144 @@ export class DiagnosticPipeline {
       });
 
       const settledResults = await Promise.all(specialistPromises);
-      const specialistResults = settledResults
+      const annotatorResults = settledResults
         .filter((r): r is Extract<typeof r, { ok: true }> => r.ok)
         .map((r) => r.result);
       const failedSpecialists = settledResults
         .filter((r): r is Extract<typeof r, { ok: false }> => !r.ok)
         .map((r) => ({ specialty: r.specialty, error: r.error }));
-      log("orch.stage.specialists.done", { completed: specialistResults.length, failed: failedSpecialists.length, failedList: failedSpecialists.map((f) => f.specialty) });
+      log("orch.stage.specialists.done", { completed: annotatorResults.length, failed: failedSpecialists.length, failedList: failedSpecialists.map((f) => f.specialty) });
 
-      if (specialistResults.length === 0) {
-        throw new Error(`All ${triageResult.relevantSpecialties.length} specialists failed; cannot proceed.`);
+      if (annotatorResults.length === 0) {
+        throw new Error(`All ${topSpecialists.length} specialist annotators failed; cannot proceed.`);
       }
 
-      for (const sr of specialistResults) {
-        this.budgetTracker.addUsage(sr.model, sr.tokensUsed);
+      // Merge per-candidate annotations into DiagnosisHypothesis objects.
+      // Each candidate from the union pool becomes one hypothesis. Multiple
+      // specialists' annotations for the same candidate are merged: evidence
+      // arrays are concatenated and deduped by finding, scores averaged.
+      const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const annotationsByDx = new Map<string, Array<{ specialty: string; ann: SpecialistAnnotation }>>();
+      for (const ar of annotatorResults) {
+        for (const ann of ar.annotations) {
+          const key = normalize(ann.candidateDiagnosis);
+          if (!key) continue;
+          if (!annotationsByDx.has(key)) annotationsByDx.set(key, []);
+          annotationsByDx.get(key)!.push({ specialty: ar.specialistType, ann });
+        }
+      }
+
+      const mergedHypotheses = annotationCandidates.map((c) => {
+        const key = normalize(c.diagnosis);
+        const anns = annotationsByDx.get(key) || [];
+        // Dedup helpers
+        const dedupEvidence = (arr: Array<{ finding: string; patientSymptom: string; strength: string }>) => {
+          const seen = new Set<string>();
+          const out: any[] = [];
+          for (const e of arr) {
+            const k = (e.finding + '|' + e.patientSymptom).toLowerCase();
+            if (seen.has(k)) continue;
+            seen.add(k);
+            out.push(e);
+          }
+          return out;
+        };
+        const dedupString = (arr: string[]) => {
+          const seen = new Set<string>();
+          const out: string[] = [];
+          for (const s of arr) {
+            const k = s.toLowerCase().trim();
+            if (!k || seen.has(k)) continue;
+            seen.add(k);
+            out.push(s);
+          }
+          return out;
+        };
+
+        const allSupporting = dedupEvidence(anns.flatMap((a) => a.ann.supportingEvidence || []));
+        const allContradictory = dedupEvidence(anns.flatMap((a) => a.ann.contradictoryEvidence || []));
+        const allTests = dedupString(anns.flatMap((a) => a.ann.diagnosticTests || []));
+        const allCardinal = dedupString(anns.flatMap((a) => a.ann.cardinalFeatures || []));
+        const allRuleOut = dedupString(anns.flatMap((a) => a.ann.ruleOutFeatures || []));
+        const reasoningCombined = anns.map((a) => `[${a.specialty}] ${a.ann.clinicalReasoning}`).join('\n');
+        const avgConfidence = anns.length > 0
+          ? anns.reduce((s, a) => s + (a.ann.domainConfidence || 0), 0) / anns.length
+          : 0;
+        const maxConfidence = anns.length > 0
+          ? Math.max(...anns.map((a) => a.ann.domainConfidence || 0))
+          : 0;
+
+        const hyp = {
+          diagnosis: c.diagnosis,
+          icd10Code: c.kbProfile?.icd10Codes?.[0],
+          confidenceScore: Math.round((avgConfidence + maxConfidence) / 2), // blend avg + max
+          evidenceScore: 0,
+          rareDisease: c.kbProfile?.prevalence?.classification !== 'common',
+          prevalence: c.kbProfile?.prevalence?.estimate,
+          supportingEvidence: allSupporting.map((e) => ({ ...e, type: 'supporting' as const })),
+          contradictoryEvidence: allContradictory.map((e) => ({ ...e, type: 'contradictory' as const })),
+          clinicalReasoning: reasoningCombined,
+          typicalPresentation: c.kbProfile?.symptoms?.pathognomonic?.slice(0, 5).map((s: any) => s.symptomName).join('; ') || '',
+          specialistRequired: c.kbProfile?.specialistType?.[0] || (anns[0]?.specialty || ''),
+          diagnosticCriteria: {
+            criteriaName: c.kbProfile?.diagnosticCriteria?.formalCriteriaName || 'Clinical assessment',
+            totalCriteria: 0,
+            metCriteria: 0,
+            criteriaDetails: [],
+            fulfillmentPercentage: 0,
+          },
+          sourceAgent: 'union-pool-annotated',
+          evaluationType: 'reasoning-evaluated' as const,
+          knowledgeBaseMatch: !!c.kbProfile,
+          // v16 annotation-specific fields. Persisted on the hypothesis so the
+          // deep-dive HTML can render the testing/workup data per candidate.
+          // These don't break v15 consumers — they just become available
+          // alongside the existing structure.
+          annotations: anns.map((a) => ({
+            specialty: a.specialty,
+            domainConfidence: a.ann.domainConfidence,
+            diagnosticTests: a.ann.diagnosticTests,
+            cardinalFeatures: a.ann.cardinalFeatures,
+            ruleOutFeatures: a.ann.ruleOutFeatures,
+            clinicalReasoning: a.ann.clinicalReasoning,
+          })),
+          aggregatedTests: allTests,
+          aggregatedCardinal: allCardinal,
+          aggregatedRuleOut: allRuleOut,
+        };
+        return hyp as any;
+      });
+
+      // Wrap merged hypotheses in a single synthetic "specialistResult" so the
+      // evidence evaluator's existing input shape doesn't need to change.
+      const specialistResults = [
+        {
+          agentName: 'v16-union-annotated',
+          hypotheses: mergedHypotheses,
+          reasoning: `${mergedHypotheses.length} candidates annotated by ${annotatorResults.length} specialists (${annotatorResults.map((r) => r.specialistType).join(', ')})`,
+          confidence: 0,
+          tokensUsed: annotatorResults.reduce((s, r) => s + r.tokensUsed, 0),
+          durationMs: Math.max(...annotatorResults.map((r) => r.durationMs)),
+          model: 'o3 (annotation)',
+        },
+      ];
+
+      for (const ar of annotatorResults) {
+        this.budgetTracker.addUsage(ar.model, ar.tokensUsed);
         stages.push({
-          stageName: 'specialist',
-          durationMs: sr.durationMs,
-          tokensUsed: sr.tokensUsed,
-          model: sr.model,
-          agentName: sr.agentName,
-          inputSummary: `Patient case + candidate diseases`,
-          outputSummary: `${sr.hypotheses.length} hypotheses: ${sr.hypotheses.map((h) => h.diagnosis).join(', ')}`,
-        });
+          stageName: 'specialist-annotation',
+          durationMs: ar.durationMs,
+          tokensUsed: ar.tokensUsed,
+          model: ar.model,
+          agentName: ar.agentName,
+          inputSummary: `${annotationCandidates.length} candidate diagnoses + patient case`,
+          outputSummary: `${ar.annotations.length} per-candidate annotations`,
+        } as any);
       }
+
+      // (Specialist-annotation stages already pushed above; no legacy
+      // 'specialist' stage records for v16 — the annotation entries are the
+      // source of truth.)
       // Record any specialist failures as zero-duration stages too so the
       // pipelineMetadata trail shows them in post-mortem analysis even
       // though they did not contribute hypotheses.
@@ -356,7 +490,7 @@ export class DiagnosticPipeline {
         stage: 'specialists-complete',
         stageNumber: 2,
         totalStages: 6,
-        detail: `${specialistResults.reduce((sum, sr) => sum + sr.hypotheses.length, 0)} hypotheses generated from ${specialistResults.length} of ${triageResult.relevantSpecialties.length} specialists` + (failedSpecialists.length > 0 ? ` (${failedSpecialists.length} failed: ${failedSpecialists.map((f) => f.specialty).join(", ")})` : ""),
+        detail: `${specialistResults.reduce((sum, sr) => sum + sr.hypotheses.length, 0)} candidate hypotheses annotated by ${annotatorResults.length} of ${topSpecialists.length} specialists` + (failedSpecialists.length > 0 ? ` (${failedSpecialists.length} failed: ${failedSpecialists.map((f) => f.specialty).join(", ")})` : ""),
         percentage: 50,
         data: {
           results: specialistResults.map((sr) => ({

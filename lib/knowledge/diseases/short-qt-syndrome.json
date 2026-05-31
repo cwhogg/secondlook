@@ -217,5 +217,31 @@
     "Priori SG, Wilde AA, Horie M, et al. HRS/EHRA/APHRS expert consensus statement on the diagnosis and management of patients with inherited primary arrhythmia syndromes. Heart Rhythm. 2013;10(12):1932-1963.",
     "Brugada R, Hong K, Dumaine R, et al. Sudden death associated with short-QT syndrome linked to mutations in HERG. Circulation. 2004;109(7): 830-835."
   ],
-  "confidenceInData": "medium"
+  "confidenceInData": "medium",
+  "commonPitfalls": [
+    "Often overlooked on ECG due to subtle QT shortening, especially if not measured precisely.",
+    "Misattributed to electrolyte disturbances (e.g., hypercalcemia) rather than recognizing congenital etiology.",
+    "Symptoms such as syncope or palpitations may be attributed to vasovagal or anxiety disorders.",
+    "Family history of sudden cardiac death may not be elicited or linked to the arrhythmia."
+  ],
+  "extendedDiscriminators": [
+    {
+      "vsCondition": "Long QT Syndrome",
+      "feature": "QT interval is abnormally short (QTc < 340 ms) in Short QT Syndrome, whereas it is prolonged in Long QT Syndrome."
+    },
+    {
+      "vsCondition": "Brugada Syndrome",
+      "feature": "Short QT Syndrome lacks the characteristic coved-type ST-segment elevation in V1-V3 seen in Brugada Syndrome; instead, it shows a persistently short QT interval."
+    },
+    {
+      "vsCondition": "Hypercalcemia-induced short QT",
+      "feature": "Short QT Syndrome is familial and persistent, whereas hypercalcemia-induced short QT resolves with correction of calcium levels."
+    }
+  ],
+  "ruleOutCriteria": [
+    "QTc interval consistently within normal or prolonged range on serial ECGs.",
+    "Presence of reversible causes of short QT interval (e.g., hypercalcemia, hyperkalemia, acidosis) without persistent QT shortening after correction.",
+    "No personal or family history of arrhythmia, syncope, or sudden cardiac death."
+  ],
+  "cohortEnrichedAt": "2026-05-31T07:01:17.870Z"
 }

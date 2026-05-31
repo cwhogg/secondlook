@@ -101,6 +101,53 @@ export interface TestGrading {
   gradingVersion?: 'v1' | 'v2';
 }
 
+// ===== TIERED GRADING (v3) =====
+//
+// Tiered grader produced by Claude opus-4-7 reasoning:high. Replaces the v1/v2
+// fuzzy LLM matching with a deterministic 5-tier rubric. Persists per-entry
+// tier + reasoning so the headline "Top-1" definition can be changed at
+// presentation time without re-grading.
+//
+// Headline policy (set 2026-05-31): Top-1 = EXACT or VARIANT. FAMILY is
+// persisted for analysis but doesn't count toward Top-1.
+
+export type GraderTier = 'EXACT' | 'VARIANT' | 'FAMILY' | 'SIBLING' | 'UNRELATED';
+
+export interface TieredEntry {
+  position: number;          // 1-based position in engine's ranked list (1-10)
+  engineOutput: string;      // the diagnosis string the engine produced
+  tier: GraderTier;
+  reasoning: string;         // grader's per-entry justification
+}
+
+export interface TieredGrading {
+  gradingVersion: 'v3';
+
+  // Per-entry tier assignments — full audit trail. The source of truth from
+  // which the rank-at-tier summaries below are computed.
+  entries: TieredEntry[];
+
+  // Precomputed per-tier ranks. Monotonic by construction:
+  // rankAtExact >= rankAtVariant >= rankAtFamily >= rankAtAny (where defined).
+  // null = no match at that tier or stricter anywhere in top-10.
+  rankAtExact: number | null;     // first EXACT match position
+  rankAtVariant: number | null;   // first EXACT or VARIANT
+  rankAtFamily: number | null;    // first EXACT, VARIANT, or FAMILY
+  rankAtAny: number | null;       // first non-UNRELATED match
+
+  // Headline derived field for reporting convenience. True when the engine's
+  // top-1 entry was EXACT or VARIANT — the "Top-1 (clinical)" definition.
+  isTop1: boolean;
+
+  // Grader audit
+  gradingModel: string;       // "claude-opus-4-7"
+  gradingDurationMs: number;
+  gradingTokensUsed: number;
+  graderConfidence?: 'high' | 'medium' | 'low';
+  graderNotes?: string;       // any overall notes from grader
+  gradedAt: string;           // ISO timestamp
+}
+
 // ===== API METADATA =====
 
 export interface GenerationMetadata {
@@ -233,6 +280,7 @@ export interface TestCase {
     data?: any;
   }>;
   grading?: TestGrading;
+  tieredGrading?: TieredGrading;
   gradingMetadata?: GenerationMetadata;
   previousRun?: PreviousRunSnapshot;
 }

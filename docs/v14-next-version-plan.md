@@ -1,6 +1,20 @@
 # SecondLook v14 Plan — Restore Criteria-Grounded Coverage + Maximize Per-Hypothesis Data
 
-**Status:** Planning. Not started.
+**STATUS: SUPERSEDED by `docs/v15-experiment-plan.md`** (2026-05-30).
+
+v14 Tier 1A (deterministic `isKbMatch`) is incorporated as v15 step 1. v14
+Tier 2 ideas were superseded by a broader architectural direction in v15:
+union candidate pool + parallel cross-provider synthesis + structured
+iterative reconciliation. See the v15 plan for the committed approach and
+the reasoning that drove the shift from surgical-fix to architectural-bet.
+
+This file is preserved for the reasoning it contains about per-hypothesis
+data enrichment, which remains relevant for any future Tier 2 work after v15
+ships.
+
+---
+
+**Original status:** Planning. Not started.
 **Anchored to:** `docs/session-reports/2026-05-30-v13-replay-o3-drift.md`
 **Strategic premise:** SL's structural advantage over single-shot foundation models is the volume and quality of structured, per-hypothesis information we put in front of the high-reasoning synthesizer. v14 closes the v13 regression and then deliberately expands that information set.
 

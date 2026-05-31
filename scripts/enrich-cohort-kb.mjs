@@ -153,8 +153,24 @@ if (ONLY) {
   console.log(`\nFiltering to --only "${ONLY}"`);
 }
 
-const targets = matched.filter((r) => !ONLY || norm(r.profileName).includes(norm(ONLY)) || norm(r.cohortName).includes(norm(ONLY)));
-console.log(`\nWill enrich ${targets.length} profile(s) ${DRY_RUN ? '(dry-run)' : ''}`);
+// Skip profiles already enriched in a prior run (cohortEnrichedAt present)
+// so re-running after the alias-addition step only touches the newly-mapped
+// profiles. Pass --force to re-enrich everything.
+const FORCE = process.argv.includes('--force');
+let prefilter = matched.filter((r) => !ONLY || norm(r.profileName).includes(norm(ONLY)) || norm(r.cohortName).includes(norm(ONLY)));
+let skippedAlreadyEnriched = 0;
+if (!FORCE) {
+  prefilter = prefilter.filter((r) => {
+    const fp = JSON.parse(readFileSync(join(KB_DIR, r.file), 'utf-8'));
+    if (fp.cohortEnrichedAt) {
+      skippedAlreadyEnriched++;
+      return false;
+    }
+    return true;
+  });
+}
+const targets = prefilter;
+console.log(`\nWill enrich ${targets.length} profile(s)${skippedAlreadyEnriched ? ` (skipped ${skippedAlreadyEnriched} already enriched; pass --force to re-enrich)` : ''} ${DRY_RUN ? '(dry-run)' : ''}`);
 
 if (DRY_RUN) {
   console.log('\nDry run — no API calls made. Re-run without --dry-run to enrich.');

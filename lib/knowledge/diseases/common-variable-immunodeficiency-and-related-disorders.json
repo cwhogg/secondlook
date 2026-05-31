@@ -3,7 +3,9 @@
   "name": "Common Variable Immunodeficiency and Related Disorders",
   "aliases": [
     "CVID",
-    "Common Variable Immunodeficiency"
+    "Common Variable Immunodeficiency",
+    "Immunodeficiency, common variable, 13",
+    "Immunodeficiency, common variable, 15"
   ],
   "icd10Codes": [
     "D83"
@@ -312,5 +314,31 @@
     "Bonilla FA et al. Practice parameter for the diagnosis and management of primary immunodeficiency. J Allergy Clin Immunol. 2015",
     "Orange JS et al. Use and interpretation of diagnostic vaccination in primary immunodeficiency: a working group report of the AAAAI Primary Immunodeficiency Committee. J Allergy Clin Immunol. 2012"
   ],
-  "confidenceInData": "ai-generated"
+  "confidenceInData": "ai-generated",
+  "cohortAliasAddedAt": "2026-05-31T07:38:46.126Z",
+  "commonPitfalls": [
+    "Often misdiagnosed as recurrent viral or bacterial infections without consideration of underlying immunodeficiency.",
+    "Confused with secondary immunodeficiency due to similar hypogammaglobulinemia but different etiologies.",
+    "Delayed diagnosis because of variable age of onset and heterogeneous clinical presentation.",
+    "Misattributed to allergic or atopic disorders due to overlapping symptoms such as sinusitis and bronchitis."
+  ],
+  "extendedDiscriminators": [
+    {
+      "vsCondition": "x-linked-agammaglobulinemia",
+      "feature": "CVID typically presents with normal or near-normal B cell numbers, whereas XLA shows profoundly decreased or absent B cells."
+    },
+    {
+      "vsCondition": "selective-igg-subclass-deficiency",
+      "feature": "CVID is characterized by low total IgG and often low IgA and/or IgM, while selective IgG subclass deficiency has normal total IgG and other immunoglobulins."
+    },
+    {
+      "vsCondition": "secondary-immunodeficiency",
+      "feature": "CVID is a primary immunodeficiency with no identifiable external cause, whereas secondary immunodeficiency is due to factors such as medications, malignancy, or protein loss."
+    }
+  ],
+  "ruleOutCriteria": [
+    "Normal immunoglobulin levels (IgG, IgA, and IgM) for age.",
+    "Identifiable secondary cause of hypogammaglobulinemia (e.g., nephrotic syndrome, immunosuppressive therapy)."
+  ],
+  "cohortEnrichedAt": "2026-05-31T07:39:24.309Z"
 }

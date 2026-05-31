@@ -3,7 +3,8 @@
   "name": "Classic Congenital Adrenal Hyperplasia due to 21-Hydroxylase Deficiency",
   "aliases": [
     "21-Hydroxylase Deficiency CAH",
-    "Classic CAH"
+    "Classic CAH",
+    "Adrenal hyperplasia, congenital, due to 21-hydroxylase deficiency"
   ],
   "icd10Codes": [
     "E25.0"
@@ -557,5 +558,32 @@
     "White PC, Speiser PW. Congenital adrenal hyperplasia due to 21-hydroxylase deficiency. Endocr Rev. 2000.",
     "Orphanet: Classic congenital adrenal hyperplasia due to 21-hydroxylase deficiency. ORPHA:90794."
   ],
-  "confidenceInData": "medium"
+  "confidenceInData": "medium",
+  "cohortAliasAddedAt": "2026-05-31T07:38:46.117Z",
+  "commonPitfalls": [
+    "Frequently misdiagnosed as simple virilizing or nonclassic CAH due to overlapping androgen excess symptoms.",
+    "Salt-wasting crisis may be mistaken for sepsis or gastroenteritis in neonates.",
+    "Female infants with ambiguous genitalia may be misdiagnosed as having disorders of sexual development unrelated to CAH.",
+    "Delayed diagnosis in males due to lack of genital ambiguity; presents with adrenal crisis instead."
+  ],
+  "extendedDiscriminators": [
+    {
+      "vsCondition": "nonclassic-congenital-adrenal-hyperplasia",
+      "feature": "Classic CAH presents in infancy or early childhood with salt-wasting crisis or severe virilization, while nonclassic CAH presents later with milder symptoms and no salt-wasting."
+    },
+    {
+      "vsCondition": "primary-adrenal-insufficiency-addison-disease",
+      "feature": "Classic CAH shows elevated 17-hydroxyprogesterone and androgen excess, while Addison disease does not have androgen excess and typically presents later in life."
+    },
+    {
+      "vsCondition": "disorders of sexual development (DSD) unrelated to CAH",
+      "feature": "Classic CAH is characterized by markedly elevated 17-hydroxyprogesterone and cortisol deficiency, which are not seen in other DSDs."
+    }
+  ],
+  "ruleOutCriteria": [
+    "Normal 17-hydroxyprogesterone levels in the setting of adrenal insufficiency symptoms.",
+    "Absence of CYP21A2 gene mutations on molecular testing.",
+    "Normal cortisol and aldosterone production despite symptoms."
+  ],
+  "cohortEnrichedAt": "2026-05-31T07:39:26.537Z"
 }

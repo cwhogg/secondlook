@@ -141,6 +141,28 @@ export class EvidenceEvaluator extends BaseAgent {
       },
     ], { type: 'function', function: { name: 'evaluate_evidence' } });
 
+    // ===== v15 step 1: deterministic isKbMatch =====
+    // The evaluationType field (criteria-grounded vs reasoning-evaluated) was
+    // previously taken from the LLM evaluator's chosen label. v13-era o3
+    // started overriding the [KB MATCH: <name>] prompt annotation and labeling
+    // KB-matched hypotheses as reasoning-evaluated, collapsing criteria-grounded
+    // coverage from ~5/10 to 0/10 on the NF1 case. The matcher itself was fine;
+    // the LLM was load-bearing on a question that should be deterministic.
+    //
+    // Fix: derive isKbMatch from classifyHypotheses() — the same deterministic
+    // matcher whose result already drove the prompt's [KB MATCH: ...] annotation.
+    // The LLM still produces per-criterion checklist content; the meta-label is
+    // server-side enforced. See docs/v15-experiment-plan.md decision 1.
+    const kbMatchByDiagnosis = new Map<string, DiseaseProfile | null>();
+    for (const c of classified) {
+      kbMatchByDiagnosis.set(c.hypothesis.diagnosis, c.kbMatch);
+    }
+    const fullKbForBonus = loadDiseaseDatabase();
+    const lookupKbForBonus = (name: string): DiseaseProfile | null => {
+      const norm = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+      return fullKbForBonus.find((d) => this.matchesDiseaseProfile(norm, d)) || null;
+    };
+
     // Merge criteria fulfillment and evidence metadata back into hypotheses
     // NOTE: We intentionally do NOT set evidenceScore here. The synthesizer (senior diagnostician)
     // will review all this information and assign probability scores based on clinical judgment.
@@ -151,7 +173,8 @@ export class EvidenceEvaluator extends BaseAgent {
 
       if (!evaluation) return h;
 
-      return this.applyEvaluation(h, evaluation, patientCase.labResults);
+      const kbMatch = kbMatchByDiagnosis.get(h.diagnosis) ?? null;
+      return this.applyEvaluation(h, evaluation, patientCase.labResults, kbMatch);
     });
 
     // Handle bonus subtype evaluations — evaluations the model added for subtypes
@@ -165,7 +188,10 @@ export class EvidenceEvaluator extends BaseAgent {
     });
 
     for (const bonus of bonusEvaluations) {
-      const isKbMatch = bonus.evaluationType === 'criteria-grounded';
+      // Same deterministic KB check for bonus subtypes — never rely on the
+      // LLM-chosen evaluationType to decide whether the hypothesis is KB-matched.
+      const bonusKbMatch = lookupKbForBonus(bonus.diagnosis);
+      const isKbMatch = bonusKbMatch !== null;
       const skeleton: DiagnosisHypothesis = {
         diagnosis: bonus.diagnosis,
         confidenceScore: 0,
@@ -187,7 +213,7 @@ export class EvidenceEvaluator extends BaseAgent {
           fulfillmentPercentage: 0,
         },
       };
-      evaluatedHypotheses.push(this.applyEvaluation(skeleton, bonus, patientCase.labResults));
+      evaluatedHypotheses.push(this.applyEvaluation(skeleton, bonus, patientCase.labResults, bonusKbMatch));
     }
 
     const subtypeCount = bonusEvaluations.length;
@@ -205,8 +231,20 @@ export class EvidenceEvaluator extends BaseAgent {
 
   /**
    * Apply an LLM evaluation result to a hypothesis, returning the enriched hypothesis.
+   *
+   * `kbMatchOverride` is the deterministic KB-match result for this hypothesis (from
+   * classifyHypotheses for original hypotheses, or a direct full-KB lookup for bonus
+   * subtype evaluations). When provided, it determines `evaluationType` and
+   * `knowledgeBaseMatch` server-side — the LLM's chosen label is ignored. This is the
+   * v15 step 1 fix for the v13 LLM-label-drift bug. Pass `undefined` to fall back to
+   * the LLM-chosen label (the pre-v15 behavior — kept for safety on any future caller).
    */
-  private applyEvaluation(h: DiagnosisHypothesis, evaluation: any, patientLabs?: any[]): DiagnosisHypothesis {
+  private applyEvaluation(
+    h: DiagnosisHypothesis,
+    evaluation: any,
+    patientLabs?: any[],
+    kbMatchOverride?: DiseaseProfile | null,
+  ): DiagnosisHypothesis {
     // Mechanical post-step: scan each criterion's text for recognizable lab
     // markers and confirm any criterion the patient's uploaded labs prove,
     // even if the LLM evaluator missed it. Never demotes a met criterion;
@@ -239,7 +277,15 @@ export class EvidenceEvaluator extends BaseAgent {
       console.log(`[evidence-evaluator] mechanically confirmed ${labFindings.length} criterion(s) for "${h.diagnosis}" via patient labs`);
     }
 
-    const isKbMatch = evaluation.evaluationType === 'criteria-grounded';
+    // v15 step 1: prefer the deterministic kbMatchOverride when provided.
+    // Falls through to the LLM-chosen label only when no override is supplied
+    // (kbMatchOverride === undefined, distinct from null which means "checked
+    // and definitively not a KB match"). All current callers supply the
+    // override; the fallback exists for backwards safety only.
+    const isKbMatch =
+      kbMatchOverride !== undefined
+        ? kbMatchOverride !== null
+        : evaluation.evaluationType === 'criteria-grounded';
 
     return {
       ...h,

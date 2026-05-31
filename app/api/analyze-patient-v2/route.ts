@@ -8,7 +8,11 @@ import { z } from 'zod';
 // firing in parallel per case and each call now taking 30-60s, total wall
 // time can easily exceed the default Vercel 60s timeout. Bump explicitly to
 // the platform max so the experiment doesn't get truncated mid-pipeline.
-export const maxDuration = 300;
+//
+// v15 update: parallel Claude-opus-4-7 synth + bounded 3-round reconciliation
+// can push hard cases past 5 minutes. Bumped to 600s — within Vercel Pro plan
+// limits (max 900s) with headroom for the heaviest reconciliation paths.
+export const maxDuration = 600;
 
 // Input validation schema
 const demographicsSchema = z.object({

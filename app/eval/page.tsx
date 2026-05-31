@@ -792,7 +792,11 @@ export default function EvalPage() {
       // Same safety nets + progress trail as runPipeline. The trio runner
       // ALWAYS comes through this function, so this is where diagnostics
       // need to live for batch eval runs.
-      const PIPELINE_MAX_MS = 280_000
+      // v15 pipelines run substantially longer than v12 due to the parallel
+      // Claude synth (Stage 4) and the bounded 3-round reconciliation. Worst
+      // case at full reconciliation: ~480s. Cap below Vercel's server-side
+      // maxDuration (600s) with headroom for the final SSE flush.
+      const PIPELINE_MAX_MS = 590_000
       const SSE_IDLE_MAX_MS = 180_000  // 30s heartbeat × ≥3 missed = genuinely dead
       const pipelineStart = Date.now()
       const progressLog: NonNullable<TestCase["pipelineProgressLog"]> = []

@@ -5,6 +5,7 @@ import { getSpecialistAgent } from '../agents/specialist-agents';
 import { rerankCandidatesForSpecialty } from '../agents/specialty-reference/kb-rerank';
 import { EvidenceEvaluator } from '../agents/evidence-evaluator';
 import { SynthesisAgent } from '../agents/synthesizer';
+import { ClaudeSynthAgent } from '../agents/claude-synthesizer';
 import { ReportGenerator } from '../agents/report-generator';
 import { expandFamilyVariants } from './family-expansion';
 import { deriveSymptomsFromLabs } from './lab-utils';
@@ -405,30 +406,55 @@ export class DiagnosticPipeline {
       });
 
       const synthStart = Date.now();
-      // Same heartbeat protection for the o3:high synthesizer — it's the
-      // second long sequential stage and produces no intermediate events.
+      // v15 step 5: parallel cross-provider synthesis.
+      // Both synthesizers run on identical input (same evaluatedHypotheses,
+      // same prompt via SynthesisAgent.buildPrompt). The two model families
+      // bring independent training distributions; their independent rankings
+      // are the raw material for the reconciliation stage (v15 step 6).
+      //
+      // For step 5 alone, we run both but use the o3 ranking as primary
+      // downstream — exactly equivalent to current behavior until step 6
+      // wires the reconciliation in. The Claude ranking is preserved in
+      // claudeSynthResult so step 6 can consume it.
       const synthHeartbeat = setInterval(() => {
         const elapsedMs = Date.now() - synthStart;
         onProgress?.({
           stage: 'heartbeat',
           stageNumber: 4,
           totalStages: 6,
-          detail: `synthesizer still reasoning... ${Math.round(elapsedMs / 1000)}s`,
+          detail: `synthesizers (o3 + Claude opus-4-7) still reasoning... ${Math.round(elapsedMs / 1000)}s`,
           percentage: 75,
           data: { stage: 'synthesis', elapsedMs },
         });
       }, 30_000);
       const synthesizer = new SynthesisAgent();
-      let synthesisResult;
+      const claudeSynth = new ClaudeSynthAgent();
+      let synthesisResult: AgentOutput;
+      let claudeSynthResult: AgentOutput | null = null;
       try {
-        synthesisResult = await synthesizer.execute({
-          patientCase,
-          previousStageOutput: { specialistResults, evaluationResult },
-        });
+        const synthInput = { patientCase, previousStageOutput: { specialistResults, evaluationResult } };
+        // Claude side runs in parallel but failures don't fail the whole
+        // analysis — we degrade to o3-only ranking when Claude errors.
+        const [o3Result, claudeResultSettled] = await Promise.all([
+          synthesizer.execute(synthInput),
+          claudeSynth.execute(synthInput).catch((err: any) => {
+            log("orch.stage.synthesis.claude.fail", { msg: (err?.message || "").substring(0, 200) });
+            return null;
+          }),
+        ]);
+        synthesisResult = o3Result;
+        claudeSynthResult = claudeResultSettled;
       } finally {
         clearInterval(synthHeartbeat);
       }
-      log("orch.stage.synthesis.done", { dur: Date.now() - synthStart, top: synthesisResult.hypotheses[0]?.diagnosis?.substring(0, 80) });
+      log("orch.stage.synthesis.done", {
+        dur: Date.now() - synthStart,
+        topO3: synthesisResult.hypotheses[0]?.diagnosis?.substring(0, 80),
+        topClaude: claudeSynthResult?.hypotheses[0]?.diagnosis?.substring(0, 80) || '(not available)',
+        topOneAgrees: claudeSynthResult
+          ? synthesisResult.hypotheses[0]?.diagnosis === claudeSynthResult.hypotheses[0]?.diagnosis
+          : null,
+      });
 
       this.budgetTracker.addUsage(synthesisResult.model, synthesisResult.tokensUsed);
       stages.push({
@@ -440,6 +466,22 @@ export class DiagnosticPipeline {
         inputSummary: `${evaluationResult.hypotheses.length} evaluated hypotheses from ${specialistResults.length} specialists`,
         outputSummary: `Top diagnosis: ${synthesisResult.hypotheses[0]?.diagnosis || 'none'} (probability: ${synthesisResult.hypotheses[0]?.confidenceScore || 0}%)`,
       });
+
+      // v15 step 5: record Claude synth as its own stage for budget/metadata.
+      // The Claude ranking itself isn't yet used for downstream output —
+      // step 6 wires reconciliation in.
+      if (claudeSynthResult) {
+        this.budgetTracker.addUsage(claudeSynthResult.model, claudeSynthResult.tokensUsed);
+        stages.push({
+          stageName: 'synthesis-claude',
+          durationMs: claudeSynthResult.durationMs,
+          tokensUsed: claudeSynthResult.tokensUsed,
+          model: claudeSynthResult.model,
+          agentName: claudeSynthResult.agentName,
+          inputSummary: `${evaluationResult.hypotheses.length} evaluated hypotheses (same as o3 synth)`,
+          outputSummary: `Top: ${claudeSynthResult.hypotheses[0]?.diagnosis || 'none'} (probability: ${claudeSynthResult.hypotheses[0]?.confidenceScore || 0}%)`,
+        });
+      }
 
       const synthesisData_ = (synthesisResult as any).synthesisData || {};
       onProgress?.({

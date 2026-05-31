@@ -262,9 +262,10 @@ export class SynthesisAgent extends BaseAgent {
   }
 
   /**
-   * Flexible name matching that handles minor LLM rephrasing.
+   * Public so the v15 ClaudeSynthAgent can reuse the same name-matching logic
+   * to align its diagnosis names to the canonical hypothesis pool.
    */
-  private findHypothesisByName(
+  public findHypothesisByName(
     hypotheses: DiagnosisHypothesis[],
     name: string
   ): DiagnosisHypothesis | undefined {
@@ -393,7 +394,12 @@ export class SynthesisAgent extends BaseAgent {
     return lines.join('\n');
   }
 
-  private buildPrompt(
+  /**
+   * Public so the v15 ClaudeSynthAgent can reuse the same prompt construction
+   * — both providers must see identical inputs for the parallel synthesis to
+   * be a meaningful comparison.
+   */
+  public buildPrompt(
     patientCase: PatientCase,
     hypotheses: DiagnosisHypothesis[],
     specialistResults: AgentOutput[]

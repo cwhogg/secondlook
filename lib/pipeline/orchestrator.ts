@@ -86,10 +86,12 @@ export class DiagnosticPipeline {
       // v15 union candidate pool addition: an o3:high call producing 30-50
       // candidate diagnoses from the patient case directly. Names that match
       // KB profiles are unioned with triage's KB-retrieved candidates so the
-      // specialists see a wider, more inclusive pool. Names without a KB
-      // match are dropped at this stage — specialists may still independently
-      // propose them downstream but they don't enter the KB-grounded
-      // candidate flow. See docs/v15-experiment-plan.md decision 1.
+      // specialists see a wider, more inclusive pool. Names WITHOUT a KB match
+      // are also carried through — as reasoning-evaluated seed hypotheses
+      // (no structured criteria, but with the o3 rationale as initial
+      // clinicalReasoning) so the evidence evaluator and synth still see
+      // them. Avoids silently dropping the long-tail rare diseases not yet
+      // in our KB. See docs/v15-experiment-plan.md decision 1.
       log("orch.stage.triage_and_candidates.start");
       const triageAgent = new TriageAgent();
       const candidateGenAgent = new CandidateGeneratorAgent();
@@ -106,22 +108,40 @@ export class DiagnosticPipeline {
       log("orch.stage.triage.done", { candidates: triageResult.candidateDiseases.length });
 
       // Union: look up each LLM-generated candidate name in the KB; append
-      // any KB matches not already present in the triage pool. Track stats
-      // for measurement.
+      // any KB matches not already present in the triage pool. Names that
+      // don't match a KB profile are collected separately so they can be
+      // carried through as reasoning-evaluated seed hypotheses downstream.
+      // Track stats for measurement.
+      const rationalesMap: Map<string, string> | undefined =
+        (candidateGenResult as any)?.rationales ?? (candidateGenResult as any)?.candidateRationales;
+      const lookupRationale = (name: string): string => {
+        if (rationalesMap && typeof rationalesMap.get === 'function') {
+          return rationalesMap.get(name) || '';
+        }
+        return '';
+      };
       const triageCandidateIds = new Set(triageResult.candidateDiseases.map((m) => m.disease.id));
       const addedFromLLM: DiseaseMatch[] = [];
-      const llmCandidatesNoKbMatch: string[] = [];
+      const rationalesByDiseaseId = new Map<string, string>();
+      const nonKbSeedCandidates: Array<{ name: string; rationale: string }> = [];
       let llmCandidateNames: string[] = [];
       if (candidateGenResult && candidateGenResult.diagnosisNames) {
         llmCandidateNames = candidateGenResult.diagnosisNames;
         for (const name of llmCandidateNames) {
           const profile = findDiseaseByName(name);
           if (!profile) {
-            llmCandidatesNoKbMatch.push(name);
+            // No KB profile — carry through as a reasoning-evaluated seed
+            // hypothesis. The evidence evaluator will score it via clinical
+            // reasoning rather than structured criteria.
+            nonKbSeedCandidates.push({ name, rationale: lookupRationale(name) });
             continue;
           }
           if (triageCandidateIds.has(profile.id)) {
-            // Already in triage's pool — no need to add a duplicate.
+            // Already in triage's pool — no need to add a duplicate, but
+            // capture the rationale so the KB-matched seed can use it as
+            // initial clinicalReasoning downstream.
+            const existing = rationalesByDiseaseId.get(profile.id);
+            if (!existing) rationalesByDiseaseId.set(profile.id, lookupRationale(name));
             continue;
           }
           // Synthetic DiseaseMatch for the LLM-surfaced candidate. matchScore
@@ -137,6 +157,7 @@ export class DiagnosticPipeline {
             demographicFit: 0.5,
           });
           triageCandidateIds.add(profile.id);
+          rationalesByDiseaseId.set(profile.id, lookupRationale(name));
         }
       }
       const unionCandidates = [...triageResult.candidateDiseases, ...addedFromLLM];
@@ -144,7 +165,7 @@ export class DiagnosticPipeline {
         triage: triageResult.candidateDiseases.length,
         llmGenerated: llmCandidateNames.length,
         llmAddedToPool: addedFromLLM.length,
-        llmNoKbMatch: llmCandidatesNoKbMatch.length,
+        llmNonKbCarried: nonKbSeedCandidates.length,
         union: unionCandidates.length,
       });
 
@@ -155,31 +176,24 @@ export class DiagnosticPipeline {
       // Record Stage 1b as a separate stage for accounting / metadata.
       // Persist the full list of LLM candidate names, their rationales, and
       // the per-candidate disposition (added to pool / duplicate of triage /
-      // no KB match) into a top-level pipelineMetadata.candidateGeneration
-      // field below. The stages-array summary is the short version for the
-      // existing UI; the detailed breakdown is the source of truth.
+      // non-KB carried as reasoning-evaluated) into a top-level
+      // pipelineMetadata.candidateGeneration field below. The stages-array
+      // summary is the short version for the existing UI; the detailed
+      // breakdown is the source of truth.
       const addedDiseaseIds = new Set(addedFromLLM.map((m) => m.disease.id));
-      const noKbMatchSet = new Set(llmCandidatesNoKbMatch);
-      const rationalesMap: Map<string, string> | undefined =
-        (candidateGenResult as any)?.rationales ?? (candidateGenResult as any)?.candidateRationales;
       const llmCandidateDetail = llmCandidateNames.map((name) => {
-        let disposition: 'added-to-pool' | 'duplicate-of-triage' | 'no-kb-match' = 'added-to-pool';
+        let disposition: 'added-to-pool' | 'duplicate-of-triage' | 'non-kb-carried' = 'added-to-pool';
         const profile = findDiseaseByName(name);
-        if (!profile) disposition = 'no-kb-match';
+        if (!profile) disposition = 'non-kb-carried';
         else if (!addedDiseaseIds.has(profile.id)) disposition = 'duplicate-of-triage';
-        let rationale = '';
-        if (rationalesMap && typeof rationalesMap.get === 'function') {
-          rationale = rationalesMap.get(name) || '';
-        }
         return {
           name,
-          rationale,
+          rationale: lookupRationale(name),
           resolvedKbProfile: profile?.id || null,
           resolvedKbName: profile?.name || null,
           disposition,
         };
       });
-      void noKbMatchSet;
 
       if (candidateGenResult) {
         this.budgetTracker.addUsage(candidateGenResult.model || 'o3', candidateGenResult.tokensUsed || 0);
@@ -190,7 +204,7 @@ export class DiagnosticPipeline {
           model: candidateGenResult.model || 'o3',
           agentName: 'candidate-generator',
           inputSummary: `${patientCase.symptoms.length} symptoms, ${patientCase.demographics.age}yo ${patientCase.demographics.sex}`,
-          outputSummary: `${llmCandidateNames.length} LLM candidates → ${addedFromLLM.length} added to KB-retrieved pool (${llmCandidatesNoKbMatch.length} not in KB)`,
+          outputSummary: `${llmCandidateNames.length} LLM candidates → ${addedFromLLM.length} KB-matched added + ${llmCandidateNames.length - addedFromLLM.length - nonKbSeedCandidates.length} KB-duplicate + ${nonKbSeedCandidates.length} non-KB carried (reasoning-evaluated)`,
         });
       }
 
@@ -284,11 +298,12 @@ export class DiagnosticPipeline {
       // timeouts at ~100s (observed on PMID_39753114 — all 6 annotators
       // timing out at the same point). 25 candidates × 7 fields × ~200 tokens
       // = ~35K tokens output per call which fits comfortably in 40K maxTokens.
-      const MAX_CANDIDATES_PER_ANNOTATOR = 25;
+      const MAX_KB_CANDIDATES = 25;
       const sortedCandidates = [...triageResult.candidateDiseases].sort((a, b) => (b.matchScore || 0) - (a.matchScore || 0));
-      const annotationCandidates: AnnotationCandidate[] = sortedCandidates.slice(0, MAX_CANDIDATES_PER_ANNOTATOR).map((dm) => ({
+      const annotationCandidates: AnnotationCandidate[] = sortedCandidates.slice(0, MAX_KB_CANDIDATES).map((dm) => ({
         diagnosis: dm.disease.name,
         kbProfile: dm.disease,
+        rationale: rationalesByDiseaseId.get(dm.disease.id) || '',
       }));
 
       /* ============ ANNOTATION FLOW COMMENTED OUT — needs rethinking ============
@@ -312,10 +327,13 @@ export class DiagnosticPipeline {
        */
 
       // ===== STAGE 2 PASSTHROUGH: union candidates → seed hypotheses =====
-      // No specialist calls. Each union candidate becomes a hypothesis with
-      // its KB profile data attached (criteria, symptom tiers, etc). The
-      // evidence evaluator (Stage 3) then runs the criteria check on each.
-      const seedHypotheses = annotationCandidates.map((c) => {
+      // No specialist calls. Each KB-matched union candidate becomes a
+      // hypothesis with its KB profile data attached (criteria, symptom tiers,
+      // etc). Each non-KB candidate (o3-surfaced names with no matching KB
+      // profile) becomes a hypothesis with no KB attachment, marked as
+      // reasoning-evaluated so the evidence evaluator (Stage 3) scores it via
+      // clinical reasoning rather than structured criteria.
+      const kbSeedHypotheses = annotationCandidates.map((c) => {
         const kb = c.kbProfile;
         return {
           diagnosis: c.diagnosis,
@@ -342,11 +360,43 @@ export class DiagnosticPipeline {
         } as any;
       });
 
+      // Cap the non-KB seed hypotheses separately. Each adds ~1-2K tokens to
+      // the evidence evaluator input; capping at 15 keeps the evaluator under
+      // the OpenAI request timeout window while still surfacing the long-tail
+      // candidates triage's symptom-overlap retrieval missed.
+      const MAX_NON_KB_CANDIDATES = 15;
+      const nonKbSeedHypotheses = nonKbSeedCandidates.slice(0, MAX_NON_KB_CANDIDATES).map((c) => ({
+        diagnosis: c.name,
+        icd10Code: undefined,
+        confidenceScore: 0,
+        evidenceScore: 0,
+        rareDisease: true,
+        supportingEvidence: [],
+        contradictoryEvidence: [],
+        clinicalReasoning: c.rationale,
+        typicalPresentation: '',
+        specialistRequired: '',
+        diagnosticCriteria: {
+          criteriaName: 'Clinical assessment',
+          totalCriteria: 0,
+          metCriteria: 0,
+          criteriaDetails: [],
+          fulfillmentPercentage: 0,
+        },
+        sourceAgent: 'llm-non-kb-candidate',
+        evaluationType: 'reasoning-evaluated' as const,
+        knowledgeBaseMatch: false,
+      } as any));
+
+      // KB-matched first so dedup tie-breaks inside the evidence evaluator
+      // favor the KB-attached entry on any name collision.
+      const allSeedHypotheses = [...kbSeedHypotheses, ...nonKbSeedHypotheses];
+
       const specialistResults = [
         {
           agentName: 'v16-passthrough',
-          hypotheses: seedHypotheses,
-          reasoning: `${seedHypotheses.length} candidates passed through from union pool (specialist annotation disabled)`,
+          hypotheses: allSeedHypotheses,
+          reasoning: `${allSeedHypotheses.length} candidates passed through from union pool (${kbSeedHypotheses.length} KB-matched, ${nonKbSeedHypotheses.length} non-KB; specialist annotation disabled)`,
           confidence: 0,
           tokensUsed: 0,
           durationMs: 0,
@@ -362,8 +412,8 @@ export class DiagnosticPipeline {
         tokensUsed: 0,
         model: 'n/a',
         agentName: 'union-passthrough',
-        inputSummary: `${annotationCandidates.length} candidates from union pool`,
-        outputSummary: `${seedHypotheses.length} seed hypotheses (no LLM annotation)`,
+        inputSummary: `${annotationCandidates.length} KB candidates + ${nonKbSeedHypotheses.length} non-KB candidates from union pool`,
+        outputSummary: `${allSeedHypotheses.length} seed hypotheses (${kbSeedHypotheses.length} KB-matched, ${nonKbSeedHypotheses.length} non-KB; no LLM annotation)`,
       } as any);
 
       this.checkBudget();
@@ -372,7 +422,7 @@ export class DiagnosticPipeline {
         stage: 'specialists-complete',
         stageNumber: 2,
         totalStages: 6,
-        detail: `${seedHypotheses.length} seed hypotheses (passthrough; specialist annotation disabled)`,
+        detail: `${allSeedHypotheses.length} seed hypotheses (${kbSeedHypotheses.length} KB, ${nonKbSeedHypotheses.length} non-KB; passthrough)`,
         percentage: 50,
         data: {
           results: specialistResults.map((sr) => ({
@@ -815,8 +865,14 @@ export class DiagnosticPipeline {
           candidateGeneration: candidateGenResult ? {
             totalGenerated: llmCandidateNames.length,
             addedToPool: addedFromLLM.length,
-            duplicateOfTriage: llmCandidateNames.length - addedFromLLM.length - llmCandidatesNoKbMatch.length,
-            noKbMatch: llmCandidatesNoKbMatch.length,
+            duplicateOfTriage: llmCandidateNames.length - addedFromLLM.length - nonKbSeedCandidates.length,
+            nonKbCarried: nonKbSeedCandidates.length,
+            nonKbCarriedAfterCap: nonKbSeedHypotheses.length,
+            // Deprecated alias of nonKbCarried — kept so older deep-dive UI
+            // reading newly persisted analyses continues to render the count.
+            // No longer means "dropped"; these are carried through as
+            // reasoning-evaluated seed hypotheses.
+            noKbMatch: nonKbSeedCandidates.length,
             unionSize: unionCandidates.length,
             triageCandidateCount: triageResult.candidateDiseases.length - addedFromLLM.length, // back out the additions
             candidates: llmCandidateDetail,

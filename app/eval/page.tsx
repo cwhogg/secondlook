@@ -1290,7 +1290,7 @@ export default function EvalPage() {
             <div className="border border-[#d4c5b0] bg-white p-4 sm:p-6 mb-6">
               {/* Version selector — tags every testCase the next batch creates */}
               {(() => {
-                const KNOWN_VERSIONS = ["v1","v2","v3","v4","v5","v6","v7","v8","v9","v10","v11","v12","v13","v14","v15","v16"] as const
+                const KNOWN_VERSIONS = ["v1","v2","v3","v4","v5","v6","v7","v8","v9","v10","v11","v12","v13","v14","v15","v16","v17"] as const
                 const allVersions = Array.from(new Set([...KNOWN_VERSIONS, ...customVersions]))
                 const trimmedNewVersion = newVersionInput.trim()
                 const addNewVersion = () => {

@@ -344,7 +344,7 @@ function renderTOC() {
     ['extraction', '2. Extraction'],
     ['triage', '3. Triage'],
     ['candidate-gen', '4. LLM Candidates'],
-    ['retrieval', '5. KB Retrieval'],
+    ['retrieval', '5. KB Enrichment'],
     ['specialists', '6. Specialists (11)'],
     ['evidence-eval', '7. Evidence Eval'],
     ['synth-o3', '8. Synth (o3)'],
@@ -480,28 +480,204 @@ function renderCandidateGen(slCase) {
   `);
 }
 
-function renderKBRetrieval(slCase) {
-  const retrievals = slCase.pipelineResult?.pipelineMetadata?.retrievalScores || [];
-  const rows = retrievals.slice(0, 30).map((r, i) => `
-    <tr>
-      <td class="rank">${i + 1}</td>
-      <td>${esc(r.diseaseName)}</td>
-      <td><code>${esc(r.diseaseId)}</code></td>
-      <td class="score">${(r.matchScore || 0).toFixed(2)}</td>
-      <td class="score">${(r.componentScores?.symptom || 0).toFixed(2)}</td>
-      <td class="score">${(r.componentScores?.system || 0).toFixed(2)}</td>
-      <td class="score">${(r.componentScores?.demographic || 0).toFixed(2)}</td>
-      <td class="score">${(r.componentScores?.prevalence || 0).toFixed(2)}</td>
-    </tr>
-  `).join('');
-  return section('retrieval', '5. KB Retrieval — top candidates from the knowledge base', `
-    <div class="stage-meta">
-      ${retrievals.length} KB candidates passed to specialists. Showing top 30.
+const _kbCache = new Map();
+function loadKbProfile(diseaseId) {
+  if (!diseaseId) return null;
+  if (_kbCache.has(diseaseId)) return _kbCache.get(diseaseId);
+  let kb = null;
+  try {
+    const p = join(ROOT, 'lib/knowledge/diseases', `${diseaseId}.json`);
+    kb = JSON.parse(readFileSync(p, 'utf-8'));
+  } catch { /* not found */ }
+  _kbCache.set(diseaseId, kb);
+  return kb;
+}
+
+function renderSymptomList(syms) {
+  if (!syms || syms.length === 0) return '<em>(none)</em>';
+  return `<ul class="evidence-list">${syms.map((s) => {
+    if (typeof s === 'string') return `<li>${esc(s)}</li>`;
+    const name = s.finding || s.name || s.symptom || JSON.stringify(s);
+    const freq = s.frequency !== undefined ? s.frequency : s.frequencyPercent;
+    const sys = s.bodySystem;
+    return `<li>${esc(name)}${freq !== undefined ? ` <small style="color:var(--muted)">(${freq}%)</small>` : ''}${sys ? ` <span class="badge">${esc(sys)}</span>` : ''}</li>`;
+  }).join('')}</ul>`;
+}
+
+function renderKbProfileBody(kb) {
+  if (!kb) return '<div class="note" style="margin: 0;">No KB profile attached to this candidate. Evidence evaluator must reason from clinical knowledge alone (no curated criteria, no tiered symptom list).</div>';
+
+  const dc = kb.diagnosticCriteria;
+  const sx = kb.symptoms || {};
+  const dems = kb.demographics || {};
+  const kf = kb.keyFindings || {};
+
+  const kfFmt = (arr) => arr.map((x) => esc(typeof x === 'string' ? x : (x.finding || x.gene || x.name || JSON.stringify(x)))).join(' · ');
+
+  return `
+    <div style="font-size:13px;">
+      <div style="margin: 4px 0;">
+        ${kb.icd10Codes?.length ? `<span class="badge">ICD-10 ${esc(kb.icd10Codes.join(', '))}</span>` : ''}
+        ${kb.omimId ? `<span class="badge">OMIM ${esc(kb.omimId)}</span>` : ''}
+        ${kb.orphanetId ? `<span class="badge">Orphanet ${esc(kb.orphanetId)}</span>` : ''}
+        ${kb.prevalence?.classification ? `<span class="badge">${esc(kb.prevalence.classification)}</span>` : ''}
+        ${kb.specialistType ? `<span class="badge">specialist: ${esc(kb.specialistType)}</span>` : ''}
+        ${kb.confidenceInData ? `<span class="badge">${esc(kb.confidenceInData)} confidence</span>` : ''}
+      </div>
+      ${kb.aliases?.length ? `<div class="pair"><span class="label">Aliases:</span> ${esc(kb.aliases.join(', '))}</div>` : ''}
+      ${(dems.typicalOnsetAge || dems.sexPredilection || dems.ethnicityPredilection) ? `
+        <div class="pair"><span class="label">Demographics:</span>
+          ${dems.typicalOnsetAge ? `onset ${esc(dems.typicalOnsetAge)}` : ''}${dems.sexPredilection ? ` · sex ${esc(dems.sexPredilection)}` : ''}${dems.ethnicityPredilection ? ` · ${esc(dems.ethnicityPredilection)}` : ''}
+        </div>` : ''}
+      ${kb.systemsAffected?.length ? `<div class="pair"><span class="label">Systems:</span> ${kb.systemsAffected.map((s) => `<span class="badge">${esc(s)}</span>`).join(' ')}</div>` : ''}
+
+      ${dc ? `
+        <h4 style="margin: 12px 0 4px;">Diagnostic criteria${dc.name ? ` — ${esc(dc.name)}` : ''}</h4>
+        ${dc.totalRequired ? `<div class="stage-meta">${dc.totalRequired} required to meet criteria</div>` : ''}
+        ${dc.criteria?.length ? `<ul class="evidence-list">${dc.criteria.map((c) => `<li>${esc(c.criterion || c.name || (typeof c === 'string' ? c : JSON.stringify(c)))}${c.majorOrMinor ? ` <span class="badge">${esc(c.majorOrMinor)}</span>` : ''}${c.weight ? ` <small>w=${c.weight}</small>` : ''}</li>`).join('')}</ul>` : '<div class="stage-meta">(no formal criteria list)</div>'}
+      ` : ''}
+
+      ${sx.pathognomonic?.length ? `<h4 style="margin: 12px 0 4px;">Pathognomonic symptoms (&gt;90%)</h4>${renderSymptomList(sx.pathognomonic)}` : ''}
+      ${sx.common?.length ? `<h4 style="margin: 12px 0 4px;">Common symptoms (&gt;50%)</h4>${renderSymptomList(sx.common)}` : ''}
+      ${sx.occasional?.length ? `<h4 style="margin: 12px 0 4px;">Occasional symptoms (10–50%)</h4>${renderSymptomList(sx.occasional)}` : ''}
+      ${sx.rare?.length ? `<h4 style="margin: 12px 0 4px;">Rare symptoms (&lt;10%)</h4>${renderSymptomList(sx.rare)}` : ''}
+
+      ${(kf.laboratory?.length || kf.imaging?.length || kf.genetic?.length || kf.other?.length) ? `
+        <h4 style="margin: 12px 0 4px;">Key findings</h4>
+        ${kf.laboratory?.length ? `<div><strong>Lab:</strong> ${kfFmt(kf.laboratory)}</div>` : ''}
+        ${kf.imaging?.length ? `<div><strong>Imaging:</strong> ${kfFmt(kf.imaging)}</div>` : ''}
+        ${kf.genetic?.length ? `<div><strong>Genetic:</strong> ${kfFmt(kf.genetic)}</div>` : ''}
+        ${kf.other?.length ? `<div><strong>Other:</strong> ${kfFmt(kf.other)}</div>` : ''}
+      ` : ''}
+
+      ${kb.differentialDiagnoses?.length ? `
+        <h4 style="margin: 12px 0 4px;">Sibling differential diagnoses</h4>
+        <ul class="evidence-list">${kb.differentialDiagnoses.slice(0, 10).map((d) => `<li><strong>${esc(d.disease || d.name)}</strong>${d.distinguishingFeatures ? ` — ${esc(d.distinguishingFeatures)}` : ''}</li>`).join('')}</ul>
+      ` : ''}
+
+      ${kb.redFlags?.length ? `
+        <h4 style="margin: 12px 0 4px;">Red flags</h4>
+        <ul class="evidence-list">${kb.redFlags.map((f) => `<li>${esc(typeof f === 'string' ? f : (f.finding || JSON.stringify(f)))}</li>`).join('')}</ul>
+      ` : ''}
+
+      ${kb.commonPitfalls?.length ? `
+        <h4 style="margin: 12px 0 4px;">Common pitfalls (v15 enrichment)</h4>
+        <ul class="evidence-list">${kb.commonPitfalls.slice(0, 6).map((p) => `<li>${esc(typeof p === 'string' ? p : (p.pitfall || JSON.stringify(p)))}</li>`).join('')}</ul>
+      ` : ''}
+
+      ${jsonBlock(kb, 'Full KB profile JSON')}
     </div>
+  `;
+}
+
+function renderKBRetrieval(slCase) {
+  const triage = slCase.pipelineResult?.pipelineMetadata?.retrievalScores || [];
+  const cgCands = slCase.pipelineResult?.pipelineMetadata?.candidateGeneration?.candidates || [];
+
+  // Union pool, deduped by KB id. Track which source(s) contributed each.
+  const byKey = new Map();
+  for (const t of triage) {
+    if (!t.diseaseId) continue;
+    byKey.set(t.diseaseId, {
+      diseaseId: t.diseaseId,
+      name: t.diseaseName,
+      sources: new Set(['triage']),
+      retrievalScore: t.matchScore,
+      componentScores: t.componentScores,
+    });
+  }
+  const o3NoKb = [];
+  for (const c of cgCands) {
+    const id = c.resolvedKbProfile;
+    if (!id) {
+      if (c.disposition === 'no-kb-match') o3NoKb.push(c);
+      continue;
+    }
+    if (byKey.has(id)) {
+      const entry = byKey.get(id);
+      entry.sources.add('o3');
+      entry.o3Rationale = c.rationale;
+      entry.o3OriginalName = c.name;
+    } else {
+      byKey.set(id, {
+        diseaseId: id,
+        name: c.resolvedKbName || c.name,
+        sources: new Set(['o3']),
+        o3Rationale: c.rationale,
+        o3OriginalName: c.name,
+      });
+    }
+  }
+
+  const pool = Array.from(byKey.values()).sort((a, b) => (b.retrievalScore || 0) - (a.retrievalScore || 0));
+  const withKb = pool.filter((p) => loadKbProfile(p.diseaseId));
+  const missingKb = pool.filter((p) => !loadKbProfile(p.diseaseId));
+
+  const sourceBadge = (sources) => {
+    const out = [];
+    if (sources.has('triage')) out.push('<span class="badge badge-info">triage</span>');
+    if (sources.has('o3')) out.push('<span class="badge badge-info">o3</span>');
+    return out.join(' ');
+  };
+
+  const renderCard = (c, i) => {
+    const kb = loadKbProfile(c.diseaseId);
+    return `
+      <details class="json-details" style="border:1px solid var(--light-border); padding:8px 12px; margin-bottom:8px; background:#fefdfb;"${i < 3 ? ' open' : ''}>
+        <summary class="json-summary">
+          <strong>#${i + 1} ${esc(c.name)}</strong>
+          ${sourceBadge(c.sources)}
+          ${c.retrievalScore !== undefined ? `<span class="badge">match ${Number(c.retrievalScore).toFixed(2)}</span>` : ''}
+          ${kb ? '<span class="badge badge-ok">KB attached</span>' : '<span class="badge badge-err">KB id not found</span>'}
+          ${kb?.diagnosticCriteria?.criteria?.length ? `<span class="badge">${kb.diagnosticCriteria.criteria.length} criteria</span>` : ''}
+          ${kb ? `<span class="badge">${((kb.symptoms?.pathognomonic?.length || 0) + (kb.symptoms?.common?.length || 0) + (kb.symptoms?.occasional?.length || 0) + (kb.symptoms?.rare?.length || 0))} symptoms</span>` : ''}
+        </summary>
+        <div style="padding: 8px 12px;">
+          <div class="pair"><span class="label">KB id:</span> <code>${esc(c.diseaseId)}</code></div>
+          ${c.o3OriginalName && c.o3OriginalName !== c.name ? `<div class="pair"><span class="label">o3 name:</span> <em>${esc(c.o3OriginalName)}</em></div>` : ''}
+          ${c.o3Rationale ? `<div class="pair"><span class="label">o3 rationale:</span> <em>${esc(c.o3Rationale)}</em></div>` : ''}
+          ${c.componentScores ? `<div class="pair"><span class="label">Triage scores:</span> sym ${(c.componentScores.symptom || 0).toFixed(2)} · sys ${(c.componentScores.system || 0).toFixed(2)} · demo ${(c.componentScores.demographic || 0).toFixed(2)} · prev ${(c.componentScores.prevalence || 0).toFixed(2)}</div>` : ''}
+          ${renderKbProfileBody(kb)}
+        </div>
+      </details>
+    `;
+  };
+
+  const noKbList = o3NoKb.length ? `
+    <h3 style="margin-top: 16px;">o3 candidates with no KB match (${o3NoKb.length}) — dropped from pool</h3>
+    <div class="note">These o3 hypotheses had no matching KB profile, so they were not appended with KB data and do not appear in the evidence-evaluator / synthesizer input.</div>
     <table>
-      <thead><tr><th>#</th><th>Disease</th><th>ID</th><th>Match</th><th>Sym</th><th>Sys</th><th>Demo</th><th>Prev</th></tr></thead>
-      <tbody>${rows || '<tr><td colspan="8">(no retrieval scores)</td></tr>'}</tbody>
+      <thead><tr><th>#</th><th>Name</th><th>Rationale</th></tr></thead>
+      <tbody>
+        ${o3NoKb.map((c, i) => `<tr><td class="rank">${i + 1}</td><td><strong>${esc(c.name)}</strong></td><td><small>${esc(c.rationale || '')}</small></td></tr>`).join('')}
+      </tbody>
     </table>
+  ` : '';
+
+  const missingList = missingKb.length ? `
+    <div class="note"><strong>${missingKb.length} candidate(s) had a KB id that didn't resolve to a profile on disk:</strong>
+      ${missingKb.map((c) => `<code>${esc(c.diseaseId)}</code>`).join(' · ')}
+    </div>
+  ` : '';
+
+  return section('retrieval', '5. KB Enrichment — full KB profile appended to each candidate', `
+    <div class="stage-meta">
+      For each candidate from the union pool (triage retrieval + o3 candidate
+      generation), the complete KB profile (diagnostic criteria, tiered
+      symptoms, key findings, sibling DDx, red flags) is appended. This combined
+      payload is what the evidence evaluator and synthesizer LLM calls see for
+      every hypothesis.
+    </div>
+    <div style="margin: 4px 0 12px;">
+      <span class="badge badge-info">${pool.length} unique candidates in union pool</span>
+      <span class="badge badge-info">${withKb.length} with KB profile attached</span>
+      <span class="badge badge-info">${triage.length} from triage</span>
+      <span class="badge badge-info">${cgCands.filter((c) => c.resolvedKbProfile).length} from o3 (KB-matched)</span>
+      ${o3NoKb.length ? `<span class="badge">${o3NoKb.length} o3 with no KB match (dropped)</span>` : ''}
+    </div>
+    ${missingList}
+    ${pool.map(renderCard).join('')}
+    ${noKbList}
   `);
 }
 

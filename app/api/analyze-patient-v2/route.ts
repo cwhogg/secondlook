@@ -177,8 +177,17 @@ export async function POST(request: NextRequest) {
       };
 
       try {
-        // Wire agent logs to SSE so they appear in the browser console
+        // Wire agent logs to SSE so they appear in the browser console.
+        // RESPONSE_BODY logs dump full LLM response JSON which can be
+        // 50-100KB per call; with v17's 8+ LLM calls per case, this balloons
+        // the SSE stream to 200-400KB and reliably causes the Vercel proxy
+        // to close the connection mid-flight on long cases (silent SSE
+        // close failure mode). Suppress the verbose payloads to SSE; they
+        // remain available in pipelineMetadata.llmCalls and Vercel function
+        // logs.
+        const SSE_VERBOSE_PHASES = new Set(['RESPONSE_BODY', 'USER_PROMPT', 'SYSTEM_PROMPT']);
         BaseAgent.onLog = (agent, phase, message) => {
+          if (SSE_VERBOSE_PHASES.has(phase)) return;
           sendEvent({ type: 'log', requestId, agent, phase, message });
         };
 

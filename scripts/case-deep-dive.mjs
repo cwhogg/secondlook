@@ -353,8 +353,31 @@ function renderHeader(slCase, oaiCase, clCase) {
 </header>`;
 }
 
-function renderTOC() {
-  const items = [
+function isV17Case(slCase) {
+  const stages = slCase?.pipelineResult?.pipelineMetadata?.stages || [];
+  return stages.some((s) => s.stageName === 'specialist-consultation');
+}
+
+function renderTOC(slCase) {
+  const items = isV17Case(slCase) ? [
+    ['input', '1. Input'],
+    ['extraction', '2. Extraction'],
+    ['triage', '3. Triage'],
+    ['retrieval', '4. Triage KB Pool'],
+    ['specialists', '5. Specialists (5)'],
+    ['dedup-normalize', '6. Dedup & Normalize'],
+    ['kb-attach', '7. KB Profile Attach'],
+    ['evidence-eval', '8. Claude Evaluation'],
+    ['synth-claude', '9. Claude Synthesis'],
+    ['o3-critique', '10. o3 Critique'],
+    ['claude-finalize', '11. Claude Finalize'],
+    ['report', '12. Report'],
+    ['family-expansion', '13. Family Expansion'],
+    ['final', '14. Final Differential'],
+    ['grading', '15. Grading'],
+    ['llm-calls', '15b. LLM Calls'],
+    ['raw', '16. Raw Data'],
+  ] : [
     ['input', '1. Input'],
     ['extraction', '2. Extraction'],
     ['triage', '3. Triage'],
@@ -588,7 +611,7 @@ function renderKbProfileBody(kb) {
   `;
 }
 
-function renderKBRetrieval(slCase) {
+function renderKBRetrieval(slCase, { v17 = false } = {}) {
   const triage = slCase.pipelineResult?.pipelineMetadata?.retrievalScores || [];
   const cgCands = slCase.pipelineResult?.pipelineMetadata?.candidateGeneration?.candidates || [];
 
@@ -689,15 +712,27 @@ function renderKBRetrieval(slCase) {
     </div>
   ` : '';
 
-  return section('retrieval', '5. KB Enrichment — full KB profile appended to each candidate', `
-    <div class="stage-meta">
-      For each KB-matched candidate from the union pool (triage retrieval +
-      o3 candidate generation), the complete KB profile (diagnostic criteria,
-      tiered symptoms, key findings, sibling DDx, red flags) is appended.
-      o3-generated candidates with no KB match are carried through as
-      reasoning-evaluated seeds with the o3 rationale only. Both flow into
-      the evidence evaluator and synthesizer with equal weight.
-    </div>
+  const title = v17
+    ? '4. Triage KB Retrieval Pool — candidates fed into specialists'
+    : '5. KB Enrichment — full KB profile appended to each candidate';
+  const intro = v17
+    ? `<div class="stage-meta">
+        In v17 this is an INPUT, not an output: the symptom-matched retrieval pool from
+        triage (with full KB profiles loaded) is passed to each specialist as their
+        candidate slice. Specialists then generate hypotheses (some KB-matched, some not).
+        Full KB profiles are re-attached to the deduped surviving hypotheses in Stage 7
+        — those are the ones the evaluator sees, not these triage candidates directly.
+      </div>`
+    : `<div class="stage-meta">
+        For each KB-matched candidate from the union pool (triage retrieval +
+        o3 candidate generation), the complete KB profile (diagnostic criteria,
+        tiered symptoms, key findings, sibling DDx, red flags) is appended.
+        o3-generated candidates with no KB match are carried through as
+        reasoning-evaluated seeds with the o3 rationale only. Both flow into
+        the evidence evaluator and synthesizer with equal weight.
+      </div>`;
+  return section('retrieval', title, `
+    ${intro}
     <div style="margin: 4px 0 12px;">
       <span class="badge badge-info">${pool.length} KB-matched in union pool</span>
       <span class="badge badge-info">${withKb.length} with KB profile attached</span>
@@ -883,7 +918,7 @@ function renderSpecialists(slCase) {
   }
 
   const header = isV17Consultation
-    ? `6. Specialist Consultation (v17) — ${sps.length} parallel o3 specialists generating hypotheses`
+    ? `5. Specialist Consultation (v17) — ${sps.length} parallel o3 specialists generating hypotheses`
     : isV16Annotation
     ? `6. Specialist Annotation (v16) — ${sps.length} specialists annotating ${slCase.pipelineResult?.differentialDiagnoses?.length || '?'} candidates`
     : `6. Specialist Consultation (v15) — ${sps.length} parallel hypothesis-generation agents`;
@@ -920,9 +955,204 @@ function renderSpecialists(slCase) {
   `);
 }
 
+function renderDedupNormalize(slCase) {
+  const stages = slCase.pipelineResult?.pipelineMetadata?.stages || [];
+  const stage = stages.find((s) => s.stageName === 'dedup-normalize');
+  const stats = slCase.pipelineResult?.pipelineMetadata?.dedupStats;
+  if (!stage && !stats) return '';
+  const validBadge = stats?.validationPassed ? '<span class="badge badge-ok">PASS</span>' : '<span class="badge badge-err">FAIL</span>';
+
+  const groupRows = (stats?.groups || []).map((g, i) => `
+    <tr>
+      <td class="rank">${i + 1}</td>
+      <td><strong>${esc(g.canonical)}</strong></td>
+      <td>${g.variants?.length || 1}</td>
+      <td>${(g.contributingSpecialists || []).map((s) => `<span class="badge">${esc(s)}</span>`).join(' ')}</td>
+      <td class="score">${g.evidenceItemsContributed ?? '—'}</td>
+      <td><span class="badge">${esc(g.canonicalChosenBy || g.matchPath || '—')}</span></td>
+    </tr>
+    ${g.variants && g.variants.length > 1 ? `
+      <tr><td></td><td colspan="5" style="padding-top: 0; font-size: 12px; color: var(--muted);">
+        merged variants: ${g.variants.map((v) => `<code>${esc(v)}</code>`).join(' · ')}
+      </td></tr>` : ''}
+  `).join('');
+
+  const unmatchedBlock = stats?.unmatched?.length ? `
+    <h3 style="margin-top: 16px;">Singletons (proposed by only 1 specialist, no merge — ${stats.unmatched.length})</h3>
+    <div class="stage-meta">Each carried through to evaluation unmodified. High count here can indicate over-splitting (real duplicates missed) — cross-check via suspicious-pairs below.</div>
+    <ul class="evidence-list">${stats.unmatched.slice(0, 30).map((u) => `<li><strong>${esc(u.diagnosis)}</strong> <span class="badge">${esc(u.specialty || '?')}</span></li>`).join('')}</ul>
+  ` : '';
+
+  const suspiciousBlock = stats?.suspiciousPairs?.length ? `
+    <h3 style="margin-top: 16px;">Suspicious near-matches (${stats.suspiciousPairs.length}) — flagged but NOT merged</h3>
+    <div class="stage-meta">Pairs the matcher saw as textually close but kept separate. Manual review territory for over-splitting bugs.</div>
+    <ul class="evidence-list">${stats.suspiciousPairs.slice(0, 20).map((p) => `<li><code>${esc(p.a)}</code> vs <code>${esc(p.b)}</code> — edit distance ${p.editDistance ?? '?'} (${esc(p.reason || '?')})</li>`).join('')}</ul>
+  ` : '';
+
+  return section('dedup-normalize', '6. Dedup & Normalize — merge variant names across specialists', `
+    <div class="stage-meta">
+      ${stage ? `<span class="badge">${esc(stage.agentName)}</span> <span class="badge">deterministic</span> <span class="badge">${stage.durationMs}ms</span>` : ''}
+      ${stats ? `
+        <span class="badge badge-info">${stats.inputCount} → ${stats.outputCount} merged</span>
+        <span class="badge badge-info">evidence ${stats.evidenceItemsInput} → ${stats.evidenceItemsOutput}</span>
+        <span class="badge badge-info">${stats.attributionsOutput} attributions</span>
+        validation: ${validBadge}
+      ` : ''}
+    </div>
+    <p>Deterministic step (no LLM). Hypotheses from the 5 specialists are grouped by normalized name
+    (substring/alias matching). Canonical name selection: <strong>KB-anchored</strong> first (use the
+    KB profile's curated name if any variant resolves), else <strong>specialist consensus</strong>
+    (most-proposed wins), else <strong>shortest variant</strong> (umbrella over subtype). Evidence
+    items, diagnostic tests, cardinal features, and rule-outs are merged with per-specialist attribution preserved.</p>
+    ${stats?.groups?.length ? `
+      <h3>Merge groups (${stats.groups.length})</h3>
+      <table>
+        <thead><tr><th>#</th><th>Canonical name</th><th>Variants merged</th><th>Specialists</th><th>Ev items</th><th>Chosen by</th></tr></thead>
+        <tbody>${groupRows}</tbody>
+      </table>
+    ` : ''}
+    ${unmatchedBlock}
+    ${suspiciousBlock}
+  `);
+}
+
+function renderKbAttach(slCase) {
+  const stages = slCase.pipelineResult?.pipelineMetadata?.stages || [];
+  const stage = stages.find((s) => s.stageName === 'kb-annotation-merge');
+  if (!stage) return '';
+
+  const diffs = slCase.pipelineResult?.differentialDiagnoses || [];
+  // Only the survivors-of-dedup hypotheses carry kbProfile attachments at this stage.
+  // Show one drill-down per hypothesis with its KB profile if present.
+  const hyps = diffs.slice(0, 20);
+  const cards = hyps.map((h, i) => {
+    const kb = h.kbProfile || (h.knowledgeBaseMatch && h._kbDiseaseId ? loadKbProfile(h._kbDiseaseId) : null);
+    return `
+      <details class="json-details" style="border:1px solid var(--light-border); padding:8px 12px; margin-bottom:8px; background:#fefdfb;"${i < 3 ? ' open' : ''}>
+        <summary class="json-summary">
+          <strong>#${i + 1} ${esc(h.diagnosis)}</strong>
+          ${h.knowledgeBaseMatch ? '<span class="badge badge-ok">KB attached</span>' : '<span class="badge">non-KB (reasoning-only)</span>'}
+          ${kb?.diagnosticCriteria?.criteria?.length ? `<span class="badge">${kb.diagnosticCriteria.criteria.length} criteria</span>` : ''}
+          ${kb ? `<span class="badge">${((kb.symptoms?.pathognomonic?.length || 0) + (kb.symptoms?.common?.length || 0) + (kb.symptoms?.occasional?.length || 0) + (kb.symptoms?.rare?.length || 0))} symptoms</span>` : ''}
+          ${h.orphanetId ? `<span class="badge">Orphanet ${esc(h.orphanetId)}</span>` : ''}
+          ${h.omimId ? `<span class="badge">OMIM ${esc(h.omimId)}</span>` : ''}
+        </summary>
+        <div style="padding: 8px 12px;">
+          ${renderKbProfileBody(kb)}
+        </div>
+      </details>
+    `;
+  }).join('');
+
+  return section('kb-attach', '7. KB Profile Attach — full profile attached to each surviving hypothesis', `
+    <div class="stage-meta">
+      <span class="badge">${esc(stage.agentName)}</span>
+      <span class="badge">deterministic</span>
+      <span class="badge">${stage.durationMs}ms</span>
+      <br/><span class="badge badge-info">${esc(stage.outputSummary || '')}</span>
+    </div>
+    <p>After dedup, each canonical hypothesis name is looked up in the KB. Matches get the
+    full curated profile (diagnostic criteria, tiered symptoms, key findings, sibling DDx,
+    red flags) attached for the Claude evaluator. Non-matches are flagged as reasoning-only
+    and scored by the evaluator on clinical-reasoning quality (same 0–100 scale).</p>
+    ${cards}
+  `);
+}
+
+function renderO3Critique(slCase) {
+  const stages = slCase.pipelineResult?.pipelineMetadata?.stages || [];
+  const stage = stages.find((s) => s.stageName === 'o3-critique');
+  const crit = slCase.pipelineResult?.pipelineMetadata?.critique;
+  if (!stage && !crit) return '';
+
+  return section('o3-critique', '10. o3 Critique — second-opinion review of Claude\'s ranking', `
+    <div class="stage-meta">
+      ${stage ? `<span class="badge">${esc(stage.model)}</span> <span class="badge">${stage.tokensUsed?.toLocaleString()} tokens</span> <span class="badge">${Math.round((stage.durationMs || 0) / 1000)}s</span>` : ''}
+      ${crit ? `
+        <br/>
+        <span class="badge badge-info">confidence in Claude ranking: ${crit.confidenceInClaudeRanking}/100</span>
+        <span class="badge badge-info">${crit.suggestionCount} suggestions</span>
+        <span class="badge badge-ok">${crit.acceptedCount} accepted by Claude finalize</span>
+      ` : ''}
+    </div>
+    <p>o3 reasoning:high reviews Claude's full top-10 ranking and emits structured
+    suggestions: <code>promote</code>, <code>demote</code>, <code>reorder</code>, <code>merge</code>,
+    or <code>flag-gap</code>. <strong>o3 cannot add new candidates</strong> — specialists are the sole
+    candidate source. Claude finalize (next stage) accepts or rejects each suggestion.</p>
+    ${stage?.outputSummary ? `<p><strong>Output:</strong> ${esc(stage.outputSummary)}</p>` : ''}
+    <div class="note">
+      Per-suggestion detail (promote/demote/reorder/merge/flag-gap + reasoning) is not
+      persisted in <code>pipelineMetadata.critique</code> as a structured list yet — only
+      the aggregate counts. To inspect raw suggestions and reasoning, see the o3-critic
+      LLM call in Section 15b.
+    </div>
+  `);
+}
+
+function renderClaudeFinalize(slCase) {
+  const stages = slCase.pipelineResult?.pipelineMetadata?.stages || [];
+  const stage = stages.find((s) => s.stageName === 'claude-finalize');
+  const fc = slCase.pipelineResult?.pipelineMetadata?.finalizerChanges;
+  if (!stage && !fc) return '';
+
+  const diffs = slCase.pipelineResult?.differentialDiagnoses || [];
+  const ranked = diffs.filter((d) => d.changesFromFirstPass).slice(0, 15);
+
+  const changesRows = ranked.length ? ranked.map((d, i) => {
+    const ch = d.changesFromFirstPass || {};
+    const delta = ch.rankBefore !== undefined && ch.rankAfter !== undefined
+      ? ch.rankBefore - ch.rankAfter
+      : null;
+    const deltaBadge = delta === null
+      ? '<span class="badge">—</span>'
+      : delta > 0
+      ? `<span class="badge badge-ok">▲ +${delta}</span>`
+      : delta < 0
+      ? `<span class="badge badge-err">▼ ${delta}</span>`
+      : '<span class="badge">=</span>';
+    return `
+      <tr>
+        <td class="rank">${i + 1}</td>
+        <td><strong>${esc(d.diagnosis)}</strong></td>
+        <td class="score">${ch.rankBefore ?? '—'}</td>
+        <td class="score">${ch.rankAfter ?? i + 1}</td>
+        <td>${deltaBadge}</td>
+        <td><small>${esc(ch.changeReason || '')}</small></td>
+      </tr>
+    `;
+  }).join('') : '';
+
+  return section('claude-finalize', '11. Claude Finalize — accept/reject critique, emit final ranking', `
+    <div class="stage-meta">
+      ${stage ? `<span class="badge">${esc(stage.model)}</span> <span class="badge">${stage.tokensUsed?.toLocaleString()} tokens</span> <span class="badge">${Math.round((stage.durationMs || 0) / 1000)}s</span>` : ''}
+      ${fc ? `
+        <br/>
+        <span class="badge badge-info">${fc.rankChangesFromFirstPass} rank changes from Claude's first pass</span>
+        ${fc.removedFromTop10?.length ? `<span class="badge badge-err">removed from top10: ${fc.removedFromTop10.length}</span>` : ''}
+        ${fc.addedToTop10?.length ? `<span class="badge badge-ok">added to top10: ${fc.addedToTop10.length}</span>` : ''}
+      ` : ''}
+    </div>
+    <p>Claude opus-4-7 reasoning:medium reviews its own first-pass ranking + o3's critique
+    suggestions and produces the final top-10. Claude is the final decider per v17 spec.
+    Each hypothesis carries <code>changesFromFirstPass</code> (rankBefore/After + reason) explaining
+    why it moved.</p>
+    ${stage?.outputSummary ? `<p><strong>Output:</strong> ${esc(stage.outputSummary)}</p>` : ''}
+    ${ranked.length ? `
+      <h3>Per-hypothesis rank changes (${ranked.length})</h3>
+      <table>
+        <thead><tr><th>#</th><th>Diagnosis</th><th>Before</th><th>After</th><th>Δ</th><th>Reason</th></tr></thead>
+        <tbody>${changesRows}</tbody>
+      </table>
+    ` : ''}
+  `);
+}
+
 function renderEvidenceEval(slCase) {
   const stages = slCase.pipelineResult?.pipelineMetadata?.stages || [];
-  const ev = stages.find((s) => s.stageName === 'evidence-evaluation');
+  // v17 names this stage 'claude-evaluation'; v15/v16 named it 'evidence-evaluation'.
+  const ev = stages.find((s) => s.stageName === 'claude-evaluation')
+          || stages.find((s) => s.stageName === 'evidence-evaluation');
+  const isV17 = !!stages.find((s) => s.stageName === 'claude-evaluation');
   // Pull the final hypothesis pool from differentialDiagnoses (these are the
   // synth's final ranked output, but each entry has the upstream criteria
   // fulfillment + supporting/contradictory evidence built by the evaluator).
@@ -966,12 +1196,20 @@ function renderEvidenceEval(slCase) {
     `;
   }).join('');
 
-  return section('evidence-eval', '7. Evidence Evaluation — criteria checking & evidence scoring', `
+  const evalTitle = isV17
+    ? '8. Claude Evaluation — criteria-grounded scoring (Claude opus-4-7 reasoning:high)'
+    : '7. Evidence Evaluation — criteria checking & evidence scoring';
+  const evalIntro = isV17
+    ? `<p>Claude evaluator scores each KB-attached hypothesis against its diagnostic criteria
+       (criteria-grounded) and each non-KB hypothesis on clinical-reasoning quality
+       (reasoning-evaluated) — same 0–100 scale either way. Output feeds Claude synthesis.</p>`
+    : `<p>Showing the synth's final top-12 hypotheses with their upstream evaluator data (criteria checklist, supporting/contradictory evidence with patient-symptom anchors).</p>`;
+  return section('evidence-eval', evalTitle, `
     <div class="stage-meta">
       ${ev ? `<span class="badge">${esc(ev.model)}</span> <span class="badge">${ev.tokensUsed?.toLocaleString()} tokens</span> <span class="badge">${Math.round((ev.durationMs || 0) / 1000)}s</span>` : ''}
       ${ev?.outputSummary ? `<br/>${esc(ev.outputSummary)}` : ''}
     </div>
-    <p>Showing the synth's final top-12 hypotheses with their upstream evaluator data (criteria checklist, supporting/contradictory evidence with patient-symptom anchors).</p>
+    ${evalIntro}
     ${hypTable}
   `);
 }
@@ -979,10 +1217,15 @@ function renderEvidenceEval(slCase) {
 function renderSynthesizers(slCase) {
   const stages = slCase.pipelineResult?.pipelineMetadata?.stages || [];
   const synthO3 = stages.find((s) => s.stageName === 'synthesis');
-  const synthClaude = stages.find((s) => s.stageName === 'synthesis-claude');
+  // v17 uses 'claude-synthesis'; v15 used 'synthesis-claude'.
+  const synthClaudeV17 = stages.find((s) => s.stageName === 'claude-synthesis');
+  const synthClaudeV15 = stages.find((s) => s.stageName === 'synthesis-claude');
+  const synthClaude = synthClaudeV17 || synthClaudeV15;
+  const isV17 = !!synthClaudeV17;
   const recon = slCase.pipelineResult?.pipelineMetadata?.reconciliation;
 
-  const o3Section = section('synth-o3', '8. Synthesizer — o3 reasoning:high', `
+  // v17 has no o3 synth stage — Claude is the sole synthesizer, critiqued by o3 next.
+  const o3Section = isV17 ? '' : section('synth-o3', '8. Synthesizer — o3 reasoning:high', `
     <div class="stage-meta">
       <span class="badge">${esc(synthO3?.model)}</span>
       <span class="badge">${synthO3?.tokensUsed?.toLocaleString()} tokens</span>
@@ -995,13 +1238,24 @@ function renderSynthesizers(slCase) {
     </div>
   `);
 
-  const claudeSection = synthClaude ? section('synth-claude', '9. Synthesizer — Claude opus-4-7 reasoning:high (parallel)', `
+  const claudeTitle = isV17
+    ? '9. Claude Synthesis — first ranking before critique'
+    : '9. Synthesizer — Claude opus-4-7 reasoning:high (parallel)';
+  const claudeIntro = isV17
+    ? `<p>Claude opus-4-7 reasoning:high produces a ranked differential from the evaluator's
+       scored hypotheses. This is the <strong>first pass</strong> — o3 critiques it next, then
+       Claude finalizes. Rank changes between this stage and the finalize stage are tracked
+       per-hypothesis in <code>changesFromFirstPass</code>.</p>`
+    : `<p><strong>Claude's initial top-1:</strong> <em>${esc(recon?.claudeInitialTop1 || synthClaude?.outputSummary?.replace(/^Top:\s*/, ''))}</em></p>`;
+
+  const claudeSection = synthClaude ? section('synth-claude', claudeTitle, `
     <div class="stage-meta">
       <span class="badge">${esc(synthClaude.model)}</span>
       <span class="badge">${synthClaude.tokensUsed?.toLocaleString()} tokens</span>
       <span class="badge">${Math.round((synthClaude.durationMs || 0) / 1000)}s</span>
     </div>
-    <p><strong>Claude's initial top-1:</strong> <em>${esc(recon?.claudeInitialTop1 || synthClaude.outputSummary?.replace(/^Top:\s*/, ''))}</em></p>
+    ${claudeIntro}
+    ${synthClaude.outputSummary ? `<p><strong>Top:</strong> <em>${esc(synthClaude.outputSummary)}</em></p>` : ''}
   `) : section('synth-claude', '9. Synthesizer (Claude)', '<div class="note">Not run on this case (pre-v15 architecture).</div>');
 
   return o3Section + claudeSection;
@@ -1128,7 +1382,8 @@ function renderReport(slCase) {
   const stages = slCase.pipelineResult?.pipelineMetadata?.stages || [];
   const rep = stages.find((s) => s.stageName === 'report');
   const pr = slCase.pipelineResult;
-  return section('report', '11. Report Generation', `
+  const reportNum = isV17Case(slCase) ? '12' : '11';
+  return section('report', `${reportNum}. Report Generation`, `
     ${rep ? `<div class="stage-meta">
       <span class="badge">${esc(rep.model)}</span>
       <span class="badge">${rep.tokensUsed?.toLocaleString()} tokens</span>
@@ -1149,8 +1404,9 @@ function renderReport(slCase) {
 
 function renderFamilyExpansion(slCase) {
   const fe = slCase.pipelineResult?.familyEnrichments || [];
+  const feNum = isV17Case(slCase) ? '13' : '12';
   if (fe.length === 0 && !slCase.pipelineResult?.differentialDiagnoses?.some((d) => d.sourceAgent === 'family-expansion')) {
-    return section('family-expansion', '12. Family Expansion (positions 11-15)', '<div class="note">No family expansions added for this case.</div>');
+    return section('family-expansion', `${feNum}. Family Expansion (positions 11-15)`, '<div class="note">No family expansions added for this case.</div>');
   }
   const expansions = slCase.pipelineResult?.differentialDiagnoses?.filter((d) => d.sourceAgent === 'family-expansion') || [];
   const rows = expansions.map((d, i) => `
@@ -1162,7 +1418,7 @@ function renderFamilyExpansion(slCase) {
       <td>${esc(d.parentDiagnosis || '')}</td>
     </tr>
   `).join('');
-  return section('family-expansion', '12. Family Expansion — KB-linked siblings at positions 11-15', `
+  return section('family-expansion', `${feNum}. Family Expansion — KB-linked siblings at positions 11-15`, `
     <div class="stage-meta">Deterministic (no LLM). Walks top diagnoses, finds same-family KB profiles, appends.</div>
     <table>
       <thead><tr><th>Position</th><th>Disease</th><th>ICD-10</th><th>Source</th><th>Parent</th></tr></thead>
@@ -1198,8 +1454,12 @@ function renderFinalDifferential(slCase, oaiCase, clCase) {
     </table>
   ` : '';
 
-  return section('final', '13. Final Differential (top 15) — pipeline output', `
-    <div class="stage-meta">Output of v15 pipeline: synth-ranked top 10 plus family expansion at 11-15.</div>
+  const finalNum = isV17Case(slCase) ? '14' : '13';
+  const finalIntro = isV17Case(slCase)
+    ? 'Output of v17 pipeline: Claude-finalize ranked top 10 plus family expansion at 11-15.'
+    : 'Output of v15 pipeline: synth-ranked top 10 plus family expansion at 11-15.';
+  return section('final', `${finalNum}. Final Differential (top 15) — pipeline output`, `
+    <div class="stage-meta">${finalIntro}</div>
     <table>
       <thead><tr><th>#</th><th>Diagnosis</th><th>Conf</th><th>Evi</th><th>Type</th><th>Source</th></tr></thead>
       <tbody>${rows}</tbody>
@@ -1211,7 +1471,8 @@ function renderFinalDifferential(slCase, oaiCase, clCase) {
 function renderGrading(slCase) {
   const v2 = slCase.grading;
   const v3 = slCase.tieredGrading;
-  return section('grading', '14. Grading', `
+  const gradeNum = isV17Case(slCase) ? '15' : '14';
+  return section('grading', `${gradeNum}. Grading`, `
     ${v2 ? `
       <h3>v2 (old LLM grader)</h3>
       <div class="stage-meta">
@@ -1255,7 +1516,7 @@ function renderGrading(slCase) {
 function renderLlmCalls(slCase) {
   const calls = slCase.pipelineResult?.pipelineMetadata?.llmCalls || [];
   if (calls.length === 0) {
-    return section('llm-calls', '14b. LLM Calls — raw prompts and responses', `
+    return section('llm-calls', `${isV17Case(slCase) ? '15b' : '14b'}. LLM Calls — raw prompts and responses`, `
       <div class="note">
         No per-call logs persisted for this case. Run a fresh case with
         <code>LOG_LLM_CALLS=1</code> (default in v16+) and the orchestrator
@@ -1314,7 +1575,7 @@ function renderLlmCalls(slCase) {
     </details>
   `).join('');
 
-  return section('llm-calls', `14b. LLM Calls — ${calls.length} captured`, `
+  return section('llm-calls', `${isV17Case(slCase) ? '15b' : '14b'}. LLM Calls — ${calls.length} captured`, `
     <div class="stage-meta">
       <span class="badge">${calls.length} calls</span>
       <span class="badge">${totalTokens.toLocaleString()} tokens in/out</span>
@@ -1329,7 +1590,7 @@ function renderLlmCalls(slCase) {
 }
 
 function renderRawData(slCase, oaiCase, clCase) {
-  return section('raw', '15. Raw Data — full JSON dumps', `
+  return section('raw', `${isV17Case(slCase) ? '16' : '15'}. Raw Data — full JSON dumps`, `
     ${jsonBlock(slCase, 'Full SL testCase (this is everything persisted in KV)')}
     ${oaiCase ? jsonBlock(oaiCase, 'OAI baseline testCase') : ''}
     ${clCase ? jsonBlock(clCase, 'Claude baseline testCase') : ''}
@@ -1342,9 +1603,37 @@ function renderRawData(slCase, oaiCase, clCase) {
 
 function renderCaseBody(bundle) {
   const { slCase: sl, oaiCase: oa, clCase: cl } = bundle;
+  if (isV17Case(sl)) {
+    // v17 actual flow order: triage → triage KB pool → specialists → dedup → KB attach
+    // → claude eval → claude synth → o3 critique → claude finalize → report.
+    return `
+      ${renderHeader(sl, oa, cl)}
+      ${renderTOC(sl)}
+      <main>
+        ${renderInput(sl)}
+        ${renderExtraction(sl)}
+        ${renderTriageStage(sl)}
+        ${renderKBRetrieval(sl, { v17: true })}
+        ${renderSpecialists(sl)}
+        ${renderDedupNormalize(sl)}
+        ${renderKbAttach(sl)}
+        ${renderEvidenceEval(sl)}
+        ${renderSynthesizers(sl)}
+        ${renderO3Critique(sl)}
+        ${renderClaudeFinalize(sl)}
+        ${renderReport(sl)}
+        ${renderFamilyExpansion(sl)}
+        ${renderFinalDifferential(sl, oa, cl)}
+        ${renderGrading(sl)}
+        ${renderLlmCalls(sl)}
+        ${renderRawData(sl, oa, cl)}
+      </main>
+    `;
+  }
+  // v15/v16 legacy order — kept verbatim for backward-compatible deep dives.
   return `
     ${renderHeader(sl, oa, cl)}
-    ${renderTOC()}
+    ${renderTOC(sl)}
     <main>
       ${renderInput(sl)}
       ${renderExtraction(sl)}

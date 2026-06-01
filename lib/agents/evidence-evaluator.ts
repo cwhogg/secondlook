@@ -4,7 +4,9 @@ import { DiagnosisHypothesis, CriteriaFulfillment, PatientCase } from '../types'
 import { DiseaseMatch, DiseaseProfile } from '../types/knowledge-base';
 import { getDiseaseCount, loadDiseaseDatabase, findFamilySiblings } from '../knowledge';
 
-function buildEvidenceEvaluatorPrompt(): string {
+// v17: exported so the Claude-evaluator thin wrapper can reuse the system
+// prompt verbatim instead of duplicating it. Content unchanged from v15.
+export function buildEvidenceEvaluatorPrompt(): string {
   return `You are a senior clinical evidence evaluator. Your role is to systematically assess each diagnostic hypothesis against available evidence and diagnostic criteria, producing a structured analysis that a senior diagnostician will use to make final probability assessments.
 
 You are NOT the final decision-maker on probability. Your job is to produce a rigorous, structured evidence review. A senior diagnostician will review your analysis and assign final probability scores.
@@ -239,7 +241,10 @@ export class EvidenceEvaluator extends BaseAgent {
    * v15 step 1 fix for the v13 LLM-label-drift bug. Pass `undefined` to fall back to
    * the LLM-chosen label (the pre-v15 behavior — kept for safety on any future caller).
    */
-  private applyEvaluation(
+  // v17: made public so the Claude-evaluator thin wrapper can reuse this
+  // logic verbatim (preserves the deterministic kbMatchOverride flow and
+  // the lab-criteria mechanical confirmation). Body unchanged from v15.
+  public applyEvaluation(
     h: DiagnosisHypothesis,
     evaluation: any,
     patientLabs?: any[],
@@ -305,7 +310,8 @@ export class EvidenceEvaluator extends BaseAgent {
    * so that diseases which exist in the KB but weren't retrieved still
    * get criteria-grounded evaluation.
    */
-  private classifyHypotheses(
+  // v17: made public for thin-wrapper reuse. Body unchanged from v15.
+  public classifyHypotheses(
     hypotheses: DiagnosisHypothesis[],
     kbDiseases: DiseaseMatch[]
   ): Array<{ hypothesis: DiagnosisHypothesis; kbMatch: DiseaseProfile | null }> {
@@ -423,7 +429,9 @@ export class EvidenceEvaluator extends BaseAgent {
     );
   }
 
-  private deduplicateHypotheses(hypotheses: DiagnosisHypothesis[]): DiagnosisHypothesis[] {
+  // v17: made public so the dedup-normalizer pre-stage can leverage the same
+  // pattern. Body unchanged from v15.
+  public deduplicateHypotheses(hypotheses: DiagnosisHypothesis[]): DiagnosisHypothesis[] {
     const seen = new Map<string, DiagnosisHypothesis>();
 
     for (const h of hypotheses) {
@@ -455,7 +463,8 @@ export class EvidenceEvaluator extends BaseAgent {
     return Array.from(seen.values());
   }
 
-  private buildPrompt(
+  // v17: made public for thin-wrapper reuse. Prompt content unchanged from v15.
+  public buildPrompt(
     patientCase: PatientCase,
     classified: Array<{ hypothesis: DiagnosisHypothesis; kbMatch: DiseaseProfile | null }>,
     candidateDiseases: DiseaseMatch[],

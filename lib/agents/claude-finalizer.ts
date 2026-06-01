@@ -1,0 +1,288 @@
+/**
+ * v17 Stage 8 — Claude finalize.
+ *
+ * Claude is the final decider for the v17 pipeline. Takes the patient case,
+ * Claude's own Stage 6 synthesizer ranking, and o3's Stage 7 critique.
+ * Reviews each critique suggestion and produces a final top-10 differential
+ * with `changesFromFirstPass` annotations so the report layer can show what
+ * actually changed.
+ *
+ * Reasoning effort: 'medium' (not 'high'). This is a review-and-decide task,
+ * not from-scratch synthesis — Claude already did the analytical heavy lifting
+ * in Stage 6. Medium reasoning saves ~$0.20/case on the common
+ * high-agreement-with-critique majority.
+ *
+ * Goal: preserve the high-value original synth ranking when critique
+ * confidence is high; selectively apply critique suggestions when they cite
+ * specific evidence the original ranking under-weighted.
+ */
+import type { AgentOutput } from './types';
+import type { DiagnosisHypothesis, PatientCase, CritiqueOutput, CritiqueSuggestion } from '../types';
+import { callAnthropic } from '../anthropic';
+import { setLogContext } from '../pipeline/llm-call-log';
+
+const CLAUDE_FINALIZER_MODEL = 'claude-opus-4-7';
+
+const CLAUDE_FINALIZER_SYSTEM_PROMPT = `You are a senior clinical diagnostician finalizing a differential diagnosis ranking. You have produced a draft ranking already, and another senior clinician has reviewed it and provided specific evidence-cited critique suggestions.
+
+Your task: REVIEW each suggestion, decide whether to honor it, and produce the final ranked top-10 differential. You are the final decider — the critique is input to your judgment, not a mandate.
+
+DECISION PRINCIPLES:
+- Honor critique suggestions ONLY when the cited patient evidence actually supports the recommended change. Do not honor a suggestion just because the critic was confident.
+- Reject suggestions when the cited evidence is weak, the diagnosis is too rare given prevalence, or the proposed rank change would put a poorly-supported diagnosis above a well-supported one.
+- When the critic raised an information gap, decide whether it materially affects the ranking and reflect that in your final assessment.
+- Preserve KB-matched and reasoning-evaluated diagnoses on equal terms.
+
+For EACH entry in your final top-10, record:
+- final rank
+- whether the rank changed from your Stage 6 first-pass ranking
+- the reason for change (or 'no-change' if preserved)
+
+OUTPUT FORMAT (return as JSON, no markdown fences):
+{
+  "rankedDiagnoses": [
+    {
+      "diagnosis": "<EXACT name from the input hypothesis pool>",
+      "probabilityScore": <0-100>,
+      "rationale": "<one to three sentences>",
+      "changeReason": "no-change" | "critique-promoted" | "critique-demoted" | "critique-reordered" | "finalizer-override"
+    }
+  ],
+  "overallAssessment": "<paragraph summarizing the final differential>",
+  "criticSuggestionsAccepted": <integer count>,
+  "criticSuggestionsRejected": <integer count>,
+  "finalizerNotes": "<optional brief notes on critique acceptance/rejection rationale>"
+}`;
+
+function buildPatientRecap(patientCase: PatientCase): string {
+  const symptoms = patientCase.symptoms
+    .slice(0, 20)
+    .map((s) => s.selectedConcept?.name || s.medicalTerm || s.originalPhrase)
+    .filter(Boolean)
+    .join(', ');
+  const chief = patientCase.chiefComplaint?.description || '';
+  return `PATIENT: ${patientCase.demographics.age}yo ${patientCase.demographics.sex}.${chief ? ` Chief complaint: ${chief}.` : ''}
+Symptoms: ${symptoms}.`;
+}
+
+function buildRankingBlock(ranking: DiagnosisHypothesis[]): string {
+  return ranking.slice(0, 10).map((h, i) => {
+    const cf = h.diagnosticCriteria;
+    const fulfillment = cf && cf.totalCriteria > 0
+      ? `criteria ${cf.metCriteria}/${cf.totalCriteria}`
+      : 'no criteria fulfillment';
+    const evalTag = h.knowledgeBaseMatch ? 'KB-MATCHED' : 'NON-KB';
+    return `#${i + 1} ${h.diagnosis} [${evalTag}, ${fulfillment}, confidence ${h.confidenceScore}]
+  ${(h.clinicalReasoning || '').slice(0, 400)}`;
+  }).join('\n\n');
+}
+
+function buildCritiqueBlock(critique: CritiqueOutput): string {
+  if (!critique.suggestions.length) {
+    return `OTHER CLINICIAN'S CRITIQUE: ${critique.overallAssessment || 'No specific suggestions; ranking is acceptable.'} (Confidence in your ranking: ${critique.confidenceInClaudeRanking}/100)`;
+  }
+  const suggestions = critique.suggestions.map((s, i) => {
+    const rankPart = s.targetNewRank ? ` (suggest new rank: #${s.targetNewRank})` : '';
+    const evidenceList = s.evidence.length ? `\n    Evidence cited: ${s.evidence.join('; ')}` : '';
+    return `${i + 1}. ${s.action.toUpperCase()} "${s.targetDiagnosis}"${rankPart}
+    Reasoning: ${s.reasoning}${evidenceList}`;
+  }).join('\n');
+  return `OTHER CLINICIAN'S CRITIQUE (confidence in your ranking: ${critique.confidenceInClaudeRanking}/100):
+Overall: ${critique.overallAssessment}
+
+Specific suggestions:
+${suggestions}`;
+}
+
+function buildUserPrompt(opts: {
+  patientCase: PatientCase;
+  firstPassRanking: DiagnosisHypothesis[];
+  firstPassAssessment?: string;
+  critique: CritiqueOutput;
+}): string {
+  const recap = buildPatientRecap(opts.patientCase);
+  const ranking = buildRankingBlock(opts.firstPassRanking);
+  const critique = buildCritiqueBlock(opts.critique);
+  const firstPassNote = opts.firstPassAssessment
+    ? `\nYour Stage 6 overall assessment:\n${opts.firstPassAssessment}\n`
+    : '';
+  return `${recap}
+
+YOUR DRAFT RANKING (Stage 6, the one being critiqued):
+
+${ranking}
+${firstPassNote}
+${critique}
+
+Now produce your final ranked top-10. For each entry: explicitly note whether the rank changed from your draft, and why. Honor critique suggestions only when the cited evidence supports the change.`;
+}
+
+export interface ClaudeFinalizerOutput extends AgentOutput {
+  finalizerStats: {
+    criticSuggestionsAccepted: number;
+    criticSuggestionsRejected: number;
+    rankChangesFromFirstPass: number;
+    removedFromTop10: string[];
+    addedToTop10: string[];
+  };
+}
+
+export class ClaudeFinalizerAgent {
+  public readonly name = 'claude-finalizer';
+
+  async execute(opts: {
+    patientCase: PatientCase;
+    firstPassRanking: DiagnosisHypothesis[];
+    firstPassAssessment?: string;
+    critique: CritiqueOutput;
+    /** Full deduped + KB-attached pool, so finalizer can swap in alternates if needed. */
+    fullHypothesisPool: DiagnosisHypothesis[];
+  }): Promise<ClaudeFinalizerOutput> {
+    const userPrompt = buildUserPrompt({
+      patientCase: opts.patientCase,
+      firstPassRanking: opts.firstPassRanking,
+      firstPassAssessment: opts.firstPassAssessment,
+      critique: opts.critique,
+    });
+
+    try {
+      setLogContext({ agentName: this.name, stageName: 'claude-finalize' });
+    } catch { /* logger optional */ }
+
+    const start = Date.now();
+    const result = await callAnthropic({
+      systemPrompt: CLAUDE_FINALIZER_SYSTEM_PROMPT,
+      userPrompt,
+      maxTokens: 12000,
+      model: CLAUDE_FINALIZER_MODEL,
+    });
+
+    try {
+      setLogContext({ agentName: undefined, stageName: undefined });
+    } catch { /* logger optional */ }
+
+    const parsed = typeof result.content === 'object' && result.content !== null
+      ? (result.content as {
+          rankedDiagnoses?: Array<{ diagnosis: string; probabilityScore?: number; rationale?: string; changeReason?: string }>;
+          overallAssessment?: string;
+          criticSuggestionsAccepted?: number;
+          criticSuggestionsRejected?: number;
+          finalizerNotes?: string;
+        })
+      : null;
+
+    if (!parsed || !Array.isArray(parsed.rankedDiagnoses)) {
+      throw new Error(`Claude finalizer returned non-conforming output (got ${typeof result.content})`);
+    }
+
+    // Map finalizer output back to the full hypothesis pool to preserve all
+    // upstream fields (criteria fulfillment, evidence, KB profile, etc).
+    const pool = opts.fullHypothesisPool;
+    const findByName = (name: string): DiagnosisHypothesis | null => {
+      const norm = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const found = pool.find((h) => h.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '') === norm);
+      if (found) return found;
+      // Substring fallback (matches v15 ClaudeSynthAgent behavior).
+      return pool.find((h) => {
+        const hn = h.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '');
+        return hn.length >= 12 && (hn.includes(norm) || norm.includes(hn));
+      }) || null;
+    };
+
+    // Build first-pass rank lookup for changesFromFirstPass annotation.
+    const firstPassRankByDiag = new Map<string, number>();
+    opts.firstPassRanking.slice(0, 10).forEach((h, i) => {
+      const norm = h.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '');
+      firstPassRankByDiag.set(norm, i + 1);
+    });
+
+    type ChangeReason = NonNullable<DiagnosisHypothesis['changesFromFirstPass']>['changeReason'];
+    const validChangeReasons: ReadonlyArray<ChangeReason> = ['critique-promoted', 'critique-demoted', 'critique-reordered', 'no-change', 'finalizer-override'];
+
+    const finalRanking: DiagnosisHypothesis[] = [];
+    for (let i = 0; i < parsed.rankedDiagnoses.length && finalRanking.length < 10; i++) {
+      const r = parsed.rankedDiagnoses[i];
+      const match = findByName(r.diagnosis);
+      if (!match) continue;
+      if (finalRanking.some((x) => x.diagnosis === match.diagnosis)) continue;
+      const rankBeforeNorm = match.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const rankBefore = firstPassRankByDiag.get(rankBeforeNorm) ?? null;
+      const rankAfter = i + 1;
+      const rawReason = r.changeReason || (rankBefore === rankAfter ? 'no-change' : 'critique-reordered');
+      const changeReason: ChangeReason = (validChangeReasons as ReadonlyArray<string>).includes(rawReason)
+        ? (rawReason as ChangeReason)
+        : 'finalizer-override';
+      const copy: DiagnosisHypothesis = { ...match };
+      if (typeof r.probabilityScore === 'number') {
+        copy.confidenceScore = r.probabilityScore;
+        copy.evidenceScore = r.probabilityScore;
+      }
+      if (typeof r.rationale === 'string' && r.rationale.length > 0) {
+        // Append finalizer rationale to clinical reasoning rather than replacing.
+        copy.clinicalReasoning = `${copy.clinicalReasoning || ''}\n[finalizer]: ${r.rationale}`.trim();
+      }
+      copy.changesFromFirstPass = {
+        rankBefore,
+        rankAfter,
+        changeReason,
+      };
+      finalRanking.push(copy);
+    }
+
+    // Add any first-pass top-10 entries the finalizer didn't include — they're
+    // demoted but not dropped (matches v15 ClaudeSynth behavior of falling
+    // through unranked but evaluated hypotheses).
+    for (const h of opts.firstPassRanking) {
+      if (finalRanking.length >= 10) break;
+      if (finalRanking.some((x) => x.diagnosis === h.diagnosis)) continue;
+      const copy: DiagnosisHypothesis = {
+        ...h,
+        changesFromFirstPass: {
+          rankBefore: firstPassRankByDiag.get(h.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '')) ?? null,
+          rankAfter: finalRanking.length + 1,
+          changeReason: 'critique-demoted',
+        },
+      };
+      finalRanking.push(copy);
+    }
+
+    // Compute deltas vs first-pass top-10 for telemetry.
+    const firstPassNames = new Set(
+      opts.firstPassRanking.slice(0, 10).map((h) => h.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '')),
+    );
+    const finalNames = new Set(
+      finalRanking.slice(0, 10).map((h) => h.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '')),
+    );
+    const removedFromTop10: string[] = [];
+    const addedToTop10: string[] = [];
+    for (const h of opts.firstPassRanking.slice(0, 10)) {
+      const n = h.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (!finalNames.has(n)) removedFromTop10.push(h.diagnosis);
+    }
+    for (const h of finalRanking.slice(0, 10)) {
+      const n = h.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (!firstPassNames.has(n)) addedToTop10.push(h.diagnosis);
+    }
+    const rankChangesFromFirstPass = finalRanking
+      .slice(0, 10)
+      .filter((h) => h.changesFromFirstPass && h.changesFromFirstPass.rankBefore !== h.changesFromFirstPass.rankAfter)
+      .length;
+
+    return {
+      agentName: this.name,
+      hypotheses: finalRanking,
+      reasoning: parsed.overallAssessment || '',
+      confidence: finalRanking[0]?.confidenceScore || 0,
+      tokensUsed: result.tokensUsed,
+      durationMs: Date.now() - start,
+      model: result.model || CLAUDE_FINALIZER_MODEL,
+      finalizerStats: {
+        criticSuggestionsAccepted: parsed.criticSuggestionsAccepted ?? 0,
+        criticSuggestionsRejected: parsed.criticSuggestionsRejected ?? 0,
+        rankChangesFromFirstPass,
+        removedFromTop10,
+        addedToTop10,
+      },
+    } as ClaudeFinalizerOutput;
+  }
+}

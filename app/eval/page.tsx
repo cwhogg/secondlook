@@ -877,6 +877,31 @@ export default function EvalPage() {
     }
     const data = await response.json()
     patchCase(testId, { status: "graded", grading: data.grading, gradingMetadata: data.gradingMetadata })
+
+    // Inline v3 tiered grading. Failures here must not roll back the v2 grade
+    // — the case remains in the v2 denominator and just shows "—" for v3
+    // until a backfill run repairs it (same fallback path as pre-inline cases).
+    try {
+      const tieredResp = await fetch("/api/admin/grade-test-tiered", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          groundTruth: { diagnosis: groundTruth.diagnosis },
+          differentialDiagnoses: (result.differentialDiagnoses || []).slice(0, 10).map((d) => ({
+            diagnosis: d.diagnosis,
+          })),
+        }),
+      })
+      if (!tieredResp.ok) {
+        const body = await tieredResp.json().catch(() => ({}))
+        console.warn(`[grade-test-tiered] ${testId}: ${body?.error || tieredResp.status}`)
+        return
+      }
+      const tieredData = await tieredResp.json()
+      patchCase(testId, { tieredGrading: tieredData.tieredGrading })
+    } catch (err) {
+      console.warn(`[grade-test-tiered] ${testId}: ${(err as Error).message}`)
+    }
   }
 
   const handleTrioRun = async () => {

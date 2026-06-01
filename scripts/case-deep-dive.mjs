@@ -435,10 +435,11 @@ function renderCandidateGen(slCase) {
   const detail = slCase.pipelineResult?.pipelineMetadata?.candidateGeneration;
   if (!cg && !detail) return section('candidate-gen', '4. LLM Candidate Generation', '<div class="note">Not run on this case (v12 or earlier).</div>');
 
+  const nonKbCount = detail?.nonKbCarried ?? detail?.noKbMatch ?? 0;
   const head = `
     <div class="stage-meta">
       ${cg ? `<span class="badge">${esc(cg.model)}</span> <span class="badge">${cg.tokensUsed.toLocaleString()} tokens</span> <span class="badge">${Math.round(cg.durationMs / 1000)}s</span>` : ''}
-      ${detail ? `<span class="badge badge-info">${detail.totalGenerated} generated</span><span class="badge badge-info">${detail.addedToPool} added to pool</span><span class="badge">${detail.duplicateOfTriage ?? 0} dup of triage</span><span class="badge">${detail.noKbMatch} no KB match</span>` : ''}
+      ${detail ? `<span class="badge badge-info">${detail.totalGenerated} generated</span><span class="badge badge-info">${detail.addedToPool} KB-matched added</span><span class="badge">${detail.duplicateOfTriage ?? 0} dup of triage</span><span class="badge badge-info">${nonKbCount} non-KB carried</span>` : ''}
     </div>
     ${cg ? `<p>${esc(cg.outputSummary)}</p>` : ''}
   `;
@@ -454,9 +455,9 @@ function renderCandidateGen(slCase) {
   }
 
   const dispoBadge = (d) => {
-    if (d === 'added-to-pool') return '<span class="badge badge-ok">added</span>';
+    if (d === 'added-to-pool') return '<span class="badge badge-ok">added (KB-matched)</span>';
     if (d === 'duplicate-of-triage') return '<span class="badge">duplicate</span>';
-    if (d === 'no-kb-match') return '<span class="badge badge-err">no KB</span>';
+    if (d === 'non-kb-carried' || d === 'no-kb-match') return '<span class="badge badge-info">non-KB (reasoning-evaluated)</span>';
     return `<span class="badge">${esc(d)}</span>`;
   };
   const rows = detail.candidates.map((c, i) => `
@@ -471,8 +472,10 @@ function renderCandidateGen(slCase) {
   return section('candidate-gen', '4. LLM Candidate Generation — Stage 1b', head + `
     <p>o3 reasoning:high generates a broad differential of ${detail.totalGenerated} candidate diagnoses
     from raw symptoms (parallel with triage). Each is matched against the KB.
-    ${detail.addedToPool} were added to the candidate pool; ${detail.duplicateOfTriage ?? 0}
-    duplicated triage's retrieval; ${detail.noKbMatch} had no matching KB profile and were dropped.</p>
+    ${detail.addedToPool} KB-matched candidates were added to the pool with their KB profile data;
+    ${detail.duplicateOfTriage ?? 0} duplicated triage's retrieval; ${nonKbCount} had no matching
+    KB profile and are carried through as reasoning-evaluated seed hypotheses (no structured
+    criteria, but evaluated by the evidence evaluator using clinical knowledge).</p>
     <table>
       <thead><tr><th>#</th><th>Diagnosis</th><th>Disposition</th><th>Rationale</th></tr></thead>
       <tbody>${rows}</tbody>
@@ -586,11 +589,14 @@ function renderKBRetrieval(slCase) {
       componentScores: t.componentScores,
     });
   }
-  const o3NoKb = [];
+  const o3NonKb = [];
   for (const c of cgCands) {
     const id = c.resolvedKbProfile;
     if (!id) {
-      if (c.disposition === 'no-kb-match') o3NoKb.push(c);
+      // Accept both legacy 'no-kb-match' and new 'non-kb-carried' disposition.
+      if (c.disposition === 'non-kb-carried' || c.disposition === 'no-kb-match') {
+        o3NonKb.push(c);
+      }
       continue;
     }
     if (byKey.has(id)) {
@@ -643,15 +649,23 @@ function renderKBRetrieval(slCase) {
     `;
   };
 
-  const noKbList = o3NoKb.length ? `
-    <h3 style="margin-top: 16px;">o3 candidates with no KB match (${o3NoKb.length}) — dropped from pool</h3>
-    <div class="note">These o3 hypotheses had no matching KB profile, so they were not appended with KB data and do not appear in the evidence-evaluator / synthesizer input.</div>
-    <table>
-      <thead><tr><th>#</th><th>Name</th><th>Rationale</th></tr></thead>
-      <tbody>
-        ${o3NoKb.map((c, i) => `<tr><td class="rank">${i + 1}</td><td><strong>${esc(c.name)}</strong></td><td><small>${esc(c.rationale || '')}</small></td></tr>`).join('')}
-      </tbody>
-    </table>
+  const renderNonKbCard = (c, i) => `
+    <details class="json-details" style="border:1px solid var(--light-border); padding:8px 12px; margin-bottom:8px; background:#fefdfb;">
+      <summary class="json-summary">
+        <strong>#${i + 1} ${esc(c.name)}</strong>
+        <span class="badge badge-info">o3</span>
+        <span class="badge badge-info">non-KB (reasoning-evaluated)</span>
+      </summary>
+      <div style="padding: 8px 12px;">
+        ${c.rationale ? `<div class="pair"><span class="label">o3 rationale:</span> <em>${esc(c.rationale)}</em></div>` : ''}
+        <div class="note" style="margin-top: 8px;">No KB profile attached. The evidence evaluator scores this candidate via clinical reasoning quality (same 0–100 scale as KB-matched candidates) rather than structured criteria fulfillment.</div>
+      </div>
+    </details>
+  `;
+  const nonKbList = o3NonKb.length ? `
+    <h3 style="margin-top: 16px;">Non-KB candidates carried through (${o3NonKb.length}) — reasoning-evaluated</h3>
+    <div class="stage-meta">These o3 hypotheses had no matching KB profile. They appear alongside KB-matched candidates in the evidence-evaluator / synthesizer input pool with equal weight, scored on clinical reasoning quality rather than criteria fulfillment.</div>
+    ${o3NonKb.map(renderNonKbCard).join('')}
   ` : '';
 
   const missingList = missingKb.length ? `
@@ -662,22 +676,23 @@ function renderKBRetrieval(slCase) {
 
   return section('retrieval', '5. KB Enrichment — full KB profile appended to each candidate', `
     <div class="stage-meta">
-      For each candidate from the union pool (triage retrieval + o3 candidate
-      generation), the complete KB profile (diagnostic criteria, tiered
-      symptoms, key findings, sibling DDx, red flags) is appended. This combined
-      payload is what the evidence evaluator and synthesizer LLM calls see for
-      every hypothesis.
+      For each KB-matched candidate from the union pool (triage retrieval +
+      o3 candidate generation), the complete KB profile (diagnostic criteria,
+      tiered symptoms, key findings, sibling DDx, red flags) is appended.
+      o3-generated candidates with no KB match are carried through as
+      reasoning-evaluated seeds with the o3 rationale only. Both flow into
+      the evidence evaluator and synthesizer with equal weight.
     </div>
     <div style="margin: 4px 0 12px;">
-      <span class="badge badge-info">${pool.length} unique candidates in union pool</span>
+      <span class="badge badge-info">${pool.length} KB-matched in union pool</span>
       <span class="badge badge-info">${withKb.length} with KB profile attached</span>
       <span class="badge badge-info">${triage.length} from triage</span>
       <span class="badge badge-info">${cgCands.filter((c) => c.resolvedKbProfile).length} from o3 (KB-matched)</span>
-      ${o3NoKb.length ? `<span class="badge">${o3NoKb.length} o3 with no KB match (dropped)</span>` : ''}
+      ${o3NonKb.length ? `<span class="badge badge-info">${o3NonKb.length} non-KB carried (reasoning-evaluated)</span>` : ''}
     </div>
     ${missingList}
     ${pool.map(renderCard).join('')}
-    ${noKbList}
+    ${nonKbList}
   `);
 }
 

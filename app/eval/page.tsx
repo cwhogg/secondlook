@@ -11,6 +11,7 @@ import {
   awaitTestCaseSaves,
   subscribeToTestCaseSaveErrors,
   computeStats,
+  computeV3Stats,
   buildPatientCase,
   StatsBanner,
   StatusBadge,
@@ -1858,16 +1859,25 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full text-sm min-w-[560px]">
+          <table className="w-full text-sm min-w-[880px]">
             <thead>
+              {/* Group header: v2 columns vs v3 tiered columns */}
               <tr className="border-b border-[#e8ddd0] bg-[#faf7f2]">
-                <th className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Model</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">n</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Avg Score</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-1</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-3</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-5</th>
-                <th className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">Top-10</th>
+                <th rowSpan={2} className="text-left py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium align-bottom">Model</th>
+                <th rowSpan={2} className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium align-bottom">n</th>
+                <th rowSpan={2} className="text-right py-2 px-4 sm:px-5 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium align-bottom">Avg</th>
+                <th colSpan={4} className="text-center py-1 px-2 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium border-l border-[#e8ddd0]">v2 (legacy)</th>
+                <th colSpan={4} className="text-center py-1 px-2 text-[10px] uppercase tracking-wider text-[#6a52a3] font-semibold border-l border-[#e8ddd0]">v3 tiered</th>
+              </tr>
+              <tr className="border-b border-[#e8ddd0] bg-[#faf7f2]">
+                <th className="text-right py-2 px-3 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium border-l border-[#e8ddd0]">T-1</th>
+                <th className="text-right py-2 px-3 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">T-3</th>
+                <th className="text-right py-2 px-3 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">T-5</th>
+                <th className="text-right py-2 px-3 text-[10px] uppercase tracking-wider text-[#8b7355] font-medium">T-10</th>
+                <th className="text-right py-2 px-3 text-[10px] uppercase tracking-wider text-[#6a52a3] font-medium border-l border-[#e8ddd0]" title="EXACT at rank 1 — exact disease entity at #1">E@1</th>
+                <th className="text-right py-2 px-3 text-[10px] uppercase tracking-wider text-[#6a52a3] font-medium" title="EXACT or VARIANT at rank 1 — disease identified, umbrella-vs-subtype ok">E+V@1</th>
+                <th className="text-right py-2 px-3 text-[10px] uppercase tracking-wider text-[#6a52a3] font-medium" title="EXACT or VARIANT at rank ≤ 3">E+V@3</th>
+                <th className="text-right py-2 px-3 text-[10px] uppercase tracking-wider text-[#6a52a3] font-medium" title="EXACT or VARIANT or FAMILY at rank 1 — right disease family, may be wrong subtype">E+V+F@1</th>
               </tr>
             </thead>
             <tbody>
@@ -1882,12 +1892,14 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
                 return (
                   <Fragment key={v}>
                     <tr className="bg-[#fbf6ec] border-b border-[#e8ddd0]">
-                      <td colSpan={7} className="py-1.5 px-4 sm:px-5 text-[11px] uppercase tracking-wider text-[#8b7355] font-semibold">
+                      <td colSpan={11} className="py-1.5 px-4 sm:px-5 text-[11px] uppercase tracking-wider text-[#8b7355] font-semibold">
                         Eval {v} — {subN} case{subN === 1 ? "" : "s"}
                       </td>
                     </tr>
                     {MODEL_TABS.map((mode) => {
                       const stats = computeStats(cohort[mode])
+                      const v3 = computeV3Stats(cohort[mode])
+                      const v3Pct = (num: number) => v3 ? `${Math.round((num / v3.n) * 100)}%` : "—"
                       return (
                         <tr key={`${v}-${mode}`} className="border-b border-[#e8ddd0] last:border-b-0">
                           <td className="py-2.5 px-4 sm:px-5 text-[#2a2a2a] font-medium">{MODEL_DISPLAY[mode]} {v}</td>
@@ -1895,17 +1907,29 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
                           <td className="py-2.5 px-4 sm:px-5 text-right font-medium text-[#2a2a2a] tabular-nums">
                             {stats ? stats.avgScore.toFixed(1) : "—"}
                           </td>
-                          <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">
+                          <td className="py-2.5 px-3 text-right text-[#2a2a2a] tabular-nums border-l border-[#e8ddd0]">
                             {stats ? `${Math.round(stats.top1Rate * 100)}%` : "—"}
                           </td>
-                          <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">
+                          <td className="py-2.5 px-3 text-right text-[#2a2a2a] tabular-nums">
                             {stats ? `${Math.round(stats.top3Rate * 100)}%` : "—"}
                           </td>
-                          <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">
+                          <td className="py-2.5 px-3 text-right text-[#2a2a2a] tabular-nums">
                             {stats ? `${Math.round(stats.top5Rate * 100)}%` : "—"}
                           </td>
-                          <td className="py-2.5 px-4 sm:px-5 text-right text-[#2a2a2a] tabular-nums">
+                          <td className="py-2.5 px-3 text-right text-[#2a2a2a] tabular-nums">
                             {stats ? `${Math.round(stats.top10Rate * 100)}%` : "—"}
+                          </td>
+                          <td className="py-2.5 px-3 text-right text-[#2a2a2a] tabular-nums border-l border-[#e8ddd0]" title={v3 ? `${v3.exactT1}/${v3.n}` : undefined}>
+                            {v3 ? v3Pct(v3.exactT1) : "—"}
+                          </td>
+                          <td className="py-2.5 px-3 text-right text-[#2a2a2a] tabular-nums font-medium" title={v3 ? `${v3.variantT1}/${v3.n}` : undefined}>
+                            {v3 ? v3Pct(v3.variantT1) : "—"}
+                          </td>
+                          <td className="py-2.5 px-3 text-right text-[#2a2a2a] tabular-nums" title={v3 ? `${v3.variantT3}/${v3.n}` : undefined}>
+                            {v3 ? v3Pct(v3.variantT3) : "—"}
+                          </td>
+                          <td className="py-2.5 px-3 text-right text-[#2a2a2a] tabular-nums" title={v3 ? `${v3.familyT1}/${v3.n}` : undefined}>
+                            {v3 ? v3Pct(v3.familyT1) : "—"}
                           </td>
                         </tr>
                       )

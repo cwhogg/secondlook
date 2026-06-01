@@ -186,6 +186,47 @@ export async function awaitTestCaseSaves(): Promise<void> {
 }
 
 
+// v3 tiered-grader stats on a set of testCases. Returns null when no case has
+// tieredGrading attached so callers can render "—" without diluting v2 counts.
+//
+// `n` = how many of the input cases have a v3 tieredGrading object (denominator
+// for the rates). Cases without tieredGrading drop from this n; they remain in
+// the v2 computeStats denominator separately. This matches how /eval's
+// matched-trio panel handles partial grader coverage during rollout.
+export interface V3Stats {
+  n: number;
+  exactT1: number;        // rankAtExact === 1
+  exactT3: number;        // rankAtExact ≤ 3
+  exactT5: number;        // rankAtExact ≤ 5
+  variantT1: number;      // rankAtVariant === 1 (v3's isTop1)
+  variantT3: number;      // rankAtVariant ≤ 3
+  variantT5: number;      // rankAtVariant ≤ 5
+  familyT1: number;       // rankAtFamily === 1
+  familyT3: number;       // rankAtFamily ≤ 3
+}
+
+export function computeV3Stats(cases: TestCase[]): V3Stats | null {
+  const withV3 = cases.filter((c) => c.tieredGrading);
+  if (withV3.length === 0) return null;
+  const atOrBefore = (rank: number | null | undefined, k: number) =>
+    typeof rank === "number" && rank <= k;
+  let exactT1 = 0, exactT3 = 0, exactT5 = 0;
+  let variantT1 = 0, variantT3 = 0, variantT5 = 0;
+  let familyT1 = 0, familyT3 = 0;
+  for (const c of withV3) {
+    const g = c.tieredGrading!;
+    if (atOrBefore(g.rankAtExact, 1)) exactT1++;
+    if (atOrBefore(g.rankAtExact, 3)) exactT3++;
+    if (atOrBefore(g.rankAtExact, 5)) exactT5++;
+    if (atOrBefore(g.rankAtVariant, 1)) variantT1++;
+    if (atOrBefore(g.rankAtVariant, 3)) variantT3++;
+    if (atOrBefore(g.rankAtVariant, 5)) variantT5++;
+    if (atOrBefore(g.rankAtFamily, 1)) familyT1++;
+    if (atOrBefore(g.rankAtFamily, 3)) familyT3++;
+  }
+  return { n: withV3.length, exactT1, exactT3, exactT5, variantT1, variantT3, variantT5, familyT1, familyT3 };
+}
+
 export function computeStats(cases: TestCase[]): TestSuiteStats | null {
   const graded = cases.filter((c) => c.status === "graded" && c.grading)
   if (graded.length === 0) return null

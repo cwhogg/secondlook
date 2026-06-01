@@ -1327,7 +1327,6 @@ const html = `<!DOCTYPE html>
   <title>${titleStr}</title>
   ${css}
   ${tabCss}
-  ${caseBundles.length > 1 ? '<style>.tab-pane:first-of-type { display: block; }</style>' : ''}
 </head>
 <body>
   ${wrappedBody}

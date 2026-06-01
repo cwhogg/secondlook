@@ -33,7 +33,13 @@ const argv = (name, def) => {
   return i >= 0 ? args[i + 1] : def;
 };
 
+// Multi-case mode: --ppkts a,b,c renders all cases as tabs in one HTML.
+// Backward-compatible: --ppkt X works as before (single case, no tabs).
 const PPKT = argv('ppkt', null);
+const PPKTS_RAW = argv('ppkts', null);
+const PPKTS = PPKTS_RAW
+  ? PPKTS_RAW.split(',').map((s) => s.trim()).filter(Boolean)
+  : PPKT ? [PPKT] : [null];
 const VERSION = argv('version', 'v15');
 const OUT = argv('out', join(ROOT, 'case-deep-dive.html'));
 
@@ -42,38 +48,44 @@ const tcRes = await fetch(`${BASE}/api/admin/test-cases`);
 const tcData = await tcRes.json();
 const all = tcData.testCases || [];
 
-// Find the SL case
-let slCase;
-if (PPKT) {
-  slCase = all.find((t) =>
-    t.testVersion === 'Eval' &&
-    t.evalVersion === VERSION &&
-    t.evalRunMode === 'secondlook' &&
-    t.categoryHint === PPKT &&
-    t.status === 'graded'
-  );
-} else {
-  slCase = all.find((t) =>
-    t.testVersion === 'Eval' &&
-    t.evalVersion === VERSION &&
-    t.evalRunMode === 'secondlook' &&
-    t.status === 'graded'
-  );
+function findCases(ppktOrNull) {
+  let slCase;
+  if (ppktOrNull) {
+    slCase = all.find((t) =>
+      t.testVersion === 'Eval' &&
+      t.evalVersion === VERSION &&
+      t.evalRunMode === 'secondlook' &&
+      t.categoryHint === ppktOrNull &&
+      t.status === 'graded'
+    );
+  } else {
+    slCase = all.find((t) =>
+      t.testVersion === 'Eval' &&
+      t.evalVersion === VERSION &&
+      t.evalRunMode === 'secondlook' &&
+      t.status === 'graded'
+    );
+  }
+  if (!slCase) return null;
+  const ppkt = slCase.categoryHint;
+  const oaiCase = all.find((t) => t.evalVersion === VERSION && t.evalRunMode === 'openai' && t.categoryHint === ppkt);
+  const clCase = all.find((t) => t.evalVersion === VERSION && t.evalRunMode === 'claude' && t.categoryHint === ppkt);
+  return { slCase, oaiCase, clCase, ppkt };
 }
 
-if (!slCase) {
-  console.error('No matching completed SL case found');
+const caseBundles = PPKTS.map((p) => findCases(p)).filter(Boolean);
+if (caseBundles.length === 0) {
+  console.error('No matching completed SL cases found');
   process.exit(1);
 }
+for (const b of caseBundles) {
+  console.log(`Picked: ${b.slCase.id}  (gt: ${b.slCase.groundTruth?.diagnosis})`);
+}
 
-const ppkt = slCase.categoryHint;
-// Find sibling OAI and Claude cases on same ppkt
-const oaiCase = all.find((t) => t.evalVersion === VERSION && t.evalRunMode === 'openai' && t.categoryHint === ppkt);
-const clCase = all.find((t) => t.evalVersion === VERSION && t.evalRunMode === 'claude' && t.categoryHint === ppkt);
-
-console.log('Picked SL case:', slCase.id);
-console.log('ppkt:', ppkt);
-console.log('Ground truth:', slCase.groundTruth?.diagnosis);
+// First bundle = "primary" for header / sidebar default
+const slCase = caseBundles[0].slCase;
+const oaiCase = caseBundles[0].oaiCase;
+const clCase = caseBundles[0].clCase;
 
 // ============================================================
 // HTML BUILDERS
@@ -939,33 +951,108 @@ function renderRawData(slCase, oaiCase, clCase) {
 // BUILD HTML
 // ============================================================
 
+function renderCaseBody(bundle) {
+  const { slCase: sl, oaiCase: oa, clCase: cl } = bundle;
+  return `
+    ${renderHeader(sl, oa, cl)}
+    ${renderTOC()}
+    <main>
+      ${renderInput(sl)}
+      ${renderExtraction(sl)}
+      ${renderTriageStage(sl)}
+      ${renderCandidateGen(sl)}
+      ${renderKBRetrieval(sl)}
+      ${renderSpecialists(sl)}
+      ${renderEvidenceEval(sl)}
+      ${renderSynthesizers(sl)}
+      ${renderReconciliation(sl)}
+      ${renderReport(sl)}
+      ${renderFamilyExpansion(sl)}
+      ${renderFinalDifferential(sl, oa, cl)}
+      ${renderGrading(sl)}
+      ${renderLlmCalls(sl)}
+      ${renderRawData(sl, oa, cl)}
+    </main>
+  `;
+}
+
+// Tabs CSS — uses :checked sibling selectors so no JS needed
+const tabCss = caseBundles.length > 1 ? `
+<style>
+  .tab-radio { display: none; }
+  .tab-nav {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--paper);
+    border-bottom: 2px solid var(--med-border);
+    padding: 0 24px;
+    display: flex; gap: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .tab-label {
+    padding: 14px 18px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .tab-label:hover { color: var(--ink); background: #fdfaf5; }
+  .tab-label small { display: block; font-weight: 400; color: var(--muted); font-size: 11px; margin-top: 2px; }
+  .tab-pane { display: none; }
+  ${caseBundles.map((b, i) => `
+    #tab-${i}:checked ~ .tab-nav label[for="tab-${i}"] {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      background: var(--paper);
+    }
+    #tab-${i}:checked ~ #pane-${i} { display: block; }
+  `).join('')}
+</style>
+` : '';
+
+function renderTabNav() {
+  if (caseBundles.length <= 1) return '';
+  return `<nav class="tab-nav">
+    ${caseBundles.map((b, i) => `
+      <label class="tab-label" for="tab-${i}">
+        ${esc(b.slCase.groundTruth?.diagnosis || '?')}
+        <small>${esc(b.slCase.categoryHint)}</small>
+      </label>
+    `).join('')}
+  </nav>`;
+}
+
+const titleStr = caseBundles.length > 1
+  ? `Pipeline Deep Dive — ${caseBundles.length} cases`
+  : `Pipeline Deep Dive — ${esc(slCase.categoryHint)}`;
+
+const radios = caseBundles.length > 1
+  ? caseBundles.map((b, i) => `<input type="radio" class="tab-radio" name="case-tab" id="tab-${i}"${i === 0 ? ' checked' : ''}>`).join('')
+  : '';
+
+const panes = caseBundles.map((b, i) => `
+  <div class="tab-pane" id="pane-${i}">
+    ${renderCaseBody(b)}
+  </div>
+`).join('');
+
+const wrappedBody = caseBundles.length > 1
+  ? `${radios}${renderTabNav()}${panes}`
+  : renderCaseBody(caseBundles[0]);
+
 const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Pipeline Deep Dive — ${esc(slCase.categoryHint)}</title>
+  <title>${titleStr}</title>
   ${css}
+  ${tabCss}
+  ${caseBundles.length > 1 ? '<style>.tab-pane:first-of-type { display: block; }</style>' : ''}
 </head>
 <body>
-  ${renderHeader(slCase, oaiCase, clCase)}
-  ${renderTOC()}
-  <main>
-    ${renderInput(slCase)}
-    ${renderExtraction(slCase)}
-    ${renderTriageStage(slCase)}
-    ${renderCandidateGen(slCase)}
-    ${renderKBRetrieval(slCase)}
-    ${renderSpecialists(slCase)}
-    ${renderEvidenceEval(slCase)}
-    ${renderSynthesizers(slCase)}
-    ${renderReconciliation(slCase)}
-    ${renderReport(slCase)}
-    ${renderFamilyExpansion(slCase)}
-    ${renderFinalDifferential(slCase, oaiCase, clCase)}
-    ${renderGrading(slCase)}
-    ${renderLlmCalls(slCase)}
-    ${renderRawData(slCase, oaiCase, clCase)}
-  </main>
+  ${wrappedBody}
 </body>
 </html>
 `;

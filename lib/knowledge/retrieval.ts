@@ -374,9 +374,10 @@ function computeSymptomScoreSemantic(
   const diseaseScore = matchedWeight / totalWeight;
   const coverageScore = matchedSymptoms.length / Math.max(symptoms.length, 1);
   const blendedScore = 0.6 * diseaseScore + 0.4 * coverageScore;
+  const pathFloor = applyPathognomonicFloor(disease, matchedSymptoms, blendedScore);
 
   return {
-    symptomScore: Math.min(blendedScore, 1.0),
+    symptomScore: Math.min(pathFloor, 1.0),
     matchedSymptoms,
   };
 }
@@ -424,14 +425,48 @@ function computeSymptomScoreFallback(
   const diseaseScore = matchedWeight / totalWeight;
   const coverageScore = matchedSymptoms.length / Math.max(symptoms.length, 1);
   const blendedScore = 0.6 * diseaseScore + 0.4 * coverageScore;
+  const pathFloor = applyPathognomonicFloor(disease, matchedSymptoms, blendedScore);
 
   return {
-    symptomScore: Math.min(blendedScore, 1.0),
+    symptomScore: Math.min(pathFloor, 1.0),
     matchedSymptoms,
   };
 }
 
 // ===== SHARED HELPERS =====
+
+/**
+ * Pathognomonic floor: when a disease has ≥2 pathognomonic symptoms and ≥50%
+ * of them match the patient with strength 'exact' or 'partial', floor the
+ * blended symptom score at 0.80. Prevents pathognomonic-rich cases from being
+ * buried because the disease has many additional common/occasional/rare
+ * symptoms inflating its total weight denominator.
+ *
+ * Pathognomonic means >90% of patients with the disease present with this
+ * finding; an exact or partial match on multiple such features is strong
+ * evidence of the disease and should not be diluted by symptom-count math.
+ *
+ * Only triggers on 'exact' and 'partial' matches (not 'semantic'), since
+ * semantic matches at 0.50-0.68 cosine similarity are too loose to anchor
+ * a high-confidence floor.
+ */
+function applyPathognomonicFloor(
+  disease: DiseaseProfile,
+  matchedSymptoms: SymptomMatch[],
+  currentScore: number,
+): number {
+  const pathognomonic = disease.symptoms.pathognomonic || [];
+  if (pathognomonic.length < 2) return currentScore;
+  const pathNames = new Set(pathognomonic.map((s) => s.symptomName));
+  let strongPathMatches = 0;
+  for (const m of matchedSymptoms) {
+    if (!pathNames.has(m.diseaseSymptom.symptomName)) continue;
+    if (m.matchType === 'exact' || m.matchType === 'partial') strongPathMatches++;
+  }
+  const ratio = strongPathMatches / pathognomonic.length;
+  if (ratio < 0.5) return currentScore;
+  return Math.max(currentScore, 0.80);
+}
 
 function getSearchTerms(symptom: MappedSymptom): string[] {
   const terms: string[] = [];

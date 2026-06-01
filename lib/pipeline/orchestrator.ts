@@ -288,19 +288,41 @@ export class DiagnosticPipeline {
       })();
       void topSpecialists_DISABLED;
 
-      // Build annotation candidates from the union pool. Each candidate carries
-      // its KB profile (if any) so the specialist can leverage the structured
-      // criteria + cardinal features + discriminators.
+      // Cap the KB-matched candidate pool before building seed hypotheses.
       //
-      // Cap at top 25 by matchScore. The full union can be 50-80 candidates;
-      // asking each specialist to annotate all of them in one o3:high call
-      // overflows the realistic output size and triggers OpenAI request
-      // timeouts at ~100s (observed on PMID_39753114 — all 6 annotators
-      // timing out at the same point). 25 candidates × 7 fields × ~200 tokens
-      // = ~35K tokens output per call which fits comfortably in 40K maxTokens.
-      const MAX_KB_CANDIDATES = 25;
-      const sortedCandidates = [...triageResult.candidateDiseases].sort((a, b) => (b.matchScore || 0) - (a.matchScore || 0));
-      const annotationCandidates: AnnotationCandidate[] = sortedCandidates.slice(0, MAX_KB_CANDIDATES).map((dm) => ({
+      // Previously the cap was a single top-N-by-matchScore slice, which
+      // silently dropped o3-generated KB-matched candidates whenever triage's
+      // symptom-overlap retrieval produced enough hits scoring above their
+      // hardcoded matchScore (0.4). On the Netherton case this lost the only
+      // correct candidate (orchestrator.ts root-cause analysis 2026-06-01).
+      //
+      // New scheme partitions the union pool by source:
+      //   • LLM-added KB-matched candidates: guaranteed seats up to LLM_KB_CAP
+      //   • Triage retrieval candidates: fill remaining seats up to a total
+      //     ceiling of TOTAL_KB_CAP, sorted by triage matchScore desc.
+      //
+      // This guarantees o3's clinical-reasoning catches always reach the
+      // evidence evaluator even when triage retrieval is noisy.
+      const TOTAL_KB_CAP = 35;
+      const LLM_KB_CAP = 25;
+      const llmAddedIds = new Set(addedFromLLM.map((m) => m.disease.id));
+      const triageOnly = triageResult.candidateDiseases.filter((c) => !llmAddedIds.has(c.disease.id));
+      const llmOnly = triageResult.candidateDiseases.filter((c) => llmAddedIds.has(c.disease.id));
+      const cappedLlm = llmOnly.slice(0, LLM_KB_CAP);
+      const triageSlots = Math.max(0, TOTAL_KB_CAP - cappedLlm.length);
+      const cappedTriage = [...triageOnly]
+        .sort((a, b) => (b.matchScore || 0) - (a.matchScore || 0))
+        .slice(0, triageSlots);
+      const cappedCandidates = [...cappedTriage, ...cappedLlm];
+      log('orch.stage.kb_cap', {
+        triageIn: triageOnly.length,
+        llmIn: llmOnly.length,
+        triageKept: cappedTriage.length,
+        llmKept: cappedLlm.length,
+        total: cappedCandidates.length,
+      });
+
+      const annotationCandidates: AnnotationCandidate[] = cappedCandidates.map((dm) => ({
         diagnosis: dm.disease.name,
         kbProfile: dm.disease,
         rationale: rationalesByDiseaseId.get(dm.disease.id) || '',

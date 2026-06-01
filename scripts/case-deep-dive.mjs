@@ -883,9 +883,96 @@ function renderSynthesizers(slCase) {
 
 function renderReconciliation(slCase) {
   const recon = slCase.pipelineResult?.pipelineMetadata?.reconciliation;
-  if (!recon) return section('reconciliation', '10. Reconciliation', '<div class="note">No reconciliation data (pre-v15 architecture or older grading).</div>');
+  if (!recon) return section('reconciliation', '10. Reconciliation', '<div class="note">No reconciliation data (pre-v15 architecture).</div>');
 
   const confBadge = recon.confidence === 'dual-model-consensus' ? 'badge-ok' : recon.confidence === 'persistent-disagreement-criteria-tiebreak' ? 'badge-err' : 'badge-info';
+
+  const positionBadge = (p) => {
+    if (!p) return '';
+    if (p === 'agree') return '<span class="badge badge-ok">AGREE</span>';
+    if (p === 'stand') return '<span class="badge badge-info">STAND</span>';
+    if (p === 'disagree') return '<span class="badge badge-err">DISAGREE</span>';
+    return `<span class="badge">${esc(p)}</span>`;
+  };
+
+  const o3Hist = recon.o3RoundHistory || [];
+  const clHist = recon.claudeRoundHistory || [];
+  const maxRound = Math.max(o3Hist.length, clHist.length);
+
+  // Render side-by-side round history with each model's top-1, position, and reasoning
+  let roundRows = '';
+  for (let i = 0; i < maxRound; i++) {
+    const o3R = o3Hist[i] || {};
+    const clR = clHist[i] || {};
+    roundRows += `
+      <tr>
+        <td><strong>Round ${i + 1}</strong></td>
+        <td>
+          ${o3R.topOne ? `<div><strong>${esc(o3R.topOne)}</strong> ${positionBadge(o3R.position)}</div>` : '<em>(no entry)</em>'}
+          ${o3R.reasoning ? `<details class="json-details"><summary class="json-summary">reasoning</summary><div style="padding:6px 8px; background:var(--code-bg); font-size:12px;">${esc(o3R.reasoning)}</div></details>` : ''}
+        </td>
+        <td>
+          ${clR.topOne ? `<div><strong>${esc(clR.topOne)}</strong> ${positionBadge(clR.position)}</div>` : '<em>(no entry)</em>'}
+          ${clR.reasoning ? `<details class="json-details"><summary class="json-summary">reasoning</summary><div style="padding:6px 8px; background:var(--code-bg); font-size:12px;">${esc(clR.reasoning)}</div></details>` : ''}
+        </td>
+      </tr>`;
+  }
+
+  // Pull reconciliation LLM calls (Round 2 / Round 3 raw prompts + responses)
+  const allCalls = slCase.pipelineResult?.pipelineMetadata?.llmCalls || [];
+  const reconCalls = allCalls.filter((c) => (c.agentName || '').includes('reconciliation') || c.stageName === 'reconciliation');
+  // Group by round
+  const callsByRound = new Map();
+  for (const c of reconCalls) {
+    const m = (c.agentName || '').match(/-r(\d+)$/);
+    const r = m ? Number(m[1]) : null;
+    if (r === null) continue;
+    if (!callsByRound.has(r)) callsByRound.set(r, []);
+    callsByRound.get(r).push(c);
+  }
+
+  const renderCallDrilldown = (c) => `
+    <details class="json-details" style="border:1px solid var(--light-border); padding:6px 10px; margin:6px 0; background:#fefdfb;">
+      <summary class="json-summary">
+        <strong>${esc(c.agentName)}</strong>
+        <span class="badge badge-info">${esc(c.provider)}/${esc(c.model)}</span>
+        ${c.reasoningEffort ? `<span class="badge">${esc(c.reasoningEffort)}</span>` : ''}
+        <span class="badge">${c.tokensIn ?? '?'}→${c.tokensOut ?? '?'} tok</span>
+        ${c.reasoningTokens ? `<span class="badge badge-info">${c.reasoningTokens} reasoning</span>` : ''}
+        <span class="badge">${Math.round((c.durationMs || 0) / 1000)}s</span>
+        ${c.finishReason ? `<span class="badge">finish: ${esc(c.finishReason)}</span>` : ''}
+      </summary>
+      <div style="padding: 6px 0;">
+        <h4 style="margin: 10px 0 4px;">System prompt</h4>
+        <pre>${esc(c.systemPrompt || '(none)')}</pre>
+        <h4 style="margin: 10px 0 4px;">User prompt</h4>
+        <pre>${esc(c.userPrompt || '(none)')}</pre>
+        ${c.rawResponseText ? `<h4 style="margin: 10px 0 4px;">Raw response</h4><pre>${esc(c.rawResponseText)}</pre>` : ''}
+        ${c.structuredOutput ? `<h4 style="margin: 10px 0 4px;">Structured output</h4><pre>${esc(typeof c.structuredOutput === 'string' ? c.structuredOutput : JSON.stringify(c.structuredOutput, null, 2))}</pre>` : ''}
+      </div>
+    </details>
+  `;
+
+  let drilldown = '';
+  if (callsByRound.size > 0) {
+    const rounds = Array.from(callsByRound.keys()).sort((a, b) => a - b);
+    drilldown = `
+      <h3 style="margin-top: 16px;">Per-round LLM calls (raw prompts + responses)</h3>
+      ${rounds.map((r) => `
+        <h4 style="margin: 12px 0 6px;">Round ${r}</h4>
+        ${callsByRound.get(r).map(renderCallDrilldown).join('')}
+      `).join('')}
+    `;
+  } else if (recon.roundsRun > 1) {
+    drilldown = `
+      <div class="note">
+        Per-round LLM calls weren't logged for this case (predates the LLM call
+        logger). The round history above still carries each model's
+        position + reasoning text. Newer runs capture the full prompt/response
+        for every Round 2 / Round 3 call.
+      </div>
+    `;
+  }
 
   return section('reconciliation', '10. Reconciliation — structured iterative agreement', `
     <div class="stage-meta">
@@ -895,19 +982,19 @@ function renderReconciliation(slCase) {
       ${recon.durationMs > 0 ? `<span class="badge">${Math.round(recon.durationMs / 1000)}s</span>` : ''}
     </div>
     <table>
-      <thead><tr><th>Step</th><th>o3</th><th>Claude</th></tr></thead>
+      <thead><tr><th></th><th>o3</th><th>Claude</th></tr></thead>
       <tbody>
-        <tr><td>Initial top-1</td><td>${esc(recon.o3InitialTop1)}</td><td>${esc(recon.claudeInitialTop1)}</td></tr>
-        <tr><td><strong>Final top-1</strong></td><td colspan="2"><strong>${esc(recon.finalTop1)}</strong> <span class="badge">${esc(recon.finalTop1Source)}</span></td></tr>
-        <tr><td>Initial agreement</td><td colspan="2">${recon.initialAgreement ? '✓ agreed at Round 1' : '✗ disagreed at Round 1'}</td></tr>
-        <tr><td>Final agreement</td><td colspan="2">${recon.finalAgreement ? '✓ converged' : '✗ persistent disagreement (criteria tiebreaker)'}</td></tr>
+        ${roundRows}
       </tbody>
     </table>
-    <div class="note">
-      The full per-round prompts and responses for o3 and Claude during Round 2 and Round 3
-      reconsideration aren't persisted in this version of the pipeline. The summary above
-      reflects the round-1 inputs and the final converged answer.
-    </div>
+    <table style="margin-top: 12px;">
+      <tbody>
+        <tr><td><strong>Final top-1</strong></td><td><strong>${esc(recon.finalTop1)}</strong> <span class="badge">${esc(recon.finalTop1Source)}</span></td></tr>
+        <tr><td>Initial agreement</td><td>${recon.initialAgreement ? '✓ agreed at Round 1' : '✗ disagreed at Round 1'}</td></tr>
+        <tr><td>Final agreement</td><td>${recon.finalAgreement ? '✓ converged' : '✗ persistent disagreement (criteria tiebreaker)'}</td></tr>
+      </tbody>
+    </table>
+    ${drilldown}
   `);
 }
 

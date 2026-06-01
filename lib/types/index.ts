@@ -125,6 +125,9 @@ export interface EvidenceItem {
   patientSymptom: string; // maps back to a specific MappedSymptom
   strength: 'strong' | 'moderate' | 'weak';
   type: 'supporting' | 'contradictory';
+  // v17+: specialty that surfaced this evidence item, preserved through dedup
+  // so the deep-dive can show which expert raised each finding.
+  attributedTo?: string;
 }
 
 export interface CriteriaFulfillment {
@@ -186,6 +189,42 @@ export interface DiagnosisHypothesis {
   // Marker set only on KB-linked entries appended after synthesis (positions 11-15);
   // synthesizer-ranked diagnoses leave this undefined.
   expansionSource?: 'family' | 'variant';
+  // v17+: specialist-emitted annotation fields. Each hypothesis carries these
+  // through dedup as the union of all contributing specialists' suggestions.
+  diagnosticTests?: string[];
+  cardinalFeatures?: string[];
+  ruleOutFeatures?: string[];
+  // v17+: per-specialist confidence preserved through dedup so the synth/critic
+  // can see disagreement (e.g. geneticist 90 vs internist 40 = uncertain).
+  domainConfidenceMap?: Record<string, number>;
+  // v17+: alternate names from individual specialists merged into this canonical.
+  // Preserved so the deep-dive can show what got combined.
+  nameVariants?: string[];
+  // v17+: set by Stage 8 (Claude finalize) so the report can show what o3's
+  // critique actually changed vs Claude's first synth pass.
+  changesFromFirstPass?: {
+    rankBefore: number | null;
+    rankAfter: number | null;
+    changeReason?: 'critique-promoted' | 'critique-demoted' | 'critique-reordered' | 'no-change' | 'finalizer-override';
+  };
+}
+
+// v17+: output shape from the o3 critic. Read by Stage 8 (Claude finalize).
+export interface CritiqueSuggestion {
+  targetDiagnosis: string; // EXACT name from Claude's Stage 6 ranking
+  action: 'promote' | 'demote' | 'reorder' | 'merge' | 'flag-gap';
+  targetNewRank?: number; // 1-10
+  evidence: string[]; // specific patient findings supporting the suggestion
+  reasoning: string;
+}
+
+export interface CritiqueOutput {
+  overallAssessment: string;
+  suggestions: CritiqueSuggestion[];
+  confidenceInClaudeRanking: number; // 0-100
+  tokensUsed: number;
+  durationMs: number;
+  model: string;
 }
 
 export interface DataGap {
@@ -272,6 +311,62 @@ export interface PipelineMetadata {
       prevalence: number;
     };
   }>;
+
+  // v17+: per-specialist breakdown from Stage 2.
+  specialistPool?: {
+    selected: string[]; // 5 specialty names
+    perSpecialistResults: Array<{
+      specialty: string;
+      hypothesisCount: number;
+      durationMs: number;
+      tokensUsed: number;
+      model: string;
+      failureReason?: string;
+    }>;
+  };
+
+  // v17+: dedup audit from Stage 3 — detailed so over-splitting is detectable early.
+  dedupStats?: {
+    inputCount: number;
+    outputCount: number;
+    evidenceItemsInput: number;
+    evidenceItemsOutput: number;
+    validationPassed: boolean;
+    groups: Array<{
+      canonical: string;
+      variants: string[];
+      contributingSpecialists: string[];
+      evidenceItemsContributed: number;
+      matchPath: 'exact-normalized' | 'substring' | 'alias-map' | 'kb-anchored';
+      canonicalChosenBy: 'kb-anchor' | 'specialist-consensus' | 'shortest';
+    }>;
+    unmatched: Array<{
+      diagnosis: string;
+      specialty: string;
+    }>;
+    suspiciousPairs: Array<{
+      a: string;
+      b: string;
+      editDistance: number;
+      reason: 'below-threshold' | 'different-tokens';
+    }>;
+  };
+
+  // v17+: o3 critique summary from Stage 7.
+  critique?: {
+    confidenceInClaudeRanking: number;
+    suggestionCount: number;
+    acceptedCount: number; // how many were honored by finalizer
+    tokensUsed: number;
+    durationMs: number;
+  };
+
+  // v17+: Claude finalize delta from Stage 8.
+  finalizerChanges?: {
+    rankChangesFromFirstPass: number;
+    removedFromTop10: string[];
+    addedToTop10: string[];
+  };
 }
 
 export interface AnalysisResult {

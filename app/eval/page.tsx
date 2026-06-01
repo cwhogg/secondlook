@@ -43,6 +43,7 @@ const EVAL_VERSION_COLORS: Record<string, string> = {
   v10: "bg-lime-50 text-lime-800 border-lime-300",
   v11: "bg-teal-50 text-teal-800 border-teal-300",
   v12: "bg-indigo-50 text-indigo-800 border-indigo-300",
+  v17: "bg-purple-50 text-purple-900 border-purple-400",
 }
 
 function EvalVersionBadge({ version }: { version?: string }) {

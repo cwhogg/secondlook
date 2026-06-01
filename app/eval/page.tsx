@@ -44,6 +44,7 @@ const EVAL_VERSION_COLORS: Record<string, string> = {
   v11: "bg-teal-50 text-teal-800 border-teal-300",
   v12: "bg-indigo-50 text-indigo-800 border-indigo-300",
   v17: "bg-purple-50 text-purple-900 border-purple-400",
+  v18: "bg-rose-50 text-rose-900 border-rose-400",
 }
 
 function EvalVersionBadge({ version }: { version?: string }) {
@@ -1290,7 +1291,7 @@ export default function EvalPage() {
             <div className="border border-[#d4c5b0] bg-white p-4 sm:p-6 mb-6">
               {/* Version selector — tags every testCase the next batch creates */}
               {(() => {
-                const KNOWN_VERSIONS = ["v1","v2","v3","v4","v5","v6","v7","v8","v9","v10","v11","v12","v13","v14","v15","v16","v17"] as const
+                const KNOWN_VERSIONS = ["v1","v2","v3","v4","v5","v6","v7","v8","v9","v10","v11","v12","v13","v14","v15","v16","v17","v18"] as const
                 const allVersions = Array.from(new Set([...KNOWN_VERSIONS, ...customVersions]))
                 const trimmedNewVersion = newVersionInput.trim()
                 const addNewVersion = () => {

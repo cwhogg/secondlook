@@ -28,7 +28,14 @@ export class ReportGenerator extends BaseAgent {
       name: 'report-generator',
       model: 'gpt-4.1-mini',
       temperature: 0.2,
-      maxTokens: 3000,
+      // v17: was 3000, raised to 10000 because v17 differentials have richer
+      // per-hypothesis clinicalReasoning (concatenated specialist reasoning
+      // from dedup) + finalizer rationale appended. Two cohort cases
+      // (PMID_36917008, PMID_12920066) failed with "Unterminated string in
+      // JSON at position ~12600" when the tool-call arguments were
+      // truncated mid-write at 3K. 10K gives comfortable headroom; cost
+      // impact is negligible on gpt-4.1-mini (~$0.005/call extra).
+      maxTokens: 10000,
       systemPrompt: REPORT_PROMPT,
     });
   }

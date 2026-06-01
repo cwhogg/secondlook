@@ -34,6 +34,8 @@ const argv = (name, def) => {
 };
 
 // Multi-case mode: --ppkts a,b,c renders all cases as tabs in one HTML.
+// Per-case version override: use ppkt_id@version (e.g. PMID_123@v17). The
+// global --version flag applies to entries without an explicit @suffix.
 // Backward-compatible: --ppkt X works as before (single case, no tabs).
 const PPKT = argv('ppkt', null);
 const PPKTS_RAW = argv('ppkts', null);
@@ -48,28 +50,34 @@ const tcRes = await fetch(`${BASE}/api/admin/test-cases`);
 const tcData = await tcRes.json();
 const all = tcData.testCases || [];
 
-function findCases(ppktOrNull) {
-  let slCase;
-  if (ppktOrNull) {
-    slCase = all.find((t) =>
-      t.testVersion === 'Eval' &&
-      t.evalVersion === VERSION &&
-      t.evalRunMode === 'secondlook' &&
-      t.categoryHint === ppktOrNull &&
-      t.status === 'graded'
-    );
-  } else {
-    slCase = all.find((t) =>
+function findCases(rawEntry) {
+  if (rawEntry === null) {
+    const slCase = all.find((t) =>
       t.testVersion === 'Eval' &&
       t.evalVersion === VERSION &&
       t.evalRunMode === 'secondlook' &&
       t.status === 'graded'
     );
+    if (!slCase) return null;
+    const ppkt = slCase.categoryHint;
+    const oaiCase = all.find((t) => t.evalVersion === VERSION && t.evalRunMode === 'openai' && t.categoryHint === ppkt);
+    const clCase = all.find((t) => t.evalVersion === VERSION && t.evalRunMode === 'claude' && t.categoryHint === ppkt);
+    return { slCase, oaiCase, clCase, ppkt };
   }
+  // Per-case version override: 'ppkt_id@version'
+  const [ppktOrNull, versionOverride] = rawEntry.split('@');
+  const version = versionOverride || VERSION;
+  const slCase = all.find((t) =>
+    t.testVersion === 'Eval' &&
+    t.evalVersion === version &&
+    t.evalRunMode === 'secondlook' &&
+    t.categoryHint === ppktOrNull &&
+    t.status === 'graded'
+  );
   if (!slCase) return null;
   const ppkt = slCase.categoryHint;
-  const oaiCase = all.find((t) => t.evalVersion === VERSION && t.evalRunMode === 'openai' && t.categoryHint === ppkt);
-  const clCase = all.find((t) => t.evalVersion === VERSION && t.evalRunMode === 'claude' && t.categoryHint === ppkt);
+  const oaiCase = all.find((t) => t.evalVersion === version && t.evalRunMode === 'openai' && t.categoryHint === ppkt);
+  const clCase = all.find((t) => t.evalVersion === version && t.evalRunMode === 'claude' && t.categoryHint === ppkt);
   return { slCase, oaiCase, clCase, ppkt };
 }
 

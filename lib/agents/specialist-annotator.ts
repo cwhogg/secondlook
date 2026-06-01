@@ -106,7 +106,10 @@ Our knowledge base covers ${getDiseaseCount()} rare diseases. For candidates whe
       name: `specialist-annotator-${specialistType}`,
       model: 'o3',
       temperature: 0.3,
-      maxTokens: 18000,
+      // Allow generous output budget — 25 candidates × ~7 structured fields
+      // each easily exceeds 20K tokens for verbose annotations. 40K leaves
+      // headroom for o3's reasoning_tokens which count against this budget.
+      maxTokens: 40000,
       reasoningEffort: 'high',
       systemPrompt,
     });

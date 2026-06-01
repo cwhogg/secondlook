@@ -279,7 +279,16 @@ export class DiagnosticPipeline {
       // Build annotation candidates from the union pool. Each candidate carries
       // its KB profile (if any) so the specialist can leverage the structured
       // criteria + cardinal features + discriminators.
-      const annotationCandidates: AnnotationCandidate[] = triageResult.candidateDiseases.map((dm) => ({
+      //
+      // Cap at top 25 by matchScore. The full union can be 50-80 candidates;
+      // asking each specialist to annotate all of them in one o3:high call
+      // overflows the realistic output size and triggers OpenAI request
+      // timeouts at ~100s (observed on PMID_39753114 — all 6 annotators
+      // timing out at the same point). 25 candidates × 7 fields × ~200 tokens
+      // = ~35K tokens output per call which fits comfortably in 40K maxTokens.
+      const MAX_CANDIDATES_PER_ANNOTATOR = 25;
+      const sortedCandidates = [...triageResult.candidateDiseases].sort((a, b) => (b.matchScore || 0) - (a.matchScore || 0));
+      const annotationCandidates: AnnotationCandidate[] = sortedCandidates.slice(0, MAX_CANDIDATES_PER_ANNOTATOR).map((dm) => ({
         diagnosis: dm.disease.name,
         kbProfile: dm.disease,
       }));

@@ -11,14 +11,16 @@ AI-powered rare disease diagnostic tool. Patients input symptoms through a multi
 - **Validation**: Zod
 - **Deployment**: Vercel
 
-### AI Provider Separation
+### AI Provider Separation (v17+ — per-stage instead of per-flow)
 
-The analysis flow and testing framework use **separate AI providers** to keep their API quotas independent:
+As of v17 (2026-05-31), the analysis flow uses both providers per-stage rather than the per-flow split that defined v5–v16. The testing framework remains Anthropic-only.
 
-- **Analysis flow (OpenAI)**: `parse-symptoms`, `parse-medications`, `analyze-symptom-patterns`, `analyze-patient-v2` (all pipeline agents). Everything a real user touches uses OpenAI.
-- **Testing framework (Anthropic)**: `admin/generate-patient`, `admin/grade-test`. Everything internal for test generation and grading uses Anthropic/Claude.
+- **Analysis flow (mixed)**: triage + specialists + o3 critic use OpenAI; Claude evaluator + Claude synth (existing `ClaudeSynthAgent`) + Claude finalizer use Anthropic. Symptom/medication parsing remains OpenAI.
+- **Testing framework (Anthropic only)**: `admin/generate-patient`, `admin/grade-test`, `admin/grade-test-tiered`. Unchanged.
 
-**Never mix providers across this boundary.** Analysis endpoints must use OpenAI. Testing endpoints must use Anthropic. This ensures testing activity cannot cause rate limits or quota issues for the production analysis flow, and vice versa.
+**Rule:** keep the testing framework strictly Anthropic so testing activity cannot exhaust the OpenAI analysis quota. Inside the analysis flow, provider choice per stage is driven by which model fits the role (Claude for eval/synth/finalize per v17 architecture decision; o3 for specialists/critique).
+
+Pre-v17 rule for reference: "Never mix providers" — formally relaxed by user decision on 2026-05-31. See `docs/v17-architecture.md` and `~/.claude/projects/-Users-cwhogg-SecondLook/memory/MEMORY.md`.
 
 ## Project Structure
 

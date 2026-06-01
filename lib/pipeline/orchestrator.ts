@@ -1,21 +1,20 @@
-import { PatientCase, AnalysisResult, StageResult, FamilyEnrichment } from '../types';
+import { PatientCase, AnalysisResult, StageResult, FamilyEnrichment, DiagnosisHypothesis } from '../types';
 import { TriageAgent } from '../agents/triage-agent';
-import { CandidateGeneratorAgent } from '../agents/candidate-generator';
-import { getSpecialistAgent } from '../agents/specialist-agents';
-import { type AnnotationCandidate } from '../agents/specialist-annotator';
+import { getSpecialistV17Agent, selectV17Specialists, SpecialistV17Output } from '../agents/specialist-v17';
 import { rerankCandidatesForSpecialty } from '../agents/specialty-reference/kb-rerank';
-import { EvidenceEvaluator } from '../agents/evidence-evaluator';
-import { SynthesisAgent } from '../agents/synthesizer';
+import { dedupAndNormalizeHypotheses, SpecialistV17Hypothesis } from '../agents/dedup-normalizer';
+import { ClaudeEvaluatorAgent } from '../agents/claude-evaluator';
 import { ClaudeSynthAgent } from '../agents/claude-synthesizer';
-import { reconcileRankings, type ReconciliationResult } from './reconciliation';
+import { O3CriticAgent } from '../agents/o3-critic';
+import { ClaudeFinalizerAgent } from '../agents/claude-finalizer';
 import { withLlmCallLog } from './llm-call-log';
 import { ReportGenerator } from '../agents/report-generator';
 import { expandFamilyVariants } from './family-expansion';
 import { deriveSymptomsFromLabs } from './lab-utils';
-import { AgentOutput } from '../agents/types';
+import { AgentOutput, SpecialistType } from '../agents/types';
 import { BudgetTracker } from './budget';
 import { getDiseaseCount, findFamilySiblings, findDiseaseByName, computeDifferentiatingTests, loadDiseaseDatabase } from '../knowledge';
-import { DiseaseMatch } from '../types/knowledge-base';
+import { DiseaseProfile } from '../types/knowledge-base';
 import { PipelineProgress, ProgressCallback } from '../types/pipeline';
 
 export type { PipelineProgress, ProgressCallback };
@@ -52,26 +51,16 @@ export class DiagnosticPipeline {
   ): Promise<AnalysisResult> {
     const stages: StageResult[] = [];
     const pipelineStart = Date.now();
-    // Tagged log helper. Vercel function logs end up grep-able by event name
-    // (orch.start, orch.stage.specialist.start/done/timeout, etc.) so a stuck
-    // case can be diagnosed from the log stream alone.
     const elapsed = () => `${Date.now() - pipelineStart}ms`;
     const log = (event: string, extra: Record<string, any> = {}) => {
       const fields = { event, t: elapsed(), ...extra };
       const tail = Object.entries(fields).map(([k, v]) => `${k}=${typeof v === "string" ? v : JSON.stringify(v)}`).join(" ");
       console.log(`[orch] ${tail}`);
     };
-    log("orch.start", { age: patientCase.demographics.age, sex: patientCase.demographics.sex, symptomCount: patientCase.symptoms.length });
+    log("orch.start", { version: '17.0.0', age: patientCase.demographics.age, sex: patientCase.demographics.sex, symptomCount: patientCase.symptoms.length });
 
     try {
-      // ===== STAGE 0: Lab-derived findings =====
-      // Convert uploaded labs flagged H/L/HH/LL/CRIT into MappedSymptom-shaped
-      // entries that retrieval and downstream agents see alongside the user-
-      // narrated symptoms. Without this, labs are visible to specialists in
-      // their prompt (Phase 1) but invisible to the symptom-overlap retrieval
-      // scoring, which means we miss the rare-disease cases where the only
-      // strong clue is a specific lab abnormality the patient never thought
-      // to verbalize ("low ceruloplasmin" -> Wilson's).
+      // ===== STAGE 0: Lab-derived findings (unchanged) =====
       const derivedLabSymptoms = deriveSymptomsFromLabs(patientCase.labResults);
       if (derivedLabSymptoms.length > 0) {
         patientCase = {
@@ -80,133 +69,22 @@ export class DiagnosticPipeline {
         };
       }
 
-      // ===== STAGES 1 + 1b (parallel) =====
-      // Stage 1 (triage) and Stage 1b (LLM-generated wide differential)
-      // run in parallel because neither depends on the other. Stage 1b is the
-      // v15 union candidate pool addition: an o3:high call producing 30-50
-      // candidate diagnoses from the patient case directly. Names that match
-      // KB profiles are unioned with triage's KB-retrieved candidates so the
-      // specialists see a wider, more inclusive pool. Names WITHOUT a KB match
-      // are also carried through — as reasoning-evaluated seed hypotheses
-      // (no structured criteria, but with the o3 rationale as initial
-      // clinicalReasoning) so the evidence evaluator and synth still see
-      // them. Avoids silently dropping the long-tail rare diseases not yet
-      // in our KB. See docs/v15-experiment-plan.md decision 1.
-      log("orch.stage.triage_and_candidates.start");
+      // ===== STAGE 1: TRIAGE (v5/v15 unchanged) =====
       const triageAgent = new TriageAgent();
-      const candidateGenAgent = new CandidateGeneratorAgent();
-      const triagePromise = triageAgent.execute({ patientCase });
-      const candidateGenPromise = candidateGenAgent
-        .generate(patientCase)
-        .catch((err: any) => {
-          // If candidate generation fails, fall back to triage-only — better
-          // to lose the union breadth than to fail the whole analysis.
-          log("orch.stage.candidates.fail", { msg: (err?.message || "").substring(0, 200) });
-          return null;
-        });
-      const [triageResult, candidateGenResult] = await Promise.all([triagePromise, candidateGenPromise]);
+      const triageResult = await triageAgent.execute({ patientCase });
       log("orch.stage.triage.done", { candidates: triageResult.candidateDiseases.length });
 
-      // Union: look up each LLM-generated candidate name in the KB; append
-      // any KB matches not already present in the triage pool. Names that
-      // don't match a KB profile are collected separately so they can be
-      // carried through as reasoning-evaluated seed hypotheses downstream.
-      // Track stats for measurement.
-      const rationalesMap: Map<string, string> | undefined =
-        (candidateGenResult as any)?.rationales ?? (candidateGenResult as any)?.candidateRationales;
-      const lookupRationale = (name: string): string => {
-        if (rationalesMap && typeof rationalesMap.get === 'function') {
-          return rationalesMap.get(name) || '';
-        }
-        return '';
-      };
-      const triageCandidateIds = new Set(triageResult.candidateDiseases.map((m) => m.disease.id));
-      const addedFromLLM: DiseaseMatch[] = [];
-      const rationalesByDiseaseId = new Map<string, string>();
-      const nonKbSeedCandidates: Array<{ name: string; rationale: string }> = [];
-      let llmCandidateNames: string[] = [];
-      if (candidateGenResult && candidateGenResult.diagnosisNames) {
-        llmCandidateNames = candidateGenResult.diagnosisNames;
-        for (const name of llmCandidateNames) {
-          const profile = findDiseaseByName(name);
-          if (!profile) {
-            // No KB profile — carry through as a reasoning-evaluated seed
-            // hypothesis. The evidence evaluator will score it via clinical
-            // reasoning rather than structured criteria.
-            nonKbSeedCandidates.push({ name, rationale: lookupRationale(name) });
-            continue;
-          }
-          if (triageCandidateIds.has(profile.id)) {
-            // Already in triage's pool — no need to add a duplicate, but
-            // capture the rationale so the KB-matched seed can use it as
-            // initial clinicalReasoning downstream.
-            const existing = rationalesByDiseaseId.get(profile.id);
-            if (!existing) rationalesByDiseaseId.set(profile.id, lookupRationale(name));
-            continue;
-          }
-          // Synthetic DiseaseMatch for the LLM-surfaced candidate. matchScore
-          // 0.4 places it below typical strong KB-retrieval hits (which range
-          // 0.5-1.0) but high enough that per-specialty reranking still
-          // considers it. systemOverlap pulled from the disease's own
-          // declared systems; demographicFit neutral.
-          addedFromLLM.push({
-            disease: profile,
-            matchScore: 0.4,
-            matchedSymptoms: [],
-            systemOverlap: profile.systemsAffected,
-            demographicFit: 0.5,
-          });
-          triageCandidateIds.add(profile.id);
-          rationalesByDiseaseId.set(profile.id, lookupRationale(name));
-        }
-      }
-      const unionCandidates = [...triageResult.candidateDiseases, ...addedFromLLM];
-      log("orch.stage.candidates.union", {
-        triage: triageResult.candidateDiseases.length,
-        llmGenerated: llmCandidateNames.length,
-        llmAddedToPool: addedFromLLM.length,
-        llmNonKbCarried: nonKbSeedCandidates.length,
-        union: unionCandidates.length,
+      const triageModel = 'gpt-4.1-nano';
+      this.budgetTracker.addUsage(triageModel, triageResult.tokensUsed);
+      stages.push({
+        stageName: 'triage',
+        durationMs: triageResult.durationMs,
+        tokensUsed: triageResult.tokensUsed,
+        model: triageModel,
+        agentName: 'triage-agent',
+        inputSummary: `${patientCase.symptoms.length} symptoms, ${patientCase.demographics.age}yo ${patientCase.demographics.sex}`,
+        outputSummary: `Systems: ${triageResult.bodySystems.join(', ')}. ${triageResult.candidateDiseases.length} candidate diseases.`,
       });
-
-      // Replace triageResult.candidateDiseases with the union for downstream
-      // consumers. The triage object itself is otherwise unchanged.
-      triageResult.candidateDiseases = unionCandidates;
-
-      // Record Stage 1b as a separate stage for accounting / metadata.
-      // Persist the full list of LLM candidate names, their rationales, and
-      // the per-candidate disposition (added to pool / duplicate of triage /
-      // non-KB carried as reasoning-evaluated) into a top-level
-      // pipelineMetadata.candidateGeneration field below. The stages-array
-      // summary is the short version for the existing UI; the detailed
-      // breakdown is the source of truth.
-      const addedDiseaseIds = new Set(addedFromLLM.map((m) => m.disease.id));
-      const llmCandidateDetail = llmCandidateNames.map((name) => {
-        let disposition: 'added-to-pool' | 'duplicate-of-triage' | 'non-kb-carried' = 'added-to-pool';
-        const profile = findDiseaseByName(name);
-        if (!profile) disposition = 'non-kb-carried';
-        else if (!addedDiseaseIds.has(profile.id)) disposition = 'duplicate-of-triage';
-        return {
-          name,
-          rationale: lookupRationale(name),
-          resolvedKbProfile: profile?.id || null,
-          resolvedKbName: profile?.name || null,
-          disposition,
-        };
-      });
-
-      if (candidateGenResult) {
-        this.budgetTracker.addUsage(candidateGenResult.model || 'o3', candidateGenResult.tokensUsed || 0);
-        stages.push({
-          stageName: 'candidate-generation',
-          durationMs: candidateGenResult.durationMs || 0,
-          tokensUsed: candidateGenResult.tokensUsed || 0,
-          model: candidateGenResult.model || 'o3',
-          agentName: 'candidate-generator',
-          inputSummary: `${patientCase.symptoms.length} symptoms, ${patientCase.demographics.age}yo ${patientCase.demographics.sex}`,
-          outputSummary: `${llmCandidateNames.length} LLM candidates → ${addedFromLLM.length} KB-matched added + ${llmCandidateNames.length - addedFromLLM.length - nonKbSeedCandidates.length} KB-duplicate + ${nonKbSeedCandidates.length} non-KB carried (reasoning-evaluated)`,
-        });
-      }
 
       onProgress?.({
         stage: 'triage',
@@ -223,14 +101,10 @@ export class DiagnosticPipeline {
             .map((s) => {
               const concept = s.selectedConcept || null;
               const code = concept?.snomedCode || concept?.cui || null;
-              const codeSystem: 'SNOMED' | 'UMLS CUI' | null = concept?.snomedCode
-                ? 'SNOMED'
-                : concept?.cui
-                  ? 'UMLS CUI'
-                  : null;
+              const codeSystem: 'SNOMED' | 'UMLS CUI' | null = concept?.snomedCode ? 'SNOMED' : concept?.cui ? 'UMLS CUI' : null;
               return {
-                originalPhrase: s.originalPhrase || s.userCorrection || s.medicalTerm || '',
-                medicalTerm: s.medicalTerm || s.originalPhrase || s.userCorrection || '',
+                originalPhrase: s.originalPhrase || '',
+                medicalTerm: s.medicalTerm || s.originalPhrase || '',
                 code,
                 codeSystem,
               };
@@ -240,285 +114,235 @@ export class DiagnosticPipeline {
         },
       });
 
-      const triageModel = 'gpt-4.1-nano'; // triage agent model
-      this.budgetTracker.addUsage(triageModel, triageResult.tokensUsed);
-      stages.push({
-        stageName: 'triage',
-        durationMs: triageResult.durationMs,
-        tokensUsed: triageResult.tokensUsed,
-        model: triageModel,
-        agentName: 'triage-agent',
-        inputSummary: `${patientCase.symptoms.length} symptoms, ${patientCase.demographics.age}yo ${patientCase.demographics.sex}`,
-        outputSummary: `Systems: ${triageResult.bodySystems.join(', ')}. Specialists: ${triageResult.relevantSpecialties.join(', ')}. ${triageResult.candidateDiseases.length} candidate diseases.`,
-      });
-
       this.checkBudget();
 
-      // ===== STAGE 2 (v16 — specialists disabled, candidates pass through) =====
-      // The full specialist-annotation flow is commented out below. Decision:
-      // each annotator was making one o3:high call with ALL union candidates as
-      // structured input, producing 5-7 LLM calls per case at ~$0.50 each and
-      // hitting timeout edge cases (PMID_39753114 burned all 6 annotators at
-      // 102s simultaneously). The cost/complexity isn't justifying its share of
-      // the answer signal — needs rethinking after the rest of the pipeline is
-      // stable. Likely future direction: route only the top 3-5 most relevant
-      // candidates to 1-2 specialists each (per-disease routing), not all
-      // candidates to all specialists.
-      //
-      // Current path: build seed hypotheses directly from union candidates with
-      // their KB profile data attached. No specialist enrichment. Evidence
-      // evaluator (Stage 3) still runs criteria checks; synth still ranks.
-      log("orch.stage.specialists.start", { count: 0, mode: 'passthrough' });
+      // ===== STAGE 2: SPECIALIST CONSULTATION (v17 — 5 in parallel, v5-style) =====
+      // Select 5 distinct specialists: geneticist + general-internist (anchors)
+      // + top 3 from triage ranking that aren't already anchors. Each runs the
+      // v5 SpecialistAgent prompt (verbatim) + v16 annotation fields. Per-
+      // specialty KB candidate slice via existing rerankCandidatesForSpecialty.
+      const selectedSpecialties = selectV17Specialists(triageResult.relevantSpecialties as SpecialistType[]);
+      log("orch.stage.specialists.start", { count: selectedSpecialties.length, specialties: selectedSpecialties });
+
       onProgress?.({
         stage: 'specialists',
         stageNumber: 2,
         totalStages: 6,
-        detail: `Passthrough mode: ${triageResult.candidateDiseases.length} candidates → seed hypotheses (specialist annotation temporarily disabled)`,
+        detail: `Consulting ${selectedSpecialties.length} specialist agents in parallel`,
         percentage: 20,
-        data: { specialties: [] },
+        data: { specialties: selectedSpecialties },
       });
 
-      // /* ============ COMMENTED OUT: specialist annotation flow ============
-      const topSpecialists_DISABLED = (() => {
-        const ranked = [...triageResult.relevantSpecialties];
-        const top = ranked.slice(0, 5);
-        if (!top.includes('geneticist' as any)) top.push('geneticist' as any);
-        if (!top.includes('general-internist' as any)) top.push('general-internist' as any);
-        return top;
-      })();
-      void topSpecialists_DISABLED;
-
-      // Cap the KB-matched candidate pool before building seed hypotheses.
-      //
-      // Previously the cap was a single top-N-by-matchScore slice, which
-      // silently dropped o3-generated KB-matched candidates whenever triage's
-      // symptom-overlap retrieval produced enough hits scoring above their
-      // hardcoded matchScore (0.4). On the Netherton case this lost the only
-      // correct candidate (orchestrator.ts root-cause analysis 2026-06-01).
-      //
-      // New scheme partitions the union pool by source:
-      //   • LLM-added KB-matched candidates: guaranteed seats up to LLM_KB_CAP
-      //   • Triage retrieval candidates: fill remaining seats up to a total
-      //     ceiling of TOTAL_KB_CAP, sorted by triage matchScore desc.
-      //
-      // This guarantees o3's clinical-reasoning catches always reach the
-      // evidence evaluator even when triage retrieval is noisy.
-      const TOTAL_KB_CAP = 35;
-      const LLM_KB_CAP = 25;
-      const llmAddedIds = new Set(addedFromLLM.map((m) => m.disease.id));
-      const triageOnly = triageResult.candidateDiseases.filter((c) => !llmAddedIds.has(c.disease.id));
-      const llmOnly = triageResult.candidateDiseases.filter((c) => llmAddedIds.has(c.disease.id));
-      const cappedLlm = llmOnly.slice(0, LLM_KB_CAP);
-      const triageSlots = Math.max(0, TOTAL_KB_CAP - cappedLlm.length);
-      const cappedTriage = [...triageOnly]
-        .sort((a, b) => (b.matchScore || 0) - (a.matchScore || 0))
-        .slice(0, triageSlots);
-      const cappedCandidates = [...cappedTriage, ...cappedLlm];
-      log('orch.stage.kb_cap', {
-        triageIn: triageOnly.length,
-        llmIn: llmOnly.length,
-        triageKept: cappedTriage.length,
-        llmKept: cappedLlm.length,
-        total: cappedCandidates.length,
-      });
-
-      const annotationCandidates: AnnotationCandidate[] = cappedCandidates.map((dm) => ({
-        diagnosis: dm.disease.name,
-        kbProfile: dm.disease,
-        rationale: rationalesByDiseaseId.get(dm.disease.id) || '',
-      }));
-
-      /* ============ ANNOTATION FLOW COMMENTED OUT — needs rethinking ============
-       *
-       * This block fanned out 5-7 o3:high calls per case, each annotating up to 25
-       * candidates with structured per-candidate output. Two issues:
-       *   1. Cost was ~$0.50 per call × 5-7 = $3-4 per case just for annotation,
-       *      on top of synth/eval/recon.
-       *   2. Output size + reasoning tokens kept hitting OpenAI request timeouts
-       *      at ~100s. PMID_39753114 burned all 6 annotators simultaneously.
-       *
-       * The annotation idea (specialists adding testing/cardinal/rule-out data
-       * per candidate) is still valuable, but needs a cheaper / more targeted
-       * design. Likely next iteration: only the top 3-5 ranked candidates get
-       * annotated, by 1-2 specialists each (per-candidate routing rather than
-       * per-specialist fan-out). Save until the rest of the pipeline is stable.
-       *
-       * Old code preserved in git history (commit fb1ba77). Specialist annotator
-       * agent at lib/agents/specialist-annotator.ts remains in the codebase
-       * (unimported by the orchestrator) for the future rethink.
-       */
-
-      // ===== STAGE 2 PASSTHROUGH: union candidates → seed hypotheses =====
-      // No specialist calls. Each KB-matched union candidate becomes a
-      // hypothesis with its KB profile data attached (criteria, symptom tiers,
-      // etc). Each non-KB candidate (o3-surfaced names with no matching KB
-      // profile) becomes a hypothesis with no KB attachment, marked as
-      // reasoning-evaluated so the evidence evaluator (Stage 3) scores it via
-      // clinical reasoning rather than structured criteria.
-      const kbSeedHypotheses = annotationCandidates.map((c) => {
-        const kb = c.kbProfile;
-        return {
-          diagnosis: c.diagnosis,
-          icd10Code: kb?.icd10Codes?.[0],
-          confidenceScore: 0,
-          evidenceScore: 0,
-          rareDisease: kb?.prevalence?.classification !== 'common',
-          prevalence: kb?.prevalence?.estimate,
-          supportingEvidence: [],
-          contradictoryEvidence: [],
-          clinicalReasoning: c.rationale || '',
-          typicalPresentation: kb?.symptoms?.pathognomonic?.slice(0, 5).map((s: any) => s.symptomName).join('; ') || '',
-          specialistRequired: kb?.specialistType?.[0] || '',
-          diagnosticCriteria: {
-            criteriaName: kb?.diagnosticCriteria?.formalCriteriaName || 'Clinical assessment',
-            totalCriteria: 0,
-            metCriteria: 0,
-            criteriaDetails: [],
-            fulfillmentPercentage: 0,
-          },
-          sourceAgent: 'union-pool-passthrough',
-          evaluationType: 'reasoning-evaluated' as const,
-          knowledgeBaseMatch: !!kb,
-        } as any;
-      });
-
-      // Cap the non-KB seed hypotheses separately. Each adds ~1-2K tokens to
-      // the evidence evaluator input; capping at 15 keeps the evaluator under
-      // the OpenAI request timeout window while still surfacing the long-tail
-      // candidates triage's symptom-overlap retrieval missed.
-      const MAX_NON_KB_CANDIDATES = 15;
-      const nonKbSeedHypotheses = nonKbSeedCandidates.slice(0, MAX_NON_KB_CANDIDATES).map((c) => ({
-        diagnosis: c.name,
-        icd10Code: undefined,
-        confidenceScore: 0,
-        evidenceScore: 0,
-        rareDisease: true,
-        supportingEvidence: [],
-        contradictoryEvidence: [],
-        clinicalReasoning: c.rationale,
-        typicalPresentation: '',
-        specialistRequired: '',
-        diagnosticCriteria: {
-          criteriaName: 'Clinical assessment',
-          totalCriteria: 0,
-          metCriteria: 0,
-          criteriaDetails: [],
-          fulfillmentPercentage: 0,
-        },
-        sourceAgent: 'llm-non-kb-candidate',
-        evaluationType: 'reasoning-evaluated' as const,
-        knowledgeBaseMatch: false,
-      } as any));
-
-      // KB-matched first so dedup tie-breaks inside the evidence evaluator
-      // favor the KB-attached entry on any name collision.
-      const allSeedHypotheses = [...kbSeedHypotheses, ...nonKbSeedHypotheses];
-
-      const specialistResults = [
-        {
-          agentName: 'v16-passthrough',
-          hypotheses: allSeedHypotheses,
-          reasoning: `${allSeedHypotheses.length} candidates passed through from union pool (${kbSeedHypotheses.length} KB-matched, ${nonKbSeedHypotheses.length} non-KB; specialist annotation disabled)`,
-          confidence: 0,
-          tokensUsed: 0,
-          durationMs: 0,
-          model: 'n/a (passthrough)',
-        },
-      ];
-
+      const specialistStart = Date.now();
+      const specialistResults: SpecialistV17Output[] = [];
       const failedSpecialists: Array<{ specialty: string; error: string }> = [];
 
-      stages.push({
-        stageName: 'specialist-passthrough',
-        durationMs: 0,
-        tokensUsed: 0,
-        model: 'n/a',
-        agentName: 'union-passthrough',
-        inputSummary: `${annotationCandidates.length} KB candidates + ${nonKbSeedHypotheses.length} non-KB candidates from union pool`,
-        outputSummary: `${allSeedHypotheses.length} seed hypotheses (${kbSeedHypotheses.length} KB-matched, ${nonKbSeedHypotheses.length} non-KB; no LLM annotation)`,
-      } as any);
+      // Heartbeat for SSE during the o3:high parallel reasoning.
+      const specHeartbeat = setInterval(() => {
+        const ms = Date.now() - specialistStart;
+        onProgress?.({
+          stage: 'heartbeat',
+          stageNumber: 2,
+          totalStages: 6,
+          detail: `5 specialists still reasoning... ${Math.round(ms / 1000)}s`,
+          percentage: 35,
+          data: { stage: 'specialists', elapsedMs: ms },
+        });
+      }, 30_000);
 
-      this.checkBudget();
+      try {
+        const specialistPromises = selectedSpecialties.map(async (specialty) => {
+          const agent = getSpecialistV17Agent(specialty);
+          // General-internist gets NO KB candidates (counterweight, matches CLAUDE.md convention).
+          const candidates = specialty === 'general-internist'
+            ? []
+            : rerankCandidatesForSpecialty(triageResult.candidateDiseases, specialty);
+          try {
+            return await agent.execute({ patientCase, candidateDiseases: candidates });
+          } catch (err: any) {
+            failedSpecialists.push({ specialty, error: err?.message || 'unknown' });
+            log("orch.stage.specialist.fail", { specialty, msg: (err?.message || '').slice(0, 200) });
+            return null;
+          }
+        });
+        const results = await Promise.all(specialistPromises);
+        for (const r of results) {
+          if (r) specialistResults.push(r);
+        }
+      } finally {
+        clearInterval(specHeartbeat);
+      }
+
+      log("orch.stage.specialists.done", {
+        durationMs: Date.now() - specialistStart,
+        succeeded: specialistResults.length,
+        failed: failedSpecialists.length,
+        totalHypotheses: specialistResults.reduce((sum, r) => sum + r.hypotheses.length, 0),
+      });
+
+      for (const sr of specialistResults) {
+        this.budgetTracker.addUsage(sr.model, sr.tokensUsed);
+        stages.push({
+          stageName: 'specialist-consultation',
+          durationMs: sr.durationMs,
+          tokensUsed: sr.tokensUsed,
+          model: sr.model,
+          agentName: sr.agentName,
+          inputSummary: `Patient case + reranked candidate diseases for ${sr.specialty}`,
+          outputSummary: `${sr.hypotheses.length} hypotheses: ${sr.hypotheses.map((h) => h.diagnosis).slice(0, 3).join(', ')}${sr.hypotheses.length > 3 ? '...' : ''}`,
+        });
+      }
+      for (const f of failedSpecialists) {
+        stages.push({
+          stageName: 'specialist-failed',
+          durationMs: 0,
+          tokensUsed: 0,
+          model: 'n/a',
+          agentName: `specialist-${f.specialty}`,
+          inputSummary: '',
+          outputSummary: `FAILED: ${f.error.slice(0, 200)}`,
+        });
+      }
 
       onProgress?.({
         stage: 'specialists-complete',
         stageNumber: 2,
         totalStages: 6,
-        detail: `${allSeedHypotheses.length} seed hypotheses (${kbSeedHypotheses.length} KB, ${nonKbSeedHypotheses.length} non-KB; passthrough)`,
-        percentage: 50,
+        detail: `${specialistResults.length}/${selectedSpecialties.length} specialists returned (${specialistResults.reduce((sum, r) => sum + r.hypotheses.length, 0)} hypotheses)`,
+        percentage: 45,
         data: {
           results: specialistResults.map((sr) => ({
             agentName: sr.agentName,
-            specialty: sr.agentName.replace('-agent', ''),
-            hypotheses: sr.hypotheses.map((h) => ({
-              diagnosis: h.diagnosis,
-              confidenceScore: h.confidenceScore,
-            })),
+            specialty: sr.specialty,
+            hypotheses: sr.hypotheses.map((h) => ({ diagnosis: h.diagnosis, confidenceScore: h.confidenceScore })),
           })),
           failedSpecialists,
         },
       });
 
-      // ===== STAGE 3: EVIDENCE EVALUATION =====
-      log("orch.stage.evidence.start", { hypotheses: specialistResults.reduce((sum, sr) => sum + sr.hypotheses.length, 0) });
+      this.checkBudget();
+
+      // ===== STAGE 3: DEDUP + NAME NORMALIZATION (deterministic) =====
+      const rawPool: SpecialistV17Hypothesis[] = specialistResults.flatMap((sr) => sr.hypotheses);
+      log("orch.stage.dedup.start", { input: rawPool.length });
+      const dedupStart = Date.now();
+      const { merged: dedupedHypotheses, stats: dedupStats } = dedupAndNormalizeHypotheses(rawPool);
+      const dedupDurMs = Date.now() - dedupStart;
+      log("orch.stage.dedup.done", {
+        durationMs: dedupDurMs,
+        inputCount: dedupStats.inputCount,
+        outputCount: dedupStats.outputCount,
+        evidenceIn: dedupStats.evidenceItemsInput,
+        evidenceOut: dedupStats.evidenceItemsOutput,
+        attributionsOut: dedupStats.attributionsOutput,
+        validationPassed: dedupStats.validationPassed,
+        suspiciousCount: dedupStats.suspiciousPairs.length,
+      });
+      if (dedupStats.suspiciousPairs.length > 0) {
+        log("orch.dedup.suspicious", { pairs: dedupStats.suspiciousPairs.slice(0, 10) });
+      }
+      stages.push({
+        stageName: 'dedup-normalize',
+        durationMs: dedupDurMs,
+        tokensUsed: 0,
+        model: 'n/a (deterministic)',
+        agentName: 'dedup-normalizer',
+        inputSummary: `${dedupStats.inputCount} specialist hypotheses`,
+        outputSummary: `${dedupStats.outputCount} merged (evidence ${dedupStats.evidenceItemsInput}→${dedupStats.evidenceItemsOutput}, attributions ${dedupStats.attributionsOutput}, validation ${dedupStats.validationPassed ? 'PASS' : 'FAIL'}, suspicious-pairs ${dedupStats.suspiciousPairs.length})`,
+      });
+
+      // ===== STAGE 4: KB PROFILE ATTACH (deterministic) =====
+      // For each merged hypothesis, look up the KB profile and attach. The
+      // claude-evaluator + downstream consumers can use this directly without
+      // re-resolving names.
+      const kbAttachStart = Date.now();
+      const kbAttachCount = { matched: 0, unmatched: 0 };
+      for (const h of dedupedHypotheses) {
+        const profile = findDiseaseByName(h.diagnosis);
+        if (profile) {
+          (h as any).kbProfile = profile;
+          h.knowledgeBaseMatch = true;
+          h.evaluationType = 'criteria-grounded';
+          if (!h.icd10Code && profile.icd10Codes?.length) h.icd10Code = profile.icd10Codes[0];
+          if (!h.orphanetId && profile.orphanetId) h.orphanetId = profile.orphanetId;
+          if (!h.omimId && profile.omimId) h.omimId = profile.omimId;
+          kbAttachCount.matched++;
+        } else {
+          kbAttachCount.unmatched++;
+        }
+      }
+      stages.push({
+        stageName: 'kb-annotation-merge',
+        durationMs: Date.now() - kbAttachStart,
+        tokensUsed: 0,
+        model: 'n/a (deterministic)',
+        agentName: 'kb-attach',
+        inputSummary: `${dedupedHypotheses.length} merged hypotheses`,
+        outputSummary: `${kbAttachCount.matched} KB-attached, ${kbAttachCount.unmatched} reasoning-only`,
+      });
+
+      // ===== STAGE 5: CLAUDE EVIDENCE EVALUATION =====
+      log("orch.stage.evaluation.start", { hypotheses: dedupedHypotheses.length });
       onProgress?.({
         stage: 'evidence',
         stageNumber: 3,
         totalStages: 6,
-        detail: 'Evaluating hypotheses against diagnostic criteria from knowledge base',
+        detail: 'Claude reviewing evidence against diagnostic criteria',
         percentage: 55,
-        data: {
-          hypothesesCount: specialistResults.reduce((sum, sr) => sum + sr.hypotheses.length, 0),
-        },
+        data: { hypothesesCount: dedupedHypotheses.length },
       });
 
-      const evidenceStart = Date.now();
-      // Heartbeat keeps the SSE stream alive every 30s while the o3:high
-      // evidence-evaluator is reasoning. Without this, evidence-eval emits
-      // exactly one event (the start above) then goes silent for 80-100s
-      // while o3 thinks, and the client's 180s idle timeout would otherwise
-      // be the only thing distinguishing "long reasoning" from "dead
-      // function." Heartbeat preserves the safety net for genuine hangs.
-      const evidenceHeartbeat = setInterval(() => {
-        const elapsedMs = Date.now() - evidenceStart;
+      const evalStart = Date.now();
+      const evalHeartbeat = setInterval(() => {
+        const ms = Date.now() - evalStart;
         onProgress?.({
           stage: 'heartbeat',
           stageNumber: 3,
           totalStages: 6,
-          detail: `evidence-evaluator still reasoning... ${Math.round(elapsedMs / 1000)}s`,
+          detail: `Claude evaluator still reasoning... ${Math.round(ms / 1000)}s`,
           percentage: 60,
-          data: { stage: 'evidence', elapsedMs },
+          data: { stage: 'evaluation', elapsedMs: ms },
         });
       }, 30_000);
-      const evaluator = new EvidenceEvaluator();
-      let evaluationResult;
+
+      const evaluatorPool: AgentOutput = {
+        agentName: 'dedup-pool',
+        hypotheses: dedupedHypotheses as DiagnosisHypothesis[],
+        reasoning: 'Deduped specialist pool',
+        confidence: 0,
+        tokensUsed: 0,
+        durationMs: 0,
+        model: 'n/a',
+      };
+
+      const claudeEvaluator = new ClaudeEvaluatorAgent();
+      let evaluationResult: AgentOutput;
       try {
-        evaluationResult = await evaluator.execute({
+        evaluationResult = await claudeEvaluator.execute({
           patientCase,
-          previousStageOutput: specialistResults,
+          previousStageOutput: [evaluatorPool],
           candidateDiseases: triageResult.candidateDiseases,
         });
       } finally {
-        clearInterval(evidenceHeartbeat);
+        clearInterval(evalHeartbeat);
       }
-      log("orch.stage.evidence.done", { dur: Date.now() - evidenceStart, evaluated: evaluationResult.hypotheses.length });
-
+      log("orch.stage.evaluation.done", { durationMs: Date.now() - evalStart, evaluated: evaluationResult.hypotheses.length });
       this.budgetTracker.addUsage(evaluationResult.model, evaluationResult.tokensUsed);
       stages.push({
-        stageName: 'evidence-evaluation',
+        stageName: 'claude-evaluation',
         durationMs: evaluationResult.durationMs,
         tokensUsed: evaluationResult.tokensUsed,
         model: evaluationResult.model,
         agentName: evaluationResult.agentName,
-        inputSummary: `${evaluationResult.hypotheses.length} hypotheses to evaluate`,
-        outputSummary: `Criteria review complete: ${evaluationResult.hypotheses.filter((h) => h.knowledgeBaseMatch).length} KB-matched, ${evaluationResult.hypotheses.filter((h) => !h.knowledgeBaseMatch).length} reasoning-evaluated`,
+        inputSummary: `${dedupedHypotheses.length} merged hypotheses`,
+        outputSummary: `Criteria review: ${evaluationResult.hypotheses.filter((h) => h.knowledgeBaseMatch).length} KB-matched, ${evaluationResult.hypotheses.filter((h) => !h.knowledgeBaseMatch).length} reasoning-evaluated`,
       });
 
       onProgress?.({
         stage: 'evidence-complete',
         stageNumber: 3,
         totalStages: 6,
-        detail: `${evaluationResult.hypotheses.length} hypotheses evaluated against diagnostic criteria`,
+        detail: `${evaluationResult.hypotheses.length} hypotheses evaluated`,
         percentage: 65,
         data: {
           evaluatedCount: evaluationResult.hypotheses.length,
@@ -529,249 +353,210 @@ export class DiagnosticPipeline {
 
       this.checkBudget();
 
-      // ===== STAGE 4: SYNTHESIS =====
+      // ===== STAGE 6: CLAUDE SYNTHESIS (reuse existing ClaudeSynthAgent AS-IS) =====
       log("orch.stage.synthesis.start");
       onProgress?.({
         stage: 'synthesis',
         stageNumber: 4,
         totalStages: 6,
-        detail: 'Senior diagnostician reviewing all evidence and assigning probabilities',
+        detail: 'Claude ranking diagnoses by overall evidence',
         percentage: 70,
         data: null,
       });
 
       const synthStart = Date.now();
-      // v15 step 5: parallel cross-provider synthesis.
-      // Both synthesizers run on identical input (same evaluatedHypotheses,
-      // same prompt via SynthesisAgent.buildPrompt). The two model families
-      // bring independent training distributions; their independent rankings
-      // are the raw material for the reconciliation stage (v15 step 6).
-      //
-      // For step 5 alone, we run both but use the o3 ranking as primary
-      // downstream — exactly equivalent to current behavior until step 6
-      // wires the reconciliation in. The Claude ranking is preserved in
-      // claudeSynthResult so step 6 can consume it.
       const synthHeartbeat = setInterval(() => {
-        const elapsedMs = Date.now() - synthStart;
+        const ms = Date.now() - synthStart;
         onProgress?.({
           stage: 'heartbeat',
           stageNumber: 4,
           totalStages: 6,
-          detail: `synthesizers (o3 + Claude opus-4-7) still reasoning... ${Math.round(elapsedMs / 1000)}s`,
+          detail: `Claude synth still reasoning... ${Math.round(ms / 1000)}s`,
           percentage: 75,
-          data: { stage: 'synthesis', elapsedMs },
+          data: { stage: 'synthesis', elapsedMs: ms },
         });
       }, 30_000);
-      const synthesizer = new SynthesisAgent();
+
+      // ClaudeSynthAgent expects { specialistResults, evaluationResult } shape.
+      // Wrap the v17 specialistResults into the legacy AgentOutput[] shape it
+      // consumes (it only reads hypotheses + agentName).
+      const specialistResultsForSynth: AgentOutput[] = specialistResults.map((sr) => ({
+        agentName: sr.agentName,
+        hypotheses: sr.hypotheses as DiagnosisHypothesis[],
+        reasoning: sr.reasoning,
+        confidence: sr.confidence,
+        tokensUsed: sr.tokensUsed,
+        durationMs: sr.durationMs,
+        model: sr.model,
+      }));
+
       const claudeSynth = new ClaudeSynthAgent();
       let synthesisResult: AgentOutput;
-      let claudeSynthResult: AgentOutput | null = null;
       try {
-        const synthInput = { patientCase, previousStageOutput: { specialistResults, evaluationResult } };
-        // Claude side runs in parallel but failures don't fail the whole
-        // analysis — we degrade to o3-only ranking when Claude errors.
-        const [o3Result, claudeResultSettled] = await Promise.all([
-          synthesizer.execute(synthInput),
-          claudeSynth.execute(synthInput).catch((err: any) => {
-            log("orch.stage.synthesis.claude.fail", { msg: (err?.message || "").substring(0, 200) });
-            return null;
-          }),
-        ]);
-        synthesisResult = o3Result;
-        claudeSynthResult = claudeResultSettled;
+        synthesisResult = await claudeSynth.execute({
+          patientCase,
+          previousStageOutput: { specialistResults: specialistResultsForSynth, evaluationResult },
+        });
       } finally {
         clearInterval(synthHeartbeat);
       }
-      log("orch.stage.synthesis.done", {
-        dur: Date.now() - synthStart,
-        topO3: synthesisResult.hypotheses[0]?.diagnosis?.substring(0, 80),
-        topClaude: claudeSynthResult?.hypotheses[0]?.diagnosis?.substring(0, 80) || '(not available)',
-        topOneAgrees: claudeSynthResult
-          ? synthesisResult.hypotheses[0]?.diagnosis === claudeSynthResult.hypotheses[0]?.diagnosis
-          : null,
-      });
-
+      log("orch.stage.synthesis.done", { durationMs: Date.now() - synthStart, top1: synthesisResult.hypotheses[0]?.diagnosis });
       this.budgetTracker.addUsage(synthesisResult.model, synthesisResult.tokensUsed);
       stages.push({
-        stageName: 'synthesis',
+        stageName: 'claude-synthesis',
         durationMs: synthesisResult.durationMs,
         tokensUsed: synthesisResult.tokensUsed,
         model: synthesisResult.model,
         agentName: synthesisResult.agentName,
         inputSummary: `${evaluationResult.hypotheses.length} evaluated hypotheses from ${specialistResults.length} specialists`,
-        outputSummary: `Top diagnosis: ${synthesisResult.hypotheses[0]?.diagnosis || 'none'} (probability: ${synthesisResult.hypotheses[0]?.confidenceScore || 0}%)`,
-      });
-
-      // v15 step 5: record Claude synth as its own stage for budget/metadata.
-      if (claudeSynthResult) {
-        this.budgetTracker.addUsage(claudeSynthResult.model, claudeSynthResult.tokensUsed);
-        stages.push({
-          stageName: 'synthesis-claude',
-          durationMs: claudeSynthResult.durationMs,
-          tokensUsed: claudeSynthResult.tokensUsed,
-          model: claudeSynthResult.model,
-          agentName: claudeSynthResult.agentName,
-          inputSummary: `${evaluationResult.hypotheses.length} evaluated hypotheses (same as o3 synth)`,
-          outputSummary: `Top: ${claudeSynthResult.hypotheses[0]?.diagnosis || 'none'} (probability: ${claudeSynthResult.hypotheses[0]?.confidenceScore || 0}%)`,
-        });
-      }
-
-      // ===== v15 step 6: structured iterative reconciliation =====
-      // If o3 and Claude agree on top-1 at Round 1: trivial — use o3's
-      // ranking with high confidence. If they disagree: run up to 2 more
-      // rounds of structured information exchange where each model is
-      // asked to genuinely reconsider given the other's reasoning. If
-      // unresolved after Round 3: criteria-fulfillment ratio tiebreak with
-      // low confidence flag. See lib/pipeline/reconciliation.ts and
-      // docs/v15-experiment-plan.md decision 4.
-      log("orch.stage.reconciliation.start");
-      const reconcileStart = Date.now();
-      let reconciliation: ReconciliationResult;
-      try {
-        reconciliation = await reconcileRankings(
-          synthesisResult,
-          claudeSynthResult,
-          patientCase,
-          evaluationResult.hypotheses,
-          (event, extra) => log(event, extra || {}),
-        );
-      } catch (err: any) {
-        log("orch.stage.reconciliation.fail", { msg: (err?.message || "").substring(0, 200) });
-        // Degrade gracefully: if reconciliation throws (network, JSON
-        // parse, etc.), use o3's ranking as the final answer with a
-        // descriptive confidence flag.
-        reconciliation = {
-          hypotheses: synthesisResult.hypotheses,
-          confidence: 'o3-only-claude-unavailable',
-          reconciliationData: {
-            initialAgreement: false,
-            finalAgreement: false,
-            roundsRun: 1,
-            o3InitialTop1: synthesisResult.hypotheses[0]?.diagnosis || '',
-            claudeInitialTop1: claudeSynthResult?.hypotheses[0]?.diagnosis || null,
-            finalTop1: synthesisResult.hypotheses[0]?.diagnosis || '',
-            finalTop1Source: 'o3-after-reconsideration',
-            o3RoundHistory: [],
-            claudeRoundHistory: [],
-            tokensUsed: 0,
-            durationMs: Date.now() - reconcileStart,
-          },
-        };
-      }
-      log("orch.stage.reconciliation.done", {
-        dur: Date.now() - reconcileStart,
-        rounds: reconciliation.reconciliationData.roundsRun,
-        confidence: reconciliation.confidence,
-        finalTop1: reconciliation.reconciliationData.finalTop1,
-      });
-
-      // Replace synthesisResult.hypotheses with the reconciled top-10 so
-      // every downstream consumer (report generator, family expansion,
-      // final result) sees the reconciled ranking. Budget tracking and
-      // model attribution remain the o3 synth's — the reconciliation
-      // rounds are tracked separately below.
-      synthesisResult.hypotheses = reconciliation.hypotheses;
-
-      // Track reconciliation token usage as its own stage. The model
-      // attribution is "mixed" since both o3 and Claude were called in
-      // each round.
-      if (reconciliation.reconciliationData.tokensUsed > 0) {
-        this.budgetTracker.addUsage('o3', Math.round(reconciliation.reconciliationData.tokensUsed / 2));
-        this.budgetTracker.addUsage('claude-opus-4-7', Math.round(reconciliation.reconciliationData.tokensUsed / 2));
-        stages.push({
-          stageName: 'reconciliation',
-          durationMs: reconciliation.reconciliationData.durationMs,
-          tokensUsed: reconciliation.reconciliationData.tokensUsed,
-          model: 'mixed (o3 + claude-opus-4-7)',
-          agentName: 'reconciliation',
-          inputSummary: `o3 top-1: ${reconciliation.reconciliationData.o3InitialTop1}; claude top-1: ${reconciliation.reconciliationData.claudeInitialTop1 || 'n/a'}`,
-          outputSummary: `Converged at round ${reconciliation.reconciliationData.roundsRun}: ${reconciliation.reconciliationData.finalTop1} [${reconciliation.confidence}]`,
-        });
-      } else if (reconciliation.reconciliationData.initialAgreement) {
-        // Track the round-1 agreement explicitly even though no extra LLM
-        // tokens were spent.
-        stages.push({
-          stageName: 'reconciliation',
-          durationMs: reconciliation.reconciliationData.durationMs,
-          tokensUsed: 0,
-          model: 'n/a (round-1 consensus)',
-          agentName: 'reconciliation',
-          inputSummary: `o3 + claude agreed on top-1 at round 1`,
-          outputSummary: `${reconciliation.reconciliationData.finalTop1} [${reconciliation.confidence}]`,
-        });
-      }
-
-      // Attach the reconciliation metadata to the synthesis output so it
-      // flows through into the AnalysisResult for /eval visibility and
-      // post-hoc analysis.
-      (synthesisResult as any).reconciliation = reconciliation;
-
-      const synthesisData_ = (synthesisResult as any).synthesisData || {};
-      onProgress?.({
-        stage: 'synthesis-complete',
-        stageNumber: 4,
-        totalStages: 6,
-        detail: `Final ranking complete — ${synthesisResult.hypotheses.length} diagnoses ranked by evidence`,
-        percentage: 85,
-        data: {
-          topDiagnoses: synthesisResult.hypotheses.slice(0, 10).map((h) => ({
-            diagnosis: h.diagnosis,
-            probabilityScore: h.confidenceScore,
-          })),
-          consensusLevel: synthesisData_.consensusLevel || 'moderate',
-        },
+        outputSummary: `Top: ${synthesisResult.hypotheses[0]?.diagnosis || 'none'} (probability: ${synthesisResult.hypotheses[0]?.confidenceScore || 0}%)`,
       });
 
       this.checkBudget();
 
-      // ===== LOW-CONFIDENCE ESCALATION CHECK =====
-      const topScore = synthesisResult.hypotheses[0]?.confidenceScore || 0;
-      const allLow = synthesisResult.hypotheses.slice(0, 5).every(h => h.confidenceScore < 40);
-      const weakConsensus = synthesisData_.consensusLevel === 'weak' || synthesisData_.consensusLevel === 'divergent';
-      const lowReliability = synthesisData_.confidenceCalibration?.topDiagnosisReliability === 'low';
+      // ===== STAGE 7: o3 CRITIQUE =====
+      log("orch.stage.critique.start");
+      onProgress?.({
+        stage: 'synthesis',
+        stageNumber: 4,
+        totalStages: 6,
+        detail: 'o3 critiquing the ranking',
+        percentage: 78,
+        data: null,
+      });
 
+      const synthesisData = (synthesisResult as any).synthesisData || {};
+      const o3Critic = new O3CriticAgent();
+      const critique = await o3Critic.execute({
+        patientCase,
+        claudeRanking: synthesisResult.hypotheses,
+        claudeOverallAssessment: synthesisResult.reasoning,
+        claudeInformationGaps: synthesisData.criticalGaps,
+      }).catch((err: any) => {
+        log("orch.stage.critique.fail", { msg: (err?.message || '').slice(0, 200) });
+        return null;
+      });
+
+      if (critique) {
+        this.budgetTracker.addUsage(critique.model, critique.tokensUsed);
+        stages.push({
+          stageName: 'o3-critique',
+          durationMs: critique.durationMs,
+          tokensUsed: critique.tokensUsed,
+          model: critique.model,
+          agentName: 'o3-critic',
+          inputSummary: `Claude top-10 ranking + rationales`,
+          outputSummary: `${critique.suggestions.length} suggestions, confidence in Claude: ${critique.confidenceInClaudeRanking}/100`,
+        });
+        log("orch.stage.critique.done", { suggestions: critique.suggestions.length, confidence: critique.confidenceInClaudeRanking });
+      } else {
+        log("orch.stage.critique.skipped");
+      }
+
+      this.checkBudget();
+
+      // ===== STAGE 8: CLAUDE FINALIZE =====
+      let finalRanking: DiagnosisHypothesis[] = synthesisResult.hypotheses;
+      let finalizerStats: { criticSuggestionsAccepted: number; criticSuggestionsRejected: number; rankChangesFromFirstPass: number; removedFromTop10: string[]; addedToTop10: string[] } | null = null;
+
+      if (critique) {
+        log("orch.stage.finalize.start");
+        onProgress?.({
+          stage: 'synthesis',
+          stageNumber: 4,
+          totalStages: 6,
+          detail: 'Claude finalizing the differential with critique review',
+          percentage: 84,
+          data: null,
+        });
+
+        const finalizer = new ClaudeFinalizerAgent();
+        try {
+          const finalizerResult = await finalizer.execute({
+            patientCase,
+            firstPassRanking: synthesisResult.hypotheses,
+            firstPassAssessment: synthesisResult.reasoning,
+            critique,
+            fullHypothesisPool: evaluationResult.hypotheses,
+          });
+          finalRanking = finalizerResult.hypotheses;
+          finalizerStats = finalizerResult.finalizerStats;
+          this.budgetTracker.addUsage(finalizerResult.model, finalizerResult.tokensUsed);
+          stages.push({
+            stageName: 'claude-finalize',
+            durationMs: finalizerResult.durationMs,
+            tokensUsed: finalizerResult.tokensUsed,
+            model: finalizerResult.model,
+            agentName: finalizerResult.agentName,
+            inputSummary: `Claude top-10 + ${critique.suggestions.length} critique suggestions`,
+            outputSummary: `Final top: ${finalRanking[0]?.diagnosis} (accepted ${finalizerStats.criticSuggestionsAccepted}/${critique.suggestions.length} suggestions, ${finalizerStats.rankChangesFromFirstPass} rank changes)`,
+          });
+          log("orch.stage.finalize.done", { top1: finalRanking[0]?.diagnosis, accepted: finalizerStats.criticSuggestionsAccepted, rejected: finalizerStats.criticSuggestionsRejected });
+        } catch (err: any) {
+          log("orch.stage.finalize.fail", { msg: (err?.message || '').slice(0, 200) });
+          // Degrade gracefully: keep Claude synth's ranking as final.
+          finalRanking = synthesisResult.hypotheses;
+        }
+      } else {
+        // No critique → no finalize call needed. Synth ranking is final.
+        log("orch.stage.finalize.skipped");
+      }
+
+      // Replace synthesisResult.hypotheses with the finalized ranking so
+      // downstream consumers see it.
+      synthesisResult.hypotheses = finalRanking;
+
+      // ===== LOW-CONFIDENCE ESCALATION CHECK =====
+      const topScore = finalRanking[0]?.confidenceScore || 0;
+      const allLow = finalRanking.slice(0, 5).every((h) => h.confidenceScore < 40);
+      const synthData_ = (synthesisResult as any).synthesisData || {};
+      const weakConsensus = synthData_.consensusLevel === 'weak' || synthData_.consensusLevel === 'divergent';
+      const lowReliability = synthData_.confidenceCalibration?.topDiagnosisReliability === 'low';
       if (allLow || weakConsensus || lowReliability) {
         const reasons: string[] = [];
         if (allLow) reasons.push(`all top-5 diagnoses scored below 40 (highest: ${topScore})`);
-        if (weakConsensus) reasons.push(`specialist consensus is ${synthesisData_.consensusLevel}`);
+        if (weakConsensus) reasons.push(`specialist consensus is ${synthData_.consensusLevel}`);
         if (lowReliability) reasons.push('top diagnosis reliability rated low');
-
         if (!(synthesisResult as any).synthesisData) (synthesisResult as any).synthesisData = {};
         (synthesisResult as any).synthesisData.escalationContext =
           `LOW DIAGNOSTIC CERTAINTY: ${reasons.join('; ')}. ` +
           `The patient's condition may not match any of the ${getDiseaseCount()} profiled diseases in our knowledge base. ` +
-          `Consider broader investigative pathways including genetic panel testing (WES/WGS), ` +
-          `advanced neuroimaging, tissue biopsy, and referral to a medical geneticist or ` +
-          `academic undiagnosed disease program (e.g., NIH UDP).`;
+          `Consider broader investigative pathways including genetic panel testing (WES/WGS), advanced neuroimaging, tissue biopsy, ` +
+          `and referral to a medical geneticist or academic undiagnosed disease program (e.g., NIH UDP).`;
       }
 
-      // ===== FAMILY ENRICHMENT (deterministic, zero LLM calls) =====
+      onProgress?.({
+        stage: 'synthesis-complete',
+        stageNumber: 4,
+        totalStages: 6,
+        detail: `Final ranking complete — ${finalRanking.length} diagnoses ranked`,
+        percentage: 88,
+        data: {
+          topDiagnoses: finalRanking.slice(0, 10).map((h) => ({ diagnosis: h.diagnosis, probabilityScore: h.confidenceScore })),
+          consensusLevel: synthData_.consensusLevel || 'moderate',
+        },
+      });
+
+      // ===== FAMILY ENRICHMENT (unchanged from v15/v16) =====
       const familyEnrichments: FamilyEnrichment[] = [];
       const seenFamilies = new Set<string>();
-      const patientSymptomTerms = patientCase.symptoms.map(s => s.medicalTerm || s.originalPhrase || '');
-
-      for (const hypothesis of synthesisResult.hypotheses.slice(0, 5)) {
+      const patientSymptomTerms = patientCase.symptoms.map((s) => s.medicalTerm || s.originalPhrase || '');
+      for (const hypothesis of finalRanking.slice(0, 5)) {
         if (familyEnrichments.length >= 2) break;
-
         const familyResult = findFamilySiblings(hypothesis.diagnosis, patientSymptomTerms);
         if (!familyResult || familyResult.totalInFamily < 3) continue;
         if (seenFamilies.has(familyResult.familyName)) continue;
         seenFamilies.add(familyResult.familyName);
-
-        // Include the hypothesis itself in the siblings list for differentiating test computation
         const db = loadDiseaseDatabase();
         const diagNorm = hypothesis.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '');
-        const selfProfile = db.find(d => {
+        const selfProfile = db.find((d) => {
           const nameNorm = d.name.toLowerCase().replace(/[^a-z0-9]/g, '');
           return nameNorm === diagNorm || nameNorm.includes(diagNorm) || diagNorm.includes(nameNorm);
         });
-
-        const profilesForTest = selfProfile
+        const profilesForTest: DiseaseProfile[] = selfProfile
           ? [selfProfile, ...familyResult.siblings.slice(0, 9)]
           : familyResult.siblings.slice(0, 10);
-
         const diffTest = computeDifferentiatingTests(profilesForTest);
-
         familyEnrichments.push({
           familyName: familyResult.familyName,
           totalSubtypes: familyResult.totalInFamily,
@@ -779,24 +564,21 @@ export class DiagnosticPipeline {
           differentiatingTest: diffTest,
         });
       }
-
-      // Attach enrichments to synthesis data for report generator
       if (familyEnrichments.length > 0) {
         if (!(synthesisResult as any).synthesisData) (synthesisResult as any).synthesisData = {};
         (synthesisResult as any).synthesisData.familyEnrichments = familyEnrichments;
       }
 
-      // ===== STAGE 5: REPORT GENERATION =====
+      // ===== STAGE 9: REPORT GENERATION (unchanged) =====
       log("orch.stage.report.start");
       onProgress?.({
         stage: 'report',
         stageNumber: 5,
         totalStages: 6,
         detail: 'Generating your detailed diagnostic report',
-        percentage: 90,
+        percentage: 92,
         data: null,
       });
-
       const reportStart = Date.now();
       const reportGenerator = new ReportGenerator();
       const reportResult = await reportGenerator.execute({
@@ -804,7 +586,6 @@ export class DiagnosticPipeline {
         previousStageOutput: synthesisResult,
       });
       log("orch.stage.report.done", { dur: Date.now() - reportStart });
-
       this.budgetTracker.addUsage(reportResult.model, reportResult.tokensUsed);
       stages.push({
         stageName: 'report',
@@ -812,7 +593,7 @@ export class DiagnosticPipeline {
         tokensUsed: reportResult.tokensUsed,
         model: reportResult.model,
         agentName: reportResult.agentName,
-        inputSummary: `Synthesis output with ${synthesisResult.hypotheses.length} ranked diagnoses`,
+        inputSummary: `Synthesis output with ${finalRanking.length} ranked diagnoses`,
         outputSummary: `Report generated with recommendations`,
       });
 
@@ -827,23 +608,15 @@ export class DiagnosticPipeline {
       });
 
       const reportData = (reportResult as any).reportData || {};
-      const synthesisData = (synthesisResult as any).synthesisData || {};
+      const synthesisDataFinal = (synthesisResult as any).synthesisData || {};
       const budgetSummary = this.budgetTracker.getSummary();
-
-      // Family expansion: deterministically append up to 5 KB-linked variants
-      // of the top ranked diagnoses at positions 11-15. No LLM calls.
-      // v11: revert to v5 behavior — expansions keep their initial score=0
-      // rather than inheriting parent*0.5. v7's applyFamilyExpansionScoring
-      // is dropped to test whether the v5-vs-v9 SL regression was due to
-      // post-synthesis scoring changes (in combination with the synth
-      // downstream-penalty drop in synthesizer.ts).
       const familyExpansions = expandFamilyVariants(reportResult.hypotheses);
 
       const analysisResult: AnalysisResult = {
         differentialDiagnoses: [...reportResult.hypotheses, ...familyExpansions],
-        differentialClusters: synthesisData.differentialClusters || [],
+        differentialClusters: synthesisDataFinal.differentialClusters || [],
         familyEnrichments: familyEnrichments.length > 0 ? familyEnrichments : undefined,
-        excludedCommonDiagnoses: synthesisData.excludedCommonDiagnoses || reportData.excludedCommonDiagnoses || [],
+        excludedCommonDiagnoses: synthesisDataFinal.excludedCommonDiagnoses || reportData.excludedCommonDiagnoses || [],
         dataGaps: reportData.dataGaps || [],
         recommendedTesting: reportData.recommendedTesting || [],
         nextSteps: reportData.nextSteps || {
@@ -855,7 +628,7 @@ export class DiagnosticPipeline {
         overallAssessment: reportData.overallAssessment || synthesisResult.reasoning,
         patientHypothesisAnalysis: reportData.patientHypothesisAnalysis || undefined,
         pipelineMetadata: {
-          pipelineVersion: '2.1.0',
+          pipelineVersion: '17.0.0',
           stages,
           totalDurationMs: Date.now() - pipelineStart,
           totalTokensUsed: budgetSummary.totalTokens,
@@ -879,52 +652,51 @@ export class DiagnosticPipeline {
             reasoningEvaluatedCount: reportResult.hypotheses.filter((h) => !h.knowledgeBaseMatch).length,
             disclaimer: `This analysis was evaluated against a knowledge base of ${getDiseaseCount()} profiled rare diseases. Diagnoses marked as "reasoning-evaluated" were assessed using specialist clinical knowledge rather than structured diagnostic criteria from our database.`,
           },
-          // v15: surface the full LLM-candidate-generation detail so deep-dive
-          // tooling can see exactly which diagnoses the o3 candidate generator
-          // proposed, each one's rationale, whether it matched a KB profile,
-          // and whether it was added to the pool or de-duplicated against
-          // triage's KB retrieval.
-          candidateGeneration: candidateGenResult ? {
-            totalGenerated: llmCandidateNames.length,
-            addedToPool: addedFromLLM.length,
-            duplicateOfTriage: llmCandidateNames.length - addedFromLLM.length - nonKbSeedCandidates.length,
-            nonKbCarried: nonKbSeedCandidates.length,
-            nonKbCarriedAfterCap: nonKbSeedHypotheses.length,
-            // Deprecated alias of nonKbCarried — kept so older deep-dive UI
-            // reading newly persisted analyses continues to render the count.
-            // No longer means "dropped"; these are carried through as
-            // reasoning-evaluated seed hypotheses.
-            noKbMatch: nonKbSeedCandidates.length,
-            unionSize: unionCandidates.length,
-            triageCandidateCount: triageResult.candidateDiseases.length - addedFromLLM.length, // back out the additions
-            candidates: llmCandidateDetail,
-          } : undefined,
-          // v15: surface the reconciliation outcome so per-case analysis can
-          // tell how often the two synths agreed at round 1, how often they
-          // converged after information exchange, and how often they hit
-          // persistent disagreement (criteria-fulfillment tiebreak).
-          reconciliation: (synthesisResult as any).reconciliation
+          // v17 telemetry
+          specialistPool: {
+            selected: selectedSpecialties,
+            perSpecialistResults: [
+              ...specialistResults.map((sr) => ({
+                specialty: sr.specialty,
+                hypothesisCount: sr.hypotheses.length,
+                durationMs: sr.durationMs,
+                tokensUsed: sr.tokensUsed,
+                model: sr.model,
+              })),
+              ...failedSpecialists.map((f) => ({
+                specialty: f.specialty,
+                hypothesisCount: 0,
+                durationMs: 0,
+                tokensUsed: 0,
+                model: 'n/a',
+                failureReason: f.error,
+              })),
+            ],
+          },
+          dedupStats,
+          critique: critique
             ? {
-                confidence: (synthesisResult as any).reconciliation.confidence,
-                roundsRun: (synthesisResult as any).reconciliation.reconciliationData.roundsRun,
-                initialAgreement: (synthesisResult as any).reconciliation.reconciliationData.initialAgreement,
-                finalAgreement: (synthesisResult as any).reconciliation.reconciliationData.finalAgreement,
-                o3InitialTop1: (synthesisResult as any).reconciliation.reconciliationData.o3InitialTop1,
-                claudeInitialTop1: (synthesisResult as any).reconciliation.reconciliationData.claudeInitialTop1,
-                finalTop1: (synthesisResult as any).reconciliation.reconciliationData.finalTop1,
-                finalTop1Source: (synthesisResult as any).reconciliation.reconciliationData.finalTop1Source,
-                tokensUsed: (synthesisResult as any).reconciliation.reconciliationData.tokensUsed,
-                durationMs: (synthesisResult as any).reconciliation.reconciliationData.durationMs,
+                confidenceInClaudeRanking: critique.confidenceInClaudeRanking,
+                suggestionCount: critique.suggestions.length,
+                acceptedCount: finalizerStats?.criticSuggestionsAccepted ?? 0,
+                tokensUsed: critique.tokensUsed,
+                durationMs: critique.durationMs,
+              }
+            : undefined,
+          finalizerChanges: finalizerStats
+            ? {
+                rankChangesFromFirstPass: finalizerStats.rankChangesFromFirstPass,
+                removedFromTop10: finalizerStats.removedFromTop10,
+                addedToTop10: finalizerStats.addedToTop10,
               }
             : undefined,
         } as any,
       };
 
-      log("orch.done", { totalDur: elapsed(), stages: stages.length });
+      log("orch.done", { totalDur: elapsed(), stages: stages.length, top1: finalRanking[0]?.diagnosis });
       return analysisResult;
 
     } catch (error: any) {
-      // If we have partial results, include them in the error
       const budgetSummary = this.budgetTracker.getSummary();
       log("orch.error", { totalDur: elapsed(), msg: (error?.message || "").substring(0, 200) });
       console.error('[Pipeline] Budget at failure:', budgetSummary);

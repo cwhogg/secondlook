@@ -205,17 +205,23 @@ export interface DiagnosisHypothesis {
   changesFromFirstPass?: {
     rankBefore: number | null;
     rankAfter: number | null;
-    changeReason?: 'critique-promoted' | 'critique-demoted' | 'critique-reordered' | 'no-change' | 'finalizer-override';
+    changeReason?: 'critique-promoted' | 'critique-demoted' | 'critique-reordered' | 'critique-added' | 'no-change' | 'finalizer-override';
   };
 }
 
 // v17+: output shape from the o3 critic. Read by Stage 8 (Claude finalize).
 export interface CritiqueSuggestion {
-  targetDiagnosis: string; // EXACT name from Claude's Stage 6 ranking
-  action: 'promote' | 'demote' | 'reorder' | 'merge' | 'flag-gap';
+  // EXACT name from Claude's Stage 6 ranking for promote/demote/reorder/merge/flag-gap.
+  // For 'add': a NEW diagnosis name not present in Claude's top-10 that o3 believes
+  // belongs there based on specific patient evidence.
+  targetDiagnosis: string;
+  action: 'promote' | 'demote' | 'reorder' | 'merge' | 'flag-gap' | 'add';
   targetNewRank?: number; // 1-10
   evidence: string[]; // specific patient findings supporting the suggestion
   reasoning: string;
+  // 0-100. Required and gated for 'add' (only kept if >= ADD_CONFIDENCE_FLOOR);
+  // optional informational signal for the other actions.
+  confidence?: number;
 }
 
 export interface CritiqueOutput {
@@ -359,6 +365,8 @@ export interface PipelineMetadata {
     acceptedCount: number; // how many were honored by finalizer
     tokensUsed: number;
     durationMs: number;
+    overallAssessment?: string;
+    suggestions?: CritiqueSuggestion[];
   };
 
   // v17+: Claude finalize delta from Stage 8.

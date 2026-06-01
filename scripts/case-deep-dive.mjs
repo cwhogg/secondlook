@@ -439,7 +439,7 @@ function renderExtraction(slCase) {
     <div class="stage-meta">Done by /api/parse-symptoms (gpt-4.1-mini) + UMLS lookup</div>
     <h3>Extracted symptoms (${syms.length})</h3>
     <table>
-      <thead><tr><th>#</th><th>Original phrase</th><th>Medical term</th><th>UMLS concept</th><th>Code</th></tr></thead>
+      <thead><tr><th>#</th><th>Original phrase</th><th>Medical term</th><th>UMLS concept</th><th>UMLS Code</th></tr></thead>
       <tbody>${symRows || '<tr><td colspan="5">(none)</td></tr>'}</tbody>
     </table>
     ${excs.length > 0 ? `
@@ -1065,6 +1065,39 @@ function renderO3Critique(slCase) {
   const crit = slCase.pipelineResult?.pipelineMetadata?.critique;
   if (!stage && !crit) return '';
 
+  const actionBadge = (a) => {
+    if (a === 'promote') return '<span class="badge badge-ok">PROMOTE</span>';
+    if (a === 'demote') return '<span class="badge badge-err">DEMOTE</span>';
+    if (a === 'reorder') return '<span class="badge badge-info">REORDER</span>';
+    if (a === 'merge') return '<span class="badge">MERGE</span>';
+    if (a === 'flag-gap') return '<span class="badge">FLAG-GAP</span>';
+    if (a === 'add') return '<span class="badge badge-ok">ADD (new)</span>';
+    return `<span class="badge">${esc(a || '?')}</span>`;
+  };
+  const suggestionsBlock = (crit?.suggestions?.length)
+    ? `
+      <h3 style="margin-top: 16px;">Per-suggestion detail (${crit.suggestions.length})</h3>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Target diagnosis</th><th>Action</th><th>New rank</th><th>Conf</th><th>Evidence cited</th><th>Reasoning</th></tr>
+        </thead>
+        <tbody>
+          ${crit.suggestions.map((s, i) => `
+            <tr>
+              <td class="rank">${i + 1}</td>
+              <td><strong>${esc(s.targetDiagnosis)}</strong></td>
+              <td>${actionBadge(s.action)}</td>
+              <td class="score">${s.targetNewRank ?? '—'}</td>
+              <td class="score">${typeof s.confidence === 'number' ? s.confidence : '—'}</td>
+              <td><small>${(s.evidence || []).map((e) => `• ${esc(e)}`).join('<br/>')}</small></td>
+              <td><small>${esc(s.reasoning || '')}</small></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `
+    : '<div class="note">No per-suggestion detail persisted on this case (older run pre-dating the structured-suggestion persistence change). Raw suggestions and reasoning are in the o3-critic LLM call in Section 15b.</div>';
+
   return section('o3-critique', '10. o3 Critique — second-opinion review of Claude\'s ranking', `
     <div class="stage-meta">
       ${stage ? `<span class="badge">${esc(stage.model)}</span> <span class="badge">${stage.tokensUsed?.toLocaleString()} tokens</span> <span class="badge">${Math.round((stage.durationMs || 0) / 1000)}s</span>` : ''}
@@ -1077,15 +1110,13 @@ function renderO3Critique(slCase) {
     </div>
     <p>o3 reasoning:high reviews Claude's full top-10 ranking and emits structured
     suggestions: <code>promote</code>, <code>demote</code>, <code>reorder</code>, <code>merge</code>,
-    or <code>flag-gap</code>. <strong>o3 cannot add new candidates</strong> — specialists are the sole
-    candidate source. Claude finalize (next stage) accepts or rejects each suggestion.</p>
+    <code>flag-gap</code>, or <code>add</code>. <code>add</code> is gated by a confidence floor
+    (suggestions below the threshold are dropped before Claude finalize sees them) — used when
+    o3 is highly confident a diagnosis missed by specialists + Claude belongs in the top 5.
+    Claude finalize (next stage) accepts or rejects each suggestion.</p>
+    ${crit?.overallAssessment ? `<p><strong>Overall assessment:</strong> <em>${esc(crit.overallAssessment)}</em></p>` : ''}
     ${stage?.outputSummary ? `<p><strong>Output:</strong> ${esc(stage.outputSummary)}</p>` : ''}
-    <div class="note">
-      Per-suggestion detail (promote/demote/reorder/merge/flag-gap + reasoning) is not
-      persisted in <code>pipelineMetadata.critique</code> as a structured list yet — only
-      the aggregate counts. To inspect raw suggestions and reasoning, see the o3-critic
-      LLM call in Section 15b.
-    </div>
+    ${suggestionsBlock}
   `);
 }
 

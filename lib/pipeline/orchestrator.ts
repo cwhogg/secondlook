@@ -681,6 +681,8 @@ export class DiagnosticPipeline {
                 acceptedCount: finalizerStats?.criticSuggestionsAccepted ?? 0,
                 tokensUsed: critique.tokensUsed,
                 durationMs: critique.durationMs,
+                overallAssessment: critique.overallAssessment,
+                suggestions: critique.suggestions,
               }
             : undefined,
           finalizerChanges: finalizerStats

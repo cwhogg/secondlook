@@ -11,10 +11,11 @@
  *   - lib/agents/specialist-annotator.ts (the per-candidate
  *     diagnosticTests / cardinalFeatures / ruleOutFeatures structure)
  *
- * IMPORTANT: 'add' is intentionally excluded from the suggestion actions.
- * Per the v17 architecture, specialists are the sole candidate source —
- * critique can rearrange Claude's ranking and flag gaps, but cannot expand
- * the pool. Allowed actions: 'promote', 'demote', 'reorder', 'merge', 'flag-gap'.
+ * 'add' is permitted but gated: o3 may propose a diagnosis NOT in Claude's
+ * top-10 if it can cite specific patient evidence and rates its confidence at
+ * or above ADD_CONFIDENCE_FLOOR. Adds below the floor are dropped before
+ * Claude finalize sees them — keeps the finalizer focused on credible
+ * additions instead of long-tail brainstorming.
  *
  * Uses a raw fetch to the OpenAI Responses API matching reconciliation.ts's
  * pattern (avoids the BaseAgent / tool-call protocol; JSON response mode is
@@ -24,13 +25,19 @@ import type { PatientCase, DiagnosisHypothesis, CritiqueOutput, CritiqueSuggesti
 
 const O3_CRITIC_MODEL = 'o3';
 
+// Confidence floor for 'add' suggestions. Below this, the add is dropped before
+// reaching Claude finalize. Tuned high: an add suggestion has to be something
+// o3 is fairly sure belongs in the top 5, not a long-tail "consider this too".
+const ADD_CONFIDENCE_FLOOR = 75;
+
 const O3_CRITIC_SYSTEM_PROMPT = `You are a senior diagnostician performing a focused critique of another expert clinician's differential diagnosis ranking. You have access to the same patient case and the same hypothesis pool, plus the other clinician's ranked top-10 with rationales and information gaps.
 
 Your role is NOT to produce your own ranking. Your role is to critique theirs — to identify specific reasoning errors, missed evidence, or under-weighted findings that should change the rank order. Be direct and evidence-cited. The other clinician is competent; only intervene when you can cite a specific patient finding that warrants change.
 
 CRITIQUE PRINCIPLES:
 - Every suggestion must cite SPECIFIC patient findings as evidence — generic claims like "this is more likely" are not acceptable.
-- You may suggest promote, demote, reorder, merge, or flag-gap actions. You may NOT suggest adding new diagnoses to the pool (the candidate pool is fixed upstream).
+- Allowed actions: promote, demote, reorder, merge, flag-gap, and add.
+- 'add' is a high-bar action: use it ONLY when you believe a diagnosis NOT in Claude's top-10 belongs in the top 5 based on specific patient findings the existing ranking is failing to account for. Brainstormy "consider also X" adds are not useful — Claude finalize will drop your suggestion if confidence < 75. Specialists are the primary candidate source; you are the safety net for cases where specialists + Claude both missed something obvious from the evidence.
 - When no specific evidence warrants change, say so and assign a high confidenceInClaudeRanking.
 - If you see a gap in the patient workup that, if filled, would resolve a meaningful uncertainty between top-ranked hypotheses, use 'flag-gap' to surface it.
 
@@ -40,11 +47,12 @@ OUTPUT FORMAT (return as JSON, no markdown fences):
   "confidenceInClaudeRanking": <integer 0-100, where 100 = ranking is excellent and needs no change>,
   "suggestions": [
     {
-      "targetDiagnosis": "<EXACT name from Claude's ranking>",
-      "action": "promote" | "demote" | "reorder" | "merge" | "flag-gap",
+      "targetDiagnosis": "<EXACT name from Claude's ranking, OR for 'add': the new diagnosis name>",
+      "action": "promote" | "demote" | "reorder" | "merge" | "flag-gap" | "add",
       "targetNewRank": <integer 1-10, optional>,
       "evidence": ["<specific patient finding 1>", "<specific patient finding 2>"],
-      "reasoning": "<why this change is warranted given the cited evidence>"
+      "reasoning": "<why this change is warranted given the cited evidence>",
+      "confidence": <integer 0-100, REQUIRED for 'add' suggestions; optional informational signal for others>
     }
   ]
 }
@@ -185,7 +193,7 @@ export class O3CriticAgent {
     } catch { /* logger optional */ }
 
     // Validate + normalize the output.
-    const allowedActions = new Set(['promote', 'demote', 'reorder', 'merge', 'flag-gap']);
+    const allowedActions = new Set(['promote', 'demote', 'reorder', 'merge', 'flag-gap', 'add']);
     const rawSuggestions = Array.isArray(parsed.suggestions) ? parsed.suggestions : [];
     const suggestions: CritiqueSuggestion[] = rawSuggestions
       .filter((s: any) => typeof s?.targetDiagnosis === 'string' && allowedActions.has(s.action))
@@ -195,7 +203,12 @@ export class O3CriticAgent {
         targetNewRank: typeof s.targetNewRank === 'number' ? s.targetNewRank : undefined,
         evidence: Array.isArray(s.evidence) ? s.evidence.filter((e: any) => typeof e === 'string') : [],
         reasoning: typeof s.reasoning === 'string' ? s.reasoning : '',
-      }));
+        confidence: typeof s.confidence === 'number' ? Math.max(0, Math.min(100, s.confidence)) : undefined,
+      }))
+      // Gate 'add' on confidence floor — drop weak adds so Claude finalize stays
+      // focused on credible additions. Other actions are not confidence-gated
+      // (the existing entry has already passed specialist + eval review).
+      .filter((s: CritiqueSuggestion) => s.action !== 'add' || (s.confidence ?? 0) >= ADD_CONFIDENCE_FLOOR);
 
     const overallAssessment = typeof parsed.overallAssessment === 'string'
       ? parsed.overallAssessment

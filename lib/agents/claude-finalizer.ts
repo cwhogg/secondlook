@@ -30,6 +30,7 @@ Your task: REVIEW each suggestion, decide whether to honor it, and produce the f
 DECISION PRINCIPLES:
 - Honor critique suggestions ONLY when the cited patient evidence actually supports the recommended change. Do not honor a suggestion just because the critic was confident.
 - Reject suggestions when the cited evidence is weak, the diagnosis is too rare given prevalence, or the proposed rank change would put a poorly-supported diagnosis above a well-supported one.
+- For 'add' suggestions (a diagnosis NOT in your draft top-10): the bar is high. Accept only when the critic cites specific patient findings that materially support the new diagnosis AND the cited evidence is stronger than the entry it would displace. When you accept an 'add', use 'critique-added' as the changeReason.
 - When the critic raised an information gap, decide whether it materially affects the ranking and reflect that in your final assessment.
 - Preserve KB-matched and reasoning-evaluated diagnoses on equal terms.
 
@@ -42,10 +43,10 @@ OUTPUT FORMAT (return as JSON, no markdown fences):
 {
   "rankedDiagnoses": [
     {
-      "diagnosis": "<EXACT name from the input hypothesis pool>",
+      "diagnosis": "<EXACT name from the input hypothesis pool, OR the new diagnosis name when accepting a critic 'add' suggestion>",
       "probabilityScore": <0-100>,
       "rationale": "<one to three sentences>",
-      "changeReason": "no-change" | "critique-promoted" | "critique-demoted" | "critique-reordered" | "finalizer-override"
+      "changeReason": "no-change" | "critique-promoted" | "critique-demoted" | "critique-reordered" | "critique-added" | "finalizer-override"
     }
   ],
   "overallAssessment": "<paragraph summarizing the final differential>",
@@ -197,35 +198,72 @@ export class ClaudeFinalizerAgent {
     });
 
     type ChangeReason = NonNullable<DiagnosisHypothesis['changesFromFirstPass']>['changeReason'];
-    const validChangeReasons: ReadonlyArray<ChangeReason> = ['critique-promoted', 'critique-demoted', 'critique-reordered', 'no-change', 'finalizer-override'];
+    const validChangeReasons: ReadonlyArray<ChangeReason> = ['critique-promoted', 'critique-demoted', 'critique-reordered', 'critique-added', 'no-change', 'finalizer-override'];
+
+    // Index critic 'add' suggestions by normalized name so we can match them
+    // to finalizer entries the pool doesn't contain (the case where the
+    // finalizer accepted a critic add and emitted a brand-new diagnosis name).
+    const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const addByName = new Map<string, typeof opts.critique.suggestions[number]>();
+    for (const s of opts.critique.suggestions) {
+      if (s.action === 'add') addByName.set(norm(s.targetDiagnosis), s);
+    }
 
     const finalRanking: DiagnosisHypothesis[] = [];
     for (let i = 0; i < parsed.rankedDiagnoses.length && finalRanking.length < 10; i++) {
       const r = parsed.rankedDiagnoses[i];
       const match = findByName(r.diagnosis);
-      if (!match) continue;
-      if (finalRanking.some((x) => x.diagnosis === match.diagnosis)) continue;
-      const rankBeforeNorm = match.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '');
-      const rankBefore = firstPassRankByDiag.get(rankBeforeNorm) ?? null;
+      // Pool miss: check whether this is an accepted critic 'add'. If yes,
+      // build a stub hypothesis so the new diagnosis survives into the report.
+      let entry: DiagnosisHypothesis | null = match;
+      let isCritiqueAdd = false;
+      if (!entry) {
+        const addSugg = addByName.get(norm(r.diagnosis));
+        if (addSugg) {
+          isCritiqueAdd = true;
+          entry = {
+            diagnosis: r.diagnosis,
+            confidenceScore: typeof r.probabilityScore === 'number' ? r.probabilityScore : 50,
+            evidenceScore: typeof r.probabilityScore === 'number' ? r.probabilityScore : 50,
+            rareDisease: false,
+            supportingEvidence: (addSugg.evidence || []).map((e) => ({
+              finding: e,
+              patientSymptom: '',
+              strength: 'moderate',
+              type: 'supporting',
+              attributedTo: 'o3-critic',
+            })),
+            contradictoryEvidence: [],
+            clinicalReasoning: `[o3-critic add]: ${addSugg.reasoning}`,
+            typicalPresentation: '',
+            specialistRequired: '',
+            diagnosticCriteria: { criteriaName: '', totalCriteria: 0, metCriteria: 0, criteriaDetails: [], fulfillmentPercentage: 0 },
+            sourceAgent: 'o3-critic-add',
+            sourceAgents: ['o3-critic'],
+            evaluationType: 'reasoning-evaluated',
+            knowledgeBaseMatch: false,
+          } as DiagnosisHypothesis;
+        }
+      }
+      if (!entry) continue;
+      if (finalRanking.some((x) => x.diagnosis === entry!.diagnosis)) continue;
+      const rankBeforeNorm = norm(entry.diagnosis);
+      const rankBefore = isCritiqueAdd ? null : (firstPassRankByDiag.get(rankBeforeNorm) ?? null);
       const rankAfter = i + 1;
-      const rawReason = r.changeReason || (rankBefore === rankAfter ? 'no-change' : 'critique-reordered');
+      const rawReason = r.changeReason
+        || (isCritiqueAdd ? 'critique-added' : (rankBefore === rankAfter ? 'no-change' : 'critique-reordered'));
       const changeReason: ChangeReason = (validChangeReasons as ReadonlyArray<string>).includes(rawReason)
         ? (rawReason as ChangeReason)
         : 'finalizer-override';
-      const copy: DiagnosisHypothesis = { ...match };
+      const copy: DiagnosisHypothesis = { ...entry };
       if (typeof r.probabilityScore === 'number') {
         copy.confidenceScore = r.probabilityScore;
         copy.evidenceScore = r.probabilityScore;
       }
       if (typeof r.rationale === 'string' && r.rationale.length > 0) {
-        // Append finalizer rationale to clinical reasoning rather than replacing.
         copy.clinicalReasoning = `${copy.clinicalReasoning || ''}\n[finalizer]: ${r.rationale}`.trim();
       }
-      copy.changesFromFirstPass = {
-        rankBefore,
-        rankAfter,
-        changeReason,
-      };
+      copy.changesFromFirstPass = { rankBefore, rankAfter, changeReason };
       finalRanking.push(copy);
     }
 

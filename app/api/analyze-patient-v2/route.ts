@@ -120,9 +120,17 @@ export async function POST(request: NextRequest) {
   const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   const startTime = Date.now();
 
-  // Rate limiting (skip in development for testing)
+  // Rate limiting (skip in development for testing; also skip when a valid
+  // cohort-run bypass header is present so admin-driven batch runs can
+  // exceed the per-IP user limit without DoS'ing the analysis flow for
+  // organic users).
   const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
-  const rateCheck = process.env.NODE_ENV === 'production' ? checkRateLimit(ip) : { allowed: true };
+  const cohortBypassSecret = process.env.COHORT_BYPASS_SECRET;
+  const providedBypass = request.headers.get('x-cohort-bypass');
+  const cohortBypass = !!cohortBypassSecret && providedBypass === cohortBypassSecret;
+  const rateCheck = (process.env.NODE_ENV === 'production' && !cohortBypass)
+    ? checkRateLimit(ip)
+    : { allowed: true };
   if (!rateCheck.allowed) {
     return new Response(
       JSON.stringify({

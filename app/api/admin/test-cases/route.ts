@@ -30,10 +30,13 @@ function createdAtScore(tc: TestCase): number {
 // 1 MB (free). A single MGET of all 500+ cases blows past that — observed
 // 24 MB for our current corpus. Batch the MGET into chunks small enough that
 // no single response can exceed the cap even when individual cases are large.
-// 30 keys × worst-case ~200 KB per case ≈ 6 MB per batch; well-under cap and
-// the batches run in parallel so the extra round-trips don't add user-visible
-// latency.
-const MGET_BATCH = 30
+//
+// v17 cases carry full pipelineMetadata.llmCalls[] arrays (per-call system
+// prompt, user prompt, raw response, structured output) which can be 500
+// KB-1 MB each. 30-per-batch could exceed 30 MB and trip the 10 MB cap.
+// Dropped to 8 so even at 1 MB/case the batch stays well under cap. Extra
+// round-trips add ~50ms total since the batches run in parallel.
+const MGET_BATCH = 8
 
 async function loadAllTestCases(redis: Redis): Promise<TestCase[]> {
   // Newest first — same ordering as the old Blob-backed implementation, which

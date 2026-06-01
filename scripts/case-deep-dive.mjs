@@ -1108,12 +1108,14 @@ function renderO3Critique(slCase) {
         <span class="badge badge-ok">${crit.acceptedCount} accepted by Claude finalize</span>
       ` : ''}
     </div>
-    <p>o3 reasoning:high reviews Claude's full top-10 ranking and emits structured
-    suggestions: <code>promote</code>, <code>demote</code>, <code>reorder</code>, <code>merge</code>,
+    <p>o3 reasoning:high reviews Claude's <strong>full ranking</strong> (every evaluated
+    hypothesis, not just the top-10) and emits structured suggestions:
+    <code>promote</code>, <code>demote</code>, <code>reorder</code>, <code>merge</code>,
     <code>flag-gap</code>, or <code>add</code>. <code>add</code> is gated by a confidence floor
     (suggestions below the threshold are dropped before Claude finalize sees them) — used when
-    o3 is highly confident a diagnosis missed by specialists + Claude belongs in the top 5.
-    Claude finalize (next stage) accepts or rejects each suggestion.</p>
+    o3 is highly confident a diagnosis missed by specialists + Claude belongs in the final
+    top-10. Claude finalize (next stage) accepts or rejects each suggestion and selects the
+    final top-10.</p>
     ${crit?.overallAssessment ? `<p><strong>Overall assessment:</strong> <em>${esc(crit.overallAssessment)}</em></p>` : ''}
     ${stage?.outputSummary ? `<p><strong>Output:</strong> ${esc(stage.outputSummary)}</p>` : ''}
     ${suggestionsBlock}
@@ -1163,10 +1165,12 @@ function renderClaudeFinalize(slCase) {
         ${fc.addedToTop10?.length ? `<span class="badge badge-ok">added to top10: ${fc.addedToTop10.length}</span>` : ''}
       ` : ''}
     </div>
-    <p>Claude opus-4-7 reasoning:medium reviews its own first-pass ranking + o3's critique
-    suggestions and produces the final top-10. Claude is the final decider per v17 spec.
-    Each hypothesis carries <code>changesFromFirstPass</code> (rankBefore/After + reason) explaining
-    why it moved.</p>
+    <p>Claude opus-4-7 reasoning:medium reviews its own full first-pass ranking
+    (Section 9) + o3's critique suggestions (Section 10) and <strong>selects the final
+    top-10</strong> the patient sees. Entries from positions 11+ in synth can be
+    promoted into the top-10 here; entries from the synth top-10 can be dropped.
+    Each surviving hypothesis carries <code>changesFromFirstPass</code> (rankBefore/After + reason)
+    explaining why it moved.</p>
     ${stage?.outputSummary ? `<p><strong>Output:</strong> ${esc(stage.outputSummary)}</p>` : ''}
     ${ranked.length ? `
       <h3>Per-hypothesis rank changes (${ranked.length})</h3>
@@ -1270,13 +1274,13 @@ function renderSynthesizers(slCase) {
   `);
 
   const claudeTitle = isV17
-    ? '9. Claude Synthesis — first ranking before critique'
+    ? '9. Claude Synthesis — full ranking of all deduped hypotheses'
     : '9. Synthesizer — Claude opus-4-7 reasoning:high (parallel)';
   const claudeIntro = isV17
-    ? `<p>Claude opus-4-7 reasoning:high produces a ranked differential from the evaluator's
-       scored hypotheses. This is the <strong>first pass</strong> — o3 critiques it next, then
-       Claude finalizes. Rank changes between this stage and the finalize stage are tracked
-       per-hypothesis in <code>changesFromFirstPass</code>.</p>`
+    ? `<p>Claude opus-4-7 reasoning:high ranks <strong>every</strong> evaluated hypothesis
+       (not just a top-10) so the downstream critique and finalize stages see the full
+       differential. The 10-cap moves to Stage 11 (Claude finalize) — synth's job here
+       is to produce a coherent full ordering, not to narrow the field.</p>`
     : `<p><strong>Claude's initial top-1:</strong> <em>${esc(recon?.claudeInitialTop1 || synthClaude?.outputSummary?.replace(/^Top:\s*/, ''))}</em></p>`;
 
   const claudeSection = synthClaude ? section('synth-claude', claudeTitle, `

@@ -30,14 +30,15 @@ const O3_CRITIC_MODEL = 'o3';
 // o3 is fairly sure belongs in the top 5, not a long-tail "consider this too".
 const ADD_CONFIDENCE_FLOOR = 75;
 
-const O3_CRITIC_SYSTEM_PROMPT = `You are a senior diagnostician performing a focused critique of another expert clinician's differential diagnosis ranking. You have access to the same patient case and the same hypothesis pool, plus the other clinician's ranked top-10 with rationales and information gaps.
+const O3_CRITIC_SYSTEM_PROMPT = `You are a senior diagnostician performing a focused critique of another expert clinician's differential diagnosis ranking. You have access to the same patient case and the same hypothesis pool, plus the other clinician's FULL ranked differential (all evaluated hypotheses) with rationales and information gaps. The downstream finalizer will use the post-critique ranking to select the final top-10 — your job is to fix ordering errors anywhere in the ranking, not just within the top-10.
 
 Your role is NOT to produce your own ranking. Your role is to critique theirs — to identify specific reasoning errors, missed evidence, or under-weighted findings that should change the rank order. Be direct and evidence-cited. The other clinician is competent; only intervene when you can cite a specific patient finding that warrants change.
 
 CRITIQUE PRINCIPLES:
 - Every suggestion must cite SPECIFIC patient findings as evidence — generic claims like "this is more likely" are not acceptable.
 - Allowed actions: promote, demote, reorder, merge, flag-gap, and add.
-- 'add' is a high-bar action: use it ONLY when you believe a diagnosis NOT in Claude's top-10 belongs in the top 5 based on specific patient findings the existing ranking is failing to account for. Brainstormy "consider also X" adds are not useful — Claude finalize will drop your suggestion if confidence < 75. Specialists are the primary candidate source; you are the safety net for cases where specialists + Claude both missed something obvious from the evidence.
+- Focus your critique on whether the right diagnoses are positioned to make the final top-10. A correct diagnosis ranked at #14 is invisible to the patient unless you promote it. Equally, a wrong diagnosis at #3 will appear prominently unless you demote it.
+- 'add' is a high-bar action: use it ONLY when you believe a diagnosis NOT in Claude's ranking at all belongs in the final top-10, based on specific patient findings the existing differential is failing to consider. Brainstormy "consider also X" adds are not useful — Claude finalize will drop your suggestion if confidence < 75. Specialists are the primary candidate source; you are the safety net for cases where specialists + Claude both missed something obvious from the evidence.
 - When no specific evidence warrants change, say so and assign a high confidenceInClaudeRanking.
 - If you see a gap in the patient workup that, if filled, would resolve a meaningful uncertainty between top-ranked hypotheses, use 'flag-gap' to surface it.
 
@@ -49,7 +50,7 @@ OUTPUT FORMAT (return as JSON, no markdown fences):
     {
       "targetDiagnosis": "<EXACT name from Claude's ranking, OR for 'add': the new diagnosis name>",
       "action": "promote" | "demote" | "reorder" | "merge" | "flag-gap" | "add",
-      "targetNewRank": <integer 1-10, optional>,
+      "targetNewRank": <integer 1..N where N is the size of Claude's ranking; optional>,
       "evidence": ["<specific patient finding 1>", "<specific patient finding 2>"],
       "reasoning": "<why this change is warranted given the cited evidence>",
       "confidence": <integer 0-100, REQUIRED for 'add' suggestions; optional informational signal for others>
@@ -72,7 +73,10 @@ Symptoms: ${symptoms}.${excluded ? `\nExplicitly excluded findings: ${excluded}.
 }
 
 function buildRankingBlock(ranking: DiagnosisHypothesis[]): string {
-  return ranking.slice(0, 10).map((h, i) => {
+  // v17+ widened funnel: Claude synth now ranks ALL deduped hypotheses, not
+  // just top-10. Show the critic the full ranking so promotion/demotion can
+  // reach beyond what the old top-10-only view exposed.
+  return ranking.map((h, i) => {
     const cf = h.diagnosticCriteria;
     const fulfillment = cf && cf.totalCriteria > 0
       ? `criteria ${cf.metCriteria}/${cf.totalCriteria} (${cf.fulfillmentPercentage}%)`
@@ -109,7 +113,7 @@ function buildUserPrompt(opts: {
     : '';
   return `${recap}
 
-CLAUDE'S RANKED DIFFERENTIAL (top ${Math.min(10, opts.claudeRanking.length)}):
+CLAUDE'S FULL RANKED DIFFERENTIAL (${opts.claudeRanking.length} entries — finalizer will select the final top-10 after your critique):
 
 ${rankingBlock}
 ${claudeReasoning}${gaps}

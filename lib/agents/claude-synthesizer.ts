@@ -34,9 +34,9 @@ function buildClaudeSystemPrompt(): string {
 
 You are reviewing a patient case where multiple specialist consultations have been completed and an evidence evaluator has systematically checked each hypothesis against diagnostic criteria. ALL of this information is now in front of you.
 
-YOUR JOB: Make the final clinical judgment and produce a deep differential.
+YOUR JOB: Make the first-pass clinical ranking. A senior critic (o3) will then review your full ranking, and a finalizer will produce the final top-10 from your output plus the critic's suggestions. Your job here is to rank ALL evaluated hypotheses, not to narrow.
 
-1. Produce 10 RANKED DIAGNOSES (most likely first). Pull from the evaluated hypotheses provided to you; rank exactly 10 if at least 10 distinct evaluated hypotheses exist, otherwise rank all of them. Do not invent diagnoses that were not evaluated. Each must be a distinct disease — no duplicates. RANK by how likely each is to be correct, based on EVERYTHING:
+1. RANK ALL EVALUATED HYPOTHESES (most likely first). Include every distinct hypothesis you were given, in your best-guess probability order. Do not truncate; the finalizer needs to see your full ranking so it can pick the final 10 with the critic's input. Do not invent diagnoses that were not evaluated. Each entry must be a distinct disease — no duplicates. Rank by how likely each is to be correct, based on EVERYTHING:
    - The specialist reasoning and clinical arguments
    - The criteria fulfillment data (how many diagnostic criteria are met)
    - The quality and specificity of supporting evidence
@@ -64,7 +64,7 @@ OUTPUT FORMAT — return a single JSON object exactly matching this shape, with 
 {
   "rankedDiagnoses": [
     { "diagnosis": "...", "probabilityScore": 0-100, "reasoning": "..." },
-    ... (up to 10)
+    ... (one entry per distinct evaluated hypothesis — rank all of them)
   ],
   "consensusLevel": "strong" | "moderate" | "weak" | "divergent",
   "criticalGaps": [ "..." ],
@@ -101,7 +101,9 @@ export class ClaudeSynthAgent {
     const result = await callAnthropic({
       systemPrompt: buildClaudeSystemPrompt(),
       userPrompt,
-      maxTokens: 12000,
+      // Bumped from 12000 to 18000 because v17+ asks Claude to rank ALL
+      // evaluated hypotheses (was top-10 only) — output grows ~80% per case.
+      maxTokens: 18000,
       model: CLAUDE_SYNTH_MODEL,
     });
 
@@ -129,20 +131,23 @@ export class ClaudeSynthAgent {
     }
 
     // Add any remaining evaluated hypotheses Claude didn't rank — so the
-    // downstream still sees the full set.
+    // downstream critic still sees the full set. Safety net only; Claude is
+    // now asked to rank ALL of them upstream.
     for (const h of evaluatedHypotheses) {
       if (!rankedHypotheses.some((r) => r.diagnosis === h.diagnosis)) {
         rankedHypotheses.push(h);
       }
     }
 
-    const finalTopN = rankedHypotheses.slice(0, 10);
-
+    // v17+ widened-funnel: pass the FULL ranking downstream (was top-10).
+    // The 10-cap now lives at the finalizer (Stage 10) — synth provides
+    // the full ranked pool so o3 and Claude finalize can see / promote
+    // entries that would otherwise be silently dropped here.
     const agentOutput: AgentOutput = {
       agentName: this.name,
-      hypotheses: finalTopN,
+      hypotheses: rankedHypotheses,
       reasoning: synthesis.overallAssessment || '',
-      confidence: finalTopN[0]?.confidenceScore || 0,
+      confidence: rankedHypotheses[0]?.confidenceScore || 0,
       tokensUsed: result.tokensUsed,
       durationMs: Date.now() - callStart,
       model: result.model || CLAUDE_SYNTH_MODEL,

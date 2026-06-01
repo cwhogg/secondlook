@@ -23,14 +23,15 @@ import { setLogContext } from '../pipeline/llm-call-log';
 
 const CLAUDE_FINALIZER_MODEL = 'claude-opus-4-7';
 
-const CLAUDE_FINALIZER_SYSTEM_PROMPT = `You are a senior clinical diagnostician finalizing a differential diagnosis ranking. You have produced a draft ranking already, and another senior clinician has reviewed it and provided specific evidence-cited critique suggestions.
+const CLAUDE_FINALIZER_SYSTEM_PROMPT = `You are a senior clinical diagnostician finalizing a differential diagnosis ranking. You produced a draft FULL ranking of all evaluated hypotheses, and another senior clinician has reviewed it and provided specific evidence-cited critique suggestions. Your job now is to SELECT the final top-10 — the differential the patient sees — from your full draft ranking, incorporating the critic's input where the cited evidence justifies it.
 
-Your task: REVIEW each suggestion, decide whether to honor it, and produce the final ranked top-10 differential. You are the final decider — the critique is input to your judgment, not a mandate.
+Your task: REVIEW each suggestion, decide whether to honor it, and SELECT the final top-10 from your draft ranking (which may have more than 10 entries). You are the final decider — the critique is input to your judgment, not a mandate. The cap of 10 is firm; entries you do not include in the final 10 are dropped from the patient-facing differential.
 
 DECISION PRINCIPLES:
 - Honor critique suggestions ONLY when the cited patient evidence actually supports the recommended change. Do not honor a suggestion just because the critic was confident.
 - Reject suggestions when the cited evidence is weak, the diagnosis is too rare given prevalence, or the proposed rank change would put a poorly-supported diagnosis above a well-supported one.
-- For 'add' suggestions (a diagnosis NOT in your draft top-10): the bar is high. Accept only when the critic cites specific patient findings that materially support the new diagnosis AND the cited evidence is stronger than the entry it would displace. When you accept an 'add', use 'critique-added' as the changeReason.
+- Selection is more important than reordering within the top: getting the right 10 in any plausible order beats getting the wrong 10 in the perfect order. Use your full draft ranking + the critic's input to decide which 10 belong.
+- For 'add' suggestions (a diagnosis NOT in your draft ranking at all): the bar is high. Accept only when the critic cites specific patient findings that materially support the new diagnosis AND the cited evidence is stronger than the entry it would displace. When you accept an 'add', use 'critique-added' as the changeReason.
 - When the critic raised an information gap, decide whether it materially affects the ranking and reflect that in your final assessment.
 - Preserve KB-matched and reasoning-evaluated diagnoses on equal terms.
 
@@ -67,7 +68,10 @@ Symptoms: ${symptoms}.`;
 }
 
 function buildRankingBlock(ranking: DiagnosisHypothesis[]): string {
-  return ranking.slice(0, 10).map((h, i) => {
+  // v17+ widened funnel: synth ranks ALL evaluated hypotheses. Show the
+  // finalizer the full list so it can promote a strong rank-15 entry into
+  // the final top-10 if the critic justified it.
+  return ranking.map((h, i) => {
     const cf = h.diagnosticCriteria;
     const fulfillment = cf && cf.totalCriteria > 0
       ? `criteria ${cf.metCriteria}/${cf.totalCriteria}`
@@ -154,7 +158,9 @@ export class ClaudeFinalizerAgent {
     const result = await callAnthropic({
       systemPrompt: CLAUDE_FINALIZER_SYSTEM_PROMPT,
       userPrompt,
-      maxTokens: 12000,
+      // Bumped from 12000: finalizer now ingests Claude's FULL ranking (was
+      // top-10) plus the critique. Output stays at 10, but the input grows.
+      maxTokens: 16000,
       model: CLAUDE_FINALIZER_MODEL,
     });
 
@@ -191,8 +197,10 @@ export class ClaudeFinalizerAgent {
     };
 
     // Build first-pass rank lookup for changesFromFirstPass annotation.
+    // v17+ widened funnel: track the FULL first-pass ranking (not just top-10)
+    // so an entry promoted from rank 14 → 7 is annotated with rankBefore=14.
     const firstPassRankByDiag = new Map<string, number>();
-    opts.firstPassRanking.slice(0, 10).forEach((h, i) => {
+    opts.firstPassRanking.forEach((h, i) => {
       const norm = h.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '');
       firstPassRankByDiag.set(norm, i + 1);
     });

@@ -445,7 +445,7 @@ export class DiagnosticPipeline {
           tokensUsed: critique.tokensUsed,
           model: critique.model,
           agentName: 'o3-critic',
-          inputSummary: `Claude top-10 ranking + rationales`,
+          inputSummary: `Claude full ranking (${synthesisResult.hypotheses.length} entries) + rationales`,
           outputSummary: `${critique.suggestions.length} suggestions, confidence in Claude: ${critique.confidenceInClaudeRanking}/100`,
         });
         log("orch.stage.critique.done", { suggestions: critique.suggestions.length, confidence: critique.confidenceInClaudeRanking });
@@ -488,7 +488,7 @@ export class DiagnosticPipeline {
             tokensUsed: finalizerResult.tokensUsed,
             model: finalizerResult.model,
             agentName: finalizerResult.agentName,
-            inputSummary: `Claude top-10 + ${critique.suggestions.length} critique suggestions`,
+            inputSummary: `Claude full ranking (${synthesisResult.hypotheses.length} entries) + ${critique.suggestions.length} critique suggestions`,
             outputSummary: `Final top: ${finalRanking[0]?.diagnosis} (accepted ${finalizerStats.criticSuggestionsAccepted}/${critique.suggestions.length} suggestions, ${finalizerStats.rankChangesFromFirstPass} rank changes)`,
           });
           log("orch.stage.finalize.done", { top1: finalRanking[0]?.diagnosis, accepted: finalizerStats.criticSuggestionsAccepted, rejected: finalizerStats.criticSuggestionsRejected });

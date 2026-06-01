@@ -14,6 +14,25 @@ You are triaging for a rare disease diagnostic service. Consider uncommon and co
 
 IMPORTANT: Only select body systems that the symptoms directly implicate. Typically 2-4 systems are involved, rarely more than 5. Do NOT tag every possible system — focus on the systems where there is concrete symptom evidence. A symptom should map to at most 1-2 body systems, not all systems it could theoretically affect.
 
+VOCABULARY (critical): the bodySystems field accepts EXACTLY these tokens — match the enum verbatim, do NOT use casual synonyms. Common mistakes to avoid:
+- Use "dermatological" — NOT "skin", "cutaneous", "dermatologic"
+- Use "immunological" — NOT "immune", "immune system", "immunologic"
+- Use "neurological" — NOT "neuro", "nervous system", "neurologic"
+- Use "musculoskeletal" — NOT "muscular", "skeletal", "MSK", "ortho"
+- Use "cardiovascular" — NOT "cardiac", "heart", "CV"
+- Use "respiratory" — NOT "pulmonary", "lung", "pulm"
+- Use "gastrointestinal" — NOT "GI", "digestive", "gut"
+- Use "ophthalmological" — NOT "ocular", "eye", "ophthalmic"
+- Use "endocrine" — NOT "endocrinologic", "endocrinological", "hormonal"
+- Use "hematological" — NOT "blood", "hematologic", "heme"
+- Use "renal" — NOT "kidney", "nephrologic", "urologic" (renal covers nephro)
+- Use "reproductive" — NOT "genital", "gynecologic", "reproductive system"
+- Use "psychiatric" — NOT "mental", "behavioral", "psych"
+- Use "constitutional" — NOT "general", "systemic", "nonspecific"
+- Use "otolaryngological" — NOT "ENT", "ear nose throat", "otolaryngologic"
+- Use "oncological" — NOT "cancer", "tumor", "neoplastic"
+The downstream KB retrieval matches body systems by exact string equality against these tokens. Any mismatch (e.g., "skin" instead of "dermatological") silently breaks symptom-to-disease scoring for the affected system.
+
 When ranking specialists, the geneticist should usually rank highly (rare diseases are disproportionately genetic) and the general-internist serves as an un-anchored counterweight — rank it where it best fits the presentation. The full list of 11 must appear in your ranking exactly once each.
 
 Return your analysis as structured JSON.`;

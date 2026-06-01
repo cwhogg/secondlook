@@ -122,18 +122,20 @@ export abstract class BaseAgent {
     }
 
     const toolCall = data.choices[0]?.message?.tool_calls?.[0];
-    if (!toolCall?.function?.arguments) {
-      throw new Error(`No tool call in response from ${this.config.name}`);
+    const hasToolCall = !!toolCall?.function?.arguments;
+
+    let content: any = undefined;
+    let parseError: string | undefined;
+    if (hasToolCall) {
+      try {
+        content = JSON.parse(toolCall.function.arguments);
+      } catch (err) {
+        parseError = String(err);
+      }
     }
 
-    let content: any;
-    try {
-      content = JSON.parse(toolCall.function.arguments);
-    } catch (err) {
-      throw new Error(`Failed to parse tool call arguments from ${this.config.name}: ${err}`);
-    }
-
-    // Persist call into per-pipeline log if enabled
+    // Persist call into per-pipeline log BEFORE any throw so empty/failed
+    // responses are diagnosable (finish_reason, token counts, raw text).
     try {
       const { pushLlmCall } = require('../pipeline/llm-call-log');
       pushLlmCall({
@@ -154,8 +156,16 @@ export abstract class BaseAgent {
         tokensIn: data.usage?.prompt_tokens,
         tokensOut: data.usage?.completion_tokens,
         durationMs,
+        error: !hasToolCall ? 'No tool call in response' : parseError,
       });
     } catch { /* logger optional; never break the pipeline */ }
+
+    if (!hasToolCall) {
+      throw new Error(`No tool call in response from ${this.config.name}`);
+    }
+    if (parseError) {
+      throw new Error(`Failed to parse tool call arguments from ${this.config.name}: ${parseError}`);
+    }
 
     return {
       content,

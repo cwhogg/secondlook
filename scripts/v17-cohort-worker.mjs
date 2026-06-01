@@ -163,6 +163,62 @@ const testCase = {
   pipelineResult: analysis,
 };
 
+// === Inline v2 grading so the testCase lands on /eval with grade attached ===
+// SecondLook tab on /eval requires tc.grading to render trio rows. Without
+// this step, freshly-completed v17 cases appear ungraded and need backfill.
+const gradeRequest = {
+  groundTruth: {
+    diagnosis: meta.groundTruth.diagnosis,
+    icd10: meta.groundTruth.icd10 || null,
+    prevalence: meta.groundTruth.prevalence || null,
+    keyFindings: meta.groundTruth.keyFindings || [],
+    expectedBodySystems: meta.groundTruth.expectedBodySystems || [],
+    expectedSpecialists: meta.groundTruth.expectedSpecialists || [],
+    nearMisses: meta.groundTruth.nearMisses || [],
+  },
+  differentialDiagnoses: (analysis.differentialDiagnoses || []).slice(0, 10).map((d) => ({
+    diagnosis: d.diagnosis,
+    evidenceScore: d.evidenceScore || 0,
+    confidenceScore: d.confidenceScore || 0,
+    clinicalReasoning: d.clinicalReasoning || '',
+    supportingEvidence: d.supportingEvidence || [],
+    sourceAgent: d.sourceAgent || 'unknown',
+    evaluationType: d.evaluationType || 'reasoning-evaluated',
+    knowledgeBaseMatch: !!d.knowledgeBaseMatch,
+    icd10Code: d.icd10Code,
+  })),
+  pipelineMetadata: analysis.pipelineMetadata || {},
+  familyEnrichments: analysis.familyEnrichments,
+  difficulty: 3,
+};
+
+const gradePath = `${OUT_DIR}/${PPKT}.grade-req.json`;
+writeFileSync(gradePath, JSON.stringify(gradeRequest));
+let grading = null;
+try {
+  const gradeRaw = await runVercelCurl('/api/admin/grade-test', gradePath);
+  const gradeBody = gradeRaw.replace(/\nHTTP_STATUS=\d+\n?$/, '');
+  const gradeJson = JSON.parse(gradeBody);
+  if (gradeJson.grading) {
+    grading = {
+      ...gradeJson.grading,
+      grade: gradeJson.grading.grade,
+      score: gradeJson.grading.score,
+      correctDiagnosisRank: gradeJson.grading.correctDiagnosisRank ?? null,
+      inTop3: gradeJson.grading.inTop3 || false,
+      inTop5: gradeJson.grading.inTop5 || false,
+      feedback: gradeJson.grading.feedback || '',
+      tierMatch: gradeJson.grading.tierMatch,
+      gradedAt: new Date().toISOString(),
+    };
+    testCase.grading = grading;
+  }
+} catch (gradeErr) {
+  // Grading failure is non-fatal — case still gets persisted without grading;
+  // the backfill script can fill it later.
+  process.stderr.write(`[${PPKT}] grading failed: ${gradeErr.message.slice(0, 200)}\n`);
+}
+
 const persistPath = `${OUT_DIR}/${PPKT}.persist.json`;
 writeFileSync(persistPath, JSON.stringify({ upsert: [testCase] }));
 try {

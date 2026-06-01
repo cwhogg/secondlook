@@ -44,10 +44,17 @@ const PPKTS = PPKTS_RAW
   : PPKT ? [PPKT] : [null];
 const VERSION = argv('version', 'v15');
 const OUT = argv('out', join(ROOT, 'case-deep-dive.html'));
+const INPUT_FILE = argv('input-file', null);
 
-console.log('Fetching testCases...');
-const tcRes = await fetch(`${BASE}/api/admin/test-cases`);
-const tcData = await tcRes.json();
+let tcData;
+if (INPUT_FILE) {
+  console.log(`Loading testCases from ${INPUT_FILE}...`);
+  tcData = JSON.parse(readFileSync(INPUT_FILE, 'utf8'));
+} else {
+  console.log('Fetching testCases...');
+  const tcRes = await fetch(`${BASE}/api/admin/test-cases`);
+  tcData = await tcRes.json();
+}
 const all = tcData.testCases || [];
 
 function findCases(rawEntry) {
@@ -708,11 +715,13 @@ function renderSpecialists(slCase) {
   const stages = slCase.pipelineResult?.pipelineMetadata?.stages || [];
   const v15Sps = stages.filter((s) => s.stageName === 'specialist');
   const v16Sps = stages.filter((s) => s.stageName === 'specialist-annotation');
+  const v17Sps = stages.filter((s) => s.stageName === 'specialist-consultation');
   const failed = stages.filter((s) => s.stageName === 'specialist-failed');
 
   // v16 architecture: annotation cards + per-hypothesis annotations rendered below
-  const isV16Annotation = v16Sps.length > 0;
-  const sps = isV16Annotation ? v16Sps : v15Sps;
+  const isV17Consultation = v17Sps.length > 0;
+  const isV16Annotation = !isV17Consultation && v16Sps.length > 0;
+  const sps = isV17Consultation ? v17Sps : isV16Annotation ? v16Sps : v15Sps;
 
   const sCards = sps.map((sp) => `
     <div class="specialist-card">
@@ -788,11 +797,104 @@ function renderSpecialists(slCase) {
     }
   }
 
-  const header = isV16Annotation
+  // v17 per-hypothesis specialty attribution. Each merged hypothesis carries
+  // sourceAgents (which specialists proposed it), domainConfidenceMap (each
+  // specialist's confidence 0-100), nameVariants (raw names each emitted),
+  // and supportingEvidence[].attributedTo (which specialist surfaced each
+  // evidence item). Render a drill-down per hypothesis.
+  let v17PerHypothesisBreakdown = '';
+  if (isV17Consultation) {
+    const diffs = slCase.pipelineResult?.differentialDiagnoses || [];
+    const withAttribution = diffs.filter((d) => Array.isArray(d.sourceAgents) && d.sourceAgents.length > 0).slice(0, 25);
+    if (withAttribution.length > 0) {
+      v17PerHypothesisBreakdown = `
+        <h3>Per-hypothesis specialty attribution (${withAttribution.length} hypotheses shown)</h3>
+        <div class="stage-meta">After dedup, each surviving hypothesis carries the set of specialists that proposed it,
+          per-specialist confidence (0-100), the canonical name + raw nameVariants each one used, and per-evidence-item attribution.</div>
+        ${withAttribution.map((h) => {
+          const confMap = h.domainConfidenceMap || {};
+          const confEntries = Object.entries(confMap).sort((a, b) => b[1] - a[1]);
+          const avgConf = confEntries.length > 0 ? Math.round(confEntries.reduce((s, [, v]) => s + v, 0) / confEntries.length) : 0;
+          const evidence = (h.supportingEvidence || []);
+          const evByAgent = {};
+          for (const e of evidence) {
+            const a = e.attributedTo || 'unknown';
+            if (!evByAgent[a]) evByAgent[a] = [];
+            evByAgent[a].push(e);
+          }
+          return `
+          <details class="json-details" style="border:1px solid var(--light-border); padding:8px 12px; margin-bottom:8px; background:#fefdfb;">
+            <summary class="json-summary">
+              <strong>${esc(h.diagnosis)}</strong>
+              <span class="badge">${h.sourceAgents.length}/${sps.length} specialists agree</span>
+              <span class="badge">avg conf ${avgConf}</span>
+              ${h.knowledgeBaseMatch ? '<span class="badge badge-ok">KB</span>' : '<span class="badge">non-KB</span>'}
+              ${h.evaluationType ? `<span class="badge">${esc(h.evaluationType)}</span>` : ''}
+            </summary>
+            <div style="padding: 8px 12px;">
+              ${Array.isArray(h.nameVariants) && h.nameVariants.length > 1 ? `
+                <h4 style="margin: 8px 0 4px;">Name variants merged (${h.nameVariants.length})</h4>
+                <ul class="evidence-list">${h.nameVariants.slice(0, 10).map((v) => `<li>${esc(v)}</li>`).join('')}</ul>
+              ` : ''}
+              <h4 style="margin: 12px 0 4px;">Per-specialist confidence</h4>
+              <table>
+                <thead><tr><th>Specialist</th><th>Confidence (0-100)</th><th>Evidence items attributed</th></tr></thead>
+                <tbody>
+                  ${confEntries.map(([agent, conf]) => `
+                    <tr>
+                      <td><strong>${esc(agent)}</strong></td>
+                      <td class="score">${conf}</td>
+                      <td class="score">${(evByAgent[agent] || []).length}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+              ${h.diagnosticTests?.length > 0 ? `
+                <h4 style="margin: 12px 0 4px;">Diagnostic tests proposed</h4>
+                <ul class="evidence-list">${h.diagnosticTests.slice(0, 10).map((t) => `<li>${esc(typeof t === 'string' ? t : (t.test || t.name || JSON.stringify(t)))}</li>`).join('')}</ul>
+              ` : ''}
+              ${h.cardinalFeatures?.length > 0 ? `
+                <h4 style="margin: 12px 0 4px;">Cardinal features</h4>
+                <ul class="evidence-list">${h.cardinalFeatures.slice(0, 10).map((f) => `<li>${esc(typeof f === 'string' ? f : JSON.stringify(f))}</li>`).join('')}</ul>
+              ` : ''}
+              ${h.ruleOutFeatures?.length > 0 ? `
+                <h4 style="margin: 12px 0 4px;">Rule-out features</h4>
+                <ul class="evidence-list">${h.ruleOutFeatures.slice(0, 10).map((f) => `<li>${esc(typeof f === 'string' ? f : JSON.stringify(f))}</li>`).join('')}</ul>
+              ` : ''}
+              <h4 style="margin: 12px 0 4px;">Supporting evidence by specialist</h4>
+              <table>
+                <thead><tr><th>Specialist</th><th>Finding</th><th>Patient symptom</th><th>Strength</th></tr></thead>
+                <tbody>
+                  ${evidence.slice(0, 20).map((e) => `
+                    <tr>
+                      <td><strong>${esc(e.attributedTo || '—')}</strong></td>
+                      <td><small>${esc(e.finding || '')}</small></td>
+                      <td><small>${esc(e.patientSymptom || '')}</small></td>
+                      <td class="score">${esc(e.strength || '')}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </details>`;
+        }).join('')}
+      `;
+    }
+  }
+
+  const header = isV17Consultation
+    ? `6. Specialist Consultation (v17) — ${sps.length} parallel o3 specialists generating hypotheses`
+    : isV16Annotation
     ? `6. Specialist Annotation (v16) — ${sps.length} specialists annotating ${slCase.pipelineResult?.differentialDiagnoses?.length || '?'} candidates`
     : `6. Specialist Consultation (v15) — ${sps.length} parallel hypothesis-generation agents`;
 
-  const intro = isV16Annotation
+  const intro = isV17Consultation
+    ? `<div class="stage-meta">
+        v17 architecture: ${sps.length} specialists (geneticist + general-internist anchors, plus top 3 from triage ranking)
+        run o3:reasoning=high in parallel on the patient case + per-specialty KB candidates (general-internist gets none —
+        un-anchored counterweight). Each emits 3-7 hypotheses with full evidence. Outputs flow into deterministic dedup (next stage).
+      </div>`
+    : isV16Annotation
     ? `<div class="stage-meta">
         v16 architecture: hypothesis pool fixed upstream (triage + candidate generation union).
         ${sps.length} specialists (top 5 by triage + geneticist + general-internist) each annotate
@@ -809,7 +911,8 @@ function renderSpecialists(slCase) {
     ${sCards}
     ${failCards}
     ${perHypothesisAnnotations}
-    ${!isV16Annotation ? `<div class="note">
+    ${v17PerHypothesisBreakdown}
+    ${!isV16Annotation && !isV17Consultation ? `<div class="note">
       Per-specialist hypothesis-level evidence is aggregated into the evidence-evaluator stage below
       (the source-of-truth merged view). Individual specialist hypotheses aren't persisted separately
       after the merge — the next stage shows them combined.

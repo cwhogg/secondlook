@@ -38,8 +38,10 @@ CRITIQUE PRINCIPLES:
 - Every suggestion must cite SPECIFIC patient findings as evidence — generic claims like "this is more likely" are not acceptable.
 - Allowed actions: promote, demote, reorder, merge, flag-gap, and add.
 - Focus your critique on whether the right diagnoses are positioned to make the final top-10. A correct diagnosis ranked at #14 is invisible to the patient unless you promote it. Equally, a wrong diagnosis at #3 will appear prominently unless you demote it.
+- MERGE GUIDANCE — gene-level vs umbrella preservation: when proposing 'merge' between a gene-specific entry (e.g., "LMNA-related cardiac conduction disease") and an umbrella name (e.g., "Familial Isolated Cardiac Conduction Disease"), preserve the GENE-LEVEL entry as canonical when the case has gene-specific evidence — family-history pattern, age-of-onset that matches the gene, organ-specific findings, or laboratory phenotype consistent with the gene. Collapse to the umbrella only when the case lacks gene-distinguishing features. The finalizer benefits from the more specific name when it can be supported.
 - 'add' is a high-bar action: use it ONLY when you believe a diagnosis NOT in Claude's ranking at all belongs in the final top-10, based on specific patient findings the existing differential is failing to consider. Brainstormy "consider also X" adds are not useful — Claude finalize will drop your suggestion if confidence < 75. Specialists are the primary candidate source; you are the safety net for cases where specialists + Claude both missed something obvious from the evidence.
 - When no specific evidence warrants change, say so and assign a high confidenceInClaudeRanking.
+- CONFIDENCE/INTERVENTION CONSISTENCY: if any of the four systematic checks (below) fired and produced a tagged suggestion, your overall confidenceInClaudeRanking MUST be ≤ 75. A high overall confidence alongside check-fired interventions is internally inconsistent — the checks identified concrete issues, which by definition lowers your confidence in the ranking as-is.
 - If you see a gap in the patient workup that, if filled, would resolve a meaningful uncertainty between top-ranked hypotheses, use 'flag-gap' to surface it.
 
 SYSTEMATIC CHECKS — run all four below. Each may produce suggestions; combine them with your standard critique. Order across checks by clinical significance; cap total suggestions at 8.
@@ -71,8 +73,6 @@ CHECK 4 — DISCORDANT-FEATURE PRESERVATION: Identify any feature in the patient
 - Do NOT propose unifying syndromes when the discordant feature can be reasonably explained as a secondary phenomenon WITH evidence (e.g., diabetes-induced neuropathy when the primary diagnosis is diabetes mellitus). The check fires ONLY when the explanation requires hand-waving.
 - Do NOT propose a unifier if you cannot name a specific syndrome from your medical knowledge. Speculative unifiers are noise.
 
-REMINDER: every check-fired suggestion MUST start its 'reasoning' field with the appropriate "[CHECK N] <marker line>" prefix. Standard critique suggestions (not produced by these four checks) do NOT use a [CHECK N] prefix and should reason normally.
-
 OUTPUT FORMAT (return as JSON, no markdown fences):
 {
   "overallAssessment": "<one to three sentences on the quality of the ranking>",
@@ -89,7 +89,19 @@ OUTPUT FORMAT (return as JSON, no markdown fences):
   ]
 }
 
-If no changes are warranted, return an empty suggestions array with a high confidence score and an overallAssessment explaining why.`;
+If no changes are warranted, return an empty suggestions array with a high confidence score and an overallAssessment explaining why.
+
+==========================
+FINAL CHECK BEFORE RETURNING — CHECK TAG REQUIREMENT (the most commonly skipped requirement):
+Every suggestion produced by one of the four systematic checks MUST start its 'reasoning' field with the appropriate "[CHECK N] <marker line>" prefix from the Tag format section above. Re-read each suggestion in your suggestions array and ask:
+- Did you examine synth's overallAssessment prose for strong-language endorsements? → reasoning MUST start with "[CHECK 1] Quoted span: ..."
+- Did you assess whether major monogenic causes are represented across syndrome-family classes? → reasoning MUST start with "[CHECK 2] Pathognomonic check: ..."
+- Did you review an absent-feature exclusion for age-appropriateness? → reasoning MUST start with "[CHECK 3] Age-inappropriate exclusion: ..."
+- Did you identify an independently-confirmed discordant feature pointing to a unifying syndrome? → reasoning MUST start with "[CHECK 4] Discordant feature: ..."
+
+Standard critique suggestions (merging duplicates, general rank refinements based on weight of evidence, demoting on clear contradictory evidence) do NOT use tags and reason normally.
+
+Also re-check: if any check-tagged suggestion exists in your array, is your confidenceInClaudeRanking ≤ 75? If not, lower it now. Check-fired interventions and high overall confidence cannot coexist.`;
 
 function buildPatientRecap(patientCase: PatientCase): string {
   const symptoms = patientCase.symptoms

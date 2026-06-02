@@ -21,10 +21,11 @@ const TIER_WEIGHTS = {
 
 // Score component weights
 const SCORE_WEIGHTS = {
-  symptom: 0.50,
+  symptom: 0.40,
   system: 0.20,
   demographic: 0.15,
-  prevalence: 0.15,
+  prevalence: 0.10,
+  bm25: 0.15, // v22: BM25 lexical match — catches rare disease names, eponyms, gene symbols
 };
 
 // ===== EMBEDDINGS INDEX (binary format) =====
@@ -78,6 +79,201 @@ function loadEmbeddingsIndex(): EmbeddingsIndex | null {
   }
 }
 
+// ===== BM25 LEXICAL INDEX (v22) =====
+// Complements semantic retrieval by catching exact term matches that
+// embeddings miss — rare disease names, eponyms (Lafora, Skraban-Deardorff),
+// gene symbols (SMAD3, TGFBR2), and recently-described conditions whose
+// embeddings may be stale. Built once on first use, cached for process lifetime.
+
+interface BM25Index {
+  docs: Array<{ diseaseId: string; tokens: string[] }>;
+  docFreq: Map<string, number>; // term → number of docs containing it
+  docLengths: number[];
+  avgDocLength: number;
+  idByIndex: string[]; // diseaseId at each doc position
+  indexById: Map<string, number>; // reverse lookup
+}
+
+let bm25Index: BM25Index | null = null;
+
+function bm25Tokenize(s: string): string[] {
+  if (!s) return [];
+  return s
+    .toLowerCase()
+    .replace(/[^a-z0-9 -]/g, ' ')
+    .split(/[\s-]+/)
+    .filter((t) => t.length >= 2);
+}
+
+function buildBM25Index(db: DiseaseProfile[]): BM25Index {
+  const docs: Array<{ diseaseId: string; tokens: string[] }> = [];
+  const docFreq = new Map<string, number>();
+  const idByIndex: string[] = [];
+  const indexById = new Map<string, number>();
+  for (const disease of db) {
+    // Document = name + aliases + key findings + pathognomonic symptoms.
+    // Deliberately narrow: NOT all symptoms, because rare-name matching is the
+    // value-add. The full-symptom signal is already in the semantic path.
+    const parts: string[] = [disease.name];
+    if (disease.aliases) parts.push(...disease.aliases);
+    const kf = disease.keyFindings;
+    if (kf) {
+      for (const cat of ['laboratory', 'imaging', 'genetic', 'other'] as const) {
+        const items = (kf as Record<string, unknown>)[cat];
+        if (Array.isArray(items)) {
+          for (const f of items) {
+            if (typeof f === 'string') parts.push(f);
+            else if (f && typeof f === 'object') {
+              const obj = f as Record<string, unknown>;
+              if (typeof obj.finding === 'string') parts.push(obj.finding);
+              if (typeof obj.gene === 'string') parts.push(obj.gene);
+              if (typeof obj.name === 'string') parts.push(obj.name);
+            }
+          }
+        }
+      }
+    }
+    const patho = disease.symptoms?.pathognomonic || [];
+    for (const s of patho) {
+      parts.push(s.symptomName);
+      if (s.searchTerms) parts.push(...s.searchTerms);
+    }
+    if (disease.omimId) parts.push(`omim ${disease.omimId}`);
+    const tokens = bm25Tokenize(parts.filter(Boolean).join(' '));
+    docs.push({ diseaseId: disease.id, tokens });
+    idByIndex.push(disease.id);
+    indexById.set(disease.id, docs.length - 1);
+    const uniqueTokens = new Set(tokens);
+    for (const t of uniqueTokens) {
+      docFreq.set(t, (docFreq.get(t) || 0) + 1);
+    }
+  }
+  const docLengths = docs.map((d) => d.tokens.length);
+  const avgDocLength = docLengths.length > 0
+    ? docLengths.reduce((s, n) => s + n, 0) / docLengths.length
+    : 0;
+  return { docs, docFreq, docLengths, avgDocLength, idByIndex, indexById };
+}
+
+function loadBM25Index(): BM25Index {
+  if (bm25Index) return bm25Index;
+  const db = loadDiseaseDatabase();
+  bm25Index = buildBM25Index(db);
+  console.log(`[Retrieval] Built BM25 index: ${db.length} diseases, avg doc length ${bm25Index.avgDocLength.toFixed(1)} tokens`);
+  return bm25Index;
+}
+
+function computeAllBM25Scores(queryTokens: string[], index: BM25Index): Map<string, number> {
+  // Classic Okapi BM25 — k1=1.5, b=0.75 (literature defaults).
+  const k1 = 1.5;
+  const b = 0.75;
+  const N = index.docs.length;
+  // Pre-compute query term IDFs once.
+  const queryUnique = Array.from(new Set(queryTokens));
+  const idfs = queryUnique.map((t) => {
+    const df = index.docFreq.get(t) || 0;
+    if (df === 0) return 0;
+    return Math.log(1 + (N - df + 0.5) / (df + 0.5));
+  });
+  const scores = new Map<string, number>();
+  let maxScore = 0;
+  for (let i = 0; i < index.docs.length; i++) {
+    const doc = index.docs[i];
+    const docLen = index.docLengths[i];
+    // Term-frequency map for this doc.
+    const tf = new Map<string, number>();
+    for (const t of doc.tokens) tf.set(t, (tf.get(t) || 0) + 1);
+    let score = 0;
+    for (let j = 0; j < queryUnique.length; j++) {
+      const idf = idfs[j];
+      if (idf === 0) continue;
+      const f = tf.get(queryUnique[j]) || 0;
+      if (f === 0) continue;
+      const num = f * (k1 + 1);
+      const denom = f + k1 * (1 - b + (b * docLen) / (index.avgDocLength || 1));
+      score += idf * (num / denom);
+    }
+    if (score > 0) {
+      scores.set(index.idByIndex[i], score);
+      if (score > maxScore) maxScore = score;
+    }
+  }
+  // Normalize to [0,1] by dividing by the max observed score so the BM25
+  // component is on the same scale as other components.
+  if (maxScore > 0) {
+    for (const [id, s] of scores) scores.set(id, s / maxScore);
+  }
+  return scores;
+}
+
+// ===== FAMILY ENUMERATION (v22) =====
+// When triage retrieves a disease whose name matches `<family> <number>`
+// (e.g., "Developmental and epileptic encephalopathy 4", "Coffin-Siris
+// syndrome 8"), look up all other members of the same family in KB and add
+// them as candidates. Addresses the failure pattern where the right answer
+// is a numbered subtype of an umbrella that DID get retrieved but the
+// specific number did NOT.
+
+const FAMILY_NUMBER_RE = /^(.+?)[\s,]+(\d+)\s*$/i;
+
+function parseFamilyMember(name: string): { family: string; number: number } | null {
+  const m = name.match(FAMILY_NUMBER_RE);
+  if (!m) return null;
+  const family = m[1].trim();
+  // Avoid spurious matches on things like "Type 1 diabetes" — family must be
+  // at least 8 characters and contain at least one alphabetic word.
+  if (family.length < 8 || !/[a-z]{4}/i.test(family)) return null;
+  return { family, number: parseInt(m[2], 10) };
+}
+
+function enumerateFamilySiblings(
+  retrievedMatches: DiseaseMatch[],
+  db: DiseaseProfile[],
+  scoreFn: (d: DiseaseProfile) => DiseaseMatch,
+  alreadyIncluded: Set<string>,
+  maxSiblingsPerFamily: number,
+): DiseaseMatch[] {
+  // Group by family root, dedupe.
+  const familyRoots = new Map<string, { root: string; existingNumbers: Set<number> }>();
+  for (const m of retrievedMatches) {
+    const parsed = parseFamilyMember(m.disease.name);
+    if (!parsed) continue;
+    const key = parsed.family.toLowerCase();
+    if (!familyRoots.has(key)) {
+      familyRoots.set(key, { root: parsed.family, existingNumbers: new Set([parsed.number]) });
+    } else {
+      familyRoots.get(key)!.existingNumbers.add(parsed.number);
+    }
+  }
+  if (familyRoots.size === 0) return [];
+
+  const additions: DiseaseMatch[] = [];
+  for (const [key, { root, existingNumbers }] of familyRoots) {
+    // Find all KB diseases with names of the form "<root> <number>" with a
+    // number NOT already in the pool.
+    const rootLower = key;
+    const found: DiseaseProfile[] = [];
+    for (const d of db) {
+      if (alreadyIncluded.has(d.id)) continue;
+      const parsed = parseFamilyMember(d.name);
+      if (!parsed) continue;
+      if (parsed.family.toLowerCase() !== rootLower) continue;
+      if (existingNumbers.has(parsed.number)) continue;
+      found.push(d);
+    }
+    if (found.length === 0) continue;
+    // Score and keep top N by matchScore — gives priority to siblings whose
+    // symptoms still match the patient (not blind enumeration of every member).
+    const scored = found.map((d) => scoreFn(d)).sort((a, b) => b.matchScore - a.matchScore);
+    for (const s of scored.slice(0, maxSiblingsPerFamily)) {
+      additions.push(s);
+      alreadyIncluded.add(s.disease.id);
+    }
+    console.log(`[Retrieval] Family enumeration: "${root}" expanded with ${Math.min(maxSiblingsPerFamily, scored.length)} siblings (existing: ${[...existingNumbers].join(',')})`);
+  }
+  return additions;
+}
+
 /**
  * Find diseases matching a set of patient symptoms using semantic search.
  * Returns ranked DiseaseMatch[] sorted by matchScore descending.
@@ -111,9 +307,24 @@ export async function findMatchingDiseases(
     patientEmbeddings = await embedPatientSymptoms(symptoms);
   }
 
+  // v22: Build patient query tokens + compute BM25 scores against all diseases.
+  // We tokenize medicalTerm + selectedConcept.name + alternativeSearchTerms +
+  // originalPhrase per symptom — the union is the BM25 query. Cheap (~50ms for
+  // 9k diseases) and runs in parallel with the semantic path.
+  const bm25Idx = loadBM25Index();
+  const queryTokens: string[] = [];
+  for (const s of symptoms) {
+    queryTokens.push(...bm25Tokenize(s.medicalTerm || s.originalPhrase || ''));
+    if (s.selectedConcept?.name) queryTokens.push(...bm25Tokenize(s.selectedConcept.name));
+    if (s.alternativeSearchTerms) {
+      for (const a of s.alternativeSearchTerms) queryTokens.push(...bm25Tokenize(a));
+    }
+  }
+  const bm25Scores = computeAllBM25Scores(queryTokens, bm25Idx);
+
   const scoreFn = (disease: DiseaseProfile) =>
     applyExclusionPenalty(
-      scoreDisease(disease, symptoms, demographics, index, patientEmbeddings, patientBodySystems),
+      scoreDisease(disease, symptoms, demographics, index, patientEmbeddings, patientBodySystems, bm25Scores),
       normalizedExclusions,
     );
 
@@ -168,6 +379,22 @@ export async function findMatchingDiseases(
       .sort((a, b) => b.matchScore - a.matchScore);
   }
 
+  // --- Pass 4 (v22): Family enumeration. Catches the recurring failure
+  // where the umbrella subtype was retrieved but the specific numbered
+  // member that's the GT was missed. Examines the current pool for
+  // "<family-name> <number>" patterns and enumerates siblings from KB.
+  const inPool = new Set(allMatches.map((m) => m.disease.id));
+  const familyAdds = enumerateFamilySiblings(
+    allMatches.slice(0, 40), // only check the top-40 to keep enumeration focused
+    db,
+    scoreFn,
+    inPool,
+    /* maxSiblingsPerFamily */ 8,
+  );
+  if (familyAdds.length > 0) {
+    allMatches = [...allMatches, ...familyAdds].sort((a, b) => b.matchScore - a.matchScore);
+  }
+
   return allMatches.slice(0, maxResults);
 }
 
@@ -212,7 +439,8 @@ function scoreDisease(
   demographics: Demographics,
   index: EmbeddingsIndex | null,
   patientEmbeddings: Map<string, EmbeddingVector> | null,
-  patientBodySystems: BodySystem[]
+  patientBodySystems: BodySystem[],
+  bm25Scores?: Map<string, number>,
 ): DiseaseMatch {
   const { symptomScore, matchedSymptoms } = index && patientEmbeddings && patientEmbeddings.size > 0
     ? computeSymptomScoreSemantic(disease, symptoms, index, patientEmbeddings)
@@ -221,6 +449,7 @@ function scoreDisease(
   const systemOverlap = computeSystemOverlap(disease, patientBodySystems);
   const demographicFit = computeDemographicFit(disease, demographics);
   const prevalenceBonus = computePrevalenceBonus(disease);
+  const bm25Score = bm25Scores?.get(disease.id) ?? 0;
 
   const systemScore = systemOverlap.length / Math.max(disease.systemsAffected.length, 1);
 
@@ -228,7 +457,8 @@ function scoreDisease(
     SCORE_WEIGHTS.symptom * symptomScore +
     SCORE_WEIGHTS.system * systemScore +
     SCORE_WEIGHTS.demographic * demographicFit +
-    SCORE_WEIGHTS.prevalence * prevalenceBonus;
+    SCORE_WEIGHTS.prevalence * prevalenceBonus +
+    SCORE_WEIGHTS.bm25 * bm25Score;
 
   return {
     disease,
@@ -241,6 +471,7 @@ function scoreDisease(
       system: systemScore,
       demographic: demographicFit,
       prevalence: prevalenceBonus,
+      bm25: bm25Score,
     },
   };
 }

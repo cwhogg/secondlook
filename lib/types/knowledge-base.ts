@@ -119,5 +119,6 @@ export interface DiseaseMatch {
     system: number;
     demographic: number;
     prevalence: number;
+    bm25?: number; // v22: lexical-match component
   };
 }

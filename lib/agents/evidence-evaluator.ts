@@ -36,6 +36,21 @@ YOUR APPROACH FOR EACH HYPOTHESIS:
 5. CONTRADICTIONS:
    - What in the patient's presentation argues against this diagnosis?
 
+6. ABSENT-FEATURE HANDLING (age-aware soft penalty):
+   Do NOT treat an absent or unreported feature as a hard rule-out unless ALL three conditions hold:
+     (a) the feature is explicitly listed in the patient's excludedFindings (the clinician tested for it and it was negative — NOT just unmentioned), AND
+     (b) the feature is pathognomonic-tier (>90% penetrance) for the candidate disease, AND
+     (c) the feature is age-appropriate to be present in this patient (i.e., it typically emerges at or before the patient's current age).
+   When (a) holds but (b) or (c) does not, apply a graded penalty rather than rule-out:
+     • Feature absent in age window where emergence is typical: hard penalty (criterion failed).
+     • Feature absent in age window where emergence is variable or later: soft penalty (criterion not-yet-emerged).
+     • Reference: aortic root dilation in connective tissue disease emerges ages 15–40; absence at age 6 is a soft penalty; absence at age 30 is a hard penalty.
+   When (a) does NOT hold (the feature is simply not mentioned in the narrative, not explicitly excluded), do NOT penalize for absence. Missing information is unknown, not negative.
+   Reflect this judgment in your strengthAssessment field; do not silently zero a hypothesis on absent-feature grounds.
+
+7. POOL SIZE CAP:
+   Do not retain more than 25 hypotheses in the final evaluation pool. If the input pool exceeds 25, drop the lowest-scoring evaluations; when tied, preserve KB-matched candidates over non-KB.
+
 IMPORTANT: Our knowledge base covers ${getDiseaseCount()} profiled rare diseases. The absence of a disease from our database is NOT evidence against it. Evaluate all hypotheses with equal rigor regardless of KB status.
 
 Be RIGOROUS and HONEST. Clearly distinguish between what the evidence supports and what remains unknown.`;

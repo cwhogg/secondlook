@@ -256,7 +256,7 @@ export interface TestCase {
   //               Use this for pipeline-quality evaluation when corpus
   //               concentration is contaminating the per-disease signal.
   // Unset = uniform (back-compat with all runs prior to the field landing).
-  evalSamplingMode?: 'uniform' | 'diversified';
+  evalSamplingMode?: 'uniform' | 'diversified' | 'standard25' | 'standard50';
   status: TestCaseStatus;
   source?: 'generated';
   groundTruth: GroundTruth;

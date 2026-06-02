@@ -1729,7 +1729,10 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
   const cohortLabel = (t: MatchedTrio) => {
     const v = t.secondlook.evalVersion ?? "unknown"
     const m = t.secondlook.evalSamplingMode
-    return m === "diversified" ? `${v} (diversified)` : v
+    if (m === "standard50") return `${v} STD EVAL`
+    if (m === "standard25") return `${v} STD-25 EVAL`
+    if (m === "diversified") return `${v} (diversified)`
+    return v
   }
   const byCohort = new Map<string, MatchedTrio[]>()
   for (const t of trios) {
@@ -1739,20 +1742,26 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
   }
   // Newest first by version *number*, not lexical — without parsing,
   // "v10" sorts between "v2" and "v1" because string-compare treats "10"
-  // as starting with "1". Diversified suffix is the secondary key so
-  // "v6 (diversified)" lands just under "v6".
-  const parseCohort = (key: string): { ver: number; diversified: 0 | 1 } => {
-    const match = key.match(/^v(\d+)(\s*\(diversified\))?$/i)
-    return {
-      ver: match ? parseInt(match[1], 10) : -1,
-      diversified: match && match[2] ? 1 : 0,
-    }
+  // as starting with "1". Suffix (sub-cohort) is the secondary key so
+  // "v6 (diversified)" / "v19 STD EVAL" lands just under "v6" / "v19".
+  const parseCohort = (key: string): { ver: number; subOrder: number } => {
+    const match = key.match(/^v(\d+)(?:\s+(.+))?$/i)
+    if (!match) return { ver: -1, subOrder: 0 }
+    const ver = parseInt(match[1], 10)
+    const suffix = match[2] || ""
+    // Sub-order: bare version first, then standard sets, then diversified.
+    let subOrder = 0
+    if (suffix === "STD EVAL") subOrder = 1
+    else if (suffix === "STD-25 EVAL") subOrder = 2
+    else if (suffix === "(diversified)") subOrder = 3
+    else if (suffix) subOrder = 4
+    return { ver, subOrder }
   }
   const versions = Array.from(byCohort.keys()).sort((a, b) => {
     const pa = parseCohort(a)
     const pb = parseCohort(b)
     if (pb.ver !== pa.ver) return pb.ver - pa.ver
-    return pa.diversified - pb.diversified
+    return pa.subOrder - pb.subOrder
   })
 
   return (

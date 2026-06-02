@@ -1142,7 +1142,7 @@ export function TestHistoryRow({
     >
       <div className="flex-1 min-w-0 w-full sm:w-auto">
         <div className="text-sm font-serif text-[#2a2a2a] truncate flex items-center gap-1.5">
-          {tc.groundTruth.diagnosis}
+          {tc.groundTruth?.diagnosis ?? "(no ground truth)"}
         </div>
         <div className="text-xs text-[#8b7355]">
           {date.toLocaleDateString()} {date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}

@@ -347,7 +347,7 @@ export default function AdminPage() {
         body: JSON.stringify({
           difficulty,
           categoryHint: categoryHint || undefined,
-          excludeDiseases: testCases.map((tc) => tc.groundTruth.diagnosis),
+          excludeDiseases: testCases.map((tc) => tc.groundTruth?.diagnosis).filter((d): d is string => typeof d === "string"),
         }),
       })
 
@@ -783,7 +783,7 @@ export default function AdminPage() {
             <div className="px-4 py-3 border-b border-[#e8ddd0] flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-wrap items-center gap-2 sm:gap-3 min-w-0">
                 <h2 className="text-base sm:text-lg font-serif font-bold text-[#2a2a2a] break-words">
-                  {currentActiveTest.groundTruth.diagnosis}
+                  {currentActiveTest.groundTruth?.diagnosis ?? "(no ground truth)"}
                 </h2>
                 <div className="flex items-center gap-2">
                   <DifficultyBadge difficulty={currentActiveTest.difficulty} />

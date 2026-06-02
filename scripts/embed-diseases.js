@@ -22,7 +22,10 @@ const path = require('path');
 const DISEASES_DIR = path.join(__dirname, '..', 'lib', 'knowledge', 'diseases');
 const META_FILE = path.join(__dirname, '..', 'lib', 'knowledge', 'embeddings-meta.json');
 const VECTORS_FILE = path.join(__dirname, '..', 'lib', 'knowledge', 'embeddings-vectors.bin');
-const EMBEDDING_MODEL = 'text-embedding-3-small';
+// v23: upgraded from text-embedding-3-small. 3-large produces meaningfully
+// better latent representations at the same dimensionality (256d retained for
+// Upstash Vector free-tier storage compatibility and zero retrieval-code change).
+const EMBEDDING_MODEL = 'text-embedding-3-large';
 const EMBEDDING_DIMENSIONS = 256;
 const BATCH_SIZE = 2000;
 

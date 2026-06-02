@@ -1,13 +1,17 @@
 /**
  * Embedding utilities for semantic symptom matching.
  *
- * Uses OpenAI text-embedding-3-small to convert symptom descriptions into
- * numerical vectors. Cosine similarity between vectors captures semantic
+ * Uses OpenAI text-embedding-3-large at 256d to convert symptom descriptions
+ * into numerical vectors. Cosine similarity between vectors captures semantic
  * meaning — "brain fog" and "cognitive dysfunction" will be close together
  * even though they share no words.
+ *
+ * v23 (upgraded from -small): 3-large at the same 256 dimensions provides
+ * meaningfully better latent representations for rare-disease names and
+ * recently-described conditions. Storage cost unchanged.
  */
 
-const EMBEDDING_MODEL = 'text-embedding-3-small';
+const EMBEDDING_MODEL = 'text-embedding-3-large';
 const EMBEDDING_DIMENSIONS = 256;
 const MAX_BATCH_SIZE = 2048; // OpenAI allows up to 2048 inputs per request
 

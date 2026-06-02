@@ -79,6 +79,138 @@ function loadEmbeddingsIndex(): EmbeddingsIndex | null {
   }
 }
 
+// ===== UPSTASH VECTOR (v23, optional) =====
+// When UPSTASH_VECTOR_REST_URL is set, replace the local-index semantic path
+// with a Upstash Vector query. Each patient symptom embedding queries Upstash
+// for top-K nearest disease-symptom vectors; results aggregate per disease with
+// tier weights matching the local-index path.
+//
+// Fallback chain at retrieval time: Upstash → local-index → string-matching.
+
+interface UpstashMatchedSymptom {
+  symptomName: string;
+  tier: string;
+  score: number; // cosine similarity, ~[0, 1] for OpenAI embeddings
+  patientTerm: string;
+}
+
+interface UpstashAggregated {
+  // For each disease: per-symptom best-match score (across all patient symptoms),
+  // grouped by tier. Used by scoreDisease for tier-weighted aggregation.
+  diseaseScores: Map<string, Map<string, { score: number; symptomName: string; patientTerm: string }>>;
+}
+
+function isUpstashConfigured(): boolean {
+  return !!(process.env.UPSTASH_VECTOR_REST_URL && process.env.UPSTASH_VECTOR_REST_TOKEN);
+}
+
+const UPSTASH_TOP_K = 500; // per patient symptom — covers ~50 distinct diseases at depth
+
+async function queryUpstashOnce(vector: number[]): Promise<Array<{ id: string; score: number; metadata: Record<string, unknown> }>> {
+  const url = process.env.UPSTASH_VECTOR_REST_URL;
+  const token = process.env.UPSTASH_VECTOR_REST_TOKEN;
+  if (!url || !token) return [];
+  try {
+    const resp = await fetch(`${url}/query`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ vector, topK: UPSTASH_TOP_K, includeMetadata: true }),
+    });
+    if (!resp.ok) {
+      console.warn(`[Retrieval] Upstash query failed: HTTP ${resp.status}`);
+      return [];
+    }
+    const body = await resp.json();
+    return body.result || [];
+  } catch (err) {
+    console.warn(`[Retrieval] Upstash query exception:`, err);
+    return [];
+  }
+}
+
+async function buildUpstashAggregated(
+  symptoms: MappedSymptom[],
+  patientEmbeddings: Map<string, EmbeddingVector>,
+): Promise<UpstashAggregated> {
+  const diseaseScores: UpstashAggregated['diseaseScores'] = new Map();
+  if (patientEmbeddings.size === 0) return { diseaseScores };
+
+  // Build query list: one query per unique (patient term, embedding) pair.
+  const queries: Array<{ term: string; vector: number[] }> = [];
+  for (const [term, vec] of patientEmbeddings) {
+    queries.push({ term, vector: vec });
+  }
+
+  // Parallel Upstash queries (Upstash free tier handles ~10/sec comfortably).
+  const PARALLEL = 6;
+  const allResults: Array<{ query: { term: string; vector: number[] }; results: Awaited<ReturnType<typeof queryUpstashOnce>> }> = [];
+  for (let i = 0; i < queries.length; i += PARALLEL) {
+    const batch = queries.slice(i, i + PARALLEL);
+    const batchResults = await Promise.all(batch.map(async (q) => ({ query: q, results: await queryUpstashOnce(q.vector) })));
+    allResults.push(...batchResults);
+  }
+
+  // Aggregate: per (disease, symptom-within-disease), keep the BEST similarity
+  // score across all patient symptoms. Symptom-within-disease is identified by
+  // the symptomName+tier combo so the same disease symptom doesn't get
+  // double-counted across multiple patient symptoms.
+  for (const { query, results } of allResults) {
+    for (const r of results) {
+      const diseaseId = (r.metadata?.diseaseId as string) || '';
+      const tier = (r.metadata?.tier as string) || 'common';
+      const symptomName = (r.metadata?.symptomName as string) || '';
+      if (!diseaseId) continue;
+      if (!diseaseScores.has(diseaseId)) diseaseScores.set(diseaseId, new Map());
+      const diseaseMap = diseaseScores.get(diseaseId)!;
+      const key = `${tier}:${symptomName}`;
+      const existing = diseaseMap.get(key);
+      if (!existing || r.score > existing.score) {
+        diseaseMap.set(key, { score: r.score, symptomName, patientTerm: query.term });
+      }
+    }
+  }
+  console.log(`[Retrieval] Upstash query complete: ${queries.length} symptoms queried, ${diseaseScores.size} diseases matched`);
+  return { diseaseScores };
+}
+
+// Score a disease's symptom-match component using the Upstash-aggregated
+// per-symptom scores. Mirrors computeSymptomScoreSemantic's tier weighting but
+// scores against the disease's actual KB symptom list (not just whatever
+// Upstash returned — that ensures we account for the disease's full symptom
+// inventory, including unmatched symptoms which lower the score).
+function computeSymptomScoreFromUpstash(
+  disease: DiseaseProfile,
+  upstashAgg: UpstashAggregated,
+): { symptomScore: number; matchedSymptoms: SymptomMatch[] } {
+  const diseaseMatches = upstashAgg.diseaseScores.get(disease.id);
+  if (!diseaseMatches || diseaseMatches.size === 0) {
+    return { symptomScore: 0, matchedSymptoms: [] };
+  }
+  let totalWeight = 0;
+  let matchedWeight = 0;
+  const matchedSymptoms: SymptomMatch[] = [];
+  for (const [tier, weight] of Object.entries(TIER_WEIGHTS)) {
+    const tierSymptoms = (disease.symptoms[tier as keyof typeof disease.symptoms] || []);
+    for (const s of tierSymptoms) {
+      totalWeight += weight;
+      const matchKey = `${tier}:${s.symptomName}`;
+      const match = diseaseMatches.get(matchKey);
+      if (!match) continue;
+      const matchType = classifyMatch(match.score);
+      if (!matchType) continue; // below semantic threshold (~0.50)
+      const multiplier = matchType === 'exact' ? 1.0 : matchType === 'partial' ? 0.7 : 0.4;
+      matchedWeight += weight * multiplier;
+      matchedSymptoms.push({
+        patientSymptom: match.patientTerm,
+        diseaseSymptom: s,
+        matchType,
+      });
+    }
+  }
+  if (totalWeight === 0) return { symptomScore: 0, matchedSymptoms };
+  return { symptomScore: matchedWeight / totalWeight, matchedSymptoms };
+}
+
 // ===== BM25 LEXICAL INDEX (v22) =====
 // Complements semantic retrieval by catching exact term matches that
 // embeddings miss — rare disease names, eponyms (Lafora, Skraban-Deardorff),
@@ -301,10 +433,21 @@ export async function findMatchingDiseases(
     .map((s) => s.toLowerCase().trim())
     .filter((s) => s.length > 2);
 
-  // Generate patient symptom embeddings if index is available
+  // Generate patient symptom embeddings if EITHER the local index OR Upstash
+  // Vector is available — we need embeddings to query either path.
+  const upstashEnabled = isUpstashConfigured();
   let patientEmbeddings: Map<string, EmbeddingVector> | null = null;
-  if (index) {
+  if (index || upstashEnabled) {
     patientEmbeddings = await embedPatientSymptoms(symptoms);
+  }
+
+  // v23: if Upstash configured AND we got patient embeddings, query Upstash
+  // for per-disease symptom-match scores. Takes priority over local-index path
+  // because Upstash holds the full embedding set in prod (local file may be
+  // missing or stale in deployed environments).
+  let upstashAgg: UpstashAggregated | null = null;
+  if (upstashEnabled && patientEmbeddings && patientEmbeddings.size > 0) {
+    upstashAgg = await buildUpstashAggregated(symptoms, patientEmbeddings);
   }
 
   // v22: Build patient query tokens + compute BM25 scores against all diseases.
@@ -324,7 +467,7 @@ export async function findMatchingDiseases(
 
   const scoreFn = (disease: DiseaseProfile) =>
     applyExclusionPenalty(
-      scoreDisease(disease, symptoms, demographics, index, patientEmbeddings, patientBodySystems, bm25Scores),
+      scoreDisease(disease, symptoms, demographics, index, patientEmbeddings, patientBodySystems, bm25Scores, upstashAgg),
       normalizedExclusions,
     );
 
@@ -441,8 +584,12 @@ function scoreDisease(
   patientEmbeddings: Map<string, EmbeddingVector> | null,
   patientBodySystems: BodySystem[],
   bm25Scores?: Map<string, number>,
+  upstashAgg?: UpstashAggregated | null,
 ): DiseaseMatch {
-  const { symptomScore, matchedSymptoms } = index && patientEmbeddings && patientEmbeddings.size > 0
+  // v23 priority: Upstash → local-index → string-matching.
+  const { symptomScore, matchedSymptoms } = upstashAgg
+    ? computeSymptomScoreFromUpstash(disease, upstashAgg)
+    : index && patientEmbeddings && patientEmbeddings.size > 0
     ? computeSymptomScoreSemantic(disease, symptoms, index, patientEmbeddings)
     : computeSymptomScoreFallback(disease, symptoms);
 

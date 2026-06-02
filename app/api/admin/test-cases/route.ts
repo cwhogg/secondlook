@@ -62,12 +62,35 @@ async function loadAllTestCases(redis: Redis): Promise<TestCase[]> {
   return out
 }
 
-export async function GET() {
+// Strip the heavy llmCalls array from the list response by default. Each call
+// can be 500 KB-1 MB (system prompt + user prompt + raw response text), and a
+// v17+ case carries ~11 of them, so a 2,500-case corpus becomes a multi-GB
+// response without this strip. /eval and the testing UI don't need llmCalls;
+// the deep-dive HTML script uses ?includeLlmCalls=1 to opt back in.
+function stripLlmCalls(tc: TestCase): TestCase {
+  if (!tc.pipelineResult || !tc.pipelineResult.pipelineMetadata) return tc
+  const pm = tc.pipelineResult.pipelineMetadata as unknown as Record<string, unknown>
+  if (!pm.llmCalls) return tc
+  const { llmCalls: _llmCalls, ...rest } = pm
+  void _llmCalls
+  return {
+    ...tc,
+    pipelineResult: {
+      ...tc.pipelineResult,
+      pipelineMetadata: rest as unknown as NonNullable<TestCase["pipelineResult"]>["pipelineMetadata"],
+    },
+  } as TestCase
+}
+
+export async function GET(request: Request) {
   const redis = getRedis()
   if (!redis) return NextResponse.json({ testCases: [] })
 
   try {
-    const testCases = await loadAllTestCases(redis)
+    const url = new URL(request.url)
+    const includeLlmCalls = url.searchParams.get("includeLlmCalls") === "1"
+    const raw = await loadAllTestCases(redis)
+    const testCases = includeLlmCalls ? raw : raw.map(stripLlmCalls)
     return NextResponse.json({ testCases })
   } catch (error) {
     console.error("Failed to load test cases from KV:", error)

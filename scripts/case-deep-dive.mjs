@@ -45,6 +45,10 @@ const PPKTS = PPKTS_RAW
 const VERSION = argv('version', 'v15');
 const OUT = argv('out', join(ROOT, 'case-deep-dive.html'));
 const INPUT_FILE = argv('input-file', null);
+// Section ids to omit from both the TOC and body, e.g. --exclude llm-calls,raw
+const EXCLUDE = new Set(
+  (argv('exclude', '') || '').split(',').map((s) => s.trim()).filter(Boolean)
+);
 
 let tcData;
 if (INPUT_FILE) {
@@ -52,7 +56,9 @@ if (INPUT_FILE) {
   tcData = JSON.parse(readFileSync(INPUT_FILE, 'utf8'));
 } else {
   console.log('Fetching testCases...');
-  const tcRes = await fetch(`${BASE}/api/admin/test-cases`);
+  // Deep-dive needs llmCalls; opt back in via query param (default endpoint
+  // strips them since the response would otherwise exceed Vercel response cap).
+  const tcRes = await fetch(`${BASE}/api/admin/test-cases?includeLlmCalls=1`);
   tcData = await tcRes.json();
 }
 const all = tcData.testCases || [];
@@ -395,7 +401,7 @@ function renderTOC(slCase) {
     ['llm-calls', '14b. LLM Calls'],
     ['raw', '15. Raw Data'],
   ];
-  return `<div class="toc">${items.map(([h, t]) => `<a href="#${h}">${esc(t)}</a>`).join('')}</div>`;
+  return `<div class="toc">${items.filter(([h]) => !EXCLUDE.has(h)).map(([h, t]) => `<a href="#${h}">${esc(t)}</a>`).join('')}</div>`;
 }
 
 function renderInput(slCase) {
@@ -1660,8 +1666,8 @@ function renderCaseBody(bundle) {
         ${renderFamilyExpansion(sl)}
         ${renderFinalDifferential(sl, oa, cl)}
         ${renderGrading(sl)}
-        ${renderLlmCalls(sl)}
-        ${renderRawData(sl, oa, cl)}
+        ${EXCLUDE.has('llm-calls') ? '' : renderLlmCalls(sl)}
+        ${EXCLUDE.has('raw') ? '' : renderRawData(sl, oa, cl)}
       </main>
     `;
   }

@@ -44,25 +44,34 @@ CRITIQUE PRINCIPLES:
 
 SYSTEMATIC CHECKS — run all four below. Each may produce suggestions; combine them with your standard critique. Order across checks by clinical significance; cap total suggestions at 8.
 
+MANDATORY REASONING FORMAT for ANY suggestion produced by a systematic check: the 'reasoning' field MUST start with a check tag in square brackets, followed by the per-check marker line (specified below), THEN your clinical reasoning. The check tag and marker are not optional; they are how downstream tooling distinguishes check-fired suggestions from standard critique. Suggestions without the required tag will be treated as standard critique even if you intended them as check output.
+
+Tag format:
+- "[CHECK 1] Quoted span: \"<prose excerpt from synth's overallAssessment>\". <reasoning>"
+- "[CHECK 2] Pathognomonic check: I examined [features]. Conclusion: [no pathognomonic feature found / feature X is pathognomonic for Y]. <reasoning>"
+- "[CHECK 3] Age-inappropriate exclusion: [feature] typically emerges age [range]; patient is age [N]. <reasoning>"
+- "[CHECK 4] Discordant feature: [independently-confirmed finding] is contradicted/hand-waved by current top-3 but natively included in <syndrome>. <reasoning>"
+
 CHECK 1 — PROSE AUDIT: Scan synth's overallAssessment for any diagnosis explicitly endorsed as "leading," "most likely," "best fit," "primary consideration," or equivalent strong language.
-- If the endorsed diagnosis is NOT in synth's ranked top-3: emit a 'promote' suggestion (or 'add' if not in the ranking at all). Quote the specific prose span in your 'reasoning' field as evidence.
+- If the endorsed diagnosis is NOT in synth's ranked top-3: emit a 'promote' suggestion (or 'add' if not in the ranking at all). The mandatory CHECK 1 tag REQUIRES the actual quoted prose span as evidence.
 - A diagnosis merely discussed, considered, or ruled out in the prose is NOT an endorsement. Only explicit strong-language endorsements count.
 
 CHECK 2 — SYNDROME-FAMILY COVERAGE: Identify the broad clinical syndrome category (or 2–3 plausible categories) that fits the patient's core phenotype. For each category, assess whether the major monogenic causes are represented in Claude's top-10.
 - If a category fits the phenotype but is poorly represented (≤1 candidate among Claude's top-10 despite the phenotype fitting multiple known genes in that category): emit 'add' suggestions for specific gene-level or syndrome-level candidates. Class labels ("DEE genes", "chromatinopathies") are NOT acceptable — name specific syndromes/genes.
-- In your 'reasoning' field for any CHECK 2 suggestion you MUST include this line verbatim: "Pathognomonic check: I examined [list features you considered]. Conclusion: [no pathognomonic feature found / feature X is pathognomonic for Y]."
+- The mandatory CHECK 2 tag REQUIRES the pathognomonic-check statement; emitting a CHECK 2 'add' without the tag means downstream tooling cannot attribute it and the suggestion provides no observability.
 - SUPPRESS CHECK 2 ENTIRELY when EITHER: (a) any patient feature is pathognomonic for a single diagnosis (bamboo hair → Netherton; ≥6 café-au-lait macules or ≥2 Lisch nodules → NF1; cherry-red spot → Tay-Sachs / Niemann-Pick; eye-of-the-tiger MRI sign → PKAN absent discordant biochemistry), OR (b) synth's top-1 has criteriaFulfillment > 70%. Pathognomonic anchoring is correct anchoring.
 - Cap: at most 2 'add' suggestions per case from CHECK 2.
 - Confidence floor: any 'add' suggestion from CHECK 2 must have confidence ≥ 70. Below that, do not emit it.
 
 CHECK 3 — ABSENT-FEATURE AUDIT: Identify candidates the evaluator or synth excluded or strongly demoted on the basis of an absent or excluded feature.
-- For each such candidate, check: was the absent feature age-appropriate to expect in THIS patient? If the patient is pediatric or young and the feature typically emerges in adolescence or adulthood (e.g., aortic root dilation in connective tissue disease, cardiac arrhythmia in muscular dystrophy, arterial tortuosity in Loeys-Dietz), emit a 'promote' suggestion.
-- In your 'reasoning' field for any CHECK 3 suggestion, specify both the absent feature and the typical age of emergence: "age-inappropriate exclusion: [feature] typically emerges age [range]; patient is age [N]."
+- For each such candidate, check: was the absent feature age-appropriate to expect in THIS patient? If the patient is pediatric or young and the feature typically emerges in adolescence or adulthood (e.g., aortic root dilation in connective tissue disease, cardiac arrhythmia in muscular dystrophy, arterial tortuosity in Loeys-Dietz), emit a 'promote' suggestion with the mandatory CHECK 3 tag.
 
 CHECK 4 — DISCORDANT-FEATURE PRESERVATION: Identify any feature in the patient's presentation that is INDEPENDENTLY CONFIRMED (biopsy, EMG, imaging, lab — not just reported symptom) and that the top-3 candidates either contradict, fail to explain, or are forced to label as "secondary" or "atypical."
-- For each such discordant feature, ask: is there a known syndrome that natively includes BOTH the dominant phenotype AND this discordant feature? If yes and that syndrome is NOT in Claude's top-5, emit 'add' (or 'promote' if it is lower in the ranking). Name a specific syndrome/gene. Cite the specific discordant feature in 'reasoning'.
+- For each such discordant feature, ask: is there a known syndrome that natively includes BOTH the dominant phenotype AND this discordant feature? If yes and that syndrome is NOT in Claude's top-5, emit 'add' (or 'promote' if it is lower in the ranking). Name a specific syndrome/gene. The mandatory CHECK 4 tag REQUIRES naming the independently-confirmed discordant feature and the proposed unifying syndrome.
 - Do NOT propose unifying syndromes when the discordant feature can be reasonably explained as a secondary phenomenon WITH evidence (e.g., diabetes-induced neuropathy when the primary diagnosis is diabetes mellitus). The check fires ONLY when the explanation requires hand-waving.
 - Do NOT propose a unifier if you cannot name a specific syndrome from your medical knowledge. Speculative unifiers are noise.
+
+REMINDER: every check-fired suggestion MUST start its 'reasoning' field with the appropriate "[CHECK N] <marker line>" prefix. Standard critique suggestions (not produced by these four checks) do NOT use a [CHECK N] prefix and should reason normally.
 
 OUTPUT FORMAT (return as JSON, no markdown fences):
 {

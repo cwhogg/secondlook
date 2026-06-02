@@ -104,7 +104,11 @@ function isUpstashConfigured(): boolean {
   return !!(process.env.UPSTASH_VECTOR_REST_URL && process.env.UPSTASH_VECTOR_REST_TOKEN);
 }
 
-const UPSTASH_TOP_K = 500; // per patient symptom — covers ~50 distinct diseases at depth
+// v23.1: dropped 500 → 200. Cohort showed 7 ranking regressions vs v22 where
+// the correct disease was surfaced but out-ranked by semantic neighbors. Smaller
+// top-K shrinks the candidate pool so synth doesn't drown in similar-but-wrong
+// diseases. Still well above what's needed for the synth's top-10 differential.
+const UPSTASH_TOP_K = 200;
 
 async function queryUpstashOnce(vector: number[]): Promise<Array<{ id: string; score: number; metadata: Record<string, unknown> }>> {
   const url = process.env.UPSTASH_VECTOR_REST_URL;
@@ -196,8 +200,14 @@ function computeSymptomScoreFromUpstash(
       const matchKey = `${tier}:${s.symptomName}`;
       const match = diseaseMatches.get(matchKey);
       if (!match) continue;
+      // v23.1: raised threshold 0.50 → 0.60 for the Upstash path only. The
+      // text-embedding-3-large distribution clusters tighter than 3-small, so
+      // the looser 0.50 floor was admitting too many wrong semantic neighbors
+      // and crowding out the correct disease at synth ranking time. 0.60 keeps
+      // genuine partial/semantic matches while shedding the noise.
+      if (match.score < 0.60) continue;
       const matchType = classifyMatch(match.score);
-      if (!matchType) continue; // below semantic threshold (~0.50)
+      if (!matchType) continue; // safety: should never trigger after explicit gate above
       const multiplier = matchType === 'exact' ? 1.0 : matchType === 'partial' ? 0.7 : 0.4;
       matchedWeight += weight * multiplier;
       matchedSymptoms.push({

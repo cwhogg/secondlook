@@ -98,17 +98,28 @@ const PIPELINE_METADATA_STRIP = new Set([
   "specialistPool", "finalizerChanges",
 ])
 
-function stripHeavyFields(tc: TestCase): TestCase {
-  let next: TestCase = tc
-  if (next.pipelineProgressLog) {
-    const { pipelineProgressLog: _log, ...rest } = next
-    void _log
-    next = rest as TestCase
-  }
-  if (!next.pipelineResult) return next
+const PIPELINE_RESULT_STRIP = new Set([
+  "differentialClusters", "dataGaps", "recommendedTesting",
+])
 
-  const pr = next.pipelineResult as unknown as Record<string, unknown>
-  const slimPr: Record<string, unknown> = { ...pr }
+const TC_TOP_LEVEL_STRIP = new Set([
+  "extractedSymptoms", "extractedExcludedFindings",
+])
+
+function stripHeavyFields(tc: TestCase): TestCase {
+  const next: Record<string, unknown> = { ...tc }
+  if (next.pipelineProgressLog) delete next.pipelineProgressLog
+  for (const k of Object.keys(next)) {
+    if (TC_TOP_LEVEL_STRIP.has(k)) delete next[k]
+  }
+  if (!next.pipelineResult) return next as unknown as TestCase
+
+  const pr = next.pipelineResult as Record<string, unknown>
+  const slimPr: Record<string, unknown> = {}
+  for (const k of Object.keys(pr)) {
+    if (PIPELINE_RESULT_STRIP.has(k)) continue
+    slimPr[k] = pr[k]
+  }
 
   if (Array.isArray(pr.differentialDiagnoses)) {
     slimPr.differentialDiagnoses = (pr.differentialDiagnoses as Record<string, unknown>[]).map(slimDiagnosis)
@@ -119,7 +130,8 @@ function stripHeavyFields(tc: TestCase): TestCase {
     for (const k of Object.keys(pm)) if (!PIPELINE_METADATA_STRIP.has(k)) slimPm[k] = pm[k]
     slimPr.pipelineMetadata = slimPm
   }
-  return { ...next, pipelineResult: slimPr } as unknown as TestCase
+  next.pipelineResult = slimPr
+  return next as unknown as TestCase
 }
 
 export async function GET(request: Request) {

@@ -76,6 +76,28 @@ async function loadAllTestCases(redis: Redis, limit?: number | null): Promise<Te
 // response from ~7 MB (over Vercel's 4.5 MB function response cap, returns
 // 500) to well under cap. /eval and the testing UI don't need either; the
 // deep-dive HTML script uses ?includeLlmCalls=1 to opt back in.
+// Aggressive slim: strip per-hypothesis evidence/reasoning text and heavy
+// metadata internals. /eval reads only diagnosis names, confidence scores, and
+// the tieredGrading.entries — not the rich evidence payload. Profiling shows
+// the average post-strip case was ~55 KB largely from supportingEvidence and
+// clinicalReasoning under differentialDiagnoses; 3,289 cases × 55 KB = ~180 MB,
+// over Vercel's response cap. Slimming drops the per-case median to ~3 KB.
+const DIAGNOSIS_KEEP = new Set([
+  "diagnosis", "confidenceScore", "evidenceScore", "rareDisease", "prevalence",
+  "icd10Code", "knowledgeBaseMatch", "evaluationType", "sourceAgent",
+  "specialty", "familyName", "syndromeOfMember",
+])
+function slimDiagnosis(d: Record<string, unknown>): Record<string, unknown> {
+  const out: Record<string, unknown> = {}
+  for (const k of Object.keys(d)) if (DIAGNOSIS_KEEP.has(k)) out[k] = d[k]
+  return out
+}
+
+const PIPELINE_METADATA_STRIP = new Set([
+  "llmCalls", "stages", "dedupStats", "retrievalScores", "critique",
+  "specialistPool", "finalizerChanges",
+])
+
 function stripHeavyFields(tc: TestCase): TestCase {
   let next: TestCase = tc
   if (next.pipelineProgressLog) {
@@ -83,18 +105,21 @@ function stripHeavyFields(tc: TestCase): TestCase {
     void _log
     next = rest as TestCase
   }
-  if (!next.pipelineResult || !next.pipelineResult.pipelineMetadata) return next
-  const pm = next.pipelineResult.pipelineMetadata as unknown as Record<string, unknown>
-  if (!pm.llmCalls) return next
-  const { llmCalls: _llmCalls, ...restPm } = pm
-  void _llmCalls
-  return {
-    ...next,
-    pipelineResult: {
-      ...next.pipelineResult,
-      pipelineMetadata: restPm as unknown as NonNullable<TestCase["pipelineResult"]>["pipelineMetadata"],
-    },
-  } as TestCase
+  if (!next.pipelineResult) return next
+
+  const pr = next.pipelineResult as unknown as Record<string, unknown>
+  const slimPr: Record<string, unknown> = { ...pr }
+
+  if (Array.isArray(pr.differentialDiagnoses)) {
+    slimPr.differentialDiagnoses = (pr.differentialDiagnoses as Record<string, unknown>[]).map(slimDiagnosis)
+  }
+  if (pr.pipelineMetadata) {
+    const pm = pr.pipelineMetadata as Record<string, unknown>
+    const slimPm: Record<string, unknown> = {}
+    for (const k of Object.keys(pm)) if (!PIPELINE_METADATA_STRIP.has(k)) slimPm[k] = pm[k]
+    slimPr.pipelineMetadata = slimPm
+  }
+  return { ...next, pipelineResult: slimPr } as unknown as TestCase
 }
 
 export async function GET(request: Request) {

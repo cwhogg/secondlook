@@ -43,10 +43,11 @@ function createdAtScore(tc: TestCase): number {
 // round-trips add ~50ms total since the batches run in parallel.
 const MGET_BATCH = 8
 
-async function loadAllTestCases(redis: Redis): Promise<TestCase[]> {
+async function loadAllTestCases(redis: Redis, limit?: number | null): Promise<TestCase[]> {
   // Newest first — same ordering as the old Blob-backed implementation, which
   // unshifted new cases to the front of the array.
-  const ids = (await redis.zrange<string[]>(KEY_INDEX, 0, -1, { rev: true })) || []
+  const stop = limit && limit > 0 ? limit - 1 : -1
+  const ids = (await redis.zrange<string[]>(KEY_INDEX, 0, stop, { rev: true })) || []
   if (ids.length === 0) return []
 
   const batches: string[][] = []
@@ -103,7 +104,17 @@ export async function GET(request: Request) {
   try {
     const url = new URL(request.url)
     const includeLlmCalls = url.searchParams.get("includeLlmCalls") === "1"
-    const raw = await loadAllTestCases(redis)
+    const limitParam = url.searchParams.get("limit")
+    const limit = limitParam ? Math.max(1, Math.min(5000, parseInt(limitParam, 10))) : null
+    const countOnly = url.searchParams.get("countOnly") === "1"
+
+    // Cheap diagnostic: just count and exit
+    if (countOnly) {
+      const ids = (await redis.zrange<string[]>(KEY_INDEX, 0, -1, { rev: true })) || []
+      return NextResponse.json({ count: ids.length })
+    }
+
+    const raw = await loadAllTestCases(redis, limit)
     const testCases = includeLlmCalls ? raw : raw.map(stripHeavyFields)
     return NextResponse.json({ testCases })
   } catch (error) {

@@ -206,6 +206,10 @@ export default function AdminPage() {
 
   const [testCases, setTestCases] = useState<TestCase[]>([])
   const [activeTestId, setActiveTestId] = useState<string | null>(null)
+  // Which version groups in Test History are expanded. Empty = "use default"
+  // (newest group expanded, all others collapsed). User clicks transition this
+  // out of the default state into an explicit selection.
+  const [expandedVersions, setExpandedVersions] = useState<Set<string>>(new Set())
   const [difficulty, setDifficulty] = useState(2)
   const [categoryHint, setCategoryHint] = useState("")
   const [isGenerating, setIsGenerating] = useState(false)
@@ -897,26 +901,90 @@ export default function AdminPage() {
           </div>
         )}
 
-        {/* Test History */}
-        {testCases.length > 0 && (
-          <div className="border border-[#d4c5b0] bg-white">
-            <div className="px-4 py-3 border-b border-[#e8ddd0]">
-              <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
-                Test History ({testCases.length})
+        {/* Test History — grouped by testVersion, collapsible per group.
+            Newest version auto-expands on first render; older groups stay
+            collapsed by default. Click any group header to toggle. */}
+        {testCases.length > 0 && (() => {
+          // Group testCases by testVersion (treat undefined as "v1" to match
+          // the historical default used by TestHistoryRow).
+          const byVersion = new Map<string, TestCase[]>()
+          for (const tc of testCases) {
+            const v = tc.testVersion ?? "v1"
+            if (!byVersion.has(v)) byVersion.set(v, [])
+            byVersion.get(v)!.push(tc)
+          }
+          // Newest-first version order. Parser handles "v1".."v23", "v23.1",
+          // and falls back to lexical compare for anything non-numeric (e.g.,
+          // "Eval", which we want to bucket separately at the end).
+          const parseVer = (k: string): { ver: number; sub: number } => {
+            const m = k.match(/^v(\d+)(?:\.(\d+))?$/i)
+            if (!m) return { ver: -1, sub: 0 }
+            return { ver: parseInt(m[1], 10), sub: m[2] ? parseInt(m[2], 10) : 0 }
+          }
+          const versions = Array.from(byVersion.keys()).sort((a, b) => {
+            const pa = parseVer(a)
+            const pb = parseVer(b)
+            if (pb.ver !== pa.ver) return pb.ver - pa.ver
+            return pb.sub - pa.sub
+          })
+          return (
+            <div className="border border-[#d4c5b0] bg-white">
+              <div className="px-4 py-3 border-b border-[#e8ddd0]">
+                <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
+                  Test History ({testCases.length})
+                </div>
+              </div>
+              <div>
+                {versions.map((v, idx) => {
+                  const cases = byVersion.get(v)!
+                  const isExpanded = expandedVersions.has(v) || (idx === 0 && expandedVersions.size === 0)
+                  return (
+                    <div key={v} className="border-b border-[#e8ddd0] last:border-b-0">
+                      <button
+                        onClick={() => {
+                          setExpandedVersions((prev) => {
+                            const next = new Set(prev)
+                            // First click on the default-expanded section needs
+                            // to put it into the explicit state so toggling works.
+                            if (prev.size === 0) {
+                              versions.forEach((vv, ii) => { if (ii === 0) next.add(vv) })
+                            }
+                            if (next.has(v)) next.delete(v)
+                            else next.add(v)
+                            return next
+                          })
+                        }}
+                        className="w-full flex items-center gap-3 px-4 py-3 bg-[#faf7f3] hover:bg-[#f5f0e8] transition-colors text-left"
+                      >
+                        <span className="text-xs px-2 py-0.5 rounded font-medium bg-[#fbf6ec] text-[#8b7355] border border-[#e8ddd0] font-mono tabular-nums min-w-[3.5rem] text-center">
+                          {v}
+                        </span>
+                        <span className="text-[10px] uppercase tracking-wider text-[#8b7355]">
+                          {cases.length} test{cases.length === 1 ? "" : "s"}
+                        </span>
+                        <span className="ml-auto text-[#8b7355] text-xs">
+                          {isExpanded ? "▼ collapse" : "▶ expand"}
+                        </span>
+                      </button>
+                      {isExpanded && (
+                        <div>
+                          {cases.map((tc) => (
+                            <TestHistoryRow
+                              key={tc.id}
+                              tc={tc}
+                              isActive={tc.id === activeTestId}
+                              onClick={() => setActiveTestId(tc.id === activeTestId ? null : tc.id)}
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
             </div>
-            <div>
-              {testCases.map((tc) => (
-                <TestHistoryRow
-                  key={tc.id}
-                  tc={tc}
-                  isActive={tc.id === activeTestId}
-                  onClick={() => setActiveTestId(tc.id === activeTestId ? null : tc.id)}
-                />
-              ))}
-            </div>
-          </div>
-        )}
+          )
+        })()}
 
         {testCases.length === 0 && !isGenerating && (
           <div className="text-center py-16 text-[#8b7355]">

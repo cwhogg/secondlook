@@ -262,7 +262,7 @@ export default function EvalPage() {
   // latest known version. The user can pick any prior version (re-tag a
   // measurement) or define a new version inline (e.g. "v13" before the
   // type / docs are bumped).
-  const [selectedVersion, setSelectedVersion] = useState<string>("v22")
+  const [selectedVersion, setSelectedVersion] = useState<string>("v24")
   const [customVersions, setCustomVersions] = useState<string[]>([])
   const [newVersionInput, setNewVersionInput] = useState("")
   const [isFetchingCases, setIsFetchingCases] = useState(false)

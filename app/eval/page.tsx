@@ -1469,6 +1469,26 @@ export default function EvalPage() {
                 )}
               </div>
             )}
+            {/* Load-more bar — accessible from runevals (matched-trio) tab.
+                Same loader as the per-tab eval-history; lets the user pull
+                older cohorts in for the matched-trio comparison without
+                having to switch to one of the SL / OAI / Claude tabs. */}
+            {testCases.length < totalCases && (
+              <div className="border border-[#d4c5b0] bg-white mb-3 px-4 py-3 flex items-center justify-between gap-3">
+                <div className="text-xs text-[#8b7355]">
+                  Loaded <span className="font-semibold tabular-nums">{testCases.length}</span> of{" "}
+                  <span className="font-semibold tabular-nums">{totalCases}</span> test cases.
+                  Older cohorts (further-back versions) need more pages loaded to appear in the comparison.
+                </div>
+                <button
+                  onClick={loadMoreCases}
+                  disabled={loadingMore}
+                  className="text-xs px-3 py-1.5 border border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white disabled:opacity-50 transition-colors whitespace-nowrap"
+                >
+                  {loadingMore ? "Loading…" : `Load ${Math.min(PAGE_SIZE, totalCases - testCases.length)} more`}
+                </button>
+              </div>
+            )}
             <ComparisonTable
               testCases={testCases}
               selectedCohort={selectedComparisonCohort}

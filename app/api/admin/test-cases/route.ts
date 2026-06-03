@@ -43,12 +43,18 @@ function createdAtScore(tc: TestCase): number {
 // round-trips add ~50ms total since the batches run in parallel.
 const MGET_BATCH = 8
 
-async function loadAllTestCases(redis: Redis, limit?: number | null): Promise<TestCase[]> {
+async function loadAllTestCases(
+  redis: Redis,
+  limit?: number | null,
+  offset = 0,
+): Promise<{ cases: TestCase[]; total: number }> {
   // Newest first — same ordering as the old Blob-backed implementation, which
   // unshifted new cases to the front of the array.
-  const stop = limit && limit > 0 ? limit - 1 : -1
-  const ids = (await redis.zrange<string[]>(KEY_INDEX, 0, stop, { rev: true })) || []
-  if (ids.length === 0) return []
+  const total = await redis.zcard(KEY_INDEX)
+  const start = Math.max(0, offset)
+  const stop = limit && limit > 0 ? start + limit - 1 : -1
+  const ids = (await redis.zrange<string[]>(KEY_INDEX, start, stop, { rev: true })) || []
+  if (ids.length === 0) return { cases: [], total }
 
   const batches: string[][] = []
   for (let i = 0; i < ids.length; i += MGET_BATCH) {
@@ -65,7 +71,7 @@ async function loadAllTestCases(redis: Redis, limit?: number | null): Promise<Te
       if (v && typeof v === "object") out.push(v as TestCase)
     }
   }
-  return out
+  return { cases: out, total }
 }
 
 // Strip the heavy llmCalls + pipelineProgressLog arrays from the list response
@@ -142,18 +148,29 @@ export async function GET(request: Request) {
     const url = new URL(request.url)
     const includeLlmCalls = url.searchParams.get("includeLlmCalls") === "1"
     const limitParam = url.searchParams.get("limit")
-    const limit = limitParam ? Math.max(1, Math.min(5000, parseInt(limitParam, 10))) : null
+    const offsetParam = url.searchParams.get("offset")
+    // Default page size: 300. Corpus is multi-MB even after the slim above,
+    // and Vercel caps function responses around 4.5 MB — full-corpus loads
+    // hit the cap once we crossed ~2,500 cases. Pagination + load-more in
+    // /eval keeps each response well under that.
+    const limit = limitParam
+      ? Math.max(1, Math.min(5000, parseInt(limitParam, 10)))
+      : 300
+    const offset = offsetParam ? Math.max(0, parseInt(offsetParam, 10)) : 0
     const countOnly = url.searchParams.get("countOnly") === "1"
 
     // Cheap diagnostic: just count and exit
     if (countOnly) {
-      const ids = (await redis.zrange<string[]>(KEY_INDEX, 0, -1, { rev: true })) || []
-      return NextResponse.json({ count: ids.length })
+      const total = await redis.zcard(KEY_INDEX)
+      return NextResponse.json({ count: total })
     }
 
-    const raw = await loadAllTestCases(redis, limit)
+    const { cases: raw, total } = await loadAllTestCases(redis, limit, offset)
     const testCases = includeLlmCalls ? raw : raw.map(stripHeavyFields)
-    return NextResponse.json({ testCases })
+    return NextResponse.json({
+      testCases,
+      pagination: { offset, limit, returned: testCases.length, total },
+    })
   } catch (error) {
     console.error("Failed to load test cases from KV:", error)
     return NextResponse.json({ testCases: [] }, { status: 500 })

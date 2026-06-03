@@ -68,14 +68,34 @@ export const VERSION_COLORS: Record<string, string> = {
 
 // ===== HELPERS =====
 
-export async function loadTestCases(): Promise<TestCase[]> {
+export interface LoadTestCasesResult {
+  cases: TestCase[]
+  total: number
+  offset: number
+  returned: number
+}
+
+// Default initial page. Corpus is multi-MB; full-load exceeds Vercel's response
+// cap once we cross ~2,500 cases. Caller uses LoadTestCasesResult to drive
+// "Load more" UI.
+export async function loadTestCases(
+  offset = 0,
+  limit = 300,
+): Promise<LoadTestCasesResult> {
   try {
-    const res = await fetch("/api/admin/test-cases")
-    if (!res.ok) return []
+    const res = await fetch(`/api/admin/test-cases?offset=${offset}&limit=${limit}`)
+    if (!res.ok) return { cases: [], total: 0, offset, returned: 0 }
     const data = await res.json()
-    return data.testCases ?? []
+    const cases: TestCase[] = data.testCases ?? []
+    const pagination = data.pagination ?? {}
+    return {
+      cases,
+      total: typeof pagination.total === "number" ? pagination.total : cases.length,
+      offset: typeof pagination.offset === "number" ? pagination.offset : offset,
+      returned: cases.length,
+    }
   } catch {
-    return []
+    return { cases: [], total: 0, offset, returned: 0 }
   }
 }
 

@@ -281,9 +281,9 @@ export default function AdminPage() {
   const testCasesRef = useRef<TestCase[]>([])
 
   useEffect(() => {
-    loadTestCases().then((loaded) => {
-      testCasesRef.current = loaded
-      setTestCases(loaded)
+    loadTestCases(0, 300).then((res) => {
+      testCasesRef.current = res.cases
+      setTestCases(res.cases)
     })
   }, [])
 

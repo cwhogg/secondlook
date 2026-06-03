@@ -345,13 +345,33 @@ export default function EvalPage() {
   // writing through this ref instead gives us a guaranteed-current view
   // and a guaranteed-defined value to save.
   const testCasesRef = useRef<TestCase[]>([])
+  const [totalCases, setTotalCases] = useState(0)
+  const [loadingMore, setLoadingMore] = useState(false)
+  const PAGE_SIZE = 300
 
   useEffect(() => {
-    loadTestCases().then((loaded) => {
-      testCasesRef.current = loaded
-      setTestCases(loaded)
+    loadTestCases(0, PAGE_SIZE).then((res) => {
+      testCasesRef.current = res.cases
+      setTestCases(res.cases)
+      setTotalCases(res.total)
     })
   }, [])
+
+  const loadMoreCases = async () => {
+    if (loadingMore) return
+    setLoadingMore(true)
+    const offset = testCasesRef.current.length
+    const res = await loadTestCases(offset, PAGE_SIZE)
+    const seen = new Set(testCasesRef.current.map((tc) => tc.id))
+    const merged = [
+      ...testCasesRef.current,
+      ...res.cases.filter((tc) => !seen.has(tc.id)),
+    ]
+    testCasesRef.current = merged
+    setTestCases(merged)
+    setTotalCases(res.total)
+    setLoadingMore(false)
+  }
 
   // EXPLICIT save: every helper computes the next array from the ref, writes
   // the ref synchronously, calls setTestCases for the display, and fires
@@ -1598,10 +1618,19 @@ export default function EvalPage() {
             stale DOM reuse that previously leaked rows across tabs). */}
         {activeTab !== "runevals" && tabCases.length > 0 && (
           <div key={`history-${activeTab}`} className="border border-[#d4c5b0] bg-white">
-            <div className="px-4 py-3 border-b border-[#e8ddd0]">
+            <div className="px-4 py-3 border-b border-[#e8ddd0] flex items-center justify-between gap-3">
               <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
-                {TAB_LABEL[activeTab]} Eval History ({tabCases.length})
+                {TAB_LABEL[activeTab]} Eval History ({tabCases.length} loaded of {totalCases})
               </div>
+              {testCases.length < totalCases && (
+                <button
+                  onClick={loadMoreCases}
+                  disabled={loadingMore}
+                  className="text-xs px-3 py-1.5 border border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white disabled:opacity-50 transition-colors"
+                >
+                  {loadingMore ? "Loading…" : `Load ${Math.min(PAGE_SIZE, totalCases - testCases.length)} more`}
+                </button>
+              )}
             </div>
             <div>
               {tabCases.map((tc) => (

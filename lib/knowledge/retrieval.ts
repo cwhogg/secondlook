@@ -104,11 +104,11 @@ function isUpstashConfigured(): boolean {
   return !!(process.env.UPSTASH_VECTOR_REST_URL && process.env.UPSTASH_VECTOR_REST_TOKEN);
 }
 
-// v23.1: dropped 500 → 200. Cohort showed 7 ranking regressions vs v22 where
-// the correct disease was surfaced but out-ranked by semantic neighbors. Smaller
-// top-K shrinks the candidate pool so synth doesn't drown in similar-but-wrong
-// diseases. Still well above what's needed for the synth's top-10 differential.
-const UPSTASH_TOP_K = 200;
+// v24: raised 200 → 350. v23.1's 200 over-corrected from v23's 500 — depth
+// metrics (Top-5/10 VARIANT/FAMILY/ANY) regressed 5-7pp vs v20. 350 splits the
+// difference, restoring some breadth without re-introducing the v23-era
+// semantic-neighbor flood that out-ranked correct top-1 candidates.
+const UPSTASH_TOP_K = 350;
 
 async function queryUpstashOnce(vector: number[]): Promise<Array<{ id: string; score: number; metadata: Record<string, unknown> }>> {
   const url = process.env.UPSTASH_VECTOR_REST_URL;
@@ -200,12 +200,13 @@ function computeSymptomScoreFromUpstash(
       const matchKey = `${tier}:${s.symptomName}`;
       const match = diseaseMatches.get(matchKey);
       if (!match) continue;
-      // v23.1: raised threshold 0.50 → 0.60 for the Upstash path only. The
-      // text-embedding-3-large distribution clusters tighter than 3-small, so
-      // the looser 0.50 floor was admitting too many wrong semantic neighbors
-      // and crowding out the correct disease at synth ranking time. 0.60 keeps
-      // genuine partial/semantic matches while shedding the noise.
-      if (match.score < 0.60) continue;
+      // v24: lowered threshold 0.60 → 0.55 to widen the long tail back toward
+      // v22-level coverage on Top-5/10 metrics. The matchType multiplier already
+      // down-weights semantic-tier matches (0.50-0.68) by 0.4×, so admitting
+      // 0.55-0.60 matches contributes to depth without dominating top-1
+      // ranking. v23.1's 0.60 floor was a useful overcorrection that's no
+      // longer needed once top-K is also widened to 350.
+      if (match.score < 0.55) continue;
       const matchType = classifyMatch(match.score);
       if (!matchType) continue; // safety: should never trigger after explicit gate above
       const multiplier = matchType === 'exact' ? 1.0 : matchType === 'partial' ? 0.7 : 0.4;
@@ -366,6 +367,88 @@ function parseFamilyMember(name: string): { family: string; number: number } | n
   // at least 8 characters and contain at least one alphabetic word.
   if (family.length < 8 || !/[a-z]{4}/i.test(family)) return null;
   return { family, number: parseInt(m[2], 10) };
+}
+
+// v24: extract the distinctive (non-stopword) tokens from a disease name to
+// use as the matching signature for upstream variant injection. Strips generic
+// medical terms ("syndrome", "disease") so the remaining tokens are the
+// disease-identifying words (e.g., "Loeys-Dietz Syndrome" → ["loeys", "dietz"];
+// "Hereditary Spastic Paraplegia" → ["spastic", "paraplegia"]).
+const DISEASE_NAME_STOPWORDS = new Set([
+  'syndrome', 'syndromes', 'disease', 'disorder', 'disorders', 'deficiency',
+  'dystrophy', 'with', 'and', 'or', 'the', 'of', 'in', 'on', 'an', 'for',
+  'type', 'types', 'complex', 'related', 'variant', 'variants', 'familial',
+  'hereditary', 'autosomal', 'dominant', 'recessive', 'x-linked', 'congenital',
+  'progressive', 'idiopathic', 'sporadic', 'primary', 'secondary',
+]);
+
+function getDistinctiveTokens(name: string): string[] {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z\s-]/g, ' ')
+    .split(/[\s-]+/)
+    .filter((t) => t.length >= 4 && !DISEASE_NAME_STOPWORDS.has(t));
+}
+
+// v24: KB-variant enumeration for umbrella names. Fires when a retrieved
+// candidate is an umbrella (NOT a numbered family member — those are handled
+// by enumerateFamilySiblings). For each umbrella, finds KB entries whose
+// names share ALL of the umbrella's distinctive tokens (e.g., umbrella
+// "Hereditary Spastic Paraplegia" surfaces "Autosomal Dominant Spastic
+// Paraplegia Type 10" via the shared "spastic"+"paraplegia" tokens). Only
+// keeps variants whose own match score against the patient is above a
+// modest floor — symptom-relevance is the gate, not just name similarity.
+//
+// Closes the v23.1 gap where retrieval surfaced only the umbrella for cases
+// like Loeys-Dietz syndrome 1, Cone-Rod Dystrophy 13, etc. — the synth never
+// saw the numbered/specialized variants as candidates and so could not name
+// them at top-1 even when patient evidence supported a specific subtype.
+function enumerateKbVariants(
+  retrievedMatches: DiseaseMatch[],
+  db: DiseaseProfile[],
+  scoreFn: (d: DiseaseProfile) => DiseaseMatch,
+  alreadyIncluded: Set<string>,
+  maxVariantsPerUmbrella: number,
+  scoreThreshold: number,
+): DiseaseMatch[] {
+  const additions: DiseaseMatch[] = [];
+  const seenUmbrellaSigs = new Set<string>();
+  for (const m of retrievedMatches) {
+    const umbrella = m.disease;
+    // Skip numbered family members — enumerateFamilySiblings covers those
+    if (parseFamilyMember(umbrella.name)) continue;
+    const tokens = getDistinctiveTokens(umbrella.name);
+    if (tokens.length === 0) continue;
+    const sig = [...tokens].sort().join(' ');
+    if (seenUmbrellaSigs.has(sig)) continue;
+    seenUmbrellaSigs.add(sig);
+
+    const candidates: DiseaseProfile[] = [];
+    for (const d of db) {
+      if (d.id === umbrella.id) continue;
+      if (alreadyIncluded.has(d.id)) continue;
+      const nameLower = d.name.toLowerCase();
+      if (tokens.every((t) => nameLower.includes(t))) candidates.push(d);
+    }
+    if (candidates.length === 0) continue;
+
+    const scored = candidates
+      .map((d) => scoreFn(d))
+      .filter((s) => s.matchScore >= scoreThreshold)
+      .sort((a, b) => b.matchScore - a.matchScore)
+      .slice(0, maxVariantsPerUmbrella);
+
+    for (const s of scored) {
+      additions.push(s);
+      alreadyIncluded.add(s.disease.id);
+    }
+    if (scored.length > 0) {
+      console.log(
+        `[Retrieval] KB-variant enumeration: "${umbrella.name}" → ${scored.length} variants (${scored.map((v) => v.disease.name).slice(0, 3).join(', ')}${scored.length > 3 ? '…' : ''})`,
+      );
+    }
+  }
+  return additions;
 }
 
 function enumerateFamilySiblings(
@@ -546,6 +629,25 @@ export async function findMatchingDiseases(
   );
   if (familyAdds.length > 0) {
     allMatches = [...allMatches, ...familyAdds].sort((a, b) => b.matchScore - a.matchScore);
+  }
+
+  // --- Pass 5 (v24): KB-variant enumeration on UMBRELLA names. Pass 4 only
+  // fires when a retrieved candidate has a numbered name ("X 3"). This pass
+  // handles the opposite case: when only the umbrella ("X") was retrieved.
+  // Surfaces KB profiles that share the umbrella's distinctive tokens (e.g.,
+  // "Spastic Paraplegia Type 10" via "spastic"+"paraplegia"), filtered to
+  // those whose own matchScore against the patient is meaningful.
+  const inPool2 = new Set(allMatches.map((m) => m.disease.id));
+  const variantAdds = enumerateKbVariants(
+    allMatches.slice(0, 20), // top-20 umbrellas; deeper anchors aren't worth scanning
+    db,
+    scoreFn,
+    inPool2,
+    /* maxVariantsPerUmbrella */ 5,
+    /* scoreThreshold */ 0.10,
+  );
+  if (variantAdds.length > 0) {
+    allMatches = [...allMatches, ...variantAdds].sort((a, b) => b.matchScore - a.matchScore);
   }
 
   return allMatches.slice(0, maxResults);

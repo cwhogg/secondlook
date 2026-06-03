@@ -20,6 +20,7 @@ import type { AgentOutput } from './types';
 import type { DiagnosisHypothesis, PatientCase, CritiqueOutput, CritiqueSuggestion } from '../types';
 import { callAnthropic } from '../anthropic';
 import { setLogContext } from '../pipeline/llm-call-log';
+import { loadDiseaseDatabase } from '../knowledge';
 
 const CLAUDE_FINALIZER_MODEL = 'claude-opus-4-7';
 
@@ -129,6 +130,168 @@ export interface ClaudeFinalizerOutput extends AgentOutput {
     rankChangesFromFirstPass: number;
     removedFromTop10: string[];
     addedToTop10: string[];
+    // v24: when the gene-evidence post-process rewrote top-1, record what
+    // changed. Absent = no rewrite. Telemetry only — top-1 already updated
+    // in-place in hypotheses[].
+    geneRewrite?: {
+      fromName: string;
+      toName: string;
+      gene: string;
+      candidatesConsidered: number;
+    };
+  };
+}
+
+// ===== v24: Gene-evidence-driven top-1 name rewrite =====
+//
+// The v23.1 EXACT-Top-1 grader audit showed 12/12 misses were "engine names
+// the umbrella, GT is the numbered/gene-specific subtype." When the patient
+// case mentions a specific gene mutation AND the hypothesis pool contains a
+// KB-linked variant whose name encodes that gene, the umbrella at rank 1 is
+// almost certainly the wrong specificity.
+//
+// This rewrite runs deterministically AFTER the LLM finalizer's selection.
+// It only fires when ALL of:
+//   - Top-1 is an umbrella that does NOT already encode a gene
+//   - Patient case text contains a token matching a known KB gene symbol
+//   - The pool contains exactly one variant sharing top-1's distinctive
+//     tokens AND containing that gene in its name
+// Single unique match required — ambiguous evidence falls through unchanged.
+
+const KB_GENE_FALSE_POSITIVES = new Set([
+  'MRI', 'CT', 'EEG', 'ECG', 'EKG', 'PET', 'CSF', 'WBC', 'RBC', 'CRP', 'ESR',
+  'GFR', 'BUN', 'TSH', 'PTH', 'FSH', 'IGG', 'IGM', 'IGA', 'IGE', 'HIV', 'EBV',
+  'CMV', 'HSV', 'HPV', 'XX', 'XY', 'XXY', 'XYY', 'XXX', 'XXYY', 'XXXY', 'XYYY',
+  'XXXX', 'XXXXY', 'IQ', 'BMI', 'MMSE', 'COPD', 'CHF',
+]);
+
+const DISEASE_NAME_STOPWORDS_FINALIZER = new Set([
+  'syndrome', 'syndromes', 'disease', 'disorder', 'disorders', 'deficiency',
+  'dystrophy', 'with', 'and', 'or', 'the', 'of', 'in', 'on', 'an', 'for',
+  'type', 'types', 'complex', 'related', 'variant', 'variants', 'familial',
+  'hereditary', 'autosomal', 'dominant', 'recessive', 'x-linked', 'congenital',
+  'progressive', 'idiopathic', 'sporadic', 'primary', 'secondary',
+]);
+
+let cachedKbGeneSet: Set<string> | null = null;
+function getKbGeneSet(): Set<string> {
+  if (cachedKbGeneSet) return cachedKbGeneSet;
+  const db = loadDiseaseDatabase();
+  const out = new Set<string>();
+  const re = /\b[A-Z][A-Z0-9]{2,7}\b/g;
+  for (const d of db) {
+    const text = `${d.name} ${(d.aliases || []).join(' ')}`;
+    const tokens = text.match(re) || [];
+    for (const t of tokens) {
+      if (KB_GENE_FALSE_POSITIVES.has(t)) continue;
+      out.add(t);
+    }
+  }
+  cachedKbGeneSet = out;
+  return out;
+}
+
+function distinctiveTokens(name: string): string[] {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z\s-]/g, ' ')
+    .split(/[\s-]+/)
+    .filter((t) => t.length >= 4 && !DISEASE_NAME_STOPWORDS_FINALIZER.has(t));
+}
+
+function geneSymbolsIn(text: string, kbGenes: Set<string>): Set<string> {
+  const re = /\b[A-Z][A-Z0-9]{2,7}\b/g;
+  const tokens = text.match(re) || [];
+  const out = new Set<string>();
+  for (const t of tokens) {
+    if (KB_GENE_FALSE_POSITIVES.has(t)) continue;
+    if (kbGenes.has(t)) out.add(t);
+  }
+  return out;
+}
+
+function extractPatientCaseText(pc: PatientCase): string {
+  const parts: string[] = [];
+  if (pc.chiefComplaint?.description) parts.push(pc.chiefComplaint.description);
+  for (const s of pc.symptoms || []) {
+    parts.push(s.originalPhrase || '');
+    parts.push(s.medicalTerm || '');
+  }
+  for (const f of pc.medicalHistory?.familyHistory || []) parts.push(f);
+  for (const h of pc.medicalHistory?.pastMedicalHistory || []) parts.push(h);
+  for (const t of pc.medicalHistory?.testingHistory || []) parts.push(t);
+  for (const t of pc.medicalHistory?.recentTests || []) parts.push(t);
+  if (pc.patientHypothesis) parts.push(pc.patientHypothesis);
+  return parts.join(' ');
+}
+
+interface GeneRewriteEvent {
+  fromName: string;
+  toName: string;
+  gene: string;
+  candidatesConsidered: number;
+}
+
+function applyGeneEvidenceRewrite(
+  finalRanking: DiagnosisHypothesis[],
+  patientCase: PatientCase,
+  hypothesisPool: DiagnosisHypothesis[],
+): GeneRewriteEvent | null {
+  if (finalRanking.length === 0) return null;
+
+  const kbGenes = getKbGeneSet();
+  const patientText = extractPatientCaseText(patientCase);
+  const patientGenes = geneSymbolsIn(patientText, kbGenes);
+  if (patientGenes.size === 0) return null;
+
+  const top1 = finalRanking[0];
+  // Skip if top-1 name already encodes a patient gene — already specific
+  const top1Genes = (top1.diagnosis.match(/\b[A-Z][A-Z0-9]{2,7}\b/g) || []).filter(
+    (t) => !KB_GENE_FALSE_POSITIVES.has(t),
+  );
+  for (const g of top1Genes) if (patientGenes.has(g)) return null;
+
+  const top1Tokens = distinctiveTokens(top1.diagnosis);
+  if (top1Tokens.length === 0) return null;
+
+  // Find pool hypotheses that share top-1's distinctive tokens AND contain a
+  // patient-mentioned gene in their name.
+  const candidates: { hyp: DiagnosisHypothesis; gene: string }[] = [];
+  const seenNames = new Set<string>();
+  for (const h of hypothesisPool) {
+    if (h.diagnosis === top1.diagnosis) continue;
+    if (seenNames.has(h.diagnosis)) continue;
+    seenNames.add(h.diagnosis);
+    const hTokens = distinctiveTokens(h.diagnosis);
+    if (!top1Tokens.every((t) => hTokens.includes(t))) continue;
+    const hGenes = (h.diagnosis.match(/\b[A-Z][A-Z0-9]{2,7}\b/g) || []).filter(
+      (t) => !KB_GENE_FALSE_POSITIVES.has(t),
+    );
+    for (const g of hGenes) {
+      if (patientGenes.has(g)) {
+        candidates.push({ hyp: h, gene: g });
+        break;
+      }
+    }
+  }
+
+  if (candidates.length !== 1) return null;
+
+  const target = candidates[0];
+  finalRanking[0] = {
+    ...top1,
+    diagnosis: target.hyp.diagnosis,
+    icd10Code: target.hyp.icd10Code || top1.icd10Code,
+    knowledgeBaseMatch: true,
+    clinicalReasoning: `${top1.clinicalReasoning || ''}\n[v24 gene-rewrite] Patient reports ${target.gene} mutation; rewriting top-1 from umbrella "${top1.diagnosis}" to gene-specific KB variant "${target.hyp.diagnosis}".`.trim(),
+    sourceAgent: top1.sourceAgent || 'gene-rewrite',
+  };
+
+  return {
+    fromName: top1.diagnosis,
+    toName: target.hyp.diagnosis,
+    gene: target.gene,
+    candidatesConsidered: candidates.length,
   };
 }
 
@@ -314,6 +477,14 @@ export class ClaudeFinalizerAgent {
       .filter((h) => h.changesFromFirstPass && h.changesFromFirstPass.rankBefore !== h.changesFromFirstPass.rankAfter)
       .length;
 
+    // v24: gene-evidence-driven top-1 rewrite (post-finalizer, deterministic).
+    const geneRewrite = applyGeneEvidenceRewrite(finalRanking, opts.patientCase, pool);
+    if (geneRewrite) {
+      console.log(
+        `[ClaudeFinalizer] v24 gene-rewrite: top-1 "${geneRewrite.fromName}" → "${geneRewrite.toName}" (gene: ${geneRewrite.gene})`,
+      );
+    }
+
     return {
       agentName: this.name,
       hypotheses: finalRanking,
@@ -328,6 +499,7 @@ export class ClaudeFinalizerAgent {
         rankChangesFromFirstPass,
         removedFromTop10,
         addedToTop10,
+        geneRewrite: geneRewrite ?? undefined,
       },
     } as ClaudeFinalizerOutput;
   }

@@ -100,6 +100,7 @@ function getStageData(stageKey: string, events: PipelineProgress[]) {
 
 function formatSpecialtyName(name: string): string {
   return name
+    .replace(/^specialist-v\d+-/, "")
     .replace(/-agent$/, "")
     .replace(/-/g, " ")
     .replace(/\b\w/g, (c) => c.toUpperCase())

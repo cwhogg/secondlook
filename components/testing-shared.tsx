@@ -941,12 +941,12 @@ export function PipelineResultsSection({ result }: { result: AnalysisResult }) {
           <span>{(meta.totalDurationMs / 1000).toFixed(1)}s</span>
           <span>{meta.totalTokensUsed.toLocaleString()} tokens</span>
           <span>${meta.totalCostEstimate.toFixed(3)}</span>
-          <span>{meta.stages.length} stages</span>
+          <span>{meta.stages?.length ?? 0} stages</span>
           <span>{meta.diseasesConsidered} diseases considered</span>
         </div>
       )}
 
-      {meta?.stages && (
+      {meta?.stages && meta.stages.length > 0 && (
         <div className="text-xs space-y-0.5">
           <div className="font-semibold text-[#5a5a5a]">Stages:</div>
           {meta.stages.map((s, i) => (
@@ -981,7 +981,7 @@ export function PipelineResultsSection({ result }: { result: AnalysisResult }) {
                 {dx.icd10Code && ` · ${dx.icd10Code}`}
               </div>
               <div className="text-xs text-[#5a5a5a] mt-1 line-clamp-2">{dx.clinicalReasoning}</div>
-              {dx.supportingEvidence.length > 0 && (
+              {dx.supportingEvidence && dx.supportingEvidence.length > 0 && (
                 <div className="text-xs text-[#8b7355] mt-1">
                   Evidence: {dx.supportingEvidence.slice(0, 3).map((e) => e.finding).join("; ")}
                   {dx.supportingEvidence.length > 3 && ` (+${dx.supportingEvidence.length - 3} more)`}
@@ -1096,7 +1096,7 @@ export function GradingSection({ grading, previousRun }: { grading: TestGrading;
         </div>
       )}
 
-      {grading.strengths.length > 0 && (
+      {grading.strengths && grading.strengths.length > 0 && (
         <div>
           <div className="text-xs font-semibold text-green-700 uppercase tracking-wider mb-1">Strengths</div>
           <ul className="list-disc list-inside text-sm text-[#5a5a5a] space-y-0.5">
@@ -1107,7 +1107,7 @@ export function GradingSection({ grading, previousRun }: { grading: TestGrading;
         </div>
       )}
 
-      {grading.weaknesses.length > 0 && (
+      {grading.weaknesses && grading.weaknesses.length > 0 && (
         <div>
           <div className="text-xs font-semibold text-orange-700 uppercase tracking-wider mb-1">Weaknesses</div>
           <ul className="list-disc list-inside text-sm text-[#5a5a5a] space-y-0.5">
@@ -1118,7 +1118,7 @@ export function GradingSection({ grading, previousRun }: { grading: TestGrading;
         </div>
       )}
 
-      {grading.missedFindings.length > 0 && (
+      {grading.missedFindings && grading.missedFindings.length > 0 && (
         <div>
           <div className="text-xs font-semibold text-red-700 uppercase tracking-wider mb-1">Missed Findings</div>
           <ul className="list-disc list-inside text-sm text-[#5a5a5a] space-y-0.5">
@@ -1129,7 +1129,7 @@ export function GradingSection({ grading, previousRun }: { grading: TestGrading;
         </div>
       )}
 
-      {grading.falseLeads.length > 0 && (
+      {grading.falseLeads && grading.falseLeads.length > 0 && (
         <div>
           <div className="text-xs font-semibold text-amber-700 uppercase tracking-wider mb-1">False Leads</div>
           <ul className="list-disc list-inside text-sm text-[#5a5a5a] space-y-0.5">

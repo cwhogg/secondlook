@@ -148,6 +148,76 @@ export interface TieredGrading {
   gradedAt: string;           // ISO timestamp
 }
 
+// ===== V4 GRADING (paper-faithful Phenopacket2Prompt / Mondo regrade) =====
+//
+// v4 is an OPT-IN, ADDITIVE regrade tool: it never replaces v2/v3, never runs
+// automatically, and only scores existing stored differentials. See the
+// v4-grader handoff doc + the plan in ~/.claude/plans/curious-gliding-quiche.md
+// for the methodology. Mirrors malco's scoring: exact / equivalent → 1.0,
+// gold-is-descendant-of-prediction (any depth) → 0.5, else 0; isCorrect =
+// score > 0.
+
+export type V4GroundingStage = 'exact' | 'synonym' | 'fuzzy' | 'none';
+
+export interface V4GroundedItem {
+  rank: number;                      // 1-based, matches the engine's output order
+  predictionText: string;            // the raw free-text disease name
+  groundedMondoId: string | null;    // "MONDO:N" or null when ungrounded
+  groundedLabel: string | null;
+  groundingStage: V4GroundingStage;
+  fuzzyConfidence?: number;          // present iff groundingStage === 'fuzzy'
+  score: 0 | 0.5 | 1;                // malco's per-item credit
+  isCorrect: boolean;                // score > 0 — paper Top-N criterion
+  // ===== SL audit path =====
+  // The pipeline's own KB-attached id, captured for SecondLook hypotheses
+  // only. Used ONLY for the artifact-vs-real grounding-loss audit; never
+  // for grading. Baselines (OpenAI, Claude) lack this id, which is exactly
+  // why intended-id grading would break the equal-treatment invariant.
+  intendedOmimId?: string;
+  intendedVsResolvedMatch?: boolean;
+}
+
+export interface V4Grading {
+  gradingVersion: 'v4';
+  goldOmimId: string;
+  goldMondoIds: string[];            // resolved equivalents from skos:exactMatch
+
+  // Per-item audit trail
+  items: V4GroundedItem[];
+
+  // Top-N (paper-faithful, score > 0)
+  firstCorrectRank: number | null;
+  top1: boolean;
+  top3: boolean;
+  top10: boolean;
+
+  // FULL-credit-only Top-N — diagnostic distinction. score === 1.0 means
+  // exact or skos:exactMatch equivalent; PARTIAL (0.5) means gold is reached
+  // via descendant. Reported separately so we can say "X% of v24 SL hits
+  // were FULL credit (exact name) vs Y% PARTIAL (umbrella that covers gold)."
+  firstFullCreditRank: number | null;
+  top1Full: boolean;
+  top3Full: boolean;
+  top10Full: boolean;
+
+  // Per-case grounding rate
+  groundedCount: number;             // items where groundingStage !== 'none'
+  totalCount: number;
+
+  // SL audit aggregate (only present for SecondLook cases)
+  slAudit?: {
+    intendedIdAvailable: boolean;    // at least one hypothesis had an intended id
+    intendedVsResolvedAlignedCount: number;
+    intendedVsResolvedDivergedCount: number;
+  };
+
+  // Provenance
+  mondoRelease: string;              // e.g. "2025-05-13" — from credited-sets metadata
+  gradedAt: string;
+  gradingDurationMs: number;
+  groundingModel: string;            // Anthropic model used for Stage B fuzzy grounding
+}
+
 // ===== API METADATA =====
 
 export interface GenerationMetadata {
@@ -281,6 +351,9 @@ export interface TestCase {
   }>;
   grading?: TestGrading;
   tieredGrading?: TieredGrading;
+  // v4 grading is additive: present only when the case has been explicitly
+  // regraded with scripts/grade-eval-v4.mjs. Does not affect v2/v3 fields.
+  v4Grading?: V4Grading;
   gradingMetadata?: GenerationMetadata;
   previousRun?: PreviousRunSnapshot;
 }

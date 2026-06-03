@@ -76,7 +76,7 @@ function diceCoefficient(a: string, b: string): number {
  * Extract text inside parentheses as alternative candidate names.
  * Skips pure abbreviations (<6 chars, all caps). Handles "e.g.", "formerly", "aka" prefixes.
  */
-function extractParentheticalNames(diagnosis: string): string[] {
+export function extractParentheticalNames(diagnosis: string): string[] {
   const names: string[] = [];
   const parenRegex = /\(([^)]+)\)/g;
   let match;

@@ -220,3 +220,69 @@ Originally sketched as v11 then v12; renumbered here after the v12 sampler-reset
 - **Sampling-mode UX gotcha**: the dropdown defaults to "Uniform" only on a fresh page load. State persists across batches in the same tab — easy to accidentally run another diversified batch when you intended uniform.
 - **Mid-batch push gotcha**: a Vercel deploy during a run leaves all in-flight cases on the *old* client bundle (new client-side instrumentation won't activate). Hard-refresh after the deploy to get the new bundle; this kills the running batch.
 - **Stuck cases with no metadata**: pre-v8 batches produced these often (24% v7) and we couldn't diagnose. v8+ persists `pipelineProgressLog` so this is no longer invisible.
+
+---
+
+# Grader versions (separate namespace from pipeline versions)
+
+The numbers above are **pipeline versions** — the architectures that produce a differential diagnosis. **Grader versions** are different — they're the rules by which we score a differential against the ground truth. The two namespaces overlap numerically (both have a "v2", "v3", and "v4") but mean different things. Each test case carries both: `evalVersion` for the pipeline that produced it, and `grading.gradingVersion` / `tieredGrading.gradingVersion` / `v4Grading.gradingVersion` for the rule that scored it.
+
+## Grader v1 (legacy, single tier)
+
+Single-pass Claude call returning a letter grade and 0-100 score. Used pre-2026-05-15. No structural tier information. Schema: `TestGrading { gradingVersion: 'v1', grade, score, reasoning }`.
+
+## Grader v2 (current default — name-based two-pass)
+
+- **Route**: `app/api/admin/grade-test/route.ts`. Schema: `TestGrading { gradingVersion: 'v2', ... }`.
+- **How it works**: `determineTier()` from `lib/grading/deterministic-match.ts` classifies the predicted top-1 vs ground truth via fuzzy name matching (exact / variant / family / ICD-10 prefix / organ-system / unrelated), then Claude assigns a reasoning-quality score clamped into the tier's range.
+- **Required fields on the testCase**: `keyFindings`, `expectedBodySystems`, `expectedSpecialists`, `nearMisses`. Only the synthetic-case generator emits these; Phenopacket2Prompt eval cases don't have them, so v2 is structurally a bad fit for the Eval cohort.
+- **Status**: still the default for non-Eval (synthetic) test cases.
+
+## Grader v3 (current default for Eval — name-based tier)
+
+- **Route**: `app/api/admin/grade-test-tiered/route.ts`. Schema: `TieredGrading { gradingVersion: 'v3', entries[], rankAtExact, rankAtVariant, rankAtFamily, rankAtAny, isTop1 }`.
+- **How it works**: sends the ranked differential + the ground-truth **label string** to Claude opus-4-7; Claude assigns each entry a tier (EXACT / VARIANT / FAMILY / SIBLING / UNRELATED). Headline `isTop1` is true when the top entry was EXACT or VARIANT.
+- **Strengths over v2**: works on Eval cases (label-only ground truth); reports rank-at-tier for the full top-10; doesn't need synthetic-case metadata.
+- **Weaknesses**: ignores the **OMIM gold id** that flows through `app/api/admin/eval-case/route.ts` and matches on names; non-deterministic Claude judgment can drift case-to-case; FAMILY and VARIANT are LLM tier calls, not ontology lookups.
+- **Status**: still the default for Eval cases. Produces the headline clinical-Top-1 numbers in the matched-trio comparison.
+
+## Grader v4 (opt-in regrade tool — paper-faithful Mondo)
+
+Lands 2026-06-04. **Never the default; never runs automatically; never replaces v2 or v3.** Solves the comparability problem: our headline v3 numbers cannot be placed alongside the Phenopacket2Prompt published baselines (Exomiser 35.5% Top-1, best-LLM 23.6%, GPT-4o ~20% — all under Mondo grading) because the two scales measure different things.
+
+- **Core module**: `lib/grading/mondo-match.ts`. Pure, gold-blind, deterministic at runtime.
+- **Regrade script**: `scripts/grade-eval-v4.ts` — the primary deliverable. Reads a completed cohort from KV, re-scores each pipeline (SecondLook / OpenAI / Claude) under v4, optionally upserts `v4Grading` back to the testCase. Reports v4 Top-1/3/10 side by side with the existing v3 clinical Top-1.
+- **Offline ontology builds**:
+  - `scripts/build-mondo-assets.mjs` — downloads Mondo from OBO Foundry, parses label + `hasExactSynonym` + `skos:exactMatch` + IS_A graph, emits `lib/grading/mondo-labels.json` (committed) and `scripts/mondo-data/mondo-graph.json` (gitignored, offline-only).
+  - `scripts/build-credited-sets.mjs` — computes the precomputed credited-set table for the 694 distinct gold OMIM ids in `scripts/benchmark-data/en.jsonl`, emits `lib/grading/mondo-credited-sets.json`.
+
+### Methodology (faithfully replicated from the published harness)
+
+- **Source**: Robinson et al., *Eur J Hum Genet* 2026, supplemented by the open-source `monarch-initiative/malco` scoring code we read verbatim during the v4 implementation.
+- **Match rule** (from malco `mondo_score_utils.py:score_grounded_result`):
+  1. `prediction == gold_omim`                → score 1.0 (FULL credit)
+  2. prediction is a Mondo `skos:exactMatch` of the gold → score 1.0 (FULL)
+  3. Some descendant of the prediction (any depth, IS_A reflexive) is the gold's equivalent → score 0.5 (PARTIAL credit). Asymmetric — the reverse direction (prediction is descendant of gold) is **NOT** credited.
+  4. Otherwise → 0.
+- **Top-N** uses `isCorrect = score > 0` (malco's `scoring.py:is_correct`). We additionally report **FULL-only Top-N** (`score === 1`) as a diagnostic — distinguishes "exact name match" from "umbrella that contains the gold."
+- **Grounding stages** (free-text → Mondo id, mirroring OAK + CurateGPT):
+  - Stage 0: normalize via the existing `normalizeDiagnosis()` helper. Derive alternates via `extractParentheticalNames()`.
+  - Stage A: deterministic exact match against the prebuilt labels index (primary `rdfs:label` + `oboInOwl:hasExactSynonym` only, NOT `hasRelatedSynonym`).
+  - Stage B: constrained Claude fuzzy fallback for unresolved items. Generates a shortlist of ~20 candidate Mondo ids by token-overlap with the labels index, then asks Claude to pick one or return "none". Anthropic-only per project rule.
+- **Gold-blindness invariant**: `groundToMondo()`'s function signature does not accept the gold. The grounder is structurally incapable of being told which answer is correct.
+- **Equality of treatment invariant**: SL, OpenAI, and Claude all go through the IDENTICAL grounding pipeline. SL's internal KB-attached ids are NOT used for grading — only for an audit aggregate (`slAudit`) that reports how often the gold-blind text grounder landed on the same disease family the KB intended.
+
+### Audit path (SL only — never affects grading)
+
+For SecondLook hypotheses that carry a KB-attached `omimId`, we capture both that intended id and the text grounder's resolved Mondo id, then check whether they refer to the same disease family. Two outputs per case:
+- **Aligned**: resolved is the intended id's Mondo equivalent or an ancestor (umbrella) — grounder didn't pick a different entity.
+- **Diverged**: resolved is in a different disease family — SL wrote text whose grounding does not match its own KB id. These are the "artifact grounding loss" candidates worth investigating.
+
+Baselines have no intended id and therefore no audit. That asymmetry is exactly why intended-id grading would break the equality-of-treatment invariant.
+
+### Operational notes
+
+- v4 is **opt-in**. To regrade a finished cohort: `npx tsx scripts/grade-eval-v4.ts --eval-version v24 --sampling standard50 --persist`. Omit `--persist` for a report-only dry run.
+- Expected behavior: v4 SL Top-1 should be **lower** than v3 clinical Top-1 on the same cases. v4 is stricter (no string fuzz, no organ-system partial credit, no LLM tier judgments). If v4 numbers are higher than v3, the grounder is leaking leniency and needs investigation.
+- **Do not use v4 to make cross-version SL claims** without confirming the grounding rate is comparable across pipelines. A SL-vs-baseline gap riding on a grounding-rate gap is an artifact.
+- Mondo release is pinned to whatever the build script downloaded; see `_metadata` in the credited-sets JSON for the release SHA.

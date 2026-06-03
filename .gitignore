@@ -34,6 +34,12 @@ scripts/expansion-rejected.json
 # Orphanet data files (download via enrich-from-orphanet.js)
 scripts/orphanet-data/
 
+# Mondo ontology files (download via build-mondo-assets.mjs).
+# Heavy intermediate ontology data lives offline only; the slim derived
+# assets needed at runtime (mondo-labels.json, mondo-credited-sets.json)
+# are committed in lib/grading/.
+scripts/mondo-data/
+
 # Benchmark data: ignore everything in this dir except the source dataset,
 # which is bundled into the eval-case serverless function for production.
 scripts/benchmark-data/*

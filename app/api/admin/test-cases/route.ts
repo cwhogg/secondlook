@@ -67,22 +67,31 @@ async function loadAllTestCases(redis: Redis): Promise<TestCase[]> {
   return out
 }
 
-// Strip the heavy llmCalls array from the list response by default. Each call
-// can be 500 KB-1 MB (system prompt + user prompt + raw response text), and a
-// v17+ case carries ~11 of them, so a 2,500-case corpus becomes a multi-GB
-// response without this strip. /eval and the testing UI don't need llmCalls;
-// the deep-dive HTML script uses ?includeLlmCalls=1 to opt back in.
-function stripLlmCalls(tc: TestCase): TestCase {
-  if (!tc.pipelineResult || !tc.pipelineResult.pipelineMetadata) return tc
-  const pm = tc.pipelineResult.pipelineMetadata as unknown as Record<string, unknown>
-  if (!pm.llmCalls) return tc
-  const { llmCalls: _llmCalls, ...rest } = pm
+// Strip the heavy llmCalls + pipelineProgressLog arrays from the list response
+// by default. llmCalls can be 500 KB-1 MB each (system + user prompts + raw
+// response text); v17+ cases carry ~11 of them. pipelineProgressLog grows
+// linearly with stage events (50+ entries on full v17 runs). Together they
+// account for most of the per-case payload; stripping both drops a 3k-case
+// response from ~7 MB (over Vercel's 4.5 MB function response cap, returns
+// 500) to well under cap. /eval and the testing UI don't need either; the
+// deep-dive HTML script uses ?includeLlmCalls=1 to opt back in.
+function stripHeavyFields(tc: TestCase): TestCase {
+  let next: TestCase = tc
+  if (next.pipelineProgressLog) {
+    const { pipelineProgressLog: _log, ...rest } = next
+    void _log
+    next = rest as TestCase
+  }
+  if (!next.pipelineResult || !next.pipelineResult.pipelineMetadata) return next
+  const pm = next.pipelineResult.pipelineMetadata as unknown as Record<string, unknown>
+  if (!pm.llmCalls) return next
+  const { llmCalls: _llmCalls, ...restPm } = pm
   void _llmCalls
   return {
-    ...tc,
+    ...next,
     pipelineResult: {
-      ...tc.pipelineResult,
-      pipelineMetadata: rest as unknown as NonNullable<TestCase["pipelineResult"]>["pipelineMetadata"],
+      ...next.pipelineResult,
+      pipelineMetadata: restPm as unknown as NonNullable<TestCase["pipelineResult"]>["pipelineMetadata"],
     },
   } as TestCase
 }
@@ -95,7 +104,7 @@ export async function GET(request: Request) {
     const url = new URL(request.url)
     const includeLlmCalls = url.searchParams.get("includeLlmCalls") === "1"
     const raw = await loadAllTestCases(redis)
-    const testCases = includeLlmCalls ? raw : raw.map(stripLlmCalls)
+    const testCases = includeLlmCalls ? raw : raw.map(stripHeavyFields)
     return NextResponse.json({ testCases })
   } catch (error) {
     console.error("Failed to load test cases from KV:", error)

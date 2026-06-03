@@ -2,6 +2,11 @@ import { NextResponse } from "next/server"
 import { Redis } from "@upstash/redis"
 import type { TestCase } from "@/lib/types/admin"
 
+// Corpus has grown past 3,000 cases; loading all of them via batched MGET
+// (8-per-batch to stay under Upstash's 10 MB response cap) exceeds the
+// 10-second default Vercel function timeout under load. Bump to 60s.
+export const maxDuration = 60
+
 // ===== Storage layout =====
 // Each TestCase is stored at its own Redis key (`tc:<id>`) and indexed in a
 // single sorted set (`tc:index`, score = createdAt ms). Per-key writes are

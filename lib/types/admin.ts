@@ -180,7 +180,7 @@ export interface TestCase {
   createdAt: string;
   difficulty: number;
   categoryHint?: string;
-  testVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12' | 'v13' | 'v14' | 'v15' | 'v16' | 'v17' | 'v18' | 'v19' | 'v20' | 'v21' | 'v21.1' | 'v22' | 'v23' | 'v23.1' | 'v24' | 'Eval';
+  testVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12' | 'v13' | 'v14' | 'v15' | 'v16' | 'v17' | 'v18' | 'v19' | 'v20' | 'v21' | 'v21.1' | 'v22' | 'v23' | 'v23.1' | 'v24' | 'v24.1' | 'Eval';
   // For Eval-tagged testCases: which version of the pipeline produced them.
   // v1 = pre-2026-05-27 pipeline (5-cap on diagnoses, no family expansion).
   // v2 = 2026-05-27 pipeline: 10-cap synth + KB-linked family expansion.
@@ -242,7 +242,7 @@ export interface TestCase {
   // version is bumped in this file. Components that switch on the
   // version string (color map, badge type) fall back to a neutral
   // styling for unrecognized values.
-  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12' | 'v13' | 'v14' | 'v15' | 'v16' | 'v17' | 'v18' | 'v19' | 'v20' | 'v21' | 'v21.1' | 'v22' | 'v23' | 'v23.1' | 'v24' | (string & {});
+  evalVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12' | 'v13' | 'v14' | 'v15' | 'v16' | 'v17' | 'v18' | 'v19' | 'v20' | 'v21' | 'v21.1' | 'v22' | 'v23' | 'v23.1' | 'v24' | 'v24.1' | (string & {});
   // Which "engine" produced this Eval case. secondlook = the full V2 pipeline;
   // openai / claude = single-shot baseline calls to the respective top model.
   // Unset entries are treated as 'secondlook' for backward compatibility.

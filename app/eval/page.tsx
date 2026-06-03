@@ -55,6 +55,7 @@ const EVAL_VERSION_COLORS: Record<string, string> = {
   v23: "bg-violet-50 text-violet-900 border-violet-500",
   "v23.1": "bg-indigo-50 text-indigo-900 border-indigo-500",
   v24: "bg-emerald-50 text-emerald-900 border-emerald-500",
+  "v24.1": "bg-teal-50 text-teal-900 border-teal-500",
 }
 
 function EvalVersionBadge({ version }: { version?: string }) {
@@ -266,7 +267,7 @@ export default function EvalPage() {
   // latest known version. The user can pick any prior version (re-tag a
   // measurement) or define a new version inline (e.g. "v13" before the
   // type / docs are bumped).
-  const [selectedVersion, setSelectedVersion] = useState<string>("v24")
+  const [selectedVersion, setSelectedVersion] = useState<string>("v24.1")
   const [customVersions, setCustomVersions] = useState<string[]>([])
   const [newVersionInput, setNewVersionInput] = useState("")
   const [isFetchingCases, setIsFetchingCases] = useState(false)
@@ -1256,7 +1257,7 @@ export default function EvalPage() {
             <div className="border border-[#d4c5b0] bg-white p-4 sm:p-6 mb-6">
               {/* Version selector — tags every testCase the next batch creates */}
               {(() => {
-                const KNOWN_VERSIONS = ["v1","v2","v3","v4","v5","v6","v7","v8","v9","v10","v11","v12","v13","v14","v15","v16","v17","v18","v19","v20","v21","v21.1","v22","v23","v23.1","v24"] as const
+                const KNOWN_VERSIONS = ["v1","v2","v3","v4","v5","v6","v7","v8","v9","v10","v11","v12","v13","v14","v15","v16","v17","v18","v19","v20","v21","v21.1","v22","v23","v23.1","v24","v24.1"] as const
                 const allVersions = Array.from(new Set([...KNOWN_VERSIONS, ...customVersions]))
                 const trimmedNewVersion = newVersionInput.trim()
                 const addNewVersion = () => {

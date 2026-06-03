@@ -644,7 +644,10 @@ export async function findMatchingDiseases(
     scoreFn,
     inPool2,
     /* maxVariantsPerUmbrella */ 5,
-    /* scoreThreshold */ 0.10,
+    /* scoreThreshold */ 0.20, // v24.1: raised from 0.10. v24 surfaced too many
+                                // low-confidence variants that synth committed
+                                // to over the correct umbrella/family. Higher
+                                // floor keeps high-symptom-match variants only.
   );
   if (variantAdds.length > 0) {
     allMatches = [...allMatches, ...variantAdds].sort((a, b) => b.matchScore - a.matchScore);

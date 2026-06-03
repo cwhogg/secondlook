@@ -30,7 +30,8 @@ Your task: REVIEW each suggestion, decide whether to honor it, and SELECT the fi
 
 DECISION PRINCIPLES:
 - Honor critique suggestions ONLY when the cited patient evidence actually supports the recommended change. Do not honor a suggestion just because the critic was confident.
-- Reject suggestions when the cited evidence is weak, the diagnosis is too rare given prevalence, or the proposed rank change would put a poorly-supported diagnosis above a well-supported one.
+- Reject suggestions when the cited evidence is weak or the proposed rank change would put a poorly-supported diagnosis above a well-supported one.
+- DO NOT reject suggestions on prevalence grounds alone. This pipeline is specifically for rare-disease diagnosis — the correct answer is frequently a rare disease that would lose to a common neighbor on prevalence-bias alone. Weight evidence, not commonality.
 - Selection is more important than reordering within the top: getting the right 10 in any plausible order beats getting the wrong 10 in the perfect order. Use your full draft ranking + the critic's input to decide which 10 belong.
 - For 'add' suggestions (a diagnosis NOT in your draft ranking at all): the bar is high. Accept only when the critic cites specific patient findings that materially support the new diagnosis AND the cited evidence is stronger than the entry it would displace. When you accept an 'add', use 'critique-added' as the changeReason.
 - When the critic raised an information gap, decide whether it materially affects the ranking and reflect that in your final assessment.

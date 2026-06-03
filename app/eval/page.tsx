@@ -253,6 +253,10 @@ export default function EvalPage() {
   const [testCases, setTestCases] = useState<TestCase[]>([])
   const [activeTab, setActiveTab] = useState<EvalTab>("runevals")
   const [activeTestId, setActiveTestId] = useState<string | null>(null)
+  // Which cohort row in the Matched-trio comparison table is selected. Drives
+  // which trios the per-trio details table shows below. null = no selection
+  // yet; auto-populated to the newest cohort when testCases loads.
+  const [selectedComparisonCohort, setSelectedComparisonCohort] = useState<string | null>(null)
   const [count, setCount] = useState(5)
   const [samplingMode, setSamplingMode] = useState<'uniform' | 'diversified'>('uniform')
   // Eval source: random sample from corpus, or one of the stable standard
@@ -1465,8 +1469,12 @@ export default function EvalPage() {
                 )}
               </div>
             )}
-            <ComparisonTable testCases={testCases} />
-            <TrioDetailsTable testCases={testCases} />
+            <ComparisonTable
+              testCases={testCases}
+              selectedCohort={selectedComparisonCohort}
+              onSelect={setSelectedComparisonCohort}
+            />
+            <TrioDetailsTable testCases={testCases} cohortFilter={selectedComparisonCohort} />
           </>
         )}
 
@@ -1657,17 +1665,37 @@ export default function EvalPage() {
   )
 }
 
-function TrioDetailsTable({ testCases }: { testCases: TestCase[] }) {
-  const trios = getMatchedTrios(testCases)
+function TrioDetailsTable({
+  testCases,
+  cohortFilter,
+}: {
+  testCases: TestCase[]
+  cohortFilter: string | null
+}) {
+  const allTrios = getMatchedTrios(testCases)
+  // Mirror ComparisonTable.cohortLabel so the filter key matches that table.
+  const cohortLabel = (t: MatchedTrio): string => {
+    const v = t.secondlook.evalVersion ?? "unknown"
+    const m = t.secondlook.evalSamplingMode
+    if (m === "standard50") return `${v} STD EVAL`
+    if (m === "standard25") return `${v} STD-25 EVAL`
+    if (m === "diversified") return `${v} (diversified)`
+    return v
+  }
+  const trios = cohortFilter
+    ? allTrios.filter((t) => cohortLabel(t) === cohortFilter)
+    : allTrios
   if (trios.length === 0) return null
   return (
     <div className="border border-[#d4c5b0] bg-white mb-6">
       <div className="px-4 py-3 border-b border-[#e8ddd0]">
         <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
-          Per-trio results ({trios.length})
+          Per-trio results ({trios.length}{cohortFilter ? ` — ${cohortFilter}` : ""})
         </div>
         <div className="text-xs text-[#8b7355] mt-1 italic">
-          Grade and 0-100 score from each model on each shared case, newest first.
+          {cohortFilter
+            ? "Showing trios from the selected cohort. Click another row above to switch."
+            : "Grade and 0-100 score from each model on each shared case, newest first."}
         </div>
       </div>
       <div className="overflow-x-auto">
@@ -1752,7 +1780,15 @@ function TrioStatusChip({ label, status }: { label: string; status: "pending" | 
   )
 }
 
-function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
+function ComparisonTable({
+  testCases,
+  selectedCohort,
+  onSelect,
+}: {
+  testCases: TestCase[]
+  selectedCohort: string | null
+  onSelect: (cohort: string | null) => void
+}) {
   const trios = getMatchedTrios(testCases)
   const totalN = trios.length
 
@@ -1798,6 +1834,15 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
     if (pb.ver !== pa.ver) return pb.ver - pa.ver
     return pa.subOrder - pb.subOrder
   })
+
+  // Auto-select newest cohort once trios are loaded and nothing is selected.
+  // If the previously-selected cohort is no longer in the list (e.g., its
+  // cases got deleted), fall back to the newest cohort too.
+  useEffect(() => {
+    if (versions.length === 0) return
+    if (selectedCohort && versions.includes(selectedCohort)) return
+    onSelect(versions[0])
+  }, [versions, selectedCohort, onSelect])
 
   return (
     <div className="border border-[#d4c5b0] bg-white mb-6">
@@ -1846,11 +1891,17 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
                   openai: subTrios.map((t) => t.openai),
                   claude: subTrios.map((t) => t.claude),
                 }
+                const isSelected = selectedCohort === v
                 return (
                   <Fragment key={v}>
-                    <tr className="bg-[#fbf6ec] border-b border-[#e8ddd0]">
+                    <tr
+                      onClick={() => onSelect(v)}
+                      className={`border-b border-[#e8ddd0] cursor-pointer transition-colors ${
+                        isSelected ? "bg-[#f3eef7]" : "bg-[#fbf6ec] hover:bg-[#f5e9d3]"
+                      }`}
+                    >
                       <td colSpan={12} className="py-1.5 px-4 sm:px-5 text-[11px] uppercase tracking-wider text-[#8b7355] font-semibold">
-                        Eval {v} — {subN} case{subN === 1 ? "" : "s"}
+                        {isSelected ? "▼ " : "▶ "}Eval {v} — {subN} case{subN === 1 ? "" : "s"}
                       </td>
                     </tr>
                     {MODEL_TABS.map((mode) => {
@@ -1858,7 +1909,13 @@ function ComparisonTable({ testCases }: { testCases: TestCase[] }) {
                       const v3 = computeV3Stats(cohort[mode])
                       const v3Pct = (num: number) => v3 ? `${Math.round((num / v3.n) * 100)}%` : "—"
                       return (
-                        <tr key={`${v}-${mode}`} className="border-b border-[#e8ddd0] last:border-b-0">
+                        <tr
+                          key={`${v}-${mode}`}
+                          onClick={() => onSelect(v)}
+                          className={`border-b border-[#e8ddd0] last:border-b-0 cursor-pointer transition-colors ${
+                            isSelected ? "bg-[#faf6ff]" : "hover:bg-[#faf7f3]"
+                          }`}
+                        >
                           <td className="py-2.5 px-4 sm:px-5 text-[#2a2a2a] font-medium">{MODEL_DISPLAY[mode]} {v}</td>
                           <td className="py-2.5 px-4 sm:px-5 text-right text-[#5a5a5a] tabular-nums">{stats?.gradedTests ?? 0}</td>
                           <td className="py-2.5 px-4 sm:px-5 text-right font-medium text-[#2a2a2a] tabular-nums">

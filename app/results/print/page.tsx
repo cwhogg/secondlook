@@ -9,6 +9,7 @@ import {
   normalizeCategory,
   type TestCategory,
 } from "@/lib/results/where-to-get-it"
+import { startNewAnalysis } from "@/lib/results/start-new-analysis"
 
 interface EvidenceItem {
   finding: string
@@ -144,7 +145,7 @@ export default function PrintReportPage() {
             Run an analysis first, then return here to download a report.
           </p>
           <button
-            onClick={() => router.push("/step-1")}
+            onClick={() => startNewAnalysis(router)}
             className="px-4 py-2 bg-[#8b2500] text-white"
           >
             Start a new analysis

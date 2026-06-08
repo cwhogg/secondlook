@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, Download, Brain, Activity, AlertTriangle } from "lucide-react"
+import { startNewAnalysis } from "@/lib/results/start-new-analysis"
 
 interface FamilyEnrichmentData {
   familyName: string
@@ -146,7 +147,7 @@ export default function AnalysisResultsPage() {
             We couldn't find your analysis results. Please complete the assessment first.
           </p>
           <button
-            onClick={() => router.push("/step-1")}
+            onClick={() => startNewAnalysis(router)}
             className="px-4 sm:px-6 py-2 sm:py-3 bg-[#8b2500] hover:bg-[#6d1d00] text-white rounded-none font-semibold transition-all text-sm sm:text-base"
           >
             Start Assessment

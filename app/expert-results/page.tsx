@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { ExpertAnalysisResults } from "@/components/expert-analysis-results"
+import { startNewAnalysis } from "@/lib/results/start-new-analysis"
 
 export default function ExpertResultsPage() {
   const router = useRouter()
@@ -71,7 +72,7 @@ export default function ExpertResultsPage() {
       <div className="min-h-screen bg-[#f5f0eb] flex items-center justify-center">
         <div className="text-center">
           <div className="text-red-600 mb-4">No analysis results found</div>
-          <button onClick={() => router.push("/step-1")} className="text-[#8b2500] hover:text-[#6d1d00]">
+          <button onClick={() => startNewAnalysis(router)} className="text-[#8b2500] hover:text-[#6d1d00]">
             Start new analysis
           </button>
         </div>

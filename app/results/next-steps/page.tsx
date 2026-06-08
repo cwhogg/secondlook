@@ -27,6 +27,7 @@ import {
   normalizeCategory,
   type TestCategory,
 } from "@/lib/results/where-to-get-it"
+import { startNewAnalysis } from "@/lib/results/start-new-analysis"
 
 interface RecommendedTest {
   testType: string
@@ -100,7 +101,7 @@ export default function NextStepsPage() {
       <div className="min-h-screen bg-[#f5f0eb] flex items-center justify-center">
         <div className="text-center">
           <div className="text-red-600 mb-6 text-lg">No analysis results found</div>
-          <MedicalButton onClick={() => router.push("/step-1")} className="flex items-center space-x-2">
+          <MedicalButton onClick={() => startNewAnalysis(router)} className="flex items-center space-x-2">
             <Home className="h-5 w-5" />
             <span>Start New Analysis</span>
           </MedicalButton>
@@ -361,7 +362,7 @@ export default function NextStepsPage() {
           </button>
 
           <button
-            onClick={() => router.push("/step-1")}
+            onClick={() => startNewAnalysis(router)}
             className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-[#8b2500] text-white hover:bg-[#6d1d00] transition-all duration-200 font-medium text-sm sm:text-base"
           >
             <span className="hidden sm:inline">Start new analysis</span>

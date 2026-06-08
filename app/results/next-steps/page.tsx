@@ -17,8 +17,16 @@ import {
   MapPin,
   Info,
   CheckCircle,
+  Download,
 } from "lucide-react"
 import { MedicalButton } from "@/components/medical-button"
+import {
+  CATEGORY_LABELS,
+  CATEGORY_ORDER,
+  getWhereToGetIt,
+  normalizeCategory,
+  type TestCategory,
+} from "@/lib/results/where-to-get-it"
 
 interface RecommendedTest {
   testType: string
@@ -38,105 +46,12 @@ interface StoredAnalysis {
   }
 }
 
-type Category = "laboratory" | "genetic_testing" | "imaging" | "specialist_evaluate" | "other"
-
-const CATEGORY_META: Record<Category, { label: string; Icon: typeof TestTubes; short: string }> = {
-  laboratory: { label: "Lab test", Icon: TestTubes, short: "blood / urine / tissue work" },
-  genetic_testing: { label: "Genetic test", Icon: Dna, short: "DNA panel or exome sequencing" },
-  imaging: { label: "Imaging", Icon: ScanLine, short: "MRI / CT / ultrasound / X-ray" },
-  specialist_evaluate: { label: "Specialist visit", Icon: Stethoscope, short: "in-person or telehealth" },
-  other: { label: "Other", Icon: Info, short: "" },
-}
-
-const CATEGORY_ORDER: Category[] = ["laboratory", "genetic_testing", "imaging", "specialist_evaluate", "other"]
-
-function normalizeCategory(testType: string): Category {
-  const t = (testType || "").toLowerCase()
-  if (t === "specialist_evaluation" || t === "specialist_evaluate") return "specialist_evaluate"
-  if (t === "laboratory" || t === "lab") return "laboratory"
-  if (t === "genetic_testing" || t === "genetics") return "genetic_testing"
-  if (t === "imaging") return "imaging"
-  return "other"
-}
-
-interface WhereInfo {
-  blurb: string
-  inPersonExamples: string[]
-  online: { available: boolean; note?: string }
-  costRange?: string
-}
-
-function getWhereToGetIt(category: Category, testName: string): WhereInfo {
-  switch (category) {
-    case "laboratory":
-      return {
-        blurb:
-          "A standard outpatient blood (or urine) draw. Most insurance plans cover routine panels; cash-pay prices are usually $30–$200 per panel.",
-        inPersonExamples: ["Quest Diagnostics", "LabCorp", "Your hospital outpatient lab"],
-        online: {
-          available: true,
-          note:
-            "Common panels (CBC, metabolic, thyroid, ANA, inflammatory markers) can be ordered without a doctor through Quest Direct, LabCorp OnDemand, or Empower DX — you pick the test online, get a requisition, and walk into a draw site.",
-        },
-        costRange: "$30–$200 typical",
-      }
-    case "genetic_testing":
-      return {
-        blurb:
-          "Most rare-disease panels need a doctor or genetic counselor to order. Sample is usually saliva or a single blood draw. Results take 2–6 weeks.",
-        inPersonExamples: ["Invitae", "GeneDx", "Variantyx", "Blueprint Genetics"],
-        online: {
-          available: true,
-          note:
-            "Several clinical genetics labs (Invitae, GeneDx) offer a sponsored-physician pathway: you submit symptoms online, their network physician signs the order, and a kit ships to your home. Many of these programs are no-cost when you have qualifying symptoms.",
-        },
-        costRange: "$0 (sponsored) – $3,000",
-      }
-    case "imaging":
-      return {
-        blurb:
-          "Requires a doctor's order. Independent imaging centers are typically 30–70% cheaper than hospital imaging for the same scan.",
-        inPersonExamples: ["RadNet", "SimonMed", "Touchstone Imaging", "Hospital radiology"],
-        online: {
-          available: false,
-        },
-        costRange: "$100–$3,000 depending on scan and facility",
-      }
-    case "specialist_evaluate": {
-      const lower = testName.toLowerCase()
-      let telehealth = "Telehealth specialty visits are available for many fields and most accept insurance."
-      if (lower.includes("cardio") || lower.includes("heart")) {
-        telehealth = "Heartbeat Health and Sesame offer cardiology telehealth visits, including ECG/Holter interpretation."
-      } else if (lower.includes("neuro")) {
-        telehealth = "Synapticure (rare neuro / ALS) and Cerebral Neurology offer remote neurology consults."
-      } else if (lower.includes("psych")) {
-        telehealth = "Talkiatry, Cerebral, and Brightside offer telehealth psychiatry across most states."
-      } else if (lower.includes("gastro")) {
-        telehealth = "Oshi Health and Sesame have GI telehealth programs."
-      } else if (lower.includes("genet")) {
-        telehealth = "Genome Medical and GeneDx Genetic Counseling offer telehealth genetic-counseling visits."
-      } else if (lower.includes("derm")) {
-        telehealth = "Dermatology telehealth is widely available via Apostrophe, Curology, and most major insurers."
-      } else if (lower.includes("endo")) {
-        telehealth = "Paloma Health (thyroid) and Steady Health offer endocrinology telehealth."
-      }
-      return {
-        blurb:
-          "Most specialists need a referral from your primary care doctor. Many telehealth specialty services let you book directly without a referral.",
-        inPersonExamples: ["Hospital-affiliated specialty clinics", "Academic medical centers (often best for rare disease)"],
-        online: {
-          available: true,
-          note: telehealth,
-        },
-      }
-    }
-    default:
-      return {
-        blurb: "Ask your primary care doctor for a referral or order. Academic medical centers are best for unusual or complex workups.",
-        inPersonExamples: [],
-        online: { available: false },
-      }
-  }
+const CATEGORY_ICON: Record<TestCategory, typeof TestTubes> = {
+  laboratory: TestTubes,
+  genetic_testing: Dna,
+  imaging: ScanLine,
+  specialist_evaluate: Stethoscope,
+  other: Info,
 }
 
 function getUrgencyBadge(urgency?: string) {
@@ -201,7 +116,7 @@ export default function NextStepsPage() {
   const redFlags = results.nextSteps?.redFlags ?? []
 
   // Group tests by normalized category, preserve relative order within group
-  const grouped: Record<Category, RecommendedTest[]> = {
+  const grouped: Record<TestCategory, RecommendedTest[]> = {
     laboratory: [],
     genetic_testing: [],
     imaging: [],
@@ -222,10 +137,17 @@ export default function NextStepsPage() {
       <div className="max-w-4xl mx-auto px-4 py-6 sm:py-10 pb-28 sm:pb-32 space-y-6 sm:space-y-8">
         {/* Header */}
         <div className="bg-[#8b2500] text-white p-5 sm:p-8">
-          <div className="mb-2">
+          <div className="mb-2 flex items-center justify-between gap-3">
             <Link href="/" className="text-white/80 hover:text-white text-sm font-medium">
               SecondLook
             </Link>
+            <button
+              onClick={() => window.open("/results/print", "_blank", "noopener,noreferrer")}
+              className="flex items-center gap-2 px-3 py-1.5 bg-white/15 hover:bg-white/25 text-white text-xs sm:text-sm font-medium transition-colors"
+            >
+              <Download className="h-4 w-4" />
+              <span>Download PDF</span>
+            </button>
           </div>
           <h1 className="text-2xl sm:text-4xl font-bold mb-2">Your Recommended Next Steps</h1>
           <p className="text-[#f0d9c3] text-sm sm:text-lg">
@@ -257,10 +179,10 @@ export default function NextStepsPage() {
             <div className="space-y-5">
               {CATEGORY_ORDER.flatMap((category) =>
                 grouped[category].map((test, idx) => {
-                  const meta = CATEGORY_META[category]
                   const where = getWhereToGetIt(category, test.testName)
                   const urgencyBadge = getUrgencyBadge(test.urgency)
-                  const Icon = meta.Icon
+                  const Icon = CATEGORY_ICON[category]
+                  const categoryLabel = CATEGORY_LABELS[category]
 
                   return (
                     <article
@@ -275,7 +197,7 @@ export default function NextStepsPage() {
                         <div className="flex-1 min-w-0">
                           <div className="flex flex-wrap items-center gap-2 mb-1">
                             <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
-                              {meta.label}
+                              {categoryLabel}
                             </span>
                             <span className={`text-xs font-medium px-2 py-0.5 border ${urgencyBadge.className}`}>
                               {urgencyBadge.label}

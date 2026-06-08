@@ -136,19 +136,11 @@ export default function AnalysisResultsPage() {
   }
 
   const handlePrint = () => {
-    window.print()
+    window.open("/results/print", "_blank", "noopener,noreferrer")
   }
 
   const handleDownload = () => {
-    const originalTitle = document.title
-    const date = new Date().toISOString().split("T")[0]
-    document.title = `secondlook-analysis-${date}`
-    const restore = () => {
-      document.title = originalTitle
-      window.removeEventListener("afterprint", restore)
-    }
-    window.addEventListener("afterprint", restore)
-    window.print()
+    window.open("/results/print", "_blank", "noopener,noreferrer")
   }
 
   if (isLoading) {

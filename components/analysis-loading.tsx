@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Brain, CheckCircle2, Loader2, Stethoscope, FlaskConical, Scale, FileText, Activity, Search } from "lucide-react"
 import { BreadcrumbNav } from "./breadcrumb-nav"
 import type { PipelineProgress } from "@/lib/types/pipeline"
@@ -59,6 +59,19 @@ function getStageStatus(
   let latestActiveStage: string | null = null
 
   for (const event of events) {
+    // Heartbeats + per-specialist progress events shouldn't set
+    // latestActiveStage to their own raw stage name (which isn't a
+    // member of ORDERED_STAGES). Map them back to the real stage via
+    // stageNumber so the spinner stays on the right row.
+    if (
+      event.stage === "heartbeat" ||
+      event.stage === "specialist-done" ||
+      event.stage === "specialist-failed"
+    ) {
+      const mapped = ORDERED_STAGES[event.stageNumber]
+      if (mapped) latestActiveStage = mapped
+      continue
+    }
     const key = event.stage.replace("-complete", "")
     if (event.stage.endsWith("-complete") || event.stage === "complete") {
       completeStages.add(key)
@@ -81,6 +94,51 @@ function getStageStatus(
   if (stageIndex < latestIndex) return "complete"
 
   return "pending"
+}
+
+// Track per-specialist completion progress so we can render a running tally
+// on the specialists stage row.
+function getSpecialistTally(events: PipelineProgress[]): {
+  done: number
+  failed: number
+  total: number
+  lastDetail: string | null
+} {
+  let done = 0
+  let failed = 0
+  let total = 0
+  let lastDetail: string | null = null
+  for (const event of events) {
+    if (event.stage === "specialists") {
+      const specialties = (event as any).data?.specialties
+      if (Array.isArray(specialties)) total = specialties.length
+    } else if (event.stage === "specialist-done") {
+      done += 1
+      lastDetail = event.detail
+    } else if (event.stage === "specialist-failed") {
+      failed += 1
+      lastDetail = event.detail
+    }
+  }
+  return { done, failed, total, lastDetail }
+}
+
+function formatElapsed(ms: number): string {
+  const totalSec = Math.max(0, Math.floor(ms / 1000))
+  const m = Math.floor(totalSec / 60)
+  const s = totalSec % 60
+  return `${m}:${s.toString().padStart(2, "0")}`
+}
+
+// Stage-specific reassurance shown when the active stage has been running
+// for more than ~15s — manages expectations on the slow stages.
+const STAGE_DURATION_HINT: Record<string, string> = {
+  extraction: "Typically a few seconds.",
+  triage: "Typically 5–15 seconds.",
+  specialists: "Typically 1–3 minutes — five specialists reasoning in parallel.",
+  evidence: "Typically 30–60 seconds.",
+  synthesis: "Typically 30–90 seconds.",
+  report: "Typically 10–20 seconds.",
 }
 
 function getStageData(stageKey: string, events: PipelineProgress[]) {
@@ -292,6 +350,8 @@ function TimelineStage({
   event,
   isLast,
   preTriageSymptoms,
+  elapsedMs,
+  specialistTally,
 }: {
   stageKey: string
   status: "pending" | "active" | "complete"
@@ -303,6 +363,8 @@ function TimelineStage({
     code: string | null
     codeSystem: 'SNOMED' | 'UMLS CUI' | null
   }>
+  elapsedMs?: number
+  specialistTally?: { done: number; failed: number; total: number; lastDetail: string | null }
 }) {
   const config = STAGE_CONFIG[stageKey]
   if (!config) return null
@@ -396,26 +458,41 @@ function TimelineStage({
 
       {/* Stage content */}
       <div className={`flex-1 min-w-0 ${isLast ? "pb-0" : "pb-5 sm:pb-6"}`}>
-        <h3
-          className={`text-[13px] sm:text-sm font-semibold leading-7 sm:leading-8 ${
-            status === "complete"
-              ? "text-green-700"
-              : status === "active"
-                ? "text-[#8b2500]"
-                : "text-gray-400"
-          }`}
-        >
-          {config.label}
-        </h3>
+        <div className="flex items-baseline justify-between gap-2">
+          <h3
+            className={`text-[13px] sm:text-sm font-semibold leading-7 sm:leading-8 ${
+              status === "complete"
+                ? "text-green-700"
+                : status === "active"
+                  ? "text-[#8b2500]"
+                  : "text-gray-400"
+            }`}
+          >
+            {config.label}
+          </h3>
+          {status === "active" && typeof elapsedMs === "number" && (
+            <span className="text-[11px] sm:text-xs font-medium text-[#8b2500] tabular-nums">
+              {formatElapsed(elapsedMs)}
+            </span>
+          )}
+        </div>
         <p
           className={`text-[11px] sm:text-xs leading-relaxed ${
             status === "pending" ? "text-gray-300" : "text-gray-500"
           }`}
         >
           {status === "active" || status === "complete"
-            ? event?.detail || config.description
+            ? (specialistTally && stageKey === "specialists" && status === "active" && specialistTally.total > 0
+                ? `${specialistTally.done + specialistTally.failed} of ${specialistTally.total} specialists complete${specialistTally.failed > 0 ? ` (${specialistTally.failed} failed)` : ""}${specialistTally.lastDetail ? ` — ${specialistTally.lastDetail}` : ""}`
+                : event?.detail || config.description)
             : config.description}
         </p>
+
+        {status === "active" && elapsedMs !== undefined && elapsedMs > 15_000 && STAGE_DURATION_HINT[stageKey] && (
+          <p className="text-[10px] sm:text-[11px] text-gray-400 mt-1 italic">
+            {STAGE_DURATION_HINT[stageKey]}
+          </p>
+        )}
 
         {status !== "pending" && renderStageData()}
       </div>
@@ -428,9 +505,39 @@ function TimelineStage({
 export function AnalysisLoading({ progress, pipelineEvents, preTriageSymptoms }: AnalysisLoadingProps) {
   const timelineEndRef = useRef<HTMLDivElement>(null)
 
+  // Track which stage is currently active so we can show a live mm:ss timer
+  // that proves the page isn't frozen even when no new SSE events arrive.
+  const [activeStageStartedAt, setActiveStageStartedAt] = useState<number | null>(null)
+  const [activeStageKey, setActiveStageKey] = useState<string | null>(null)
+  const [tickNow, setTickNow] = useState<number>(() => Date.now())
+
+  // Re-evaluate the active stage on every event update.
+  useEffect(() => {
+    let liveStage: string | null = null
+    for (const stageKey of ORDERED_STAGES) {
+      const status = getStageStatus(stageKey, pipelineEvents)
+      if (status === "active") liveStage = stageKey
+    }
+    if (liveStage !== activeStageKey) {
+      setActiveStageKey(liveStage)
+      setActiveStageStartedAt(liveStage ? Date.now() : null)
+    }
+  }, [pipelineEvents, activeStageKey])
+
+  // Tick the timer once per second while a stage is active.
+  useEffect(() => {
+    if (!activeStageKey || activeStageStartedAt == null) return
+    const t = setInterval(() => setTickNow(Date.now()), 1000)
+    return () => clearInterval(t)
+  }, [activeStageKey, activeStageStartedAt])
+
   useEffect(() => {
     timelineEndRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" })
   }, [pipelineEvents])
+
+  const elapsedMs =
+    activeStageStartedAt != null ? Math.max(0, tickNow - activeStageStartedAt) : 0
+  const specialistTally = getSpecialistTally(pipelineEvents)
 
   return (
     <div className="min-h-screen bg-[#f5f0eb]">
@@ -487,6 +594,8 @@ export function AnalysisLoading({ progress, pipelineEvents, preTriageSymptoms }:
                 event={event}
                 isLast={index === ORDERED_STAGES.length - 1}
                 preTriageSymptoms={stageKey === "extraction" ? preTriageSymptoms : undefined}
+                elapsedMs={status === "active" ? elapsedMs : undefined}
+                specialistTally={stageKey === "specialists" ? specialistTally : undefined}
               />
             )
           })}

@@ -75,17 +75,6 @@ interface StoredMeta {
   patientHypothesis?: string
 }
 
-interface Step2Data {
-  primaryConcern?: string
-  patientHypothesis?: string
-  noIdea?: boolean
-}
-
-interface ExtractedSymptom {
-  medicalTerm?: string
-  originalPhrase?: string
-}
-
 function fmtScore(n?: number): string {
   if (typeof n !== "number" || Number.isNaN(n)) return "—"
   return `${Math.round(n)}%`
@@ -100,29 +89,14 @@ export default function PrintReportPage() {
   const router = useRouter()
   const [analysis, setAnalysis] = useState<StoredAnalysis | null>(null)
   const [meta, setMeta] = useState<StoredMeta | null>(null)
-  const [step2, setStep2] = useState<Step2Data | null>(null)
-  const [symptoms, setSymptoms] = useState<string[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     try {
       const a = sessionStorage.getItem("analysisResults")
       const m = sessionStorage.getItem("analysisMetadata")
-      const s2 = localStorage.getItem("step2Data")
-      const sym = localStorage.getItem("symptomExtractionResults")
       if (a) setAnalysis(JSON.parse(a))
       if (m) setMeta(JSON.parse(m))
-      if (s2) setStep2(JSON.parse(s2))
-      if (sym) {
-        const parsed: ExtractedSymptom[] = JSON.parse(sym)
-        if (Array.isArray(parsed)) {
-          setSymptoms(
-            parsed
-              .map((p) => p.medicalTerm || p.originalPhrase || "")
-              .filter((s) => s.trim().length > 0),
-          )
-        }
-      }
     } catch (err) {
       console.error("Print report: failed to read storage", err)
     }
@@ -281,39 +255,6 @@ export default function PrintReportPage() {
             </div>
           </div>
         </header>
-
-        {/* Patient summary */}
-        <section className="avoid-break mb-6">
-          <h2 className="text-base font-bold text-[#8b2500] uppercase tracking-wide mb-2 border-b border-gray-300 pb-1">
-            Patient summary
-          </h2>
-          <div className="text-sm leading-relaxed space-y-2">
-            {step2?.primaryConcern && (
-              <div>
-                <span className="font-semibold">Chief complaint: </span>
-                {step2.primaryConcern}
-              </div>
-            )}
-            {!step2?.noIdea && (step2?.patientHypothesis || meta?.patientHypothesis) && (
-              <div>
-                <span className="font-semibold">Patient's own hypothesis: </span>
-                {step2?.patientHypothesis || meta?.patientHypothesis}
-              </div>
-            )}
-            {symptoms.length > 0 && (
-              <div>
-                <span className="font-semibold">Reported symptoms: </span>
-                {symptoms.join("; ")}
-              </div>
-            )}
-            {analysis.patientHypothesisAnalysis?.reasoning && (
-              <div className="mt-2 p-3 bg-[#faf6f0] border-l-2 border-[#8b2500]">
-                <span className="font-semibold">On the patient's hypothesis: </span>
-                {analysis.patientHypothesisAnalysis.reasoning}
-              </div>
-            )}
-          </div>
-        </section>
 
         {/* Clinical summary */}
         {analysis.overallAssessment && (

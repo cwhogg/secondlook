@@ -137,31 +137,63 @@ export class DiagnosticPipeline {
       const specialistResults: SpecialistV17Output[] = [];
       const failedSpecialists: Array<{ specialty: string; error: string }> = [];
 
-      // Heartbeat for SSE during the o3:high parallel reasoning.
+      // Heartbeat every 10s during the o3:high parallel reasoning. Keeps the
+      // SSE stream non-idle AND gives the UI a regular live update so the
+      // user can see that work is in flight.
       const specHeartbeat = setInterval(() => {
         const ms = Date.now() - specialistStart;
+        const remaining = selectedSpecialties.length - specialistResults.length - failedSpecialists.length;
         onProgress?.({
           stage: 'heartbeat',
           stageNumber: 2,
           totalStages: 6,
-          detail: `5 specialists still reasoning... ${Math.round(ms / 1000)}s`,
+          detail: remaining > 0
+            ? `${remaining} of ${selectedSpecialties.length} specialists still reasoning... ${Math.round(ms / 1000)}s`
+            : `All specialists finished... ${Math.round(ms / 1000)}s`,
           percentage: 35,
           data: { stage: 'specialists', elapsedMs: ms },
         });
-      }, 30_000);
+      }, 10_000);
 
       try {
         const specialistPromises = selectedSpecialties.map(async (specialty) => {
+          const agentStart = Date.now();
           const agent = getSpecialistV17Agent(specialty);
           // General-internist gets NO KB candidates (counterweight, matches CLAUDE.md convention).
           const candidates = specialty === 'general-internist'
             ? []
             : rerankCandidatesForSpecialty(triageResult.candidateDiseases, specialty);
           try {
-            return await agent.execute({ patientCase, candidateDiseases: candidates });
+            const result = await agent.execute({ patientCase, candidateDiseases: candidates });
+            onProgress?.({
+              stage: 'specialist-done',
+              stageNumber: 2,
+              totalStages: 6,
+              percentage: 35,
+              detail: `${specialty} returned ${result.hypotheses.length} hypotheses (${Math.round((Date.now() - agentStart) / 1000)}s)`,
+              data: {
+                specialty,
+                durationMs: Date.now() - agentStart,
+                hypothesisCount: result.hypotheses.length,
+              },
+            });
+            return result;
           } catch (err: any) {
             failedSpecialists.push({ specialty, error: err?.message || 'unknown' });
             log("orch.stage.specialist.fail", { specialty, msg: (err?.message || '').slice(0, 200) });
+            onProgress?.({
+              stage: 'specialist-failed',
+              stageNumber: 2,
+              totalStages: 6,
+              percentage: 35,
+              detail: `${specialty} failed (${Math.round((Date.now() - agentStart) / 1000)}s)`,
+              data: {
+                specialty,
+                durationMs: Date.now() - agentStart,
+                kind: 'error',
+                error: (err?.message || 'unknown').slice(0, 200),
+              },
+            });
             return null;
           }
         });
@@ -303,7 +335,7 @@ export class DiagnosticPipeline {
           percentage: 60,
           data: { stage: 'evaluation', elapsedMs: ms },
         });
-      }, 30_000);
+      }, 10_000);
 
       const evaluatorPool: AgentOutput = {
         agentName: 'dedup-pool',
@@ -375,7 +407,7 @@ export class DiagnosticPipeline {
           percentage: 75,
           data: { stage: 'synthesis', elapsedMs: ms },
         });
-      }, 30_000);
+      }, 10_000);
 
       // ClaudeSynthAgent expects { specialistResults, evaluationResult } shape.
       // Wrap the v17 specialistResults into the legacy AgentOutput[] shape it

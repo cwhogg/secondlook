@@ -137,17 +137,10 @@ export default function NextStepsPage() {
       <div className="max-w-4xl mx-auto px-4 py-6 sm:py-10 pb-28 sm:pb-32 space-y-6 sm:space-y-8">
         {/* Header */}
         <div className="bg-[#8b2500] text-white p-5 sm:p-8">
-          <div className="mb-2 flex items-center justify-between gap-3">
+          <div className="mb-2">
             <Link href="/" className="text-white/80 hover:text-white text-sm font-medium">
               SecondLook
             </Link>
-            <button
-              onClick={() => window.open("/results/print", "_blank", "noopener,noreferrer")}
-              className="flex items-center gap-2 px-3 py-1.5 bg-white/15 hover:bg-white/25 text-white text-xs sm:text-sm font-medium transition-colors"
-            >
-              <Download className="h-4 w-4" />
-              <span>Download PDF</span>
-            </button>
           </div>
           <h1 className="text-2xl sm:text-4xl font-bold mb-2">Your Recommended Next Steps</h1>
           <p className="text-[#f0d9c3] text-sm sm:text-lg">
@@ -356,6 +349,15 @@ export default function NextStepsPage() {
             <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
             <span className="hidden sm:inline">Back to analysis</span>
             <span className="sm:hidden">Back</span>
+          </button>
+
+          <button
+            onClick={() => router.push("/results/print")}
+            title="Download PDF report"
+            aria-label="Download PDF report"
+            className="flex items-center justify-center p-2 sm:p-3 border-2 border-gray-300 text-gray-700 hover:border-[#8b2500] hover:text-[#8b2500] transition-all duration-200"
+          >
+            <Download className="h-5 w-5" />
           </button>
 
           <button

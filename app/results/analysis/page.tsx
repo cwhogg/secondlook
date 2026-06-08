@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { ArrowLeft, ArrowRight, Share2, Printer, Download, Brain, Activity, AlertTriangle } from "lucide-react"
+import { ArrowLeft, ArrowRight, Download, Brain, Activity, AlertTriangle } from "lucide-react"
 
 interface FamilyEnrichmentData {
   familyName: string
@@ -121,26 +121,8 @@ export default function AnalysisResultsPage() {
     setIsLoading(false)
   }, [])
 
-  const handleShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: "SecondLook Medical Analysis",
-          text: "View my medical analysis results",
-          url: window.location.href,
-        })
-      } catch (err) {
-        console.log("Share cancelled")
-      }
-    }
-  }
-
-  const handlePrint = () => {
-    window.open("/results/print", "_blank", "noopener,noreferrer")
-  }
-
   const handleDownload = () => {
-    window.open("/results/print", "_blank", "noopener,noreferrer")
+    router.push("/results/print")
   }
 
   if (isLoading) {
@@ -218,30 +200,6 @@ export default function AnalysisResultsPage() {
             </div>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-wrap gap-2 sm:gap-3">
-            <button
-              onClick={handleShare}
-              className="flex items-center space-x-2 px-3 sm:px-4 md:px-6 py-2 sm:py-3 bg-white/20 backdrop-blur-sm rounded-none hover:bg-white/30 transition-all text-sm sm:text-base"
-            >
-              <Share2 className="h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="hidden sm:inline">Share</span>
-            </button>
-            <button
-              onClick={handlePrint}
-              className="flex items-center space-x-2 px-3 sm:px-4 md:px-6 py-2 sm:py-3 bg-white/20 backdrop-blur-sm rounded-none hover:bg-white/30 transition-all text-sm sm:text-base"
-            >
-              <Printer className="h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="hidden sm:inline">Print</span>
-            </button>
-            <button
-              onClick={handleDownload}
-              className="flex items-center space-x-2 px-3 sm:px-4 md:px-6 py-2 sm:py-3 bg-white/20 backdrop-blur-sm rounded-none hover:bg-white/30 transition-all text-sm sm:text-base"
-            >
-              <Download className="h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="hidden sm:inline">Download</span>
-            </button>
-          </div>
         </div>
       </div>
 
@@ -411,6 +369,15 @@ export default function AnalysisResultsPage() {
             >
               <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
               <span>Back</span>
+            </button>
+
+            <button
+              onClick={handleDownload}
+              title="Download PDF report"
+              aria-label="Download PDF report"
+              className="flex items-center justify-center p-3 rounded-none border-2 border-gray-300 text-gray-700 hover:border-[#8b2500] hover:text-[#8b2500] transition-all"
+            >
+              <Download className="h-5 w-5" />
             </button>
 
             <button

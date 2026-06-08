@@ -217,6 +217,19 @@ export function dedupAndNormalizeHypotheses(
     const cardinalMerged = mergeStringList(g.members.map((m) => m.cardinalFeatures || []));
     const ruleOutMerged = mergeStringList(g.members.map((m) => m.ruleOutFeatures || []));
 
+    // Union of clarifying-question candidates across all specialists that proposed
+    // this diagnosis, deduped by normalized question text.
+    const seenQuestionKeys = new Set<string>();
+    const clarifyingQuestionCandidates: NonNullable<DiagnosisHypothesis['clarifyingQuestionCandidates']> = [];
+    for (const m of g.members) {
+      for (const q of m.clarifyingQuestionCandidates || []) {
+        const key = (q.question || '').trim().toLowerCase().replace(/\s+/g, ' ');
+        if (!key || seenQuestionKeys.has(key)) continue;
+        seenQuestionKeys.add(key);
+        clarifyingQuestionCandidates.push(q);
+      }
+    }
+
     // domainConfidenceMap — every contributing specialist's confidence preserved.
     const domainConfidenceMap: Record<string, number> = {};
     for (const m of g.members) {
@@ -264,6 +277,7 @@ export function dedupAndNormalizeHypotheses(
       diagnosticTests: testsMerged.length ? testsMerged : undefined,
       cardinalFeatures: cardinalMerged.length ? cardinalMerged : undefined,
       ruleOutFeatures: ruleOutMerged.length ? ruleOutMerged : undefined,
+      clarifyingQuestionCandidates: clarifyingQuestionCandidates.length ? clarifyingQuestionCandidates : undefined,
       domainConfidenceMap: Object.keys(domainConfidenceMap).length ? domainConfidenceMap : undefined,
       nameVariants: variants.length > 1 ? Array.from(new Set(variants)) : undefined,
       clinicalReasoning: reasoningMerged || rep.clinicalReasoning,

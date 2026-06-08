@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { ArrowLeft, ArrowRight, Download, Brain, Activity, AlertTriangle } from "lucide-react"
+import { ArrowLeft, ArrowRight, Download, Brain, Activity, AlertTriangle, Sparkles } from "lucide-react"
 import { startNewAnalysis } from "@/lib/results/start-new-analysis"
 
 interface FamilyEnrichmentData {
@@ -53,6 +53,7 @@ export default function AnalysisResultsPage() {
   const router = useRouter()
   const [analysisData, setAnalysisData] = useState<AnalysisData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [hasClarifyingQuestions, setHasClarifyingQuestions] = useState(false)
 
   useEffect(() => {
     // Results are stored in sessionStorage by the ExpertAnalysisResults component
@@ -60,6 +61,10 @@ export default function AnalysisResultsPage() {
     if (data) {
       try {
         const raw = JSON.parse(data)
+
+        setHasClarifyingQuestions(
+          Array.isArray(raw.clarifyingQuestions) && raw.clarifyingQuestions.length > 0
+        )
 
         // Transform API response format into the shape this page expects
         if (raw.differentialDiagnoses && !raw.conditions) {
@@ -380,6 +385,18 @@ export default function AnalysisResultsPage() {
             >
               <Download className="h-5 w-5" />
             </button>
+
+            {hasClarifyingQuestions && (
+              <button
+                onClick={() => router.push("/results/refine")}
+                title="Refine results by answering 1-5 follow-up questions"
+                aria-label="Refine results"
+                className="flex items-center justify-center gap-2 px-3 sm:px-4 py-3 rounded-none border-2 border-[#8b2500] text-[#8b2500] hover:bg-[#faf6f0] transition-all text-sm sm:text-base font-semibold"
+              >
+                <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
+                <span className="hidden sm:inline">Refine</span>
+              </button>
+            )}
 
             <button
               onClick={() => router.push("/results/next-steps")}

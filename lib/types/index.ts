@@ -207,6 +207,50 @@ export interface DiagnosisHypothesis {
     rankAfter: number | null;
     changeReason?: 'critique-promoted' | 'critique-demoted' | 'critique-reordered' | 'critique-added' | 'no-change' | 'finalizer-override';
   };
+  // v18+: specialist-emitted candidate clarifying questions. These are the
+  // raw inputs the Clarifier stage picks from. Patient-answerable yes/no
+  // ("Has a doctor ever told you you have X?", "Do you experience Y?").
+  clarifyingQuestionCandidates?: ClarifyingQuestionCandidate[];
+}
+
+// v18+: emitted by specialists for each of their top hypotheses. Raw
+// candidate pool that the Clarifier stage picks 1-5 questions from.
+export interface ClarifyingQuestionCandidate {
+  question: string; // patient-answerable, ideally yes/no
+  ifYesImpact: 'rules-in' | 'supports' | 'weakens' | 'rules-out';
+  rationale: string; // why this question discriminates THIS diagnosis
+  questionType: 'symptom' | 'prior_dx' | 'family_history' | 'lab_result';
+}
+
+// v18+: clarifier-picked questions presented to the patient after the
+// initial analysis. Each carries a per-hypothesis impact mapping so the
+// refine endpoint can synthesize new EvidenceItems from the patient's
+// answers.
+export interface ClarifyingQuestion {
+  id: string;
+  question: string;
+  questionType: 'symptom' | 'prior_dx' | 'family_history' | 'lab_result';
+  rationale: string;
+  affectsDiagnoses: Array<{
+    diagnosisName: string;
+    ifYes: 'rules-in' | 'supports' | 'weakens' | 'rules-out' | 'neutral';
+    ifNo: 'rules-in' | 'supports' | 'weakens' | 'rules-out' | 'neutral';
+  }>;
+}
+
+export interface ClarifyingAnswer {
+  questionId: string;
+  answer: 'yes' | 'no' | 'dont_know';
+}
+
+// v18+: returned by /api/refine-diagnosis so the UI can show before/after
+// rank and score deltas per hypothesis.
+export interface RefinementDelta {
+  diagnosisName: string;
+  oldRank: number | null;
+  newRank: number | null;
+  oldScore: number | null;
+  newScore: number | null;
 }
 
 // v17+: output shape from the o3 critic. Read by Stage 8 (Claude finalize).
@@ -395,4 +439,17 @@ export interface AnalysisResult {
     alternativeExplanation: string;
   };
   pipelineMetadata: PipelineMetadata;
+  // v18+: optional set of patient-answerable yes/no questions that, once
+  // answered, can be used to refine the differential via /api/refine-diagnosis.
+  // Picked by the Clarifier stage from the candidate pool emitted by
+  // specialists; absent on flows where the Clarifier didn't run.
+  clarifyingQuestions?: ClarifyingQuestion[];
+  // v18+: present iff this result is the output of /api/refine-diagnosis.
+  // Carries before/after rank + score deltas plus the answers the patient
+  // provided, so the UI can render rank-change badges on /results/refine.
+  refinement?: {
+    answers: ClarifyingAnswer[];
+    deltas: RefinementDelta[];
+    refinedAt: string; // ISO timestamp
+  };
 }

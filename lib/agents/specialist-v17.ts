@@ -46,7 +46,27 @@ For EACH hypothesis you propose, also populate these annotation fields:
 - diagnosticTests: 2-5 specific tests (lab / imaging / genetic) that would confirm or refute this diagnosis. Use specific test names (e.g., "SPINK5 gene sequencing", "muscle biopsy with EM"), not categories.
 - cardinalFeatures: 2-5 features the patient should have IF this diagnosis is correct. State each as a clinical finding (e.g., "trichorrhexis invaginata on hair microscopy").
 - ruleOutFeatures: 1-3 features whose ABSENCE would rule out this diagnosis (e.g., "normal SPINK5 sequencing").
-- domainConfidence: an integer 0-100 representing YOUR OWN confidence in this hypothesis from YOUR specialty's perspective. This is your domain confidence, not the overall probability — it captures how strongly your expertise points to this diagnosis. May differ from confidenceScore (which is overall probability).`;
+- domainConfidence: an integer 0-100 representing YOUR OWN confidence in this hypothesis from YOUR specialty's perspective. This is your domain confidence, not the overall probability — it captures how strongly your expertise points to this diagnosis. May differ from confidenceScore (which is overall probability).
+
+===== v18 CLARIFYING QUESTIONS =====
+For EACH of your top THREE hypotheses, propose 1-3 \`clarifyingQuestions\` the patient could answer to confirm or refute that hypothesis. The Clarifier stage will pick the best 1-5 across all specialists to present to the patient after the initial result is delivered.
+
+Rules for clarifying questions:
+- Patient-answerable. The patient is NOT a clinician. They typically cannot answer questions about lab values, imaging findings, or specific gene names. Acceptable formats:
+  * "Has a doctor ever told you you have [specific named diagnosis]?"
+  * "Do you experience [specific patient-recognizable symptom]?"
+  * "Has anyone in your immediate family (parent, sibling, child) been diagnosed with [condition]?"
+- Yes/no answerable. Each question must have a clean yes / no / "don't know" answer.
+- HIGH discriminating power. Ask only about features whose presence or absence would substantially move the probability of THIS hypothesis. Avoid questions whose answer wouldn't change your ranking.
+- Lab values ONLY when critical AND likely-known. E.g. "Has a doctor told you your iron levels were very low?" is acceptable. "What is your ferritin level?" is not.
+- Specific, not vague. "Do you experience tingling in your fingertips that came on suddenly?" beats "Do you ever feel anything unusual?"
+- One feature per question. Don't bundle.
+
+For each question populate:
+- question: the text shown to the patient, written in plain second-person ("Do you…?", "Has a doctor ever told you…?")
+- ifYesImpact: 'rules-in' | 'supports' | 'weakens' | 'rules-out' — what a YES answer means FOR THIS HYPOTHESIS
+- rationale: one sentence explaining why this question discriminates this diagnosis (clinician-facing reasoning)
+- questionType: 'symptom' | 'prior_dx' | 'family_history' | 'lab_result'`;
 
 class SpecialistV17Agent extends BaseAgent {
   private specialistType: SpecialistType;
@@ -213,6 +233,22 @@ OUTPUT RULES:
                       maximum: 100,
                       description: "This specialist's own confidence in the hypothesis from their domain perspective, 0-100.",
                     },
+                    // v18 clarifying questions (top-3 hypotheses only — Clarifier
+                    // stage will pick the best 1-5 across all specialists).
+                    clarifyingQuestions: {
+                      type: 'array',
+                      description: '1-3 patient-answerable yes/no questions that would discriminate this hypothesis. Populate for your top-3 hypotheses.',
+                      items: {
+                        type: 'object',
+                        properties: {
+                          question: { type: 'string', description: 'Patient-facing yes/no question, second person.' },
+                          ifYesImpact: { type: 'string', enum: ['rules-in', 'supports', 'weakens', 'rules-out'] },
+                          rationale: { type: 'string', description: 'One-sentence clinician-facing reason this question discriminates the diagnosis.' },
+                          questionType: { type: 'string', enum: ['symptom', 'prior_dx', 'family_history', 'lab_result'] },
+                        },
+                        required: ['question', 'ifYesImpact', 'rationale', 'questionType'],
+                      },
+                    },
                   },
                   required: ['diagnosis', 'confidenceScore', 'clinicalReasoning', 'supportingEvidence'],
                 },
@@ -263,6 +299,22 @@ OUTPUT RULES:
       ruleOutFeatures: Array.isArray(h.ruleOutFeatures) && h.ruleOutFeatures.length ? h.ruleOutFeatures : undefined,
       domainConfidenceMap: typeof h.domainConfidence === 'number'
         ? { [this.specialistType]: h.domainConfidence }
+        : undefined,
+      clarifyingQuestionCandidates: Array.isArray(h.clarifyingQuestions) && h.clarifyingQuestions.length
+        ? h.clarifyingQuestions
+            .filter((q: any) =>
+              q
+              && typeof q.question === 'string'
+              && q.question.trim().length > 0
+              && ['rules-in', 'supports', 'weakens', 'rules-out'].includes(q.ifYesImpact)
+              && ['symptom', 'prior_dx', 'family_history', 'lab_result'].includes(q.questionType),
+            )
+            .map((q: any) => ({
+              question: q.question.trim(),
+              ifYesImpact: q.ifYesImpact,
+              rationale: typeof q.rationale === 'string' ? q.rationale : '',
+              questionType: q.questionType,
+            }))
         : undefined,
       emittedBySpecialty: this.specialistType,
     }));

@@ -601,6 +601,45 @@ export class DiagnosticPipeline {
         (synthesisResult as any).synthesisData.familyEnrichments = familyEnrichments;
       }
 
+      // ===== STAGE 8.5: CLARIFIER (v18) =====
+      // Picks 1-5 yes/no questions from the candidate pool the specialists
+      // already emitted, scoped to the top-ranked hypotheses from synth.
+      // Failure is non-fatal — the pipeline produces a valid AnalysisResult
+      // without clarifyingQuestions if Claude errors or no candidates exist.
+      log("orch.stage.clarifier.start", { topHypotheses: finalRanking.length });
+      const clarifierStart = Date.now();
+      let clarifierQuestions: AnalysisResult['clarifyingQuestions'] = undefined;
+      try {
+        const { ClarifierAgent } = await import('../agents/clarifier');
+        const clarifier = new ClarifierAgent();
+        const clarifierResult = await clarifier.execute({
+          rankedHypotheses: finalRanking,
+        });
+        if (clarifierResult.questions.length > 0) {
+          clarifierQuestions = clarifierResult.questions;
+        }
+        this.budgetTracker.addUsage(clarifierResult.model, clarifierResult.tokensUsed);
+        stages.push({
+          stageName: 'clarifier',
+          durationMs: clarifierResult.durationMs,
+          tokensUsed: clarifierResult.tokensUsed,
+          model: clarifierResult.model,
+          agentName: 'clarifier',
+          inputSummary: `${finalRanking.length} ranked hypotheses, candidate pool from specialists`,
+          outputSummary: clarifierResult.skipped
+            ? `skipped (${clarifierResult.skipped})`
+            : `${clarifierResult.questions.length} questions picked`,
+        });
+        log("orch.stage.clarifier.done", {
+          durationMs: Date.now() - clarifierStart,
+          picked: clarifierResult.questions.length,
+          skipped: clarifierResult.skipped,
+        });
+      } catch (err: any) {
+        log("orch.stage.clarifier.fail", { msg: (err?.message || '').slice(0, 200) });
+        // swallow — clarifier is non-fatal
+      }
+
       // ===== STAGE 9: REPORT GENERATION (unchanged) =====
       log("orch.stage.report.start");
       onProgress?.({
@@ -659,6 +698,7 @@ export class DiagnosticPipeline {
         },
         overallAssessment: reportData.overallAssessment || synthesisResult.reasoning,
         patientHypothesisAnalysis: reportData.patientHypothesisAnalysis || undefined,
+        clarifyingQuestions: clarifierQuestions,
         pipelineMetadata: {
           pipelineVersion: '17.0.0',
           stages,

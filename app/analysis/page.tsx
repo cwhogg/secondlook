@@ -268,6 +268,11 @@ export default function AnalysisPage() {
 
               sessionStorage.setItem("analysisResults", JSON.stringify(analysisResults))
               sessionStorage.setItem("analysisMetadata", JSON.stringify(analysisMetadata))
+              // Persist the patient case so /api/refine-diagnosis has the
+              // same context the v2 pipeline ran against. Kept in sessionStorage
+              // (per-tab, cleared by startNewAnalysis) to match the rest of the
+              // analysis blob.
+              sessionStorage.setItem("analysisPatientCase", JSON.stringify(analysisPayload))
 
               router.push("/results/analysis")
               return

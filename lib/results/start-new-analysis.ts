@@ -11,7 +11,7 @@ const LOCAL_KEYS = [
   "mappedSymptoms",
 ] as const
 
-const SESSION_KEYS = ["analysisResults", "analysisMetadata"] as const
+const SESSION_KEYS = ["analysisResults", "analysisMetadata", "analysisPatientCase"] as const
 
 export function clearAnalysisCache(): void {
   if (typeof window === "undefined") return

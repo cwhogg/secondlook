@@ -246,9 +246,14 @@ export default function AnalysisPage() {
                 throw new Error("Invalid analysis result from pipeline")
               }
 
+              // NOTE: this whitelist must include every AnalysisResult field
+              // that any downstream results page reads from sessionStorage.
+              // Missing fields are silently dropped — if a new field on
+              // AnalysisResult needs to surface in the UI, add it here.
               const analysisResults = {
                 differentialDiagnoses: event.analysis.differentialDiagnoses || [],
                 differentialClusters: event.analysis.differentialClusters || [],
+                familyEnrichments: event.analysis.familyEnrichments || undefined,
                 excludedCommonDiagnoses: event.analysis.excludedCommonDiagnoses || [],
                 dataGaps: event.analysis.dataGaps || [],
                 recommendedTesting: event.analysis.recommendedTesting || [],
@@ -256,6 +261,8 @@ export default function AnalysisPage() {
                 overallAssessment: event.analysis.overallAssessment || "",
                 patientHypothesisAnalysis: event.analysis.patientHypothesisAnalysis || null,
                 pipelineMetadata: event.analysis.pipelineMetadata || null,
+                // v18: optional clarifying questions for the refine flow.
+                clarifyingQuestions: event.analysis.clarifyingQuestions || undefined,
               }
 
               const analysisMetadata = {

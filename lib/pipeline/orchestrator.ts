@@ -487,6 +487,40 @@ export class DiagnosticPipeline {
 
       this.checkBudget();
 
+      // ===== FAMILY ENRICHMENT (v25 — moved before finalize) =====
+      // Compute family enrichment on the synth top-5 BEFORE the finalizer
+      // runs, so the finalizer can use it to make umbrella-vs-subtype
+      // decisions. Also still attached to synthesisData below so the report
+      // generator picks it up unchanged (the existing "Consider including
+      // the differentiating test" block in report-generator.ts).
+      const familyEnrichments: FamilyEnrichment[] = [];
+      const seenFamilies = new Set<string>();
+      const patientSymptomTerms = patientCase.symptoms.map((s) => s.medicalTerm || s.originalPhrase || '');
+      for (const hypothesis of synthesisResult.hypotheses.slice(0, 5)) {
+        if (familyEnrichments.length >= 2) break;
+        const familyResult = findFamilySiblings(hypothesis.diagnosis, patientSymptomTerms);
+        if (!familyResult || familyResult.totalInFamily < 3) continue;
+        if (seenFamilies.has(familyResult.familyName)) continue;
+        seenFamilies.add(familyResult.familyName);
+        const db = loadDiseaseDatabase();
+        const diagNorm = hypothesis.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const selfProfile = db.find((d) => {
+          const nameNorm = d.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+          return nameNorm === diagNorm || nameNorm.includes(diagNorm) || diagNorm.includes(nameNorm);
+        });
+        const profilesForTest: DiseaseProfile[] = selfProfile
+          ? [selfProfile, ...familyResult.siblings.slice(0, 9)]
+          : familyResult.siblings.slice(0, 10);
+        const diffTest = computeDifferentiatingTests(profilesForTest);
+        familyEnrichments.push({
+          familyName: familyResult.familyName,
+          totalSubtypes: familyResult.totalInFamily,
+          topDiagnosisInFamily: hypothesis.diagnosis,
+          differentiatingTest: diffTest,
+        });
+      }
+      log("orch.stage.family.done", { count: familyEnrichments.length });
+
       // ===== STAGE 8: CLAUDE FINALIZE =====
       let finalRanking: DiagnosisHypothesis[] = synthesisResult.hypotheses;
       let finalizerStats: { criticSuggestionsAccepted: number; criticSuggestionsRejected: number; rankChangesFromFirstPass: number; removedFromTop10: string[]; addedToTop10: string[] } | null = null;
@@ -510,6 +544,7 @@ export class DiagnosticPipeline {
             firstPassAssessment: synthesisResult.reasoning,
             critique,
             fullHypothesisPool: evaluationResult.hypotheses,
+            familyEnrichments,
           });
           finalRanking = finalizerResult.hypotheses;
           finalizerStats = finalizerResult.finalizerStats;
@@ -538,24 +573,26 @@ export class DiagnosticPipeline {
       // downstream consumers see it.
       synthesisResult.hypotheses = finalRanking;
 
-      // ===== LOW-CONFIDENCE ESCALATION CHECK =====
-      const topScore = finalRanking[0]?.confidenceScore || 0;
+      // ===== LOW-CONFIDENCE WARNING FLAG =====
+      // Compute a structured flag that the UI surfaces as a banner on
+      // /results/analysis. The previous version injected a hardcoded
+      // recommendation paragraph into the report-generator prompt, which
+      // produced generic, untailored advice. The UI banner approach lets
+      // the report-gen focus on tailored recommendations from the actual
+      // top-10, while still being honest about confidence.
+      const highestTopScore = finalRanking[0]?.confidenceScore || 0;
       const allLow = finalRanking.slice(0, 5).every((h) => h.confidenceScore < 40);
       const synthData_ = (synthesisResult as any).synthesisData || {};
       const weakConsensus = synthData_.consensusLevel === 'weak' || synthData_.consensusLevel === 'divergent';
       const lowReliability = synthData_.confidenceCalibration?.topDiagnosisReliability === 'low';
-      if (allLow || weakConsensus || lowReliability) {
-        const reasons: string[] = [];
-        if (allLow) reasons.push(`all top-5 diagnoses scored below 40 (highest: ${topScore})`);
-        if (weakConsensus) reasons.push(`specialist consensus is ${synthData_.consensusLevel}`);
-        if (lowReliability) reasons.push('top diagnosis reliability rated low');
-        if (!(synthesisResult as any).synthesisData) (synthesisResult as any).synthesisData = {};
-        (synthesisResult as any).synthesisData.escalationContext =
-          `LOW DIAGNOSTIC CERTAINTY: ${reasons.join('; ')}. ` +
-          `The patient's condition may not match any of the ${getDiseaseCount()} profiled diseases in our knowledge base. ` +
-          `Consider broader investigative pathways including genetic panel testing (WES/WGS), advanced neuroimaging, tissue biopsy, ` +
-          `and referral to a medical geneticist or academic undiagnosed disease program (e.g., NIH UDP).`;
-      }
+      const lowConfidenceReasons: Array<'all-top-5-below-40' | 'weak-consensus' | 'low-reliability'> = [];
+      if (allLow) lowConfidenceReasons.push('all-top-5-below-40');
+      if (weakConsensus) lowConfidenceReasons.push('weak-consensus');
+      if (lowReliability) lowConfidenceReasons.push('low-reliability');
+      const lowConfidenceWarning: AnalysisResult['lowConfidenceWarning'] =
+        lowConfidenceReasons.length > 0
+          ? { triggered: true, reasons: lowConfidenceReasons, highestTopScore }
+          : undefined;
 
       onProgress?.({
         stage: 'synthesis-complete',
@@ -569,33 +606,9 @@ export class DiagnosticPipeline {
         },
       });
 
-      // ===== FAMILY ENRICHMENT (unchanged from v15/v16) =====
-      const familyEnrichments: FamilyEnrichment[] = [];
-      const seenFamilies = new Set<string>();
-      const patientSymptomTerms = patientCase.symptoms.map((s) => s.medicalTerm || s.originalPhrase || '');
-      for (const hypothesis of finalRanking.slice(0, 5)) {
-        if (familyEnrichments.length >= 2) break;
-        const familyResult = findFamilySiblings(hypothesis.diagnosis, patientSymptomTerms);
-        if (!familyResult || familyResult.totalInFamily < 3) continue;
-        if (seenFamilies.has(familyResult.familyName)) continue;
-        seenFamilies.add(familyResult.familyName);
-        const db = loadDiseaseDatabase();
-        const diagNorm = hypothesis.diagnosis.toLowerCase().replace(/[^a-z0-9]/g, '');
-        const selfProfile = db.find((d) => {
-          const nameNorm = d.name.toLowerCase().replace(/[^a-z0-9]/g, '');
-          return nameNorm === diagNorm || nameNorm.includes(diagNorm) || diagNorm.includes(nameNorm);
-        });
-        const profilesForTest: DiseaseProfile[] = selfProfile
-          ? [selfProfile, ...familyResult.siblings.slice(0, 9)]
-          : familyResult.siblings.slice(0, 10);
-        const diffTest = computeDifferentiatingTests(profilesForTest);
-        familyEnrichments.push({
-          familyName: familyResult.familyName,
-          totalSubtypes: familyResult.totalInFamily,
-          topDiagnosisInFamily: hypothesis.diagnosis,
-          differentiatingTest: diffTest,
-        });
-      }
+      // Attach family enrichments (computed earlier, see v25 block above) to
+      // synthesisData so the report generator's existing prompt block picks
+      // them up unchanged.
       if (familyEnrichments.length > 0) {
         if (!(synthesisResult as any).synthesisData) (synthesisResult as any).synthesisData = {};
         (synthesisResult as any).synthesisData.familyEnrichments = familyEnrichments;
@@ -699,8 +712,9 @@ export class DiagnosticPipeline {
         overallAssessment: reportData.overallAssessment || synthesisResult.reasoning,
         patientHypothesisAnalysis: reportData.patientHypothesisAnalysis || undefined,
         clarifyingQuestions: clarifierQuestions,
+        lowConfidenceWarning,
         pipelineMetadata: {
-          pipelineVersion: '17.0.0',
+          pipelineVersion: '25.0.0',
           stages,
           totalDurationMs: Date.now() - pipelineStart,
           totalTokensUsed: budgetSummary.totalTokens,

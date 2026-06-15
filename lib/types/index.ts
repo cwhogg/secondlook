@@ -452,4 +452,15 @@ export interface AnalysisResult {
     deltas: RefinementDelta[];
     refinedAt: string; // ISO timestamp
   };
+  // v18+: set when the analysis confidence is low. UI surfaces this as a
+  // banner on /results/analysis. Replaces the prior practice of injecting
+  // a hardcoded recommendation paragraph into the report-generator's prompt.
+  lowConfidenceWarning?: {
+    triggered: boolean;
+    // Which of the three checks fired. Multiple can fire at once.
+    reasons: Array<'all-top-5-below-40' | 'weak-consensus' | 'low-reliability'>;
+    // Highest score among top-5, included so the UI banner can say "highest
+    // was 32%" without recomputing.
+    highestTopScore: number;
+  };
 }

@@ -49,11 +49,18 @@ interface AnalysisData {
   familyEnrichments?: FamilyEnrichmentData[]
 }
 
+interface LowConfidenceWarning {
+  triggered: boolean
+  reasons: Array<'all-top-5-below-40' | 'weak-consensus' | 'low-reliability'>
+  highestTopScore: number
+}
+
 export default function AnalysisResultsPage() {
   const router = useRouter()
   const [analysisData, setAnalysisData] = useState<AnalysisData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [hasClarifyingQuestions, setHasClarifyingQuestions] = useState(false)
+  const [lowConfidence, setLowConfidence] = useState<LowConfidenceWarning | null>(null)
 
   useEffect(() => {
     // Results are stored in sessionStorage by the ExpertAnalysisResults component
@@ -65,6 +72,10 @@ export default function AnalysisResultsPage() {
         setHasClarifyingQuestions(
           Array.isArray(raw.clarifyingQuestions) && raw.clarifyingQuestions.length > 0
         )
+
+        if (raw.lowConfidenceWarning?.triggered) {
+          setLowConfidence(raw.lowConfidenceWarning)
+        }
 
         // Transform API response format into the shape this page expects
         if (raw.differentialDiagnoses && !raw.conditions) {
@@ -211,6 +222,33 @@ export default function AnalysisResultsPage() {
 
       {/* Main Content */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
+        {/* Low-confidence warning banner */}
+        {lowConfidence && (
+          <div className="mb-6 sm:mb-8 bg-amber-50 border-l-4 border-amber-500 p-4 sm:p-5">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="h-5 w-5 sm:h-6 sm:w-6 text-amber-700 flex-shrink-0 mt-0.5" />
+              <div className="flex-1">
+                <div className="font-semibold text-amber-900 text-sm sm:text-base mb-1">
+                  Confidence in these results is lower than usual
+                </div>
+                <p className="text-amber-900 text-xs sm:text-sm leading-relaxed">
+                  Our system couldn't confidently match your symptoms to a specific diagnosis
+                  {lowConfidence.reasons.includes('all-top-5-below-40') && (
+                    <> (the top diagnosis scored {Math.round(lowConfidence.highestTopScore)}%)</>
+                  )}
+                  {lowConfidence.reasons.includes('weak-consensus') && (
+                    <>{lowConfidence.reasons.includes('all-top-5-below-40') ? ' and the' : ', and the'} specialists disagreed with each other</>
+                  )}
+                  . The most useful next step is usually a consultation with a clinical geneticist, or applying to an academic undiagnosed-disease program — they have access to advanced tools (whole-exome / whole-genome sequencing, specialized testing) that can investigate further than this report can.
+                </p>
+                <p className="text-amber-800 text-xs mt-2">
+                  Treat the diagnoses below as <em>directions to investigate</em>, not definitive answers.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Summary Statistics */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-12">
           <div className="bg-white rounded-none border border-gray-100 p-4 sm:p-6 md:p-8 text-center">

@@ -17,7 +17,7 @@
  * specific evidence the original ranking under-weighted.
  */
 import type { AgentOutput } from './types';
-import type { DiagnosisHypothesis, PatientCase, CritiqueOutput, CritiqueSuggestion } from '../types';
+import type { DiagnosisHypothesis, PatientCase, CritiqueOutput, CritiqueSuggestion, FamilyEnrichment } from '../types';
 import { callAnthropic } from '../anthropic';
 import { setLogContext } from '../pipeline/llm-call-log';
 import { loadDiseaseDatabase } from '../knowledge';
@@ -36,6 +36,13 @@ DECISION PRINCIPLES:
 - For 'add' suggestions (a diagnosis NOT in your draft ranking at all): the bar is high. Accept only when the critic cites specific patient findings that materially support the new diagnosis AND the cited evidence is stronger than the entry it would displace. When you accept an 'add', use 'critique-added' as the changeReason.
 - When the critic raised an information gap, decide whether it materially affects the ranking and reflect that in your final assessment.
 - Preserve KB-matched and reasoning-evaluated diagnoses on equal terms.
+
+FAMILY-AWARE REASONING (v25):
+When the input includes a FAMILY ANALYSIS block, multiple top-ranked hypotheses belong to the same disease family with several subtypes. Use this information to make better umbrella-vs-subtype decisions:
+- If the patient case carries SUBTYPE-DISTINGUISHING evidence (a feature unique to one numbered/gene-keyed subtype per the family analysis), commit to that subtype.
+- If the patient case has NO subtype-distinguishing evidence (the hypotheses are indistinguishable by clinical features alone), prefer the UMBRELLA name over a confidently-named subtype. A confident wrong-gene call ("Loeys-Dietz syndrome type 2 (TGFBR2)" when no TGFBR2 evidence exists) sends physicians on a tangent. Use 'finalizer-override' as the changeReason and explain in rationale.
+- If multiple subtypes from the same family are spread across the top-10 with similar scores AND the case cannot distinguish them, consider consolidating to a single umbrella entry at higher rank. This frees ranking slots for genuinely different hypotheses. Use 'finalizer-override' as the changeReason.
+- This guidance is informational; do NOT mechanically collapse every family — preserve subtype specificity when evidence supports it.
 
 For EACH entry in your final top-10, record:
 - final rank
@@ -101,15 +108,43 @@ Specific suggestions:
 ${suggestions}`;
 }
 
+function buildFamilyBlock(familyEnrichments?: FamilyEnrichment[]): string {
+  if (!familyEnrichments || familyEnrichments.length === 0) return '';
+  const lines = familyEnrichments.map((fe) => {
+    const dt = fe.differentiatingTest;
+    if (!dt) {
+      return `Family "${fe.familyName}" — anchor diagnosis: "${fe.topDiagnosisInFamily}" (${fe.totalSubtypes} subtypes in KB)
+  No single differentiating test identified (mixed modalities). Subtype distinction requires multiple investigations.`;
+    }
+    const perSubtype = dt.perSubtype
+      .filter((s) => s.uniqueFindings && s.uniqueFindings.length > 0)
+      .slice(0, 6)
+      .map((s) => `    - ${s.diseaseName}: ${s.uniqueFindings.slice(0, 3).join('; ')}`)
+      .join('\n');
+    const shared = dt.sharedFindings && dt.sharedFindings.length > 0
+      ? `\n  Shared across the family: ${dt.sharedFindings.slice(0, 4).join('; ')}`
+      : '';
+    return `Family "${fe.familyName}" — anchor diagnosis: "${fe.topDiagnosisInFamily}" (${fe.totalSubtypes} subtypes in KB)
+  Differentiating test: ${dt.modalityLabel} (convergence ratio ${Math.round((dt.convergenceRatio || 0) * 100)}%)
+  Per-subtype distinguishing features:
+${perSubtype}${shared}`;
+  });
+  return `FAMILY ANALYSIS (v25): the following top-ranked hypotheses belong to disease families with multiple subtypes. Use the per-subtype features below to judge whether the patient case actually supports a specific subtype, or whether the umbrella is the more honest call.
+
+${lines.join('\n\n')}`;
+}
+
 function buildUserPrompt(opts: {
   patientCase: PatientCase;
   firstPassRanking: DiagnosisHypothesis[];
   firstPassAssessment?: string;
   critique: CritiqueOutput;
+  familyEnrichments?: FamilyEnrichment[];
 }): string {
   const recap = buildPatientRecap(opts.patientCase);
   const ranking = buildRankingBlock(opts.firstPassRanking);
   const critique = buildCritiqueBlock(opts.critique);
+  const family = buildFamilyBlock(opts.familyEnrichments);
   const firstPassNote = opts.firstPassAssessment
     ? `\nYour Stage 6 overall assessment:\n${opts.firstPassAssessment}\n`
     : '';
@@ -120,7 +155,7 @@ YOUR DRAFT RANKING (Stage 6, the one being critiqued):
 ${ranking}
 ${firstPassNote}
 ${critique}
-
+${family ? '\n' + family + '\n' : ''}
 Now produce your final ranked top-10. For each entry: explicitly note whether the rank changed from your draft, and why. Honor critique suggestions only when the cited evidence supports the change.`;
 }
 
@@ -306,12 +341,15 @@ export class ClaudeFinalizerAgent {
     critique: CritiqueOutput;
     /** Full deduped + KB-attached pool, so finalizer can swap in alternates if needed. */
     fullHypothesisPool: DiagnosisHypothesis[];
+    /** v25: family enrichments computed on the synth ranking before finalize. */
+    familyEnrichments?: FamilyEnrichment[];
   }): Promise<ClaudeFinalizerOutput> {
     const userPrompt = buildUserPrompt({
       patientCase: opts.patientCase,
       firstPassRanking: opts.firstPassRanking,
       firstPassAssessment: opts.firstPassAssessment,
       critique: opts.critique,
+      familyEnrichments: opts.familyEnrichments,
     });
 
     try {

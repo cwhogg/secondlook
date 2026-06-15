@@ -440,39 +440,333 @@
     align-items: center;
     gap: 6px;
   }
-  /* ===== DIAGRAM ===== */
-  .diagram-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 18px 18px 8px;
-    overflow-x: auto;
-  }
-  .diagram-wrap svg {
-    display: block;
-    width: 100%;
-    max-width: 1040px;
-    margin: 0 auto;
-    height: auto;
-  }
-  .diagram-legend {
+  /* ===== ONE-PAGE PIPELINE DIAGRAM ===== */
+  .flow-legend {
     display: flex;
-    gap: 18px;
-    justify-content: center;
+    gap: 14px;
     flex-wrap: wrap;
-    margin-top: 4px;
-    padding-top: 12px;
-    border-top: 1px solid var(--border-soft);
+    justify-content: center;
     font-size: 11px;
     color: var(--text-faint);
+    margin: 12px 0 14px;
   }
-  .diagram-legend .swatch {
+  .flow-legend .swatch {
     display: inline-block;
     width: 12px;
     height: 12px;
-    margin-right: 6px;
+    margin-right: 5px;
     vertical-align: middle;
     border: 1px solid rgba(0,0,0,0.2);
   }
+  .diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 14px 12px 12px;
+    overflow-x: auto;
+  }
+  .diagram-inner {
+    min-width: 980px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+  }
+  .row.row-feeders { grid-template-columns: 220px 1fr; gap: 10px; }
+
+  /* Tile */
+  .tile {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left-width: 4px;
+    padding: 6px 8px 7px;
+    font-size: 11px;
+    line-height: 1.35;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 132px;
+  }
+  .tile.openai { border-left-color: #0a8a6a; }
+  .tile.anthropic { border-left-color: #b65a1f; }
+  .tile.determ { border-left-color: #2d6a4f; }
+  .tile.terminal { background: var(--accent); color: #fff; border-left-color: var(--accent-deep); justify-content: center; min-height: 132px; }
+  .tile.terminal .t-name { color: #fff; font-size: 13px; font-weight: 700; text-align: center; }
+  .tile.terminal .t-sub { color: #f0d9c3; font-size: 10px; text-align: center; margin-top: 4px; }
+
+  .tile-head {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .t-num {
+    background: var(--accent);
+    color: #fff;
+    font-family: "SF Mono", Menlo, monospace;
+    font-weight: 700;
+    font-size: 10px;
+    padding: 1px 5px;
+    border-radius: 2px;
+    min-width: 22px;
+    text-align: center;
+  }
+  .t-name {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 11px;
+    flex: 1;
+    line-height: 1.2;
+  }
+  .t-model {
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 9px;
+    color: var(--text-faint);
+    margin: 1px 0 4px;
+    font-weight: 600;
+  }
+  .t-block {
+    margin-top: 3px;
+  }
+  .t-lbl {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-bottom: 1px;
+  }
+  .t-lbl.in { color: #0a8a6a; }
+  .t-lbl.out { color: #b65a1f; }
+  .t-list {
+    margin: 0;
+    padding-left: 11px;
+    font-size: 10px;
+    line-height: 1.3;
+    color: var(--text);
+  }
+  .t-list li { margin: 0; }
+  .t-list li code { font-size: 9.5px; }
+
+  /* KB pool */
+  .kb-pool {
+    background: var(--accent-soft);
+    border: 1.5px dashed var(--accent);
+    padding: 8px 12px 9px;
+    position: relative;
+  }
+  .kb-pool-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .kb-badge {
+    background: var(--accent);
+    color: #fff;
+    font-family: "SF Mono", Menlo, monospace;
+    font-weight: 700;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 2px;
+  }
+  .kb-title {
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .kb-sub {
+    font-size: 10px;
+    color: var(--text-soft);
+    margin-left: auto;
+  }
+  .kb-fields {
+    columns: 4;
+    column-gap: 16px;
+    margin: 4px 0 0;
+    padding-left: 14px;
+    font-size: 10px;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .kb-fields li { margin: 0; break-inside: avoid; }
+  .kb-fields li strong { color: var(--accent-deep); font-weight: 700; }
+
+  /* Connectors between rows */
+  .conn {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    line-height: 1;
+    height: 14px;
+  }
+  .conn span.kb-arrow { color: var(--accent); font-weight: 700; }
+
+  /* Feeder column on the left of row 1 */
+  .feeder {
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .feeder .lbl-top { font-size: 9px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.7); margin-bottom: 4px; font-weight: 700; }
+  .feeder h4 { margin: 0 0 4px; font-size: 13px; font-family: Georgia, serif; }
+  .feeder ul { margin: 0; padding-left: 14px; font-size: 10px; line-height: 1.4; color: #f0d9c3; }
+
+  /* Specialist sub-stack (shows the 5 lanes inside stage 2) */
+  .spec-lanes {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 3px;
+  }
+  .spec-lane {
+    background: var(--surface-soft);
+    border: 1px solid var(--border-soft);
+    padding: 1px 5px;
+    font-size: 9px;
+    color: var(--text-soft);
+    line-height: 1.3;
+  }
+  .spec-lane.anchor {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent-deep);
+    font-weight: 600;
+  }
+
+  /* Refinement strip */
+  .refine-strip {
+    margin-top: 10px;
+    background: var(--surface-soft);
+    border: 1.5px dashed var(--accent);
+    padding: 8px 10px 10px;
+  }
+  .refine-strip-head {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+  .refine-badge {
+    background: var(--accent);
+    color: #fff;
+    font-family: "SF Mono", Menlo, monospace;
+    font-weight: 700;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 2px;
+  }
+  .refine-title {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .refine-sub {
+    font-size: 10px;
+    color: var(--text-soft);
+    margin-left: auto;
+  }
+  .refine-cells {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 60px;
+    gap: 6px;
+    align-items: stretch;
+  }
+  .refine-cell {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 5px 8px 6px;
+  }
+  .refine-cell .t-num { background: var(--accent); }
+  .refine-loopback {
+    background: var(--accent);
+    color: #fff;
+    padding: 5px 6px;
+    font-size: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  .refine-loopback .arrow { font-size: 18px; line-height: 1; }
+
+  /* ===== DETAILED VERTICAL VIEW ===== */
+  .detail-flow { max-width: 920px; margin: 0 auto; }
+  .detail-step { background: var(--surface); border: 1px solid var(--border); margin: 0; }
+  .detail-step-head {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px; border-bottom: 1px solid var(--border-soft);
+    background: var(--surface-soft);
+  }
+  .detail-num {
+    background: var(--accent); color: #fff;
+    font-family: "SF Mono", Menlo, monospace; font-weight: 700; font-size: 12px;
+    padding: 3px 9px; min-width: 30px; text-align: center; border-radius: 3px;
+  }
+  .detail-name { font-weight: 700; color: var(--text); font-size: 14px; flex: 1; }
+  .detail-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+  .detail-body { display: grid; grid-template-columns: 1fr 0.85fr 1fr; gap: 0; }
+  @media (max-width: 720px) { .detail-body { grid-template-columns: 1fr; } }
+  .detail-cell { padding: 10px 14px; }
+  .detail-in { background: #e3f4ee; border-right: 1px solid var(--border-soft); }
+  .detail-action { background: #fff; border-right: 1px solid var(--border-soft); display: flex; align-items: center; }
+  .detail-out { background: #fbedde; }
+  @media (max-width: 720px) {
+    .detail-in, .detail-action { border-right: none; border-bottom: 1px solid var(--border-soft); }
+  }
+  .detail-lbl {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.15em; color: var(--muted); margin-bottom: 5px;
+  }
+  .detail-in .detail-lbl { color: #0a8a6a; }
+  .detail-out .detail-lbl { color: #b65a1f; }
+  .detail-cell ul { margin: 0; padding-left: 14px; font-size: 12px; line-height: 1.5; color: var(--text); }
+  .detail-cell li { margin: 1px 0; }
+  .detail-cell li code { font-size: 11px; }
+  .detail-action-text { font-size: 13px; color: var(--text); line-height: 1.45; }
+  .detail-arrow {
+    text-align: center; color: var(--muted); font-size: 13px;
+    line-height: 1; padding: 5px 0; font-family: "SF Mono", Menlo, monospace;
+  }
+  .detail-augment {
+    background: var(--accent-soft); border: 1px dashed var(--accent);
+    padding: 11px 14px 12px;
+  }
+  .detail-augment-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .detail-augment-badge {
+    background: var(--accent); color: #fff;
+    font-family: "SF Mono", Menlo, monospace; font-weight: 700; font-size: 11px;
+    padding: 2px 7px; border-radius: 3px;
+  }
+  .detail-augment-name {
+    font-weight: 700; color: var(--accent); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+  }
+  .detail-augment-desc { color: var(--text); font-size: 12px; margin-bottom: 6px; }
+  .detail-augment-list {
+    columns: 2; column-gap: 22px; margin: 0; padding-left: 16px;
+    font-size: 12px; color: var(--text); line-height: 1.5;
+  }
+  @media (max-width: 600px) { .detail-augment-list { columns: 1; } }
+  .detail-augment-list li { margin: 1px 0; break-inside: avoid; }
+
   /* ===== FOOTER ===== */
   footer {
     margin-top: 60px;
@@ -527,230 +821,479 @@
 
 <!-- ========= DIAGRAM ========= -->
 <section>
-  <h2>Pipeline at a glance</h2>
-  <p>Patient input on the left → ten coordinated stages → ranked differential, recommendations, and refinement on the right. Colour-coded by who's running the stage. Solid arrows are data flow; the dotted loop is the optional refinement re-entry.</p>
+  <h2>Pipeline diagram</h2>
+  <p>The full pipeline on one page: two rows of stages with the knowledge base feeding into them, optional refinement loop at the bottom. Each tile shows its provider stripe, model, and a compact input/output summary.</p>
 
-  <div class="diagram-wrap">
-    <svg viewBox="0 0 1040 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SecondLook pipeline diagram">
-      <defs>
-        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b7355" />
-        </marker>
-        <marker id="arrowDashed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b2500" />
-        </marker>
-        <style>
-          .lbl { font: 600 11px -apple-system, "Inter", sans-serif; fill: #1a1a1a; }
-          .lbl-sm { font: 500 9px -apple-system, "Inter", sans-serif; fill: #4a4a4a; }
-          .lbl-tag { font: 700 8px "SF Mono", Menlo, monospace; letter-spacing: 0.05em; }
-          .lbl-num { font: 700 11px "SF Mono", Menlo, monospace; fill: #fff; }
-          .lbl-num-dark { font: 700 11px "SF Mono", Menlo, monospace; fill: #1a1a1a; }
-          .lbl-stage { font: 600 11px -apple-system, "Inter", sans-serif; fill: #1a1a1a; }
-          .lbl-sub { font: 500 9px -apple-system, "Inter", sans-serif; fill: #6b6b6b; }
-          .lbl-grp { font: 700 10px -apple-system, "Inter", sans-serif; letter-spacing: 0.12em; fill: #8b2500; text-transform: uppercase; }
-        </style>
-      </defs>
+  <div class="flow-legend">
+    <span><span class="swatch" style="background:#fff;border-left:4px solid #0a8a6a;width:14px;height:14px;display:inline-block"></span>OpenAI stage</span>
+    <span><span class="swatch" style="background:#fff;border-left:4px solid #b65a1f;width:14px;height:14px;display:inline-block"></span>Anthropic stage</span>
+    <span><span class="swatch" style="background:#fff;border-left:4px solid #2d6a4f;width:14px;height:14px;display:inline-block"></span>Deterministic stage</span>
+    <span><span class="swatch" style="background:#faf3eb;border:1px dashed #8b2500"></span>KB augmentation</span>
+    <span><span class="swatch" style="background:#8b2500"></span>Patient / output</span>
+  </div>
 
-      <!-- ===== GROUP LABELS ===== -->
-      <text x="100" y="22" class="lbl-grp">Input</text>
-      <text x="285" y="22" class="lbl-grp">Triage</text>
-      <text x="475" y="22" class="lbl-grp">Specialists (parallel)</text>
-      <text x="760" y="22" class="lbl-grp">Reconciliation</text>
-      <text x="965" y="22" class="lbl-grp">Output</text>
+  <div class="diagram">
+    <div class="diagram-inner">
 
-      <!-- ===== ROW 1: STAGES 0-5 ===== -->
+      <!-- ===== ROW 1 ===== -->
+      <div class="row">
+        <!-- Patient input (terminal) -->
+        <div class="tile terminal">
+          <div class="t-name">Patient input</div>
+          <div class="t-sub">demographics<br>narrative<br>onset · severity<br>chief complaint</div>
+        </div>
 
-      <!-- Stage 0: Symptom Extraction (OpenAI gpt-4.1-mini + UMLS) -->
-      <rect x="20" y="50" width="160" height="64" rx="3" fill="#fff" stroke="#0a8a6a" stroke-width="2"/>
-      <circle cx="38" cy="68" r="11" fill="#8b2500"/>
-      <text x="38" y="71" text-anchor="middle" class="lbl-num">0</text>
-      <text x="56" y="68" class="lbl-stage">Symptom extraction</text>
-      <text x="56" y="82" class="lbl-sub">Free text → SNOMED/UMLS</text>
-      <rect x="56" y="92" width="68" height="14" fill="#e3f4ee" stroke="#0a8a6a"/>
-      <text x="60" y="102" class="lbl-tag" fill="#0a8a6a">gpt-4.1-mini</text>
-      <rect x="128" y="92" width="44" height="14" fill="#eaf5ef" stroke="#2d6a4f"/>
-      <text x="132" y="102" class="lbl-tag" fill="#2d6a4f">UMLS</text>
+        <!-- 0 Symptom extraction -->
+        <div class="tile openai">
+          <div class="tile-head"><span class="t-num">0</span><span class="t-name">Symptom extraction</span></div>
+          <div class="t-model">gpt-4.1-mini · UMLS</div>
+          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Free-text narrative</li><li>Demographics</li></ul></div>
+          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>Structured symptoms + codes</li><li>Excluded findings</li></ul></div>
+        </div>
 
-      <!-- Stage 1: Triage (OpenAI nano + retrieval) -->
-      <rect x="200" y="50" width="160" height="64" rx="3" fill="#fff" stroke="#0a8a6a" stroke-width="2"/>
-      <circle cx="218" cy="68" r="11" fill="#8b2500"/>
-      <text x="218" y="71" text-anchor="middle" class="lbl-num">1</text>
-      <text x="236" y="68" class="lbl-stage">Triage</text>
-      <text x="236" y="82" class="lbl-sub">Body systems · KB retrieval</text>
-      <rect x="236" y="92" width="68" height="14" fill="#e3f4ee" stroke="#0a8a6a"/>
-      <text x="240" y="102" class="lbl-tag" fill="#0a8a6a">gpt-4.1-nano</text>
-      <rect x="308" y="92" width="44" height="14" fill="#eaf5ef" stroke="#2d6a4f"/>
-      <text x="312" y="102" class="lbl-tag" fill="#2d6a4f">Vec KB</text>
+        <!-- 1 Triage -->
+        <div class="tile openai">
+          <div class="tile-head"><span class="t-num">1</span><span class="t-name">Triage</span></div>
+          <div class="t-model">gpt-4.1-nano</div>
+          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Mapped symptoms</li></ul></div>
+          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>Body systems</li><li>Acuity</li><li>Specialist ranking</li></ul></div>
+        </div>
 
-      <!-- Stage 2: 5 Specialist agents in parallel (lanes) -->
-      <rect x="380" y="50" width="220" height="180" rx="3" fill="#faf6f0" stroke="#0a8a6a" stroke-width="2" stroke-dasharray="4 4"/>
-      <circle cx="398" cy="68" r="11" fill="#8b2500"/>
-      <text x="398" y="71" text-anchor="middle" class="lbl-num">2</text>
-      <text x="416" y="68" class="lbl-stage">Specialist consult (×5)</text>
-      <text x="416" y="82" class="lbl-sub">Parallel · o3 high reasoning</text>
+        <!-- 2 KB retrieval -->
+        <div class="tile determ">
+          <div class="tile-head"><span class="t-num">2</span><span class="t-name">KB retrieval</span></div>
+          <div class="t-model">Upstash Vector</div>
+          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Symptoms + systems</li></ul></div>
+          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>Top-K candidates</li><li>Each w/ full KB profile ↓</li></ul></div>
+        </div>
 
-      <!-- 5 specialist lanes -->
-      <rect x="394" y="98" width="194" height="22" rx="2" fill="#fff" stroke="#8b2500" stroke-width="1.5"/>
-      <text x="400" y="113" class="lbl-sm" font-weight="600">Geneticist</text>
-      <text x="588" y="113" text-anchor="end" class="lbl-tag" fill="#8b2500">ANCHOR</text>
+        <!-- 3 Specialists -->
+        <div class="tile openai">
+          <div class="tile-head"><span class="t-num">3</span><span class="t-name">Specialists ×5</span></div>
+          <div class="t-model">o3 high · parallel</div>
+          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Case + KB candidates</li></ul></div>
+          <div class="spec-lanes">
+            <div class="spec-lane anchor">Geneticist (anchor)</div>
+            <div class="spec-lane anchor">Gen. internist (no KB)</div>
+            <div class="spec-lane">Triage pick #1</div>
+            <div class="spec-lane">Triage pick #2</div>
+            <div class="spec-lane">Triage pick #3</div>
+          </div>
+        </div>
 
-      <rect x="394" y="124" width="194" height="22" rx="2" fill="#fff" stroke="#8b2500" stroke-width="1.5"/>
-      <text x="400" y="139" class="lbl-sm" font-weight="600">General internist</text>
-      <text x="588" y="139" text-anchor="end" class="lbl-tag" fill="#8b2500">ANCHOR · no KB</text>
+        <!-- 4 Dedup -->
+        <div class="tile determ">
+          <div class="tile-head"><span class="t-num">4</span><span class="t-name">Dedup &amp; merge</span></div>
+          <div class="t-model">deterministic</div>
+          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>~35 specialist hypotheses</li></ul></div>
+          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>~15 deduped</li><li>Merged evidence</li><li>Per-specialty confidence</li></ul></div>
+        </div>
 
-      <rect x="394" y="150" width="194" height="22" rx="2" fill="#fff" stroke="#d4c5b0"/>
-      <text x="400" y="165" class="lbl-sm">Triage pick #1</text>
-      <rect x="394" y="176" width="194" height="22" rx="2" fill="#fff" stroke="#d4c5b0"/>
-      <text x="400" y="191" class="lbl-sm">Triage pick #2</text>
-      <rect x="394" y="202" width="194" height="22" rx="2" fill="#fff" stroke="#d4c5b0"/>
-      <text x="400" y="217" class="lbl-sm">Triage pick #3</text>
+        <!-- 5 Claude evaluator -->
+        <div class="tile anthropic">
+          <div class="tile-head"><span class="t-num">5</span><span class="t-name">Claude evaluator</span></div>
+          <div class="t-model">claude-opus-4-7</div>
+          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Deduped pool + KB criteria</li></ul></div>
+          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>Evidence scores 0–100</li><li>Criteria fulfillment checklist</li><li>Info gaps</li></ul></div>
+        </div>
+      </div>
 
-      <!-- Stage 3: Dedup / merge -->
-      <rect x="620" y="50" width="160" height="64" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="2"/>
-      <circle cx="638" cy="68" r="11" fill="#8b2500"/>
-      <text x="638" y="71" text-anchor="middle" class="lbl-num">3</text>
-      <text x="656" y="68" class="lbl-stage">Dedup &amp; merge</text>
-      <text x="656" y="82" class="lbl-sub">Union hypotheses + evidence</text>
-      <rect x="656" y="92" width="80" height="14" fill="#eaf5ef" stroke="#2d6a4f"/>
-      <text x="660" y="102" class="lbl-tag" fill="#2d6a4f">deterministic</text>
+      <!-- arrows row -->
+      <div class="conn"><span></span><span>▶</span><span>▶</span><span style="color:var(--accent)">▶</span><span>▶</span><span>▶</span><span>▶</span></div>
 
-      <!-- Stage 4: Claude evaluator -->
-      <rect x="620" y="132" width="160" height="64" rx="3" fill="#fff" stroke="#b65a1f" stroke-width="2"/>
-      <circle cx="638" cy="150" r="11" fill="#8b2500"/>
-      <text x="638" y="153" text-anchor="middle" class="lbl-num">4</text>
-      <text x="656" y="150" class="lbl-stage">Claude evaluator</text>
-      <text x="656" y="164" class="lbl-sub">Criteria-grounded scoring</text>
-      <rect x="656" y="174" width="84" height="14" fill="#fbedde" stroke="#b65a1f"/>
-      <text x="660" y="184" class="lbl-tag" fill="#b65a1f">claude-opus-4-7</text>
+      <!-- ===== KB POOL ===== -->
+      <div class="kb-pool">
+        <div class="kb-pool-head">
+          <span class="kb-badge">+ KB</span>
+          <span class="kb-title">Per-candidate KB profile (appended at step 2, read by steps 3 &amp; 5)</span>
+          <span class="kb-sub">9,275 disease profiles · Orphanet-enriched</span>
+        </div>
+        <ul class="kb-fields">
+          <li><strong>Diagnostic criteria</strong> (Brighton, Ghent, RCD…)</li>
+          <li><strong>Symptom tiers</strong> + frequency %</li>
+          <li><strong>Body-system</strong> classification</li>
+          <li><strong>Onset ages</strong> (neonatal…late)</li>
+          <li><strong>Inheritance</strong> (AR / AD / X-linked)</li>
+          <li><strong>Prevalence</strong> (Orphanet class)</li>
+          <li><strong>Gene associations</strong> (FBN1, TGFBR2…)</li>
+          <li><strong>Family / siblings</strong> (LDS 1-5, CMT 1-X)</li>
+          <li><strong>Differential diagnoses</strong></li>
+          <li><strong>Red flags</strong> &amp; common mimics</li>
+          <li><strong>Identifiers</strong> (ICD-10, OMIM, Orphanet, Mondo)</li>
+          <li><strong><code>confidenceInData</code></strong> flag</li>
+        </ul>
+      </div>
 
-      <!-- Stage 5: Claude synth -->
-      <rect x="620" y="214" width="160" height="64" rx="3" fill="#fff" stroke="#b65a1f" stroke-width="2"/>
-      <circle cx="638" cy="232" r="11" fill="#8b2500"/>
-      <text x="638" y="235" text-anchor="middle" class="lbl-num">5</text>
-      <text x="656" y="232" class="lbl-stage">Claude synthesiser</text>
-      <text x="656" y="246" class="lbl-sub">Rank full evaluated pool</text>
-      <rect x="656" y="256" width="84" height="14" fill="#fbedde" stroke="#b65a1f"/>
-      <text x="660" y="266" class="lbl-tag" fill="#b65a1f">claude-opus-4-7</text>
+      <!-- arrows row -->
+      <div class="conn"><span>▼</span><span>▼</span><span>▼</span><span>▼</span><span>▼</span><span>▼</span><span></span></div>
 
-      <!-- Stage 6: o3 critic -->
-      <rect x="800" y="132" width="160" height="64" rx="3" fill="#fff" stroke="#0a8a6a" stroke-width="2"/>
-      <circle cx="818" cy="150" r="11" fill="#8b2500"/>
-      <text x="818" y="153" text-anchor="middle" class="lbl-num">6</text>
-      <text x="836" y="150" class="lbl-stage">o3 critic</text>
-      <text x="836" y="164" class="lbl-sub">Challenge: promote/demote/add</text>
-      <rect x="836" y="174" width="68" height="14" fill="#e3f4ee" stroke="#0a8a6a"/>
-      <text x="840" y="184" class="lbl-tag" fill="#0a8a6a">o3 high</text>
+      <!-- ===== ROW 2 ===== -->
+      <div class="row">
+        <!-- 6 Claude synth -->
+        <div class="tile anthropic">
+          <div class="tile-head"><span class="t-num">6</span><span class="t-name">Claude synthesiser</span></div>
+          <div class="t-model">claude-opus-4-7</div>
+          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Evaluated pool</li></ul></div>
+          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>Full ranked pool</li><li>Consensus level</li><li>Calibration</li></ul></div>
+        </div>
 
-      <!-- Stage 7: Low-confidence escalation -->
-      <rect x="800" y="214" width="160" height="64" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="2" stroke-dasharray="3 3"/>
-      <circle cx="818" cy="232" r="11" fill="#8b2500"/>
-      <text x="818" y="235" text-anchor="middle" class="lbl-num">7</text>
-      <text x="836" y="232" class="lbl-stage">Escalation check</text>
-      <text x="836" y="246" class="lbl-sub">If top-5 &lt; 40 → broaden</text>
-      <rect x="836" y="256" width="80" height="14" fill="#eaf5ef" stroke="#2d6a4f"/>
-      <text x="840" y="266" class="lbl-tag" fill="#2d6a4f">deterministic</text>
+        <!-- 7 o3 critic -->
+        <div class="tile openai">
+          <div class="tile-head"><span class="t-num">7</span><span class="t-name">o3 critic</span></div>
+          <div class="t-model">o3 high</div>
+          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Claude ranking + case</li></ul></div>
+          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>promote / demote</li><li>add / merge / flag-gap</li><li>w/ cited evidence</li></ul></div>
+        </div>
 
-      <!-- Stage 8: Claude finalizer -->
-      <rect x="800" y="296" width="160" height="64" rx="3" fill="#fff" stroke="#b65a1f" stroke-width="2"/>
-      <circle cx="818" cy="314" r="11" fill="#8b2500"/>
-      <text x="818" y="317" text-anchor="middle" class="lbl-num">8</text>
-      <text x="836" y="314" class="lbl-stage">Claude finaliser</text>
-      <text x="836" y="328" class="lbl-sub">Pick patient-facing top-10</text>
-      <rect x="836" y="338" width="84" height="14" fill="#fbedde" stroke="#b65a1f"/>
-      <text x="840" y="348" class="lbl-tag" fill="#b65a1f">claude-opus-4-7</text>
+        <!-- 8 Claude finalizer (was 9) -->
+        <div class="tile anthropic">
+          <div class="tile-head"><span class="t-num">8</span><span class="t-name">Claude finaliser</span></div>
+          <div class="t-model">claude-opus-4-7</div>
+          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Ranking + critique</li></ul></div>
+          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>Final top 10</li><li>changesFromFirstPass</li></ul></div>
+        </div>
 
-      <!-- Stage 8.5: Clarifier (offset to side) -->
-      <rect x="620" y="296" width="160" height="64" rx="3" fill="#fff" stroke="#b65a1f" stroke-width="2" stroke-dasharray="4 4"/>
-      <circle cx="638" cy="314" r="11" fill="#8b2500"/>
-      <text x="638" y="317" text-anchor="middle" class="lbl-num">8½</text>
-      <text x="656" y="314" class="lbl-stage">Clarifier</text>
-      <text x="656" y="328" class="lbl-sub">Pick 1-5 yes/no questions</text>
-      <rect x="656" y="338" width="92" height="14" fill="#fbedde" stroke="#b65a1f"/>
-      <text x="660" y="348" class="lbl-tag" fill="#b65a1f">claude-sonnet-4-6</text>
+        <!-- 9 Family enrichment (+ KB) -->
+        <div class="tile determ">
+          <div class="tile-head"><span class="t-num">9</span><span class="t-name">Family enrichment</span></div>
+          <div class="t-model">deterministic + KB</div>
+          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Top-5 + KB family graph</li></ul></div>
+          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>Family cards</li><li>Differentiating test</li><li>Per-subtype findings</li></ul></div>
+        </div>
 
-      <!-- Stage 9: Family enrichment -->
-      <rect x="800" y="378" width="160" height="64" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="2"/>
-      <circle cx="818" cy="396" r="11" fill="#8b2500"/>
-      <text x="818" y="399" text-anchor="middle" class="lbl-num">9</text>
-      <text x="836" y="396" class="lbl-stage">Family enrichment</text>
-      <text x="836" y="410" class="lbl-sub">Umbrella-vs-subtype callout</text>
-      <rect x="836" y="420" width="80" height="14" fill="#eaf5ef" stroke="#2d6a4f"/>
-      <text x="840" y="430" class="lbl-tag" fill="#2d6a4f">deterministic</text>
+        <!-- 10 Clarifier -->
+        <div class="tile anthropic">
+          <div class="tile-head"><span class="t-num">10</span><span class="t-name">Clarifier (v18)</span></div>
+          <div class="t-model">claude-sonnet-4-6</div>
+          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Top-10</li><li>Candidate questions (from 3)</li></ul></div>
+          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>1–5 yes/no rule in/rule out questions</li><li>affectsDiagnoses map</li></ul></div>
+        </div>
 
-      <!-- Stage 10: Report -->
-      <rect x="800" y="460" width="160" height="64" rx="3" fill="#fff" stroke="#0a8a6a" stroke-width="2"/>
-      <circle cx="818" cy="478" r="11" fill="#8b2500"/>
-      <text x="818" y="481" text-anchor="middle" class="lbl-num-dark">10</text>
-      <text x="836" y="478" class="lbl-stage">Report generator</text>
-      <text x="836" y="492" class="lbl-sub">Recs, gaps, next steps</text>
-      <rect x="836" y="502" width="68" height="14" fill="#e3f4ee" stroke="#0a8a6a"/>
-      <text x="840" y="512" class="lbl-tag" fill="#0a8a6a">gpt-4.1-mini</text>
+        <!-- 11 Report -->
+        <div class="tile openai">
+          <div class="tile-head"><span class="t-num">11</span><span class="t-name">Report generator</span></div>
+          <div class="t-model">gpt-4.1-mini</div>
+          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Top-10 + enrichments</li><li>Patient hypothesis</li></ul></div>
+          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>differentialDiagnoses</li><li>recommendedTesting</li><li>nextSteps + redFlags</li></ul></div>
+        </div>
 
-      <!-- ===== INPUT NODE (left) ===== -->
-      <rect x="20" y="296" width="160" height="64" rx="3" fill="#8b2500"/>
-      <text x="100" y="320" text-anchor="middle" fill="#fff" font-family="-apple-system,Inter,sans-serif" font-size="13" font-weight="700">Patient input</text>
-      <text x="100" y="338" text-anchor="middle" fill="#f0d9c3" font-family="-apple-system,Inter,sans-serif" font-size="10">demographics · narrative · onset · severity</text>
+        <!-- Patient result (terminal) -->
+        <div class="tile terminal">
+          <div class="t-name">Patient<br>result</div>
+          <div class="t-sub">ranked differential<br>recommendations<br>refine option<br>PDF report</div>
+        </div>
+      </div>
 
-      <!-- ===== KB NODE (left, below input) ===== -->
-      <rect x="20" y="378" width="160" height="48" rx="3" fill="#faf6f0" stroke="#8b2500" stroke-width="1.5"/>
-      <text x="100" y="396" text-anchor="middle" fill="#8b2500" font-family="-apple-system,Inter,sans-serif" font-size="11" font-weight="700">Knowledge Base</text>
-      <text x="100" y="410" text-anchor="middle" fill="#6d1d00" font-family="-apple-system,Inter,sans-serif" font-size="10">9,275 rare diseases · Upstash Vector</text>
+      <!-- ===== REFINEMENT STRIP ===== -->
+      <div class="refine-strip">
+        <div class="refine-strip-head">
+          <span class="refine-badge">v18</span>
+          <span class="refine-title">Optional refinement loop</span>
+          <span class="refine-sub">patient answers 1–5 rule in/rule out questions → augment evidence pool → re-run stages 5 + 6 (only)</span>
+        </div>
+        <div class="refine-cells">
+          <div class="refine-cell tile anthropic" style="min-height:0">
+            <div class="tile-head" style="padding-bottom:2px;margin-bottom:3px"><span class="t-num">R1</span><span class="t-name">Patient answers</span></div>
+            <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>Yes / No / Don't know per rule in/rule out question</li></ul></div>
+          </div>
+          <div class="refine-cell tile determ" style="min-height:0">
+            <div class="tile-head" style="padding-bottom:2px;margin-bottom:3px"><span class="t-num">R2</span><span class="t-name">Answer → evidence</span></div>
+            <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>New EvidenceItems appended per hypothesis (rules-in → strong supporting, etc.)</li></ul></div>
+          </div>
+          <div class="refine-cell tile anthropic" style="min-height:0">
+            <div class="tile-head" style="padding-bottom:2px;margin-bottom:3px"><span class="t-num">R3</span><span class="t-name">Re-run 5 + 6</span></div>
+            <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>Refined ranking + rank / score deltas</li></ul></div>
+          </div>
+          <div class="refine-loopback">
+            <span class="arrow">↺</span>
+            <span>back to<br>stage 5</span>
+          </div>
+        </div>
+      </div>
 
-      <!-- ===== OUTPUT NODES (right) ===== -->
-      <rect x="20" y="460" width="160" height="64" rx="3" fill="#8b2500"/>
-      <text x="100" y="484" text-anchor="middle" fill="#fff" font-family="-apple-system,Inter,sans-serif" font-size="13" font-weight="700">Ranked differential</text>
-      <text x="100" y="502" text-anchor="middle" fill="#f0d9c3" font-family="-apple-system,Inter,sans-serif" font-size="10">top 10 · evidence · confidence</text>
+    </div>
+  </div>
+</section>
 
-      <!-- ===== ARROWS: main forward flow ===== -->
-      <!-- patient -> stage 0 -->
-      <line x1="100" y1="296" x2="100" y2="114" stroke="#8b7355" stroke-width="1.5" marker-end="url(#arrow)"/>
-      <!-- 0 -> 1 -->
-      <line x1="180" y1="82" x2="200" y2="82" stroke="#8b7355" stroke-width="1.5" marker-end="url(#arrow)"/>
-      <!-- 1 -> 2 -->
-      <line x1="360" y1="82" x2="380" y2="82" stroke="#8b7355" stroke-width="1.5" marker-end="url(#arrow)"/>
-      <!-- KB feeds Stage 1 (curved) -->
-      <path d="M 100 378 Q 100 270 220 220 Q 280 195 280 114" fill="none" stroke="#2d6a4f" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
-      <!-- KB feeds Stage 2 (curved) -->
-      <path d="M 180 402 Q 280 402 380 270 Q 410 230 460 140" fill="none" stroke="#2d6a4f" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+<!-- ========= DETAILED VIEW ========= -->
+<section>
+  <h2>Detailed view — every stage with full I/O</h2>
+  <p>For digging deeper: every pipeline stage as its own card with the explicit fields it consumes and produces. The two <code>+ KB</code> augmentation cards spell out which knowledge-base fields are appended and where they're read.</p>
 
-      <!-- 2 -> 3 -->
-      <line x1="600" y1="82" x2="620" y2="82" stroke="#8b7355" stroke-width="1.5" marker-end="url(#arrow)"/>
-      <!-- 3 -> 4 -->
-      <line x1="700" y1="114" x2="700" y2="132" stroke="#8b7355" stroke-width="1.5" marker-end="url(#arrow)"/>
-      <!-- 4 -> 5 -->
-      <line x1="700" y1="196" x2="700" y2="214" stroke="#8b7355" stroke-width="1.5" marker-end="url(#arrow)"/>
-      <!-- 5 -> 6 -->
-      <line x1="780" y1="246" x2="800" y2="164" stroke="#8b7355" stroke-width="1.5" marker-end="url(#arrow)"/>
-      <!-- 6 -> 7 -->
-      <line x1="880" y1="196" x2="880" y2="214" stroke="#8b7355" stroke-width="1.5" marker-end="url(#arrow)"/>
-      <!-- 7 -> 8 -->
-      <line x1="880" y1="278" x2="880" y2="296" stroke="#8b7355" stroke-width="1.5" marker-end="url(#arrow)"/>
-      <!-- 5 -> 8.5 (clarifier) -->
-      <line x1="700" y1="278" x2="700" y2="296" stroke="#8b7355" stroke-width="1.5" marker-end="url(#arrow)"/>
-      <!-- 8.5 -> 8 -->
-      <line x1="780" y1="328" x2="800" y2="328" stroke="#8b7355" stroke-width="1.5" marker-end="url(#arrow)"/>
-      <!-- 8 -> 9 -->
-      <line x1="880" y1="360" x2="880" y2="378" stroke="#8b7355" stroke-width="1.5" marker-end="url(#arrow)"/>
-      <!-- 9 -> 10 -->
-      <line x1="880" y1="442" x2="880" y2="460" stroke="#8b7355" stroke-width="1.5" marker-end="url(#arrow)"/>
-      <!-- 10 -> output -->
-      <path d="M 800 492 L 180 492" fill="none" stroke="#8b7355" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <div class="detail-flow">
 
-      <!-- ===== REFINEMENT LOOP (dashed) ===== -->
-      <!-- output -> back to stage 4 (refine re-runs eval + synth) -->
-      <path d="M 180 460 Q 110 460 110 250 Q 110 164 530 164 Q 600 164 620 164" fill="none" stroke="#8b2500" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrowDashed)"/>
-      <text x="120" y="252" class="lbl-sm" fill="#8b2500" font-weight="700">Refine (v18)</text>
-      <text x="120" y="264" class="lbl-sm" fill="#8b2500">patient answers</text>
-      <text x="120" y="276" class="lbl-sm" fill="#8b2500">→ re-run 4+5</text>
-    </svg>
+    <!-- 0 -->
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">0</span>
+        <span class="detail-name">Symptom extraction</span>
+        <span class="detail-tags"><span class="tag tag-openai">gpt-4.1-mini</span><span class="tag tag-determ">UMLS</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in">
+          <div class="detail-lbl">Input</div>
+          <ul><li>Free-text symptom narrative</li><li>Patient demographics (age, sex)</li></ul>
+        </div>
+        <div class="detail-cell detail-action">
+          <div class="detail-action-text">Parse the narrative into discrete clinical findings. Map each to UMLS CUI / SNOMED. Also extract anything the patient explicitly denies.</div>
+        </div>
+        <div class="detail-cell detail-out">
+          <div class="detail-lbl">Output</div>
+          <ul><li>List of <code>MappedSymptom</code> (medical term + code + body part)</li><li>List of excluded findings</li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="detail-arrow">▼</div>
 
-    <div class="diagram-legend">
-      <span><span class="swatch" style="background:#e3f4ee;border-color:#0a8a6a"></span>OpenAI</span>
-      <span><span class="swatch" style="background:#fbedde;border-color:#b65a1f"></span>Anthropic</span>
-      <span><span class="swatch" style="background:#eaf5ef;border-color:#2d6a4f"></span>Deterministic</span>
-      <span><span style="display:inline-block;width:30px;border-top:1.5px solid #8b7355;vertical-align:middle;margin-right:6px"></span>Data flow</span>
-      <span><span style="display:inline-block;width:30px;border-top:1.5px dashed #8b2500;vertical-align:middle;margin-right:6px"></span>Refinement loop</span>
-      <span><span style="display:inline-block;width:30px;border-top:1.5px dashed #2d6a4f;vertical-align:middle;margin-right:6px"></span>KB retrieval</span>
+    <!-- 1 -->
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">1</span>
+        <span class="detail-name">Triage — classify case</span>
+        <span class="detail-tags"><span class="tag tag-openai">gpt-4.1-nano</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Mapped symptoms</li><li>Demographics</li><li>Chief complaint description</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">Classify which body systems are involved, set acuity (routine / urgent / emergent), and rank specialists by relevance for this case.</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output</div><ul><li>Body systems involved (e.g. <code>neurological</code>, <code>renal</code>)</li><li>Acuity level</li><li>Ranked list of specialists</li></ul></div>
+      </div>
+    </div>
+    <div class="detail-arrow">▼</div>
+
+    <!-- 1.5 -->
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">2</span>
+        <span class="detail-name">KB retrieval — pull candidate diseases</span>
+        <span class="detail-tags"><span class="tag tag-determ">Upstash Vector</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Mapped symptoms</li><li>Body systems</li><li>Demographics</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">Semantic search against ~9,275 disease embeddings (text-embedding-3-large, 256d, similarity ≥ 0.60). Top-K candidates retrieved, then reranked per specialist downstream.</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output</div><ul><li>Top-K candidate diseases</li><li>Each with similarity score</li><li>Each <em>fully hydrated</em> with KB profile (see next card)</li></ul></div>
+      </div>
+    </div>
+
+    <!-- KB AUGMENT 1 -->
+    <div class="detail-augment">
+      <div class="detail-augment-head">
+        <span class="detail-augment-badge">+ KB</span>
+        <span class="detail-augment-name">Knowledge-base profile appended to each candidate</span>
+      </div>
+      <div class="detail-augment-desc">For every candidate disease, the following structured fields are loaded from <code>lib/knowledge/diseases/&lt;disease&gt;.json</code> and attached. The specialists in the next stage read these to ground their reasoning in real diagnostic frameworks.</div>
+      <ul class="detail-augment-list">
+        <li><strong>Diagnostic criteria</strong> (Brighton, Ghent, RCD, 2017 hEDS, etc.)</li>
+        <li><strong>Symptom tiers</strong>: pathognomonic / common / occasional / rare — each with frequency %</li>
+        <li><strong>Body system</strong> classification per symptom</li>
+        <li><strong>Onset ages</strong> (neonatal / infantile / childhood / adolescent / adult / late)</li>
+        <li><strong>Inheritance pattern</strong> (AR / AD / X-linked / mitochondrial)</li>
+        <li><strong>Prevalence</strong> classification (Orphanet)</li>
+        <li><strong>Gene associations</strong> (e.g. <code>FBN1</code>, <code>TGFBR2</code>)</li>
+        <li><strong>Family / sibling diseases</strong> (Loeys-Dietz 1-5, CMT 1-X)</li>
+        <li><strong>Differential diagnoses</strong> &amp; common mimics</li>
+        <li><strong>Red flags</strong> (urgent presentations)</li>
+        <li><strong>Identifiers</strong>: ICD-10, OMIM, Orphanet, Mondo</li>
+        <li><strong><code>confidenceInData</code></strong> flag</li>
+      </ul>
+    </div>
+    <div class="detail-arrow">▼</div>
+
+    <!-- 2 -->
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">3</span>
+        <span class="detail-name">Specialist consultation — 5 agents in parallel</span>
+        <span class="detail-tags"><span class="tag tag-openai">o3 high · ×5</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input per specialist</div><ul><li>Patient case</li><li>Reranked KB candidates relevant to this specialty</li><li>(General internist receives <em>no</em> KB candidates — by design)</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">Always-included anchors: <strong>geneticist</strong> + <strong>general internist</strong>. Plus the top 3 from triage. Each emits 3–7 hypotheses with evidence mapped to specific patient symptoms.</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output per hypothesis</div><ul><li>Diagnosis name + ICD-10</li><li>Confidence score (0–100)</li><li>Supporting evidence → patient symptoms</li><li>Contradictory evidence</li><li>Clinical reasoning</li><li>Cardinal features + rule-out features</li><li>Recommended diagnostic tests</li><li>Clarifying-question candidates (v18)</li></ul></div>
+      </div>
+    </div>
+    <div class="detail-arrow">▼</div>
+
+    <!-- 3 -->
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">4</span>
+        <span class="detail-name">Dedup &amp; merge</span>
+        <span class="detail-tags"><span class="tag tag-determ">deterministic</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Up to ~35 hypotheses (5 specialists × ~7 each)</li><li>Many overlap (e.g. geneticist + neurologist both name "Charcot-Marie-Tooth")</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">Match by exact-normalized name, substring, alias map, or KB anchor. Pick a canonical name. Union evidence items, diagnostic tests, cardinal features, candidate questions. Preserve per-specialist confidence.</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output</div><ul><li>Deduped hypothesis pool (~10–20)</li><li>Each with merged evidence and contributing specialists</li><li>Per-specialist confidence map</li><li><code>dedupStats</code> telemetry</li></ul></div>
+      </div>
+    </div>
+    <div class="detail-arrow">▼</div>
+
+    <!-- 4 -->
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">5</span>
+        <span class="detail-name">Claude evaluator — score against criteria</span>
+        <span class="detail-tags"><span class="tag tag-anthropic">claude-opus-4-7</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Deduped hypothesis pool</li><li>KB candidate profiles (criteria, symptoms, prevalence)</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">Two-track scoring on a single 0–100 scale. KB-matched hypotheses scored against structured criteria (met / not-met / unknown). Non-KB scored on clinical reasoning quality. Same scale avoids bias against non-KB diagnoses.</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output (per hypothesis)</div><ul><li><code>evidenceScore</code> (0–100)</li><li>Criteria fulfillment checklist (% + list of met/unmet)</li><li>Evidence quality: strong / moderate / weak / insufficient</li><li>Information gaps + contradictions noted</li></ul></div>
+      </div>
+    </div>
+    <div class="detail-arrow">▼</div>
+
+    <!-- 5 -->
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">6</span>
+        <span class="detail-name">Claude synthesiser — rank everything</span>
+        <span class="detail-tags"><span class="tag tag-anthropic">claude-opus-4-7</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Full evaluated hypothesis pool</li><li>Per-specialist confidence maps</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">Rank every evaluated hypothesis by overall probability. Read disagreement between specialists. Output the full ranking so critic and finaliser can promote entries that would otherwise be dropped.</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output</div><ul><li>Full ranked pool with probability scores</li><li>Consensus level: strong / moderate / weak / divergent</li><li>Confidence calibration + critical gaps</li><li>Differential clusters + excluded common diagnoses</li></ul></div>
+      </div>
+    </div>
+    <div class="detail-arrow">▼</div>
+
+    <!-- 6 -->
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">7</span>
+        <span class="detail-name">o3 critic — second opinion</span>
+        <span class="detail-tags"><span class="tag tag-openai">o3 high</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Claude's full ranking</li><li>Patient case + KB candidates</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">Challenge Claude's ranking with structured critique suggestions. Each cites specific patient evidence. The <code>add</code> action is gated on a confidence floor.</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output</div><ul><li>Critique suggestions: <code>promote</code> · <code>demote</code> · <code>reorder</code> · <code>merge</code> · <code>flag-gap</code> · <code>add</code></li><li>Each with cited evidence + confidence</li><li>Overall confidence in Claude's ranking</li></ul></div>
+      </div>
+    </div>
+    <div class="detail-arrow">▼</div>
+
+    <!-- 8 Claude finaliser (was 9) -->
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">8</span>
+        <span class="detail-name">Claude finaliser — pick patient-facing top 10</span>
+        <span class="detail-tags"><span class="tag tag-anthropic">claude-opus-4-7</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Claude's full ranking</li><li>o3 critique suggestions</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">Review every critique suggestion and decide whether to honour it. Select the final top-10 from the draft ranking. The cap is firm; entries not in the final 10 are dropped from the patient view.</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output</div><ul><li>Final top-10 hypotheses</li><li><code>changesFromFirstPass</code> per hypothesis</li></ul></div>
+      </div>
+    </div>
+    <div class="detail-arrow">▼</div>
+
+    <!-- 9 Family enrichment (moved before clarifier per orchestrator order) -->
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">9</span>
+        <span class="detail-name">Family enrichment — umbrella-vs-subtype callout</span>
+        <span class="detail-tags"><span class="tag tag-determ">deterministic</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Final top-5</li><li>Patient symptom terms</li><li>(KB family graph — see next card)</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">For top-5 hypotheses with 3+ KB sibling subtypes (e.g. Loeys-Dietz 1–5, CMT 1-X), surface the family's differentiating test (modality + per-subtype unique findings). Up to 2 enrichments per analysis.</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output</div><ul><li>Family enrichment cards</li><li>Each: family name, sibling count, differentiating test, per-subtype unique findings</li></ul></div>
+      </div>
+    </div>
+
+    <!-- KB AUGMENT 2 -->
+    <div class="detail-augment">
+      <div class="detail-augment-head">
+        <span class="detail-augment-badge">+ KB</span>
+        <span class="detail-augment-name">Family graph appended</span>
+      </div>
+      <div class="detail-augment-desc">The KB is walked sibling-side to find related subtypes for each candidate diagnosis. The following are pulled per family:</div>
+      <ul class="detail-augment-list">
+        <li><strong>Total subtypes</strong> in the family</li>
+        <li><strong>Sibling profiles</strong> with the same identifying root</li>
+        <li><strong>Per-subtype unique findings</strong> (what makes <em>this</em> subtype distinct)</li>
+        <li><strong>Differentiating test modality</strong> (genetic panel / imaging / biopsy / lab)</li>
+        <li><strong>Convergence ratio</strong> — how confidently a single modality resolves the family</li>
+        <li><strong>Shared findings</strong> across the family</li>
+      </ul>
+    </div>
+    <div class="detail-arrow">▼</div>
+
+    <!-- 10 Clarifier (v18) -->
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">10</span>
+        <span class="detail-name">Clarifier — pick 1-5 rule in/rule out questions <span style="font-weight:400;color:var(--text-faint);font-size:11px">· v18 · fail-soft</span></span>
+        <span class="detail-tags"><span class="tag tag-anthropic">claude-sonnet-4-6</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Final top-10 hypotheses</li><li>Candidate clarifying questions from specialists (Step 3)</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">Pick 1–5 yes/no rule in/rule out questions with the highest discriminating power. Patient-answerable, non-redundant, spread across top hypotheses. If no candidates exist, short-circuit (no questions — refine UI just won't appear).</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output</div><ul><li>Final question list (0–5)</li><li>Each with <code>affectsDiagnoses</code> per-hypothesis impact</li><li><code>questionType</code>: symptom / prior_dx / family_history / lab_result</li></ul></div>
+      </div>
+    </div>
+    <div class="detail-arrow">▼</div>
+
+    <!-- 11 Report -->
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">11</span>
+        <span class="detail-name">Report generator — assemble the patient view</span>
+        <span class="detail-tags"><span class="tag tag-openai">gpt-4.1-mini</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Final top-10 hypotheses</li><li>Family enrichments</li><li>Patient case + patient's own hypothesis</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">Format everything into the patient-facing <code>AnalysisResult</code>. Writes the overall assessment, judges the patient's own hypothesis, lists data gaps, generates recommended tests with rationale + urgency, and writes action items.</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output → patient</div><ul><li><code>differentialDiagnoses</code> — top 10</li><li><code>overallAssessment</code></li><li><code>patientHypothesisAnalysis</code></li><li><code>dataGaps</code></li><li><code>recommendedTesting</code></li><li><code>nextSteps</code>: actions, specialists, follow-up, red flags</li><li><code>clarifyingQuestions</code> + <code>familyEnrichments</code></li></ul></div>
+      </div>
+    </div>
+
+  </div>
+
+  <h3 style="margin-top:36px;">Optional refinement loop (v18) — detailed</h3>
+  <p>After the patient sees their initial differential, they can answer 1–5 yes/no rule in/rule out questions and re-enter the pipeline. Only the affected stages re-run.</p>
+
+  <div class="detail-flow">
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">R1</span>
+        <span class="detail-name">Patient answers</span>
+        <span class="detail-tags"><span class="tag tag-determ">UI</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Questions from Step 10</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">Patient picks Yes / No / Don't know per question. "Don't know" is treated as no signal — that question is dropped.</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output</div><ul><li>Array of <code>{ questionId, answer }</code></li></ul></div>
+      </div>
+    </div>
+    <div class="detail-arrow">▼</div>
+
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">R2</span>
+        <span class="detail-name">Answer → evidence translation</span>
+        <span class="detail-tags"><span class="tag tag-determ">deterministic</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Patient answers</li><li>Question's <code>affectsDiagnoses</code> map (from clarifier)</li><li>Original hypothesis pool</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">For each answer, look up the question's <code>ifYes</code> / <code>ifNo</code> impact per hypothesis. Yes/No becomes a new <code>EvidenceItem</code> appended to that hypothesis (rules-in → strong supporting; weakens → moderate contradictory; etc.).</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output</div><ul><li>Augmented hypothesis pool with new evidence items</li></ul></div>
+      </div>
+    </div>
+    <div class="detail-arrow">▼</div>
+
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">R3</span>
+        <span class="detail-name">Re-run evaluator + synth</span>
+        <span class="detail-tags"><span class="tag tag-anthropic">claude-opus-4-7 ×2</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Augmented hypothesis pool</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">Steps 5 + 6 run again from scratch with the patient's new evidence items folded in. Critic, finaliser, family enrichment, and report are <em>not</em> re-run — only the ranking.</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output → patient</div><ul><li>Refined top-10 ranking</li><li>Per-hypothesis delta: old rank → new rank, old score → new score</li><li>Items dropped out of the top 10</li></ul></div>
+      </div>
     </div>
   </div>
 </section>
@@ -986,21 +1529,6 @@
     <div class="stage-head">
       <div style="display:flex;gap:10px;align-items:flex-start;flex:1;">
         <div class="stage-num">7</div>
-        <div class="stage-title">Low-confidence escalation <span class="sub">— broaden the investigative pathway</span></div>
-      </div>
-      <div class="stage-tags">
-        <span class="tag tag-determ">Deterministic</span>
-      </div>
-    </div>
-    <div class="stage-body">
-      <p>If <strong>all top-5 scores &lt; 40</strong>, or consensus is weak / divergent, or top-diagnosis reliability is rated low, an escalation context is injected. This recommends broader pathways — WES/WGS, geneticist referral, undiagnosed-disease programs like the NIH UDP — and is folded into the finaliser and report prompts.</p>
-    </div>
-  </div>
-
-  <div class="stage">
-    <div class="stage-head">
-      <div style="display:flex;gap:10px;align-items:flex-start;flex:1;">
-        <div class="stage-num">8</div>
         <div class="stage-title">Claude finaliser <span class="sub">— select the patient-facing top 10</span></div>
       </div>
       <div class="stage-tags">
@@ -1018,7 +1546,22 @@
   <div class="stage">
     <div class="stage-head">
       <div style="display:flex;gap:10px;align-items:flex-start;flex:1;">
-        <div class="stage-num">8.5</div>
+        <div class="stage-num">8</div>
+        <div class="stage-title">Family enrichment <span class="sub">— umbrella vs subtype callout</span></div>
+      </div>
+      <div class="stage-tags">
+        <span class="tag tag-determ">Deterministic</span>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p>For top-5 hypotheses with 3+ KB sibling subtypes (e.g. CMT 1-X, Loeys-Dietz 1-5), surface the family's differentiating test (modality + per-subtype unique findings). The report shows: "this belongs to a family of N subtypes; modality X can determine which." Up to two family enrichments per analysis.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head">
+      <div style="display:flex;gap:10px;align-items:flex-start;flex:1;">
+        <div class="stage-num">9</div>
         <div class="stage-title">Clarifier <span class="sub">— pick 1–5 follow-up questions</span></div>
       </div>
       <div class="stage-tags">
@@ -1033,21 +1576,6 @@
       <div class="stage-meta">
         <span><span class="label">Files:</span> <code>lib/agents/clarifier.ts</code></span>
       </div>
-    </div>
-  </div>
-
-  <div class="stage">
-    <div class="stage-head">
-      <div style="display:flex;gap:10px;align-items:flex-start;flex:1;">
-        <div class="stage-num">9</div>
-        <div class="stage-title">Family enrichment <span class="sub">— umbrella vs subtype callout</span></div>
-      </div>
-      <div class="stage-tags">
-        <span class="tag tag-determ">Deterministic</span>
-      </div>
-    </div>
-    <div class="stage-body">
-      <p>For top-5 hypotheses with 3+ KB sibling subtypes (e.g. CMT 1-X, Loeys-Dietz 1-5), surface the family's differentiating test (modality + per-subtype unique findings). The report shows: "this belongs to a family of N subtypes; modality X can determine which." Up to two family enrichments per analysis.</p>
     </div>
   </div>
 
@@ -1114,7 +1642,7 @@
   <div class="vline">
     <div class="vline-item">
       <h4>Question generation (pipeline stage 8.5)</h4>
-      <p>Specialists emit candidate questions per hypothesis during stage 2 (constrained to patient-answerable yes/no formats). Stage 8.5 picks the 1–5 with highest discriminating power across the top hypotheses.</p>
+      <p>Specialists emit candidate questions per hypothesis during stage 3 (constrained to patient-answerable yes/no formats). Stage 10 picks the 1–5 with highest discriminating power across the top hypotheses.</p>
     </div>
     <div class="vline-item">
       <h4>Patient answers (UX)</h4>

@@ -263,6 +263,8 @@ export default function AnalysisPage() {
                 pipelineMetadata: event.analysis.pipelineMetadata || null,
                 // v18: optional clarifying questions for the refine flow.
                 clarifyingQuestions: event.analysis.clarifyingQuestions || undefined,
+                // v18: structured low-confidence flag for the UI banner.
+                lowConfidenceWarning: event.analysis.lowConfidenceWarning || undefined,
               }
 
               const analysisMetadata = {

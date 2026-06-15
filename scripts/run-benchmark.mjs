@@ -22,14 +22,22 @@ import { readFileSync, writeFileSync, existsSync, appendFileSync, copyFileSync }
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 const DATASET_PATH = new URL('./benchmark-data/en.jsonl', import.meta.url).pathname;
-const RESULTS_PATH = new URL('./benchmark-data/results.jsonl', import.meta.url).pathname;
+const RESULTS_PATH = process.env.RESULTS_FILE
+  ? (process.env.RESULTS_FILE.startsWith('/')
+      ? process.env.RESULTS_FILE
+      : new URL(`./benchmark-data/${process.env.RESULTS_FILE}`, import.meta.url).pathname)
+  : new URL('./benchmark-data/results.jsonl', import.meta.url).pathname;
 const KB_PATH = new URL('../lib/knowledge/diseases-compiled.json', import.meta.url).pathname;
 
 // ===== CLI ARGS =====
 
 function parseArgs() {
   const args = process.argv.slice(2);
-  const opts = { count: 20, offset: 0, resume: false, rerun: false, stats: false, shuffle: false, seed: null };
+  const opts = {
+    count: 20, offset: 0, resume: false, rerun: false, stats: false, shuffle: false, seed: null,
+    evalVersion: 'v3', evalRunMode: 'secondlook', evalSamplingMode: null,
+    parallelism: 1, fetchTimeoutMs: 900_000, // 15 min default
+  };
 
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--count' && args[i + 1]) opts.count = parseInt(args[++i], 10);
@@ -39,6 +47,10 @@ function parseArgs() {
     else if (args[i] === '--stats') opts.stats = true;
     else if (args[i] === '--shuffle') opts.shuffle = true;
     else if (args[i] === '--seed' && args[i + 1]) opts.seed = parseInt(args[++i], 10);
+    else if (args[i] === '--eval-version' && args[i + 1]) opts.evalVersion = args[++i];
+    else if (args[i] === '--eval-sampling' && args[i + 1]) opts.evalSamplingMode = args[++i];
+    else if (args[i] === '--parallelism' && args[i + 1]) opts.parallelism = parseInt(args[++i], 10);
+    else if (args[i] === '--fetch-timeout' && args[i + 1]) opts.fetchTimeoutMs = parseInt(args[++i], 10) * 1000;
   }
   return opts;
 }
@@ -60,16 +72,32 @@ async function apiPost(path, body) {
   return res.json();
 }
 
-async function runPipelineSSE(patientCase) {
+async function runPipelineSSE(patientCase, fetchTimeoutMs = 900_000) {
+  const COHORT_BYPASS_SECRET = process.env.COHORT_BYPASS_SECRET;
+  const headers = { 'Content-Type': 'application/json' };
+  if (COHORT_BYPASS_SECRET) headers['x-cohort-bypass'] = COHORT_BYPASS_SECRET;
+
   let res;
+  let ac;
+  let timer;
   for (let attempt = 0; attempt < 5; attempt++) {
+    // AbortController-driven timeout protects against laptop sleep + Vercel
+    // SSE silence: if no response in fetchTimeoutMs, the fetch (and the
+    // subsequent body read) errors out instead of hanging on a dead socket
+    // forever. Timer is intentionally NOT cleared until after the body
+    // read completes — undici propagates the signal to body reads too.
+    ac = new AbortController();
+    timer = setTimeout(() => ac.abort(new Error(`fetch timeout after ${Math.round(fetchTimeoutMs / 1000)}s`)), fetchTimeoutMs);
+
     res = await fetch(`${BASE_URL}/api/analyze-patient-v2`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers,
       body: JSON.stringify(patientCase),
+      signal: ac.signal,
     });
 
     if (res.status === 429) {
+      clearTimeout(timer);
       const body = await res.json().catch(() => ({}));
       const waitSec = (body.retryAfter || 60) + 5;
       console.log(`         Rate limited — waiting ${waitSec}s...`);
@@ -81,10 +109,12 @@ async function runPipelineSSE(patientCase) {
 
   if (!res.ok) {
     const text = await res.text();
+    clearTimeout(timer);
     throw new Error(`Pipeline failed (${res.status}): ${text}`);
   }
 
   const text = await res.text();
+  clearTimeout(timer);
   const events = text.split('\n\n')
     .filter(chunk => chunk.startsWith('data: '))
     .map(chunk => {
@@ -613,11 +643,27 @@ async function loadTestCases() {
 }
 
 async function saveTestCases(cases) {
+  // Legacy full-replace mode — kept for back-compat with --rerun / --stats paths.
   await fetch(`${BASE_URL}/api/admin/test-cases`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ testCases: cases }),
   });
+}
+
+/** Single-case upsert. Much faster than re-POSTing the whole array per case. */
+async function upsertTestCase(tc) {
+  const headers = { 'Content-Type': 'application/json' };
+  if (process.env.COHORT_BYPASS_SECRET) headers['x-cohort-bypass'] = process.env.COHORT_BYPASS_SECRET;
+  const res = await fetch(`${BASE_URL}/api/admin/test-cases`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({ upsert: [tc] }),
+  });
+  if (!res.ok) {
+    const txt = await res.text().catch(() => '');
+    throw new Error(`upsert failed (${res.status}): ${txt.slice(0, 200)}`);
+  }
 }
 
 /** Extract HPO symptom terms from case_description for keyFindings */
@@ -633,10 +679,13 @@ function extractKeyFindings(caseDescription) {
 
 // ===== SINGLE CASE RUNNER =====
 
-async function runSingleCase(entry, allTestCases) {
+async function runSingleCase(entry, allTestCases, opts = { evalVersion: 'v3', evalRunMode: 'secondlook', evalSamplingMode: null }) {
   const startTime = Date.now();
   const { ppkt_id, diagnosis: groundTruthDiag, case_description } = entry;
-  const testId = `eval_${ppkt_id}`;
+  // Trio-compatible ID format so the /eval page recognises the case.
+  // Even on solo SecondLook runs we keep the _secondlook_ suffix so the
+  // page's tabOf() lookup classifies it correctly.
+  const testId = `eval_${ppkt_id}_${opts.evalRunMode}_${Date.now()}`;
 
   try {
     // 1. Build patient case (parse symptoms + UMLS map)
@@ -646,7 +695,7 @@ async function runSingleCase(entry, allTestCases) {
 
     // 2. Run pipeline
     const pipelineStart = Date.now();
-    const analysis = await runPipelineSSE(patientCase);
+    const analysis = await runPipelineSSE(patientCase, opts.fetchTimeoutMs);
     const pipelineSec = ((Date.now() - pipelineStart) / 1000).toFixed(1);
 
     // 3. Match against ground truth
@@ -687,14 +736,16 @@ async function runSingleCase(entry, allTestCases) {
       console.log(`         Grading failed: ${e.message.slice(0, 80)}`);
     }
 
-    // 5. Build TestCase for the testing page
+    // 5. Build TestCase for the testing page / /eval
     const testCase = {
       id: testId,
       createdAt: new Date().toISOString(),
       difficulty: 3,
       categoryHint: ppkt_id,
       testVersion: 'Eval',
-      evalVersion: 'v3',
+      evalVersion: opts.evalVersion,
+      evalRunMode: opts.evalRunMode,
+      ...(opts.evalSamplingMode && { evalSamplingMode: opts.evalSamplingMode }),
       status: grading ? 'graded' : 'completed',
       source: 'generated',
       groundTruth: {
@@ -745,9 +796,14 @@ async function runSingleCase(entry, allTestCases) {
       console.log(`         ⚑ Grader improved rank: benchmark=#${benchmarkRank}, grader=#${graderRank} → reconciled=#${graderRank}`);
     }
 
-    // Save to testing page
-    allTestCases.unshift(testCase);
-    await saveTestCases(allTestCases);
+    // Save to testing page / /eval via single-case upsert (much cheaper than
+    // a full-replace POST of the entire test-case array on every case).
+    try {
+      await upsertTestCase(testCase);
+      allTestCases.unshift(testCase);
+    } catch (e) {
+      console.log(`         Upsert failed (continuing): ${e.message.slice(0, 100)}`);
+    }
 
     const totalSec = ((Date.now() - startTime) / 1000).toFixed(1);
     const rankStr = reconciledRank !== null ? `#${reconciledRank}` : 'MISS';
@@ -768,6 +824,7 @@ async function runSingleCase(entry, allTestCases) {
       ppkt_id,
       runTimestamp: new Date().toISOString(),
       status: 'completed',
+      pipelineVersion: analysis.pipelineMetadata?.pipelineVersion || null,
       groundTruth: groundTruthDiag,
       correctRank: reconciledRank,
       benchmarkRank,
@@ -878,14 +935,37 @@ async function main() {
   let completed = 0;
   const sessionResults = [];
 
-  for (const entry of casesToRun) {
-    completed++;
-    console.log(`\n[${completed}/${casesToRun.length}] ${entry.ppkt_id}`);
+  // Worker-queue parallelism: N workers pull from a shared queue.
+  // Per-case results land in results.jsonl atomically (appendFileSync per
+  // case), so concurrent workers don't race on file writes. Upserts to
+  // /api/admin/test-cases are also independent per case.
+  const P = Math.max(1, opts.parallelism || 1);
+  const queue = casesToRun.slice(); // shallow copy so we can shift()
+  let started = 0;
+  const workerId = (n) => `W${n + 1}`;
 
-    const result = await runSingleCase(entry, allTestCases);
-    appendResult(result);
-    sessionResults.push(result);
+  async function worker(n) {
+    while (queue.length > 0) {
+      const entry = queue.shift();
+      if (!entry) break;
+      started++;
+      const tag = P > 1 ? `${workerId(n)} ` : '';
+      console.log(`\n[${started}/${casesToRun.length}] ${tag}${entry.ppkt_id}`);
+      try {
+        const result = await runSingleCase(entry, allTestCases, opts);
+        appendResult(result);
+        sessionResults.push(result);
+        completed++;
+      } catch (err) {
+        // Defensive — runSingleCase already catches & returns an error result,
+        // but guard against any uncaught throw escaping into the worker pool.
+        console.log(`         WORKER ${tag}caught: ${err.message?.slice(0, 120)}`);
+      }
+    }
   }
+
+  console.log(`  Parallelism: ${P} worker(s)`);
+  await Promise.all(Array.from({ length: P }, (_, i) => worker(i)));
 
   // Print stats for this session + all results
   console.log(`\n--- Session results (${sessionResults.length} cases) ---`);

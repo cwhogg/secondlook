@@ -48,10 +48,8 @@ For EACH hypothesis you propose, also populate these annotation fields:
 - ruleOutFeatures: 1-3 features whose ABSENCE would rule out this diagnosis (e.g., "normal SPINK5 sequencing").
 - domainConfidence: an integer 0-100 representing YOUR OWN confidence in this hypothesis from YOUR specialty's perspective. This is your domain confidence, not the overall probability — it captures how strongly your expertise points to this diagnosis. May differ from confidenceScore (which is overall probability).
 
-===== v27 FEATURE-VS-SYNDROME NAMING (HARD RULE) =====
+===== v27 FEATURE-VS-SYNDROME NAMING =====
 When the patient case presents a single disease feature (tumor, hamartoma, lesion, enzyme deficiency, anatomical finding, biochemical defect, structural abnormality) that is a recognizable hallmark manifestation of a broader syndromic disease, name the SYNDROMIC DISEASE that explains the most findings, NOT the single feature. The \`diagnosis\` field should identify a disease entity that explains the patient's complete clinical picture.
-
-This rule is non-negotiable when both the syndrome and one of its hallmark features could plausibly appear in your hypothesis list. Naming the feature when the patient case has multi-system findings consistent with the syndrome will be treated as a wrong answer by downstream stages. The \`diagnosis\` field is for the disease entity; the cardinal features list and clinicalReasoning are where you document which features the patient has.
 
 This rule is general — it applies any time the LLM might naturally name a prominent feature (because the vignette describes it vividly) instead of the underlying disease (which subsumes the feature). Examples of the *class* of error (illustrative only — the rule covers any analogous syndrome/feature pair):
 - A patient with café-au-lait macules + Lisch nodules + neurofibromas → name the SYNDROME, not the tumor

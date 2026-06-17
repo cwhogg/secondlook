@@ -114,6 +114,22 @@ Pulled L2 pipeline trace. The Claude finalizer DID receive Neurofibromatosis Typ
 
 ---
 
+## Process refinement (2026-06-17, post-Loop 2)
+
+**Adopted revert rubric** (see `[[feedback-loss-loop-revert-rubric]]`):
+
+| Outcome | Action |
+|---|---|
+| Loss-set Top-1 gain ≥ 1, no holdout regression | Keep on main |
+| Loss-set Top-1 gain = 0, no holdout regression | **Revert from main**, keep on loop branch |
+| Holdout regression | Revert from main always |
+
+Main branch = only changes with proven measurable improvement. Loop branch = parking lot for in-progress mechanism work.
+
+**Retroactive application:**
+- R1 (Loop 1) and R2 (Loop 2) both delivered 0 measurable Top-1 gains. Per the rubric, both **reverted from main**. Preserved on branch `loss-loop/feature-vs-syndrome-stack` for future iteration.
+- Pipeline version reset to 27.0.0 on main.
+
 ## Loop terminated 2026-06-17 after Loop 2
 
 **Verdict:** Two consecutive zero-gain loops on the loss set. Stopping per the plateau rule defined at the start.

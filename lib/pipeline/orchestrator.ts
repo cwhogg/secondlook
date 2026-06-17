@@ -605,41 +605,6 @@ export class DiagnosticPipeline {
         log("orch.stage.finalize.skipped");
       }
 
-      // ===== STAGE 8.5: FEATURE-VS-SYNDROME RERANK (v27.2) =====
-      // Dedicated Claude haiku arbiter that classifies each top-5 entry as
-      // SYNDROMIC vs FEATURE and promotes a covering syndrome above a feature
-      // at #1. Targets the Loop 1 finding that prompt-level rules in the
-      // finalizer can't override its lexical bias when feature names look
-      // disease-shaped (e.g. "Neurofibroma" is a tumor, not the syndrome).
-      const rerankStart = Date.now();
-      try {
-        const { rerankFeatureVsSyndrome } = await import('../agents/feature-vs-syndrome-reranker');
-        const rerankResult = await rerankFeatureVsSyndrome(finalRanking, patientCase);
-        const top1Before = finalRanking[0]?.diagnosis;
-        finalRanking = rerankResult.reordered;
-        this.budgetTracker.addUsage(rerankResult.model, rerankResult.tokensUsed);
-        stages.push({
-          stageName: 'feature-vs-syndrome-rerank',
-          durationMs: rerankResult.durationMs,
-          tokensUsed: rerankResult.tokensUsed,
-          model: rerankResult.model,
-          agentName: 'feature-vs-syndrome-reranker',
-          inputSummary: `top-5 from finalizer (#1=${top1Before})`,
-          outputSummary: rerankResult.swapped
-            ? `swapped: #1 now ${finalRanking[0]?.diagnosis} (${rerankResult.swap?.reason || 'no reason'})`
-            : `no swap (#1=${finalRanking[0]?.diagnosis})`,
-        });
-        log('orch.stage.fvs-rerank.done', {
-          swapped: rerankResult.swapped,
-          before: top1Before,
-          after: finalRanking[0]?.diagnosis,
-          durationMs: rerankResult.durationMs,
-        });
-      } catch (err: any) {
-        log('orch.stage.fvs-rerank.fail', { msg: (err?.message || '').slice(0, 200) });
-        // Non-fatal — keep finalizer's ranking.
-      }
-
       // Replace synthesisResult.hypotheses with the finalized ranking so
       // downstream consumers see it.
       synthesisResult.hypotheses = finalRanking;
@@ -785,7 +750,7 @@ export class DiagnosticPipeline {
         clarifyingQuestions: clarifierQuestions,
         lowConfidenceWarning,
         pipelineMetadata: {
-          pipelineVersion: '27.2.0',
+          pipelineVersion: '27.0.0',
           stages,
           totalDurationMs: Date.now() - pipelineStart,
           totalTokensUsed: budgetSummary.totalTokens,

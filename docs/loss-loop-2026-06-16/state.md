@@ -87,5 +87,57 @@ Pulled L2 pipeline trace. The Claude finalizer DID receive Neurofibromatosis Typ
 **L2-R2 considered (rejected):** Even-stronger prompt rule. (G=4 × I=1 × S=5) / (R=2 × Cx=1) = 10. L1 evidence says prompt-only is at I≈0.
 **L2-R3 considered (deferred):** Parse-symptoms robustness audit (NF1 L1 had 1 parsed symptom, L2 case ran with 5; thin parsing may be related but isn't load-bearing for the NF1-naming bug since NF1 was in the ranking anyway).
 
-**Implementation:** see commit (TBD).
+**Implementation:** `8b08ab4` — `feature-vs-syndrome-reranker.ts` (new module, Claude haiku arbiter), wired as Stage 8.5 in orchestrator after Claude finalize. pipelineVersion → 27.2.0.
+
+**Validation cohort:** 15 cases, trio mode (PID 85112, log `/tmp/sl-cohort/loop2.log`). Tagged `evalVersion=v27.2 evalSampling=loss-loop-2`. ~50 min wall. **1 infra failure** on H4 (Claude evaluator returned non-conforming JSON — known transient Claude flake, fail-soft fallback didn't activate this path; out of scope for the loop).
+
+**Results (v4 Mondo, any-credit Top-1):**
+
+| Set | n | v27.1 | v27.2 | Net |
+|---|---|---|---|---|
+| Loss set | 10 | 0/10 | 0/10 | **0 gain, 0 loss** |
+| Holdout | 5 (4 graded) | 5/5 | 4/4 graded | **0 gain, 0 loss, 1 excluded** |
+
+**Reranker mechanism — did it fire?**
+- ✅ L1 NF1: swapped `Café-au-lait macules` → `Legius Syndrome` (covering syndrome found in top-5, wrong syndrome — Legius is the NF1 sibling, scores 0)
+- ✅ L2 NF1: swapped `Neurofibroma` → `Mosaic Neurofibromatosis Type 1` (clinically correct; v4 scores 0 because Mosaic NF1 is a separate Mondo class from NF1 syndrome — grader-side limitation, not a pipeline failure)
+- ❌ L3 NF1: kept `Neurofibroma` — reranker did not fire on this case. Likely classified Neurofibroma as syndromic, OR no covering NF1 syndrome was in top-5 to swap with
+- ✅ H1 Fibromatosis6: swapped `Drug-induced gingival overgrowth` → `Hereditary Gingival Fibromatosis` (good — restored syndromic naming, still Top-1 win)
+- N/A for non-feature cases (DEE4, ADTKD, DiGeorge unchanged where appropriate)
+
+**Stop-condition state:**
+- Plateau watch: **2/2 consecutive zero-gain loops → TRIGGERED**
+- Holdout regression: 0/2 (not triggered)
+- Loop cap: 2/10
+
+**Loop terminates per plateau rule.**
+
+---
+
+## Loop terminated 2026-06-17 after Loop 2
+
+**Verdict:** Two consecutive zero-gain loops on the loss set. Stopping per the plateau rule defined at the start.
+
+**What was achieved over Loops 1-2:**
+- **Mechanism shift demonstrated:** R2's deterministic Claude-haiku post-finalize reranker correctly swapped feature-named #1s to syndromic names on 3 of 4 feature-vs-syndrome cases (L1 → Legius, L2 → Mosaic NF1, H1 → Hereditary Gingival Fibromatosis). Prompt-only rules (R1) failed where reranker succeeded.
+- **No Top-1 wins gained** because:
+  1. **Grader limitation on near-equivalents** — Mosaic NF1 (L2) is clinically the correct call but scores 0 in v4 because Mondo doesn't structure mosaic variants as IS_A descendants of the syndrome. This is the dead end from the previous Fix #3 investigation.
+  2. **Reranker can't escape top-5** — when the syndrome is at rank 12 in the full draft (L1: NF1 was at rank 12), the reranker only sees top-5 and grabs the closest syndromic name available (Legius — wrong syndrome).
+  3. **DEE4 class (4 of 10 loss cases) is phenotype overlap, not feature-vs-syndrome** — out of scope for both R1 and R2.
+
+**Top-3 did improve:** SL v4 Top-3 went from 53.3% (Loop 1) to 57.1% (Loop 2). +3.8pp. Driven mostly by L8 ADTKD-AD6 — rank moved from beyond top-10 to rank 2 (umbrella at #1 stays, but the AD6 subtype now ranks 2nd). Top-1 didn't move because the umbrella isn't a credited ancestor of AD6 in the v4 set.
+
+**What the loss-loop learned about further fixes:**
+- *Prompt-only* fixes are dead for this failure class. Both v17 addendum and finalizer-prompt rule were insufficient.
+- *Top-5-only* deterministic reranks help on truly feature-shaped cases but can't reach syndromes ranked low.
+- The 3 dominant residual failure modes are not pipeline-fixable in a class-wide way without either: (a) grader-side widening of credited sets for clinically-near-equivalent Mondo classes (mosaic variants, umbrella terms for subtype golds), or (b) KB-side improvements to STXBP1/DEE4 retrieval and ranking confidence.
+- The DiGeorge case (L10) consistently flips to Barakat — both are GATA3-vs-22q11 syndromes with hypoparathyroidism + renal + deafness overlap. May not be cleanly separable without specific cardiac/thymic findings.
+
+**Recommended next direction (out of this loop):**
+1. **Grader-side audit** of the credited Mondo sets for NF1, DEE4, ADTKD subtypes. If clinically-near-equivalent Mondo classes (Mosaic NF1, umbrella ADTKD) can be added in a class-wide rule (e.g., walk `has_part` / `mosaic_of` relations from the gold) → would lift L2 + L8 to Top-1 immediately.
+2. **Investigate parse-symptoms thinness** (L1 NF1 case parsed 1 symptom from a multi-system vignette; possibly affecting other class-A cases).
+3. **STXBP1/DEE4 KB profile audit** — separate work item for Class B.
+
+These are out of scope for the current loss-loop. Surface as separate PRs / tasks.
+
 

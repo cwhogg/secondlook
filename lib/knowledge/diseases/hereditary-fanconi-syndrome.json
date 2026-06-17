@@ -17,8 +17,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 2,
-      "peak": 1
+      "max": 10,
+      "peak": 2
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,272 +63,136 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Atypical behavior",
-        "frequency": 0.9,
-        "bodySystem": "psychiatric"
+        "symptomName": "Generalized aminoaciduria",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "notes": "Excretion of multiple amino acids in urine"
       },
       {
-        "symptomName": "Gait disturbance",
+        "symptomName": "Renal glycosuria",
         "frequency": 0.9,
-        "bodySystem": "neurological"
+        "bodySystem": "renal",
+        "notes": "Glucose in urine despite normal blood glucose levels"
       },
       {
-        "symptomName": "Morphological central nervous system abnormality",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb spasticity",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Homocystinuria",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Hyperhomocystinemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Upper motor neuron dysfunction",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cystathioninemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb muscle weakness",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormal enzyme/coenzyme activity",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Phosphaturia with hypophosphatemia",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "notes": "Excess phosphate loss in urine leading to low serum phosphate",
+        "searchTerms": [
+          "phosphate loss in urine with low blood phosphate",
+          "low phosphate levels due to kidney loss",
+          "excess phosphate excretion causing deficiency"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Psychotic episodes",
-        "frequency": 0.55,
-        "bodySystem": "psychiatric"
+        "symptomName": "Polyuria",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "notes": "Increased urine output due to impaired tubular reabsorption"
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Dehydration",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Secondary to polyuria and electrolyte loss"
       },
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Muscle weakness",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to electrolyte imbalances, especially hypophosphatemia"
       },
       {
-        "symptomName": "Mental deterioration",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Growth retardation",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Resulting from chronic electrolyte and nutrient loss"
       },
       {
-        "symptomName": "Spastic paraparesis",
+        "symptomName": "Metabolic acidosis",
         "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal periventricular white matter morphology",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hypomethioninemia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain imaging abnormality",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "bodySystem": "endocrine",
+        "notes": "Proximal renal tubular acidosis causing acid-base imbalance"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Psychosis",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
+        "symptomName": "Rickets or osteomalacia",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal",
+        "notes": "Bone disease secondary to phosphate wasting",
+        "searchTerms": [
+          "soft or weak bones",
+          "bone deformities from vitamin D deficiency",
+          "rickets or bone softening"
+        ]
       },
       {
-        "symptomName": "Intellectual disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Hypokalemia",
+        "frequency": 0.35,
+        "bodySystem": "endocrine",
+        "notes": "Low serum potassium due to renal losses"
       },
       {
-        "symptomName": "Lethargy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Fatigue",
+        "frequency": 0.3,
+        "bodySystem": "constitutional",
+        "notes": "Generalized tiredness related to electrolyte disturbances"
       },
       {
-        "symptomName": "Global developmental delay",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Polydipsia",
+        "frequency": 0.25,
+        "bodySystem": "constitutional",
+        "notes": "Excessive thirst secondary to polyuria"
       },
       {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Specific learning disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Psychotic mentation",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Thromboembolic stroke",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Bilateral tonic-clonic seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Apnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal cerebral white matter morphology",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Deep venous thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Atrophy of the spinal cord",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Focal-onset seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Feeding difficulties in infancy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Generalized neonatal hypotonia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain atrophy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cognitive impairment",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Hypouricemia",
+        "frequency": 0.2,
+        "bodySystem": "hematological",
+        "notes": "Low serum uric acid due to renal tubular loss"
       }
     ],
     "rare": [
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Nephrocalcinosis",
+        "frequency": 0.08,
+        "bodySystem": "renal",
+        "notes": "Calcium deposition in renal parenchyma"
       },
       {
-        "symptomName": "Microcephaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Hypomagnesemia",
+        "frequency": 0.07,
+        "bodySystem": "endocrine",
+        "notes": "Low serum magnesium due to renal wasting"
       },
       {
-        "symptomName": "Abnormality of the eye",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Osteopenia",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal",
+        "notes": "Reduced bone mineral density"
       },
       {
-        "symptomName": "Nystagmus",
+        "symptomName": "Nephrogenic diabetes insipidus",
         "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Optic atrophy",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Stroke",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Encephalopathy",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ventriculomegaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized non-motor (absence) seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized myoclonic seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "bodySystem": "renal",
+        "notes": "Rare impairment of renal concentrating ability",
+        "searchTerms": [
+          "kidney-related diabetes insipidus",
+          "excessive urination due to kidney issue",
+          "nephrogenic water imbalance"
+        ]
       }
     ]
   },
   "systemsAffected": [
-    "psychiatric",
-    "neurological",
-    "constitutional",
+    "renal",
     "musculoskeletal",
-    "gastrointestinal",
-    "cardiovascular",
-    "respiratory",
-    "ophthalmological"
+    "endocrine",
+    "constitutional",
+    "hematological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -344,8 +208,7 @@
       "Nephrocalcinosis on renal ultrasound or CT"
     ],
     "genetic": [
-      "MTHFR (causative)",
-      "Autosomal recessive inheritance"
+      "Pathogenic variants in genes affecting proximal tubular function (e.g., SLC34A1, EHHADH, or others depending on subtype)"
     ],
     "other": [
       "Family history consistent with autosomal recessive inheritance",
@@ -388,7 +251,7 @@
     "Geneticist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Gahl WA, Thoene JG, Schneider JA. Cystinosis. N Engl J Med. 2002;347(2):111-121.",
     "Scheinman SJ. Fanconi syndrome and other proximal renal tubular disorders. Pediatr Nephrol. 2002;17(11):959-969.",

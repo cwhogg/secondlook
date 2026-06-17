@@ -16,9 +16,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 65,
-      "peak": 42
+      "min": 5,
+      "max": 40,
+      "peak": 15
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,75 +63,148 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Impaired vibratory sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Progressive cerebellar gait ataxia",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "worsening unsteady walking",
+          "progressive balance problems",
+          "gradual cerebellar gait disturbance"
+        ]
       },
       {
-        "symptomName": "Absent Achilles reflex",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Hypertrophic cardiomyopathy",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Impaired tactile sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Impaired proprioception",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Absent lower limb deep tendon reflexes",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "no ankle or knee reflexes",
+          "absent leg tendon reflexes",
+          "missing deep reflexes in legs"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
         "symptomName": "Dysarthria",
-        "frequency": 0.55,
+        "frequency": 0.75,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Gait disturbance",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Sensory peripheral neuropathy",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "numbness in hands and feet",
+          "tingling in peripheral nerves",
+          "loss of sensation in limbs"
+        ]
       },
       {
-        "symptomName": "Motor deterioration",
+        "symptomName": "Scoliosis",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Muscle weakness in lower limbs",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weak legs",
+          "difficulty walking due to leg weakness",
+          "lower limb muscle weakness"
+        ]
+      },
+      {
+        "symptomName": "Cardiac arrhythmias",
         "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "bodySystem": "cardiovascular"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Areflexia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Diabetes mellitus",
+        "frequency": 0.4,
+        "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Sensory axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Hearing loss",
+        "frequency": 0.3,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Motor axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Visual impairment due to optic atrophy",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "vision loss from optic nerve damage",
+          "poor eyesight due to nerve atrophy",
+          "decreased vision from optic nerve problems"
+        ]
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Bladder dysfunction",
+        "frequency": 0.2,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Mild cognitive impairment",
+        "frequency": 0.15,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "mild memory problems",
+          "slight thinking difficulties",
+          "minor cognitive decline"
+        ]
       }
     ],
-    "rare": []
+    "rare": [
+      {
+        "symptomName": "Pes cavus deformity",
+        "frequency": 0.08,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "high arch foot",
+          "arched feet",
+          "foot with raised arch"
+        ]
+      },
+      {
+        "symptomName": "Dystonia",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.04,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cardiac conduction block",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart rhythm block",
+          "slow or blocked heartbeat",
+          "irregular heart electrical signals"
+        ]
+      }
+    ]
   },
   "systemsAffected": [
-    "constitutional",
-    "neurological"
+    "neurological",
+    "cardiovascular",
+    "musculoskeletal",
+    "endocrine",
+    "ophthalmological",
+    "otolaryngological",
+    "psychiatric",
+    "respiratory",
+    "reproductive"
   ],
   "keyFindings": {
     "laboratory": [
@@ -143,8 +216,8 @@
       "Brain MRI demonstrating cerebellar atrophy"
     ],
     "genetic": [
-      "PLEKHG4 (candidate)",
-      "Autosomal dominant inheritance"
+      "Pathogenic variants in genes such as SACS, POLG, or other FA-like syndrome genes",
+      "Negative FXN gene GAA repeat expansion testing"
     ],
     "other": [
       "Electrophysiological studies showing sensory neuropathy",
@@ -179,7 +252,7 @@
     "Cardiologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Campuzano V et al. Friedreich ataxia-like syndromes: clinical and genetic heterogeneity. Neurology. 2020.",
     "Orphanet: Friedreich ataxia-like syndromes. Orphanet Journal of Rare Diseases. 2022.",

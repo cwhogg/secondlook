@@ -13,15 +13,15 @@
   "omimId": "200400",
   "orphanetId": "930",
   "prevalence": {
-    "estimate": "1-9 in 100,000",
-    "range": "1-9 / 100 000",
+    "estimate": "1 in 10,000",
+    "range": "0.007%-0.013%",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 120,
-      "peak": 60
+      "min": 20,
+      "max": 60,
+      "peak": 40
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -72,65 +72,118 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Dysphagia",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Dysphagia to both solids and liquids",
+        "snomedCode": "40739000",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal",
+        "notes": "Simultaneous onset for both solids and liquids is characteristic",
+        "searchTerms": [
+          "difficulty swallowing solids and liquids",
+          "trouble swallowing both food types"
+        ]
+      },
+      {
+        "symptomName": "Regurgitation of undigested food",
+        "snomedCode": "249497008",
+        "frequency": 0.8,
+        "bodySystem": "gastrointestinal",
+        "notes": "Bland, non-acidic regurgitation of retained food/saliva",
+        "searchTerms": [
+          "food coming back up",
+          "regurgitation of undigested food"
+        ]
       }
     ],
     "common": [
       {
         "symptomName": "Weight loss",
-        "frequency": 0.55,
+        "snomedCode": "89362005",
+        "frequency": 0.6,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Gastroesophageal reflux",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Chest pain/retrosternal pain",
+        "snomedCode": "29857009",
+        "frequency": 0.5,
+        "bodySystem": "gastrointestinal",
+        "notes": "More common in Type III (spastic) achalasia",
+        "searchTerms": [
+          "chest or retrosternal pain",
+          "pain behind breastbone"
+        ]
       },
       {
-        "symptomName": "Bronchitis",
-        "frequency": 0.55,
-        "bodySystem": "respiratory"
+        "symptomName": "Heartburn",
+        "snomedCode": "16331000",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "notes": "From stasis rather than true acid reflux"
       },
       {
-        "symptomName": "Cough",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Chest pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Nocturnal cough",
+        "snomedCode": "11833005",
+        "frequency": 0.35,
+        "bodySystem": "respiratory",
+        "notes": "Due to aspiration of retained esophageal contents"
       }
     ],
     "occasional": [
       {
         "symptomName": "Recurrent aspiration pneumonia",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
+        "snomedCode": "422588002",
+        "frequency": 0.15,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "repeated lung infections from aspiration",
+          "recurrent pneumonia due to inhaled food or liquids"
+        ]
       },
       {
-        "symptomName": "Malnutrition",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Hiccups",
+        "snomedCode": "65958008",
+        "frequency": 0.2,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Wheezing",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Decreased prealbumin level",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Halitosis",
+        "snomedCode": "79879001",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "From decomposition of retained food"
       }
     ],
-    "rare": []
+    "rare": [
+      {
+        "symptomName": "Esophageal squamous cell carcinoma",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal",
+        "notes": "Long-standing untreated achalasia carries increased cancer risk",
+        "searchTerms": [
+          "esophagus cancer",
+          "cancer of swallowing tube",
+          "tumor in esophagus lining"
+        ]
+      },
+      {
+        "symptomName": "Esophageal perforation",
+        "frequency": 0.02,
+        "bodySystem": "gastrointestinal",
+        "notes": "Rare complication of massive esophageal dilation"
+      },
+      {
+        "symptomName": "Airway compression from megaesophagus",
+        "frequency": 0.02,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing difficulty from enlarged esophagus",
+          "airway squeezed by swollen esophagus",
+          "trouble breathing due to esophagus enlargement"
+        ]
+      }
+    ]
   },
   "systemsAffected": [
     "gastrointestinal",
-    "constitutional",
     "respiratory"
   ],
   "keyFindings": {
@@ -144,11 +197,8 @@
       "CT chest may show dilated esophagus with retained food/fluid"
     ],
     "genetic": [
-      "CRLF1 (causative)",
-      "HLA-DQA1 (susceptibility)",
-      "HLA-DQB1 (susceptibility)",
-      "NOS1 (causative)",
-      "Autosomal recessive inheritance"
+      "Association with HLA-DQw1 alleles",
+      "Rare familial cases linked to Allgrove syndrome (AAAS gene, triple-A syndrome)"
     ],
     "other": [
       "High-resolution manometry is the gold standard diagnostic test",
@@ -191,7 +241,7 @@
     "Thoracic Surgeon",
     "Motility Specialist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Yadlapati R, et al. Esophageal motility disorders on high-resolution manometry: Chicago Classification version 4.0. Neurogastroenterol Motil. 2021;33(1):e14058.",
     "Vaezi MF, et al. ACG Clinical Guideline: Diagnosis and Management of Achalasia. Am J Gastroenterol. 2020;115(9):1393-1411.",

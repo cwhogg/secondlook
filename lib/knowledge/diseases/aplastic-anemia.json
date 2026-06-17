@@ -11,15 +11,14 @@
   "omimId": "609135",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1-9 in 1,000,000",
-    "range": "1-9 / 1 000 000",
+    "estimate": "1 in 100,000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 120,
-      "peak": 42
+      "min": 0,
+      "max": 80,
+      "peak": 30
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -60,276 +59,122 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Hepatic cysts",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Eosinophilia",
-        "frequency": 0.9,
+        "symptomName": "Pancytopenia",
+        "frequency": 0.95,
         "bodySystem": "hematological"
       },
       {
-        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "symptomName": "Hypocellular bone marrow",
         "frequency": 0.9,
-        "bodySystem": "hematological"
-      },
-      {
-        "symptomName": "Increased circulating antibody level",
-        "frequency": 0.9,
-        "bodySystem": "immunological"
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "low cellularity in bone marrow",
+          "reduced bone marrow cells",
+          "hypocellular marrow causing blood issues"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Jaundice",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Fatigue due to anemia",
+        "frequency": 0.85,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from anemia",
+          "fatigue due to low red blood cells",
+          "weakness related to anemia"
+        ]
       },
       {
-        "symptomName": "Decreased liver function",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Petechiae and easy bruising",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "small red skin spots and easy bruising",
+          "petechiae with bruising",
+          "skin bleeding spots and bruises"
+        ]
       },
       {
-        "symptomName": "Anemia",
-        "frequency": 0.55,
-        "bodySystem": "hematological"
+        "symptomName": "Recurrent infections due to neutropenia",
+        "frequency": 0.7,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "frequent infections from low neutrophils",
+          "recurrent infections due to immune weakness",
+          "infections caused by low white blood cells"
+        ]
       },
       {
-        "symptomName": "Fever",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abdominal pain",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Low back pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Pedal edema",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Fatigue",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Asthenia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Epigastric pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Mucosal bleeding (e.g., gingival bleeding, epistaxis)",
+        "frequency": 0.65,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "bleeding from mucous membranes",
+          "gum bleeding and nosebleeds",
+          "mucosal bleeding episodes"
+        ]
       }
     ],
     "occasional": [
       {
-        "symptomName": "Renal cyst",
-        "frequency": 0.17,
-        "bodySystem": "renal"
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.4,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "shortness of breath when active",
+          "breathlessness on exertion",
+          "difficulty breathing with activity"
+        ]
       },
       {
-        "symptomName": "Abnormal sternum morphology",
-        "frequency": 0.17,
+        "symptomName": "Palpitations",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Low-grade fever",
+        "frequency": 0.25,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Weight loss",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Dyspnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Hemoptysis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ectopic calcification",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormality of adrenal morphology",
-        "frequency": 0.17,
-        "bodySystem": "endocrine"
-      },
-      {
-        "symptomName": "Cough",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal spleen morphology",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cholangitis",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cutaneous abscess",
-        "frequency": 0.17,
+        "symptomName": "Pallor",
+        "frequency": 0.2,
         "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Pulmonary cyst",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Chest pain",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Abnormality of the diaphragm",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ataxia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Dysarthria",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Portal hypertension",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Abnormal pericardium morphology",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Pancreatic cysts",
-        "frequency": 0.03,
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.05,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Vomiting",
+        "symptomName": "Lymphadenopathy",
         "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
+        "bodySystem": "immunological"
       },
       {
-        "symptomName": "Vertigo",
-        "frequency": 0.03,
-        "bodySystem": "otolaryngological"
-      },
-      {
-        "symptomName": "Aphasia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Increased intracranial pressure",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Biliary cirrhosis",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Budd-Chiari syndrome",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal vertebral morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Intracranial cystic lesion",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal skeletal muscle morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Bone cyst",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of bladder morphology",
-        "frequency": 0.03,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Abnormal pelvis bone morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of mesentery morphology",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Liver abscess",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Neurological symptoms secondary to anemia (e.g., dizziness, headache)",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "dizziness and headaches from anemia",
+          "neurological symptoms due to low blood",
+          "brain symptoms caused by anemia"
+        ]
       }
     ]
   },
   "systemsAffected": [
-    "gastrointestinal",
     "hematological",
     "immunological",
-    "constitutional",
-    "renal",
-    "respiratory",
-    "neurological",
-    "endocrine",
     "dermatological",
+    "constitutional",
+    "respiratory",
     "cardiovascular",
-    "otolaryngological",
-    "musculoskeletal"
+    "gastrointestinal",
+    "neurological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -384,7 +229,7 @@
     "Hematologist",
     "Oncologist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Young NS. Aplastic anemia. N Engl J Med. 2018;379(17):1643-1656.",
     "Camitta BM, et al. Severe aplastic anemia: a prospective study of the effect of early marrow transplantation on acute mortality. Blood. 1976;48(1):63-70.",

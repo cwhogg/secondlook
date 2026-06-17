@@ -18,8 +18,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 2,
-      "peak": 1
+      "max": 70,
+      "peak": 10
     },
     "sexPredilection": "male",
     "ethnicAssociations": [
@@ -68,272 +68,133 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Atypical behavior",
-        "frequency": 0.9,
-        "bodySystem": "psychiatric"
+        "symptomName": "Episodic acute hemolytic anemia",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Triggered by oxidative stressors",
+        "searchTerms": [
+          "episodes of sudden red blood cell breakdown",
+          "acute hemolytic anemia attacks",
+          "intermittent anemia due to hemolysis"
+        ]
       },
       {
-        "symptomName": "Gait disturbance",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Morphological central nervous system abnormality",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb spasticity",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Homocystinuria",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Hyperhomocystinemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Upper motor neuron dysfunction",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cystathioninemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb muscle weakness",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormal enzyme/coenzyme activity",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Presence of Heinz bodies in erythrocytes",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "presence of Heinz bodies in red cells",
+          "abnormal clumps in erythrocytes",
+          "inclusion bodies seen in blood cells"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Psychotic episodes",
-        "frequency": 0.55,
-        "bodySystem": "psychiatric"
+        "symptomName": "Jaundice during hemolytic episodes",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "yellowing skin during anemia episodes",
+          "jaundice with hemolytic attacks",
+          "skin and eye yellowing in anemia"
+        ]
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Fatigue and pallor",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness and pale skin",
+          "fatigue with pallor",
+          "weakness and pale appearance"
+        ]
       },
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Dark urine (hemoglobinuria)",
+        "frequency": 0.65,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "dark colored urine",
+          "brown or red urine",
+          "urine with blood pigment"
+        ]
       },
       {
-        "symptomName": "Mental deterioration",
+        "symptomName": "Splenomegaly",
         "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Spastic paraparesis",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal periventricular white matter morphology",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hypomethioninemia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain imaging abnormality",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "bodySystem": "hematological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Psychosis",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
+        "symptomName": "Tachycardia during hemolytic crisis",
+        "frequency": 0.4,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "rapid heartbeat during hemolytic crisis",
+          "tachycardia in blood cell destruction episodes",
+          "fast pulse during anemia attacks"
+        ]
       },
       {
-        "symptomName": "Intellectual disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Lethargy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Global developmental delay",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Specific learning disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Psychotic mentation",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.17,
+        "symptomName": "Mild hepatomegaly",
+        "frequency": 0.3,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Thromboembolic stroke",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Transient abdominal pain",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "short episodes of belly pain",
+          "temporary abdominal discomfort",
+          "brief stomach pain"
+        ]
       },
       {
-        "symptomName": "Abnormal thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Bilateral tonic-clonic seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Apnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal cerebral white matter morphology",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Deep venous thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Atrophy of the spinal cord",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Focal-onset seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Feeding difficulties in infancy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Generalized neonatal hypotonia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain atrophy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cognitive impairment",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Shortness of breath on exertion",
+        "frequency": 0.15,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "shortness of breath with activity",
+          "breathlessness on exertion",
+          "difficulty breathing during exercise"
+        ]
       }
     ],
     "rare": [
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Aplastic crisis",
+        "frequency": 0.08,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Microcephaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Cholelithiasis secondary to chronic hemolysis",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "gallstones from chronic red cell breakdown",
+          "cholelithiasis due to hemolysis",
+          "stones in gallbladder linked to anemia"
+        ]
       },
       {
-        "symptomName": "Abnormality of the eye",
+        "symptomName": "Peripheral neuropathy",
         "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Nystagmus",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Optic atrophy",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Stroke",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Encephalopathy",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ventriculomegaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized non-motor (absence) seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized myoclonic seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "bodySystem": "neurological",
+        "notes": "Rarely reported in chronic cases"
       }
     ]
   },
   "systemsAffected": [
-    "psychiatric",
-    "neurological",
-    "constitutional",
-    "musculoskeletal",
+    "hematological",
+    "renal",
     "gastrointestinal",
     "cardiovascular",
     "respiratory",
-    "ophthalmological"
+    "neurological",
+    "constitutional"
   ],
   "keyFindings": {
     "laboratory": [
@@ -347,8 +208,7 @@
       "Ultrasound or CT scan detecting gallstones in chronic cases"
     ],
     "genetic": [
-      "MTHFR (causative)",
-      "Autosomal recessive inheritance"
+      "Molecular identification of the G6PD Union variant mutation (c.1360C>T, p.Arg454Cys)"
     ],
     "other": [
       "Positive family history of G6PD deficiency",
@@ -383,7 +243,7 @@
     "Geneticist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Beutler E. G6PD deficiency. Blood. 1994;84(11):3613-3636.",
     "Luzzatto L, Ally M, Notaro R. Glucose-6-phosphate dehydrogenase deficiency. Blood. 2020;136(11):1225-1240.",

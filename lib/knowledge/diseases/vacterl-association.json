@@ -11,15 +11,14 @@
   "omimId": "192350",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1-9 in 1,000,000",
-    "range": "1-9 / 1 000 000",
+    "estimate": "1 in 10,000 to 1 in 40,000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 120,
-      "peak": 42
+      "min": 0,
+      "max": 1,
+      "peak": 0
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -70,276 +69,138 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Hepatic cysts",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Vertebral anomalies",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Eosinophilia",
-        "frequency": 0.9,
-        "bodySystem": "hematological"
+        "symptomName": "Anorectal malformations (e.g., imperforate anus)",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "missing or blocked anus at birth",
+          "imperforate anus",
+          "birth defect of anal opening"
+        ]
       },
       {
-        "symptomName": "Elevated erythrocyte sedimentation rate",
-        "frequency": 0.9,
-        "bodySystem": "hematological"
-      },
-      {
-        "symptomName": "Increased circulating antibody level",
-        "frequency": 0.9,
-        "bodySystem": "immunological"
+        "symptomName": "Tracheoesophageal fistula or esophageal atresia",
+        "frequency": 0.75,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "abnormal connection between windpipe and esophagus",
+          "esophagus not properly formed",
+          "tracheoesophageal fistula or blockage"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Jaundice",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Congenital cardiac defects",
+        "frequency": 0.7,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart defects present at birth",
+          "congenital heart abnormalities",
+          "birth heart malformations"
+        ]
       },
       {
-        "symptomName": "Decreased liver function",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Renal structural anomalies",
+        "frequency": 0.65,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "kidney shape abnormalities",
+          "structural kidney defects",
+          "kidney malformations"
+        ]
       },
       {
-        "symptomName": "Anemia",
-        "frequency": 0.55,
-        "bodySystem": "hematological"
+        "symptomName": "Limb abnormalities (e.g., radial aplasia, hypoplastic thumbs)",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "missing or underdeveloped arm bones",
+          "small or absent thumbs",
+          "limb defects like missing radius bone"
+        ]
       },
       {
-        "symptomName": "Fever",
+        "symptomName": "Feeding difficulties due to esophageal anomalies",
         "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abdominal pain",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Low back pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Pedal edema",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Fatigue",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Asthenia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Epigastric pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "difficulty swallowing due to esophagus issues",
+          "feeding problems from throat abnormalities",
+          "trouble eating caused by esophageal defects"
+        ]
       }
     ],
     "occasional": [
       {
-        "symptomName": "Renal cyst",
-        "frequency": 0.17,
-        "bodySystem": "renal"
+        "symptomName": "Respiratory distress secondary to tracheal anomalies",
+        "frequency": 0.3,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing problems from trachea defects",
+          "respiratory distress due to airway malformations",
+          "difficulty breathing caused by windpipe abnormalities"
+        ]
       },
       {
-        "symptomName": "Abnormal sternum morphology",
-        "frequency": 0.17,
+        "symptomName": "Urinary tract infections due to renal malformations",
+        "frequency": 0.25,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "repeated urinary infections from kidney defects",
+          "UTIs caused by malformed kidneys",
+          "kidney problems leading to infections"
+        ]
+      },
+      {
+        "symptomName": "Growth retardation",
+        "frequency": 0.2,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Weight loss",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Dyspnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Hemoptysis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ectopic calcification",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormality of adrenal morphology",
-        "frequency": 0.17,
-        "bodySystem": "endocrine"
-      },
-      {
-        "symptomName": "Cough",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal spleen morphology",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cholangitis",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cutaneous abscess",
-        "frequency": 0.17,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Pulmonary cyst",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Chest pain",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Scoliosis",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
       }
     ],
     "rare": [
       {
-        "symptomName": "Abnormality of the diaphragm",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ataxia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Dysarthria",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Portal hypertension",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Abnormal pericardium morphology",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Pancreatic cysts",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vomiting",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vertigo",
-        "frequency": 0.03,
+        "symptomName": "Hearing impairment",
+        "frequency": 0.08,
         "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Aphasia",
-        "frequency": 0.03,
+        "symptomName": "Neurodevelopmental delay",
+        "frequency": 0.05,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Increased intracranial pressure",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Biliary cirrhosis",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Budd-Chiari syndrome",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal vertebral morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Intracranial cystic lesion",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal skeletal muscle morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Bone cyst",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of bladder morphology",
-        "frequency": 0.03,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Abnormal pelvis bone morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of mesentery morphology",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Liver abscess",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Genitourinary anomalies beyond renal malformations",
+        "frequency": 0.04,
+        "bodySystem": "reproductive",
+        "searchTerms": [
+          "genital and urinary tract abnormalities",
+          "urinary system malformations beyond kidneys",
+          "abnormalities in bladder or urethra"
+        ]
       }
     ]
   },
   "systemsAffected": [
+    "musculoskeletal",
     "gastrointestinal",
-    "hematological",
-    "immunological",
-    "constitutional",
-    "renal",
-    "respiratory",
-    "neurological",
-    "endocrine",
-    "dermatological",
     "cardiovascular",
-    "otolaryngological",
-    "musculoskeletal"
+    "respiratory",
+    "renal",
+    "reproductive",
+    "neurological",
+    "constitutional",
+    "otolaryngological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -391,7 +252,7 @@
     "Orthopedic surgeon",
     "Urologist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Solomon BD, Pineda-Alvarez DE, Raam MS. VACTERL/VATER Association. In: GeneReviews® [Internet]. University of Washington, Seattle; 2020.",
     "Botto LD, Khoury MJ, Mastroiacovo P, et al. The spectrum of congenital anomalies in VACTERL association. Am J Med Genet. 1997;71(3):217-227.",

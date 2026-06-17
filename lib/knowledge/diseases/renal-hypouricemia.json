@@ -17,8 +17,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 2,
-      "peak": 1
+      "max": 50,
+      "peak": 20
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": [
@@ -61,272 +61,142 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Atypical behavior",
-        "frequency": 0.9,
-        "bodySystem": "psychiatric"
+        "symptomName": "Hypouricemia (serum uric acid <2.0 mg/dL)",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "notes": "Consistent biochemical hallmark",
+        "searchTerms": [
+          "low blood uric acid levels",
+          "hypouricemia with low serum uric acid",
+          "reduced uric acid in blood"
+        ]
       },
       {
-        "symptomName": "Gait disturbance",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
+        "symptomName": "Exercise-induced acute kidney injury",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "notes": "Often triggered by strenuous exercise",
+        "searchTerms": [
+          "kidney injury after exercise",
+          "exercise-triggered acute kidney damage",
+          "acute kidney injury from physical activity"
+        ]
       },
       {
-        "symptomName": "Morphological central nervous system abnormality",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb spasticity",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Homocystinuria",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Hyperhomocystinemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Upper motor neuron dysfunction",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cystathioninemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb muscle weakness",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormal enzyme/coenzyme activity",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Increased fractional excretion of uric acid",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "notes": "Indicative of renal urate wasting",
+        "searchTerms": [
+          "increased uric acid loss in urine",
+          "high fractional uric acid excretion",
+          "excess uric acid clearance"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Psychotic episodes",
-        "frequency": 0.55,
-        "bodySystem": "psychiatric"
+        "symptomName": "Renal colic",
+        "frequency": 0.65,
+        "bodySystem": "renal",
+        "notes": "May be due to uric acid nephrolithiasis"
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Fatigue post-exercise",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Related to renal injury episodes"
       },
       {
-        "symptomName": "Ataxia",
+        "symptomName": "Mild proteinuria",
         "frequency": 0.55,
-        "bodySystem": "neurological"
+        "bodySystem": "renal",
+        "notes": "Transient during acute kidney injury episodes"
       },
       {
-        "symptomName": "Mental deterioration",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Spastic paraparesis",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal periventricular white matter morphology",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hypomethioninemia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain imaging abnormality",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Hematuria",
+        "frequency": 0.58,
+        "bodySystem": "renal",
+        "notes": "Microscopic or gross during renal injury"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Psychosis",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
+        "symptomName": "Uric acid nephrolithiasis",
+        "frequency": 0.3,
+        "bodySystem": "renal",
+        "notes": "Formation of uric acid kidney stones",
+        "searchTerms": [
+          "kidney stones from uric acid",
+          "uric acid kidney stones",
+          "urine crystal stones"
+        ]
       },
       {
-        "symptomName": "Intellectual disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Muscle cramps during or after exercise",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal",
+        "notes": "Possibly related to renal injury",
+        "searchTerms": [
+          "muscle cramps during exercise",
+          "painful muscle spasms after activity",
+          "exercise-induced muscle cramps"
+        ]
       },
       {
-        "symptomName": "Lethargy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Mild hypertension",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular",
+        "notes": "Reported in some cases"
       },
       {
-        "symptomName": "Global developmental delay",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Specific learning disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Psychotic mentation",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Thromboembolic stroke",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Bilateral tonic-clonic seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Apnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal cerebral white matter morphology",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Deep venous thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Atrophy of the spinal cord",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Focal-onset seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Feeding difficulties in infancy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Generalized neonatal hypotonia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain atrophy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cognitive impairment",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Transient oliguria during acute episodes",
+        "frequency": 0.4,
+        "bodySystem": "renal",
+        "notes": "Reduced urine output during kidney injury",
+        "searchTerms": [
+          "temporary low urine output",
+          "short-term oliguria during attacks",
+          "brief reduced urination episodes"
+        ]
       }
     ],
     "rare": [
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Chronic kidney disease progression",
+        "frequency": 0.05,
+        "bodySystem": "renal",
+        "notes": "Rare long-term complication",
+        "searchTerms": [
+          "worsening kidney function",
+          "progressive kidney disease",
+          "declining kidney health"
+        ]
       },
       {
-        "symptomName": "Microcephaly",
+        "symptomName": "Rhabdomyolysis",
         "frequency": 0.03,
-        "bodySystem": "neurological"
+        "bodySystem": "musculoskeletal",
+        "notes": "Rarely reported in severe exercise-induced injury"
       },
       {
-        "symptomName": "Abnormality of the eye",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Nystagmus",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Optic atrophy",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Stroke",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Encephalopathy",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ventriculomegaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized non-motor (absence) seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized myoclonic seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Acute tubular necrosis",
+        "frequency": 0.07,
+        "bodySystem": "renal",
+        "notes": "Histopathological finding in severe cases",
+        "searchTerms": [
+          "death of kidney tubule cells",
+          "acute tubular necrosis kidney damage",
+          "kidney tubule cell injury"
+        ]
       }
     ]
   },
   "systemsAffected": [
-    "psychiatric",
-    "neurological",
-    "constitutional",
+    "renal",
     "musculoskeletal",
-    "gastrointestinal",
     "cardiovascular",
-    "respiratory",
-    "ophthalmological"
+    "constitutional"
   ],
   "keyFindings": {
     "laboratory": [
@@ -339,8 +209,8 @@
       "No specific imaging abnormalities outside acute injury episodes"
     ],
     "genetic": [
-      "MTHFR (causative)",
-      "Autosomal recessive inheritance"
+      "Pathogenic variants in SLC22A12 (URAT1 gene)",
+      "Pathogenic variants in SLC2A9 gene"
     ],
     "other": [
       "History of exercise-induced acute kidney injury",
@@ -383,7 +253,7 @@
     "Geneticist",
     "Internal Medicine Specialist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Ichida K, Hosoyamada M, et al. Renal hypouricemia: molecular mechanisms and clinical significance. Clin Exp Nephrol. 2012.",
     "Enomoto A, Kimura H, et al. Molecular identification of a renal urate anion exchanger that regulates blood urate levels. Nature. 2002.",

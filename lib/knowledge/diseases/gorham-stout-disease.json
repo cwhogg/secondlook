@@ -10,15 +10,14 @@
   ],
   "orphanetId": "ORPHA:2114",
   "prevalence": {
-    "estimate": "Less than 1 in 1,000,000",
-    "range": "<1 / 1 000 000",
+    "estimate": "less than 1 in 1,000,000",
     "classification": "ultra-rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 2,
-      "max": 12,
-      "peak": 7
+      "min": 0,
+      "max": 70,
+      "peak": 25
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,68 +56,137 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Hip dysplasia",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Progressive massive osteolysis",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal",
+        "notes": "Characteristic disappearance of bone on imaging",
+        "searchTerms": [
+          "bone loss over time",
+          "progressive bone destruction",
+          "large areas of bone disappearance"
+        ]
       },
       {
-        "symptomName": "Osteoarthritis",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of bone mineral density",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of epiphysis morphology",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Broad femoral neck",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal ossification involving the femoral head and neck",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormality of the epiphysis of the femoral head",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal bone ossification",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Lymphatic vessel proliferation within bone",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "notes": "Histopathological hallmark",
+        "searchTerms": [
+          "excess lymph vessels in bone",
+          "abnormal lymphatic growth in bone",
+          "too many lymph vessels inside bone"
+        ]
       }
     ],
-    "common": [],
+    "common": [
+      {
+        "symptomName": "Localized bone pain",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "notes": "Often initial presenting symptom",
+        "searchTerms": [
+          "localized bone ache",
+          "bone pain in one area",
+          "focal bone discomfort"
+        ]
+      },
+      {
+        "symptomName": "Swelling over affected bone",
+        "frequency": 0.65,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "bone swelling",
+          "lump over bone",
+          "bony bump"
+        ]
+      },
+      {
+        "symptomName": "Pathological fractures",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Reduced range of motion in adjacent joints",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "limited joint movement",
+          "stiff nearby joints",
+          "reduced joint flexibility"
+        ]
+      }
+    ],
     "occasional": [
       {
-        "symptomName": "Scoliosis",
-        "frequency": 0.17,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Chylothorax due to thoracic duct involvement",
+        "frequency": 0.3,
+        "bodySystem": "respiratory",
+        "notes": "May cause respiratory distress",
+        "searchTerms": [
+          "fluid buildup in chest from lymph leak",
+          "chylous fluid in chest cavity",
+          "lymphatic fluid causing chest swelling"
+        ]
       },
       {
-        "symptomName": "Kyphosis",
-        "frequency": 0.17,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Muscle weakness adjacent to affected bone",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "weak muscles near bone",
+          "muscle weakness close to bone",
+          "localized muscle weakness"
+        ]
       },
       {
-        "symptomName": "Coxa vara",
-        "frequency": 0.17,
+        "symptomName": "Fatigue",
+        "frequency": 0.2,
         "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Limb length discrepancy",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "one limb shorter than other",
+          "unequal arm or leg length",
+          "difference in limb size"
+        ]
       }
     ],
-    "rare": []
+    "rare": [
+      {
+        "symptomName": "Neurological deficits due to spinal involvement",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Compression of spinal cord or nerve roots",
+        "searchTerms": [
+          "spinal nerve problems",
+          "weakness from spine issues",
+          "numbness due to spinal damage"
+        ]
+      },
+      {
+        "symptomName": "Pleural effusion unrelated to chylothorax",
+        "frequency": 0.04,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "fluid around lungs not from lymph",
+          "non-chylous pleural fluid",
+          "lung lining fluid buildup"
+        ]
+      },
+      {
+        "symptomName": "Hypercalcemia",
+        "frequency": 0.03,
+        "bodySystem": "endocrine"
+      }
+    ]
   },
   "systemsAffected": [
     "musculoskeletal",
+    "respiratory",
+    "neurological",
     "constitutional"
   ],
   "keyFindings": {
@@ -132,8 +200,7 @@
       "Bone scintigraphy with increased uptake in early stages"
     ],
     "genetic": [
-      "UFSP2 (causative)",
-      "Autosomal dominant inheritance"
+      "No known consistent genetic mutations identified"
     ],
     "other": [
       "Histopathology demonstrating non-malignant vascular or lymphatic proliferation within bone"
@@ -174,7 +241,7 @@
     "Pathologist",
     "Pulmonologist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Heffez L, et al. 'Gorham's disease: the disappearing bone disease.' Oral Surg Oral Med Oral Pathol. 1983.",
     "Dellinger MT, et al. 'Gorham-Stout disease: a case report and review of the literature.' J Bone Joint Surg Am. 2014.",

@@ -11,15 +11,14 @@
   "omimId": "200100",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1-9 in 1,000,000",
-    "range": "1-9 / 1 000 000",
-    "classification": "rare"
+    "estimate": "1 in 1,000,000",
+    "classification": "ultra-rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 120,
-      "peak": 42
+      "min": 0,
+      "max": 10,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -64,276 +63,145 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Hepatic cysts",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Acanthocytosis",
+        "frequency": 0.95,
+        "bodySystem": "hematological",
+        "notes": "Spiculated red blood cells on peripheral smear"
       },
       {
-        "symptomName": "Eosinophilia",
+        "symptomName": "Absence of apolipoprotein B",
         "frequency": 0.9,
-        "bodySystem": "hematological"
+        "bodySystem": "hematological",
+        "notes": "Detected by plasma protein electrophoresis or immunoassay",
+        "searchTerms": [
+          "lack of a key blood fat protein",
+          "missing cholesterol carrier protein",
+          "absent blood lipid protein"
+        ]
       },
       {
-        "symptomName": "Elevated erythrocyte sedimentation rate",
-        "frequency": 0.9,
-        "bodySystem": "hematological"
-      },
-      {
-        "symptomName": "Increased circulating antibody level",
-        "frequency": 0.9,
-        "bodySystem": "immunological"
+        "symptomName": "Severe fat malabsorption with steatorrhea",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Chronic diarrhea with fatty stools",
+        "searchTerms": [
+          "fatty stools",
+          "poor fat digestion",
+          "oily diarrhea from fat malabsorption"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Jaundice",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Ataxia",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Progressive cerebellar dysfunction"
       },
       {
-        "symptomName": "Decreased liver function",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Sensory and motor deficits"
       },
       {
-        "symptomName": "Anemia",
-        "frequency": 0.55,
-        "bodySystem": "hematological"
+        "symptomName": "Retinitis pigmentosa",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological",
+        "notes": "Progressive vision loss"
       },
       {
-        "symptomName": "Fever",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Failure to thrive",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Poor weight gain in infancy",
+        "searchTerms": [
+          "poor weight gain",
+          "not growing well",
+          "failure to gain weight"
+        ]
       },
       {
-        "symptomName": "Abdominal pain",
+        "symptomName": "Hypocholesterolemia",
         "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Low back pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Pedal edema",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Fatigue",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Asthenia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Epigastric pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "bodySystem": "hematological",
+        "notes": "Low plasma cholesterol levels"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Renal cyst",
-        "frequency": 0.17,
-        "bodySystem": "renal"
+        "symptomName": "Spinocerebellar degeneration",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "notes": "Progressive loss of cerebellar neurons"
       },
       {
-        "symptomName": "Abnormal sternum morphology",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Vitamin E deficiency",
+        "frequency": 0.35,
+        "bodySystem": "endocrine",
+        "notes": "Leads to neurological and muscular symptoms",
+        "searchTerms": [
+          "low vitamin E levels",
+          "vitamin E deficiency symptoms",
+          "lack of vitamin E in blood"
+        ]
       },
       {
-        "symptomName": "Weight loss",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Muscle weakness",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to neuropathy and vitamin deficiencies"
       },
       {
-        "symptomName": "Dyspnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
+        "symptomName": "Hyporeflexia",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Reduced deep tendon reflexes"
       },
       {
-        "symptomName": "Hemoptysis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ectopic calcification",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormality of adrenal morphology",
-        "frequency": 0.17,
-        "bodySystem": "endocrine"
-      },
-      {
-        "symptomName": "Cough",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal spleen morphology",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cholangitis",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cutaneous abscess",
-        "frequency": 0.17,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Pulmonary cyst",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Chest pain",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Night blindness",
+        "frequency": 0.2,
+        "bodySystem": "ophthalmological",
+        "notes": "Early symptom of retinal degeneration"
       }
     ],
     "rare": [
       {
-        "symptomName": "Abnormality of the diaphragm",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
+        "symptomName": "Cardiomyopathy",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to chronic malnutrition"
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Hepatic steatosis",
+        "frequency": 0.07,
+        "bodySystem": "gastrointestinal",
+        "notes": "Fat accumulation in liver"
       },
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Skeletal deformities",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to vitamin deficiencies"
       },
       {
-        "symptomName": "Dysarthria",
+        "symptomName": "Psychiatric symptoms",
         "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Portal hypertension",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Abnormal pericardium morphology",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Pancreatic cysts",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vomiting",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vertigo",
-        "frequency": 0.03,
-        "bodySystem": "otolaryngological"
-      },
-      {
-        "symptomName": "Aphasia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Increased intracranial pressure",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Biliary cirrhosis",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Budd-Chiari syndrome",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal vertebral morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Intracranial cystic lesion",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal skeletal muscle morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Bone cyst",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of bladder morphology",
-        "frequency": 0.03,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Abnormal pelvis bone morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of mesentery morphology",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Liver abscess",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
+        "bodySystem": "psychiatric",
+        "notes": "Rare cognitive or mood disturbances"
       }
     ]
   },
   "systemsAffected": [
-    "gastrointestinal",
     "hematological",
-    "immunological",
-    "constitutional",
-    "renal",
-    "respiratory",
+    "gastrointestinal",
     "neurological",
-    "endocrine",
-    "dermatological",
+    "ophthalmological",
+    "musculoskeletal",
     "cardiovascular",
-    "otolaryngological",
-    "musculoskeletal"
+    "endocrine",
+    "psychiatric",
+    "constitutional"
   ],
   "keyFindings": {
     "laboratory": [
@@ -393,7 +261,7 @@
     "Geneticist",
     "Ophthalmologist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Bassen-Kornzweig syndrome: clinical and molecular aspects. Orphanet Journal of Rare Diseases, 2019.",
     "Abetalipoproteinemia: A comprehensive review. Journal of Clinical Lipidology, 2021.",

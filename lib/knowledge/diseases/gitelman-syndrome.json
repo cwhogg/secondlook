@@ -11,15 +11,14 @@
   "omimId": "263800",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1-9 in 1,000,000",
-    "range": "1-9 / 1 000 000",
+    "estimate": "1 in 40,000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 120,
-      "peak": 42
+      "min": 5,
+      "max": 40,
+      "peak": 20
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -64,276 +63,141 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Hepatic cysts",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Hypokalemic metabolic alkalosis",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "notes": "Characteristic biochemical hallmark",
+        "searchTerms": [
+          "low potassium with metabolic alkalosis",
+          "electrolyte imbalance causing alkalosis",
+          "hypokalemia with high blood pH"
+        ]
       },
       {
-        "symptomName": "Eosinophilia",
+        "symptomName": "Hypomagnesemia",
         "frequency": 0.9,
-        "bodySystem": "hematological"
+        "bodySystem": "endocrine",
+        "notes": "Due to renal magnesium wasting"
       },
       {
-        "symptomName": "Elevated erythrocyte sedimentation rate",
-        "frequency": 0.9,
-        "bodySystem": "hematological"
-      },
-      {
-        "symptomName": "Increased circulating antibody level",
-        "frequency": 0.9,
-        "bodySystem": "immunological"
+        "symptomName": "Normocalciuria or hypocalciuria",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "notes": "Differentiates from Bartter syndrome",
+        "searchTerms": [
+          "normal or low urine calcium",
+          "low calcium in urine",
+          "normal calcium excretion"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Jaundice",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Decreased liver function",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Anemia",
-        "frequency": 0.55,
-        "bodySystem": "hematological"
-      },
-      {
-        "symptomName": "Fever",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abdominal pain",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Low back pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Pedal edema",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Muscle cramps and weakness",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to electrolyte disturbances",
+        "searchTerms": [
+          "muscle cramps",
+          "muscle weakness and spasms",
+          "painful muscle contractions"
+        ]
       },
       {
         "symptomName": "Fatigue",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Common presenting symptom"
       },
       {
-        "symptomName": "Asthenia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Salt craving",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Compensatory behavior"
       },
       {
-        "symptomName": "Epigastric pain",
+        "symptomName": "Tetany",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "notes": "Secondary to hypomagnesemia"
+      },
+      {
+        "symptomName": "Polyuria and polydipsia",
         "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "bodySystem": "renal",
+        "notes": "Due to salt wasting",
+        "searchTerms": [
+          "excessive urination",
+          "extreme thirst",
+          "frequent peeing and thirst"
+        ]
       }
     ],
     "occasional": [
       {
-        "symptomName": "Renal cyst",
-        "frequency": 0.17,
-        "bodySystem": "renal"
+        "symptomName": "Chondrocalcinosis",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal",
+        "notes": "Calcium pyrophosphate deposition related to hypomagnesemia"
       },
       {
-        "symptomName": "Abnormal sternum morphology",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Arrhythmias",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Due to electrolyte imbalance"
       },
       {
-        "symptomName": "Weight loss",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Dizziness or syncope",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Secondary to volume depletion or electrolyte abnormalities",
+        "searchTerms": [
+          "feeling dizzy or fainting",
+          "episodes of syncope or lightheadedness",
+          "balance problems with fainting"
+        ]
       },
       {
-        "symptomName": "Dyspnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Hemoptysis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ectopic calcification",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormality of adrenal morphology",
-        "frequency": 0.17,
-        "bodySystem": "endocrine"
-      },
-      {
-        "symptomName": "Cough",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal spleen morphology",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cholangitis",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cutaneous abscess",
-        "frequency": 0.17,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Pulmonary cyst",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Chest pain",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Paresthesias",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Related to hypomagnesemia"
       }
     ],
     "rare": [
       {
-        "symptomName": "Abnormality of the diaphragm",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
+        "symptomName": "Growth retardation",
+        "frequency": 0.05,
+        "bodySystem": "constitutional",
+        "notes": "Reported in pediatric cases"
       },
       {
-        "symptomName": "Seizure",
+        "symptomName": "Hearing loss",
         "frequency": 0.03,
-        "bodySystem": "neurological"
+        "bodySystem": "otolaryngological",
+        "notes": "Rarely reported"
       },
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Dysarthria",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Portal hypertension",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Abnormal pericardium morphology",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Pancreatic cysts",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vomiting",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vertigo",
-        "frequency": 0.03,
-        "bodySystem": "otolaryngological"
-      },
-      {
-        "symptomName": "Aphasia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Increased intracranial pressure",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Biliary cirrhosis",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Budd-Chiari syndrome",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal vertebral morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Intracranial cystic lesion",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal skeletal muscle morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Bone cyst",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of bladder morphology",
-        "frequency": 0.03,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Abnormal pelvis bone morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of mesentery morphology",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Liver abscess",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Chronic kidney disease",
+        "frequency": 0.02,
+        "bodySystem": "renal",
+        "notes": "Rare long-term complication",
+        "searchTerms": [
+          "long-term kidney failure",
+          "chronic kidney disease",
+          "progressive loss of kidney function"
+        ]
       }
     ]
   },
   "systemsAffected": [
-    "gastrointestinal",
-    "hematological",
-    "immunological",
-    "constitutional",
     "renal",
-    "respiratory",
+    "musculoskeletal",
+    "cardiovascular",
     "neurological",
     "endocrine",
-    "dermatological",
-    "cardiovascular",
-    "otolaryngological",
-    "musculoskeletal"
+    "constitutional",
+    "otolaryngological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -382,7 +246,7 @@
     "Endocrinologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Simon DB et al. Gitelman's variant of Bartter's syndrome, inherited hypokalemic alkalosis, is caused by mutations in the thiazide-sensitive Na-Cl cotransporter. Nat Genet. 1996.",
     "Blanchard A et al. Gitelman syndrome: consensus and guidance from a Kidney Disease: Improving Global Outcomes (KDIGO) Controversies Conference. Kidney Int. 2017.",

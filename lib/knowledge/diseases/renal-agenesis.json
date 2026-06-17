@@ -12,15 +12,15 @@
   "omimId": "193000",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1-9 in 1,000,000",
-    "range": "1-9 / 1 000 000",
+    "estimate": "1 in 3,000",
+    "range": "0.03%-0.04%",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 120,
-      "peak": 42
+      "min": 0,
+      "max": 5,
+      "peak": 0
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": []
@@ -53,276 +53,145 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Hepatic cysts",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Unilateral or bilateral absence of palpable renal tissue",
+        "frequency": 0.95,
+        "bodySystem": "renal",
+        "notes": "Detected by imaging or physical examination",
+        "searchTerms": [
+          "no kidney felt on one or both sides",
+          "missing kidney tissue on physical exam",
+          "unable to feel kidney mass"
+        ]
       },
       {
-        "symptomName": "Eosinophilia",
+        "symptomName": "Absent kidney on prenatal ultrasound",
         "frequency": 0.9,
-        "bodySystem": "hematological"
+        "bodySystem": "renal",
+        "notes": "Often the first indication of renal agenesis",
+        "searchTerms": [
+          "kidney missing on prenatal ultrasound",
+          "no kidney seen before birth",
+          "absent kidney detected during pregnancy scan"
+        ]
       },
       {
-        "symptomName": "Elevated erythrocyte sedimentation rate",
-        "frequency": 0.9,
-        "bodySystem": "hematological"
-      },
-      {
-        "symptomName": "Increased circulating antibody level",
-        "frequency": 0.9,
-        "bodySystem": "immunological"
+        "symptomName": "Absent renal artery on Doppler imaging",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "notes": "Confirms absence of kidney vascular supply",
+        "searchTerms": [
+          "missing kidney artery on Doppler",
+          "no blood flow in renal artery",
+          "absent renal artery detected by imaging"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Jaundice",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Compensatory hypertrophy of contralateral kidney",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "notes": "Common in unilateral renal agenesis",
+        "searchTerms": [
+          "enlarged opposite kidney",
+          "compensatory growth of other kidney",
+          "increased size of remaining kidney"
+        ]
       },
       {
-        "symptomName": "Decreased liver function",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Oligohydramnios in utero",
+        "frequency": 0.7,
+        "bodySystem": "renal",
+        "notes": "Due to decreased fetal urine production",
+        "searchTerms": [
+          "low amniotic fluid before birth",
+          "reduced fluid around baby in womb",
+          "oligohydramnios during pregnancy"
+        ]
       },
       {
-        "symptomName": "Anemia",
-        "frequency": 0.55,
-        "bodySystem": "hematological"
+        "symptomName": "Hypertension",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "notes": "May develop secondary to renal hypoplasia or dysfunction"
       },
       {
-        "symptomName": "Fever",
+        "symptomName": "Proteinuria",
         "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abdominal pain",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Low back pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Pedal edema",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Fatigue",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Asthenia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Epigastric pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "bodySystem": "renal",
+        "notes": "Indicative of renal stress or damage"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Renal cyst",
-        "frequency": 0.17,
-        "bodySystem": "renal"
+        "symptomName": "Urinary tract infections",
+        "frequency": 0.4,
+        "bodySystem": "renal",
+        "notes": "More common in unilateral cases with compensatory hypertrophy",
+        "searchTerms": [
+          "bladder infections",
+          "urinary infections",
+          "repeated urine infections"
+        ]
       },
       {
-        "symptomName": "Abnormal sternum morphology",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Growth retardation",
+        "frequency": 0.3,
+        "bodySystem": "constitutional",
+        "notes": "May occur due to chronic kidney disease in bilateral cases"
       },
       {
-        "symptomName": "Weight loss",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Pulmonary hypoplasia",
+        "frequency": 0.25,
+        "bodySystem": "respiratory",
+        "notes": "Secondary to severe oligohydramnios in bilateral agenesis"
       },
       {
-        "symptomName": "Dyspnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Hemoptysis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ectopic calcification",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormality of adrenal morphology",
-        "frequency": 0.17,
-        "bodySystem": "endocrine"
-      },
-      {
-        "symptomName": "Cough",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal spleen morphology",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cholangitis",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cutaneous abscess",
-        "frequency": 0.17,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Pulmonary cyst",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Chest pain",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Electrolyte imbalances",
+        "frequency": 0.2,
+        "bodySystem": "endocrine",
+        "notes": "May occur in bilateral renal agenesis due to renal failure"
       }
     ],
     "rare": [
       {
-        "symptomName": "Abnormality of the diaphragm",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
+        "symptomName": "Congenital anomalies of the reproductive tract",
+        "frequency": 0.08,
+        "bodySystem": "reproductive",
+        "notes": "Associated malformations especially in females",
+        "searchTerms": [
+          "birth defects in reproductive organs",
+          "congenital reproductive tract abnormalities",
+          "malformations of reproductive system present at birth"
+        ]
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Hypertrophic cardiomyopathy",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare cardiac association"
       },
       {
-        "symptomName": "Ataxia",
+        "symptomName": "Neurological developmental delay",
         "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Dysarthria",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Portal hypertension",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Abnormal pericardium morphology",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Pancreatic cysts",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vomiting",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vertigo",
-        "frequency": 0.03,
-        "bodySystem": "otolaryngological"
-      },
-      {
-        "symptomName": "Aphasia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Increased intracranial pressure",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Biliary cirrhosis",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Budd-Chiari syndrome",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal vertebral morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Intracranial cystic lesion",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal skeletal muscle morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Bone cyst",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of bladder morphology",
-        "frequency": 0.03,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Abnormal pelvis bone morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of mesentery morphology",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Liver abscess",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
+        "bodySystem": "neurological",
+        "notes": "Secondary to chronic kidney disease complications",
+        "searchTerms": [
+          "delayed brain development",
+          "slow neurological progress",
+          "developmental delay in nervous system"
+        ]
       }
     ]
   },
   "systemsAffected": [
-    "gastrointestinal",
-    "hematological",
-    "immunological",
-    "constitutional",
     "renal",
-    "respiratory",
-    "neurological",
-    "endocrine",
-    "dermatological",
     "cardiovascular",
-    "otolaryngological",
-    "musculoskeletal"
+    "respiratory",
+    "reproductive",
+    "constitutional",
+    "neurological",
+    "endocrine"
   ],
   "keyFindings": {
     "laboratory": [
@@ -373,7 +242,7 @@
     "Geneticist",
     "Urologist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "National Organization for Rare Disorders (NORD) - Renal Agenesis",
     "UpToDate: Congenital anomalies of the kidney and urinary tract",

@@ -16,9 +16,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 65,
-      "peak": 42
+      "min": 0,
+      "max": 10,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,75 +63,128 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Impaired vibratory sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Chronic hemolytic anemia",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "long-term destruction of red blood cells",
+          "chronic anemia from red cell breakdown",
+          "ongoing hemolytic anemia"
+        ]
       },
       {
-        "symptomName": "Absent Achilles reflex",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Severe developmental delay",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "profound developmental delay",
+          "severe cognitive and motor delay",
+          "major learning and growth impairment"
+        ]
       },
       {
-        "symptomName": "Impaired tactile sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Impaired proprioception",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Pyruvate dehydrogenase complex enzyme deficiency",
+        "frequency": 0.95,
+        "bodySystem": "constitutional",
+        "notes": "Biochemical hallmark",
+        "searchTerms": [
+          "pyruvate dehydrogenase deficiency",
+          "energy metabolism enzyme defect",
+          "problems with energy production enzyme"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
+        "symptomName": "Hypotonia",
+        "frequency": 0.65,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Dysarthria",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Failure to thrive",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "poor weight gain",
+          "not growing well",
+          "failure to gain weight"
+        ]
       },
       {
-        "symptomName": "Gait disturbance",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Elevated blood lactate",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "high blood lactic acid",
+          "elevated lactate levels",
+          "increased lactic acid in blood"
+        ]
       },
       {
-        "symptomName": "Motor deterioration",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.5,
+        "bodySystem": "musculoskeletal"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Areflexia",
-        "frequency": 0.17,
+        "symptomName": "Seizures",
+        "frequency": 0.4,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Sensory axonal neuropathy",
-        "frequency": 0.17,
+        "symptomName": "Ataxia",
+        "frequency": 0.3,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Motor axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Splenomegaly",
+        "frequency": 0.25,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Cardiomyopathy",
+        "frequency": 0.15,
+        "bodySystem": "cardiovascular"
       },
       {
         "symptomName": "Peripheral neuropathy",
-        "frequency": 0.17,
+        "frequency": 0.1,
         "bodySystem": "neurological"
       }
     ],
-    "rare": []
+    "rare": [
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.08,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Respiratory distress",
+        "frequency": 0.03,
+        "bodySystem": "respiratory"
+      }
+    ]
   },
   "systemsAffected": [
+    "hematological",
+    "neurological",
+    "musculoskeletal",
+    "cardiovascular",
     "constitutional",
-    "neurological"
+    "ophthalmological",
+    "gastrointestinal",
+    "respiratory"
   ],
   "keyFindings": {
     "laboratory": [
@@ -145,8 +198,7 @@
       "Echocardiogram may reveal cardiomyopathy"
     ],
     "genetic": [
-      "PLEKHG4 (candidate)",
-      "Autosomal dominant inheritance"
+      "Pathogenic variants in PDHA1 gene or other PDH complex genes"
     ],
     "other": [
       "Muscle biopsy showing mitochondrial abnormalities",
@@ -190,7 +242,7 @@
     "Geneticist",
     "Metabolic specialist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "DeBrosse SD et al. Pyruvate dehydrogenase complex deficiency: clinical, biochemical, and genetic features. Mol Genet Metab. 2012.",
     "Patel MS, Korotchkina LG. Regulation of the pyruvate dehydrogenase complex. Biochem Soc Trans. 2006.",

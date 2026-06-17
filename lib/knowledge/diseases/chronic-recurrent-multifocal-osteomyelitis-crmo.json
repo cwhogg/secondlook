@@ -11,15 +11,14 @@
   "omimId": "605089",
   "orphanetId": "2380",
   "prevalence": {
-    "estimate": "1-9 in 100,000",
-    "range": "1-9 / 100 000",
+    "estimate": "1 in 200,000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 2,
-      "max": 12,
-      "peak": 7
+      "min": 4,
+      "max": 16,
+      "peak": 10
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": []
@@ -70,53 +69,149 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Abnormality of the dentition",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Recurrent multifocal bone pain",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "notes": "Typically affects long bones, clavicle, and vertebrae",
+        "searchTerms": [
+          "repeated bone pain in multiple areas",
+          "multisite bone discomfort",
+          "chronic bone pain episodes"
+        ]
       },
       {
-        "symptomName": "Joint dislocation",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Delayed skeletal maturation",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Arthralgia",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Skeletal muscle atrophy",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Short stature",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Avascular necrosis",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Cartilage destruction",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Sterile bone inflammation confirmed by biopsy",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "bone inflammation without infection",
+          "sterile bone swelling",
+          "non-infectious bone inflammation confirmed by biopsy"
+        ]
       }
     ],
-    "common": [],
-    "occasional": [],
-    "rare": []
+    "common": [
+      {
+        "symptomName": "Localized bone swelling",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "swelling in one bone area",
+          "localized bone lump",
+          "bone enlargement in specific spot"
+        ]
+      },
+      {
+        "symptomName": "Mild fever",
+        "frequency": 0.65,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate (ESR)",
+        "frequency": 0.7,
+        "bodySystem": "hematological",
+        "notes": "Reflects systemic inflammation",
+        "searchTerms": [
+          "high inflammation blood test",
+          "elevated ESR indicating inflammation",
+          "blood test showing inflammation"
+        ]
+      },
+      {
+        "symptomName": "Elevated C-reactive protein (CRP)",
+        "frequency": 0.7,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "high CRP blood levels",
+          "elevated C-reactive protein",
+          "increased inflammation marker CRP"
+        ]
+      },
+      {
+        "symptomName": "Associated skin lesions (e.g., psoriasis, palmoplantar pustulosis)",
+        "frequency": 0.6,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin rashes like psoriasis",
+          "pustules on palms and soles",
+          "psoriasis-like skin changes"
+        ]
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Limited range of motion in affected joints",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "reduced joint movement",
+          "limited ability to move joints",
+          "stiff joints with decreased range"
+        ]
+      },
+      {
+        "symptomName": "Vertebral involvement causing back pain",
+        "frequency": 0.25,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "back pain from spine involvement",
+          "spinal bone pain",
+          "vertebral pain"
+        ]
+      },
+      {
+        "symptomName": "Mild anemia of chronic disease",
+        "frequency": 0.15,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "mild anemia due to chronic illness",
+          "low red blood cells from long-term disease"
+        ]
+      },
+      {
+        "symptomName": "Low-grade night sweats",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "night sweating with mild intensity",
+          "low-grade sweating at night",
+          "mild night sweats"
+        ]
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pathological fractures",
+        "frequency": 0.05,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Spinal deformities due to vertebral involvement",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "spinal curvature changes",
+          "spine deformities from bone disease",
+          "abnormal spine shape"
+        ]
+      },
+      {
+        "symptomName": "Peripheral arthritis",
+        "frequency": 0.07,
+        "bodySystem": "musculoskeletal"
+      }
+    ]
   },
   "systemsAffected": [
-    "constitutional",
-    "musculoskeletal"
+    "musculoskeletal",
+    "hematological",
+    "dermatological",
+    "constitutional"
   ],
   "keyFindings": {
     "laboratory": [
@@ -130,9 +225,7 @@
       "Bone scintigraphy revealing multiple active lesions"
     ],
     "genetic": [
-      "COL2A1 (causative)",
-      "Autosomal dominant inheritance",
-      "Multigenic/multifactorial inheritance"
+      "Association with mutations in LPIN2, FBLIM1, and other autoinflammatory genes in some cases"
     ],
     "other": [
       "Exclusion of infectious osteomyelitis and malignancy is critical",
@@ -176,7 +269,7 @@
     "Pediatrician",
     "Radiologist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Jansson AF, et al. Chronic recurrent multifocal osteomyelitis: clinical presentation and diagnostic criteria. J Rheumatol. 2007.",
     "Ferguson PJ, et al. Autoinflammatory bone disorders. Curr Opin Rheumatol. 2014.",

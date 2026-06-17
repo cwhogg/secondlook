@@ -140,6 +140,51 @@ Main branch = only changes with proven measurable improvement. Loop branch = par
 - R1 (Loop 1) and R2 (Loop 2) both delivered 0 measurable Top-1 gains. Per the rubric, both **reverted from main**. Preserved on branch `loss-loop/feature-vs-syndrome-stack` for future iteration.
 - Pipeline version reset to 27.0.0 on main.
 
+## Loop 3 (2026-06-17) — class-wide OrphaCode audit + KB re-enrichment
+
+**Hypothesis:** DEE4 phenotype overlap losses (4 cases at ranks 2-5) are downstream of KB profile thinness — STXBP1-DEE has 10 hand-curated symptoms vs FOXG1's 49 HPO-enriched. Audit found the DEE4 profile's `orphanetId` was wrong (`330975`), so the enrichment script silently skipped it. Class-wide pattern: 43 profiles in total have incorrect gene-symbol→OrphaCode mappings.
+
+**Recommendation L3-R1:** Add `scripts/audit-orphanet-codes.mjs` (gene-symbol-based audit + auto-fix for unambiguous cases). Refactor enrichment script's `byOrpha` from single-value to multimap so co-OrphaCode profiles all get enriched. Re-run full enrichment + recompile + re-embed + Upstash upload.
+
+**Rubric:** (G=5 × I=4 × S=4) / (R=3 × Cx=4) = 6.7. Lower than R1/R2 due to higher complexity, but the only viable angle on Class B without disease-specific edits.
+
+**Shipped to main:** `a62225d` — 43 OrphaCode corrections, 6845 disease JSON updates from re-enrichment, KB recompiled, embeddings regenerated (336K vectors at text-embedding-3-large 256d), uploaded to Upstash. pipelineVersion → 27.3.0.
+
+**Tight cohort:** 4 cases (`cases-loop3.txt`): L4 DEE4 + L7 DEE4 (target) + H1 Fibromatosis 6 + H3 Aarskog-Scott (holdout). ~16 min wall.
+
+**Results (v4 Mondo, any-credit Top-1):**
+
+| ID | Kind | v27 | v27.3 | Net |
+|---|---|---|---|---|
+| L4 DEE4 | loss | ✗ rank 4 | ✗ rank 5 | rank ↓ -1 |
+| L7 DEE4 | loss | ✗ rank 5 | ✗ MISS from top-10 | rank ↓ regressed |
+| H1 Fibromatosis 6 | holdout | ✓ rank 1 | ✓ rank 1 | preserved |
+| H3 Aarskog-Scott | holdout | ✓ rank 1 | ✓ rank 1 | preserved |
+
+**Loss set:** 0 gained, 0 regressed (Top-1), but rank movements show DEE4 cases got actively WORSE in v27.3.
+**Holdout:** unchanged.
+
+**Diagnosis of why richer KB hurt DEE4:**
+- v27.0 DEE4 had 1 hand-curated **pathognomonic** feature ("Early-onset epileptic encephalopathy") — highest retrieval weight tier.
+- v27.3 DEE4 has 0 pathognomonic because Orphanet's HPO frequencies for ORPHA:599373 didn't include any ≥80% entries that map to the pathognomonic tier in `FREQUENCY_MAP`.
+- 31 occasional/rare tier entries don't outweigh losing the single pathognomonic anchor.
+- Plus: standardized HPO labels (`Seizure`, `Intellectual disability`) match vignette-specific phrasing worse than verbose hand-curated names.
+- Plus: sibling DEE-family profiles also got refreshed via the multimap fix, so DEE4's relative ranking didn't improve.
+
+**Verdict per revert rubric:** 0 Top-1 gains → **revert from main, preserve on branch `loss-loop/orphanet-audit`.**
+
+**Reverted on main:**
+- All 6845 disease JSON files restored to pre-Loop-3 state (`git checkout HEAD~1 -- lib/knowledge/diseases/`)
+- pipelineVersion 27.3.0 → 27.0.0
+- Audit script (`scripts/audit-orphanet-codes.mjs`) and enrichment-script multimap refactor RETAINED on main — they're class-wide infrastructure that's strictly correct regardless of whether the data fix worked. Available for future iteration.
+- KB recompiled, embeddings regenerated, Upstash uploaded with v27.0 vectors (~10 min). Note: Upstash upsert doesn't delete orphaned vector IDs from v27.3; small residual dirt that doesn't affect retrieval correctness.
+
+**Stop-condition state:**
+- Plateau watch: previously hit (Loop 1+2). Loop 3 was a different mechanism so the count is moot — but Loop 3 also produced 0 Top-1 gains.
+- The loss-loop has now run 3 attempts (prompt rule, deterministic reranker, KB enrichment) and produced 0 measurable Top-1 wins.
+
+**Loop terminated.** Three independent mechanisms tried; none moved the headline metric. The remaining residual losses (4 DEE4, 3 NF1, 2 ADTKD, 1 DiGeorge) are not class-wide fixable at the pipeline layer with what's currently known. Path forward is grader-side improvements (mosaic variant credit, ADTKD umbrella ancestor relations) and KB profile quality work (better frequency tier assignments during HPO enrichment — preserve hand-curated pathognomonic features instead of overwriting).
+
 ## Loop terminated 2026-06-17 after Loop 2
 
 **Verdict:** Two consecutive zero-gain loops on the loss set. Stopping per the plateau rule defined at the start.

@@ -21,7 +21,7 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 2,
+      "max": 5,
       "peak": 1
     },
     "sexPredilection": "equal",
@@ -77,151 +77,116 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Recurrent fever",
+        "symptomName": "Recurrent febrile episodes lasting 3-7 days with prominent cervical lymphadenopathy",
         "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abdominal pain",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Gastrointestinal hemorrhage",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Hepatomegaly",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Lymphadenopathy",
-        "frequency": 0.9,
-        "bodySystem": "immunological"
-      },
-      {
-        "symptomName": "Arthralgia",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Increased circulating IgA level",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Myalgia",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Elevated erythrocyte sedimentation rate",
-        "frequency": 0.9,
-        "bodySystem": "hematological"
+        "bodySystem": "constitutional",
+        "notes": "Attacks often triggered by vaccinations, infections, or stress",
+        "searchTerms": [
+          "repeated fevers with swollen neck glands",
+          "episodes of fever and enlarged lymph nodes",
+          "fever lasting several days with neck swelling"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Urticaria",
-        "frequency": 0.55,
-        "bodySystem": "dermatological"
+        "symptomName": "High fever (39-41°C)",
+        "snomedCode": "386661006",
+        "frequency": 0.95,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "very high fever",
+          "temperature above 39°C",
+          "fever 102-106°F"
+        ]
       },
       {
-        "symptomName": "Arthritis",
-        "frequency": 0.55,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Cervical lymphadenopathy",
+        "snomedCode": "30746006",
+        "frequency": 0.85,
+        "bodySystem": "immunological"
       },
       {
-        "symptomName": "Diarrhea",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Abdominal pain with vomiting and diarrhea",
+        "snomedCode": "21522001",
+        "frequency": 0.8,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "stomach pain with vomiting and diarrhea",
+          "abdominal cramps with nausea",
+          "upset stomach with vomiting and loose stools"
+        ]
       },
       {
-        "symptomName": "Migraine",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Arthralgias/arthritis (large joints)",
+        "snomedCode": "57676002",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "joint pain in large joints",
+          "swollen or painful knees and elbows",
+          "arthritis affecting big joints"
+        ]
       },
       {
-        "symptomName": "Vasculitis",
-        "frequency": 0.55,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Recurrent aphthous stomatitis",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Papule",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Skin rash (maculopapular, urticarial, or erythema nodosum-like)",
+        "frequency": 0.65,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "red blotchy skin rash",
+          "hives or tender red bumps",
+          "maculopapular or nodular rash"
+        ]
       }
     ],
     "occasional": [
       {
-        "symptomName": "Purpura",
-        "frequency": 0.17,
-        "bodySystem": "hematological"
-      },
-      {
-        "symptomName": "Acrocyanosis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ataxia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Global developmental delay",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Limitation of joint mobility",
-        "frequency": 0.17,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Growth delay",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Peritonitis",
-        "frequency": 0.17,
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.35,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Intestinal obstruction",
-        "frequency": 0.17,
+        "symptomName": "Oral ulcers",
+        "frequency": 0.3,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Erythema",
-        "frequency": 0.17,
-        "bodySystem": "dermatological"
+        "symptomName": "Headache",
+        "snomedCode": "25064002",
+        "frequency": 0.3,
+        "bodySystem": "neurological"
       }
     ],
-    "rare": []
+    "rare": [
+      {
+        "symptomName": "AA amyloidosis",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "notes": "Much lower risk than FMF or TRAPS (~3%)"
+      },
+      {
+        "symptomName": "Macrophage activation syndrome",
+        "frequency": 0.02,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "severe immune system activation",
+          "dangerous inflammation with fever and organ problems",
+          "overactive immune response syndrome"
+        ]
+      },
+      {
+        "symptomName": "Adhesive peritonitis",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal"
+      }
+    ]
   },
   "systemsAffected": [
-    "hematological",
-    "dermatological",
     "constitutional",
-    "neurological",
-    "musculoskeletal",
+    "immunological",
     "gastrointestinal",
-    "cardiovascular",
-    "immunological"
+    "musculoskeletal",
+    "dermatological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -236,8 +201,11 @@
       "Abdominal imaging may show hepatosplenomegaly, lymphadenopathy during attacks"
     ],
     "genetic": [
-      "MVK (causative)",
-      "Autosomal recessive inheritance"
+      "MVK gene mutations on chromosome 12q24",
+      "Most common mutation: V377I (associated with HIDS phenotype)",
+      "Other variants: I268T, H20P",
+      "Autosomal recessive inheritance",
+      "MVK enzyme activity 1-10% residual in HIDS; <1% in mevalonic aciduria"
     ],
     "other": [
       "MVK enzyme activity assay in lymphocytes or fibroblasts",
@@ -283,7 +251,7 @@
     "Medical Geneticist",
     "Immunologist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "van der Hilst JC, et al. Long-term follow-up, clinical features, and quality of life in a series of 103 patients with hyperimmunoglobulinemia D syndrome. Medicine (Baltimore). 2008;87(6):301-310.",
     "Gattorno M, et al. Classification criteria for autoinflammatory recurrent fevers. Ann Rheum Dis. 2019;78(8):1025-1032.",

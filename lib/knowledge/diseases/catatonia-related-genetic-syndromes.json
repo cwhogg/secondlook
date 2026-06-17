@@ -17,8 +17,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 2,
-      "peak": 1
+      "max": 40,
+      "peak": 15
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,272 +57,96 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Atypical behavior",
-        "frequency": 0.9,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Gait disturbance",
-        "frequency": 0.9,
+        "symptomName": "Catatonic stupor",
+        "frequency": 0.85,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Morphological central nervous system abnormality",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb spasticity",
-        "frequency": 0.9,
+        "symptomName": "Mutism",
+        "frequency": 0.8,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Homocystinuria",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Hyperhomocystinemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Upper motor neuron dysfunction",
-        "frequency": 0.9,
+        "symptomName": "Posturing",
+        "frequency": 0.75,
         "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cystathioninemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb muscle weakness",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormal enzyme/coenzyme activity",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Psychotic episodes",
-        "frequency": 0.55,
+        "symptomName": "Echolalia",
+        "frequency": 0.65,
         "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.55,
+        "symptomName": "Negativism",
+        "frequency": 0.6,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Psychomotor retardation",
+        "frequency": 0.58,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Ataxia",
+        "symptomName": "Impaired social interaction",
         "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Mental deterioration",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Spastic paraparesis",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal periventricular white matter morphology",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hypomethioninemia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain imaging abnormality",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "difficulty with social skills",
+          "problems interacting with others",
+          "impaired social communication"
+        ]
       }
     ],
     "occasional": [
       {
-        "symptomName": "Psychosis",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Intellectual disability",
-        "frequency": 0.17,
+        "symptomName": "Stereotyped movements",
+        "frequency": 0.4,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Lethargy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Autonomic instability",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Includes fluctuations in blood pressure and heart rate"
       },
       {
-        "symptomName": "Global developmental delay",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Specific learning disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Psychotic mentation",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Thromboembolic stroke",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Bilateral tonic-clonic seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Apnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal cerebral white matter morphology",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Deep venous thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Atrophy of the spinal cord",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Focal-onset seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Feeding difficulties in infancy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Generalized neonatal hypotonia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain atrophy",
-        "frequency": 0.17,
+        "symptomName": "Seizures",
+        "frequency": 0.25,
         "bodySystem": "neurological"
       },
       {
         "symptomName": "Cognitive impairment",
-        "frequency": 0.17,
+        "frequency": 0.15,
         "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Dystonia",
+        "frequency": 0.08,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Microcephaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Respiratory dysregulation",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Abnormality of the eye",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Nystagmus",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Optic atrophy",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Stroke",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Encephalopathy",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ventriculomegaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized non-motor (absence) seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized myoclonic seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Hypersalivation",
+        "frequency": 0.04,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "psychiatric",
     "neurological",
-    "constitutional",
-    "musculoskeletal",
-    "gastrointestinal",
+    "psychiatric",
     "cardiovascular",
+    "musculoskeletal",
     "respiratory",
-    "ophthalmological"
+    "gastrointestinal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -334,8 +158,8 @@
       "Functional imaging may reveal altered basal ganglia activity"
     ],
     "genetic": [
-      "MTHFR (causative)",
-      "Autosomal recessive inheritance"
+      "Mutations in genes such as KCTD17, ATP1A3, and GNAO1",
+      "Variants affecting GABAergic and dopaminergic neurotransmission pathways"
     ],
     "other": [
       "Electroencephalogram (EEG) typically normal or nonspecific",
@@ -370,7 +194,7 @@
     "Psychiatrist",
     "Clinical Geneticist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Fink M, Taylor MA. Catatonia: A Clinician's Guide to Diagnosis and Treatment. Cambridge University Press; 2003.",
     "Northoff G. Catatonia and neurodevelopmental disorders: a systematic review. Neurosci Biobehav Rev. 2020;112:1-14.",

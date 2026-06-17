@@ -16,9 +16,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 65,
-      "peak": 42
+      "min": 0,
+      "max": 50,
+      "peak": 10
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,75 +57,131 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Impaired vibratory sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Severe recurrent bacterial respiratory infections",
+        "frequency": 0.85,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "frequent severe bacterial lung infections",
+          "recurrent bacterial respiratory infections",
+          "multiple serious lung infections"
+        ]
       },
       {
-        "symptomName": "Absent Achilles reflex",
+        "symptomName": "Hypocomplementemia with absent C1r and/or C1s activity",
         "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "low complement with no C1r or C1s activity",
+          "absent C1r/C1s enzyme function",
+          "hypocomplementemia lacking C1r/C1s"
+        ]
       },
       {
-        "symptomName": "Impaired tactile sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Impaired proprioception",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Early-onset systemic lupus erythematosus-like autoimmune manifestations",
+        "frequency": 0.75,
+        "bodySystem": "immunological",
+        "notes": "Includes malar rash, arthritis, and nephritis",
+        "searchTerms": [
+          "early lupus-like autoimmune symptoms",
+          "childhood systemic autoimmune signs",
+          "early onset lupus-like disease features"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Chronic sinusitis",
+        "frequency": 0.7,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Dysarthria",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Cutaneous photosensitivity",
+        "frequency": 0.65,
+        "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Gait disturbance",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Arthralgia or arthritis",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "joint pain or swelling",
+          "arthritis symptoms",
+          "painful or inflamed joints"
+        ]
       },
       {
-        "symptomName": "Motor deterioration",
+        "symptomName": "Fatigue and malaise",
         "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "extreme tiredness",
+          "general feeling of unwellness",
+          "lack of energy and malaise"
+        ]
       }
     ],
     "occasional": [
       {
-        "symptomName": "Areflexia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Glomerulonephritis",
+        "frequency": 0.3,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Sensory axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Oral ulcers",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Motor axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.2,
+        "bodySystem": "immunological"
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Recurrent otitis media",
+        "frequency": 0.15,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "frequent middle ear infections",
+          "recurrent ear infections",
+          "repeated otitis media episodes"
+        ]
       }
     ],
-    "rare": []
+    "rare": [
+      {
+        "symptomName": "Central nervous system vasculitis",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "brain blood vessel inflammation",
+          "central nervous system vasculitis",
+          "inflammation of brain vessels"
+        ]
+      },
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.04,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Hemolytic anemia",
+        "frequency": 0.03,
+        "bodySystem": "hematological"
+      }
+    ]
   },
   "systemsAffected": [
+    "immunological",
+    "respiratory",
+    "dermatological",
+    "musculoskeletal",
+    "renal",
+    "otolaryngological",
     "constitutional",
-    "neurological"
+    "neurological",
+    "cardiovascular",
+    "hematological",
+    "gastrointestinal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -138,8 +194,8 @@
       "Chest X-ray or CT demonstrating recurrent pneumonia or bronchiectasis"
     ],
     "genetic": [
-      "PLEKHG4 (candidate)",
-      "Autosomal dominant inheritance"
+      "Pathogenic mutations in C1R gene",
+      "Pathogenic mutations in C1S gene"
     ],
     "other": [
       "Family history of complement deficiencies or autoimmune disease"
@@ -173,7 +229,7 @@
     "Rheumatologist",
     "Infectious Disease Specialist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Walport MJ. Complement. First of two parts. N Engl J Med. 2001 Apr 5;344(14):1058-66.",
     "Pickering MC, Botto M. Complement and disease: lessons from complement deficiencies. Mol Immunol. 2001 Sep;38(2-3):161-73.",

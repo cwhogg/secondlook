@@ -16,9 +16,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 2,
-      "peak": 1
+      "min": 2,
+      "max": 40,
+      "peak": 10
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,271 +63,135 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Atypical behavior",
-        "frequency": 0.9,
-        "bodySystem": "psychiatric"
+        "symptomName": "Refractory focal seizures with nocturnal predominance",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Seizures often resistant to multiple antiepileptic drugs",
+        "searchTerms": [
+          "seizures mostly at night",
+          "focal seizures hard to treat",
+          "nocturnal partial seizures"
+        ]
       },
       {
-        "symptomName": "Gait disturbance",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
+        "symptomName": "Prolonged nonconvulsive status epilepticus",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Often seen during EEG monitoring",
+        "searchTerms": [
+          "long-lasting nonconvulsive seizures",
+          "prolonged seizure without convulsions",
+          "extended status epilepticus"
+        ]
       },
       {
-        "symptomName": "Morphological central nervous system abnormality",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb spasticity",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Homocystinuria",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Hyperhomocystinemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Upper motor neuron dysfunction",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cystathioninemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb muscle weakness",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormal enzyme/coenzyme activity",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Ring chromosome 20 detected on karyotype",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "notes": "Definitive cytogenetic marker",
+        "searchTerms": [
+          "chromosome 20 ring abnormality",
+          "ring-shaped chromosome 20",
+          "genetic ring chromosome 20"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Psychotic episodes",
-        "frequency": 0.55,
-        "bodySystem": "psychiatric"
+        "symptomName": "Progressive cognitive decline",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Memory and executive function impairment",
+        "searchTerms": [
+          "gradual memory and thinking decline",
+          "progressive cognitive impairment",
+          "worsening mental function"
+        ]
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Behavioral disturbances",
+        "frequency": 0.65,
+        "bodySystem": "psychiatric",
+        "notes": "Irritability, mood changes"
       },
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "EEG abnormalities with frontal or temporal spikes",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Characteristic ictal and interictal patterns",
+        "searchTerms": [
+          "EEG with frontal or temporal spikes",
+          "brain wave abnormalities in front or side",
+          "epileptic spikes on EEG"
+        ]
       },
       {
-        "symptomName": "Mental deterioration",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Spastic paraparesis",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal periventricular white matter morphology",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hypomethioninemia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain imaging abnormality",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Sleep disturbances",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "notes": "Insomnia or fragmented sleep"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Psychosis",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
+        "symptomName": "Generalized tonic-clonic seizures",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "notes": "Occur less frequently than focal seizures",
+        "searchTerms": [
+          "generalized seizures with convulsions",
+          "full body tonic-clonic seizures",
+          "major convulsive seizures"
+        ]
       },
       {
-        "symptomName": "Intellectual disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Headaches",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Often migraine-like"
       },
       {
-        "symptomName": "Lethargy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Mild motor impairment",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Subtle coordination difficulties",
+        "searchTerms": [
+          "mild movement difficulties",
+          "slight motor skill impairment",
+          "minor muscle weakness"
+        ]
       },
       {
-        "symptomName": "Global developmental delay",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Specific learning disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Psychotic mentation",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Thromboembolic stroke",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Bilateral tonic-clonic seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Apnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal cerebral white matter morphology",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Deep venous thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Atrophy of the spinal cord",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Focal-onset seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Feeding difficulties in infancy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Generalized neonatal hypotonia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain atrophy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cognitive impairment",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Psychomotor slowing",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "Slowed cognitive and motor responses"
       }
     ],
     "rare": [
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Autonomic dysfunction",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Includes tachycardia or sweating during seizures"
       },
       {
-        "symptomName": "Microcephaly",
+        "symptomName": "Visual disturbances",
         "frequency": 0.03,
-        "bodySystem": "neurological"
+        "bodySystem": "ophthalmological",
+        "notes": "Transient visual aura or impairment"
       },
       {
-        "symptomName": "Abnormality of the eye",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Nystagmus",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Optic atrophy",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Stroke",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Encephalopathy",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ventriculomegaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized non-motor (absence) seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized myoclonic seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Psychosis",
+        "frequency": 0.02,
+        "bodySystem": "psychiatric",
+        "notes": "Rarely reported in advanced cases"
       }
     ]
   },
   "systemsAffected": [
-    "psychiatric",
     "neurological",
-    "constitutional",
-    "musculoskeletal",
-    "gastrointestinal",
-    "cardiovascular",
-    "respiratory",
+    "psychiatric",
     "ophthalmological"
   ],
   "keyFindings": {
@@ -340,8 +204,8 @@
       "Functional imaging may show hypometabolism in frontal lobes"
     ],
     "genetic": [
-      "MTHFR (causative)",
-      "Autosomal recessive inheritance"
+      "Presence of ring chromosome 20 detected by karyotyping or FISH",
+      "Mosaicism common with variable percentage of ring chromosome cells"
     ],
     "other": [
       "EEG demonstrating prolonged ictal discharges with frontal or temporal onset",
@@ -376,7 +240,7 @@
     "Clinical Geneticist",
     "Epileptologist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Verrotti A, et al. Ring chromosome 20 syndrome: clinical and EEG features. Epilepsia. 2014.",
     "Tsuchida T, et al. Ring chromosome 20 syndrome: a review of clinical features and genetics. Seizure. 2018.",

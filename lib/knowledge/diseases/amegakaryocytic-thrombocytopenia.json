@@ -17,8 +17,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 2,
-      "peak": 1
+      "max": 5,
+      "peak": 0
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,272 +57,141 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Atypical behavior",
-        "frequency": 0.9,
-        "bodySystem": "psychiatric"
+        "symptomName": "Severe thrombocytopenia",
+        "frequency": 0.95,
+        "bodySystem": "hematological",
+        "notes": "Markedly low platelet counts leading to bleeding risk"
       },
       {
-        "symptomName": "Gait disturbance",
+        "symptomName": "Absent or markedly reduced bone marrow megakaryocytes",
         "frequency": 0.9,
-        "bodySystem": "neurological"
+        "bodySystem": "hematological",
+        "notes": "Confirmed by bone marrow biopsy",
+        "searchTerms": [
+          "very low platelet-producing cells",
+          "absent megakaryocytes in bone marrow",
+          "reduced platelet precursor cells"
+        ]
       },
       {
-        "symptomName": "Morphological central nervous system abnormality",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb spasticity",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Homocystinuria",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Hyperhomocystinemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Upper motor neuron dysfunction",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cystathioninemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb muscle weakness",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormal enzyme/coenzyme activity",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Petechiae and mucocutaneous bleeding",
+        "frequency": 0.85,
+        "bodySystem": "dermatological",
+        "notes": "Common bleeding manifestations due to thrombocytopenia",
+        "searchTerms": [
+          "small skin bleeding spots",
+          "bruising and mucous membrane bleeding",
+          "petechiae and bleeding gums"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Psychotic episodes",
-        "frequency": 0.55,
-        "bodySystem": "psychiatric"
+        "symptomName": "Easy bruising",
+        "frequency": 0.75,
+        "bodySystem": "dermatological",
+        "notes": "Spontaneous bruising with minimal trauma"
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Epistaxis (nosebleeds)",
+        "frequency": 0.7,
+        "bodySystem": "otolaryngological",
+        "notes": "Frequent and prolonged nosebleeds"
       },
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Prolonged bleeding from minor cuts",
+        "frequency": 0.65,
+        "bodySystem": "hematological",
+        "notes": "Delayed clot formation",
+        "searchTerms": [
+          "long-lasting bleeding from small cuts",
+          "minor cuts bleed for a long time",
+          "prolonged bleeding from minor skin injuries"
+        ]
       },
       {
-        "symptomName": "Mental deterioration",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Secondary to chronic bleeding or anemia"
       },
       {
-        "symptomName": "Spastic paraparesis",
+        "symptomName": "Oral mucosal bleeding",
         "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal periventricular white matter morphology",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hypomethioninemia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain imaging abnormality",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "bodySystem": "otolaryngological",
+        "notes": "Gingival bleeding or bleeding after dental procedures",
+        "searchTerms": [
+          "bleeding inside mouth",
+          "oral mucosal bleeding",
+          "gum bleeding"
+        ]
       }
     ],
     "occasional": [
       {
-        "symptomName": "Psychosis",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
+        "symptomName": "Menorrhagia",
+        "frequency": 0.4,
+        "bodySystem": "reproductive",
+        "notes": "Heavy menstrual bleeding in females"
       },
       {
-        "symptomName": "Intellectual disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Splenomegaly",
+        "frequency": 0.3,
+        "bodySystem": "hematological",
+        "notes": "Mild enlargement of the spleen"
       },
       {
-        "symptomName": "Lethargy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Bone marrow hypocellularity",
+        "frequency": 0.25,
+        "bodySystem": "hematological",
+        "notes": "Reduction in overall marrow cellularity",
+        "searchTerms": [
+          "low bone marrow cell count",
+          "reduced bone marrow cells",
+          "bone marrow underactivity"
+        ]
       },
       {
-        "symptomName": "Global developmental delay",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Specific learning disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Psychotic mentation",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Thromboembolic stroke",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Bilateral tonic-clonic seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Apnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal cerebral white matter morphology",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Deep venous thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Atrophy of the spinal cord",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Focal-onset seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Feeding difficulties in infancy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Generalized neonatal hypotonia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain atrophy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cognitive impairment",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Transient infections",
+        "frequency": 0.15,
+        "bodySystem": "immunological",
+        "notes": "Occasional increased susceptibility due to marrow dysfunction"
       }
     ],
     "rare": [
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Progression to aplastic anemia",
+        "frequency": 0.08,
+        "bodySystem": "hematological",
+        "notes": "Rare evolution to broader marrow failure",
+        "searchTerms": [
+          "progression to bone marrow failure",
+          "development of aplastic anemia",
+          "severe decrease in blood cell production"
+        ]
       },
       {
-        "symptomName": "Microcephaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Intracranial hemorrhage",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Life-threatening bleeding complication"
       },
       {
-        "symptomName": "Abnormality of the eye",
+        "symptomName": "Autoimmune manifestations",
         "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Nystagmus",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Optic atrophy",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Stroke",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Encephalopathy",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ventriculomegaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized non-motor (absence) seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized myoclonic seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "bodySystem": "immunological",
+        "notes": "Rare autoimmune phenomena reported"
       }
     ]
   },
   "systemsAffected": [
-    "psychiatric",
+    "hematological",
+    "dermatological",
+    "otolaryngological",
+    "reproductive",
     "neurological",
-    "constitutional",
-    "musculoskeletal",
-    "gastrointestinal",
-    "cardiovascular",
-    "respiratory",
-    "ophthalmological"
+    "immunological",
+    "constitutional"
   ],
   "keyFindings": {
     "laboratory": [
@@ -334,8 +203,8 @@
       "Occasional splenomegaly on abdominal ultrasound"
     ],
     "genetic": [
-      "MTHFR (causative)",
-      "Autosomal recessive inheritance"
+      "Mutations in MPL gene (thrombopoietin receptor gene)",
+      "Other rare mutations affecting megakaryocyte development"
     ],
     "other": [
       "Exclusion of immune thrombocytopenic purpura by lack of platelet antibodies",
@@ -370,7 +239,7 @@
     "Pediatric Hematologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Balduini CL, et al. Congenital Amegakaryocytic Thrombocytopenia: Clinical and Molecular Features. Haematologica. 2018.",
     "Germeshausen M, Ballmaier M. Congenital Amegakaryocytic Thrombocytopenia: Pathophysiology and Management. Hematology Am Soc Hematol Educ Program. 2012.",

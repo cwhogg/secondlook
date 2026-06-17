@@ -11,15 +11,15 @@
   "omimId": "603820",
   "orphanetId": "229",
   "prevalence": {
-    "estimate": "1-9 in 1,000,000",
-    "range": "1-9 / 1 000 000",
+    "estimate": "1 in 100,000",
+    "range": "0.001%-0.01%",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 120,
-      "peak": 60
+      "min": 15,
+      "max": 50,
+      "peak": 30
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": [
@@ -61,112 +61,124 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Cystic medial necrosis of the aorta",
-        "frequency": 0.9,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Hepatomegaly due to hepatic congestion",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "enlarged liver from blood congestion",
+          "liver swelling due to heart failure",
+          "hepatomegaly from fluid backup"
+        ]
+      },
+      {
+        "symptomName": "Ascites secondary to portal hypertension",
+        "frequency": 0.8,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "fluid buildup in abdomen from liver pressure",
+          "ascites caused by portal hypertension",
+          "abdominal swelling from liver disease"
+        ]
+      },
+      {
+        "symptomName": "Abdominal pain localized to right upper quadrant",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "pain in right upper abdomen",
+          "right upper belly ache",
+          "discomfort in liver area"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Cardiomegaly",
-        "frequency": 0.55,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Jaundice",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Patent ductus arteriosus",
-        "frequency": 0.55,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Lower extremity edema",
+        "frequency": 0.6,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "swelling in legs",
+          "leg fluid buildup",
+          "ankle and foot swelling"
+        ]
       },
       {
-        "symptomName": "Aortic regurgitation",
+        "symptomName": "Fatigue and malaise",
         "frequency": 0.55,
-        "bodySystem": "cardiovascular"
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "extreme tiredness",
+          "general feeling of unwellness",
+          "lack of energy and malaise"
+        ]
       },
       {
-        "symptomName": "Coronaryartery atherosclerosis",
+        "symptomName": "Splenomegaly",
         "frequency": 0.55,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Aortic root aneurysm",
-        "frequency": 0.55,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Exertional dyspnea",
-        "frequency": 0.55,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Ascending aortic dissection",
-        "frequency": 0.55,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Descending thoracic aorta aneurysm",
-        "frequency": 0.55,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Abnormal left ventricular function",
-        "frequency": 0.55,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Descending aortic dissection",
-        "frequency": 0.55,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Paroxysmal dyspnea",
-        "frequency": 0.55,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Chest pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "bodySystem": "gastrointestinal"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Cutis marmorata",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Gastrointestinal bleeding from varices",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "bleeding from enlarged stomach veins",
+          "GI bleeding from varices",
+          "blood loss due to swollen digestive veins"
+        ]
       },
       {
-        "symptomName": "Stroke",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Aortic dissection",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Dilatation of the cerebral artery",
-        "frequency": 0.17,
+        "symptomName": "Hepatic encephalopathy",
+        "frequency": 0.3,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Peripheral arterial stenosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Weight loss",
+        "frequency": 0.25,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Carotid artery dilatation",
-        "frequency": 0.17,
+        "symptomName": "Fever",
+        "frequency": 0.15,
         "bodySystem": "constitutional"
       }
     ],
-    "rare": []
+    "rare": [
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.05,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pulmonary hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Renal impairment secondary to hepatorenal syndrome",
+        "frequency": 0.02,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "kidney problems from liver failure",
+          "renal impairment due to hepatorenal syndrome",
+          "kidney dysfunction secondary to liver disease"
+        ]
+      }
+    ]
   },
   "systemsAffected": [
+    "gastrointestinal",
     "cardiovascular",
-    "respiratory",
+    "neurological",
     "constitutional",
-    "neurological"
+    "renal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -181,7 +193,7 @@
       "Venography confirming venous outflow obstruction"
     ],
     "genetic": [
-      "MYH11 (candidate)"
+      "Mutations associated with thrombophilia (e.g., Factor V Leiden, prothrombin gene mutation)"
     ],
     "other": [
       "Liver biopsy showing centrilobular congestion and fibrosis",
@@ -216,7 +228,7 @@
     "Hematologist",
     "Interventional Radiologist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Naymagon L, Tremblay D, Tadros M. Budd-Chiari Syndrome: A Review of Pathogenesis, Diagnosis, and Treatment. Hematology Am Soc Hematol Educ Program. 2018;2018(1):1-8.",
     "Menon KV, Shah V, Kamath PS. The Budd-Chiari syndrome. N Engl J Med. 2004;350(6):578-585.",

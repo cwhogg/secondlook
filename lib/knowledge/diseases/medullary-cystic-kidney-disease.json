@@ -11,15 +11,14 @@
   "omimId": "174000",
   "orphanetId": "ORPHA:284",
   "prevalence": {
-    "estimate": "1-9 in 1,000,000",
-    "range": "1-9 / 1 000 000",
+    "estimate": "1 in 50,000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 120,
-      "peak": 42
+      "min": 10,
+      "max": 50,
+      "peak": 30
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -64,276 +63,146 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Hepatic cysts",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Medullary renal cysts",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "notes": "Cysts localized specifically to the renal medulla",
+        "searchTerms": [
+          "kidney cysts in inner region",
+          "cysts in kidney medulla",
+          "fluid-filled kidney lesions"
+        ]
       },
       {
-        "symptomName": "Eosinophilia",
+        "symptomName": "Progressive chronic kidney disease",
         "frequency": 0.9,
-        "bodySystem": "hematological"
+        "bodySystem": "renal",
+        "searchTerms": [
+          "gradual worsening kidney function",
+          "chronic kidney disease progression",
+          "slow decline in kidney health"
+        ]
       },
       {
-        "symptomName": "Elevated erythrocyte sedimentation rate",
-        "frequency": 0.9,
-        "bodySystem": "hematological"
-      },
-      {
-        "symptomName": "Increased circulating antibody level",
-        "frequency": 0.9,
-        "bodySystem": "immunological"
+        "symptomName": "Polyuria and nocturia due to impaired concentrating ability",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "excessive urination day and night",
+          "frequent urination especially at night",
+          "inability to concentrate urine"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Jaundice",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Anemia secondary to chronic kidney disease",
+        "frequency": 0.7,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "low red blood cells from kidney disease",
+          "anemia caused by kidney problems",
+          "chronic kidney disease related anemia"
+        ]
       },
       {
-        "symptomName": "Decreased liver function",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Hypertension",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Anemia",
-        "frequency": 0.55,
-        "bodySystem": "hematological"
+        "symptomName": "Fatigue and malaise",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "extreme tiredness",
+          "general feeling of unwellness",
+          "lack of energy and malaise"
+        ]
       },
       {
-        "symptomName": "Fever",
+        "symptomName": "Electrolyte imbalances (e.g. hyperkalemia)",
         "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abdominal pain",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Low back pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Pedal edema",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Fatigue",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Asthenia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Epigastric pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "bodySystem": "endocrine",
+        "notes": "Due to impaired renal tubular function",
+        "searchTerms": [
+          "high potassium levels",
+          "electrolyte imbalance symptoms",
+          "abnormal blood minerals"
+        ]
       }
     ],
     "occasional": [
       {
-        "symptomName": "Renal cyst",
-        "frequency": 0.17,
-        "bodySystem": "renal"
+        "symptomName": "Urinary tract infections",
+        "frequency": 0.3,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "bladder infections",
+          "urinary infections",
+          "repeated urine infections"
+        ]
       },
       {
-        "symptomName": "Abnormal sternum morphology",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Renal pain or flank discomfort",
+        "frequency": 0.25,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "pain in side or back",
+          "flank discomfort",
+          "kidney area pain"
+        ]
       },
       {
-        "symptomName": "Weight loss",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Growth retardation in pediatric cases",
+        "frequency": 0.15,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "slow growth in children",
+          "delayed physical development",
+          "growth failure in pediatric patients"
+        ]
       },
       {
-        "symptomName": "Dyspnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Hemoptysis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ectopic calcification",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormality of adrenal morphology",
-        "frequency": 0.17,
-        "bodySystem": "endocrine"
-      },
-      {
-        "symptomName": "Cough",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal spleen morphology",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cholangitis",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cutaneous abscess",
-        "frequency": 0.17,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Pulmonary cyst",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Chest pain",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Hyperuricemia and gout",
+        "frequency": 0.2,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "high uric acid and gout attacks",
+          "elevated uric acid causing joint pain",
+          "gout symptoms with hyperuricemia"
+        ]
       }
     ],
     "rare": [
       {
-        "symptomName": "Abnormality of the diaphragm",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
+        "symptomName": "Renal cyst infection or abscess formation",
+        "frequency": 0.05,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "infected kidney cyst",
+          "kidney abscess",
+          "painful cyst infection"
+        ]
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Secondary hyperparathyroidism",
+        "frequency": 0.07,
+        "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Dysarthria",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Portal hypertension",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Abnormal pericardium morphology",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Pancreatic cysts",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vomiting",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vertigo",
-        "frequency": 0.03,
-        "bodySystem": "otolaryngological"
-      },
-      {
-        "symptomName": "Aphasia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Increased intracranial pressure",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Biliary cirrhosis",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Budd-Chiari syndrome",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal vertebral morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Intracranial cystic lesion",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal skeletal muscle morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Bone cyst",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of bladder morphology",
-        "frequency": 0.03,
+        "symptomName": "Nephrolithiasis",
+        "frequency": 0.04,
         "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Abnormal pelvis bone morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of mesentery morphology",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Liver abscess",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "gastrointestinal",
-    "hematological",
-    "immunological",
-    "constitutional",
     "renal",
-    "respiratory",
-    "neurological",
-    "endocrine",
-    "dermatological",
+    "hematological",
     "cardiovascular",
-    "otolaryngological",
-    "musculoskeletal"
+    "endocrine",
+    "constitutional"
   ],
   "keyFindings": {
     "laboratory": [
@@ -380,7 +249,7 @@
     "Nephrologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Hildebrandt F, et al. Medullary cystic kidney disease: clinical and molecular aspects. Kidney Int. 2017.",
     "Olinger E, et al. Genetic basis of medullary cystic kidney disease. Nat Rev Nephrol. 2019.",

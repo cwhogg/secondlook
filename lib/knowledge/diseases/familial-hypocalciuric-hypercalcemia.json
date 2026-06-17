@@ -17,8 +17,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 2,
-      "peak": 1
+      "max": 120,
+      "peak": 20
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,272 +63,134 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Atypical behavior",
-        "frequency": 0.9,
-        "bodySystem": "psychiatric"
+        "symptomName": "Persistent mild hypercalcemia",
+        "frequency": 0.95,
+        "bodySystem": "endocrine",
+        "notes": "Lifelong and stable elevated serum calcium levels",
+        "searchTerms": [
+          "persistently slightly high blood calcium",
+          "mild ongoing hypercalcemia",
+          "elevated calcium levels over time"
+        ]
       },
       {
-        "symptomName": "Gait disturbance",
+        "symptomName": "Hypocalciuria (low urinary calcium excretion)",
         "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Morphological central nervous system abnormality",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb spasticity",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Homocystinuria",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Hyperhomocystinemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Upper motor neuron dysfunction",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cystathioninemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb muscle weakness",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormal enzyme/coenzyme activity",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "bodySystem": "renal",
+        "notes": "Characteristic low calcium clearance despite hypercalcemia",
+        "searchTerms": [
+          "low calcium in urine",
+          "hypocalciuria",
+          "reduced urinary calcium levels"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Psychotic episodes",
-        "frequency": 0.55,
-        "bodySystem": "psychiatric"
+        "symptomName": "Normal or mildly elevated parathyroid hormone levels",
+        "frequency": 0.75,
+        "bodySystem": "endocrine",
+        "notes": "PTH levels inappropriately normal or slightly raised",
+        "searchTerms": [
+          "normal parathyroid hormone",
+          "slightly high parathyroid levels",
+          "parathyroid hormone within normal range"
+        ]
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Asymptomatic presentation",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Most patients do not experience symptoms"
       },
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Mild fatigue",
+        "frequency": 0.6,
+        "bodySystem": "constitutional",
+        "notes": "Non-specific symptom occasionally reported"
       },
       {
-        "symptomName": "Mental deterioration",
+        "symptomName": "Mild musculoskeletal discomfort",
         "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Spastic paraparesis",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal periventricular white matter morphology",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hypomethioninemia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain imaging abnormality",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "bodySystem": "musculoskeletal",
+        "notes": "Occasional mild aches without significant pathology",
+        "searchTerms": [
+          "mild muscle or joint pain",
+          "slight body aches",
+          "minor musculoskeletal soreness"
+        ]
       }
     ],
     "occasional": [
       {
-        "symptomName": "Psychosis",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
+        "symptomName": "Mild nephrolithiasis",
+        "frequency": 0.3,
+        "bodySystem": "renal",
+        "notes": "Rare kidney stones despite hypocalciuria"
       },
       {
-        "symptomName": "Intellectual disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Lethargy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Global developmental delay",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Specific learning disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Psychotic mentation",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Thromboembolic stroke",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Bilateral tonic-clonic seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Apnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
+        "symptomName": "Mild constipation",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Occasional mild GI symptoms"
       },
       {
         "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Non-specific symptom sometimes reported"
       },
       {
-        "symptomName": "Abnormal cerebral white matter morphology",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Deep venous thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Atrophy of the spinal cord",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Focal-onset seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Feeding difficulties in infancy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Generalized neonatal hypotonia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain atrophy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cognitive impairment",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Mild depression or mood changes",
+        "frequency": 0.15,
+        "bodySystem": "psychiatric",
+        "notes": "Occasional mild psychiatric symptoms",
+        "searchTerms": [
+          "mild mood changes",
+          "low-grade depression symptoms",
+          "slight emotional disturbances"
+        ]
       }
     ],
     "rare": [
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Pancreatitis",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Very rare complication"
       },
       {
-        "symptomName": "Microcephaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Severe nephrolithiasis requiring intervention",
+        "frequency": 0.04,
+        "bodySystem": "renal",
+        "notes": "Rarely severe kidney stones",
+        "searchTerms": [
+          "severe kidney stones needing treatment",
+          "large kidney stones causing problems",
+          "kidney stones requiring surgery"
+        ]
       },
       {
-        "symptomName": "Abnormality of the eye",
+        "symptomName": "Osteitis fibrosa cystica",
         "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Nystagmus",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Optic atrophy",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Stroke",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Encephalopathy",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ventriculomegaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized non-motor (absence) seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized myoclonic seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "bodySystem": "musculoskeletal",
+        "notes": "Extremely rare bone disease usually absent in FHH",
+        "searchTerms": [
+          "bone cysts with fibrous tissue",
+          "osteitis fibrosa with bone lesions",
+          "bone disease with cystic changes"
+        ]
       }
     ]
   },
   "systemsAffected": [
-    "psychiatric",
-    "neurological",
-    "constitutional",
+    "endocrine",
+    "renal",
     "musculoskeletal",
     "gastrointestinal",
-    "cardiovascular",
-    "respiratory",
-    "ophthalmological"
+    "neurological",
+    "psychiatric",
+    "constitutional"
   ],
   "keyFindings": {
     "laboratory": [
@@ -342,8 +204,7 @@
       "Occasional nephrolithiasis on renal ultrasound or CT"
     ],
     "genetic": [
-      "MTHFR (causative)",
-      "Autosomal recessive inheritance"
+      "Inactivating mutations in the calcium-sensing receptor gene (CaSR)"
     ],
     "other": [
       "Family history consistent with autosomal dominant inheritance"
@@ -385,7 +246,7 @@
     "Nephrologist",
     "Clinical Geneticist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Brown EM, et al. Familial hypocalciuric hypercalcemia. N Engl J Med. 1993;329(26):1982-1985.",
     "Marx SJ. Hyperparathyroid and hypoparathyroid disorders. N Engl J Med. 2000;343(25):1863-1875.",

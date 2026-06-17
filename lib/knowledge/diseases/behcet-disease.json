@@ -13,15 +13,15 @@
   "omimId": "109650",
   "orphanetId": "117",
   "prevalence": {
-    "estimate": "1-9 in 100,000",
-    "range": "1-9 / 100 000",
+    "estimate": "0.3-7 per 100,000 (up to 420/100,000 in Turkey)",
+    "range": "0.3-420 per 100,000 depending on geography",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 2,
-      "max": 65,
-      "peak": 14
+      "min": 20,
+      "max": 40,
+      "peak": 30
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -83,452 +83,179 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Oral ulcer",
-        "frequency": 0.9,
-        "bodySystem": "dermatological"
+        "symptomName": "Recurrent oral aphthous ulcers",
+        "snomedCode": "26284000",
+        "frequency": 0.97,
+        "bodySystem": "gastrointestinal",
+        "notes": "Painful; recur >= 3 times/year; cardinal feature",
+        "searchTerms": [
+          "frequent mouth sores",
+          "recurrent painful mouth ulcers",
+          "repeated canker sores"
+        ]
       },
       {
-        "symptomName": "Photophobia",
-        "frequency": 0.9,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Genital ulcers",
+        "snomedCode": "300479005",
+        "frequency": 0.65,
+        "bodySystem": "constitutional",
+        "notes": "Painful; often scarring; highly specific for Behcet's"
       },
       {
-        "symptomName": "Meningitis",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Arthritis",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Subcutaneous nodule",
-        "frequency": 0.9,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Fever",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Nausea and vomiting",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Migraine",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Vasculitis",
-        "frequency": 0.9,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Myalgia",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Recurrent aphthous stomatitis",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Fatigue",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Orchitis",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Papule",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Positive pathergy test",
+        "frequency": 0.4,
+        "bodySystem": "dermatological",
+        "notes": "Papule/pustule at needle prick site after 24-48 hours; more common in Middle Eastern/Asian patients",
+        "searchTerms": [
+          "exaggerated skin injury test",
+          "positive skin prick reaction",
+          "abnormal skin response test"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Acne",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Anterior and/or posterior uveitis",
+        "snomedCode": "128473001",
+        "frequency": 0.5,
+        "bodySystem": "ophthalmological",
+        "notes": "Often bilateral; can lead to blindness",
+        "searchTerms": [
+          "inflammation inside front or back eye",
+          "uveitis affecting eye parts",
+          "eye redness and pain"
+        ]
       },
       {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Skin lesions (pseudofolliculitis, erythema nodosum, papulopustular)",
+        "snomedCode": "32861005",
+        "frequency": 0.6,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin bumps and redness",
+          "follicle inflammation and nodules",
+          "pimple-like and red skin lesions"
+        ]
       },
       {
-        "symptomName": "Gait disturbance",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Arthritis/arthralgia",
+        "snomedCode": "57676002",
+        "frequency": 0.5,
+        "bodySystem": "musculoskeletal",
+        "notes": "Non-erosive; often oligoarticular; knees, ankles, wrists"
       },
       {
-        "symptomName": "Confusion",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abdominal pain",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Gastrointestinal hemorrhage",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Superficial thrombophlebitis",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Arthralgia",
-        "frequency": 0.55,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Genital ulcers",
-        "frequency": 0.55,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Elevated erythrocyte sedimentation rate",
-        "frequency": 0.55,
-        "bodySystem": "hematological"
-      },
-      {
-        "symptomName": "Venous thrombosis",
-        "frequency": 0.55,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Nongranulomatous uveitis",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal blistering of the skin",
-        "frequency": 0.55,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Elevated circulating C-reactive protein concentration",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Panuveitis",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Erythema nodosum",
-        "frequency": 0.55,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Increased inflammatory response",
-        "frequency": 0.55,
-        "bodySystem": "immunological"
-      },
-      {
-        "symptomName": "Positive pathergy test",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Immunologic hypersensitivity",
-        "frequency": 0.55,
-        "bodySystem": "immunological"
-      },
-      {
-        "symptomName": "Pustule",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Retinal vasculitis",
+        "snomedCode": "399463004",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Malabsorption",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Deep vein thrombosis",
+        "snomedCode": "128053003",
+        "frequency": 0.2,
+        "bodySystem": "cardiovascular",
+        "notes": "Unique inflammatory thrombosis; anti-coagulation alone insufficient",
+        "searchTerms": [
+          "blood clot in deep leg vein",
+          "leg vein thrombosis",
+          "deep vein blood clot causing swelling"
+        ]
       },
       {
-        "symptomName": "Anorexia",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Pleuritis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Hemoptysis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Pulmonary infiltrates",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Pleural effusion",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Pulmonary embolism",
-        "frequency": 0.17,
+        "symptomName": "Superficial thrombophlebitis",
+        "snomedCode": "404223003",
+        "frequency": 0.15,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Vertigo",
-        "frequency": 0.17,
-        "bodySystem": "otolaryngological"
+        "symptomName": "GI ulceration (ileocecal region)",
+        "snomedCode": "235657003",
+        "frequency": 0.15,
+        "bodySystem": "gastrointestinal",
+        "notes": "Can mimic Crohn's disease",
+        "searchTerms": [
+          "intestinal ulcers near ileum",
+          "gut sores in ileocecal area",
+          "bowel ulceration in lower intestine"
+        ]
       },
       {
-        "symptomName": "Memory impairment",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Developmental regression",
-        "frequency": 0.17,
+        "symptomName": "Headache",
+        "snomedCode": "25064002",
+        "frequency": 0.2,
         "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Infectious encephalitis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Increased intracranial pressure",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Cerebral ischemia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Lymphadenopathy",
-        "frequency": 0.17,
-        "bodySystem": "immunological"
-      },
-      {
-        "symptomName": "Paresthesia",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Arterial thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Cranial nerve paralysis",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal pyramidal sign",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Avascular necrosis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Myocarditis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Non-infectious meningitis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
       },
       {
         "symptomName": "Epididymitis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Renal insufficiency",
-        "frequency": 0.17,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Retinopathy",
-        "frequency": 0.17,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Cataract",
-        "frequency": 0.17,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Blindness",
-        "frequency": 0.17,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Atypical behavior",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Irritability",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Keratoconjunctivitis sicca",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ataxia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hyperreflexia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal myocardium morphology",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Mitral regurgitation",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Myocardial infarction",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Aortic regurgitation",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Pericarditis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Pancreatitis",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Splenomegaly",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Weight loss",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Recurrent fever",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Endocarditis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Myositis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Optic neuritis",
-        "frequency": 0.17,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Retrobulbar optic neuritis",
-        "frequency": 0.17,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Gangrene",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Glomerulopathy",
-        "frequency": 0.17,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "AA amyloidosis",
-        "frequency": 0.17,
+        "snomedCode": "31070006",
+        "frequency": 0.05,
         "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Glomerulonephritis",
-        "frequency": 0.03,
-        "bodySystem": "renal"
+        "symptomName": "Neuro-Behcet (parenchymal CNS disease)",
+        "snomedCode": "230250001",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Brainstem syndrome, meningoencephalitis",
+        "searchTerms": [
+          "brain involvement in Behcet disease",
+          "neurological symptoms from CNS inflammation",
+          "parenchymal brain disease"
+        ]
       },
       {
-        "symptomName": "Diarrhea",
+        "symptomName": "Cerebral venous sinus thrombosis",
+        "snomedCode": "192759008",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "blood clot in brain veins",
+          "cerebral venous sinus blockage",
+          "brain vein thrombosis causing headache"
+        ]
+      },
+      {
+        "symptomName": "Pulmonary artery aneurysm",
         "frequency": 0.03,
+        "bodySystem": "respiratory",
+        "notes": "Highly characteristic when present; can cause massive hemoptysis",
+        "searchTerms": [
+          "lung artery ballooning",
+          "pulmonary artery swelling",
+          "bulging blood vessels in lungs"
+        ]
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "snomedCode": "82385007",
+        "frequency": 0.02,
         "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cardiac involvement (myocarditis, intracardiac thrombus)",
+        "frequency": 0.02,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart muscle inflammation",
+          "blood clots inside heart",
+          "myocarditis and intracardiac thrombus"
+        ]
       }
     ]
   },
   "systemsAffected": [
     "gastrointestinal",
-    "constitutional",
-    "respiratory",
-    "cardiovascular",
-    "otolaryngological",
-    "neurological",
-    "immunological",
-    "dermatological",
     "ophthalmological",
+    "dermatological",
+    "cardiovascular",
+    "neurological",
     "musculoskeletal",
-    "hematological",
-    "renal",
-    "psychiatric"
+    "respiratory"
   ],
   "keyFindings": {
     "laboratory": [
@@ -546,22 +273,9 @@
       "Fundoscopy/fluorescein angiography: retinal vasculitis, macular edema"
     ],
     "genetic": [
-      "IL10 (susceptibility)",
-      "HLA-B (susceptibility)",
-      "FAS (susceptibility)",
-      "UBAC2 (susceptibility)",
-      "IL23R (susceptibility)",
-      "MEFV (susceptibility)",
-      "STAT4 (susceptibility)",
-      "C4A (susceptibility)",
-      "IL12A (susceptibility)",
-      "TLR4 (susceptibility)",
-      "CCR1 (susceptibility)",
-      "KLRC4 (susceptibility)",
-      "IL12A-AS1 (susceptibility)",
-      "ERAP1 (susceptibility)",
-      "IFNGR1 (susceptibility)",
-      "Multigenic/multifactorial inheritance"
+      "HLA-B*51 (strongest genetic association; OR ~6)",
+      "IL-10, IL-23R, IL-12RB2 gene variants",
+      "ERAP1 gene variants"
     ],
     "other": [
       "Pathergy test: intradermal needle prick with reading at 24-48 hours",
@@ -618,7 +332,7 @@
     "Dermatology",
     "Neurology"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "International Team for the Revision of the International Criteria for Behcet's Disease (ITR-ICBD). The International Criteria for Behcet's Disease (ICBD): a collaborative study of 27 countries. J Eur Acad Dermatol Venereol. 2014;28(3):338-347.",
     "Hatemi G, et al. 2018 Update of the EULAR recommendations for the management of Behcet's syndrome. Ann Rheum Dis. 2018;77(6):808-818.",

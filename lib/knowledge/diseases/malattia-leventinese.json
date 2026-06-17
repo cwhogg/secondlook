@@ -17,9 +17,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 65,
-      "peak": 42
+      "min": 20,
+      "max": 50,
+      "peak": 30
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -66,75 +66,127 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Impaired vibratory sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Macular drusen deposits",
+        "frequency": 0.95,
+        "bodySystem": "ophthalmological",
+        "notes": "Yellowish extracellular deposits in the macula visible on fundus exam",
+        "searchTerms": [
+          "yellow deposits under retina",
+          "macular drusen spots",
+          "eye deposits in macula"
+        ]
       },
       {
-        "symptomName": "Absent Achilles reflex",
+        "symptomName": "Progressive central vision loss",
         "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Impaired tactile sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Impaired proprioception",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "bodySystem": "ophthalmological",
+        "notes": "Gradual decline in visual acuity affecting central vision",
+        "searchTerms": [
+          "gradual loss of central vision",
+          "progressive central eyesight decline",
+          "worsening vision in center of eye"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Metamorphopsia",
+        "frequency": 0.7,
+        "bodySystem": "ophthalmological",
+        "notes": "Visual distortion commonly reported by patients"
       },
       {
-        "symptomName": "Dysarthria",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Photophobia",
+        "frequency": 0.65,
+        "bodySystem": "ophthalmological",
+        "notes": "Increased sensitivity to light"
       },
       {
-        "symptomName": "Gait disturbance",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Difficulty with color discrimination",
+        "frequency": 0.6,
+        "bodySystem": "ophthalmological",
+        "notes": "Impaired color vision in affected individuals",
+        "searchTerms": [
+          "difficulty distinguishing colors",
+          "color vision problems",
+          "trouble seeing colors"
+        ]
       },
       {
-        "symptomName": "Motor deterioration",
+        "symptomName": "Central scotoma",
         "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "bodySystem": "ophthalmological",
+        "notes": "Central blind spot in the visual field"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Areflexia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Night vision difficulties",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological",
+        "notes": "Reduced ability to see in low light conditions",
+        "searchTerms": [
+          "poor night vision",
+          "difficulty seeing in dark",
+          "night blindness symptoms"
+        ]
       },
       {
-        "symptomName": "Sensory axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Photopsia",
+        "frequency": 0.3,
+        "bodySystem": "ophthalmological",
+        "notes": "Perception of flashes of light"
       },
       {
-        "symptomName": "Motor axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Mild peripheral vision impairment",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological",
+        "notes": "Less commonly affected peripheral vision",
+        "searchTerms": [
+          "mild loss of side vision",
+          "slightly reduced peripheral sight",
+          "narrowed field of vision"
+        ]
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Mild ocular discomfort",
+        "frequency": 0.15,
+        "bodySystem": "ophthalmological",
+        "notes": "Occasional eye irritation or discomfort",
+        "searchTerms": [
+          "minor eye discomfort",
+          "mild eye irritation",
+          "slight ocular pain"
+        ]
       }
     ],
-    "rare": []
+    "rare": [
+      {
+        "symptomName": "Choroidal neovascularization",
+        "frequency": 0.08,
+        "bodySystem": "ophthalmological",
+        "notes": "Abnormal blood vessel growth under the retina"
+      },
+      {
+        "symptomName": "Retinal pigment epithelium atrophy",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological",
+        "notes": "Degeneration of retinal pigment epithelium cells",
+        "searchTerms": [
+          "thinning or damage of retinal pigment layer",
+          "wearing away of eye pigment cells"
+        ]
+      },
+      {
+        "symptomName": "Secondary glaucoma",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological",
+        "notes": "Elevated intraocular pressure as a complication"
+      }
+    ]
   },
   "systemsAffected": [
-    "constitutional",
-    "neurological"
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [],
@@ -144,8 +196,7 @@
       "Fluorescein angiography demonstrating drusen and possible neovascularization"
     ],
     "genetic": [
-      "PLEKHG4 (candidate)",
-      "Autosomal dominant inheritance"
+      "Pathogenic EFEMP1 gene mutation (commonly R345W variant)"
     ],
     "other": [
       "Family history consistent with autosomal dominant inheritance"
@@ -178,7 +229,7 @@
     "Ophthalmologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Stone EM et al. Identification of a gene that causes dominant drusen. N Engl J Med. 1999.",
     "Seddon JM et al. Macular dystrophies: clinical features and molecular genetics. Eye (Lond). 2013.",

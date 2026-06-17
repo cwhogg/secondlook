@@ -17,9 +17,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 65,
-      "peak": 42
+      "min": 0,
+      "max": 60,
+      "peak": 5
     },
     "sexPredilection": "male",
     "ethnicAssociations": [
@@ -68,75 +68,139 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Impaired vibratory sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Acute hemolytic anemia",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Triggered by oxidative stress such as infections or certain drugs",
+        "searchTerms": [
+          "sudden severe anemia from red cell destruction",
+          "acute hemolytic anemia episodes",
+          "rapid breakdown of red blood cells"
+        ]
       },
       {
-        "symptomName": "Absent Achilles reflex",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Impaired tactile sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Impaired proprioception",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Jaundice due to hyperbilirubinemia",
+        "frequency": 0.75,
+        "bodySystem": "hematological",
+        "notes": "Resulting from increased red blood cell breakdown",
+        "searchTerms": [
+          "yellow skin from high bilirubin",
+          "jaundice caused by bilirubin buildup",
+          "skin and eye yellowing due to liver pigment"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Fatigue and pallor",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Due to anemia",
+        "searchTerms": [
+          "tiredness and pale skin",
+          "fatigue with pallor",
+          "weakness and pale appearance"
+        ]
       },
       {
-        "symptomName": "Dysarthria",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Dark urine (hemoglobinuria)",
+        "frequency": 0.65,
+        "bodySystem": "renal",
+        "notes": "During hemolytic episodes",
+        "searchTerms": [
+          "dark colored urine",
+          "brown or red urine",
+          "urine with blood pigment"
+        ]
       },
       {
-        "symptomName": "Gait disturbance",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Splenomegaly",
+        "frequency": 0.6,
+        "bodySystem": "hematological",
+        "notes": "Due to increased red cell destruction"
       },
       {
-        "symptomName": "Motor deterioration",
+        "symptomName": "Tachycardia",
         "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to anemia"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Areflexia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Gallstones",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to chronic hemolysis"
       },
       {
-        "symptomName": "Sensory axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Headache",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Possibly related to anemia"
       },
       {
-        "symptomName": "Motor axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Dyspnea on exertion",
+        "frequency": 0.2,
+        "bodySystem": "respiratory",
+        "notes": "Due to anemia",
+        "searchTerms": [
+          "shortness of breath when active",
+          "breathlessness on exertion",
+          "difficulty breathing with activity"
+        ]
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Mild jaundice during intercurrent illness",
+        "frequency": 0.15,
+        "bodySystem": "hematological",
+        "notes": "Subclinical hemolysis",
+        "searchTerms": [
+          "mild jaundice during illness",
+          "yellowing of skin with infections",
+          "temporary jaundice during sickness"
+        ]
       }
     ],
-    "rare": []
+    "rare": [
+      {
+        "symptomName": "Aplastic crisis",
+        "frequency": 0.05,
+        "bodySystem": "hematological",
+        "notes": "Usually triggered by parvovirus B19 infection"
+      },
+      {
+        "symptomName": "Severe neonatal hyperbilirubinemia",
+        "frequency": 0.03,
+        "bodySystem": "hematological",
+        "notes": "May require phototherapy or exchange transfusion",
+        "searchTerms": [
+          "severe newborn jaundice",
+          "high bilirubin in newborns",
+          "intense yellowing in babies"
+        ]
+      },
+      {
+        "symptomName": "Hemoglobinuria-induced acute kidney injury",
+        "frequency": 0.02,
+        "bodySystem": "renal",
+        "notes": "Rare complication of massive hemolysis",
+        "searchTerms": [
+          "kidney injury from hemoglobin in urine",
+          "acute kidney damage due to hemoglobinuria",
+          "dark urine causing kidney problems"
+        ]
+      }
+    ]
   },
   "systemsAffected": [
-    "constitutional",
-    "neurological"
+    "hematological",
+    "renal",
+    "cardiovascular",
+    "gastrointestinal",
+    "neurological",
+    "respiratory",
+    "constitutional"
   ],
   "keyFindings": {
     "laboratory": [
@@ -151,8 +215,7 @@
       "Ultrasound evidence of gallstones"
     ],
     "genetic": [
-      "PLEKHG4 (candidate)",
-      "Autosomal dominant inheritance"
+      "Molecular identification of G6PD Mahidol variant mutation (c.487G>A, p.Gly163Ser)"
     ],
     "other": [
       "Positive family history of G6PD deficiency",
@@ -187,7 +250,7 @@
     "Geneticist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Beutler E. G6PD Deficiency. Blood. 1994;84(11):3613-3636.",
     "Luzzatto L, et al. Glucose-6-phosphate dehydrogenase deficiency. Hematology Am Soc Hematol Educ Program. 2016;2016(1): 1-6.",

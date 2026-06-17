@@ -11,15 +11,15 @@
   "omimId": "601144",
   "orphanetId": "988",
   "prevalence": {
-    "estimate": "Less than 1 in 1,000,000",
-    "range": "<1 / 1 000 000",
-    "classification": "ultra-rare"
+    "estimate": "1 in 10,000",
+    "range": "0.01%-0.1%",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 0.08,
-      "peak": 0
+      "min": 20,
+      "max": 50,
+      "peak": 40
     },
     "sexPredilection": "male",
     "ethnicAssociations": [
@@ -67,43 +67,136 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Abnormal fibula morphology",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Coved-type ST-segment elevation in right precordial leads",
+        "frequency": 0.85,
+        "bodySystem": "cardiovascular",
+        "notes": "Characteristic ECG pattern diagnostic of Brugada syndrome",
+        "searchTerms": [
+          "specific ECG pattern with ST elevation",
+          "coved-shaped ST elevation on heart tracing",
+          "right chest lead ECG changes"
+        ]
       },
       {
-        "symptomName": "Short stature",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Ventricular fibrillation",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Life-threatening arrhythmia leading to sudden cardiac arrest"
       },
       {
-        "symptomName": "Aplasia/Hypoplasia of the tibia",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Patellar aplasia",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Polymorphic ventricular tachycardia",
+        "frequency": 0.7,
+        "bodySystem": "cardiovascular",
+        "notes": "Precursor arrhythmia to ventricular fibrillation",
+        "searchTerms": [
+          "irregular fast heart rhythm",
+          "polymorphic ventricular tachycardia",
+          "dangerous rapid heartbeats"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Synostosis of carpal bones",
-        "frequency": 0.55,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Syncope due to arrhythmia",
+        "frequency": 0.65,
+        "bodySystem": "cardiovascular",
+        "notes": "Transient loss of consciousness from ventricular arrhythmias",
+        "searchTerms": [
+          "fainting from abnormal heart rhythm",
+          "passing out due to arrhythmia",
+          "syncope caused by irregular heartbeat"
+        ]
       },
       {
-        "symptomName": "Aplasia/Hypoplasia of the thumb",
+        "symptomName": "Nocturnal agonal respiration",
+        "frequency": 0.6,
+        "bodySystem": "respiratory",
+        "notes": "Abnormal breathing during sleep often preceding sudden death",
+        "searchTerms": [
+          "gasping breathing during sleep",
+          "nocturnal choking or struggling to breathe",
+          "agonizing breathing at night"
+        ]
+      },
+      {
+        "symptomName": "Palpitations",
         "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "bodySystem": "cardiovascular",
+        "notes": "Awareness of abnormal heartbeats"
+      },
+      {
+        "symptomName": "Family history of sudden cardiac death",
+        "frequency": 0.5,
+        "bodySystem": "cardiovascular",
+        "notes": "Suggestive of inherited arrhythmia syndrome",
+        "searchTerms": [
+          "family members died suddenly from heart problems",
+          "relatives with sudden cardiac death",
+          "hereditary sudden heart death history"
+        ]
       }
     ],
-    "occasional": [],
-    "rare": []
+    "occasional": [
+      {
+        "symptomName": "Atrial fibrillation",
+        "frequency": 0.3,
+        "bodySystem": "cardiovascular",
+        "notes": "Occasional supraventricular arrhythmia in Brugada patients"
+      },
+      {
+        "symptomName": "Chest discomfort",
+        "frequency": 0.25,
+        "bodySystem": "cardiovascular",
+        "notes": "Non-specific symptom possibly related to arrhythmia"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "notes": "Generalized tiredness possibly related to arrhythmia episodes"
+      },
+      {
+        "symptomName": "Nocturnal seizures",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "notes": "May be misdiagnosed; likely arrhythmia-induced syncope"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Sudden cardiac arrest without prior symptoms",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular",
+        "notes": "First manifestation in some patients",
+        "searchTerms": [
+          "unexpected cardiac arrest without warning",
+          "sudden heart stoppage without symptoms",
+          "abrupt cardiac arrest"
+        ]
+      },
+      {
+        "symptomName": "Bradycardia",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Slow heart rate occasionally observed"
+      },
+      {
+        "symptomName": "Atrioventricular conduction block",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare conduction abnormalities in some patients",
+        "searchTerms": [
+          "heart electrical conduction block",
+          "slow or blocked AV node signals",
+          "heart rhythm delay"
+        ]
+      }
+    ]
   },
   "systemsAffected": [
-    "musculoskeletal",
+    "cardiovascular",
+    "respiratory",
+    "neurological",
     "constitutional"
   ],
   "keyFindings": {
@@ -112,10 +205,7 @@
       "Characteristic type 1 Brugada ECG pattern in right precordial leads (V1-V3)"
     ],
     "genetic": [
-      "SHH (causative)",
-      "LMBR1 (causative)",
-      "Autosomal dominant inheritance",
-      "Autosomal recessive inheritance"
+      "Mutations in SCN5A gene and other sodium channel-related genes"
     ],
     "other": [
       "Provocation test with sodium channel blockers (ajmaline, flecainide) to unmask ECG abnormalities"
@@ -149,7 +239,7 @@
     "Electrophysiologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Antzelevitch C, et al. Brugada syndrome: report of the second consensus conference. Circulation. 2005.",
     "Priori SG, et al. 2013 HRS/EHRA/APHRS expert consensus statement on the diagnosis and management of patients with inherited primary arrhythmia syndromes. Heart Rhythm. 2013.",

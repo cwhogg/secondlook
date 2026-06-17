@@ -16,9 +16,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 65,
-      "peak": 42
+      "min": 0,
+      "max": 50,
+      "peak": 10
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,75 +57,128 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Impaired vibratory sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Recurrent calcium oxalate nephrolithiasis",
+        "frequency": 0.85,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "repeated kidney stones made of calcium oxalate",
+          "frequent kidney stone episodes",
+          "kidney stones from calcium crystals"
+        ]
       },
       {
-        "symptomName": "Absent Achilles reflex",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Impaired tactile sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Impaired proprioception",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Nephrocalcinosis detected on imaging",
+        "frequency": 0.75,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "calcium deposits in kidneys on scan",
+          "kidney calcification seen on imaging",
+          "mineral buildup in kidney tissue"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Hematuria",
+        "frequency": 0.65,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Dysarthria",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Flank pain",
+        "frequency": 0.6,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Gait disturbance",
+        "symptomName": "Urinary tract infections",
         "frequency": 0.55,
-        "bodySystem": "neurological"
+        "bodySystem": "renal",
+        "searchTerms": [
+          "bladder infections",
+          "urinary infections",
+          "repeated urine infections"
+        ]
       },
       {
-        "symptomName": "Motor deterioration",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Progressive renal impairment",
+        "frequency": 0.5,
+        "bodySystem": "renal",
+        "searchTerms": [
+          "worsening kidney function",
+          "progressive kidney damage",
+          "declining renal health"
+        ]
       }
     ],
     "occasional": [
       {
-        "symptomName": "Areflexia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Fatigue",
+        "frequency": 0.4,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Sensory axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Polyuria",
+        "frequency": 0.3,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Motor axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Nephrogenic systemic fibrosis",
+        "frequency": 0.15,
+        "bodySystem": "dermatological",
+        "notes": "Rarely reported in advanced renal failure",
+        "searchTerms": [
+          "skin thickening and hardening due to kidney disease",
+          "fibrotic skin changes from kidney failure",
+          "systemic skin fibrosis related to kidney problems"
+        ]
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Bone pain",
+        "frequency": 0.2,
+        "bodySystem": "musculoskeletal",
+        "notes": "Due to secondary hyperparathyroidism in chronic kidney disease"
       }
     ],
-    "rare": []
+    "rare": [
+      {
+        "symptomName": "Systemic oxalosis with cardiac involvement",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "heart problems from systemic oxalate buildup",
+          "cardiac involvement in oxalosis",
+          "heart complications due to crystal deposits"
+        ]
+      },
+      {
+        "symptomName": "Retinal oxalate deposits",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "crystals in retina",
+          "eye deposits causing vision changes",
+          "retinal crystal accumulation"
+        ]
+      },
+      {
+        "symptomName": "Neuropathy secondary to systemic oxalosis",
+        "frequency": 0.02,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "nerve damage from oxalate crystals",
+          "neuropathy caused by crystal accumulation",
+          "peripheral nerve symptoms from oxalosis"
+        ]
+      }
+    ]
   },
   "systemsAffected": [
-    "constitutional",
-    "neurological"
+    "renal",
+    "musculoskeletal",
+    "cardiovascular",
+    "dermatological",
+    "ophthalmological",
+    "neurological",
+    "constitutional"
   ],
   "keyFindings": {
     "laboratory": [
@@ -138,8 +191,7 @@
       "CT scan confirming calcium oxalate stones"
     ],
     "genetic": [
-      "PLEKHG4 (candidate)",
-      "Autosomal dominant inheritance"
+      "Biallelic pathogenic variants in GRHPR gene"
     ],
     "other": [
       "Reduced glyoxylate reductase/hydroxypyruvate reductase enzyme activity"
@@ -173,7 +225,7 @@
     "Geneticist",
     "Metabolic disease specialist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Hoppe B, et al. Primary hyperoxaluria type 2: clinical features and outcome. Kidney Int. 2010;77(10):910-917.",
     "Williams EL, et al. Primary hyperoxaluria type 2: a rare cause of nephrolithiasis and renal failure. Clin J Am Soc Nephrol. 2012;7(6):1009-1015.",

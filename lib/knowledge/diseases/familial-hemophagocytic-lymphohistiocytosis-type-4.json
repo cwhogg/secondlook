@@ -17,7 +17,7 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 2,
+      "max": 10,
       "peak": 1
     },
     "sexPredilection": "equal",
@@ -72,272 +72,142 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Atypical behavior",
-        "frequency": 0.9,
-        "bodySystem": "psychiatric"
+        "symptomName": "Unremitting high-grade fever",
+        "frequency": 0.95,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "constant severe fever",
+          "non-stop high temperature",
+          "unrelenting fever"
+        ]
       },
       {
-        "symptomName": "Gait disturbance",
+        "symptomName": "Hepatosplenomegaly",
         "frequency": 0.9,
-        "bodySystem": "neurological"
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Morphological central nervous system abnormality",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb spasticity",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Homocystinuria",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Hyperhomocystinemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Upper motor neuron dysfunction",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cystathioninemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb muscle weakness",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormal enzyme/coenzyme activity",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Cytopenias (anemia, thrombocytopenia, neutropenia)",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "low blood counts",
+          "anemia and low platelets",
+          "low neutrophil levels"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Psychotic episodes",
-        "frequency": 0.55,
-        "bodySystem": "psychiatric"
+        "symptomName": "Hyperferritinemia-associated symptoms (fatigue, malaise)",
+        "frequency": 0.75,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness from excess ferritin",
+          "weakness with high ferritin",
+          "malaise due to iron overload"
+        ]
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Elevated liver enzymes (transaminitis)",
+        "frequency": 0.7,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "high liver enzymes",
+          "liver inflammation markers",
+          "transaminitis indicating liver injury"
+        ]
       },
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.65,
+        "bodySystem": "immunological"
       },
       {
-        "symptomName": "Mental deterioration",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Neurological symptoms (irritability, seizures)",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "fits and irritability",
+          "brain irritation and seizures",
+          "neurological upset with seizures"
+        ]
       },
       {
-        "symptomName": "Spastic paraparesis",
+        "symptomName": "Coagulopathy",
         "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal periventricular white matter morphology",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hypomethioninemia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain imaging abnormality",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "bodySystem": "hematological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Psychosis",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
+        "symptomName": "Skin rash (maculopapular or petechial)",
+        "frequency": 0.4,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "red or purple skin spots",
+          "rash with small bumps and spots",
+          "maculopapular or petechial rash"
+        ]
       },
       {
-        "symptomName": "Intellectual disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Lethargy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Global developmental delay",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Specific learning disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Psychotic mentation",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Thromboembolic stroke",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Bilateral tonic-clonic seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Apnea",
-        "frequency": 0.17,
+        "symptomName": "Respiratory distress",
+        "frequency": 0.35,
         "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Jaundice",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Abnormal cerebral white matter morphology",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Elevated triglycerides",
+        "frequency": 0.25,
+        "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Deep venous thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Atrophy of the spinal cord",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Focal-onset seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Feeding difficulties in infancy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Generalized neonatal hypotonia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain atrophy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cognitive impairment",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Neurological deterioration (ataxia, altered consciousness)",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "worsening coordination and alertness",
+          "loss of balance and consciousness changes",
+          "neurological decline with ataxia"
+        ]
       }
     ],
     "rare": [
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Seizures refractory to treatment",
+        "frequency": 0.08,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "seizures not controlled by meds",
+          "treatment-resistant seizures",
+          "refractory epilepsy"
+        ]
       },
       {
-        "symptomName": "Microcephaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Pulmonary hemorrhage",
+        "frequency": 0.05,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Abnormality of the eye",
+        "symptomName": "Renal impairment",
         "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Nystagmus",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Optic atrophy",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Stroke",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Encephalopathy",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ventriculomegaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized non-motor (absence) seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized myoclonic seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "bodySystem": "renal"
       }
     ]
   },
   "systemsAffected": [
-    "psychiatric",
+    "hematological",
+    "immunological",
+    "gastrointestinal",
     "neurological",
     "constitutional",
-    "musculoskeletal",
-    "gastrointestinal",
-    "cardiovascular",
+    "dermatological",
     "respiratory",
-    "ophthalmological"
+    "renal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -353,8 +223,7 @@
       "Brain MRI showing demyelination or cerebral edema in advanced cases"
     ],
     "genetic": [
-      "MTHFR (causative)",
-      "Autosomal recessive inheritance"
+      "Biallelic pathogenic mutations in STX11 gene"
     ],
     "other": [
       "Hemophagocytosis observed in bone marrow, spleen, or lymph node biopsy"
@@ -389,7 +258,7 @@
     "Geneticist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Henter JI, et al. HLH-2004: Diagnostic and therapeutic guidelines for hemophagocytic lymphohistiocytosis. Pediatr Blood Cancer. 2007.",
     "Zur Stadt U, et al. Familial hemophagocytic lymphohistiocytosis type 4 caused by mutations in syntaxin 11. Nat Genet. 2005.",

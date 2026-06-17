@@ -17,8 +17,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 2,
-      "peak": 1
+      "max": 70,
+      "peak": 5
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,272 +63,127 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Atypical behavior",
-        "frequency": 0.9,
-        "bodySystem": "psychiatric"
+        "symptomName": "Paroxysmal hemoglobinuria triggered by cold exposure",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Characteristic sudden onset of hemoglobinuria after cold exposure",
+        "searchTerms": [
+          "red blood cell breakdown triggered by cold",
+          "cold-induced hemolysis",
+          "episodes of blood cell destruction from cold"
+        ]
       },
       {
-        "symptomName": "Gait disturbance",
+        "symptomName": "Positive Donath-Landsteiner antibody test",
         "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Morphological central nervous system abnormality",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb spasticity",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Homocystinuria",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Hyperhomocystinemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Upper motor neuron dysfunction",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cystathioninemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb muscle weakness",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormal enzyme/coenzyme activity",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "bodySystem": "immunological",
+        "notes": "Biphasic hemolysin antibody specific to PCH",
+        "searchTerms": [
+          "positive cold antibody test",
+          "Donath-Landsteiner antibody present",
+          "autoimmune cold-triggered hemolysis test positive"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Psychotic episodes",
-        "frequency": 0.55,
-        "bodySystem": "psychiatric"
+        "symptomName": "Fatigue secondary to anemia",
+        "frequency": 0.75,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "tiredness due to low blood count",
+          "fatigue from anemia",
+          "weakness related to anemia"
+        ]
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Mental deterioration",
-        "frequency": 0.55,
+        "symptomName": "Pallor",
+        "frequency": 0.7,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Spastic paraparesis",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Jaundice",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to increased bilirubin from hemolysis"
       },
       {
-        "symptomName": "Abnormal periventricular white matter morphology",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Dark or red-colored urine",
+        "frequency": 0.6,
+        "bodySystem": "renal",
+        "notes": "Resulting from hemoglobinuria",
+        "searchTerms": [
+          "dark or reddish urine",
+          "blood-colored urine",
+          "red urine discoloration"
+        ]
       },
       {
-        "symptomName": "Hypomethioninemia",
+        "symptomName": "Splenomegaly",
         "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain imaging abnormality",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "bodySystem": "hematological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Psychosis",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Intellectual disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Lethargy",
-        "frequency": 0.17,
+        "symptomName": "Fever",
+        "frequency": 0.3,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Global developmental delay",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Specific learning disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Psychotic mentation",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.17,
+        "symptomName": "Abdominal pain",
+        "frequency": 0.25,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Thromboembolic stroke",
-        "frequency": 0.17,
+        "symptomName": "Chills",
+        "frequency": 0.2,
         "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Bilateral tonic-clonic seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Apnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
       },
       {
         "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal cerebral white matter morphology",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Deep venous thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Atrophy of the spinal cord",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Focal-onset seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Feeding difficulties in infancy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Generalized neonatal hypotonia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain atrophy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cognitive impairment",
-        "frequency": 0.17,
+        "frequency": 0.15,
         "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Acute renal failure",
+        "frequency": 0.05,
+        "bodySystem": "renal",
+        "notes": "Due to hemoglobin-induced tubular injury",
+        "searchTerms": [
+          "sudden kidney failure",
+          "acute loss of kidney function",
+          "rapid kidney impairment"
+        ]
       },
       {
-        "symptomName": "Microcephaly",
+        "symptomName": "Hemoglobin casts in urine",
         "frequency": 0.03,
-        "bodySystem": "neurological"
+        "bodySystem": "renal",
+        "searchTerms": [
+          "blood protein deposits in urine",
+          "hemoglobin in urine",
+          "urine with blood protein casts"
+        ]
       },
       {
-        "symptomName": "Abnormality of the eye",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Nystagmus",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Optic atrophy",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Stroke",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Encephalopathy",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ventriculomegaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized non-motor (absence) seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized myoclonic seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Dyspnea",
+        "frequency": 0.02,
+        "bodySystem": "respiratory",
+        "notes": "Secondary to severe anemia"
       }
     ]
   },
   "systemsAffected": [
-    "psychiatric",
-    "neurological",
+    "hematological",
+    "immunological",
+    "renal",
     "constitutional",
-    "musculoskeletal",
     "gastrointestinal",
-    "cardiovascular",
-    "respiratory",
-    "ophthalmological"
+    "neurological",
+    "respiratory"
   ],
   "keyFindings": {
     "laboratory": [
@@ -344,8 +199,7 @@
       "Splenomegaly on abdominal ultrasound (occasionally)"
     ],
     "genetic": [
-      "MTHFR (causative)",
-      "Autosomal recessive inheritance"
+      "No known genetic mutations; autoimmune etiology"
     ],
     "other": [
       "Cold exposure triggers hemolytic episodes",
@@ -381,7 +235,7 @@
     "Immunologist",
     "Nephrologist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Berentsen S. Cold agglutinin disease. Hematology Am Soc Hematol Educ Program. 2016;2016(1):226-231.",
     "Packman CH. Hemolytic anemia due to warm autoantibodies. Blood Rev. 2008;22(1):17-31.",

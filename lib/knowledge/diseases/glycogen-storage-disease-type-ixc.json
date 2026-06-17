@@ -16,9 +16,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 65,
-      "peak": 42
+      "min": 0,
+      "max": 10,
+      "peak": 2
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,75 +63,113 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Impaired vibratory sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal",
+        "notes": "Enlarged liver palpable in most patients"
       },
       {
-        "symptomName": "Absent Achilles reflex",
+        "symptomName": "Phosphorylase kinase enzyme deficiency",
         "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Impaired tactile sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Impaired proprioception",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "bodySystem": "endocrine",
+        "notes": "Confirmed by biochemical assay",
+        "searchTerms": [
+          "lack of phosphorylase kinase enzyme",
+          "enzyme deficiency affecting glycogen breakdown",
+          "phosphorylase kinase shortage"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Growth retardation",
+        "frequency": 0.75,
+        "bodySystem": "constitutional",
+        "notes": "Delayed growth velocity and short stature"
       },
       {
-        "symptomName": "Dysarthria",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Mild fasting hypoglycemia",
+        "frequency": 0.7,
+        "bodySystem": "endocrine",
+        "notes": "Usually asymptomatic or mild symptoms",
+        "searchTerms": [
+          "mild low blood sugar episodes",
+          "slight fasting hypoglycemia",
+          "low glucose levels during fasting"
+        ]
       },
       {
-        "symptomName": "Gait disturbance",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Elevated liver transaminases",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Mild to moderate elevation in AST and ALT",
+        "searchTerms": [
+          "high liver enzyme levels",
+          "elevated liver function tests",
+          "liver inflammation markers increased"
+        ]
       },
       {
-        "symptomName": "Motor deterioration",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Hyperlipidemia",
+        "frequency": 0.6,
+        "bodySystem": "endocrine",
+        "notes": "Elevated triglycerides and cholesterol"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Areflexia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Muscle weakness",
+        "frequency": 0.3,
+        "bodySystem": "musculoskeletal",
+        "notes": "Mild proximal weakness reported in some cases"
       },
       {
-        "symptomName": "Sensory axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Abdominal distension",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to hepatomegaly"
       },
       {
-        "symptomName": "Motor axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Fatigue",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "notes": "Generalized tiredness"
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Mild anemia",
+        "frequency": 0.15,
+        "bodySystem": "hematological",
+        "notes": "Occasional mild normocytic anemia"
       }
     ],
-    "rare": []
+    "rare": [
+      {
+        "symptomName": "Hepatic fibrosis",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Progressive fibrosis in long-standing cases"
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.04,
+        "bodySystem": "musculoskeletal",
+        "notes": "Rarely reported muscle hypotonia"
+      },
+      {
+        "symptomName": "Epistaxis",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological",
+        "notes": "Occasional nosebleeds"
+      }
+    ]
   },
   "systemsAffected": [
+    "gastrointestinal",
+    "endocrine",
+    "musculoskeletal",
+    "hematological",
     "constitutional",
-    "neurological"
+    "otolaryngological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -145,8 +183,7 @@
       "Liver biopsy may show glycogen accumulation and fibrosis"
     ],
     "genetic": [
-      "PLEKHG4 (candidate)",
-      "Autosomal dominant inheritance"
+      "Pathogenic mutations in PHKG2 gene"
     ],
     "other": [
       "Growth charts showing delayed growth velocity"
@@ -180,7 +217,7 @@
     "Metabolic Geneticist",
     "Endocrinologist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Rake JP et al. Glycogen storage disease type IX: clinical, biochemical, and molecular characteristics. J Inherit Metab Dis. 2000;23(3):237-42.",
     "Burwinkel B et al. PHKG2 mutations cause liver glycogen storage disease type IXc. Hum Mutat. 2007;28(8):754-60.",

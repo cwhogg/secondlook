@@ -16,9 +16,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 65,
-      "peak": 42
+      "min": 0,
+      "max": 12,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,38 +63,130 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Hyperkeratosis",
-        "frequency": 0.9,
-        "bodySystem": "dermatological"
+        "symptomName": "Chronic aseptic meningitis",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "long-term aseptic meningitis symptoms",
+          "chronic meningitis without infection",
+          "persistent sterile brain lining inflammation"
+        ]
       },
       {
-        "symptomName": "Erythema",
+        "symptomName": "Non-pruritic urticarial rash",
         "frequency": 0.9,
-        "bodySystem": "dermatological"
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "itch-free hives rash",
+          "non-itchy raised skin rash",
+          "urticarial rash without itching"
+        ]
       },
       {
-        "symptomName": "Acantholysis",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Skin erosion",
-        "frequency": 0.9,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Skin vesicle",
-        "frequency": 0.9,
-        "bodySystem": "dermatological"
+        "symptomName": "Early-onset systemic inflammation with fever",
+        "frequency": 0.95,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "early fever with inflammation",
+          "systemic inflammation in newborn",
+          "fever with body-wide inflammation"
+        ]
       }
     ],
-    "common": [],
-    "occasional": [],
-    "rare": []
+    "common": [
+      {
+        "symptomName": "Arthropathy with joint swelling",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "joint swelling and pain",
+          "inflamed joints",
+          "arthritis with swollen joints"
+        ]
+      },
+      {
+        "symptomName": "Chronic fatigue and malaise",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "chronic tiredness and weakness",
+          "persistent fatigue and malaise",
+          "ongoing low energy and discomfort"
+        ]
+      },
+      {
+        "symptomName": "Sensorineural hearing loss",
+        "frequency": 0.65,
+        "bodySystem": "otolaryngological",
+        "searchTerms": [
+          "hearing loss from nerve damage",
+          "sensorineural deafness",
+          "inner ear hearing impairment"
+        ]
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.6,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Growth retardation",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      }
+    ],
+    "occasional": [
+      {
+        "symptomName": "Papilledema",
+        "frequency": 0.4,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Chronic anemia",
+        "frequency": 0.3,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.25,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Epiphyseal overgrowth",
+        "frequency": 0.15,
+        "bodySystem": "musculoskeletal"
+      }
+    ],
+    "rare": [
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Uveitis",
+        "frequency": 0.05,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Amyloidosis",
+        "frequency": 0.03,
+        "bodySystem": "renal",
+        "notes": "Secondary amyloidosis due to chronic inflammation"
+      }
+    ]
   },
   "systemsAffected": [
+    "neurological",
     "dermatological",
-    "constitutional"
+    "musculoskeletal",
+    "constitutional",
+    "otolaryngological",
+    "ophthalmological",
+    "hematological",
+    "cardiovascular",
+    "renal",
+    "endocrine"
   ],
   "keyFindings": {
     "laboratory": [
@@ -107,8 +199,7 @@
       "X-ray showing epiphyseal overgrowth and joint deformities"
     ],
     "genetic": [
-      "ATP2C1 (causative)",
-      "Autosomal dominant inheritance"
+      "Gain-of-function mutations in NLRP3 gene"
     ],
     "other": [
       "CSF pleocytosis with sterile inflammation"
@@ -143,7 +234,7 @@
     "Immunologist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Goldbach-Mansky R. Neonatal-onset multisystem inflammatory disease and the cryopyrinopathies. Rheum Dis Clin North Am. 2006;32(3): 567-606.",
     "Hoffman HM, et al. Mutation of a new gene encoding a putative pyrin-like protein causes familial cold autoinflammatory syndrome and Muckle-Wells syndrome. Nat Genet. 2001;29(3):301-305.",

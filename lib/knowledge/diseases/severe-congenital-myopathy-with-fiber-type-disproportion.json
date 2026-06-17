@@ -16,9 +16,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 65,
-      "peak": 42
+      "min": 0,
+      "max": 2,
+      "peak": 0
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,75 +57,126 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Impaired vibratory sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Congenital generalized muscle weakness",
+        "frequency": 0.95,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "generalized muscle weakness from birth",
+          "congenital low muscle strength",
+          "weak muscles present since infancy"
+        ]
       },
       {
-        "symptomName": "Absent Achilles reflex",
+        "symptomName": "Type 1 muscle fiber atrophy with fiber size disproportion on biopsy",
         "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Impaired tactile sensation",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Impaired proprioception",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "type 1 muscle fiber shrinkage with uneven size",
+          "muscle biopsy showing fiber size differences",
+          "atrophy of specific muscle fibers"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Hypotonia at birth",
+        "frequency": 0.85,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "low muscle tone at birth",
+          "floppy baby syndrome",
+          "reduced muscle strength in newborn"
+        ]
       },
       {
-        "symptomName": "Dysarthria",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Delayed motor milestones",
+        "frequency": 0.75,
+        "bodySystem": "musculoskeletal",
+        "searchTerms": [
+          "late crawling or walking",
+          "delayed movement skills",
+          "slow motor development"
+        ]
       },
       {
-        "symptomName": "Gait disturbance",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Facial weakness",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Motor deterioration",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.65,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.6,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "trouble feeding as baby",
+          "difficulty sucking or swallowing",
+          "infant feeding problems"
+        ]
       }
     ],
     "occasional": [
       {
-        "symptomName": "Areflexia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Scoliosis",
+        "frequency": 0.4,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Sensory axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Joint contractures",
+        "frequency": 0.35,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Motor axonal neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Mild cognitive impairment",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Rarely observed, usually mild if present",
+        "searchTerms": [
+          "mild memory problems",
+          "slight thinking difficulties",
+          "minor cognitive decline"
+        ]
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Ptosis",
+        "frequency": 0.25,
+        "bodySystem": "ophthalmological"
       }
     ],
-    "rare": []
+    "rare": [
+      {
+        "symptomName": "Cardiomyopathy",
+        "frequency": 0.08,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Respiratory failure requiring ventilation",
+        "frequency": 0.05,
+        "bodySystem": "respiratory",
+        "searchTerms": [
+          "breathing failure needing ventilator",
+          "respiratory muscle failure",
+          "mechanical breathing support required"
+        ]
+      },
+      {
+        "symptomName": "Seizures",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      }
+    ]
   },
   "systemsAffected": [
-    "constitutional",
-    "neurological"
+    "musculoskeletal",
+    "respiratory",
+    "gastrointestinal",
+    "neurological",
+    "ophthalmological",
+    "cardiovascular"
   ],
   "keyFindings": {
     "laboratory": [
@@ -135,8 +186,7 @@
       "Muscle MRI showing selective muscle involvement and fatty infiltration"
     ],
     "genetic": [
-      "PLEKHG4 (candidate)",
-      "Autosomal dominant inheritance"
+      "Pathogenic variants in ACTA1, TPM3, SEPN1, or other related genes"
     ],
     "other": [
       "Muscle biopsy demonstrating type 1 fiber atrophy with fiber size disproportion (>12%) without cores or other structural abnormalities"
@@ -176,7 +226,7 @@
     "Geneticist",
     "Pulmonologist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "North KN, Laing NG, Wallgren-Pettersson C. Nemaline myopathy: current concepts. The ENMC International Consortium. Neuromuscul Disord. 1997;7(4):311-7.",
     "Ryan MM, Schnell C, Strickland CD, et al. Congenital myopathies: clinical features and diagnosis. Neuromuscul Disord. 2001;11(4): 287-300.",

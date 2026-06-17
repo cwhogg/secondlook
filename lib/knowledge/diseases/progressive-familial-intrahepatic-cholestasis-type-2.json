@@ -17,7 +17,7 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 2,
+      "max": 5,
       "peak": 1
     },
     "sexPredilection": "equal",
@@ -57,272 +57,147 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Atypical behavior",
-        "frequency": 0.9,
-        "bodySystem": "psychiatric"
+        "symptomName": "Severe pruritus in infancy",
+        "frequency": 0.85,
+        "bodySystem": "dermatological",
+        "notes": "Intense itching often leading to excoriations",
+        "searchTerms": [
+          "severe itching in babies",
+          "intense infant skin itch",
+          "persistent pruritus in infancy"
+        ]
       },
       {
-        "symptomName": "Gait disturbance",
+        "symptomName": "Progressive cholestatic jaundice",
         "frequency": 0.9,
-        "bodySystem": "neurological"
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "progressive yellowing of skin from bile buildup",
+          "cholestatic jaundice worsening over time",
+          "liver-related jaundice"
+        ]
       },
       {
-        "symptomName": "Morphological central nervous system abnormality",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb spasticity",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Homocystinuria",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Hyperhomocystinemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Upper motor neuron dysfunction",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cystathioninemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb muscle weakness",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormal enzyme/coenzyme activity",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "symptomName": "Low or normal serum gamma-glutamyl transferase (GGT) despite cholestasis",
+        "frequency": 0.8,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "low or normal GGT despite bile flow problems",
+          "normal liver enzyme with cholestasis",
+          "cholestasis without elevated GGT"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Psychotic episodes",
-        "frequency": 0.55,
-        "bodySystem": "psychiatric"
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Failure to thrive",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "poor weight gain",
+          "not growing well",
+          "failure to gain weight"
+        ]
       },
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Steatorrhea due to fat malabsorption",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "fatty stools from poor fat absorption",
+          "steatorrhea",
+          "oily or greasy bowel movements"
+        ]
       },
       {
-        "symptomName": "Mental deterioration",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Xanthomas",
+        "frequency": 0.6,
+        "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Spastic paraparesis",
+        "symptomName": "Fat-soluble vitamin deficiencies (A, D, E, K)",
         "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal periventricular white matter morphology",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hypomethioninemia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain imaging abnormality",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "bodySystem": "endocrine",
+        "notes": "May cause coagulopathy and bone disease",
+        "searchTerms": [
+          "lack of vitamins A, D, E, K",
+          "fat-soluble vitamin shortages",
+          "vitamin deficiencies from malabsorption"
+        ]
       }
     ],
     "occasional": [
       {
-        "symptomName": "Psychosis",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Intellectual disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Lethargy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Global developmental delay",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Specific learning disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Psychotic mentation",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.17,
+        "symptomName": "Hepatosplenomegaly",
+        "frequency": 0.4,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Thromboembolic stroke",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Pruritus-related sleep disturbance",
+        "frequency": 0.3,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "itching causing sleep problems",
+          "pruritus disturbing sleep",
+          "nighttime itch affecting rest"
+        ]
       },
       {
-        "symptomName": "Abnormal thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Jaundice exacerbations during infections or fasting",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "jaundice worsens with infection or fasting",
+          "yellow skin flares during illness",
+          "bilirubin spikes after fasting or infection"
+        ]
       },
       {
-        "symptomName": "Bilateral tonic-clonic seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Apnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal cerebral white matter morphology",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Deep venous thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Atrophy of the spinal cord",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Focal-onset seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Feeding difficulties in infancy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Generalized neonatal hypotonia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain atrophy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cognitive impairment",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Mild developmental delay secondary to chronic illness",
+        "frequency": 0.15,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "slight developmental delay from illness",
+          "mild growth and learning delay",
+          "slow development due to chronic sickness"
+        ]
       }
     ],
     "rare": [
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Hepatocellular carcinoma in childhood",
+        "frequency": 0.05,
+        "bodySystem": "gastrointestinal",
+        "notes": "Increased risk especially in untreated or advanced disease",
+        "searchTerms": [
+          "liver cancer in children",
+          "childhood hepatocellular carcinoma",
+          "pediatric liver tumor"
+        ]
       },
       {
-        "symptomName": "Microcephaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Portal hypertension",
+        "frequency": 0.07,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Abnormality of the eye",
+        "symptomName": "Cholangiopathy",
         "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Nystagmus",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Optic atrophy",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Stroke",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Encephalopathy",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ventriculomegaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized non-motor (absence) seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized myoclonic seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "psychiatric",
-    "neurological",
-    "constitutional",
-    "musculoskeletal",
     "gastrointestinal",
-    "cardiovascular",
-    "respiratory",
-    "ophthalmological"
+    "dermatological",
+    "endocrine",
+    "constitutional",
+    "neurological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -336,8 +211,7 @@
       "MRI/MRCP typically normal biliary tree"
     ],
     "genetic": [
-      "MTHFR (causative)",
-      "Autosomal recessive inheritance"
+      "Biallelic pathogenic variants in ABCB11 gene encoding Bile Salt Export Pump (BSEP)"
     ],
     "other": [
       "Liver biopsy showing canalicular cholestasis and absent or reduced BSEP protein by immunostaining"
@@ -371,7 +245,7 @@
     "Geneticist",
     "Pediatric Gastroenterologist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Strautnieks SS, et al. 'A gene encoding a liver-specific ABC transporter is mutated in progressive familial intrahepatic cholestasis.' Nat Genet. 1998.",
     "Bull LN, et al. 'A gene encoding a P-type ATPase mutated in two forms of hereditary cholestasis.' Nat Genet. 1998.",

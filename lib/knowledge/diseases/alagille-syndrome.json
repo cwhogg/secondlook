@@ -11,15 +11,15 @@
   "omimId": "118450",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1-9 in 1,000,000",
-    "range": "1-9 / 1 000 000",
+    "estimate": "1 in 30,000 to 1 in 50,000",
+    "range": "0.002% - 0.003%",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 120,
-      "peak": 42
+      "min": 0,
+      "max": 18,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -70,276 +70,134 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Hepatic cysts",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Bile duct paucity",
+        "frequency": 0.85,
+        "bodySystem": "gastrointestinal",
+        "notes": "Confirmed by liver biopsy",
+        "searchTerms": [
+          "few bile ducts",
+          "reduced bile channels",
+          "lack of bile ducts"
+        ]
       },
       {
-        "symptomName": "Eosinophilia",
-        "frequency": 0.9,
-        "bodySystem": "hematological"
+        "symptomName": "Peripheral pulmonary artery stenosis",
+        "frequency": 0.75,
+        "bodySystem": "cardiovascular",
+        "notes": "Most common cardiac defect",
+        "searchTerms": [
+          "narrowed lung artery",
+          "pulmonary artery narrowing",
+          "restricted blood flow to lungs"
+        ]
       },
       {
-        "symptomName": "Elevated erythrocyte sedimentation rate",
-        "frequency": 0.9,
-        "bodySystem": "hematological"
-      },
-      {
-        "symptomName": "Increased circulating antibody level",
-        "frequency": 0.9,
-        "bodySystem": "immunological"
+        "symptomName": "Characteristic facial dysmorphism",
+        "frequency": 0.7,
+        "bodySystem": "constitutional",
+        "notes": "Includes broad forehead, deep-set eyes, pointed chin",
+        "searchTerms": [
+          "distinctive facial features",
+          "unusual face shape",
+          "typical facial appearance changes"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Jaundice",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Cholestasis",
+        "frequency": 0.65,
+        "bodySystem": "gastrointestinal",
+        "notes": "Due to bile duct paucity"
       },
       {
-        "symptomName": "Decreased liver function",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Butterfly vertebrae",
+        "frequency": 0.6,
+        "bodySystem": "musculoskeletal",
+        "notes": "Vertebral anomalies seen on imaging"
       },
       {
-        "symptomName": "Anemia",
+        "symptomName": "Posterior embryotoxon",
         "frequency": 0.55,
-        "bodySystem": "hematological"
+        "bodySystem": "ophthalmological",
+        "notes": "Anterior segment eye anomaly"
       },
       {
-        "symptomName": "Fever",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Growth retardation",
+        "frequency": 0.58,
+        "bodySystem": "constitutional",
+        "notes": "Failure to thrive common in infancy"
       },
       {
-        "symptomName": "Abdominal pain",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Low back pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Pedal edema",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Fatigue",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Asthenia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Epigastric pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Pruritus",
+        "frequency": 0.5,
+        "bodySystem": "dermatological",
+        "notes": "Due to cholestasis"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Renal cyst",
-        "frequency": 0.17,
-        "bodySystem": "renal"
+        "symptomName": "Renal anomalies",
+        "frequency": 0.3,
+        "bodySystem": "renal",
+        "notes": "Including renal dysplasia or cystic changes"
       },
       {
-        "symptomName": "Abnormal sternum morphology",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Pancreatic insufficiency",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Exocrine pancreatic dysfunction"
       },
       {
-        "symptomName": "Weight loss",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.4,
+        "bodySystem": "gastrointestinal",
+        "notes": "Enlarged liver due to cholestasis"
       },
       {
-        "symptomName": "Dyspnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
+        "symptomName": "Hypercholesterolemia",
+        "frequency": 0.15,
+        "bodySystem": "endocrine",
+        "notes": "Secondary to cholestasis"
       },
       {
-        "symptomName": "Hemoptysis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ectopic calcification",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormality of adrenal morphology",
-        "frequency": 0.17,
-        "bodySystem": "endocrine"
-      },
-      {
-        "symptomName": "Cough",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal spleen morphology",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cholangitis",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cutaneous abscess",
-        "frequency": 0.17,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Pulmonary cyst",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Chest pain",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Neurodevelopmental delay",
+        "frequency": 0.2,
+        "bodySystem": "neurological",
+        "notes": "Mild cognitive impairment reported in some cases"
       }
     ],
     "rare": [
       {
-        "symptomName": "Abnormality of the diaphragm",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
+        "symptomName": "Intracranial bleeding",
+        "frequency": 0.05,
+        "bodySystem": "neurological",
+        "notes": "Due to vascular anomalies"
       },
       {
-        "symptomName": "Seizure",
+        "symptomName": "Pancreatitis",
         "frequency": 0.03,
-        "bodySystem": "neurological"
+        "bodySystem": "gastrointestinal",
+        "notes": "Rare complication"
       },
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Dysarthria",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Portal hypertension",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Abnormal pericardium morphology",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Pancreatic cysts",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vomiting",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vertigo",
-        "frequency": 0.03,
-        "bodySystem": "otolaryngological"
-      },
-      {
-        "symptomName": "Aphasia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Increased intracranial pressure",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Biliary cirrhosis",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Budd-Chiari syndrome",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal vertebral morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Intracranial cystic lesion",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal skeletal muscle morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Bone cyst",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of bladder morphology",
-        "frequency": 0.03,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Abnormal pelvis bone morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of mesentery morphology",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Liver abscess",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Pulmonary hypertension",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular",
+        "notes": "Secondary to pulmonary artery stenosis"
       }
     ]
   },
   "systemsAffected": [
     "gastrointestinal",
-    "hematological",
-    "immunological",
-    "constitutional",
-    "renal",
-    "respiratory",
-    "neurological",
-    "endocrine",
-    "dermatological",
     "cardiovascular",
-    "otolaryngological",
-    "musculoskeletal"
+    "musculoskeletal",
+    "ophthalmological",
+    "renal",
+    "neurological",
+    "dermatological",
+    "constitutional",
+    "endocrine"
   ],
   "keyFindings": {
     "laboratory": [
@@ -398,7 +256,7 @@
     "Geneticist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Alagille D, et al. Syndromic bile duct paucity: Alagille syndrome. J Pediatr. 1987.",
     "Turnpenny PD, Ellard S. Alagille syndrome: pathogenesis, diagnosis and management. Eur J Hum Genet. 2012.",

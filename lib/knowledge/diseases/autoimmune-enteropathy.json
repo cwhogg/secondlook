@@ -17,7 +17,7 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 2,
+      "max": 18,
       "peak": 1
     },
     "sexPredilection": "slight-male",
@@ -63,271 +63,156 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Atypical behavior",
-        "frequency": 0.9,
-        "bodySystem": "psychiatric"
+        "symptomName": "Intractable chronic diarrhea",
+        "frequency": 0.95,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "chronic diarrhea that is hard to control",
+          "persistent watery bowel movements",
+          "long-lasting diarrhea"
+        ]
       },
       {
-        "symptomName": "Gait disturbance",
+        "symptomName": "Small intestinal villous atrophy",
         "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Morphological central nervous system abnormality",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb spasticity",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Homocystinuria",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Hyperhomocystinemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Upper motor neuron dysfunction",
-        "frequency": 0.9,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cystathioninemia",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Lower limb muscle weakness",
-        "frequency": 0.9,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormal enzyme/coenzyme activity",
-        "frequency": 0.9,
-        "bodySystem": "constitutional"
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "damage to small intestine lining",
+          "flattened intestinal villi",
+          "small bowel tissue loss"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Psychotic episodes",
-        "frequency": 0.55,
-        "bodySystem": "psychiatric"
+        "symptomName": "Failure to thrive",
+        "frequency": 0.85,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "poor weight gain",
+          "not growing well",
+          "failure to gain weight"
+        ]
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Malabsorption with steatorrhea",
+        "frequency": 0.75,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "poor nutrient absorption with fatty stools",
+          "malabsorption causing greasy stools",
+          "steatorrhea with nutrient loss"
+        ]
       },
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Mental deterioration",
-        "frequency": 0.55,
+        "symptomName": "Weight loss",
+        "frequency": 0.7,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Spastic paraparesis",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Presence of anti-enterocyte antibodies",
+        "frequency": 0.65,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "antibodies targeting intestinal cells",
+          "immune attack on gut lining",
+          "anti-enterocyte immune response"
+        ]
       },
       {
-        "symptomName": "Abnormal periventricular white matter morphology",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hypomethioninemia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain imaging abnormality",
-        "frequency": 0.55,
-        "bodySystem": "neurological"
+        "symptomName": "Electrolyte imbalances (e.g., hypokalemia)",
+        "frequency": 0.6,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "low potassium or other electrolyte problems",
+          "imbalanced blood minerals",
+          "electrolyte disturbances"
+        ]
       }
     ],
     "occasional": [
       {
-        "symptomName": "Psychosis",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
+        "symptomName": "Associated autoimmune disorders (e.g., thyroiditis)",
+        "frequency": 0.4,
+        "bodySystem": "endocrine",
+        "searchTerms": [
+          "coexisting autoimmune diseases",
+          "other immune system disorders",
+          "autoimmune conditions like thyroiditis"
+        ]
       },
       {
-        "symptomName": "Intellectual disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Chronic abdominal pain",
+        "frequency": 0.3,
+        "bodySystem": "gastrointestinal",
+        "searchTerms": [
+          "persistent belly pain",
+          "long-term abdominal discomfort",
+          "chronic stomach pain"
+        ]
       },
       {
-        "symptomName": "Lethargy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Anemia secondary to malabsorption",
+        "frequency": 0.25,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "anemia due to poor nutrient absorption",
+          "low red blood cells from malabsorption",
+          "iron deficiency anemia related to digestion"
+        ]
       },
       {
-        "symptomName": "Global developmental delay",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Specific learning disability",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Psychotic mentation",
-        "frequency": 0.17,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Thromboembolic stroke",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Bilateral tonic-clonic seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Apnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal cerebral white matter morphology",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Deep venous thrombosis",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Atrophy of the spinal cord",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Focal-onset seizure",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Feeding difficulties in infancy",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Generalized neonatal hypotonia",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Brain atrophy",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Cognitive impairment",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
+        "symptomName": "Dermatological manifestations (e.g., rash)",
+        "frequency": 0.15,
+        "bodySystem": "dermatological",
+        "searchTerms": [
+          "skin rash or other skin symptoms",
+          "dermatological signs like redness",
+          "skin changes or lesions"
+        ]
       }
     ],
     "rare": [
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Neurological symptoms due to vitamin deficiencies",
+        "frequency": 0.08,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "nerve problems from vitamin lack",
+          "nerve damage due to vitamin deficiency",
+          "neuropathy from low vitamins"
+        ]
       },
       {
-        "symptomName": "Microcephaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Recurrent infections due to immunodeficiency",
+        "frequency": 0.05,
+        "bodySystem": "immunological",
+        "searchTerms": [
+          "frequent infections",
+          "repeated infections due to weak immunity",
+          "immune system weakness causing infections"
+        ]
       },
       {
-        "symptomName": "Abnormality of the eye",
+        "symptomName": "Ophthalmological involvement (e.g., uveitis)",
         "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Nystagmus",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Optic atrophy",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Stroke",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Encephalopathy",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ventriculomegaly",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized non-motor (absence) seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Generalized myoclonic seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "bodySystem": "ophthalmological",
+        "searchTerms": [
+          "eye inflammation",
+          "red or painful eyes",
+          "eye swelling or irritation"
+        ]
       }
     ]
   },
   "systemsAffected": [
-    "psychiatric",
-    "neurological",
-    "constitutional",
-    "musculoskeletal",
     "gastrointestinal",
-    "cardiovascular",
-    "respiratory",
+    "immunological",
+    "constitutional",
+    "hematological",
+    "endocrine",
+    "dermatological",
+    "neurological",
     "ophthalmological"
   ],
   "keyFindings": {
@@ -341,8 +226,7 @@
       "Small bowel imaging may show mucosal irregularities but is nonspecific"
     ],
     "genetic": [
-      "MTHFR (causative)",
-      "Autosomal recessive inheritance"
+      "Mutations in FOXP3 gene in IPEX syndrome-associated autoimmune enteropathy"
     ],
     "other": [
       "Small intestinal biopsy showing villous atrophy with crypt hyperplasia and lymphocytic infiltration"
@@ -384,7 +268,7 @@
     "Immunologist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Goulet O, Ruemmele F. Pediatric autoimmune enteropathy. Orphanet J Rare Dis. 2006.",
     "Unsworth DJ, Walker-Smith JA. Autoimmune enteropathy in infancy. J Pediatr Gastroenterol Nutr. 1991.",

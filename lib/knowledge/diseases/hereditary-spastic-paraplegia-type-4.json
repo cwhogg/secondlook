@@ -17,9 +17,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 120,
-      "peak": 14
+      "min": 5,
+      "max": 60,
+      "peak": 30
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -58,89 +58,128 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Myelodysplasia",
-        "frequency": 0.9,
-        "bodySystem": "hematological"
+        "symptomName": "Progressive lower limb spasticity",
+        "frequency": 0.95,
+        "bodySystem": "neurological",
+        "notes": "Core symptom defining the disease",
+        "searchTerms": [
+          "increasing stiffness in legs",
+          "progressive spasticity of lower limbs",
+          "tightness and muscle spasms in legs"
+        ]
       },
       {
-        "symptomName": "Anemia of inadequate production",
+        "symptomName": "Lower limb weakness",
         "frequency": 0.9,
-        "bodySystem": "hematological"
+        "bodySystem": "neurological",
+        "notes": "Usually symmetrical and progressive",
+        "searchTerms": [
+          "weakness in legs",
+          "lower limb muscle weakness",
+          "difficulty walking due to leg weakness"
+        ]
+      },
+      {
+        "symptomName": "Hyperreflexia in lower limbs",
+        "frequency": 0.85,
+        "bodySystem": "neurological",
+        "notes": "Increased deep tendon reflexes typical",
+        "searchTerms": [
+          "overactive reflexes in legs",
+          "exaggerated knee jerk",
+          "increased lower limb reflexes"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Macrocytic anemia",
-        "frequency": 0.55,
-        "bodySystem": "hematological"
+        "symptomName": "Gait disturbance",
+        "frequency": 0.8,
+        "bodySystem": "neurological",
+        "notes": "Spastic gait with scissoring"
       },
       {
-        "symptomName": "Erythroid hypoplasia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Bladder dysfunction",
+        "frequency": 0.7,
+        "bodySystem": "neurological",
+        "notes": "Urinary urgency or incontinence"
       },
       {
-        "symptomName": "Single lineage myelodysplasia",
-        "frequency": 0.55,
-        "bodySystem": "hematological"
+        "symptomName": "Mild distal sensory impairment",
+        "frequency": 0.6,
+        "bodySystem": "neurological",
+        "notes": "Occasionally reported",
+        "searchTerms": [
+          "mild numbness in fingers and toes",
+          "slight loss of sensation in extremities",
+          "reduced feeling in hands and feet"
+        ]
       },
       {
-        "symptomName": "Fatigue",
+        "symptomName": "Muscle cramps",
         "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "bodySystem": "musculoskeletal",
+        "notes": "Common in affected lower limbs"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Normochromic anemia",
-        "frequency": 0.17,
-        "bodySystem": "hematological"
+        "symptomName": "Upper limb hyperreflexia",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "notes": "May appear in advanced cases",
+        "searchTerms": [
+          "overactive arm reflexes",
+          "increased reflexes in upper limbs",
+          "exaggerated arm tendon reflexes"
+        ]
       },
       {
-        "symptomName": "Normocytic anemia",
-        "frequency": 0.17,
-        "bodySystem": "hematological"
+        "symptomName": "Mild ataxia",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Rarely observed"
       },
       {
-        "symptomName": "Dyspnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.25,
+        "bodySystem": "neurological",
+        "notes": "Sensory symptoms in some patients"
       },
       {
-        "symptomName": "Bone marrow hypocellularity",
-        "frequency": 0.17,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormal cardiac ventricular function",
-        "frequency": 0.17,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Fatigue",
+        "frequency": 0.2,
+        "bodySystem": "constitutional",
+        "notes": "Reported by some patients"
       }
     ],
     "rare": [
       {
-        "symptomName": "Thrombocytopenia",
-        "frequency": 0.03,
-        "bodySystem": "hematological"
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.05,
+        "bodySystem": "psychiatric",
+        "notes": "Very rare and mild if present"
       },
       {
-        "symptomName": "Decreased total neutrophil count",
+        "symptomName": "Seizures",
         "frequency": 0.03,
-        "bodySystem": "hematological"
+        "bodySystem": "neurological",
+        "notes": "Rarely reported"
       },
       {
-        "symptomName": "Abnormal bleeding",
-        "frequency": 0.03,
-        "bodySystem": "hematological"
+        "symptomName": "Optic atrophy",
+        "frequency": 0.02,
+        "bodySystem": "ophthalmological",
+        "notes": "Occasional in complicated forms"
       }
     ]
   },
   "systemsAffected": [
-    "hematological",
-    "constitutional",
-    "respiratory",
+    "neurological",
     "musculoskeletal",
-    "cardiovascular"
+    "constitutional",
+    "psychiatric",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -152,7 +191,7 @@
       "No demyelinating lesions"
     ],
     "genetic": [
-      "TET2 (somatic)"
+      "Pathogenic variants in SPAST gene (SPG4) confirm diagnosis"
     ],
     "other": [
       "Electromyography and nerve conduction studies typically normal or show mild distal neuropathy"
@@ -186,7 +225,7 @@
     "Geneticist",
     "Rehabilitation specialist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Shribman S, Reid E, Crosby AH, Houlden H, Warner TT. Hereditary spastic paraplegia: from diagnosis to emerging therapeutic approaches. Lancet Neurol. 2019;18(12):1136-1146.",
     "Blackstone C. Hereditary spastic paraplegia. Handb Clin Neurol. 2018;148:633-652.",

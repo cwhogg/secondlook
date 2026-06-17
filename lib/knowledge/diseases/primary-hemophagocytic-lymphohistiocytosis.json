@@ -11,15 +11,14 @@
   "omimId": "267700",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1-9 in 1,000,000",
-    "range": "1-9 / 1 000 000",
-    "classification": "rare"
+    "estimate": "1 in 50,000 to 1 in 100,000",
+    "classification": "ultra-rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 120,
-      "peak": 42
+      "min": 0,
+      "max": 5,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -88,276 +87,139 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Hepatic cysts",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Hemophagocytosis in bone marrow or lymphoid tissue",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "notes": "Definitive histopathologic finding",
+        "searchTerms": [
+          "excessive immune cell activity in marrow",
+          "hemophagocytosis in bone marrow",
+          "immune cells engulfing blood cells"
+        ]
       },
       {
-        "symptomName": "Eosinophilia",
+        "symptomName": "Persistent high-grade fever",
+        "frequency": 0.95,
+        "bodySystem": "constitutional",
+        "searchTerms": [
+          "ongoing high fever",
+          "continuous severe fever",
+          "persistent elevated temperature"
+        ]
+      },
+      {
+        "symptomName": "Splenomegaly",
         "frequency": 0.9,
         "bodySystem": "hematological"
-      },
-      {
-        "symptomName": "Elevated erythrocyte sedimentation rate",
-        "frequency": 0.9,
-        "bodySystem": "hematological"
-      },
-      {
-        "symptomName": "Increased circulating antibody level",
-        "frequency": 0.9,
-        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Jaundice",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Cytopenias (anemia, thrombocytopenia, neutropenia)",
+        "frequency": 0.85,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "low blood counts",
+          "anemia and low platelets",
+          "low neutrophil levels"
+        ]
       },
       {
-        "symptomName": "Decreased liver function",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Anemia",
-        "frequency": 0.55,
+        "symptomName": "Hyperferritinemia",
+        "frequency": 0.8,
         "bodySystem": "hematological"
       },
       {
-        "symptomName": "Fever",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.75,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Abdominal pain",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Elevated liver enzymes (transaminitis)",
+        "frequency": 0.7,
+        "bodySystem": "hematological",
+        "searchTerms": [
+          "high liver enzymes",
+          "liver inflammation markers",
+          "transaminitis indicating liver injury"
+        ]
       },
       {
-        "symptomName": "Low back pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Pedal edema",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Fatigue",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Asthenia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Epigastric pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Lymphadenopathy",
+        "frequency": 0.65,
+        "bodySystem": "hematological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Renal cyst",
-        "frequency": 0.17,
-        "bodySystem": "renal"
+        "symptomName": "Neurological symptoms (irritability, seizures, altered consciousness)",
+        "frequency": 0.4,
+        "bodySystem": "neurological",
+        "searchTerms": [
+          "brain symptoms with seizures",
+          "confusion and irritability",
+          "neurological changes including seizures"
+        ]
       },
       {
-        "symptomName": "Abnormal sternum morphology",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Coagulopathy",
+        "frequency": 0.35,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Weight loss",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Dyspnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Hemoptysis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ectopic calcification",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormality of adrenal morphology",
-        "frequency": 0.17,
-        "bodySystem": "endocrine"
-      },
-      {
-        "symptomName": "Cough",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal spleen morphology",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cholangitis",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cutaneous abscess",
-        "frequency": 0.17,
+        "symptomName": "Rash",
+        "frequency": 0.3,
         "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Pulmonary cyst",
-        "frequency": 0.17,
+        "symptomName": "Respiratory distress",
+        "frequency": 0.25,
         "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Chest pain",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Jaundice",
+        "frequency": 0.2,
+        "bodySystem": "hematological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Abnormality of the diaphragm",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ataxia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Dysarthria",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Portal hypertension",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Abnormal pericardium morphology",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Pancreatic cysts",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vomiting",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vertigo",
-        "frequency": 0.03,
-        "bodySystem": "otolaryngological"
-      },
-      {
-        "symptomName": "Aphasia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Increased intracranial pressure",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Biliary cirrhosis",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Budd-Chiari syndrome",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal vertebral morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Intracranial cystic lesion",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal skeletal muscle morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Bone cyst",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of bladder morphology",
-        "frequency": 0.03,
+        "symptomName": "Renal impairment",
+        "frequency": 0.08,
         "bodySystem": "renal"
       },
       {
-        "symptomName": "Abnormal pelvis bone morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Cardiovascular instability (hypotension, shock)",
+        "frequency": 0.07,
+        "bodySystem": "cardiovascular",
+        "searchTerms": [
+          "low blood pressure with shock",
+          "unstable heart function",
+          "circulatory collapse"
+        ]
       },
       {
-        "symptomName": "Abnormality of mesentery morphology",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Liver abscess",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Psychiatric manifestations (mood changes, psychosis)",
+        "frequency": 0.05,
+        "bodySystem": "psychiatric",
+        "searchTerms": [
+          "mood swings and psychosis",
+          "mental health changes",
+          "behavioral and psychiatric symptoms"
+        ]
       }
     ]
   },
   "systemsAffected": [
-    "gastrointestinal",
     "hematological",
     "immunological",
-    "constitutional",
-    "renal",
-    "respiratory",
     "neurological",
-    "endocrine",
+    "constitutional",
     "dermatological",
+    "respiratory",
+    "renal",
     "cardiovascular",
-    "otolaryngological",
-    "musculoskeletal"
+    "psychiatric"
   ],
   "keyFindings": {
     "laboratory": [
@@ -406,7 +268,7 @@
     "Immunologist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Henter JI, et al. HLH-2004: Diagnostic and therapeutic guidelines for hemophagocytic lymphohistiocytosis. Pediatr Blood Cancer. 2007.",
     "Janka GE. Familial and acquired hemophagocytic lymphohistiocytosis. Annu Rev Med. 2012.",

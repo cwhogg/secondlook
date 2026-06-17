@@ -11,15 +11,15 @@
   "omimId": "251000",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1-9 in 1,000,000",
-    "range": "1-9 / 1 000 000",
-    "classification": "rare"
+    "estimate": "1 in 100,000 to 1 in 200,000",
+    "range": "0.0005%-0.001%",
+    "classification": "ultra-rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 18,
-      "max": 120,
-      "peak": 42
+      "min": 0,
+      "max": 12,
+      "peak": 2
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -58,276 +58,155 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Hepatic cysts",
-        "frequency": 0.9,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Severe metabolic ketoacidosis",
+        "frequency": 0.95,
+        "bodySystem": "constitutional",
+        "notes": "Typically presents during infancy with recurrent crises",
+        "searchTerms": [
+          "severe acid buildup in blood",
+          "critical metabolic ketoacidosis"
+        ]
       },
       {
-        "symptomName": "Eosinophilia",
+        "symptomName": "Markedly elevated methylmalonic acidemia",
         "frequency": 0.9,
-        "bodySystem": "hematological"
+        "bodySystem": "renal",
+        "notes": "Detected in plasma and urine",
+        "searchTerms": [
+          "very high methylmalonic acid levels",
+          "markedly increased MMA in blood",
+          "extreme methylmalonic acidemia"
+        ]
       },
       {
-        "symptomName": "Elevated erythrocyte sedimentation rate",
-        "frequency": 0.9,
-        "bodySystem": "hematological"
-      },
-      {
-        "symptomName": "Increased circulating antibody level",
-        "frequency": 0.9,
-        "bodySystem": "immunological"
+        "symptomName": "Complete deficiency of methylmalonyl-CoA mutase enzyme activity",
+        "frequency": 0.85,
+        "bodySystem": "endocrine",
+        "notes": "Confirmed by enzyme assay",
+        "searchTerms": [
+          "complete lack of methylmalonyl-CoA mutase enzyme",
+          "no activity of MMA mutase enzyme",
+          "total deficiency of methylmalonyl-CoA mutase"
+        ]
       }
     ],
     "common": [
       {
-        "symptomName": "Jaundice",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Failure to thrive",
+        "frequency": 0.85,
+        "bodySystem": "constitutional",
+        "notes": "Poor weight gain and growth delay",
+        "searchTerms": [
+          "poor weight gain",
+          "not growing well",
+          "failure to gain weight"
+        ]
       },
       {
-        "symptomName": "Decreased liver function",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Vomiting",
+        "frequency": 0.8,
+        "bodySystem": "gastrointestinal",
+        "notes": "Often during metabolic crises"
       },
       {
-        "symptomName": "Anemia",
-        "frequency": 0.55,
-        "bodySystem": "hematological"
+        "symptomName": "Lethargy",
+        "frequency": 0.75,
+        "bodySystem": "neurological",
+        "notes": "Reduced responsiveness during crises"
       },
       {
-        "symptomName": "Fever",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Hypotonia",
+        "frequency": 0.7,
+        "bodySystem": "musculoskeletal",
+        "notes": "Generalized decreased muscle tone"
       },
       {
-        "symptomName": "Abdominal pain",
-        "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Low back pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Pedal edema",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Fatigue",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Asthenia",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Epigastric pain",
-        "frequency": 0.55,
-        "bodySystem": "constitutional"
+        "symptomName": "Hyperammonemia",
+        "frequency": 0.65,
+        "bodySystem": "hematological",
+        "notes": "Elevated blood ammonia levels during crises"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Renal cyst",
-        "frequency": 0.17,
-        "bodySystem": "renal"
+        "symptomName": "Developmental delay",
+        "frequency": 0.45,
+        "bodySystem": "neurological",
+        "notes": "Cognitive and motor delays may develop"
       },
       {
-        "symptomName": "Abnormal sternum morphology",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Seizures",
+        "frequency": 0.3,
+        "bodySystem": "neurological",
+        "notes": "Occur secondary to metabolic disturbances"
       },
       {
-        "symptomName": "Weight loss",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.25,
+        "bodySystem": "gastrointestinal",
+        "notes": "Enlarged liver on examination"
       },
       {
-        "symptomName": "Dyspnea",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
+        "symptomName": "Hypoglycemia",
+        "frequency": 0.2,
+        "bodySystem": "endocrine",
+        "notes": "Low blood glucose during metabolic crises"
       },
       {
-        "symptomName": "Hemoptysis",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Headache",
-        "frequency": 0.17,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ectopic calcification",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormality of adrenal morphology",
-        "frequency": 0.17,
-        "bodySystem": "endocrine"
-      },
-      {
-        "symptomName": "Cough",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal spleen morphology",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cholangitis",
-        "frequency": 0.17,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Cutaneous abscess",
-        "frequency": 0.17,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Pulmonary cyst",
-        "frequency": 0.17,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Chest pain",
-        "frequency": 0.17,
-        "bodySystem": "constitutional"
+        "symptomName": "Chronic kidney disease",
+        "frequency": 0.15,
+        "bodySystem": "renal",
+        "notes": "Progressive renal impairment in some patients",
+        "searchTerms": [
+          "long-term kidney failure",
+          "chronic kidney disease",
+          "progressive loss of kidney function"
+        ]
       }
     ],
     "rare": [
       {
-        "symptomName": "Abnormality of the diaphragm",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
+        "symptomName": "Optic atrophy",
+        "frequency": 0.08,
+        "bodySystem": "ophthalmological",
+        "notes": "Visual impairment due to nerve damage"
       },
       {
-        "symptomName": "Seizure",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Cardiomyopathy",
+        "frequency": 0.05,
+        "bodySystem": "cardiovascular",
+        "notes": "Rare cardiac muscle involvement"
       },
       {
-        "symptomName": "Ataxia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
+        "symptomName": "Pancreatitis",
+        "frequency": 0.04,
+        "bodySystem": "gastrointestinal",
+        "notes": "Inflammation of the pancreas reported rarely"
       },
       {
-        "symptomName": "Dysarthria",
+        "symptomName": "Sensorineural hearing loss",
         "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hemiparesis",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Portal hypertension",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Abnormal pericardium morphology",
-        "frequency": 0.03,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Pancreatic cysts",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vomiting",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vertigo",
-        "frequency": 0.03,
-        "bodySystem": "otolaryngological"
-      },
-      {
-        "symptomName": "Aphasia",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Increased intracranial pressure",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Biliary cirrhosis",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Budd-Chiari syndrome",
-        "frequency": 0.03,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Abnormal vertebral morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Intracranial cystic lesion",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Abnormal skeletal muscle morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Bone cyst",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of bladder morphology",
-        "frequency": 0.03,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Abnormal pelvis bone morphology",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Abnormality of mesentery morphology",
-        "frequency": 0.03,
-        "bodySystem": "constitutional"
-      },
-      {
-        "symptomName": "Liver abscess",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal"
+        "bodySystem": "otolaryngological",
+        "notes": "Hearing impairment in some cases",
+        "searchTerms": [
+          "hearing loss from nerve damage",
+          "sensorineural deafness",
+          "inner ear hearing impairment"
+        ]
       }
     ]
   },
   "systemsAffected": [
-    "gastrointestinal",
-    "hematological",
-    "immunological",
-    "constitutional",
-    "renal",
-    "respiratory",
     "neurological",
-    "endocrine",
-    "dermatological",
+    "gastrointestinal",
+    "renal",
+    "hematological",
+    "musculoskeletal",
+    "constitutional",
+    "ophthalmological",
     "cardiovascular",
-    "otolaryngological",
-    "musculoskeletal"
+    "endocrine",
+    "otolaryngological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -376,7 +255,7 @@
     "Pediatric neurologist",
     "Nephrologist"
   ],
-  "lastUpdated": "2026-06-17",
+  "lastUpdated": "2026-02-17",
   "references": [
     "Haas D, et al. Methylmalonic acidemia: Clinical presentation and management. Orphanet J Rare Dis. 2020.",
     "Fenton WA, Gravel RA, Rosenblatt DS. Disorders of Propionate and Methylmalonate Metabolism. In: Scriver CR, et al., editors. The Metabolic and Molecular Bases of Inherited Disease. 8th ed. 2001.",

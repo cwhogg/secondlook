@@ -206,7 +206,7 @@ async function fetchCohort(): Promise<FetchedTestCase[]> {
     if (SAMPLING && tc.evalSamplingMode !== SAMPLING) return false;
     const mode = (tc.evalRunMode || 'secondlook') as 'secondlook' | 'openai' | 'claude';
     if (!MODES.includes(mode)) return false;
-    if (tc.status !== 'graded') return false;
+    if (tc.status !== 'graded' && tc.status !== 'completed') return false;
     if (!tc.pipelineResult?.differentialDiagnoses?.length) return false;
     if (!tc.groundTruth?.icd10 || !tc.groundTruth.icd10.startsWith('OMIM:')) return false;
     return true;

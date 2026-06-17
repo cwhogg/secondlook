@@ -37,6 +37,7 @@ function parseArgs() {
     count: 20, offset: 0, resume: false, rerun: false, stats: false, shuffle: false, seed: null,
     evalVersion: 'v3', evalRunMode: 'secondlook', evalSamplingMode: null,
     parallelism: 1, fetchTimeoutMs: 900_000, // 15 min default
+    std50: false, std25: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -51,8 +52,31 @@ function parseArgs() {
     else if (args[i] === '--eval-sampling' && args[i + 1]) opts.evalSamplingMode = args[++i];
     else if (args[i] === '--parallelism' && args[i + 1]) opts.parallelism = parseInt(args[++i], 10);
     else if (args[i] === '--fetch-timeout' && args[i + 1]) opts.fetchTimeoutMs = parseInt(args[++i], 10) * 1000;
+    else if (args[i] === '--std-50' || args[i] === '--std50') opts.std50 = true;
+    else if (args[i] === '--std-25' || args[i] === '--std25') opts.std25 = true;
+    else if (args[i] === '--run-trio' || args[i] === '--trio') opts.runTrio = true;
   }
   return opts;
+}
+
+/**
+ * Extracts the curated STANDARD_25 + STANDARD_50 PPKT ID lists from
+ * lib/eval/standard-sets.ts. Parsed via regex so the .mjs script doesn't
+ * need a TS toolchain to read TS-source-of-truth constants.
+ */
+function loadStandardSetIds() {
+  const setsPath = new URL('../lib/eval/standard-sets.ts', import.meta.url).pathname;
+  const ts = readFileSync(setsPath, 'utf-8');
+  const extract = (name) => {
+    const re = new RegExp(`export const ${name}: readonly string\\[\\] = \\[([\\s\\S]*?)\\];`);
+    const m = ts.match(re);
+    if (!m) return [];
+    return Array.from(m[1].matchAll(/'(PMID_[^']+)'/g)).map((x) => x[1]);
+  };
+  const std25 = extract('STANDARD_25_PPKT_IDS');
+  const std50Extras = extract('STANDARD_50_PPKT_IDS');
+  const std50 = Array.from(new Set([...std25, ...std50Extras]));
+  return { std25, std50 };
 }
 
 // ===== HELPERS =====
@@ -666,6 +690,89 @@ async function upsertTestCase(tc) {
   }
 }
 
+/**
+ * Calls /api/admin/eval-baseline for an OAI or Claude single-shot baseline.
+ * Returns the synthetic "pipelineResult" matching how /eval's trio runner
+ * builds them — so the v4 grader can read them like any other test case.
+ */
+async function runBaseline(ppkt_id, caseDescription, model, fetchTimeoutMs = 600_000) {
+  const headers = { 'Content-Type': 'application/json' };
+  if (process.env.COHORT_BYPASS_SECRET) headers['x-cohort-bypass'] = process.env.COHORT_BYPASS_SECRET;
+
+  const ac = new AbortController();
+  const timer = setTimeout(() => ac.abort(new Error(`baseline timeout after ${Math.round(fetchTimeoutMs / 1000)}s`)), fetchTimeoutMs);
+  let res;
+  try {
+    res = await fetch(`${BASE_URL}/api/admin/eval-baseline`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ ppkt_id, caseDescription, model }),
+      signal: ac.signal,
+    });
+  } finally {
+    clearTimeout(timer);
+  }
+  if (!res.ok) {
+    const txt = await res.text().catch(() => '');
+    throw new Error(`${model} baseline ${res.status}: ${txt.slice(0, 200)}`);
+  }
+  const data = await res.json();
+  const diagnoses = Array.isArray(data.diagnoses) ? data.diagnoses : [];
+  const generationMeta = data.generationMetadata || { model, tokensUsed: 0, durationMs: 0 };
+  const sourceAgent = `${model}-baseline`;
+
+  // Mirror synthesizeBaselineResult in app/eval/page.tsx (lines 156-216) so the
+  // shape stored in Redis matches what /eval would produce.
+  const hypotheses = diagnoses.slice(0, 5).map((d, i) => ({
+    diagnosis: d.diagnosis,
+    confidenceScore: Math.max(20, 95 - i * 15),
+    evidenceScore: Math.max(20, 95 - i * 15),
+    rareDisease: false,
+    supportingEvidence: [],
+    contradictoryEvidence: [],
+    clinicalReasoning: d.reasoning || '',
+    typicalPresentation: '',
+    specialistRequired: '',
+    diagnosticCriteria: {
+      criteriaName: 'Clinical assessment',
+      totalCriteria: 0,
+      metCriteria: 0,
+      criteriaDetails: [],
+      fulfillmentPercentage: 0,
+    },
+    sourceAgent,
+    evaluationType: 'reasoning-evaluated',
+    knowledgeBaseMatch: false,
+  }));
+  return {
+    differentialDiagnoses: hypotheses,
+    differentialClusters: [],
+    excludedCommonDiagnoses: [],
+    dataGaps: [],
+    recommendedTesting: [],
+    nextSteps: { immediateActions: [], specialistReferrals: [], followUpTiming: '', redFlags: [] },
+    overallAssessment: '',
+    pipelineMetadata: {
+      pipelineVersion: `baseline-${sourceAgent}`,
+      stages: [{
+        stageName: 'baseline-call',
+        durationMs: generationMeta.durationMs,
+        tokensUsed: generationMeta.tokensUsed,
+        model: generationMeta.model,
+        agentName: sourceAgent,
+        inputSummary: 'Verbatim clinical vignette',
+        outputSummary: `${hypotheses.length} ranked differential diagnoses`,
+      }],
+      totalDurationMs: generationMeta.durationMs,
+      totalTokensUsed: generationMeta.tokensUsed,
+      totalCostEstimate: 0,
+      knowledgeBaseVersion: 'n/a',
+      diseasesConsidered: 0,
+      retrievalScores: [],
+    },
+  };
+}
+
 /** Extract HPO symptom terms from case_description for keyFindings */
 function extractKeyFindings(caseDescription) {
   // The vignette lists symptoms after "presented with" and excluded after "excluded:"
@@ -805,6 +912,41 @@ async function runSingleCase(entry, allTestCases, opts = { evalVersion: 'v3', ev
       console.log(`         Upsert failed (continuing): ${e.message.slice(0, 100)}`);
     }
 
+    // ==== Trio mode (v25+): also run OAI + Claude single-shot baselines on
+    // the same case and upsert them as separate test cases with matching
+    // ppkt + different evalRunMode. Lets the v4 grader compute all three
+    // pipelines side-by-side. Baselines are launched in parallel and use a
+    // shorter fetch timeout (5 min vs 15) since they're single-shot calls.
+    if (opts.runTrio) {
+      const triadTs = Date.now();
+      const baselineTimeoutMs = Math.min(opts.fetchTimeoutMs, 600_000);
+      const baselineTcShape = (mode, pipelineResult) => ({
+        id: `eval_${ppkt_id}_${mode}_${triadTs}`,
+        createdAt: new Date().toISOString(),
+        difficulty: 3,
+        categoryHint: ppkt_id,
+        testVersion: 'Eval',
+        evalVersion: opts.evalVersion,
+        evalRunMode: mode,
+        ...(opts.evalSamplingMode && { evalSamplingMode: opts.evalSamplingMode }),
+        status: 'completed',
+        source: 'generated',
+        groundTruth: testCase.groundTruth,
+        generatedPatient: testCase.generatedPatient,
+        generationMetadata: { model: pipelineResult.pipelineMetadata.stages[0].model, tokensUsed: pipelineResult.pipelineMetadata.totalTokensUsed, durationMs: pipelineResult.pipelineMetadata.totalDurationMs, source: 'generated' },
+        extractedSymptoms: patientCase.symptoms,
+        pipelineResult,
+      });
+      await Promise.all([
+        runBaseline(ppkt_id, case_description, 'openai', baselineTimeoutMs)
+          .then(async (result) => { await upsertTestCase(baselineTcShape('openai', result)); console.log(`         OAI baseline: top-1 = ${result.differentialDiagnoses[0]?.diagnosis?.slice(0, 50) || 'none'}`); })
+          .catch((e) => { console.log(`         OAI baseline FAILED: ${e.message.slice(0, 100)}`); }),
+        runBaseline(ppkt_id, case_description, 'claude', baselineTimeoutMs)
+          .then(async (result) => { await upsertTestCase(baselineTcShape('claude', result)); console.log(`         Claude baseline: top-1 = ${result.differentialDiagnoses[0]?.diagnosis?.slice(0, 50) || 'none'}`); })
+          .catch((e) => { console.log(`         Claude baseline FAILED: ${e.message.slice(0, 100)}`); }),
+      ]);
+    }
+
     const totalSec = ((Date.now() - startTime) / 1000).toFixed(1);
     const rankStr = reconciledRank !== null ? `#${reconciledRank}` : 'MISS';
     const emoji = reconciledRank === 1 ? '✓' : reconciledRank !== null ? '~' : '✗';
@@ -842,7 +984,7 @@ async function runSingleCase(entry, allTestCases, opts = { evalVersion: 'v3', ev
   } catch (err) {
     const totalSec = ((Date.now() - startTime) / 1000).toFixed(1);
     console.log(`  ✗ ERROR  GT: ${groundTruthDiag[0]?.label}`);
-    console.log(`           ${err.message.slice(0, 100)}`);
+    console.log(`           ${err.message.slice(0, 500)}`);
 
     return {
       ppkt_id,
@@ -887,7 +1029,32 @@ async function main() {
   let dataset = loadDataset();
   console.log(`  Total cases in dataset: ${dataset.length}`);
 
-  // Shuffle if requested
+  // --std-50 / --std-25 — filter the dataset to the curated regression set.
+  // Preserves the order in lib/eval/standard-sets.ts so results are
+  // reproducible. Sets opts.count to the set size automatically.
+  if (opts.std50 || opts.std25) {
+    const sets = loadStandardSetIds();
+    const targetIds = opts.std25 ? sets.std25 : sets.std50;
+    const setName = opts.std25 ? 'STANDARD_25' : 'STANDARD_50';
+    const byId = new Map(dataset.map((r) => [r.ppkt_id, r]));
+    const ordered = [];
+    const missing = [];
+    for (const id of targetIds) {
+      const row = byId.get(id);
+      if (row) ordered.push(row);
+      else missing.push(id);
+    }
+    dataset = ordered;
+    if (missing.length) {
+      console.error(`  ${setName}: ${missing.length} requested IDs not found in dataset:`);
+      for (const id of missing) console.error(`    - ${id}`);
+    }
+    console.log(`  ${setName} set: ${dataset.length}/${targetIds.length} cases resolved`);
+    opts.count = dataset.length;
+    opts.shuffle = false; // don't shuffle — order is intentional
+  }
+
+  // Shuffle if requested (skipped if a std-N set was selected)
   if (opts.shuffle) {
     const seed = opts.seed ?? Date.now();
     dataset = seededShuffle(dataset, seed);

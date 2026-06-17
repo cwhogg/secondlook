@@ -456,6 +456,7 @@ ${h.contradictoryEvidence.map((e) => `     - [${e.strength}] ${e.finding} ← "$
 
     return `PATIENT: Age ${patientCase.demographics.age}, ${patientCase.demographics.sex}
 ${patientCase.chiefComplaint?.description ? `Chief complaint: "${patientCase.chiefComplaint.description}"` : ''}Symptoms: ${patientCase.symptoms.map((s) => s.selectedConcept?.name || s.medicalTerm || s.originalPhrase).join(', ')}
+${patientCase.excludedFindings && patientCase.excludedFindings.length > 0 ? `Findings EXPLICITLY EXCLUDED (denied / absent / ruled out — these are negative evidence, NOT missing data): ${patientCase.excludedFindings.join(', ')}` : ''}
 ${patientCase.medicalHistory?.familyHistory?.length ? `Family history: ${patientCase.medicalHistory.familyHistory.join(', ')}` : ''}
 ${patientCase.medicalHistory?.pastMedicalHistory?.length ? `Past medical history: ${patientCase.medicalHistory.pastMedicalHistory.join(', ')}` : ''}
 

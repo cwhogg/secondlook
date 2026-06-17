@@ -72,8 +72,11 @@ function buildPatientRecap(patientCase: PatientCase): string {
     .filter(Boolean)
     .join(', ');
   const chief = patientCase.chiefComplaint?.description || '';
+  const excluded = patientCase.excludedFindings && patientCase.excludedFindings.length > 0
+    ? `\nFindings EXPLICITLY EXCLUDED (denied / absent / ruled out — negative evidence): ${patientCase.excludedFindings.join(', ')}.`
+    : '';
   return `PATIENT: ${patientCase.demographics.age}yo ${patientCase.demographics.sex}.${chief ? ` Chief complaint: ${chief}.` : ''}
-Symptoms: ${symptoms}.`;
+Symptoms: ${symptoms}.${excluded}`;
 }
 
 function buildRankingBlock(ranking: DiagnosisHypothesis[]): string {

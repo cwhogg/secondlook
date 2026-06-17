@@ -796,7 +796,7 @@
     <h1>SecondLook</h1>
     <p>How the rare-disease diagnostic pipeline and its evaluation harness fit together — from a patient typing symptoms into a form to a ranked differential, refinement, and benchmark accuracy measurement.</p>
     <div class="meta">
-      <span>Pipeline v17 architecture</span>
+      <span>Pipeline v26 (architecture rev v17/v25)</span>
       <span>v18 refinement flow</span>
       <span>9,275 KB disease profiles</span>
       <span>Next.js 14 · TypeScript</span>
@@ -945,20 +945,20 @@
           <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>promote / demote</li><li>add / merge / flag-gap</li><li>w/ cited evidence</li></ul></div>
         </div>
 
-        <!-- 8 Claude finalizer (was 9) -->
-        <div class="tile anthropic">
-          <div class="tile-head"><span class="t-num">8</span><span class="t-name">Claude finaliser</span></div>
-          <div class="t-model">claude-opus-4-7</div>
-          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Ranking + critique</li></ul></div>
-          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>Final top 10</li><li>changesFromFirstPass</li></ul></div>
+        <!-- 8 Family enrichment (v25: moved BEFORE finaliser) -->
+        <div class="tile determ">
+          <div class="tile-head"><span class="t-num">8</span><span class="t-name">Family enrichment</span></div>
+          <div class="t-model">deterministic + KB</div>
+          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Synth top-5 + KB family graph</li></ul></div>
+          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>Family cards</li><li>Differentiating test</li><li>Per-subtype findings</li></ul></div>
         </div>
 
-        <!-- 9 Family enrichment (+ KB) -->
-        <div class="tile determ">
-          <div class="tile-head"><span class="t-num">9</span><span class="t-name">Family enrichment</span></div>
-          <div class="t-model">deterministic + KB</div>
-          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Top-5 + KB family graph</li></ul></div>
-          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>Family cards</li><li>Differentiating test</li><li>Per-subtype findings</li></ul></div>
+        <!-- 9 Claude finalizer (v25: now reads family data for umbrella-vs-subtype decisions) -->
+        <div class="tile anthropic">
+          <div class="tile-head"><span class="t-num">9</span><span class="t-name">Claude finaliser</span></div>
+          <div class="t-model">claude-opus-4-7</div>
+          <div class="t-block"><div class="t-lbl in">In</div><ul class="t-list"><li>Synth ranking + critique</li><li>Family enrichments (v25)</li></ul></div>
+          <div class="t-block"><div class="t-lbl out">Out</div><ul class="t-list"><li>Final top 10</li><li>Umbrella vs subtype calls</li><li>changesFromFirstPass</li></ul></div>
         </div>
 
         <!-- 10 Clarifier -->
@@ -1173,32 +1173,17 @@
     </div>
     <div class="detail-arrow">▼</div>
 
-    <!-- 8 Claude finaliser (was 9) -->
+    <!-- 8 Family enrichment (v25: moved BEFORE finaliser) -->
     <div class="detail-step">
       <div class="detail-step-head">
         <span class="detail-num">8</span>
-        <span class="detail-name">Claude finaliser — pick patient-facing top 10</span>
-        <span class="detail-tags"><span class="tag tag-anthropic">claude-opus-4-7</span></span>
-      </div>
-      <div class="detail-body">
-        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Claude's full ranking</li><li>o3 critique suggestions</li></ul></div>
-        <div class="detail-cell detail-action"><div class="detail-action-text">Review every critique suggestion and decide whether to honour it. Select the final top-10 from the draft ranking. The cap is firm; entries not in the final 10 are dropped from the patient view.</div></div>
-        <div class="detail-cell detail-out"><div class="detail-lbl">Output</div><ul><li>Final top-10 hypotheses</li><li><code>changesFromFirstPass</code> per hypothesis</li></ul></div>
-      </div>
-    </div>
-    <div class="detail-arrow">▼</div>
-
-    <!-- 9 Family enrichment (moved before clarifier per orchestrator order) -->
-    <div class="detail-step">
-      <div class="detail-step-head">
-        <span class="detail-num">9</span>
-        <span class="detail-name">Family enrichment — umbrella-vs-subtype callout</span>
+        <span class="detail-name">Family enrichment — umbrella-vs-subtype callout <span style="font-weight:400;color:var(--text-faint);font-size:11px">· v25</span></span>
         <span class="detail-tags"><span class="tag tag-determ">deterministic</span></span>
       </div>
       <div class="detail-body">
-        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Final top-5</li><li>Patient symptom terms</li><li>(KB family graph — see next card)</li></ul></div>
-        <div class="detail-cell detail-action"><div class="detail-action-text">For top-5 hypotheses with 3+ KB sibling subtypes (e.g. Loeys-Dietz 1–5, CMT 1-X), surface the family's differentiating test (modality + per-subtype unique findings). Up to 2 enrichments per analysis.</div></div>
-        <div class="detail-cell detail-out"><div class="detail-lbl">Output</div><ul><li>Family enrichment cards</li><li>Each: family name, sibling count, differentiating test, per-subtype unique findings</li></ul></div>
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Synthesiser's top-5 (draft ranking)</li><li>Patient symptom terms</li><li>(KB family graph — see next card)</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">For top-5 hypotheses with 3+ KB sibling subtypes (e.g. Loeys-Dietz 1–5, CMT 1-X), surface the family's differentiating test. Output feeds BOTH the finaliser (so it can decide umbrella vs subtype) AND the report generator (existing differentiating-test recommendations). Up to 2 enrichments per analysis.</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output</div><ul><li>Family enrichment cards</li><li>Each: family name, sibling count, differentiating test, per-subtype unique findings</li><li>Passed to finaliser as <code>familyEnrichments</code></li><li>Also attached to <code>synthesisData.familyEnrichments</code> for report-gen</li></ul></div>
       </div>
     </div>
 
@@ -1217,6 +1202,21 @@
         <li><strong>Convergence ratio</strong> — how confidently a single modality resolves the family</li>
         <li><strong>Shared findings</strong> across the family</li>
       </ul>
+    </div>
+    <div class="detail-arrow">▼</div>
+
+    <!-- 9 Claude finaliser (v25: now reads family data) -->
+    <div class="detail-step">
+      <div class="detail-step-head">
+        <span class="detail-num">9</span>
+        <span class="detail-name">Claude finaliser — pick patient-facing top 10</span>
+        <span class="detail-tags"><span class="tag tag-anthropic">claude-opus-4-7</span></span>
+      </div>
+      <div class="detail-body">
+        <div class="detail-cell detail-in"><div class="detail-lbl">Input</div><ul><li>Claude's full ranking</li><li>o3 critique suggestions</li><li>Family enrichments (v25 — new)</li></ul></div>
+        <div class="detail-cell detail-action"><div class="detail-action-text">Review every critique suggestion and decide whether to honour it. <strong>v25:</strong> when family enrichments are present, the finaliser also makes umbrella-vs-subtype decisions: prefer the umbrella name when subtype-distinguishing evidence is absent; consider consolidating same-family subtypes spread across the top-10; preserve subtype specificity when evidence supports it. Select the final top-10 from the draft ranking. The cap is firm; entries not in the final 10 are dropped from the patient view.</div></div>
+        <div class="detail-cell detail-out"><div class="detail-lbl">Output</div><ul><li>Final top-10 hypotheses</li><li><code>changesFromFirstPass</code> per hypothesis</li><li>Possible umbrella-name rewrites (changeReason: <code>finalizer-override</code>)</li></ul></div>
+      </div>
     </div>
     <div class="detail-arrow">▼</div>
 
@@ -1529,6 +1529,21 @@
     <div class="stage-head">
       <div style="display:flex;gap:10px;align-items:flex-start;flex:1;">
         <div class="stage-num">7</div>
+        <div class="stage-title">Family enrichment <span class="sub">— umbrella vs subtype callout · v25</span></div>
+      </div>
+      <div class="stage-tags">
+        <span class="tag tag-determ">Deterministic</span>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p>For top-5 hypotheses (from the synthesiser's draft ranking) with 3+ KB sibling subtypes (e.g. CMT 1-X, Loeys-Dietz 1-5), surface the family's differentiating test (modality + per-subtype unique findings). <strong>As of v25 this runs BEFORE the finaliser</strong> so the finaliser can make better umbrella-vs-subtype decisions with the same data. The enrichments are also attached to <code>synthesisData.familyEnrichments</code> so the report generator still picks them up unchanged. Up to two family enrichments per analysis.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head">
+      <div style="display:flex;gap:10px;align-items:flex-start;flex:1;">
+        <div class="stage-num">8</div>
         <div class="stage-title">Claude finaliser <span class="sub">— select the patient-facing top 10</span></div>
       </div>
       <div class="stage-tags">
@@ -1537,24 +1552,10 @@
     </div>
     <div class="stage-body">
       <p>Claude reviews each o3 suggestion and decides whether to honour it. The output is the final top-10 the patient sees. Decisions are logged per hypothesis (<code>changesFromFirstPass</code>) so the report can show what o3's critique actually changed vs Claude's first synth pass. The 10-cap is firm; entries not in the final 10 are dropped.</p>
+      <p><strong>v25 family-aware reasoning:</strong> when the family enrichment block is present in the prompt, the finaliser also makes umbrella-vs-subtype decisions — prefer the umbrella name when the case lacks subtype-distinguishing evidence; consider consolidating same-family subtypes spread across the top-10; preserve subtype specificity when evidence supports it. Changes of this kind are logged with <code>changeReason: 'finalizer-override'</code>.</p>
       <div class="stage-meta">
         <span><span class="label">Files:</span> <code>lib/agents/claude-finalizer.ts</code></span>
       </div>
-    </div>
-  </div>
-
-  <div class="stage">
-    <div class="stage-head">
-      <div style="display:flex;gap:10px;align-items:flex-start;flex:1;">
-        <div class="stage-num">8</div>
-        <div class="stage-title">Family enrichment <span class="sub">— umbrella vs subtype callout</span></div>
-      </div>
-      <div class="stage-tags">
-        <span class="tag tag-determ">Deterministic</span>
-      </div>
-    </div>
-    <div class="stage-body">
-      <p>For top-5 hypotheses with 3+ KB sibling subtypes (e.g. CMT 1-X, Loeys-Dietz 1-5), surface the family's differentiating test (modality + per-subtype unique findings). The report shows: "this belongs to a family of N subtypes; modality X can determine which." Up to two family enrichments per analysis.</p>
     </div>
   </div>
 

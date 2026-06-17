@@ -206,7 +206,7 @@ function computeSymptomScoreFromUpstash(
       // 0.55-0.60 matches contributes to depth without dominating top-1
       // ranking. v23.1's 0.60 floor was a useful overcorrection that's no
       // longer needed once top-K is also widened to 350.
-      if (match.score < 0.55) continue;
+      if (match.score < 0.45) continue;
       const matchType = classifyMatch(match.score);
       if (!matchType) continue; // safety: should never trigger after explicit gate above
       const multiplier = matchType === 'exact' ? 1.0 : matchType === 'partial' ? 0.7 : 0.4;

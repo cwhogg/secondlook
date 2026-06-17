@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Autonomous Loss-Loop Report — 2026-06-17</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; max-width: 980px; margin: 32px auto; padding: 0 24px; color: #1a1a1a; line-height: 1.55; }
+h1, h2, h3 { color: #0b0b0b; }
+h1 { font-size: 2em; margin-bottom: 0.1em; }
+.subtitle { color: #555; font-size: 1em; margin-top: 0; }
+h2 { border-bottom: 2px solid #e0e0e0; padding-bottom: 4px; margin-top: 36px; }
+h3 { color: #333; margin-top: 28px; }
+.callout { background: #fff7e6; border-left: 4px solid #ffae00; padding: 12px 16px; margin: 16px 0; }
+.callout.bad { background: #ffe7e7; border-left-color: #d12626; }
+.callout.good { background: #e6ffea; border-left-color: #18a050; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0 18px; font-size: 0.92em; }
+th, td { border: 1px solid #ddd; padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: #f4f4f4; }
+td.win { background: #e6ffea; }
+td.loss { background: #ffe7e7; }
+td.same { background: #f4f4f4; }
+.pill { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.78em; font-weight: 500; }
+.pill.kept { background: #e6ffea; color: #18a050; }
+.pill.reverted { background: #ffe7e7; color: #d12626; }
+.pill.noise { background: #fff7e6; color: #b07000; }
+code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; font-size: 0.92em; }
+.label { color: #777; font-size: 0.85em; }
+.section-key { color: #444; font-weight: 500; }
+.metric { font-size: 1.4em; font-weight: 600; color: #0b3d91; }
+.commit { font-family: monospace; font-size: 0.85em; color: #777; }
+</style>
+</head>
+<body>
+
+<h1>Autonomous Loss-Loop Report</h1>
+<p class="subtitle">2026-06-17 · 5 loops · n=6 fixed cases · v4 Mondo grading</p>
+
+<div class="callout bad">
+<strong>Headline finding:</strong> The Loop 5 "win" (+1 case Top-1) was demonstrated to be <strong>within stochastic noise</strong> upon rerunning. With n=6 cases and temperature&gt;0 LLM stages, the same pipeline code can produce 33% / 50% / 60% Top-1 across reruns on the same cases. <strong>No loop produced a measurable, replicable improvement.</strong>
+</div>
+
+<h2>Setup</h2>
+
+<table>
+<tr><th>Case set</th><td>6 fixed PMIDs (4 loss-set + 2 holdout). Selected to span feature-vs-syndrome (NF1) and phenotype-overlap (DEE4) failure classes from the prior loss-loop investigation.</td></tr>
+<tr><th>Baseline (v27.0)</th><td>Loss-set Top-1: 0/4 · Holdout Top-1: 2/2 · Net: 2/6 (33%)</td></tr>
+<tr><th>Revert rubric</th><td>Loss-set gain ≥1 + no holdout regression → keep. Otherwise revert from main; branch preserves work.</td></tr>
+<tr><th>Per-loop validation</th><td>1 cohort run (6 cases × trio). Wall ~20 min, cost ~$5.</td></tr>
+<tr><th>Watchdog</th><td>Monitor with 60s polling. Catches "no log after 3 min" and "log size frozen 8+ min." (Added after Loop 4 attempt 1 silently hung on a missing <code>jq</code> dependency.)</td></tr>
+</table>
+
+<h2>Loops 4–8: results table</h2>
+
+<table>
+<tr>
+<th>Loop</th>
+<th>Hypothesis</th>
+<th>Change</th>
+<th>Rubric</th>
+<th>SL Top-1 (1st run)</th>
+<th>Outcome</th>
+<th>Branch</th>
+</tr>
+<tr>
+<td><strong>L4</strong></td>
+<td>DEE4 phenotype overlap: force specialist to explicitly compare top hypothesis against 2-3 closest competitors</td>
+<td>v17 specialist prompt addition: "EXPLICIT DIFFERENTIAL" rule</td>
+<td>37.5</td>
+<td><strong>0.0%</strong> (0/5, 1 errored)</td>
+<td><span class="pill reverted">REVERTED</span><br>holdout regression on H1</td>
+<td><code>loop-4-differential-reasoning</code></td>
+</tr>
+<tr>
+<td><strong>L5</strong></td>
+<td>Specialist may not see right syndrome in top-10 KB matches; widen window</td>
+<td>Per-specialist KB candidate slice: 10 → 20</td>
+<td>20</td>
+<td><strong>50.0%</strong> (3/6) ⬆ +1 case</td>
+<td><span class="pill noise">KEPT initially, then DEMONSTRATED NOISE</span></td>
+<td><code>loop-5-candidate-limit-20</code></td>
+</tr>
+<tr>
+<td>L5a</td>
+<td>If 20 helped, try 30 (iterate within winning loop)</td>
+<td>KB candidate slice: 20 → 30</td>
+<td>iter</td>
+<td>33.3% (2/6) ⬇ lost L5 gain</td>
+<td><span class="pill reverted">REVERTED</span></td>
+<td>(on main, reverted)</td>
+</tr>
+<tr>
+<td><strong>L6</strong></td>
+<td>More hypotheses per specialist → richer downstream candidate pool</td>
+<td>Specialist hypothesis count: 3-7 → 5-10</td>
+<td>20</td>
+<td>33.3% (2/6)</td>
+<td><span class="pill reverted">REVERTED</span></td>
+<td><code>loop-6-hypothesis-count</code></td>
+</tr>
+<tr>
+<td><strong>L7</strong></td>
+<td>More domain perspectives → more chance someone names the right syndrome</td>
+<td>Specialist panel: 5 → 7</td>
+<td>20</td>
+<td>33.3% (2/6)</td>
+<td><span class="pill reverted">REVERTED</span></td>
+<td><code>loop-7-7-specialists</code></td>
+</tr>
+<tr>
+<td><strong>L8</strong></td>
+<td>Right syndrome may fall below 0.55 similarity cutoff; widen retrieval</td>
+<td>Upstash retrieval threshold: 0.55 → 0.45</td>
+<td>20</td>
+<td>33.3% (2/6)</td>
+<td><span class="pill reverted">REVERTED</span></td>
+<td><code>loop-8-retrieval-threshold</code></td>
+</tr>
+</table>
+
+<h2>Noise-floor measurement</h2>
+
+<p>After Loop 8, the pattern was suspicious: Loop 5 hit 50%; every subsequent variant (L5a, L6, L7, L8) returned to 33%. This could mean: (a) Loop 5 was a real signal that the other changes broke, or (b) Loop 5 was a random fluctuation around a 33% mean. Re-ran the Loop 5 code (no changes from when it scored 50%) twice to discriminate.</p>
+
+<table>
+<tr><th>Run</th><th>Variant</th><th>Top-1</th><th>L2 NF1 SL #1</th></tr>
+<tr><td>Loop 5 (original)</td><td>candidate=20</td><td>3/6 = 50%</td><td><code>Neurofibromatosis Type 1</code> ✓</td></tr>
+<tr><td>Loop 5 rerun 1</td><td>candidate=20 (same code)</td><td>2/6 = 33%</td><td><code>Neurofibroma</code> ✗</td></tr>
+<tr><td>Loop 5 rerun 2</td><td>candidate=20 (same code)</td><td>3/5 = 60% (1 errored)</td><td><code>Neurofibromatosis Type 1</code> ✓</td></tr>
+</table>
+
+<div class="callout bad">
+<strong>Same pipeline, same case, output flips between <code>Neurofibroma</code> and <code>Neurofibromatosis Type 1</code> across runs.</strong> Average across 3 runs: ~47% Top-1 with ~14pp standard deviation. The single 50% reading was a lucky roll, not a signal. Specialists (gpt-4.1), synth (o3-high), critique (o3), finalize (Claude opus-4-7) all have temperature&gt;0; the LLM-stack stochasticity at each stage means per-case naming is non-deterministic.
+</div>
+
+<h2>Statistical reality</h2>
+
+<table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Cases per cohort (n)</td><td>6</td></tr>
+<tr><td>95% CI on 2/6 Top-1</td><td>roughly 4–78%</td></tr>
+<tr><td>95% CI on 3/6 Top-1</td><td>roughly 12–88%</td></tr>
+<tr><td>Per-case stochastic flip rate (observed)</td><td>~50% on at least L2 NF1</td></tr>
+<tr><td>Minimum gain to clear noise at n=6</td><td>≥3 case shift (50pp on aggregate)</td></tr>
+<tr><td>Cohort size needed for ±5pp at 80% power</td><td>≥150 cases</td></tr>
+</table>
+
+<h3>What this means for the loop framework</h3>
+
+<p>The revert rubric ("loss-set gain ≥1 → keep") assumes a single 6-case cohort can detect a 1-case improvement. The noise-floor measurement shows that's incorrect: a single 6-case run has ~17pp standard deviation just from LLM temperature variance, and the per-case binary outcome flips ~50% of the time on at least one tested case. <strong>The rubric was effectively rolling dice.</strong></p>
+
+<h2>Hypotheses tested, mechanisms tried</h2>
+
+<table>
+<tr><th>Mechanism</th><th>Loops</th><th>Honest verdict</th></tr>
+<tr><td>Prompt-level rules (differential reasoning, feature-vs-syndrome — also L1 from prior session)</td><td>L1, L4</td><td>Indistinguishable from noise on this cohort</td></tr>
+<tr><td>Pool expansion (KB candidates, hypotheses, specialists)</td><td>L5, L5a, L6, L7</td><td>L5 looked good once, didn't replicate. Others looked neutral/bad.</td></tr>
+<tr><td>Retrieval threshold</td><td>L8</td><td>Indistinguishable from noise</td></tr>
+</table>
+
+<h2>What WAS demonstrated</h2>
+
+<ol>
+<li><strong>The watchdog infrastructure works.</strong> Loop 4 attempt 1 silently hung on a missing <code>jq</code> dependency; if I'd waited on the 30-min wakeup I'd have wasted another 25 min. The watchdog Monitor (60s polling on log size + completion regex) catches stuck cohorts within 3 min.</li>
+<li><strong>The revert rubric correctly fires reverts.</strong> 5 of 6 changes were reverted per the rule (gain=0 or holdout regression). The 6th — Loop 5 — was correctly identified as suspicious through the noise-floor follow-up.</li>
+<li><strong>Per-case qualitative observations are real even when aggregate is noisy.</strong> L1 NF1 case ALWAYS produced <code>Neurofibroma</code> #1 across 8+ runs (every variant). L2 NF1 flipped between <code>Neurofibroma</code> and <code>NF1</code>. That tells us L1 and L2 have different underlying difficulty — L2 is on the boundary of the LLM's syndrome-naming behavior.</li>
+<li><strong>Failure classes from prior work were validated as residual.</strong> NF1 feature-vs-syndrome and DEE4 phenotype overlap remain unsolved at the pipeline layer with prompt/parameter changes.</li>
+</ol>
+
+<h2>Recommendations</h2>
+
+<h3>1. Fix the measurement before running more loops</h3>
+<ul>
+<li>Either use n≥25 cases per cohort (smooths single-case noise) — adds ~$15/loop and ~50 min wall</li>
+<li>Or run 3 trials per variant on the n=6 set, compare distributions (Wilcoxon paired across the 6 PMIDs) — adds 3× compute</li>
+<li>Power calc says ~150 cases needed to detect a real 5pp gain at 80% power. The n=6 framework can only detect ≥30pp shifts cleanly.</li>
+</ul>
+
+<h3>2. Re-baseline before declaring any future result</h3>
+<p>Run a 3-trial v27.0 cohort to fix the noise floor. Compare any variant against this distribution, not against a single baseline reading.</p>
+
+<h3>3. Loop framework is well-suited for big mechanistic changes, not parameter tuning</h3>
+<p>The 1-line changes attempted here (slice limits, panel size, threshold) produce effect sizes likely &lt;5pp. n=6 can't see them. Reserve the loop for changes plausibly producing ≥15pp gains, OR move to n≥25.</p>
+
+<h3>4. Promising directions that ARE plausibly &gt;15pp and worth a proper-power loop</h3>
+<ul>
+<li><strong>Grader-side credited-set fixes</strong> — Mondo mosaic-variant relations, ADTKD umbrella ancestor logic. From prior loop work, this would lift L2 + L8 (separate ADTKD loop) immediately, with a hard signal that's independent of LLM stochasticity.</li>
+<li><strong>Deterministic post-finalize feature-vs-syndrome reranker</strong> — work preserved on branch <code>loss-loop/feature-vs-syndrome-stack</code>. Would override the LLM's lexical naming via Mondo IS_A classification of the top-1.</li>
+<li><strong>Multi-vote ensemble</strong> — run the pipeline 3× per case and use majority on top-1. Reduces noise from LLM stochasticity at the consumer level; arguably the most direct fix for the problem this report documents.</li>
+</ul>
+
+<h2>Final main state</h2>
+
+<table>
+<tr><th>Branch</th><td><code>main</code></td></tr>
+<tr><th>HEAD</th><td><code>4b01f32d</code> (Loop 8 revert)</td></tr>
+<tr><th>Pipeline version</th><td>27.0.0 (effectively — versioning was inconsistent across loops since cohort tags were authoritative)</td></tr>
+<tr><th>Effective changes from this session</th><td>None merged. PR #1 (excludedFindings in synth/finalize) merged earlier in the day, separately.</td></tr>
+<tr><th>Open branches preserving work</th><td>
+<code>loss-loop/loop-4-differential-reasoning</code><br>
+<code>loss-loop/loop-5-candidate-limit-20</code><br>
+<code>loss-loop/loop-6-hypothesis-count</code><br>
+<code>loss-loop/loop-7-7-specialists</code><br>
+<code>loss-loop/loop-8-retrieval-threshold</code>
+</td></tr>
+</table>
+
+<h2>Cost &amp; time</h2>
+
+<table>
+<tr><th>Item</th><th>Cost</th><th>Wall time</th></tr>
+<tr><td>5 loop cohorts (6 cases each, trio)</td><td>~$25</td><td>~100 min</td></tr>
+<tr><td>1 within-loop iteration (L5a)</td><td>~$5</td><td>~20 min</td></tr>
+<tr><td>2 noise-floor reruns</td><td>~$10</td><td>~40 min</td></tr>
+<tr><td>v4 grading (7 cohorts × Claude haiku Stage B)</td><td>~$2</td><td>~14 min</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>~$42</strong></td><td><strong>~3 hours autonomous</strong></td></tr>
+</table>
+
+<hr>
+<p class="label">Report generated 2026-06-17. Authoritative state doc: <code>docs/autonomous-loops-2026-06-17/state.md</code>. Cases: <code>docs/autonomous-loops-2026-06-17/cases.txt</code>.</p>
+</body>
+</html>

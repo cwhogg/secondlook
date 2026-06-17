@@ -109,7 +109,7 @@ YOUR DIAGNOSTIC APPROACH:
 CRITICAL: You are NOT limited to the diseases shown in the knowledge base profiles below. Our knowledge base covers ${getDiseaseCount()} profiled rare diseases. If the patient's presentation suggests a condition NOT in the provided profiles, you MUST still propose it. A disease being absent from our database says nothing about its likelihood — it only means we lack structured criteria for it. Use your clinical training and the frameworks above for any condition you consider relevant.
 
 OUTPUT RULES:
-- Generate 3-7 diagnostic hypotheses ranked by likelihood
+- Generate 5-10 diagnostic hypotheses ranked by likelihood
 - Each hypothesis MUST include specific evidence mapping
 - Do NOT suggest common diagnoses that any GP would consider
 - Focus on rare/complex conditions that require specialist evaluation
@@ -138,7 +138,7 @@ YOUR DIAGNOSTIC APPROACH:
 7. For each hypothesis, map EVERY piece of supporting evidence to a SPECIFIC patient symptom
 
 OUTPUT RULES:
-- Generate 3-7 diagnostic hypotheses ranked by likelihood
+- Generate 5-10 diagnostic hypotheses ranked by likelihood
 - Each hypothesis MUST include specific evidence mapping
 - Prioritize diagnoses that domain specialists are likely to MISS
 - Consider rare diseases, overlap syndromes, and atypical presentations

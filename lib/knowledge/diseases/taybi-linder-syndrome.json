@@ -11,14 +11,15 @@
   "omimId": "210710",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 1,
-      "peak": 0
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,128 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Severe congenital microcephaly",
-        "frequency": 0.95,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "very small head size at birth",
-          "severe congenital microcephaly"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Severe skeletal dysplasia with metaphyseal abnormalities",
+        "symptomName": "Eosinophilia",
         "frequency": 0.9,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "severe bone growth abnormalities",
-          "abnormal bone shape near joints",
-          "skeletal deformities in long bones"
-        ]
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Profound neurological impairment including developmental delay",
+        "symptomName": "Elevated erythrocyte sedimentation rate",
         "frequency": 0.9,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "severe brain dysfunction",
-          "delayed development",
-          "profound neurological problems"
-        ]
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Seizures",
-        "frequency": 0.7,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Hypoplastic corpus callosum",
-        "frequency": 0.65,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "underdeveloped corpus callosum",
-          "thin or small brain connection structure",
-          "hypoplastic brain bridge"
-        ]
-      },
-      {
-        "symptomName": "Cerebellar hypoplasia",
-        "frequency": 0.6,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Short stature",
-        "frequency": 0.6,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Feeding difficulties",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
         "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Respiratory distress",
-        "frequency": 0.4,
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
         "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Ocular abnormalities including nystagmus",
-        "frequency": 0.3,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "eye movement abnormalities",
-          "involuntary eye shaking",
-          "nystagmus and other eye issues"
-        ]
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hepatomegaly",
-        "frequency": 0.2,
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Abnormal ciliary ultrastructure",
-        "frequency": 0.15,
-        "bodySystem": "immunological",
-        "notes": "Detected by electron microscopy of ciliary biopsy",
-        "searchTerms": [
-          "defective tiny hair-like structures",
-          "abnormal cilia ultrastructure",
-          "structural defects in cell cilia"
-        ]
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Cardiac malformations",
-        "frequency": 0.08,
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Renal anomalies",
-        "frequency": 0.05,
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
         "bodySystem": "renal"
       },
       {
-        "symptomName": "Hearing impairment",
-        "frequency": 0.04,
-        "bodySystem": "otolaryngological"
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "neurological",
-    "musculoskeletal",
     "gastrointestinal",
-    "respiratory",
-    "ophthalmological",
-    "cardiovascular",
-    "renal",
+    "hematological",
     "immunological",
-    "otolaryngological"
+    "constitutional",
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -233,7 +382,7 @@
     "Pediatrician",
     "Orthopedic Surgeon"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Taybi H, Linder H. Microcephalic osteodysplastic primordial dwarfism type I. Am J Dis Child. 1967.",
     "Edery P, et al. Association of mutations in the U4atac snRNA gene with MOPD I. Nat Genet. 2011.",

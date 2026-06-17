@@ -11,14 +11,15 @@
   "omimId": "119600",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
+      "min": 18,
       "max": 120,
-      "peak": 0
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -69,171 +70,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Clavicular hypoplasia or aplasia",
-        "frequency": 0.95,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "small or missing collarbones",
-          "underdeveloped clavicles",
-          "absent shoulder bones"
-        ]
-      },
-      {
-        "symptomName": "Delayed closure of cranial sutures and fontanelles",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "late skull soft spot closing",
-          "persistent open skull sutures",
-          "delayed cranial bone fusion"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Multiple supernumerary teeth with delayed eruption",
-        "frequency": 0.85,
-        "bodySystem": "musculoskeletal",
-        "notes": "Includes dental malocclusion and retained primary teeth",
-        "searchTerms": [
-          "extra teeth",
-          "too many teeth",
-          "late tooth eruption"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Brachycephaly with frontal bossing",
-        "frequency": 0.75,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "short head front to back",
-          "prominent forehead",
-          "round skull shape"
-        ]
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Short stature",
-        "frequency": 0.7,
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hypoplastic or absent paranasal sinuses",
-        "frequency": 0.65,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "small or missing sinus cavities",
-          "underdeveloped nasal sinuses",
-          "absent air spaces in face"
-        ]
-      },
-      {
-        "symptomName": "Scoliosis or spinal abnormalities",
-        "frequency": 0.6,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "curved spine",
-          "spinal deformity",
-          "back bone abnormality"
-        ]
-      },
-      {
-        "symptomName": "Delayed ossification of pubic bones",
+        "symptomName": "Abdominal pain",
         "frequency": 0.55,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "late pelvic bone hardening",
-          "delayed bone formation in pelvis",
-          "slow pubic bone development"
-        ]
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hearing loss due to recurrent otitis media",
-        "frequency": 0.4,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "hearing loss from ear infections",
-          "repeated middle ear infections",
-          "hearing problems due to otitis media"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Pes planus (flat feet)",
-        "frequency": 0.3,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "flat feet",
-          "fallen arches",
-          "low foot arches"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Recurrent respiratory infections",
-        "frequency": 0.25,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "frequent lung infections",
-          "repeated chest infections",
-          "chronic respiratory infections"
-        ]
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Delayed motor milestones",
-        "frequency": 0.15,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "late crawling or walking",
-          "delayed movement skills",
-          "slow motor development"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Hypermobility of joints",
-        "frequency": 0.1,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "loose joints",
-          "joint flexibility",
-          "hypermobile joints"
-        ]
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Cleft palate",
-        "frequency": 0.08,
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
         "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Hernias (inguinal or umbilical)",
-        "frequency": 0.05,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "groin or belly button hernias",
-          "inguinal or umbilical hernias",
-          "protrusions in groin or navel area"
-        ]
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Dental cyst formation",
+        "symptomName": "Increased intracranial pressure",
         "frequency": 0.03,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "tooth cysts",
-          "fluid-filled dental sacs",
-          "dental cyst formation"
-        ]
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "musculoskeletal",
-    "respiratory",
-    "otolaryngological",
-    "neurological",
+    "gastrointestinal",
+    "hematological",
+    "immunological",
     "constitutional",
-    "gastrointestinal"
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -292,7 +398,7 @@
     "Dentist/Oral and Maxillofacial Surgeon",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Mundlos S. Cleidocranial dysplasia: clinical and molecular genetics. J Med Genet. 1999;36(3):177-182.",
     "Lee B, Thirunavukkarasu K. RUNX2 mutations in cleidocranial dysplasia. Hum Mutat. 2004;23(6):571-577.",

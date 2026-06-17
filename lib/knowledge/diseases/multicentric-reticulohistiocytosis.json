@@ -15,9 +15,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 70,
-      "peak": 40
+      "min": 0,
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": []
@@ -62,159 +62,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Papulonodular cutaneous lesions with ground-glass cytoplasm",
-        "frequency": 0.85,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "skin bumps with ground-glass appearance under microscope",
-          "papulonodular lesions with translucent cytoplasm",
-          "raised skin lesions with glassy cell features"
-        ]
-      },
-      {
-        "symptomName": "Severe erosive symmetric polyarthritis predominantly affecting distal interphalangeal joints",
+        "symptomName": "Atypical behavior",
         "frequency": 0.9,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "severe joint erosion mainly in finger end joints",
-          "aggressive arthritis of distal finger joints",
-          "symmetrical erosive arthritis in fingertips"
-        ]
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Histopathological presence of multinucleated giant cells and histiocytes with eosinophilic ground-glass cytoplasm",
-        "frequency": 0.8,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "biopsy showing giant cells and histiocytes with glassy cytoplasm",
-          "multinucleated giant cells with eosinophilic ground-glass appearance",
-          "specific cell types with glassy cytoplasm in tissue"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Arthralgia and joint stiffness",
-        "frequency": 0.75,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "joint pain and stiffness",
-          "arthralgia with limited movement",
-          "painful and stiff joints"
-        ]
+        "symptomName": "Psychotic episodes",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Fatigue and malaise",
-        "frequency": 0.7,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "extreme tiredness",
-          "general feeling of unwellness",
-          "lack of energy and malaise"
-        ]
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Weight loss",
-        "frequency": 0.6,
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Nail changes including dystrophy or ridging",
+        "symptomName": "Spastic paraparesis",
         "frequency": 0.55,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "nail ridging and dystrophy",
-          "abnormal nail growth and texture",
-          "damaged or ridged nails"
-        ]
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Subcutaneous nodules over extensor surfaces",
-        "frequency": 0.5,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "lumps under skin over elbows or knees",
-          "subcutaneous nodules on joint extensor surfaces",
-          "skin nodules on outer joint areas"
-        ]
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Fever",
-        "frequency": 0.4,
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Lymphadenopathy",
-        "frequency": 0.3,
-        "bodySystem": "immunological"
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Pulmonary involvement including interstitial lung disease",
-        "frequency": 0.2,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "lung involvement including interstitial lung disease",
-          "lung fibrosis or scarring",
-          "chronic lung inflammation and damage"
-        ]
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Ocular inflammation such as uveitis",
-        "frequency": 0.15,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "eye inflammation like uveitis",
-          "red, painful eyes",
-          "ocular swelling and irritation"
-        ]
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Muscle weakness",
-        "frequency": 0.1,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Cardiac involvement including pericarditis",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "heart inflammation",
-          "pericardium swelling",
-          "heart lining infection",
-          "chest pain from heart sac"
-        ]
-      },
-      {
-        "symptomName": "Renal involvement",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "renal"
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Neurological symptoms such as peripheral neuropathy",
-        "frequency": 0.02,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "nerve damage symptoms",
-          "tingling and numbness in limbs",
-          "peripheral nerve problems"
-        ]
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "dermatological",
-    "musculoskeletal",
+    "psychiatric",
+    "neurological",
     "constitutional",
-    "immunological",
-    "respiratory",
-    "ophthalmological",
+    "musculoskeletal",
+    "gastrointestinal",
     "cardiovascular",
-    "renal",
-    "neurological"
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -227,7 +340,8 @@
       "MRI may show synovial hypertrophy and erosions"
     ],
     "genetic": [
-      "No specific genetic markers identified"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Skin or synovial biopsy demonstrating multinucleated giant cells with eosinophilic ground-glass cytoplasm",
@@ -270,7 +384,7 @@
     "Dermatologist",
     "Pathologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Miller RL, et al. Multicentric Reticulohistiocytosis: A Review of Clinical Features and Treatment. J Rheumatol. 2020;47(3):345-352.",
     "Smith KJ, et al. Histopathologic and Immunohistochemical Features of Multicentric Reticulohistiocytosis. Am J Dermatopathol. 2019;41(2):123-130.",

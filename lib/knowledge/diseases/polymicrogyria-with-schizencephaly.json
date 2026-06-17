@@ -11,15 +11,15 @@
   "omimId": "607634",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 100,000",
-    "range": "0.001%-0.002%",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 12,
-      "peak": 1
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -58,142 +58,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Polymicrogyria-associated cortical malformation",
-        "frequency": 0.95,
-        "bodySystem": "neurological",
-        "notes": "Identified by neuroimaging",
-        "searchTerms": [
-          "abnormal brain surface with many small folds",
-          "excessive tiny brain gyri",
-          "cortical brain malformation with many folds"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Schizencephalic clefts lined by abnormal cortex",
+        "symptomName": "Eosinophilia",
         "frequency": 0.9,
-        "bodySystem": "neurological",
-        "notes": "Characteristic MRI finding",
-        "searchTerms": [
-          "brain clefts lined with abnormal tissue",
-          "split brain areas with unusual cortex",
-          "schizencephaly brain clefts"
-        ]
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Epileptic seizures",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "notes": "Often refractory to treatment"
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Global developmental delay",
-        "frequency": 0.8,
-        "bodySystem": "neurological",
-        "notes": "Cognitive and motor delays",
-        "searchTerms": [
-          "delayed overall development",
-          "slow developmental milestones",
-          "global delay in growth and skills"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Spastic hemiparesis",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal",
-        "notes": "Unilateral motor impairment"
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Hypotonia in infancy",
-        "frequency": 0.65,
-        "bodySystem": "musculoskeletal",
-        "notes": "Reduced muscle tone early in life",
-        "searchTerms": [
-          "low muscle tone in babies",
-          "floppy muscles in infancy",
-          "reduced muscle strength in infants"
-        ]
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Cognitive impairment ranging from mild to severe",
-        "frequency": 0.4,
-        "bodySystem": "neurological",
-        "notes": "Variable intellectual disability",
-        "searchTerms": [
-          "learning difficulties",
-          "memory and thinking problems",
-          "varying degrees of intellectual disability"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Speech delay or impairment",
-        "frequency": 0.35,
-        "bodySystem": "neurological",
-        "notes": "Expressive and receptive language affected",
-        "searchTerms": [
-          "delayed talking skills",
-          "speech development problems",
-          "difficulty speaking"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Visual field defects",
-        "frequency": 0.3,
-        "bodySystem": "ophthalmological",
-        "notes": "Due to cortical involvement",
-        "searchTerms": [
-          "loss of part of vision",
-          "blind spots",
-          "partial visual field loss"
-        ]
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Behavioral abnormalities",
-        "frequency": 0.25,
-        "bodySystem": "psychiatric",
-        "notes": "Including autism spectrum features",
-        "searchTerms": [
-          "behavior changes",
-          "abnormal actions",
-          "unusual behavior patterns"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.08,
-        "bodySystem": "neurological",
-        "notes": "Secondary to CSF flow obstruction"
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Microcephaly",
-        "frequency": 0.07,
-        "bodySystem": "neurological",
-        "notes": "Reduced head circumference"
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Severe spastic quadriparesis",
-        "frequency": 0.05,
-        "bodySystem": "musculoskeletal",
-        "notes": "Extensive motor impairment",
-        "searchTerms": [
-          "severe stiffness and weakness in all four limbs",
-          "spastic paralysis affecting arms and legs",
-          "tight muscles causing quadriparesis"
-        ]
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
     "neurological",
-    "musculoskeletal",
-    "ophthalmological",
-    "psychiatric",
-    "constitutional"
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -242,7 +376,7 @@
     "Geneticist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Leventer RJ, Guerrini R, Dobyns WB. Malformations of cortical development and epilepsy. Dialogues Clin Neurosci. 2008;10(1):47-62.",
     "Guerrini R, Dobyns WB. Malformations of cortical development: clinical features and genetic causes. Lancet Neurol. 2014;13(7):710-726.",

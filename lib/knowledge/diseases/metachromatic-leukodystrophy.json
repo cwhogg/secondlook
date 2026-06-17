@@ -11,14 +11,15 @@
   "omimId": "250100",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 40,000 to 1 in 160,000",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 50,
-      "peak": 2
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,136 +58,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Progressive central and peripheral demyelination",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "neurological",
-        "notes": "Underlying pathological hallmark",
-        "searchTerms": [
-          "progressive nerve covering loss",
-          "worsening central and peripheral demyelination",
-          "gradual nerve sheath damage"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Areflexia with peripheral neuropathy",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "loss of reflexes with nerve damage",
-          "absent reflexes and peripheral neuropathy",
-          "no tendon reflexes due to nerve problems"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Metachromatic granules in nerve biopsy or urine sediment",
-        "frequency": 0.75,
-        "bodySystem": "neurological",
-        "notes": "Diagnostic pathological finding",
-        "searchTerms": [
-          "colored granules in nerve or urine samples",
-          "metachromatic deposits in biopsy or urine",
-          "abnormal granules seen in nerve tissue"
-        ]
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Cognitive decline and dementia",
-        "frequency": 0.8,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "memory loss",
-          "cognitive decline",
-          "dementia symptoms"
-        ]
-      },
-      {
-        "symptomName": "Ataxia and gait disturbance",
-        "frequency": 0.75,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "unsteady walking and coordination problems",
-          "balance issues with gait difficulty",
-          "problems with walking and coordination"
-        ]
-      },
-      {
-        "symptomName": "Seizures",
-        "frequency": 0.6,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Muscle weakness",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Visual impairment due to optic atrophy",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "vision loss from optic nerve damage",
-          "poor eyesight due to nerve atrophy",
-          "decreased vision from optic nerve problems"
-        ]
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Dysarthria",
-        "frequency": 0.4,
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Dysphagia",
-        "frequency": 0.3,
-        "bodySystem": "neurological"
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Peripheral neuropathic pain",
-        "frequency": 0.25,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "nerve pain in limbs",
-          "burning or shooting limb pain",
-          "tingling nerve pain in arms or legs"
-        ]
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Spasticity",
-        "frequency": 0.35,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Behavioral changes",
-        "frequency": 0.15,
-        "bodySystem": "psychiatric"
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.05,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Peripheral edema",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Autonomic dysfunction",
-        "frequency": 0.07,
+        "symptomName": "Seizure",
+        "frequency": 0.03,
         "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
     "neurological",
-    "musculoskeletal",
-    "ophthalmological",
-    "psychiatric",
-    "constitutional"
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -232,7 +373,7 @@
     "Geneticist",
     "Metabolic specialist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Wenger DA, et al. Metachromatic leukodystrophy: diagnosis and pathogenesis. Neurology. 2000.",
     "Biffi A, et al. Gene therapy for metachromatic leukodystrophy. Nat Med. 2013.",

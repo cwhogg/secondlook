@@ -11,14 +11,15 @@
   "omimId": "256800",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 2,
-      "peak": 0
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -67,148 +68,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Congenital insensitivity to pain",
-        "frequency": 0.95,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "cannot feel pain",
-          "no pain sensation from birth",
-          "pain insensitivity"
-        ]
-      },
-      {
-        "symptomName": "Anhidrosis (absence of sweating)",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "no sweating",
-          "absence of sweat production",
-          "lack of sweating response"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Self-mutilating behavior due to pain insensitivity",
-        "frequency": 0.75,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "self-harm without pain",
-          "biting or injuring self without feeling pain",
-          "pain insensitivity leading to self-injury"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Recurrent hyperpyrexia due to impaired thermoregulation",
-        "frequency": 0.85,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "frequent high fevers",
-          "inability to regulate body temperature",
-          "repeated episodes of very high fever"
-        ]
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Peripheral neuropathy with loss of small fiber function",
-        "frequency": 0.8,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "nerve damage affecting small fibers",
-          "loss of pain and temperature sensation",
-          "peripheral nerve problems with small fiber loss"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Delayed wound healing and frequent infections",
-        "frequency": 0.7,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "slow healing wounds",
-          "frequent infections with poor recovery",
-          "delayed skin healing and infections"
-        ]
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Corneal scarring due to absent corneal reflex",
-        "frequency": 0.65,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "cloudy or scarred cornea",
-          "eye surface damage from lack of blink reflex",
-          "corneal injury due to absent eye protection"
-        ]
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hypotonia in infancy",
-        "frequency": 0.6,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "low muscle tone in babies",
-          "floppy muscles in infancy",
-          "reduced muscle strength in infants"
-        ]
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Intellectual disability",
-        "frequency": 0.4,
-        "bodySystem": "psychiatric"
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Orthostatic hypotension",
-        "frequency": 0.3,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Gastrointestinal dysmotility",
-        "frequency": 0.25,
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Chronic osteomyelitis",
-        "frequency": 0.15,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Dry skin and recurrent skin infections",
-        "frequency": 0.2,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "dry flaky skin",
-          "repeated skin infections",
-          "itchy dry skin prone to infection"
-        ]
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Seizures",
-        "frequency": 0.05,
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Hearing loss",
-        "frequency": 0.04,
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
         "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Cardiac arrhythmias",
+        "symptomName": "Aphasia",
         "frequency": 0.03,
-        "bodySystem": "cardiovascular"
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "neurological",
-    "dermatological",
-    "musculoskeletal",
-    "ophthalmological",
-    "cardiovascular",
     "gastrointestinal",
-    "psychiatric",
+    "hematological",
+    "immunological",
     "constitutional",
-    "otolaryngological"
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -256,7 +385,7 @@
     "Pediatrician",
     "Dermatologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Indo Y. Hereditary sensory and autonomic neuropathy type IV. In: GeneReviews® [Internet]. University of Washington, Seattle; 2020.",
     "Dyck PJ, et al. Hereditary sensory and autonomic neuropathies: types I-IV. Neurology. 1993;43(3 Pt 1):465-72.",

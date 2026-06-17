@@ -17,8 +17,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 80,
-      "peak": 36
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": [
@@ -60,124 +60,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Exertional dyspnea",
-        "frequency": 0.85,
-        "bodySystem": "respiratory"
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Fatigue related to decreased cardiac output",
-        "frequency": 0.75,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "tiredness from poor heart function",
-          "fatigue due to low cardiac output",
-          "weakness related to heart problems"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Syncope on exertion",
-        "frequency": 0.7,
-        "bodySystem": "neurological",
-        "notes": "Due to transient cerebral hypoperfusion",
-        "searchTerms": [
-          "fainting during exercise",
-          "passing out on exertion",
-          "exercise-induced syncope"
-        ]
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Chest pain or angina-like discomfort",
-        "frequency": 0.65,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "chest pain",
-          "angina-like chest discomfort",
-          "heart-related chest ache"
-        ]
-      },
-      {
-        "symptomName": "Palpitations",
-        "frequency": 0.6,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Peripheral edema",
+        "symptomName": "Psychotic episodes",
         "frequency": 0.55,
-        "bodySystem": "cardiovascular"
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Cough",
-        "frequency": 0.5,
-        "bodySystem": "respiratory"
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hemoptysis",
-        "frequency": 0.3,
-        "bodySystem": "respiratory"
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Abdominal distension due to hepatomegaly or ascites",
-        "frequency": 0.25,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "swollen belly from liver enlargement",
-          "abdominal swelling from fluid buildup",
-          "belly bloating due to liver or fluid"
-        ]
-      },
-      {
-        "symptomName": "Lightheadedness",
-        "frequency": 0.4,
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Raynaud phenomenon",
-        "frequency": 0.15,
-        "bodySystem": "immunological",
-        "notes": "Especially in connective tissue disease-associated PAH"
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Hoarseness due to recurrent laryngeal nerve compression",
-        "frequency": 0.05,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "hoarse voice from nerve compression",
-          "voice changes due to nerve pressure",
-          "laryngeal nerve causing hoarseness"
-        ]
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Cyanosis",
-        "frequency": 0.07,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Clubbing of fingers",
-        "frequency": 0.02,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "enlarged fingertips",
-          "clubbing of fingers",
-          "rounded finger tips"
-        ]
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
+    "psychiatric",
+    "neurological",
+    "constitutional",
+    "musculoskeletal",
+    "gastrointestinal",
     "cardiovascular",
     "respiratory",
-    "neurological",
-    "gastrointestinal",
-    "constitutional",
-    "immunological",
-    "otolaryngological",
-    "musculoskeletal"
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -190,7 +338,8 @@
       "Perfusion defects excluded by ventilation/perfusion scan"
     ],
     "genetic": [
-      "BMPR2 gene mutations in familial and idiopathic PAH"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Right heart catheterization confirming elevated pulmonary arterial pressures",
@@ -225,7 +374,7 @@
     "Cardiologist",
     "Rheumatologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Galiè N, Humbert M, Vachiery JL, et al. 2015 ESC/ERS Guidelines for the diagnosis and treatment of pulmonary hypertension. Eur Heart J. 2016 Jan 1;37(1):67-119.",
     "Simonneau G, Montani D, Celermajer DS, et al. Haemodynamic definitions and updated clinical classification of pulmonary hypertension. Eur Respir J. 2019 Jan;53(1):1801913.",

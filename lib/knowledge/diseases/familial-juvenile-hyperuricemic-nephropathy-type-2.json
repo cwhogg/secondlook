@@ -11,14 +11,15 @@
   "omimId": "162000",
   "orphanetId": "ORPHA:284",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 5,
-      "max": 40,
-      "peak": 20
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,138 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Persistent hyperuricemia",
-        "frequency": 0.95,
-        "bodySystem": "renal",
-        "notes": "Elevated serum uric acid levels from early life"
-      },
-      {
-        "symptomName": "Progressive tubulointerstitial nephritis",
-        "frequency": 0.85,
-        "bodySystem": "renal",
-        "notes": "Leads to chronic kidney disease and eventual renal failure",
-        "searchTerms": [
-          "gradual kidney inflammation",
-          "progressive tubulointerstitial kidney disease"
-        ]
-      },
-      {
-        "symptomName": "Autosomal dominant inheritance pattern",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "constitutional",
-        "notes": "Family history of similar kidney disease and hyperuricemia",
-        "searchTerms": [
-          "condition passed from parent",
-          "dominant inherited trait",
-          "family history with dominant pattern"
-        ]
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Gouty arthritis attacks",
-        "frequency": 0.75,
-        "bodySystem": "musculoskeletal",
-        "notes": "Typically affecting peripheral joints such as the big toe",
-        "searchTerms": [
-          "gout flare-ups",
-          "attacks of gouty arthritis"
-        ]
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Hypertension",
-        "frequency": 0.65,
-        "bodySystem": "cardiovascular",
-        "notes": "Secondary to progressive renal impairment"
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Mild proteinuria",
-        "frequency": 0.6,
-        "bodySystem": "renal",
-        "notes": "Usually non-nephrotic range"
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
         "symptomName": "Fatigue",
         "frequency": 0.55,
-        "bodySystem": "constitutional",
-        "notes": "Related to chronic kidney disease"
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Polyuria and nocturia",
-        "frequency": 0.4,
-        "bodySystem": "renal",
-        "notes": "Due to impaired tubular function",
-        "searchTerms": [
-          "excessive urination day and night",
-          "frequent urination including nighttime"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Mild anemia",
-        "frequency": 0.3,
-        "bodySystem": "hematological",
-        "notes": "Secondary to chronic kidney disease"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Renal colic",
-        "frequency": 0.25,
-        "bodySystem": "renal",
-        "notes": "Due to uric acid nephrolithiasis"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Decreased glomerular filtration rate",
-        "frequency": 0.35,
-        "bodySystem": "renal",
-        "notes": "Progressive decline over years",
-        "searchTerms": [
-          "poor kidney filtering",
-          "reduced kidney function",
-          "low kidney filtration rate"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "End-stage renal disease before age 50",
-        "frequency": 0.08,
-        "bodySystem": "renal",
-        "notes": "In severe cases",
-        "searchTerms": [
-          "kidney failure before age 50",
-          "early end-stage kidney disease",
-          "young adult kidney failure"
-        ]
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hyperuricemic nephropathy with gouty tophi",
-        "frequency": 0.05,
-        "bodySystem": "musculoskeletal",
-        "notes": "Rare in juvenile onset",
-        "searchTerms": [
-          "kidney damage from high uric acid with tophi",
-          "hyperuricemia causing nephropathy and gout lumps"
-        ]
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Secondary hypertension complications (e.g. left ventricular hypertrophy)",
-        "frequency": 0.07,
-        "bodySystem": "cardiovascular",
-        "notes": "Due to chronic hypertension",
-        "searchTerms": [
-          "high blood pressure complications like heart thickening",
-          "secondary hypertension causing heart changes"
-        ]
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "renal",
-    "musculoskeletal",
-    "cardiovascular",
+    "gastrointestinal",
     "hematological",
-    "constitutional"
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -250,7 +389,7 @@
     "Geneticist",
     "Rheumatologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Dahan K et al. Familial juvenile hyperuricemic nephropathy: clinical and genetic features. Kidney Int. 2009.",
     "Bleyer AJ et al. UMOD mutations and familial juvenile hyperuricemic nephropathy. Nephrol Dial Transplant. 2010.",

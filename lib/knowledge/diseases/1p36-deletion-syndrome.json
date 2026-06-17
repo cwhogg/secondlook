@@ -11,15 +11,15 @@
   "omimId": "607872",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 5,000 to 1 in 10,000",
-    "range": "0.01%-0.02%",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
+      "min": 18,
       "max": 120,
-      "peak": 0
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -64,146 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Terminal deletion of chromosome 1p36",
-        "frequency": 1,
-        "bodySystem": "constitutional",
-        "notes": "Defining genetic abnormality",
-        "searchTerms": [
-          "loss of end part of chromosome 1p36",
-          "chromosome deletion syndrome",
-          "missing genetic material on 1p36"
-        ]
-      },
-      {
-        "symptomName": "Characteristic craniofacial dysmorphism",
-        "frequency": 0.85,
-        "bodySystem": "constitutional",
-        "notes": "Includes straight eyebrows, deep-set eyes, flat nasal bridge, pointed chin",
-        "searchTerms": [
-          "distinctive facial features",
-          "unusual head and face shape",
-          "typical facial appearance changes"
-        ]
-      },
-      {
-        "symptomName": "Intellectual disability",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "neurological",
-        "notes": "Ranges from moderate to severe"
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Seizures or epilepsy",
-        "frequency": 0.7,
-        "bodySystem": "neurological",
-        "notes": "Often infantile onset",
-        "searchTerms": [
-          "seizure episodes",
-          "epileptic fits",
-          "uncontrolled electrical brain activity"
-        ]
-      },
-      {
-        "symptomName": "Hypotonia",
-        "frequency": 0.65,
-        "bodySystem": "musculoskeletal",
-        "notes": "Neonatal or infantile"
-      },
-      {
-        "symptomName": "Congenital heart defects",
-        "frequency": 0.6,
-        "bodySystem": "cardiovascular",
-        "notes": "Including cardiomyopathy and septal defects",
-        "searchTerms": [
-          "heart defects present at birth",
-          "congenital heart problems",
-          "heart abnormalities from birth"
-        ]
-      },
-      {
-        "symptomName": "Feeding difficulties",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "gastrointestinal",
-        "notes": "Poor sucking and swallowing in infancy"
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Growth retardation",
-        "frequency": 0.5,
-        "bodySystem": "constitutional",
-        "notes": "Postnatal growth delay"
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hearing impairment",
-        "frequency": 0.4,
-        "bodySystem": "otolaryngological",
-        "notes": "Sensorineural or conductive"
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Behavioral problems",
-        "frequency": 0.3,
-        "bodySystem": "psychiatric",
-        "notes": "Includes hyperactivity and autistic features"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Scoliosis",
-        "frequency": 0.25,
-        "bodySystem": "musculoskeletal",
-        "notes": "Spinal curvature deformity"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Ophthalmological abnormalities",
-        "frequency": 0.2,
-        "bodySystem": "ophthalmological",
-        "notes": "Strabismus, refractive errors",
-        "searchTerms": [
-          "eye abnormalities",
-          "vision problems",
-          "ocular defects"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Hypothyroidism",
-        "frequency": 0.15,
-        "bodySystem": "endocrine",
-        "notes": "Occasional thyroid dysfunction"
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Renal anomalies",
-        "frequency": 0.08,
-        "bodySystem": "renal",
-        "notes": "Structural kidney abnormalities"
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Recurrent infections",
-        "frequency": 0.05,
-        "bodySystem": "immunological",
-        "notes": "Possible immune dysfunction"
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Hepatomegaly",
-        "frequency": 0.04,
-        "bodySystem": "gastrointestinal",
-        "notes": "Enlarged liver in some cases"
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "neurological",
-    "musculoskeletal",
-    "cardiovascular",
     "gastrointestinal",
+    "hematological",
+    "immunological",
     "constitutional",
-    "psychiatric",
-    "otolaryngological",
-    "ophthalmological",
-    "endocrine",
     "renal",
-    "immunological"
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -251,7 +381,7 @@
     "Cardiologist",
     "Developmental pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Zhang et al. 1p36 Deletion Syndrome: Clinical and Molecular Characterization. Am J Med Genet A. 2019.",
     "Shaffer et al. Chromosome 1p36 Deletion Syndrome. GeneReviews. 2021.",

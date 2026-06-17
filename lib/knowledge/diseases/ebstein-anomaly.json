@@ -11,14 +11,15 @@
   "omimId": "224900",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 200,000 live births",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
+      "min": 18,
       "max": 120,
-      "peak": 0
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,121 +58,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Apical displacement of tricuspid valve leaflets",
-        "frequency": 0.95,
-        "bodySystem": "cardiovascular",
-        "notes": "Defining anatomical abnormality",
-        "searchTerms": [
-          "tricuspid valve leaflets displaced toward apex",
-          "apical displacement of valve leaflets",
-          "abnormal tricuspid valve position"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Atrialization of right ventricle",
+        "symptomName": "Eosinophilia",
         "frequency": 0.9,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "right heart chamber enlargement",
-          "right ventricle acting like atrium",
-          "right ventricle with atrial features"
-        ]
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Tricuspid regurgitation",
-        "frequency": 0.85,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Right atrial enlargement",
-        "frequency": 0.8,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "enlarged right atrium",
-          "right upper heart chamber enlargement"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Cyanosis",
-        "frequency": 0.7,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Heart failure symptoms (e.g., fatigue, dyspnea)",
-        "frequency": 0.65,
-        "bodySystem": "cardiovascular",
-        "notes": "Due to impaired right ventricular function",
-        "searchTerms": [
-          "tiredness and breathlessness",
-          "difficulty breathing with fatigue",
-          "symptoms of heart weakness"
-        ]
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Arrhythmias (e.g., Wolff-Parkinson-White syndrome)",
-        "frequency": 0.4,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "irregular heartbeats",
-          "fast or abnormal heart rhythm",
-          "episodes of rapid heart rate"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Exercise intolerance",
-        "frequency": 0.35,
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Palpitations",
-        "frequency": 0.3,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Syncope",
-        "frequency": 0.2,
-        "bodySystem": "neurological",
-        "notes": "Secondary to arrhythmias or low cardiac output"
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Stroke or embolic events",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "Due to paradoxical embolism via atrial septal defect",
-        "searchTerms": [
-          "stroke or blood clot events",
-          "embolic episodes",
-          "brain blood flow blockage"
-        ]
-      },
-      {
-        "symptomName": "Sudden cardiac death",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "sudden heart-related death",
-          "unexpected cardiac arrest"
-        ]
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hepatomegaly",
-        "frequency": 0.02,
-        "bodySystem": "gastrointestinal",
-        "notes": "Due to right heart failure"
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "cardiovascular",
-    "neurological",
+    "gastrointestinal",
+    "hematological",
+    "immunological",
     "constitutional",
-    "gastrointestinal"
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -217,7 +373,7 @@
     "Adult congenital heart disease specialist",
     "Cardiothoracic surgeon"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Anderson RH, et al. Pediatric Cardiology. 4th ed. 2010.",
     "Moss AJ, et al. The Clinical Recognition of Congenital Heart Disease. 2015.",

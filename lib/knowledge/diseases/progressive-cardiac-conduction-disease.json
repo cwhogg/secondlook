@@ -17,9 +17,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 70,
-      "peak": 40
+      "min": 0,
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": []
@@ -58,131 +58,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Progressive atrioventricular conduction block",
-        "frequency": 0.85,
-        "bodySystem": "cardiovascular",
-        "notes": "Key hallmark of disease progression",
-        "searchTerms": [
-          "slow worsening heart electrical block",
-          "progressive heartbeat conduction delay",
-          "increasing atrioventricular block"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Bundle branch block",
-        "frequency": 0.75,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "heart electrical conduction delay",
-          "bundle branch electrical block",
-          "abnormal heart rhythm pattern"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Syncope due to transient heart block",
-        "frequency": 0.65,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "fainting from heart block",
-          "passing out due to slow heartbeat",
-          "temporary heart conduction pause causing blackout"
-        ]
-      },
-      {
-        "symptomName": "Palpitations from arrhythmias",
-        "frequency": 0.6,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "irregular or fast heartbeat",
-          "heart racing or fluttering",
-          "feeling heart palpitations"
-        ]
-      },
-      {
-        "symptomName": "Fatigue related to decreased cardiac output",
+        "symptomName": "Psychotic episodes",
         "frequency": 0.55,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "tiredness from poor heart function",
-          "fatigue due to low cardiac output",
-          "weakness related to heart problems"
-        ]
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Dizziness or lightheadedness",
-        "frequency": 0.58,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "feeling dizzy",
-          "lightheadedness",
-          "balance problems"
-        ]
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Heart failure symptoms",
-        "frequency": 0.3,
-        "bodySystem": "cardiovascular",
-        "notes": "May develop in advanced disease",
-        "searchTerms": [
-          "symptoms of heart pumping failure",
-          "fluid buildup from heart failure",
-          "shortness of breath and swelling"
-        ]
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Exercise intolerance",
-        "frequency": 0.25,
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Nocturnal dyspnea",
-        "frequency": 0.15,
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
         "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Chest discomfort",
-        "frequency": 0.2,
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
         "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Sudden cardiac arrest",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "notes": "Rare but life-threatening complication",
-        "searchTerms": [
-          "sudden heart stoppage",
-          "unexpected cardiac arrest",
-          "heart suddenly stops beating"
-        ]
-      },
-      {
-        "symptomName": "Neurological symptoms due to cerebral hypoperfusion",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "brain symptoms from low blood flow",
-          "neurological signs due to poor brain circulation",
-          "dizziness and confusion from reduced brain blood supply"
-        ]
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Peripheral edema",
-        "frequency": 0.07,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "cardiovascular",
+    "psychiatric",
+    "neurological",
     "constitutional",
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
     "respiratory",
-    "neurological"
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -193,7 +334,8 @@
       "Echocardiogram may show normal or mildly reduced ventricular function"
     ],
     "genetic": [
-      "Pathogenic variants in SCN5A, LMNA, or other conduction system-related genes"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Electrophysiological studies demonstrating conduction system disease"
@@ -235,7 +377,7 @@
     "Electrophysiologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Groenewegen A, et al. Progressive cardiac conduction disease: clinical and genetic aspects. Heart. 2020;106(12):915-922.",
     "Ackerman MJ, et al. Genetic testing for cardiac arrhythmias. Circulation. 2011;123(9):1021-1037.",

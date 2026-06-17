@@ -17,9 +17,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 50,
-      "peak": 35
+      "min": 0,
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -64,99 +64,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Progressive gait ataxia",
-        "frequency": 0.95,
-        "bodySystem": "neurological",
-        "notes": "Typically the initial presenting symptom",
-        "searchTerms": [
-          "worsening unsteady walking",
-          "progressive balance problems",
-          "increasing difficulty walking steadily"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Cerebellar dysarthria",
-        "frequency": 0.85,
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Limb ataxia",
-        "frequency": 0.75,
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
         "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Nystagmus",
-        "frequency": 0.65,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Psychotic episodes",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Dysmetria",
-        "frequency": 0.6,
+        "symptomName": "Seizure",
+        "frequency": 0.55,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Intention tremor",
-        "frequency": 0.58,
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Impaired proprioception",
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
         "frequency": 0.55,
         "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Mild cognitive impairment",
-        "frequency": 0.3,
-        "bodySystem": "psychiatric",
-        "searchTerms": [
-          "mild memory problems",
-          "slight thinking difficulties",
-          "minor cognitive decline"
-        ]
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.25,
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Bladder dysfunction",
-        "frequency": 0.2,
-        "bodySystem": "reproductive"
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Depression",
-        "frequency": 0.15,
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
         "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Dystonia",
-        "frequency": 0.08,
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.03,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Oculomotor apraxia",
-        "frequency": 0.05,
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Seizures",
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
         "frequency": 0.03,
         "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "neurological",
-    "ophthalmological",
     "psychiatric",
-    "reproductive"
+    "neurological",
+    "constitutional",
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -167,7 +340,8 @@
       "MRI showing cerebellar atrophy predominantly affecting the vermis and hemispheres"
     ],
     "genetic": [
-      "Pathogenic variants in genes such as ATXN1, ATXN2, or others depending on subtype"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Electromyography may show mild peripheral neuropathy"
@@ -200,7 +374,7 @@
     "Neurologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Klockgether T. Familial and sporadic adult-onset ataxias. Neurol Clin. 2011;29(4):1017-1031.",
     "Orphanet: Familial Adult-Onset Ataxia. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=395",

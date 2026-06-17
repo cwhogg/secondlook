@@ -18,8 +18,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 60,
-      "peak": 30
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": []
@@ -58,116 +58,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Abnormally short QT interval on ECG",
-        "frequency": 0.95,
-        "bodySystem": "cardiovascular",
-        "notes": "QTc ≤ 330 ms is highly indicative",
-        "searchTerms": [
-          "short QT interval on heart test",
-          "abnormal heart rhythm timing",
-          "ECG with brief QT"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Ventricular tachyarrhythmias",
-        "frequency": 0.75,
-        "bodySystem": "cardiovascular",
-        "notes": "Includes ventricular fibrillation and ventricular tachycardia"
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Atrial fibrillation",
-        "frequency": 0.65,
-        "bodySystem": "cardiovascular",
-        "notes": "Often early onset atrial arrhythmia"
-      },
-      {
-        "symptomName": "Palpitations",
-        "frequency": 0.6,
-        "bodySystem": "cardiovascular",
-        "notes": "Subjective awareness of abnormal heartbeats"
-      },
-      {
-        "symptomName": "Syncope",
+        "symptomName": "Psychotic episodes",
         "frequency": 0.55,
-        "bodySystem": "neurological",
-        "notes": "Transient loss of consciousness due to arrhythmia"
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Sudden cardiac arrest",
-        "frequency": 0.5,
-        "bodySystem": "cardiovascular",
-        "notes": "May be first presentation",
-        "searchTerms": [
-          "sudden heart stoppage",
-          "unexpected cardiac arrest",
-          "heart suddenly stops beating"
-        ]
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Fatigue",
-        "frequency": 0.3,
-        "bodySystem": "constitutional",
-        "notes": "May result from arrhythmia or reduced cardiac output"
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Dizziness",
-        "frequency": 0.25,
-        "bodySystem": "neurological",
-        "notes": "Often related to transient cerebral hypoperfusion"
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Chest discomfort",
-        "frequency": 0.2,
-        "bodySystem": "cardiovascular",
-        "notes": "Non-specific symptom during arrhythmic episodes"
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Exercise intolerance",
-        "frequency": 0.15,
-        "bodySystem": "cardiovascular",
-        "notes": "Due to arrhythmia-induced hemodynamic compromise"
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Sudden infant death",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "notes": "Rare but reported in neonatal SQTS cases",
-        "searchTerms": [
-          "unexpected infant death",
-          "sudden death in newborn",
-          "unexplained baby death"
-        ]
-      },
-      {
-        "symptomName": "Nocturnal agonal respirations",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "respiratory",
-        "notes": "May occur during arrhythmic events",
-        "searchTerms": [
-          "gasping breathing at night",
-          "struggling to breathe during sleep",
-          "noisy or labored nighttime breathing"
-        ]
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Seizure-like activity",
-        "frequency": 0.02,
-        "bodySystem": "neurological",
-        "notes": "Secondary to cerebral hypoxia during arrhythmia"
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "cardiovascular",
+    "psychiatric",
     "neurological",
     "constitutional",
-    "respiratory"
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [],
@@ -176,7 +332,8 @@
       "Holter monitoring demonstrating arrhythmias"
     ],
     "genetic": [
-      "Pathogenic variants in KCNH2, KCNQ1, KCNJ2, or other ion channel genes"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Family history of sudden cardiac death",
@@ -211,7 +368,7 @@
     "Electrophysiologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Gollob MH, Redpath CJ, Roberts JD. The short QT syndrome: proposed diagnostic criteria. J Am Coll Cardiol. 2011;57(7):802-812.",
     "Priori SG, Wilde AA, Horie M, et al. HRS/EHRA/APHRS expert consensus statement on the diagnosis and management of patients with inherited primary arrhythmia syndromes. Heart Rhythm. 2013;10(12):1932-1963.",

@@ -11,15 +11,15 @@
   "omimId": "105120",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 100,000",
-    "range": "0.001%-0.002%",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 50,
-      "peak": 35
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -68,148 +68,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Nephrotic-range proteinuria",
-        "frequency": 0.85,
-        "bodySystem": "renal",
-        "notes": "Often the earliest and most prominent manifestation"
-      },
-      {
-        "symptomName": "Amyloid deposits in renal tissue",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "renal",
-        "notes": "Confirmed by Congo red staining and electron microscopy",
-        "searchTerms": [
-          "protein deposits in kidney tissue",
-          "amyloid buildup in renal tissue",
-          "abnormal protein accumulation in kidneys"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Familial history of amyloidosis",
-        "frequency": 0.75,
-        "bodySystem": "constitutional",
-        "notes": "Strongly suggestive in affected families",
-        "searchTerms": [
-          "family history of amyloid disease",
-          "inherited amyloidosis in relatives",
-          "amyloid deposits running in family"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Progressive renal impairment",
-        "frequency": 0.75,
-        "bodySystem": "renal",
-        "notes": "Leads to chronic kidney disease and possible end-stage renal failure",
-        "searchTerms": [
-          "worsening kidney function",
-          "progressive kidney damage",
-          "declining renal health"
-        ]
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Edema due to hypoalbuminemia",
-        "frequency": 0.7,
-        "bodySystem": "renal",
-        "notes": "Secondary to nephrotic syndrome",
-        "searchTerms": [
-          "swelling from low blood protein",
-          "edema due to hypoalbuminemia",
-          "fluid retention from low albumin"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Hypertension",
-        "frequency": 0.6,
-        "bodySystem": "cardiovascular",
-        "notes": "May develop as renal function declines"
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
         "symptomName": "Fatigue",
-        "frequency": 0.65,
-        "bodySystem": "constitutional",
-        "notes": "Common nonspecific symptom"
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mild anemia",
+        "symptomName": "Asthenia",
         "frequency": 0.55,
-        "bodySystem": "hematological",
-        "notes": "Due to chronic kidney disease"
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Orthostatic hypotension",
-        "frequency": 0.3,
-        "bodySystem": "cardiovascular",
-        "notes": "Due to autonomic involvement in some cases"
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.25,
-        "bodySystem": "neurological",
-        "notes": "Less common but reported in some mutations"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Gastrointestinal disturbances",
-        "frequency": 0.2,
-        "bodySystem": "gastrointestinal",
-        "notes": "Including diarrhea or constipation"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mild hepatomegaly",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal",
-        "notes": "Due to amyloid infiltration"
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Carpal tunnel syndrome",
-        "frequency": 0.1,
-        "bodySystem": "neurological",
-        "notes": "Occasionally reported",
-        "searchTerms": [
-          "wrist nerve compression symptoms",
-          "tingling and numbness in hand",
-          "median nerve compression at wrist"
-        ]
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Cardiac amyloidosis",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "notes": "Rare in familial renal amyloidosis but possible"
-      },
-      {
-        "symptomName": "Cutaneous purpura",
-        "frequency": 0.07,
-        "bodySystem": "dermatological",
-        "notes": "Due to vascular fragility from amyloid deposits"
-      },
-      {
-        "symptomName": "Ocular amyloid deposits",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "ophthalmological",
-        "notes": "Rare manifestation",
-        "searchTerms": [
-          "amyloid deposits in eye tissues",
-          "protein buildup in ocular structures",
-          "eye involvement with amyloid"
-        ]
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "renal",
-    "cardiovascular",
-    "neurological",
     "gastrointestinal",
     "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
     "dermatological",
-    "ophthalmological",
-    "constitutional"
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -267,7 +395,7 @@
     "Geneticist",
     "Pathologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Sipe JD, Benson MD, Buxbaum JN, et al. Amyloid fibril proteins and amyloidosis: chemical identification and clinical classification. Amyloid. 2016;23(4):209-213.",
     "Lachmann HJ, Goodman HJ, Gilbertson JA, et al. Natural history and outcome in systemic AA amyloidosis. N Engl J Med. 2007;356(23):2361-2371.",

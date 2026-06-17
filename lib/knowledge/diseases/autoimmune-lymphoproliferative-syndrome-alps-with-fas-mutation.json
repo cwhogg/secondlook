@@ -11,14 +11,15 @@
   "omimId": "601859",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 20,
-      "peak": 5
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,133 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Chronic nonmalignant lymphadenopathy",
-        "frequency": 0.85,
-        "bodySystem": "immunological",
-        "notes": "Persistent enlargement of lymph nodes without malignancy",
-        "searchTerms": [
-          "persistent swollen lymph nodes",
-          "long-lasting non-cancerous lymph node enlargement"
-        ]
-      },
-      {
-        "symptomName": "Elevated double-negative T lymphocytes",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "immunological",
-        "notes": "Increased CD3+ TCRαβ+ CD4- CD8- T cells in peripheral blood",
-        "searchTerms": [
-          "increased unusual T cells lacking common markers",
-          "high double-negative T lymphocyte count"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Defective Fas-mediated lymphocyte apoptosis",
-        "frequency": 0.8,
-        "bodySystem": "immunological",
-        "notes": "Impaired programmed cell death of lymphocytes",
-        "searchTerms": [
-          "impaired programmed cell death in immune cells",
-          "defective lymphocyte self-destruction"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Splenomegaly",
-        "frequency": 0.75,
-        "bodySystem": "hematological",
-        "notes": "Enlarged spleen commonly observed"
-      },
-      {
-        "symptomName": "Autoimmune cytopenias",
-        "frequency": 0.7,
-        "bodySystem": "hematological",
-        "notes": "Including autoimmune hemolytic anemia and thrombocytopenia"
-      },
-      {
-        "symptomName": "Chronic fatigue",
-        "frequency": 0.65,
-        "bodySystem": "constitutional",
-        "notes": "Generalized tiredness and malaise"
-      },
-      {
-        "symptomName": "Recurrent infections",
-        "frequency": 0.6,
-        "bodySystem": "immunological",
-        "notes": "Due to immune dysregulation"
-      },
-      {
-        "symptomName": "Hepatomegaly",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "hematological",
-        "notes": "Enlarged liver in some patients"
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Lymphoma development",
-        "frequency": 0.3,
-        "bodySystem": "hematological",
-        "notes": "Increased risk of Hodgkin and non-Hodgkin lymphoma"
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Autoimmune endocrinopathies",
-        "frequency": 0.25,
-        "bodySystem": "endocrine",
-        "notes": "Including autoimmune thyroiditis"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Skin rashes",
-        "frequency": 0.2,
-        "bodySystem": "dermatological",
-        "notes": "Various autoimmune skin manifestations"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Arthralgia",
-        "frequency": 0.15,
-        "bodySystem": "musculoskeletal",
-        "notes": "Joint pain without overt arthritis"
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Neurological autoimmune manifestations",
-        "frequency": 0.07,
-        "bodySystem": "neurological",
-        "notes": "Rare autoimmune neuropathies or CNS involvement",
-        "searchTerms": [
-          "nervous system autoimmune symptoms",
-          "immune-related neurological problems"
-        ]
-      },
-      {
-        "symptomName": "Pulmonary infiltrates",
-        "frequency": 0.05,
-        "bodySystem": "respiratory",
-        "notes": "Rare autoimmune lung involvement"
-      },
-      {
-        "symptomName": "Renal autoimmune disease",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "renal",
-        "notes": "Rare glomerulonephritis or nephritis",
-        "searchTerms": [
-          "kidney disease caused by autoimmunity",
-          "immune system attacking kidneys"
-        ]
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
+    "gastrointestinal",
     "hematological",
     "immunological",
     "constitutional",
-    "dermatological",
-    "musculoskeletal",
-    "neurological",
+    "renal",
     "respiratory",
+    "neurological",
     "endocrine",
-    "renal"
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -238,7 +382,7 @@
     "Hematologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Fisher GH et al. Dominant interfering Fas gene mutations impair apoptosis in a human autoimmune lymphoproliferative syndrome. Cell. 1995.",
     "Rieux-Laucat F et al. Mutations in Fas associated with human lymphoproliferative syndrome and autoimmunity. Science. 1995.",

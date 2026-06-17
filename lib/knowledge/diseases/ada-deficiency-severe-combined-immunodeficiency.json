@@ -11,14 +11,15 @@
   "omimId": "102700",
   "orphanetId": "803",
   "prevalence": {
-    "estimate": "1 in 200,000 to 1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 12,
-      "peak": 3
+      "min": 18,
+      "max": 65,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,142 +64,256 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Severe combined T, B, and NK lymphocyte depletion",
-        "frequency": 0.95,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "severe loss of T, B, and NK immune cells",
-          "combined immune cell depletion",
-          "extremely low lymphocyte counts"
-        ]
+        "symptomName": "Amyotrophic lateral sclerosis",
+        "frequency": 1,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Accumulation of toxic purine metabolites",
-        "frequency": 0.85,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "build-up of harmful purine substances",
-          "toxic purine metabolite accumulation",
-          "excess purine breakdown products"
-        ]
+        "symptomName": "Neurodegeneration",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Motor neuron atrophy",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       }
     ],
     "common": [
       {
-        "symptomName": "Recurrent severe bacterial, viral, and fungal infections",
-        "frequency": 0.85,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "frequent severe infections",
-          "recurrent bacterial, viral, fungal infections",
-          "persistent serious infections"
-        ]
+        "symptomName": "Xerostomia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.75,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "poor weight gain",
-          "not growing well",
-          "failure to gain weight"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Chronic diarrhea",
-        "frequency": 0.65,
+        "symptomName": "Emotional lability",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Depression",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Spasticity",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hyperreflexia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysphonia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.55,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Persistent oral candidiasis",
-        "frequency": 0.6,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "ongoing oral yeast infection",
-          "chronic thrush in mouth",
-          "persistent oral candidiasis"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Lymphadenopathy",
+        "symptomName": "Drooling",
         "frequency": 0.55,
-        "bodySystem": "immunological"
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fasciculations",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Skeletal muscle atrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Muscle spasm",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Paralysis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Upper limb muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Babinski sign",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Distal amyotrophy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Progressive distal muscular atrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Tongue atrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigable weakness of bulbar muscles",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigable weakness of swallowing muscles",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigable weakness of respiratory muscles",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormality on pulmonary function testing",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hoffmann sign",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hepatosplenomegaly",
-        "frequency": 0.4,
-        "bodySystem": "hematological"
+        "symptomName": "Tongue fasciculations",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Eczema or dermatitis",
-        "frequency": 0.3,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "skin inflammation and rash",
-          "eczema or dermatitis symptoms",
-          "itchy, red skin patches"
-        ]
+        "symptomName": "Frontotemporal dementia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Neurological abnormalities (e.g., developmental delay)",
-        "frequency": 0.25,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "neurological problems like delayed development",
-          "brain function abnormalities",
-          "developmental and neurological delays"
-        ]
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Chronic cough or respiratory infections",
-        "frequency": 0.15,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "long-lasting cough or lung infections",
-          "chronic respiratory problems",
-          "repeated chest infections"
-        ]
+        "symptomName": "Sleep abnormality",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Language impairment",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Steppage gait",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cachexia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Foot dorsiflexor weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Orthopnea",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Jaw hyperreflexia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Autoimmune manifestations",
-        "frequency": 0.08,
-        "bodySystem": "immunological"
-      },
-      {
-        "symptomName": "Skeletal abnormalities",
-        "frequency": 0.05,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "bone deformities or malformations",
-          "abnormal bone structure",
-          "skeletal irregularities"
-        ]
-      },
-      {
-        "symptomName": "Sensorineural hearing loss",
+        "symptomName": "Laryngospasm",
         "frequency": 0.03,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "hearing loss from nerve damage",
-          "sensorineural deafness",
-          "inner ear hearing impairment"
-        ]
+        "bodySystem": "otolaryngological"
       }
     ]
   },
   "systemsAffected": [
-    "immunological",
-    "hematological",
-    "gastrointestinal",
-    "constitutional",
-    "dermatological",
+    "ophthalmological",
     "neurological",
-    "respiratory",
     "musculoskeletal",
+    "constitutional",
+    "psychiatric",
+    "gastrointestinal",
+    "respiratory",
     "otolaryngological"
   ],
   "keyFindings": {
@@ -213,7 +328,44 @@
       "Possible hepatosplenomegaly on abdominal ultrasound"
     ],
     "genetic": [
-      "Pathogenic mutations in ADA gene confirmed by sequencing"
+      "CCNF (causative)",
+      "TAF15 (candidate)",
+      "ANXA11 (causative)",
+      "CFAP410 (causative)",
+      "GLE1 (causative)",
+      "NEK1 (susceptibility)",
+      "GLT8D1 (susceptibility)",
+      "CHCHD10 (causative)",
+      "DAO (causative)",
+      "ATXN2 (susceptibility)",
+      "CHMP2B (causative)",
+      "SOD1 (causative)",
+      "TREM2 (susceptibility)",
+      "VAPB (causative)",
+      "VCP (causative)",
+      "NEFH (susceptibility)",
+      "OPTN (causative)",
+      "DCTN1 (candidate)",
+      "TARDBP (causative)",
+      "FIG4 (causative)",
+      "FUS (causative)",
+      "ANG (causative)",
+      "MATR3 (causative)",
+      "PRPH (susceptibility)",
+      "PON1 (causative)",
+      "PON2 (causative)",
+      "PON3 (causative)",
+      "SQSTM1 (causative)",
+      "UBQLN2 (causative)",
+      "C9ORF72 (causative)",
+      "PFN1 (causative)",
+      "TBK1 (susceptibility)",
+      "HNRNPA1 (causative)",
+      "PPARGC1A (modifier)",
+      "ERBB4 (causative)",
+      "UNC13A (susceptibility)",
+      "Autosomal dominant inheritance",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Newborn screening may detect elevated metabolites or low T-cell receptor excision circles (TRECs)"
@@ -247,7 +399,7 @@
     "Geneticist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Buckley RH. Molecular defects in human severe combined immunodeficiency and approaches to immune reconstitution. Annu Rev Immunol. 2004;22:625-55.",
     "Hirschhorn R. Adenosine deaminase deficiency: clinical presentation and molecular basis. Immunol Allergy Clin North Am. 2001;21(4):715-38.",

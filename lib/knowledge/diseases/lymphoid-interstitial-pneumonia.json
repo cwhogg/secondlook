@@ -15,9 +15,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 70,
-      "peak": 40
+      "min": 0,
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": []
@@ -56,113 +56,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Diffuse bilateral ground-glass opacities on imaging",
-        "frequency": 0.85,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "hazy lung spots on both sides",
-          "cloudy areas in lungs on scan",
-          "diffuse ground-glass lung shadows"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Polyclonal lymphocytic infiltration of pulmonary interstitium",
+        "symptomName": "Gait disturbance",
         "frequency": 0.9,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "widespread lymphocyte buildup in lungs",
-          "immune cell infiltration in lung tissue",
-          "polyclonal lymphocyte lung involvement"
-        ]
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Progressive exertional dyspnea",
-        "frequency": 0.75,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "worsening shortness of breath with activity",
-          "progressive exercise breathlessness",
-          "increasing exertional dyspnea"
-        ]
+        "symptomName": "Psychotic episodes",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Non-productive cough",
-        "frequency": 0.7,
-        "bodySystem": "respiratory"
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Fatigue",
-        "frequency": 0.65,
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Crackles on lung auscultation",
-        "frequency": 0.6,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "crackling sounds in lungs",
-          "lung noises heard with stethoscope"
-        ]
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Low-grade fever",
-        "frequency": 0.3,
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Weight loss",
-        "frequency": 0.25,
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Chest discomfort",
-        "frequency": 0.15,
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
         "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Clubbing of fingers",
-        "frequency": 0.1,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "enlarged fingertips",
-          "clubbing of fingers",
-          "rounded finger tips"
-        ]
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Hemoptysis",
-        "frequency": 0.05,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Pulmonary hypertension",
-        "frequency": 0.07,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Associated autoimmune manifestations (e.g., Sjögren’s syndrome)",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "autoimmune symptoms like dry eyes and mouth",
-          "associated autoimmune problems",
-          "autoimmune features such as Sjögren’s"
-        ]
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "respiratory",
+    "psychiatric",
+    "neurological",
     "constitutional",
     "musculoskeletal",
+    "gastrointestinal",
     "cardiovascular",
-    "immunological"
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -175,7 +334,10 @@
       "Centrilobular nodules",
       "Thin-walled cysts predominantly in lower lobes"
     ],
-    "genetic": [],
+    "genetic": [
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
+    ],
     "other": [
       "Lung biopsy demonstrating lymphoid infiltration without monoclonality",
       "Pulmonary function tests showing restrictive pattern with reduced diffusion capacity"
@@ -218,7 +380,7 @@
     "Radiologist",
     "Immunologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Cordier JF. Lymphoid interstitial pneumonia. Orphanet J Rare Dis. 2006;1:3.",
     "Travis WD, et al. WHO Classification of Tumours of the Lung, Pleura, Thymus and Heart. IARC; 2015.",

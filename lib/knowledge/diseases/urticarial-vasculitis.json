@@ -15,9 +15,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 60,
-      "peak": 40
+      "min": 0,
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": []
@@ -62,135 +62,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Persistent urticarial plaques lasting more than 24 hours",
+        "symptomName": "Atypical behavior",
         "frequency": 0.9,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "long-lasting itchy red skin plaques",
-          "hives that persist over 24 hours",
-          "urticaria plaques lasting more than a day"
-        ]
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Leukocytoclastic vasculitis on skin biopsy",
-        "frequency": 0.85,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "small blood vessel inflammation in skin",
-          "vasculitis seen on skin biopsy",
-          "leukocytoclastic vasculitis rash"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Arthralgia or arthritis",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "joint pain or swelling",
-          "arthritis symptoms",
-          "painful or inflamed joints"
-        ]
+        "symptomName": "Psychotic episodes",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Hypocomplementemia (low C3, C4, or CH50)",
-        "frequency": 0.65,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "low blood complement levels",
-          "reduced immune proteins C3 and C4",
-          "decreased complement activity in blood"
-        ]
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Ocular inflammation (e.g., conjunctivitis, uveitis)",
-        "frequency": 0.6,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "eye inflammation",
-          "red, painful eyes",
-          "conjunctivitis or uveitis",
-          "ocular redness and swelling"
-        ]
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Fever",
+        "symptomName": "Mental deterioration",
         "frequency": 0.55,
         "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Renal involvement (proteinuria, hematuria)",
-        "frequency": 0.3,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "kidney problems with protein or blood in urine",
-          "proteinuria and hematuria indicating kidney involvement",
-          "urine abnormalities showing kidney disease"
-        ]
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Gastrointestinal symptoms (abdominal pain, nausea)",
-        "frequency": 0.25,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "stomach pain and nausea symptoms",
-          "digestive discomfort with nausea",
-          "abdominal upset and queasiness"
-        ]
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Fatigue",
-        "frequency": 0.4,
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Angioedema",
-        "frequency": 0.15,
-        "bodySystem": "dermatological"
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Pulmonary involvement (pleuritis, interstitial lung disease)",
-        "frequency": 0.05,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "lung inflammation symptoms",
-          "pleurisy and lung tissue disease",
-          "breathing problems from lung involvement"
-        ]
-      },
-      {
-        "symptomName": "Peripheral neuropathy",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Cardiovascular involvement (pericarditis, vasculitis)",
-        "frequency": 0.02,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "heart inflammation and blood vessel disease",
-          "pericarditis and vasculitis symptoms",
-          "cardiovascular inflammation signs"
-        ]
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "dermatological",
-    "musculoskeletal",
-    "immunological",
-    "ophthalmological",
-    "renal",
-    "gastrointestinal",
-    "constitutional",
-    "respiratory",
+    "psychiatric",
     "neurological",
-    "cardiovascular"
+    "constitutional",
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -203,7 +340,10 @@
       "Chest X-ray or CT showing pleural effusions or interstitial lung disease",
       "Renal ultrasound if indicated"
     ],
-    "genetic": [],
+    "genetic": [
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
+    ],
     "other": [
       "Skin biopsy demonstrating leukocytoclastic vasculitis with fibrinoid necrosis",
       "Direct immunofluorescence showing immune complex deposition"
@@ -246,7 +386,7 @@
     "Nephrologist",
     "Immunologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Sais G, et al. Urticarial vasculitis: clinical and immunopathologic study of 16 patients. J Am Acad Dermatol. 1998.",
     "Vasculitis Foundation. Urticarial Vasculitis. 2023.",

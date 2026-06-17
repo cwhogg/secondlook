@@ -11,14 +11,15 @@
   "omimId": "245000",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 1,
-      "max": 5,
-      "peak": 2
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -61,157 +62,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Diffuse palmoplantar keratoderma",
-        "frequency": 0.95,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "thickened skin on palms and soles",
-          "widespread hand and foot skin thickening",
-          "diffuse palm and sole calluses"
-        ]
-      },
-      {
-        "symptomName": "Severe early-onset periodontitis",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "otolaryngological",
-        "notes": "Leads to premature loss of deciduous and permanent teeth",
-        "searchTerms": [
-          "severe early gum disease",
-          "early onset periodontitis",
-          "rapid gum tissue loss",
-          "aggressive gum infection"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Biallelic CTSC gene mutations",
-        "frequency": 1,
-        "bodySystem": "immunological",
-        "notes": "Genetic hallmark of the syndrome",
-        "searchTerms": [
-          "mutations in CTSC gene causing symptoms",
-          "genetic CTSC defects with clinical signs",
-          "CTSC gene changes leading to disease",
-          "biallelic CTSC mutations with symptoms"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Gingival inflammation",
-        "frequency": 0.85,
-        "bodySystem": "otolaryngological"
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Hyperhidrosis of palms and soles",
-        "frequency": 0.7,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "excessive sweating on hands and feet",
-          "palm and sole sweating",
-          "overactive sweat glands in hands and feet"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Recurrent skin infections",
-        "frequency": 0.65,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "frequent skin infections",
-          "repeated skin bacterial infections",
-          "chronic skin infections"
-        ]
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Premature loss of primary teeth",
-        "frequency": 0.75,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "early loss of baby teeth",
-          "premature shedding of primary teeth",
-          "losing baby teeth too soon"
-        ]
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Premature loss of permanent teeth",
-        "frequency": 0.6,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "early loss of adult teeth",
-          "premature permanent tooth loss"
-        ]
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Nail dystrophy",
-        "frequency": 0.4,
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
         "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Mild liver enzyme elevation",
-        "frequency": 0.3,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "slightly raised liver enzymes",
-          "mild liver function test increase",
-          "minor liver enzyme elevation",
-          "slight liver blood test abnormality"
-        ]
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Increased susceptibility to pyogenic infections",
-        "frequency": 0.25,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "increased risk of bacterial infections",
-          "more frequent pus-forming infections",
-          "susceptibility to pyogenic infections",
-          "prone to bacterial infections"
-        ]
-      },
-      {
-        "symptomName": "Mild bone resorption in alveolar bone",
-        "frequency": 0.15,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "mild bone loss around teeth",
-          "alveolar bone thinning",
-          "early bone resorption in jaw",
-          "gum bone loss"
-        ]
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Intracranial calcifications",
-        "frequency": 0.05,
-        "bodySystem": "neurological"
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mental retardation",
+        "symptomName": "Seizure",
         "frequency": 0.03,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Psoriasiform skin lesions",
-        "frequency": 0.07,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "psoriasis-like skin patches",
-          "scaly red skin lesions",
-          "psoriasiform rash",
-          "skin plaques resembling psoriasis"
-        ]
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "dermatological",
-    "otolaryngological",
+    "gastrointestinal",
+    "hematological",
     "immunological",
-    "musculoskeletal",
+    "constitutional",
+    "renal",
+    "respiratory",
     "neurological",
-    "gastrointestinal"
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -268,7 +388,7 @@
     "Geneticist",
     "Immunologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Hart TC, Hart PS. Papillon-Lefevre syndrome. In: GeneReviews® [Internet]. University of Washington, Seattle; 2020.",
     "Toomes C, James J, Wood AJ, et al. Loss-of-function mutations in the cathepsin C gene result in Papillon-Lefevre syndrome. Nat Genet. 1999;23(4):421-424.",

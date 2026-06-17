@@ -11,14 +11,15 @@
   "omimId": "180849",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 100,000 to 125,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
+      "min": 18,
       "max": 120,
-      "peak": 0
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,165 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Broad and angulated thumbs and halluces",
-        "frequency": 0.85,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "wide and bent thumbs and big toes",
-          "broad angled thumbs and halluces",
-          "thick and crooked thumb and big toe"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Distinctive facial dysmorphism (beaked nose, downslanting palpebral fissures, grimacing smile)",
-        "frequency": 0.8,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "distinct facial features like hooked nose",
-          "downward slanting eyes",
-          "grimacing smile expression"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Intellectual disability ranging from mild to moderate",
-        "frequency": 0.75,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "mild to moderate learning difficulties",
-          "intellectual challenges",
-          "cognitive impairment"
-        ]
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Postnatal growth retardation",
-        "frequency": 0.7,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "slow growth after birth",
-          "poor weight and height gain",
-          "growth delay in infancy"
-        ]
-      },
-      {
-        "symptomName": "Cryptorchidism in males",
-        "frequency": 0.65,
-        "bodySystem": "reproductive",
-        "searchTerms": [
-          "undescended testicles",
-          "testes not in scrotum",
-          "hidden testicles at birth"
-        ]
-      },
-      {
-        "symptomName": "Congenital heart defects (e.g., patent ductus arteriosus, atrial septal defect)",
-        "frequency": 0.6,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "heart defects present at birth",
-          "holes in heart walls",
-          "persistent fetal blood vessel"
-        ]
-      },
-      {
-        "symptomName": "Ocular abnormalities including strabismus and refractive errors",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "eye problems including crossed eyes and vision errors",
-          "strabismus and need for glasses",
-          "ocular abnormalities like misaligned eyes and refractive issues"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Feeding difficulties in infancy",
-        "frequency": 0.52,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "trouble feeding as baby",
-          "difficulty sucking or swallowing",
-          "infant feeding problems"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Recurrent respiratory infections",
-        "frequency": 0.4,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "frequent lung infections",
-          "repeated chest infections",
-          "chronic respiratory infections"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Scoliosis or spinal abnormalities",
-        "frequency": 0.3,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "curved spine",
-          "spinal deformity",
-          "back bone abnormality"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hirsutism",
-        "frequency": 0.25,
-        "bodySystem": "dermatological"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Seizures",
-        "frequency": 0.15,
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Dental anomalies including talon cusps",
-        "frequency": 0.12,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "unusual tooth shape like extra cusps",
-          "tooth abnormalities including talon cusps",
-          "extra pointed tooth parts"
-        ]
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Renal anomalies such as hydronephrosis",
-        "frequency": 0.08,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "kidney abnormalities like hydronephrosis",
-          "swollen kidney collecting system",
-          "renal swelling due to urine buildup"
-        ]
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hearing loss",
-        "frequency": 0.07,
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
         "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Hypertrichosis",
-        "frequency": 0.05,
-        "bodySystem": "dermatological"
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "neurological",
-    "musculoskeletal",
-    "cardiovascular",
-    "respiratory",
     "gastrointestinal",
-    "dermatological",
-    "ophthalmological",
-    "reproductive",
+    "hematological",
+    "immunological",
+    "constitutional",
     "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
     "otolaryngological",
-    "constitutional"
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -273,7 +385,7 @@
     "Orthopedist",
     "Developmental pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Hennekam RC. Rubinstein-Taybi syndrome. Eur J Hum Genet. 2006;14(9):981-5.",
     "Petrij F, et al. Rubinstein-Taybi syndrome caused by mutations in the transcriptional co-activator CBP. Nature. 1995;376(6538):348-51.",

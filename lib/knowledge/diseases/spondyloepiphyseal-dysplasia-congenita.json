@@ -11,14 +11,15 @@
   "omimId": "183900",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 100,000 to 1 in 200,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 5,
-      "peak": 0
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,124 +58,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Disproportionate short-trunk dwarfism",
-        "frequency": 0.95,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "short trunk body type",
-          "disproportionately short torso",
-          "short body with normal limbs"
-        ]
-      },
-      {
-        "symptomName": "Platyspondyly (flattened vertebral bodies)",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "flattened spinal bones",
-          "compressed vertebrae",
-          "squashed back bones"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Delayed ossification of epiphyses",
-        "frequency": 0.85,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "slow bone growth at ends",
-          "delayed bone hardening",
-          "late ossification of growth plates"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Myopia",
-        "frequency": 0.75,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Sensorineural hearing loss",
-        "frequency": 0.65,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "hearing loss from nerve damage",
-          "sensorineural deafness",
-          "inner ear hearing impairment"
-        ]
-      },
-      {
-        "symptomName": "Barrel-shaped chest",
-        "frequency": 0.6,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Cleft palate",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "musculoskeletal"
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Retinal detachment",
-        "frequency": 0.4,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Atlantoaxial instability",
-        "frequency": 0.3,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Early-onset osteoarthritis",
-        "frequency": 0.25,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hearing impairment progression",
-        "frequency": 0.2,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "worsening hearing loss over time",
-          "progressive decrease in hearing"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Respiratory complications due to thoracic deformity",
-        "frequency": 0.08,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "breathing problems from chest shape",
-          "lung issues due to rib cage deformity",
-          "respiratory difficulty from thorax abnormality"
-        ]
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Spinal cord compression",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "pressure on spinal cord",
-          "spinal cord squeezing",
-          "compressed spinal nerves"
-        ]
-      },
-      {
-        "symptomName": "Hydrocephalus",
+        "symptomName": "Seizure",
         "frequency": 0.03,
         "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "musculoskeletal",
-    "ophthalmological",
-    "otolaryngological",
-    "neurological",
+    "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
     "respiratory",
-    "constitutional"
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [],
@@ -221,7 +374,7 @@
     "Audiologist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Spranger JW, et al. Bone Dysplasias: An Atlas of Genetic Disorders of Skeletal Development. 2018.",
     "Superti-Furga A, Unger S. Nosology and classification of genetic skeletal disorders: 2019 revision. Am J Med Genet A. 2019.",

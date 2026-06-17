@@ -18,15 +18,15 @@
   "omimId": "181750",
   "orphanetId": "90291",
   "prevalence": {
-    "estimate": "1 in 5,000 to 1 in 10,000",
-    "range": "0.01%-0.02%",
-    "classification": "rare"
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 25,
-      "max": 55,
-      "peak": 45
+      "min": 18,
+      "max": 65,
+      "peak": 42
     },
     "sexPredilection": "female",
     "ethnicAssociations": [
@@ -93,179 +93,454 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Progressive skin thickening and fibrosis",
-        "snomedCode": "201049004",
-        "frequency": 0.95,
-        "bodySystem": "dermatological",
-        "notes": "Begins in fingers; may progress proximally in diffuse type",
-        "searchTerms": [
-          "progressive skin thickening and scarring",
-          "increasing skin fibrosis",
-          "gradual skin hardening"
-        ]
+        "symptomName": "Thickened skin",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Raynaud's phenomenon",
-        "snomedCode": "266261006",
-        "frequency": 0.95,
-        "bodySystem": "cardiovascular",
-        "notes": "Often the first symptom; may precede other manifestations by years"
+        "symptomName": "Arthralgia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Antinuclear antibody positivity",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Abnormality of the gastrointestinal tract",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Cutaneous sclerotic plaque",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
       }
     ],
     "common": [
       {
-        "symptomName": "Sclerodactyly (skin tightening of fingers)",
-        "frequency": 0.9,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "finger skin tightening",
-          "hardening of skin on fingers",
-          "thickened skin on digits"
-        ]
+        "symptomName": "Abnormality of the kidney",
+        "frequency": 0.55,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Esophageal dysmotility / GERD",
-        "snomedCode": "40739000",
-        "frequency": 0.8,
-        "bodySystem": "gastrointestinal",
-        "notes": "Reduced distal esophageal peristalsis and lower esophageal sphincter tone",
-        "searchTerms": [
-          "esophagus movement problems",
-          "acid reflux symptoms",
-          "difficulty swallowing with heartburn"
-        ]
+        "symptomName": "Narrow mouth",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
         "symptomName": "Telangiectasia",
-        "snomedCode": "247479008",
-        "frequency": 0.7,
-        "bodySystem": "dermatological",
-        "notes": "Face, lips, hands, mucosa"
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Digital pitting scars or ulcers",
-        "snomedCode": "238792006",
-        "frequency": 0.6,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "scars or ulcers on fingertips",
-          "digital skin sores and pits",
-          "finger tip wounds and scars"
-        ]
+        "symptomName": "Nail bed telangiectasia",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Interstitial lung disease",
-        "snomedCode": "233703007",
-        "frequency": 0.5,
-        "bodySystem": "respiratory",
-        "notes": "NSIP pattern most common; more frequent in dcSSc with anti-Scl-70",
-        "searchTerms": [
-          "lung tissue scarring",
-          "interstitial lung inflammation",
-          "thickened lung tissue"
-        ]
+        "symptomName": "Muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Arthralgias and joint stiffness",
-        "snomedCode": "57676002",
-        "frequency": 0.6,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "joint pain and stiffness",
-          "arthralgia with limited movement",
-          "joint discomfort and tightness"
-        ]
+        "symptomName": "Joint swelling",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal esophagus morphology",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Pulmonary fibrosis",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Elevated circulating creatine kinase concentration",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Spotty hypopigmentation",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Acral ulceration",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Abnormal phalangeal joint morphology of the hand",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal pulmonary interstitial morphology",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Irregular hyperpigmentation",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Sclerodactyly",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Finger swelling",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Calcinosis cutis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anti-topoisomerase I antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anticentromere antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Digital pitting scar",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Digital ulcer",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Anti-RNA-polymerase-III-autoantibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anti-carbonic anhydrase II antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-PM-Scl antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-centromere protein A antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-centromere protein B antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-U3 RNP antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-Th/To antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-bicaudal D2 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-nucleolus-organizing region antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-PM-Scl100 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-PM-Scl75 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-U11/U12 RNP antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-Ku antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-B23 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-RuvBL1/2 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-platelet derived growth factor receptor",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Anti-Ro52/TRIM21 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-angiotensin receptor type-1 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-endothelin-1 type A receptor antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-angiotensin-converting enzyme 2 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-platelet antigen antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Anti-voltage-gated potassium channel antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
       }
     ],
     "occasional": [
       {
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Proteinuria",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Glomerulonephritis",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hypohidrosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pruritus",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Syncope",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Flexion contracture",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Recurrent skin infections",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Alopecia",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Right ventricular failure",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Acute kidney injury",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Gastroesophageal reflux",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
         "symptomName": "Pulmonary arterial hypertension",
-        "snomedCode": "70995007",
-        "frequency": 0.15,
-        "bodySystem": "respiratory",
-        "notes": "More common in lcSSc with anti-centromere; leading cause of death",
-        "searchTerms": [
-          "high blood pressure in lungs",
-          "lung artery hypertension",
-          "pulmonary high blood pressure"
-        ]
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Calcinosis cutis",
-        "snomedCode": "201119003",
-        "frequency": 0.25,
-        "bodySystem": "dermatological",
-        "notes": "Subcutaneous calcium deposits; painful and prone to infection"
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Myocardial fibrosis / cardiac involvement",
-        "frequency": 0.2,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "heart muscle scarring",
-          "cardiac tissue fibrosis",
-          "heart involvement with fibrosis"
-        ]
+        "symptomName": "Abnormality of the small intestine",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Joint contractures (flexion contractures of fingers)",
-        "frequency": 0.35,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "finger joint contractures",
-          "permanent finger bending",
-          "flexion deformities of fingers"
-        ]
+        "symptomName": "Abnormal large intestine morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Tendon friction rubs",
-        "frequency": 0.2,
-        "bodySystem": "musculoskeletal",
-        "notes": "Palpable crepitus over tendons; associated with diffuse disease",
-        "searchTerms": [
-          "tendon rubbing sounds or sensations",
-          "tendon friction during movement",
-          "crepitus over tendons"
-        ]
+        "symptomName": "Abnormal stomach morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Gastroparesis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Intestinal bleeding",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Gastrointestinal telangiectasia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Bowel incontinence",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dilatation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Osteomyelitis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Osteolytic defects of the phalanges of the hand",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of facial soft tissue",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Constrictive median neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Albuminuria",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chronic kidney disease",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Myocarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Interstitial cardiac fibrosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Barrett esophagus",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       }
     ],
     "rare": [
       {
-        "symptomName": "Scleroderma renal crisis",
-        "snomedCode": "236499007",
-        "frequency": 0.1,
-        "bodySystem": "renal",
-        "notes": "Acute hypertension, AKI, MAHA; more common in dcSSc and anti-RNA polymerase III",
-        "searchTerms": [
-          "sudden kidney failure with high blood pressure",
-          "renal crisis with hypertension",
-          "acute kidney injury from scleroderma"
-        ]
-      },
-      {
-        "symptomName": "Gastric antral vascular ectasia (GAVE / watermelon stomach)",
-        "frequency": 0.05,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "stomach blood vessel dilation causing bleeding",
-          "watermelon stomach bleeding",
-          "gastric vascular ectasia"
-        ]
-      },
-      {
-        "symptomName": "Trigeminal neuropathy",
-        "frequency": 0.05,
-        "bodySystem": "neurological"
+        "symptomName": "Gangrene",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
     "dermatological",
-    "cardiovascular",
-    "respiratory",
-    "gastrointestinal",
     "musculoskeletal",
+    "immunological",
+    "gastrointestinal",
+    "cardiovascular",
+    "ophthalmological",
     "renal",
+    "constitutional",
+    "respiratory",
+    "hematological",
     "neurological"
   ],
   "keyFindings": {
@@ -287,7 +562,8 @@
     "genetic": [
       "No single causative gene; polygenic susceptibility",
       "HLA-DRB1 associations vary by antibody subtype",
-      "IRF5, STAT4, CD247, and other immune-related polymorphisms"
+      "IRF5, STAT4, CD247, and other immune-related polymorphisms",
+      "Multigenic/multifactorial inheritance"
     ],
     "other": [
       "Modified Rodnan Skin Score (mRSS) for skin involvement",
@@ -337,7 +613,7 @@
     "Nephrologist",
     "Dermatologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "van den Hoogen F, et al. 2013 classification criteria for systemic sclerosis: an American College of Rheumatology/European League Against Rheumatism collaborative initiative. Arthritis Rheum. 2013;65(11):2737-47.",
     "Denton CP, Khanna D. Systemic sclerosis. Lancet. 2017;390(10103):1685-99.",

@@ -16,9 +16,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 10,
-      "peak": 2
+      "min": 18,
+      "max": 65,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,108 +63,75 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Acute non-inflammatory encephalopathy",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "notes": "Rapid onset altered mental status without evidence of infection",
-        "searchTerms": [
-          "sudden brain dysfunction without infection",
-          "acute brain failure",
-          "non-inflammatory encephalopathy"
-        ]
+        "symptomName": "Impaired vibratory sensation",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Acute liver failure with coagulopathy",
-        "frequency": 0.8,
-        "bodySystem": "gastrointestinal",
-        "notes": "Marked elevation of liver enzymes and impaired synthetic function",
-        "searchTerms": [
-          "sudden liver failure with bleeding risk",
-          "acute liver disease with clotting problems",
-          "liver failure causing coagulopathy"
-        ]
+        "symptomName": "Absent Achilles reflex",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Impaired tactile sensation",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Impaired proprioception",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Hypoglycemia",
-        "frequency": 0.75,
-        "bodySystem": "endocrine",
-        "notes": "Often fasting or stress-induced"
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Vomiting",
-        "frequency": 0.7,
-        "bodySystem": "gastrointestinal",
-        "notes": "Early symptom preceding encephalopathy"
+        "symptomName": "Dysarthria",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Lethargy",
-        "frequency": 0.65,
-        "bodySystem": "neurological",
-        "notes": "Decreased responsiveness"
+        "symptomName": "Gait disturbance",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Seizures",
-        "frequency": 0.6,
-        "bodySystem": "neurological",
-        "notes": "May occur during encephalopathic phase"
+        "symptomName": "Motor deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hypotonia",
-        "frequency": 0.4,
-        "bodySystem": "neurological",
-        "notes": "Reduced muscle tone during acute phase"
+        "symptomName": "Areflexia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Hyperammonemia",
-        "frequency": 0.35,
-        "bodySystem": "hematological",
-        "notes": "Elevated blood ammonia contributing to encephalopathy"
+        "symptomName": "Sensory axonal neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Cardiomyopathy",
-        "frequency": 0.3,
-        "bodySystem": "cardiovascular",
-        "notes": "Occasional cardiac involvement in severe cases"
-      },
-      {
-        "symptomName": "Hypoketosis",
-        "frequency": 0.25,
-        "bodySystem": "endocrine",
-        "notes": "Low ketone bodies despite hypoglycemia"
-      }
-    ],
-    "rare": [
-      {
-        "symptomName": "Rhabdomyolysis",
-        "frequency": 0.08,
-        "bodySystem": "musculoskeletal",
-        "notes": "Muscle breakdown with elevated creatine kinase"
+        "symptomName": "Motor axonal neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
         "symptomName": "Peripheral neuropathy",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "Rare long-term complication"
-      },
-      {
-        "symptomName": "Pancreatitis",
-        "frequency": 0.04,
-        "bodySystem": "gastrointestinal",
-        "notes": "Rare inflammatory complication"
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
-    ]
+    ],
+    "rare": []
   },
   "systemsAffected": [
-    "neurological",
-    "gastrointestinal",
-    "endocrine",
-    "hematological",
-    "cardiovascular",
-    "musculoskeletal"
+    "constitutional",
+    "neurological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -179,7 +146,9 @@
       "Liver ultrasound typically normal or enlarged"
     ],
     "genetic": [
-      "Mutations in genes encoding mitochondrial fatty acid oxidation enzymes (e.g., ACADVL, CPT2, HADHA)"
+      "PLEKHG4 (candidate)",
+      "Mutations in genes encoding mitochondrial fatty acid oxidation enzymes (e.g., ACADVL, CPT2, HADHA)",
+      "Autosomal dominant inheritance"
     ],
     "other": [
       "Abnormal acylcarnitine profile on tandem mass spectrometry",
@@ -215,7 +184,7 @@
     "Hepatologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Roe CR, et al. Fatty acid oxidation defects presenting as Reye-like syndrome. J Pediatr. 2002.",
     "Spiekerkoetter U, et al. Diagnosis and management of fatty acid oxidation disorders. Mol Genet Metab. 2010.",

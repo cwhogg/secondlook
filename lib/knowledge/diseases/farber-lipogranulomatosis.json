@@ -11,14 +11,15 @@
   "omimId": "228000",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 5,
-      "peak": 1
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,163 +58,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Painful progressive joint deformities",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "painful worsening joint deformities",
-          "progressive joint pain with deformity",
-          "joint damage causing pain and deformity"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Subcutaneous nodules (lipogranulomas)",
-        "frequency": 0.85,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "small lumps under the skin",
-          "subcutaneous fatty nodules",
-          "lipogranuloma skin bumps"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Hoarseness of voice due to laryngeal involvement",
-        "frequency": 0.75,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "hoarse voice from throat involvement",
-          "voice changes due to larynx problems",
-          "laryngeal cause of hoarseness"
-        ]
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Restricted joint mobility",
-        "frequency": 0.75,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "limited joint movement",
-          "stiff joints",
-          "reduced joint flexibility"
-        ]
-      },
-      {
-        "symptomName": "Swelling and tenderness of affected joints",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "joint swelling and pain",
-          "tender and swollen joints",
-          "inflamed joints with tenderness"
-        ]
-      },
-      {
-        "symptomName": "Subcutaneous nodules on fingers and joints",
-        "frequency": 0.65,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "skin nodules on fingers and joints",
-          "bumps on finger joints",
-          "subcutaneous nodules near joints"
-        ]
-      },
-      {
-        "symptomName": "Failure to thrive in infants",
-        "frequency": 0.6,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "poor weight gain in babies",
-          "infants not growing well",
-          "failure to gain weight as expected"
-        ]
-      },
-      {
-        "symptomName": "Mild hepatosplenomegaly",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
         "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Respiratory distress due to laryngeal or pulmonary involvement",
-        "frequency": 0.4,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "breathing difficulty from throat or lung involvement",
-          "respiratory distress due to airway or lung problems",
-          "shortness of breath from laryngeal or pulmonary issues"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Neurological abnormalities including developmental delay",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "brain development delays",
-          "neurological problems with delayed milestones",
-          "cognitive and motor delays"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Osteolytic bone lesions",
-        "frequency": 0.25,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "areas of bone loss",
-          "bone damage with holes",
-          "destructive bone lesions"
-        ]
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Fatigue and malaise",
-        "frequency": 0.2,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "extreme tiredness",
-          "general feeling of unwellness",
-          "lack of energy and malaise"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Seizures",
-        "frequency": 0.05,
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Cardiovascular complications such as cardiomegaly",
+        "symptomName": "Ataxia",
         "frequency": 0.03,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "enlarged heart",
-          "cardiomegaly",
-          "heart swelling"
-        ]
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Ophthalmological involvement including corneal opacities",
-        "frequency": 0.02,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "eye problems including cloudy cornea",
-          "corneal opacities affecting vision",
-          "eye involvement with corneal clouding"
-        ]
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "musculoskeletal",
-    "dermatological",
-    "otolaryngological",
+    "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
     "respiratory",
     "neurological",
-    "constitutional",
-    "gastrointestinal",
+    "endocrine",
+    "dermatological",
     "cardiovascular",
-    "ophthalmological"
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -260,7 +374,7 @@
     "Pediatrician",
     "Metabolic Disease Specialist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Farber S. Lipogranulomatosis. A new lipid storage disease. J Lab Clin Med. 1957;49(4):545-58.",
     "Schuchman EH, Desnick RJ. Types A and B Niemann-Pick disease. In: Scriver CR, et al., editors. The Metabolic and Molecular Bases of Inherited Disease. 8th ed. New York: McGraw-Hill; 2001. p. 3589-3610.",

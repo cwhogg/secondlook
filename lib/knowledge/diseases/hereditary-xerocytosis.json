@@ -17,8 +17,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 40,
-      "peak": 10
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,118 +63,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Dehydrated erythrocytes with stomatocytes on peripheral smear",
-        "frequency": 0.85,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "dehydrated red cells with abnormal shape",
-          "stomatocytes seen in blood smear with cell dehydration",
-          "red blood cells with slit-like appearance and dehydration"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Chronic compensated hemolytic anemia",
-        "frequency": 0.8,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "chronic mild hemolytic anemia",
-          "long-term compensated red cell breakdown",
-          "persistent anemia due to red cell destruction"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Jaundice due to hemolysis",
-        "frequency": 0.75,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "yellow skin from red blood cell breakdown",
-          "jaundice caused by hemolysis",
-          "bilirubin buildup due to hemolysis"
-        ]
+        "symptomName": "Psychotic episodes",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Splenomegaly",
-        "frequency": 0.7,
-        "bodySystem": "hematological"
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Elevated reticulocyte count",
-        "frequency": 0.7,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "high number of young red blood cells",
-          "elevated reticulocyte count",
-          "increased immature red cells"
-        ]
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Gallstones (cholelithiasis)",
-        "frequency": 0.6,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Exercise intolerance",
-        "frequency": 0.4,
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mild fatigue",
-        "frequency": 0.35,
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Transient edema",
-        "frequency": 0.3,
-        "bodySystem": "hematological"
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Mild splenic infarcts",
-        "frequency": 0.15,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "small areas of spleen tissue death",
-          "tiny spleen infarcts",
-          "minor spleen tissue damage"
-        ]
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Iron overload due to chronic hemolysis",
-        "frequency": 0.08,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "iron buildup from ongoing red cell destruction",
-          "excess iron due to chronic hemolysis",
-          "iron overload linked to red cell breakdown"
-        ]
-      },
-      {
-        "symptomName": "Aplastic crises",
-        "frequency": 0.05,
-        "bodySystem": "hematological"
-      },
-      {
-        "symptomName": "Transient neurological symptoms due to microvascular occlusion",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "temporary neurological problems from small vessel blockages",
-          "transient symptoms caused by microvascular occlusion",
-          "short-lived brain symptoms due to blocked small vessels"
-        ]
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "hematological",
-    "gastrointestinal",
+    "psychiatric",
+    "neurological",
     "constitutional",
-    "neurological"
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -189,8 +343,8 @@
       "Splenic enlargement on abdominal imaging"
     ],
     "genetic": [
-      "Mutations in PIEZO1 gene",
-      "Mutations in KCNN4 gene"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Abnormal red blood cell cation permeability assays",
@@ -232,7 +386,7 @@
     "Hematologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Bae C, Gnanasambandam R, Nicolai C, et al. Xerocytosis is caused by mutations that alter the kinetics of the mechanosensitive channel PIEZO1. Proc Natl Acad Sci U S A. 2013;110(12):E1162-8.",
     "Andolfo I, Russo R, Gambale A, et al. Hereditary xerocytosis: clinical and molecular heterogeneity. Blood Cells Mol Dis. 2015;54(4):280-5.",

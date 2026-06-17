@@ -11,15 +11,15 @@
   "omimId": "101000",
   "orphanetId": "637",
   "prevalence": {
-    "estimate": "1 in 25,000 to 1 in 40,000",
-    "range": "0.0025%-0.004%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 10,
-      "max": 40,
-      "peak": 20
+      "min": 0,
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -52,142 +52,257 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Bilateral vestibular schwannomas",
-        "frequency": 0.95,
-        "bodySystem": "neurological",
-        "notes": "Typically cause hearing loss and tinnitus",
-        "searchTerms": [
-          "tumors on both balance nerves",
-          "bilateral acoustic nerve tumors",
-          "growths on vestibular nerves both sides"
-        ]
-      },
-      {
-        "symptomName": "Juvenile posterior subcapsular lenticular opacities (cataracts)",
-        "frequency": 0.75,
-        "bodySystem": "ophthalmological",
-        "notes": "Characteristic early lens changes",
-        "searchTerms": [
-          "early onset back of lens cataracts",
-          "juvenile posterior lens clouding",
-          "young age cataracts behind lens"
-        ]
+        "symptomName": "Neuroma",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       }
     ],
     "common": [
       {
-        "symptomName": "Sensorineural hearing loss",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "notes": "Usually progressive and bilateral",
-        "searchTerms": [
-          "hearing loss from nerve damage",
-          "sensorineural deafness",
-          "inner ear hearing impairment"
-        ]
-      },
-      {
-        "symptomName": "Tinnitus",
-        "frequency": 0.75,
-        "bodySystem": "neurological",
-        "notes": "Ringing in the ears associated with vestibular schwannomas"
-      },
-      {
-        "symptomName": "Meningiomas",
-        "frequency": 0.65,
-        "bodySystem": "neurological",
-        "notes": "Multiple intracranial or spinal meningiomas"
-      },
-      {
-        "symptomName": "Peripheral schwannomas",
-        "frequency": 0.6,
-        "bodySystem": "neurological",
-        "notes": "Schwannomas affecting peripheral nerves"
-      },
-      {
-        "symptomName": "Balance disturbances",
+        "symptomName": "Sensorineural hearing impairment",
         "frequency": 0.55,
-        "bodySystem": "neurological",
-        "notes": "Due to vestibular nerve involvement"
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Myelopathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Meningioma",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Reduced visual acuity",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Posterior subcapsular cataract",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Bilateral vestibular schwannoma",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Peripheral schwannoma",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spinal cord tumor",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Intracranial meningioma",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperesthesia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Spinal cord tumors (ependymomas or schwannomas)",
-        "frequency": 0.4,
-        "bodySystem": "neurological",
-        "notes": "May cause motor or sensory deficits",
-        "searchTerms": [
-          "tumors in spinal cord",
-          "spinal cord growths like ependymomas",
-          "nerve sheath tumors in spine"
-        ]
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Facial nerve schwannomas",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "notes": "Can cause facial weakness or paralysis",
-        "searchTerms": [
-          "tumors on facial nerve",
-          "growths affecting facial nerve",
-          "facial nerve schwannoma tumors"
-        ]
+        "symptomName": "Tinnitus",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Headaches",
-        "frequency": 0.25,
-        "bodySystem": "neurological",
-        "notes": "Often related to intracranial tumors"
+        "symptomName": "Visual loss",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Cutaneous schwannomas",
-        "frequency": 0.2,
-        "bodySystem": "dermatological",
-        "notes": "Skin nodules representing schwannomas"
+        "symptomName": "Abnormal optic nerve morphology",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Visual disturbances other than cataracts",
-        "frequency": 0.15,
-        "bodySystem": "ophthalmological",
-        "notes": "Due to optic nerve involvement or tumors",
-        "searchTerms": [
-          "vision problems besides cataracts",
-          "other eye disturbances",
-          "non-cataract visual symptoms"
-        ]
+        "symptomName": "Blindness",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Amblyopia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Diplopia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sensory neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hyperpigmentation of the skin",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Polyneuropathy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cerebellum morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Postural instability",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Unsteady gait",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Memory impairment",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Brain stem compression",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ependymoma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Somatic sensory dysfunction",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Neoplasm of the skin",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Foot dorsiflexor weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Retinal hamartoma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Mononeuropathy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Facial palsy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Wrist drop",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spinal meningioma",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Epiretinal membrane",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cortical cataract",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Seizures",
-        "frequency": 0.08,
-        "bodySystem": "neurological",
-        "notes": "Secondary to cortical tumors or irritation"
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "Due to obstruction by tumors"
+        "symptomName": "Remnants of the hyaloid vascular system",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Cranial nerve palsies other than vestibular or facial",
-        "frequency": 0.04,
-        "bodySystem": "neurological",
-        "notes": "Involvement of other cranial nerves by schwannomas",
-        "searchTerms": [
-          "weakness or paralysis of other cranial nerves",
-          "cranial nerve palsies excluding facial and vestibular",
-          "nerve function loss in head nerves"
-        ]
+        "symptomName": "Astrocytoma",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Glioma",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
     "neurological",
+    "otolaryngological",
     "ophthalmological",
-    "dermatological"
+    "constitutional",
+    "dermatological",
+    "gastrointestinal",
+    "musculoskeletal",
+    "cardiovascular"
   ],
   "keyFindings": {
     "laboratory": [],
@@ -197,7 +312,8 @@
       "Ophthalmologic slit-lamp examination revealing juvenile posterior subcapsular cataracts"
     ],
     "genetic": [
-      "Pathogenic variants in the NF2 gene on chromosome 22q12"
+      "NF2 (causative)",
+      "Autosomal dominant inheritance"
     ],
     "other": [
       "Audiometric testing demonstrating sensorineural hearing loss",
@@ -234,11 +350,11 @@
     "Geneticist",
     "ENT specialist"
   ],
-  "lastUpdated": "2026-03-10",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Evans DG. Neurofibromatosis type 2 (NF2): a clinical and molecular review. Orphanet J Rare Dis. 2009.",
     "Manchester Diagnostic Criteria for NF2, 2017 revision.",
     "National Organization for Rare Disorders (NORD) - Neurofibromatosis Type 2."
   ],
-  "confidenceInData": "ai-generated"
+  "confidenceInData": "medium"
 }

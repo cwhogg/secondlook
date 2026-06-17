@@ -11,14 +11,15 @@
   "omimId": "223900",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 3,700 Ashkenazi Jewish births",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 10,
-      "peak": 1
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -65,143 +66,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Impaired pain and temperature sensation",
-        "frequency": 0.95,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "reduced ability to feel pain and temperature",
-          "loss of pain and heat/cold sensation",
-          "impaired sensory perception for pain and temperature"
-        ]
-      },
-      {
-        "symptomName": "Autonomic dysfunction including blood pressure instability",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "unstable blood pressure",
-          "autonomic nervous system problems",
-          "dizziness from blood pressure changes"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Absent or reduced deep tendon reflexes",
-        "frequency": 0.75,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "absent or weak reflexes",
-          "reduced deep tendon reflex responses",
-          "loss of knee or ankle reflexes"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Reduced lacrimation leading to dry eyes",
-        "frequency": 0.85,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "dry eyes from reduced tears",
-          "decreased tear production causing dryness",
-          "lack of lacrimation"
-        ]
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Gastrointestinal dysmotility including swallowing difficulties",
-        "frequency": 0.8,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "swallowing difficulties and slow digestion",
-          "gastrointestinal motility problems",
-          "digestive tract nerve dysfunction"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Recurrent pneumonia due to aspiration",
-        "frequency": 0.7,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "repeated lung infections",
-          "frequent aspiration pneumonia",
-          "chronic pneumonia from inhaling food"
-        ]
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Poor growth and failure to thrive",
-        "frequency": 0.65,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "poor growth in children",
-          "failure to gain weight or height",
-          "growth delay and poor development"
-        ]
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Orthostatic hypotension",
-        "frequency": 0.6,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Gait ataxia",
-        "frequency": 0.4,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Excessive sweating episodes",
-        "frequency": 0.3,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "episodes of excessive sweating",
-          "sudden increased sweating spells",
-          "hyperhidrosis attacks"
-        ]
-      },
-      {
-        "symptomName": "Urinary incontinence",
-        "frequency": 0.25,
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
         "bodySystem": "renal"
       },
       {
-        "symptomName": "Episodic vomiting",
-        "frequency": 0.2,
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Delayed puberty",
-        "frequency": 0.15,
-        "bodySystem": "endocrine"
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Corneal ulcerations",
-        "frequency": 0.08,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Cardiac arrhythmias",
-        "frequency": 0.05,
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Seizures",
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
         "frequency": 0.03,
         "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "neurological",
-    "cardiovascular",
     "gastrointestinal",
-    "ophthalmological",
-    "respiratory",
-    "dermatological",
+    "hematological",
+    "immunological",
+    "constitutional",
     "renal",
+    "respiratory",
+    "neurological",
     "endocrine",
-    "constitutional"
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -246,7 +380,7 @@
     "Geneticist",
     "Autonomic specialist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Axelrod FB. Familial Dysautonomia. In: Adam MP, Ardinger HH, Pagon RA, et al., editors. GeneReviews® [Internet]. Seattle (WA): University of Washington, Seattle; 1993-2024.",
     "Norcliffe-Kaufmann L, Axelrod FB, Kaufmann H. Familial Dysautonomia: History, Genotype, Phenotype and Translational Research. Prog Neurobiol. 2016;152:131-146.",

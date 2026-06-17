@@ -11,15 +11,15 @@
   "omimId": "220110",
   "orphanetId": "ORPHA:284",
   "prevalence": {
-    "estimate": "1 in 100,000",
-    "range": "0.0005%-0.001%",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 40,
-      "peak": 5
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -64,149 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Progressive proximal muscle weakness",
-        "frequency": 0.85,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "gradual weakness in upper legs and arms",
-          "progressive muscle weakness near trunk",
-          "proximal muscle weakness"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Neurodevelopmental delay or regression",
-        "frequency": 0.75,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "delayed brain development",
-          "loss of developmental skills",
-          "slow neurodevelopment or regression"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Exercise intolerance with lactic acidosis",
-        "frequency": 0.7,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "poor exercise tolerance with lactic acid buildup",
-          "muscle fatigue and acid buildup during activity",
-          "exercise intolerance with acidosis"
-        ]
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Hypotonia",
-        "frequency": 0.65,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Seizures",
-        "frequency": 0.6,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ataxia",
-        "frequency": 0.58,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Ophthalmoplegia",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "ophthalmological"
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Cardiomyopathy",
-        "frequency": 0.5,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Sensorineural hearing loss",
-        "frequency": 0.4,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "hearing loss from nerve damage",
-          "sensorineural deafness",
-          "inner ear hearing impairment"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.35,
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Gastrointestinal dysmotility",
-        "frequency": 0.3,
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.25,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "poor weight gain",
-          "not growing well",
-          "failure to gain weight"
-        ]
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Lactic acidosis episodes",
-        "frequency": 0.2,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "episodes of high lactic acid",
-          "lactic acid buildup attacks",
-          "periodic lactic acidosis symptoms"
-        ]
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Renal tubular dysfunction",
-        "frequency": 0.08,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "kidney tubule problems",
-          "renal tubular dysfunction",
-          "kidney filtering defects"
-        ]
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Endocrine abnormalities (e.g., diabetes mellitus)",
-        "frequency": 0.05,
-        "bodySystem": "endocrine",
-        "searchTerms": [
-          "hormone problems like diabetes",
-          "endocrine system issues",
-          "blood sugar regulation problems"
-        ]
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Psychiatric manifestations (e.g., mood disorders)",
-        "frequency": 0.04,
-        "bodySystem": "psychiatric",
-        "searchTerms": [
-          "mood disorders",
-          "psychiatric symptoms",
-          "mental health problems"
-        ]
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "neurological",
-    "musculoskeletal",
-    "cardiovascular",
-    "ophthalmological",
-    "otolaryngological",
     "gastrointestinal",
+    "hematological",
+    "immunological",
     "constitutional",
     "renal",
+    "respiratory",
+    "neurological",
     "endocrine",
-    "psychiatric"
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -256,7 +383,7 @@
     "Metabolic specialist",
     "Cardiologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "DiMauro S, Schon EA. Mitochondrial respiratory-chain diseases. N Engl J Med. 2003 Jun 19;348(26):2656-68.",
     "Rahman S, et al. Mitochondrial disease: clinical features, diagnosis, and management. J Neurol Neurosurg Psychiatry. 2017;88(1):1-12.",

@@ -11,14 +11,15 @@
   "omimId": "224120",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 20,
-      "peak": 5
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -66,144 +67,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Binucleated erythroblasts in bone marrow",
-        "frequency": 0.95,
-        "bodySystem": "hematological",
-        "notes": "Distinctive morphological hallmark",
-        "searchTerms": [
-          "red blood cell precursors with two nuclei",
-          "abnormal bone marrow cells",
-          "binucleated erythroblasts in marrow"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Ineffective erythropoiesis leading to anemia",
+        "symptomName": "Eosinophilia",
         "frequency": 0.9,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "poor red blood cell production",
-          "anemia from ineffective blood cell formation",
-          "low red blood cell count due to marrow issues"
-        ]
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Pallor due to anemia",
-        "frequency": 0.85,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "pale skin from low red blood cells",
-          "skin looks lighter due to anemia",
-          "paleness caused by anemia"
-        ]
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Fatigue and weakness",
-        "frequency": 0.8,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "constant tiredness",
-          "muscle weakness",
-          "feeling exhausted"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Jaundice from mild hemolysis",
-        "frequency": 0.7,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "yellow skin from mild red cell breakdown",
-          "jaundice caused by hemolysis",
-          "mild hemolytic jaundice"
-        ]
-      },
-      {
-        "symptomName": "Splenomegaly",
-        "frequency": 0.65,
+        "symptomName": "Anemia",
+        "frequency": 0.55,
         "bodySystem": "hematological"
       },
       {
-        "symptomName": "Mild hepatomegaly",
-        "frequency": 0.6,
-        "bodySystem": "hematological"
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Iron overload complications",
-        "frequency": 0.4,
-        "bodySystem": "hematological",
-        "notes": "Due to repeated transfusions or increased absorption",
-        "searchTerms": [
-          "excess iron buildup",
-          "iron overload symptoms",
-          "too much iron in body"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Gallstones",
-        "frequency": 0.3,
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Growth retardation in children",
-        "frequency": 0.25,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "slow growth in children",
-          "poor childhood growth",
-          "growth delay in kids"
-        ]
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Bone deformities",
-        "frequency": 0.15,
-        "bodySystem": "musculoskeletal",
-        "notes": "Due to marrow expansion"
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Cardiac complications secondary to anemia",
-        "frequency": 0.08,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "heart problems from anemia",
-          "cardiac issues due to low red cells",
-          "anemia-related heart complications"
-        ]
-      },
-      {
-        "symptomName": "Endocrine dysfunction from iron overload",
-        "frequency": 0.05,
-        "bodySystem": "endocrine",
-        "searchTerms": [
-          "hormone problems from iron overload",
-          "endocrine dysfunction due to iron",
-          "iron-related gland disorders"
-        ]
-      },
-      {
-        "symptomName": "Neurological symptoms due to severe anemia",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "nerve problems from severe anemia",
-          "neurological symptoms due to low blood",
-          "brain effects of anemia"
-        ]
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "hematological",
-    "constitutional",
     "gastrointestinal",
-    "musculoskeletal",
-    "cardiovascular",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
+    "neurological",
     "endocrine",
-    "neurological"
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -262,7 +395,7 @@
     "Geneticist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Heimpel H, et al. Congenital dyserythropoietic anemia type I: clinical and molecular aspects. Blood Rev. 2002;16(3):193-202.",
     "Iolascon A, et al. Congenital dyserythropoietic anemias: molecular insights and diagnostic challenges. Haematologica. 2013;98(6):833-40.",

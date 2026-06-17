@@ -11,15 +11,15 @@
   "omimId": "192500",
   "orphanetId": "ORPHA:803",
   "prevalence": {
-    "estimate": "1 in 7,000",
-    "range": "0.01%-0.02%",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 40,
-      "peak": 15
+      "min": 18,
+      "max": 65,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -58,127 +58,257 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Prolonged QT interval on ECG",
-        "frequency": 0.85,
-        "bodySystem": "cardiovascular",
-        "notes": "QTc prolongation is hallmark of LQT1",
-        "searchTerms": [
-          "long QT interval on heart test",
-          "prolonged electrical heart recovery",
-          "delayed heart repolarization on ECG"
-        ]
+        "symptomName": "Amyotrophic lateral sclerosis",
+        "frequency": 1,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Exercise-induced syncope",
-        "frequency": 0.75,
-        "bodySystem": "cardiovascular",
-        "notes": "Syncope often triggered by swimming or exertion"
+        "symptomName": "Neurodegeneration",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Motor neuron atrophy",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       }
     ],
     "common": [
       {
-        "symptomName": "Palpitations",
-        "frequency": 0.65,
-        "bodySystem": "cardiovascular",
-        "notes": "Due to ventricular arrhythmias"
-      },
-      {
-        "symptomName": "Torsades de pointes",
-        "frequency": 0.6,
-        "bodySystem": "cardiovascular",
-        "notes": "Polymorphic ventricular tachycardia causing syncope or sudden death",
-        "searchTerms": [
-          "specific dangerous heart rhythm",
-          "torsades de pointes arrhythmia",
-          "twisting ventricular tachycardia"
-        ]
-      },
-      {
-        "symptomName": "Sudden cardiac arrest",
+        "symptomName": "Xerostomia",
         "frequency": 0.55,
-        "bodySystem": "cardiovascular",
-        "notes": "May be first presentation",
-        "searchTerms": [
-          "sudden heart stoppage",
-          "unexpected cardiac arrest",
-          "heart suddenly stops beating"
-        ]
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Atypical behavior",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Emotional lability",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Depression",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Spasticity",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hyperreflexia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysphonia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Drooling",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fasciculations",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Skeletal muscle atrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Muscle spasm",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Paralysis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Upper limb muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Babinski sign",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Distal amyotrophy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Progressive distal muscular atrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
       },
       {
         "symptomName": "Fatigue",
-        "frequency": 0.5,
-        "bodySystem": "constitutional",
-        "notes": "Non-specific symptom related to arrhythmia episodes"
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Tongue atrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigable weakness of bulbar muscles",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigable weakness of swallowing muscles",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigable weakness of respiratory muscles",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormality on pulmonary function testing",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hoffmann sign",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Seizure-like episodes",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "notes": "Secondary to cerebral hypoperfusion during arrhythmia"
+        "symptomName": "Tongue fasciculations",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Chest pain",
-        "frequency": 0.25,
-        "bodySystem": "cardiovascular",
-        "notes": "May occur during arrhythmic events"
+        "symptomName": "Frontotemporal dementia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Dizziness",
-        "frequency": 0.2,
-        "bodySystem": "neurological",
-        "notes": "Pre-syncope symptom"
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Shortness of breath",
-        "frequency": 0.15,
-        "bodySystem": "respiratory",
-        "notes": "During arrhythmia or syncope episodes",
-        "searchTerms": [
-          "difficulty breathing",
-          "shortness of breath",
-          "breathlessness"
-        ]
+        "symptomName": "Sleep abnormality",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Language impairment",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Steppage gait",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cachexia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Foot dorsiflexor weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Orthopnea",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Jaw hyperreflexia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Sudden infant death",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "notes": "Rare presentation in infants with LQT1",
-        "searchTerms": [
-          "unexpected infant death",
-          "sudden death in newborn",
-          "unexplained baby death"
-        ]
-      },
-      {
-        "symptomName": "Nocturnal agonal respirations",
+        "symptomName": "Laryngospasm",
         "frequency": 0.03,
-        "bodySystem": "respiratory",
-        "notes": "Rarely reported during arrhythmic events",
-        "searchTerms": [
-          "gasping breathing at night",
-          "struggling to breathe during sleep",
-          "noisy or labored nighttime breathing"
-        ]
-      },
-      {
-        "symptomName": "Psychiatric symptoms",
-        "frequency": 0.02,
-        "bodySystem": "psychiatric",
-        "notes": "Anxiety related to recurrent syncope or ICD implantation"
+        "bodySystem": "otolaryngological"
       }
     ]
   },
   "systemsAffected": [
-    "cardiovascular",
+    "ophthalmological",
     "neurological",
-    "respiratory",
+    "musculoskeletal",
     "constitutional",
-    "psychiatric"
+    "psychiatric",
+    "gastrointestinal",
+    "respiratory",
+    "otolaryngological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -188,7 +318,44 @@
       "ECG showing prolonged QTc interval; Holter monitoring may capture arrhythmias"
     ],
     "genetic": [
-      "Pathogenic variants in KCNQ1 gene causing loss of function of IKs potassium channel"
+      "CCNF (causative)",
+      "TAF15 (candidate)",
+      "ANXA11 (causative)",
+      "CFAP410 (causative)",
+      "GLE1 (causative)",
+      "NEK1 (susceptibility)",
+      "GLT8D1 (susceptibility)",
+      "CHCHD10 (causative)",
+      "DAO (causative)",
+      "ATXN2 (susceptibility)",
+      "CHMP2B (causative)",
+      "SOD1 (causative)",
+      "TREM2 (susceptibility)",
+      "VAPB (causative)",
+      "VCP (causative)",
+      "NEFH (susceptibility)",
+      "OPTN (causative)",
+      "DCTN1 (candidate)",
+      "TARDBP (causative)",
+      "FIG4 (causative)",
+      "FUS (causative)",
+      "ANG (causative)",
+      "MATR3 (causative)",
+      "PRPH (susceptibility)",
+      "PON1 (causative)",
+      "PON2 (causative)",
+      "PON3 (causative)",
+      "SQSTM1 (causative)",
+      "UBQLN2 (causative)",
+      "C9ORF72 (causative)",
+      "PFN1 (causative)",
+      "TBK1 (susceptibility)",
+      "HNRNPA1 (causative)",
+      "PPARGC1A (modifier)",
+      "ERBB4 (causative)",
+      "UNC13A (susceptibility)",
+      "Autosomal dominant inheritance",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Exercise stress testing may provoke QT prolongation and arrhythmias"
@@ -222,7 +389,7 @@
     "Geneticist",
     "Electrophysiologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Schwartz PJ, et al. Diagnostic criteria for the long QT syndrome: an update. Circulation. 2013.",
     "Ackerman MJ, et al. HRS/EHRA expert consensus statement on the diagnosis and management of patients with inherited primary arrhythmia syndromes. Heart Rhythm. 2013.",

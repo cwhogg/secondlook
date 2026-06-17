@@ -10,14 +10,15 @@
   ],
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 100,000",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 50,
-      "peak": 20
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": []
@@ -56,185 +57,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Sclerotic ivory-colored plaques",
-        "frequency": 0.85,
-        "bodySystem": "dermatological",
-        "notes": "Typically well-demarcated with a shiny surface",
-        "searchTerms": [
-          "hard white bone plaques",
-          "ivory-colored sclerotic bone spots",
-          "dense bone patches"
-        ]
-      },
-      {
-        "symptomName": "Localized skin induration and thickening",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "localized thickened and hardened skin",
-          "skin hardening in specific areas",
-          "indurated skin patches"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Hypopigmentation or hyperpigmentation within plaques",
-        "frequency": 0.75,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "light or dark spots within plaques",
-          "areas of skin color changes",
-          "patchy skin pigmentation in lesions"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Pruritus over affected skin",
-        "frequency": 0.65,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "itching over affected skin",
-          "skin itchiness in plaques",
-          "pruritus on hardened skin"
-        ]
-      },
-      {
-        "symptomName": "Skin atrophy within plaques",
-        "frequency": 0.7,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "thinning of skin in plaques",
-          "skin wasting within affected areas",
-          "skin atrophy in patches"
-        ]
-      },
-      {
-        "symptomName": "Mild pain or tenderness in lesions",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "mild pain or soreness in lesions",
-          "tenderness in skin plaques",
-          "slight discomfort in affected skin"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Restricted joint movement adjacent to plaques",
-        "frequency": 0.6,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "limited joint movement near plaques",
-          "restricted mobility of nearby joints",
-          "joint stiffness adjacent to skin lesions"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Erythematous border around plaques",
-        "frequency": 0.5,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "red border around skin plaques",
-          "erythematous edges on lesions",
-          "red rim surrounding plaques"
-        ]
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hair loss over affected skin",
-        "frequency": 0.3,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "hair loss over affected skin",
-          "patchy scalp hair thinning",
-          "alopecia on hardened skin"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Subcutaneous tissue involvement causing deep induration",
-        "frequency": 0.4,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "deep skin and fat tissue hardening",
-          "subcutaneous tissue thickening",
-          "deep skin induration"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Joint contractures near plaques",
-        "frequency": 0.25,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "joint stiffness from skin tightening",
-          "contracted joints near plaques",
-          "limited joint flexibility due to fibrosis"
-        ]
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mild limb asymmetry due to tissue atrophy",
-        "frequency": 0.15,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "mild limb size difference from tissue loss",
-          "slight asymmetry of arms or legs",
-          "unequal limb size due to atrophy"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Fatigue",
-        "frequency": 0.2,
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Neuropathic pain or paresthesia near lesions",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "nerve pain or tingling near lesions",
-          "neuropathic discomfort around plaques",
-          "burning or numbness near affected skin"
-        ]
-      },
-      {
-        "symptomName": "Ocular involvement (e.g. uveitis) in linear morphea",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "eye inflammation linked to skin disease",
-          "uveitis or eye irritation in morphea",
-          "ocular involvement with skin condition"
-        ]
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Muscle weakness adjacent to plaques",
-        "frequency": 0.07,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "muscle weakness near plaques",
-          "reduced muscle strength adjacent to lesions",
-          "weak muscles close to affected skin"
-        ]
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Systemic symptoms such as fever or weight loss",
-        "frequency": 0.02,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "fever and weight loss",
-          "general illness symptoms",
-          "systemic signs like chills and losing weight"
-        ]
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "dermatological",
-    "musculoskeletal",
+    "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
     "neurological",
-    "ophthalmological",
-    "constitutional"
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -289,7 +381,7 @@
     "Rheumatologist",
     "Neurologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Mertens JS et al. Morphea: Clinical and Pathological Features. J Am Acad Dermatol. 2020.",
     "Fett N, Werth VP. Update on morphea: part I. Epidemiology, clinical presentation, and pathogenesis. J Am Acad Dermatol. 2011.",

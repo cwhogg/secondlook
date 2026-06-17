@@ -11,14 +11,15 @@
   "omimId": "161200",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 50,000",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 50,
-      "peak": 10
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,160 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Nail dysplasia (absent or hypoplastic nails)",
-        "frequency": 0.85,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "missing or small nails",
-          "poorly formed fingernails or toenails",
-          "abnormal nail growth"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Patellar hypoplasia or aplasia",
-        "frequency": 0.8,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "small or missing kneecap",
-          "underdeveloped or absent patella",
-          "kneecap hypoplasia or aplasia"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Iliac horns visible on pelvic radiographs",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "bony projections on pelvis",
-          "iliac horns seen on x-ray",
-          "pelvic bone spikes",
-          "pelvic bone abnormalities"
-        ]
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Proteinuria indicating renal involvement",
-        "frequency": 0.6,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "protein in urine indicating kidney issues",
-          "kidney damage causing protein loss",
-          "excess protein leakage in urine"
-        ]
-      },
-      {
-        "symptomName": "Elbow dysplasia with limited extension",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "stiff elbow",
-          "limited elbow movement",
-          "elbow joint deformity"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Hypoplasia or dysplasia of the radial head",
-        "frequency": 0.5,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "small or malformed radial head",
-          "radial head bone underdevelopment",
-          "abnormal shape of radial head"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Glaucoma or ocular hypertension",
-        "frequency": 0.5,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "high eye pressure",
-          "glaucoma symptoms",
-          "ocular hypertension",
-          "increased intraocular pressure"
-        ]
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Chronic kidney disease progression",
-        "frequency": 0.3,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "worsening kidney function",
-          "progressive kidney disease",
-          "declining kidney health"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Lower limb pain or arthritis",
-        "frequency": 0.25,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "leg joint pain",
-          "aching lower limbs",
-          "arthritis in legs"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Gastrointestinal symptoms such as constipation",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "constipation",
-          "difficulty passing stool",
-          "slow bowel movements"
-        ]
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hearing loss",
-        "frequency": 0.1,
-        "bodySystem": "otolaryngological"
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Neuropathic pain or peripheral neuropathy",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "nerve pain",
-          "burning or shooting limb pain",
-          "peripheral nerve damage symptoms"
-        ]
-      },
-      {
-        "symptomName": "Psychiatric manifestations including anxiety or depression",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "psychiatric",
-        "searchTerms": [
-          "anxiety and depression symptoms",
-          "mood changes and psychiatric signs",
-          "mental health issues"
-        ]
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Cardiovascular abnormalities such as hypertension",
-        "frequency": 0.02,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "high blood pressure",
-          "heart and vessel abnormalities",
-          "vascular problems"
-        ]
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "dermatological",
-    "musculoskeletal",
-    "renal",
-    "ophthalmological",
     "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
     "neurological",
-    "psychiatric",
+    "endocrine",
+    "dermatological",
     "cardiovascular",
-    "otolaryngological"
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -264,7 +381,7 @@
     "Dermatologist",
     "Ophthalmologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "OMIM entry #161200 - Nail-Patella Syndrome",
     "Orphanet: Nail-Patella Syndrome",

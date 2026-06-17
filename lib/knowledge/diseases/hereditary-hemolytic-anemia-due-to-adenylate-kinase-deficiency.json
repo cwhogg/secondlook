@@ -17,8 +17,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 50,
-      "peak": 10
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,141 +57,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Chronic hemolytic anemia",
-        "frequency": 0.85,
-        "bodySystem": "hematological",
-        "notes": "Variable severity from mild to moderate anemia",
-        "searchTerms": [
-          "long-term destruction of red blood cells",
-          "chronic anemia from red cell breakdown",
-          "ongoing hemolytic anemia"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Reduced erythrocyte adenylate kinase enzyme activity",
-        "frequency": 0.95,
-        "bodySystem": "hematological",
-        "notes": "Diagnostic hallmark",
-        "searchTerms": [
-          "low red blood cell enzyme activity",
-          "reduced adenylate kinase in blood cells",
-          "enzyme deficiency in erythrocytes"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Jaundice due to indirect hyperbilirubinemia",
-        "frequency": 0.75,
-        "bodySystem": "hematological",
-        "notes": "Intermittent or persistent",
-        "searchTerms": [
-          "yellow skin from indirect bilirubin",
-          "jaundice caused by bilirubin buildup",
-          "indirect hyperbilirubinemia-related jaundice"
-        ]
+        "symptomName": "Psychotic episodes",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Reticulocytosis",
-        "frequency": 0.7,
-        "bodySystem": "hematological",
-        "notes": "Reflects compensatory erythropoiesis"
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Splenomegaly",
-        "frequency": 0.65,
-        "bodySystem": "hematological",
-        "notes": "Mild to moderate enlargement"
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Fatigue and pallor",
-        "frequency": 0.6,
-        "bodySystem": "constitutional",
-        "notes": "Related to anemia",
-        "searchTerms": [
-          "tiredness and pale skin",
-          "fatigue with pallor",
-          "weakness and pale appearance"
-        ]
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Gallstones (cholelithiasis)",
-        "frequency": 0.3,
-        "bodySystem": "gastrointestinal",
-        "notes": "Secondary to chronic hemolysis"
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Mild splenic infarcts",
-        "frequency": 0.2,
-        "bodySystem": "hematological",
-        "notes": "Rarely reported",
-        "searchTerms": [
-          "small areas of spleen tissue death",
-          "tiny spleen infarcts",
-          "minor spleen tissue damage"
-        ]
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Exercise intolerance",
-        "frequency": 0.25,
-        "bodySystem": "constitutional",
-        "notes": "Due to anemia"
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mild jaundice exacerbations during infections",
-        "frequency": 0.15,
-        "bodySystem": "hematological",
-        "notes": "Hemolytic crises",
-        "searchTerms": [
-          "mild jaundice worsened by infections",
-          "yellow skin during infections",
-          "infection-triggered mild jaundice"
-        ]
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Hemolytic crises requiring transfusion",
-        "frequency": 0.05,
-        "bodySystem": "hematological",
-        "notes": "Usually triggered by infections or stress",
-        "searchTerms": [
-          "episodes of severe red blood cell breakdown",
-          "hemolytic crises needing transfusion",
-          "blood cell destruction attacks"
-        ]
-      },
-      {
-        "symptomName": "Aplastic anemia episodes",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "hematological",
-        "notes": "Very rare complication",
-        "searchTerms": [
-          "episodes of bone marrow failure",
-          "temporary aplastic anemia attacks",
-          "periods of low blood cell production"
-        ]
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Neurological symptoms due to severe anemia",
-        "frequency": 0.02,
-        "bodySystem": "neurological",
-        "notes": "Rare and usually secondary",
-        "searchTerms": [
-          "nerve problems from severe anemia",
-          "neurological symptoms due to low blood",
-          "brain effects of anemia"
-        ]
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "hematological",
-    "gastrointestinal",
+    "psychiatric",
+    "neurological",
     "constitutional",
-    "neurological"
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -206,7 +337,8 @@
       "Ultrasound or CT evidence of gallstones"
     ],
     "genetic": [
-      "Pathogenic mutations in AK1 gene confirmed by molecular genetic testing"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Peripheral blood smear showing anisopoikilocytosis and polychromasia"
@@ -247,7 +379,7 @@
     "Hematologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Beutler E. Adenylate kinase deficiency and hemolytic anemia. Blood Cells. 1984;10(3):517-530.",
     "Bianchi P, et al. Hereditary hemolytic anemia due to adenylate kinase deficiency: clinical and molecular characterization. Blood. 2000;95(8):2569-2574.",

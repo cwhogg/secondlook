@@ -11,15 +11,15 @@
   "omimId": "151623",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 5,000 to 1 in 20,000",
-    "range": "0.005% - 0.02%",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 50,
-      "peak": 25
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -60,130 +60,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Early-onset soft tissue sarcoma",
-        "frequency": 0.85,
-        "bodySystem": "musculoskeletal",
-        "notes": "Often occurs before age 45",
-        "searchTerms": [
-          "soft tissue cancer at young age",
-          "early onset connective tissue sarcoma",
-          "childhood soft tissue tumor"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Breast carcinoma diagnosed before age 35",
-        "frequency": 0.75,
-        "bodySystem": "reproductive",
-        "notes": "Frequently bilateral or multifocal",
-        "searchTerms": [
-          "breast cancer before age 35",
-          "early age breast carcinoma",
-          "young adult breast cancer"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Adrenocortical carcinoma in childhood",
-        "frequency": 0.7,
-        "bodySystem": "endocrine",
-        "notes": "Rare but highly indicative",
-        "searchTerms": [
-          "adrenal gland cancer in children",
-          "childhood adrenal carcinoma",
-          "early onset adrenal tumor"
-        ]
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Osteosarcoma",
-        "frequency": 0.65,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Brain tumors (e.g., gliomas, medulloblastomas)",
-        "frequency": 0.6,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "brain tumors like gliomas or medulloblastomas",
-          "malignant brain growths",
-          "central nervous system tumors"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Leukemia",
+        "symptomName": "Anemia",
         "frequency": 0.55,
         "bodySystem": "hematological"
       },
       {
-        "symptomName": "Lung carcinoma",
-        "frequency": 0.52,
-        "bodySystem": "respiratory"
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Gastrointestinal tract cancers (e.g., colorectal carcinoma)",
-        "frequency": 0.3,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "cancers of digestive tract",
-          "colorectal cancer",
-          "gastrointestinal malignancies"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Skin melanoma",
-        "frequency": 0.25,
-        "bodySystem": "dermatological"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Thyroid carcinoma",
-        "frequency": 0.2,
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
         "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Soft tissue tumors other than sarcoma",
-        "frequency": 0.15,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "soft tissue tumors excluding sarcoma",
-          "non-sarcoma soft tissue growths",
-          "benign or malignant soft tissue masses"
-        ]
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Leptomeningeal carcinomatosis",
-        "frequency": 0.08,
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Pancreatic carcinoma",
-        "frequency": 0.05,
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Choroid plexus carcinoma",
-        "frequency": 0.04,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "rare brain tumor in choroid plexus",
-          "choroid plexus carcinoma",
-          "tumor of brain fluid-producing tissue"
-        ]
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "musculoskeletal",
-    "reproductive",
-    "endocrine",
-    "neurological",
-    "hematological",
-    "respiratory",
     "gastrointestinal",
-    "dermatological"
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -230,7 +376,7 @@
     "Oncologist",
     "Genetic Counselor"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Malkin D. Li-Fraumeni syndrome. Genes Cancer. 2011;2(4):475-484.",
     "Bougeard G, et al. Revisiting Li-Fraumeni syndrome from TP53 mutation carriers. J Clin Oncol. 2015;33(21):2345-2352.",

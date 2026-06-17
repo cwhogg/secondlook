@@ -18,9 +18,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 5,
-      "max": 40,
-      "peak": 15
+      "min": 0,
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "male",
     "ethnicAssociations": [
@@ -68,149 +68,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Recurrent hypokalemic muscle paralysis",
+        "symptomName": "Atypical behavior",
         "frequency": 0.9,
-        "bodySystem": "musculoskeletal",
-        "notes": "Typically triggered by rest after exercise or high carbohydrate meals",
-        "searchTerms": [
-          "repeated episodes of low potassium muscle weakness",
-          "muscle paralysis from low potassium",
-          "periodic muscle weakness with low potassium"
-        ]
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Life-threatening ventricular arrhythmias",
-        "frequency": 0.75,
-        "bodySystem": "cardiovascular",
-        "notes": "Includes ventricular tachycardia and ventricular fibrillation",
-        "searchTerms": [
-          "dangerous irregular heartbeats",
-          "life-threatening heart rhythm problems",
-          "severe ventricular arrhythmias"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Serum hypokalemia during attacks",
-        "frequency": 0.85,
-        "bodySystem": "endocrine",
-        "notes": "Potassium levels typically below 3.5 mmol/L",
-        "searchTerms": [
-          "low blood potassium during attacks",
-          "potassium deficiency in blood during episodes",
-          "hypokalemia during muscle weakness"
-        ]
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Muscle cramps and stiffness",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal",
-        "notes": "Often precedes paralysis episodes",
-        "searchTerms": [
-          "muscle cramps and stiffness",
-          "painful muscle tightening",
-          "muscle spasms"
-        ]
-      },
-      {
-        "symptomName": "Palpitations",
-        "frequency": 0.65,
-        "bodySystem": "cardiovascular",
-        "notes": "May occur during or outside paralysis episodes"
-      },
-      {
-        "symptomName": "Fatigue",
-        "frequency": 0.6,
-        "bodySystem": "constitutional",
-        "notes": "Generalized tiredness between episodes"
-      },
-      {
-        "symptomName": "Transient muscle weakness between episodes",
+        "symptomName": "Psychotic episodes",
         "frequency": 0.55,
-        "bodySystem": "musculoskeletal",
-        "notes": "Mild weakness may persist",
-        "searchTerms": [
-          "temporary muscle weakness between attacks",
-          "muscle strength returns after episodes",
-          "intermittent muscle weakness"
-        ]
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Syncope or near-syncope",
-        "frequency": 0.3,
-        "bodySystem": "cardiovascular",
-        "notes": "Due to arrhythmia or hypotension",
-        "searchTerms": [
-          "fainting or near fainting spells",
-          "passing out or almost passing out",
-          "loss of consciousness episodes"
-        ]
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Respiratory muscle weakness",
-        "frequency": 0.25,
-        "bodySystem": "respiratory",
-        "notes": "May cause breathing difficulties during severe attacks",
-        "searchTerms": [
-          "weak breathing muscles",
-          "difficulty breathing due to muscle weakness",
-          "respiratory muscle fatigue"
-        ]
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Muscle pain",
-        "frequency": 0.2,
-        "bodySystem": "musculoskeletal",
-        "notes": "Myalgias during or after episodes"
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Anxiety related to attacks",
-        "frequency": 0.15,
-        "bodySystem": "psychiatric",
-        "notes": "Psychological distress due to unpredictable episodes",
-        "searchTerms": [
-          "anxiety related to episodes",
-          "nervousness during attacks",
-          "worry associated with symptoms"
-        ]
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Dilated cardiomyopathy",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "notes": "Reported in chronic cases with arrhythmia"
-      },
-      {
-        "symptomName": "Permanent muscle weakness",
-        "frequency": 0.07,
-        "bodySystem": "musculoskeletal",
-        "notes": "Due to muscle fiber degeneration after repeated attacks",
-        "searchTerms": [
-          "permanent muscle weakness",
-          "long-term loss of muscle strength",
-          "chronic muscle weakness"
-        ]
-      },
-      {
-        "symptomName": "Hyperthyroidism",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "endocrine",
-        "notes": "May coexist or exacerbate symptoms"
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "musculoskeletal",
-    "cardiovascular",
-    "endocrine",
-    "respiratory",
     "psychiatric",
-    "constitutional"
+    "neurological",
+    "constitutional",
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -223,8 +346,8 @@
       "Cardiac MRI may reveal fibrosis in chronic cases"
     ],
     "genetic": [
-      "Pathogenic variants in CACNA1S gene",
-      "Pathogenic variants in SCN4A gene"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "ECG abnormalities including prolonged QT interval and ventricular ectopy",
@@ -259,7 +382,7 @@
     "Cardiologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Statland JM, Tawil R. Hypokalemic periodic paralysis. In: GeneReviews® [Internet]. University of Washington, Seattle; 2020.",
     "Tricarico D, Mele A. Familial hypokalemic periodic paralysis: pathophysiology and treatment. Neurol Sci. 2019;40(10):2049-2057.",

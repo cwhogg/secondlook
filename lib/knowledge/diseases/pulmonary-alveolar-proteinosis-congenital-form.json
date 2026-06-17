@@ -17,8 +17,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 1,
-      "peak": 0
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,148 +57,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Accumulation of surfactant material in alveoli",
-        "frequency": 0.95,
-        "bodySystem": "respiratory",
-        "notes": "Defining pathological feature",
-        "searchTerms": [
-          "surfactant buildup in lungs",
-          "alveolar material accumulation",
-          "lung surfactant excess"
-        ]
-      },
-      {
-        "symptomName": "Neonatal respiratory distress",
+        "symptomName": "Atypical behavior",
         "frequency": 0.9,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "breathing problems at birth",
-          "newborn breathing difficulty",
-          "respiratory distress in newborn"
-        ]
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Hypoxemia refractory to oxygen therapy",
-        "frequency": 0.85,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "low oxygen levels not improving with oxygen therapy",
-          "hypoxemia resistant to supplemental oxygen",
-          "oxygen therapy failing to raise blood oxygen"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Tachypnea",
-        "frequency": 0.8,
-        "bodySystem": "respiratory"
+        "symptomName": "Psychotic episodes",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Cyanosis",
-        "frequency": 0.75,
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.7,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "poor weight gain",
-          "not growing well",
-          "failure to gain weight"
-        ]
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Diffuse crackles on lung auscultation",
-        "frequency": 0.65,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "widespread crackling lung sounds",
-          "diffuse lung crackles on exam",
-          "crackles heard throughout lungs"
-        ]
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Progressive respiratory failure",
-        "frequency": 0.6,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "worsening breathing failure",
-          "progressive respiratory insufficiency",
-          "gradual lung function decline"
-        ]
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Clubbing of fingers",
-        "frequency": 0.4,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "enlarged fingertips",
-          "clubbing of fingers",
-          "rounded finger tips"
-        ]
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Recurrent pulmonary infections",
-        "frequency": 0.35,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "frequent lung infections",
-          "repeated pneumonia or bronchitis",
-          "chronic respiratory infections"
-        ]
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Pulmonary hypertension",
-        "frequency": 0.3,
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Intermittent cough",
-        "frequency": 0.25,
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
         "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Poor feeding",
-        "frequency": 0.2,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Pneumothorax",
-        "frequency": 0.07,
-        "bodySystem": "respiratory"
-      },
-      {
-        "symptomName": "Cor pulmonale",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular"
-      },
-      {
-        "symptomName": "Neurological developmental delay",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "neurological",
-        "notes": "Secondary to chronic hypoxia",
-        "searchTerms": [
-          "delayed brain development",
-          "slow neurological progress",
-          "developmental delay in nervous system"
-        ]
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "respiratory",
-    "cardiovascular",
+    "psychiatric",
+    "neurological",
     "constitutional",
     "musculoskeletal",
-    "immunological",
-    "neurological",
-    "gastrointestinal"
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -211,8 +335,8 @@
       "Chest X-ray with bilateral alveolar infiltrates"
     ],
     "genetic": [
-      "Pathogenic mutations in surfactant protein genes (SFTPB, SFTPC)",
-      "Mutations in ABCA3 gene associated with surfactant metabolism dysfunction"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Lung biopsy demonstrating alveolar filling with periodic acid–Schiff positive material",
@@ -247,7 +371,7 @@
     "Medical Geneticist",
     "Neonatologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Trapnell BC, Whitsett JA, Nakata K. Pulmonary alveolar proteinosis. N Engl J Med. 2003;349(26):2527-2539.",
     "Nogee LM. Genetic causes of surfactant protein deficiencies. Pediatr Dev Pathol. 2004;7(4):392-397.",

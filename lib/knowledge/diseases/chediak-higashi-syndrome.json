@@ -11,14 +11,15 @@
   "omimId": "214500",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 10,
-      "peak": 2
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,136 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Giant azurophilic granules in leukocytes",
-        "frequency": 0.95,
-        "bodySystem": "hematological",
-        "notes": "Characteristic finding on peripheral blood smear",
-        "searchTerms": [
-          "large granules in white blood cells",
-          "giant azurophilic inclusions in leukocytes",
-          "abnormal granules seen in immune cells"
-        ]
-      },
-      {
-        "symptomName": "Partial oculocutaneous albinism",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "dermatological",
-        "notes": "Hypopigmentation of skin, hair, and eyes",
-        "searchTerms": [
-          "partial skin and eye lightening",
-          "reduced pigment in skin and eyes",
-          "patchy pale skin and eye color"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Recurrent pyogenic infections",
-        "frequency": 0.85,
-        "bodySystem": "immunological",
-        "notes": "Due to neutrophil and NK cell dysfunction",
-        "searchTerms": [
-          "frequent bacterial infections",
-          "repeated pus-forming infections",
-          "ongoing infections with pus"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Neurological abnormalities (ataxia, peripheral neuropathy)",
-        "frequency": 0.6,
-        "bodySystem": "neurological",
-        "notes": "Progressive in nature",
-        "searchTerms": [
-          "balance problems and nerve damage",
-          "difficulty walking and numbness",
-          "coordination issues with peripheral nerve symptoms"
-        ]
-      },
-      {
-        "symptomName": "Hepatosplenomegaly",
-        "frequency": 0.7,
-        "bodySystem": "constitutional",
-        "notes": "Due to infiltration and immune activation"
-      },
-      {
-        "symptomName": "Bleeding tendency",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "hematological",
-        "notes": "Due to platelet dysfunction"
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Lymphadenopathy",
-        "frequency": 0.65,
-        "bodySystem": "immunological",
-        "notes": "Enlarged lymph nodes common"
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Photophobia",
-        "frequency": 0.3,
-        "bodySystem": "ophthalmological",
-        "notes": "Due to ocular hypopigmentation"
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.4,
-        "bodySystem": "neurological",
-        "notes": "Sensory and motor involvement"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Fever of unknown origin",
-        "frequency": 0.25,
-        "bodySystem": "constitutional",
-        "notes": "Often associated with infections or hemophagocytic lymphohistiocytosis",
-        "searchTerms": [
-          "unexplained fever",
-          "fever with no known cause",
-          "persistent high temperature without diagnosis"
-        ]
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hemophagocytic lymphohistiocytosis (accelerated phase)",
-        "frequency": 0.3,
-        "bodySystem": "hematological",
-        "notes": "Life-threatening immune activation syndrome",
-        "searchTerms": [
-          "severe immune system overactivation",
-          "rapid worsening of immune cell attack",
-          "intense immune response causing symptoms"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Seizures",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "Occasionally reported in advanced disease"
-      },
-      {
-        "symptomName": "Cardiomyopathy",
-        "frequency": 0.02,
-        "bodySystem": "cardiovascular",
-        "notes": "Rare complication"
-      },
-      {
-        "symptomName": "Pulmonary fibrosis",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "respiratory",
-        "notes": "Reported in some cases"
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
+    "gastrointestinal",
     "hematological",
     "immunological",
-    "dermatological",
-    "neurological",
     "constitutional",
-    "ophthalmological",
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
     "cardiovascular",
-    "respiratory"
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -243,7 +384,7 @@
     "Geneticist",
     "Dermatologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Introne WJ, Boissy RE, Gahl WA. Chediak-Higashi syndrome. In: GeneReviews® [Internet]. University of Washington, Seattle; 2020.",
     "Feldmann J, Callebaut I, Raposo G, et al. Munc13-4 is essential for cytolytic granules fusion and is mutated in a form of familial hemophagocytic lymphohistiocytosis (FHL3). Cell. 2003.",

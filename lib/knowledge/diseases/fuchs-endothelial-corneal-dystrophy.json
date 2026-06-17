@@ -17,9 +17,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 40,
-      "max": 80,
-      "peak": 60
+      "min": 0,
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": [
@@ -61,132 +61,271 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Corneal endothelial guttae",
-        "frequency": 0.95,
-        "bodySystem": "ophthalmological",
-        "notes": "Visible as excrescences on Descemet membrane",
-        "searchTerms": [
-          "small bumps on cornea inner layer",
-          "corneal guttae",
-          "dots on corneal endothelium"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Central corneal stromal and epithelial edema",
+        "symptomName": "Gait disturbance",
         "frequency": 0.9,
-        "bodySystem": "ophthalmological",
-        "notes": "Leads to corneal thickening and haziness",
-        "searchTerms": [
-          "swelling of cornea layers",
-          "cloudy cornea with fluid buildup",
-          "corneal edema affecting vision"
-        ]
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Progressive decreased visual acuity",
-        "frequency": 0.85,
-        "bodySystem": "ophthalmological",
-        "notes": "Worse in the morning due to corneal hydration changes",
-        "searchTerms": [
-          "gradual vision loss",
-          "progressive decrease in eyesight",
-          "worsening visual clarity"
-        ]
+        "symptomName": "Psychotic episodes",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Glare and halos around lights",
-        "frequency": 0.7,
-        "bodySystem": "ophthalmological",
-        "notes": "Photophobia due to corneal edema",
-        "searchTerms": [
-          "seeing glare or halos around lights",
-          "light sensitivity with halos",
-          "visual disturbances in bright light"
-        ]
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Blurred vision",
-        "frequency": 0.65,
-        "bodySystem": "ophthalmological",
-        "notes": "Variable throughout the day"
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Eye discomfort or foreign body sensation",
-        "frequency": 0.6,
-        "bodySystem": "ophthalmological",
-        "notes": "Due to epithelial edema",
-        "searchTerms": [
-          "eye irritation or feeling something in eye",
-          "foreign body sensation in eye",
-          "eye discomfort"
-        ]
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Pain from epithelial bullae rupture",
-        "frequency": 0.3,
-        "bodySystem": "ophthalmological",
-        "notes": "Occurs in advanced disease with bullous keratopathy",
-        "searchTerms": [
-          "pain from corneal blister rupture",
-          "eye pain due to epithelial bullae",
-          "painful eye blisters"
-        ]
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Corneal scarring",
-        "frequency": 0.25,
-        "bodySystem": "ophthalmological",
-        "notes": "Secondary to chronic edema"
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Contact lens intolerance",
-        "frequency": 0.2,
-        "bodySystem": "ophthalmological",
-        "notes": "Due to corneal surface irregularities",
-        "searchTerms": [
-          "unable to wear contact lenses",
-          "contact lens intolerance",
-          "discomfort with contacts"
-        ]
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Intermittent ocular redness",
-        "frequency": 0.15,
-        "bodySystem": "ophthalmological",
-        "notes": "Mild inflammation secondary to epithelial breakdown",
-        "searchTerms": [
-          "red eyes on and off",
-          "episodic eye redness",
-          "intermittent eye irritation"
-        ]
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Corneal neovascularization",
-        "frequency": 0.05,
-        "bodySystem": "ophthalmological",
-        "notes": "Usually in late-stage disease or secondary complications"
-      },
-      {
-        "symptomName": "Secondary glaucoma",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "ophthalmological",
-        "notes": "Due to angle closure from corneal edema"
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Corneal perforation",
-        "frequency": 0.01,
-        "bodySystem": "ophthalmological",
-        "notes": "Extremely rare complication of advanced bullous keratopathy"
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
+    "psychiatric",
+    "neurological",
+    "constitutional",
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
     "ophthalmological"
   ],
   "keyFindings": {
@@ -197,8 +336,8 @@
       "Anterior segment optical coherence tomography (AS-OCT) showing corneal thickening and edema"
     ],
     "genetic": [
-      "Mutations in COL8A2 gene (early-onset forms)",
-      "Association with TCF4 gene polymorphisms (common late-onset forms)"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "In vivo confocal microscopy revealing endothelial cell abnormalities",
@@ -232,7 +371,7 @@
     "Ophthalmologist",
     "Cornea Specialist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Krachmer JH, Purcell JJ, Young CW, Bucher KD. Corneal endothelial dystrophy. A study of 64 families. Arch Ophthalmol. 1978;96(11):2036-2039.",
     "Møller HU. Fuchs endothelial corneal dystrophy. Acta Ophthalmol. 2018;96(1):1-2.",

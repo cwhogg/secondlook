@@ -11,14 +11,15 @@
   "omimId": "300555",
   "orphanetId": "ORPHA:284",
   "prevalence": {
-    "estimate": "1 in 500,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 50,
-      "peak": 10
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "male",
     "ethnicAssociations": []
@@ -63,112 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Low-molecular-weight proteinuria",
-        "frequency": 0.95,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Hypercalciuria",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "renal"
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Progressive renal failure",
-        "frequency": 0.75,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "worsening kidney function",
-          "gradual kidney failure",
-          "kidneys losing function over time"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Nephrocalcinosis",
-        "frequency": 0.7,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Nephrolithiasis",
-        "frequency": 0.65,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Proteinuria (non-selective)",
-        "frequency": 0.6,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Fatigue related to chronic kidney disease",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "tiredness from kidney disease",
-          "fatigue linked to chronic kidney failure",
-          "low energy due to kidney problems"
-        ]
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hypophosphatemia",
-        "frequency": 0.4,
-        "bodySystem": "endocrine",
-        "notes": "Due to proximal tubular dysfunction"
-      },
-      {
-        "symptomName": "Rickets or osteomalacia",
-        "frequency": 0.3,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "soft or weak bones",
-          "bone deformities from vitamin D deficiency",
-          "rickets or bone softening"
-        ]
-      },
-      {
-        "symptomName": "Polyuria",
-        "frequency": 0.25,
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
         "bodySystem": "renal"
       },
       {
-        "symptomName": "Hyperuricemia",
-        "frequency": 0.15,
-        "bodySystem": "renal"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Cataracts",
-        "frequency": 0.08,
-        "bodySystem": "ophthalmological",
-        "notes": "Reported in some patients with OCRL mutations"
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mild intellectual disability",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "mild learning difficulties",
-          "slight intellectual delay",
-          "mild cognitive impairment"
-        ]
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Growth retardation",
-        "frequency": 0.04,
-        "bodySystem": "endocrine"
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
     "renal",
-    "musculoskeletal",
-    "endocrine",
-    "ophthalmological",
+    "respiratory",
     "neurological",
-    "constitutional"
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -223,7 +388,7 @@
     "Geneticist",
     "Pediatric Nephrologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Lloyd SE, Pearce SH, Fisher SE, et al. A common molecular basis for three inherited kidney stone diseases. Nature. 1996.",
     "Hoopes RR Jr, Shrimpton AE, Knohl SJ, et al. Dent disease with mutations in OCRL1. Am J Hum Genet. 2005.",

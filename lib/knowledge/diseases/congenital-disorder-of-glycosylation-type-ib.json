@@ -11,14 +11,15 @@
   "omimId": "602579",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 24,
-      "peak": 6
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,147 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Protein-losing enteropathy",
-        "frequency": 0.85,
-        "bodySystem": "gastrointestinal",
-        "notes": "Leads to hypoalbuminemia and edema"
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Hypoglycemia",
-        "frequency": 0.8,
-        "bodySystem": "endocrine",
-        "notes": "Often fasting or postprandial"
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Liver disease with hepatomegaly",
-        "frequency": 0.75,
-        "bodySystem": "gastrointestinal",
-        "notes": "Variable severity including elevated liver enzymes",
-        "searchTerms": [
-          "enlarged liver",
-          "liver swelling",
-          "liver disease with big liver"
-        ]
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Failure to thrive",
-        "frequency": 0.7,
-        "bodySystem": "constitutional",
-        "notes": "Due to malabsorption and metabolic disturbances",
-        "searchTerms": [
-          "poor weight gain",
-          "not growing well",
-          "failure to gain weight"
-        ]
-      },
-      {
-        "symptomName": "Diarrhea",
-        "frequency": 0.65,
-        "bodySystem": "gastrointestinal",
-        "notes": "Chronic and protein-rich"
-      },
-      {
-        "symptomName": "Coagulopathy",
-        "frequency": 0.6,
-        "bodySystem": "hematological",
-        "notes": "Due to liver dysfunction"
-      },
-      {
-        "symptomName": "Hypoalbuminemia",
-        "frequency": 0.6,
-        "bodySystem": "hematological",
-        "notes": "Secondary to protein loss"
-      },
-      {
-        "symptomName": "Elevated serum transaminases",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "gastrointestinal",
-        "notes": "Indicative of liver injury",
-        "searchTerms": [
-          "high liver enzymes in blood",
-          "elevated transaminases",
-          "increased liver function tests"
-        ]
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Abdominal distension",
-        "frequency": 0.4,
-        "bodySystem": "gastrointestinal",
-        "notes": "Due to ascites or hepatomegaly"
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Edema",
-        "frequency": 0.35,
-        "bodySystem": "constitutional",
-        "notes": "Peripheral edema related to hypoalbuminemia"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hypoglycemia-induced seizures",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "notes": "Secondary to severe hypoglycemia"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Failure of normal glycosylation on transferrin testing",
-        "frequency": 0.25,
-        "bodySystem": "hematological",
-        "notes": "Detected by isoelectric focusing",
-        "searchTerms": [
-          "abnormal sugar attachments on blood proteins",
-          "problems with protein sugar patterns",
-          "defective glycosylation test results"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Mild developmental delay",
-        "frequency": 0.15,
-        "bodySystem": "neurological",
-        "notes": "Less common than in other CDG types",
-        "searchTerms": [
-          "slight delay in learning skills",
-          "mild cognitive development lag",
-          "slow developmental milestones"
-        ]
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Thrombocytopenia",
-        "frequency": 0.08,
-        "bodySystem": "hematological",
-        "notes": "Due to liver dysfunction or splenic sequestration"
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hypogammaglobulinemia",
-        "frequency": 0.06,
-        "bodySystem": "immunological",
-        "notes": "Secondary to protein loss"
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
         "symptomName": "Portal hypertension",
-        "frequency": 0.05,
-        "bodySystem": "gastrointestinal",
-        "notes": "Complication of chronic liver disease"
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Mild hepatosplenomegaly",
-        "frequency": 0.04,
-        "bodySystem": "gastrointestinal",
-        "notes": "Less frequent finding"
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
     "gastrointestinal",
-    "endocrine",
     "hematological",
-    "neurological",
+    "immunological",
     "constitutional",
-    "immunological"
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -253,7 +383,7 @@
     "Geneticist",
     "Endocrinologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Jaeken J, et al. Congenital disorders of glycosylation: a review. J Inherit Metab Dis. 2017.",
     "Marquardt T, et al. MPI-CDG: clinical and biochemical features and response to mannose therapy. J Pediatr. 1999.",

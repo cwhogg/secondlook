@@ -11,14 +11,15 @@
   "omimId": "174800",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 100,000 to 1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 10,
-      "peak": 2
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -51,174 +52,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Polyostotic fibrous dysplasia",
-        "frequency": 0.85,
-        "bodySystem": "musculoskeletal",
-        "notes": "Bone lesions causing deformity and fractures",
-        "searchTerms": [
-          "fibrous bone lesions in multiple bones",
-          "many bones affected by fibrous dysplasia",
-          "widespread fibrous bone changes"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Irregular café-au-lait macules with 'coast of Maine' borders",
-        "frequency": 0.8,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "irregular light brown skin spots",
-          "café-au-lait spots with jagged edges",
-          "skin patches with uneven borders"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Endocrine hyperfunction (e.g., precocious puberty)",
-        "frequency": 0.75,
-        "bodySystem": "endocrine",
-        "searchTerms": [
-          "early hormone overactivity",
-          "precocious puberty symptoms",
-          "excess hormone effects in childhood"
-        ]
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Precocious puberty in females",
-        "frequency": 0.65,
-        "bodySystem": "endocrine",
-        "searchTerms": [
-          "early puberty in girls",
-          "early onset of puberty",
-          "precocious sexual development"
-        ]
-      },
-      {
-        "symptomName": "Thyroid hyperfunction (hyperthyroidism)",
-        "frequency": 0.6,
-        "bodySystem": "endocrine",
-        "searchTerms": [
-          "overactive thyroid symptoms",
-          "hyperthyroidism signs",
-          "excess thyroid hormone effects"
-        ]
-      },
-      {
-        "symptomName": "Growth hormone excess",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "endocrine",
-        "searchTerms": [
-          "too much growth hormone",
-          "excessive body growth hormone",
-          "growth hormone overproduction"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Bone pain and deformities",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "bone pain and deformities",
-          "aching and misshapen bones",
-          "bone discomfort with abnormal shape"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Craniofacial asymmetry",
-        "frequency": 0.5,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Cushing syndrome due to adrenal hyperfunction",
-        "frequency": 0.3,
-        "bodySystem": "endocrine",
-        "searchTerms": [
-          "symptoms of high cortisol",
-          "Cushing syndrome signs",
-          "adrenal hormone excess effects"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Vision impairment from optic nerve compression",
-        "frequency": 0.25,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "vision loss from optic nerve pressure",
-          "blurred sight due to nerve compression",
-          "optic nerve causing vision problems"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hearing loss from temporal bone involvement",
-        "frequency": 0.2,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "hearing loss from skull bone involvement",
-          "decreased hearing due to temporal bone disease",
-          "ear problems linked to bone lesions"
-        ]
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hypophosphatemia due to renal phosphate wasting",
-        "frequency": 0.15,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "low blood phosphate from kidneys",
-          "phosphate loss causing low levels",
-          "kidney phosphate wasting"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Skeletal fractures",
-        "frequency": 0.4,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Cardiomyopathy secondary to endocrinopathies",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "heart muscle disease from hormone disorders",
-          "cardiomyopathy caused by endocrine issues",
-          "heart problems secondary to hormone imbalance"
-        ]
-      },
-      {
-        "symptomName": "Neurological deficits from skull base lesions",
-        "frequency": 0.07,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "nerve problems from skull base tumor",
-          "neurological symptoms from skull lesion",
-          "nerve damage near skull base"
-        ]
-      },
-      {
-        "symptomName": "Psychiatric manifestations including mood disorders",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "psychiatric",
-        "searchTerms": [
-          "mood swings and psychiatric symptoms",
-          "depression or anxiety",
-          "mental health problems"
-        ]
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "musculoskeletal",
-    "dermatological",
-    "endocrine",
-    "ophthalmological",
-    "otolaryngological",
+    "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
     "renal",
-    "cardiovascular",
+    "respiratory",
     "neurological",
-    "psychiatric"
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -276,7 +379,7 @@
     "Neurologist",
     "Ophthalmologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Weinstein LS, Shenker A, Gejman PV, et al. Activating mutations of the stimulatory G protein in the McCune-Albright syndrome. N Engl J Med. 1991;325(24):1688-1695.",
     "Boyce AM, Collins MT. Fibrous dysplasia/McCune-Albright syndrome. In: Adam MP, et al., editors. GeneReviews® [Internet]. University of Washington, Seattle; 2002-2024.",

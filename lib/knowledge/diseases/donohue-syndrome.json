@@ -11,14 +11,15 @@
   "omimId": "246200",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 1,
-      "peak": 0
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,138 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Severe insulin resistance with hyperinsulinemia",
-        "frequency": 0.95,
-        "bodySystem": "endocrine",
-        "searchTerms": [
-          "severe resistance to insulin",
-          "high insulin levels with poor sugar control",
-          "difficulty managing blood sugar due to insulin resistance"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Characteristic elfin facial dysmorphism",
+        "symptomName": "Eosinophilia",
         "frequency": 0.9,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "elfin-like facial features",
-          "small face with distinct features",
-          "unusual facial shape resembling elf"
-        ]
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Intrauterine and postnatal growth retardation",
+        "symptomName": "Elevated erythrocyte sedimentation rate",
         "frequency": 0.9,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "poor growth before and after birth",
-          "slow fetal and infant growth",
-          "small size from womb to infancy"
-        ]
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Acanthosis nigricans",
-        "frequency": 0.85,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Thickened skin",
-        "frequency": 0.7,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Hypertrichosis",
-        "frequency": 0.65,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Fasting hypoglycemia episodes",
-        "frequency": 0.6,
-        "bodySystem": "endocrine",
-        "searchTerms": [
-          "low blood sugar when fasting",
-          "hypoglycemia episodes without eating",
-          "blood sugar drops after fasting"
-        ]
-      },
-      {
-        "symptomName": "Delayed developmental milestones",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "delayed reaching developmental milestones",
-          "slow progress in child development"
-        ]
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Enlarged genitalia in males",
-        "frequency": 0.4,
-        "bodySystem": "reproductive",
-        "searchTerms": [
-          "large male genitalia",
-          "enlarged penis or testes",
-          "overdeveloped male reproductive organs"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Cardiomyopathy",
-        "frequency": 0.3,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Respiratory infections",
-        "frequency": 0.25,
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
         "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Ophthalmological abnormalities (e.g., nystagmus)",
-        "frequency": 0.15,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "eye movement problems",
-          "involuntary eye shaking",
-          "abnormal eye movements like nystagmus"
-        ]
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Hepatomegaly",
-        "frequency": 0.08,
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Renal abnormalities",
-        "frequency": 0.05,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "kidney abnormalities",
-          "renal problems",
-          "kidney malformations"
-        ]
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Neuropathy",
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
         "frequency": 0.03,
         "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
+    "neurological",
     "endocrine",
     "dermatological",
-    "constitutional",
-    "neurological",
     "cardiovascular",
-    "respiratory",
-    "ophthalmological",
-    "reproductive",
-    "gastrointestinal",
-    "renal"
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -242,7 +381,7 @@
     "Geneticist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Semple RK, Savage DB, Cochran EK, et al. Genetic syndromes of severe insulin resistance. Endocr Rev. 2011;32(4):498-514.",
     "Kadowaki T, Kadowaki H. Donohue syndrome and Rabson-Mendenhall syndrome: insulin receptor mutations and severe insulin resistance. Pediatr Endocrinol Rev. 2002;1 Suppl 1:123-8.",

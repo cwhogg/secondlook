@@ -11,14 +11,15 @@
   "omimId": "120810",
   "orphanetId": "ORPHA:217",
   "prevalence": {
-    "estimate": "1 in 50,000",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 50,
-      "peak": 20
+      "max": 0.08,
+      "peak": 0
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,107 +58,118 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Persistent hypocomplementemia with low C4",
-        "frequency": 0.85,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "persistently low C4 protein",
-          "ongoing low complement levels",
-          "chronic low immune protein C4"
-        ]
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Recurrent bacterial infections",
-        "frequency": 0.75,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "frequent bacterial infections",
-          "repeated infections",
-          "susceptibility to infections"
-        ]
+        "symptomName": "Macrocephaly",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Prominent occiput",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dandy-Walker malformation",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Platybasia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Autoimmune manifestations (e.g., systemic lupus erythematosus-like symptoms)",
-        "frequency": 0.65,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "autoimmune symptoms like lupus",
-          "immune system attacking body",
-          "joint pain and rash"
-        ]
+        "symptomName": "Cerebellar hypoplasia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Chronic fatigue",
-        "frequency": 0.6,
+        "symptomName": "Frontal bossing",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Arthralgia",
+        "symptomName": "Dilated fourth ventricle",
         "frequency": 0.55,
-        "bodySystem": "musculoskeletal"
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Cutaneous photosensitivity",
-        "frequency": 0.52,
-        "bodySystem": "dermatological"
+        "symptomName": "Enlarged posterior fossa",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Aplasia/Hypoplasia of the cerebellar vermis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mild fetal ventriculomegaly",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Enlarged fetal cisterna magna",
+        "frequency": 0.55,
+        "bodySystem": "reproductive"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Mucocutaneous ulcers",
-        "frequency": 0.3,
-        "bodySystem": "dermatological"
+        "symptomName": "Cleft palate",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Lymphadenopathy",
-        "frequency": 0.25,
-        "bodySystem": "immunological"
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Proteinuria",
-        "frequency": 0.15,
-        "bodySystem": "renal"
+        "symptomName": "Motor delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Sinusitis",
-        "frequency": 0.4,
-        "bodySystem": "otolaryngological"
+        "symptomName": "Encephalocele",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Aplasia/Hypoplasia of the corpus callosum",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Central nervous system vasculitis",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "brain blood vessel inflammation",
-          "central nervous system vasculitis",
-          "inflammation of brain vessels"
-        ]
-      },
-      {
-        "symptomName": "Glomerulonephritis",
-        "frequency": 0.07,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Pericarditis",
+        "symptomName": "Nystagmus",
         "frequency": 0.03,
-        "bodySystem": "cardiovascular"
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Truncal ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "immunological",
-    "dermatological",
-    "musculoskeletal",
-    "renal",
     "neurological",
-    "cardiovascular",
     "constitutional",
-    "otolaryngological"
+    "reproductive",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -171,7 +183,8 @@
       "MRI brain in cases with CNS vasculitis"
     ],
     "genetic": [
-      "Mutations or deletions in C4A or C4B genes detected by molecular genetic testing"
+      "Mutations or deletions in C4A or C4B genes detected by molecular genetic testing",
+      "Multigenic/multifactorial inheritance"
     ],
     "other": [
       "Reduced total hemolytic complement activity (CH50)",
@@ -206,7 +219,7 @@
     "Rheumatologist",
     "Nephrologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Walport MJ. Complement. First of two parts. N Engl J Med. 2001 Apr 5;344(14):1058-66.",
     "Pickering MC, Botto M. Complement and disease: lessons from complement deficiencies. Mol Immunol. 2001 Nov;38(2-3):161-74.",

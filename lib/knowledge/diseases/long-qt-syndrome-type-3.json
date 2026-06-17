@@ -11,15 +11,15 @@
   "omimId": "603830",
   "orphanetId": "ORPHA:98806",
   "prevalence": {
-    "estimate": "1 in 100,000",
-    "range": "0.0005%-0.001%",
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
     "classification": "ultra-rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 50,
-      "peak": 20
+      "min": 2,
+      "max": 65,
+      "peak": 14
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": []
@@ -58,135 +58,63 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Prolonged QT interval on electrocardiogram",
-        "frequency": 0.95,
-        "bodySystem": "cardiovascular",
-        "notes": "Characteristic ECG finding in LQT3",
-        "searchTerms": [
-          "prolonged QT on ECG",
-          "lengthened heart electrical recovery",
-          "delayed heart rhythm reset"
-        ]
+        "symptomName": "Dystonia",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Ventricular tachyarrhythmias (e.g., torsades de pointes)",
-        "frequency": 0.85,
-        "bodySystem": "cardiovascular",
-        "notes": "Life-threatening arrhythmias triggered by QT prolongation",
-        "searchTerms": [
-          "fast abnormal heart rhythms",
-          "ventricular tachyarrhythmias",
-          "dangerous rapid heartbeats"
-        ]
+        "symptomName": "Generalized dystonia",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       }
     ],
     "common": [
       {
-        "symptomName": "Syncope due to arrhythmia",
-        "frequency": 0.75,
-        "bodySystem": "cardiovascular",
-        "notes": "Transient loss of consciousness from ventricular arrhythmias",
-        "searchTerms": [
-          "fainting from abnormal heart rhythm",
-          "passing out due to arrhythmia",
-          "syncope caused by irregular heartbeat"
-        ]
-      },
-      {
-        "symptomName": "Palpitations",
-        "frequency": 0.65,
-        "bodySystem": "cardiovascular",
-        "notes": "Subjective sensation of irregular heartbeat"
-      },
-      {
-        "symptomName": "Nocturnal arrhythmia events",
-        "frequency": 0.6,
-        "bodySystem": "cardiovascular",
-        "notes": "Arrhythmias often occur during sleep or rest",
-        "searchTerms": [
-          "nighttime irregular heartbeats",
-          "arrhythmia events during sleep",
-          "nocturnal heart rhythm problems"
-        ]
-      },
-      {
-        "symptomName": "Sudden cardiac arrest",
+        "symptomName": "Dysarthria",
         "frequency": 0.55,
-        "bodySystem": "cardiovascular",
-        "notes": "Potential initial presentation in severe cases",
-        "searchTerms": [
-          "sudden heart stoppage",
-          "unexpected cardiac arrest",
-          "heart suddenly stops beating"
-        ]
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Seizure-like activity secondary to cerebral hypoperfusion",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "notes": "May mimic epilepsy due to arrhythmia-induced syncope",
-        "searchTerms": [
-          "seizure-like episodes from low brain blood flow",
-          "fainting with seizure symptoms",
-          "brain hypoperfusion causing convulsions"
-        ]
+        "symptomName": "Torticollis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Fatigue",
-        "frequency": 0.25,
-        "bodySystem": "constitutional",
-        "notes": "Non-specific symptom related to arrhythmia episodes"
+        "symptomName": "Blepharospasm",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Chest discomfort",
-        "frequency": 0.2,
-        "bodySystem": "cardiovascular",
-        "notes": "May occur during arrhythmic events"
+        "symptomName": "Laryngeal dystonia",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Dizziness",
-        "frequency": 0.15,
-        "bodySystem": "neurological",
-        "notes": "Related to transient cerebral hypoperfusion"
+        "symptomName": "Craniofacial dystonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Lingual dystonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Sudden infant death",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "notes": "Rare presentation in neonates with LQT3",
-        "searchTerms": [
-          "unexpected infant death",
-          "sudden death in newborn",
-          "unexplained baby death"
-        ]
-      },
-      {
-        "symptomName": "Atrial fibrillation",
-        "frequency": 0.04,
-        "bodySystem": "cardiovascular",
-        "notes": "Occasional supraventricular arrhythmia in LQT3"
-      },
-      {
-        "symptomName": "Congenital sensorineural hearing loss",
-        "frequency": 0.02,
-        "bodySystem": "neurological",
-        "notes": "Rarely reported in overlap syndromes",
-        "searchTerms": [
-          "hearing loss from birth due to nerve damage",
-          "congenital sensorineural deafness",
-          "born with inner ear hearing impairment"
-        ]
+        "symptomName": "Limb dystonia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "cardiovascular",
     "neurological",
-    "constitutional"
+    "constitutional",
+    "ophthalmological",
+    "otolaryngological"
   ],
   "keyFindings": {
     "laboratory": [],
@@ -195,7 +123,8 @@
       "Holter monitoring demonstrating ventricular arrhythmias"
     ],
     "genetic": [
-      "Pathogenic variants in SCN5A gene encoding cardiac sodium channel Nav1.5"
+      "THAP1 (causative)",
+      "Autosomal dominant inheritance"
     ],
     "other": [
       "Family history of sudden cardiac death or LQTS",
@@ -230,7 +159,7 @@
     "Electrophysiologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Schwartz PJ, Crotti L, Insolia R. Long-QT syndrome: from genetics to management. Circ Arrhythm Electrophysiol. 2012;5(4):868-877.",
     "Priori SG, Wilde AA, Horie M, et al. HRS/EHRA/APHRS expert consensus statement on the diagnosis and management of patients with inherited primary arrhythmia syndromes. Heart Rhythm. 2013;10(12):1932-1963.",

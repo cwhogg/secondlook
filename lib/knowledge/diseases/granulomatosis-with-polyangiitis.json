@@ -13,15 +13,15 @@
   "omimId": "608710",
   "orphanetId": "900",
   "prevalence": {
-    "estimate": "3-15 per 100,000",
-    "range": "3-15 per 100,000",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 40,
-      "max": 65,
-      "peak": 55
+      "min": 2,
+      "max": 120,
+      "peak": 14
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": [
@@ -87,187 +87,426 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Saddle nose deformity",
-        "snomedCode": "249308005",
-        "frequency": 0.15,
-        "bodySystem": "constitutional",
-        "notes": "Due to nasal cartilage destruction from granulomatous inflammation",
-        "searchTerms": [
-          "collapsed nose bridge",
-          "saddle-shaped nose",
-          "nose with depressed bridge"
-        ]
+        "symptomName": "Abnormal oral cavity morphology",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Cavitating pulmonary nodules",
-        "snomedCode": "713178000",
-        "frequency": 0.35,
-        "bodySystem": "respiratory",
-        "notes": "Multiple bilateral nodules that may cavitate",
-        "searchTerms": [
-          "lung nodules with cavities",
-          "holes in lung spots",
-          "lung lesions with hollow centers"
-        ]
+        "symptomName": "Sinusitis",
+        "frequency": 0.9,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Necrotizing granulomatous vasculitis on biopsy",
-        "frequency": 0.6,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "blood vessel inflammation with tissue death",
-          "vessel damage with necrotic granulomas",
-          "biopsy showing dying granulomatous blood vessels"
-        ]
+        "symptomName": "Abnormality of the nose",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Otitis media",
+        "frequency": 0.9,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Epistaxis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hematuria",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pulmonary infiltrates",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Recurrent respiratory infections",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Cerebral ischemia",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Granulomatosis",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Autoimmunity",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Glomerulopathy",
+        "frequency": 0.9,
+        "bodySystem": "renal"
       }
     ],
     "common": [
       {
-        "symptomName": "Chronic sinusitis with bloody nasal discharge",
-        "snomedCode": "40055000",
-        "frequency": 0.7,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "long-term sinus infection with bloody nose",
-          "chronic sinus inflammation and nosebleeds",
-          "persistent sinus congestion with blood discharge"
-        ]
+        "symptomName": "Proteinuria",
+        "frequency": 0.55,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Pulmonary infiltrates or nodules",
-        "snomedCode": "713178000",
-        "frequency": 0.6,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "lung spots or patches",
-          "lung shadows or nodules",
-          "abnormal lung areas on imaging"
-        ]
+        "symptomName": "Glomerulonephritis",
+        "frequency": 0.55,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Glomerulonephritis (rapidly progressive)",
-        "snomedCode": "36171008",
-        "frequency": 0.5,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "rapid kidney inflammation",
-          "quickly worsening kidney disease",
-          "fast progressive kidney inflammation"
-        ]
+        "symptomName": "Nasolacrimal duct obstruction",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Constitutional symptoms (fever, weight loss, fatigue)",
-        "snomedCode": "386661006",
-        "frequency": 0.7,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "fever, weight loss, tiredness",
-          "general feeling of illness with fatigue",
-          "unexplained fever and weakness"
-        ]
+        "symptomName": "Abnormality of the hypothalamus-pituitary axis",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Arthralgia or arthritis",
-        "snomedCode": "57676002",
-        "frequency": 0.5,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "joint pain or swelling",
-          "arthritis symptoms",
-          "painful or inflamed joints"
-        ]
+        "symptomName": "Skin rash",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pulmonary fibrosis",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Polyarticular arthritis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Chronic pulmonary obstruction",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Recurrent intrapulmonary hemorrhage",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Elevated circulating C-reactive protein concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased inflammatory response",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cytoplasmic antineutrophil antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-proteinase 3 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-myeloperoxidase antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-neutrophil elastase antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Scleritis",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Inflammatory abnormality of the eye",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Periorbital edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Papule",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Subglottic stenosis",
-        "snomedCode": "419977006",
-        "frequency": 0.15,
-        "bodySystem": "constitutional",
-        "notes": "Stridor, dyspnea; more common in younger patients"
+        "symptomName": "Prostatitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Orbital pseudotumor/proptosis",
-        "snomedCode": "18146001",
-        "frequency": 0.15,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Scleritis or episcleritis",
-        "snomedCode": "78370002",
-        "frequency": 0.15,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "eye inflammation",
-          "red painful eyes",
-          "swollen white of eye"
-        ]
-      },
-      {
-        "symptomName": "Mononeuritis multiplex",
-        "snomedCode": "128189008",
-        "frequency": 0.15,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Otitis media (serous or hemorrhagic)",
-        "snomedCode": "65363002",
-        "frequency": 0.25,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "middle ear infection with fluid",
-          "ear infection with clear or bloody fluid",
-          "serous or bloody ear infection"
-        ]
-      }
-    ],
-    "rare": [
-      {
-        "symptomName": "Diffuse alveolar hemorrhage",
-        "snomedCode": "233608003",
-        "frequency": 0.08,
-        "bodySystem": "respiratory",
-        "notes": "Life-threatening; pulmonary-renal syndrome",
-        "searchTerms": [
-          "bleeding into lung air sacs",
-          "blood in lungs causing breathing issues",
-          "alveolar hemorrhage with coughing blood"
-        ]
-      },
-      {
-        "symptomName": "Pachymeningitis",
-        "snomedCode": "45170000",
-        "frequency": 0.05,
-        "bodySystem": "neurological"
-      },
-      {
-        "symptomName": "Pericarditis",
-        "snomedCode": "3238004",
-        "frequency": 0.05,
+        "symptomName": "Ureteral stenosis",
+        "frequency": 0.17,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Skin ulceration or palpable purpura",
-        "snomedCode": "20143000",
-        "frequency": 0.1,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "skin sores or purple spots",
-          "open skin wounds or raised purple spots",
-          "skin ulcers and palpable bruises"
-        ]
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Hydronephrosis",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Chronic otitis media",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Sensorineural hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Retinopathy",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Keratitis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Visual impairment",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Proptosis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Sensory neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Diabetes insipidus",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Purpura",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Meningitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Subglottic stenosis",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Angina pectoris",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pericarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Restrictive ventilatory defect",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pleuritis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pleural effusion",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Gastrointestinal hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hemiplegia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Intestinal obstruction",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Arrhythmia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Diffuse alveolar hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Pulmonary nodule",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Gangrene",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skin ulcer",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
       }
-    ]
+    ],
+    "rare": []
   },
   "systemsAffected": [
+    "constitutional",
     "otolaryngological",
+    "hematological",
     "respiratory",
-    "renal",
-    "ophthalmological",
-    "musculoskeletal",
+    "cardiovascular",
     "neurological",
+    "musculoskeletal",
+    "immunological",
+    "renal",
+    "endocrine",
     "dermatological",
-    "cardiovascular"
+    "gastrointestinal",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -285,8 +524,11 @@
       "MRI brain: pachymeningeal enhancement"
     ],
     "genetic": [
-      "HLA-DPB1*0401 association",
-      "SERPINA1 (alpha-1 antitrypsin) gene variants associated with ANCA vasculitis"
+      "HLA-DPA1 (susceptibility)",
+      "HLA-DPB1 (susceptibility)",
+      "CTLA4 (susceptibility)",
+      "PTPN22 (susceptibility)",
+      "PRTN3 (susceptibility)"
     ],
     "other": [
       "Renal biopsy: pauci-immune crescentic and necrotizing glomerulonephritis",
@@ -350,7 +592,7 @@
     "Nephrology",
     "Otolaryngology"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Robson JC, et al. 2022 American College of Rheumatology/European Alliance of Associations for Rheumatology Classification Criteria for Granulomatosis with Polyangiitis. Arthritis Rheumatol. 2022;74(3):393-399.",
     "Yates M, et al. EULAR/ERA-EDTA recommendations for the management of ANCA-associated vasculitis. Ann Rheum Dis. 2016;75(9):1583-1594.",

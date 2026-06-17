@@ -15,9 +15,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 70,
-      "peak": 50
+      "min": 0,
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": []
@@ -56,112 +56,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Persistent hoarseness",
-        "frequency": 0.85,
-        "bodySystem": "otolaryngological"
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Submucosal laryngeal masses detected on laryngoscopy",
-        "frequency": 0.75,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "lumps under throat lining",
-          "submucosal masses in larynx",
-          "laryngeal growths seen on scope"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Dysphonia",
-        "frequency": 0.7,
-        "bodySystem": "otolaryngological"
-      },
-      {
-        "symptomName": "Throat discomfort or foreign body sensation",
-        "frequency": 0.65,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "sore throat or feeling of something stuck",
-          "throat discomfort",
-          "foreign body sensation in throat"
-        ]
-      },
-      {
-        "symptomName": "Mild airway obstruction symptoms (e.g., dyspnea on exertion)",
-        "frequency": 0.6,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "mild breathing difficulty",
-          "slight airway blockage symptoms",
-          "shortness of breath on exertion"
-        ]
-      },
-      {
-        "symptomName": "Cough",
+        "symptomName": "Psychotic episodes",
         "frequency": 0.55,
-        "bodySystem": "respiratory"
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Stridor",
-        "frequency": 0.3,
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
         "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Dysphagia",
-        "frequency": 0.25,
-        "bodySystem": "otolaryngological"
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Voice fatigue",
-        "frequency": 0.2,
-        "bodySystem": "otolaryngological"
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Recurrent laryngeal infections",
-        "frequency": 0.15,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "repeated throat infections",
-          "chronic laryngeal infections",
-          "frequent voice box infections"
-        ]
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Severe airway obstruction requiring emergency intervention",
-        "frequency": 0.05,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "severe airway blockage",
-          "life-threatening breathing obstruction",
-          "emergency airway swelling"
-        ]
-      },
-      {
-        "symptomName": "Hemoptysis",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "respiratory"
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Systemic symptoms such as weight loss or fatigue",
-        "frequency": 0.02,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "weight loss and tiredness",
-          "fatigue with systemic symptoms",
-          "general weakness and weight loss"
-        ]
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "otolaryngological",
+    "psychiatric",
+    "neurological",
+    "constitutional",
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
     "respiratory",
-    "constitutional"
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -173,7 +333,8 @@
       "CT or MRI may show localized laryngeal thickening or masses"
     ],
     "genetic": [
-      "No known genetic mutations associated with localized laryngeal amyloidosis"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Histopathology with Congo red staining demonstrating amyloid deposits",
@@ -216,7 +377,7 @@
     "Pathologist",
     "Pulmonologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Benson MD, et al. Amyloidosis of the larynx: a review. Laryngoscope. 2019;129(3):567-573.",
     "Kyle RA, Gertz MA. Primary localized amyloidosis of the larynx. Mayo Clin Proc. 1995;70(3):248-254.",

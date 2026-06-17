@@ -11,14 +11,15 @@
   "omimId": "118400",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 175,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 2,
-      "max": 10,
-      "peak": 5
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "male",
     "ethnicAssociations": []
@@ -63,138 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Bilateral painless mandibular and maxillary swelling",
-        "frequency": 0.95,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "swelling on both sides of jaw",
-          "painless lumps in upper and lower jaw",
-          "bilateral jaw swelling without pain"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Multilocular radiolucent jaw lesions",
+        "symptomName": "Eosinophilia",
         "frequency": 0.9,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "multiple cyst-like areas in jaw bone",
-          "jaw bone with several hollow spots",
-          "multichambered dark areas on jaw x-ray"
-        ]
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Facial fullness with cherubic appearance",
-        "frequency": 0.85,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "full round face with chubby cheeks",
-          "plump facial appearance like a cherub",
-          "rounded facial fullness"
-        ]
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Dental malocclusion",
-        "frequency": 0.75,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Delayed eruption of permanent teeth",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "late coming in of adult teeth",
-          "permanent teeth erupting slowly",
-          "delayed growth of adult teeth"
-        ]
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Painless jaw deformity",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "jaw changes without pain",
-          "slowly growing jaw deformity",
-          "painless jaw bone swelling"
-        ]
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Nasal airway obstruction",
-        "frequency": 0.3,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "blocked nasal breathing",
-          "difficulty breathing through nose",
-          "nasal airway blockage"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Speech difficulties",
-        "frequency": 0.25,
-        "bodySystem": "otolaryngological"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Visual disturbances due to orbital involvement",
-        "frequency": 0.15,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "vision problems from eye socket issues",
-          "eye disturbances due to orbital involvement",
-          "blurred or double vision from eye area"
-        ]
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Pain or tenderness in jaw region",
-        "frequency": 0.2,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "jaw pain or soreness",
-          "tenderness in jaw area",
-          "discomfort around the jaw"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Airway compromise requiring intervention",
-        "frequency": 0.05,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "blocked airway needing help",
-          "difficulty breathing requiring intervention",
-          "airway obstruction emergency"
-        ]
-      },
-      {
-        "symptomName": "Pathologic fractures of the jaw",
-        "frequency": 0.04,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "jaw bone breaks from minor injury",
-          "spontaneous fractures in jaw",
-          "fragile jaw bones breaking easily"
-        ]
-      },
-      {
-        "symptomName": "Hearing loss secondary to Eustachian tube dysfunction",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "hearing loss due to ear tube problems",
-          "ear infections causing hearing issues",
-          "impaired hearing from Eustachian tube dysfunction"
-        ]
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "musculoskeletal",
+    "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
     "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
     "otolaryngological",
-    "ophthalmological"
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -240,7 +379,7 @@
     "Pediatrician",
     "Otolaryngologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Marck KW, et al. Cherubism: clinical and molecular findings. Orphanet J Rare Dis. 2014.",
     "Ueki Y. Cherubism: a genetic perspective. Oral Dis. 2015.",

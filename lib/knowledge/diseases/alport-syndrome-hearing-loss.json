@@ -11,14 +11,15 @@
   "omimId": "301050",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 50,000",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 5,
-      "max": 40,
-      "peak": 15
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": []
@@ -63,129 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Bilateral sensorineural hearing loss",
-        "frequency": 0.85,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "hearing loss from nerve damage both ears",
-          "bilateral sensorineural deafness",
-          "nerve-related hearing impairment both sides"
-        ]
-      },
-      {
-        "symptomName": "Persistent microscopic hematuria",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "blood in urine visible only under microscope",
-          "microscopic hematuria",
-          "tiny amounts of blood in urine"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Anterior lenticonus",
-        "frequency": 0.75,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Progressive renal impairment",
-        "frequency": 0.7,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "worsening kidney function",
-          "progressive kidney damage",
-          "declining renal health"
-        ]
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "High-frequency hearing loss",
-        "frequency": 0.65,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "hearing loss at high pitches",
-          "difficulty hearing high-frequency sounds",
-          "high tone hearing impairment"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Proteinuria",
-        "frequency": 0.6,
-        "bodySystem": "renal"
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Sensorineural hearing loss onset in childhood or adolescence",
-        "frequency": 0.6,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "nerve-related hearing loss starting in youth",
-          "childhood onset sensorineural deafness",
-          "early life nerve hearing loss"
-        ]
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Retinopathy",
-        "frequency": 0.3,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Hypertension secondary to renal disease",
-        "frequency": 0.25,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "high blood pressure due to kidney disease",
-          "renal hypertension",
-          "kidney-related hypertension"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Tinnitus",
-        "frequency": 0.4,
-        "bodySystem": "otolaryngological"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Fatigue related to chronic kidney disease",
-        "frequency": 0.2,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "tiredness from kidney disease",
-          "fatigue linked to chronic kidney failure",
-          "low energy due to kidney problems"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Gross hematuria",
-        "frequency": 0.05,
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
         "bodySystem": "renal"
       },
       {
-        "symptomName": "Corneal erosion",
-        "frequency": 0.07,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "End-stage renal disease before age 40",
-        "frequency": 0.08,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "kidney failure before age 40",
-          "early onset end-stage renal disease",
-          "young adult kidney failure"
-        ]
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "otolaryngological",
+    "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
     "renal",
-    "ophthalmological",
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
     "cardiovascular",
-    "constitutional"
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -238,7 +386,7 @@
     "Geneticist",
     "Ophthalmologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Kashtan CE. Alport syndrome: Achieving clarity on the genetic and clinical spectrum. Kidney Int. 2021;99(2):324-326.",
     "Jais JP, Knebelmann B, Giatras I, et al. X-linked Alport syndrome: natural history and genotype-phenotype correlations in girls and women belonging to 195 families: a 'European Community Alport Syndrome Concerted Action' study. J Am Soc Nephrol. 2003;14(10):2603-2610.",

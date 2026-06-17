@@ -16,9 +16,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 10,
-      "max": 70,
-      "peak": 35
+      "min": 0,
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -51,127 +51,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Primary hyperparathyroidism",
-        "frequency": 0.85,
-        "bodySystem": "endocrine",
-        "notes": "Most common initial manifestation"
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Pituitary adenomas",
-        "frequency": 0.75,
-        "bodySystem": "endocrine",
-        "notes": "Often prolactinomas or non-functioning adenomas"
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Hypercalcemia-related symptoms (fatigue, polyuria, polydipsia)",
-        "frequency": 0.65,
-        "bodySystem": "constitutional",
-        "notes": "Due to hyperparathyroidism",
-        "searchTerms": [
-          "high calcium symptoms like tiredness",
-          "excess calcium causing frequent urination",
-          "increased thirst from high calcium"
-        ]
-      },
-      {
-        "symptomName": "Adrenal tumors (non-functioning or cortisol-producing)",
-        "frequency": 0.6,
-        "bodySystem": "endocrine",
-        "notes": "May be incidental or symptomatic",
-        "searchTerms": [
-          "adrenal gland tumors",
-          "tumors making cortisol or inactive adrenal masses",
-          "growths on adrenal glands"
-        ]
-      },
-      {
-        "symptomName": "Menstrual irregularities",
+        "symptomName": "Psychotic episodes",
         "frequency": 0.55,
-        "bodySystem": "reproductive",
-        "notes": "Secondary to pituitary adenomas"
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Headache",
-        "frequency": 0.5,
-        "bodySystem": "neurological",
-        "notes": "Associated with pituitary tumors"
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Kidney stones",
-        "frequency": 0.4,
-        "bodySystem": "renal",
-        "notes": "Secondary to hypercalcemia"
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Visual field defects",
-        "frequency": 0.3,
-        "bodySystem": "ophthalmological",
-        "notes": "Due to pituitary adenoma compression",
-        "searchTerms": [
-          "loss of part of vision",
-          "blind spots",
-          "partial visual field loss"
-        ]
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Hypertension",
-        "frequency": 0.25,
-        "bodySystem": "cardiovascular",
-        "notes": "May be related to adrenal tumors"
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Gastroesophageal reflux",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal",
-        "notes": "Reported in some cases"
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Pancreatic neuroendocrine tumors",
-        "frequency": 0.08,
-        "bodySystem": "endocrine",
-        "notes": "Less frequently reported",
-        "searchTerms": [
-          "pancreatic hormone-producing tumors",
-          "pancreatic neuroendocrine growths",
-          "pancreatic tumors causing hormone issues"
-        ]
-      },
-      {
-        "symptomName": "Osteoporosis",
-        "frequency": 0.05,
-        "bodySystem": "musculoskeletal",
-        "notes": "Secondary to chronic hyperparathyroidism"
-      },
-      {
-        "symptomName": "Psychiatric symptoms (depression, anxiety)",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "psychiatric",
-        "notes": "May be related to hormonal imbalances",
-        "searchTerms": [
-          "depression or anxiety symptoms",
-          "mental health issues",
-          "psychiatric problems like mood disorders"
-        ]
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "endocrine",
-    "constitutional",
+    "psychiatric",
     "neurological",
-    "ophthalmological",
-    "renal",
-    "cardiovascular",
-    "reproductive",
-    "gastrointestinal",
+    "constitutional",
     "musculoskeletal",
-    "psychiatric"
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -185,7 +330,8 @@
       "Adrenal masses on CT or MRI"
     ],
     "genetic": [
-      "Pathogenic germline mutations in CDKN1B gene"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Family history consistent with MEN4 phenotype"
@@ -220,7 +366,7 @@
     "Oncologist",
     "Neurosurgeon"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Pellegata NS, Quintanilla-Martinez L, Siggelkow H, et al. Germ-line mutations in p27Kip1 cause a multiple endocrine neoplasia syndrome in rats and humans. Proc Natl Acad Sci U S A. 2006;103(42):15558-15563.",
     "Marx SJ. Multiple endocrine neoplasia type 1: clinical and genetic features. Ann N Y Acad Sci. 2006;1073:1-17.",

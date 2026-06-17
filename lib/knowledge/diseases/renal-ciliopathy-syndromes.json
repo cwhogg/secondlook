@@ -17,9 +17,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 40,
-      "peak": 10
+      "min": 18,
+      "max": 65,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -52,139 +52,75 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Bilateral renal cystic disease",
-        "frequency": 0.85,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "cysts in both kidneys",
-          "bilateral kidney cyst disease",
-          "multiple kidney cysts on both sides"
-        ]
+        "symptomName": "Impaired vibratory sensation",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Renal fibrosis",
-        "frequency": 0.75,
-        "bodySystem": "renal"
+        "symptomName": "Absent Achilles reflex",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Pathogenic variants in ciliary genes",
-        "frequency": 0.95,
-        "bodySystem": "renal",
-        "notes": "Confirmed by genetic testing",
-        "searchTerms": [
-          "genetic defects affecting cilia",
-          "mutations in cilia-related genes",
-          "inherited ciliary dysfunction"
-        ]
+        "symptomName": "Impaired tactile sensation",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Impaired proprioception",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Hypertension secondary to renal impairment",
-        "frequency": 0.65,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "high blood pressure from kidney problems",
-          "renal-related hypertension",
-          "blood pressure increase due to kidney issues"
-        ]
-      },
-      {
-        "symptomName": "Progressive chronic kidney disease",
-        "frequency": 0.7,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "gradual worsening kidney function",
-          "chronic kidney disease progression",
-          "slow decline in kidney health"
-        ]
-      },
-      {
-        "symptomName": "Hepatic fibrosis",
+        "symptomName": "Ataxia",
         "frequency": 0.55,
-        "bodySystem": "gastrointestinal"
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Retinal dystrophy",
-        "frequency": 0.6,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Dysarthria",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Polydactyly",
-        "frequency": 0.5,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Gait disturbance",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Motor deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Liver cysts",
-        "frequency": 0.3,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Areflexia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Hepatosplenomegaly",
-        "frequency": 0.25,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Sensory axonal neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Neurological abnormalities (e.g., developmental delay)",
-        "frequency": 0.15,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "neurological problems like delayed development",
-          "brain function abnormalities",
-          "developmental and neurological delays"
-        ]
+        "symptomName": "Motor axonal neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Respiratory infections due to ciliary dysfunction",
-        "frequency": 0.4,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "frequent respiratory infections",
-          "lung infections due to cilia problems",
-          "recurrent chest infections from ciliary dysfunction"
-        ]
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
-    "rare": [
-      {
-        "symptomName": "Congenital heart defects",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "heart defects present at birth",
-          "congenital heart problems",
-          "heart abnormalities from birth"
-        ]
-      },
-      {
-        "symptomName": "Hearing loss",
-        "frequency": 0.07,
-        "bodySystem": "otolaryngological"
-      },
-      {
-        "symptomName": "Endocrine abnormalities (e.g., diabetes insipidus)",
-        "frequency": 0.03,
-        "bodySystem": "endocrine",
-        "searchTerms": [
-          "hormone problems like diabetes insipidus",
-          "endocrine disorders affecting fluid balance",
-          "abnormal hormone regulation causing thirst and urination issues"
-        ]
-      }
-    ]
+    "rare": []
   },
   "systemsAffected": [
-    "renal",
-    "gastrointestinal",
-    "ophthalmological",
-    "musculoskeletal",
-    "neurological",
-    "cardiovascular",
-    "respiratory",
-    "otolaryngological",
-    "endocrine"
+    "constitutional",
+    "neurological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -196,7 +132,8 @@
       "Liver imaging demonstrating fibrosis or cysts"
     ],
     "genetic": [
-      "Pathogenic mutations in genes encoding ciliary proteins (e.g., PKD1, PKD2, NPHP genes)"
+      "PLEKHG4 (candidate)",
+      "Autosomal dominant inheritance"
     ],
     "other": [
       "Histopathology showing renal interstitial fibrosis and tubular atrophy"
@@ -232,7 +169,7 @@
     "Hepatologist",
     "Ophthalmologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Hildebrandt F, Benzing T, Katsanis N. Ciliopathies. N Engl J Med. 2011 Apr 21;364(16):1533-43.",
     "Waters AM, Beales PL. Ciliopathies: an expanding disease spectrum. Pediatr Nephrol. 2011 Jul;26(7):1039-56.",

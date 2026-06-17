@@ -11,15 +11,15 @@
   "omimId": "180920",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 100,000",
-    "range": "0.001% - 0.002%",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 60,
-      "peak": 40
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": []
@@ -70,160 +70,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Recurrent auricular chondritis",
-        "frequency": 0.85,
-        "bodySystem": "otolaryngological",
-        "notes": "Painful, red, swollen ear sparing the earlobe",
-        "searchTerms": [
-          "repeated ear cartilage inflammation",
-          "ear pain and swelling episodes",
-          "auricular cartilage swelling"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Saddle-nose deformity due to nasal chondritis",
-        "frequency": 0.75,
-        "bodySystem": "otolaryngological",
-        "notes": "Collapse of nasal bridge from cartilage destruction",
-        "searchTerms": [
-          "collapsed nose bridge",
-          "nose deformity from cartilage loss",
-          "saddle-shaped nose"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Non-erosive inflammatory arthritis",
-        "frequency": 0.65,
-        "bodySystem": "musculoskeletal",
-        "notes": "Symmetric joint pain and swelling without joint destruction",
-        "searchTerms": [
-          "joint inflammation without erosion",
-          "non-destructive arthritis",
-          "inflammatory joint pain"
-        ]
-      },
-      {
-        "symptomName": "Ocular inflammation (scleritis, episcleritis, conjunctivitis)",
-        "frequency": 0.6,
-        "bodySystem": "ophthalmological",
-        "notes": "Redness and pain in the eyes",
-        "searchTerms": [
-          "red and painful eyes",
-          "eye surface inflammation",
-          "conjunctivitis and eye redness"
-        ]
-      },
-      {
-        "symptomName": "Respiratory tract chondritis causing hoarseness or cough",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "respiratory",
-        "notes": "Inflammation of laryngeal or tracheal cartilage",
-        "searchTerms": [
-          "hoarse voice from airway swelling",
-          "cough due to throat cartilage inflammation",
-          "breathing noise changes"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Sensorineural hearing loss",
-        "frequency": 0.5,
-        "bodySystem": "otolaryngological",
-        "notes": "Progressive hearing impairment",
-        "searchTerms": [
-          "hearing loss from nerve damage",
-          "sensorineural deafness",
-          "inner ear hearing impairment"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Fever and malaise",
-        "frequency": 0.4,
-        "bodySystem": "constitutional",
-        "notes": "Systemic inflammatory symptoms",
-        "searchTerms": [
-          "high temperature",
-          "feeling tired and weak",
-          "flu-like symptoms"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Episodic chest pain due to costochondritis",
-        "frequency": 0.3,
-        "bodySystem": "musculoskeletal",
-        "notes": "Inflammation of rib cartilage",
-        "searchTerms": [
-          "chest pain near ribs",
-          "rib cartilage pain episodes",
-          "costochondritis chest discomfort"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Dysphagia or airway obstruction",
-        "frequency": 0.25,
-        "bodySystem": "respiratory",
-        "notes": "Due to laryngeal or tracheal cartilage involvement",
-        "searchTerms": [
-          "difficulty swallowing from blockage",
-          "airway blocked causing swallowing problems",
-          "trouble swallowing due to obstruction"
-        ]
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.15,
-        "bodySystem": "neurological",
-        "notes": "Rare nerve involvement"
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Aortic root dilation or aneurysm",
-        "frequency": 0.08,
-        "bodySystem": "cardiovascular",
-        "notes": "Potential life-threatening complication",
-        "searchTerms": [
-          "enlarged aortic root",
-          "swollen base of aorta",
-          "aortic root ballooning"
-        ]
-      },
-      {
-        "symptomName": "Renal involvement with glomerulonephritis",
-        "frequency": 0.05,
-        "bodySystem": "renal",
-        "notes": "Rare kidney inflammation",
-        "searchTerms": [
-          "kidney inflammation affecting filtering units",
-          "glomerulonephritis causing kidney problems",
-          "renal involvement with inflammation"
-        ]
-      },
-      {
-        "symptomName": "Neurological manifestations including meningoencephalitis",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "neurological",
-        "notes": "Very rare CNS involvement",
-        "searchTerms": [
-          "brain and spinal cord inflammation",
-          "meningitis and encephalitis symptoms",
-          "neurological infection signs"
-        ]
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "otolaryngological",
-    "musculoskeletal",
-    "respiratory",
-    "ophthalmological",
-    "cardiovascular",
-    "neurological",
+    "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
     "renal",
-    "constitutional"
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -279,7 +395,7 @@
     "Otolaryngologist",
     "Pulmonologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "McAdam LP, O'Hanlan MA, Bluestone R, Pearson CM. Relapsing polychondritis: prospective study of 23 patients and a review of the literature. Medicine (Baltimore). 1976;55(3):193-215.",
     "Kent PD, Michet CJ Jr, Luthra HS. Relapsing polychondritis. Curr Opin Rheumatol. 2004;16(1):56-61.",

@@ -11,14 +11,15 @@
   "omimId": "609136",
   "orphanetId": "ORPHA:276",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 5,
-      "max": 30,
-      "peak": 15
+      "min": 0,
+      "max": 0.08,
+      "peak": 0
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,135 +58,185 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Cranio-cervical dystonia",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "notes": "Often presents as blepharospasm or oromandibular dystonia"
+        "symptomName": "Decreased proportion of CD4-positive T cells",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Early-onset limb dystonia",
-        "frequency": 0.75,
-        "bodySystem": "neurological",
-        "notes": "Typically begins in distal limbs",
-        "searchTerms": [
-          "early muscle twisting in limbs",
-          "young onset limb spasms",
-          "early abnormal limb postures"
-        ]
+        "symptomName": "Lymphopenia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Recurrent fever",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pneumonia",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormal immunoglobulin level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Decreased lymphocyte proliferation in response to mitogen",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Reduced proportion of naive T cells",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Reduced natural killer cell count",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Generalized dystonia",
-        "frequency": 0.65,
-        "bodySystem": "neurological",
-        "notes": "May progress from focal onset"
-      },
-      {
-        "symptomName": "Speech impairment (dysarthria)",
-        "frequency": 0.6,
-        "bodySystem": "neurological",
-        "notes": "Due to involvement of oromandibular muscles",
-        "searchTerms": [
-          "speech difficulty",
-          "slurred or unclear speech",
-          "problems speaking clearly"
-        ]
-      },
-      {
-        "symptomName": "Neck muscle spasms (cervical dystonia)",
-        "frequency": 0.58,
-        "bodySystem": "neurological",
-        "notes": "Common initial presentation",
-        "searchTerms": [
-          "neck muscle spasms",
-          "tight neck muscles",
-          "involuntary neck contractions"
-        ]
-      },
-      {
-        "symptomName": "Task-specific dystonia",
+        "symptomName": "Skin rash",
         "frequency": 0.55,
-        "bodySystem": "neurological",
-        "notes": "May affect writing or other fine motor tasks"
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Recurrent bacterial infections",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased circulating IgA level",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased circulating IgG level",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Recurrent opportunistic infections",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormally low T cell receptor excision circle level",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased proportion of CD3-positive T cells",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sepsis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Upper limb tremor",
-        "frequency": 0.4,
-        "bodySystem": "neurological",
-        "notes": "Mild postural or action tremor",
-        "searchTerms": [
-          "shaking in arms",
-          "tremor in upper limbs",
-          "hand tremors"
-        ]
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Pain associated with dystonic postures",
-        "frequency": 0.35,
-        "bodySystem": "musculoskeletal",
-        "notes": "Secondary to sustained muscle contractions",
-        "searchTerms": [
-          "pain from abnormal muscle positions",
-          "discomfort due to twisted posture",
-          "muscle pain from spasms"
-        ]
+        "symptomName": "Chronic mucocutaneous candidiasis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mild gait disturbance",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "notes": "Due to lower limb involvement",
-        "searchTerms": [
-          "slight difficulty walking",
-          "unsteady walk",
-          "mild balance problems"
-        ]
+        "symptomName": "Lymph node hypoplasia",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
       },
       {
-        "symptomName": "Psychiatric symptoms (anxiety, depression)",
-        "frequency": 0.2,
-        "bodySystem": "psychiatric",
-        "notes": "May be secondary to chronic disease burden",
-        "searchTerms": [
-          "anxiety symptoms",
-          "depression feelings",
-          "mental health issues related to illness"
-        ]
+        "symptomName": "Recurrent herpes",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Recurrent Haemophilus influenzae infections",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Recurrent bacterial skin infections",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Severe recurrent varicella",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chronic oral candidiasis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Recurrent cutaneous fungal infections",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Absent tonsils",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Sensory tricks (geste antagoniste)",
-        "frequency": 0.08,
-        "bodySystem": "neurological",
-        "notes": "Temporary relief of dystonia with specific maneuvers",
-        "searchTerms": [
-          "sensory tricks easing spasms",
-          "touch relieving muscle tightness",
-          "gestures that reduce symptoms"
-        ]
+        "symptomName": "Jaundice",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Oromandibular dyskinesia",
-        "frequency": 0.07,
-        "bodySystem": "neurological",
-        "notes": "Involuntary movements of jaw and tongue"
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Autonomic dysfunction",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "Rarely reported"
+        "symptomName": "Lymphoma",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased circulating IgG level",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lymphoproliferative disorder",
+        "frequency": 0.03,
+        "bodySystem": "immunological"
       }
     ]
   },
   "systemsAffected": [
-    "neurological",
-    "musculoskeletal",
-    "psychiatric"
+    "constitutional",
+    "respiratory",
+    "immunological",
+    "hematological",
+    "dermatological",
+    "gastrointestinal"
   ],
   "keyFindings": {
     "laboratory": [],
@@ -194,7 +245,8 @@
       "Functional imaging may show basal ganglia involvement"
     ],
     "genetic": [
-      "Pathogenic variants in THAP1 gene confirmed by molecular genetic testing"
+      "IL2RG (causative)",
+      "X-linked recessive inheritance"
     ],
     "other": [
       "Electromyography (EMG) may show dystonic muscle activity"
@@ -228,7 +280,7 @@
     "Movement Disorder Specialist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Fuchs T et al. Mutations in the THAP1 gene are responsible for DYT6 primary torsion dystonia. Nat Genet. 2009.",
     "Albanese A et al. Phenomenology and classification of dystonia: a consensus update. Mov Disord. 2013.",

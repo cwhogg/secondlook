@@ -11,14 +11,15 @@
   "omimId": "106210",
   "orphanetId": "183",
   "prevalence": {
-    "estimate": "1 in 50,000 to 1 in 100,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 1,
-      "peak": 0
+      "min": 10,
+      "max": 120,
+      "peak": 14
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,99 +58,354 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Congenital absence or hypoplasia of the iris",
-        "frequency": 0.95,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "missing or small iris",
-          "absent or underdeveloped colored eye part",
-          "no or tiny iris at birth"
-        ]
+        "symptomName": "Sinusitis",
+        "frequency": 0.9,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Foveal hypoplasia",
-        "frequency": 0.85,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Purpura",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Urticaria",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Asthma",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Pulmonary infiltrates",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Autoimmunity",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Central nervous system degeneration",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased inflammatory response",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Nystagmus",
-        "frequency": 0.75,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Glaucoma",
-        "frequency": 0.65,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Photophobia",
-        "frequency": 0.6,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Reduced visual acuity",
+        "symptomName": "Hematuria",
         "frequency": 0.55,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "blurred vision",
-          "poor eyesight",
-          "difficulty seeing clearly"
-        ]
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Hypertension",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Skin rash",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Hypopigmented skin patches",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Gait disturbance",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypertrophic cardiomyopathy",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Tubulointerstitial nephritis",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nausea and vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormality of the pleura",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Rheumatoid factor positive",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Increased circulating IgE level",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Venous thrombosis",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Airway obstruction",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Multiple mononeuropathy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Eosinophilic pneumonia",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Cytoplasmic antineutrophil antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-proteinase 3 antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-myeloperoxidase antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-neutrophil elastase antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Cataracts",
-        "frequency": 0.3,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Corneal pannus or keratopathy",
-        "frequency": 0.25,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "corneal scarring or clouding",
-          "abnormal cornea surface",
-          "corneal damage or growth"
-        ]
+        "symptomName": "Proteinuria",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Strabismus",
-        "frequency": 0.2,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Cutis marmorata",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Ptosis",
-        "frequency": 0.15,
-        "bodySystem": "ophthalmological"
-      }
-    ],
-    "rare": [
-      {
-        "symptomName": "Wilms tumor",
-        "frequency": 0.05,
-        "bodySystem": "renal",
-        "notes": "Associated with WAGR syndrome subset"
+        "symptomName": "Acrocyanosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Anosmia",
-        "frequency": 0.03,
+        "symptomName": "Arthritis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Subcutaneous nodule",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Congestive heart failure",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Myocardial infarction",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gastroesophageal reflux",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Malabsorption",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pleural effusion",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Transient ischemic attack",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hemiplegia/hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Intestinal obstruction",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Recurrent intrapulmonary hemorrhage",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Developmental delay",
-        "frequency": 0.02,
-        "bodySystem": "neurological",
-        "notes": "Seen in syndromic cases"
+        "symptomName": "Crescentic glomerulonephritis",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myocarditis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Gastrointestinal eosinophilia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Nasal polyposis",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Endocarditis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myositis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Glomerulopathy",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Papule",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cutaneous granuloma",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
       }
-    ]
+    ],
+    "rare": []
   },
   "systemsAffected": [
-    "ophthalmological",
+    "otolaryngological",
+    "hematological",
+    "dermatological",
+    "constitutional",
+    "respiratory",
+    "cardiovascular",
+    "immunological",
+    "neurological",
     "renal",
-    "neurological"
+    "gastrointestinal",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -193,7 +449,7 @@
     "Geneticist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Nelson LB, Spaeth GL, Nowinski TS, Margo CE, Jackson L. Aniridia: a review. Surv Ophthalmol. 1984;28(6):621-42.",
     "Hingorani M, Hanson I, van Heyningen V. Aniridia. Eur J Hum Genet. 2012;20(10):1011-7.",

@@ -10,15 +10,15 @@
   ],
   "orphanetId": "ORPHA:289390",
   "prevalence": {
-    "estimate": "1 in 10,000",
-    "range": "0.05%-0.1%",
-    "classification": "rare"
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 30,
-      "max": 60,
-      "peak": 50
+      "min": 18,
+      "max": 65,
+      "peak": 42
     },
     "sexPredilection": "female",
     "ethnicAssociations": [
@@ -60,176 +60,438 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Keratoconjunctivitis sicca",
-        "frequency": 0.85,
-        "bodySystem": "ophthalmological",
-        "notes": "Severe dryness and inflammation of the conjunctiva and cornea"
-      },
-      {
-        "symptomName": "Xerostomia (oral dryness)",
+        "symptomName": "Xerostomia",
         "frequency": 0.9,
-        "bodySystem": "otolaryngological",
-        "notes": "Marked dryness of the oral mucosa due to salivary gland dysfunction",
-        "searchTerms": [
-          "dry mouth feeling",
-          "oral dryness or xerostomia"
-        ]
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Focal lymphocytic sialadenitis on labial salivary gland biopsy",
-        "frequency": 0.75,
-        "bodySystem": "immunological",
-        "notes": "Histopathological hallmark",
-        "searchTerms": [
-          "inflammation in salivary gland biopsy",
-          "immune cell clusters in mouth gland tissue",
-          "lymphocyte infiltration in lip gland"
-        ]
+        "symptomName": "Keratoconjunctivitis sicca",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Parotid gland enlargement",
-        "frequency": 0.6,
-        "bodySystem": "otolaryngological",
-        "notes": "Bilateral or unilateral swelling",
-        "searchTerms": [
-          "swollen parotid glands",
-          "enlarged cheek salivary glands",
-          "parotid swelling"
-        ]
-      },
-      {
-        "symptomName": "Arthralgia without synovitis",
-        "frequency": 0.65,
-        "bodySystem": "musculoskeletal",
-        "notes": "Joint pain commonly affecting small joints",
-        "searchTerms": [
-          "joint pain without swelling",
-          "arthralgia without inflammation",
-          "painful joints without synovitis"
-        ]
-      },
-      {
-        "symptomName": "Fatigue of moderate intensity",
-        "frequency": 0.7,
-        "bodySystem": "constitutional",
-        "notes": "Persistent and disabling",
-        "searchTerms": [
-          "moderate tiredness",
-          "feeling moderately exhausted",
-          "medium level fatigue"
-        ]
-      },
-      {
-        "symptomName": "Dry cough due to xerotrachea",
+        "symptomName": "Abnormality of the kidney",
         "frequency": 0.55,
-        "bodySystem": "respiratory",
-        "notes": "Nonproductive cough related to dryness of airways",
-        "searchTerms": [
-          "dry cough from dry airway",
-          "persistent cough due to dry throat",
-          "cough caused by airway dryness"
-        ]
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Recurrent dental caries",
-        "frequency": 0.58,
-        "bodySystem": "otolaryngological",
-        "notes": "Due to decreased salivary flow and protective factors",
-        "searchTerms": [
-          "frequent tooth decay",
-          "repeated cavities",
-          "multiple dental caries episodes"
-        ]
+        "symptomName": "Abnormality of the nervous system",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Abnormality of the skin",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Tubulointerstitial nephritis",
+        "frequency": 0.55,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Arthralgia",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of the musculature",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Complement deficiency",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Polyarticular arthropathy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Parotitis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chronic pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Usual interstitial pneumonia",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Anti-Ro/SS-A antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-salivary protein antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-carbonic anhydrase VI antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-parotid secretory protein antibody positivity",
+        "frequency": 0.55,
+        "bodySystem": "immunological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "notes": "Sensory or sensorimotor neuropathy"
+        "symptomName": "Renal insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Raynaud phenomenon",
-        "frequency": 0.25,
-        "bodySystem": "cardiovascular",
-        "notes": "Vasospasm of digits triggered by cold or stress"
+        "symptomName": "Glomerulonephritis",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Cutaneous vasculitis",
-        "frequency": 0.15,
-        "bodySystem": "dermatological",
-        "notes": "Palpable purpura or urticarial lesions"
+        "symptomName": "Atypical behavior",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Interstitial lung disease",
-        "frequency": 0.2,
-        "bodySystem": "respiratory",
-        "notes": "Inflammation and fibrosis of lung interstitium",
-        "searchTerms": [
-          "lung tissue scarring",
-          "interstitial lung inflammation",
-          "thickened lung tissue"
-        ]
+        "symptomName": "Depression",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Dry skin",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Cutis marmorata",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Purpura",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Vitiligo",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Meningitis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cerebellum morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Arthritis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of blood and blood-forming tissues",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Thrombocytopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Leukopenia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Lymphopenia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Normochromic anemia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Normocytic anemia",
+        "frequency": 0.17,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Lymphoma",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
         "symptomName": "Lymphadenopathy",
-        "frequency": 0.18,
-        "bodySystem": "immunological",
-        "notes": "Enlarged lymph nodes, often cervical or axillary"
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Somatic sensory dysfunction",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Functional motor deficit",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Decreased circulating antibody level",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Decreased circulating complement C3 concentration",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Lymphoproliferative disorder",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Lymphoid interstitial pneumonia",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormal pulmonary interstitial morphology",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Airway obstruction",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Arteritis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Erythema nodosum",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Bronchitis",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Anti-dsDNA antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Raynaud phenomenon",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Vaginal dryness",
+        "frequency": 0.17,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Nonproductive cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lichenoid skin lesion",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Abnormal pulmonary thoracic imaging finding",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Decreased proportion of CD4-positive T cells",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anti-ribosome Po antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Anti-Ro52/TRIM21 antibody positivity",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Decreased circulating complement C4 concentration",
+        "frequency": 0.17,
+        "bodySystem": "immunological"
+      },
+      {
+        "symptomName": "Myositis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Thyroiditis",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Optic neuritis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Cryoglobulinemia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skin ulcer",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Chronic hepatitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormality of the peripheral nervous system",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Non-Hodgkin lymphoma development",
-        "frequency": 0.05,
-        "bodySystem": "hematological",
-        "notes": "Increased risk in long-standing disease",
-        "searchTerms": [
-          "development of lymph node cancer",
-          "non-Hodgkin lymphoma symptoms",
-          "cancer of lymphatic system"
-        ]
-      },
-      {
-        "symptomName": "Renal tubular acidosis",
-        "frequency": 0.04,
-        "bodySystem": "renal",
-        "notes": "Distal renal tubular dysfunction causing metabolic acidosis",
-        "searchTerms": [
-          "acid buildup in kidneys",
-          "kidney acid-base imbalance",
-          "problems with kidney acid removal"
-        ]
-      },
-      {
-        "symptomName": "Cognitive dysfunction",
+        "symptomName": "Dementia",
         "frequency": 0.03,
-        "bodySystem": "neurological",
-        "notes": "Memory impairment and brain fog"
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Myositis",
-        "frequency": 0.02,
-        "bodySystem": "musculoskeletal",
-        "notes": "Inflammation of skeletal muscles"
+        "symptomName": "Chorea",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the spinal cord",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Sensorimotor neuropathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Multiple mononeuropathy",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Corneal perforation",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Chronic active hepatitis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "ophthalmological",
-    "otolaryngological",
-    "musculoskeletal",
-    "neurological",
-    "hematological",
-    "renal",
-    "dermatological",
-    "respiratory",
-    "cardiovascular",
     "constitutional",
-    "immunological"
+    "renal",
+    "psychiatric",
+    "dermatological",
+    "musculoskeletal",
+    "immunological",
+    "respiratory",
+    "hematological",
+    "neurological",
+    "gastrointestinal",
+    "cardiovascular",
+    "reproductive",
+    "endocrine",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -285,11 +547,11 @@
     "Ophthalmologist",
     "Otolaryngologist"
   ],
-  "lastUpdated": "2026-03-10",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Shiboski CH, Shiboski SC, Seror R, et al. 2016 ACR/EULAR Classification Criteria for Primary Sjögren's Syndrome. Arthritis Rheumatol. 2017 Jan;69(1):35-45.",
     "Vitali C, Bombardieri S, Jonsson R, et al. Classification criteria for Sjögren's syndrome: a revised version of the European criteria proposed by the American-European Consensus Group. Ann Rheum Dis. 2002 Jun;61(6):554-8.",
     "Fox RI. Sjögren's syndrome. Lancet. 2005 Jul 23-29;366(9482):321-31."
   ],
-  "confidenceInData": "ai-generated"
+  "confidenceInData": "medium"
 }

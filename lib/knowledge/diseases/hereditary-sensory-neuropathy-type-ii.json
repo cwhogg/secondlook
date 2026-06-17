@@ -11,14 +11,15 @@
   "omimId": "201300",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 5,
-      "max": 40,
-      "peak": 15
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,161 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Distal loss of pain sensation",
-        "frequency": 0.95,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "no pain feeling in fingers/toes",
-          "loss of pain sensation in extremities",
-          "can't feel pain in hands and feet"
-        ]
-      },
-      {
-        "symptomName": "Distal loss of temperature sensation",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "can't feel cold or heat in extremities",
-          "loss of temperature sensation in hands/feet",
-          "numbness to hot and cold in limbs"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Painless distal limb ulcerations",
-        "frequency": 0.85,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "pain-free sores on fingers/toes",
-          "ulcers on hands and feet without pain",
-          "distal limb wounds without discomfort"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Distal sensory loss to light touch",
-        "frequency": 0.75,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "can't feel light touch in fingers/toes",
-          "loss of gentle touch sensation distally",
-          "numbness to soft touch in extremities"
-        ]
-      },
-      {
-        "symptomName": "Reduced or absent deep tendon reflexes",
-        "frequency": 0.7,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "weak or missing reflexes",
-          "absent knee or ankle jerks",
-          "reduced deep tendon reflexes"
-        ]
-      },
-      {
-        "symptomName": "Callus formation on distal extremities",
-        "frequency": 0.65,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "thickened skin patches on hands/feet",
-          "calluses on fingers and toes",
-          "hardened skin on distal limbs"
-        ]
-      },
-      {
-        "symptomName": "Muscle wasting in distal limbs",
-        "frequency": 0.6,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "muscle shrinking in hands and feet",
-          "wasting of distal limb muscles",
-          "loss of muscle bulk in fingers and toes"
-        ]
-      },
-      {
-        "symptomName": "Hypohidrosis or anhidrosis in affected areas",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "reduced or no sweating in areas",
-          "dry skin due to lack of sweat",
-          "inability to sweat in affected regions"
-        ]
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Painless fractures due to sensory loss",
-        "frequency": 0.4,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "broken bones without pain",
-          "fractures that don't hurt",
-          "painless bone breaks in limbs"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Charcot joints",
-        "frequency": 0.3,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mild distal motor weakness",
-        "frequency": 0.25,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "mild weakness in hands and feet",
-          "slight muscle weakness distally",
-          "reduced strength in distal limbs"
-        ]
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Autonomic dysfunction (e.g., orthostatic hypotension)",
-        "frequency": 0.15,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "autonomic nervous system problems",
-          "low blood pressure on standing",
-          "orthostatic hypotension"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Neuropathic pain episodes",
-        "frequency": 0.08,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "episodes of nerve pain",
-          "burning or shooting pain from nerves",
-          "neuropathic pain attacks"
-        ]
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hearing loss",
-        "frequency": 0.05,
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
         "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Skin infections secondary to ulcerations",
-        "frequency": 0.04,
-        "bodySystem": "immunological",
-        "notes": "Due to repeated skin breakdown",
-        "searchTerms": [
-          "skin infections from open sores",
-          "infections caused by ulcers",
-          "wound infections on skin ulcers"
-        ]
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "neurological",
-    "dermatological",
-    "musculoskeletal",
-    "cardiovascular",
+    "gastrointestinal",
+    "hematological",
     "immunological",
-    "otolaryngological"
+    "constitutional",
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -272,7 +388,7 @@
     "Dermatologist",
     "Orthopedic surgeon"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Dyck PJ, et al. Hereditary sensory and autonomic neuropathies: clinical and genetic classification. Muscle Nerve. 1993.",
     "Rotthier A, et al. Genes and mechanisms in hereditary sensory and autonomic neuropathies. Nat Rev Neurol. 2012.",

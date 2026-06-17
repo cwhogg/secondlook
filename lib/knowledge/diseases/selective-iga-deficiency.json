@@ -12,15 +12,15 @@
   "omimId": "137100",
   "orphanetId": "869",
   "prevalence": {
-    "estimate": "1 in 300 to 1 in 700 in Caucasian populations",
-    "range": "0.14%-0.33%",
-    "classification": "common"
+    "estimate": "Less than 1 in 1,000,000",
+    "range": "<1 / 1 000 000",
+    "classification": "ultra-rare"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 20,
-      "peak": 5
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -60,120 +60,200 @@
     "notes": "Partial IgA deficiency (IgA detectable but >2 SD below mean) is more common but less clinically significant. Most patients are asymptomatic and discovered incidentally. ~10% may progress to CVID."
   },
   "symptoms": {
-    "pathognomonic": [],
+    "pathognomonic": [
+      {
+        "symptomName": "Alacrima",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Adrenal insufficiency",
+        "frequency": 0.9,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Achalasia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized hyperpigmentation",
+        "frequency": 0.9,
+        "bodySystem": "dermatological"
+      }
+    ],
     "common": [
       {
-        "symptomName": "Asymptomatic (majority of patients)",
-        "frequency": 0.7,
-        "bodySystem": "constitutional",
-        "notes": "Most individuals with selective IgA deficiency are clinically silent",
-        "searchTerms": [
-          "no noticeable symptoms",
-          "symptom-free in most cases",
-          "no apparent signs"
-        ]
+        "symptomName": "Palmoplantar keratoderma",
+        "frequency": 0.55,
+        "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Recurrent upper respiratory infections",
-        "snomedCode": "54150009",
-        "frequency": 0.3,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "frequent colds",
-          "repeated respiratory infections",
-          "constant upper airway infections"
-        ]
+        "symptomName": "Failure to thrive in infancy",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Recurrent sinusitis",
-        "snomedCode": "36971009",
-        "frequency": 0.25,
+        "symptomName": "Hypernasal speech",
+        "frequency": 0.55,
         "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypoglycemia",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Hypoglycemic seizures",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypotension",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased circulating ACTH level",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Short stature",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Decreased circulating cortisol level",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Impaired cortisol response to corticotropin releasing hormone stimulation test",
+        "frequency": 0.55,
+        "bodySystem": "endocrine"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Recurrent gastrointestinal infections",
-        "snomedCode": "50465008",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal",
-        "notes": "Giardia and other enteric pathogens",
-        "searchTerms": [
-          "frequent gut infections",
-          "repeated stomach and intestinal infections",
-          "chronic gastrointestinal infections"
-        ]
+        "symptomName": "Microcephaly",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Allergic diseases (asthma, allergic rhinitis, eczema)",
-        "snomedCode": "195967001",
-        "frequency": 0.2,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "allergic conditions like asthma",
-          "hay fever and eczema",
-          "common allergies such as skin rash and breathing problems"
-        ]
+        "symptomName": "Sensorineural hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Autoimmune diseases (celiac, thyroiditis, SLE, RA)",
-        "snomedCode": "85828009",
-        "frequency": 0.15,
-        "bodySystem": "immunological",
-        "notes": "10-15 fold increased risk of celiac disease",
-        "searchTerms": [
-          "immune system attacks body organs",
-          "autoimmune thyroid or gut disease",
-          "conditions like lupus or rheumatoid arthritis"
-        ]
+        "symptomName": "Visual impairment",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Chronic diarrhea",
-        "snomedCode": "62315008",
-        "frequency": 0.1,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Optic atrophy",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Keratoconjunctivitis sicca",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hyperreflexia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Pes cavus",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Developmental regression",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Motor axonal neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Plantar hyperkeratosis",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Abnormality of the hypothenar eminence",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Corneal ulceration",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Anaphylactic transfusion reaction (anti-IgA antibodies)",
-        "snomedCode": "35595004",
+        "symptomName": "Decreased circulating aldosterone level",
         "frequency": 0.03,
-        "bodySystem": "immunological",
-        "notes": "Severe anaphylaxis to blood products containing IgA; occurs in patients who develop anti-IgA antibodies",
-        "searchTerms": [
-          "severe allergic reaction to blood transfusion",
-          "anaphylaxis after transfusion",
-          "life-threatening transfusion allergy"
-        ]
-      },
-      {
-        "symptomName": "Progression to CVID",
-        "frequency": 0.05,
-        "bodySystem": "immunological",
-        "notes": "~5-10% may evolve to CVID over years",
-        "searchTerms": [
-          "development of common variable immune deficiency",
-          "progressive immune system failure",
-          "worsening antibody deficiency"
-        ]
-      },
-      {
-        "symptomName": "Nodular lymphoid hyperplasia of GI tract",
-        "frequency": 0.03,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "small lumps of immune tissue in gut",
-          "nodules in gastrointestinal lymphoid tissue",
-          "enlarged lymphoid patches in intestines"
-        ]
+        "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
-    "immunological",
-    "respiratory",
-    "gastrointestinal"
+    "dermatological",
+    "gastrointestinal",
+    "constitutional",
+    "endocrine",
+    "neurological",
+    "musculoskeletal",
+    "otolaryngological",
+    "ophthalmological",
+    "respiratory"
   ],
   "keyFindings": {
     "laboratory": [
@@ -189,10 +269,11 @@
       "CT chest if recurrent lower respiratory infections"
     ],
     "genetic": [
-      "HLA associations: HLA-A1, HLA-B8, HLA-DR3 haplotype",
-      "Shared genetic susceptibility with CVID (same family)",
-      "TNFRSF13B (TACI) variants in some families",
-      "Usually sporadic; occasionally autosomal dominant or recessive inheritance"
+      "TRAPPC11 (causative)",
+      "AAAS (causative)",
+      "GMPPA (causative, loss-of-function)",
+      "Usually sporadic; occasionally autosomal dominant or recessive inheritance",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "IgA typing should be repeated to confirm persistence",
@@ -237,7 +318,7 @@
     "Gastroenterologist (for celiac disease screening)",
     "Transfusion Medicine Specialist (for safe blood product selection)"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Yel L. Selective IgA deficiency. J Clin Immunol. 2010;30(1):10-16.",
     "Bonilla FA, et al. Practice parameter for the diagnosis and management of primary immunodeficiency. J Allergy Clin Immunol. 2015;136(5):1186-1205.",

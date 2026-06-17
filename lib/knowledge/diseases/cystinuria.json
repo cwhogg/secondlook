@@ -17,8 +17,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 40,
-      "peak": 10
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -59,118 +59,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Hexagonal cystine crystals in urine",
-        "frequency": 0.85,
-        "bodySystem": "renal",
-        "notes": "Characteristic microscopic finding",
-        "searchTerms": [
-          "six-sided cystine crystals in urine",
-          "hexagonal urine crystals",
-          "distinct cystine crystals in urine"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Recurrent cystine kidney stones",
+        "symptomName": "Gait disturbance",
         "frequency": 0.9,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "repeated cystine kidney stones",
-          "frequent cystine stone formation",
-          "kidney stones from cystine recurring"
-        ]
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Flank pain due to renal colic",
-        "frequency": 0.75,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "side pain from kidney stones",
-          "flank pain due to renal colic",
-          "pain in side from kidney stone"
-        ]
-      },
-      {
-        "symptomName": "Hematuria",
-        "frequency": 0.7,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Urinary tract infections",
-        "frequency": 0.6,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "bladder infections",
-          "urinary infections",
-          "repeated urine infections"
-        ]
-      },
-      {
-        "symptomName": "Dysuria",
+        "symptomName": "Psychotic episodes",
         "frequency": 0.55,
-        "bodySystem": "renal"
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hydronephrosis",
-        "frequency": 0.3,
-        "bodySystem": "renal"
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Renal impairment",
-        "frequency": 0.25,
-        "bodySystem": "renal"
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Abdominal pain",
-        "frequency": 0.2,
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Nausea and vomiting during stone episodes",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "nausea and vomiting during stones",
-          "throwing up with kidney stone pain",
-          "sick feeling during stone episodes"
-        ]
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Chronic kidney disease",
-        "frequency": 0.05,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "long-term kidney failure",
-          "chronic kidney disease",
-          "progressive loss of kidney function"
-        ]
-      },
-      {
-        "symptomName": "Urinary obstruction",
-        "frequency": 0.07,
-        "bodySystem": "renal"
-      },
-      {
-        "symptomName": "Hypertension secondary to renal disease",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "high blood pressure due to kidney disease",
-          "renal hypertension",
-          "kidney-related hypertension"
-        ]
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "renal",
+    "psychiatric",
+    "neurological",
+    "constitutional",
+    "musculoskeletal",
     "gastrointestinal",
-    "cardiovascular"
+    "cardiovascular",
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -183,8 +337,8 @@
       "Hydronephrosis on ultrasound if obstruction present"
     ],
     "genetic": [
-      "Pathogenic mutations in SLC3A1 gene",
-      "Pathogenic mutations in SLC7A9 gene"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Stone analysis confirming cystine composition"
@@ -216,7 +370,7 @@
     "Urologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Strolin Benedetti M, et al. Cystinuria: pathophysiology and clinical management. Pediatr Nephrol. 2020.",
     "ICD-10-CM Official Guidelines for Coding and Reporting FY 2024",

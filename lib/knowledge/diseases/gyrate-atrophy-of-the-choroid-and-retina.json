@@ -11,15 +11,15 @@
   "omimId": "258870",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 50,000 to 1 in 100,000",
-    "range": "0.001%-0.002%",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 5,
-      "max": 40,
-      "peak": 15
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -62,139 +62,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Progressive chorioretinal atrophy with scalloped peripheral lesions",
-        "frequency": 0.95,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "gradual retina thinning with scalloped edges",
-          "progressive eye tissue loss with irregular borders",
-          "retinal degeneration with peripheral scalloping"
-        ]
-      },
-      {
-        "symptomName": "Elevated plasma ornithine concentration",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "endocrine",
-        "notes": "Metabolic finding rather than symptom",
-        "searchTerms": [
-          "high blood ornithine levels",
-          "elevated amino acid ornithine",
-          "increased plasma ornithine concentration"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Night blindness (nyctalopia)",
-        "frequency": 0.85,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "night blindness",
-          "difficulty seeing in dark",
-          "poor vision at night"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Progressive peripheral vision loss",
-        "frequency": 0.75,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "gradual loss of side vision",
-          "tunnel vision worsening over time",
-          "progressive peripheral vision loss"
-        ]
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Decreased visual acuity",
-        "frequency": 0.7,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "blurred vision",
-          "difficulty seeing clearly",
-          "reduced sharpness of sight"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Myopia",
-        "frequency": 0.65,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Cataract formation",
-        "frequency": 0.6,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Photophobia",
-        "frequency": 0.4,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Color vision defects",
-        "frequency": 0.3,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "color blindness",
-          "problems seeing colors",
-          "color vision problems"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Peripheral retinal pigmentary changes",
-        "frequency": 0.25,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "pigment changes in outer retina",
-          "dark spots on peripheral retina",
-          "retinal pigment abnormalities"
-        ]
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mild muscle weakness",
-        "frequency": 0.15,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "slight muscle weakness",
-          "mildly weak muscles",
-          "reduced muscle strength"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Psychiatric symptoms including depression",
-        "frequency": 0.05,
-        "bodySystem": "psychiatric",
-        "searchTerms": [
-          "depression and mood changes",
-          "mental health symptoms",
-          "psychiatric problems including sadness"
-        ]
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Peripheral neuropathy",
+        "symptomName": "Seizure",
         "frequency": 0.03,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Elevated plasma creatine kinase",
-        "frequency": 0.02,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "high creatine kinase enzyme in blood",
-          "muscle enzyme elevation",
-          "raised blood muscle markers"
-        ]
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "ophthalmological",
-    "musculoskeletal",
+    "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
     "neurological",
-    "psychiatric"
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -242,7 +379,7 @@
     "Medical Geneticist",
     "Metabolic Specialist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Heller J, et al. Gyrate atrophy of the choroid and retina: clinical and molecular aspects. Surv Ophthalmol. 2019.",
     "OMIM Entry - #258870 - GYRATE ATROPHY OF THE CHOROID AND RETINA; GACR",

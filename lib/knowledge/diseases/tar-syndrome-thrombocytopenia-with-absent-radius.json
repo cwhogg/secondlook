@@ -11,14 +11,15 @@
   "omimId": "274000",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 100,000 to 1 in 200,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 1,
-      "peak": 0
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,163 +58,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Bilateral absence of radius bone",
-        "frequency": 0.95,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "missing radius bone in both arms",
-          "both forearms lack radius bone",
-          "bilateral absence of forearm bone"
-        ]
-      },
-      {
-        "symptomName": "Severe thrombocytopenia in infancy",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "very low platelet count in infancy",
-          "severe infant thrombocytopenia",
-          "low blood platelets in babies"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Presence of bilateral thumbs despite absent radius",
-        "frequency": 0.85,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "both thumbs present despite missing radius",
-          "thumbs present with absent forearm bone",
-          "bilateral thumbs despite radius absence"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Petechiae and bruising due to thrombocytopenia",
-        "frequency": 0.75,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "small red or purple skin spots",
-          "bruising and petechiae from low platelets",
-          "bleeding spots and bruises"
-        ]
-      },
-      {
-        "symptomName": "Upper limb deformities including short forearms",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "short forearms and arm deformities",
-          "upper limb abnormalities with short forearms",
-          "arm deformities including short forearms"
-        ]
-      },
-      {
-        "symptomName": "Transient hypocalcemia in neonatal period",
-        "frequency": 0.6,
-        "bodySystem": "endocrine",
-        "searchTerms": [
-          "temporary low blood calcium after birth",
-          "neonatal transient hypocalcemia",
-          "low calcium levels in newborn period"
-        ]
-      },
-      {
-        "symptomName": "Feeding difficulties in infancy",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "trouble feeding as baby",
-          "difficulty sucking or swallowing",
-          "infant feeding problems"
-        ]
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Cardiac malformations (e.g. atrial septal defect)",
-        "frequency": 0.3,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "heart defects like atrial septal defect",
-          "congenital heart malformations",
-          "structural heart abnormalities"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Renal anomalies such as hydronephrosis",
-        "frequency": 0.25,
-        "bodySystem": "renal",
-        "searchTerms": [
-          "kidney abnormalities like hydronephrosis",
-          "swollen kidney collecting system",
-          "renal swelling due to urine buildup"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mild developmental delay",
-        "frequency": 0.2,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "slight delay in learning skills",
-          "mild cognitive development lag",
-          "slow developmental milestones"
-        ]
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Recurrent infections due to transient immunodeficiency",
-        "frequency": 0.15,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "frequent infections from temporary immune weakness",
-          "recurrent infections due to transient immunodeficiency",
-          "infections caused by short-term immune problems"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Gastrointestinal malformations such as cow’s milk intolerance",
-        "frequency": 0.08,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "digestive tract malformations",
-          "cow's milk intolerance symptoms",
-          "gastrointestinal abnormalities"
-        ]
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Skeletal anomalies beyond radius absence (e.g. lower limb abnormalities)",
-        "frequency": 0.05,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "bone abnormalities beyond forearm",
-          "lower limb skeletal anomalies",
-          "additional skeletal malformations"
-        ]
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Ophthalmological abnormalities such as strabismus",
-        "frequency": 0.04,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "eye problems like crossed eyes",
-          "strabismus and other eye issues",
-          "vision muscle imbalance"
-        ]
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "musculoskeletal",
-    "hematological",
-    "cardiovascular",
     "gastrointestinal",
-    "renal",
-    "neurological",
+    "hematological",
     "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
+    "neurological",
     "endocrine",
-    "ophthalmological"
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -263,7 +377,7 @@
     "Geneticist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Boussion S, et al. TAR syndrome: clinical and genetic update. Orphanet J Rare Dis. 2020.",
     "Albers CA, et al. Compound inheritance of a low-frequency regulatory SNP and a rare null mutation in RBM8A causes TAR syndrome. Nat Genet. 2012.",

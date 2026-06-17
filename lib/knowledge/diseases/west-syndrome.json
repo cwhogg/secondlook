@@ -11,15 +11,15 @@
   "omimId": "308350",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 2,000 to 1 in 4,000 live births",
-    "range": "0.025% - 0.05%",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 2,
-      "max": 12,
-      "peak": 4
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": []
@@ -58,125 +58,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Infantile epileptic spasms",
-        "frequency": 0.95,
-        "bodySystem": "neurological",
-        "notes": "Brief symmetric contractions involving neck, trunk, and limbs",
-        "searchTerms": [
-          "infant seizures with spasms",
-          "epileptic spasms in babies",
-          "infantile spasm seizures"
-        ]
-      },
-      {
-        "symptomName": "Hypsarrhythmia on EEG",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "neurological",
-        "notes": "Chaotic high-voltage slow waves and multifocal spikes",
-        "searchTerms": [
-          "chaotic brain wave pattern on EEG",
-          "abnormal infant EEG",
-          "disorganized brain electrical activity"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Developmental regression",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "notes": "Loss of previously acquired milestones"
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Irritability",
-        "frequency": 0.7,
-        "bodySystem": "psychiatric",
-        "notes": "Increased fussiness and crying"
-      },
-      {
-        "symptomName": "Hypotonia",
-        "frequency": 0.65,
-        "bodySystem": "musculoskeletal",
-        "notes": "Reduced muscle tone"
-      },
-      {
-        "symptomName": "Sleep disturbances",
-        "frequency": 0.6,
-        "bodySystem": "psychiatric",
-        "notes": "Difficulty initiating or maintaining sleep"
-      },
-      {
-        "symptomName": "Feeding difficulties",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "gastrointestinal",
-        "notes": "Poor sucking or swallowing"
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Microcephaly",
-        "frequency": 0.4,
-        "bodySystem": "neurological",
-        "notes": "Head circumference below normal percentiles"
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Ocular abnormalities",
-        "frequency": 0.3,
-        "bodySystem": "ophthalmological",
-        "notes": "Including nystagmus or strabismus",
-        "searchTerms": [
-          "eye problems",
-          "vision abnormalities",
-          "abnormalities in the eyes"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Autonomic instability",
-        "frequency": 0.25,
-        "bodySystem": "neurological",
-        "notes": "Fluctuations in heart rate and respiration"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Seizure types other than spasms",
-        "frequency": 0.15,
-        "bodySystem": "neurological",
-        "notes": "Focal or generalized seizures may occur",
-        "searchTerms": [
-          "other types of seizures",
-          "non-spasm seizure episodes",
-          "various seizure forms"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Cutaneous hypopigmentation",
-        "frequency": 0.08,
-        "bodySystem": "dermatological",
-        "notes": "Associated with tuberous sclerosis complex"
-      },
-      {
-        "symptomName": "Cardiac arrhythmias",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "notes": "Rarely reported in underlying etiologies"
-      },
-      {
-        "symptomName": "Hepatomegaly",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "gastrointestinal",
-        "notes": "Possible in metabolic causes"
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "neurological",
-    "psychiatric",
-    "musculoskeletal",
     "gastrointestinal",
-    "ophthalmological",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
     "dermatological",
-    "cardiovascular"
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -222,7 +373,7 @@
     "Epileptologist",
     "Clinical Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Lux AL, Osborne JP. A proposal for case definitions and outcome measures in studies of infantile spasms and West syndrome: consensus statement of the West Delphi group. Epilepsia. 2004.",
     "Shahwan A, Farrell K, Delanty N. Infantile spasms: a review of the literature. Epilepsy Res Treat. 2013.",

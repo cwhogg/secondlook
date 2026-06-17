@@ -18,8 +18,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 120,
-      "peak": 10
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -58,134 +58,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Recurrent mucocutaneous candidiasis",
-        "frequency": 0.85,
-        "bodySystem": "immunological",
-        "notes": "Most common fungal infection in MPO deficiency",
-        "searchTerms": [
-          "repeated yeast infections on skin and mucous membranes",
-          "chronic thrush infections",
-          "frequent fungal infections in mouth and skin"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Impaired neutrophil oxidative burst",
-        "frequency": 0.75,
-        "bodySystem": "hematological",
-        "notes": "Detected by flow cytometry or biochemical assays",
-        "searchTerms": [
-          "impaired white blood cell function",
-          "reduced neutrophil oxidative burst",
-          "weak immune cell killing ability"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Recurrent bacterial skin infections",
-        "frequency": 0.65,
-        "bodySystem": "dermatological",
-        "notes": "Often secondary to impaired neutrophil function",
-        "searchTerms": [
-          "frequent skin bacterial infections",
-          "recurrent skin infections",
-          "repeated bacterial skin problems"
-        ]
-      },
-      {
-        "symptomName": "Oral thrush",
-        "frequency": 0.6,
-        "bodySystem": "immunological",
-        "notes": "Common mucosal fungal infection"
-      },
-      {
-        "symptomName": "Chronic sinusitis",
+        "symptomName": "Psychotic episodes",
         "frequency": 0.55,
-        "bodySystem": "otolaryngological",
-        "notes": "Due to impaired microbial clearance"
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Delayed wound healing",
-        "frequency": 0.5,
-        "bodySystem": "dermatological",
-        "notes": "Related to defective neutrophil function",
-        "searchTerms": [
-          "slow healing cuts or wounds",
-          "delayed skin recovery",
-          "wounds take long to close"
-        ]
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Pulmonary fungal infections",
-        "frequency": 0.3,
-        "bodySystem": "respiratory",
-        "notes": "Less frequent but possible in severe cases",
-        "searchTerms": [
-          "lung fungal infection",
-          "fungal pneumonia",
-          "fungal lung disease"
-        ]
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Recurrent urinary tract infections",
-        "frequency": 0.25,
-        "bodySystem": "renal",
-        "notes": "Occasional bacterial infections",
-        "searchTerms": [
-          "frequent urinary infections",
-          "recurrent bladder infections",
-          "repeated UTIs"
-        ]
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Lymphadenopathy",
-        "frequency": 0.2,
-        "bodySystem": "immunological",
-        "notes": "Reactive enlargement due to infections"
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Fever of unknown origin",
-        "frequency": 0.15,
-        "bodySystem": "constitutional",
-        "notes": "Intermittent febrile episodes",
-        "searchTerms": [
-          "unexplained fever",
-          "fever with no known cause",
-          "persistent high temperature without diagnosis"
-        ]
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Disseminated candidiasis",
-        "frequency": 0.05,
-        "bodySystem": "immunological",
-        "notes": "Severe systemic fungal infection"
-      },
-      {
-        "symptomName": "Granulomatous inflammation",
-        "frequency": 0.04,
-        "bodySystem": "immunological",
-        "notes": "Rare immune response to persistent infections"
-      },
-      {
-        "symptomName": "Sepsis",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "constitutional",
-        "notes": "Life-threatening systemic infection"
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "immunological",
-    "hematological",
-    "dermatological",
+    "psychiatric",
+    "neurological",
+    "constitutional",
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
     "respiratory",
-    "otolaryngological",
-    "renal",
-    "constitutional"
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -198,7 +336,8 @@
       "Chest imaging may reveal fungal infiltrates in severe cases"
     ],
     "genetic": [
-      "Pathogenic variants in MPO gene detected by sequencing"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Flow cytometry demonstrating defective neutrophil function",
@@ -233,7 +372,7 @@
     "Hematologist",
     "Infectious Disease Specialist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Newburger PE, Dale DC. Myeloperoxidase deficiency: prevalence and clinical significance. Ann Intern Med. 1982;97(2):239-245.",
     "Aratani Y. Myeloperoxidase deficiency: prevalence, clinical significance and recent developments. Curr Opin Hematol. 2018;25(1):22-28.",

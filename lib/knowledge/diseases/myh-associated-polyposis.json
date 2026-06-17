@@ -17,9 +17,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 60,
-      "peak": 40
+      "min": 0,
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -61,127 +61,271 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Multiple colorectal adenomatous polyps",
-        "frequency": 0.85,
-        "bodySystem": "gastrointestinal",
-        "notes": "Typically 10-100 polyps distributed throughout the colon",
-        "searchTerms": [
-          "many colon polyps",
-          "multiple growths in large intestine",
-          "numerous colorectal adenomas"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Early-onset colorectal cancer",
-        "frequency": 0.75,
-        "bodySystem": "gastrointestinal",
-        "notes": "Often diagnosed before age 50",
-        "searchTerms": [
-          "early colorectal cancer",
-          "colon cancer at young age",
-          "young onset bowel cancer"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Rectal bleeding",
-        "frequency": 0.65,
-        "bodySystem": "gastrointestinal",
-        "notes": "May be intermittent or persistent"
-      },
-      {
-        "symptomName": "Abdominal pain or discomfort",
-        "frequency": 0.6,
-        "bodySystem": "gastrointestinal",
-        "notes": "Often nonspecific",
-        "searchTerms": [
-          "stomach pain",
-          "belly discomfort",
-          "abdominal ache"
-        ]
-      },
-      {
-        "symptomName": "Diarrhea or altered bowel habits",
+        "symptomName": "Psychotic episodes",
         "frequency": 0.55,
-        "bodySystem": "gastrointestinal",
-        "notes": "May fluctuate over time",
-        "searchTerms": [
-          "frequent diarrhea or changed bowel movements",
-          "altered stool patterns including diarrhea",
-          "loose stools and bowel habit changes"
-        ]
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Anemia secondary to chronic blood loss",
-        "frequency": 0.5,
-        "bodySystem": "hematological",
-        "notes": "Iron deficiency anemia is common",
-        "searchTerms": [
-          "low red blood cells from ongoing blood loss",
-          "anemia caused by chronic bleeding",
-          "blood loss anemia"
-        ]
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Duodenal adenomas",
-        "frequency": 0.3,
-        "bodySystem": "gastrointestinal",
-        "notes": "Less frequent than colorectal polyps"
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Osteomas",
-        "frequency": 0.2,
-        "bodySystem": "musculoskeletal",
-        "notes": "Benign bony growths occasionally observed"
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Sebaceous cysts",
-        "frequency": 0.15,
-        "bodySystem": "dermatological",
-        "notes": "May be present but not diagnostic"
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hyperplastic polyps",
-        "frequency": 0.4,
-        "bodySystem": "gastrointestinal",
-        "notes": "Can coexist with adenomatous polyps"
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Thyroid nodules",
-        "frequency": 0.05,
-        "bodySystem": "endocrine",
-        "notes": "Rarely reported in association"
-      },
-      {
-        "symptomName": "Desmoid tumors",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "musculoskeletal",
-        "notes": "Very uncommon in MAP compared to FAP"
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Congenital hypertrophy of retinal pigment epithelium",
-        "frequency": 0.02,
-        "bodySystem": "ophthalmological",
-        "notes": "Rarely observed",
-        "searchTerms": [
-          "born with thickened retinal pigment layer",
-          "congenital retinal pigment overgrowth",
-          "abnormal retinal pigment epithelium thickness"
-        ]
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "gastrointestinal",
-    "hematological",
+    "psychiatric",
+    "neurological",
+    "constitutional",
     "musculoskeletal",
-    "dermatological",
-    "endocrine",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
     "ophthalmological"
   ],
   "keyFindings": {
@@ -194,7 +338,8 @@
       "Upper endoscopy showing duodenal adenomas"
     ],
     "genetic": [
-      "Biallelic pathogenic mutations in MUTYH gene confirmed by molecular testing"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Histopathology of polyps showing adenomatous features",
@@ -230,7 +375,7 @@
     "Oncologist",
     "Colorectal surgeon"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Nielsen M et al. MUTYH-associated polyposis: clinical and molecular genetics. Clin Genet. 2017.",
     "Grover S et al. MUTYH-associated polyposis: a review. J Gastrointest Oncol. 2018.",

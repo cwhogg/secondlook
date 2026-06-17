@@ -16,9 +16,9 @@
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 20,
-      "max": 70,
-      "peak": 45
+      "min": 0,
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": []
@@ -57,117 +57,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Markedly enlarged gastric rugal folds",
-        "frequency": 0.85,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "very large stomach folds",
-          "enlarged stomach lining folds",
-          "thickened gastric rugal folds"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Protein-losing gastropathy with hypoalbuminemia",
-        "frequency": 0.75,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "protein loss from stomach",
-          "low blood protein due to gut",
-          "protein-losing stomach disease"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Epigastric abdominal pain",
-        "frequency": 0.75,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "pain in upper middle abdomen",
-          "epigastric stomach pain",
-          "upper belly discomfort"
-        ]
-      },
-      {
-        "symptomName": "Nausea",
-        "frequency": 0.65,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Vomiting",
-        "frequency": 0.6,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Peripheral edema due to hypoalbuminemia",
+        "symptomName": "Psychotic episodes",
         "frequency": 0.55,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "swelling from low blood protein",
-          "fluid buildup from low albumin",
-          "peripheral swelling due to hypoalbuminemia"
-        ]
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Weight loss",
-        "frequency": 0.4,
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
         "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Anorexia",
-        "frequency": 0.35,
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Diarrhea",
-        "frequency": 0.3,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Gastrointestinal bleeding",
-        "frequency": 0.25,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Iron deficiency anemia",
-        "frequency": 0.08,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "low iron causing anemia",
-          "iron deficiency causing low blood counts",
-          "anemia from lack of iron"
-        ]
-      },
-      {
-        "symptomName": "Gastric outlet obstruction",
-        "frequency": 0.05,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "blockage at stomach exit",
-          "stomach outlet obstruction",
-          "difficulty emptying stomach"
-        ]
-      },
-      {
-        "symptomName": "Secondary gastric carcinoma development",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "stomach cancer developing later",
-          "secondary stomach tumor formation",
-          "gastric cancer after chronic disease"
-        ]
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "gastrointestinal",
+    "psychiatric",
+    "neurological",
     "constitutional",
-    "hematological"
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -180,7 +335,8 @@
       "Barium swallow or upper GI series demonstrating thickened gastric mucosa"
     ],
     "genetic": [
-      "No established genetic mutations; sporadic cases predominating"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Histopathology showing foveolar hyperplasia and glandular atrophy",
@@ -222,7 +378,7 @@
     "Gastroenterologist",
     "Pathologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Jass JR, et al. Ménétrier disease: a clinicopathologic study. Am J Surg Pathol. 1987.",
     "Scharschmidt BF. Ménétrier disease. Gastroenterol Clin North Am. 1993.",

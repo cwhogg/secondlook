@@ -12,14 +12,15 @@
   "omimId": "603041",
   "orphanetId": "558",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 10,
-      "max": 40,
-      "peak": 20
+      "min": 0,
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -64,130 +65,361 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Progressive gastrointestinal dysmotility",
-        "frequency": 0.95,
-        "bodySystem": "gastrointestinal",
-        "notes": "Includes chronic diarrhea, nausea, vomiting, and abdominal pain",
-        "searchTerms": [
-          "worsening digestive tract movement problems",
-          "progressive gastrointestinal motility issues",
-          "slow or abnormal gut movement"
-        ]
+        "symptomName": "Disproportionate tall stature",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Diffuse leukoencephalopathy on MRI",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "notes": "Often asymptomatic or mild clinical encephalopathy",
-        "searchTerms": [
-          "widespread brain white matter damage",
-          "diffuse brain tissue abnormalities on MRI",
-          "extensive leukoencephalopathy"
-        ]
+        "symptomName": "Slender build",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Sensorimotor peripheral neuropathy",
-        "frequency": 0.8,
-        "bodySystem": "neurological",
-        "notes": "Symmetric distal weakness and sensory loss",
-        "searchTerms": [
-          "nerve damage causing weakness and numbness",
-          "loss of sensation and muscle control",
-          "peripheral nerve problems affecting movement and feeling"
-        ]
+        "symptomName": "Pes planus",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Spontaneous pneumothorax",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Aortic root aneurysm",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Aortic aneurysm",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Chronic fatigue",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pectus carinatum",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Striae distensae",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arachnodactyly",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
       }
     ],
     "common": [
       {
-        "symptomName": "Cachexia and severe weight loss",
-        "frequency": 0.75,
-        "bodySystem": "constitutional",
-        "notes": "Due to malabsorption and gastrointestinal dysmotility",
-        "searchTerms": [
-          "severe weight loss and muscle wasting",
-          "cachexia with extreme thinness",
-          "marked loss of body mass"
-        ]
-      },
-      {
-        "symptomName": "Ptosis",
-        "frequency": 0.65,
-        "bodySystem": "neurological",
-        "notes": "Mild to moderate eyelid drooping"
-      },
-      {
-        "symptomName": "Ophthalmoplegia",
-        "frequency": 0.6,
-        "bodySystem": "ophthalmological",
-        "notes": "External ophthalmoplegia with limited eye movements"
-      },
-      {
-        "symptomName": "Muscle weakness",
+        "symptomName": "Narrow face",
         "frequency": 0.55,
-        "bodySystem": "musculoskeletal",
-        "notes": "Predominantly distal and symmetrical"
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Visual impairment",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Myopia",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Dental crowding",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pectus excavatum",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Ectopia lentis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lens subluxation",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Joint hypermobility",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mitral valve prolapse",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Mitral regurgitation",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Aortic regurgitation",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Tricuspid valve prolapse",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Sleep abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Aortic dissection",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "High, narrow palate",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Protrusio acetabuli",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ascending tubular aorta aneurysm",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Arthralgia/arthritis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Increased axial length of the globe",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sleep apnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormal zygomatic bone morphology",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Lens luxation",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Dural ectasia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hearing loss",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "notes": "Sensorineural type"
+        "symptomName": "Inguinal hernia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Peripheral edema",
-        "frequency": 0.25,
-        "bodySystem": "cardiovascular",
-        "notes": "Secondary to malnutrition or autonomic dysfunction"
+        "symptomName": "Cleft palate",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Cardiac conduction abnormalities",
-        "frequency": 0.2,
-        "bodySystem": "cardiovascular",
-        "notes": "Includes arrhythmias and heart block",
-        "searchTerms": [
-          "heart rhythm problems",
-          "abnormal cardiac conduction",
-          "irregular heartbeat"
-        ]
+        "symptomName": "Dolichocephaly",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Gastroesophageal reflux",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal",
-        "notes": "Due to impaired motility"
+        "symptomName": "Retrognathia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Micrognathia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Downslanted palpebral fissures",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Glaucoma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Retinal detachment",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Osteopenia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Osteoporosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Congestive heart failure",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Emphysema",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Meningocele",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Aneurysm of an abdominal artery",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Kyphosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Limited elbow movement",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skeletal muscle atrophy",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Spondylolisthesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cachexia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Reduced bone mineral density",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mitral valve calcification",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Ventricular tachycardia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pulmonary artery dilatation",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormal left ventricular function",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Arterial dissection",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Aortic tortuosity",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Attention deficit hyperactivity disorder",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Hypoplasia of the iris",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Flat cornea",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Open bite",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Insomnia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
-    "rare": [
-      {
-        "symptomName": "Seizures",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "Occasional in advanced disease"
-      },
-      {
-        "symptomName": "Diabetes mellitus",
-        "frequency": 0.04,
-        "bodySystem": "endocrine",
-        "notes": "Secondary to mitochondrial dysfunction"
-      },
-      {
-        "symptomName": "Optic atrophy",
-        "frequency": 0.03,
-        "bodySystem": "ophthalmological",
-        "notes": "Rare but reported in some cases"
-      }
-    ]
+    "rare": []
   },
   "systemsAffected": [
+    "musculoskeletal",
+    "constitutional",
+    "respiratory",
+    "cardiovascular",
+    "ophthalmological",
     "neurological",
     "gastrointestinal",
-    "musculoskeletal",
-    "ophthalmological",
-    "cardiovascular",
-    "constitutional",
-    "endocrine"
+    "psychiatric"
   ],
   "keyFindings": {
     "laboratory": [
@@ -200,7 +432,8 @@
       "Gastrointestinal imaging showing dysmotility"
     ],
     "genetic": [
-      "Biallelic pathogenic variants in TYMP gene"
+      "Biallelic pathogenic variants in TYMP gene",
+      "Autosomal dominant inheritance"
     ],
     "other": [
       "Muscle biopsy showing mitochondrial abnormalities",
@@ -236,7 +469,7 @@
     "Geneticist",
     "Mitochondrial disease specialist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Nishino I, Spinazzola A, Hirano M. Mitochondrial neurogastrointestinal encephalomyopathy (MNGIE): clinical features, biochemical diagnosis, and genetic basis. J Med Genet. 2000;37(7):493-495.",
     "Hirano M, Nishino I. Mitochondrial neurogastrointestinal encephalomyopathy (MNGIE): an autosomal recessive disorder caused by thymidine phosphorylase mutations. Ann Neurol. 2001;49(2):123-127.",

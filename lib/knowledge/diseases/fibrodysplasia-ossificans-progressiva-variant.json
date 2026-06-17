@@ -11,14 +11,15 @@
   "omimId": "135100",
   "orphanetId": "ORPHA:558",
   "prevalence": {
-    "estimate": "1 in 2,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 40,
-      "peak": 10
+      "max": 120,
+      "peak": 60
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,181 +64,361 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Progressive heterotopic ossification of soft tissues",
-        "frequency": 0.95,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "gradual abnormal bone growth in soft tissue",
-          "progressive bone formation outside skeleton",
-          "bone forming in muscles and skin"
-        ]
+        "symptomName": "Disproportionate tall stature",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Recurrent inflammatory flare-ups preceding ossification",
-        "frequency": 0.85,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "repeated inflammation before bone growth",
-          "flare-ups causing swelling before ossification",
-          "inflammatory episodes preceding bone formation"
-        ]
+        "symptomName": "Slender build",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Congenital skeletal malformations atypical for classic FOP",
-        "frequency": 0.75,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "unusual bone malformations present at birth",
-          "atypical skeletal birth defects",
-          "congenital bone abnormalities different from classic patterns"
-        ]
+        "symptomName": "Pes planus",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Spontaneous pneumothorax",
+        "frequency": 0.9,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Aortic root aneurysm",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Aortic aneurysm",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Chronic fatigue",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pectus carinatum",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Striae distensae",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Arachnodactyly",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
       }
     ],
     "common": [
       {
-        "symptomName": "Restricted joint mobility due to ossification",
-        "frequency": 0.85,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "joint movement limited by bone growth",
-          "stiff joints due to abnormal ossification",
-          "restricted joints from extra bone"
-        ]
+        "symptomName": "Narrow face",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Soft tissue swelling during flare-ups",
-        "frequency": 0.8,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "soft tissue swelling during flare-ups",
-          "localized swelling in soft tissues",
-          "flare-related tissue enlargement"
-        ]
+        "symptomName": "Visual impairment",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Pain localized to affected areas during flare-ups",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "pain in affected areas during flare-ups",
-          "flare-up localized pain",
-          "area-specific pain with inflammation"
-        ]
+        "symptomName": "Myopia",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Mild skeletal deformities other than great toe malformations",
-        "frequency": 0.65,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "mild bone deformities besides big toe",
-          "minor skeletal abnormalities other than great toe",
-          "small bone shape changes excluding big toe"
-        ]
+        "symptomName": "Dental crowding",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Fatigue during flare-ups",
-        "frequency": 0.6,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "tiredness during flare-ups",
-          "fatigue with inflammatory episodes",
-          "low energy during disease flares"
-        ]
+        "symptomName": "Pectus excavatum",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Ectopia lentis",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lens subluxation",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Joint hypermobility",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mitral valve prolapse",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Mitral regurgitation",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Aortic regurgitation",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Tricuspid valve prolapse",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Sleep abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Aortic dissection",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "High, narrow palate",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Protrusio acetabuli",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ascending tubular aorta aneurysm",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Arthralgia/arthritis",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Increased axial length of the globe",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Sleep apnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormal zygomatic bone morphology",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Lens luxation",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Dural ectasia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Muscle weakness adjacent to ossified areas",
-        "frequency": 0.4,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "muscle weakness near ossified areas",
-          "reduced strength next to bone growth",
-          "weak muscles adjacent to abnormal bone"
-        ]
+        "symptomName": "Inguinal hernia",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Low-grade fever during flare-ups",
-        "frequency": 0.35,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "low fever during flare-ups",
-          "mild temperature rise with inflammation",
-          "slight fever in flare episodes"
-        ]
+        "symptomName": "Cleft palate",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mild respiratory restriction due to thoracic ossification",
-        "frequency": 0.3,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "breathing difficulty from chest bone growth",
-          "mild lung restriction due to thoracic ossification",
-          "reduced respiratory capacity from chest bone changes"
-        ]
+        "symptomName": "Dolichocephaly",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Joint stiffness unrelated to ossification",
-        "frequency": 0.25,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "joint stiffness not caused by bone growth",
-          "stiff joints unrelated to ossification",
-          "joint tightness without abnormal bone"
-        ]
+        "symptomName": "Retrognathia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Localized skin erythema during flare-ups",
-        "frequency": 0.15,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "skin redness during flare-ups",
-          "localized skin inflammation in flares",
-          "red skin patches with flare episodes"
-        ]
+        "symptomName": "Micrognathia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Downslanted palpebral fissures",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Glaucoma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Retinal detachment",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Osteopenia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Osteoporosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Congestive heart failure",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Emphysema",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Meningocele",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Aneurysm of an abdominal artery",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Kyphosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Limited elbow movement",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skeletal muscle atrophy",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Spondylolisthesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Cachexia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Reduced bone mineral density",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Mitral valve calcification",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Ventricular tachycardia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pulmonary artery dilatation",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormal left ventricular function",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Arterial dissection",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Aortic tortuosity",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Attention deficit hyperactivity disorder",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Hypoplasia of the iris",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Flat cornea",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Open bite",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Insomnia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
-    "rare": [
-      {
-        "symptomName": "Cardiovascular complications secondary to thoracic cage restriction",
-        "frequency": 0.08,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "heart and blood vessel problems from chest restriction",
-          "cardiovascular issues due to limited chest movement",
-          "heart complications secondary to thoracic cage stiffness"
-        ]
-      },
-      {
-        "symptomName": "Hearing impairment due to ossification near auditory structures",
-        "frequency": 0.05,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "hearing loss from bone near ear",
-          "impaired hearing due to ossification",
-          "decreased hearing caused by abnormal bone growth"
-        ]
-      },
-      {
-        "symptomName": "Neuropathic pain from nerve entrapment",
-        "frequency": 0.04,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "nerve pain from trapped nerves",
-          "pain caused by nerve compression",
-          "shooting pain due to nerve entrapment"
-        ]
-      }
-    ]
+    "rare": []
   },
   "systemsAffected": [
     "musculoskeletal",
     "constitutional",
     "respiratory",
-    "dermatological",
     "cardiovascular",
-    "otolaryngological",
-    "neurological"
+    "ophthalmological",
+    "neurological",
+    "gastrointestinal",
+    "psychiatric"
   ],
   "keyFindings": {
     "laboratory": [
@@ -248,7 +429,8 @@
       "Absence or atypical presentation of great toe malformations on skeletal survey"
     ],
     "genetic": [
-      "Presence of atypical ACVR1 gene mutations distinct from classic R206H mutation"
+      "Presence of atypical ACVR1 gene mutations distinct from classic R206H mutation",
+      "Autosomal dominant inheritance"
     ],
     "other": [
       "Soft tissue swelling and inflammation preceding ossification episodes"
@@ -282,7 +464,7 @@
     "Orthopedic Surgeon",
     "Rheumatologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Kaplan FS, Shore EM. Fibrodysplasia Ossificans Progressiva: Diagnosis, Management, and Therapeutic Horizons. Pediatr Endocrinol Rev. 2015;13 Suppl 2:690-701.",
     "Shore EM, Kaplan FS. Insights from a rare genetic disorder of extraskeletal bone formation, fibrodysplasia ossificans progressiva (FOP). Bone. 2011;49(1):4-9.",

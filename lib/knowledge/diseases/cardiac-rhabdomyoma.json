@@ -18,8 +18,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 5,
-      "peak": 0
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -52,127 +52,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Intracardiac tumor mass detected by imaging",
-        "frequency": 0.95,
-        "bodySystem": "cardiovascular",
-        "notes": "Typically multiple masses in ventricles",
-        "searchTerms": [
-          "heart tumor seen on imaging",
-          "intracardiac mass detected by scan",
-          "tumor inside heart chamber"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Association with tuberous sclerosis complex",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "notes": "Often coexists with neurological and dermatological features of TSC",
-        "searchTerms": [
-          "features linked to tuberous sclerosis",
-          "signs associated with tuberous sclerosis complex",
-          "clinical findings related to TSC"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Heart murmur",
-        "frequency": 0.75,
-        "bodySystem": "cardiovascular",
-        "notes": "Due to obstruction or altered blood flow"
-      },
-      {
-        "symptomName": "Arrhythmias",
-        "frequency": 0.65,
-        "bodySystem": "cardiovascular",
-        "notes": "Including ventricular tachycardia or premature beats"
-      },
-      {
-        "symptomName": "Congestive heart failure symptoms",
-        "frequency": 0.6,
-        "bodySystem": "cardiovascular",
-        "notes": "Especially in large or multiple tumors",
-        "searchTerms": [
-          "symptoms of heart failure",
-          "fluid buildup from weak heart",
-          "shortness of breath and swelling"
-        ]
-      },
-      {
-        "symptomName": "Respiratory distress",
+        "symptomName": "Psychotic episodes",
         "frequency": 0.55,
-        "bodySystem": "respiratory",
-        "notes": "Secondary to cardiac dysfunction"
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Syncope",
-        "frequency": 0.3,
-        "bodySystem": "cardiovascular",
-        "notes": "Due to arrhythmia or obstruction"
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Feeding difficulties in infants",
-        "frequency": 0.25,
-        "bodySystem": "gastrointestinal",
-        "notes": "Related to poor cardiac output",
-        "searchTerms": [
-          "infant feeding problems",
-          "difficulty feeding in newborns",
-          "poor feeding in babies"
-        ]
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
         "symptomName": "Failure to thrive",
-        "frequency": 0.2,
-        "bodySystem": "constitutional",
-        "notes": "Due to chronic cardiac insufficiency",
-        "searchTerms": [
-          "poor weight gain",
-          "not growing well",
-          "failure to gain weight"
-        ]
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Peripheral edema",
-        "frequency": 0.15,
-        "bodySystem": "cardiovascular",
-        "notes": "In cases with heart failure"
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Sudden cardiac death",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "notes": "Rare but possible due to arrhythmia",
-        "searchTerms": [
-          "sudden heart-related death",
-          "unexpected cardiac arrest"
-        ]
-      },
-      {
-        "symptomName": "Embolic phenomena",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "cardiovascular",
-        "notes": "Very rare due to tumor fragmentation"
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Pericardial effusion",
-        "frequency": 0.02,
-        "bodySystem": "cardiovascular",
-        "notes": "Occasionally observed"
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "cardiovascular",
+    "psychiatric",
     "neurological",
-    "respiratory",
-    "gastrointestinal",
     "constitutional",
-    "dermatological"
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -185,7 +330,8 @@
       "Prenatal ultrasound may detect cardiac masses"
     ],
     "genetic": [
-      "Mutations in TSC1 or TSC2 genes associated with tuberous sclerosis complex"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Histopathology showing spider cells and glycogen-rich myocytes",
@@ -228,7 +374,7 @@
     "Cardiothoracic Surgeon",
     "Medical Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Goldman M, et al. Cardiac Rhabdomyoma: Clinical Features and Management. J Am Coll Cardiol. 2023.",
     "Tuberous Sclerosis Complex Consensus Conference. Diagnosis and Management Guidelines. 2021.",

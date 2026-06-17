@@ -18,7 +18,7 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 12,
+      "max": 2,
       "peak": 1
     },
     "sexPredilection": "equal",
@@ -66,155 +66,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Chronic osmotic diarrhea triggered by sucrose ingestion",
+        "symptomName": "Atypical behavior",
         "frequency": 0.9,
-        "bodySystem": "gastrointestinal",
-        "notes": "Diarrhea typically begins in infancy after introduction of sucrose-containing foods",
-        "searchTerms": [
-          "chronic diarrhea triggered by sugar intake",
-          "osmotic diarrhea after sucrose",
-          "loose stools caused by sugar ingestion"
-        ]
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Abdominal bloating and distension after carbohydrate ingestion",
-        "frequency": 0.85,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "belly bloating after carbs",
-          "stomach swelling after eating sugar",
-          "abdominal fullness after carbohydrate meal"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Failure to thrive due to malabsorption",
-        "frequency": 0.75,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "poor growth from nutrient absorption problems",
-          "not gaining weight due to digestion issues",
-          "growth failure from malabsorption"
-        ]
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Excessive flatulence",
-        "frequency": 0.7,
-        "bodySystem": "gastrointestinal"
-      },
-      {
-        "symptomName": "Abdominal pain or cramping",
-        "frequency": 0.65,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "stomach cramps",
-          "belly pain",
-          "abdominal discomfort"
-        ]
-      },
-      {
-        "symptomName": "Steatorrhea or fatty stools",
-        "frequency": 0.6,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "fatty greasy stools",
-          "oily bowel movements",
-          "stools that float or look greasy"
-        ]
-      },
-      {
-        "symptomName": "Irritability in infants",
+        "symptomName": "Psychotic episodes",
         "frequency": 0.55,
-        "bodySystem": "psychiatric",
-        "notes": "Likely secondary to gastrointestinal discomfort",
-        "searchTerms": [
-          "fussiness in babies",
-          "irritable infant",
-          "baby crankiness"
-        ]
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Mild dehydration episodes",
-        "frequency": 0.4,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "mild episodes of dehydration",
-          "slight fluid loss symptoms",
-          "occasional mild dehydration"
-        ]
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Electrolyte imbalances",
-        "frequency": 0.3,
-        "bodySystem": "endocrine"
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Iron deficiency anemia",
-        "frequency": 0.25,
-        "bodySystem": "hematological",
-        "notes": "Due to chronic malabsorption",
-        "searchTerms": [
-          "low iron causing anemia",
-          "iron deficiency causing low blood counts",
-          "anemia from lack of iron"
-        ]
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Delayed growth and development",
-        "frequency": 0.15,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "slow physical and mental growth",
-          "delayed development milestones",
-          "growth lag in children"
-        ]
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Secondary lactose intolerance",
-        "frequency": 0.08,
-        "bodySystem": "gastrointestinal",
-        "notes": "Due to mucosal damage",
-        "searchTerms": [
-          "lactose intolerance after milk",
-          "milk sugar digestion problems",
-          "unable to digest lactose"
-        ]
-      },
-      {
-        "symptomName": "Dermatitis due to malnutrition",
-        "frequency": 0.05,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "skin rash from poor nutrition",
-          "nutritional skin inflammation",
-          "dermatitis due to vitamin deficiency"
-        ]
-      },
-      {
-        "symptomName": "Recurrent abdominal infections",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "frequent belly infections",
-          "repeated abdominal infections",
-          "chronic stomach infections"
-        ]
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "gastrointestinal",
-    "constitutional",
-    "hematological",
-    "endocrine",
     "psychiatric",
-    "dermatological",
-    "immunological"
+    "neurological",
+    "constitutional",
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -226,7 +343,8 @@
       "Usually normal abdominal imaging; may show nonspecific bowel gas patterns"
     ],
     "genetic": [
-      "Pathogenic mutations in the SI gene identified by molecular genetic testing"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Clinical response to sacrosidase enzyme replacement therapy",
@@ -269,7 +387,7 @@
     "Geneticist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Treem WR. Congenital sucrase-isomaltase deficiency. J Pediatr Gastroenterol Nutr. 1995;21(4):457-466.",
     "Kailasam MT, et al. Molecular basis of congenital sucrase-isomaltase deficiency. Am J Hum Genet. 1999;65(2):449-458.",

@@ -11,14 +11,15 @@
   "omimId": "156500",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 20,
-      "peak": 10
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -51,138 +52,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Multiple enchondromas",
-        "frequency": 0.95,
-        "bodySystem": "musculoskeletal",
-        "notes": "Typically affects long bones and phalanges"
-      },
-      {
-        "symptomName": "Multiple soft tissue hemangiomas",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "dermatological",
-        "notes": "Often bluish, compressible vascular lesions",
-        "searchTerms": [
-          "multiple soft skin blood vessel tumors",
-          "many benign blood vessel lumps",
-          "several hemangioma spots"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Skeletal deformities due to enchondromas",
-        "frequency": 0.8,
-        "bodySystem": "musculoskeletal",
-        "notes": "Includes limb length discrepancy and bone deformities",
-        "searchTerms": [
-          "bone deformities from cartilage tumors",
-          "skeletal changes due to enchondromas",
-          "bone shape abnormalities"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Bone pain",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal",
-        "notes": "Often related to enchondroma growth or fractures"
-      },
-      {
-        "symptomName": "Pathological fractures",
-        "frequency": 0.65,
-        "bodySystem": "musculoskeletal",
-        "notes": "Fractures occurring with minimal trauma"
-      },
-      {
-        "symptomName": "Soft tissue swelling",
-        "frequency": 0.6,
-        "bodySystem": "dermatological",
-        "notes": "Due to hemangiomas or enchondromas",
-        "searchTerms": [
-          "soft tissue swelling",
-          "localized tissue puffiness",
-          "area of soft tissue enlargement"
-        ]
-      },
-      {
-        "symptomName": "Limb asymmetry",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "musculoskeletal",
-        "notes": "Resulting from uneven bone growth"
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Malignant transformation of enchondromas (chondrosarcoma)",
-        "frequency": 0.3,
-        "bodySystem": "musculoskeletal",
-        "notes": "Risk increases with age",
-        "searchTerms": [
-          "cancerous change in cartilage tumors",
-          "malignant bone tumor development",
-          "enchondroma turning cancerous"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Malignant transformation of hemangiomas (angiosarcoma)",
-        "frequency": 0.2,
-        "bodySystem": "dermatological",
-        "notes": "Rare but serious complication",
-        "searchTerms": [
-          "cancerous blood vessel tumor",
-          "malignant hemangioma",
-          "angiosarcoma development"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Joint stiffness",
-        "frequency": 0.25,
-        "bodySystem": "musculoskeletal",
-        "notes": "Due to bone deformities or hemangiomas near joints"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Cutaneous telangiectasias",
-        "frequency": 0.15,
-        "bodySystem": "dermatological",
-        "notes": "Small dilated blood vessels on skin surface"
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Neurological symptoms due to nerve compression",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "From large hemangiomas or bone lesions",
-        "searchTerms": [
-          "nerve symptoms from compression",
-          "tingling or numbness near lesion",
-          "weakness due to nerve pressure"
-        ]
-      },
-      {
-        "symptomName": "Anemia secondary to hemangioma bleeding",
-        "frequency": 0.04,
-        "bodySystem": "hematological",
-        "notes": "Chronic blood loss from vascular lesions",
-        "searchTerms": [
-          "anemia from bleeding hemangiomas",
-          "low blood count due to tumor bleeding",
-          "blood loss anemia"
-        ]
-      },
-      {
-        "symptomName": "Lymphedema",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "immunological",
-        "notes": "Due to lymphatic obstruction by hemangiomas"
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "musculoskeletal",
-    "dermatological",
+    "gastrointestinal",
     "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
     "neurological",
-    "immunological"
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -229,7 +368,7 @@
     "Oncologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Maffucci E. Di una forma particolare di osteodistrofia: con note critiche e bibliografiche. G Chir. 1881;2:423-429.",
     "Pansuriya TC, et al. Somatic mosaic IDH1 and IDH2 mutations are associated with enchondroma and spindle cell hemangioma in Ollier disease and Maffucci syndrome. Nat Genet. 2011;43(12):1256-1261.",

@@ -17,15 +17,15 @@
   "omimId": "160900",
   "orphanetId": "273",
   "prevalence": {
-    "estimate": "1 in 8,000 (DM1); 1 in 20,000 (DM2)",
-    "range": "DM1: 1 in 3,000 to 1 in 8,000 depending on population",
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
     "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 60,
-      "peak": 25
+      "max": 65,
+      "peak": 14
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -75,184 +75,566 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Myotonia (grip myotonia and percussion myotonia)",
-        "snomedCode": "26950007",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "notes": "Inability to relax muscles after contraction; handshake difficulty; 'warm-up' phenomenon",
-        "searchTerms": [
-          "difficulty relaxing grip muscles",
-          "muscle stiffness after hand use",
-          "percussion myotonia causing delayed relaxation"
-        ]
+        "symptomName": "Muscle weakness",
+        "frequency": 1,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Distal muscle weakness and wasting (DM1)",
-        "snomedCode": "249937002",
-        "frequency": 0.8,
-        "bodySystem": "musculoskeletal",
-        "notes": "Hand grip weakness, foot drop; characteristic distal pattern (DM1); DM2 is proximal",
-        "searchTerms": [
-          "weakness and wasting of distal muscles",
-          "muscle loss in hands and feet",
-          "distal muscle weakness and atrophy"
-        ]
+        "symptomName": "Excessive daytime somnolence",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Characteristic facies",
-        "frequency": 0.75,
-        "bodySystem": "musculoskeletal",
-        "notes": "Temporalis and masseter wasting, ptosis, long thin face, frontal balding (hatchet face in DM1)"
+        "symptomName": "Distal muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Myotonia with warm-up phenomenon",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Posterior subcapsular cataract",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Cardiac conduction abnormality",
+        "frequency": 0.9,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "EMG: myotonic discharges",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
       }
     ],
     "common": [
       {
-        "symptomName": "Cataracts (posterior subcapsular iridescent cataracts)",
-        "snomedCode": "95722004",
-        "frequency": 0.8,
-        "bodySystem": "ophthalmological",
-        "notes": "Christmas tree or multicolored cataracts on slit lamp; can appear before other symptoms",
-        "searchTerms": [
-          "cloudy lens in eye behind pupil",
-          "posterior subcapsular cataracts",
-          "vision changes from lens opacity"
-        ]
-      },
-      {
-        "symptomName": "Cardiac conduction abnormalities",
-        "snomedCode": "698247007",
-        "frequency": 0.65,
-        "bodySystem": "cardiovascular",
-        "notes": "First-degree AV block, bundle branch block, atrial flutter/fibrillation; sudden cardiac death risk",
-        "searchTerms": [
-          "heart rhythm problems",
-          "abnormal cardiac conduction",
-          "irregular heartbeat"
-        ]
-      },
-      {
-        "symptomName": "Excessive daytime sleepiness",
-        "snomedCode": "77692006",
-        "frequency": 0.7,
-        "bodySystem": "neurological",
-        "notes": "Central hypersomnolence, not just from respiratory failure",
-        "searchTerms": [
-          "extreme daytime tiredness",
-          "falling asleep during day",
-          "uncontrollable daytime sleepiness"
-        ]
-      },
-      {
-        "symptomName": "Frontal balding",
-        "snomedCode": "278040002",
+        "symptomName": "Myalgia",
         "frequency": 0.55,
-        "bodySystem": "dermatological",
-        "notes": "In both males and females; DM1"
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Dysphagia",
-        "snomedCode": "40739000",
-        "frequency": 0.5,
-        "bodySystem": "gastrointestinal",
-        "notes": "From pharyngeal muscle weakness and myotonia"
+        "symptomName": "Atrial fibrillation",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Prolonged QRS complex",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Poor fine motor coordination",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Foot dorsiflexor weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Prolonged PR interval",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigable weakness of bulbar muscles",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Weakness of facial musculature",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Impairment in personality functioning",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypersomnia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of masticatory muscle",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Atypical behavior",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Gait disturbance",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal rapid eye movement sleep",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Obstructive sleep apnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Insulin resistance and diabetes",
-        "snomedCode": "73211009",
-        "frequency": 0.25,
-        "bodySystem": "endocrine",
-        "searchTerms": [
-          "high blood sugar and insulin resistance",
-          "diabetes and metabolic problems",
-          "difficulty controlling blood sugar"
-        ]
+        "symptomName": "Male hypogonadism",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Cognitive impairment and apathy",
-        "snomedCode": "386806002",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "notes": "Executive dysfunction, reduced initiative; more prominent in DM1",
-        "searchTerms": [
-          "memory problems",
-          "lack of interest",
-          "reduced motivation",
-          "difficulty thinking"
-        ]
+        "symptomName": "Testicular atrophy",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Gastrointestinal dysmotility",
-        "snomedCode": "235595009",
-        "frequency": 0.35,
-        "bodySystem": "gastrointestinal",
-        "notes": "Dysphagia, constipation, pseudo-obstruction, gallstones"
+        "symptomName": "Decreased fertility",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Neck muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Astigmatism",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hypermetropia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ophthalmoplegia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Emotional lability",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Depression",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Autistic behavior",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Short attention span",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Impotence",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypergonadotropic hypogonadism",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Diabetes mellitus",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Hyperinsulinemia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Insulin resistance",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Secondary hyperparathyroidism",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cholelithiasis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Intellectual disability, mild",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Facial diplegia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Bilateral ptosis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Decreased fetal movement",
+        "frequency": 0.17,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Polyhydramnios",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Alopecia",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Talipes equinovarus",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Diarrhea",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Constipation",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
       },
       {
         "symptomName": "Respiratory insufficiency",
-        "snomedCode": "409622000",
-        "frequency": 0.3,
-        "bodySystem": "respiratory",
-        "notes": "Diaphragmatic and respiratory muscle weakness"
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Testicular atrophy and infertility",
-        "snomedCode": "17732005",
-        "frequency": 0.2,
-        "bodySystem": "reproductive",
-        "searchTerms": [
-          "small testicles",
-          "low sperm count",
-          "male infertility",
-          "shrunken testes"
-        ]
+        "symptomName": "Cerebral cortical atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Early balding",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Falls",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Respiratory insufficiency due to muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Elevated circulating hepatic transaminase concentration",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Abnormality of thyroid physiology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Hypercholesterolemia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Skeletal muscle atrophy",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Distal amyotrophy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Proximal muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Neck flexor weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intestinal pseudo-obstruction",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Supraventricular tachycardia",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Respiratory failure requiring assisted ventilation",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Intellectual disability, borderline",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Reduced visual acuity",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Limited extraocular movements",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Diaphragmatic weakness",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Impaired visuospatial constructive cognition",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tented upper lip vermilion",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Mild fetal ventriculomegaly",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Nasogastric tube feeding in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Paranoia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Handgrip myotonia",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Myotonia of the jaw",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Myotonia of the upper limb",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Left ventricular systolic dysfunction",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Decreased serum testosterone concentration",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of the tongue muscle",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Oral-pharyngeal dysphagia",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Congenital myotonic dystrophy (neonatal presentation)",
-        "frequency": 0.1,
-        "bodySystem": "neurological",
-        "notes": "Only in DM1; neonatal hypotonia, respiratory failure, feeding difficulty; intellectual disability",
-        "searchTerms": [
-          "newborn muscle weakness",
-          "infant floppy baby",
-          "congenital muscle stiffness",
-          "neonatal muscle problems"
-        ]
+        "symptomName": "Autism",
+        "frequency": 0.03,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Pilomatricomas (skin tumors)",
-        "frequency": 0.05,
-        "bodySystem": "dermatological",
-        "notes": "Multiple calcifying epitheliomas; associated with DM1",
-        "searchTerms": [
-          "benign skin lumps",
-          "hard skin bumps",
-          "calcium deposits under skin",
-          "small skin tumors"
-        ]
+        "symptomName": "Aggressive behavior",
+        "frequency": 0.03,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Elevated liver enzymes",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal",
-        "notes": "Gamma-GT elevation common",
-        "searchTerms": [
-          "high liver blood test results",
-          "elevated liver enzymes",
-          "liver function abnormalities"
-        ]
+        "symptomName": "Decreased response to growth hormone stimulation test",
+        "frequency": 0.03,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Dilated cardiomyopathy",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Inability to walk",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Colon cancer",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Peripheral axonal neuropathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Shoulder girdle muscle weakness",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pelvic girdle muscle weakness",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Neoplasm of the skin",
+        "frequency": 0.03,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Obsessive-compulsive trait",
+        "frequency": 0.03,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Choroidal melanoma",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Endometrial carcinoma",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ovarian carcinoma",
+        "frequency": 0.03,
+        "bodySystem": "reproductive"
+      },
+      {
+        "symptomName": "Brain neoplasm",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Non-medullary thyroid carcinoma",
+        "frequency": 0.03,
+        "bodySystem": "endocrine"
       }
     ]
   },
   "systemsAffected": [
     "musculoskeletal",
+    "cardiovascular",
+    "constitutional",
     "neurological",
     "endocrine",
+    "ophthalmological",
+    "psychiatric",
     "respiratory",
-    "gastrointestinal"
+    "reproductive",
+    "dermatological",
+    "gastrointestinal",
+    "otolaryngological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -326,7 +708,7 @@
     "cardiologist",
     "geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Johnson NE, et al. Evidence-based management of myotonic dystrophy type 1. Neurology. 2021;96(2):e1-e14.",
     "Meola G, Cardani R. Myotonic dystrophies: an update on clinical aspects, genetic, pathology, and molecular pathomechanisms. Biochim Biophys Acta. 2015;1852(4):594-606.",

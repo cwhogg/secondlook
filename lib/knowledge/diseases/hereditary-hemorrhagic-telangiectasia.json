@@ -11,14 +11,15 @@
   "omimId": "187300",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 5,000 to 1 in 8,000",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 10,
-      "max": 60,
-      "peak": 30
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -57,151 +58,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Recurrent spontaneous epistaxis",
-        "frequency": 0.95,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "frequent spontaneous nosebleeds",
-          "recurrent nose bleeding",
-          "nosebleeds without injury"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Mucocutaneous telangiectasias",
-        "frequency": 0.85,
-        "bodySystem": "dermatological",
-        "notes": "Typically on lips, oral mucosa, fingers, and nose"
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Visceral arteriovenous malformations",
-        "frequency": 0.75,
-        "bodySystem": "cardiovascular",
-        "notes": "Including pulmonary, hepatic, cerebral AVMs",
-        "searchTerms": [
-          "abnormal blood vessel tangles in organs",
-          "visceral organ AVMs",
-          "internal organ blood vessel malformations"
-        ]
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Gastrointestinal bleeding",
-        "frequency": 0.6,
-        "bodySystem": "gastrointestinal",
-        "notes": "Often presents as chronic iron deficiency anemia"
-      },
-      {
-        "symptomName": "Iron deficiency anemia",
-        "frequency": 0.65,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "low iron causing anemia",
-          "iron deficiency causing low blood counts",
-          "anemia from lack of iron"
-        ]
-      },
-      {
-        "symptomName": "Fatigue related to chronic anemia",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "tiredness from long-term anemia",
-          "chronic fatigue due to low red blood cells",
-          "weakness related to anemia"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Dyspnea due to pulmonary AVMs",
-        "frequency": 0.5,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "shortness of breath from lung AVMs",
-          "breathing difficulty due to lung blood vessel issues",
-          "pulmonary arteriovenous malformations causing dyspnea"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Neurological deficits from cerebral AVMs or paradoxical emboli",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "brain problems from AVMs or emboli",
-          "neurological deficits from abnormal brain vessels",
-          "stroke-like symptoms from brain AVMs"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "High-output cardiac failure due to hepatic AVMs",
-        "frequency": 0.25,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "heart failure from liver AVMs",
-          "high-output cardiac failure due to liver blood vessel malformations",
-          "heart overload from hepatic AVMs"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hemoptysis",
-        "frequency": 0.15,
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
         "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Telangiectasias on conjunctiva",
-        "frequency": 0.2,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "red blood vessels on eye surface",
-          "spider veins on conjunctiva",
-          "tiny red eye spots"
-        ]
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Seizures secondary to cerebral AVMs",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "seizures caused by brain AVMs",
-          "convulsions from cerebral blood vessel malformations",
-          "brain vessel abnormalities causing seizures"
-        ]
-      },
-      {
-        "symptomName": "Stroke or brain abscess due to paradoxical embolism",
-        "frequency": 0.07,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "stroke or brain infection from emboli",
-          "brain abscess due to paradoxical embolism",
-          "stroke caused by abnormal blood clots"
-        ]
-      },
-      {
-        "symptomName": "Portal hypertension secondary to hepatic AVMs",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "high blood pressure in portal vein from liver AVMs",
-          "portal hypertension due to hepatic vessel malformations",
-          "increased liver blood pressure from AVMs"
-        ]
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "otolaryngological",
-    "dermatological",
-    "cardiovascular",
     "gastrointestinal",
     "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
     "respiratory",
     "neurological",
-    "ophthalmological",
-    "constitutional"
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -255,7 +381,7 @@
     "Otolaryngologist",
     "Gastroenterologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Shovlin CL. Hereditary haemorrhagic telangiectasia: pathophysiology, diagnosis and treatment. Blood Rev. 2010 Mar;24(6):203-19.",
     "Faughnan ME, Palda VA, Garcia-Tsao G, et al. International guidelines for the diagnosis and management of hereditary hemorrhagic telangiectasia. J Med Genet. 2011 Feb;48(2):73-87.",

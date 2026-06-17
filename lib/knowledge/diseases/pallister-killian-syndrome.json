@@ -11,14 +11,15 @@
   "omimId": "601803",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 20,000 to 1 in 50,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 1,
-      "peak": 0
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,162 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Mosaic tetrasomy of chromosome 12p",
-        "frequency": 0.95,
-        "bodySystem": "constitutional",
-        "notes": "Detected by cytogenetic or molecular testing; hallmark of the syndrome",
-        "searchTerms": [
-          "mosaic extra chromosome 12p",
-          "partial chromosome 12p duplication in some cells",
-          "genetic mosaicism with extra 12p material"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Distinctive craniofacial dysmorphism",
-        "frequency": 0.85,
-        "bodySystem": "constitutional",
-        "notes": "Includes high forehead, sparse scalp hair, hypertelorism, flat nasal bridge",
-        "searchTerms": [
-          "unusual facial features",
-          "distinct face shape",
-          "unique head and face appearance"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Severe hypotonia in infancy",
-        "frequency": 0.75,
-        "bodySystem": "musculoskeletal",
-        "notes": "Marked muscle weakness present from birth",
-        "searchTerms": [
-          "severe floppy baby syndrome",
-          "marked low muscle tone in infancy",
-          "extreme infant muscle hypotonia"
-        ]
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Intellectual disability",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "notes": "Ranges from moderate to severe"
-      },
-      {
-        "symptomName": "Epilepsy",
-        "frequency": 0.65,
-        "bodySystem": "neurological",
-        "notes": "Seizures often develop in childhood"
-      },
-      {
-        "symptomName": "Skin pigmentation anomalies",
-        "frequency": 0.6,
-        "bodySystem": "dermatological",
-        "notes": "Hypo- or hyperpigmented streaks or patches",
-        "searchTerms": [
-          "uneven skin color",
-          "patchy skin pigmentation",
-          "skin color changes or spots"
-        ]
-      },
-      {
-        "symptomName": "Hearing impairment",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "otolaryngological",
-        "notes": "Sensorineural or conductive hearing loss"
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Congenital diaphragmatic hernia",
-        "frequency": 0.5,
-        "bodySystem": "respiratory",
-        "notes": "May cause respiratory distress in neonates",
-        "searchTerms": [
-          "hole in diaphragm at birth",
-          "diaphragm birth defect",
-          "abdominal organs in chest"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Cardiac malformations",
-        "frequency": 0.4,
-        "bodySystem": "cardiovascular",
-        "notes": "Including ventricular septal defects and patent ductus arteriosus"
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Gastrointestinal anomalies",
-        "frequency": 0.3,
-        "bodySystem": "gastrointestinal",
-        "notes": "Feeding difficulties, reflux, or constipation"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Ophthalmological abnormalities",
-        "frequency": 0.25,
-        "bodySystem": "ophthalmological",
-        "notes": "Strabismus, refractive errors",
-        "searchTerms": [
-          "eye abnormalities",
-          "vision problems",
-          "ocular defects"
-        ]
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Skeletal anomalies",
-        "frequency": 0.2,
-        "bodySystem": "musculoskeletal",
-        "notes": "Including joint contractures and scoliosis"
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Recurrent respiratory infections",
-        "frequency": 0.15,
-        "bodySystem": "respiratory",
-        "notes": "Due to hypotonia and anatomical anomalies",
-        "searchTerms": [
-          "frequent lung infections",
-          "repeated chest infections",
-          "chronic respiratory infections"
-        ]
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Endocrine abnormalities",
-        "frequency": 0.08,
-        "bodySystem": "endocrine",
-        "notes": "Including hypothyroidism",
-        "searchTerms": [
-          "hormone gland problems",
-          "endocrine system issues",
-          "abnormal hormone levels"
-        ]
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Renal anomalies",
-        "frequency": 0.05,
-        "bodySystem": "renal",
-        "notes": "Structural kidney abnormalities"
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Immunological dysfunction",
-        "frequency": 0.04,
-        "bodySystem": "immunological",
-        "notes": "Occasional immune deficiency"
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "neurological",
-    "musculoskeletal",
-    "cardiovascular",
-    "respiratory",
     "gastrointestinal",
-    "dermatological",
-    "ophthalmological",
-    "otolaryngological",
-    "endocrine",
-    "renal",
+    "hematological",
     "immunological",
-    "constitutional"
+    "constitutional",
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -277,7 +392,7 @@
     "Pediatrician",
     "Developmental Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Pallister-Killian syndrome: clinical and cytogenetic features. J Med Genet. 1991.",
     "OMIM Entry - # 601803 - PALLISTER-KILLIAN SYNDROME.",

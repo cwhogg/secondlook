@@ -11,14 +11,15 @@
   "omimId": "231200",
   "orphanetId": "803",
   "prevalence": {
-    "estimate": "1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 50,
-      "peak": 5
+      "min": 18,
+      "max": 65,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,113 +64,256 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Giant platelets",
-        "frequency": 0.95,
-        "bodySystem": "hematological",
-        "notes": "Characteristic large platelets seen on peripheral smear"
+        "symptomName": "Amyotrophic lateral sclerosis",
+        "frequency": 1,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Deficiency of glycoprotein Ib-IX-V complex",
+        "symptomName": "Neurodegeneration",
         "frequency": 0.9,
-        "bodySystem": "hematological",
-        "notes": "Molecular hallmark of the disorder",
-        "searchTerms": [
-          "lack of platelet receptor glycoprotein complex",
-          "deficiency in platelet adhesion proteins",
-          "missing glycoprotein Ib-IX-V on platelets"
-        ]
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Motor neuron atrophy",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       }
     ],
     "common": [
       {
-        "symptomName": "Mucocutaneous bleeding",
-        "frequency": 0.85,
-        "bodySystem": "hematological",
-        "notes": "Includes epistaxis, gum bleeding, and easy bruising"
+        "symptomName": "Xerostomia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Thrombocytopenia",
-        "frequency": 0.8,
-        "bodySystem": "hematological",
-        "notes": "Moderate reduction in platelet count"
+        "symptomName": "Atypical behavior",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Prolonged bleeding time",
-        "frequency": 0.75,
-        "bodySystem": "hematological",
-        "notes": "Due to platelet dysfunction",
-        "searchTerms": [
-          "long bleeding time",
-          "slow blood clotting",
-          "prolonged bleeding after injury"
-        ]
+        "symptomName": "Emotional lability",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Menorrhagia",
-        "frequency": 0.7,
-        "bodySystem": "hematological",
-        "notes": "Heavy menstrual bleeding in affected females"
+        "symptomName": "Depression",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Anxiety",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Spasticity",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hyperreflexia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysphonia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Drooling",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fasciculations",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Skeletal muscle atrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Muscle spasm",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Paralysis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Upper limb muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Babinski sign",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Distal amyotrophy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Progressive distal muscular atrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Tongue atrophy",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigable weakness of bulbar muscles",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigable weakness of swallowing muscles",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigable weakness of respiratory muscles",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Abnormality on pulmonary function testing",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hoffmann sign",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Gastrointestinal bleeding",
-        "frequency": 0.3,
-        "bodySystem": "gastrointestinal",
-        "notes": "May occur in severe cases"
+        "symptomName": "Tongue fasciculations",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hemarthrosis",
-        "frequency": 0.2,
-        "bodySystem": "musculoskeletal",
-        "notes": "Rare joint bleeding episodes"
+        "symptomName": "Frontotemporal dementia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Postoperative bleeding",
-        "frequency": 0.4,
-        "bodySystem": "hematological",
-        "notes": "Excessive bleeding after surgery or trauma"
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Petechiae",
-        "frequency": 0.15,
-        "bodySystem": "dermatological",
-        "notes": "Small pinpoint hemorrhages"
+        "symptomName": "Sleep abnormality",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Language impairment",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Steppage gait",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cachexia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Foot dorsiflexor weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Orthopnea",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Jaw hyperreflexia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Intracranial hemorrhage",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "Life-threatening bleeding complication"
-      },
-      {
-        "symptomName": "Hematuria",
-        "frequency": 0.07,
-        "bodySystem": "renal",
-        "notes": "Blood in urine due to bleeding"
-      },
-      {
-        "symptomName": "Epistaxis refractory to treatment",
-        "frequency": 0.06,
-        "bodySystem": "otolaryngological",
-        "notes": "Severe nosebleeds difficult to control",
-        "searchTerms": [
-          "nosebleeds not responding to treatment",
-          "persistent nose bleeding",
-          "refractory epistaxis"
-        ]
+        "symptomName": "Laryngospasm",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
       }
     ]
   },
   "systemsAffected": [
-    "hematological",
-    "dermatological",
-    "gastrointestinal",
-    "musculoskeletal",
+    "ophthalmological",
     "neurological",
-    "renal",
+    "musculoskeletal",
+    "constitutional",
+    "psychiatric",
+    "gastrointestinal",
+    "respiratory",
     "otolaryngological"
   ],
   "keyFindings": {
@@ -183,7 +327,44 @@
       "Neuroimaging (CT/MRI) may show intracranial hemorrhage in severe cases"
     ],
     "genetic": [
-      "Mutations in GP1BA, GP1BB, or GP9 genes affecting glycoprotein Ib-IX-V complex"
+      "CCNF (causative)",
+      "TAF15 (candidate)",
+      "ANXA11 (causative)",
+      "CFAP410 (causative)",
+      "GLE1 (causative)",
+      "NEK1 (susceptibility)",
+      "GLT8D1 (susceptibility)",
+      "CHCHD10 (causative)",
+      "DAO (causative)",
+      "ATXN2 (susceptibility)",
+      "CHMP2B (causative)",
+      "SOD1 (causative)",
+      "TREM2 (susceptibility)",
+      "VAPB (causative)",
+      "VCP (causative)",
+      "NEFH (susceptibility)",
+      "OPTN (causative)",
+      "DCTN1 (candidate)",
+      "TARDBP (causative)",
+      "FIG4 (causative)",
+      "FUS (causative)",
+      "ANG (causative)",
+      "MATR3 (causative)",
+      "PRPH (susceptibility)",
+      "PON1 (causative)",
+      "PON2 (causative)",
+      "PON3 (causative)",
+      "SQSTM1 (causative)",
+      "UBQLN2 (causative)",
+      "C9ORF72 (causative)",
+      "PFN1 (causative)",
+      "TBK1 (susceptibility)",
+      "HNRNPA1 (causative)",
+      "PPARGC1A (modifier)",
+      "ERBB4 (causative)",
+      "UNC13A (susceptibility)",
+      "Autosomal dominant inheritance",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Flow cytometry demonstrating decreased expression of glycoprotein Ib-IX-V complex"
@@ -217,7 +398,7 @@
     "Geneticist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Nurden AT. Bernard-Soulier syndrome. Orphanet J Rare Dis. 2006;1:46.",
     "Savoia A, et al. Bernard-Soulier syndrome: clinical and laboratory features of 10 patients. Haematologica. 2001;86(5):463-468.",

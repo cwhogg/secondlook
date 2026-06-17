@@ -11,14 +11,15 @@
   "omimId": "231300",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 10,000 to 1 in 20,000 live births",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 24,
-      "peak": 6
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": [
@@ -67,131 +68,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Elevated intraocular pressure",
-        "frequency": 0.95,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "high eye pressure",
-          "elevated intraocular pressure",
-          "glaucoma-like eye pressure"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Corneal enlargement (buphthalmos)",
-        "frequency": 0.85,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "enlarged cornea",
-          "big cloudy eye surface",
-          "corneal enlargement (buphthalmos)"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Corneal edema and clouding",
-        "frequency": 0.75,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "swollen, cloudy cornea",
-          "corneal swelling and haziness",
-          "blurred cornea due to edema"
-        ]
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Photophobia",
-        "frequency": 0.75,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Excessive tearing (epiphora)",
-        "frequency": 0.7,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "excessive eye tearing",
-          "watery eyes",
-          "too much tear production"
-        ]
-      },
-      {
-        "symptomName": "Optic nerve cupping",
-        "frequency": 0.65,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "optic nerve head depression",
-          "cupped optic nerve appearance",
-          "optic disc hollowing"
-        ]
-      },
-      {
-        "symptomName": "Blepharospasm",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "ophthalmological"
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Corneal Haab's striae",
-        "frequency": 0.4,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "horizontal lines on cornea",
-          "corneal Haab's striae cracks",
-          "breaks in corneal layers"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Reduced visual fixation",
-        "frequency": 0.3,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "difficulty focusing eyes",
-          "reduced eye fixation",
-          "poor visual attention"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Strabismus",
-        "frequency": 0.25,
-        "bodySystem": "ophthalmological"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Iris abnormalities",
-        "frequency": 0.15,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "abnormal colored part of eye",
-          "iris shape or color changes",
-          "irregular iris appearance"
-        ]
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Corneal scarring",
-        "frequency": 0.08,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Lens subluxation",
-        "frequency": 0.05,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Secondary glaucoma complications (e.g. optic atrophy)",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "glaucoma-related optic nerve damage",
-          "vision loss from glaucoma",
-          "optic atrophy due to eye pressure"
-        ]
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "ophthalmological",
-    "constitutional"
+    "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [],
@@ -235,7 +381,7 @@
     "Pediatric Ophthalmologist",
     "Glaucoma Specialist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Weinreb RN, et al. Primary congenital glaucoma. Lancet. 2014;383(9915):1710-1721.",
     "Mandal AK, et al. Genetics of primary congenital glaucoma. Indian J Ophthalmol. 2011;59(2):97-101.",

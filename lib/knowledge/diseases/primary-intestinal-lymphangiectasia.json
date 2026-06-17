@@ -11,14 +11,15 @@
   "omimId": "151800",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 100,000",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 20,
-      "peak": 5
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,127 +64,260 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Dilated intestinal lymphatics on biopsy",
-        "frequency": 0.95,
-        "bodySystem": "gastrointestinal",
-        "notes": "Definitive histological finding",
-        "searchTerms": [
-          "enlarged lymph vessels in intestines",
-          "dilated intestinal lymphatics on biopsy",
-          "swollen lymph channels in gut tissue"
-        ]
-      },
-      {
-        "symptomName": "Protein-losing enteropathy",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "gastrointestinal",
-        "notes": "Leads to hypoalbuminemia and immunoglobulin loss"
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Peripheral edema",
-        "frequency": 0.85,
-        "bodySystem": "constitutional",
-        "notes": "Due to hypoproteinemia"
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Diarrhea",
-        "frequency": 0.7,
-        "bodySystem": "gastrointestinal",
-        "notes": "Often chronic and non-bloody"
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Abdominal distension",
-        "frequency": 0.65,
-        "bodySystem": "gastrointestinal",
-        "notes": "Due to lymphatic dilation and edema"
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
         "symptomName": "Fatigue",
-        "frequency": 0.6,
-        "bodySystem": "constitutional",
-        "notes": "Related to protein loss and malnutrition"
-      },
-      {
-        "symptomName": "Lymphopenia",
         "frequency": 0.55,
-        "bodySystem": "hematological",
-        "notes": "Due to lymphatic leakage"
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hypocalcemia",
-        "frequency": 0.5,
-        "bodySystem": "endocrine",
-        "notes": "Secondary to vitamin D malabsorption"
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Steatorrhea",
-        "frequency": 0.4,
-        "bodySystem": "gastrointestinal",
-        "notes": "Fat malabsorption due to lymphatic dysfunction"
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Recurrent infections",
-        "frequency": 0.3,
-        "bodySystem": "immunological",
-        "notes": "Due to immunoglobulin loss"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Muscle cramps",
-        "frequency": 0.25,
-        "bodySystem": "musculoskeletal",
-        "notes": "Secondary to electrolyte imbalances"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Ascites",
-        "frequency": 0.2,
-        "bodySystem": "gastrointestinal",
-        "notes": "Due to lymph leakage and hypoalbuminemia"
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Growth retardation",
-        "frequency": 0.15,
-        "bodySystem": "constitutional",
-        "notes": "In pediatric patients due to malnutrition"
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Chylous pleural effusion",
-        "frequency": 0.08,
-        "bodySystem": "respiratory",
-        "notes": "Due to lymph leakage into pleural space",
-        "searchTerms": [
-          "milky fluid in chest cavity",
-          "chylous pleural effusion",
-          "lymphatic fluid buildup in chest"
-        ]
-      },
-      {
-        "symptomName": "Chylous ascites",
-        "frequency": 0.07,
-        "bodySystem": "gastrointestinal",
-        "notes": "Rare complication of lymph leakage"
-      },
-      {
-        "symptomName": "Hypogammaglobulinemia",
-        "frequency": 0.05,
-        "bodySystem": "immunological",
-        "notes": "Leads to increased infection risk"
-      },
-      {
-        "symptomName": "Lymphedema of limbs",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "musculoskeletal",
-        "notes": "Due to peripheral lymphatic involvement",
-        "searchTerms": [
-          "swelling of arms or legs from lymph buildup",
-          "limb lymphedema",
-          "chronic limb swelling due to lymph issues"
-        ]
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
@@ -192,9 +326,14 @@
     "hematological",
     "immunological",
     "constitutional",
-    "musculoskeletal",
+    "renal",
     "respiratory",
-    "endocrine"
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -253,7 +392,7 @@
     "Immunologist",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Waldmann TA, Steinfeld JL, Dutcher TF, Davidson JD, Gordon RS Jr. The role of intestinal lymphangiectasia in the pathogenesis of hypoproteinemia. J Clin Invest. 1961.",
     "Fouquet V, et al. Primary intestinal lymphangiectasia: clinical, histological, and therapeutic aspects. Orphanet J Rare Dis. 2018.",

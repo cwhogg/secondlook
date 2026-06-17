@@ -18,8 +18,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 5,
-      "peak": 0
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -58,122 +58,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Unilateral or bilateral small kidney size",
-        "frequency": 0.85,
-        "bodySystem": "renal",
-        "notes": "Detected via ultrasound or MRI",
-        "searchTerms": [
-          "small kidney size on one or both sides",
-          "unilateral or bilateral kidney shrinkage",
-          "reduced kidney size"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Reduced nephron number",
-        "frequency": 0.75,
-        "bodySystem": "renal",
-        "notes": "Confirmed histologically",
-        "searchTerms": [
-          "fewer kidney filtering units",
-          "reduced nephron count",
-          "low number of kidney nephrons"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Chronic kidney disease symptoms",
-        "frequency": 0.7,
-        "bodySystem": "renal",
-        "notes": "Includes fatigue, edema, and hypertension",
-        "searchTerms": [
-          "symptoms of chronic kidney disease",
-          "signs of kidney failure",
-          "kidney disease symptoms"
-        ]
-      },
-      {
-        "symptomName": "Hypertension",
-        "frequency": 0.65,
-        "bodySystem": "cardiovascular",
-        "notes": "Secondary to renal impairment"
-      },
-      {
-        "symptomName": "Proteinuria",
-        "frequency": 0.6,
-        "bodySystem": "renal",
-        "notes": "Mild to moderate"
-      },
-      {
-        "symptomName": "Growth retardation",
+        "symptomName": "Psychotic episodes",
         "frequency": 0.55,
-        "bodySystem": "constitutional",
-        "notes": "Due to chronic illness"
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Anemia",
-        "frequency": 0.3,
-        "bodySystem": "hematological",
-        "notes": "Secondary to chronic kidney disease"
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Electrolyte imbalances",
-        "frequency": 0.25,
-        "bodySystem": "endocrine",
-        "notes": "Including hyperkalemia and metabolic acidosis"
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Polyuria",
-        "frequency": 0.2,
-        "bodySystem": "renal",
-        "notes": "Due to impaired concentrating ability"
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Nocturia",
-        "frequency": 0.15,
-        "bodySystem": "renal",
-        "notes": "Frequent urination at night"
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Renal artery stenosis",
-        "frequency": 0.07,
-        "bodySystem": "cardiovascular",
-        "notes": "May contribute to hypertension",
-        "searchTerms": [
-          "narrow kidney artery",
-          "renal blood vessel narrowing",
-          "reduced blood flow to kidney"
-        ]
-      },
-      {
-        "symptomName": "Urinary tract infections",
-        "frequency": 0.05,
-        "bodySystem": "renal",
-        "notes": "Secondary to structural abnormalities",
-        "searchTerms": [
-          "bladder infections",
-          "urinary infections",
-          "repeated urine infections"
-        ]
-      },
-      {
-        "symptomName": "Nephrolithiasis",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "renal",
-        "notes": "Kidney stone formation"
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "renal",
+    "psychiatric",
+    "neurological",
+    "constitutional",
+    "musculoskeletal",
+    "gastrointestinal",
     "cardiovascular",
-    "hematological",
-    "endocrine",
-    "constitutional"
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -187,7 +337,8 @@
       "Absence of cystic changes or dysplastic features"
     ],
     "genetic": [
-      "Mutations in genes regulating nephrogenesis (e.g., HNF1B, PAX2) in some cases"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Histopathology showing reduced nephron number without dysplasia"
@@ -229,7 +380,7 @@
     "Pediatric Nephrologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Niaudet P. Congenital anomalies of the kidney and urinary tract. Pediatr Nephrol. 2018.",
     "Sanna-Cherchi S, et al. Genetic basis of congenital anomalies of the kidney and urinary tract. Nat Rev Nephrol. 2018.",

@@ -11,15 +11,15 @@
   "omimId": "218700",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 3,000 to 4,000 newborns",
-    "range": "0.025%-0.033%",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 1,
-      "peak": 0
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": []
@@ -58,143 +58,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Absent thyroid gland on imaging",
-        "frequency": 0.95,
-        "bodySystem": "endocrine",
-        "notes": "Confirmed by ultrasound or radionuclide scan",
-        "searchTerms": [
-          "missing thyroid gland on scan",
-          "absent thyroid seen in imaging",
-          "no thyroid tissue detected"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Elevated serum TSH levels",
-        "frequency": 0.98,
-        "bodySystem": "endocrine",
-        "searchTerms": [
-          "high thyroid stimulating hormone",
-          "elevated TSH levels",
-          "increased pituitary thyroid signal"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Low serum free thyroxine (T4)",
-        "frequency": 0.97,
-        "bodySystem": "endocrine",
-        "searchTerms": [
-          "low free thyroid hormone levels",
-          "reduced free T4 in blood",
-          "decreased active thyroid hormone"
-        ]
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Prolonged neonatal jaundice",
-        "frequency": 0.75,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "jaundice lasting after birth",
-          "yellow skin in newborn",
-          "prolonged newborn jaundice"
-        ]
-      },
-      {
-        "symptomName": "Feeding difficulties and poor sucking",
-        "frequency": 0.65,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "difficulty feeding and weak sucking",
-          "poor infant feeding and sucking",
-          "feeding problems in newborn"
-        ]
-      },
-      {
-        "symptomName": "Constipation",
-        "frequency": 0.6,
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Hypotonia",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Macroglossia",
+        "symptomName": "Anemia",
         "frequency": 0.55,
-        "bodySystem": "otolaryngological"
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Umbilical hernia",
-        "frequency": 0.3,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Hoarse cry",
-        "frequency": 0.25,
-        "bodySystem": "otolaryngological"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Dry, coarse skin",
-        "frequency": 0.2,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "rough dry skin",
-          "coarse skin texture",
-          "dry flaky skin"
-        ]
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Bradycardia",
-        "frequency": 0.15,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Delayed bone age",
-        "frequency": 0.4,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "slow bone growth",
-          "bones maturing late",
-          "delayed skeletal age"
-        ]
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Mental retardation or developmental delay if untreated",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "intellectual disability if untreated",
-          "developmental delay without treatment",
-          "mental retardation from untreated condition"
-        ]
-      },
-      {
-        "symptomName": "Periorbital edema",
-        "frequency": 0.07,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Hypothermia",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
         "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "endocrine",
     "gastrointestinal",
-    "musculoskeletal",
-    "otolaryngological",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
     "dermatological",
     "cardiovascular",
-    "neurological",
-    "constitutional"
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -243,7 +376,7 @@
     "Pediatrician",
     "Geneticist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "American Academy of Pediatrics. Clinical Practice Guideline: Screening and Management of Congenital Hypothyroidism. Pediatrics. 2014.",
     "Lazar L, et al. Congenital hypothyroidism due to thyroid dysgenesis: clinical and molecular aspects. Horm Res Paediatr. 2017.",

@@ -17,8 +17,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 20,
-      "peak": 5
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -60,141 +60,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Elevated plasma homocysteine concentration",
-        "frequency": 0.95,
-        "bodySystem": "hematological",
-        "notes": "Biochemical hallmark of the disease",
-        "searchTerms": [
-          "high blood homocysteine levels",
-          "elevated amino acid in blood",
-          "increased homocysteine"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Developmental delay with intellectual disability",
-        "frequency": 0.85,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "delayed development and learning difficulties",
-          "intellectual disability with slow milestones"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Thromboembolic events (venous and arterial thrombosis)",
-        "frequency": 0.75,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "blood clots in veins or arteries",
-          "repeated blood clot events",
-          "thrombosis episodes"
-        ]
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Seizures",
-        "frequency": 0.65,
+        "symptomName": "Psychotic episodes",
+        "frequency": 0.55,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.55,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Psychiatric manifestations including depression and anxiety",
-        "frequency": 0.6,
-        "bodySystem": "psychiatric",
-        "searchTerms": [
-          "mood disorders like depression",
-          "anxiety and depression symptoms",
-          "mental health changes"
-        ]
-      },
-      {
-        "symptomName": "Hypotonia",
+        "symptomName": "Ataxia",
         "frequency": 0.55,
-        "bodySystem": "musculoskeletal"
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Microcephaly",
-        "frequency": 0.5,
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
         "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Osteoporosis or decreased bone mineral density",
-        "frequency": 0.4,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "low bone density",
-          "thin bones",
-          "bone weakening"
-        ]
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Stroke or transient ischemic attacks",
-        "frequency": 0.35,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "stroke or mini-stroke events",
-          "transient ischemic attacks",
-          "brain blood flow interruptions"
-        ]
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Visual disturbances due to optic atrophy",
-        "frequency": 0.3,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "vision loss from optic nerve damage",
-          "blurred vision due to nerve atrophy",
-          "optic nerve degeneration symptoms"
-        ]
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Gait abnormalities",
-        "frequency": 0.25,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "walking difficulties",
-          "abnormal walking pattern",
-          "unsteady gait"
-        ]
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
         "symptomName": "Feeding difficulties in infancy",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "trouble feeding as baby",
-          "difficulty sucking or swallowing",
-          "infant feeding problems"
-        ]
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Psychomotor regression",
-        "frequency": 0.08,
+        "symptomName": "Hydrocephalus",
+        "frequency": 0.03,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Peripheral neuropathy",
-        "frequency": 0.07,
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Pulmonary embolism",
-        "frequency": 0.05,
-        "bodySystem": "respiratory"
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "neurological",
-    "hematological",
-    "musculoskeletal",
     "psychiatric",
-    "ophthalmological",
+    "neurological",
+    "constitutional",
+    "musculoskeletal",
     "gastrointestinal",
-    "respiratory"
+    "cardiovascular",
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -208,8 +339,8 @@
       "Doppler ultrasound for detection of thrombi"
     ],
     "genetic": [
-      "Pathogenic mutations in the MTHFR gene identified by sequencing",
-      "Reduced MTHFR enzyme activity in fibroblasts or leukocytes (research setting)"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Prolonged prothrombin time or activated partial thromboplastin time in thrombotic events",
@@ -245,11 +376,11 @@
     "Hematologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-03-10",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Mudd SH, et al. Disorders of transsulfuration. In: Scriver CR, et al., editors. The Metabolic and Molecular Bases of Inherited Disease. 8th ed. McGraw-Hill; 2001.",
     "Orphanet: Homocystinuria due to methylene tetrahydrofolate reductase deficiency. Available from: https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=395",
     "MTHFR Deficiency. GeneReviews® [Internet]. 2020."
   ],
-  "confidenceInData": "ai-generated"
+  "confidenceInData": "medium"
 }

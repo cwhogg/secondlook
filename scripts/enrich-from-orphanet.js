@@ -335,7 +335,10 @@ function parseXML(filePath) {
 function loadKBProfiles() {
   console.log('\nLoading KB profiles...');
   const files = fs.readdirSync(DISEASES_DIR).filter(f => f.endsWith('.json'));
-  const byOrpha = new Map(); // orphaCode → { profile, filePath }
+  // Map<orphaCode, Array<{profile, filePath}>> — multiple KB profiles can
+  // legitimately share an OrphaCode (e.g., umbrella + named variants).
+  // Enrichment passes apply to ALL matched profiles so none get orphaned.
+  const byOrpha = new Map();
   let noOrpha = 0;
 
   for (const file of files) {
@@ -344,7 +347,8 @@ function loadKBProfiles() {
       const profile = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
       const code = normalizeOrphaCode(profile.orphanetId);
       if (code) {
-        byOrpha.set(code, { profile, filePath });
+        if (!byOrpha.has(code)) byOrpha.set(code, []);
+        byOrpha.get(code).push({ profile, filePath });
       } else {
         noOrpha++;
       }
@@ -353,7 +357,8 @@ function loadKBProfiles() {
     }
   }
 
-  console.log(`  Loaded ${files.length} profiles, ${byOrpha.size} with orphanetId, ${noOrpha} without`);
+  const totalEntries = Array.from(byOrpha.values()).reduce((sum, arr) => sum + arr.length, 0);
+  console.log(`  Loaded ${files.length} profiles, ${totalEntries} with orphanetId across ${byOrpha.size} distinct codes, ${noOrpha} without`);
   return byOrpha;
 }
 
@@ -382,8 +387,8 @@ function enrichPhenotypes(kbProfiles) {
     const disorder = Array.isArray(entry.Disorder) ? entry.Disorder[0] : entry.Disorder;
     if (!disorder) continue;
     const orphaCode = String(disorder.OrphaCode);
-    const kbEntry = kbProfiles.get(orphaCode);
-    if (!kbEntry) { skipped++; continue; }
+    const kbEntries = kbProfiles.get(orphaCode);
+    if (!kbEntries || kbEntries.length === 0) { skipped++; continue; }
 
     const associations = ensureArray(
       disorder.HPODisorderAssociationList?.HPODisorderAssociation
@@ -434,16 +439,16 @@ function enrichPhenotypes(kbProfiles) {
       tier.sort((a, b) => b.frequency - a.frequency);
     }
 
-    kbEntry.profile.symptoms = symptoms;
-
-    // Update systemsAffected from actual symptoms
-    if (systemsUsed.size > 0) {
-      kbEntry.profile.systemsAffected = [...systemsUsed];
+    // Apply enrichment to every profile sharing this OrphaCode
+    for (const kbEntry of kbEntries) {
+      kbEntry.profile.symptoms = symptoms;
+      if (systemsUsed.size > 0) {
+        kbEntry.profile.systemsAffected = [...systemsUsed];
+      }
+      kbEntry.profile.confidenceInData = 'medium';
+      kbEntry.dirty = true;
+      matched++;
     }
-
-    kbEntry.profile.confidenceInData = 'medium';
-    kbEntry.dirty = true;
-    matched++;
   }
 
   console.log(`  Enriched: ${matched} profiles | No KB match: ${skipped}`);
@@ -470,8 +475,8 @@ function enrichNaturalHistory(kbProfiles) {
 
   for (const disorder of disorders) {
     const orphaCode = String(disorder.OrphaCode);
-    const kbEntry = kbProfiles.get(orphaCode);
-    if (!kbEntry) { skipped++; continue; }
+    const kbEntries = kbProfiles.get(orphaCode);
+    if (!kbEntries || kbEntries.length === 0) { skipped++; continue; }
 
     // Age of onset
     const onsets = ensureArray(disorder.AverageAgeOfOnsetList?.AverageAgeOfOnset);
@@ -483,22 +488,15 @@ function enrichNaturalHistory(kbProfiles) {
       }
     }
 
+    // Compute the values once, then apply to every profile sharing this OrphaCode
+    let onsetData = null;
     if (validOnsets.length > 0) {
       const minAge = Math.min(...validOnsets.map(o => o.min));
       const maxAge = Math.max(...validOnsets.map(o => o.max));
-      // Compute peak as midpoint of the first (most typical) onset category
       const peakAge = Math.round((validOnsets[0].min + validOnsets[0].max) / 2);
-
-      kbEntry.profile.demographics.typicalOnsetAge = {
-        min: minAge,
-        max: maxAge,
-        peak: Math.min(peakAge, maxAge),
-      };
-      kbEntry.dirty = true;
-      matched++;
+      onsetData = { min: minAge, max: maxAge, peak: Math.min(peakAge, maxAge) };
     }
 
-    // Inheritance patterns → keyFindings.genetic
     const inheritances = ensureArray(disorder.TypeOfInheritanceList?.TypeOfInheritance);
     const inheritanceNames = [];
     for (const inh of inheritances) {
@@ -509,17 +507,23 @@ function enrichNaturalHistory(kbProfiles) {
       }
     }
 
-    if (inheritanceNames.length > 0) {
-      const existing = kbEntry.profile.keyFindings.genetic || [];
-      // Add inheritance info if not already present
-      const existingLower = existing.map(s => s.toLowerCase());
-      for (const inh of inheritanceNames) {
-        if (!existingLower.some(e => e.includes(inh.toLowerCase().replace(' inheritance', '')))) {
-          existing.push(inh);
-        }
+    for (const kbEntry of kbEntries) {
+      if (onsetData) {
+        kbEntry.profile.demographics.typicalOnsetAge = { ...onsetData };
+        kbEntry.dirty = true;
+        matched++;
       }
-      kbEntry.profile.keyFindings.genetic = existing;
-      kbEntry.dirty = true;
+      if (inheritanceNames.length > 0) {
+        const existing = kbEntry.profile.keyFindings.genetic || [];
+        const existingLower = existing.map(s => s.toLowerCase());
+        for (const inh of inheritanceNames) {
+          if (!existingLower.some(e => e.includes(inh.toLowerCase().replace(' inheritance', '')))) {
+            existing.push(inh);
+          }
+        }
+        kbEntry.profile.keyFindings.genetic = existing;
+        kbEntry.dirty = true;
+      }
     }
   }
 
@@ -547,8 +551,8 @@ function enrichEpidemiology(kbProfiles) {
 
   for (const disorder of disorders) {
     const orphaCode = String(disorder.OrphaCode);
-    const kbEntry = kbProfiles.get(orphaCode);
-    if (!kbEntry) { skipped++; continue; }
+    const kbEntries = kbProfiles.get(orphaCode);
+    if (!kbEntries || kbEntries.length === 0) { skipped++; continue; }
 
     const prevalences = ensureArray(disorder.PrevalenceList?.Prevalence);
 
@@ -584,13 +588,16 @@ function enrichEpidemiology(kbProfiles) {
 
     if (bestPrev && PREVALENCE_MAP[bestPrev.cls]) {
       const mapping = PREVALENCE_MAP[bestPrev.cls];
-      kbEntry.profile.prevalence = {
+      const prev = {
         estimate: mapping.estimate,
         range: bestPrev.cls,
         classification: mapping.classification,
       };
-      kbEntry.dirty = true;
-      matched++;
+      for (const kbEntry of kbEntries) {
+        kbEntry.profile.prevalence = { ...prev };
+        kbEntry.dirty = true;
+        matched++;
+      }
     }
   }
 
@@ -632,8 +639,8 @@ function enrichGenes(kbProfiles) {
 
   for (const disorder of disorders) {
     const orphaCode = String(disorder.OrphaCode);
-    const kbEntry = kbProfiles.get(orphaCode);
-    if (!kbEntry) { skipped++; continue; }
+    const kbEntries = kbProfiles.get(orphaCode);
+    if (!kbEntries || kbEntries.length === 0) { skipped++; continue; }
 
     const genes = ensureArray(
       disorder.DisorderGeneAssociationList?.DisorderGeneAssociation
@@ -653,18 +660,18 @@ function enrichGenes(kbProfiles) {
     }
 
     if (geneEntries.length > 0) {
-      // Preserve any inheritance info that was added in pass 2
-      const existing = kbEntry.profile.keyFindings.genetic || [];
-      const inheritanceEntries = existing.filter(e =>
-        e.toLowerCase().includes('inheritance') ||
-        e.toLowerCase().includes('autosomal') ||
-        e.toLowerCase().includes('x-linked') ||
-        e.toLowerCase().includes('mitochondrial')
-      );
-
-      kbEntry.profile.keyFindings.genetic = [...geneEntries, ...inheritanceEntries];
-      kbEntry.dirty = true;
-      matched++;
+      for (const kbEntry of kbEntries) {
+        const existing = kbEntry.profile.keyFindings.genetic || [];
+        const inheritanceEntries = existing.filter(e =>
+          e.toLowerCase().includes('inheritance') ||
+          e.toLowerCase().includes('autosomal') ||
+          e.toLowerCase().includes('x-linked') ||
+          e.toLowerCase().includes('mitochondrial')
+        );
+        kbEntry.profile.keyFindings.genetic = [...geneEntries, ...inheritanceEntries];
+        kbEntry.dirty = true;
+        matched++;
+      }
     }
   }
 
@@ -701,12 +708,14 @@ function main() {
   let written = 0;
   if (!DRY_RUN) {
     console.log('\nWriting updated profiles...');
-    for (const [code, entry] of kbProfiles) {
-      if (!entry.dirty) continue;
-      entry.profile.lastUpdated = new Date().toISOString().split('T')[0];
-      const json = JSON.stringify(entry.profile, null, 2);
-      fs.writeFileSync(entry.filePath, json + '\n');
-      written++;
+    for (const [code, entries] of kbProfiles) {
+      for (const entry of entries) {
+        if (!entry.dirty) continue;
+        entry.profile.lastUpdated = new Date().toISOString().split('T')[0];
+        const json = JSON.stringify(entry.profile, null, 2);
+        fs.writeFileSync(entry.filePath, json + '\n');
+        written++;
+      }
     }
     console.log(`  Wrote ${written} modified profile files`);
   }

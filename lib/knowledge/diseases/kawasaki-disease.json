@@ -11,15 +11,15 @@
   "omimId": "611775",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 10,000 children under 5 years",
-    "range": "0.005%-0.01%",
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
+      "min": 18,
       "max": 120,
-      "peak": 24
+      "peak": 42
     },
     "sexPredilection": "slight-male",
     "ethnicAssociations": [
@@ -72,165 +72,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Prolonged high-grade fever",
-        "frequency": 0.95,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "long-lasting high fever",
-          "prolonged elevated body temperature",
-          "extended period of fever"
-        ]
-      },
-      {
-        "symptomName": "Bilateral non-exudative conjunctival injection",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "red eyes without discharge",
-          "both eyes with redness but no pus",
-          "conjunctival redness without fluid"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Strawberry tongue and erythema of oral mucosa",
-        "frequency": 0.85,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "red bumpy tongue",
-          "strawberry-like tongue appearance",
-          "red inflamed mouth lining"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Polymorphous rash",
-        "frequency": 0.8,
-        "bodySystem": "dermatological"
-      },
-      {
-        "symptomName": "Erythema and edema of hands and feet",
-        "frequency": 0.75,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "redness and swelling of hands",
-          "swollen painful fingers and toes",
-          "inflamed hands and feet"
-        ]
-      },
-      {
-        "symptomName": "Cervical lymphadenopathy >1.5 cm",
-        "frequency": 0.6,
-        "bodySystem": "immunological",
-        "searchTerms": [
-          "enlarged neck lymph nodes",
-          "swollen lymph nodes in neck",
-          "neck lumps over 1.5 cm"
-        ]
-      },
-      {
-        "symptomName": "Irritability",
-        "frequency": 0.65,
-        "bodySystem": "psychiatric"
-      },
-      {
-        "symptomName": "Desquamation of fingers and toes in subacute phase",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "peeling skin on fingers and toes",
-          "skin shedding on hands and feet",
-          "flaky skin on fingers and toes"
-        ]
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Arthralgia or arthritis",
-        "frequency": 0.4,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "joint pain or swelling",
-          "arthritis symptoms",
-          "painful or inflamed joints"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Abdominal pain",
-        "frequency": 0.3,
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Diarrhea",
-        "frequency": 0.25,
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Hepatomegaly",
-        "frequency": 0.15,
-        "bodySystem": "gastrointestinal"
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
       },
       {
-        "symptomName": "Mild aseptic meningitis",
-        "frequency": 0.1,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "mild brain inflammation without infection",
-          "low-grade meningitis symptoms",
-          "aseptic meningitis with mild signs"
-        ]
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Coronary artery aneurysms",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "notes": "Occurs if untreated or delayed treatment",
-        "searchTerms": [
-          "enlarged heart arteries",
-          "bulging coronary vessels",
-          "heart artery ballooning"
-        ]
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Myocarditis",
-        "frequency": 0.07,
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
         "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Sensorineural hearing loss",
-        "frequency": 0.02,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "hearing loss from nerve damage",
-          "sensorineural deafness",
-          "inner ear hearing impairment"
-        ]
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
       },
       {
-        "symptomName": "Hydrops of gallbladder",
+        "symptomName": "Pancreatic cysts",
         "frequency": 0.03,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "fluid buildup in gallbladder",
-          "swollen gallbladder",
-          "gallbladder swelling with fluid"
-        ]
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "cardiovascular",
-    "dermatological",
-    "immunological",
     "gastrointestinal",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
     "neurological",
-    "ophthalmological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
     "otolaryngological",
-    "musculoskeletal",
-    "psychiatric",
-    "constitutional"
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -289,7 +400,7 @@
     "Pediatric Cardiologist",
     "Infectious Disease Specialist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "McCrindle BW, Rowley AH, Newburger JW, et al. Diagnosis, Treatment, and Long-Term Management of Kawasaki Disease: A Scientific Statement for Health Professionals From the American Heart Association. Circulation. 2017;135(17):e927-e999.",
     "Newburger JW, Takahashi M, Gerber MA, et al. Diagnosis, Treatment, and Long-Term Management of Kawasaki Disease. Circulation. 2004;110(17):2747-2771.",

@@ -11,14 +11,15 @@
   "omimId": "123790",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "fewer than 1 in 1,000,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 1,
-      "peak": 0
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,141 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Cutis gyrata with furrowed scalp skin",
-        "frequency": 0.95,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "folded or ridged scalp skin",
-          "scalp skin with deep furrows"
-        ]
-      },
-      {
-        "symptomName": "Craniosynostosis involving coronal and lambdoid sutures",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "early fusion of skull sutures at front and back",
-          "premature skull bone joining in coronal and lambdoid areas"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Midface hypoplasia with depressed nasal bridge",
-        "frequency": 0.85,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "underdeveloped middle face with flat nose bridge",
-          "sunken midface and low nasal bridge"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Multiple cutaneous skin tags (acrochordons)",
-        "frequency": 0.75,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "multiple small skin tags",
-          "numerous soft skin growths"
-        ]
-      },
-      {
-        "symptomName": "Prominent forehead (frontal bossing)",
-        "frequency": 0.7,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "large or prominent forehead",
-          "bulging frontal skull area"
-        ]
-      },
-      {
-        "symptomName": "Hypertelorism",
-        "frequency": 0.65,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Choanal stenosis or atresia",
-        "frequency": 0.6,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "narrow or blocked nasal airway",
-          "blocked back of the nose",
-          "difficulty breathing through nose"
-        ]
-      },
-      {
-        "symptomName": "Skin hyperpigmentation in gyrate areas",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "darkened skin in swirling patterns",
-          "patchy skin hyperpigmentation"
-        ]
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Hydrocephalus",
-        "frequency": 0.4,
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
         "bodySystem": "neurological"
       },
       {
-        "symptomName": "Hearing loss",
-        "frequency": 0.3,
-        "bodySystem": "otolaryngological"
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Respiratory distress due to midface hypoplasia",
-        "frequency": 0.25,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "breathing problems due to underdeveloped midface",
-          "respiratory distress from facial bone abnormalities"
-        ]
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Seizures",
-        "frequency": 0.15,
-        "bodySystem": "neurological"
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Cutaneous cysts",
-        "frequency": 0.2,
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
         "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Cardiac anomalies such as ventricular septal defect",
-        "frequency": 0.08,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "hole in heart wall",
-          "heart structural defect",
-          "ventricular septal defect symptoms"
-        ]
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Genitourinary anomalies",
-        "frequency": 0.05,
-        "bodySystem": "reproductive"
-      },
-      {
-        "symptomName": "Intellectual disability",
-        "frequency": 0.07,
+        "symptomName": "Seizure",
+        "frequency": 0.03,
         "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "dermatological",
-    "musculoskeletal",
+    "gastrointestinal",
+    "hematological",
+    "immunological",
     "constitutional",
-    "ophthalmological",
-    "otolaryngological",
-    "neurological",
+    "renal",
     "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
     "cardiovascular",
-    "reproductive"
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -255,7 +391,7 @@
     "Dermatologist",
     "Otolaryngologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Beare-Stevenson Cutis Gyrata Syndrome. GeneReviews. 2023.",
     "Wilkie AO, et al. FGFR2 mutations in Beare-Stevenson syndrome. Am J Hum Genet. 1995.",

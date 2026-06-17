@@ -11,14 +11,15 @@
   "omimId": "126800",
   "orphanetId": "233",
   "prevalence": {
-    "estimate": "1 in 1000 to 1 in 10,000",
-    "classification": "rare"
+    "estimate": "1-5 in 10,000",
+    "range": "1-5 / 10 000",
+    "classification": "uncommon"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 5,
-      "peak": 0
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "slight-female",
     "ethnicAssociations": []
@@ -63,143 +64,331 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Congenital limitation of abduction",
-        "frequency": 0.95,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "limited outward eye movement",
-          "restricted eye abduction",
-          "difficulty moving eyes sideways"
-        ]
-      },
-      {
-        "symptomName": "Globe retraction on attempted adduction",
+        "symptomName": "Strabismus",
         "frequency": 0.9,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "eye pulls back when looking inward",
-          "globe retraction on adduction",
-          "eye retracts on inward gaze"
-        ]
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Palpebral fissure narrowing on adduction",
-        "frequency": 0.85,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "narrowing of eye opening on adduction",
-          "eyelid slit narrows when eye moves inward",
-          "palpebral fissure constriction with eye movement"
-        ]
+        "symptomName": "Abnormality of eye movement",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Oculomotor apraxia",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Duane anomaly",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Oculomotor nerve palsy",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Short palpebral fissure",
+        "frequency": 0.9,
+        "bodySystem": "ophthalmological"
       }
     ],
     "common": [
       {
-        "symptomName": "Strabismus (esotropia or exotropia)",
-        "frequency": 0.75,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "crossed or wandering eyes",
-          "strabismus with inward or outward turning",
-          "eye misalignment"
-        ]
+        "symptomName": "Sensorineural hearing impairment",
+        "frequency": 0.55,
+        "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Head turn or face turn to compensate for limited eye movement",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "turning head to see better",
-          "compensatory face or head turn",
-          "head tilt to adjust for eye movement"
-        ]
+        "symptomName": "Anteverted nares",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Upshoot or downshoot of the affected eye on adduction",
-        "frequency": 0.65,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "eye moves up or down on inward gaze",
-          "upshoot or downshoot of eye",
-          "vertical eye movement abnormality on adduction"
-        ]
+        "symptomName": "Deeply set eye",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Diplopia in some cases",
-        "frequency": 0.6,
-        "bodySystem": "ophthalmological",
-        "searchTerms": [
-          "double vision in some cases",
-          "seeing two images",
-          "diplopia symptom"
-        ]
+        "symptomName": "Impaired ocular adduction",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Blepharophimosis",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Impaired ocular abduction",
+        "frequency": 0.55,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Low posterior hairline",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal vertebral segmentation and fusion",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Mild amblyopia",
-        "frequency": 0.4,
+        "symptomName": "Ectopic kidney",
+        "frequency": 0.17,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Cleft palate",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Everted lower lip vermilion",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Microcephaly",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Facial asymmetry",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Micrognathia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Preauricular skin tag",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Stenosis of the external auditory canal",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Wide nasal bridge",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Webbed neck",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Short neck",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Microcornea",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Ptosis",
+        "frequency": 0.17,
         "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Facial asymmetry due to compensatory head posture",
-        "frequency": 0.3,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "uneven face from head posture",
-          "facial asymmetry due to head tilt",
-          "face looks uneven from compensatory turning"
-        ]
+        "symptomName": "Aniridia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Chorioretinal coloboma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Iris coloboma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Abnormal pupil morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
         "symptomName": "Nystagmus",
-        "frequency": 0.2,
+        "frequency": 0.17,
         "bodySystem": "ophthalmological"
       },
       {
-        "symptomName": "Associated hearing loss",
-        "frequency": 0.15,
-        "bodySystem": "otolaryngological",
-        "searchTerms": [
-          "hearing loss",
-          "difficulty hearing",
-          "reduced hearing"
-        ]
+        "symptomName": "Blepharospasm",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Amblyopia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Hypopigmented skin patches",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Brachydactyly",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Preaxial hand polydactyly",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Triphalangeal thumb",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Plagiocephaly",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Talipes equinovarus",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Hypoplasia of the radius",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Skeletal muscle atrophy",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Spina bifida occulta",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal form of the vertebral bodies",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Absent radius",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Irregular hyperpigmentation",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Optic disc hypoplasia",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Central heterochromia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hypoplastic iris stroma",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Aplasia/Hypoplasia of the thumb",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Patchy hypopigmentation of hair",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Narrow internal auditory canal",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Camptodactyly",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Anorectal anomaly",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Marcus Gunn jaw winking synkinesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal cardiovascular system morphology",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Compensatory head posture",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Gustatory lacrimation",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal pinna morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
-    "rare": [
-      {
-        "symptomName": "Bilateral involvement",
-        "frequency": 0.05,
-        "bodySystem": "ophthalmological"
-      },
-      {
-        "symptomName": "Associated systemic anomalies (e.g., Goldenhar syndrome features)",
-        "frequency": 0.03,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "other body abnormalities",
-          "multiple birth defects",
-          "additional physical anomalies"
-        ]
-      },
-      {
-        "symptomName": "Facial nerve palsy",
-        "frequency": 0.02,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "facial muscle weakness",
-          "drooping on one side of face",
-          "paralysis of facial muscles"
-        ]
-      }
-    ]
+    "rare": []
   },
   "systemsAffected": [
     "ophthalmological",
+    "constitutional",
+    "otolaryngological",
     "musculoskeletal",
+    "renal",
     "neurological",
-    "otolaryngological"
+    "cardiovascular",
+    "dermatological"
   ],
   "keyFindings": {
     "laboratory": [],
@@ -208,8 +397,11 @@
       "Orbital imaging demonstrating anomalous lateral rectus muscle innervation"
     ],
     "genetic": [
-      "Mutations in CHN1 gene in familial cases",
-      "Genetic heterogeneity with sporadic and familial forms"
+      "CHN1 (causative)",
+      "MAFB (causative, loss-of-function)",
+      "SALL4 (causative)",
+      "Autosomal dominant inheritance",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Electromyography demonstrating co-contraction of medial and lateral rectus muscles"
@@ -243,11 +435,11 @@
     "Neurologist",
     "Geneticist"
   ],
-  "lastUpdated": "2026-03-10",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Engle EC. Duane Retraction Syndrome: A Model for Human Motor Neuron Development and Disease. Curr Opin Neurol. 2007;20(1):5-13.",
     "Orphanet: Duane Retraction Syndrome. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=EN&Expert=233",
     "Miller NR. Duane Retraction Syndrome. In: Walsh & Hoyt’s Clinical Neuro-Ophthalmology. 6th ed. 2005."
   ],
-  "confidenceInData": "ai-generated"
+  "confidenceInData": "medium"
 }

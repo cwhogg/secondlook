@@ -12,14 +12,15 @@
   "omimId": "232300",
   "orphanetId": "365",
   "prevalence": {
-    "estimate": "1 in 40,000",
+    "estimate": "1-9 in 100,000",
+    "range": "1-9 / 100 000",
     "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 60,
-      "peak": 1
+      "max": 65,
+      "peak": 14
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -58,137 +59,383 @@
   "symptoms": {
     "pathognomonic": [
       {
+        "symptomName": "Muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
         "symptomName": "Progressive proximal muscle weakness",
-        "frequency": 0.85,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "gradual weakness in upper legs and arms",
-          "progressive muscle weakness near trunk",
-          "proximal muscle weakness"
-        ]
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Respiratory muscle weakness leading to respiratory insufficiency",
-        "frequency": 0.8,
-        "bodySystem": "respiratory",
-        "searchTerms": [
-          "weak breathing muscles causing breathing failure",
-          "respiratory muscle weakness leading to insufficiency",
-          "difficulty breathing from muscle weakness"
-        ]
+        "symptomName": "Oligosacchariduria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hypertrophic cardiomyopathy (infantile-onset)",
-        "frequency": 0.75,
-        "bodySystem": "cardiovascular",
-        "notes": "More common in infantile-onset form",
-        "searchTerms": [
-          "thickened heart muscle in infants",
-          "infant heart muscle enlargement",
-          "early onset hypertrophic cardiomyopathy"
-        ]
+        "symptomName": "Decreased circulating acid maltase activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Hypotonia",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal"
-      },
-      {
-        "symptomName": "Feeding difficulties (infants)",
-        "frequency": 0.65,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "feeding problems in babies",
-          "difficulty feeding as an infant",
-          "poor feeding in newborns"
-        ]
-      },
-      {
-        "symptomName": "Delayed motor milestones",
-        "frequency": 0.6,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "late crawling or walking",
-          "delayed movement skills",
-          "slow motor development"
-        ]
-      },
-      {
-        "symptomName": "Elevated serum creatine kinase",
+        "symptomName": "Gait disturbance",
         "frequency": 0.55,
-        "bodySystem": "hematological",
-        "searchTerms": [
-          "high muscle enzyme levels",
-          "elevated creatine kinase"
-        ]
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Macroglossia",
-        "frequency": 0.5,
+        "symptomName": "Hypomimic face",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Delayed speech and language development",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hyporeflexia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Motor delay",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Areflexia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Tongue fasciculations",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Growth delay",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cardiomegaly",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Left ventricular hypertrophy",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Respiratory insufficiency",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Recurrent respiratory infections",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hepatomegaly",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Respiratory insufficiency due to muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Exertional dyspnea",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Elevated circulating creatine kinase concentration",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Myalgia",
+        "frequency": 0.55,
         "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Gowers sign",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "EMG: myopathic abnormalities",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Exercise intolerance",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Difficulty climbing stairs",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Respiratory tract infection",
+        "frequency": 0.55,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Increased circulating lactate dehydrogenase concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Heart murmur",
+        "frequency": 0.55,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Glycogen accumulation in muscle fiber lysosomes",
+        "frequency": 0.55,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Elevated circulating alanine aminotransferase concentration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Camptocormia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Scoliosis",
-        "frequency": 0.4,
+        "symptomName": "Abnormal internal carotid artery morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Macroglossia",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Tongue muscle weakness",
+        "frequency": 0.17,
         "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Hepatomegaly",
-        "frequency": 0.3,
+        "symptomName": "Facial hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hearing impairment",
+        "frequency": 0.17,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Ptosis",
+        "frequency": 0.17,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Osteoporosis",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypertrophic cardiomyopathy",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Dysphagia",
+        "frequency": 0.17,
         "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Sleep-disordered breathing",
-        "frequency": 0.25,
+        "symptomName": "Respiratory distress",
+        "frequency": 0.17,
         "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Fatigue on exertion",
-        "frequency": 0.2,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "tiredness after activity",
-          "fatigue with exertion",
-          "feeling exhausted after physical effort"
-        ]
+        "symptomName": "Transient ischemic attack",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Joint contractures",
-        "frequency": 0.15,
+        "symptomName": "Inability to walk",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Vasculitis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Scoliosis",
+        "frequency": 0.17,
         "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Respiratory failure",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hyperlordosis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized muscle weakness",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Dilatation of the cerebral artery",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Shortened PR interval",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Impaired mastication",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Cranial nerve paralysis",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Floppy infant",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Diaphragmatic weakness",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Sleep apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chronic pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Thoracic aortic aneurysm",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Orthopnea",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigable weakness of swallowing muscles",
+        "frequency": 0.17,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Fatigable weakness of respiratory muscles",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Basilar artery calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Left ventricular outflow tract obstruction",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
       }
     ],
     "rare": [
       {
-        "symptomName": "Hearing loss",
-        "frequency": 0.08,
-        "bodySystem": "otolaryngological"
+        "symptomName": "Flexion contracture",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
       },
       {
-        "symptomName": "Arrhythmias",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular"
+        "symptomName": "Bowel incontinence",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Motor axonal neuropathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       },
       {
         "symptomName": "Cognitive impairment",
         "frequency": 0.03,
         "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Atelectasis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       }
     ]
   },
   "systemsAffected": [
-    "musculoskeletal",
-    "respiratory",
-    "cardiovascular",
-    "gastrointestinal",
-    "hematological",
+    "neurological",
     "constitutional",
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "hematological",
     "otolaryngological",
-    "neurological"
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -202,7 +449,8 @@
       "Chest X-ray or CT showing diaphragmatic elevation or atelectasis"
     ],
     "genetic": [
-      "Pathogenic variants in the GAA gene confirmed by molecular genetic testing"
+      "Pathogenic variants in the GAA gene confirmed by molecular genetic testing",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Muscle biopsy demonstrating glycogen accumulation with vacuolar myopathy",
@@ -247,11 +495,11 @@
     "Pulmonologist",
     "Metabolic specialist"
   ],
-  "lastUpdated": "2026-03-10",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Hirschhorn R, Reuser AJJ. Glycogen storage disease type II: acid alpha-glucosidase (acid maltase) deficiency. In: Scriver CR, Beaudet AL, Sly WS, Valle D, editors. The Metabolic and Molecular Bases of Inherited Disease. 8th ed. New York: McGraw-Hill; 2001. p. 3389-3420.",
     "Kishnani PS, et al. Pompe disease diagnosis and management guideline. Genet Med. 2006;8(5):267-288.",
     "Orphanet: Glycogen storage disease due to acid maltase deficiency. https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=365"
   ],
-  "confidenceInData": "ai-generated"
+  "confidenceInData": "medium"
 }

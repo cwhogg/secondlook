@@ -18,8 +18,8 @@
   "demographics": {
     "typicalOnsetAge": {
       "min": 0,
-      "max": 50,
-      "peak": 5
+      "max": 2,
+      "peak": 1
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -58,131 +58,272 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Recurrent bacterial sinusitis",
-        "frequency": 0.85,
-        "bodySystem": "otolaryngological",
-        "notes": "Common presenting symptom due to impaired mucosal immunity",
-        "searchTerms": [
-          "frequent bacterial sinus infections",
-          "repeated sinus infections",
-          "chronic bacterial sinusitis episodes"
-        ]
+        "symptomName": "Atypical behavior",
+        "frequency": 0.9,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Recurrent bacterial pneumonia",
-        "frequency": 0.75,
-        "bodySystem": "respiratory",
-        "notes": "Indicative of impaired humoral immunity",
-        "searchTerms": [
-          "repeated lung bacterial infections",
-          "frequent pneumonia episodes",
-          "chronic bacterial lung infections"
-        ]
+        "symptomName": "Gait disturbance",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Recurrent otitis media",
-        "frequency": 0.7,
-        "bodySystem": "otolaryngological",
-        "notes": "Especially in pediatric patients",
-        "searchTerms": [
-          "frequent middle ear infections",
-          "recurrent ear infections",
-          "repeated otitis media episodes"
-        ]
+        "symptomName": "Morphological central nervous system abnormality",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb spasticity",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Homocystinuria",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Hyperhomocystinemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Upper motor neuron dysfunction",
+        "frequency": 0.9,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cystathioninemia",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Lower limb muscle weakness",
+        "frequency": 0.9,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormal enzyme/coenzyme activity",
+        "frequency": 0.9,
+        "bodySystem": "constitutional"
       }
     ],
     "common": [
       {
-        "symptomName": "Chronic cough",
-        "frequency": 0.65,
-        "bodySystem": "respiratory",
-        "notes": "Often secondary to recurrent infections"
-      },
-      {
-        "symptomName": "Fatigue",
-        "frequency": 0.6,
-        "bodySystem": "constitutional",
-        "notes": "May result from chronic illness"
-      },
-      {
-        "symptomName": "Nasal congestion",
-        "frequency": 0.58,
-        "bodySystem": "otolaryngological",
-        "notes": "Due to recurrent sinus infections"
-      },
-      {
-        "symptomName": "Bronchiectasis",
+        "symptomName": "Psychotic episodes",
         "frequency": 0.55,
-        "bodySystem": "respiratory",
-        "notes": "Complication of recurrent lower respiratory infections"
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Mental deterioration",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Spastic paraparesis",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal periventricular white matter morphology",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hypomethioninemia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Peripheral neuropathy",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain imaging abnormality",
+        "frequency": 0.55,
+        "bodySystem": "neurological"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Recurrent skin infections",
-        "frequency": 0.3,
-        "bodySystem": "dermatological",
-        "notes": "May occur due to impaired immune defense",
-        "searchTerms": [
-          "frequent skin infections",
-          "repeated skin bacterial infections",
-          "chronic skin infections"
-        ]
+        "symptomName": "Psychosis",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
       },
       {
-        "symptomName": "Gastrointestinal infections",
-        "frequency": 0.25,
-        "bodySystem": "gastrointestinal",
-        "notes": "Less common but reported"
+        "symptomName": "Intellectual disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       },
       {
-        "symptomName": "Allergic manifestations",
-        "frequency": 0.2,
-        "bodySystem": "immunological",
-        "notes": "Including eczema or asthma"
+        "symptomName": "Lethargy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Lymphadenopathy",
-        "frequency": 0.15,
-        "bodySystem": "hematological",
-        "notes": "Reactive enlargement due to infections"
+        "symptomName": "Global developmental delay",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Specific learning disability",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Psychotic mentation",
+        "frequency": 0.17,
+        "bodySystem": "psychiatric"
+      },
+      {
+        "symptomName": "Failure to thrive",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Thromboembolic stroke",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Bilateral tonic-clonic seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Apnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal cerebral white matter morphology",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Deep venous thrombosis",
+        "frequency": 0.17,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Atrophy of the spinal cord",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Focal-onset seizure",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Feeding difficulties in infancy",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Generalized neonatal hypotonia",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Brain atrophy",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Cognitive impairment",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
       }
     ],
     "rare": [
       {
-        "symptomName": "Autoimmune manifestations",
-        "frequency": 0.05,
-        "bodySystem": "immunological",
-        "notes": "Rarely associated with autoimmune diseases"
-      },
-      {
-        "symptomName": "Sepsis",
-        "frequency": 0.04,
-        "bodySystem": "constitutional",
-        "notes": "Severe systemic infection in immunocompromised patients"
-      },
-      {
-        "symptomName": "Neurological complications secondary to infection",
+        "symptomName": "Hydrocephalus",
         "frequency": 0.03,
-        "bodySystem": "neurological",
-        "notes": "Rare but possible",
-        "searchTerms": [
-          "brain problems caused by infection",
-          "neurological issues from infection",
-          "infection-related nervous system symptoms"
-        ]
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Microcephaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormality of the eye",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Nystagmus",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Optic atrophy",
+        "frequency": 0.03,
+        "bodySystem": "ophthalmological"
+      },
+      {
+        "symptomName": "Stroke",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Encephalopathy",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ventriculomegaly",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized non-motor (absence) seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Generalized myoclonic seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
       }
     ]
   },
   "systemsAffected": [
-    "respiratory",
-    "otolaryngological",
-    "dermatological",
-    "gastrointestinal",
-    "immunological",
+    "psychiatric",
+    "neurological",
     "constitutional",
-    "hematological",
-    "neurological"
+    "musculoskeletal",
+    "gastrointestinal",
+    "cardiovascular",
+    "respiratory",
+    "ophthalmological"
   ],
   "keyFindings": {
     "laboratory": [
@@ -196,7 +337,8 @@
       "Sinus imaging showing chronic sinusitis"
     ],
     "genetic": [
-      "No consistent monogenic cause identified; possible familial aggregation"
+      "MTHFR (causative)",
+      "Autosomal recessive inheritance"
     ],
     "other": [
       "Poor clinical response to standard antibiotic therapy",
@@ -240,7 +382,7 @@
     "Pulmonologist",
     "Otolaryngologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Orange JS, Ballow M, Stiehm ER, et al. Use and interpretation of diagnostic vaccination in primary immunodeficiency: a working group report of the Basic and Clinical Immunology Interest Section of the American Academy of Allergy, Asthma & Immunology. J Allergy Clin Immunol. 2012;130(3 Suppl):S1-S24.",
     "Bonilla FA, Barlan I, Chapel H, et al. International Consensus Document (ICON): Common Variable Immunodeficiency Disorders. J Allergy Clin Immunol Pract. 2016;4(1):38-59.",

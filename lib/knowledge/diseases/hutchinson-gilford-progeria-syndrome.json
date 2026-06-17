@@ -11,14 +11,15 @@
   "omimId": "176670",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 4 million",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 2,
-      "peak": 1
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -63,157 +64,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Severe growth retardation",
-        "frequency": 0.95,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "severe poor growth",
-          "marked growth failure",
-          "extreme growth retardation"
-        ]
-      },
-      {
-        "symptomName": "Alopecia including scalp hair loss",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "hair loss on scalp",
-          "balding or thinning hair",
-          "patchy scalp hair loss"
-        ]
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Characteristic facial features (micrognathia, prominent scalp veins, beaked nose)",
-        "frequency": 0.85,
-        "bodySystem": "constitutional",
-        "searchTerms": [
-          "small lower jaw",
-          "visible veins on scalp",
-          "hooked or pointed nose"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Loss of subcutaneous fat",
-        "frequency": 0.85,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "loss of fat under the skin",
-          "thin or wasted appearance",
-          "reduced fatty tissue"
-        ]
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Joint contractures and stiffness",
-        "frequency": 0.75,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "stiff joints and limited movement",
-          "joint tightness and contractures",
-          "reduced joint flexibility"
-        ]
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Early onset atherosclerosis",
-        "frequency": 0.7,
-        "bodySystem": "cardiovascular",
-        "searchTerms": [
-          "early hardening of arteries",
-          "premature artery blockage",
-          "early heart vessel disease"
-        ]
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Hip dislocation",
-        "frequency": 0.65,
-        "bodySystem": "musculoskeletal"
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Delayed dentition and dental abnormalities",
-        "frequency": 0.6,
-        "bodySystem": "gastrointestinal",
-        "searchTerms": [
-          "late tooth eruption",
-          "delayed teeth growth",
-          "abnormal dental development"
-        ]
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Osteolysis of distal phalanges",
-        "frequency": 0.4,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "bone loss in fingertips",
-          "finger bone destruction",
-          "disintegration of distal finger bones"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "High-pitched voice",
-        "frequency": 0.3,
-        "bodySystem": "otolaryngological"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Insulin resistance",
-        "frequency": 0.25,
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
         "bodySystem": "endocrine"
       },
       {
-        "symptomName": "Scleroderma-like skin changes",
-        "frequency": 0.2,
-        "bodySystem": "dermatological",
-        "searchTerms": [
-          "hard, tight skin like scleroderma",
-          "skin thickening and tightening",
-          "skin changes resembling sclerosis"
-        ]
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Delayed closure of cranial sutures",
-        "frequency": 0.15,
-        "bodySystem": "musculoskeletal",
-        "searchTerms": [
-          "skull bones closing late",
-          "delayed skull suture fusion",
-          "open soft spots on head longer than usual"
-        ]
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Stroke or transient ischemic attacks",
-        "frequency": 0.08,
-        "bodySystem": "neurological",
-        "searchTerms": [
-          "stroke or mini-stroke events",
-          "transient ischemic attacks",
-          "brain blood flow interruptions"
-        ]
+        "symptomName": "Abnormality of the diaphragm",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Hearing loss",
-        "frequency": 0.05,
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
         "bodySystem": "otolaryngological"
       },
       {
-        "symptomName": "Severe osteoporosis",
-        "frequency": 0.04,
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
         "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
+    "gastrointestinal",
+    "hematological",
+    "immunological",
     "constitutional",
-    "dermatological",
-    "musculoskeletal",
-    "cardiovascular",
-    "endocrine",
+    "renal",
+    "respiratory",
     "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
     "otolaryngological",
-    "gastrointestinal"
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -263,7 +383,7 @@
     "Cardiologist",
     "Dermatologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Gordon LB, et al. Hutchinson-Gilford Progeria Syndrome: Clinical and Molecular Features. Nat Rev Dis Primers. 2018.",
     "Merideth MA, et al. Phenotype and course of Hutchinson-Gilford progeria syndrome. N Engl J Med. 2008.",

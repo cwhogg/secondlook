@@ -11,14 +11,15 @@
   "omimId": "210900",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "1 in 48,000 to 1 in 100,000",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 10,
-      "peak": 1
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": [
@@ -65,175 +66,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Increased sister chromatid exchanges",
-        "frequency": 0.95,
-        "bodySystem": "hematological",
-        "notes": "Detected by cytogenetic analysis",
-        "searchTerms": [
-          "increased chromosome exchanges",
-          "higher sister chromatid swapping",
-          "chromosomal instability markers"
-        ]
-      },
-      {
-        "symptomName": "Photosensitive erythematous facial rash with telangiectasia",
-        "frequency": 0.85,
-        "bodySystem": "dermatological",
-        "notes": "Typically involves malar area and nose",
-        "searchTerms": [
-          "red facial rash sensitive to sunlight",
-          "face rash with visible small blood vessels",
-          "sun-triggered facial redness with tiny veins"
-        ]
-      },
-      {
-        "symptomName": "Severe pre- and postnatal growth deficiency",
+        "symptomName": "Hepatic cysts",
         "frequency": 0.9,
-        "bodySystem": "constitutional",
-        "notes": "Short stature below 3rd percentile",
-        "searchTerms": [
-          "severe growth failure before and after birth",
-          "very poor prenatal and postnatal growth",
-          "extreme small size from fetal period onwards"
-        ]
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Immunodeficiency with recurrent infections",
-        "frequency": 0.75,
-        "bodySystem": "immunological",
-        "notes": "Predisposes to respiratory and gastrointestinal infections",
-        "searchTerms": [
-          "weak immune system with frequent infections",
-          "repeated infections due to immune deficiency"
-        ]
+        "symptomName": "Jaundice",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Hypogonadism",
-        "frequency": 0.6,
-        "bodySystem": "endocrine",
-        "notes": "More common in males"
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Sun-induced photosensitivity with blistering",
-        "frequency": 0.65,
-        "bodySystem": "dermatological",
-        "notes": "Exacerbated by UV exposure",
-        "searchTerms": [
-          "sunlight causes skin blistering",
-          "photosensitive skin with blisters",
-          "skin eruptions triggered by sun exposure"
-        ]
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Early onset malignancies",
-        "frequency": 0.7,
-        "bodySystem": "hematological",
-        "notes": "Leukemia, lymphoma, and carcinomas",
-        "searchTerms": [
-          "early development of cancers",
-          "cancers occurring at young age",
-          "premature tumor formation"
-        ]
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Facial telangiectasia",
-        "frequency": 0.7,
-        "bodySystem": "dermatological",
-        "notes": "Dilated superficial blood vessels"
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Microcephaly",
-        "frequency": 0.3,
-        "bodySystem": "neurological",
-        "notes": "Head circumference below normal"
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Chronic lung disease",
-        "frequency": 0.25,
-        "bodySystem": "respiratory",
-        "notes": "Due to recurrent infections",
-        "searchTerms": [
-          "long-term lung disease",
-          "chronic respiratory condition",
-          "persistent lung illness"
-        ]
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Gastrointestinal disturbances",
-        "frequency": 0.4,
-        "bodySystem": "gastrointestinal",
-        "notes": "Including malabsorption and diarrhea"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Diabetes mellitus",
-        "frequency": 0.15,
-        "bodySystem": "endocrine",
-        "notes": "Secondary to pancreatic insufficiency"
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
       },
       {
-        "symptomName": "Ocular abnormalities such as cataracts",
-        "frequency": 0.2,
-        "bodySystem": "ophthalmological",
-        "notes": "May develop in adolescence",
-        "searchTerms": [
-          "eye problems like cataracts",
-          "cloudy lens in eyes",
-          "ocular abnormalities"
-        ]
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Neurological deficits including developmental delay",
-        "frequency": 0.05,
-        "bodySystem": "neurological",
-        "notes": "Not typical but reported",
-        "searchTerms": [
-          "brain function problems including delayed milestones",
-          "neurological delays",
-          "developmental and nervous system impairments"
-        ]
-      },
-      {
-        "symptomName": "Congenital heart defects",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "cardiovascular",
-        "notes": "Rarely observed",
-        "searchTerms": [
-          "heart defects present at birth",
-          "congenital heart problems",
-          "heart abnormalities from birth"
-        ]
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Renal abnormalities",
-        "frequency": 0.02,
-        "bodySystem": "renal",
-        "notes": "Including structural anomalies",
-        "searchTerms": [
-          "kidney abnormalities",
-          "renal problems",
-          "kidney malformations"
-        ]
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "hematological",
-    "dermatological",
-    "constitutional",
-    "immunological",
-    "endocrine",
-    "neurological",
-    "respiratory",
     "gastrointestinal",
-    "ophthalmological",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
+    "respiratory",
+    "neurological",
+    "endocrine",
+    "dermatological",
     "cardiovascular",
-    "renal"
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -283,7 +385,7 @@
     "Oncologist",
     "Immunologist"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "German J. Bloom syndrome: a mendelian prototype of somatic mutational disease. Medicine (Baltimore). 1993 Jul;72(4):393-406.",
     "German J. Bloom syndrome. XX. The first 100 cancers. Cancer Genet Cytogenet. 1997 Jan;93(1):100-6.",

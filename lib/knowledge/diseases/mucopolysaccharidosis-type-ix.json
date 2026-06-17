@@ -11,14 +11,15 @@
   "omimId": "601492",
   "orphanetId": "284",
   "prevalence": {
-    "estimate": "fewer than 10 reported cases worldwide",
-    "classification": "ultra-rare"
+    "estimate": "1-9 in 1,000,000",
+    "range": "1-9 / 1 000 000",
+    "classification": "rare"
   },
   "demographics": {
     "typicalOnsetAge": {
-      "min": 0,
-      "max": 10,
-      "peak": 2
+      "min": 18,
+      "max": 120,
+      "peak": 42
     },
     "sexPredilection": "equal",
     "ethnicAssociations": []
@@ -51,142 +52,276 @@
   "symptoms": {
     "pathognomonic": [
       {
-        "symptomName": "Hyaluronidase enzyme deficiency",
-        "frequency": 1,
-        "bodySystem": "musculoskeletal",
-        "notes": "Definitive biochemical hallmark",
-        "searchTerms": [
-          "lack of hyaluronidase enzyme",
-          "enzyme deficiency affecting connective tissue",
-          "reduced hyaluronidase activity"
-        ]
+        "symptomName": "Hepatic cysts",
+        "frequency": 0.9,
+        "bodySystem": "gastrointestinal"
       },
       {
-        "symptomName": "Soft tissue masses around joints",
-        "frequency": 0.85,
-        "bodySystem": "musculoskeletal",
-        "notes": "Typically non-inflammatory and painless",
-        "searchTerms": [
-          "soft lumps around joints",
-          "joint area swelling with soft masses",
-          "painless tissue growths near joints"
-        ]
+        "symptomName": "Eosinophilia",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
       },
       {
-        "symptomName": "Progressive joint swelling and stiffness",
-        "frequency": 0.75,
-        "bodySystem": "musculoskeletal",
-        "notes": "Affects multiple large joints",
-        "searchTerms": [
-          "joints getting swollen and stiff over time",
-          "gradual joint swelling and tightness",
-          "progressive joint pain and stiffness"
-        ]
+        "symptomName": "Elevated erythrocyte sedimentation rate",
+        "frequency": 0.9,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Increased circulating antibody level",
+        "frequency": 0.9,
+        "bodySystem": "immunological"
       }
     ],
     "common": [
       {
-        "symptomName": "Joint contractures",
-        "frequency": 0.7,
-        "bodySystem": "musculoskeletal",
-        "notes": "Leads to limited range of motion"
-      },
-      {
-        "symptomName": "Mild facial dysmorphism",
-        "frequency": 0.65,
-        "bodySystem": "constitutional",
-        "notes": "Includes coarse facial features",
-        "searchTerms": [
-          "mild unusual facial features",
-          "slightly different face shape",
-          "minor facial differences"
-        ]
-      },
-      {
-        "symptomName": "Delayed motor milestones",
-        "frequency": 0.6,
-        "bodySystem": "neurological",
-        "notes": "Due to joint limitations",
-        "searchTerms": [
-          "late crawling or walking",
-          "delayed movement skills",
-          "slow motor development"
-        ]
-      },
-      {
-        "symptomName": "Normal intelligence",
+        "symptomName": "Jaundice",
         "frequency": 0.55,
-        "bodySystem": "neurological",
-        "notes": "Cognitive function typically preserved"
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Decreased liver function",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Anemia",
+        "frequency": 0.55,
+        "bodySystem": "hematological"
+      },
+      {
+        "symptomName": "Fever",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abdominal pain",
+        "frequency": 0.55,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Low back pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Pedal edema",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Fatigue",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Asthenia",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Epigastric pain",
+        "frequency": 0.55,
+        "bodySystem": "constitutional"
       }
     ],
     "occasional": [
       {
-        "symptomName": "Recurrent otitis media",
-        "frequency": 0.4,
-        "bodySystem": "otolaryngological",
-        "notes": "Due to mucopolysaccharide accumulation in tissues",
-        "searchTerms": [
-          "frequent middle ear infections",
-          "recurrent ear infections",
-          "repeated otitis media episodes"
-        ]
+        "symptomName": "Renal cyst",
+        "frequency": 0.17,
+        "bodySystem": "renal"
       },
       {
-        "symptomName": "Short stature",
-        "frequency": 0.3,
-        "bodySystem": "endocrine",
-        "notes": "Mild growth delay"
+        "symptomName": "Abnormal sternum morphology",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Mild hepatomegaly",
-        "frequency": 0.2,
-        "bodySystem": "gastrointestinal",
-        "notes": "Due to storage material accumulation"
+        "symptomName": "Weight loss",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       },
       {
-        "symptomName": "Joint pain",
-        "frequency": 0.15,
-        "bodySystem": "musculoskeletal",
-        "notes": "Variable severity"
+        "symptomName": "Dyspnea",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Hemoptysis",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Headache",
+        "frequency": 0.17,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ectopic calcification",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormality of adrenal morphology",
+        "frequency": 0.17,
+        "bodySystem": "endocrine"
+      },
+      {
+        "symptomName": "Cough",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal spleen morphology",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cholangitis",
+        "frequency": 0.17,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Cutaneous abscess",
+        "frequency": 0.17,
+        "bodySystem": "dermatological"
+      },
+      {
+        "symptomName": "Pulmonary cyst",
+        "frequency": 0.17,
+        "bodySystem": "respiratory"
+      },
+      {
+        "symptomName": "Chest pain",
+        "frequency": 0.17,
+        "bodySystem": "constitutional"
       }
     ],
     "rare": [
       {
-        "symptomName": "Corneal clouding",
-        "frequency": 0.08,
-        "bodySystem": "ophthalmological",
-        "notes": "Mild and infrequent"
-      },
-      {
-        "symptomName": "Cardiac valve abnormalities",
-        "frequency": 0.05,
-        "bodySystem": "cardiovascular",
-        "notes": "Rarely reported",
-        "searchTerms": [
-          "heart valve problems",
-          "abnormal heart valves",
-          "valve issues in the heart"
-        ]
-      },
-      {
-        "symptomName": "Respiratory infections",
+        "symptomName": "Abnormality of the diaphragm",
         "frequency": 0.03,
-        "bodySystem": "respiratory",
-        "notes": "Secondary to upper airway involvement"
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Seizure",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Ataxia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Dysarthria",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Hemiparesis",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Portal hypertension",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Abnormal pericardium morphology",
+        "frequency": 0.03,
+        "bodySystem": "cardiovascular"
+      },
+      {
+        "symptomName": "Pancreatic cysts",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vomiting",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Vertigo",
+        "frequency": 0.03,
+        "bodySystem": "otolaryngological"
+      },
+      {
+        "symptomName": "Aphasia",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Increased intracranial pressure",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Biliary cirrhosis",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
+      },
+      {
+        "symptomName": "Budd-Chiari syndrome",
+        "frequency": 0.03,
+        "bodySystem": "neurological"
+      },
+      {
+        "symptomName": "Abnormal vertebral morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Intracranial cystic lesion",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Abnormal skeletal muscle morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Bone cyst",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of bladder morphology",
+        "frequency": 0.03,
+        "bodySystem": "renal"
+      },
+      {
+        "symptomName": "Abnormal pelvis bone morphology",
+        "frequency": 0.03,
+        "bodySystem": "musculoskeletal"
+      },
+      {
+        "symptomName": "Abnormality of mesentery morphology",
+        "frequency": 0.03,
+        "bodySystem": "constitutional"
+      },
+      {
+        "symptomName": "Liver abscess",
+        "frequency": 0.03,
+        "bodySystem": "gastrointestinal"
       }
     ]
   },
   "systemsAffected": [
-    "musculoskeletal",
-    "neurological",
-    "constitutional",
-    "otolaryngological",
     "gastrointestinal",
-    "ophthalmological",
-    "cardiovascular",
+    "hematological",
+    "immunological",
+    "constitutional",
+    "renal",
     "respiratory",
-    "endocrine"
+    "neurological",
+    "endocrine",
+    "dermatological",
+    "cardiovascular",
+    "otolaryngological",
+    "musculoskeletal"
   ],
   "keyFindings": {
     "laboratory": [
@@ -233,7 +368,7 @@
     "Orthopedic surgeon",
     "Pediatrician"
   ],
-  "lastUpdated": "2026-02-17",
+  "lastUpdated": "2026-06-17",
   "references": [
     "Tomatsu S, Montaño AM, Oikawa H, et al. Mucopolysaccharidosis type IX: clinical features and molecular basis. Mol Genet Metab. 2010;100(3):221-228.",
     "Neufeld EF, Muenzer J. The mucopolysaccharidoses. In: The Metabolic and Molecular Bases of Inherited Disease. 8th ed. 2001.",

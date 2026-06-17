@@ -468,7 +468,7 @@ export function selectV17Specialists(triageRanking: SpecialistType[]): Specialis
   const seen = new Set<SpecialistType>(anchors);
 
   for (const s of triageRanking) {
-    if (selected.length >= 5) break;
+    if (selected.length >= 7) break;
     if (seen.has(s)) continue;
     selected.push(s);
     seen.add(s);

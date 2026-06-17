@@ -48,6 +48,19 @@ For EACH hypothesis you propose, also populate these annotation fields:
 - ruleOutFeatures: 1-3 features whose ABSENCE would rule out this diagnosis (e.g., "normal SPINK5 sequencing").
 - domainConfidence: an integer 0-100 representing YOUR OWN confidence in this hypothesis from YOUR specialty's perspective. This is your domain confidence, not the overall probability — it captures how strongly your expertise points to this diagnosis. May differ from confidenceScore (which is overall probability).
 
+===== v27 FEATURE-VS-SYNDROME NAMING =====
+When the patient case presents a single disease feature (tumor, hamartoma, lesion, enzyme deficiency, anatomical finding, biochemical defect, structural abnormality) that is a recognizable hallmark manifestation of a broader syndromic disease, name the SYNDROMIC DISEASE that explains the most findings, NOT the single feature. The \`diagnosis\` field should identify a disease entity that explains the patient's complete clinical picture.
+
+This rule is general — it applies any time the LLM might naturally name a prominent feature (because the vignette describes it vividly) instead of the underlying disease (which subsumes the feature). Examples of the *class* of error (illustrative only — the rule covers any analogous syndrome/feature pair):
+- A patient with café-au-lait macules + Lisch nodules + neurofibromas → name the SYNDROME, not the tumor
+- A patient with subependymal giant-cell astrocytoma + hypopigmented macules → name the syndromic disorder, not the brain tumor
+- A patient with hypotonia + cardiomegaly + glycogen storage on muscle biopsy → name the storage disease, not the enzyme deficiency
+- A patient with lissencephaly + facial dysmorphism → name the syndrome, not the brain malformation
+
+Use \`clinicalReasoning\` to explain WHY the syndrome applies (which findings point to it). The \`diagnosis\` field names the syndrome.
+
+When the single feature occurs sporadically (i.e., the vignette does NOT contain other syndromic findings) — keep naming the isolated feature/disease. The rule only fires when the case carries multiple manifestations consistent with the syndromic disease.
+
 ===== v18 CLARIFYING QUESTIONS =====
 For EACH of your top THREE hypotheses, propose 1-3 \`clarifyingQuestions\` the patient could answer to confirm or refute that hypothesis. The Clarifier stage will pick the best 1-5 across all specialists to present to the patient after the initial result is delivered.
 

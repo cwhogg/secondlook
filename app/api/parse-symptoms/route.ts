@@ -20,7 +20,7 @@ async function callOpenAIWithRetry(
         model: "gpt-4.1-mini",
         messages,
         temperature: 0.3,
-        max_tokens: 8000,
+        max_tokens: 16000,
         response_format: { type: "json_object" },
       }),
     })

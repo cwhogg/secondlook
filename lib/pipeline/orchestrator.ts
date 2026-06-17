@@ -254,8 +254,44 @@ export class DiagnosticPipeline {
 
       this.checkBudget();
 
+      // ===== STAGE 2.5: DIAGNOSIS CANONICALIZATION (v27 — deterministic) =====
+      // Rewrite specialist-emitted diagnosis names to their canonical Mondo
+      // labels where the lookup is unambiguous. Catches LLM-emitted synonyms
+      // (PKAN → Pantothenate Kinase-Associated Neurodegeneration, etc.) before
+      // dedup so synonymous hypotheses collapse correctly. Same Mondo synonym
+      // index the v4 grader uses (lib/grading/mondo-labels.json).
+      const rawPoolPreCanon: SpecialistV17Hypothesis[] = specialistResults.flatMap((sr) => sr.hypotheses);
+      const canonStart = Date.now();
+      let rawPool: SpecialistV17Hypothesis[];
+      let canonRewriteCount = 0;
+      try {
+        const { canonicalizeHypotheses } = await import('../agents/diagnosis-canonicalizer');
+        const canonResult = canonicalizeHypotheses(rawPoolPreCanon);
+        rawPool = canonResult.hypotheses as SpecialistV17Hypothesis[];
+        canonRewriteCount = canonResult.rewriteCount;
+        log("orch.stage.canonicalize.done", {
+          durationMs: Date.now() - canonStart,
+          input: rawPoolPreCanon.length,
+          rewrites: canonRewriteCount,
+          sampleRewrites: canonResult.rewrites.slice(0, 5).map((r) => `${r.from} → ${r.to}`),
+        });
+        stages.push({
+          stageName: 'diagnosis-canonicalize',
+          durationMs: Date.now() - canonStart,
+          tokensUsed: 0,
+          model: 'n/a (Mondo synonym index)',
+          agentName: 'diagnosis-canonicalizer',
+          inputSummary: `${rawPoolPreCanon.length} specialist hypotheses`,
+          outputSummary: `${canonRewriteCount} rewritten to canonical Mondo labels`,
+        });
+      } catch (err: any) {
+        log("orch.stage.canonicalize.fail", { msg: (err?.message || '').slice(0, 200) });
+        // Non-fatal — fall back to raw pool. Canonicalization is an enhancement,
+        // not a load-bearing step.
+        rawPool = rawPoolPreCanon;
+      }
+
       // ===== STAGE 3: DEDUP + NAME NORMALIZATION (deterministic) =====
-      const rawPool: SpecialistV17Hypothesis[] = specialistResults.flatMap((sr) => sr.hypotheses);
       log("orch.stage.dedup.start", { input: rawPool.length });
       const dedupStart = Date.now();
       const { merged: dedupedHypotheses, stats: dedupStats } = dedupAndNormalizeHypotheses(rawPool);

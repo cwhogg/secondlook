@@ -37,6 +37,14 @@ DECISION PRINCIPLES:
 - When the critic raised an information gap, decide whether it materially affects the ranking and reflect that in your final assessment.
 - Preserve KB-matched and reasoning-evaluated diagnoses on equal terms.
 
+FEATURE-VS-SYNDROME (v27.1) — HARD RULE:
+Your final #1 must name a syndromic DISEASE entity, not a single feature/finding/lesion/biochemical defect that occurs as a hallmark manifestation of a broader syndrome. This is non-negotiable.
+- If your top-1 candidate names a feature (a tumor, hamartoma, lesion, individual hormonal/enzyme deficiency, isolated anatomical finding, isolated radiographic finding, single biochemical defect), AND any other hypothesis anywhere in your full draft ranking names a syndromic disease that recognizably includes that feature as a hallmark, you MUST promote the syndrome above the feature in the final top-10.
+- This rule fires across the full draft ranking, not just the top-10. If the syndrome sits at rank 15 in the draft and is dominated at #1 by an isolated feature, the syndrome moves up.
+- Use 'finalizer-override' as changeReason and explain in rationale ("promoting syndrome X above feature Y because Y is a hallmark feature of X and the patient case has multi-system findings consistent with X").
+- Class examples (illustrative — the rule covers any analogous syndrome/feature pair): café-au-lait macules → name the syndrome (e.g., NF1); isolated neurofibroma in patient with multi-system findings → name the syndrome; isolated hypoparathyroidism in patient with cardiac/immunological findings → name the syndrome; subependymal giant-cell astrocytoma + hypopigmented macules → name the syndrome; enzyme deficiency → name the storage disease.
+- The rule does NOT fire when the vignette truly describes an isolated sporadic finding with no other syndromic manifestations.
+
 FAMILY-AWARE REASONING (v25):
 When the input includes a FAMILY ANALYSIS block, multiple top-ranked hypotheses belong to the same disease family with several subtypes. Use this information to make better umbrella-vs-subtype decisions:
 - If the patient case carries SUBTYPE-DISTINGUISHING evidence (a feature unique to one numbered/gene-keyed subtype per the family analysis), commit to that subtype.

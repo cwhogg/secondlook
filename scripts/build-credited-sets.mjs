@@ -126,98 +126,10 @@ function ancestorsOf(startMondos, parents) {
   return out;
 }
 
-/**
- * Build a MONDO id → label primary index by inverting mondo-labels.json.
- * Keeps the shortest label per id (best heuristic for the primary rdfs:label
- * vs a synonym entry; the builder emits labels before synonyms).
- */
-function buildIdToLabel(labelsPath) {
-  if (!existsSync(labelsPath)) return new Map();
-  const raw = JSON.parse(readFileSync(labelsPath, 'utf-8'));
-  const entries = raw.entries || {};
-  const idToLabel = new Map();
-  for (const [label, id] of Object.entries(entries)) {
-    const existing = idToLabel.get(id);
-    if (!existing || label.length < existing.length) idToLabel.set(id, label);
-  }
-  return idToLabel;
-}
-
-/**
- * Build a children adjacency from the parents map.
- *   parents[child] = [parent_a, parent_b, ...]   →   children[parent] = [child_a, child_b, ...]
- */
-function buildChildrenIndex(parents) {
-  const children = {};
-  for (const [child, ps] of Object.entries(parents)) {
-    for (const p of ps) {
-      if (!children[p]) children[p] = [];
-      children[p].push(child);
-    }
-  }
-  return children;
-}
-
-/**
- * For each MONDO node M in the FULL credit set, find IS_A descendants whose
- * label looks like a CLINICAL VARIANT of M (e.g., "mosaic neurofibromatosis 1"
- * descendant of "neurofibromatosis 1"). Class-wide rule — variants are
- * clinically the same disease as the parent (somatic vs germline mutation,
- * etc.) and should receive FULL credit, not partial.
- *
- * Pattern: descendant label starts with a variant-marker token from the list
- * below AND the remainder is a substring of the parent label. Conservative —
- * other forms of "type N" subtypes are NOT credited this way (they're often
- * genuinely distinct diseases).
- */
-const VARIANT_MARKERS = ['mosaic', 'somatic', 'autosomal recessive', 'autosomal dominant', 'x linked'];
-
-function variantDescendantsOf(equivalents, children, idToLabel) {
-  const variants = new Set();
-  for (const equiv of equivalents) {
-    const parentLabel = idToLabel.get(equiv);
-    if (!parentLabel) continue;
-    const queue = [...(children[equiv] || [])];
-    const seen = new Set();
-    while (queue.length > 0) {
-      const node = queue.shift();
-      if (seen.has(node)) continue;
-      seen.add(node);
-      const childLabel = idToLabel.get(node);
-      if (!childLabel) {
-        // No label — can't classify; still walk its children (rare).
-        for (const c of children[node] || []) queue.push(c);
-        continue;
-      }
-      const lower = childLabel.toLowerCase();
-      const pLower = parentLabel.toLowerCase();
-      // Variant marker check: descendant label starts with a known marker AND
-      // contains the parent label as a substring.
-      let isVariant = false;
-      for (const marker of VARIANT_MARKERS) {
-        if (lower.startsWith(marker + ' ') && lower.includes(pLower)) {
-          isVariant = true;
-          break;
-        }
-      }
-      if (isVariant) {
-        variants.add(node);
-        // Also descend into the variant's children — sub-variants of a variant
-        // are still variants of the parent.
-        for (const c of children[node] || []) queue.push(c);
-      }
-      // Non-variant descendants are NOT walked further. Their own descendants
-      // could be variants of the variant (rare), but we stay conservative.
-    }
-  }
-  return variants;
-}
-
-function buildCreditedSets(goldOmims, parents, mondosByOmim, children, idToLabel) {
+function buildCreditedSets(goldOmims, parents, mondosByOmim) {
   const credited = {};
   const unmappable = [];
   let totalPartial = 0;
-  let totalVariantBoost = 0;
 
   for (const omim of goldOmims) {
     const equivalents = mondosByOmim[omim] || [];
@@ -226,13 +138,7 @@ function buildCreditedSets(goldOmims, parents, mondosByOmim, children, idToLabel
       credited[omim] = { full: [omim], partial: [] };
       continue;
     }
-    // Variant descendants (mosaic / somatic / etc.) are added to FULL.
-    const variantDesc = variantDescendantsOf(equivalents, children, idToLabel);
-    totalVariantBoost += variantDesc.size;
-    const full = new Set([omim, ...equivalents, ...variantDesc]);
-    // PARTIAL = ancestors of equivalents (existing behavior). We don't include
-    // ancestors of variants — variants share ancestry with their parent so it's
-    // already covered.
+    const full = new Set([omim, ...equivalents]);
     const partial = ancestorsOf(equivalents, parents);
     credited[omim] = {
       full: Array.from(full).sort(),
@@ -242,11 +148,9 @@ function buildCreditedSets(goldOmims, parents, mondosByOmim, children, idToLabel
   }
 
   const avgPartial = (totalPartial / goldOmims.length).toFixed(1);
-  const avgVariant = (totalVariantBoost / goldOmims.length).toFixed(2);
   console.log(`  ✓ computed credited sets for ${goldOmims.length} golds`);
   console.log(`    Unmappable (no Mondo equivalent): ${unmappable.length}`);
-  console.log(`    Avg ancestors per gold (partial): ${avgPartial}`);
-  console.log(`    Avg variant descendants added (full): ${avgVariant}`);
+  console.log(`    Avg ancestors per gold:           ${avgPartial}`);
   if (unmappable.length > 0 && unmappable.length <= 10) {
     console.log(`    Unmappable: ${unmappable.join(', ')}`);
   } else if (unmappable.length > 10) {
@@ -282,12 +186,7 @@ function main() {
   console.log('===============================================');
   const goldOmims = loadGoldOmims();
   const { parents, mondosByOmim, mondoRelease } = loadGraph();
-  const children = buildChildrenIndex(parents);
-  const labelsPath = resolve(ROOT, 'lib/grading/mondo-labels.json');
-  const idToLabel = buildIdToLabel(labelsPath);
-  console.log(`  ✓ children index: ${Object.keys(children).length} parents with kids`);
-  console.log(`  ✓ id→label index: ${idToLabel.size} MONDO nodes labelled`);
-  const { credited, unmappable } = buildCreditedSets(goldOmims, parents, mondosByOmim, children, idToLabel);
+  const { credited, unmappable } = buildCreditedSets(goldOmims, parents, mondosByOmim);
   writeOutput({ credited, unmappable, goldOmims, mondoRelease });
   console.log('');
   console.log('Done. The v4 grader can now load lib/grading/mondo-credited-sets.json.');

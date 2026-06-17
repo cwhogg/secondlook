@@ -54,6 +54,7 @@ function parseArgs() {
     else if (args[i] === '--fetch-timeout' && args[i + 1]) opts.fetchTimeoutMs = parseInt(args[++i], 10) * 1000;
     else if (args[i] === '--std-50' || args[i] === '--std50') opts.std50 = true;
     else if (args[i] === '--std-25' || args[i] === '--std25') opts.std25 = true;
+    else if (args[i] === '--case-list' && args[i + 1]) opts.caseListFile = args[++i];
     else if (args[i] === '--run-trio' || args[i] === '--trio') opts.runTrio = true;
   }
   return opts;
@@ -1052,6 +1053,30 @@ async function main() {
     console.log(`  ${setName} set: ${dataset.length}/${targetIds.length} cases resolved`);
     opts.count = dataset.length;
     opts.shuffle = false; // don't shuffle — order is intentional
+  }
+
+  // --case-list <file> — filter the dataset to a specific list of ppkt_ids
+  // (one per line, blank lines and # comments ignored). Order preserved from
+  // the file. Used by the loss-loop to run a fixed set of cases each iteration.
+  if (opts.caseListFile) {
+    const raw = readFileSync(opts.caseListFile, 'utf8');
+    const targetIds = raw.split('\n').map((l) => l.trim()).filter((l) => l && !l.startsWith('#'));
+    const byId = new Map(dataset.map((r) => [r.ppkt_id, r]));
+    const ordered = [];
+    const missing = [];
+    for (const id of targetIds) {
+      const row = byId.get(id);
+      if (row) ordered.push(row);
+      else missing.push(id);
+    }
+    dataset = ordered;
+    if (missing.length) {
+      console.error(`  --case-list: ${missing.length} requested IDs not found in dataset:`);
+      for (const id of missing) console.error(`    - ${id}`);
+    }
+    console.log(`  --case-list ${opts.caseListFile}: ${dataset.length}/${targetIds.length} cases resolved`);
+    opts.count = dataset.length;
+    opts.shuffle = false;
   }
 
   // Shuffle if requested (skipped if a std-N set was selected)

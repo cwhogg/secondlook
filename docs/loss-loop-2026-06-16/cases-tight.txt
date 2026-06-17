@@ -1,0 +1,41 @@
+# Loss-loop TIGHT case list — 7 loss + 2 holdout = 9 cases
+#
+# Used for rapid per-loop iteration. Smaller than cases-full.txt (10+5)
+# so each loop runs in ~15-25 min instead of ~50.
+#
+# For single-class loops, subset further by commenting out unrelated classes.
+#
+# Selection rationale: 2 representative cases per failure class; holdout
+# mixes one sensitive (flipped between runs) + one robust diverse win.
+#
+# Deep validation (broader regression check) is NOT this file — use
+# --count 25 --shuffle or --count 50 --shuffle against the full en.jsonl
+# every few successful merges.
+
+# === LOSS SET (7) ===
+
+# Class A — NF1 feature-vs-syndrome
+# L1: 1 parsed symptom, feature-named #1 ("Café-au-lait") — tests thin-input
+# L2: 6 parsed symptoms, feature-named #1 ("Neurofibroma") — tests rich-input
+PMID_26178382_UAB_R9216_I2
+PMID_29290338_Family_ROT_R02233_individual_PrS
+
+# Class B — DEE4 / STXBP1 phenotype overlap
+# L4: gold at rank 3 in v27 — closest to Top-1
+# L7: gold at rank 2 in v27 — closest to Top-1
+PMID_35190816_STX_29896790_P5
+PMID_35190816_STX_26865513_Patient_30
+
+# Class C — ADTKD umbrella naming
+# L8 (AD6) + L9 (AD1) — both subtype variants
+PMID_38096951_Family_1_III_12
+PMID_17245395_Family_A214_II_1
+
+# Class A' — DiGeorge anchor (non-tumor feature)
+PMID_32110744_III_C
+
+# === HOLDOUT (2) ===
+# H1 — Fibromatosis 6, sensitive (SL #1 flipped between v27/v27.1)
+# H3 — Aarskog-Scott, robust diverse class
+PMID_35142290_III_2
+PMID_20082460_case_11

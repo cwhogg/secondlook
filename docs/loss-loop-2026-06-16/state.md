@@ -114,7 +114,17 @@ Pulled L2 pipeline trace. The Claude finalizer DID receive Neurofibromatosis Typ
 
 ---
 
-## Process refinement (2026-06-17, post-Loop 2)
+## Process refinement #2 (2026-06-17, post-Loop 2) — tiered validation
+
+**Adopted tiered cohort sizing:**
+- **Tight per-loop:** 2 cases per targeted failure class + 2 holdout. See `cases-tight.txt` for the curated 9-case set (7 loss + 2 holdout). Subset further for single-class loops. Cohort wall ~10-20 min, cost ~$3-5.
+- **Deep validation:** every ~3 merged improvements, run 25 or 50 random cases via `--count N --shuffle`. Catches broader regression that the curated set can't see. Cohort wall ~50-100 min, cost ~$15-30.
+
+**Rationale:** "2 per class" is the floor for class-wide claims. Loop 2 evidence: NF1 cases L1/L2 swapped under R2's reranker but L3 didn't — a single-case validation would have missed this.
+
+The full 10+5 set (`cases-full.txt`) is preserved for periodic spot-checks but isn't the per-loop default anymore.
+
+## Process refinement #1 (2026-06-17, post-Loop 2) — revert rubric
 
 **Adopted revert rubric** (see `[[feedback-loss-loop-revert-rubric]]`):
 

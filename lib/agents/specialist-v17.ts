@@ -362,7 +362,7 @@ OUTPUT RULES:
     let kbSection = '';
 
     if (!isGeneralInternist && candidateDiseases.length > 0) {
-      const diseaseProfiles = candidateDiseases.slice(0, 20).map((dm) => {
+      const diseaseProfiles = candidateDiseases.slice(0, 30).map((dm) => {
         const d = dm.disease;
         const criteriaStr = d.diagnosticCriteria.criteria
           .map((c) => `  - [${c.category}${c.requiredForDiagnosis ? ', REQUIRED' : ''}] ${c.description}`)

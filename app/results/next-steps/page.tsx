@@ -13,6 +13,7 @@ import {
   Stethoscope,
   AlertTriangle,
   Zap,
+  Activity,
   Globe,
   MapPin,
   Info,
@@ -51,6 +52,7 @@ const CATEGORY_ICON: Record<TestCategory, typeof TestTubes> = {
   laboratory: TestTubes,
   genetic_testing: Dna,
   imaging: ScanLine,
+  electrodiagnostic: Activity,
   specialist_evaluate: Stethoscope,
   other: Info,
 }
@@ -121,11 +123,12 @@ export default function NextStepsPage() {
     laboratory: [],
     genetic_testing: [],
     imaging: [],
+    electrodiagnostic: [],
     specialist_evaluate: [],
     other: [],
   }
   for (const test of tests) {
-    grouped[normalizeCategory(test.testType)].push(test)
+    grouped[normalizeCategory(test.testType, test.testName)].push(test)
   }
 
   const hasAnyTests = tests.length > 0
@@ -173,7 +176,7 @@ export default function NextStepsPage() {
             <div className="space-y-5">
               {CATEGORY_ORDER.flatMap((category) =>
                 grouped[category].map((test, idx) => {
-                  const where = getWhereToGetIt(category, test.testName)
+                  const where = getWhereToGetIt(normalizeCategory(test.testType, test.testName), test.testName)
                   const urgencyBadge = getUrgencyBadge(test.urgency)
                   const Icon = CATEGORY_ICON[category]
                   const categoryLabel = CATEGORY_LABELS[category]
@@ -219,12 +222,17 @@ export default function NextStepsPage() {
                         )}
                       </div>
 
-                      {/* Where to get it */}
+                      {/* How to get it */}
                       <div className="bg-[#faf6f0] border border-[#d4c5b0] p-3 sm:p-4">
                         <div className="text-xs font-semibold text-[#8b2500] uppercase tracking-wide mb-2">
-                          Where to get this test
+                          How to get this test
                         </div>
-                        <p className="text-gray-800 text-sm leading-relaxed mb-3">{where.blurb}</p>
+                        <p className="text-gray-800 text-sm leading-relaxed mb-3">{where.process}</p>
+
+                        <div className="inline-flex items-center gap-1.5 mb-3 px-2 py-1 bg-white border border-[#d4c5b0] text-xs text-gray-700">
+                          <span className="font-medium text-[#6d1d00]">Order:</span>
+                          <span>{where.doctorOrder}</span>
+                        </div>
 
                         {where.inPersonExamples.length > 0 && (
                           <div className="flex items-start gap-2 mb-2">
@@ -243,12 +251,6 @@ export default function NextStepsPage() {
                               <span className="font-medium text-green-800">Online option:</span>{" "}
                               {where.online.note}
                             </div>
-                          </div>
-                        )}
-
-                        {where.costRange && (
-                          <div className="text-xs text-gray-500 mt-2">
-                            Typical cost: {where.costRange}
                           </div>
                         )}
                       </div>

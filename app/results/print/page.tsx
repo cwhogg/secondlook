@@ -161,10 +161,11 @@ export default function PrintReportPage() {
     laboratory: [],
     genetic_testing: [],
     imaging: [],
+    electrodiagnostic: [],
     specialist_evaluate: [],
     other: [],
   }
-  for (const t of tests) grouped[normalizeCategory(t.testType)].push(t)
+  for (const t of tests) grouped[normalizeCategory(t.testType, t.testName)].push(t)
 
   const next = analysis.nextSteps || {}
   const redFlags = next.redFlags || []
@@ -372,7 +373,7 @@ export default function PrintReportPage() {
             <div className="space-y-3">
               {CATEGORY_ORDER.flatMap((cat) =>
                 grouped[cat].map((test, idx) => {
-                  const where = getWhereToGetIt(cat, test.testName)
+                  const where = getWhereToGetIt(normalizeCategory(test.testType, test.testName), test.testName)
                   return (
                     <article
                       key={`${cat}-${idx}`}
@@ -411,9 +412,13 @@ export default function PrintReportPage() {
                       )}
                       <div className="bg-[#faf6f0] border border-[#d4c5b0] p-2 text-xs">
                         <div className="font-semibold text-[#8b2500] uppercase text-[10px] tracking-wide mb-1">
-                          Where to get it
+                          How to get it
                         </div>
-                        <div className="text-gray-800 leading-relaxed">{where.blurb}</div>
+                        <div className="text-gray-800 leading-relaxed">{where.process}</div>
+                        <div className="mt-1">
+                          <span className="font-semibold">Order: </span>
+                          {where.doctorOrder}
+                        </div>
                         {where.inPersonExamples.length > 0 && (
                           <div className="mt-1">
                             <span className="font-semibold">In person: </span>
@@ -424,11 +429,6 @@ export default function PrintReportPage() {
                           <div className="mt-1">
                             <span className="font-semibold">Online option: </span>
                             {where.online.note}
-                          </div>
-                        )}
-                        {where.costRange && (
-                          <div className="mt-1 text-gray-600">
-                            Typical cost: {where.costRange}
                           </div>
                         )}
                       </div>

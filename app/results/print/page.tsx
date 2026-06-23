@@ -189,7 +189,7 @@ export default function PrintReportPage() {
         @media print {
           @page {
             size: letter;
-            margin: 0.6in;
+            margin: 0.55in;
           }
           .no-print {
             display: none !important;
@@ -198,11 +198,33 @@ export default function PrintReportPage() {
             background: white !important;
             color: #1a1a1a !important;
           }
-          .page-break {
-            page-break-before: always;
-          }
+          /* Avoid-break is now reserved for truly atomic units (single test
+             cards, individual differential rows, the footer). Large parent
+             containers should NOT have it — when they do, the browser bumps
+             the whole section to a new page on the slightest overflow,
+             which is exactly what caused the 50%-empty pages in the prior
+             10-page version. */
           .avoid-break {
+            break-inside: avoid;
             page-break-inside: avoid;
+          }
+          /* Keep section titles with their first child paragraph/article. */
+          .print-root h2,
+          .print-root h3 {
+            break-after: avoid;
+            page-break-after: avoid;
+          }
+          /* Don't strand a single line at the bottom of a page or the top
+             of the next one. */
+          .print-root p,
+          .print-root li {
+            widows: 3;
+            orphans: 3;
+          }
+          /* Tighten section gaps in print so we don't waste 40% of every
+             page on whitespace. */
+          .print-root section {
+            margin-bottom: 1rem !important;
           }
           body,
           html {
@@ -295,7 +317,7 @@ export default function PrintReportPage() {
         </header>
 
         {/* Clinical presentation — patient-side context */}
-        <section className="avoid-break mb-7">
+        <section className="mb-6">
           <h2 className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b2500] mb-3 pb-1.5 border-b border-[#d4c5b0]">
             Clinical Presentation
           </h2>
@@ -350,7 +372,7 @@ export default function PrintReportPage() {
 
         {/* Clinical summary — the synth&rsquo;s overall assessment */}
         {analysis.overallAssessment && (
-          <section className="avoid-break mb-7">
+          <section className="mb-6">
             <h2 className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b2500] mb-3 pb-1.5 border-b border-[#d4c5b0]">
               Clinical Summary
             </h2>
@@ -365,7 +387,7 @@ export default function PrintReportPage() {
           const evidence = (top.supportingEvidence || []).slice(0, 6)
           const contradictory = (top.contradictoryEvidence || []).slice(0, 3)
           return (
-            <section className="avoid-break mb-7">
+            <section className="mb-6">
               <h2 className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b2500] mb-3 pb-1.5 border-b border-[#d4c5b0]">
                 Most Likely Diagnosis
               </h2>
@@ -465,7 +487,7 @@ export default function PrintReportPage() {
 
         {/* ADDITIONAL DIFFERENTIAL — compact rows for #2..#5 */}
         {diagnoses.length > 1 && (
-          <section className="mb-7">
+          <section className="mb-6">
             <h2 className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b2500] mb-3 pb-1.5 border-b border-[#d4c5b0]">
               Additional Differential
             </h2>
@@ -520,7 +542,7 @@ export default function PrintReportPage() {
 
         {/* Recommended tests with where-to-get */}
         {tests.length > 0 && (
-          <section className="page-break mb-7">
+          <section className="mb-6">
             <h2 className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b2500] mb-3 pb-1.5 border-b border-[#d4c5b0]">
               Recommended Next Steps — Testing
             </h2>
@@ -598,7 +620,7 @@ export default function PrintReportPage() {
 
         {/* Action items + specialists */}
         {(immediateActions.length > 0 || specialistReferrals.length > 0) && (
-          <section className="avoid-break mb-7">
+          <section className="mb-6">
             <h2 className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b2500] mb-3 pb-1.5 border-b border-[#d4c5b0]">
               Action Items &amp; Specialists
             </h2>
@@ -639,7 +661,7 @@ export default function PrintReportPage() {
 
         {/* Information gaps */}
         {dataGaps.length > 0 && (
-          <section className="avoid-break mb-7">
+          <section className="mb-6">
             <h2 className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b2500] mb-3 pb-1.5 border-b border-[#d4c5b0]">
               Information Gaps
             </h2>
@@ -663,7 +685,7 @@ export default function PrintReportPage() {
 
         {/* Warning signs */}
         {redFlags.length > 0 && (
-          <section className="avoid-break mb-7">
+          <section className="avoid-break mb-6">
             <h2 className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 mb-2 pb-1.5 border-b border-red-300">
               Seek Urgent Care If…
             </h2>

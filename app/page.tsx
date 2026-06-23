@@ -434,7 +434,7 @@ export default function HomePage() {
           <div className="flex flex-col items-center">
             <FlowStep step={1} icon={Upload} title="Upload your story and data" />
             <FlowStep step={2} icon={Search} title="SecondLook extracts clinical concepts" />
-            <FlowStep step={3} icon={Database} title="Map to candidates in our 9k+ rare disease knowledge base" />
+            <FlowStep step={3} icon={Database} title="Map symptoms and concepts to candidates in our 9k+ rare disease knowledge base" />
             <FlowStep step={4} icon={UsersRound} title="Spin up 5 selected AI specialist agents in parallel" />
             <FlowStep step={5} icon={ListOrdered} title="Synthesize and rank a top-10 differential" />
             <FlowStep step={6} icon={MessageCircle} title="Refine with 3–5 targeted patient questions" />

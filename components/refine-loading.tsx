@@ -41,7 +41,7 @@ const REFINE_STAGES = [
     description: "Re-ranking diagnoses and assessing how the differential shifted",
     activeFromMs: 22000,
     completeAfterMs: Infinity,
-    durationHint: "Typically 1–3 mins.",
+    durationHint: "Typically 2–3 mins.",
   },
 ] as const
 

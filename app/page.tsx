@@ -507,60 +507,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Comparison Table */}
-          <div className="bg-white border border-[#d4c5b0] overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-[#faf6f0] border-b border-[#d4c5b0]">
-                  <th className="text-left font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] px-4 py-3">
-                    Method
-                  </th>
-                  <th className="text-right font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] px-4 py-3 w-24">
-                    Top-1
-                  </th>
-                  <th className="text-right font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] px-4 py-3 w-24">
-                    Top-3
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="bg-[#8b2500] text-white">
-                  <td className="font-serif font-semibold px-4 py-3">SecondLook</td>
-                  <td className="font-serif font-bold tabular-nums text-right px-4 py-3">36.7%</td>
-                  <td className="font-serif font-bold tabular-nums text-right px-4 py-3">50.0%</td>
-                </tr>
-                <tr className="border-t border-[#e8ddd0]">
-                  <td className="font-serif px-4 py-3 text-[#1a1a1a]">
-                    Claude Opus 4.7 (single-shot)<sup className="text-[#999] text-[10px] ml-0.5">2</sup>
-                  </td>
-                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">33.3%</td>
-                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">43.3%</td>
-                </tr>
-                <tr className="border-t border-[#e8ddd0]">
-                  <td className="font-serif px-4 py-3 text-[#1a1a1a]">
-                    OpenAI o3 (single-shot)<sup className="text-[#999] text-[10px] ml-0.5">2</sup>
-                  </td>
-                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">31.0%</td>
-                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">41.4%</td>
-                </tr>
-                <tr className="border-t border-[#e8ddd0]">
-                  <td className="font-serif px-4 py-3 text-[#1a1a1a]">
-                    o1-preview<sup className="text-[#999] text-[10px] ml-0.5">1</sup>
-                  </td>
-                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">23.6%</td>
-                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">31.2%</td>
-                </tr>
-                <tr className="border-t border-[#e8ddd0]">
-                  <td className="font-serif px-4 py-3 text-[#1a1a1a]">
-                    GPT-4o<sup className="text-[#999] text-[10px] ml-0.5">1</sup>
-                  </td>
-                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">~20%</td>
-                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">~27%</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
           {/* Dataset description */}
           <div className="mt-10 sm:mt-12 bg-white border border-[#d4c5b0] p-5 sm:p-6">
             <h3 className="font-serif text-lg sm:text-xl font-medium text-[#1a1a1a] mb-3 leading-snug">

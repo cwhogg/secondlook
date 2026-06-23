@@ -1,5 +1,26 @@
 import Link from "next/link"
-import { ArrowRight, Shield, CheckCircle, Lock, Sparkles, Zap, Heart, BookOpen } from "lucide-react"
+import {
+  ArrowRight,
+  Shield,
+  CheckCircle,
+  Lock,
+  Sparkles,
+  Zap,
+  Heart,
+  BookOpen,
+  FlaskConical,
+  Upload,
+  Search,
+  Database,
+  UsersRound,
+  ListOrdered,
+  MessageCircle,
+  CheckSquare,
+  TestTubes,
+  FileCheck,
+  ChevronDown,
+  AlertTriangle,
+} from "lucide-react"
 import { getAllContent } from "@/lib/content"
 
 const jsonLd = {
@@ -190,6 +211,44 @@ function TimelineStep({
   )
 }
 
+function FlowStep({
+  step,
+  title,
+  icon: Icon,
+  isLast,
+}: {
+  step: number
+  title: string
+  icon: typeof Upload
+  isLast?: boolean
+}) {
+  return (
+    <div className="flex flex-col items-center">
+      <div className="w-full max-w-[520px] bg-white border border-[#d4c5b0] px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-3 sm:gap-4">
+        {/* Number circle */}
+        <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#8b2500] text-white font-serif font-semibold text-sm sm:text-base flex items-center justify-center">
+          {step}
+        </div>
+        {/* Icon */}
+        <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 bg-[#faf6f0] border border-[#d4c5b0] flex items-center justify-center">
+          <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-[#8b2500]" />
+        </div>
+        {/* Title */}
+        <div className="font-serif text-sm sm:text-base text-[#1a1a1a] leading-snug flex-1">
+          {title}
+        </div>
+      </div>
+      {/* Connector arrow to next step */}
+      {!isLast && (
+        <div className="flex flex-col items-center py-1 sm:py-1.5" aria-hidden="true">
+          <div className="w-px h-3 sm:h-4 bg-[#d4c5b0]" />
+          <ChevronDown className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#c9a96e]" />
+        </div>
+      )}
+    </div>
+  )
+}
+
 function ResourcesSection() {
   const posts = getAllContent().slice(0, 3)
   if (posts.length === 0) return null
@@ -285,19 +344,13 @@ export default function HomePage() {
         <div className="max-w-[1140px] mx-auto px-4 sm:px-8 grid grid-cols-1 md:grid-cols-[1fr_0.65fr] gap-8 sm:gap-12 items-center">
           {/* Text Content */}
           <div className="max-w-[600px]">
-            {/* Trust Badges */}
+            {/* Beta Test Badge */}
             <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-6 sm:mb-8">
-              <div className="flex items-center space-x-1.5 sm:space-x-2 border border-[#d4c5b0] px-2.5 sm:px-4 py-1.5 sm:py-2">
-                <Shield className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#8b2500]" />
-                <span className="font-sans text-[10px] sm:text-xs font-medium text-[#5a5a5a] uppercase tracking-wide">HIPAA Compliant</span>
-              </div>
-              <div className="flex items-center space-x-1.5 sm:space-x-2 border border-[#d4c5b0] px-2.5 sm:px-4 py-1.5 sm:py-2">
-                <CheckCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#8b2500]" />
-                <span className="font-sans text-[10px] sm:text-xs font-medium text-[#5a5a5a] uppercase tracking-wide">MD Reviewed</span>
-              </div>
-              <div className="flex items-center space-x-1.5 sm:space-x-2 border border-[#d4c5b0] px-2.5 sm:px-4 py-1.5 sm:py-2">
-                <Lock className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#c9a96e]" />
-                <span className="font-sans text-[10px] sm:text-xs font-medium text-[#5a5a5a] uppercase tracking-wide">Encrypted</span>
+              <div className="flex items-center space-x-1.5 sm:space-x-2 border-2 border-[#8b2500] bg-[#8b2500] px-3 sm:px-4 py-1.5 sm:py-2">
+                <FlaskConical className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
+                <span className="font-sans text-[10px] sm:text-xs font-semibold text-white uppercase tracking-wider">
+                  Beta Test
+                </span>
               </div>
             </div>
 
@@ -346,12 +399,12 @@ export default function HomePage() {
           <div className="border border-[#d4c5b0] border-t-2 border-t-[#8b2500] bg-white p-8 md:px-10">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-[#8b2500] flex items-center justify-center flex-shrink-0">
-                <Shield className="h-6 w-6 text-white" />
+                <AlertTriangle className="h-6 w-6 text-white" />
               </div>
               <div>
                 <h3 className="font-serif text-lg font-medium text-[#1a1a1a] mb-2">Important Medical Notice</h3>
                 <p className="font-serif-body text-[0.9rem] leading-[1.75] text-[#5a5a5a]">
-                  This analysis is for educational purposes and does not replace professional medical advice. Always consult with qualified healthcare providers for medical decisions.
+                  <strong className="text-[#8b2500]">This analysis is AI-generated</strong> and is for educational purposes only. It does not replace professional medical advice, diagnosis, or treatment. Always consult with qualified healthcare providers for medical decisions, especially before acting on any AI-suggested diagnosis or test.
                 </p>
               </div>
             </div>
@@ -410,7 +463,7 @@ export default function HomePage() {
         <GoldDivider />
       </div>
 
-      {/* How It Works - Timeline */}
+      {/* How It Works - Flow Diagram */}
       <section className="py-12 sm:py-16">
         <div className="max-w-[820px] mx-auto px-4 sm:px-8">
           {/* Section Header */}
@@ -419,32 +472,21 @@ export default function HomePage() {
               How SecondLook Works
             </h2>
             <p className="font-serif-body text-lg sm:text-xl text-[#5a5a5a] max-w-3xl mx-auto leading-relaxed">
-              Our simple 4-step process helps you get expert medical insights quickly and securely.
+              A multi-stage diagnostic pipeline that turns your story into a ranked differential and concrete next steps.
             </p>
           </div>
 
-          {/* Timeline */}
-          <div className="relative pl-10 sm:pl-20 before:content-[''] before:absolute before:left-[13px] sm:before:left-[33px] before:top-1 before:bottom-1 before:w-px before:bg-[#d4c5b0]">
-            <TimelineStep
-              number="I"
-              title="Share Your Health Story"
-              description="Tell us about your symptoms, health history, and concerns using our easy questionnaire designed for patients."
-            />
-            <TimelineStep
-              number="II"
-              title="AI Medical Review"
-              description="Our medical AI analyzes your information against thousands of conditions, focusing on rare and complex diagnoses."
-            />
-            <TimelineStep
-              number="III"
-              title="Get Your Report"
-              description="Receive a detailed analysis with potential conditions to discuss with your healthcare provider."
-            />
-            <TimelineStep
-              number="IV"
-              title="Get Recommendations"
-              description="We recommend trusted partners who can fill in gaps and help get to a specific diagnosis."
-            />
+          {/* Flow diagram */}
+          <div className="flex flex-col items-center">
+            <FlowStep step={1} icon={Upload} title="Upload your story and data" />
+            <FlowStep step={2} icon={Search} title="SecondLook extracts clinical concepts" />
+            <FlowStep step={3} icon={Database} title="Map to likely diagnoses in 9k+ rare disease knowledge base" />
+            <FlowStep step={4} icon={UsersRound} title="Spin up 5 selected AI specialist agents to find most likely diagnoses" />
+            <FlowStep step={5} icon={ListOrdered} title="Synthesize and rank top 10 differential diagnoses" />
+            <FlowStep step={6} icon={MessageCircle} title="Refine with 3–5 targeted patient questions" />
+            <FlowStep step={7} icon={CheckSquare} title="Finalize top 10 differential and probabilities" />
+            <FlowStep step={8} icon={TestTubes} title="Determine top recommended tests to rule diagnoses in or out" />
+            <FlowStep step={9} icon={FileCheck} title="Deliver final report to user" isLast />
           </div>
         </div>
       </section>

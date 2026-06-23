@@ -223,26 +223,31 @@ function FlowStep({
   isLast?: boolean
 }) {
   return (
-    <div className="flex flex-col items-center">
-      <div className="w-full max-w-[520px] bg-white border border-[#d4c5b0] px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-3 sm:gap-4">
-        {/* Number circle */}
-        <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#8b2500] text-white font-serif font-semibold text-sm sm:text-base flex items-center justify-center">
-          {step}
+    <div className="flex flex-col items-center w-full">
+      {/* Card — fixed min-height + two-column structure so every step has
+          the exact same visual footprint regardless of title length. */}
+      <div className="w-full max-w-[560px] bg-white border border-[#d4c5b0] flex items-stretch min-h-[92px] sm:min-h-[96px]">
+        {/* Left fixed-width block: STEP N label + icon, on a cream
+            background separated by a divider. Consistent width across
+            all cards so titles align on the right. */}
+        <div className="flex-shrink-0 w-[88px] sm:w-[104px] bg-[#faf6f0] border-r border-[#d4c5b0] flex flex-col items-center justify-center gap-1.5 py-3">
+          <div className="font-sans text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.12em] text-[#6d4c30]">
+            Step {step}
+          </div>
+          <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-[#8b2500]" strokeWidth={1.6} />
         </div>
-        {/* Icon */}
-        <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 bg-[#faf6f0] border border-[#d4c5b0] flex items-center justify-center">
-          <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-[#8b2500]" />
-        </div>
-        {/* Title */}
-        <div className="font-serif text-sm sm:text-base text-[#1a1a1a] leading-snug flex-1">
-          {title}
+        {/* Right block: title, vertically centered. */}
+        <div className="flex-1 flex items-center px-4 sm:px-5 py-3">
+          <div className="font-serif text-sm sm:text-base text-[#1a1a1a] leading-snug">
+            {title}
+          </div>
         </div>
       </div>
       {/* Connector arrow to next step */}
       {!isLast && (
-        <div className="flex flex-col items-center py-1 sm:py-1.5" aria-hidden="true">
+        <div className="flex flex-col items-center py-1.5 sm:py-2" aria-hidden="true">
           <div className="w-px h-3 sm:h-4 bg-[#d4c5b0]" />
-          <ChevronDown className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#c9a96e]" />
+          <ChevronDown className="h-3.5 w-3.5 text-[#c9a96e]" />
         </div>
       )}
     </div>
@@ -412,6 +417,39 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* How It Works - Flow Diagram */}
+      <section className="py-12 sm:py-16">
+        <div className="max-w-[820px] mx-auto px-4 sm:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-10 sm:mb-14">
+            <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4">
+              How SecondLook Works
+            </h2>
+            <p className="font-serif-body text-lg sm:text-xl text-[#5a5a5a] max-w-3xl mx-auto leading-relaxed">
+              A multi-stage diagnostic pipeline that turns your story into a ranked differential and concrete next steps.
+            </p>
+          </div>
+
+          {/* Flow diagram */}
+          <div className="flex flex-col items-center">
+            <FlowStep step={1} icon={Upload} title="Upload your story and data" />
+            <FlowStep step={2} icon={Search} title="SecondLook extracts clinical concepts" />
+            <FlowStep step={3} icon={Database} title="Map to candidates in our 9k+ rare disease knowledge base" />
+            <FlowStep step={4} icon={UsersRound} title="Spin up 5 selected AI specialist agents in parallel" />
+            <FlowStep step={5} icon={ListOrdered} title="Synthesize and rank a top-10 differential" />
+            <FlowStep step={6} icon={MessageCircle} title="Refine with 3–5 targeted patient questions" />
+            <FlowStep step={7} icon={CheckSquare} title="Finalize the top-10 differential and probabilities" />
+            <FlowStep step={8} icon={TestTubes} title="Recommend tests to rule diagnoses in or out" />
+            <FlowStep step={9} icon={FileCheck} title="Deliver the final report" isLast />
+          </div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="py-8">
+        <GoldDivider />
+      </div>
+
       {/* Benchmark Performance */}
       <section className="py-12 sm:py-16 bg-[#faf6f0] border-y border-[#d4c5b0]">
         <div className="max-w-[1000px] mx-auto px-4 sm:px-8">
@@ -562,39 +600,6 @@ export default function HomePage() {
                 Grading is paper-faithful: each prediction is grounded to a Mondo class, scored 1.0 for an exact OMIM/skos:exactMatch hit and 0.5 for an IS_A ancestor of the gold; Top-N counts a case correct when any of the top N has score &gt; 0 (Robinson et al. methodology).
               </li>
             </ol>
-          </div>
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="py-8">
-        <GoldDivider />
-      </div>
-
-      {/* How It Works - Flow Diagram */}
-      <section className="py-12 sm:py-16">
-        <div className="max-w-[820px] mx-auto px-4 sm:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-10 sm:mb-14">
-            <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4">
-              How SecondLook Works
-            </h2>
-            <p className="font-serif-body text-lg sm:text-xl text-[#5a5a5a] max-w-3xl mx-auto leading-relaxed">
-              A multi-stage diagnostic pipeline that turns your story into a ranked differential and concrete next steps.
-            </p>
-          </div>
-
-          {/* Flow diagram */}
-          <div className="flex flex-col items-center">
-            <FlowStep step={1} icon={Upload} title="Upload your story and data" />
-            <FlowStep step={2} icon={Search} title="SecondLook extracts clinical concepts" />
-            <FlowStep step={3} icon={Database} title="Map to likely diagnoses in 9k+ rare disease knowledge base" />
-            <FlowStep step={4} icon={UsersRound} title="Spin up 5 selected AI specialist agents to find most likely diagnoses" />
-            <FlowStep step={5} icon={ListOrdered} title="Synthesize and rank top 10 differential diagnoses" />
-            <FlowStep step={6} icon={MessageCircle} title="Refine with 3–5 targeted patient questions" />
-            <FlowStep step={7} icon={CheckSquare} title="Finalize top 10 differential and probabilities" />
-            <FlowStep step={8} icon={TestTubes} title="Determine top recommended tests to rule diagnoses in or out" />
-            <FlowStep step={9} icon={FileCheck} title="Deliver final report to user" isLast />
           </div>
         </div>
       </section>

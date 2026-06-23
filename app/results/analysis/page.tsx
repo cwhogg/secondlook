@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { ArrowLeft, ArrowRight, Download, Brain, Activity, AlertTriangle, Sparkles } from "lucide-react"
+import { ArrowLeft, ArrowRight, Brain, Activity, AlertTriangle, Sparkles, ChevronDown, ChevronUp } from "lucide-react"
 import { startNewAnalysis } from "@/lib/results/start-new-analysis"
 
 interface FamilyEnrichmentData {
@@ -61,6 +61,18 @@ export default function AnalysisResultsPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [hasClarifyingQuestions, setHasClarifyingQuestions] = useState(false)
   const [lowConfidence, setLowConfidence] = useState<LowConfidenceWarning | null>(null)
+  // Track which diagnosis cards are expanded. Default: only the top diagnosis
+  // (index 0) is open so the list stays compact but the user sees the most
+  // important condition immediately.
+  const [expandedIndexes, setExpandedIndexes] = useState<Set<number>>(() => new Set([0]))
+  const toggleExpanded = (idx: number) => {
+    setExpandedIndexes((prev) => {
+      const next = new Set(prev)
+      if (next.has(idx)) next.delete(idx)
+      else next.add(idx)
+      return next
+    })
+  }
 
   useEffect(() => {
     // Results are stored in sessionStorage by the ExpertAnalysisResults component
@@ -137,10 +149,6 @@ export default function AnalysisResultsPage() {
     }
     setIsLoading(false)
   }, [])
-
-  const handleDownload = () => {
-    router.push("/results/print")
-  }
 
   if (isLoading) {
     return (
@@ -279,18 +287,27 @@ export default function AnalysisResultsPage() {
 
         {/* Conditions List */}
         <div className="space-y-4 sm:space-y-6 md:space-y-8">
-          {analysisData.conditions.map((condition, index) => (
+          {analysisData.conditions.map((condition, index) => {
+            const isExpanded = expandedIndexes.has(index)
+            return (
             <div
               key={index}
-              className={`rounded-none border p-5 md:p-6 ${
+              className={`rounded-none border ${
                 condition.expansionSource
                   ? "bg-gray-50 border-dashed border-gray-300"
                   : "bg-white border-gray-100"
               }`}
             >
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 sm:mb-6 gap-3 sm:gap-0">
-                <div className="flex-1">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">{condition.name}</h3>
+              {/* Card header — clickable to expand/collapse */}
+              <button
+                type="button"
+                onClick={() => toggleExpanded(index)}
+                aria-expanded={isExpanded}
+                aria-controls={`diagnosis-body-${index}`}
+                className="w-full text-left p-5 md:p-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 hover:bg-[#faf6f0]/40 transition-colors"
+              >
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 leading-tight">{condition.name}</h3>
                   <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                     <span className="px-2 sm:px-3 py-1 bg-[#faf6f0] text-[#8b2500] rounded-none text-xs sm:text-sm font-medium">
                       {condition.icdCode}
@@ -314,14 +331,26 @@ export default function AnalysisResultsPage() {
                     )}
                   </div>
                 </div>
-                <div className="text-right flex-shrink-0">
-                  <div className="text-2xl sm:text-3xl font-bold text-[#8b2500]">
-                    {Math.round(condition.confidence * 100)}%
+                <div className="flex items-start gap-3 sm:gap-4 flex-shrink-0">
+                  <div className="text-right">
+                    <div className="text-2xl sm:text-3xl font-bold text-[#8b2500] leading-none">
+                      {Math.round(condition.confidence * 100)}%
+                    </div>
+                    <div className="text-xs sm:text-sm text-gray-500">Confidence</div>
                   </div>
-                  <div className="text-xs sm:text-sm text-gray-500">Confidence</div>
+                  <div className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 border border-gray-200 text-gray-500" aria-hidden="true">
+                    {isExpanded ? (
+                      <ChevronUp className="h-4 w-4 sm:h-5 sm:w-5" />
+                    ) : (
+                      <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5" />
+                    )}
+                  </div>
                 </div>
-              </div>
+              </button>
 
+              {/* Card body — collapsed by default unless expandedIndexes contains this index */}
+              {isExpanded && (
+              <div id={`diagnosis-body-${index}`} className="px-5 md:px-6 pb-5 md:pb-6 pt-0">
               <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">{condition.description}</p>
 
               {/* Family enrichment callout */}
@@ -387,19 +416,11 @@ export default function AnalysisResultsPage() {
                 </div>
               </div>
 
-              <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200">
-                <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2 sm:mb-3">Recommended Actions</h4>
-                <ul className="space-y-1 sm:space-y-2">
-                  {condition.recommendations.map((rec, idx) => (
-                    <li key={idx} className="text-xs sm:text-sm text-gray-600 flex items-start">
-                      <span className="mr-2">•</span>
-                      <span>{rec}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
+              )}
             </div>
-          ))}
+            )
+          })}
         </div>
       </div>
 
@@ -415,15 +436,6 @@ export default function AnalysisResultsPage() {
               <span>Back</span>
             </button>
 
-            <button
-              onClick={handleDownload}
-              title="Download PDF report"
-              aria-label="Download PDF report"
-              className="flex items-center justify-center p-3 rounded-none border-2 border-gray-300 text-gray-700 hover:border-[#8b2500] hover:text-[#8b2500] transition-all"
-            >
-              <Download className="h-5 w-5" />
-            </button>
-
             {hasClarifyingQuestions ? (
               // Refinement is the standard next step when clarifying questions
               // were generated. The refine flow itself routes to /results/next-steps
@@ -436,7 +448,7 @@ export default function AnalysisResultsPage() {
                 className="flex-1 max-w-md flex items-center justify-center space-x-2 px-4 sm:px-6 py-3 rounded-none bg-[#8b2500] hover:bg-[#6d1d00] text-white font-semibold transition-all text-sm sm:text-base"
               >
                 <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span>Refine &amp; See Recommendations</span>
+                <span>Refine diagnoses (3–5 questions)</span>
                 <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
             ) : (

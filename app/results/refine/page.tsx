@@ -353,6 +353,38 @@ export default function RefinePage() {
   )
 }
 
+function ExpandableReasoning({ text }: { text: string }) {
+  const [expanded, setExpanded] = useState(false)
+  // ~360 chars roughly matches the previous 3-line clamp visually. Anything
+  // shorter than this doesn't need an expand control.
+  const NEEDS_CLAMP_THRESHOLD = 360
+  const needsToggle = text.length > NEEDS_CLAMP_THRESHOLD
+
+  if (!needsToggle) {
+    return <p className="text-sm text-gray-700 leading-relaxed">{text}</p>
+  }
+
+  return (
+    <div>
+      <p
+        className={`text-sm text-gray-700 leading-relaxed ${
+          expanded ? "" : "line-clamp-3"
+        }`}
+      >
+        {text}
+      </p>
+      <button
+        type="button"
+        onClick={() => setExpanded((v) => !v)}
+        className="mt-1.5 text-xs font-semibold text-[#8b2500] hover:underline focus:outline-none focus:underline"
+        aria-expanded={expanded}
+      >
+        {expanded ? "Show less" : "Show more"}
+      </button>
+    </div>
+  )
+}
+
 function RefinedDiagnosesView({ analysis }: { analysis: StoredAnalysis }) {
   const refined = analysis.differentialDiagnoses || []
   const deltas = analysis.refinement?.deltas || []
@@ -435,9 +467,7 @@ function RefinedDiagnosesView({ analysis }: { analysis: StoredAnalysis }) {
               )}
 
               {d.clinicalReasoning && (
-                <p className="text-sm text-gray-700 leading-relaxed line-clamp-3">
-                  {d.clinicalReasoning}
-                </p>
+                <ExpandableReasoning text={d.clinicalReasoning} />
               )}
             </article>
           )

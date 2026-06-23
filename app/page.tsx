@@ -436,7 +436,7 @@ export default function HomePage() {
             <FlowStep step={2} icon={Search} title="SecondLook extracts clinical concepts" />
             <FlowStep step={3} icon={Database} title="Map symptoms and concepts to candidates in our 9k+ rare disease knowledge base" />
             <FlowStep step={4} icon={UsersRound} title="Activate 5 most relevant AI specialist agents in parallel to select most likely diagnoses from profile" />
-            <FlowStep step={5} icon={ListOrdered} title="Synthesize and rank a top-10 differential" />
+            <FlowStep step={5} icon={ListOrdered} title="Synthesize and rank a top-10 differential diagnosis list" />
             <FlowStep step={6} icon={MessageCircle} title="Refine diagnoses with 3–5 targeted patient questions" />
             <FlowStep step={7} icon={CheckSquare} title="Finalize the top-10 differential and probabilities" />
             <FlowStep step={8} icon={TestTubes} title="Recommend tests to rule diagnoses in or out" />

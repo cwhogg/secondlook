@@ -663,6 +663,44 @@ export class DiagnosticPipeline {
         log("orch.stage.finalize.skipped");
       }
 
+      // ===== STAGE 8.6: NARRATIVE MERGER (v28.1) =====
+      // Rewrite the role-prefixed clinicalReasoning ("geneticist: ...
+      // general-internist: ... [finalizer]: ...") into a single unified
+      // clinical narrative per top-N hypothesis. Single Sonnet 4.6 call
+      // for all top-10 in one batch. Original concatenation preserved on
+      // clinicalReasoningRaw. Fail-soft.
+      const mergerStart = Date.now();
+      try {
+        const { mergeNarratives, applyNarrativesInPlace } = await import('../agents/narrative-merger');
+        const topForMerger = finalRanking.slice(0, 10);
+        if (topForMerger.length > 0) {
+          const mergerResult = await mergeNarratives(topForMerger);
+          const applied = applyNarrativesInPlace(topForMerger, mergerResult.narratives);
+          this.budgetTracker.addUsage(mergerResult.model, mergerResult.tokensUsed);
+          stages.push({
+            stageName: 'narrative-merge',
+            durationMs: mergerResult.durationMs,
+            tokensUsed: mergerResult.tokensUsed,
+            model: mergerResult.model,
+            agentName: 'narrative-merger',
+            inputSummary: `${topForMerger.length} hypotheses with role-prefixed reasoning`,
+            outputSummary: `${applied} hypothesis narratives rewritten`,
+          });
+          log('orch.stage.narrative-merge.done', {
+            durationMs: mergerResult.durationMs,
+            rewriteCount: mergerResult.rewriteCount,
+            applied,
+            model: mergerResult.model,
+          });
+        }
+      } catch (err: any) {
+        log('orch.stage.narrative-merge.fail', {
+          msg: (err?.message || '').slice(0, 200),
+          durationMs: Date.now() - mergerStart,
+        });
+        // Continue with role-prefixed reasoning — pre-v28.1 behavior.
+      }
+
       // Replace synthesisResult.hypotheses with the finalized ranking so
       // downstream consumers see it.
       synthesisResult.hypotheses = finalRanking;
@@ -808,7 +846,7 @@ export class DiagnosticPipeline {
         clarifyingQuestions: clarifierQuestions,
         lowConfidenceWarning,
         pipelineMetadata: {
-          pipelineVersion: '28.0.0',
+          pipelineVersion: '28.1.0',
           stages,
           totalDurationMs: Date.now() - pipelineStart,
           totalTokensUsed: budgetSummary.totalTokens,

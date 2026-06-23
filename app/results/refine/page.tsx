@@ -343,8 +343,8 @@ export default function RefinePage() {
             disabled={!inResultsView}
             className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-[#8b2500] text-white hover:bg-[#6d1d00] transition-all duration-200 font-medium text-sm sm:text-base disabled:opacity-40"
           >
-            <span className="hidden sm:inline">{inResultsView ? "See refined recommendations" : "See recommendations"}</span>
-            <span className="sm:hidden">Next</span>
+            <span className="hidden sm:inline">See testing recommendations</span>
+            <span className="sm:hidden">Tests</span>
             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
         </div>

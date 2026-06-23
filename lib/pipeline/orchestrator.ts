@@ -89,7 +89,7 @@ export class DiagnosticPipeline {
       onProgress?.({
         stage: 'triage',
         stageNumber: 1,
-        totalStages: 6,
+        totalStages: 7,
         detail: 'Classifying symptoms and retrieving candidate conditions from knowledge base',
         percentage: 15,
         data: {
@@ -124,10 +124,29 @@ export class DiagnosticPipeline {
       const selectedSpecialties = selectV17Specialists(triageResult.relevantSpecialties as SpecialistType[]);
       log("orch.stage.specialists.start", { count: selectedSpecialties.length, specialties: selectedSpecialties });
 
+      // Specialist Selection — show the user WHICH specialists were chosen
+      // before they start reasoning. The 5-of-11 panel selection is a real
+      // pipeline step (selectV17Specialists) and the user benefits from seeing
+      // it. The triage event lists the ranked-by-relevance specialties; this
+      // one shows the actual subset that will run.
+      const TOTAL_SPECIALIST_COUNT = 11; // see lib/agents/types — 11 specialist registry
+      onProgress?.({
+        stage: 'specialist-selection',
+        stageNumber: 2,
+        totalStages: 7,
+        detail: `Selected ${selectedSpecialties.length} of ${TOTAL_SPECIALIST_COUNT} specialists for this case`,
+        percentage: 18,
+        data: {
+          selectedSpecialties,
+          triageRanked: triageResult.relevantSpecialties,
+          totalSpecialistCount: TOTAL_SPECIALIST_COUNT,
+        },
+      });
+
       onProgress?.({
         stage: 'specialists',
-        stageNumber: 2,
-        totalStages: 6,
+        stageNumber: 3,
+        totalStages: 7,
         detail: `Consulting ${selectedSpecialties.length} specialist agents in parallel`,
         percentage: 20,
         data: { specialties: selectedSpecialties },
@@ -145,8 +164,8 @@ export class DiagnosticPipeline {
         const remaining = selectedSpecialties.length - specialistResults.length - failedSpecialists.length;
         onProgress?.({
           stage: 'heartbeat',
-          stageNumber: 2,
-          totalStages: 6,
+          stageNumber: 3,
+          totalStages: 7,
           detail: remaining > 0
             ? `${remaining} of ${selectedSpecialties.length} specialists still reasoning... ${Math.round(ms / 1000)}s`
             : `All specialists finished... ${Math.round(ms / 1000)}s`,
@@ -167,8 +186,8 @@ export class DiagnosticPipeline {
             const result = await agent.execute({ patientCase, candidateDiseases: candidates });
             onProgress?.({
               stage: 'specialist-done',
-              stageNumber: 2,
-              totalStages: 6,
+              stageNumber: 3,
+              totalStages: 7,
               percentage: 35,
               detail: `${specialty} returned ${result.hypotheses.length} hypotheses (${Math.round((Date.now() - agentStart) / 1000)}s)`,
               data: {
@@ -183,8 +202,8 @@ export class DiagnosticPipeline {
             log("orch.stage.specialist.fail", { specialty, msg: (err?.message || '').slice(0, 200) });
             onProgress?.({
               stage: 'specialist-failed',
-              stageNumber: 2,
-              totalStages: 6,
+              stageNumber: 3,
+              totalStages: 7,
               percentage: 35,
               detail: `${specialty} failed (${Math.round((Date.now() - agentStart) / 1000)}s)`,
               data: {
@@ -238,8 +257,8 @@ export class DiagnosticPipeline {
 
       onProgress?.({
         stage: 'specialists-complete',
-        stageNumber: 2,
-        totalStages: 6,
+        stageNumber: 3,
+        totalStages: 7,
         detail: `${specialistResults.length}/${selectedSpecialties.length} specialists returned (${specialistResults.reduce((sum, r) => sum + r.hypotheses.length, 0)} hypotheses)`,
         percentage: 45,
         data: {
@@ -353,8 +372,8 @@ export class DiagnosticPipeline {
       log("orch.stage.evaluation.start", { hypotheses: dedupedHypotheses.length });
       onProgress?.({
         stage: 'evidence',
-        stageNumber: 3,
-        totalStages: 6,
+        stageNumber: 4,
+        totalStages: 7,
         detail: 'Claude reviewing evidence against diagnostic criteria',
         percentage: 55,
         data: { hypothesesCount: dedupedHypotheses.length },
@@ -365,8 +384,8 @@ export class DiagnosticPipeline {
         const ms = Date.now() - evalStart;
         onProgress?.({
           stage: 'heartbeat',
-          stageNumber: 3,
-          totalStages: 6,
+          stageNumber: 4,
+          totalStages: 7,
           detail: `Claude evaluator still reasoning... ${Math.round(ms / 1000)}s`,
           percentage: 60,
           data: { stage: 'evaluation', elapsedMs: ms },
@@ -408,8 +427,8 @@ export class DiagnosticPipeline {
 
       onProgress?.({
         stage: 'evidence-complete',
-        stageNumber: 3,
-        totalStages: 6,
+        stageNumber: 4,
+        totalStages: 7,
         detail: `${evaluationResult.hypotheses.length} hypotheses evaluated`,
         percentage: 65,
         data: {
@@ -425,8 +444,8 @@ export class DiagnosticPipeline {
       log("orch.stage.synthesis.start");
       onProgress?.({
         stage: 'synthesis',
-        stageNumber: 4,
-        totalStages: 6,
+        stageNumber: 5,
+        totalStages: 7,
         detail: 'Claude ranking diagnoses by overall evidence',
         percentage: 70,
         data: null,
@@ -437,8 +456,8 @@ export class DiagnosticPipeline {
         const ms = Date.now() - synthStart;
         onProgress?.({
           stage: 'heartbeat',
-          stageNumber: 4,
-          totalStages: 6,
+          stageNumber: 5,
+          totalStages: 7,
           detail: `Claude synth still reasoning... ${Math.round(ms / 1000)}s`,
           percentage: 75,
           data: { stage: 'synthesis', elapsedMs: ms },
@@ -486,8 +505,8 @@ export class DiagnosticPipeline {
       log("orch.stage.critique.start");
       onProgress?.({
         stage: 'synthesis',
-        stageNumber: 4,
-        totalStages: 6,
+        stageNumber: 5,
+        totalStages: 7,
         detail: 'o3 critiquing the ranking',
         percentage: 78,
         data: null,
@@ -565,8 +584,8 @@ export class DiagnosticPipeline {
         log("orch.stage.finalize.start");
         onProgress?.({
           stage: 'synthesis',
-          stageNumber: 4,
-          totalStages: 6,
+          stageNumber: 5,
+          totalStages: 7,
           detail: 'Claude finalizing the differential with critique review',
           percentage: 84,
           data: null,
@@ -632,8 +651,8 @@ export class DiagnosticPipeline {
 
       onProgress?.({
         stage: 'synthesis-complete',
-        stageNumber: 4,
-        totalStages: 6,
+        stageNumber: 5,
+        totalStages: 7,
         detail: `Final ranking complete — ${finalRanking.length} diagnoses ranked`,
         percentage: 88,
         data: {
@@ -693,8 +712,8 @@ export class DiagnosticPipeline {
       log("orch.stage.report.start");
       onProgress?.({
         stage: 'report',
-        stageNumber: 5,
-        totalStages: 6,
+        stageNumber: 6,
+        totalStages: 7,
         detail: 'Generating your detailed diagnostic report',
         percentage: 92,
         data: null,
@@ -720,8 +739,8 @@ export class DiagnosticPipeline {
       // ===== ASSEMBLE FINAL RESULT =====
       onProgress?.({
         stage: 'complete',
-        stageNumber: 5,
-        totalStages: 6,
+        stageNumber: 6,
+        totalStages: 7,
         detail: 'Analysis complete',
         percentage: 100,
         data: null,

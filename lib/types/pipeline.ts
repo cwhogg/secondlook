@@ -5,7 +5,7 @@ export type PipelineProgress =
   | {
       stage: 'extraction';
       stageNumber: 0;
-      totalStages: 6;
+      totalStages: 7;
       percentage: number;
       detail: string;
       data: {
@@ -21,7 +21,7 @@ export type PipelineProgress =
   | {
       stage: 'extraction-complete';
       stageNumber: 0;
-      totalStages: 6;
+      totalStages: 7;
       percentage: number;
       detail: string;
       data: {
@@ -37,7 +37,7 @@ export type PipelineProgress =
   | {
       stage: 'triage';
       stageNumber: 1;
-      totalStages: 6;
+      totalStages: 7;
       percentage: number;
       detail: string;
       data: {
@@ -54,17 +54,34 @@ export type PipelineProgress =
       };
     }
   | {
-      stage: 'specialists';
+      // v27 + UI fix: explicit selection step between triage and specialists.
+      // Surfaces WHICH specialists were chosen for this case so the loader can
+      // show them before the specialists start reasoning. Triage emits the
+      // ranked list of relevant specialties; this stage emits the actual 5
+      // selected (geneticist + general-internist anchors + top 3 from triage).
+      stage: 'specialist-selection';
       stageNumber: 2;
-      totalStages: 6;
+      totalStages: 7;
+      percentage: number;
+      detail: string;
+      data: {
+        selectedSpecialties: string[];
+        triageRanked: string[];
+        totalSpecialistCount: number;
+      };
+    }
+  | {
+      stage: 'specialists';
+      stageNumber: 3;
+      totalStages: 7;
       percentage: number;
       detail: string;
       data: { specialties: string[] };
     }
   | {
       stage: 'specialists-complete';
-      stageNumber: 2;
-      totalStages: 6;
+      stageNumber: 3;
+      totalStages: 7;
       percentage: number;
       detail: string;
       data: {
@@ -80,8 +97,8 @@ export type PipelineProgress =
       // Emitted as each specialist finishes inside the parallel stage so
       // the client can persist per-agent progress for diagnosing hangs.
       stage: 'specialist-done';
-      stageNumber: 2;
-      totalStages: 6;
+      stageNumber: 3;
+      totalStages: 7;
       percentage: number;
       detail: string;
       data: { specialty: string; durationMs: number; hypothesisCount: number };
@@ -89,24 +106,24 @@ export type PipelineProgress =
   | {
       // Emitted when a specialist times out or errors.
       stage: 'specialist-failed';
-      stageNumber: 2;
-      totalStages: 6;
+      stageNumber: 3;
+      totalStages: 7;
       percentage: number;
       detail: string;
       data: { specialty: string; durationMs: number; kind: 'timeout' | 'error'; error: string };
     }
   | {
       stage: 'evidence';
-      stageNumber: 3;
-      totalStages: 6;
+      stageNumber: 4;
+      totalStages: 7;
       percentage: number;
       detail: string;
       data: { hypothesesCount: number };
     }
   | {
       stage: 'evidence-complete';
-      stageNumber: 3;
-      totalStages: 6;
+      stageNumber: 4;
+      totalStages: 7;
       percentage: number;
       detail: string;
       data: {
@@ -117,16 +134,16 @@ export type PipelineProgress =
     }
   | {
       stage: 'synthesis';
-      stageNumber: 4;
-      totalStages: 6;
+      stageNumber: 5;
+      totalStages: 7;
       percentage: number;
       detail: string;
       data: null;
     }
   | {
       stage: 'synthesis-complete';
-      stageNumber: 4;
-      totalStages: 6;
+      stageNumber: 5;
+      totalStages: 7;
       percentage: number;
       detail: string;
       data: {
@@ -136,16 +153,16 @@ export type PipelineProgress =
     }
   | {
       stage: 'report';
-      stageNumber: 5;
-      totalStages: 6;
+      stageNumber: 6;
+      totalStages: 7;
       percentage: number;
       detail: string;
       data: null;
     }
   | {
       stage: 'complete';
-      stageNumber: 5;
-      totalStages: 6;
+      stageNumber: 6;
+      totalStages: 7;
       percentage: 100;
       detail: string;
       data: null;
@@ -157,7 +174,7 @@ export type PipelineProgress =
       // idle-timeout doesn't kill legitimate long o3:high reasoning.
       stage: 'heartbeat';
       stageNumber: number;
-      totalStages: 6;
+      totalStages: 7;
       percentage: number;
       detail: string;
       data: { stage: string; elapsedMs: number };

@@ -424,25 +424,30 @@ export default function AnalysisResultsPage() {
               <Download className="h-5 w-5" />
             </button>
 
-            {hasClarifyingQuestions && (
+            {hasClarifyingQuestions ? (
+              // Refinement is the standard next step when clarifying questions
+              // were generated. The refine flow itself routes to /results/next-steps
+              // after submission, so users still reach recommendations — they just
+              // can't skip the refinement.
               <button
                 onClick={() => router.push("/results/refine")}
-                title="Refine results by answering 1-5 follow-up questions"
+                title="Answer 1-5 follow-up questions before viewing recommendations"
                 aria-label="Refine results"
-                className="flex items-center justify-center gap-2 px-3 sm:px-4 py-3 rounded-none border-2 border-[#8b2500] text-[#8b2500] hover:bg-[#faf6f0] transition-all text-sm sm:text-base font-semibold"
+                className="flex-1 max-w-md flex items-center justify-center space-x-2 px-4 sm:px-6 py-3 rounded-none bg-[#8b2500] hover:bg-[#6d1d00] text-white font-semibold transition-all text-sm sm:text-base"
               >
                 <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span className="hidden sm:inline">Refine</span>
+                <span>Refine &amp; See Recommendations</span>
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+              </button>
+            ) : (
+              <button
+                onClick={() => router.push("/results/next-steps")}
+                className="flex-1 max-w-md flex items-center justify-center space-x-2 px-4 sm:px-6 py-3 rounded-none bg-[#8b2500] hover:bg-[#6d1d00] text-white font-semibold transition-all text-sm sm:text-base"
+              >
+                <span>See Recommendations</span>
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
             )}
-
-            <button
-              onClick={() => router.push("/results/next-steps")}
-              className="flex-1 max-w-md flex items-center justify-center space-x-2 px-4 sm:px-6 py-3 rounded-none bg-[#8b2500] hover:bg-[#6d1d00] text-white font-semibold transition-all text-sm sm:text-base"
-            >
-              <span>See Recommendations</span>
-              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
-            </button>
           </div>
         </div>
       </div>

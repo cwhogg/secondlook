@@ -64,7 +64,7 @@ export default function AnalysisPage() {
         setPipelineEvents([{
           stage: 'extraction',
           stageNumber: 0,
-          totalStages: 6,
+          totalStages: 7,
           percentage: 2,
           detail: 'Parsing symptoms from your narrative...',
           data: { symptomCount: 0, symptoms: [] },
@@ -121,7 +121,7 @@ export default function AnalysisPage() {
         setPipelineEvents([{
           stage: 'extraction-complete',
           stageNumber: 0,
-          totalStages: 6,
+          totalStages: 7,
           percentage: 10,
           detail: `Extracted ${preExtracted.length} symptoms with UMLS mappings`,
           data: { symptomCount: preExtracted.length, symptoms: preExtracted },

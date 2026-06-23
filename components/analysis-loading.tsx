@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Brain, CheckCircle2, Loader2, Stethoscope, FlaskConical, Scale, FileText, Activity, Search } from "lucide-react"
+import { Brain, CheckCircle2, Loader2, Stethoscope, FlaskConical, Scale, FileText, Activity, Search, UsersRound } from "lucide-react"
 import { BreadcrumbNav } from "./breadcrumb-nav"
 import type { PipelineProgress } from "@/lib/types/pipeline"
 
@@ -25,12 +25,17 @@ const STAGE_CONFIG: Record<string, { label: string; icon: typeof Brain; descript
   triage: {
     label: "Triage",
     icon: Activity,
-    description: "Classifying symptoms and identifying candidate conditions",
+    description: "Classifying symptoms and ranking specialty relevance",
+  },
+  "specialist-selection": {
+    label: "Specialist Selection",
+    icon: UsersRound,
+    description: "Choosing the specialists most relevant to this case",
   },
   specialists: {
     label: "Specialist Consultation",
     icon: Stethoscope,
-    description: "Domain specialists analyzing your case in parallel",
+    description: "Selected specialists analyzing your case in parallel",
   },
   evidence: {
     label: "Evidence Evaluation",
@@ -49,7 +54,7 @@ const STAGE_CONFIG: Record<string, { label: string; icon: typeof Brain; descript
   },
 }
 
-const ORDERED_STAGES = ["extraction", "triage", "specialists", "evidence", "synthesis", "report"] as const
+const ORDERED_STAGES = ["extraction", "triage", "specialist-selection", "specialists", "evidence", "synthesis", "report"] as const
 
 function getStageStatus(
   stageKey: string,
@@ -135,7 +140,8 @@ function formatElapsed(ms: number): string {
 const STAGE_DURATION_HINT: Record<string, string> = {
   extraction: "Typically a few seconds.",
   triage: "Typically 5–15 seconds.",
-  specialists: "Typically 1–3 minutes — five specialists reasoning in parallel.",
+  "specialist-selection": "Instant — deterministic selection from the triage ranking.",
+  specialists: "Typically 1–3 minutes — selected specialists reasoning in parallel.",
   evidence: "Typically 30–60 seconds.",
   synthesis: "Typically 30–90 seconds.",
   report: "Typically 10–20 seconds.",
@@ -193,7 +199,7 @@ function ConfidenceBar({
 // ===== STAGE DATA RENDERERS =====
 
 function TriageData({ event }: { event: PipelineProgress & { stage: "triage" } }) {
-  const { bodySystems, acuityLevel, specialties, candidateCount } = event.data
+  const { bodySystems, acuityLevel, candidateCount } = event.data
   return (
     <div className="mt-3 space-y-3">
       <div className="flex flex-wrap gap-1.5">
@@ -217,10 +223,33 @@ function TriageData({ event }: { event: PipelineProgress & { stage: "triage" } }
           {acuityLevel}
         </span>
       </div>
-      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-[11px] text-gray-500">
-        <span>{candidateCount} candidates from KB</span>
-        <span className="hidden sm:inline text-gray-300">|</span>
-        <span>Consulting {specialties.map(formatSpecialtyName).join(", ")}</span>
+      <div className="text-[11px] text-gray-500">
+        {candidateCount} candidates from KB
+      </div>
+    </div>
+  )
+}
+
+function SpecialistSelectionData({
+  event,
+}: {
+  event: PipelineProgress & { stage: "specialist-selection" }
+}) {
+  const { selectedSpecialties, totalSpecialistCount } = event.data
+  return (
+    <div className="mt-3 space-y-2">
+      <div className="text-[11px] text-gray-500">
+        {selectedSpecialties.length} of {totalSpecialistCount} specialists selected
+      </div>
+      <div className="flex flex-wrap gap-1.5">
+        {selectedSpecialties.map((sp) => (
+          <span
+            key={sp}
+            className="inline-flex items-center px-2 py-0.5 text-[11px] font-medium bg-[#faf6f0] text-[#6d4c30] border border-[#d4c5b0] rounded-sm"
+          >
+            {formatSpecialtyName(sp)}
+          </span>
+        ))}
       </div>
     </div>
   )
@@ -272,7 +301,6 @@ function EvidenceData({
   const kbPercent = evaluatedCount > 0 ? Math.round((kbMatchedCount / evaluatedCount) * 100) : 0
   return (
     <div className="mt-3 space-y-2">
-      <div className="text-xs text-gray-600">{evaluatedCount} hypotheses evaluated</div>
       <div className="flex items-center gap-1 h-2.5 rounded-sm overflow-hidden bg-gray-100">
         <div
           className="h-full bg-[#8b2500] rounded-l-sm transition-all duration-500"
@@ -286,11 +314,11 @@ function EvidenceData({
       <div className="flex justify-between text-[11px] text-gray-500">
         <span className="flex items-center gap-1.5">
           <span className="w-2 h-2 bg-[#8b2500] rounded-sm inline-block" />
-          {kbMatchedCount} criteria-grounded
+          {kbMatchedCount} criteria-grounded (from KB)
         </span>
         <span className="flex items-center gap-1.5">
           <span className="w-2 h-2 bg-gray-300 rounded-sm inline-block" />
-          {reasoningEvaluatedCount} reasoning-evaluated
+          {reasoningEvaluatedCount} reasoning-evaluated (LLM-generated)
         </span>
       </div>
     </div>
@@ -395,6 +423,12 @@ function TimelineStage({
       }
       case "triage":
         return <TriageData event={event as PipelineProgress & { stage: "triage" }} />
+      case "specialist-selection":
+        return (
+          <SpecialistSelectionData
+            event={event as PipelineProgress & { stage: "specialist-selection" }}
+          />
+        )
       case "specialists-complete":
         return (
           <SpecialistsData
@@ -567,7 +601,7 @@ export function AnalysisLoading({ progress, pipelineEvents, preTriageSymptoms }:
           <div className="flex items-center justify-between mb-1.5">
             <span className="text-[11px] font-medium text-gray-400">
               {progress < 100
-                ? `Stage ${Math.max(1, pipelineEvents.length > 0 ? pipelineEvents[pipelineEvents.length - 1].stageNumber + 1 : 1)} of 6`
+                ? `Stage ${Math.max(1, pipelineEvents.length > 0 ? pipelineEvents[pipelineEvents.length - 1].stageNumber + 1 : 1)} of 7`
                 : "Complete"}
             </span>
             <span className="text-[11px] font-bold text-[#8b2500] tabular-nums">{progress}%</span>

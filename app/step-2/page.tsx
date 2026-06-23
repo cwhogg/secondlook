@@ -7,9 +7,20 @@ import { CharacterCounter } from "@/components/character-counter"
 import { DocumentUpload } from "@/components/document-upload"
 import { LabUpload } from "@/components/lab-upload"
 import { LabVerification } from "@/components/lab-verification"
-import { ArrowRight, ArrowLeft, CheckCircle, Sparkles } from "lucide-react"
+import { ArrowRight, ArrowLeft, CheckCircle, Sparkles, AlertTriangle } from "lucide-react"
 import type { LabResult } from "@/lib/types/index"
 import { cn } from "@/lib/utils"
+
+// Maximum length for the primary-concern field after merging uploaded
+// documents. 10k chars (the prior typed-input cap) was arbitrarily low and
+// silently truncated uploaded clinical records. 100k is the comfortable
+// middle ground: handles a multi-doc upload (discharge summary + labs +
+// specialist note) at roughly 25k input tokens per LLM call. Going higher
+// (250k+) starts 2-4x'ing the per-analysis cost on every downstream stage
+// without obvious diagnostic upside; at that point a summarize-then-pass
+// preprocessing step is the right architecture. See conversation
+// 2026-06-23 for the cost/benefit analysis.
+const PRIMARY_CONCERN_MAX = 100_000
 
 interface Step2Data {
   primaryConcern: string
@@ -28,6 +39,12 @@ export default function Step2() {
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [autoSaved, setAutoSaved] = useState(false)
+  // Visible notice surfaced when a document upload would push the merged
+  // text past PRIMARY_CONCERN_MAX. Cleared when the user starts editing
+  // or when an upload fits cleanly.
+  const [uploadTruncationNotice, setUploadTruncationNotice] = useState<
+    { totalLength: number; keptLength: number; excess: number } | null
+  >(null)
 
   useEffect(() => {
     const step1 = localStorage.getItem("step1Data")
@@ -126,13 +143,37 @@ export default function Step2() {
                   const merged = current
                     ? `${formData.primaryConcern}\n\n--- From uploaded document ---\n\n${text}`
                     : text
-                  updateFormData("primaryConcern", merged.slice(0, 10000))
+                  const wasTruncated = merged.length > PRIMARY_CONCERN_MAX
+                  updateFormData("primaryConcern", merged.slice(0, PRIMARY_CONCERN_MAX))
+                  setUploadTruncationNotice(
+                    wasTruncated
+                      ? {
+                          totalLength: merged.length,
+                          keptLength: PRIMARY_CONCERN_MAX,
+                          excess: merged.length - PRIMARY_CONCERN_MAX,
+                        }
+                      : null,
+                  )
                 }}
               />
 
+              {uploadTruncationNotice && (
+                <div className="flex items-start gap-2 p-3 bg-amber-50 border border-amber-200 text-amber-900 text-sm">
+                  <AlertTriangle className="h-4 w-4 mt-0.5 flex-shrink-0 text-amber-700" />
+                  <div>
+                    <div className="font-semibold mb-0.5">
+                      Your upload was longer than the input allows
+                    </div>
+                    <div className="leading-relaxed">
+                      Your story plus uploaded documents totaled {uploadTruncationNotice.totalLength.toLocaleString()} characters. We kept the first {uploadTruncationNotice.keptLength.toLocaleString()} characters and dropped the remaining {uploadTruncationNotice.excess.toLocaleString()}. Consider summarizing the most relevant sections or splitting the upload across multiple analyses.
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <textarea
                 rows={7}
-                maxLength={10000}
+                maxLength={PRIMARY_CONCERN_MAX}
                 value={formData.primaryConcern}
                 onChange={(e) => updateFormData("primaryConcern", e.target.value)}
                 className={cn(
@@ -143,7 +184,7 @@ export default function Step2() {
               />
               <div className="flex justify-between items-center">
                 <p className="text-sm text-gray-600">Include onset, progression, and what makes it better/worse</p>
-                <CharacterCounter current={formData.primaryConcern.length} max={10000} />
+                <CharacterCounter current={formData.primaryConcern.length} max={PRIMARY_CONCERN_MAX} />
               </div>
               {errors.primaryConcern && <p className="text-red-600 text-sm">{errors.primaryConcern}</p>}
             </div>

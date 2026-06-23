@@ -4,9 +4,11 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import {
   CATEGORY_LABELS,
+  CATEGORY_ORDER,
   getWhereToGetIt,
   normalizeCategory,
   urgencyRank,
+  type TestCategory,
 } from "@/lib/results/where-to-get-it"
 import { startNewAnalysis } from "@/lib/results/start-new-analysis"
 
@@ -198,12 +200,11 @@ export default function PrintReportPage() {
             background: white !important;
             color: #1a1a1a !important;
           }
-          /* Avoid-break is now reserved for truly atomic units (single test
-             cards, individual differential rows, the footer). Large parent
-             containers should NOT have it — when they do, the browser bumps
-             the whole section to a new page on the slightest overflow,
-             which is exactly what caused the 50%-empty pages in the prior
-             10-page version. */
+          /* Avoid-break is now reserved for truly atomic units (single
+             differential rows, the cover header, the methodology footer).
+             Individual test cards are slim enough after the legend fix
+             that we let them split if needed — keeping them whole is what
+             forced 2-tests-per-page in prior versions. */
           .avoid-break {
             break-inside: avoid;
             page-break-inside: avoid;
@@ -214,16 +215,30 @@ export default function PrintReportPage() {
             break-after: avoid;
             page-break-after: avoid;
           }
-          /* Don't strand a single line at the bottom of a page or the top
-             of the next one. */
+          /* widows/orphans: 2 lets paragraphs split across pages with just
+             2 lines stranded instead of 3, which lets the Clinical Summary
+             share page 1 with Clinical Presentation instead of being forced
+             onto a near-empty page 2. */
           .print-root p,
           .print-root li {
-            widows: 3;
-            orphans: 3;
+            widows: 2;
+            orphans: 2;
           }
           /* Tighten section gaps in print so we don't waste 40% of every
              page on whitespace. */
           .print-root section {
+            margin-bottom: 0.85rem !important;
+          }
+          /* Tighten the outer container padding for print — screen padding
+             is fine but in print it pushes the cover header down ~80px and
+             eats into the first page. */
+          .print-root .print-container {
+            padding-top: 0.25in !important;
+            padding-bottom: 0.25in !important;
+          }
+          /* Cover header bottom margin: 8 = 2rem on screen is generous;
+             1rem in print is plenty given the brand bar separator. */
+          .print-root .print-cover-header {
             margin-bottom: 1rem !important;
           }
           body,
@@ -271,9 +286,9 @@ export default function PrintReportPage() {
         </div>
       </div>
 
-      <div className="max-w-[7.5in] mx-auto px-6 sm:px-10 py-8 sm:py-10 font-serif text-[#1a1a1a]">
+      <div className="print-container max-w-[7.5in] mx-auto px-6 sm:px-10 py-8 sm:py-10 font-serif text-[#1a1a1a]">
         {/* Cover header — branded, professional, with AI-generated badge */}
-        <header className="avoid-break mb-8">
+        <header className="print-cover-header avoid-break mb-8">
           <div className="flex items-end justify-between gap-4 flex-wrap pb-4 border-b-2 border-[#8b2500]">
             <div>
               <div className="text-[10px] uppercase tracking-[0.2em] text-[#8b2500] font-semibold font-sans mb-1">
@@ -541,19 +556,85 @@ export default function PrintReportPage() {
         )}
 
         {/* Recommended tests with where-to-get */}
-        {tests.length > 0 && (
-          <section className="mb-6">
-            <h2 className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b2500] mb-3 pb-1.5 border-b border-[#d4c5b0]">
-              Recommended Next Steps — Testing
-            </h2>
-            <p className="text-[12px] text-gray-600 mb-3 leading-relaxed">
-              Each test includes what it will tell you, whether a doctor order is required, and where to get it.
-            </p>
-            <div className="space-y-3">
-              {sortedTests.map((test, idx) => {
-                const cat = normalizeCategory(test.testType, test.testName)
-                const where = getWhereToGetIt(cat, test.testName)
-                return (
+        {tests.length > 0 && (() => {
+          // Compute the set of categories actually used by the recommended
+          // tests so the "How to obtain these tests" legend only shows the
+          // rows the patient will use. CATEGORY_ORDER imposes a stable
+          // ordering. specialist_evaluate is intentionally excluded from the
+          // shared legend because its `online.note` varies by specialty —
+          // those telehealth pointers stay on the per-test card.
+          const usedCategories = new Set<TestCategory>(
+            sortedTests.map((t) => normalizeCategory(t.testType, t.testName)),
+          )
+          const legendCategories = CATEGORY_ORDER.filter(
+            (c) => usedCategories.has(c) && c !== "specialist_evaluate",
+          )
+          return (
+            <section className="mb-6">
+              <h2 className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b2500] mb-3 pb-1.5 border-b border-[#d4c5b0]">
+                Recommended Next Steps — Testing
+              </h2>
+              <p className="text-[12px] text-gray-600 mb-3 leading-relaxed">
+                Each test below tells you what it will reveal and which diagnoses it helps confirm or rule out. See the legend for how to obtain each type.
+              </p>
+
+              {/* Shared "how to obtain" legend — populated only with the test
+                  categories that appear in this report. Replaces the
+                  duplicated HOW TO GET IT box that previously printed
+                  verbatim on every test card. */}
+              {legendCategories.length > 0 && (
+                <div className="avoid-break border border-[#d4c5b0] bg-[#faf6f0] p-3 mb-4">
+                  <div className="font-sans text-[10px] font-semibold uppercase tracking-wide text-[#8b2500] mb-2">
+                    How to obtain these tests
+                  </div>
+                  <dl className="space-y-2 text-[11px] leading-relaxed">
+                    {legendCategories.map((cat) => {
+                      const where = getWhereToGetIt(cat, "")
+                      return (
+                        <div key={cat} className="grid grid-cols-[120px_1fr] gap-x-3">
+                          <dt className="font-semibold text-gray-900 text-[11px]">
+                            {CATEGORY_LABELS[cat]}
+                          </dt>
+                          <dd className="text-gray-800">
+                            <div>{where.process}</div>
+                            <div className="mt-1">
+                              <span className="font-semibold">Order: </span>
+                              {where.doctorOrder}
+                            </div>
+                            {where.inPersonExamples.length > 0 && (
+                              <div className="mt-1">
+                                <span className="font-semibold">In person: </span>
+                                {where.inPersonExamples.join(", ")}
+                              </div>
+                            )}
+                            {where.online.available && where.online.note && (
+                              <div className="mt-1">
+                                <span className="font-semibold">Online: </span>
+                                {where.online.note}
+                              </div>
+                            )}
+                          </dd>
+                        </div>
+                      )
+                    })}
+                  </dl>
+                </div>
+              )}
+
+              {/* 2-column grid — each test card is slim (3-4 lines) after
+                  hoisting the boilerplate into the legend, so two fit
+                  side-by-side comfortably at letter width. avoid-break on
+                  each card keeps the title with its body. */}
+              <div className="grid grid-cols-2 gap-2">
+                {sortedTests.map((test, idx) => {
+                  const cat = normalizeCategory(test.testType, test.testName)
+                  // specialist_evaluate isn't in the shared legend (note
+                  // varies by specialty); show the per-specialty telehealth
+                  // note on the card itself. Other categories: legend covers
+                  // it, card stays slim.
+                  const specialistWhere =
+                    cat === "specialist_evaluate" ? getWhereToGetIt(cat, test.testName) : null
+                  return (
                     <article
                       key={`${cat}-${idx}`}
                       className="avoid-break border border-gray-200 p-3"
@@ -579,44 +660,32 @@ export default function PrintReportPage() {
                       <h3 className="font-bold text-gray-900 text-sm leading-snug mb-1">
                         {test.testName}
                       </h3>
-                      <div className="text-xs text-gray-800 leading-relaxed mb-2">
+                      <div className="text-xs text-gray-800 leading-relaxed mb-1">
                         <span className="font-semibold">What it tells you: </span>
                         {test.rationale}
                       </div>
                       {test.targetDiagnoses && test.targetDiagnoses.length > 0 && (
-                        <div className="text-xs text-gray-700 mb-2">
+                        <div className="text-xs text-gray-700">
                           <span className="font-semibold">Helps confirm or rule out: </span>
                           {test.targetDiagnoses.join(", ")}
                         </div>
                       )}
-                      <div className="bg-[#faf6f0] border border-[#d4c5b0] p-2 text-xs">
-                        <div className="font-semibold text-[#8b2500] uppercase text-[10px] tracking-wide mb-1">
-                          How to get it
+                      {specialistWhere && (
+                        <div className="text-xs text-gray-700 mt-1">
+                          <span className="font-semibold">How to obtain: </span>
+                          {specialistWhere.process}
+                          {specialistWhere.online.available && specialistWhere.online.note && (
+                            <> {specialistWhere.online.note}</>
+                          )}
                         </div>
-                        <div className="text-gray-800 leading-relaxed">{where.process}</div>
-                        <div className="mt-1">
-                          <span className="font-semibold">Order: </span>
-                          {where.doctorOrder}
-                        </div>
-                        {where.inPersonExamples.length > 0 && (
-                          <div className="mt-1">
-                            <span className="font-semibold">In person: </span>
-                            {where.inPersonExamples.join(", ")}
-                          </div>
-                        )}
-                        {where.online.available && where.online.note && (
-                          <div className="mt-1">
-                            <span className="font-semibold">Online option: </span>
-                            {where.online.note}
-                          </div>
-                        )}
-                      </div>
+                      )}
                     </article>
                   )
                 })}
-            </div>
-          </section>
-        )}
+              </div>
+            </section>
+          )
+        })()}
 
         {/* Action items + specialists */}
         {(immediateActions.length > 0 || specialistReferrals.length > 0) && (
@@ -668,14 +737,22 @@ export default function PrintReportPage() {
             <p className="text-xs text-gray-600 mb-2">
               These pieces of information weren't available during analysis and could meaningfully change the diagnostic picture.
             </p>
-            <ul className="text-sm space-y-2">
+            {/* 2-column compact list. The prior version put each gap in its
+                own bordered card with vertical padding, which inflated the
+                section to a full page for 13 items. The grid + tight
+                leading lets a typical 10-15 gap list fit in ~half a
+                page. */}
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs">
               {dataGaps.map((g, i) => {
                 const title = g.description || g.item || g.gapType || "Information gap"
                 const impact = g.impact || g.suggestedAction
                 return (
-                  <li key={i} className="border border-gray-200 p-2">
-                    <div className="font-semibold text-gray-900">{title}</div>
-                    {impact && <div className="text-xs text-gray-700 mt-0.5">{impact}</div>}
+                  <li key={i} className="flex gap-2 leading-snug">
+                    <span className="text-[#8b2500] flex-shrink-0">•</span>
+                    <div>
+                      <span className="font-semibold text-gray-900">{title}</span>
+                      {impact && <span className="text-gray-600"> — {impact}</span>}
+                    </div>
                   </li>
                 )
               })}

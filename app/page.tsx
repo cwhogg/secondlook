@@ -398,6 +398,17 @@ export default function HomePage() {
         <GoldDivider wide />
       </div>
 
+      {/* Positioning paragraph (moved here from below to lead before the medical notice) */}
+      <section className="py-6 sm:py-8">
+        <div className="max-w-[820px] mx-auto px-4 sm:px-8">
+          <p className="font-serif-body text-center text-[#5a5a5a] leading-relaxed">
+            Whether you&apos;re searching for a medical second opinion, exploring an AI symptom checker for rare diseases,
+            or looking for help with a complex diagnosis, SecondLook provides the analytical depth that standard tools lack.
+            Our platform is designed for patients navigating a diagnostic odyssey who need more than generic health advice.
+          </p>
+        </div>
+      </section>
+
       {/* Medical Notice */}
       <section className="py-10 sm:py-14">
         <div className="max-w-[700px] mx-auto px-4 sm:px-8">
@@ -547,17 +558,6 @@ export default function HomePage() {
       <div className="py-8">
         <GoldDivider wide />
       </div>
-
-      {/* SEO Paragraph */}
-      <section className="py-8">
-        <div className="max-w-[820px] mx-auto px-4 sm:px-8">
-          <p className="font-serif-body text-center text-[#5a5a5a] leading-relaxed">
-            Whether you&apos;re searching for a medical second opinion, exploring an AI symptom checker for rare diseases,
-            or looking for help with a complex diagnosis, SecondLook provides the analytical depth that standard tools lack.
-            Our platform is designed for patients navigating a diagnostic odyssey who need more than generic health advice.
-          </p>
-        </div>
-      </section>
 
       {/* Resources Section */}
       <ResourcesSection />

@@ -338,6 +338,45 @@ export class DiagnosticPipeline {
         outputSummary: `${dedupStats.outputCount} merged (evidence ${dedupStats.evidenceItemsInput}→${dedupStats.evidenceItemsOutput}, attributions ${dedupStats.attributionsOutput}, validation ${dedupStats.validationPassed ? 'PASS' : 'FAIL'}, suspicious-pairs ${dedupStats.suspiciousPairs.length})`,
       });
 
+      // ===== STAGE 3.5: DIFFERENTIAL BROADENER (v28 — non-KB channel) =====
+      // Single Claude Sonnet 4.6 call. Generates 2-4 rare-disease candidates
+      // that are NOT in the specialist pool. Output is appended to the deduped
+      // list with knowledgeBaseMatch=false; the KB attach step below will
+      // leave that flag alone since findDiseaseByName won't match, and the
+      // evaluator will route these through its reasoning-evaluated track.
+      // Fail-soft: if the call errors or returns nothing, we proceed with
+      // just the specialist list (the pre-v28 behavior).
+      const broadenStart = Date.now();
+      try {
+        const { broadenDifferential } = await import('../agents/broaden-differential');
+        const broadenResult = await broadenDifferential(patientCase, dedupedHypotheses);
+        if (broadenResult.hypotheses.length > 0) {
+          dedupedHypotheses.push(...broadenResult.hypotheses);
+        }
+        this.budgetTracker.addUsage(broadenResult.model, broadenResult.tokensUsed);
+        stages.push({
+          stageName: 'broaden-differential',
+          durationMs: broadenResult.durationMs,
+          tokensUsed: broadenResult.tokensUsed,
+          model: broadenResult.model,
+          agentName: 'differential-broadener',
+          inputSummary: `${dedupedHypotheses.length - broadenResult.hypotheses.length} deduped specialist hypotheses`,
+          outputSummary: `+${broadenResult.acceptedCount} non-KB candidates (raw ${broadenResult.rawCount})`,
+        });
+        log('orch.stage.broaden.done', {
+          durationMs: broadenResult.durationMs,
+          rawCount: broadenResult.rawCount,
+          acceptedCount: broadenResult.acceptedCount,
+          model: broadenResult.model,
+        });
+      } catch (err: any) {
+        log('orch.stage.broaden.fail', {
+          msg: (err?.message || '').slice(0, 200),
+          durationMs: Date.now() - broadenStart,
+        });
+        // Continue with specialist-only list — pre-v28 behavior.
+      }
+
       // ===== STAGE 4: KB PROFILE ATTACH (deterministic) =====
       // For each merged hypothesis, look up the KB profile and attach. The
       // claude-evaluator + downstream consumers can use this directly without
@@ -769,7 +808,7 @@ export class DiagnosticPipeline {
         clarifyingQuestions: clarifierQuestions,
         lowConfidenceWarning,
         pipelineMetadata: {
-          pipelineVersion: '27.0.0',
+          pipelineVersion: '28.0.0',
           stages,
           totalDurationMs: Date.now() - pipelineStart,
           totalTokensUsed: budgetSummary.totalTokens,

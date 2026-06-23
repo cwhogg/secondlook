@@ -108,6 +108,8 @@ YOUR DIAGNOSTIC APPROACH:
 
 CRITICAL: You are NOT limited to the diseases shown in the knowledge base profiles below. Our knowledge base covers ${getDiseaseCount()} profiled rare diseases. If the patient's presentation suggests a condition NOT in the provided profiles, you MUST still propose it. A disease being absent from our database says nothing about its likelihood — it only means we lack structured criteria for it. Use your clinical training and the frameworks above for any condition you consider relevant.
 
+NON-KB REQUIREMENT (v28): When the patient's presentation plausibly fits a rare condition that is NOT in the KB profiles you were shown, include at least one such hypothesis in your differential. Do not silently exclude a candidate just because it is missing from the provided profiles. We are explicitly auditing for over-anchoring on the KB; an empty non-KB tail indicates you stopped reaching beyond what you were shown.
+
 OUTPUT RULES:
 - Generate 3-7 diagnostic hypotheses ranked by likelihood
 - Each hypothesis MUST include specific evidence mapping

@@ -564,13 +564,22 @@ ${patientCase.excludedFindings.map((f) => `- ${f}`).join('\n')}
 These are negative evidence with diagnostic weight, not missing data. When evaluating each hypothesis, check whether any of the disease's pathognomonic or common features appears in this excluded list — if so, that is a strong contradiction. Reflect it in the contradictions array AND lower the criteriaFulfillment if a required/major criterion is on the excluded list.`
       : '';
 
+    const confirmedSection = patientCase.confirmedFindings && patientCase.confirmedFindings.length > 0
+      ? `
+
+EXPLICITLY CONFIRMED FINDINGS (verified / present / patient-confirmed during clarification):
+${patientCase.confirmedFindings.map((f) => `- ${f}`).join('\n')}
+
+These are positive evidence with diagnostic weight, not background symptom restatement. The patient or source explicitly confirmed these findings in response to targeted diagnostic questioning. When evaluating each hypothesis, check whether any of the disease's pathognomonic or common features appears in this confirmed list — if so, that is strong support. Reflect it in the strengthAssessment AND raise the criteriaFulfillment if a required/major criterion is on the confirmed list.`
+      : '';
+
     const labsBlock = (() => {
       const { formatLabsForPrompt } = require('../pipeline/lab-utils');
       return formatLabsForPrompt(patientCase.labResults);
     })();
 
     return `PATIENT SYMPTOMS:
-${symptomSummary}${excludedSection}
+${symptomSummary}${excludedSection}${confirmedSection}
 
 Demographics: Age ${patientCase.demographics.age}, ${patientCase.demographics.sex}
 ${labsBlock ? '\n' + labsBlock + '\n' : ''}

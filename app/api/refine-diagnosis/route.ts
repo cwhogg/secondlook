@@ -222,32 +222,40 @@ export async function POST(request: NextRequest) {
   try {
     const augmentedPool = applyAnswersToHypotheses(originalHypotheses, questions, answers);
 
-    // Plumb each "no" answer into patientCase.excludedFindings so the
-    // evaluator's EXPLICITLY EXCLUDED FINDINGS reasoning channel triggers
-    // ("These are negative evidence with diagnostic weight, not missing
-    // data"). The per-hypothesis contradictoryEvidence channel only fires
-    // for diagnoses listed in q.affectsDiagnoses, which silently misses
-    // diagnoses the question didn't enumerate; excludedFindings applies to
-    // every diagnosis. General-purpose: every denied phrase becomes
-    // diagnostic-weight negative evidence for the whole differential.
+    // Plumb each clarification answer into the patient case's parallel
+    // negative/positive findings channels so the evaluator's EXPLICITLY
+    // EXCLUDED FINDINGS and EXPLICITLY CONFIRMED FINDINGS sections both
+    // fire. The per-hypothesis contradictoryEvidence / supportingEvidence
+    // channels only fire for diagnoses listed in q.affectsDiagnoses, which
+    // silently misses diagnoses the question didn't enumerate. The
+    // case-level findings channels apply to every diagnosis equally.
+    // General-purpose: every confirmed/denied phrase becomes
+    // diagnostic-weight evidence for the whole differential.
     const deniedPhrases: string[] = [];
+    const confirmedPhrases: string[] = [];
     const questionById = new Map(questions.map((q) => [q.id, q]));
     for (const ans of answers) {
-      if (ans.answer !== 'no') continue;
       const q = questionById.get(ans.questionId);
       if (!q) continue;
       const phrase = q.question.replace(/[?]+\s*$/, '').trim();
-      if (phrase) deniedPhrases.push(phrase);
+      if (!phrase) continue;
+      if (ans.answer === 'no') deniedPhrases.push(phrase);
+      else if (ans.answer === 'yes') confirmedPhrases.push(phrase);
     }
-    const augmentedPatientCase = deniedPhrases.length > 0
-      ? {
-          ...patientCase,
-          excludedFindings: [
-            ...((patientCase as any).excludedFindings || []),
-            ...deniedPhrases,
-          ],
-        }
-      : patientCase;
+    const augmentedPatientCase =
+      deniedPhrases.length > 0 || confirmedPhrases.length > 0
+        ? {
+            ...patientCase,
+            excludedFindings: [
+              ...((patientCase as any).excludedFindings || []),
+              ...deniedPhrases,
+            ],
+            confirmedFindings: [
+              ...((patientCase as any).confirmedFindings || []),
+              ...confirmedPhrases,
+            ],
+          }
+        : patientCase;
 
     // Build the AgentInput shapes the eval + synth expect. We mock a single
     // AgentOutput carrying the augmented pool — the evaluator dedupes

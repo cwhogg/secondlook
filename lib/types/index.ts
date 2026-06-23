@@ -103,6 +103,12 @@ export interface PatientCase {
   // Clinical findings the source explicitly marked absent/denied/ruled-out.
   // Used as negative evidence by retrieval and downstream agents.
   excludedFindings?: string[];
+  // Clinical findings the source explicitly confirmed (e.g. a patient
+  // answered "yes" to a targeted clarifying question). Treated as positive
+  // evidence with diagnostic weight — analogous to `excludedFindings` but on
+  // the supporting side. Populated by the refinement flow; empty on the
+  // initial analysis pass.
+  confirmedFindings?: string[];
   // User-uploaded structured lab values; populated from PDF/image uploads
   // on step-2 after the user reviews and confirms the extraction.
   labResults?: LabResult[];

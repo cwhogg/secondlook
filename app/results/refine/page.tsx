@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import { RefineLoading } from "@/components/refine-loading"
 import {
   ArrowLeft,
   ArrowRight,
@@ -93,6 +94,7 @@ export default function RefinePage() {
   const [loading, setLoading] = useState(true)
   const [answers, setAnswers] = useState<Record<string, AnswerValue>>({})
   const [refining, setRefining] = useState(false)
+  const [refineStartedAt, setRefineStartedAt] = useState<number | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [refined, setRefined] = useState<StoredAnalysis | null>(null)
 
@@ -119,6 +121,7 @@ export default function RefinePage() {
     if (!analysis || !patientCase) return
     setError(null)
     setRefining(true)
+    setRefineStartedAt(Date.now())
 
     const payloadAnswers = Object.entries(answers).map(([questionId, answer]) => ({
       questionId,
@@ -217,7 +220,11 @@ export default function RefinePage() {
           </p>
         </div>
 
-        {!inResultsView && (
+        {!inResultsView && refining && refineStartedAt && (
+          <RefineLoading startedAt={refineStartedAt} done={false} />
+        )}
+
+        {!inResultsView && !refining && (
           <>
             <section className="space-y-4">
               {questions.map((q, idx) => {

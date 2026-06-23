@@ -475,10 +475,10 @@ export default function HomePage() {
                 head-to-head
               </div>
               <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#1a1a1a] mb-1">
-                +8.6<span className="text-base text-[#5a5a5a] font-sans ml-1">pp</span>
+                +20.8<span className="text-base text-[#5a5a5a] font-sans ml-0.5">%</span>
               </div>
               <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                Top-3 over <strong>OpenAI o3</strong> single-shot on identical cases — same patient, same grader.
+                More Top-3 accuracy than <strong>OpenAI o3</strong> single-shot on identical cases — same patient, same grader.
               </div>
             </div>
 
@@ -487,10 +487,10 @@ export default function HomePage() {
                 head-to-head
               </div>
               <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#1a1a1a] mb-1">
-                +6.7<span className="text-base text-[#5a5a5a] font-sans ml-1">pp</span>
+                +15.5<span className="text-base text-[#5a5a5a] font-sans ml-0.5">%</span>
               </div>
               <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                Top-3 over <strong>Claude Opus 4.7</strong> single-shot on identical cases — same patient, same grader.
+                More Top-3 accuracy than <strong>Claude Opus 4.7</strong> single-shot on identical cases — same patient, same grader.
               </div>
             </div>
 
@@ -499,10 +499,10 @@ export default function HomePage() {
                 vs. prior LLM SOTA
               </div>
               <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#1a1a1a] mb-1">
-                +13.1<span className="text-base text-[#5a5a5a] font-sans ml-1">pp</span>
+                +55.5<span className="text-base text-[#5a5a5a] font-sans ml-0.5">%</span>
               </div>
               <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                Top-1 over <strong>o1-preview</strong> from the published Phenopacket2Prompt evaluation.
+                More Top-1 accuracy than <strong>o1-preview</strong> from the published Phenopacket2Prompt evaluation.
               </div>
             </div>
           </div>

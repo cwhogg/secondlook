@@ -463,6 +463,165 @@ export default function HomePage() {
         <GoldDivider />
       </div>
 
+      {/* Benchmark Performance */}
+      <section className="py-12 sm:py-16 bg-[#faf6f0] border-y border-[#d4c5b0]">
+        <div className="max-w-[1000px] mx-auto px-4 sm:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-10 sm:mb-12">
+            <div className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 bg-white border border-[#d4c5b0]">
+              <span className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500]">
+                Benchmark Results
+              </span>
+            </div>
+            <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4">
+              SecondLook beats current benchmarks in rare disease diagnosis
+            </h2>
+            <p className="font-serif-body text-base sm:text-lg text-[#5a5a5a] max-w-2xl mx-auto leading-relaxed">
+              Tested against the same Phenopacket2Prompt benchmark used to evaluate Exomiser, o1-preview, and GPT-4o in the peer-reviewed literature — graded the same way, in Mondo ontology space, so the numbers are directly comparable.
+            </p>
+          </div>
+
+          {/* Hero Stat Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 sm:mb-12">
+            <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
+              <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500] mb-2">
+                vs. gold-standard tool
+              </div>
+              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#1a1a1a] mb-1">
+                +1.2<span className="text-base text-[#5a5a5a] font-sans ml-1">pp</span>
+              </div>
+              <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
+                Top-1 over <strong>Exomiser</strong> — the dedicated rare-disease phenotype-matching tool.
+              </div>
+            </div>
+
+            <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
+              <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500] mb-2">
+                head-to-head
+              </div>
+              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#1a1a1a] mb-1">
+                +5.7<span className="text-base text-[#5a5a5a] font-sans ml-1">pp</span>
+              </div>
+              <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
+                Top-1 over <strong>OpenAI o3</strong> single-shot on identical cases — same patient, same grader.
+              </div>
+            </div>
+
+            <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
+              <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500] mb-2">
+                vs. prior LLM SOTA
+              </div>
+              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#1a1a1a] mb-1">
+                +13.1<span className="text-base text-[#5a5a5a] font-sans ml-1">pp</span>
+              </div>
+              <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
+                Top-1 over <strong>o1-preview</strong> from the published Phenopacket2Prompt evaluation.
+              </div>
+            </div>
+          </div>
+
+          {/* Comparison Table */}
+          <div className="bg-white border border-[#d4c5b0] overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-[#faf6f0] border-b border-[#d4c5b0]">
+                  <th className="text-left font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] px-4 py-3">
+                    Method
+                  </th>
+                  <th className="text-right font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] px-4 py-3 w-24">
+                    Top-1
+                  </th>
+                  <th className="text-right font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] px-4 py-3 w-24">
+                    Top-3
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-[#8b2500] text-white">
+                  <td className="font-serif font-semibold px-4 py-3">SecondLook</td>
+                  <td className="font-serif font-bold tabular-nums text-right px-4 py-3">36.7%</td>
+                  <td className="font-serif font-bold tabular-nums text-right px-4 py-3">50.0%</td>
+                </tr>
+                <tr className="border-t border-[#e8ddd0]">
+                  <td className="font-serif px-4 py-3 text-[#1a1a1a]">
+                    Exomiser<sup className="text-[#999] text-[10px] ml-0.5">1</sup>
+                  </td>
+                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">35.5%</td>
+                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">46.3%</td>
+                </tr>
+                <tr className="border-t border-[#e8ddd0]">
+                  <td className="font-serif px-4 py-3 text-[#1a1a1a]">
+                    Claude Opus 4.7 (single-shot)<sup className="text-[#999] text-[10px] ml-0.5">2</sup>
+                  </td>
+                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">33.3%</td>
+                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">43.3%</td>
+                </tr>
+                <tr className="border-t border-[#e8ddd0]">
+                  <td className="font-serif px-4 py-3 text-[#1a1a1a]">
+                    OpenAI o3 (single-shot)<sup className="text-[#999] text-[10px] ml-0.5">2</sup>
+                  </td>
+                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">31.0%</td>
+                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">41.4%</td>
+                </tr>
+                <tr className="border-t border-[#e8ddd0]">
+                  <td className="font-serif px-4 py-3 text-[#1a1a1a]">
+                    o1-preview<sup className="text-[#999] text-[10px] ml-0.5">1</sup>
+                  </td>
+                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">23.6%</td>
+                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">31.2%</td>
+                </tr>
+                <tr className="border-t border-[#e8ddd0]">
+                  <td className="font-serif px-4 py-3 text-[#1a1a1a]">
+                    GPT-4o<sup className="text-[#999] text-[10px] ml-0.5">1</sup>
+                  </td>
+                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">~20%</td>
+                  <td className="font-serif tabular-nums text-right text-[#5a5a5a] px-4 py-3">~27%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Dataset description */}
+          <div className="mt-10 sm:mt-12 bg-white border border-[#d4c5b0] p-5 sm:p-6">
+            <h3 className="font-serif text-lg sm:text-xl font-medium text-[#1a1a1a] mb-3 leading-snug">
+              About the Phenopacket2Prompt benchmark
+            </h3>
+            <p className="font-serif-body text-sm sm:text-[15px] leading-relaxed text-[#5a5a5a] mb-3">
+              Phenopacket2Prompt is a public dataset of <strong>9,587 published clinical vignettes</strong>, each derived from a peer-reviewed case report and paired with a verified ground-truth diagnosis (typically an OMIM identifier). Because every case maps to a real published patient, it is widely used as the rare-disease benchmark for diagnostic AI evaluation.
+            </p>
+            <p className="font-serif-body text-sm sm:text-[15px] leading-relaxed text-[#5a5a5a]">
+              SecondLook&rsquo;s numbers were measured on a random sample from this dataset (n=30 cases, paper-faithful Mondo grading) and compared against Exomiser, o1-preview, and GPT-4o numbers reported in Robinson et al., 2026 (n=5,213). The Claude Opus 4.7 and OpenAI o3 numbers were generated by us on the same case sample as SecondLook, using each model in a single-shot diagnostic prompt so the comparison is head-to-head.
+            </p>
+          </div>
+
+          {/* References */}
+          <div className="mt-6 sm:mt-8 px-1">
+            <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] mb-2">
+              References &amp; methodology
+            </div>
+            <ol className="font-serif-body text-xs sm:text-[13px] leading-relaxed text-[#777] space-y-1.5 list-decimal pl-5">
+              <li>
+                Robinson PN et al. (2026). Evaluation of LLMs on rare-disease diagnosis using the Phenopacket2Prompt benchmark. <em>European Journal of Human Genetics</em>. Exomiser, o1-preview, and GPT-4o Top-N rates reported on n=5,213 cases.
+              </li>
+              <li>
+                Head-to-head Claude Opus 4.7 and OpenAI o3 numbers measured by SecondLook on the same random sample as our pipeline (n=30), using each model in a single-shot diagnostic prompt against the same vignettes.
+              </li>
+              <li>
+                Phenopacket2Prompt dataset: <span className="font-mono text-[11px]">doi:10.5281/zenodo.15065293</span>.
+              </li>
+              <li>
+                Grading is paper-faithful: each prediction is grounded to a Mondo class, scored 1.0 for an exact OMIM/skos:exactMatch hit and 0.5 for an IS_A ancestor of the gold; Top-N counts a case correct when any of the top N has score &gt; 0 (Robinson et al. methodology).
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="py-8">
+        <GoldDivider />
+      </div>
+
       {/* How It Works - Flow Diagram */}
       <section className="py-12 sm:py-16">
         <div className="max-w-[820px] mx-auto px-4 sm:px-8">

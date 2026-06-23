@@ -7,7 +7,6 @@ import { RefineLoading } from "@/components/refine-loading"
 import {
   ArrowLeft,
   ArrowRight,
-  Download,
   Sparkles,
   AlertTriangle,
   CheckCircle,
@@ -327,15 +326,6 @@ export default function RefinePage() {
             <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
             <span className="hidden sm:inline">Back to analysis</span>
             <span className="sm:hidden">Back</span>
-          </button>
-
-          <button
-            onClick={() => router.push("/results/print")}
-            title="Download PDF report"
-            aria-label="Download PDF report"
-            className="flex items-center justify-center p-2 sm:p-3 border-2 border-gray-300 text-gray-700 hover:border-[#8b2500] hover:text-[#8b2500] transition-all duration-200"
-          >
-            <Download className="h-5 w-5" />
           </button>
 
           <button

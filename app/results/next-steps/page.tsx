@@ -356,20 +356,11 @@ export default function NextStepsPage() {
 
           <button
             onClick={() => router.push("/results/print")}
-            title="Download PDF report"
-            aria-label="Download PDF report"
-            className="flex items-center justify-center p-2 sm:p-3 border-2 border-gray-300 text-gray-700 hover:border-[#8b2500] hover:text-[#8b2500] transition-all duration-200"
-          >
-            <Download className="h-5 w-5" />
-          </button>
-
-          <button
-            onClick={() => startNewAnalysis(router)}
             className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-[#8b2500] text-white hover:bg-[#6d1d00] transition-all duration-200 font-medium text-sm sm:text-base"
           >
-            <span className="hidden sm:inline">Start new analysis</span>
-            <span className="sm:hidden">New</span>
-            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+            <Download className="h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="hidden sm:inline">Download Final Report</span>
+            <span className="sm:hidden">Report</span>
           </button>
         </div>
       </div>

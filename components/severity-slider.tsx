@@ -15,10 +15,13 @@ export function SeveritySlider({ value, onChange }: SeveritySliderProps) {
     return "Severe impact - most activities are very difficult"
   }
 
+  // Brand-aligned warm gradient: sage olive (mild) -> brand gold (moderate)
+  // -> brand red (severe). Replaces the original bright green/yellow/red
+  // semantic palette which clashed with the cream/red brand.
   const getSeverityColor = (value: number) => {
-    if (value <= 3) return "text-green-600"
-    if (value <= 6) return "text-yellow-500"
-    return "text-red-600"
+    if (value <= 3) return "text-[#6b7d4a]" // muted sage olive
+    if (value <= 6) return "text-[#6d4c30]" // warm brand brown — more legible than raw gold
+    return "text-[#8b2500]" // brand red
   }
 
   return (
@@ -34,9 +37,9 @@ export function SeveritySlider({ value, onChange }: SeveritySliderProps) {
           onMouseUp={() => setIsDragging(false)}
           onTouchStart={() => setIsDragging(true)}
           onTouchEnd={() => setIsDragging(false)}
-          className="w-full h-3 bg-gray-200 rounded-none appearance-none cursor-pointer slider-thumb"
+          className="w-full h-3 bg-[#e8ddd0] rounded-none appearance-none cursor-pointer slider-thumb"
           style={{
-            background: `linear-gradient(to right, #22c55e 0%, #22c55e 30%, #eab308 30%, #eab308 60%, #ef4444 60%, #ef4444 100%)`,
+            background: `linear-gradient(to right, #9aac6e 0%, #9aac6e 30%, #c9a96e 30%, #c9a96e 60%, #8b2500 60%, #8b2500 100%)`,
           }}
         />
 
@@ -47,13 +50,13 @@ export function SeveritySlider({ value, onChange }: SeveritySliderProps) {
           }`}
           style={{ left: `${((value - 1) / 9) * 100}%` }}
         >
-          <div className="bg-gray-900 text-white px-3 py-1 rounded-none text-sm font-semibold">{value}</div>
-          <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900 mx-auto"></div>
+          <div className="bg-[#1a1a1a] text-white px-3 py-1 rounded-none text-sm font-semibold">{value}</div>
+          <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#1a1a1a] mx-auto"></div>
         </div>
       </div>
 
       {/* Labels */}
-      <div className="flex justify-between text-sm text-gray-500">
+      <div className="flex justify-between text-sm text-[#6d4c30]">
         <span>1 - Minimal</span>
         <span>5 - Moderate</span>
         <span>10 - Extreme</span>

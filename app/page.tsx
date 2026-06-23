@@ -475,10 +475,10 @@ export default function HomePage() {
                 head-to-head
               </div>
               <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#1a1a1a] mb-1">
-                +5.7<span className="text-base text-[#5a5a5a] font-sans ml-1">pp</span>
+                +8.6<span className="text-base text-[#5a5a5a] font-sans ml-1">pp</span>
               </div>
               <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                Top-1 over <strong>OpenAI o3</strong> single-shot on identical cases — same patient, same grader.
+                Top-3 over <strong>OpenAI o3</strong> single-shot on identical cases — same patient, same grader.
               </div>
             </div>
 
@@ -487,10 +487,10 @@ export default function HomePage() {
                 head-to-head
               </div>
               <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#1a1a1a] mb-1">
-                +3.4<span className="text-base text-[#5a5a5a] font-sans ml-1">pp</span>
+                +6.7<span className="text-base text-[#5a5a5a] font-sans ml-1">pp</span>
               </div>
               <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                Top-1 over <strong>Claude Opus 4.7</strong> single-shot on identical cases — same patient, same grader.
+                Top-3 over <strong>Claude Opus 4.7</strong> single-shot on identical cases — same patient, same grader.
               </div>
             </div>
 

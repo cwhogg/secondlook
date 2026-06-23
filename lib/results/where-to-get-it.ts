@@ -50,6 +50,21 @@ const ELECTRODIAGNOSTIC_HINTS = [
   "qsart",
 ]
 
+/**
+ * Sort tests from most-to-least urgent: urgent -> routine (default) ->
+ * when_available. Used by both /results/next-steps and /results/print so
+ * patients see the things to act on first regardless of the test's
+ * category. JavaScript's sort is stable in modern engines, so original
+ * relative order is preserved within each urgency tier.
+ */
+export function urgencyRank(urgency?: string | null): number {
+  const u = (urgency || "").toLowerCase().trim()
+  if (u === "urgent") return 0
+  if (u === "when_available" || u === "when available") return 2
+  // routine, scheduled, undefined, or anything else -> middle tier
+  return 1
+}
+
 export function normalizeCategory(testType: string, testName?: string): TestCategory {
   const t = (testType || "").toLowerCase()
   const n = (testName || "").toLowerCase()

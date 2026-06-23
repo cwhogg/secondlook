@@ -22,9 +22,9 @@ import {
 import { MedicalButton } from "@/components/medical-button"
 import {
   CATEGORY_LABELS,
-  CATEGORY_ORDER,
   getWhereToGetIt,
   normalizeCategory,
+  urgencyRank,
   type TestCategory,
 } from "@/lib/results/where-to-get-it"
 import { startNewAnalysis } from "@/lib/results/start-new-analysis"
@@ -117,18 +117,12 @@ export default function NextStepsPage() {
   const followUpTiming = results.nextSteps?.followUpTiming ?? ""
   const redFlags = results.nextSteps?.redFlags ?? []
 
-  // Group tests by normalized category, preserve relative order within group
-  const grouped: Record<TestCategory, RecommendedTest[]> = {
-    laboratory: [],
-    genetic_testing: [],
-    imaging: [],
-    electrodiagnostic: [],
-    specialist_evaluate: [],
-    other: [],
-  }
-  for (const test of tests) {
-    grouped[normalizeCategory(test.testType, test.testName)].push(test)
-  }
+  // Sort tests by urgency tier (urgent -> routine -> when_available).
+  // Patients should see what's time-sensitive first, regardless of category.
+  // Category icon/label is still shown per card, so this only changes order.
+  const sortedTests = [...tests].sort(
+    (a, b) => urgencyRank(a.urgency) - urgencyRank(b.urgency),
+  )
 
   const hasAnyTests = tests.length > 0
   const hasUrgent =
@@ -173,14 +167,14 @@ export default function NextStepsPage() {
             </p>
 
             <div className="space-y-5">
-              {CATEGORY_ORDER.flatMap((category) =>
-                grouped[category].map((test, idx) => {
-                  const where = getWhereToGetIt(normalizeCategory(test.testType, test.testName), test.testName)
-                  const urgencyBadge = getUrgencyBadge(test.urgency)
-                  const Icon = CATEGORY_ICON[category]
-                  const categoryLabel = CATEGORY_LABELS[category]
+              {sortedTests.map((test, idx) => {
+                const category = normalizeCategory(test.testType, test.testName)
+                const where = getWhereToGetIt(category, test.testName)
+                const urgencyBadge = getUrgencyBadge(test.urgency)
+                const Icon = CATEGORY_ICON[category]
+                const categoryLabel = CATEGORY_LABELS[category]
 
-                  return (
+                return (
                     <article
                       key={`${category}-${idx}`}
                       className="bg-white border border-[#d4c5b0] p-4 sm:p-6"
@@ -255,8 +249,7 @@ export default function NextStepsPage() {
                       </div>
                     </article>
                   )
-                }),
-              )}
+                })}
             </div>
           </section>
         ) : (

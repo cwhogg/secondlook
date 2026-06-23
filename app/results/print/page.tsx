@@ -4,10 +4,9 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import {
   CATEGORY_LABELS,
-  CATEGORY_ORDER,
   getWhereToGetIt,
   normalizeCategory,
-  type TestCategory,
+  urgencyRank,
 } from "@/lib/results/where-to-get-it"
 import { startNewAnalysis } from "@/lib/results/start-new-analysis"
 
@@ -169,15 +168,12 @@ export default function PrintReportPage() {
 
   const diagnoses = (analysis.differentialDiagnoses || []).slice(0, 5)
   const tests = analysis.recommendedTesting || []
-  const grouped: Record<TestCategory, RecommendedTest[]> = {
-    laboratory: [],
-    genetic_testing: [],
-    imaging: [],
-    electrodiagnostic: [],
-    specialist_evaluate: [],
-    other: [],
-  }
-  for (const t of tests) grouped[normalizeCategory(t.testType, t.testName)].push(t)
+  // Order by urgency tier (urgent -> routine -> when_available). The report
+  // mirrors the next-steps page so the patient and their clinician read the
+  // time-sensitive tests first.
+  const sortedTests = [...tests].sort(
+    (a, b) => urgencyRank(a.urgency) - urgencyRank(b.urgency),
+  )
 
   const next = analysis.nextSteps || {}
   const redFlags = next.redFlags || []
@@ -532,10 +528,10 @@ export default function PrintReportPage() {
               Each test includes what it will tell you, whether a doctor order is required, and where to get it.
             </p>
             <div className="space-y-3">
-              {CATEGORY_ORDER.flatMap((cat) =>
-                grouped[cat].map((test, idx) => {
-                  const where = getWhereToGetIt(normalizeCategory(test.testType, test.testName), test.testName)
-                  return (
+              {sortedTests.map((test, idx) => {
+                const cat = normalizeCategory(test.testType, test.testName)
+                const where = getWhereToGetIt(cat, test.testName)
+                return (
                     <article
                       key={`${cat}-${idx}`}
                       className="avoid-break border border-gray-200 p-3"
@@ -595,8 +591,7 @@ export default function PrintReportPage() {
                       </div>
                     </article>
                   )
-                }),
-              )}
+                })}
             </div>
           </section>
         )}

@@ -143,7 +143,7 @@ const STAGE_DURATION_HINT: Record<string, string> = {
   "specialist-selection": "Instant — deterministic selection from the triage ranking.",
   specialists: "Typically 1–3 minutes — selected specialists reasoning in parallel.",
   evidence: "Typically 30–60 seconds.",
-  synthesis: "Typically 30–90 seconds.",
+  synthesis: "Typically 2–3 min.",
   report: "Typically 10–20 seconds.",
 }
 

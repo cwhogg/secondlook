@@ -412,57 +412,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="py-12 sm:py-[4.5rem]">
-        <div className="max-w-[1140px] mx-auto px-4 sm:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-            {/* Feature 1 */}
-            <div className="py-6 md:px-8 md:border-r border-[#d4c5b0] first:pl-0 border-b md:border-b-0">
-              <div className="w-12 h-12 bg-[#faf6f0] flex items-center justify-center mb-6">
-                <Shield className="h-6 w-6 text-[#8b2500]" />
-              </div>
-              <h3 className="font-serif text-xl font-medium text-[#1a1a1a] mb-3 leading-snug">
-                Medical-Grade Security
-              </h3>
-              <p className="font-serif-body text-sm leading-relaxed text-[#5a5a5a]">
-                Your health information is protected with the same security standards used by hospitals and medical institutions.
-              </p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="py-6 md:px-8 md:border-r border-[#d4c5b0] border-b md:border-b-0">
-              <div className="w-12 h-12 bg-[#faf6f0] flex items-center justify-center mb-6">
-                <Zap className="h-6 w-6 text-[#c9a96e]" />
-              </div>
-              <h3 className="font-serif text-xl font-medium text-[#1a1a1a] mb-3 leading-snug">
-                Fast Analysis
-              </h3>
-              <p className="font-serif-body text-sm leading-relaxed text-[#5a5a5a]">
-                Get comprehensive health insights in under 10 minutes. No waiting for appointments or referrals.
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="py-6 md:px-8 md:pl-8">
-              <div className="w-12 h-12 bg-[#faf6f0] flex items-center justify-center mb-6">
-                <Heart className="h-6 w-6 text-[#8b2500]" />
-              </div>
-              <h3 className="font-serif text-xl font-medium text-[#1a1a1a] mb-3 leading-snug">
-                Doctor-Reviewed AI
-              </h3>
-              <p className="font-serif-body text-sm leading-relaxed text-[#5a5a5a]">
-                Our AI is trained on peer-reviewed medical literature and overseen by licensed healthcare professionals.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="py-8">
-        <GoldDivider />
-      </div>
-
       {/* Benchmark Performance */}
       <section className="py-12 sm:py-16 bg-[#faf6f0] border-y border-[#d4c5b0]">
         <div className="max-w-[1000px] mx-auto px-4 sm:px-8">

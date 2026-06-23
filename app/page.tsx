@@ -443,7 +443,7 @@ export default function HomePage() {
 
           {/* Flow diagram */}
           <div className="flex flex-col items-center">
-            <FlowStep step={1} icon={Upload} title="Upload your story and data" />
+            <FlowStep step={1} icon={Upload} title="Tell us your medical story and upload relevant history and data" />
             <FlowStep step={2} icon={Search} title="SecondLook extracts clinical concepts" />
             <FlowStep step={3} icon={Database} title="Map symptoms and concepts to candidates in our 9k+ rare disease knowledge base" />
             <FlowStep step={4} icon={UsersRound} title="Activate 5 most relevant AI specialist agents in parallel to select most likely diagnoses from profile" />

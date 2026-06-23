@@ -345,12 +345,12 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section id="main-content" className="py-12 sm:py-20 md:py-[5rem]">
-        <div className="max-w-[1140px] mx-auto px-4 sm:px-8 grid grid-cols-1 md:grid-cols-[1fr_0.65fr] gap-8 sm:gap-12 items-center">
+      <section id="main-content" className="py-6 sm:py-20 md:py-[5rem]">
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-8 grid grid-cols-1 md:grid-cols-[1fr_0.65fr] gap-4 sm:gap-12 items-center">
           {/* Text Content */}
           <div className="max-w-[600px]">
             {/* Beta Test Badge */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-6 sm:mb-8">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-3 sm:mb-8">
               <div className="flex items-center space-x-1.5 sm:space-x-2 border-2 border-[#8b2500] bg-[#8b2500] px-3 sm:px-4 py-1.5 sm:py-2">
                 <FlaskConical className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
                 <span className="font-sans text-[10px] sm:text-xs font-semibold text-white uppercase tracking-wider">
@@ -360,12 +360,12 @@ export default function HomePage() {
             </div>
 
             {/* Headline */}
-            <h1 className="font-serif text-[2rem] sm:text-[2.6rem] md:text-[3.4rem] font-normal leading-[1.12] text-[#1a1a1a] mb-5 sm:mb-7 tracking-[-0.01em]">
+            <h1 className="font-serif text-[2rem] sm:text-[2.6rem] md:text-[3.4rem] font-normal leading-[1.12] text-[#1a1a1a] mb-3 sm:mb-7 tracking-[-0.01em]">
               Find Your Rare Diagnosis <em className="text-[#8b2500]">in Minutes.</em>
             </h1>
 
             {/* Subline */}
-            <p className="font-serif-body text-lg leading-[1.75] text-[#5a5a5a] mb-10 max-w-[480px]">
+            <p className="font-serif-body text-base sm:text-lg leading-[1.5] sm:leading-[1.75] text-[#5a5a5a] mb-5 sm:mb-10 max-w-[480px]">
               Our AI analyzes your symptoms against thousands of conditions, focusing on rare and complex diagnoses that might be overlooked by general practitioners.
             </p>
 
@@ -379,14 +379,17 @@ export default function HomePage() {
               <ArrowRight className="h-4 w-4" />
             </Link>
 
-            <p className="mt-5 font-sans text-[0.72rem] text-[#999] tracking-[0.02em]">
+            <p className="mt-3 sm:mt-5 font-sans text-[0.72rem] text-[#999] tracking-[0.02em]">
               Free during early access
             </p>
           </div>
 
-          {/* DNA Helix Decoration */}
+          {/* DNA Helix Decoration. Mobile-only: shrunk to 140px max so the
+              illustration + headline + subline + CTA all fit on the first
+              viewport above the fold on a 390px-wide phone. Desktop layout
+              keeps the larger illustration at md breakpoint. */}
           <div className="flex justify-center items-center order-first md:order-last">
-            <div className="max-w-[240px] sm:max-w-[380px]">
+            <div className="max-w-[140px] sm:max-w-[380px]">
               <DNAHelix />
             </div>
           </div>

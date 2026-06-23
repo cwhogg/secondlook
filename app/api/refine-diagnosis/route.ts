@@ -222,6 +222,33 @@ export async function POST(request: NextRequest) {
   try {
     const augmentedPool = applyAnswersToHypotheses(originalHypotheses, questions, answers);
 
+    // Plumb each "no" answer into patientCase.excludedFindings so the
+    // evaluator's EXPLICITLY EXCLUDED FINDINGS reasoning channel triggers
+    // ("These are negative evidence with diagnostic weight, not missing
+    // data"). The per-hypothesis contradictoryEvidence channel only fires
+    // for diagnoses listed in q.affectsDiagnoses, which silently misses
+    // diagnoses the question didn't enumerate; excludedFindings applies to
+    // every diagnosis. General-purpose: every denied phrase becomes
+    // diagnostic-weight negative evidence for the whole differential.
+    const deniedPhrases: string[] = [];
+    const questionById = new Map(questions.map((q) => [q.id, q]));
+    for (const ans of answers) {
+      if (ans.answer !== 'no') continue;
+      const q = questionById.get(ans.questionId);
+      if (!q) continue;
+      const phrase = q.question.replace(/[?]+\s*$/, '').trim();
+      if (phrase) deniedPhrases.push(phrase);
+    }
+    const augmentedPatientCase = deniedPhrases.length > 0
+      ? {
+          ...patientCase,
+          excludedFindings: [
+            ...((patientCase as any).excludedFindings || []),
+            ...deniedPhrases,
+          ],
+        }
+      : patientCase;
+
     // Build the AgentInput shapes the eval + synth expect. We mock a single
     // AgentOutput carrying the augmented pool — the evaluator dedupes
     // defensively and treats it as the merged specialist pool.
@@ -236,7 +263,7 @@ export async function POST(request: NextRequest) {
     };
 
     const evalInput: AgentInput = {
-      patientCase: patientCase as any,
+      patientCase: augmentedPatientCase as any,
       previousStageOutput: [mockSpecialistOutput],
       candidateDiseases: [],
     };
@@ -245,7 +272,7 @@ export async function POST(request: NextRequest) {
     const evaluationResult = await evaluator.execute(evalInput);
 
     const synthInput: AgentInput = {
-      patientCase: patientCase as any,
+      patientCase: augmentedPatientCase as any,
       previousStageOutput: {
         specialistResults: [mockSpecialistOutput],
         evaluationResult,
@@ -256,6 +283,27 @@ export async function POST(request: NextRequest) {
     const synthResult = await synth.execute(synthInput);
 
     const refinedHypotheses: DiagnosisHypothesis[] = synthResult.hypotheses;
+
+    // Run the narrative merger on the top-10 so refined hypotheses get a
+    // single unified clinical narrative instead of the role-prefixed
+    // "geneticist: ... general-internist: ... neurologist: ..."
+    // concatenation that the synth produces. Matches the main pipeline's
+    // v28.1 Stage 8.6 behavior. Fail-soft — falls back to role-prefixed
+    // text if the merger errors.
+    try {
+      const { mergeNarratives, applyNarrativesInPlace } = await import('@/lib/agents/narrative-merger');
+      const topForMerger = refinedHypotheses.slice(0, 10);
+      if (topForMerger.length > 0) {
+        const mergerResult = await mergeNarratives(topForMerger);
+        applyNarrativesInPlace(topForMerger, mergerResult.narratives);
+      }
+    } catch (mergerErr: any) {
+      console.warn(
+        `[${requestId}] Narrative merger failed in refinement; falling back to role-prefixed reasoning:`,
+        (mergerErr?.message || 'unknown').slice(0, 200),
+      );
+    }
+
     const deltas = buildDeltas(originalHypotheses, refinedHypotheses);
 
     // Build the refined analysis result. Preserve the parts of the original

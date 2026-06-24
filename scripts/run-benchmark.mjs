@@ -604,19 +604,26 @@ function printStats(results) {
   console.log(`  ${'Top-5'.padEnd(15)} ${(top5 + '/' + n).padEnd(10)} ${(100 * top5 / n).toFixed(1)}%`);
   console.log(`  ${'Top-10'.padEnd(15)} ${(top10 + '/' + n).padEnd(10)} ${(100 * top10 / n).toFixed(1)}%`);
 
-  // Clinical accuracy (exact + variant) and Family accuracy (exact + variant + family)
+  // Tier breakdown. The grader vocabulary has no variant-top1 or
+  // family-top1 — variant + family matches are categorized at top-3 / top-5
+  // resolution regardless of where they actually rank. So "Exact Top-1" is
+  // the only Top-1 metric that comes from the LLM tier judgment; "Top-1"
+  // at the top of this report comes from the reconciled string-matcher OR
+  // LLM rank, which is a broader signal.
   const exactOrVariantTiers = new Set(['exact-top1', 'exact-top3', 'exact-top5', 'variant-top3', 'variant-top5']);
   const familyTiers = new Set([...exactOrVariantTiers, 'family-top3', 'family-top5']);
 
-  const clinTop1 = completed.filter(r => r.tier === 'exact-top1').length;
+  const exactTop1 = completed.filter(r => r.tier === 'exact-top1').length;
   const clinTop3 = completed.filter(r => exactOrVariantTiers.has(r.tier) && (r.correctRank ?? 99) <= 3).length;
   const clinTop5 = completed.filter(r => exactOrVariantTiers.has(r.tier)).length;
   const famTop3 = completed.filter(r => familyTiers.has(r.tier) && (r.correctRank ?? 99) <= 3).length;
   const famTop5 = completed.filter(r => familyTiers.has(r.tier)).length;
 
   console.log();
-  console.log(`  ${'Clinical (exact+variant):'.padEnd(30)} Top-1: ${(100 * clinTop1 / n).toFixed(1)}%  Top-3: ${(100 * clinTop3 / n).toFixed(1)}%  Top-5: ${(100 * clinTop5 / n).toFixed(1)}%`);
-  console.log(`  ${'Family (exact+var+fam):'.padEnd(30)} Top-3: ${(100 * famTop3 / n).toFixed(1)}%  Top-5: ${(100 * famTop5 / n).toFixed(1)}%`);
+  console.log(`  ${'Exact Top-1 (tier=exact-top1):'.padEnd(30)} ${(100 * exactTop1 / n).toFixed(1)}%`);
+  console.log(`  ${'Exact+Variant (tier T3/T5):'.padEnd(30)} Top-3: ${(100 * clinTop3 / n).toFixed(1)}%  Top-5: ${(100 * clinTop5 / n).toFixed(1)}%`);
+  console.log(`  ${'+Family (tier T3/T5):'.padEnd(30)} Top-3: ${(100 * famTop3 / n).toFixed(1)}%  Top-5: ${(100 * famTop5 / n).toFixed(1)}%`);
+  console.log(`  ${'(grader has no variant-top1 or family-top1 tier — see "Top-1" above for reconciled rank-1 rate)'}`);
 
   // Published baselines for comparison
   console.log();

@@ -282,15 +282,39 @@ export default function PrintReportPage() {
           .print-root .print-cover-header {
             margin-bottom: 1rem !important;
           }
-          /* Force the Recommended Next Steps section onto its own page so
-             the section header + intro + legend + first tests are never
-             split across a page boundary. Without this, the header and
-             intro paragraph were stranding at the bottom of the
-             Additional Differential page with the legend + tests jumping
-             to the next page. */
+          /* Let the Recommended Next Steps section flow naturally instead
+             of forcing a fresh page. The earlier break-before: page solved
+             a specific stranded-header bug on a 6-page case, but on
+             content-heavy 7+ page reports it wasted ~40% of the page
+             below the legend by pushing the section to a fresh page
+             before the prior page had filled. The break-after: avoid on
+             h2 already keeps the section title with its first child
+             (the intro paragraph + legend block). */
           .print-root .print-tests-section {
-            break-before: page;
-            page-break-before: always;
+            break-before: auto;
+            page-break-before: auto;
+          }
+          /* Diagnosis cards (#1 hero + ranks 2-5) need stronger widow
+             control than paragraphs. Without this, the supporting
+             evidence list on the #1 hero card can split with just 1-2
+             bullets stranded at the top of the next page along with the
+             SPECIALIST TO CONSULT line — visually ugly. widows: 4 forces
+             the card to either keep 4+ bullets together at the bottom of
+             a page or push the whole tail block to the next page. */
+          .print-root .print-diagnosis-card,
+          .print-root .print-diagnosis-card ul,
+          .print-root .print-diagnosis-card li {
+            widows: 4;
+            orphans: 3;
+          }
+          /* Compact legend padding — recovers ~30px of vertical real
+             estate on every legend without losing the visual block
+             treatment. */
+          .print-root .print-tests-legend {
+            padding: 0.5rem !important;
+          }
+          .print-root .print-tests-legend dl > div {
+            margin-bottom: 0.35rem !important;
           }
           body,
           html {
@@ -469,7 +493,7 @@ export default function PrintReportPage() {
               <h2 className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b2500] mb-3 pb-1.5 border-b border-[#d4c5b0]">
                 Most Likely Diagnosis
               </h2>
-              <article className="bg-[#faf6f0] border border-[#d4c5b0] border-l-4 border-l-[#8b2500] p-4 sm:p-5">
+              <article className="print-diagnosis-card bg-[#faf6f0] border border-[#d4c5b0] border-l-4 border-l-[#8b2500] p-4 sm:p-5">
                 <div className="flex items-start justify-between gap-4 mb-3">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-baseline gap-2 mb-1 flex-wrap">
@@ -646,7 +670,7 @@ export default function PrintReportPage() {
                   duplicated HOW TO GET IT box that previously printed
                   verbatim on every test card. */}
               {legendCategories.length > 0 && (
-                <div className="avoid-break border border-[#d4c5b0] bg-[#faf6f0] p-3 mb-4">
+                <div className="print-tests-legend avoid-break border border-[#d4c5b0] bg-[#faf6f0] p-3 mb-4">
                   <div className="font-sans text-[10px] font-semibold uppercase tracking-wide text-[#8b2500] mb-2">
                     How to obtain these tests
                   </div>

@@ -74,6 +74,10 @@ export function breakdownHypotheses(hypotheses: DiagnosisHypothesis[]): Hypothes
     'hematologist',
     'psychiatrist',
     'oncologist',
+    'pulmonologist',
+    'nephrologist',
+    'ophthalmologist',
+    'dermatologist',
     'geneticist',
     'general-internist',
   ]);

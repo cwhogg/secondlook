@@ -74,24 +74,34 @@ export const SPECIALIST_TYPES = [
   'hematologist',
   'psychiatrist',
   'oncologist',
+  'pulmonologist',
+  'nephrologist',
+  'ophthalmologist',
+  'dermatologist',
   'general-internist',
 ] as const;
 
 export type SpecialistType = typeof SPECIALIST_TYPES[number];
 
-// Maps body systems to relevant specialist types
+// Maps body systems to relevant specialist types. The first entry in
+// each list is the CANONICAL OWNER — selectV17Specialists pulls the
+// canonical owner into the panel deterministically whenever the triage
+// flags that body system, regardless of where the LLM ranked the
+// specialist overall. This eliminates the failure mode where the
+// triage's overall ranking dropped (e.g.) the oncologist out of the
+// top 3 even though "oncological" was tagged as a primary system.
 export const SYSTEM_TO_SPECIALIST: Record<string, SpecialistType[]> = {
   neurological: ['neurologist', 'geneticist'],
   musculoskeletal: ['rheumatologist'],
   cardiovascular: ['cardiologist'],
-  respiratory: ['immunologist'],
+  respiratory: ['pulmonologist', 'immunologist'],
   gastrointestinal: ['gastroenterologist'],
-  dermatological: ['rheumatologist', 'immunologist'],
-  ophthalmological: ['neurologist', 'rheumatologist'],
+  dermatological: ['dermatologist', 'rheumatologist', 'immunologist'],
+  ophthalmological: ['ophthalmologist', 'neurologist'],
   endocrine: ['endocrinologist'],
   hematological: ['hematologist'],
   immunological: ['immunologist', 'rheumatologist'],
-  renal: ['rheumatologist'],
+  renal: ['nephrologist', 'rheumatologist'],
   reproductive: ['endocrinologist'],
   psychiatric: ['psychiatrist'],
   constitutional: ['general-internist', 'rheumatologist', 'geneticist'],

@@ -490,11 +490,39 @@ export function getSpecialistV17Agent(specialistType: string): SpecialistV17Agen
  *
  * Always returns exactly 5 distinct specialists.
  */
-export function selectV17Specialists(triageRanking: SpecialistType[]): SpecialistType[] {
+export function selectV17Specialists(
+  triageRanking: SpecialistType[],
+  bodySystems: string[] = [],
+): SpecialistType[] {
   const anchors: SpecialistType[] = ['geneticist', 'general-internist'];
   const selected: SpecialistType[] = [...anchors];
   const seen = new Set<SpecialistType>(anchors);
 
+  // Pass 1: pull in the PRIMARY specialist for each body system the
+  // triage tagged. SYSTEM_TO_SPECIALIST maps each body system to a
+  // ranked list of specialists — the first entry is the canonical
+  // owner of that system (e.g. oncological -> oncologist, respiratory
+  // -> pulmonologist, renal -> nephrologist). This makes specialist
+  // selection deterministic when the triage produces concrete
+  // body-system evidence, instead of letting gpt-4.1-nano's overall
+  // specialist ranking drop the canonical owner out of the top 3.
+  //
+  // The "soft-tissue sarcoma → neuro/rheum/cardio called, oncologist
+  // missed" bug came from exactly this: triage tagged 'oncological'
+  // but the overall ranking didn't put oncologist in its top 3.
+  const { SYSTEM_TO_SPECIALIST } = require('./types') as {
+    SYSTEM_TO_SPECIALIST: Record<string, SpecialistType[]>;
+  };
+  for (const bs of bodySystems) {
+    if (selected.length >= 5) break;
+    const primary = SYSTEM_TO_SPECIALIST[bs]?.[0];
+    if (primary && !seen.has(primary)) {
+      selected.push(primary);
+      seen.add(primary);
+    }
+  }
+
+  // Pass 2: fill remaining slots from the triage's relevance ranking.
   for (const s of triageRanking) {
     if (selected.length >= 5) break;
     if (seen.has(s)) continue;

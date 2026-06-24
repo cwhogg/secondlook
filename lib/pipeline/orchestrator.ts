@@ -122,7 +122,10 @@ export class DiagnosticPipeline {
       // + top 3 from triage ranking that aren't already anchors. Each runs the
       // v5 SpecialistAgent prompt (verbatim) + v16 annotation fields. Per-
       // specialty KB candidate slice via existing rerankCandidatesForSpecialty.
-      const selectedSpecialties = selectV17Specialists(triageResult.relevantSpecialties as SpecialistType[]);
+      const selectedSpecialties = selectV17Specialists(
+        triageResult.relevantSpecialties as SpecialistType[],
+        triageResult.bodySystems || [],
+      );
       log("orch.stage.specialists.start", { count: selectedSpecialties.length, specialties: selectedSpecialties });
 
       // Specialist Selection — show the user WHICH specialists were chosen
@@ -130,7 +133,7 @@ export class DiagnosticPipeline {
       // pipeline step (selectV17Specialists) and the user benefits from seeing
       // it. The triage event lists the ranked-by-relevance specialties; this
       // one shows the actual subset that will run.
-      const TOTAL_SPECIALIST_COUNT = 11; // see lib/agents/types — 11 specialist registry
+      const TOTAL_SPECIALIST_COUNT = 15; // see lib/agents/types — 15 specialist registry
       onProgress?.({
         stage: 'specialist-selection',
         stageNumber: 2,

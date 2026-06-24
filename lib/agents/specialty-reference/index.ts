@@ -11,6 +11,10 @@ import { GENETICS_REFERENCE } from "./genetics";
 import { HEMATOLOGY_REFERENCE } from "./hematology";
 import { PSYCHIATRY_REFERENCE } from "./psychiatry";
 import { ONCOLOGY_REFERENCE } from "./oncology";
+import { PULMONOLOGY_REFERENCE } from "./pulmonology";
+import { NEPHROLOGY_REFERENCE } from "./nephrology";
+import { OPHTHALMOLOGY_REFERENCE } from "./ophthalmology";
+import { DERMATOLOGY_REFERENCE } from "./dermatology";
 import { GENERAL_INTERNAL_REFERENCE } from "./general-internal";
 
 export type { SpecialtyReference, ClinicalFramework, MimicGroup } from "./types";
@@ -26,6 +30,10 @@ export const SPECIALTY_REFERENCES: Record<SpecialistType, SpecialtyReference> = 
   hematologist: HEMATOLOGY_REFERENCE,
   psychiatrist: PSYCHIATRY_REFERENCE,
   oncologist: ONCOLOGY_REFERENCE,
+  pulmonologist: PULMONOLOGY_REFERENCE,
+  nephrologist: NEPHROLOGY_REFERENCE,
+  ophthalmologist: OPHTHALMOLOGY_REFERENCE,
+  dermatologist: DERMATOLOGY_REFERENCE,
   "general-internist": GENERAL_INTERNAL_REFERENCE,
 };
 

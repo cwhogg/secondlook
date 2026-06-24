@@ -143,7 +143,7 @@ export default function Step1() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-[#f5f0eb] py-8">
+      <div className="min-h-screen bg-[#f5f0eb] py-4 sm:py-8">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             className={`fixed top-20 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ${
@@ -156,18 +156,18 @@ export default function Step1() {
             </div>
           </div>
 
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center space-x-2 bg-[#faf6f0] px-4 py-2 rounded-full mb-6">
+          <div className="text-center mb-4 sm:mb-10">
+            <div className="inline-flex items-center space-x-2 bg-[#faf6f0] px-4 py-1.5 sm:py-2 rounded-full mb-3 sm:mb-6">
               <Sparkles className="h-4 w-4 text-[#8b2500]" />
               <span className="text-sm font-medium text-[#8b2500]">Step 1 of 4</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">About you</h1>
-            <p className="text-lg text-gray-600">A couple basics to personalize your analysis</p>
+            <h1 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-1.5 sm:mb-4">About you</h1>
+            <p className="text-sm sm:text-lg text-gray-600">A couple basics to personalize your analysis</p>
           </div>
 
-          <div className="bg-white border border-gray-100 p-6 sm:p-8 space-y-8">
-            <div className="space-y-3">
-              <label className="block text-lg font-semibold text-gray-900">
+          <div className="bg-white border border-gray-100 p-4 sm:p-8 space-y-4 sm:space-y-8">
+            <div className="space-y-2 sm:space-y-3">
+              <label className="block text-base sm:text-lg font-semibold text-gray-900">
                 Your age <span className="text-red-500">*</span>
               </label>
               <input
@@ -177,7 +177,7 @@ export default function Step1() {
                 value={formData.age}
                 onChange={(e) => updateFormData("age", e.target.value)}
                 className={cn(
-                  "w-full px-4 py-4 border rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-lg",
+                  "w-full px-4 py-3 sm:py-4 border rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-base sm:text-lg",
                   errors.age ? "border-red-300" : "border-gray-200",
                 )}
                 placeholder="Enter your age"
@@ -185,11 +185,11 @@ export default function Step1() {
               {errors.age && <p className="text-red-600 text-sm">{errors.age}</p>}
             </div>
 
-            <div className="space-y-3">
-              <label className="block text-lg font-semibold text-gray-900">
+            <div className="space-y-2 sm:space-y-3">
+              <label className="block text-base sm:text-lg font-semibold text-gray-900">
                 Biological sex <span className="text-red-500">*</span>
               </label>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {[
                   { label: "Male", value: "male" },
                   { label: "Female", value: "female" },
@@ -214,24 +214,24 @@ export default function Step1() {
                         <div className="w-2 h-2 bg-white rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                       )}
                     </div>
-                    <span className="text-lg text-gray-900">{option.label}</span>
+                    <span className="text-base sm:text-lg text-gray-900">{option.label}</span>
                   </label>
                 ))}
               </div>
               {errors.biologicalSex && <p className="text-red-600 text-sm">{errors.biologicalSex}</p>}
             </div>
 
-            <div className="pt-2 space-y-3">
+            <div className="pt-1 sm:pt-2 space-y-2 sm:space-y-3">
               {/* Continue + Create Test User. On desktop the link sits to
                   the right of the Continue button; on mobile it stacks
                   underneath. The link reuses the same generator the admin
                   testing page does — see /api/admin/generate-patient. */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6">
                 <button
                   onClick={handleContinue}
                   disabled={!isFormValid || creatingTestUser}
                   className={cn(
-                    "group px-8 py-4 rounded-none font-semibold text-lg transition-all duration-300 min-w-[220px]",
+                    "group w-full sm:w-auto px-8 py-3 sm:py-4 rounded-none font-semibold text-base sm:text-lg transition-all duration-300 sm:min-w-[220px]",
                     isFormValid && !creatingTestUser
                       ? "bg-[#8b2500] text-white"
                       : "bg-gray-200 text-gray-500 cursor-not-allowed",

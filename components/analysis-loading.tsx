@@ -144,7 +144,7 @@ const STAGE_DURATION_HINT: Record<string, string> = {
   specialists: "Typically 1–3 minutes — selected specialists reasoning in parallel.",
   evidence: "Typically 1–3 min.",
   synthesis: "Typically 2–3 min.",
-  report: "Typically 10–20 seconds.",
+  report: "Typically 30–60 sec.",
 }
 
 function getStageData(stageKey: string, events: PipelineProgress[]) {

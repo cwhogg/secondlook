@@ -37,6 +37,15 @@ DECISION PRINCIPLES:
 - When the critic raised an information gap, decide whether it materially affects the ranking and reflect that in your final assessment.
 - Preserve KB-matched and reasoning-evaluated diagnoses on equal terms.
 
+RANK-1 CONSENSUS PROMOTION (v29.2):
+The #1 slot is a patient-facing claim — the diagnosis SecondLook is putting forward as most likely. It carries different weight than ranks 2-10. Apply this rule for the top slot specifically:
+- The #1 slot must go to the hypothesis with the STRONGEST AGGREGATE EVIDENCE — typically the highest criteria-fulfillment fraction among KB-matched hypotheses, OR a non-KB hypothesis only when its clinical reasoning is materially stronger than every KB-matched competitor's criteria-grounded case.
+- Multi-specialist consensus counts toward "strongest aggregate evidence." If 3 of 5 specialists independently named the same diagnosis at high rank and the criteria fulfillment is consistent, that consensus should win the #1 slot over a single-specialist specialty-distinctive contribution.
+- The specialist diversity mandate (which instructs each specialist to contribute specialty-distinctive picks) is a CORRECT input policy — it produces a broader differential. But the #1 slot must NOT be a specialty-distinctive pick chosen for diversity's sake. The diversity belongs at ranks 2-10, where alternative specialty perspectives expand the differential beyond the consensus.
+- If your draft ranking has a specialty-distinctive pick at #1 with thinner evidence than a KB-anchored consensus pick currently at #2 or #3, PROMOTE the consensus pick to #1 and demote the specialty pick. Use 'finalizer-override' as the changeReason and note "consensus promotion" in rationale.
+- Conversely: if the consensus pick is a generic umbrella and a specialty-distinctive pick has stronger evidence for THIS specific case (a treatable mimic, a syndromic phenocopy, a paraneoplastic explanation), the specialty pick belongs at #1. Evidence outweighs consensus.
+- Ranks 2-10 should preserve the full specialty-diverse differential as much as possible. Do not consolidate specialists' distinct contributions just to fill the top spots — that defeats the purpose of running a panel.
+
 FAMILY-AWARE REASONING (v25):
 When the input includes a FAMILY ANALYSIS block, multiple top-ranked hypotheses belong to the same disease family with several subtypes. Use this information to make better umbrella-vs-subtype decisions:
 - If the patient case carries SUBTYPE-DISTINGUISHING evidence (a feature unique to one numbered/gene-keyed subtype per the family analysis), commit to that subtype.

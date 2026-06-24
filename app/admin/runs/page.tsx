@@ -29,13 +29,17 @@ export default function AdminRunsPage() {
   const [passwordInput, setPasswordInput] = useState("")
   const [authError, setAuthError] = useState("")
   const [authChecked, setAuthChecked] = useState(false)
+  const [needsAuth, setNeedsAuth] = useState(false)
   const [runs, setRuns] = useState<RunRow[]>([])
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   // On mount: load any cached password and try a list. If the server replies
-  // 401/403, surface the prompt. If it replies 200, persist + render.
+  // 401/403, surface the password prompt. If it replies 200, render the
+  // list (even if it's empty — empty != unauthorized). Server config decides
+  // whether a password is required at all; when TESTING_PASSWORD is unset
+  // on the server, the API just returns 200 with no auth check.
   useEffect(() => {
     const cached = sessionStorage.getItem(PASSWORD_STORAGE_KEY) || ""
     setPassword(cached)
@@ -50,6 +54,7 @@ export default function AdminRunsPage() {
         headers: pw ? { "x-admin-password": pw } : {},
       })
       if (res.status === 401 || res.status === 403) {
+        setNeedsAuth(true)
         setAuthChecked(true)
         sessionStorage.removeItem(PASSWORD_STORAGE_KEY)
         setPassword("")
@@ -65,6 +70,7 @@ export default function AdminRunsPage() {
       const data = await res.json()
       setRuns(data.runs || [])
       setTotal(data.total || 0)
+      setNeedsAuth(false)
       if (pw) sessionStorage.setItem(PASSWORD_STORAGE_KEY, pw)
       setAuthChecked(true)
     } catch (err: any) {
@@ -106,7 +112,7 @@ export default function AdminRunsPage() {
     )
   }
 
-  if (runs.length === 0 && !password && !loading) {
+  if (needsAuth) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
         <form

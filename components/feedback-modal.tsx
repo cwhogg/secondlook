@@ -15,7 +15,13 @@ interface FeedbackModalProps {
   onSubmitted: () => void
 }
 
-const LIKERT_LABELS_VALUE = ["Not at all", "Slightly", "Somewhat", "Quite", "Extremely"]
+const LIKERT_LABELS_VALUE = [
+  "Not at all valuable",
+  "Slightly valuable",
+  "Somewhat valuable",
+  "Quite valuable",
+  "Extremely valuable",
+]
 const LIKERT_LABELS_UX = ["Frustrating", "Below average", "OK", "Good", "Great"]
 const LIKERT_LABELS_USEFUL = ["Not useful", "A little", "Somewhat", "Useful", "Very useful"]
 
@@ -115,7 +121,7 @@ export function FeedbackModal({
         <div className="flex items-start justify-between border-b border-gray-200 px-5 py-3">
           <div>
             <div className="text-xs font-semibold uppercase tracking-wider text-[#8b2500] mb-1">
-              {mode === "test" ? "Test feedback" : "Your feedback"}
+              SecondLook Feedback
             </div>
             <div className="text-sm text-gray-600">
               Question {step} of {totalSteps}
@@ -151,7 +157,7 @@ export function FeedbackModal({
         <div className="px-5 py-5 space-y-4">
           {mode === "test" && step === 1 && (
             <LikertQuestion
-              prompt="Rate the value to someone searching for a diagnosis"
+              prompt="Rate the potential value of SecondLook to someone searching for a diagnosis"
               labels={LIKERT_LABELS_VALUE}
               value={valueRating}
               onChange={setValueRating}
@@ -217,9 +223,7 @@ export function FeedbackModal({
           </div>
         )}
         <div className="border-t border-gray-200 px-5 py-3 flex items-center justify-between">
-          <span className="text-xs text-gray-500">
-            Your feedback is anonymous beyond IP and time.
-          </span>
+          <span className="text-xs text-gray-500">Your feedback is anonymous.</span>
           <button
             onClick={advance}
             disabled={submitting}

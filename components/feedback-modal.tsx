@@ -165,7 +165,7 @@ export function FeedbackModal({
           )}
           {mode === "test" && step === 2 && (
             <LikertQuestion
-              prompt="Rate the user experience"
+              prompt="Rate the overall SecondLook user experience"
               labels={LIKERT_LABELS_UX}
               value={uxRating}
               onChange={setUxRating}

@@ -119,6 +119,19 @@ export default function RefinePage() {
 
   const handleSubmit = async () => {
     if (!analysis || !patientCase) return
+
+    // If the operator didn't give any yes/no answers (all left blank or all
+    // "don't know"), there's no new evidence to fold in — the refine call
+    // would just re-run the evaluator + synthesizer over identical inputs.
+    // Route straight to recommendations to skip the wasted ~2 min and $0.10+
+    // in LLM cost. Existing analysisResults stays as-is on sessionStorage so
+    // /results/next-steps renders the same recommendations it would after a
+    // no-op refine.
+    if (!anyAnswered) {
+      router.push("/results/next-steps")
+      return
+    }
+
     setError(null)
     setRefining(true)
     setRefineStartedAt(Date.now())
@@ -294,7 +307,7 @@ export default function RefinePage() {
               </button>
               <button
                 onClick={handleSubmit}
-                disabled={refining || !anyAnswered}
+                disabled={refining}
                 className="px-6 py-3 bg-[#8b2500] text-white font-semibold hover:bg-[#6d1d00] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {refining ? (
@@ -304,7 +317,11 @@ export default function RefinePage() {
                   </>
                 ) : (
                   <>
-                    {allAnswered ? "Refine my results" : "Refine with what I've answered"}
+                    {!anyAnswered
+                      ? "See testing recommendations"
+                      : allAnswered
+                        ? "Refine my results"
+                        : "Refine with what I've answered"}
                     <ArrowRight className="h-4 w-4" />
                   </>
                 )}

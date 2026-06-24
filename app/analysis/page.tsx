@@ -26,6 +26,81 @@ interface Step3Data {
 
 interface Step4Data {}
 
+/**
+ * Common success handler. Used by both the SSE 'result' event and the
+ * resume-from-KV path so they produce identical sessionStorage + nav.
+ */
+function handleAnalysisResult(
+  analysis: any,
+  startTime: number,
+  parsedStep1: Step1Data,
+  parsedStep2: Step2Data,
+  analysisPayload: any,
+  router: ReturnType<typeof useRouter>,
+) {
+  const processingTime = Date.now() - startTime
+  const analysisResults = {
+    differentialDiagnoses: analysis.differentialDiagnoses || [],
+    differentialClusters: analysis.differentialClusters || [],
+    familyEnrichments: analysis.familyEnrichments || undefined,
+    excludedCommonDiagnoses: analysis.excludedCommonDiagnoses || [],
+    dataGaps: analysis.dataGaps || [],
+    recommendedTesting: analysis.recommendedTesting || [],
+    nextSteps: analysis.nextSteps || {},
+    overallAssessment: analysis.overallAssessment || "",
+    patientHypothesisAnalysis: analysis.patientHypothesisAnalysis || null,
+    pipelineMetadata: analysis.pipelineMetadata || null,
+    clarifyingQuestions: analysis.clarifyingQuestions || undefined,
+    lowConfidenceWarning: analysis.lowConfidenceWarning || undefined,
+  }
+  const analysisMetadata = {
+    timestamp: new Date().toLocaleString(),
+    processingTime,
+    patientAge: parsedStep1.age,
+    patientSex: parsedStep1.biologicalSex,
+    patientHypothesis: parsedStep2.patientHypothesis,
+  }
+  sessionStorage.setItem("analysisResults", JSON.stringify(analysisResults))
+  sessionStorage.setItem("analysisMetadata", JSON.stringify(analysisMetadata))
+  sessionStorage.setItem("analysisPatientCase", JSON.stringify(analysisPayload))
+  // Pending-request markers no longer needed once delivery succeeds.
+  sessionStorage.removeItem("pendingAnalysisRequestId")
+  sessionStorage.removeItem("pendingAnalysisStartedAt")
+  router.push("/results/analysis")
+}
+
+/**
+ * Resume polling for the persisted analysisResult by requestId. Polls
+ * every 5s for up to 12 min from startedAt (pipeline is ~7-8 min typical
+ * + buffer). Aborts on AbortController signal. Returns the run record
+ * on success, null on timeout / aborted / repeated failures.
+ */
+async function tryResumeFromKv(
+  requestId: string,
+  startedAt: number,
+  abortRef: React.RefObject<AbortController | null>,
+): Promise<{ analysisResult: any } | null> {
+  const MAX_AGE_MS = 12 * 60 * 1000
+  const POLL_MS = 5000
+  while (Date.now() - startedAt < MAX_AGE_MS) {
+    if (abortRef.current?.signal.aborted) return null
+    try {
+      const res = await fetch(`/api/get-analysis/${encodeURIComponent(requestId)}`)
+      if (res.ok) {
+        const data = await res.json()
+        if (data?.status === "complete" && data?.analysisResult) {
+          return { analysisResult: data.analysisResult }
+        }
+      }
+      // 404 / pending -> keep polling
+    } catch {
+      // network blip, keep polling
+    }
+    await new Promise((r) => setTimeout(r, POLL_MS))
+  }
+  return null
+}
+
 export default function AnalysisPage() {
   const router = useRouter()
   const [progress, setProgress] = useState(0)
@@ -181,6 +256,40 @@ export default function AnalysisPage() {
 
         const startTime = Date.now()
 
+        // Persist the patient case upfront so the resume-from-KV path
+        // can reuse it if the SSE connection dies (e.g., mobile suspend).
+        // The analysisRequestId + startedAt are saved as soon as the first
+        // SSE event arrives (every event carries the requestId).
+        sessionStorage.setItem("analysisPatientCase", JSON.stringify(analysisPayload))
+        sessionStorage.setItem("pendingAnalysisStartedAt", String(startTime))
+
+        // BEFORE making the request — check if we have a recent pending
+        // analysis from a prior tab visit that died mid-flight (mobile
+        // suspended, user closed and reopened, etc.). If so, try the
+        // resume path instead of starting a duplicate analysis.
+        const priorRequestId = sessionStorage.getItem("pendingAnalysisRequestId")
+        const priorStartedAt = parseInt(
+          sessionStorage.getItem("pendingAnalysisStartedAt") || "0",
+          10,
+        )
+        if (priorRequestId && priorStartedAt && Date.now() - priorStartedAt < 12 * 60 * 1000) {
+          const resumed = await tryResumeFromKv(priorRequestId, priorStartedAt, abortControllerRef)
+          if (resumed && !abortControllerRef.current?.signal.aborted) {
+            handleAnalysisResult(
+              resumed.analysisResult,
+              priorStartedAt,
+              parsedStep1,
+              parsedStep2,
+              analysisPayload,
+              router,
+            )
+            return
+          }
+          // Resume failed or timed out — fall through to a fresh analysis.
+          // Clear stale markers so the next run starts clean.
+          sessionStorage.removeItem("pendingAnalysisRequestId")
+        }
+
         const abortController = new AbortController()
         abortControllerRef.current = abortController
 
@@ -228,6 +337,13 @@ export default function AnalysisPage() {
               continue
             }
 
+            // Every SSE event carries the requestId — capture and persist
+            // it the first time we see it so the resume-from-KV path can
+            // poll for the result if the connection later dies.
+            if (event.requestId && !sessionStorage.getItem("pendingAnalysisRequestId")) {
+              sessionStorage.setItem("pendingAnalysisRequestId", event.requestId)
+            }
+
             if (event.type === "progress") {
               const progressEvent: PipelineProgress = {
                 stage: event.stage,
@@ -241,50 +357,17 @@ export default function AnalysisPage() {
               setPipelineEvents((prev) => [...prev, progressEvent])
               setProgress(event.percentage)
             } else if (event.type === "result") {
-              const processingTime = Date.now() - startTime
-
               if (!event.success || !event.analysis) {
                 throw new Error("Invalid analysis result from pipeline")
               }
-
-              // NOTE: this whitelist must include every AnalysisResult field
-              // that any downstream results page reads from sessionStorage.
-              // Missing fields are silently dropped — if a new field on
-              // AnalysisResult needs to surface in the UI, add it here.
-              const analysisResults = {
-                differentialDiagnoses: event.analysis.differentialDiagnoses || [],
-                differentialClusters: event.analysis.differentialClusters || [],
-                familyEnrichments: event.analysis.familyEnrichments || undefined,
-                excludedCommonDiagnoses: event.analysis.excludedCommonDiagnoses || [],
-                dataGaps: event.analysis.dataGaps || [],
-                recommendedTesting: event.analysis.recommendedTesting || [],
-                nextSteps: event.analysis.nextSteps || {},
-                overallAssessment: event.analysis.overallAssessment || "",
-                patientHypothesisAnalysis: event.analysis.patientHypothesisAnalysis || null,
-                pipelineMetadata: event.analysis.pipelineMetadata || null,
-                // v18: optional clarifying questions for the refine flow.
-                clarifyingQuestions: event.analysis.clarifyingQuestions || undefined,
-                // v18: structured low-confidence flag for the UI banner.
-                lowConfidenceWarning: event.analysis.lowConfidenceWarning || undefined,
-              }
-
-              const analysisMetadata = {
-                timestamp: new Date().toLocaleString(),
-                processingTime,
-                patientAge: parsedStep1.age,
-                patientSex: parsedStep1.biologicalSex,
-                patientHypothesis: parsedStep2.patientHypothesis,
-              }
-
-              sessionStorage.setItem("analysisResults", JSON.stringify(analysisResults))
-              sessionStorage.setItem("analysisMetadata", JSON.stringify(analysisMetadata))
-              // Persist the patient case so /api/refine-diagnosis has the
-              // same context the v2 pipeline ran against. Kept in sessionStorage
-              // (per-tab, cleared by startNewAnalysis) to match the rest of the
-              // analysis blob.
-              sessionStorage.setItem("analysisPatientCase", JSON.stringify(analysisPayload))
-
-              router.push("/results/analysis")
+              handleAnalysisResult(
+                event.analysis,
+                startTime,
+                parsedStep1,
+                parsedStep2,
+                analysisPayload,
+                router,
+              )
               return
             } else if (event.type === "error") {
               throw new Error(event.error || "Pipeline error")
@@ -295,6 +378,41 @@ export default function AnalysisPage() {
         throw new Error("Analysis stream ended without a result")
       } catch (err) {
         if (err instanceof DOMException && err.name === "AbortError") return
+
+        // Before showing "Analysis failed" — the SSE may have died
+        // because mobile suspended the tab while the pipeline kept
+        // running server-side. Check whether KV has the result.
+        const pendingId = sessionStorage.getItem("pendingAnalysisRequestId")
+        const pendingAt = parseInt(
+          sessionStorage.getItem("pendingAnalysisStartedAt") || "0",
+          10,
+        )
+        if (pendingId && pendingAt && Date.now() - pendingAt < 12 * 60 * 1000) {
+          setPipelineEvents((prev) => [
+            ...prev,
+            {
+              stage: "heartbeat",
+              stageNumber: 0,
+              totalStages: 7,
+              percentage: Math.max(0, Math.min(95, Math.round(((Date.now() - pendingAt) / (10 * 60_000)) * 100))),
+              detail: "Reconnecting — checking whether your analysis completed in the background…",
+              data: null,
+            } as any,
+          ])
+          const resumed = await tryResumeFromKv(pendingId, pendingAt, abortControllerRef)
+          if (resumed && !abortControllerRef.current?.signal.aborted) {
+            handleAnalysisResult(
+              resumed.analysisResult,
+              pendingAt,
+              JSON.parse(localStorage.getItem("step1Data") || "{}"),
+              JSON.parse(localStorage.getItem("step2Data") || "{}"),
+              JSON.parse(sessionStorage.getItem("analysisPatientCase") || "{}"),
+              router,
+            )
+            return
+          }
+        }
+
         setError(err instanceof Error ? err.message : "Analysis failed")
         setProgress(0)
       }

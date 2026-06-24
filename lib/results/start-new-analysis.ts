@@ -19,6 +19,12 @@ const SESSION_KEYS = [
   // step-1. Cleared on "Start new analysis" so the banner goes away
   // when the operator hands the next session off to a real user.
   "testUserGroundTruth",
+  // Resume-from-KV markers. A stale pending requestId would otherwise
+  // cause the next analysis page mount to try resuming the prior run
+  // instead of starting a fresh one.
+  "pendingAnalysisRequestId",
+  "pendingAnalysisStartedAt",
+  "feedbackShown",
 ] as const
 
 export function clearAnalysisCache(): void {

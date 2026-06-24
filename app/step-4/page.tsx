@@ -195,6 +195,9 @@ export default function Step4() {
                   <span className="inline-flex items-center gap-2"><ArrowLeft className="h-4 w-4" /> Back</span>
                 </button>
               </div>
+              <p className="mt-3 text-center sm:text-left text-sm text-gray-500">
+                Evaluations take 8–10 mins.
+              </p>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 import { DiagnosticPipeline } from '@/lib/pipeline/orchestrator';
 import { BaseAgent } from '@/lib/agents/base-agent';
 import { z } from 'zod';
+import { saveProdRun, summarizeAnalysis, extractIp } from '@/lib/admin/prod-runs';
 
 // v5: specialists are o3 reasoning:high (was gpt-4.1) plus the existing o3
 // reasoning:high at evidence-evaluator and synthesizer. With 6-8 specialists
@@ -198,6 +199,24 @@ export async function POST(request: NextRequest) {
         });
 
         console.log(`[${requestId}] Pipeline complete — ${Date.now() - startTime}ms, ${result.pipelineMetadata.totalTokensUsed} tokens, ~$${result.pipelineMetadata.totalCostEstimate.toFixed(3)}`);
+
+        // Persist the full run (patient case + analysis + IP) for the
+        // /admin/runs viewer. Best-effort: errors in saveProdRun() are
+        // logged + swallowed, never break the user's response.
+        const clientIp = extractIp(request.headers);
+        const userAgent = request.headers.get('user-agent');
+        saveProdRun({
+          id: requestId,
+          createdAt: new Date().toISOString(),
+          ip: clientIp,
+          userAgent,
+          durationMs: Date.now() - startTime,
+          patientCase: patientCase as any,
+          analysisResult: result as any,
+          summary: summarizeAnalysis(patientCase as any, result as any),
+        }).catch((err) => {
+          console.warn(`[${requestId}] prod-run persistence failed (non-fatal):`, err?.message);
+        });
 
         sendEvent({
           type: 'result',

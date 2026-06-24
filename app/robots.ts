@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/results/", "/expert-results/", "/analysis/", "/step-1", "/step-2", "/step-3", "/testing"],
+        disallow: ["/api/", "/results/", "/expert-results/", "/analysis/", "/step-1", "/step-2", "/step-3", "/admin"],
       },
     ],
     sitemap: "https://secondlook.vercel.app/sitemap.xml",

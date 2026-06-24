@@ -347,14 +347,35 @@ export default function RefinePage() {
             <span className="sm:hidden">Back</span>
           </button>
 
+          {/* Primary CTA. Before refining: "Refine Diagnoses" — calls
+              handleSubmit which either runs the refine flow (when any
+              yes/no answers exist) or short-circuits to next-steps (when
+              everything is blank or "don't know"). After refining: the
+              user has the refined ranking on screen and the natural next
+              step is the testing recommendations. */}
           <button
-            onClick={() => router.push("/results/next-steps")}
-            disabled={!inResultsView}
-            className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-[#8b2500] text-white hover:bg-[#6d1d00] transition-all duration-200 font-medium text-sm sm:text-base disabled:opacity-40"
+            onClick={inResultsView ? () => router.push("/results/next-steps") : handleSubmit}
+            disabled={refining}
+            className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-[#8b2500] text-white hover:bg-[#6d1d00] transition-all duration-200 font-medium text-sm sm:text-base disabled:opacity-50 disabled:cursor-wait"
           >
-            <span className="hidden sm:inline">See testing recommendations</span>
-            <span className="sm:hidden">Tests</span>
-            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+            {refining ? (
+              <>
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
+                <span className="hidden sm:inline">Refining…</span>
+              </>
+            ) : inResultsView ? (
+              <>
+                <span className="hidden sm:inline">See testing recommendations</span>
+                <span className="sm:hidden">Tests</span>
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+              </>
+            ) : (
+              <>
+                <span className="hidden sm:inline">Refine Diagnoses</span>
+                <span className="sm:hidden">Refine</span>
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+              </>
+            )}
           </button>
         </div>
       </div>

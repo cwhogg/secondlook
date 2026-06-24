@@ -107,12 +107,44 @@ export class ClaudeSynthAgent {
       model: CLAUDE_SYNTH_MODEL,
     });
 
-    const synthesis = typeof result.content === 'object' && result.content !== null
-      ? result.content
-      : null;
+    // Salvage path: callAnthropic already tries JSON + markdown-fence
+    // extraction and falls back to the raw string if both fail. Try one
+    // more recovery — regex-extract a top-level { ... } block from anywhere
+    // in the string. Claude occasionally prefaces JSON with prose
+    // ("Here's the synthesis: { ... }") despite the prompt asking for
+    // JSON only; this catches that case before we fail the run.
+    let synthesis: any =
+      typeof result.content === 'object' && result.content !== null ? result.content : null;
+    if (!synthesis && typeof result.content === 'string') {
+      const objMatch = result.content.match(/\{[\s\S]*\}/);
+      if (objMatch) {
+        try {
+          synthesis = JSON.parse(objMatch[0]);
+        } catch {
+          /* fall through to the error below */
+        }
+      }
+    }
 
     if (!synthesis || !Array.isArray(synthesis.rankedDiagnoses)) {
-      throw new Error(`Claude synthesizer returned non-conforming output (got ${typeof result.content})`);
+      // Log full diagnostic context to Vercel logs so we can inspect what
+      // Claude actually returned. The error string thrown back to the user
+      // stays generic; the detail lives in console.
+      const raw =
+        typeof result.content === 'string'
+          ? result.content
+          : JSON.stringify(result.content || null);
+      console.error('[claude-synthesizer] non-conforming output:', {
+        contentType: typeof result.content,
+        contentLength: raw?.length || 0,
+        rawHead: raw?.slice(0, 1000),
+        rawTail: raw && raw.length > 1000 ? raw.slice(-300) : undefined,
+        model: result.model,
+        tokensUsed: result.tokensUsed,
+      });
+      throw new Error(
+        `synthesizer.bad_output: type=${typeof result.content} len=${raw?.length || 0}`,
+      );
     }
 
     // Map Claude's ranked diagnoses back to the canonical hypothesis pool,

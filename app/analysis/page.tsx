@@ -426,14 +426,76 @@ export default function AnalysisPage() {
   }, [router])
 
   if (error) {
+    // Translate internal pipeline tags to friendly user-facing copy. The
+    // raw error names a specific stage (e.g. "synthesizer.bad_output",
+    // "Anthropic API error 529"); the user gets a clear next-step
+    // instead. The internal id stays visible as a tiny error code so
+    // support can correlate logs.
+    const friendly = (() => {
+      const m = (error || "").toLowerCase()
+      if (m.includes("synthesizer.bad_output") || m.includes("evaluator.bad_output") || m.includes("finalizer.bad_output")) {
+        return {
+          headline: "We hit a snag in the diagnostic synthesis",
+          detail:
+            "Our reasoning model returned a response we couldn't parse. This happens occasionally with complex cases. Your information is still in your browser — just click Start Over to try again. If it keeps failing, please share what you entered (or a few words about it) so we can debug.",
+          code: "SYNTH_NONCONFORM",
+        }
+      }
+      if (m.includes("anthropic api error 5") || m.includes("openai") || m.includes("503") || m.includes("overload")) {
+        return {
+          headline: "An AI model was temporarily unavailable",
+          detail:
+            "One of the language models the pipeline calls is overloaded right now. Wait a minute and try again — your input is still saved in your browser.",
+          code: "UPSTREAM_OVERLOAD",
+        }
+      }
+      if (m.includes("timeout") || m.includes("aborted")) {
+        return {
+          headline: "Analysis timed out",
+          detail:
+            "The pipeline took longer than expected and we had to stop it. This happens on cases with very long histories or transient slowdowns. Try again — most retries succeed.",
+          code: "TIMEOUT",
+        }
+      }
+      if (m.includes("at least one symptom") || m.includes("symptoms:")) {
+        return {
+          headline: "We couldn't extract any symptoms",
+          detail:
+            "The symptom-parsing step couldn't identify clinical findings in your description. Click Start Over and try rephrasing with specific symptoms (e.g., \"chronic fatigue, joint pain since 2019\").",
+          code: "NO_SYMPTOMS",
+        }
+      }
+      if (m.includes("budget") || m.includes("cost")) {
+        return {
+          headline: "This analysis hit the cost cap",
+          detail:
+            "We cap the per-analysis spend during beta. Your case may be unusually complex. Try simplifying the description or splitting it into two analyses.",
+          code: "BUDGET_CAP",
+        }
+      }
+      return {
+        headline: "Analysis didn't complete",
+        detail:
+          "Something went wrong while processing your case. Your information is still in your browser — click Start Over to try again. If it keeps failing, the issue may be on our side; please try again later.",
+        code: "GENERIC",
+      }
+    })()
+
     return (
       <div className="min-h-screen bg-[#f5f0eb] flex items-center justify-center p-4">
         <div className="text-center max-w-md">
-          <div className="text-red-600 text-xl font-semibold mb-4">Analysis Failed</div>
-          <p className="text-gray-600 mb-6">{error}</p>
-          <button onClick={() => router.push("/step-1")} className="px-6 py-3 bg-[#8b2500] text-white rounded-none">
-            Start Over
+          <div className="text-red-600 text-xl font-semibold mb-4">{friendly.headline}</div>
+          <p className="text-gray-700 mb-6 leading-relaxed">{friendly.detail}</p>
+          <button
+            onClick={() => router.push("/step-2")}
+            className="px-6 py-3 bg-[#8b2500] text-white rounded-none hover:bg-[#6d1d00] transition-colors"
+          >
+            Edit your story & retry
           </button>
+          <div className="mt-4 flex flex-col items-center gap-1 text-[10px] text-gray-400">
+            <span>Error code: {friendly.code}</span>
+            <span className="font-mono break-all max-w-xs">{error.slice(0, 200)}</span>
+          </div>
         </div>
       </div>
     )

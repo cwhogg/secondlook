@@ -53,7 +53,12 @@ function fail(msg) {
 
 // ===== Load inputs =====
 
-function loadGoldOmims() {
+const SOURCE = (process.argv.find((a) => a.startsWith('--source=')) || '--source=phenopacket').split('=')[1];
+if (!['phenopacket', 'full-mondo'].includes(SOURCE)) {
+  fail(`--source must be 'phenopacket' or 'full-mondo' (got '${SOURCE}')`);
+}
+
+function loadGoldOmimsFromPhenopacket() {
   if (!existsSync(EN_JSONL)) fail(`${EN_JSONL} not found.`);
   console.log(`Reading ${EN_JSONL} ...`);
   const lines = readFileSync(EN_JSONL, 'utf8').split('\n');
@@ -77,6 +82,17 @@ function loadGoldOmims() {
   }
   console.log(`  ✓ ${parsed} rows parsed (${skipped} skipped); ${distinct.size} distinct OMIM golds`);
   return Array.from(distinct).sort();
+}
+
+function loadGoldOmimsFromFullMondo(mondosByOmim) {
+  // Use every OMIM phenotype id that has a skos:exactMatch entry in Mondo.
+  // This widens credited-sets from the 694 Phenopacket cohort golds to ~6-7k
+  // OMIM phenotype ids — covering any disease the synthetic generator (or
+  // any external caller) might emit. The cost is a ~10x larger output JSON;
+  // the v4 grader's runtime lookup is O(1) regardless.
+  const all = Object.keys(mondosByOmim).filter((k) => k.startsWith('OMIM:')).sort();
+  console.log(`  ✓ ${all.length} distinct OMIM ids with Mondo skos:exactMatch xrefs`);
+  return all;
 }
 
 function loadGraph() {
@@ -184,8 +200,12 @@ function writeOutput({ credited, unmappable, goldOmims, mondoRelease }) {
 function main() {
   console.log('Building credited-sets table for the v4 grader.');
   console.log('===============================================');
-  const goldOmims = loadGoldOmims();
   const { parents, mondosByOmim, mondoRelease } = loadGraph();
+  const goldOmims =
+    SOURCE === 'phenopacket'
+      ? loadGoldOmimsFromPhenopacket()
+      : loadGoldOmimsFromFullMondo(mondosByOmim);
+  console.log(`  Source: ${SOURCE} (${goldOmims.length} gold OMIMs)`);
   const { credited, unmappable } = buildCreditedSets(goldOmims, parents, mondosByOmim);
   writeOutput({ credited, unmappable, goldOmims, mondoRelease });
   console.log('');

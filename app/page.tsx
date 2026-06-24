@@ -440,7 +440,7 @@ export default function HomePage() {
               How SecondLook Works
             </h2>
             <p className="font-serif-body text-lg sm:text-xl text-[#5a5a5a] max-w-3xl mx-auto leading-relaxed">
-              A multi-stage diagnostic pipeline that turns your story into a ranked differential and concrete next steps.
+              SecondLook&apos;s detailed and multi-stage diagnostic pipeline turns your story into a ranked differential and concrete next steps. Each evaluation takes 8-10 minutes on average.
             </p>
           </div>
 

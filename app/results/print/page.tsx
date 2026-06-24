@@ -241,6 +241,16 @@ export default function PrintReportPage() {
           .print-root .print-cover-header {
             margin-bottom: 1rem !important;
           }
+          /* Force the Recommended Next Steps section onto its own page so
+             the section header + intro + legend + first tests are never
+             split across a page boundary. Without this, the header and
+             intro paragraph were stranding at the bottom of the
+             Additional Differential page with the legend + tests jumping
+             to the next page. */
+          .print-root .print-tests-section {
+            break-before: page;
+            page-break-before: always;
+          }
           body,
           html {
             background: white !important;
@@ -570,7 +580,7 @@ export default function PrintReportPage() {
             (c) => usedCategories.has(c) && c !== "specialist_evaluate",
           )
           return (
-            <section className="mb-6">
+            <section className="print-tests-section mb-6">
               <h2 className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b2500] mb-3 pb-1.5 border-b border-[#d4c5b0]">
                 Recommended Next Steps — Testing
               </h2>

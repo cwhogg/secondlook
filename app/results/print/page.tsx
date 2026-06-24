@@ -120,7 +120,6 @@ export default function PrintReportPage() {
   // through the "Create Test User" shortcut.
   const [showFeedback, setShowFeedback] = useState(false)
   const [feedbackMode, setFeedbackMode] = useState<"test" | "real">("real")
-  const [feedbackThanks, setFeedbackThanks] = useState(false)
 
   useEffect(() => {
     try {
@@ -259,7 +258,7 @@ export default function PrintReportPage() {
 
   return (
     <div className="bg-white text-gray-900 print-root">
-      {showFeedback && !feedbackThanks && (
+      {showFeedback && (
         <FeedbackModal
           mode={feedbackMode}
           analysisRequestId={(analysis as any)?.pipelineMetadata?.requestId || null}
@@ -274,17 +273,10 @@ export default function PrintReportPage() {
           })()}
           actualTop1={diagnoses[0]?.diagnosis}
           onClose={() => setShowFeedback(false)}
-          onSubmitted={() => {
-            setShowFeedback(false)
-            setFeedbackThanks(true)
-            setTimeout(() => setFeedbackThanks(false), 4000)
-          }}
+          // The modal handles its own thank-you screen post-submit; this
+          // callback fires when the user clicks Close on that screen.
+          onSubmitted={() => setShowFeedback(false)}
         />
-      )}
-      {feedbackThanks && (
-        <div className="no-print fixed bottom-4 right-4 z-50 bg-emerald-600 text-white px-4 py-3 shadow-lg text-sm font-medium">
-          Thanks for the feedback!
-        </div>
       )}
       {/* Print-only stylesheet */}
       <style jsx global>{`

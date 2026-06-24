@@ -47,6 +47,7 @@ export function FeedbackModal({
 }: FeedbackModalProps) {
   const [step, setStep] = useState(1)
   const [submitting, setSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   // Test-mode answers
@@ -98,7 +99,10 @@ export function FeedbackModal({
         const txt = await res.text().catch(() => "")
         throw new Error(txt.slice(0, 200) || `Server returned ${res.status}`)
       }
-      onSubmitted()
+      // Show the thank-you view inside the modal. The parent's
+      // onSubmitted callback is invoked when the user clicks Close so
+      // the modal stays open until they explicitly dismiss it.
+      setSubmitted(true)
     } catch (err: any) {
       setError(err?.message || "Failed to submit")
     } finally {
@@ -112,6 +116,34 @@ export function FeedbackModal({
     } else {
       setStep((s) => s + 1)
     }
+  }
+
+  if (submitted) {
+    return (
+      <div className="no-print fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+        <div className="bg-white max-w-md w-full shadow-2xl">
+          <div className="px-6 py-8 text-center">
+            <div className="inline-flex items-center justify-center h-14 w-14 rounded-full bg-emerald-100 text-emerald-700 mb-4">
+              <Send className="h-6 w-6" />
+            </div>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">
+              Thank you for your feedback!
+            </h2>
+            <p className="text-sm text-gray-600">
+              Your input directly shapes the next version of SecondLook.
+            </p>
+          </div>
+          <div className="border-t border-gray-200 px-5 py-3 flex items-center justify-end">
+            <button
+              onClick={onSubmitted}
+              className="px-6 py-2 bg-[#8b2500] text-white text-sm font-semibold hover:bg-[#6d1d00] transition-colors"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (

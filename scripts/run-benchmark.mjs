@@ -54,6 +54,8 @@ function parseArgs() {
     else if (args[i] === '--fetch-timeout' && args[i + 1]) opts.fetchTimeoutMs = parseInt(args[++i], 10) * 1000;
     else if (args[i] === '--std-50' || args[i] === '--std50') opts.std50 = true;
     else if (args[i] === '--std-25' || args[i] === '--std25') opts.std25 = true;
+    else if (args[i] === '--exclude-std-50' || args[i] === '--exclude-std50') opts.excludeStd50 = true;
+    else if (args[i] === '--exclude-std-25' || args[i] === '--exclude-std25') opts.excludeStd25 = true;
     else if (args[i] === '--case-list' && args[i + 1]) opts.caseListFile = args[++i];
     else if (args[i] === '--run-trio' || args[i] === '--trio') opts.runTrio = true;
   }
@@ -1060,6 +1062,21 @@ async function main() {
     console.log(`  ${setName} set: ${dataset.length}/${targetIds.length} cases resolved`);
     opts.count = dataset.length;
     opts.shuffle = false; // don't shuffle — order is intentional
+  }
+
+  // --exclude-std-50 / --exclude-std-25 — strip the curated regression set
+  // ppkt_ids from the dataset BEFORE shuffling/counting. Used by random-50
+  // validation runs to guarantee no overlap with the curated cohort. Safe
+  // to combine with --shuffle/--seed/--count: the exclusion runs first,
+  // then shuffle picks from the remaining 9537 (or 9562) cases.
+  if (opts.excludeStd50 || opts.excludeStd25) {
+    const sets = loadStandardSetIds();
+    const excludeIds = new Set(opts.excludeStd25 ? sets.std25 : sets.std50);
+    const setName = opts.excludeStd25 ? 'STANDARD_25' : 'STANDARD_50';
+    const before = dataset.length;
+    dataset = dataset.filter((row) => !excludeIds.has(row.ppkt_id));
+    const removed = before - dataset.length;
+    console.log(`  Excluded ${removed} ${setName} ppkt_ids; ${dataset.length} cases remain in sampling pool`);
   }
 
   // --case-list <file> — filter the dataset to a specific list of ppkt_ids

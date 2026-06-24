@@ -64,7 +64,20 @@ const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
                 SecondLook provides educational information only and is not a substitute for professional medical
                 advice.
               </p>
-              <p>Always consult with a qualified healthcare provider for medical concerns.</p>
+              <p className="mb-3">Always consult with a qualified healthcare provider for medical concerns.</p>
+              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-neutral-500">
+                <span>© Woggner Strategies, LLC · dba HoggHealth</span>
+                <span className="hidden sm:inline">·</span>
+                <Link href="/legal/terms" className="hover:text-[#8b2500] hover:underline">
+                  Terms of Use
+                </Link>
+                <span className="hidden sm:inline">·</span>
+                <Link href="/legal/privacy" className="hover:text-[#8b2500] hover:underline">
+                  Privacy Policy
+                </Link>
+                <span className="hidden sm:inline">·</span>
+                <span>Beta · Not a medical device</span>
+              </div>
             </div>
           </div>
         </footer>

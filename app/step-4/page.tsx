@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Layout } from "@/components/layout"
+import Link from "next/link"
 import { ArrowLeft, CheckCircle, AlertCircle, Sparkles, Shield } from "lucide-react"
 
 interface Step4Data {
@@ -161,19 +162,39 @@ export default function Step4() {
               <div className="space-y-4 text-sm">
                 <label className="flex items-start gap-3">
                   <input type="checkbox" checked={formData.consentAnalysis} onChange={(e) => update("consentAnalysis", e.target.checked)} className="mt-1" />
-                  <span>I consent to AI analysis of the information I provided.</span>
+                  <span>
+                    I consent to AI analysis of the information I provided. My symptom narrative
+                    will be processed by OpenAI and Anthropic language models and stored for up
+                    to 90 days. See the{" "}
+                    <Link href="/legal/privacy" className="text-[#8b2500] underline" target="_blank">
+                      Privacy Policy
+                    </Link>{" "}
+                    for what we store, where, and for how long.
+                  </span>
                 </label>
                 {errors.consentAnalysis && <p className="text-red-600">{errors.consentAnalysis}</p>}
 
                 <label className="flex items-start gap-3">
                   <input type="checkbox" checked={formData.consentNotSubstitute} onChange={(e) => update("consentNotSubstitute", e.target.checked)} className="mt-1" />
-                  <span>I understand this is educational and does not replace professional medical care.</span>
+                  <span>
+                    I understand SecondLook is a research preview for educational purposes only,
+                    is <strong>not a medical device</strong>, does not establish a
+                    clinician–patient relationship, and{" "}
+                    <strong>
+                      does not replace evaluation, diagnosis, or treatment by a licensed clinician
+                    </strong>
+                    .
+                  </span>
                 </label>
                 {errors.consentNotSubstitute && <p className="text-red-600">{errors.consentNotSubstitute}</p>}
 
                 <label className="flex items-start gap-3">
                   <input type="checkbox" checked={formData.consentAccurate} onChange={(e) => update("consentAccurate", e.target.checked)} className="mt-1" />
-                  <span>I confirm the information I entered is accurate to the best of my knowledge.</span>
+                  <span>
+                    I confirm I am 18 or older, the information I entered is accurate to the best
+                    of my knowledge, and I am submitting it about myself (or about a person I
+                    legally represent with their informed consent).
+                  </span>
                 </label>
                 {errors.consentAccurate && <p className="text-red-600">{errors.consentAccurate}</p>}
               </div>
@@ -197,6 +218,17 @@ export default function Step4() {
               </div>
               <p className="mt-3 text-center sm:text-left text-sm text-gray-500">
                 Evaluations take 8–10 mins.
+              </p>
+              <p className="mt-3 text-center sm:text-left text-xs text-gray-500">
+                By clicking <strong>Start My Analysis</strong> you agree to SecondLook&rsquo;s{" "}
+                <Link href="/legal/terms" className="text-[#8b2500] underline" target="_blank">
+                  Terms of Use
+                </Link>{" "}
+                and{" "}
+                <Link href="/legal/privacy" className="text-[#8b2500] underline" target="_blank">
+                  Privacy Policy
+                </Link>
+                .
               </p>
             </div>
           </div>

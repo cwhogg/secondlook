@@ -1168,65 +1168,213 @@ export default function AdminPage() {
                 </div>
               )}
 
-              {/* v29+ test history with per-case detail. */}
-              <div className="border border-[#d4c5b0] bg-white">
-                <div className="px-4 py-3 border-b border-[#e8ddd0]">
-                  <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
-                    Test History — v29+ ({v29PlusVersions.reduce((n, v) => n + byVersion.get(v)!.length, 0)})
-                  </div>
-                </div>
-                <div>
-                  {v29PlusVersions.length === 0 && (
-                    <div className="px-4 py-6 text-center text-sm text-[#8b7355]">
-                      No v29 tests yet — click <strong>Run New Test</strong> above to generate the first one.
-                    </div>
-                  )}
-                  {v29PlusVersions.map((v, idx) => {
-                    const cases = byVersion.get(v)!
-                    const isExpanded = expandedVersions.has(v) || (idx === 0 && expandedVersions.size === 0)
-                    return (
-                      <div key={v} className="border-b border-[#e8ddd0] last:border-b-0">
-                        <button
-                          onClick={() => {
-                            setExpandedVersions((prev) => {
-                              const next = new Set(prev)
-                              if (prev.size === 0) {
-                                v29PlusVersions.forEach((vv, ii) => { if (ii === 0) next.add(vv) })
-                              }
-                              if (next.has(v)) next.delete(v)
-                              else next.add(v)
-                              return next
-                            })
-                          }}
-                          className="w-full flex items-center gap-3 px-4 py-3 bg-[#faf7f3] hover:bg-[#f5f0e8] transition-colors text-left"
-                        >
-                          <span className="text-xs px-2 py-0.5 rounded font-medium bg-[#fbf6ec] text-[#8b7355] border border-[#e8ddd0] font-mono tabular-nums min-w-[3.5rem] text-center">
-                            {v}
-                          </span>
-                          <span className="text-[10px] uppercase tracking-wider text-[#8b7355]">
-                            {cases.length} test{cases.length === 1 ? "" : "s"}
-                          </span>
-                          <span className="ml-auto text-[#8b7355] text-xs">
-                            {isExpanded ? "▼ collapse" : "▶ expand"}
-                          </span>
-                        </button>
-                        {isExpanded && (
-                          <div>
-                            {cases.map((tc) => (
-                              <TestHistoryRow
-                                key={tc.id}
-                                tc={tc}
-                                isActive={tc.id === activeTestId}
-                                onClick={() => setActiveTestId(tc.id === activeTestId ? null : tc.id)}
-                              />
-                            ))}
-                          </div>
-                        )}
+              {/* v29 trio-mode history: group SL + OAI + Claude rows by
+                  parent (baselineOf back-pointer). One row per "trio
+                  test" instead of three separate version sections.
+                  Comparative stats panel above the table aggregates
+                  Top-N per model so SL vs OAI vs Claude is one glance. */}
+              {(() => {
+                const v29All = v29PlusVersions.flatMap((v) => byVersion.get(v)!)
+                if (v29All.length === 0) {
+                  return (
+                    <div className="border border-[#d4c5b0] bg-white">
+                      <div className="px-4 py-3 border-b border-[#e8ddd0]">
+                        <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
+                          v29 Trio History
+                        </div>
                       </div>
-                    )
-                  })}
-                </div>
-              </div>
+                      <div className="px-4 py-6 text-center text-sm text-[#8b7355]">
+                        No v29 tests yet — click <strong>Run New Test</strong> above to generate the first trio.
+                      </div>
+                    </div>
+                  )
+                }
+
+                const slCases = v29All.filter((tc) => tc.testVersion === "v29")
+                const oaiCases = v29All.filter((tc) => tc.testVersion === "v29-oai-baseline")
+                const claudeCases = v29All.filter((tc) => tc.testVersion === "v29-claude-baseline")
+                const modelStats = (cs: TestCase[]) => {
+                  const graded = cs.filter((c) => c.status === "graded" && c.grading)
+                  if (graded.length === 0) return null
+                  return {
+                    count: cs.length,
+                    graded: graded.length,
+                    top1: graded.filter((c) => c.grading!.correctDiagnosisRank === 1).length / graded.length,
+                    top3: graded.filter((c) => c.grading!.inTop3).length / graded.length,
+                    top5: graded.filter((c) => c.grading!.inTop5).length / graded.length,
+                    top10: graded.filter((c) => {
+                      const r = c.grading!.correctDiagnosisRank
+                      return typeof r === "number" && r <= 10
+                    }).length / graded.length,
+                    avgScore: graded.reduce((a, c) => a + c.grading!.score, 0) / graded.length,
+                  }
+                }
+                const stats = {
+                  sl: modelStats(slCases),
+                  oai: modelStats(oaiCases),
+                  claude: modelStats(claudeCases),
+                }
+
+                // Group by trio parent. SL records are the parent
+                // (baselineOf undefined, id === parentId). OAI/Claude
+                // siblings point at the SL parent via baselineOf.
+                type Trio = { sl?: TestCase; oai?: TestCase; claude?: TestCase; parentId: string; createdAt: string }
+                const trioMap = new Map<string, Trio>()
+                for (const tc of v29All) {
+                  const parentId = tc.baselineOf || tc.id
+                  if (!trioMap.has(parentId)) {
+                    trioMap.set(parentId, { parentId, createdAt: tc.createdAt })
+                  }
+                  const t = trioMap.get(parentId)!
+                  if (tc.testVersion === "v29") {
+                    t.sl = tc
+                    t.createdAt = tc.createdAt
+                  } else if (tc.testVersion === "v29-oai-baseline") t.oai = tc
+                  else if (tc.testVersion === "v29-claude-baseline") t.claude = tc
+                }
+                const trios = Array.from(trioMap.values()).sort((a, b) =>
+                  b.createdAt.localeCompare(a.createdAt),
+                )
+
+                const gradeCell = (tc?: TestCase) => {
+                  if (!tc) return <span className="text-[#c4b89f]">—</span>
+                  if (tc.status === "running") return <span className="text-[#8b7355]">…</span>
+                  if (tc.status === "error") return <span className="text-red-600">err</span>
+                  if (!tc.grading) return <span className="text-[#c4b89f]">·</span>
+                  const r = tc.grading.correctDiagnosisRank
+                  const rankText = r === null || r === undefined ? "miss" : `#${r}`
+                  const color =
+                    r === 1
+                      ? "text-emerald-700"
+                      : typeof r === "number" && r <= 5
+                        ? "text-amber-700"
+                        : "text-red-600"
+                  return (
+                    <span className={`${color} font-mono text-xs`}>
+                      {rankText} <span className="text-[#8b7355]">·</span> {tc.grading.score.toFixed(0)}
+                    </span>
+                  )
+                }
+
+                return (
+                  <div className="space-y-4">
+                    {/* Comparative stats — SL vs OAI vs Claude across all
+                        graded v29 trios. */}
+                    <div className="border border-[#d4c5b0] bg-white">
+                      <div className="px-4 py-3 border-b border-[#e8ddd0]">
+                        <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
+                          v29 Comparative Stats — SL vs OAI vs Claude
+                        </div>
+                      </div>
+                      <table className="w-full text-sm">
+                        <thead className="bg-[#faf7f3] text-[10px] uppercase tracking-wider text-[#8b7355]">
+                          <tr>
+                            <th className="text-left px-4 py-2 font-semibold">Model</th>
+                            <th className="text-right px-3 py-2 font-semibold">n graded</th>
+                            <th className="text-right px-3 py-2 font-semibold">Top-1</th>
+                            <th className="text-right px-3 py-2 font-semibold">Top-3</th>
+                            <th className="text-right px-3 py-2 font-semibold">Top-5</th>
+                            <th className="text-right px-3 py-2 font-semibold">Top-10</th>
+                            <th className="text-right px-3 py-2 font-semibold">Avg score</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {(["sl", "oai", "claude"] as const).map((model) => {
+                            const s = stats[model]
+                            const label = model === "sl" ? "SecondLook" : model === "oai" ? "OpenAI o3" : "Claude Opus"
+                            const accent = model === "sl" ? "text-[#8b2500] font-bold" : ""
+                            if (!s) {
+                              return (
+                                <tr key={model} className="border-t border-[#e8ddd0] text-[#8b7355]">
+                                  <td className={`px-4 py-2 ${accent}`}>{label}</td>
+                                  <td colSpan={6} className="px-3 py-2 text-center italic">no graded tests yet</td>
+                                </tr>
+                              )
+                            }
+                            return (
+                              <tr key={model} className="border-t border-[#e8ddd0] text-[#2a2a2a]">
+                                <td className={`px-4 py-2 ${accent}`}>{label}</td>
+                                <td className="px-3 py-2 text-right tabular-nums">{s.graded}/{s.count}</td>
+                                <td className="px-3 py-2 text-right tabular-nums">{Math.round(s.top1 * 100)}%</td>
+                                <td className="px-3 py-2 text-right tabular-nums">{Math.round(s.top3 * 100)}%</td>
+                                <td className="px-3 py-2 text-right tabular-nums">{Math.round(s.top5 * 100)}%</td>
+                                <td className="px-3 py-2 text-right tabular-nums">{Math.round(s.top10 * 100)}%</td>
+                                <td className="px-3 py-2 text-right tabular-nums">{s.avgScore.toFixed(1)}</td>
+                              </tr>
+                            )
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+
+                    {/* Trio history — one row per parent SL run, with
+                        SL / OAI / Claude grade cells side-by-side.
+                        Clicking a cell selects that specific testCase
+                        for the detail panel above. */}
+                    <div className="border border-[#d4c5b0] bg-white">
+                      <div className="px-4 py-3 border-b border-[#e8ddd0]">
+                        <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
+                          v29 Trio History ({trios.length} {trios.length === 1 ? "trio" : "trios"})
+                        </div>
+                      </div>
+                      <table className="w-full text-sm">
+                        <thead className="bg-[#faf7f3] text-[10px] uppercase tracking-wider text-[#8b7355]">
+                          <tr>
+                            <th className="text-left px-3 py-2 font-semibold">When</th>
+                            <th className="text-left px-3 py-2 font-semibold">Difficulty</th>
+                            <th className="text-left px-3 py-2 font-semibold">Ground Truth</th>
+                            <th className="text-left px-3 py-2 font-semibold">SecondLook</th>
+                            <th className="text-left px-3 py-2 font-semibold">OpenAI o3</th>
+                            <th className="text-left px-3 py-2 font-semibold">Claude Opus</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {trios.map((t) => {
+                            const dx = t.sl?.groundTruth?.diagnosis || t.oai?.groundTruth?.diagnosis || t.claude?.groundTruth?.diagnosis || "—"
+                            const when = new Date(t.createdAt)
+                            const diff = t.sl?.difficulty || t.oai?.difficulty || t.claude?.difficulty
+                            const onClickRow = (tc?: TestCase) => () => {
+                              if (!tc) return
+                              setActiveTestId(tc.id === activeTestId ? null : tc.id)
+                            }
+                            const isAnyActive =
+                              activeTestId === t.sl?.id ||
+                              activeTestId === t.oai?.id ||
+                              activeTestId === t.claude?.id
+                            return (
+                              <tr
+                                key={t.parentId}
+                                className={`border-t border-[#e8ddd0] ${isAnyActive ? "bg-[#faf7f3]" : "hover:bg-[#fbf8f3]"}`}
+                              >
+                                <td className="px-3 py-2 text-[#5a5a5a] whitespace-nowrap text-xs" title={when.toISOString()}>
+                                  {when.toLocaleString()}
+                                </td>
+                                <td className="px-3 py-2 text-[#5a5a5a]">
+                                  {diff !== undefined && (
+                                    <DifficultyBadge difficulty={diff} />
+                                  )}
+                                </td>
+                                <td className="px-3 py-2 text-[#2a2a2a] max-w-xs truncate" title={dx}>
+                                  {dx}
+                                </td>
+                                <td className="px-3 py-2 cursor-pointer" onClick={onClickRow(t.sl)}>
+                                  {gradeCell(t.sl)}
+                                </td>
+                                <td className="px-3 py-2 cursor-pointer" onClick={onClickRow(t.oai)}>
+                                  {gradeCell(t.oai)}
+                                </td>
+                                <td className="px-3 py-2 cursor-pointer" onClick={onClickRow(t.claude)}>
+                                  {gradeCell(t.claude)}
+                                </td>
+                              </tr>
+                            )
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )
+              })()}
             </div>
           )
         })()}

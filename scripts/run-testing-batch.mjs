@@ -231,15 +231,21 @@ async function buildPatientCase(generatedPatient) {
     throw new Error(`parse-symptoms ${parseRes.status}: ${(await parseRes.text()).slice(0, 200)}`);
   }
   const parsed = await parseRes.json();
-  const symptoms = (parsed.mappedSymptoms || []).map((s) => ({
+  // parse-symptoms returns { symptoms: [...], excludedFindings: [...] }.
+  // /admin/testing's buildPatientCase then runs each through
+  // mapSingleSymptom for UMLS enrichment, but the pipeline's symptom
+  // requirement is just "at least one symptom with a medicalTerm" —
+  // the UMLS mapping is enrichment, not a blocker. Skip it here to
+  // keep the batch script self-contained and Node-friendly.
+  const symptoms = (parsed.symptoms || []).map((s) => ({
     originalPhrase: s.originalPhrase || '',
     medicalTerm: s.medicalTerm || s.originalPhrase || '',
-    selectedConcept: s.selectedConcept || null,
+    selectedConcept: null,
     bodyPart: s.bodyPart,
     category: s.category,
     severity: s.severity || 'unknown',
     duration: s.duration || 'unknown',
-    onset: s.onset || 'unknown',
+    onset: 'unknown',
   }));
   const excludedFindings = (parsed.excludedFindings || []).map((e) =>
     typeof e === 'string' ? e : e.medicalTerm || e.originalPhrase || '',

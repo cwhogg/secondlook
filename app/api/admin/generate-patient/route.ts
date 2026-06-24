@@ -302,6 +302,7 @@ IMPORTANT RULES:
     "They checked for [condition] but ruled it out"
   Calibrate frequency to the archetype: 'researcher' and 'frustrated-chronic' patients often know their negatives; 'stoic', 'minimizer', 'elderly-vague', and 'caregiver-proxy' less so. Include negatives ONLY when they would plausibly come up in this patient's voice — never as a list. Use clinical terms inside the negation so a parser can recognize the ruled-out finding (e.g., "no peripheral neuropathy" reads better than "no nerve stuff"). Difficulty 1-2 cases should rarely include them; 3-5 cases benefit from 1-3 well-placed negatives.
 - The ground truth must include the correct diagnosis, key findings, expected body systems, and which specialists should be consulted
+- MANDATORY: populate "omimId" with the correct OMIM phenotype identifier in 'OMIM:NNNNNN' format. The vast majority of rare diseases have OMIM entries; choose a disease that has one. ONLY return null for omimId if you specifically chose a non-Mendelian condition with no OMIM entry — and in that case, prefer picking a different disease at this difficulty. Downstream grading depends on this field being populated; null severely degrades the test.
 - You MUST include "difficultyFactors" listing which specific factors make this case hard
 - Include a "nearMisses" array in the ground truth with 2-5 diseases that should receive partial credit if the pipeline suggests them instead of the correct diagnosis
 - Two credit levels:

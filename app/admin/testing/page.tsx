@@ -280,6 +280,10 @@ export default function AdminPage() {
   // (newest group expanded, all others collapsed). User clicks transition this
   // out of the default state into an explicit selection.
   const [expandedVersions, setExpandedVersions] = useState<Set<string>>(new Set())
+  // v29 trio history grader view: 'v3' = LLM tier grader (correctDiagnosisRank
+  // + score), 'v4' = Mondo paper-faithful grader (v4Grading.firstCorrectRank +
+  // top1/3/10). Toggle persists for the session only.
+  const [gradeView, setGradeView] = useState<"v3" | "v4">("v3")
   const [difficulty, setDifficulty] = useState(2)
   const [categoryHint, setCategoryHint] = useState("")
   const [isGenerating, setIsGenerating] = useState(false)
@@ -1194,19 +1198,42 @@ export default function AdminPage() {
                 const oaiCases = v29All.filter((tc) => tc.testVersion === "v29-oai-baseline")
                 const claudeCases = v29All.filter((tc) => tc.testVersion === "v29-claude-baseline")
                 const modelStats = (cs: TestCase[]) => {
-                  const graded = cs.filter((c) => c.status === "graded" && c.grading)
+                  if (gradeView === "v3") {
+                    const graded = cs.filter((c) => c.status === "graded" && c.grading)
+                    if (graded.length === 0) return null
+                    return {
+                      count: cs.length,
+                      graded: graded.length,
+                      top1: graded.filter((c) => c.grading!.correctDiagnosisRank === 1).length / graded.length,
+                      top3: graded.filter((c) => c.grading!.inTop3).length / graded.length,
+                      top5: graded.filter((c) => c.grading!.inTop5).length / graded.length,
+                      top10: graded.filter((c) => {
+                        const r = c.grading!.correctDiagnosisRank
+                        return typeof r === "number" && r <= 10
+                      }).length / graded.length,
+                      avgScore: graded.reduce((a, c) => a + c.grading!.score, 0) / graded.length,
+                    }
+                  }
+                  // v4 view — Mondo paper-faithful grader.
+                  const graded = cs.filter((c) => c.v4Grading)
                   if (graded.length === 0) return null
                   return {
                     count: cs.length,
                     graded: graded.length,
-                    top1: graded.filter((c) => c.grading!.correctDiagnosisRank === 1).length / graded.length,
-                    top3: graded.filter((c) => c.grading!.inTop3).length / graded.length,
-                    top5: graded.filter((c) => c.grading!.inTop5).length / graded.length,
-                    top10: graded.filter((c) => {
-                      const r = c.grading!.correctDiagnosisRank
-                      return typeof r === "number" && r <= 10
-                    }).length / graded.length,
-                    avgScore: graded.reduce((a, c) => a + c.grading!.score, 0) / graded.length,
+                    top1: graded.filter((c) => c.v4Grading!.top1).length / graded.length,
+                    top3: graded.filter((c) => c.v4Grading!.top3).length / graded.length,
+                    // v4 has no Top-5; show Full Top-1 in its place so the column
+                    // still carries information.
+                    top5: graded.filter((c) => c.v4Grading!.top1Full).length / graded.length,
+                    top10: graded.filter((c) => c.v4Grading!.top10).length / graded.length,
+                    avgScore:
+                      // For v4 there's no single 0-100 score; show the grounding
+                      // rate (groundedCount / totalCount averaged) in the Avg
+                      // column. Useful diagnostic when fuzzy stage missed a lot.
+                      graded.reduce(
+                        (a, c) => a + (c.v4Grading!.totalCount > 0 ? c.v4Grading!.groundedCount / c.v4Grading!.totalCount : 0),
+                        0,
+                      ) / graded.length * 100,
                   }
                 }
                 const stats = {
@@ -1240,30 +1267,86 @@ export default function AdminPage() {
                   if (!tc) return <span className="text-[#c4b89f]">—</span>
                   if (tc.status === "running") return <span className="text-[#8b7355]">…</span>
                   if (tc.status === "error") return <span className="text-red-600">err</span>
-                  if (!tc.grading) return <span className="text-[#c4b89f]">·</span>
-                  const r = tc.grading.correctDiagnosisRank
+                  if (gradeView === "v3") {
+                    if (!tc.grading) return <span className="text-[#c4b89f]">·</span>
+                    const r = tc.grading.correctDiagnosisRank
+                    const rankText = r === null || r === undefined ? "miss" : `#${r}`
+                    const color =
+                      r === 1
+                        ? "text-emerald-700"
+                        : typeof r === "number" && r <= 5
+                          ? "text-amber-700"
+                          : "text-red-600"
+                    return (
+                      <span className={`${color} font-mono text-xs`}>
+                        {rankText} <span className="text-[#8b7355]">·</span> {tc.grading.score.toFixed(0)}
+                      </span>
+                    )
+                  }
+                  // v4 view
+                  if (!tc.v4Grading) return <span className="text-[#c4b89f]" title="v4 grader not yet run on this case">·</span>
+                  const r = tc.v4Grading.firstCorrectRank
+                  const isFull = typeof r === "number" && tc.v4Grading.firstFullCreditRank === r
                   const rankText = r === null || r === undefined ? "miss" : `#${r}`
                   const color =
                     r === 1
                       ? "text-emerald-700"
-                      : typeof r === "number" && r <= 5
+                      : typeof r === "number" && r <= 3
                         ? "text-amber-700"
-                        : "text-red-600"
+                        : typeof r === "number" && r <= 10
+                          ? "text-amber-600"
+                          : "text-red-600"
+                  const fullBadge = isFull ? (
+                    <span className="text-emerald-600 ml-1" title="FULL credit (exact OMIM match)">●</span>
+                  ) : null
                   return (
-                    <span className={`${color} font-mono text-xs`}>
-                      {rankText} <span className="text-[#8b7355]">·</span> {tc.grading.score.toFixed(0)}
+                    <span className={`${color} font-mono text-xs`} title="v4 / Mondo grader">
+                      {rankText}
+                      {fullBadge}
                     </span>
                   )
                 }
 
                 return (
                   <div className="space-y-4">
+                    {/* Grader toggle — switches the comparative stats + trio
+                        history cells between v3 (LLM grader) and v4 (Mondo
+                        paper-faithful grader). v4 requires offline run of
+                        scripts/grade-eval-v4.ts --source admin-testing
+                        --persist before cells populate. */}
+                    <div className="flex items-center gap-3 text-xs text-[#8b7355]">
+                      <span className="font-semibold uppercase tracking-wider">Grader view:</span>
+                      <div className="inline-flex border border-[#d4c5b0]">
+                        {(["v3", "v4"] as const).map((v) => (
+                          <button
+                            key={v}
+                            onClick={() => setGradeView(v)}
+                            className={`px-3 py-1 font-mono text-xs transition-colors ${
+                              gradeView === v
+                                ? "bg-[#8b2500] text-white"
+                                : "bg-white text-[#8b7355] hover:bg-[#faf7f3]"
+                            }`}
+                          >
+                            {v === "v3" ? "v3 LLM" : "v4 Mondo"}
+                          </button>
+                        ))}
+                      </div>
+                      {gradeView === "v4" && (
+                        <span className="italic">
+                          v4 cells empty until you run{" "}
+                          <code className="text-[10px] bg-[#faf7f3] px-1 py-0.5 border border-[#e8ddd0]">
+                            npx tsx scripts/grade-eval-v4.ts --source admin-testing --persist
+                          </code>
+                        </span>
+                      )}
+                    </div>
+
                     {/* Comparative stats — SL vs OAI vs Claude across all
                         graded v29 trios. */}
                     <div className="border border-[#d4c5b0] bg-white">
                       <div className="px-4 py-3 border-b border-[#e8ddd0]">
                         <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
-                          v29 Comparative Stats — SL vs OAI vs Claude
+                          v29 Comparative Stats — SL vs OAI vs Claude · {gradeView === "v3" ? "v3 LLM grader" : "v4 Mondo grader"}
                         </div>
                       </div>
                       <table className="w-full text-sm">
@@ -1273,9 +1356,9 @@ export default function AdminPage() {
                             <th className="text-right px-3 py-2 font-semibold">n graded</th>
                             <th className="text-right px-3 py-2 font-semibold">Top-1</th>
                             <th className="text-right px-3 py-2 font-semibold">Top-3</th>
-                            <th className="text-right px-3 py-2 font-semibold">Top-5</th>
+                            <th className="text-right px-3 py-2 font-semibold">{gradeView === "v3" ? "Top-5" : "FULL Top-1"}</th>
                             <th className="text-right px-3 py-2 font-semibold">Top-10</th>
-                            <th className="text-right px-3 py-2 font-semibold">Avg score</th>
+                            <th className="text-right px-3 py-2 font-semibold">{gradeView === "v3" ? "Avg score" : "Grounding %"}</th>
                           </tr>
                         </thead>
                         <tbody>

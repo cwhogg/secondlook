@@ -1,6 +1,7 @@
 "use client"
 
 import { Fragment, useState, useEffect, useCallback, useRef } from "react"
+import Link from "next/link"
 import type { TestCase, TestSuiteStats, GroundTruth, GeneratedPatient } from "@/lib/types/admin"
 import type { AnalysisResult, DiagnosisHypothesis } from "@/lib/types/index"
 import type { PipelineProgress } from "@/lib/types/pipeline"
@@ -1183,6 +1184,9 @@ export default function EvalPage() {
   return (
     <div className="min-h-screen bg-[#f5f0eb]">
       <div className="max-w-5xl mx-auto px-4 py-8">
+        <Link href="/admin" className="inline-block text-sm text-[#8b2500] hover:underline mb-4">
+          ← Admin
+        </Link>
         <div className="mb-6">
           <h1 className="text-2xl sm:text-3xl font-bold font-serif text-[#2a2a2a]">Clinical Eval Framework</h1>
           <p className="text-sm text-[#8b7355] mt-1">{TAB_SUBTITLE[activeTab]}</p>

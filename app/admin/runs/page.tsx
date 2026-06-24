@@ -148,6 +148,9 @@ export default function AdminRunsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+        <Link href="/admin" className="inline-block text-sm text-[#8b2500] hover:underline mb-4">
+          ← Admin
+        </Link>
         <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Production Runs</h1>

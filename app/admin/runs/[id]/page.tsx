@@ -105,9 +105,15 @@ export default function AdminRunDetailPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 space-y-6">
         <div className="flex items-center justify-between">
-          <Link href="/admin/runs" className="text-sm text-[#8b2500] hover:underline">
-            ← Back to list
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link href="/admin" className="text-sm text-gray-500 hover:text-[#8b2500] hover:underline">
+              Admin
+            </Link>
+            <span className="text-gray-300">/</span>
+            <Link href="/admin/runs" className="text-sm text-[#8b2500] hover:underline">
+              ← Back to list
+            </Link>
+          </div>
           <div className="flex gap-2">
             <button
               onClick={openAsReport}

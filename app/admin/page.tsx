@@ -4,8 +4,18 @@ export default function AdminIndexPage() {
   return (
     <div className="min-h-screen bg-gray-50 px-4 py-10">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">Admin</h1>
-        <p className="text-sm text-gray-600 mb-6">Internal tools.</p>
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900 mb-1">Admin</h1>
+            <p className="text-sm text-gray-600">Internal tools.</p>
+          </div>
+          <Link
+            href="/"
+            className="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 hover:border-[#8b2500] hover:text-[#8b2500]"
+          >
+            ← Home
+          </Link>
+        </div>
 
         <div className="grid gap-3">
           <Link
@@ -29,7 +39,7 @@ export default function AdminIndexPage() {
           </Link>
 
           <Link
-            href="/eval"
+            href="/admin/eval"
             className="block bg-white border border-gray-200 p-5 hover:border-[#8b2500] transition-colors"
           >
             <div className="font-semibold text-gray-900 mb-1">Phenopacket2Prompt Eval</div>

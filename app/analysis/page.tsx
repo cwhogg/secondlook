@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { AnalysisLoading } from "@/components/analysis-loading"
+import { TestUserGroundTruthBanner } from "@/components/test-user-ground-truth-banner"
 import { mapSingleSymptom } from "@/lib/symptom-parser"
 import type { PipelineProgress } from "@/lib/types/pipeline"
 
@@ -320,5 +321,10 @@ export default function AnalysisPage() {
     )
   }
 
-  return <AnalysisLoading progress={progress} pipelineEvents={pipelineEvents} preTriageSymptoms={preTriageSymptoms} />
+  return (
+    <>
+      <TestUserGroundTruthBanner />
+      <AnalysisLoading progress={progress} pipelineEvents={pipelineEvents} preTriageSymptoms={preTriageSymptoms} />
+    </>
+  )
 }

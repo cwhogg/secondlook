@@ -132,6 +132,21 @@ export default function Step1() {
           labResults: existingStep2.labResults || [],
         }),
       )
+      // Pre-fill step-3 with sensible defaults so the operator can click
+      // through without typing. Rare-disease cases are typically chronic
+      // ("1-2 years ago") with moderate-to-high severity (6/10); the
+      // operator can still override on the step-3 screen.
+      localStorage.setItem(
+        "step3Data",
+        JSON.stringify({ mainSymptomStart: "1-2-years", severity: 6 }),
+      )
+      // Persist the ground truth to sessionStorage so the
+      // TestUserGroundTruthBanner can display the expected diagnosis
+      // alongside the analysis output for verification. sessionStorage
+      // (not localStorage) so it disappears when the tab closes.
+      if (data?.groundTruth) {
+        sessionStorage.setItem("testUserGroundTruth", JSON.stringify(data.groundTruth))
+      }
       router.push("/step-2")
     } catch (err: any) {
       setCreateError(err?.message || "Failed to create test user")

@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { RefineLoading } from "@/components/refine-loading"
+import { TestUserGroundTruthBanner } from "@/components/test-user-ground-truth-banner"
 import {
   ArrowLeft,
   ArrowRight,
@@ -200,6 +201,7 @@ export default function RefinePage() {
 
   return (
     <div className="min-h-screen bg-[#f5f0eb]">
+      <TestUserGroundTruthBanner />
       <div className="max-w-3xl mx-auto px-4 py-6 sm:py-10 pb-28 sm:pb-32 space-y-6 sm:space-y-8">
         {/* Header */}
         <div className="bg-[#8b2500] text-white p-5 sm:p-8">

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, Brain, Activity, AlertTriangle, Sparkles, ChevronDown, ChevronUp } from "lucide-react"
 import { startNewAnalysis } from "@/lib/results/start-new-analysis"
+import { TestUserGroundTruthBanner } from "@/components/test-user-ground-truth-banner"
 
 interface FamilyEnrichmentData {
   familyName: string
@@ -183,6 +184,7 @@ export default function AnalysisResultsPage() {
 
   return (
     <div className="min-h-screen bg-[#f5f0eb] pb-28 sm:pb-32">
+      <TestUserGroundTruthBanner />
       {/* Header Section */}
       <div className="bg-[#8b2500] text-white py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">

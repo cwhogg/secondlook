@@ -11,7 +11,15 @@ const LOCAL_KEYS = [
   "mappedSymptoms",
 ] as const
 
-const SESSION_KEYS = ["analysisResults", "analysisMetadata", "analysisPatientCase"] as const
+const SESSION_KEYS = [
+  "analysisResults",
+  "analysisMetadata",
+  "analysisPatientCase",
+  // Test-user ground truth set by the "Create Test User" shortcut on
+  // step-1. Cleared on "Start new analysis" so the banner goes away
+  // when the operator hands the next session off to a real user.
+  "testUserGroundTruth",
+] as const
 
 export function clearAnalysisCache(): void {
   if (typeof window === "undefined") return

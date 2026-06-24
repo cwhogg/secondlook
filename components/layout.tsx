@@ -4,6 +4,7 @@ import React from "react"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { TestUserGroundTruthBanner } from "@/components/test-user-ground-truth-banner"
 
 interface LayoutProps {
   children: React.ReactNode
@@ -46,6 +47,11 @@ const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
             </div>
           </div>
         </header>
+
+        {/* Ground-truth banner: only renders when sessionStorage carries a
+            testUserGroundTruth payload (set by the "Create Test User"
+            shortcut on step-1). No-op for real patient sessions. */}
+        <TestUserGroundTruthBanner />
 
         {/* Main Content */}
         <main id="main-content" className="flex-1">{children}</main>

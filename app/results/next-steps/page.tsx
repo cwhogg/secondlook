@@ -28,6 +28,7 @@ import {
   type TestCategory,
 } from "@/lib/results/where-to-get-it"
 import { startNewAnalysis } from "@/lib/results/start-new-analysis"
+import { TestUserGroundTruthBanner } from "@/components/test-user-ground-truth-banner"
 
 interface RecommendedTest {
   testType: string
@@ -131,6 +132,7 @@ export default function NextStepsPage() {
 
   return (
     <div className="min-h-screen bg-[#f5f0eb]">
+      <TestUserGroundTruthBanner />
       <div className="max-w-4xl mx-auto px-4 py-6 sm:py-10 pb-28 sm:pb-32 space-y-6 sm:space-y-8">
         {/* Header */}
         <div className="bg-[#8b2500] text-white p-5 sm:p-8">

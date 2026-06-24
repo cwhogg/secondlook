@@ -616,10 +616,10 @@ export default function HomePage() {
 
           {/* Links */}
           <div className="flex flex-wrap gap-7 mt-3">
-            <Link href="#" className="font-sans text-[0.7rem] text-[#999] uppercase tracking-[0.04em] hover:text-[#5a5a5a] transition-colors">
+            <Link href="/legal/privacy" className="font-sans text-[0.7rem] text-[#999] uppercase tracking-[0.04em] hover:text-[#5a5a5a] transition-colors">
               Privacy
             </Link>
-            <Link href="#" className="font-sans text-[0.7rem] text-[#999] uppercase tracking-[0.04em] hover:text-[#5a5a5a] transition-colors">
+            <Link href="/legal/terms" className="font-sans text-[0.7rem] text-[#999] uppercase tracking-[0.04em] hover:text-[#5a5a5a] transition-colors">
               Terms
             </Link>
             <Link href="/blog" className="font-sans text-[0.7rem] text-[#999] uppercase tracking-[0.04em] hover:text-[#5a5a5a] transition-colors">

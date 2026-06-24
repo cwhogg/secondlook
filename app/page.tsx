@@ -366,7 +366,7 @@ export default function HomePage() {
 
             {/* Subline */}
             <p className="font-serif-body text-base sm:text-lg leading-[1.5] sm:leading-[1.75] text-[#5a5a5a] mb-5 sm:mb-10 max-w-[480px]">
-              Our AI analyzes your symptoms against thousands of conditions, focusing on rare and complex diagnoses that might be overlooked by general practitioners.
+              Our AI analyzes your symptoms and history against thousands of conditions, focusing on rare and complex diagnoses that might be overlooked by general practitioners.
             </p>
 
             {/* CTA Button */}

@@ -110,6 +110,8 @@ export default function PrintReportPage() {
   const [meta, setMeta] = useState<StoredMeta | null>(null)
   const [patientCase, setPatientCase] = useState<StoredPatientCase | null>(null)
   const [loading, setLoading] = useState(true)
+  const [pdfGenerating, setPdfGenerating] = useState(false)
+  const [pdfError, setPdfError] = useState<string | null>(null)
 
   useEffect(() => {
     try {
@@ -183,6 +185,45 @@ export default function PrintReportPage() {
   const specialistReferrals = next.specialistReferrals || []
   const dataGaps = analysis.dataGaps || []
   const generatedAt = meta?.timestamp || new Date().toLocaleString()
+
+  // Server-side PDF: POST the sessionStorage payload to /api/generate-pdf
+  // and stream the resulting blob to a download. Works identically across
+  // mobile (where window.print is unreliable / blocked in in-app
+  // browsers), desktop browsers (where print dialogs vary), and PWAs.
+  const downloadPdf = async () => {
+    if (pdfGenerating) return
+    setPdfError(null)
+    setPdfGenerating(true)
+    try {
+      const res = await fetch("/api/generate-pdf", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          analysisResult: analysis,
+          patientCase: patientCase,
+          metadata: meta,
+        }),
+      })
+      if (!res.ok) {
+        const txt = await res.text().catch(() => "")
+        throw new Error(txt.slice(0, 200) || `Server returned ${res.status}`)
+      }
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement("a")
+      a.href = url
+      a.download = `secondlook-report-${new Date().toISOString().slice(0, 10)}.pdf`
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      // Give the browser a tick to start the download before revoking.
+      setTimeout(() => URL.revokeObjectURL(url), 1000)
+    } catch (err: any) {
+      setPdfError(err?.message || "PDF generation failed")
+    } finally {
+      setPdfGenerating(false)
+    }
+  }
 
   return (
     <div className="bg-white text-gray-900 print-root">
@@ -277,7 +318,11 @@ export default function PrintReportPage() {
             ← Back
           </button>
           <div className="hidden sm:block text-xs text-gray-500">
-            Choose <span className="font-semibold text-gray-700">Save as PDF</span> as the print destination to download.
+            {pdfError ? (
+              <span className="text-red-600">{pdfError}</span>
+            ) : (
+              "Download a portable PDF — same on mobile and desktop."
+            )}
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -288,10 +333,18 @@ export default function PrintReportPage() {
             Start new analysis
           </button>
           <button
-            onClick={() => window.print()}
-            className="px-4 py-2 bg-[#8b2500] text-white text-sm font-semibold hover:bg-[#6d1d00] transition-colors"
+            onClick={downloadPdf}
+            disabled={pdfGenerating}
+            className="px-4 py-2 bg-[#8b2500] text-white text-sm font-semibold hover:bg-[#6d1d00] transition-colors disabled:opacity-70 disabled:cursor-wait flex items-center gap-2"
           >
-            Print / Save as PDF
+            {pdfGenerating ? (
+              <>
+                <span className="inline-block h-3.5 w-3.5 border-2 border-white border-r-transparent rounded-full animate-spin" />
+                Generating PDF…
+              </>
+            ) : (
+              "Download PDF"
+            )}
           </button>
         </div>
       </div>

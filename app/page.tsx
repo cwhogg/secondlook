@@ -20,6 +20,7 @@ import {
   FileCheck,
   ChevronDown,
   AlertTriangle,
+  Clock,
 } from "lucide-react"
 import { getAllContent } from "@/lib/content"
 
@@ -440,12 +441,19 @@ export default function HomePage() {
               How SecondLook Works
             </h2>
             <p className="font-serif-body text-lg sm:text-xl text-[#5a5a5a] max-w-3xl mx-auto leading-relaxed">
-              SecondLook&apos;s detailed and multi-stage diagnostic pipeline turns your story into a ranked differential and concrete next steps. Each evaluation takes 8-10 minutes on average.
+              SecondLook&apos;s detailed and multi-stage diagnostic pipeline turns your story into a ranked differential and concrete next steps.
             </p>
           </div>
 
           {/* Flow diagram */}
           <div className="flex flex-col items-center">
+            {/* Evaluation time callout — same footprint as the step cards below */}
+            <div className="w-full max-w-[560px] bg-[#8b2500] text-white flex items-center justify-center gap-2.5 px-5 py-3.5 mb-6 sm:mb-8">
+              <Clock className="h-5 w-5 flex-shrink-0" strokeWidth={1.8} />
+              <p className="font-serif text-sm sm:text-base font-medium leading-snug text-center">
+                Each evaluation takes 8&ndash;10 minutes on average.
+              </p>
+            </div>
             <FlowStep step={1} icon={Upload} title="Tell us your medical story and upload relevant history and data" />
             <FlowStep step={2} icon={Search} title="SecondLook extracts clinical concepts" />
             <FlowStep step={3} icon={Database} title="Map symptoms and concepts to candidates in our 9k+ rare disease knowledge base" />

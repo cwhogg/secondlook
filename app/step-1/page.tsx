@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Layout } from "@/components/layout"
-import { ArrowRight, CheckCircle, Sparkles } from "lucide-react"
+import { ArrowRight, CheckCircle, Sparkles, Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface Step1Data {
@@ -19,6 +19,13 @@ export default function Step1() {
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [autoSaved, setAutoSaved] = useState(false)
+  // Test-user generation: hits the same /api/admin/generate-patient
+  // endpoint the admin testing page uses, asks for a difficulty-3
+  // (Challenging) case with no category filter, then jumps straight to
+  // step-2 with the narrative pre-filling primaryConcern + demographics
+  // pre-filling step-1.
+  const [creatingTestUser, setCreatingTestUser] = useState(false)
+  const [createError, setCreateError] = useState<string | null>(null)
 
   useEffect(() => {
     const saved = localStorage.getItem("step1Data")
@@ -76,6 +83,60 @@ export default function Step1() {
     if (!validateForm()) return
     localStorage.setItem("step1Data", JSON.stringify(formData))
     router.push("/step-2")
+  }
+
+  const handleCreateTestUser = async () => {
+    if (creatingTestUser) return
+    setCreateError(null)
+    setCreatingTestUser(true)
+    try {
+      const response = await fetch("/api/admin/generate-patient", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ difficulty: 3 }),
+      })
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}))
+        throw new Error(err?.error || `Generation failed (${response.status})`)
+      }
+      const data = await response.json()
+      const patient = data?.patient
+      if (!patient?.demographics || !patient?.narrative) {
+        throw new Error("Generation returned an unexpected shape")
+      }
+      // Pre-populate both step caches so the user lands on step-2 with
+      // demographics already captured and the patient narrative filling
+      // the primary-concern field. Existing data is overwritten.
+      const sex: "male" | "female" | "other" =
+        patient.demographics.sex === "male" || patient.demographics.sex === "female"
+          ? patient.demographics.sex
+          : "other"
+      localStorage.setItem(
+        "step1Data",
+        JSON.stringify({ age: String(patient.demographics.age), biologicalSex: sex }),
+      )
+      const existingStep2 = (() => {
+        try {
+          return JSON.parse(localStorage.getItem("step2Data") || "{}")
+        } catch {
+          return {}
+        }
+      })()
+      localStorage.setItem(
+        "step2Data",
+        JSON.stringify({
+          ...existingStep2,
+          primaryConcern: patient.narrative,
+          patientHypothesis: existingStep2.patientHypothesis || "",
+          noIdea: existingStep2.noIdea ?? true,
+          labResults: existingStep2.labResults || [],
+        }),
+      )
+      router.push("/step-2")
+    } catch (err: any) {
+      setCreateError(err?.message || "Failed to create test user")
+      setCreatingTestUser(false)
+    }
   }
 
   const isFormValid = !!formData.age && !!formData.biologicalSex
@@ -160,20 +221,49 @@ export default function Step1() {
               {errors.biologicalSex && <p className="text-red-600 text-sm">{errors.biologicalSex}</p>}
             </div>
 
-            <div className="flex justify-center pt-2">
-              <button
-                onClick={handleContinue}
-                disabled={!isFormValid}
-                className={cn(
-                  "group px-8 py-4 rounded-none font-semibold text-lg transition-all duration-300 min-w-[220px]",
-                  isFormValid ? "bg-[#8b2500] text-white" : "bg-gray-200 text-gray-500 cursor-not-allowed",
-                )}
-              >
-                <span className="flex items-center justify-center space-x-2">
-                  <span>Continue</span>
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </button>
+            <div className="pt-2 space-y-3">
+              {/* Continue + Create Test User. On desktop the link sits to
+                  the right of the Continue button; on mobile it stacks
+                  underneath. The link reuses the same generator the admin
+                  testing page does — see /api/admin/generate-patient. */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <button
+                  onClick={handleContinue}
+                  disabled={!isFormValid || creatingTestUser}
+                  className={cn(
+                    "group px-8 py-4 rounded-none font-semibold text-lg transition-all duration-300 min-w-[220px]",
+                    isFormValid && !creatingTestUser
+                      ? "bg-[#8b2500] text-white"
+                      : "bg-gray-200 text-gray-500 cursor-not-allowed",
+                  )}
+                >
+                  <span className="flex items-center justify-center space-x-2">
+                    <span>Continue</span>
+                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleCreateTestUser}
+                  disabled={creatingTestUser}
+                  className={cn(
+                    "text-sm text-[#8b2500] underline underline-offset-4 hover:text-[#6d1d00] transition-colors flex items-center gap-2",
+                    creatingTestUser && "cursor-wait opacity-80",
+                  )}
+                >
+                  {creatingTestUser ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <span>Creating challenging test patient…</span>
+                    </>
+                  ) : (
+                    <span>Create Test User</span>
+                  )}
+                </button>
+              </div>
+              {createError && (
+                <p className="text-center text-sm text-red-600">{createError}</p>
+              )}
             </div>
           </div>
         </div>

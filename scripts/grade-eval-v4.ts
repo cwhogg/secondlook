@@ -5,6 +5,7 @@
  * Run with:
  *   npx tsx scripts/grade-eval-v4.ts --eval-version v24
  *   npx tsx scripts/grade-eval-v4.ts --eval-version v22 --sampling standard50 --persist
+ *   npx tsx scripts/grade-eval-v4.ts --source admin-testing --persist
  *
  * Re-scores an already-completed cohort using the paper-faithful Mondo
  * grading methodology (see lib/grading/mondo-match.ts). Reads cases from KV
@@ -17,8 +18,9 @@
  * never runs as part of a normal eval flow.
  *
  * CLI flags:
- *   --eval-version v24            (required) filter cohort by evalVersion
- *   --sampling standard50         (default; pass empty string to disable)
+ *   --source eval|admin-testing   (default: eval) cohort source
+ *   --eval-version v24            (required for --source eval) filter cohort by evalVersion
+ *   --sampling standard50         (default; eval only; pass empty string to disable)
  *   --persist                     write v4Grading back to KV
  *   --modes secondlook,openai,claude   (default all three)
  *   --limit N                     cap how many trios are graded
@@ -54,6 +56,11 @@ function arg(name: string, fallback?: string): string | undefined {
   return argv[idx + 1];
 }
 
+const SOURCE = (arg('source', 'eval') || 'eval') as 'eval' | 'admin-testing';
+if (SOURCE !== 'eval' && SOURCE !== 'admin-testing') {
+  console.error(`FATAL: --source must be 'eval' or 'admin-testing' (got '${SOURCE}')`);
+  process.exit(1);
+}
 const EVAL_VERSION = arg('eval-version');
 const SAMPLING_RAW = arg('sampling', 'standard50');
 const SAMPLING = SAMPLING_RAW === '' ? undefined : SAMPLING_RAW;
@@ -67,8 +74,11 @@ const USE_FUZZY = !flag('no-fuzzy');
 const DRY_RUN = flag('dry-run');
 const BASE = process.env.BASE_URL || 'https://secondlook.vercel.app';
 
-if (!EVAL_VERSION) {
-  console.error('FATAL: --eval-version is required (e.g. --eval-version v24)');
+// --eval-version is only required for source=eval. The admin-testing
+// source filters on testVersion ∈ {v29, v29-oai-baseline, v29-claude-baseline}
+// so there's no separate evalVersion knob to set.
+if (SOURCE === 'eval' && !EVAL_VERSION) {
+  console.error('FATAL: --eval-version is required for --source eval (e.g. --eval-version v24)');
   process.exit(1);
 }
 
@@ -200,18 +210,43 @@ async function fetchCohort(): Promise<FetchedTestCase[]> {
   const cases = all;
   console.log(`  ✓ ${cases.length} cases returned`);
 
+  const V29_VERSIONS = new Set([
+    'v29',
+    'v29-oai-baseline',
+    'v29-claude-baseline',
+  ]);
   const filtered = cases.filter((tc) => {
-    if (tc.testVersion !== 'Eval') return false;
-    if (tc.evalVersion !== EVAL_VERSION) return false;
-    if (SAMPLING && tc.evalSamplingMode !== SAMPLING) return false;
-    const mode = (tc.evalRunMode || 'secondlook') as 'secondlook' | 'openai' | 'claude';
-    if (!MODES.includes(mode)) return false;
+    // Source-specific membership rules.
+    if (SOURCE === 'eval') {
+      if (tc.testVersion !== 'Eval') return false;
+      if (tc.evalVersion !== EVAL_VERSION) return false;
+      if (SAMPLING && tc.evalSamplingMode !== SAMPLING) return false;
+      const mode = (tc.evalRunMode || 'secondlook') as 'secondlook' | 'openai' | 'claude';
+      if (!MODES.includes(mode)) return false;
+    } else {
+      // admin-testing: pull v29 trios produced by /admin/testing's
+      // doRunTrioBaselines. Each TestCase carries testVersion in one
+      // of three slots; map that to the canonical mode enum below
+      // when grouping.
+      if (!V29_VERSIONS.has(tc.testVersion as string)) return false;
+      const mode =
+        tc.testVersion === 'v29'
+          ? 'secondlook'
+          : tc.testVersion === 'v29-oai-baseline'
+            ? 'openai'
+            : 'claude';
+      if (!MODES.includes(mode)) return false;
+    }
     if (tc.status !== 'graded' && tc.status !== 'completed') return false;
     if (!tc.pipelineResult?.differentialDiagnoses?.length) return false;
     if (!tc.groundTruth?.icd10 || !tc.groundTruth.icd10.startsWith('OMIM:')) return false;
     return true;
   });
-  console.log(`  ✓ ${filtered.length} match --eval-version ${EVAL_VERSION} --sampling ${SAMPLING || '(any)'} --modes ${MODES.join(',')}`);
+  const filterDesc =
+    SOURCE === 'eval'
+      ? `--eval-version ${EVAL_VERSION} --sampling ${SAMPLING || '(any)'} --modes ${MODES.join(',')}`
+      : `--source admin-testing --modes ${MODES.join(',')}`;
+  console.log(`  ✓ ${filtered.length} match ${filterDesc}`);
   return filtered;
 }
 
@@ -227,10 +262,23 @@ interface Trio {
 function groupIntoTrios(cases: FetchedTestCase[]): Trio[] {
   const byPmid = new Map<string, Trio>();
   for (const tc of cases) {
-    const pmid = tc.categoryHint || tc.id;
+    // Eval source: trios share a categoryHint (the ppkt_id). Admin-testing
+    // source: baseline siblings carry baselineOf pointing back at the SL
+    // parent's id, and the SL row uses its own id as the trio key.
+    const pmid =
+      SOURCE === 'eval'
+        ? (tc.categoryHint || tc.id)
+        : ((tc as any).baselineOf || tc.id);
     if (!byPmid.has(pmid)) byPmid.set(pmid, { pmid });
     const trio = byPmid.get(pmid)!;
-    const mode = (tc.evalRunMode || 'secondlook') as 'secondlook' | 'openai' | 'claude';
+    const mode =
+      SOURCE === 'eval'
+        ? ((tc.evalRunMode || 'secondlook') as 'secondlook' | 'openai' | 'claude')
+        : tc.testVersion === 'v29'
+          ? 'secondlook'
+          : tc.testVersion === 'v29-oai-baseline'
+            ? 'openai'
+            : 'claude';
     const existing = trio[mode];
     if (!existing || Date.parse(tc.createdAt) > Date.parse(existing.createdAt)) {
       trio[mode] = tc;
@@ -316,8 +364,11 @@ function reportRollup(rollup: PipelineRollup): void {
 async function main(): Promise<void> {
   console.log('v4 grader (paper-faithful Phenopacket2Prompt / Mondo regrade)');
   console.log('=============================================================');
-  console.log(`Eval version : ${EVAL_VERSION}`);
-  console.log(`Sampling     : ${SAMPLING || '(any)'}`);
+  console.log(`Source       : ${SOURCE}`);
+  if (SOURCE === 'eval') {
+    console.log(`Eval version : ${EVAL_VERSION}`);
+    console.log(`Sampling     : ${SAMPLING || '(any)'}`);
+  }
   console.log(`Modes        : ${MODES.join(', ')}`);
   console.log(`Fuzzy stage  : ${USE_FUZZY ? `enabled (${FUZZY_MODEL})` : 'DISABLED'}`);
   console.log(`Persist      : ${PERSIST ? 'yes (upserting v4Grading)' : 'no (report-only)'}`);
@@ -388,7 +439,11 @@ async function main(): Promise<void> {
 
   console.log(`\nDone. Graded ${processed} pipeline-cases.\n`);
   console.log('=========================================================================');
-  console.log(`v4 (paper-faithful Mondo) vs v3 (current LLM-tier) — ${EVAL_VERSION} ${SAMPLING || ''}`);
+  const cohortDesc =
+    SOURCE === 'eval'
+      ? `${EVAL_VERSION} ${SAMPLING || ''}`
+      : 'admin-testing v29 trios';
+  console.log(`v4 (paper-faithful Mondo) vs v3 (current LLM-tier) — ${cohortDesc}`);
   console.log('=========================================================================');
   console.log('             ground.  |    v4 Top-N (score>0)   |   v4 FULL Top-N (score=1)');
   console.log('Pipeline      rate    |   T-1     T-3     T-10  |   T-1     T-3     T-10   |  v3 clin T-1');

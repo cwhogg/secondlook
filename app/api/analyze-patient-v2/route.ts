@@ -201,22 +201,34 @@ export async function POST(request: NextRequest) {
         console.log(`[${requestId}] Pipeline complete — ${Date.now() - startTime}ms, ${result.pipelineMetadata.totalTokensUsed} tokens, ~$${result.pipelineMetadata.totalCostEstimate.toFixed(3)}`);
 
         // Persist the full run (patient case + analysis + IP) for the
-        // /admin/runs viewer. Best-effort: errors in saveProdRun() are
-        // logged + swallowed, never break the user's response.
+        // /admin/runs viewer. AWAITED so Vercel doesn't terminate the
+        // serverless function before the Upstash write completes — a
+        // prior fire-and-forget version silently dropped writes when
+        // the stream closed before the HTTP request to Upstash went
+        // out. Errors are caught + logged so persistence failures still
+        // never break the user's analysis response.
         const clientIp = extractIp(request.headers);
         const userAgent = request.headers.get('user-agent');
-        saveProdRun({
-          id: requestId,
-          createdAt: new Date().toISOString(),
-          ip: clientIp,
-          userAgent,
-          durationMs: Date.now() - startTime,
-          patientCase: patientCase as any,
-          analysisResult: result as any,
-          summary: summarizeAnalysis(patientCase as any, result as any),
-        }).catch((err) => {
-          console.warn(`[${requestId}] prod-run persistence failed (non-fatal):`, err?.message);
-        });
+        try {
+          const ok = await saveProdRun({
+            id: requestId,
+            createdAt: new Date().toISOString(),
+            ip: clientIp,
+            userAgent,
+            durationMs: Date.now() - startTime,
+            patientCase: patientCase as any,
+            analysisResult: result as any,
+            summary: summarizeAnalysis(patientCase as any, result as any),
+          });
+          if (!ok) {
+            console.warn(`[${requestId}] prod-run persistence returned false (non-fatal)`);
+          }
+        } catch (err: any) {
+          console.warn(
+            `[${requestId}] prod-run persistence threw (non-fatal):`,
+            err?.message,
+          );
+        }
 
         sendEvent({
           type: 'result',

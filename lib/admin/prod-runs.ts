@@ -84,6 +84,31 @@ export function summarizeAnalysis(
 }
 
 /**
+ * Strip the per-call LLM log from analysisResult before persistence. When
+ * LOG_LLM_CALLS=1 is set on the deployment, pipelineMetadata.llmCalls[]
+ * carries the full system prompt + user prompt + raw response + structured
+ * output for every LLM call — easily 500KB–2MB per call, with 10+ calls
+ * per analysis. A single record can exceed Upstash's per-value cap
+ * (1MB free tier, 10MB pay-as-you-go), silently dropping the SET. The
+ * full LLM trace is still available in Vercel function logs by request
+ * ID if needed.
+ */
+function trimForStorage(analysisResult: AnalysisResult): AnalysisResult {
+  const md = (analysisResult as any).pipelineMetadata;
+  if (!md || !md.llmCalls || !Array.isArray(md.llmCalls) || md.llmCalls.length === 0) {
+    return analysisResult;
+  }
+  return {
+    ...analysisResult,
+    pipelineMetadata: {
+      ...md,
+      llmCalls: [],
+      llmCallsOmitted: md.llmCalls.length,
+    },
+  } as AnalysisResult;
+}
+
+/**
  * Persist one analysis run. Best-effort: errors are logged and swallowed
  * so failures here never break the user's analysis response.
  */
@@ -94,11 +119,23 @@ export async function saveProdRun(record: ProdRunRecord): Promise<boolean> {
     return false;
   }
   try {
+    const trimmed: ProdRunRecord = {
+      ...record,
+      analysisResult: trimForStorage(record.analysisResult),
+    };
+    const payload = JSON.stringify(trimmed);
     const score = Date.parse(record.createdAt) || Date.now();
+    // Log payload size so we can see in Vercel logs when records get
+    // close to the per-value cap. Upstash silently rejects writes above
+    // ~1MB on free tier / ~10MB on pay-as-you-go.
+    console.log(
+      `[prod-runs] saving ${record.id} — payload ${(payload.length / 1024).toFixed(1)} KB`,
+    );
     // Write the full record with TTL, then add to the index. Index entries
     // for already-expired records are dropped on list().
-    await redis.set(runKey(record.id), JSON.stringify(record), { ex: TTL_SECONDS });
+    await redis.set(runKey(record.id), payload, { ex: TTL_SECONDS });
     await redis.zadd(KEY_INDEX, { score, member: record.id });
+    console.log(`[prod-runs] saved ${record.id}`);
     return true;
   } catch (err: any) {
     console.error('[prod-runs] save failed for', record.id, err?.message);

@@ -9,6 +9,7 @@ import { O3CriticAgent } from '../agents/o3-critic';
 import { ClaudeFinalizerAgent } from '../agents/claude-finalizer';
 import { withLlmCallLog } from './llm-call-log';
 import { breakdownHypotheses, rankingLine } from './summary-log';
+import { runShadowBaseline, applyShadowBaselinePromotion, type ShadowBaselineResult } from '../agents/shadow-baseline';
 import { ReportGenerator } from '../agents/report-generator';
 import { expandFamilyVariants } from './family-expansion';
 import { deriveSymptomsFromLabs } from './lab-utils';
@@ -177,6 +178,12 @@ export class DiagnosticPipeline {
           data: { stage: 'specialists', elapsedMs: ms },
         });
       }, 10_000);
+
+      // v31 shadow baseline (~$0.30-0.50/case, runs in parallel with the
+      // specialists so wall-time addition is ~0). Result is awaited just
+      // before the finalize stage and applied as a post-finalize check.
+      // Fail-soft: any error returns null, finalizer ranking stands.
+      let shadowBaselinePromise: Promise<ShadowBaselineResult | null> = runShadowBaseline(patientCase);
 
       try {
         const specialistPromises = selectedSpecialties.map(async (specialty) => {
@@ -701,6 +708,47 @@ export class DiagnosticPipeline {
         log("orch.stage.finalize.skipped");
       }
 
+      // ===== STAGE 8.5: SHADOW BASELINE PROMOTION (v31) =====
+      // Await the shadow o3 baseline (kicked off at specialist start) and
+      // apply the promotion rule: if its top-1 disagrees with SL's top-1
+      // AND has materially stronger KB-criteria fulfillment, promote it.
+      // Fail-soft — any error or null shadow leaves SL's ranking
+      // unchanged. The rule is generalized (no disease-specific logic);
+      // all conditions checked in shadow-baseline.ts.
+      const shadowStart = Date.now();
+      try {
+        const shadowResult = await shadowBaselinePromise;
+        const promotionOutcome = applyShadowBaselinePromotion(finalRanking, shadowResult);
+        if (promotionOutcome.promoted) {
+          finalRanking = promotionOutcome.ranking;
+        }
+        if (shadowResult) {
+          this.budgetTracker.addUsage('o3', shadowResult.tokensUsed);
+        }
+        stages.push({
+          stageName: 'shadow-baseline-check',
+          durationMs: Date.now() - shadowStart,
+          tokensUsed: shadowResult?.tokensUsed || 0,
+          model: 'o3',
+          agentName: 'shadow-baseline',
+          inputSummary: `Patient case + SL top-${finalRanking.length} ranking`,
+          outputSummary: promotionOutcome.promoted
+            ? `Promoted: ${promotionOutcome.baselineTop1} to #1 (${promotionOutcome.reason})`
+            : `No promotion: ${promotionOutcome.reason}`,
+        });
+        log('orch.stage.shadow-baseline.done', {
+          shadowAvailable: !!shadowResult,
+          shadowTop1: shadowResult?.topDiagnoses?.[0],
+          slTop1: finalRanking[0]?.diagnosis,
+          promoted: promotionOutcome.promoted,
+          reason: promotionOutcome.reason,
+          baselineScore: promotionOutcome.baselineTop1Score,
+          slScore: promotionOutcome.slTop1Score,
+        });
+      } catch (err: any) {
+        log('orch.stage.shadow-baseline.fail', { msg: (err?.message || '').slice(0, 200) });
+      }
+
       // ===== STAGE 8.6: NARRATIVE MERGER (v28.1) =====
       // Rewrite the role-prefixed clinicalReasoning ("geneticist: ...
       // general-internist: ... [finalizer]: ...") into a single unified
@@ -884,7 +932,7 @@ export class DiagnosticPipeline {
         clarifyingQuestions: clarifierQuestions,
         lowConfidenceWarning,
         pipelineMetadata: {
-          pipelineVersion: '30.0.0',
+          pipelineVersion: '31.0.0',
           stages,
           totalDurationMs: Date.now() - pipelineStart,
           totalTokensUsed: budgetSummary.totalTokens,

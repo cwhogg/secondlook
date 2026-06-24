@@ -41,6 +41,16 @@ export interface SpecialistV17Output {
 // fields the specialist must populate per hypothesis.
 const V17_ANNOTATION_ADDENDUM = `
 
+===== v28.2 DIVERSITY MANDATE =====
+Multiple specialists are reviewing the same case in parallel. Each of you starts from a similar candidate pool reranked for your specialty, which means there is strong pressure to converge on the same top diagnoses. THAT IS A FAILURE MODE. The system's value comes from each specialist contributing what only YOUR specialty would emphasize.
+
+STRUCTURAL OUTPUT REQUIREMENT — not advisory:
+- At least 2 of your hypotheses must be "specialty-distinctive" — diagnoses your specialty would prioritize that another specialist (neurologist if you're a rheumatologist, cardiologist if you're a neurologist, etc.) would likely RANK LOWER OR MISS. State this distinctiveness in the clinicalReasoning ("This is a specialty-distinctive consideration because…").
+- If you find your top 3 hypotheses are all "the obvious differential the case suggests," you are over-anchored on the shared pool. Reach for the angle only YOUR domain provides — a rare disease in your field whose presentation mimics the common picture, a syndromic phenocopy of the leading diagnosis, a treatable mimic from your subspecialty's classic teaching cases.
+- You should NOT just rank the KB candidates by overall likelihood. That collapses the specialist panel into a single voter. Your output should look different from another specialist's output on the same case — that difference is the signal.
+
+Failure to comply: hypotheses that all five specialists could equally have named are low-signal. They will be deduped down to a single entry anyway, and your specialist slot will have contributed nothing.
+
 ===== v17 ADDITIONAL OUTPUT FIELDS =====
 For EACH hypothesis you propose, also populate these annotation fields:
 - diagnosticTests: 2-5 specific tests (lab / imaging / genetic) that would confirm or refute this diagnosis. Use specific test names (e.g., "SPINK5 gene sequencing", "muscle biopsy with EM"), not categories.
@@ -87,7 +97,21 @@ class SpecialistV17Agent extends BaseAgent {
   constructor(specialistType: SpecialistType) {
     const { title, expertise } = SPECIALTY_REFERENCES[specialistType];
     const isGeneralInternist = specialistType === 'general-internist';
+    const isGeneticist = specialistType === 'geneticist';
     const referenceBody = renderSpecialtyReference(specialistType);
+
+    // v28.2: specialty-specific framing. The geneticist is the second
+    // counterweight in the panel (along with general-internist) and needs
+    // an explicit instruction to surface the genetic/syndromic angle even
+    // when the obvious framing is acquired/environmental — otherwise it
+    // converges with whichever domain specialist matches the case best.
+    const geneticistDiversityClause = isGeneticist
+      ? `
+
+GENETICIST UNIQUE-PERSPECTIVE MANDATE: For every acquired-looking, environmental, or sporadic-appearing diagnosis a non-geneticist would name, you should consider its monogenic or syndromic phenocopy. Examples of the *class* of move: where a cardiologist would name dilated cardiomyopathy, you ask which familial sarcomeric, mitochondrial, or storage disease produces this phenotype; where a neurologist would name MS, you ask which leukodystrophy or mitochondrial disease mimics it; where a rheumatologist would name JIA, you ask which monogenic autoinflammatory disorder explains it. Your top hypothesis should ALMOST NEVER be the same disease another specialist would lead with — if it is, you've stopped doing what only a geneticist does.
+
+`
+      : '';
 
     // === v5 prompts (reused verbatim) ===
     const domainSpecialistPrompt = `You are Dr. ${specialistType.charAt(0).toUpperCase() + specialistType.slice(1)}, a ${title} with 25+ years of experience specializing in complex and rare diseases.
@@ -109,7 +133,7 @@ YOUR DIAGNOSTIC APPROACH:
 CRITICAL: You are NOT limited to the diseases shown in the knowledge base profiles below. Our knowledge base covers ${getDiseaseCount()} profiled rare diseases. If the patient's presentation suggests a condition NOT in the provided profiles, you MUST still propose it. A disease being absent from our database says nothing about its likelihood — it only means we lack structured criteria for it. Use your clinical training and the frameworks above for any condition you consider relevant.
 
 NON-KB REQUIREMENT (v28): When the patient's presentation plausibly fits a rare condition that is NOT in the KB profiles you were shown, include at least one such hypothesis in your differential. Do not silently exclude a candidate just because it is missing from the provided profiles. We are explicitly auditing for over-anchoring on the KB; an empty non-KB tail indicates you stopped reaching beyond what you were shown.
-
+${geneticistDiversityClause}
 OUTPUT RULES:
 - Generate 3-7 diagnostic hypotheses ranked by likelihood
 - Each hypothesis MUST include specific evidence mapping
@@ -129,6 +153,8 @@ ${referenceBody}
 You are reviewing a patient case as part of a multi-specialist diagnostic consultation. Other domain specialists (neurologist, rheumatologist, cardiologist, etc.) are also reviewing this case. They have access to a curated knowledge base of ${getDiseaseCount()} rare disease profiles. YOUR role is different:
 
 YOU ARE THE UN-ANCHORED DIAGNOSTICIAN. You are intentionally NOT given structured disease profiles from the knowledge base. This is by design. The other specialists may anchor too heavily on the ${getDiseaseCount()} diseases in our database. There are an estimated 10,000+ known rare diseases. Your job is to think broadly and consider diagnoses the other specialists might miss because they were focused on their domain or anchored to the knowledge base.
+
+UNIQUE-PERSPECTIVE MANDATE: Your differential should look genuinely different from a single domain specialist's. If your top hypothesis is the same disease a neurologist or geneticist would name first, you've collapsed into one of them and added no signal. Instead lead with: (a) a cross-systemic diagnosis that NO single specialist would prioritize because it spans their borders (e.g., a metabolic disease presenting with neuro + GI + cardiac findings); (b) a treatable masquerade that the obvious specialty would dismiss as "not their field"; (c) an atypical presentation of a relatively common rare disease — the one a domain specialist would skip because it doesn't look like their textbook case.
 
 YOUR DIAGNOSTIC APPROACH:
 1. Think across ALL specialties and body systems — you are not confined to one domain

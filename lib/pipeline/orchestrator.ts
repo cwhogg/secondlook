@@ -8,6 +8,7 @@ import { ClaudeSynthAgent } from '../agents/claude-synthesizer';
 import { O3CriticAgent } from '../agents/o3-critic';
 import { ClaudeFinalizerAgent } from '../agents/claude-finalizer';
 import { withLlmCallLog } from './llm-call-log';
+import { breakdownHypotheses, rankingLine } from './summary-log';
 import { ReportGenerator } from '../agents/report-generator';
 import { expandFamilyVariants } from './family-expansion';
 import { deriveSymptomsFromLabs } from './lab-utils';
@@ -328,6 +329,10 @@ export class DiagnosticPipeline {
       if (dedupStats.suspiciousPairs.length > 0) {
         log("orch.dedup.suspicious", { pairs: dedupStats.suspiciousPairs.slice(0, 10) });
       }
+      log("orch.summary.dedup", {
+        ...breakdownHypotheses(dedupedHypotheses),
+        names: dedupedHypotheses.map((h) => h.diagnosis).slice(0, 20),
+      });
       stages.push({
         stageName: 'dedup-normalize',
         durationMs: dedupDurMs,
@@ -369,6 +374,13 @@ export class DiagnosticPipeline {
           acceptedCount: broadenResult.acceptedCount,
           model: broadenResult.model,
         });
+        log("orch.summary.broaden", {
+          // The broadener's accepted candidates — names only. Tells us
+          // whether the broadener generated candidates that the KB-attach
+          // step below will then absorb into criteria-grounded (look for
+          // overlap with existing dedupedHypotheses on the next stage log).
+          accepted: broadenResult.hypotheses.map((h) => h.diagnosis),
+        });
       } catch (err: any) {
         log('orch.stage.broaden.fail', {
           msg: (err?.message || '').slice(0, 200),
@@ -405,6 +417,17 @@ export class DiagnosticPipeline {
         agentName: 'kb-attach',
         inputSummary: `${dedupedHypotheses.length} merged hypotheses`,
         outputSummary: `${kbAttachCount.matched} KB-attached, ${kbAttachCount.unmatched} reasoning-only`,
+      });
+      // Post-KB-attach summary: now that hypotheses have evaluationType
+      // flipped to criteria-grounded for KB hits, this is the first stage
+      // where the "X criteria-grounded vs Y reasoning-evaluated" split
+      // becomes meaningful. If a broadener candidate appears here as
+      // criteria-grounded (fromBroadener should drop while fromOther
+      // rises), the canonicalizer absorbed it.
+      log("orch.summary.kb-attach", {
+        ...breakdownHypotheses(dedupedHypotheses),
+        matched: kbAttachCount.matched,
+        unmatched: kbAttachCount.unmatched,
       });
 
       // ===== STAGE 5: CLAUDE EVIDENCE EVALUATION =====
@@ -453,6 +476,7 @@ export class DiagnosticPipeline {
         clearInterval(evalHeartbeat);
       }
       log("orch.stage.evaluation.done", { durationMs: Date.now() - evalStart, evaluated: evaluationResult.hypotheses.length });
+      log("orch.summary.evaluation", breakdownHypotheses(evaluationResult.hypotheses));
       this.budgetTracker.addUsage(evaluationResult.model, evaluationResult.tokensUsed);
       stages.push({
         stageName: 'claude-evaluation',
@@ -527,6 +551,10 @@ export class DiagnosticPipeline {
         clearInterval(synthHeartbeat);
       }
       log("orch.stage.synthesis.done", { durationMs: Date.now() - synthStart, top1: synthesisResult.hypotheses[0]?.diagnosis });
+      log("orch.summary.synthesis", {
+        ...breakdownHypotheses(synthesisResult.hypotheses),
+        ranking: rankingLine(synthesisResult.hypotheses, 10),
+      });
       this.budgetTracker.addUsage(synthesisResult.model, synthesisResult.tokensUsed);
       stages.push({
         stageName: 'claude-synthesis',
@@ -653,6 +681,13 @@ export class DiagnosticPipeline {
             outputSummary: `Final top: ${finalRanking[0]?.diagnosis} (accepted ${finalizerStats.criticSuggestionsAccepted}/${critique.suggestions.length} suggestions, ${finalizerStats.rankChangesFromFirstPass} rank changes)`,
           });
           log("orch.stage.finalize.done", { top1: finalRanking[0]?.diagnosis, accepted: finalizerStats.criticSuggestionsAccepted, rejected: finalizerStats.criticSuggestionsRejected });
+          log("orch.summary.finalize", {
+            ...breakdownHypotheses(finalRanking),
+            ranking: rankingLine(finalRanking, 10),
+            addedByFinalizer: finalizerStats.addedToTop10,
+            removedByFinalizer: finalizerStats.removedFromTop10,
+            rankChanges: finalizerStats.rankChangesFromFirstPass,
+          });
         } catch (err: any) {
           log("orch.stage.finalize.fail", { msg: (err?.message || '').slice(0, 200) });
           // Degrade gracefully: keep Claude synth's ranking as final.
@@ -914,6 +949,31 @@ export class DiagnosticPipeline {
       };
 
       log("orch.done", { totalDur: elapsed(), stages: stages.length, top1: finalRanking[0]?.diagnosis });
+      // Headline summary: a single Vercel-greppable line containing the full
+      // top-10 ranking with type + source + score, classification breakdown,
+      // and total budget. Search Vercel logs for `orch.done.summary` to get
+      // one row per analysis with all the metrics needed to answer questions
+      // like "what % of top-10 hypotheses are reasoning-evaluated", "how
+      // often does the broadener contribute to the top-10", "which models
+      // and how much did we spend per analysis".
+      const finalBreakdown = breakdownHypotheses(finalRanking);
+      const doneBudget = this.budgetTracker.getSummary();
+      log("orch.done.summary", {
+        version: '28.1.0',
+        totalDurMs: elapsed(),
+        top10: rankingLine(finalRanking, 10),
+        totalKB: finalBreakdown.criteriaGrounded,
+        totalRR: finalBreakdown.reasoningEvaluated,
+        srcSpecialists: finalBreakdown.fromSpecialists,
+        srcBroadener: finalBreakdown.fromBroadener,
+        srcOther: finalBreakdown.fromOther,
+        finalizerAdded: finalizerStats?.addedToTop10?.length || 0,
+        finalizerRemoved: finalizerStats?.removedFromTop10?.length || 0,
+        criticConfidence: critique?.confidenceInClaudeRanking ?? null,
+        totalCostCents: doneBudget.totalCostCents,
+        totalTokens: doneBudget.totalTokens,
+        llmStages: doneBudget.stages.length,
+      });
       return analysisResult;
 
     } catch (error: any) {

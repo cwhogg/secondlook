@@ -492,37 +492,34 @@ export function getSpecialistV17Agent(specialistType: string): SpecialistV17Agen
  */
 export function selectV17Specialists(
   triageRanking: SpecialistType[],
-  bodySystems: string[] = [],
+  // bodySystems is accepted but ignored as of v29.1 — see comment below.
+  // Kept in the signature so the orchestrator's call site doesn't need to
+  // change.
+  _bodySystems: string[] = [],
 ): SpecialistType[] {
   const anchors: SpecialistType[] = ['geneticist', 'general-internist'];
   const selected: SpecialistType[] = [...anchors];
   const seen = new Set<SpecialistType>(anchors);
 
-  // Pass 1: pull in the PRIMARY specialist for each body system the
-  // triage tagged. SYSTEM_TO_SPECIALIST maps each body system to a
-  // ranked list of specialists — the first entry is the canonical
-  // owner of that system (e.g. oncological -> oncologist, respiratory
-  // -> pulmonologist, renal -> nephrologist). This makes specialist
-  // selection deterministic when the triage produces concrete
-  // body-system evidence, instead of letting gpt-4.1-nano's overall
-  // specialist ranking drop the canonical owner out of the top 3.
+  // v29.1 REVERT: body-system-driven selection (added in v29.0) is removed.
+  // Original v29 design forced each body-system-primary specialist into
+  // the panel deterministically, to fix the "soft-tissue sarcoma →
+  // oncologist missed" bug. But STD-50 v4 Mondo cohort comparison showed
+  // a −4pp Top-1 regression v24→v29 with the body-system pass enabled.
+  // Hypothesis: forcing new specialists (pulmonologist / nephrologist /
+  // ophthalmologist / dermatologist) into the panel on cases where they
+  // shouldn't dominate diluted the panel consensus — the geneticist +
+  // neurologist + cardiologist trio that v24 ran on neuro-cardiac cases
+  // was getting replaced by less-relevant specialists.
   //
-  // The "soft-tissue sarcoma → neuro/rheum/cardio called, oncologist
-  // missed" bug came from exactly this: triage tagged 'oncological'
-  // but the overall ranking didn't put oncologist in its top 3.
-  const { SYSTEM_TO_SPECIALIST } = require('./types') as {
-    SYSTEM_TO_SPECIALIST: Record<string, SpecialistType[]>;
-  };
-  for (const bs of bodySystems) {
-    if (selected.length >= 5) break;
-    const primary = SYSTEM_TO_SPECIALIST[bs]?.[0];
-    if (primary && !seen.has(primary)) {
-      selected.push(primary);
-      seen.add(primary);
-    }
-  }
+  // Reverting to triage-ranking-only selection. The triage (gpt-4.1-nano)
+  // already ranks ALL 15 specialists by relevance — that ranking is what
+  // we trust now. If triage drops oncologist out of the top 3 on a
+  // sarcoma case, that's a triage prompt problem to solve at the triage
+  // layer (or in the specialist diversity addendum), not at the selection
+  // layer.
 
-  // Pass 2: fill remaining slots from the triage's relevance ranking.
+  // Fill remaining slots from the triage's full 15-specialist relevance ranking.
   for (const s of triageRanking) {
     if (selected.length >= 5) break;
     if (seen.has(s)) continue;

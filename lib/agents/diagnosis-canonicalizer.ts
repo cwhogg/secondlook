@@ -173,13 +173,26 @@ export function canonicalizeName(predictionText: string): { canonical: string; m
  * Stage 3 (dedup) — diagnoses are canonicalized BEFORE dedup so synonymous
  * specialist outputs collapse correctly during merge.
  */
-export function canonicalizeHypotheses<T extends Pick<DiagnosisHypothesis, 'diagnosis'>>(
+export function canonicalizeHypotheses<T extends Pick<DiagnosisHypothesis, 'diagnosis' | 'sourceAgent'>>(
   hypotheses: T[],
 ): { hypotheses: T[]; rewriteCount: number; rewrites: Array<{ from: string; to: string; mondoId: string | null }> } {
   const out: T[] = [];
   let rewriteCount = 0;
   const rewrites: Array<{ from: string; to: string; mondoId: string | null }> = [];
   for (const h of hypotheses) {
+    // v29.1: do NOT canonicalize broadener output. The broadener's job is
+    // to surface diagnoses OUTSIDE the KB-anchored specialist consensus;
+    // canonicalizing rewrites its picks to KB-canonical names which then
+    // collide with specialist hypotheses during dedup. Result: the
+    // broadener becomes a no-op (everything it adds gets absorbed back
+    // into criteria-grounded), and the Torg-Winchester "17/17
+    // criteria-grounded, 0 reasoning" pattern emerges. Leave the broadener
+    // text alone so KB-attach won't find it and it stays reasoning-
+    // evaluated.
+    if ((h as any).sourceAgent === 'differential-broadener') {
+      out.push(h);
+      continue;
+    }
     const result = canonicalizeName(h.diagnosis);
     if (result.rewritten) {
       rewriteCount++;

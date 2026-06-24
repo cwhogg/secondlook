@@ -321,6 +321,7 @@ Respond with this exact JSON structure:
   "groundTruth": {
     "diagnosis": "Disease Name",
     "icd10": "ICD-10 code or null",
+    "omimId": "OMIM identifier as 'OMIM:NNNNNN' when the disease has an OMIM entry, otherwise null. Required for grading.",
     "prevalence": "e.g., 1 in 50,000",
     "keyFindings": ["finding 1", "finding 2", ...],
     "expectedBodySystems": ["musculoskeletal", "neurological", ...],

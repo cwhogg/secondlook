@@ -239,7 +239,13 @@ async function fetchCohort(): Promise<FetchedTestCase[]> {
     }
     if (tc.status !== 'graded' && tc.status !== 'completed') return false;
     if (!tc.pipelineResult?.differentialDiagnoses?.length) return false;
-    if (!tc.groundTruth?.icd10 || !tc.groundTruth.icd10.startsWith('OMIM:')) return false;
+    // The phenopacket cohort persisted gold OMIM ids on groundTruth.icd10
+    // (because the Phenopacket2Prompt corpus encodes them there). The
+    // /admin/testing synthetic generator emits a separate groundTruth.omimId
+    // field instead. Accept either as the gold so the same script works
+    // for both sources.
+    const gold = ((tc.groundTruth as any).omimId as string | undefined) || tc.groundTruth.icd10;
+    if (!gold || !gold.startsWith('OMIM:')) return false;
     return true;
   });
   const filterDesc =
@@ -403,7 +409,9 @@ async function main(): Promise<void> {
     for (const mode of MODES) {
       const tc = trio[mode];
       if (!tc) continue;
-      const goldOmim = tc.groundTruth.icd10;
+      // Same dual-source resolution as the filter above.
+      const goldOmim =
+        ((tc.groundTruth as any).omimId as string | undefined) || tc.groundTruth.icd10;
       if (!goldOmim?.startsWith('OMIM:')) continue;
 
       const differential = extractDifferential(tc);

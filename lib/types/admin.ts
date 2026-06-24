@@ -46,6 +46,11 @@ export interface NearMiss {
 export interface GroundTruth {
   diagnosis: string;
   icd10?: string | null;
+  // OMIM identifier in 'OMIM:NNNNNN' format when the diagnosis has one.
+  // Required for v4 Mondo grading (the credited-sets table is keyed by
+  // OMIM). Most rare diseases have an OMIM entry; the generator emits
+  // this alongside icd10. May be null for non-OMIM-listed conditions.
+  omimId?: string | null;
   prevalence?: string | null;
   keyFindings: string[];
   expectedBodySystems: string[];

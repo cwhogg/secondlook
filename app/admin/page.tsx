@@ -29,6 +29,16 @@ export default function AdminIndexPage() {
           </Link>
 
           <Link
+            href="/admin/feedback"
+            className="block bg-white border border-gray-200 p-5 hover:border-[#8b2500] transition-colors"
+          >
+            <div className="font-semibold text-gray-900 mb-1">Feedback</div>
+            <div className="text-sm text-gray-600">
+              Responses from the post-report survey modal. Aggregate ratings, free-text comments, link back to the analysis run.
+            </div>
+          </Link>
+
+          <Link
             href="/admin/testing"
             className="block bg-white border border-gray-200 p-5 hover:border-[#8b2500] transition-colors"
           >

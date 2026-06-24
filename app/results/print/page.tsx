@@ -11,6 +11,7 @@ import {
   type TestCategory,
 } from "@/lib/results/where-to-get-it"
 import { startNewAnalysis } from "@/lib/results/start-new-analysis"
+import { FeedbackModal } from "@/components/feedback-modal"
 
 interface EvidenceItem {
   finding: string
@@ -112,6 +113,14 @@ export default function PrintReportPage() {
   const [loading, setLoading] = useState(true)
   const [pdfGenerating, setPdfGenerating] = useState(false)
   const [pdfError, setPdfError] = useState<string | null>(null)
+  // Feedback modal: triggered 5s after landing on the report so the
+  // reader has time to skim before the prompt appears. One-shot per
+  // session — once dismissed or submitted, we don't re-pop. Mode flips
+  // between "test" and "real" depending on whether the session came in
+  // through the "Create Test User" shortcut.
+  const [showFeedback, setShowFeedback] = useState(false)
+  const [feedbackMode, setFeedbackMode] = useState<"test" | "real">("real")
+  const [feedbackThanks, setFeedbackThanks] = useState(false)
 
   useEffect(() => {
     try {
@@ -138,6 +147,29 @@ export default function PrintReportPage() {
     return () => {
       document.title = originalTitle
     }
+  }, [loading, analysis])
+
+  // Feedback modal trigger: fire 5 seconds after the user lands on the
+  // report so they have time to skim it first. Mode is decided by
+  // whether the session was started via the "Create Test User"
+  // shortcut (testUserGroundTruth in sessionStorage). One-shot per
+  // session — sessionStorage.feedbackShown prevents re-prompts on
+  // refresh or back-nav. Don't fire on the Puppeteer-driven PDF render
+  // (it has user-agent "HeadlessChrome").
+  useEffect(() => {
+    if (loading || !analysis) return
+    if (typeof window === "undefined") return
+    if (sessionStorage.getItem("feedbackShown") === "1") return
+    if (/HeadlessChrome|Puppeteer/i.test(navigator.userAgent || "")) return
+
+    const groundTruthRaw = sessionStorage.getItem("testUserGroundTruth")
+    setFeedbackMode(groundTruthRaw ? "test" : "real")
+
+    const timer = window.setTimeout(() => {
+      setShowFeedback(true)
+      sessionStorage.setItem("feedbackShown", "1")
+    }, 5000)
+    return () => window.clearTimeout(timer)
   }, [loading, analysis])
 
   if (loading) {
@@ -227,6 +259,33 @@ export default function PrintReportPage() {
 
   return (
     <div className="bg-white text-gray-900 print-root">
+      {showFeedback && !feedbackThanks && (
+        <FeedbackModal
+          mode={feedbackMode}
+          analysisRequestId={(analysis as any)?.pipelineMetadata?.requestId || null}
+          expectedDiagnosis={(() => {
+            try {
+              const raw = sessionStorage.getItem("testUserGroundTruth")
+              if (!raw) return undefined
+              return JSON.parse(raw)?.diagnosis
+            } catch {
+              return undefined
+            }
+          })()}
+          actualTop1={diagnoses[0]?.diagnosis}
+          onClose={() => setShowFeedback(false)}
+          onSubmitted={() => {
+            setShowFeedback(false)
+            setFeedbackThanks(true)
+            setTimeout(() => setFeedbackThanks(false), 4000)
+          }}
+        />
+      )}
+      {feedbackThanks && (
+        <div className="no-print fixed bottom-4 right-4 z-50 bg-emerald-600 text-white px-4 py-3 shadow-lg text-sm font-medium">
+          Thanks for the feedback!
+        </div>
+      )}
       {/* Print-only stylesheet */}
       <style jsx global>{`
         @media print {

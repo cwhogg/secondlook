@@ -250,7 +250,7 @@ export interface TestCase {
   createdAt: string;
   difficulty: number;
   categoryHint?: string;
-  testVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12' | 'v13' | 'v14' | 'v15' | 'v16' | 'v17' | 'v18' | 'v19' | 'v20' | 'v21' | 'v21.1' | 'v22' | 'v23' | 'v23.1' | 'v24' | 'v24.1' | 'Eval';
+  testVersion?: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12' | 'v13' | 'v14' | 'v15' | 'v16' | 'v17' | 'v18' | 'v19' | 'v20' | 'v21' | 'v21.1' | 'v22' | 'v23' | 'v23.1' | 'v24' | 'v24.1' | 'v29' | 'v29-oai-baseline' | 'v29-claude-baseline' | 'Eval';
   // For Eval-tagged testCases: which version of the pipeline produced them.
   // v1 = pre-2026-05-27 pipeline (5-cap on diagnoses, no family expansion).
   // v2 = 2026-05-27 pipeline: 10-cap synth + KB-linked family expansion.
@@ -356,6 +356,11 @@ export interface TestCase {
   v4Grading?: V4Grading;
   gradingMetadata?: GenerationMetadata;
   previousRun?: PreviousRunSnapshot;
+  // v29 trio mode: when this TestCase is a baseline sibling produced
+  // alongside an SL run on the same generated patient, baselineOf points
+  // back to the parent SL TestCase's id. Used to group SL / OAI / Claude
+  // rows by parent in the test history table.
+  baselineOf?: string;
 }
 
 // ===== AGGREGATE STATS =====

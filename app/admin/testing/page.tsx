@@ -199,6 +199,75 @@ function RunNewTestCard(props: RunNewTestCardProps) {
   )
 }
 
+// v29 trio mode helpers. After the SL pipeline + grade complete on a
+// generated patient, we also send the same patient narrative VERBATIM
+// to OpenAI o3 and Claude Opus 4.7 as single-shot baselines. The
+// baselines produce their own ranked differentials which we persist as
+// sibling TestCase records (testVersion: 'v29-oai-baseline' / 'v29-claude-baseline')
+// linked to the parent SL test via baselineOf. Same grader runs against
+// each so the trio comparison shows up in the test-history table.
+function synthesizeBaselineResult(
+  diagnoses: Array<{ diagnosis: string; reasoning?: string }>,
+  sourceAgent: string,
+  generationMeta: { model: string; tokensUsed: number; durationMs: number },
+): AnalysisResult {
+  const hypotheses = diagnoses.slice(0, 5).map((d, i) => ({
+    diagnosis: d.diagnosis,
+    confidenceScore: Math.max(20, 95 - i * 15),
+    evidenceScore: Math.max(20, 95 - i * 15),
+    rareDisease: false,
+    supportingEvidence: [],
+    contradictoryEvidence: [],
+    clinicalReasoning: d.reasoning || "",
+    typicalPresentation: "",
+    specialistRequired: "",
+    diagnosticCriteria: {
+      criteriaName: "Clinical assessment",
+      totalCriteria: 0,
+      metCriteria: 0,
+      criteriaDetails: [],
+      fulfillmentPercentage: 0,
+    },
+    sourceAgent,
+    evaluationType: "reasoning-evaluated" as const,
+    knowledgeBaseMatch: false,
+  }))
+  return {
+    differentialDiagnoses: hypotheses,
+    differentialClusters: [],
+    excludedCommonDiagnoses: [],
+    dataGaps: [],
+    recommendedTesting: [],
+    nextSteps: {
+      immediateActions: [],
+      specialistReferrals: [],
+      followUpTiming: "",
+      redFlags: [],
+    },
+    overallAssessment: "",
+    pipelineMetadata: {
+      pipelineVersion: `baseline-${sourceAgent}`,
+      stages: [
+        {
+          stageName: "baseline-call",
+          durationMs: generationMeta.durationMs,
+          tokensUsed: generationMeta.tokensUsed,
+          model: generationMeta.model,
+          agentName: sourceAgent,
+          inputSummary: "Verbatim generated patient narrative",
+          outputSummary: `${hypotheses.length} ranked differential diagnoses`,
+        },
+      ],
+      totalDurationMs: generationMeta.durationMs,
+      totalTokensUsed: generationMeta.tokensUsed,
+      totalCostEstimate: 0,
+      knowledgeBaseVersion: "n/a",
+      diseasesConsidered: 0,
+      retrievalScores: [],
+    },
+  } as unknown as AnalysisResult
+}
+
 export default function AdminPage() {
   const [isAuthorized, setIsAuthorized] = useState(false)
   const [authChecked, setAuthChecked] = useState(false)
@@ -368,7 +437,7 @@ export default function AdminPage() {
         createdAt: new Date().toISOString(),
         difficulty,
         categoryHint: categoryHint || undefined,
-        testVersion: 'v24.1' as const,
+        testVersion: 'v29' as const,
         status: "generated",
         source: "generated",
         groundTruth: data.groundTruth,
@@ -529,6 +598,84 @@ export default function AdminPage() {
 
   // ===== HANDLERS =====
 
+  // v29 trio: after the SL pipeline + grade complete on a generated
+  // patient, hit /api/admin/eval-baseline twice (OpenAI o3 single-shot,
+  // Claude Opus single-shot) with the same VERBATIM patient narrative,
+  // synthesize the responses as AnalysisResult shapes, persist sibling
+  // TestCase records, and grade each so the test-history table shows
+  // SL / OAI / Claude side-by-side on identical input. Fail-soft: any
+  // baseline error gets logged into pipelineError on the sibling
+  // record but never interrupts the SL test.
+  const runBaselineSibling = async (
+    parentCase: TestCase,
+    model: "openai" | "claude",
+  ): Promise<void> => {
+    const sourceAgent = `${model}-baseline`
+    const versionTag = (model === "openai" ? "v29-oai-baseline" : "v29-claude-baseline") as TestCase["testVersion"]
+    const siblingId = `test_${Date.now()}_${model}_${Math.random().toString(36).substr(2, 6)}`
+    const siblingCase: TestCase = {
+      id: siblingId,
+      createdAt: new Date().toISOString(),
+      difficulty: parentCase.difficulty,
+      categoryHint: parentCase.categoryHint,
+      testVersion: versionTag,
+      status: "running",
+      source: "generated",
+      groundTruth: parentCase.groundTruth,
+      generatedPatient: parentCase.generatedPatient,
+      baselineOf: parentCase.id,
+    } as TestCase
+    upsertCase(siblingCase)
+
+    try {
+      const res = await fetch("/api/admin/eval-baseline", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ppkt_id: siblingId,
+          caseDescription: parentCase.generatedPatient.narrative,
+          model,
+        }),
+      })
+      if (!res.ok) {
+        const txt = await res.text().catch(() => "")
+        throw new Error(`${model} baseline ${res.status}: ${txt.slice(0, 200)}`)
+      }
+      const data = await res.json()
+      const synth = synthesizeBaselineResult(
+        data.diagnoses || [],
+        sourceAgent,
+        data.generationMetadata || { model, tokensUsed: 0, durationMs: 0 },
+      )
+      patchCase(siblingId, { status: "completed", pipelineResult: synth })
+      // Grade via the same /api/admin/grade-test endpoint the SL test
+      // uses so scores are directly comparable.
+      const gradeRes = await fetch("/api/admin/grade-test", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          groundTruth: parentCase.groundTruth,
+          differentialDiagnoses: synth.differentialDiagnoses,
+          pipelineMetadata: synth.pipelineMetadata,
+          familyEnrichments: synth.familyEnrichments,
+          difficulty: parentCase.difficulty,
+        }),
+      })
+      if (!gradeRes.ok) {
+        const body = await gradeRes.json().catch(() => ({}))
+        throw new Error(body.error || `grade-test ${gradeRes.status}`)
+      }
+      const graded = await gradeRes.json()
+      patchCase(siblingId, {
+        status: "graded",
+        grading: graded.grading,
+        gradingMetadata: graded.gradingMetadata,
+      })
+    } catch (err: any) {
+      patchCase(siblingId, { status: "error", pipelineError: err?.message || "unknown" })
+    }
+  }
+
   const handleRunNewTest = async () => {
     const total = testCount
     setError(null)
@@ -548,6 +695,13 @@ export default function AdminPage() {
         const newCase = await doGenerate()
         const result = await doRunPipeline(newCase.id, newCase.generatedPatient)
         await doGrade(newCase.id, newCase.groundTruth, result, newCase.difficulty)
+        // v29 trio: run baselines in parallel after SL completes. Don't
+        // await — let them grade in the background while the next SL
+        // generation kicks off. Errors are caught and persisted to the
+        // sibling testCase row, never bubbled to interrupt the SL loop.
+        const parentForBaselines = testCasesRef.current.find((tc) => tc.id === newCase.id) || newCase
+        runBaselineSibling(parentForBaselines, "openai").catch(() => {})
+        runBaselineSibling(parentForBaselines, "claude").catch(() => {})
       }
     } catch (err: any) {
       if (!(err instanceof DOMException && err.name === "AbortError")) {
@@ -917,6 +1071,13 @@ export default function AdminPage() {
             if (!byVersion.has(v)) byVersion.set(v, [])
             byVersion.get(v)!.push(tc)
           }
+
+          // v29 cutoff: pre-v29 rows are aggregated to summary stats only.
+          // Per-case rows are hidden so the test history is focused on the
+          // current architecture's results. The summary table below the
+          // header surfaces the historical aggregates so prior versions are
+          // still visible for trend comparison.
+          const isV29Plus = (v: string) => v === "v29" || v.startsWith("v29-")
           // Newest-first version order. Parser handles "v1".."v23", "v23.1",
           // and falls back to lexical compare for anything non-numeric (e.g.,
           // "Eval", which we want to bucket separately at the end).
@@ -931,60 +1092,140 @@ export default function AdminPage() {
             if (pb.ver !== pa.ver) return pb.ver - pa.ver
             return pb.sub - pa.sub
           })
+          // Pre-v29 summary table data — aggregate stats per version, no
+          // individual rows.
+          const preV29Versions = versions.filter((v) => !isV29Plus(v))
+          const v29PlusVersions = versions.filter(isV29Plus)
+          const versionAggregate = (cs: TestCase[]) => {
+            const graded = cs.filter((c) => c.status === "graded" && c.grading)
+            if (graded.length === 0) return null
+            const top1 = graded.filter((c) => c.grading!.correctDiagnosisRank === 1).length
+            const top3 = graded.filter((c) => c.grading!.inTop3).length
+            const top5 = graded.filter((c) => c.grading!.inTop5).length
+            const top10 = graded.filter((c) => {
+              const r = c.grading!.correctDiagnosisRank
+              return typeof r === "number" && r <= 10
+            }).length
+            const avgScore =
+              graded.reduce((a, c) => a + c.grading!.score, 0) / graded.length
+            return {
+              count: cs.length,
+              graded: graded.length,
+              avgScore,
+              top1Rate: top1 / graded.length,
+              top3Rate: top3 / graded.length,
+              top5Rate: top5 / graded.length,
+              top10Rate: top10 / graded.length,
+            }
+          }
+
           return (
-            <div className="border border-[#d4c5b0] bg-white">
-              <div className="px-4 py-3 border-b border-[#e8ddd0]">
-                <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
-                  Test History ({testCases.length})
-                </div>
-              </div>
-              <div>
-                {versions.map((v, idx) => {
-                  const cases = byVersion.get(v)!
-                  const isExpanded = expandedVersions.has(v) || (idx === 0 && expandedVersions.size === 0)
-                  return (
-                    <div key={v} className="border-b border-[#e8ddd0] last:border-b-0">
-                      <button
-                        onClick={() => {
-                          setExpandedVersions((prev) => {
-                            const next = new Set(prev)
-                            // First click on the default-expanded section needs
-                            // to put it into the explicit state so toggling works.
-                            if (prev.size === 0) {
-                              versions.forEach((vv, ii) => { if (ii === 0) next.add(vv) })
-                            }
-                            if (next.has(v)) next.delete(v)
-                            else next.add(v)
-                            return next
-                          })
-                        }}
-                        className="w-full flex items-center gap-3 px-4 py-3 bg-[#faf7f3] hover:bg-[#f5f0e8] transition-colors text-left"
-                      >
-                        <span className="text-xs px-2 py-0.5 rounded font-medium bg-[#fbf6ec] text-[#8b7355] border border-[#e8ddd0] font-mono tabular-nums min-w-[3.5rem] text-center">
-                          {v}
-                        </span>
-                        <span className="text-[10px] uppercase tracking-wider text-[#8b7355]">
-                          {cases.length} test{cases.length === 1 ? "" : "s"}
-                        </span>
-                        <span className="ml-auto text-[#8b7355] text-xs">
-                          {isExpanded ? "▼ collapse" : "▶ expand"}
-                        </span>
-                      </button>
-                      {isExpanded && (
-                        <div>
-                          {cases.map((tc) => (
-                            <TestHistoryRow
-                              key={tc.id}
-                              tc={tc}
-                              isActive={tc.id === activeTestId}
-                              onClick={() => setActiveTestId(tc.id === activeTestId ? null : tc.id)}
-                            />
-                          ))}
-                        </div>
-                      )}
+            <div className="space-y-4">
+              {/* Pre-v29 summary table — aggregate stats only, no per-case
+                  detail. Architecture before v29 differed enough that
+                  individual results are no longer apples-to-apples; the
+                  aggregates remain useful for trend tracking. */}
+              {preV29Versions.length > 0 && (
+                <div className="border border-[#d4c5b0] bg-white">
+                  <div className="px-4 py-3 border-b border-[#e8ddd0]">
+                    <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
+                      Pre-v29 Versions — Summary Stats
                     </div>
-                  )
-                })}
+                    <p className="text-[11px] text-[#8b7355] mt-0.5">
+                      Per-case detail hidden. Individual results from architectures before v29 are not directly comparable to current runs.
+                    </p>
+                  </div>
+                  <table className="w-full text-sm">
+                    <thead className="bg-[#faf7f3] text-[10px] uppercase tracking-wider text-[#8b7355]">
+                      <tr>
+                        <th className="text-left px-4 py-2 font-semibold">Version</th>
+                        <th className="text-right px-3 py-2 font-semibold">n graded</th>
+                        <th className="text-right px-3 py-2 font-semibold">Top-1</th>
+                        <th className="text-right px-3 py-2 font-semibold">Top-3</th>
+                        <th className="text-right px-3 py-2 font-semibold">Top-5</th>
+                        <th className="text-right px-3 py-2 font-semibold">Top-10</th>
+                        <th className="text-right px-3 py-2 font-semibold">Avg score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {preV29Versions.map((v) => {
+                        const agg = versionAggregate(byVersion.get(v)!)
+                        if (!agg) return null
+                        return (
+                          <tr key={v} className="border-t border-[#e8ddd0] text-[#2a2a2a]">
+                            <td className="px-4 py-2 font-mono font-semibold">{v}</td>
+                            <td className="px-3 py-2 text-right tabular-nums">{agg.graded}/{agg.count}</td>
+                            <td className="px-3 py-2 text-right tabular-nums">{Math.round(agg.top1Rate * 100)}%</td>
+                            <td className="px-3 py-2 text-right tabular-nums">{Math.round(agg.top3Rate * 100)}%</td>
+                            <td className="px-3 py-2 text-right tabular-nums">{Math.round(agg.top5Rate * 100)}%</td>
+                            <td className="px-3 py-2 text-right tabular-nums">{Math.round(agg.top10Rate * 100)}%</td>
+                            <td className="px-3 py-2 text-right tabular-nums">{agg.avgScore.toFixed(1)}</td>
+                          </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {/* v29+ test history with per-case detail. */}
+              <div className="border border-[#d4c5b0] bg-white">
+                <div className="px-4 py-3 border-b border-[#e8ddd0]">
+                  <div className="text-sm font-semibold text-[#8b7355] uppercase tracking-wider">
+                    Test History — v29+ ({v29PlusVersions.reduce((n, v) => n + byVersion.get(v)!.length, 0)})
+                  </div>
+                </div>
+                <div>
+                  {v29PlusVersions.length === 0 && (
+                    <div className="px-4 py-6 text-center text-sm text-[#8b7355]">
+                      No v29 tests yet — click <strong>Run New Test</strong> above to generate the first one.
+                    </div>
+                  )}
+                  {v29PlusVersions.map((v, idx) => {
+                    const cases = byVersion.get(v)!
+                    const isExpanded = expandedVersions.has(v) || (idx === 0 && expandedVersions.size === 0)
+                    return (
+                      <div key={v} className="border-b border-[#e8ddd0] last:border-b-0">
+                        <button
+                          onClick={() => {
+                            setExpandedVersions((prev) => {
+                              const next = new Set(prev)
+                              if (prev.size === 0) {
+                                v29PlusVersions.forEach((vv, ii) => { if (ii === 0) next.add(vv) })
+                              }
+                              if (next.has(v)) next.delete(v)
+                              else next.add(v)
+                              return next
+                            })
+                          }}
+                          className="w-full flex items-center gap-3 px-4 py-3 bg-[#faf7f3] hover:bg-[#f5f0e8] transition-colors text-left"
+                        >
+                          <span className="text-xs px-2 py-0.5 rounded font-medium bg-[#fbf6ec] text-[#8b7355] border border-[#e8ddd0] font-mono tabular-nums min-w-[3.5rem] text-center">
+                            {v}
+                          </span>
+                          <span className="text-[10px] uppercase tracking-wider text-[#8b7355]">
+                            {cases.length} test{cases.length === 1 ? "" : "s"}
+                          </span>
+                          <span className="ml-auto text-[#8b7355] text-xs">
+                            {isExpanded ? "▼ collapse" : "▶ expand"}
+                          </span>
+                        </button>
+                        {isExpanded && (
+                          <div>
+                            {cases.map((tc) => (
+                              <TestHistoryRow
+                                key={tc.id}
+                                tc={tc}
+                                isActive={tc.id === activeTestId}
+                                onClick={() => setActiveTestId(tc.id === activeTestId ? null : tc.id)}
+                              />
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             </div>
           )

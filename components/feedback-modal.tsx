@@ -173,7 +173,7 @@ export function FeedbackModal({
           )}
           {mode === "test" && step === 3 && (
             <OpenTextQuestion
-              prompt="Please give me any comments or feedback!"
+              prompt="Please give me any comments or feedback so I can improve SecondLook!"
               value={testComments}
               onChange={setTestComments}
             />

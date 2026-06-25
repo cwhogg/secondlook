@@ -3,23 +3,20 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Layout } from "@/components/layout"
-import { TimelineSelector } from "@/components/timeline-selector"
-import { SeveritySlider } from "@/components/severity-slider"
-import { ArrowLeft, ArrowRight, CheckCircle, Sparkles } from "lucide-react"
+import { LabUpload } from "@/components/lab-upload"
+import { LabVerification } from "@/components/lab-verification"
+import { IntakeBreadcrumb } from "@/components/intake-breadcrumb"
+import { ArrowLeft, ArrowRight, CheckCircle, SkipForward } from "lucide-react"
+import type { LabResult } from "@/lib/types/index"
 import { cn } from "@/lib/utils"
 
 interface Step3Data {
-  mainSymptomStart: string
-  severity: number
+  labResults: LabResult[]
 }
 
 export default function Step3() {
   const router = useRouter()
-  const [formData, setFormData] = useState<Step3Data>({
-    mainSymptomStart: "",
-    severity: 5,
-  })
-  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [formData, setFormData] = useState<Step3Data>({ labResults: [] })
   const [autoSaved, setAutoSaved] = useState(false)
 
   useEffect(() => {
@@ -38,11 +35,9 @@ export default function Step3() {
     if (saved) {
       try {
         const parsed = JSON.parse(saved)
-        setFormData((prev) => ({
-          ...prev,
-          mainSymptomStart: typeof parsed.mainSymptomStart === "string" ? parsed.mainSymptomStart : "",
-          severity: typeof parsed.severity === "number" ? parsed.severity : 5,
-        }))
+        setFormData({
+          labResults: Array.isArray(parsed.labResults) ? parsed.labResults : [],
+        })
       } catch {
         // ignore
       }
@@ -51,27 +46,14 @@ export default function Step3() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (formData.mainSymptomStart || formData.severity !== 5) {
+      if (formData.labResults.length > 0) {
         localStorage.setItem("step3Data", JSON.stringify(formData))
         setAutoSaved(true)
         setTimeout(() => setAutoSaved(false), 1500)
       }
     }, 700)
-
     return () => clearTimeout(timer)
   }, [formData])
-
-  const update = (field: keyof Step3Data, value: any) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: "" }))
-  }
-
-  const validate = () => {
-    const nextErrors: Record<string, string> = {}
-    if (!formData.mainSymptomStart) nextErrors.mainSymptomStart = "Please select when symptoms started"
-    setErrors(nextErrors)
-    return Object.keys(nextErrors).length === 0
-  }
 
   const handleBack = () => {
     localStorage.setItem("step3Data", JSON.stringify(formData))
@@ -79,12 +61,18 @@ export default function Step3() {
   }
 
   const handleContinue = () => {
-    if (!validate()) return
     localStorage.setItem("step3Data", JSON.stringify(formData))
     router.push("/step-4")
   }
 
-  const isFormValid = !!formData.mainSymptomStart
+  const handleSkip = () => {
+    // Persist an empty labResults so /step-4 (which checks step-3 exists)
+    // and /analysis don't bounce us back here.
+    localStorage.setItem("step3Data", JSON.stringify({ labResults: [] }))
+    router.push("/step-4")
+  }
+
+  const hasLabs = formData.labResults.length > 0
 
   return (
     <Layout>
@@ -101,27 +89,30 @@ export default function Step3() {
             </div>
           </div>
 
+          <IntakeBreadcrumb current={3} />
+
           <div className="text-center mb-10">
-            <div className="inline-flex items-center space-x-2 bg-[#faf6f0] px-4 py-2 rounded-full mb-6">
-              <Sparkles className="h-4 w-4 text-[#8b2500]" />
-              <span className="text-sm font-medium text-[#8b2500]">Step 3 of 4</span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Timeline & impact</h1>
-            <p className="text-lg text-gray-600">Help us understand onset and how much this affects daily life</p>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Lab results</h1>
+            <p className="text-lg text-gray-600">
+              Optional — upload any recent labs to sharpen the analysis. Skip if you don't have any.
+            </p>
           </div>
 
           <div className="max-w-3xl mx-auto bg-white border border-gray-100 p-6 sm:p-8 space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-xl font-bold text-gray-900">When did your symptoms start? <span className="text-red-500">*</span></h2>
-              <TimelineSelector value={formData.mainSymptomStart} onChange={(value) => update("mainSymptomStart", value)} />
-              {errors.mainSymptomStart && <p className="text-red-600 text-sm">{errors.mainSymptomStart}</p>}
-            </div>
-
-            <div className="space-y-4">
-              <h2 className="text-xl font-bold text-gray-900">How much is this affecting your day-to-day life?</h2>
-              <div className="bg-[#faf6f0] p-6">
-                <SeveritySlider value={formData.severity} onChange={(value) => update("severity", value)} />
-              </div>
+            <div className="space-y-3">
+              <p className="text-sm text-gray-600">
+                Upload PDFs or photos of lab reports. We'll extract the numeric values and reference
+                ranges — you'll see and confirm everything before continuing.
+              </p>
+              <LabUpload
+                onLabsExtracted={(newLabs) => {
+                  setFormData((prev) => ({ labResults: [...prev.labResults, ...newLabs] }))
+                }}
+              />
+              <LabVerification
+                labs={formData.labResults}
+                onChange={(next) => setFormData({ labResults: next })}
+              />
             </div>
 
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-2">
@@ -133,19 +124,28 @@ export default function Step3() {
                 <span>Back</span>
               </button>
 
-              <button
-                onClick={handleContinue}
-                disabled={!isFormValid}
-                className={cn(
-                  "group px-8 py-4 font-semibold text-lg transition-all duration-300 w-full sm:w-auto min-w-[220px]",
-                  isFormValid ? "bg-[#8b2500] text-white" : "bg-gray-200 text-gray-500 cursor-not-allowed",
+              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                {!hasLabs && (
+                  <button
+                    onClick={handleSkip}
+                    className="group flex items-center justify-center space-x-2 px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold"
+                  >
+                    <SkipForward className="h-5 w-5" />
+                    <span>Skip — no labs</span>
+                  </button>
                 )}
-              >
-                <span className="flex items-center justify-center space-x-2">
-                  <span>Continue</span>
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </button>
+                <button
+                  onClick={handleContinue}
+                  className={cn(
+                    "group px-8 py-4 font-semibold text-lg transition-all duration-300 sm:w-auto min-w-[220px] bg-[#8b2500] text-white",
+                  )}
+                >
+                  <span className="flex items-center justify-center space-x-2">
+                    <span>Continue</span>
+                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

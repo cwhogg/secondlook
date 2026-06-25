@@ -27,9 +27,11 @@ Pre-v17 rule for reference: "Never mix providers" — formally relaxed by user d
 ```
 app/
   page.tsx                    # Homepage
-  step-1/page.tsx             # Demographics + chief complaint
-  step-2/page.tsx             # Symptom mapping + medical history
-  step-3/page.tsx             # Medications, testing, consent
+  step-1/page.tsx             # Demographics (age, biological sex)
+  step-2/page.tsx             # Your history — narrative or medical document upload
+  step-3/page.tsx             # Lab results — optional
+  step-4/page.tsx             # Symptom photos — optional
+  step-5/page.tsx             # Review extracted symptoms + timeline + severity + consent + submit
   analysis/page.tsx           # Loading screen during analysis
   results/analysis/page.tsx   # Results display
   testing/page.tsx            # Internal testing framework (generate cases, run pipeline, grade)

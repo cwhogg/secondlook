@@ -5,10 +5,8 @@ import { useRouter } from "next/navigation"
 import { Layout } from "@/components/layout"
 import { CharacterCounter } from "@/components/character-counter"
 import { DocumentUpload } from "@/components/document-upload"
-import { LabUpload } from "@/components/lab-upload"
-import { LabVerification } from "@/components/lab-verification"
-import { ArrowRight, ArrowLeft, CheckCircle, Sparkles, AlertTriangle } from "lucide-react"
-import type { LabResult } from "@/lib/types/index"
+import { IntakeBreadcrumb } from "@/components/intake-breadcrumb"
+import { ArrowRight, ArrowLeft, CheckCircle, AlertTriangle } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 // Maximum length for the primary-concern field after merging uploaded
@@ -26,7 +24,6 @@ interface Step2Data {
   primaryConcern: string
   patientHypothesis: string
   noIdea: boolean
-  labResults: LabResult[]
 }
 
 export default function Step2() {
@@ -35,7 +32,6 @@ export default function Step2() {
     primaryConcern: "",
     patientHypothesis: "",
     noIdea: false,
-    labResults: [],
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [autoSaved, setAutoSaved] = useState(false)
@@ -62,7 +58,6 @@ export default function Step2() {
           primaryConcern: typeof parsed.primaryConcern === "string" ? parsed.primaryConcern : "",
           patientHypothesis: typeof parsed.patientHypothesis === "string" ? parsed.patientHypothesis : "",
           noIdea: typeof parsed.noIdea === "boolean" ? parsed.noIdea : false,
-          labResults: Array.isArray(parsed.labResults) ? parsed.labResults : [],
         }))
       } catch {
         // ignore
@@ -72,7 +67,7 @@ export default function Step2() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (formData.primaryConcern || formData.patientHypothesis || formData.labResults.length > 0) {
+      if (formData.primaryConcern || formData.patientHypothesis) {
         localStorage.setItem("step2Data", JSON.stringify(formData))
         setAutoSaved(true)
         setTimeout(() => setAutoSaved(false), 1500)
@@ -122,13 +117,11 @@ export default function Step2() {
             </div>
           </div>
 
+          <IntakeBreadcrumb current={2} />
+
           <div className="text-center mb-10">
-            <div className="inline-flex items-center space-x-2 bg-[#faf6f0] px-4 py-2 rounded-full mb-6">
-              <Sparkles className="h-4 w-4 text-[#8b2500]" />
-              <span className="text-sm font-medium text-[#8b2500]">Step 2 of 4</span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Tell your story</h1>
-            <p className="text-lg text-gray-600">Describe what’s been happening in your own words</p>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Your history</h1>
+            <p className="text-lg text-gray-600">Tell your story in writing, or upload a medical document</p>
           </div>
 
           <div className="max-w-3xl mx-auto bg-white border border-gray-100 p-6 sm:p-8 space-y-8">
@@ -187,24 +180,6 @@ export default function Step2() {
                 <CharacterCounter current={formData.primaryConcern.length} max={PRIMARY_CONCERN_MAX} />
               </div>
               {errors.primaryConcern && <p className="text-red-600 text-sm">{errors.primaryConcern}</p>}
-            </div>
-
-            <div className="space-y-3">
-              <h2 className="text-xl font-bold text-gray-900">
-                Bloodwork or lab reports <span className="text-gray-500 text-base font-normal">(optional)</span>
-              </h2>
-              <p className="text-sm text-gray-600">
-                Upload any recent lab PDFs or photos. The actual numeric values feed the analysis — you'll see and confirm everything that's extracted before continuing.
-              </p>
-              <LabUpload
-                onLabsExtracted={(newLabs) => {
-                  setFormData((prev) => ({ ...prev, labResults: [...prev.labResults, ...newLabs] }))
-                }}
-              />
-              <LabVerification
-                labs={formData.labResults}
-                onChange={(next) => setFormData((prev) => ({ ...prev, labResults: next }))}
-              />
             </div>
 
             <div className="space-y-4">

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Layout } from "@/components/layout"
+import { IntakeBreadcrumb } from "@/components/intake-breadcrumb"
 import { ArrowRight, CheckCircle, Sparkles, Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -129,16 +130,26 @@ export default function Step1() {
           primaryConcern: patient.narrative,
           patientHypothesis: existingStep2.patientHypothesis || "",
           noIdea: existingStep2.noIdea ?? true,
-          labResults: existingStep2.labResults || [],
         }),
       )
-      // Pre-fill step-3 with sensible defaults so the operator can click
+      // Pre-populate the optional intake steps with empty arrays so the
+      // operator can click straight through without seeing the "step
+      // missing — sending you back" redirect chain.
+      localStorage.setItem("step3Data", JSON.stringify({ labResults: [] }))
+      localStorage.setItem("step4Data", JSON.stringify({ photos: [] }))
+      // Pre-fill step-5 with sensible defaults so the operator can click
       // through without typing. Rare-disease cases are typically chronic
-      // ("1-2 years ago") with moderate-to-high severity (6/10); the
-      // operator can still override on the step-3 screen.
+      // ("1-2 years ago") with moderate-to-high severity (6/10). Consents
+      // are intentionally left unchecked — operator confirms explicitly.
       localStorage.setItem(
-        "step3Data",
-        JSON.stringify({ mainSymptomStart: "1-2-years", severity: 6 }),
+        "step5Data",
+        JSON.stringify({
+          mainSymptomStart: "1-2-years",
+          severity: 6,
+          consentAnalysis: false,
+          consentNotSubstitute: false,
+          consentAccurate: false,
+        }),
       )
       // Persist the ground truth to sessionStorage so the
       // TestUserGroundTruthBanner can display the expected diagnosis
@@ -171,11 +182,9 @@ export default function Step1() {
             </div>
           </div>
 
+          <IntakeBreadcrumb current={1} />
+
           <div className="text-center mb-4 sm:mb-10">
-            <div className="inline-flex items-center space-x-2 bg-[#faf6f0] px-4 py-1.5 sm:py-2 rounded-full mb-3 sm:mb-6">
-              <Sparkles className="h-4 w-4 text-[#8b2500]" />
-              <span className="text-sm font-medium text-[#8b2500]">Step 1 of 4</span>
-            </div>
             <h1 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-1.5 sm:mb-4">About you</h1>
             <p className="text-sm sm:text-lg text-gray-600">A couple basics to personalize your analysis</p>
           </div>

@@ -16,15 +16,48 @@ interface Step2Data {
   primaryConcern: string
   patientHypothesis?: string
   noIdea?: boolean
+  // Legacy: labs used to live on step-2. Tolerated for in-flight drafts.
   labResults?: any[]
 }
 
 interface Step3Data {
-  mainSymptomStart?: string
-  severity?: number
+  labResults?: any[]
 }
 
-interface Step4Data {}
+interface Step4SymptomPhoto {
+  description: string
+  bodyPart?: string
+  fileName?: string
+}
+
+interface Step4Data {
+  photos?: Step4SymptomPhoto[]
+}
+
+interface Step5Data {
+  mainSymptomStart?: string
+  severity?: number
+  consentAnalysis?: boolean
+  consentNotSubstitute?: boolean
+  consentAccurate?: boolean
+}
+
+function combineNarrativeAndPhotos(
+  primaryConcern: string,
+  photos: Step4SymptomPhoto[] | undefined,
+): string {
+  const ps = Array.isArray(photos) ? photos : []
+  if (ps.length === 0) return primaryConcern
+  const block = ps
+    .map((p) =>
+      p.bodyPart ? `${p.bodyPart}: ${p.description}` : p.description,
+    )
+    .join("\n")
+  const sep = primaryConcern.trim()
+    ? "\n\n--- Visible findings (from uploaded photos) ---\n\n"
+    : ""
+  return `${primaryConcern}${sep}${block}`
+}
 
 /**
  * Common success handler. Used by both the SSE 'result' event and the
@@ -124,9 +157,21 @@ export default function AnalysisPage() {
       const step2Data = localStorage.getItem("step2Data")
       const step3Data = localStorage.getItem("step3Data")
       const step4Data = localStorage.getItem("step4Data")
+      const step5Data = localStorage.getItem("step5Data")
 
-      if (!step1Data || !step2Data || !step3Data || !step4Data) {
-        router.push("/step-1")
+      if (!step1Data || !step2Data || !step3Data || !step4Data || !step5Data) {
+        // Send the user back to the earliest missing step rather than always
+        // /step-1 — keeps drafts that got partway through from feeling lost.
+        const missing = !step1Data
+          ? "/step-1"
+          : !step2Data
+            ? "/step-2"
+            : !step3Data
+              ? "/step-3"
+              : !step4Data
+                ? "/step-4"
+                : "/step-5"
+        router.push(missing)
         return
       }
 
@@ -134,7 +179,17 @@ export default function AnalysisPage() {
         const parsedStep1: Step1Data = JSON.parse(step1Data)
         const parsedStep2: Step2Data = JSON.parse(step2Data)
         const parsedStep3: Step3Data = JSON.parse(step3Data)
-        JSON.parse(step4Data) // validate step4 is present
+        const parsedStep4: Step4Data = JSON.parse(step4Data)
+        const parsedStep5: Step5Data = JSON.parse(step5Data)
+
+        // Combined narrative = the written history (step-2) plus any
+        // symptom-photo descriptions (step-4). parse-symptoms operates on
+        // this combined text so visible findings flow into the symptom
+        // list alongside what the patient wrote.
+        const combinedNarrative = combineNarrativeAndPhotos(
+          parsedStep2.primaryConcern || "",
+          parsedStep4.photos,
+        )
 
         // ===== STAGE 0: SYMPTOM EXTRACTION =====
         setPipelineEvents([{
@@ -147,12 +202,14 @@ export default function AnalysisPage() {
         } as PipelineProgress])
         setProgress(2)
 
-        // Call parse-symptoms API
+        // Call parse-symptoms API. Uses the combined narrative so any
+        // symptom-photo descriptions are part of the same extraction pass
+        // as the written history.
         const parseResponse = await fetch("/api/parse-symptoms", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            text: parsedStep2.primaryConcern,
+            text: combinedNarrative,
             patientAge: parsedStep1.age,
             patientSex: parsedStep1.biologicalSex,
           }),
@@ -216,16 +273,25 @@ export default function AnalysisPage() {
           severity: s.severity,
         }))
 
+        // Labs are now collected on step-3 (was: step-2 in the legacy flow).
+        // Tolerate legacy step2Data.labResults so drafts started before the
+        // restructure still submit cleanly.
+        const labResults = Array.isArray(parsedStep3.labResults) && parsedStep3.labResults.length > 0
+          ? parsedStep3.labResults
+          : (Array.isArray(parsedStep2.labResults) ? parsedStep2.labResults : [])
+
         const analysisPayload = {
           demographics: {
             age: parsedStep1.age,
             sex: parsedStep1.biologicalSex,
           },
           chiefComplaint: {
-            description: parsedStep2.primaryConcern,
-            duration: parsedStep3.mainSymptomStart || undefined,
+            // Use the combined narrative so the pipeline sees the same text
+            // we parsed symptoms from. Includes photo descriptions.
+            description: combinedNarrative,
+            duration: parsedStep5.mainSymptomStart || undefined,
             bodyRegions: [],
-            severity: parsedStep3.severity || 5,
+            severity: parsedStep5.severity || 5,
           },
           symptoms,
           // parse-symptoms now returns excludedFindings as full objects; map
@@ -240,7 +306,7 @@ export default function AnalysisPage() {
                 })
                 .filter((s: string) => s.length > 0)
             : [],
-          labResults: Array.isArray(parsedStep2.labResults) ? parsedStep2.labResults : [],
+          labResults,
           patientHypothesis: parsedStep2.noIdea ? null : parsedStep2.patientHypothesis || null,
           medicalHistory: {
             currentMedications: [],

@@ -4,8 +4,13 @@
  * surface a summary table + click into a saved report.
  *
  * Storage layout (Upstash KV, same connection as the testing framework):
- *   pr:<id>     — JSON-serialized ProdRunRecord
+ *   pr:<id>     — JSON-serialized ProdRunRecord (full case + analysis, ~100KB+)
+ *   prs:<id>    — JSON-serialized ProdRunSummary (lightweight, ~few hundred bytes)
  *   pr:index    — sorted set, score = createdAt ms, member = id (for newest-first listing)
+ *
+ * The list view reads ONLY the prs:<id> summary keys — hydrating 100 full
+ * pr:<id> records in a single mget exceeds Upstash's 10MB per-request cap.
+ * The full pr:<id> record is fetched on demand by the detail page.
  *
  * TTL: each pr:<id> key gets a 90-day expiry; the sorted set is pruned
  * lazily on list (entries with no surviving key are dropped). Free-tier
@@ -17,10 +22,12 @@
  * production with real GDPR exposure, revisit the trim/hash logic here.
  */
 import { Redis } from '@upstash/redis';
+import { timingSafeEqual } from 'crypto';
 import type { PatientCase, AnalysisResult } from '../types';
 
 const KEY_INDEX = 'pr:index';
 const KEY_PREFIX = 'pr:';
+const KEY_SUMMARY_PREFIX = 'prs:';
 const TTL_SECONDS = 60 * 60 * 24 * 90; // 90 days
 
 let cachedRedis: Redis | null = null;
@@ -34,6 +41,7 @@ function getRedis(): Redis | null {
 }
 
 const runKey = (id: string) => `${KEY_PREFIX}${id}`;
+const summaryKey = (id: string) => `${KEY_SUMMARY_PREFIX}${id}`;
 
 export interface ProdRunRecord {
   id: string;
@@ -80,6 +88,19 @@ export function summarizeAnalysis(
     top1EvaluationType: (top?.evaluationType as any) ?? null,
     diagnosisCount: analysisResult.differentialDiagnoses?.length ?? 0,
     refined: !!(analysisResult as any).refinement,
+  };
+}
+
+/**
+ * Project a full record down to the lightweight summary view stored in the
+ * prs:<id> key and returned by listProdRuns().
+ */
+function toSummary(record: ProdRunRecord): ProdRunSummary {
+  return {
+    id: record.id,
+    createdAt: record.createdAt,
+    ip: record.ip,
+    summary: record.summary,
   };
 }
 
@@ -131,9 +152,13 @@ export async function saveProdRun(record: ProdRunRecord): Promise<boolean> {
     console.log(
       `[prod-runs] saving ${record.id} — payload ${(payload.length / 1024).toFixed(1)} KB`,
     );
-    // Write the full record with TTL, then add to the index. Index entries
-    // for already-expired records are dropped on list().
+    // Write the full record + lightweight summary (both with TTL), then add
+    // to the index. Index entries for already-expired records are dropped on
+    // list(). The summary key is what the list view reads — see header note.
     await redis.set(runKey(record.id), payload, { ex: TTL_SECONDS });
+    await redis.set(summaryKey(record.id), JSON.stringify(toSummary(trimmed)), {
+      ex: TTL_SECONDS,
+    });
     await redis.zadd(KEY_INDEX, { score, member: record.id });
     console.log(`[prod-runs] saved ${record.id}`);
     return true;
@@ -159,36 +184,57 @@ export async function listProdRuns(
   const ids = (await redis.zrange<string[]>(KEY_INDEX, start, stop, { rev: true })) || [];
   if (ids.length === 0) return { runs: [], total };
 
-  // mget returns nulls for keys that have expired — we collect those ids
-  // and remove them from the index in the background so subsequent listings
-  // are clean.
-  const raw = await redis.mget<(string | null)[]>(...ids.map(runKey));
+  // Read the lightweight summary keys only — NOT the full pr:<id> records.
+  // A single mget of 100 full records (~100KB+ each) blows past Upstash's
+  // 10MB per-request cap; summaries are a few hundred bytes each.
+  const rawSummaries = await redis.mget<(string | null)[]>(...ids.map(summaryKey));
+
+  // Build the result positionally so newest-first order from the index is
+  // preserved even after lazy backfill of any missing summaries.
+  const out: (ProdRunSummary | null)[] = new Array(ids.length).fill(null);
   const expired: string[] = [];
-  const runs: ProdRunSummary[] = [];
+  const missingIdx: number[] = [];
   for (let i = 0; i < ids.length; i++) {
-    const r = raw[i];
+    const r = rawSummaries[i];
     if (!r) {
-      expired.push(ids[i]);
+      missingIdx.push(i);
       continue;
     }
     try {
-      const parsed: ProdRunRecord = typeof r === 'string' ? JSON.parse(r) : (r as any);
-      runs.push({
-        id: parsed.id,
-        createdAt: parsed.createdAt,
-        ip: parsed.ip,
-        summary: parsed.summary,
-      });
+      out[i] = typeof r === 'string' ? JSON.parse(r) : (r as any);
     } catch (err: any) {
-      console.warn('[prod-runs] failed to parse record for', ids[i], err?.message);
-      expired.push(ids[i]);
+      console.warn('[prod-runs] failed to parse summary for', ids[i], err?.message);
+      missingIdx.push(i);
     }
   }
+
+  // Lazy self-heal: any id with no summary key (e.g. pre-dating the summary
+  // layout, or a partial backfill) is hydrated from its full record one at a
+  // time — single GETs stay well under the request cap — and the summary key
+  // is written so subsequent listings are fast. A missing full record means
+  // it expired; prune it from the index.
+  for (const i of missingIdx) {
+    const id = ids[i];
+    const full = await getProdRun(id);
+    if (!full) {
+      expired.push(id);
+      continue;
+    }
+    const summary = toSummary(full);
+    const ttl = await redis.ttl(runKey(id));
+    redis
+      .set(summaryKey(id), JSON.stringify(summary), {
+        ex: typeof ttl === 'number' && ttl > 0 ? ttl : TTL_SECONDS,
+      })
+      .catch(() => {});
+    out[i] = summary;
+  }
+
   if (expired.length > 0) {
     // Best-effort prune. Don't await — the next listing also self-heals.
     redis.zrem(KEY_INDEX, ...expired).catch(() => {});
   }
-  return { runs, total };
+  return { runs: out.filter((x): x is ProdRunSummary => x !== null), total };
 }
 
 /**
@@ -229,20 +275,24 @@ export function extractIp(headers: Headers): string | null {
  * 401/403 if not. The password is read from the same TESTING_PASSWORD env
  * var that /testing and /admin/test-cases use — one shared admin password
  * across all admin endpoints.
+ *
+ * Header-only: query-string passwords leak via Vercel logs, browser history,
+ * referrer headers, and screenshots. Comparison is constant-time to avoid
+ * a timing side-channel.
  */
 export function requireAdmin(request: Request): Response | null {
   const expected = process.env.TESTING_PASSWORD;
   if (!expected) return null; // unset = open (dev mode)
-  const provided =
-    request.headers.get('x-admin-password') ||
-    new URL(request.url).searchParams.get('password');
+  const provided = request.headers.get('x-admin-password');
   if (!provided) {
     return new Response(JSON.stringify({ error: 'password required' }), {
       status: 401,
       headers: { 'Content-Type': 'application/json' },
     });
   }
-  if (provided !== expected) {
+  const a = Buffer.from(provided);
+  const b = Buffer.from(expected);
+  if (a.length !== b.length || !timingSafeEqual(a, b)) {
     return new Response(JSON.stringify({ error: 'invalid password' }), {
       status: 403,
       headers: { 'Content-Type': 'application/json' },

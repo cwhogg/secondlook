@@ -98,6 +98,7 @@ export default function AdminRunsPage() {
       setRuns(data.runs || [])
       setTotal(data.total || 0)
       setPassword(pw)
+      setNeedsAuth(false)
       sessionStorage.setItem(PASSWORD_STORAGE_KEY, pw)
     } catch (err: any) {
       setAuthError(err?.message || "Failed")
@@ -123,8 +124,21 @@ export default function AdminRunsPage() {
           <p className="text-sm text-gray-600 mb-4">
             Enter the admin password.
           </p>
+          {/* Hidden username field — password managers (1Password, Chrome,
+              Safari Keychain) only offer to save a credential when they
+              detect a username + password pair. */}
+          <input
+            type="text"
+            name="username"
+            autoComplete="username"
+            value="secondlook-admin"
+            readOnly
+            hidden
+          />
           <input
             type="password"
+            name="password"
+            autoComplete="current-password"
             value={passwordInput}
             onChange={(e) => setPasswordInput(e.target.value)}
             autoFocus

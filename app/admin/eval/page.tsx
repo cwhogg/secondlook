@@ -1162,7 +1162,17 @@ export default function EvalPage() {
           <p className="text-sm text-gray-600 mb-6">Enter the password to access the eval framework.</p>
           <form onSubmit={handlePasswordSubmit} className="space-y-4">
             <input
+              type="text"
+              name="username"
+              autoComplete="username"
+              value="secondlook-admin"
+              readOnly
+              hidden
+            />
+            <input
               type="password"
+              name="password"
+              autoComplete="current-password"
               value={passwordInput}
               onChange={(e) => setPasswordInput(e.target.value)}
               placeholder="Password"

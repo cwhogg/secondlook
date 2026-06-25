@@ -115,7 +115,17 @@ export default function AdminFeedbackPage() {
           <h1 className="text-xl font-bold mb-4 text-gray-900">Admin · Feedback</h1>
           <p className="text-sm text-gray-600 mb-4">Enter the admin password.</p>
           <input
+            type="text"
+            name="username"
+            autoComplete="username"
+            value="secondlook-admin"
+            readOnly
+            hidden
+          />
+          <input
             type="password"
+            name="password"
+            autoComplete="current-password"
             value={passwordInput}
             onChange={(e) => setPasswordInput(e.target.value)}
             autoFocus

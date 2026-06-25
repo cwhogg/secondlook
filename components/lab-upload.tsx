@@ -25,8 +25,21 @@ interface UploadItem {
   error?: string
 }
 
-const ACCEPTED_TYPES = [".pdf", ".jpg", ".jpeg", ".png"]
-const ACCEPTED_MIME_TYPES = ["application/pdf", "image/jpeg", "image/png"]
+// Accepts:
+// - PDF / JPG / PNG: client preprocesses to page-images, POSTed to
+//   /api/extract-labs in image mode.
+// - .md / .markdown / .txt: read as raw text and POSTed to the same
+//   endpoint in text mode. Useful for lab reports a patient has copy-
+//   pasted out of a portal into a markdown file.
+const ACCEPTED_TYPES = [".pdf", ".jpg", ".jpeg", ".png", ".md", ".markdown", ".txt"]
+const ACCEPTED_MIME_TYPES = [
+  "application/pdf",
+  "image/jpeg",
+  "image/png",
+  "text/markdown",
+  "text/x-markdown",
+  "text/plain",
+]
 const MAX_FILE_SIZE = 20 * 1024 * 1024 // 20MB
 const MAX_PDF_PAGES = 10
 const MAX_IMAGE_DIMENSION = 2000
@@ -89,7 +102,7 @@ async function renderPdfToImages(
   return images
 }
 
-async function extractLabsViaApi(
+async function extractLabsFromImages(
   images: { base64: string; mimeType: "image/jpeg" | "image/png" }[],
   fileName: string,
 ): Promise<LabResult[]> {
@@ -97,6 +110,20 @@ async function extractLabsViaApi(
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ images, fileName }),
+  })
+  if (!response.ok) {
+    const data = await response.json().catch(() => ({}))
+    throw new Error(data.error || `Lab extraction failed (${response.status})`)
+  }
+  const data = await response.json()
+  return Array.isArray(data.results) ? (data.results as LabResult[]) : []
+}
+
+async function extractLabsFromText(text: string, fileName: string): Promise<LabResult[]> {
+  const response = await fetch("/api/extract-labs", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text, fileName }),
   })
   if (!response.ok) {
     const data = await response.json().catch(() => ({}))
@@ -123,7 +150,10 @@ export function LabUpload({ onLabsExtracted, disabled }: LabUploadProps) {
     async (file: File, id: string) => {
       const ext = "." + file.name.split(".").pop()?.toLowerCase()
       if (!ACCEPTED_TYPES.includes(ext) && !ACCEPTED_MIME_TYPES.includes(file.type)) {
-        updateItem(id, { state: "error", error: "Unsupported file (PDF, JPG, or PNG only)" })
+        updateItem(id, {
+          state: "error",
+          error: "Unsupported file (PDF, JPG, PNG, MD, or TXT only)",
+        })
         return
       }
       if (file.size > MAX_FILE_SIZE) {
@@ -135,12 +165,26 @@ export function LabUpload({ onLabsExtracted, disabled }: LabUploadProps) {
       }
       try {
         let labs: LabResult[]
-        if (file.type === "application/pdf" || ext === ".pdf") {
+        const isText =
+          ext === ".md" ||
+          ext === ".markdown" ||
+          ext === ".txt" ||
+          file.type === "text/markdown" ||
+          file.type === "text/x-markdown" ||
+          file.type === "text/plain"
+
+        if (isText) {
+          const content = await file.text()
+          if (!content.trim()) {
+            throw new Error("File is empty.")
+          }
+          labs = await extractLabsFromText(content, file.name)
+        } else if (file.type === "application/pdf" || ext === ".pdf") {
           const images = await renderPdfToImages(file)
-          labs = await extractLabsViaApi(images, file.name)
+          labs = await extractLabsFromImages(images, file.name)
         } else {
           const compressed = await compressImage(file)
-          labs = await extractLabsViaApi([compressed], file.name)
+          labs = await extractLabsFromImages([compressed], file.name)
         }
         if (labs.length === 0) {
           throw new Error("No lab results recognized in this document.")
@@ -197,10 +241,10 @@ export function LabUpload({ onLabsExtracted, disabled }: LabUploadProps) {
       >
         <Upload className="mx-auto h-7 w-7 text-[#8b7355] mb-2" />
         <p className="text-sm text-[#5a5a5a]">
-          Drop lab report PDFs or images here, or click to upload
+          Drop lab reports here, or click to upload
         </p>
         <p className="text-xs text-[#8b7355] mt-1">
-          PDF, JPG, PNG · up to 20MB · multiple files allowed · extracted values will be shown for your review before they are used
+          PDF, JPG, PNG, MD, TXT · up to 20MB · multiple files allowed · extracted values will be shown for your review before they are used
         </p>
         <input
           ref={fileInputRef}

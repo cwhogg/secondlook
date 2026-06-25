@@ -17,10 +17,19 @@ const imageSchema = z.object({
   mimeType: z.enum(["image/jpeg", "image/png"]),
 })
 
-const requestSchema = z.object({
-  images: z.array(imageSchema).min(1).max(15),
-  fileName: z.string().min(1),
-})
+// Either images (PDF/JPG/PNG, after client-side preprocessing) OR text
+// (raw markdown / plain-text lab report). The same downstream prompt +
+// function-call extracts the same LabResult[] shape from either input.
+const requestSchema = z
+  .object({
+    images: z.array(imageSchema).max(15).optional(),
+    text: z.string().max(200_000).optional(),
+    fileName: z.string().min(1),
+  })
+  .refine(
+    (v) => (v.images && v.images.length > 0) || (v.text && v.text.trim().length > 0),
+    { message: "Provide either non-empty images or text" },
+  )
 
 interface ExtractedRawRow {
   testName?: string
@@ -70,7 +79,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const { images, fileName } = parsed.data
+    const { images, text, fileName } = parsed.data
 
     const openaiApiKey = process.env.OPENAI_API_KEY
     if (!openaiApiKey) {
@@ -80,15 +89,40 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    console.log(`[extract-labs] requestId=${requestId} file="${fileName}" pages=${images.length}`)
+    const inputKind = images && images.length > 0 ? "image" : "text"
+    const pageCount = images?.length ?? 0
+    console.log(
+      `[extract-labs] requestId=${requestId} file="${fileName}" kind=${inputKind}${
+        inputKind === "image" ? ` pages=${pageCount}` : ` chars=${text?.length ?? 0}`
+      }`,
+    )
 
-    const imageContent = images.map((img) => ({
+    const imageContent = (images ?? []).map((img) => ({
       type: "image_url" as const,
       image_url: {
         url: `data:${img.mimeType};base64,${img.base64}`,
         detail: "high" as const,
       },
     }))
+
+    // Build the user message. Image mode keeps the existing prompt +
+    // attaches image_url entries. Text mode passes the raw markdown/plain
+    // text inline; the same system prompt + function call apply.
+    const userMessageContent =
+      inputKind === "image"
+        ? [
+            {
+              type: "text" as const,
+              text: `Extract structured lab results from this medical report (${pageCount} page${pageCount > 1 ? "s" : ""}): "${fileName}"`,
+            },
+            ...imageContent,
+          ]
+        : [
+            {
+              type: "text" as const,
+              text: `Extract structured lab results from this medical report. The report below is a text document (markdown or plain text). Treat tables, lists, and "Label: value" lines as you would on a printed report.\n\nFile: "${fileName}"\n\n--- REPORT START ---\n${text}\n--- REPORT END ---`,
+            },
+          ]
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -119,13 +153,7 @@ Process every page in order. Within a single report, the dateDrawn and labName a
           },
           {
             role: "user",
-            content: [
-              {
-                type: "text",
-                text: `Extract structured lab results from this medical report (${images.length} page${images.length > 1 ? "s" : ""}): "${fileName}"`,
-              },
-              ...imageContent,
-            ],
+            content: userMessageContent,
           },
         ],
         temperature: 0.1,
@@ -228,12 +256,16 @@ Process every page in order. Within a single report, the dateDrawn and labName a
         }
       })
 
-    console.log(`[extract-labs] requestId=${requestId} extracted ${results.length} results from ${images.length} page(s)`)
+    console.log(
+      `[extract-labs] requestId=${requestId} extracted ${results.length} results from ${
+        inputKind === "image" ? `${pageCount} page(s)` : `${text?.length ?? 0} chars`
+      }`,
+    )
 
     return NextResponse.json({
       results,
       documentNotes: parsedArgs.documentNotes || "",
-      pageCount: images.length,
+      pageCount,
       requestId,
     })
   } catch (error: any) {

@@ -18,12 +18,18 @@ interface UploadItem {
   error?: string
 }
 
-const ACCEPTED_TYPES = [".pdf", ".jpg", ".jpeg", ".png", ".txt"]
+const ACCEPTED_TYPES = [".pdf", ".jpg", ".jpeg", ".png", ".txt", ".md", ".markdown"]
 const ACCEPTED_MIME_TYPES = [
   "application/pdf",
   "image/jpeg",
   "image/png",
   "text/plain",
+  // Browsers are inconsistent about MIME for .md files (sometimes
+  // text/plain, sometimes octet-stream, sometimes text/markdown). The
+  // extension whitelist above is the primary gate; these MIME entries
+  // catch the cases where the OS reports a proper markdown type.
+  "text/markdown",
+  "text/x-markdown",
 ]
 const MAX_FILE_SIZE = 20 * 1024 * 1024 // 20MB
 const MAX_PDF_PAGES = 10
@@ -164,7 +170,10 @@ export function DocumentUpload({ onTextExtracted, disabled }: DocumentUploadProp
       const ext = "." + file.name.split(".").pop()?.toLowerCase()
 
       if (!ACCEPTED_TYPES.includes(ext) && !ACCEPTED_MIME_TYPES.includes(file.type)) {
-        updateItem(id, { state: "error", error: "Unsupported file type (PDF, JPG/PNG, or text only)" })
+        updateItem(id, {
+          state: "error",
+          error: "Unsupported file type (PDF, JPG/PNG, TXT, or MD only)",
+        })
         return
       }
 
@@ -179,7 +188,17 @@ export function DocumentUpload({ onTextExtracted, disabled }: DocumentUploadProp
       try {
         let extractedText: string
 
-        if (file.type === "text/plain" || ext === ".txt") {
+        const isTextLike =
+          ext === ".txt" ||
+          ext === ".md" ||
+          ext === ".markdown" ||
+          file.type === "text/plain" ||
+          file.type === "text/markdown" ||
+          file.type === "text/x-markdown"
+
+        if (isTextLike) {
+          // Read straight from the file. The downstream pipeline already
+          // understands markdown formatting; no need to convert to plain.
           extractedText = await file.text()
         } else if (file.type === "application/pdf" || ext === ".pdf") {
           const images = await renderPdfToImages(file)
@@ -338,8 +357,8 @@ export function DocumentUpload({ onTextExtracted, disabled }: DocumentUploadProp
           <Upload className="h-5 w-5 text-gray-400 flex-shrink-0" />
           <span className="text-sm text-gray-500">
             {hasItems
-              ? "Add more documents (PDF, image, or text file)"
-              : "Upload medical documents (PDF, image, or text file) — you can add multiple"}
+              ? "Add more documents (PDF, image, TXT, or Markdown)"
+              : "Upload medical documents (PDF, image, TXT, or Markdown) — you can add multiple"}
           </span>
         </div>
       </div>

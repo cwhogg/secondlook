@@ -273,17 +273,38 @@ export function extractIp(headers: Headers): string | null {
 /**
  * Shared admin auth guard. Returns null if authorized, or a Response with
  * 401/403 if not. The password is read from the same TESTING_PASSWORD env
- * var that /testing and /admin/test-cases use — one shared admin password
+ * var that the testing/eval/runs admin pages use — one shared admin password
  * across all admin endpoints.
  *
- * Header-only: query-string passwords leak via Vercel logs, browser history,
- * referrer headers, and screenshots. Comparison is constant-time to avoid
- * a timing side-channel.
+ * Two credential sources, in order:
+ *   1. `x-admin-password` header — used by scripts and CLI tooling.
+ *   2. `sl_admin_session` cookie — set by /api/admin/login, auto-attached
+ *      by the browser on subsequent admin API calls.
+ *
+ * Query-string passwords are intentionally NOT accepted: they leak via
+ * Vercel logs, browser history, referrer headers, and screenshots.
+ * Comparison is constant-time to avoid a timing side-channel.
  */
 export function requireAdmin(request: Request): Response | null {
   const expected = process.env.TESTING_PASSWORD;
   if (!expected) return null; // unset = open (dev mode)
-  const provided = request.headers.get('x-admin-password');
+
+  let provided: string | null = request.headers.get('x-admin-password');
+  if (!provided) {
+    const cookieHeader = request.headers.get('cookie');
+    if (cookieHeader) {
+      // Browsers serialize cookies as "k=v; k=v; ...". Find ours
+      // without pulling in a cookie-parser dep.
+      for (const part of cookieHeader.split(';')) {
+        const trimmed = part.trim();
+        if (trimmed.startsWith('sl_admin_session=')) {
+          provided = decodeURIComponent(trimmed.slice('sl_admin_session='.length));
+          break;
+        }
+      }
+    }
+  }
+
   if (!provided) {
     return new Response(JSON.stringify({ error: 'password required' }), {
       status: 401,

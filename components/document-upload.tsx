@@ -101,6 +101,32 @@ async function renderPdfToImages(
   return images
 }
 
+function friendlyDocumentError(
+  status: number,
+  payload: { error?: string; classification?: string; reason?: string },
+): string {
+  // 422 = the endpoint understood the request but the image isn't a
+  // medical document. Tell the user what they uploaded and where to
+  // upload it instead.
+  if (status === 422) {
+    const cls = payload.classification
+    if (cls === "symptom_photo") {
+      return "This looks like a photo of a symptom, not a written medical document. Use the “Photo of a visible symptom” section below instead."
+    }
+    if (cls === "unreadable") {
+      return "We couldn't read this image clearly. Try a sharper photo or a different file."
+    }
+    if (cls === "other") {
+      return "This doesn't look like a medical document. Upload a lab report, doctor's note, imaging report, or similar."
+    }
+    return payload.reason || "We couldn't extract text from this file."
+  }
+  if (status === 502) {
+    return "Our document reader is temporarily unavailable. Please try again in a moment."
+  }
+  return payload.error || `Extraction failed (${status}).`
+}
+
 async function extractViaApi(
   images: { base64: string; mimeType: "image/jpeg" | "image/png" }[],
   fileName: string
@@ -113,7 +139,7 @@ async function extractViaApi(
 
   if (!response.ok) {
     const data = await response.json().catch(() => ({}))
-    throw new Error(data.error || `Extraction failed (${response.status})`)
+    throw new Error(friendlyDocumentError(response.status, data))
   }
 
   const data = await response.json()

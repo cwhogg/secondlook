@@ -56,35 +56,41 @@ export async function POST(request: NextRequest) {
       },
       body: JSON.stringify({
         model: "gpt-4.1",
+        response_format: { type: "json_object" },
         messages: [
           {
             role: "system",
-            content: `You are a medical document text extractor. Extract ALL clinically relevant text from the provided document image(s).
+            content: `You inspect an uploaded image (or images) and decide whether it is a medical TEXT document, a symptom photo, or something else, then act accordingly.
 
-Include:
-- Symptoms and clinical observations
-- Diagnoses and medical conditions mentioned
-- Lab values with their units and reference ranges
-- Medications, dosages, and frequencies
-- Vital signs and physical exam findings
-- Imaging or test results and interpretations
-- Dates of visits, procedures, or symptom onset
-- Patient history notes
+Return STRICT JSON with this exact shape, no prose outside the JSON:
+{
+  "classification": "medical_document" | "symptom_photo" | "unreadable" | "other",
+  "extractedText": "<extracted text if classification is medical_document, else empty string>",
+  "reason": "<one short sentence explaining the classification>"
+}
 
-Formatting rules:
-- Preserve the document's structure (headings, lists, tables) using plain text formatting
-- For tables, use aligned columns or "Label: Value" format
-- Separate distinct sections with blank lines
-- If multiple pages are provided, process them in order as a single continuous document
-- Flag any sections that are unreadable or unclear with [UNREADABLE: brief description]
-- Do NOT interpret, diagnose, or add medical commentary — extract only what is written`,
+Classification rules:
+- "medical_document" — a written/printed medical record: lab report, imaging report, doctor's note, prescription, after-visit summary, discharge paper, etc. The page contains structured text the user expects to be transcribed.
+- "symptom_photo" — a photo of the user's body or a visible finding (rash, lesion, swelling, eye redness, joint deformity, etc.). NOT a written document.
+- "unreadable" — image quality, blur, lighting, or content prevents you from confidently identifying what it is.
+- "other" — anything else (screenshot of an app, a meme, an unrelated photo).
+
+When classification is "medical_document":
+- Set extractedText to ALL clinically relevant text on the page(s): symptoms, diagnoses, lab values with units + reference ranges, medications with dosages, vital signs, exam findings, imaging interpretations, dates, patient history.
+- Preserve structure with plain text (lists, "Label: Value" for tables). Separate sections with blank lines.
+- If multiple pages, treat them in order as one continuous document.
+- Flag unreadable parts inline with [UNREADABLE: brief description].
+- Do NOT interpret, diagnose, or add commentary — extract only what is written.
+
+When classification is anything else:
+- Set extractedText to "" (empty string). Do not paraphrase or describe the image — that belongs in a different endpoint. Use reason to explain.`,
           },
           {
             role: "user",
             content: [
               {
                 type: "text",
-                text: `Extract all clinically relevant text from this medical document (${images.length} page${images.length > 1 ? "s" : ""}): "${fileName}"`,
+                text: `Classify and (if a medical document) extract this upload (${images.length} page${images.length > 1 ? "s" : ""}): "${fileName}". Respond with the JSON shape above.`,
               },
               ...imageContent,
             ],
@@ -105,12 +111,46 @@ Formatting rules:
     }
 
     const data = await response.json()
-    const extractedText = data.choices?.[0]?.message?.content
+    const rawContent = data.choices?.[0]?.message?.content
+    if (!rawContent) {
+      return NextResponse.json(
+        { error: "No response from extraction model", requestId },
+        { status: 502 }
+      )
+    }
+
+    let llmResult: { classification?: string; extractedText?: string; reason?: string }
+    try {
+      llmResult = JSON.parse(rawContent)
+    } catch {
+      // Model returned malformed JSON despite json_object mode.
+      console.error(`[extract-document] requestId=${requestId} non-JSON response`)
+      return NextResponse.json(
+        { error: "Extraction model returned malformed response", requestId },
+        { status: 502 }
+      )
+    }
+
+    const classification = llmResult.classification || "unreadable"
+    const extractedText = (llmResult.extractedText || "").trim()
+    const reason = llmResult.reason || ""
+
+    if (classification !== "medical_document") {
+      console.log(`[extract-document] requestId=${requestId} rejected — classification=${classification}`)
+      // 422 = "request was valid, but the upload isn't what this endpoint
+      // is for". Client surfaces the classification + reason to the user
+      // so they know what to do next (use the symptom-photo upload, or
+      // upload a different file).
+      return NextResponse.json(
+        { error: "not_a_medical_document", classification, reason, requestId },
+        { status: 422 }
+      )
+    }
 
     if (!extractedText) {
       return NextResponse.json(
-        { error: "No text extracted from document", requestId },
-        { status: 502 }
+        { error: "no_text_extracted", classification, reason, requestId },
+        { status: 422 }
       )
     }
 
@@ -118,6 +158,7 @@ Formatting rules:
 
     return NextResponse.json({
       extractedText,
+      classification,
       pageCount: images.length,
       requestId,
     })

@@ -7,6 +7,7 @@ import { Layout } from "@/components/layout"
 import { TimelineSelector } from "@/components/timeline-selector"
 import { SeveritySlider } from "@/components/severity-slider"
 import { IntakeBreadcrumb } from "@/components/intake-breadcrumb"
+import { mapSingleSymptom } from "@/lib/symptom-parser"
 import {
   ArrowLeft,
   CheckCircle,
@@ -27,6 +28,8 @@ interface Step5Data {
 interface ExtractedPreview {
   originalPhrase: string
   medicalTerm: string | null
+  code: string | null
+  codeSystem: "SNOMED" | "UMLS CUI" | null
 }
 
 function buildCombinedNarrative(
@@ -160,13 +163,37 @@ export default function Step5() {
           setExtracting(false)
           return
         }
-        const symptoms: ExtractedPreview[] = Array.isArray(data.symptoms)
-          ? data.symptoms.map((s: any) => ({
-              originalPhrase: s.originalPhrase || s.text || "",
-              medicalTerm: s.medicalTerm || null,
-            }))
-          : []
-        setExtracted(symptoms)
+
+        const rawSymptoms: any[] = Array.isArray(data.symptoms) ? data.symptoms : []
+
+        // Map each parsed symptom to UMLS in parallel so we can show the
+        // CUI alongside the medical term — same enrichment /analysis does,
+        // surfaced here so the patient sees a credible mapping before
+        // consenting. Errors per symptom degrade to no-code rather than
+        // failing the whole preview.
+        const mapped = await Promise.all(
+          rawSymptoms.map(async (s) => {
+            try {
+              return await mapSingleSymptom(s)
+            } catch {
+              return null
+            }
+          }),
+        )
+        if (cancelled) return
+
+        const previews: ExtractedPreview[] = mapped.map((m, i) => {
+          const raw = rawSymptoms[i] || {}
+          const concept = m?.selectedConcept || null
+          return {
+            originalPhrase: m?.originalPhrase || raw.originalPhrase || raw.text || "",
+            medicalTerm: m?.medicalTerm || raw.medicalTerm || null,
+            code: concept?.cui || null,
+            codeSystem: concept?.cui ? "UMLS CUI" : null,
+          }
+        })
+        setExtracted(previews)
+
         const exc: string[] = Array.isArray(data.excludedFindings)
           ? data.excludedFindings
               .map((e: any) =>
@@ -175,9 +202,11 @@ export default function Step5() {
               .filter((s: string) => s.length > 0)
           : []
         setExcluded(exc)
-        // Cache the parsed preview so /analysis can reuse it instead of
-        // re-spending another parse-symptoms call. Stored separately from
-        // step5Data so the consent state stays clean.
+
+        // Cache the parsed preview AND the UMLS-mapped results so
+        // /analysis can reuse them and skip its own parse + map round
+        // trip. Stored separately from step5Data so the consent state
+        // stays clean.
         localStorage.setItem(
           "step5PreviewParse",
           JSON.stringify({
@@ -185,6 +214,10 @@ export default function Step5() {
             excludedFindings: data.excludedFindings || [],
             combinedNarrative: combined,
           }),
+        )
+        localStorage.setItem(
+          "mappedSymptoms",
+          JSON.stringify(mapped.filter((m) => m !== null)),
         )
       } catch (err: any) {
         if (!cancelled) {
@@ -312,7 +345,8 @@ export default function Step5() {
               {!extracting && !extractError && (
                 <>
                   <div className="text-xs text-gray-600 mb-1">
-                    From your written history{labCount > 0 && `, ${labCount} lab result${labCount === 1 ? "" : "s"}`}
+                    From your written history
+                    {labCount > 0 && `, ${labCount} lab result${labCount === 1 ? "" : "s"}`}
                     {photoCount > 0 && `, and ${photoCount} symptom photo${photoCount === 1 ? "" : "s"}`}.
                   </div>
                   {extracted.length === 0 ? (
@@ -321,21 +355,33 @@ export default function Step5() {
                       analysis will be more useful if you go back and add detail.
                     </div>
                   ) : (
-                    <ul className="bg-[#faf6f0] border border-[#d4c5b0] p-4 space-y-1.5 text-sm text-gray-800">
+                    <div className="space-y-2">
                       {extracted.slice(0, 60).map((s, i) => (
-                        <li key={i} className="leading-snug">
-                          <span className="font-medium">{s.originalPhrase}</span>
-                          {s.medicalTerm && s.medicalTerm !== s.originalPhrase && (
-                            <span className="text-gray-600"> → {s.medicalTerm}</span>
+                        <div
+                          key={`${s.medicalTerm}-${i}`}
+                          className="border border-[#e8ddd0] bg-[#fdfcfa] rounded-sm p-2.5"
+                        >
+                          <div className="text-sm font-medium text-gray-900">
+                            {s.medicalTerm || s.originalPhrase}
+                          </div>
+                          {s.medicalTerm && s.originalPhrase && s.medicalTerm !== s.originalPhrase && (
+                            <div className="text-xs text-gray-500 mt-0.5">
+                              From: &ldquo;{s.originalPhrase}&rdquo;
+                            </div>
                           )}
-                        </li>
+                          <div className="text-xs text-[#6d4c30] mt-1">
+                            {s.code && s.codeSystem
+                              ? `${s.codeSystem}: ${s.code}`
+                              : "Code: not mapped"}
+                          </div>
+                        </div>
                       ))}
                       {extracted.length > 60 && (
-                        <li className="text-xs text-gray-500 pt-1">
+                        <div className="text-xs text-gray-500 pt-1">
                           …and {extracted.length - 60} more.
-                        </li>
+                        </div>
                       )}
-                    </ul>
+                    </div>
                   )}
                   {excluded.length > 0 && (
                     <div className="text-xs text-gray-600">

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { timingSafeEqual } from "crypto"
 
 export async function POST(request: Request) {
   const testingPassword = process.env.TESTING_PASSWORD
@@ -15,7 +16,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Password required" }, { status: 400 })
     }
 
-    if (password === testingPassword) {
+    const a = Buffer.from(password)
+    const b = Buffer.from(testingPassword)
+    if (a.length === b.length && timingSafeEqual(a, b)) {
       return NextResponse.json({ authorized: true })
     }
 

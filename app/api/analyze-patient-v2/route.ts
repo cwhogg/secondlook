@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server';
+import { randomUUID } from 'crypto';
 import { DiagnosticPipeline } from '@/lib/pipeline/orchestrator';
 import { BaseAgent } from '@/lib/agents/base-agent';
 import { z } from 'zod';
@@ -118,7 +119,8 @@ function checkRateLimit(ip: string): { allowed: boolean; retryAfter?: number } {
 }
 
 export async function POST(request: NextRequest) {
-  const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  // 128-bit CSPRNG — this id gates unauthenticated access to /api/get-analysis/[requestId]
+  const requestId = `req_${randomUUID()}`;
   const startTime = Date.now();
 
   // Rate limiting (skip in development for testing; also skip when a valid
@@ -167,7 +169,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  console.log(`[${requestId}] Pipeline v2 starting — ${patientCase.symptoms.length} symptoms, ${patientCase.demographics.age}yo ${patientCase.demographics.sex}`);
+  console.log(`[${requestId}] Pipeline v2 starting — ${patientCase.symptoms.length} symptoms`);
 
   // Stream response via SSE
   const encoder = new TextEncoder();

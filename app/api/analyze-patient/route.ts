@@ -1,8 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server"
+import { randomUUID } from "crypto"
 
-// Generate unique request ID for tracking
 function generateRequestId(): string {
-  return `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+  return `req_${randomUUID()}`
 }
 
 // Simplified logging function

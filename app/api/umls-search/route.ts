@@ -28,17 +28,15 @@ export async function POST(request: NextRequest) {
     }
 
     const tgtData = await tgtResponse.text()
-    console.log("UMLS TGT response:", tgtData.substring(0, 200))
 
     // Extract TGT from response
     const tgtMatch = tgtData.match(/TGT-[\w-]+/)
     if (!tgtMatch) {
-      console.error("Failed to extract TGT from response:", tgtData)
+      console.error("Failed to extract TGT from UMLS response (auth credential, not logged)")
       throw new Error("Failed to extract TGT from UMLS response")
     }
 
     const tgt = tgtMatch[0]
-    console.log("Extracted TGT:", tgt.substring(0, 20) + "...")
 
     // Step 2: Exchange TGT for Service Ticket (ST)
     const serviceUrl = "http://umlsks.nlm.nih.gov"
@@ -52,13 +50,10 @@ export async function POST(request: NextRequest) {
 
     if (!stResponse.ok) {
       console.error(`Service ticket exchange failed: ${stResponse.status}`)
-      const errorText = await stResponse.text()
-      console.error(`ST error response: ${errorText}`)
       throw new Error(`Service ticket exchange failed: ${stResponse.status}`)
     }
 
     const serviceTicket = await stResponse.text().then(text => text.trim())
-    console.log("Got service ticket:", serviceTicket.substring(0, 20) + "...")
 
     // Step 3: Search UMLS with the service ticket
     const searchParams = new URLSearchParams({
@@ -70,7 +65,6 @@ export async function POST(request: NextRequest) {
     })
 
     const searchUrl = `https://uts-ws.nlm.nih.gov/rest/search/current?${searchParams.toString()}`
-    console.log("UMLS search URL:", searchUrl.replace(serviceTicket, "TICKET_HIDDEN"))
 
     const searchResponse = await fetch(searchUrl, {
       method: 'GET',
@@ -98,8 +92,8 @@ export async function POST(request: NextRequest) {
 
         if (altStResponse.ok) {
           const altServiceTicket = await altStResponse.text().then(text => text.trim())
-          console.log("Got alternative service ticket:", altServiceTicket.substring(0, 20) + "...")
-          
+
+
           const altSearchParams = new URLSearchParams({
             string: searchTerm,
             sabs: 'SNOMEDCT_US',

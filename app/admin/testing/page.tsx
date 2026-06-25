@@ -342,6 +342,9 @@ export default function AdminPage() {
 
       if (data.authorized) {
         sessionStorage.setItem("testingAuthorized", "true")
+        // Persist the password so subsequent mutation calls (eg. test-cases
+        // POST via testing-shared) can send the x-admin-password header.
+        sessionStorage.setItem("adminTestingPassword", passwordInput)
         setIsAuthorized(true)
       } else {
         setAuthError("Invalid password")

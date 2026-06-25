@@ -134,10 +134,19 @@ async function dispatchDelta(delta: PendingDelta): Promise<void> {
   const upsertArr = Array.from(delta.upsert.values())
   const deleteIdsArr = Array.from(delta.deleteIds)
   const body = JSON.stringify({ upsert: upsertArr, deleteIds: deleteIdsArr })
+  // POST to /api/admin/test-cases requires the admin password header. Read
+  // it from sessionStorage where the testing/eval login flow persists it.
+  // If unset (open dev mode), the server treats requireAdmin() as a no-op.
+  const adminPw =
+    typeof window !== "undefined"
+      ? window.sessionStorage.getItem("adminTestingPassword") || ""
+      : ""
+  const headers: Record<string, string> = { "Content-Type": "application/json" }
+  if (adminPw) headers["x-admin-password"] = adminPw
   try {
     const res = await fetch("/api/admin/test-cases", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers,
       body,
     })
     if (!res.ok) {

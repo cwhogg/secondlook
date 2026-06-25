@@ -337,6 +337,7 @@ export default function EvalPage() {
       const data = await res.json()
       if (data.authorized) {
         sessionStorage.setItem("testingAuthorized", "true")
+        sessionStorage.setItem("adminTestingPassword", passwordInput)
         setIsAuthorized(true)
       } else {
         setAuthError("Invalid password")

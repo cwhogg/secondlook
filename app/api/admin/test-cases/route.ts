@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { Redis } from "@upstash/redis"
 import type { TestCase } from "@/lib/types/admin"
+import { requireAdmin } from "@/lib/admin/prod-runs"
 
 // Corpus has grown past 3,000 cases; loading all of them via batched MGET
 // (8-per-batch to stay under Upstash's 10 MB response cap) exceeds the
@@ -178,6 +179,12 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  // POST mutates (upsert + delete) the shared corpus. Read-side stays open
+  // since test cases are synthetic (no PHI); write-side requires the same
+  // TESTING_PASSWORD that gates the admin UI.
+  const authFail = requireAdmin(request)
+  if (authFail) return authFail
+
   const redis = getRedis()
   if (!redis) {
     return NextResponse.json(

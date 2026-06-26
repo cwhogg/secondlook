@@ -98,6 +98,20 @@ function getStageStatus(
   const latestIndex = latestActiveStage ? ORDERED_STAGES.indexOf(latestActiveStage as any) : -1
   if (stageIndex < latestIndex) return "complete"
 
+  // If the immediately preceding stage just completed and there are no
+  // events yet for this stage, optimistically show this stage as active
+  // so the user can see the pipeline moving. Without this the UI sits
+  // with no spinning row in the gap between an X-complete event and
+  // the first event of stage X+1 — long enough on slow stages (triage
+  // 5-15s, evidence 1-3 min) that it reads as "stuck."
+  if (
+    latestActiveStage !== null &&
+    completeStages.has(latestActiveStage) &&
+    stageIndex === latestIndex + 1
+  ) {
+    return "active"
+  }
+
   return "pending"
 }
 

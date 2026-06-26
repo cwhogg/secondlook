@@ -485,20 +485,12 @@ function TimelineStage({
 
       {/* Stage indicator */}
       <div className="relative flex-shrink-0">
-        {/* Pulsing outer ring on the active row so the working stage
-            visibly draws attention even at mobile sizes. */}
-        {status === "active" && (
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 -m-1 rounded-full bg-[#8b2500] opacity-30 animate-ping"
-          />
-        )}
         <div
           className={`relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-colors duration-300 ${
             status === "complete"
               ? "bg-green-500"
               : status === "active"
-                ? "bg-[#8b2500] ring-2 ring-[#8b2500]/40 ring-offset-2 ring-offset-[#f5f0eb]"
+                ? "bg-[#8b2500]"
                 : "bg-[#e8ddd0]"
           }`}
         >
@@ -547,16 +539,6 @@ function TimelineStage({
                 : event?.detail || config.description)
             : config.description}
         </p>
-        {status === "active" && (
-          <p className="text-[11px] sm:text-xs font-medium text-[#8b2500] mt-1 inline-flex items-center gap-1">
-            <span>Working</span>
-            <span aria-hidden="true" className="inline-flex">
-              <span className="animate-bounce [animation-delay:-0.3s]">.</span>
-              <span className="animate-bounce [animation-delay:-0.15s]">.</span>
-              <span className="animate-bounce">.</span>
-            </span>
-          </p>
-        )}
 
         {status === "active" && elapsedMs !== undefined && elapsedMs > 15_000 && STAGE_DURATION_HINT[stageKey] && (
           <p className="text-[10px] sm:text-[11px] text-gray-400 mt-1 italic">

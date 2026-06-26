@@ -25,21 +25,74 @@ interface IntakeBreadcrumbProps {
   current: IntakeStep
 }
 
+function dotClass(step: IntakeStep, current: IntakeStep, size: "sm" | "md") {
+  const isCurrent = step === current
+  const isPast = step < current
+  const dim =
+    size === "sm" ? "h-7 w-7 text-xs" : "h-6 w-6 text-xs"
+  return cn(
+    "inline-flex items-center justify-center rounded-full font-semibold flex-shrink-0",
+    dim,
+    isCurrent && "bg-[#8b2500] text-white",
+    isPast && "bg-emerald-600 text-white",
+    !isCurrent && !isPast && "bg-gray-200 text-gray-600",
+  )
+}
+
 export function IntakeBreadcrumb({ current }: IntakeBreadcrumbProps) {
+  const currentDef = STEPS.find((s) => s.step === current) ?? STEPS[0]
+
   return (
-    <nav aria-label="Intake progress" className="mb-8">
-      <ol className="flex flex-wrap items-center gap-x-1 gap-y-2 text-sm">
+    <nav aria-label="Intake progress" className="mb-6 sm:mb-8">
+      {/* Mobile: a tight row of 6 numbered circles, with the current
+          step's label called out below. Past circles are tap-able links
+          back; current and future are inert text. */}
+      <div className="sm:hidden">
+        <ol className="flex items-center justify-between">
+          {STEPS.map((s) => {
+            const isPast = s.step < current
+            const node = (
+              <span className={dotClass(s.step, current, "sm")} aria-hidden="true">
+                {s.step}
+              </span>
+            )
+            return (
+              <li
+                key={s.step}
+                aria-current={s.step === current ? "step" : undefined}
+                className="flex-1 flex justify-center"
+              >
+                {isPast ? (
+                  <Link
+                    href={s.href}
+                    aria-label={`Back to step ${s.step}: ${s.label}`}
+                    className="focus:outline-none focus:ring-2 focus:ring-[#8b2500] rounded-full"
+                  >
+                    {node}
+                  </Link>
+                ) : (
+                  node
+                )}
+              </li>
+            )
+          })}
+        </ol>
+        <div className="mt-2 text-center text-sm text-gray-600">
+          Step <span className="font-semibold text-[#8b2500]">{current}</span> of {STEPS.length}{" "}
+          <span className="text-gray-400">·</span>{" "}
+          <span className="font-semibold text-gray-900">{currentDef.label}</span>
+          {!currentDef.required && (
+            <span className="ml-1 text-xs font-normal text-gray-400">(optional)</span>
+          )}
+        </div>
+      </div>
+
+      {/* Desktop: the labeled inline breadcrumb. Past steps link back. */}
+      <ol className="hidden sm:flex flex-wrap items-center gap-x-1 gap-y-2 text-sm">
         {STEPS.map((s, i) => {
           const isCurrent = s.step === current
           const isPast = s.step < current
           const isFuture = s.step > current
-
-          const numberClass = cn(
-            "inline-flex items-center justify-center h-6 w-6 rounded-full text-xs font-semibold flex-shrink-0",
-            isCurrent && "bg-[#8b2500] text-white",
-            isPast && "bg-emerald-600 text-white",
-            isFuture && "bg-gray-200 text-gray-600",
-          )
 
           const labelClass = cn(
             "ml-1.5",
@@ -48,10 +101,9 @@ export function IntakeBreadcrumb({ current }: IntakeBreadcrumbProps) {
             isFuture && "text-gray-500",
           )
 
-          // Past steps link back. Current is plain text. Future is disabled.
           const inner = (
             <span className="inline-flex items-center">
-              <span className={numberClass} aria-hidden="true">
+              <span className={dotClass(s.step, current, "md")} aria-hidden="true">
                 {s.step}
               </span>
               <span className={labelClass}>

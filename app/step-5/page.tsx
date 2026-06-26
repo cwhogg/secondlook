@@ -6,19 +6,11 @@ import Link from "next/link"
 import { Layout } from "@/components/layout"
 import { IntakeBreadcrumb } from "@/components/intake-breadcrumb"
 import { mapSingleSymptom } from "@/lib/symptom-parser"
-import {
-  ArrowLeft,
-  CheckCircle,
-  AlertCircle,
-  Loader2,
-  Shield,
-} from "lucide-react"
+import { ArrowLeft, ArrowRight, CheckCircle, Loader2 } from "lucide-react"
 import type { ExtractedSymptomPhoto } from "@/components/symptom-photo-upload"
 
 interface Step5Data {
-  consentAnalysis: boolean
-  consentNotSubstitute: boolean
-  consentAccurate: boolean
+  clarifications: string
 }
 
 interface ExtractedPreview {
@@ -28,15 +20,15 @@ interface ExtractedPreview {
   codeSystem: "SNOMED" | "UMLS CUI" | null
 }
 
+const CLARIFICATIONS_MAX = 2000
+
 function buildCombinedNarrative(
   primaryConcern: string,
   photos: ExtractedSymptomPhoto[],
 ): string {
   if (photos.length === 0) return primaryConcern
   const photoBlock = photos
-    .map((p) =>
-      p.bodyPart ? `${p.bodyPart}: ${p.description}` : p.description,
-    )
+    .map((p) => (p.bodyPart ? `${p.bodyPart}: ${p.description}` : p.description))
     .join("\n")
   const sep = primaryConcern.trim()
     ? "\n\n--- Visible findings (from uploaded photos) ---\n\n"
@@ -46,16 +38,9 @@ function buildCombinedNarrative(
 
 export default function Step5() {
   const router = useRouter()
-  const [formData, setFormData] = useState<Step5Data>({
-    consentAnalysis: false,
-    consentNotSubstitute: false,
-    consentAccurate: false,
-  })
-  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [formData, setFormData] = useState<Step5Data>({ clarifications: "" })
   const [autoSaved, setAutoSaved] = useState(false)
-  const [showValidationSummary, setShowValidationSummary] = useState(false)
 
-  // Symptom-extraction preview state.
   const [extracting, setExtracting] = useState(true)
   const [extractError, setExtractError] = useState<string | null>(null)
   const [extracted, setExtracted] = useState<ExtractedPreview[]>([])
@@ -85,31 +70,19 @@ export default function Step5() {
       return
     }
 
-    // Load my own saved state if returning to this step.
     const saved = localStorage.getItem("step5Data")
     if (saved) {
       try {
         const parsed = JSON.parse(saved)
-        setFormData((prev) => ({
-          ...prev,
-          consentAnalysis:
-            typeof parsed.consentAnalysis === "boolean" ? parsed.consentAnalysis : false,
-          consentNotSubstitute:
-            typeof parsed.consentNotSubstitute === "boolean"
-              ? parsed.consentNotSubstitute
-              : false,
-          consentAccurate:
-            typeof parsed.consentAccurate === "boolean" ? parsed.consentAccurate : false,
-        }))
+        setFormData({
+          clarifications:
+            typeof parsed.clarifications === "string" ? parsed.clarifications : "",
+        })
       } catch {
         // ignore
       }
     }
 
-    // Kick off the preview parse over the combined narrative + photo
-    // descriptions. We re-run the same /api/parse-symptoms call /analysis
-    // would have made — surfacing it here lets the patient see what we
-    // think their symptoms are BEFORE consenting and waiting 8-10 minutes.
     let cancelled = false
     ;(async () => {
       try {
@@ -157,11 +130,6 @@ export default function Step5() {
 
         const rawSymptoms: any[] = Array.isArray(data.symptoms) ? data.symptoms : []
 
-        // Map each parsed symptom to UMLS in parallel so we can show the
-        // CUI alongside the medical term — same enrichment /analysis does,
-        // surfaced here so the patient sees a credible mapping before
-        // consenting. Errors per symptom degrade to no-code rather than
-        // failing the whole preview.
         const mapped = await Promise.all(
           rawSymptoms.map(async (s) => {
             try {
@@ -194,10 +162,6 @@ export default function Step5() {
           : []
         setExcluded(exc)
 
-        // Cache the parsed preview AND the UMLS-mapped results so
-        // /analysis can reuse them and skip its own parse + map round
-        // trip. Stored separately from step5Data so the consent state
-        // stays clean.
         localStorage.setItem(
           "step5PreviewParse",
           JSON.stringify({
@@ -233,47 +197,15 @@ export default function Step5() {
     return () => clearTimeout(timer)
   }, [formData])
 
-  const update = (field: keyof Step5Data, value: any) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: "" }))
-    if (showValidationSummary) setShowValidationSummary(false)
-  }
-
-  const validate = () => {
-    const next: Record<string, string> = {}
-    if (!formData.consentAnalysis) next.consentAnalysis = "Please consent to AI analysis"
-    if (!formData.consentNotSubstitute)
-      next.consentNotSubstitute = "Please acknowledge this is not medical care"
-    if (!formData.consentAccurate)
-      next.consentAccurate = "Please confirm your information is accurate"
-    setErrors(next)
-    return Object.keys(next).length === 0
-  }
-
-  const missingItems = [
-    !formData.consentAnalysis ? "Consent to AI analysis" : null,
-    !formData.consentNotSubstitute ? "Acknowledgment this is not a substitute for medical care" : null,
-    !formData.consentAccurate ? "Confirmation your information is accurate" : null,
-  ].filter(Boolean) as string[]
-
   const handleBack = () => {
     localStorage.setItem("step5Data", JSON.stringify(formData))
     router.push("/step-4")
   }
 
-  const handleSubmit = () => {
-    if (!validate()) {
-      setShowValidationSummary(true)
-      return
-    }
+  const handleContinue = () => {
     localStorage.setItem("step5Data", JSON.stringify(formData))
-    router.push("/analysis")
+    router.push("/step-6")
   }
-
-  const isFormValid =
-    formData.consentAnalysis &&
-    formData.consentNotSubstitute &&
-    formData.consentAccurate
 
   return (
     <Layout>
@@ -290,33 +222,16 @@ export default function Step5() {
             </div>
           </div>
 
-          {showValidationSummary && missingItems.length > 0 && (
-            <div className="mb-6 bg-red-50 border border-red-200 p-4">
-              <div className="flex items-start gap-3">
-                <AlertCircle className="h-5 w-5 text-red-500 mt-0.5" />
-                <div>
-                  <h3 className="font-semibold text-red-900 mb-2">Please complete:</h3>
-                  <ul className="space-y-1 text-red-800 text-sm">
-                    {missingItems.map((item, i) => (
-                      <li key={i}>• {item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          )}
-
           <IntakeBreadcrumb current={5} />
 
           <div className="text-center mb-10">
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Review &amp; submit</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Review your symptoms</h1>
             <p className="text-lg text-gray-600">
-              What we extracted, plus a couple final questions and consent.
+              These are the symptoms our system extracted from your inputs. Review them before submitting.
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto bg-white border border-gray-100 p-6 sm:p-8 space-y-8">
-            {/* Extracted symptoms preview */}
             <div className="space-y-3">
               <h2 className="text-xl font-bold text-gray-900">Symptoms we extracted</h2>
               {extracting && (
@@ -389,71 +304,25 @@ export default function Step5() {
               )}
             </div>
 
-            {/* Consent */}
-            <div className="space-y-3">
-              <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                <Shield className="h-5 w-5 text-[#8b2500]" />
-                Consent
+            <div className="space-y-2">
+              <h2 className="text-xl font-bold text-gray-900">
+                Add clarifications <span className="text-gray-500 text-base font-normal">(optional)</span>
               </h2>
-              <div className="space-y-4 text-sm">
-                <label className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    checked={formData.consentAnalysis}
-                    onChange={(e) => update("consentAnalysis", e.target.checked)}
-                    className="mt-1"
-                  />
-                  <span>
-                    I consent to AI analysis of the information I provided. My symptom narrative
-                    will be processed by OpenAI and Anthropic language models and stored for up
-                    to 90 days. See the{" "}
-                    <Link href="/legal/privacy" className="text-[#8b2500] underline" target="_blank">
-                      Privacy Policy
-                    </Link>{" "}
-                    for what we store, where, and for how long.
-                  </span>
-                </label>
-                {errors.consentAnalysis && (
-                  <p className="text-red-600">{errors.consentAnalysis}</p>
-                )}
-
-                <label className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    checked={formData.consentNotSubstitute}
-                    onChange={(e) => update("consentNotSubstitute", e.target.checked)}
-                    className="mt-1"
-                  />
-                  <span>
-                    I understand SecondLook is a research preview for educational purposes only,
-                    is <strong>not a medical device</strong>, does not establish a
-                    clinician–patient relationship, and{" "}
-                    <strong>
-                      does not replace evaluation, diagnosis, or treatment by a licensed clinician
-                    </strong>
-                    .
-                  </span>
-                </label>
-                {errors.consentNotSubstitute && (
-                  <p className="text-red-600">{errors.consentNotSubstitute}</p>
-                )}
-
-                <label className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    checked={formData.consentAccurate}
-                    onChange={(e) => update("consentAccurate", e.target.checked)}
-                    className="mt-1"
-                  />
-                  <span>
-                    I confirm I am 18 or older, the information I entered is accurate to the best
-                    of my knowledge, and I am submitting it about myself (or about a person I
-                    legally represent with their informed consent).
-                  </span>
-                </label>
-                {errors.consentAccurate && (
-                  <p className="text-red-600">{errors.consentAccurate}</p>
-                )}
+              <p className="text-sm text-gray-600">
+                Anything you want to clarify about the extracted symptoms or add context.
+              </p>
+              <textarea
+                rows={4}
+                maxLength={CLARIFICATIONS_MAX}
+                value={formData.clarifications}
+                onChange={(e) =>
+                  setFormData({ clarifications: e.target.value.slice(0, CLARIFICATIONS_MAX) })
+                }
+                className="w-full px-4 py-3 border border-gray-200 rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-base resize-none"
+                placeholder="Example: the wrist stiffness is worse in the morning and improves throughout the day."
+              />
+              <div className="text-right text-xs text-gray-500">
+                {formData.clarifications.length} / {CLARIFICATIONS_MAX}
               </div>
             </div>
 
@@ -467,29 +336,29 @@ export default function Step5() {
               </button>
 
               <button
-                onClick={handleSubmit}
-                disabled={!isFormValid}
-                className={`px-8 py-4 font-semibold text-lg transition-all duration-300 w-full sm:w-auto min-w-[260px] ${
-                  isFormValid ? "bg-[#8b2500] text-white" : "bg-gray-200 text-gray-500 cursor-not-allowed"
+                onClick={handleContinue}
+                disabled={extracting}
+                className={`group px-8 py-4 font-semibold text-lg transition-all duration-300 w-full sm:w-auto min-w-[260px] ${
+                  extracting
+                    ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                    : "bg-[#8b2500] text-white"
                 }`}
               >
-                Start my analysis
+                <span className="flex items-center justify-center space-x-2">
+                  {extracting ? (
+                    <>
+                      <Loader2 className="h-5 w-5 animate-spin" />
+                      <span>Extracting symptoms…</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Continue to consent</span>
+                      <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </span>
               </button>
             </div>
-            <p className="text-center sm:text-right text-sm text-gray-500">
-              Evaluations take 8–10 mins.
-            </p>
-            <p className="text-center sm:text-right text-xs text-gray-500">
-              By clicking <strong>Start my analysis</strong> you agree to SecondLook&rsquo;s{" "}
-              <Link href="/legal/terms" className="text-[#8b2500] underline" target="_blank">
-                Terms of Use
-              </Link>{" "}
-              and{" "}
-              <Link href="/legal/privacy" className="text-[#8b2500] underline" target="_blank">
-                Privacy Policy
-              </Link>
-              .
-            </p>
           </div>
         </div>
       </div>

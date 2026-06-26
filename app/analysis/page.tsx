@@ -164,8 +164,9 @@ export default function AnalysisPage() {
       const step3Data = localStorage.getItem("step3Data")
       const step4Data = localStorage.getItem("step4Data")
       const step5Data = localStorage.getItem("step5Data")
+      const step6Data = localStorage.getItem("step6Data")
 
-      if (!step1Data || !step2Data || !step3Data || !step4Data || !step5Data) {
+      if (!step1Data || !step2Data || !step3Data || !step4Data || !step5Data || !step6Data) {
         // Send the user back to the earliest missing step rather than always
         // /step-1 — keeps drafts that got partway through from feeling lost.
         const missing = !step1Data
@@ -176,7 +177,9 @@ export default function AnalysisPage() {
               ? "/step-3"
               : !step4Data
                 ? "/step-4"
-                : "/step-5"
+                : !step5Data
+                  ? "/step-5"
+                  : "/step-6"
         router.push(missing)
         return
       }
@@ -187,6 +190,7 @@ export default function AnalysisPage() {
         const parsedStep3: Step3Data = JSON.parse(step3Data)
         const parsedStep4: Step4Data = JSON.parse(step4Data)
         const parsedStep5: Step5Data = JSON.parse(step5Data)
+        JSON.parse(step6Data) // validate step6 (consents) is present
 
         // Combined narrative = the written history (step-2) plus any
         // symptom-photo descriptions (step-4). parse-symptoms operates on

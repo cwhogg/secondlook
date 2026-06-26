@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 
-export type IntakeStep = 1 | 2 | 3 | 4 | 5
+export type IntakeStep = 1 | 2 | 3 | 4 | 5 | 6
 
 interface StepDef {
   step: IntakeStep
@@ -18,6 +18,7 @@ const STEPS: StepDef[] = [
   { step: 3, label: "Labs", href: "/step-3", required: false },
   { step: 4, label: "Photos", href: "/step-4", required: false },
   { step: 5, label: "Review", href: "/step-5", required: true },
+  { step: 6, label: "Submit", href: "/step-6", required: true },
 ]
 
 interface IntakeBreadcrumbProps {

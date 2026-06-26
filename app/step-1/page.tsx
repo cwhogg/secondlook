@@ -140,10 +140,13 @@ export default function Step1() {
       // missing — sending you back" redirect chain.
       localStorage.setItem("step3Data", JSON.stringify({ labResults: [] }))
       localStorage.setItem("step4Data", JSON.stringify({ photos: [] }))
-      // Consents are intentionally left unchecked — operator confirms
-      // explicitly on the review step.
+      // Step-5 is the symptom-review screen; only field is the optional
+      // clarifications textarea, which we leave blank.
+      localStorage.setItem("step5Data", JSON.stringify({ clarifications: "" }))
+      // Consents (step-6) are intentionally left unchecked — operator
+      // confirms explicitly.
       localStorage.setItem(
-        "step5Data",
+        "step6Data",
         JSON.stringify({
           consentAnalysis: false,
           consentNotSubstitute: false,

@@ -304,27 +304,30 @@ export default function Step5() {
               )}
             </div>
 
-            <div className="space-y-2">
-              <h2 className="text-xl font-bold text-gray-900">
-                Add clarifications <span className="text-gray-500 text-base font-normal">(optional)</span>
-              </h2>
-              <p className="text-sm text-gray-600">
-                Anything you want to clarify about the extracted symptoms or add context.
-              </p>
-              <textarea
-                rows={4}
-                maxLength={CLARIFICATIONS_MAX}
-                value={formData.clarifications}
-                onChange={(e) =>
-                  setFormData({ clarifications: e.target.value.slice(0, CLARIFICATIONS_MAX) })
-                }
-                className="w-full px-4 py-3 border border-gray-200 rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-base resize-none"
-                placeholder="Example: the wrist stiffness is worse in the morning and improves throughout the day."
-              />
-              <div className="text-right text-xs text-gray-500">
-                {formData.clarifications.length} / {CLARIFICATIONS_MAX}
+            {!extracting && (
+              <div className="space-y-2">
+                <h2 className="text-xl font-bold text-gray-900">
+                  Add clarifications{" "}
+                  <span className="text-gray-500 text-base font-normal">(optional)</span>
+                </h2>
+                <p className="text-sm text-gray-600">
+                  Anything you want to clarify about the extracted symptoms or add context.
+                </p>
+                <textarea
+                  rows={4}
+                  maxLength={CLARIFICATIONS_MAX}
+                  value={formData.clarifications}
+                  onChange={(e) =>
+                    setFormData({ clarifications: e.target.value.slice(0, CLARIFICATIONS_MAX) })
+                  }
+                  className="w-full px-4 py-3 border border-gray-200 rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-base resize-none"
+                  placeholder="Example: the wrist stiffness is worse in the morning and improves throughout the day."
+                />
+                <div className="text-right text-xs text-gray-500">
+                  {formData.clarifications.length} / {CLARIFICATIONS_MAX}
+                </div>
               </div>
-            </div>
+            )}
 
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-2">
               <button

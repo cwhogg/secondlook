@@ -187,7 +187,13 @@ export function LabUpload({ onLabsExtracted, disabled }: LabUploadProps) {
           labs = await extractLabsFromImages([compressed], file.name)
         }
         if (labs.length === 0) {
-          throw new Error("No lab results recognized in this document.")
+          // This endpoint extracts structured numeric lab values. If a user
+          // uploads an imaging study (X-ray, CT, MRI, etc.) here it will
+          // arrive with zero values — point them to the photos & imaging
+          // step instead of just saying "nothing found".
+          throw new Error(
+            "We didn't find any lab values in this file. If you're uploading an X-ray, CT, MRI, or ultrasound, upload it on the Photos & imaging step instead.",
+          )
         }
         updateItem(id, { state: "done", count: labs.length })
         onLabsExtracted(labs)
@@ -265,29 +271,34 @@ export function LabUpload({ onLabsExtracted, disabled }: LabUploadProps) {
           {items.map((it) => (
             <li
               key={it.id}
-              className="flex items-center gap-2 text-sm border border-[#e8ddd0] rounded px-3 py-2 bg-white"
+              className="flex items-start gap-2 text-sm border border-[#e8ddd0] rounded px-3 py-2 bg-white"
             >
-              <FileText className="h-4 w-4 text-[#8b7355] shrink-0" />
-              <span className="flex-1 truncate text-[#2a2a2a]">{it.fileName}</span>
-              {it.state === "processing" && (
-                <span className="flex items-center gap-1 text-xs text-[#8b7355]">
-                  <Loader2 className="h-3 w-3 animate-spin" /> extracting…
-                </span>
-              )}
-              {it.state === "done" && (
-                <span className="text-xs text-[#2d6a4f]">
-                  {it.count} result{it.count === 1 ? "" : "s"} extracted
-                </span>
-              )}
-              {it.state === "error" && (
-                <span className="flex items-center gap-1 text-xs text-[#8b2500]">
-                  <AlertCircle className="h-3 w-3" /> {it.error}
-                </span>
-              )}
+              <FileText className="h-4 w-4 text-[#8b7355] shrink-0 mt-0.5" />
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <span className="break-words text-[#2a2a2a]">{it.fileName}</span>
+                  {it.state === "processing" && (
+                    <span className="flex items-center gap-1 text-xs text-[#8b7355]">
+                      <Loader2 className="h-3 w-3 animate-spin" /> extracting…
+                    </span>
+                  )}
+                  {it.state === "done" && (
+                    <span className="text-xs text-[#2d6a4f]">
+                      {it.count} result{it.count === 1 ? "" : "s"} extracted
+                    </span>
+                  )}
+                </div>
+                {it.state === "error" && (
+                  <div className="mt-1 flex items-start gap-1 text-xs text-[#8b2500] break-words">
+                    <AlertCircle className="h-3 w-3 mt-0.5 shrink-0" />
+                    <span>{it.error}</span>
+                  </div>
+                )}
+              </div>
               <button
                 type="button"
                 onClick={() => removeItem(it.id)}
-                className="text-[#8b7355] hover:text-[#8b2500]"
+                className="text-[#8b7355] hover:text-[#8b2500] mt-0.5"
                 aria-label="Remove"
               >
                 <X className="h-3.5 w-3.5" />

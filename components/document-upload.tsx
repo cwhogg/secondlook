@@ -283,15 +283,20 @@ export function DocumentUpload({ onTextExtracted, disabled }: DocumentUploadProp
                   : "bg-[#faf6f0] border-[#d4c5b0]"
               )}
             >
-              <div className="flex items-center space-x-2 min-w-0 flex-1">
+              <div className="flex items-start space-x-2 min-w-0 flex-1">
                 {item.state === "processing" ? (
-                  <Loader2 className="h-4 w-4 text-[#8b2500] animate-spin flex-shrink-0" />
+                  <Loader2 className="h-4 w-4 text-[#8b2500] animate-spin flex-shrink-0 mt-0.5" />
                 ) : item.state === "error" ? (
-                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0" />
+                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
                 ) : (
-                  <FileText className="h-4 w-4 text-[#8b2500] flex-shrink-0" />
+                  <FileText className="h-4 w-4 text-[#8b2500] flex-shrink-0 mt-0.5" />
                 )}
-                <span className={cn("text-sm truncate", item.state === "error" ? "text-red-700" : "text-gray-700")}>
+                <span
+                  className={cn(
+                    "text-sm break-words min-w-0",
+                    item.state === "error" ? "text-red-700" : "text-gray-700",
+                  )}
+                >
                   {item.state === "processing" ? (
                     <>
                       Extracting text from <span className="font-medium">{item.fileName}</span>...

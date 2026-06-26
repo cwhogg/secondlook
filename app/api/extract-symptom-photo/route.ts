@@ -76,28 +76,29 @@ export async function POST(request: NextRequest) {
         messages: [
           {
             role: "system",
-            content: `You inspect a photo a patient has uploaded of a visible finding on their own body and produce a concise, neutral clinical description that another clinician can read.
+            content: `You inspect an image a patient has uploaded — either a photograph of a visible finding on their own body OR a medical imaging study (X-ray, CT, MRI, ultrasound, etc.) — and produce a concise, neutral clinical description that another clinician can read.
 
 Return STRICT JSON with this exact shape, no prose outside the JSON:
 {
   "classification": "symptom_photo" | "medical_document" | "unreadable" | "other",
   "description": "<one or two short sentences describing visible findings, using neutral clinical terminology where it helps, else lay language>",
-  "bodyPart": "<the body part visible, e.g. 'right eye', 'forearm', 'left ankle', or '' if unclear>",
+  "bodyPart": "<the body part shown, e.g. 'right eye', 'forearm', 'left ankle', 'chest X-ray', or '' if unclear>",
   "reason": "<one short sentence explaining the classification>"
 }
 
 Rules:
-- "symptom_photo" — a photo of a person's body or a visible finding on it. This is what this endpoint is for. Fill in description and bodyPart.
-- "medical_document" — the image is actually a written medical document (lab report, prescription, doctor note). Set description and bodyPart to "" and explain in reason; the client will redirect to the document-upload flow.
+- "symptom_photo" — covers BOTH (a) photographs of the patient's body or a visible finding on it (rash, eye redness, swelling, joint deformity) AND (b) medical imaging studies of the patient (X-ray, CT slice, MRI slice, ultrasound, dermoscopy, fundus photo, echocardiogram still). This is what this endpoint is for. Fill in description and bodyPart.
+- "medical_document" — the image is a written medical document (lab report, prescription, doctor note, radiology REPORT text). NOT to be confused with the imaging study itself, which belongs in symptom_photo. Set description and bodyPart to "" and explain in reason; the client will redirect to the document-upload flow.
 - "unreadable" — the image is too blurry, too dark, or otherwise can't be interpreted confidently.
-- "other" — not a body part, not a medical document, not relevant (e.g. screenshot of an app, unrelated photo, meme).
+- "other" — not a body part, not an imaging study, not a medical document, not relevant (e.g. screenshot of an app, unrelated photo, meme).
 
 Description guidelines (when classification is "symptom_photo"):
 - Describe ONLY what is visible. Do NOT diagnose, name a disease, or speculate about cause.
-- Use clinical terms when widely understood (e.g. "erythema", "conjunctival hyperemia", "swelling", "papular rash", "petechiae", "ecchymosis"). Pair with lay language when helpful: "redness (erythema) on...".
-- Note distribution, laterality, color, and approximate extent when you can see them.
-- Keep it under 40 words.
-- Do NOT add commentary about photo quality unless it materially limits assessment.
+- Use clinical terms when widely understood (e.g. "erythema", "conjunctival hyperemia", "swelling", "papular rash", "petechiae", "ecchymosis", "cortical thinning", "lytic lesion", "pleural effusion", "hyperintensity on T2"). Pair with lay language when helpful: "redness (erythema) on...".
+- For imaging: note the modality, view/series, side, and the most clinically salient finding(s) visible. Example: "AP chest radiograph; opacification in the right lower lobe consistent with consolidation."
+- For photographs: note distribution, laterality, color, and approximate extent when you can see them.
+- Keep it under 50 words.
+- Do NOT add commentary about image quality unless it materially limits assessment.
 - Do NOT mention this is from a photo or that the patient uploaded it; the downstream pipeline already knows.`,
           },
           {

@@ -100,18 +100,18 @@ export default function Step4() {
           <IntakeBreadcrumb current={4} />
 
           <div className="text-center mb-10">
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Symptom photos</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Photos &amp; imaging</h1>
             <p className="text-lg text-gray-600">
-              Optional — upload photos of any visible symptoms. Skip if you don't have any.
+              Optional — upload photos of visible symptoms or any medical imaging. Skip if you don't have any.
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto bg-white border border-gray-100 p-6 sm:p-8 space-y-8">
             <div className="space-y-3">
               <p className="text-sm text-gray-600">
-                Good for: a skin rash, eye redness, joint swelling, visible deformities. We'll describe
-                what's visible in clinical terms and include it in the analysis. Do not upload anyone
-                else's images.
+                Good for: a skin rash, eye redness, joint swelling, visible deformities — or medical
+                imaging like an X-ray, CT, MRI, or ultrasound. We'll describe what's visible in clinical
+                terms and include it in the analysis. Do not upload anyone else's images.
               </p>
 
               <SymptomPhotoUpload

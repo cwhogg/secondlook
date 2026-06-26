@@ -81,15 +81,15 @@ function friendlyError(
   if (status === 422) {
     const cls = payload.classification
     if (cls === "medical_document") {
-      return "This looks like a written medical document. Use the document upload on the “Your history” step instead."
+      return "This looks like a written medical document (text), not a photo or imaging study. Use the document upload on the “Your history” step instead."
     }
     if (cls === "unreadable") {
-      return "We couldn't read this image clearly. Try better lighting or a sharper photo."
+      return "We couldn't read this image clearly. Try better lighting, a sharper photo, or a different file."
     }
     if (cls === "other") {
-      return "We couldn't tell what this is a photo of. Please upload a photo showing your symptom directly."
+      return "We couldn't tell what this image shows. Please upload a photo of a visible symptom or a medical imaging study (X-ray, CT, MRI, ultrasound)."
     }
-    return payload.reason || "We couldn't analyze this photo."
+    return payload.reason || "We couldn't analyze this image."
   }
   if (status === 502) {
     return "Our image reader is temporarily unavailable. Please try again in a moment."
@@ -221,7 +221,12 @@ export function SymptomPhotoUpload({ onExtracted, disabled }: SymptomPhotoUpload
                     <CheckCircle2 className="h-4 w-4 text-emerald-600 flex-shrink-0 mt-0.5" />
                   )}
                   <div className="min-w-0 flex-1">
-                    <div className={cn("text-sm truncate", item.state === "error" ? "text-red-700" : "text-gray-700")}>
+                    <div
+                      className={cn(
+                        "text-sm break-words",
+                        item.state === "error" ? "text-red-700" : "text-gray-700",
+                      )}
+                    >
                       {item.state === "processing" ? (
                         <>Analyzing <span className="font-medium">{item.fileName}</span>…</>
                       ) : item.state === "error" ? (
@@ -295,10 +300,10 @@ export function SymptomPhotoUpload({ onExtracted, disabled }: SymptomPhotoUpload
             <Upload className="h-5 w-5 text-gray-400" />
           </div>
           <div className="text-sm text-gray-600">
-            <span className="font-medium">Take or upload a photo</span> of a visible symptom
+            <span className="font-medium">Take or upload a photo or imaging study</span>
           </div>
           <div className="text-xs text-gray-500">
-            JPG or PNG, up to 20MB. Examples: skin rash, eye redness, swelling, joint changes.
+            JPG or PNG, up to 20MB. Photos of visible symptoms (rash, eye redness, swelling, joint changes) or medical imaging (X-ray, CT, MRI, ultrasound).
           </div>
         </div>
       </div>

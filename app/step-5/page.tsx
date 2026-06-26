@@ -4,8 +4,6 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Layout } from "@/components/layout"
-import { TimelineSelector } from "@/components/timeline-selector"
-import { SeveritySlider } from "@/components/severity-slider"
 import { IntakeBreadcrumb } from "@/components/intake-breadcrumb"
 import { mapSingleSymptom } from "@/lib/symptom-parser"
 import {
@@ -18,8 +16,6 @@ import {
 import type { ExtractedSymptomPhoto } from "@/components/symptom-photo-upload"
 
 interface Step5Data {
-  mainSymptomStart: string
-  severity: number
   consentAnalysis: boolean
   consentNotSubstitute: boolean
   consentAccurate: boolean
@@ -51,8 +47,6 @@ function buildCombinedNarrative(
 export default function Step5() {
   const router = useRouter()
   const [formData, setFormData] = useState<Step5Data>({
-    mainSymptomStart: "",
-    severity: 5,
     consentAnalysis: false,
     consentNotSubstitute: false,
     consentAccurate: false,
@@ -98,9 +92,6 @@ export default function Step5() {
         const parsed = JSON.parse(saved)
         setFormData((prev) => ({
           ...prev,
-          mainSymptomStart:
-            typeof parsed.mainSymptomStart === "string" ? parsed.mainSymptomStart : "",
-          severity: typeof parsed.severity === "number" ? parsed.severity : 5,
           consentAnalysis:
             typeof parsed.consentAnalysis === "boolean" ? parsed.consentAnalysis : false,
           consentNotSubstitute:
@@ -250,7 +241,6 @@ export default function Step5() {
 
   const validate = () => {
     const next: Record<string, string> = {}
-    if (!formData.mainSymptomStart) next.mainSymptomStart = "Please select when symptoms started"
     if (!formData.consentAnalysis) next.consentAnalysis = "Please consent to AI analysis"
     if (!formData.consentNotSubstitute)
       next.consentNotSubstitute = "Please acknowledge this is not medical care"
@@ -261,7 +251,6 @@ export default function Step5() {
   }
 
   const missingItems = [
-    !formData.mainSymptomStart ? "When symptoms started" : null,
     !formData.consentAnalysis ? "Consent to AI analysis" : null,
     !formData.consentNotSubstitute ? "Acknowledgment this is not a substitute for medical care" : null,
     !formData.consentAccurate ? "Confirmation your information is accurate" : null,
@@ -282,7 +271,6 @@ export default function Step5() {
   }
 
   const isFormValid =
-    formData.mainSymptomStart &&
     formData.consentAnalysis &&
     formData.consentNotSubstitute &&
     formData.consentAccurate
@@ -399,30 +387,6 @@ export default function Step5() {
                   </div>
                 </>
               )}
-            </div>
-
-            {/* Timeline */}
-            <div className="space-y-3">
-              <h2 className="text-xl font-bold text-gray-900">
-                When did your symptoms start? <span className="text-red-500">*</span>
-              </h2>
-              <TimelineSelector
-                value={formData.mainSymptomStart}
-                onChange={(value) => update("mainSymptomStart", value)}
-              />
-              {errors.mainSymptomStart && (
-                <p className="text-red-600 text-sm">{errors.mainSymptomStart}</p>
-              )}
-            </div>
-
-            {/* Severity */}
-            <div className="space-y-3">
-              <h2 className="text-xl font-bold text-gray-900">
-                How much is this affecting your day-to-day life?
-              </h2>
-              <div className="bg-[#faf6f0] p-6">
-                <SeveritySlider value={formData.severity} onChange={(value) => update("severity", value)} />
-              </div>
             </div>
 
             {/* Consent */}

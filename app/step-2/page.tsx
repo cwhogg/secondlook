@@ -6,6 +6,8 @@ import { Layout } from "@/components/layout"
 import { CharacterCounter } from "@/components/character-counter"
 import { DocumentUpload } from "@/components/document-upload"
 import { IntakeBreadcrumb } from "@/components/intake-breadcrumb"
+import { TimelineSelector } from "@/components/timeline-selector"
+import { SeveritySlider } from "@/components/severity-slider"
 import { ArrowRight, ArrowLeft, CheckCircle, AlertTriangle } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -22,16 +24,16 @@ const PRIMARY_CONCERN_MAX = 100_000
 
 interface Step2Data {
   primaryConcern: string
-  patientHypothesis: string
-  noIdea: boolean
+  mainSymptomStart: string
+  severity: number
 }
 
 export default function Step2() {
   const router = useRouter()
   const [formData, setFormData] = useState<Step2Data>({
     primaryConcern: "",
-    patientHypothesis: "",
-    noIdea: false,
+    mainSymptomStart: "",
+    severity: 5,
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [autoSaved, setAutoSaved] = useState(false)
@@ -56,8 +58,9 @@ export default function Step2() {
         setFormData((prev) => ({
           ...prev,
           primaryConcern: typeof parsed.primaryConcern === "string" ? parsed.primaryConcern : "",
-          patientHypothesis: typeof parsed.patientHypothesis === "string" ? parsed.patientHypothesis : "",
-          noIdea: typeof parsed.noIdea === "boolean" ? parsed.noIdea : false,
+          mainSymptomStart:
+            typeof parsed.mainSymptomStart === "string" ? parsed.mainSymptomStart : "",
+          severity: typeof parsed.severity === "number" ? parsed.severity : 5,
         }))
       } catch {
         // ignore
@@ -67,7 +70,7 @@ export default function Step2() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (formData.primaryConcern || formData.patientHypothesis) {
+      if (formData.primaryConcern || formData.mainSymptomStart) {
         localStorage.setItem("step2Data", JSON.stringify(formData))
         setAutoSaved(true)
         setTimeout(() => setAutoSaved(false), 1500)
@@ -84,7 +87,10 @@ export default function Step2() {
 
   const validateForm = () => {
     const nextErrors: Record<string, string> = {}
-    if (!formData.primaryConcern.trim()) nextErrors.primaryConcern = "Please describe your main health concern"
+    if (!formData.primaryConcern.trim())
+      nextErrors.primaryConcern = "Please describe your main health concern"
+    if (!formData.mainSymptomStart)
+      nextErrors.mainSymptomStart = "Please select when symptoms started"
     setErrors(nextErrors)
     return Object.keys(nextErrors).length === 0
   }
@@ -100,7 +106,8 @@ export default function Step2() {
     router.push("/step-1")
   }
 
-  const isFormValid = (formData.primaryConcern || "").trim().length > 0
+  const isFormValid =
+    (formData.primaryConcern || "").trim().length > 0 && !!formData.mainSymptomStart
 
   return (
     <Layout>
@@ -183,29 +190,28 @@ export default function Step2() {
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-xl font-bold text-gray-900">Do you have a theory about what this might be? (optional)</h2>
-              <label className="flex items-center space-x-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={formData.noIdea}
-                  onChange={(e) => {
-                    updateFormData("noIdea", e.target.checked)
-                    if (e.target.checked) updateFormData("patientHypothesis", "")
-                  }}
-                />
-                <span className="text-gray-800">I’m not sure — I’d like help figuring it out</span>
-              </label>
-
-              {!formData.noIdea && (
-                <textarea
-                  rows={4}
-                  maxLength={300}
-                  value={formData.patientHypothesis}
-                  onChange={(e) => updateFormData("patientHypothesis", e.target.value)}
-                  className="w-full px-4 py-4 border border-gray-200 rounded-none focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-base resize-none"
-                  placeholder="Example: My doctor mentioned autoimmune disease, or I wonder if this could be thyroid-related..."
-                />
+              <h2 className="text-xl font-bold text-gray-900">
+                When did your symptoms start? <span className="text-red-500">*</span>
+              </h2>
+              <TimelineSelector
+                value={formData.mainSymptomStart}
+                onChange={(value) => updateFormData("mainSymptomStart", value)}
+              />
+              {errors.mainSymptomStart && (
+                <p className="text-red-600 text-sm">{errors.mainSymptomStart}</p>
               )}
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-xl font-bold text-gray-900">
+                How much is this affecting your day-to-day life?
+              </h2>
+              <div className="bg-[#faf6f0] p-6">
+                <SeveritySlider
+                  value={formData.severity}
+                  onChange={(value) => updateFormData("severity", value)}
+                />
+              </div>
             </div>
 
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-2">

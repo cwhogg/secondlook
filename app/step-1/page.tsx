@@ -123,13 +123,16 @@ export default function Step1() {
           return {}
         }
       })()
+      // Step-2 holds narrative + timeline + severity. Rare-disease test
+      // cases are typically chronic ("1-2 years ago") with moderate-to-
+      // high severity (6/10); the operator can override on the page.
       localStorage.setItem(
         "step2Data",
         JSON.stringify({
           ...existingStep2,
           primaryConcern: patient.narrative,
-          patientHypothesis: existingStep2.patientHypothesis || "",
-          noIdea: existingStep2.noIdea ?? true,
+          mainSymptomStart: "1-2-years",
+          severity: 6,
         }),
       )
       // Pre-populate the optional intake steps with empty arrays so the
@@ -137,15 +140,11 @@ export default function Step1() {
       // missing — sending you back" redirect chain.
       localStorage.setItem("step3Data", JSON.stringify({ labResults: [] }))
       localStorage.setItem("step4Data", JSON.stringify({ photos: [] }))
-      // Pre-fill step-5 with sensible defaults so the operator can click
-      // through without typing. Rare-disease cases are typically chronic
-      // ("1-2 years ago") with moderate-to-high severity (6/10). Consents
-      // are intentionally left unchecked — operator confirms explicitly.
+      // Consents are intentionally left unchecked — operator confirms
+      // explicitly on the review step.
       localStorage.setItem(
         "step5Data",
         JSON.stringify({
-          mainSymptomStart: "1-2-years",
-          severity: 6,
           consentAnalysis: false,
           consentNotSubstitute: false,
           consentAccurate: false,

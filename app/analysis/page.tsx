@@ -14,10 +14,14 @@ interface Step1Data {
 
 interface Step2Data {
   primaryConcern: string
+  mainSymptomStart?: string
+  severity?: number
+  // Legacy fields tolerated for in-flight drafts started before the
+  // restructure: labs used to live on step-2; the patient-theory field
+  // was removed.
+  labResults?: any[]
   patientHypothesis?: string
   noIdea?: boolean
-  // Legacy: labs used to live on step-2. Tolerated for in-flight drafts.
-  labResults?: any[]
 }
 
 interface Step3Data {
@@ -35,11 +39,13 @@ interface Step4Data {
 }
 
 interface Step5Data {
-  mainSymptomStart?: string
-  severity?: number
   consentAnalysis?: boolean
   consentNotSubstitute?: boolean
   consentAccurate?: boolean
+  // Legacy fields tolerated for drafts in flight at the time of the
+  // step-2 ⇄ step-5 swap.
+  mainSymptomStart?: string
+  severity?: number
 }
 
 function combineNarrativeAndPhotos(
@@ -289,9 +295,15 @@ export default function AnalysisPage() {
             // Use the combined narrative so the pipeline sees the same text
             // we parsed symptoms from. Includes photo descriptions.
             description: combinedNarrative,
-            duration: parsedStep5.mainSymptomStart || undefined,
+            // Timeline + severity now live on step-2 (history). Fall back
+            // to step-5 for drafts that crossed the migration boundary.
+            duration:
+              parsedStep2.mainSymptomStart ||
+              parsedStep5.mainSymptomStart ||
+              undefined,
             bodyRegions: [],
-            severity: parsedStep5.severity || 5,
+            severity:
+              parsedStep2.severity ?? parsedStep5.severity ?? 5,
           },
           symptoms,
           // parse-symptoms now returns excludedFindings as full objects; map
@@ -307,6 +319,9 @@ export default function AnalysisPage() {
                 .filter((s: string) => s.length > 0)
             : [],
           labResults,
+          // patient-theory question was removed from the form; legacy drafts
+          // that filled it before the removal still surface through to the
+          // pipeline so we don't drop their input.
           patientHypothesis: parsedStep2.noIdea ? null : parsedStep2.patientHypothesis || null,
           medicalHistory: {
             currentMedications: [],

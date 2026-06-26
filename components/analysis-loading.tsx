@@ -477,7 +477,7 @@ function TimelineStage({
       {/* Vertical line */}
       {!isLast && (
         <div
-          className={`absolute left-[13px] sm:left-[15px] top-8 bottom-0 w-px ${
+          className={`absolute left-[15px] sm:left-[17px] top-9 sm:top-10 bottom-0 w-px ${
             status === "complete" ? "bg-green-300" : "bg-[#e8ddd0]"
           }`}
         />
@@ -485,21 +485,29 @@ function TimelineStage({
 
       {/* Stage indicator */}
       <div className="relative flex-shrink-0">
+        {/* Pulsing outer ring on the active row so the working stage
+            visibly draws attention even at mobile sizes. */}
+        {status === "active" && (
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 -m-1 rounded-full bg-[#8b2500] opacity-30 animate-ping"
+          />
+        )}
         <div
-          className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${
+          className={`relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-colors duration-300 ${
             status === "complete"
               ? "bg-green-500"
               : status === "active"
-                ? "bg-[#8b2500]"
+                ? "bg-[#8b2500] ring-2 ring-[#8b2500]/40 ring-offset-2 ring-offset-[#f5f0eb]"
                 : "bg-[#e8ddd0]"
           }`}
         >
           {status === "complete" ? (
-            <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
+            <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           ) : status === "active" ? (
-            <Loader2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white animate-spin" />
+            <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-spin" />
           ) : (
-            <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-gray-400" />
+            <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400" />
           )}
         </div>
       </div>
@@ -526,7 +534,11 @@ function TimelineStage({
         </div>
         <p
           className={`text-[11px] sm:text-xs leading-relaxed ${
-            status === "pending" ? "text-gray-300" : "text-gray-500"
+            status === "pending"
+              ? "text-gray-300"
+              : status === "active"
+                ? "text-gray-700"
+                : "text-gray-500"
           }`}
         >
           {status === "active" || status === "complete"
@@ -535,6 +547,16 @@ function TimelineStage({
                 : event?.detail || config.description)
             : config.description}
         </p>
+        {status === "active" && (
+          <p className="text-[11px] sm:text-xs font-medium text-[#8b2500] mt-1 inline-flex items-center gap-1">
+            <span>Working</span>
+            <span aria-hidden="true" className="inline-flex">
+              <span className="animate-bounce [animation-delay:-0.3s]">.</span>
+              <span className="animate-bounce [animation-delay:-0.15s]">.</span>
+              <span className="animate-bounce">.</span>
+            </span>
+          </p>
+        )}
 
         {status === "active" && elapsedMs !== undefined && elapsedMs > 15_000 && STAGE_DURATION_HINT[stageKey] && (
           <p className="text-[10px] sm:text-[11px] text-gray-400 mt-1 italic">

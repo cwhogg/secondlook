@@ -1,6 +1,36 @@
 import { BaseAgent } from './base-agent';
 import { AgentInput, AgentOutput } from './types';
 import { DiagnosisHypothesis, DataGap, RecommendedTest, NextSteps, PatientCase } from '../types';
+import { findDiseaseByName } from '../knowledge';
+
+/**
+ * For each top hypothesis, pull the KB profile's "required-for-diagnosis"
+ * criteria — these are the tests/findings that formally confirm the
+ * disease when present. Feeding these into the report-generator prompt
+ * (a) gives the LLM explicit signal for what a "clear confirmatory test"
+ * looks like per candidate, and (b) grounds the top of the recommended-
+ * testing list on the same signal downstream Q2 rubric measures against.
+ *
+ * Returns null when no KB profile matches or the profile has no criteria
+ * flagged requiredForDiagnosis — the LLM then falls back to its own
+ * clinical judgment for that candidate.
+ */
+function collectConfirmatoryHints(
+  hypotheses: DiagnosisHypothesis[],
+): Array<{ diagnosis: string; requiredCriteria: string[] }> {
+  const out: Array<{ diagnosis: string; requiredCriteria: string[] }> = [];
+  for (const h of hypotheses.slice(0, 10)) {
+    const kb = findDiseaseByName(h.diagnosis);
+    if (!kb) continue;
+    const req = (kb.diagnosticCriteria?.criteria || [])
+      .filter((c) => c.requiredForDiagnosis)
+      .map((c) => c.description)
+      .filter((d) => typeof d === 'string' && d.length > 0);
+    if (req.length === 0) continue;
+    out.push({ diagnosis: h.diagnosis, requiredCriteria: req });
+  }
+  return out;
+}
 
 const REPORT_PROMPT = `You are a medical report writer specializing in creating clear, actionable diagnostic reports for patients with complex conditions. Your reports are used by patients to have informed discussions with their healthcare providers.
 
@@ -127,10 +157,43 @@ export class ReportGenerator extends BaseAgent {
       model: result.model,
     };
 
-    // Attach report data for the orchestrator to assemble
+    // Defensive fallback: some tool-call responses have arrived with the
+    // recommendedTesting key missing entirely (not empty — absent). This
+    // is the source of the eval-cohort recommendedTesting leak. Coerce
+    // to an always-array here so the orchestrator + downstream storage
+    // never has to guess.
+    const rt = Array.isArray(report.recommendedTesting)
+      ? (report.recommendedTesting as RecommendedTest[])
+      : [];
+    if (rt.length === 0 && hypotheses.length > 0) {
+      // Last-resort fallback: at least surface the top-hypothesis's KB
+      // required-for-diagnosis rows as recommended tests so we never emit
+      // a completely empty list.
+      const hints = collectConfirmatoryHints(hypotheses.slice(0, 1));
+      if (hints.length > 0) {
+        for (const req of hints[0].requiredCriteria) {
+          rt.push({
+            testType: /genetic|variant|gene\b|molecular/i.test(req)
+              ? 'genetic'
+              : /biopsy|histolog/i.test(req)
+                ? 'histology'
+                : /imaging|MRI|CT|X-ray|ultrasound/i.test(req)
+                  ? 'imaging'
+                  : /enzyme|serum|plasma|assay/i.test(req)
+                    ? 'biochemical'
+                    : 'clinical',
+            testName: req,
+            rationale: `Formal required-for-diagnosis criterion for ${hints[0].diagnosis}; a positive finding would definitively confirm this leading candidate.`,
+            urgency: 'routine',
+            targetDiagnoses: [hints[0].diagnosis],
+          });
+        }
+      }
+    }
+
     (output as any).reportData = {
-      dataGaps: report.dataGaps as DataGap[],
-      recommendedTesting: report.recommendedTesting as RecommendedTest[],
+      dataGaps: Array.isArray(report.dataGaps) ? (report.dataGaps as DataGap[]) : [],
+      recommendedTesting: rt,
       nextSteps: report.nextSteps as NextSteps,
       overallAssessment: report.overallAssessment,
       patientHypothesisAnalysis: report.patientHypothesisAnalysis || null,
@@ -145,6 +208,8 @@ export class ReportGenerator extends BaseAgent {
     hypotheses: DiagnosisHypothesis[],
     synthesisData: any
   ): string {
+    const confirmatoryHints = collectConfirmatoryHints(hypotheses);
+    const confirmatoryBlock = formatConfirmatoryBlock(confirmatoryHints);
     const diagSummary = hypotheses
       .map((h, i) => {
         const criteriaStr = h.diagnosticCriteria.criteriaDetails
@@ -210,12 +275,65 @@ priority. If clinically relevant, frame it as: "To determine the exact subtype,
 [test] may help differentiate between subtypes." You may incorporate this into
 the overallAssessment narrative where appropriate.
 
-` : ''}===== YOUR TASK =====
+` : ''}${confirmatoryBlock}===== YOUR TASK =====
 Generate the final diagnostic report.
 - Identify data gaps linked to specific diagnoses
 - Recommend specific tests with urgency levels
 - Provide concrete next steps (immediate actions, specialist referrals, red flags)
 - Write an honest overall assessment
-${patientCase.patientHypothesis ? '- Analyze the patient\'s hypothesis' : ''}`;
+${patientCase.patientHypothesis ? '- Analyze the patient\'s hypothesis' : ''}
+
+===== RECOMMENDED-TESTING ORDERING RULES (strict) =====
+The recommendedTesting[] array is consumed downstream in order — item [0] is
+treated as the first test to run, [1] second, etc. Order them so that a
+positive result on the earliest tests would come closest to definitively
+confirming the top-ranked diagnoses. Use this ranking:
+
+1. FIRST: tests that would definitively confirm the #1 or #2 differential
+   diagnosis if positive. A "definitive confirmation" means the finding
+   satisfies a formal diagnostic criterion the disease requires (e.g., the
+   pathogenic-variant row in the CONFIRMATORY-TEST HINTS block above, if
+   present). Targeted single-gene sequencing beats a broad panel when the
+   causative gene is known; a broad panel beats an unfocused workup when
+   the family is genetically heterogeneous.
+2. NEXT: tests that would differentiate the top 2-3 diagnoses from each
+   other or from the cluster (the differential-cluster distinguishing
+   tests above).
+3. NEXT: tests that would confirm lower-ranked but urgent/red-flag
+   diagnoses that must not be missed.
+4. LAST: broad screening tests, follow-up imaging with lower diagnostic
+   yield, tests that would only refine lower-ranked candidates.
+
+You MUST emit at least one test in recommendedTesting. If the top
+candidate is criteria-grounded and a specific confirmatory test is
+implied by its formal criteria (genetic, biochemical, biopsy, imaging),
+that test MUST be at position [0].`;
   }
+}
+
+/**
+ * Format the KB-derived confirmatory-test hints as a block appended to
+ * the report-generator prompt. Empty string when no hints — the prompt
+ * still works, the ordering rules just fall back to LLM judgment.
+ */
+function formatConfirmatoryBlock(
+  hints: Array<{ diagnosis: string; requiredCriteria: string[] }>,
+): string {
+  if (hints.length === 0) return '';
+  const lines = hints
+    .map((h) => {
+      const rows = h.requiredCriteria.map((r) => `  - ${r}`).join('\n');
+      return `"${h.diagnosis}":\n${rows}`;
+    })
+    .join('\n\n');
+  return `===== CONFIRMATORY-TEST HINTS (from knowledge base) =====
+The following top hypotheses have formal required-for-diagnosis criteria in
+our KB. A test that establishes any of these findings would be a definitive
+confirmation for that diagnosis. When ordering recommendedTesting[], prefer
+tests that would establish one of these rows for the highest-ranked
+candidate that has a hint below.
+
+${lines}
+
+`;
 }

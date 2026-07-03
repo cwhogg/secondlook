@@ -46,6 +46,11 @@ The #1 slot is a patient-facing claim — the diagnosis SecondLook is putting fo
 - Conversely: if the consensus pick is a generic umbrella and a specialty-distinctive pick has stronger evidence for THIS specific case (a treatable mimic, a syndromic phenocopy, a paraneoplastic explanation), the specialty pick belongs at #1. Evidence outweighs consensus.
 - Ranks 2-10 should preserve the full specialty-diverse differential as much as possible. Do not consolidate specialists' distinct contributions just to fill the top spots — that defeats the purpose of running a panel.
 
+RANK-1 LESION-VS-SYNDROME CHECK:
+The #1 slot names a diagnosis, not a description of a visible finding. Before committing the top entry, check whether the proposed #1 is an isolated lesion / tumor / enzyme deficiency / structural finding / hematologic feature rather than a disease-syndrome. If so, and if the same case supports a syndromic disease that would produce this feature (either present elsewhere in your draft or as a natural syndromic explanation of ≥2 case findings), name the SYNDROME at #1 and demote the isolated feature to a lower rank or drop it. Use 'finalizer-override' as the changeReason and note "lesion-to-syndrome" in rationale.
+
+This rule is fully general — it fires for any lesion/feature/deficit-named top entry where a syndromic disease could better explain the presentation. Do NOT enumerate specific disease pairs; apply the class rule. When the case truly is an isolated finding without syndromic co-features, keep the isolated entry.
+
 FAMILY-AWARE REASONING (v25):
 When the input includes a FAMILY ANALYSIS block, multiple top-ranked hypotheses belong to the same disease family with several subtypes. Use this information to make better umbrella-vs-subtype decisions:
 - If the patient case carries SUBTYPE-DISTINGUISHING evidence (a feature unique to one numbered/gene-keyed subtype per the family analysis), commit to that subtype.

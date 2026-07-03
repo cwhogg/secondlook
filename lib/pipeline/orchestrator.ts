@@ -884,7 +884,7 @@ export class DiagnosticPipeline {
         clarifyingQuestions: clarifierQuestions,
         lowConfidenceWarning,
         pipelineMetadata: {
-          pipelineVersion: '30.0.0',
+          pipelineVersion: '30.1.0',
           stages,
           totalDurationMs: Date.now() - pipelineStart,
           totalTokensUsed: budgetSummary.totalTokens,

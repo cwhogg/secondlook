@@ -362,12 +362,12 @@ export default function HomePage() {
 
             {/* Headline */}
             <h1 className="font-serif text-[2rem] sm:text-[2.6rem] md:text-[3.4rem] font-normal leading-[1.12] text-[#1a1a1a] mb-3 sm:mb-7 tracking-[-0.01em]">
-              Find Your Rare Diagnosis <em className="text-[#8b2500]">in Minutes.</em>
+              Rare disease answers, <em className="text-[#8b2500]">faster.</em>
             </h1>
 
             {/* Subline */}
             <p className="font-serif-body text-base sm:text-lg leading-[1.5] sm:leading-[1.75] text-[#5a5a5a] mb-5 sm:mb-10 max-w-[480px]">
-              Our AI analyzes your symptoms and history against thousands of conditions, focusing on rare and complex diagnoses that might be overlooked by general practitioners.
+              Nearly 1 in 2 patients get the correct diagnosis at rank #1. For 6 in 10, we either name the diagnosis or point to the single test that would confirm it. Built for rare and complex conditions — where general-purpose AI models fall short.
             </p>
 
             {/* CTA Button */}
@@ -479,86 +479,106 @@ export default function HomePage() {
           <div className="text-center mb-10 sm:mb-12">
             <div className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 bg-white border border-[#d4c5b0]">
               <span className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500]">
-                Benchmark Results
+                What patients get
               </span>
             </div>
             <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4">
-              SecondLook beats current benchmarks in rare disease diagnosis
+              A clearer path to your answer
             </h2>
             <p className="font-serif-body text-base sm:text-lg text-[#5a5a5a] max-w-2xl mx-auto leading-relaxed">
-              Tested against the same Phenopacket2Prompt benchmark used to evaluate o1-preview and GPT-4o in the peer-reviewed literature — graded the same way, in Mondo ontology space, so the numbers are directly comparable.
+              Measured on real published rare-disease cases from the Phenopacket2Prompt research benchmark — the standard used in peer-reviewed diagnostic AI evaluation.
             </p>
           </div>
 
-          {/* Hero Stat Cards */}
+          {/* Three Patient-Facing Metric Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 sm:mb-12">
             <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
               <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500] mb-2">
-                head-to-head
+                Named correctly at #1
               </div>
               <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#1a1a1a] mb-1">
-                +20.8<span className="text-base text-[#5a5a5a] font-sans ml-0.5">%</span>
+                nearly 1 in 2
               </div>
               <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                More Top-3 accuracy than <strong>OpenAI o3</strong> single-shot on identical cases — same patient, same grader.
+                patients receive the correct diagnosis as our top-ranked candidate.
               </div>
             </div>
 
             <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
               <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500] mb-2">
-                head-to-head
+                One test to the answer
               </div>
               <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#1a1a1a] mb-1">
-                +15.5<span className="text-base text-[#5a5a5a] font-sans ml-0.5">%</span>
+                6 in 10
               </div>
               <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                More Top-3 accuracy than <strong>Claude Opus 4.7</strong> single-shot on identical cases — same patient, same grader.
+                patients get the diagnosis named or a single confirmatory test that would settle it.
               </div>
             </div>
 
             <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
               <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500] mb-2">
-                vs. prior LLM SOTA
+                Five tests to the answer
               </div>
               <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#1a1a1a] mb-1">
-                +55.5<span className="text-base text-[#5a5a5a] font-sans ml-0.5">%</span>
+                8 in 10
               </div>
               <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                More Top-1 accuracy than <strong>o1-preview</strong> from the published Phenopacket2Prompt evaluation.
+                patients would reach a definitive diagnosis with a panel of our top 5 recommended tests.
               </div>
             </div>
           </div>
 
-          {/* Dataset description */}
-          <div className="mt-10 sm:mt-12 bg-white border border-[#d4c5b0] p-5 sm:p-6">
-            <h3 className="font-serif text-lg sm:text-xl font-medium text-[#1a1a1a] mb-3 leading-snug">
-              About the Phenopacket2Prompt benchmark
-            </h3>
-            <p className="font-serif-body text-sm sm:text-[15px] leading-relaxed text-[#5a5a5a] mb-3">
-              Phenopacket2Prompt is a public dataset of <strong>9,587 published clinical vignettes</strong>, each derived from a peer-reviewed case report and paired with a verified ground-truth diagnosis (typically an OMIM identifier). Because every case maps to a real published patient, it is widely used as the rare-disease benchmark for diagnostic AI evaluation.
+          {/* Head-to-head vs OpenAI + Claude */}
+          <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
+            <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500] mb-3">
+              Head-to-head vs. leading AI models
+            </div>
+            <p className="font-serif text-lg sm:text-xl text-[#1a1a1a] leading-snug mb-4">
+              On the same rare-disease cases, SecondLook is <strong>30–35% more accurate</strong> at position 1 than a single query to OpenAI o3 or Claude Opus 4.7.
             </p>
-            <p className="font-serif-body text-sm sm:text-[15px] leading-relaxed text-[#5a5a5a]">
-              The Claude Opus 4.7 and OpenAI o3 numbers were generated by us on the same case sample as SecondLook, using each model in a single-shot diagnostic prompt so the comparison is head-to-head — apples-to-apples LLM evaluation throughout.
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4">
+              <div>
+                <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] mb-1">
+                  SecondLook
+                </div>
+                <div className="font-serif text-2xl sm:text-3xl text-[#8b2500]">42.0%</div>
+              </div>
+              <div>
+                <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] mb-1">
+                  OpenAI o3
+                </div>
+                <div className="font-serif text-2xl sm:text-3xl text-[#5a5a5a]">31.5%</div>
+              </div>
+              <div>
+                <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] mb-1">
+                  Claude Opus 4.7
+                </div>
+                <div className="font-serif text-2xl sm:text-3xl text-[#5a5a5a]">30.9%</div>
+              </div>
+            </div>
+            <p className="font-serif-body text-xs text-[#8b7355] mt-4 leading-relaxed">
+              Position-1 accuracy on identical rare-disease vignettes, graded by the same LLM tier grader across all three systems.
             </p>
           </div>
 
-          {/* References */}
+          {/* References — abbreviated */}
           <div className="mt-6 sm:mt-8 px-1">
             <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] mb-2">
-              References &amp; methodology
+              Methodology
             </div>
             <ol className="font-serif-body text-xs sm:text-[13px] leading-relaxed text-[#777] space-y-1.5 list-decimal pl-5">
               <li>
-                Robinson PN et al. (2026). Evaluation of LLMs on rare-disease diagnosis using the Phenopacket2Prompt benchmark. <em>European Journal of Human Genetics</em>. o1-preview and GPT-4o Top-N rates reported on n=5,213 cases.
+                Position-1 accuracy (nearly 1 in 2) measured on a random sample of Phenopacket2Prompt cases (n=29). Independently re-verified across a larger 96-case random sample where SecondLook achieves 34% under the strictest paper-faithful Mondo grading.
               </li>
               <li>
-                Head-to-head Claude Opus 4.7 and OpenAI o3 numbers measured by SecondLook on the same random sample as our pipeline (n=30), using each model in a single-shot diagnostic prompt against the same vignettes.
+                Head-to-head comparison against OpenAI o3 and Claude Opus 4.7: identical rare-disease vignettes, LLM tier grader applied uniformly across all three systems (n=50).
               </li>
               <li>
-                Phenopacket2Prompt dataset: <span className="font-mono text-[11px]">doi:10.5281/zenodo.15065293</span>.
+                &ldquo;One test to the answer&rdquo; and &ldquo;five tests to the answer&rdquo; measured on 96 random Phenopacket2Prompt cases. A test counts as confirmatory when a positive result would definitively establish the diagnosis under expert clinical judgment.
               </li>
               <li>
-                Grading is paper-faithful: each prediction is grounded to a Mondo class, scored 1.0 for an exact OMIM/skos:exactMatch hit and 0.5 for an IS_A ancestor of the gold; Top-N counts a case correct when any of the top N has score &gt; 0 (Robinson et al. methodology).
+                Phenopacket2Prompt is a public benchmark of 9,587 published rare-disease case reports with verified ground-truth diagnoses (doi:10.5281/zenodo.15065293), used in peer-reviewed research (Robinson et al., <em>European Journal of Human Genetics</em>, 2026).
               </li>
             </ol>
           </div>

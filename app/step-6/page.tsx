@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Layout } from "@/components/layout"
 import { IntakeBreadcrumb } from "@/components/intake-breadcrumb"
+import { trackEvent } from "@/lib/session-tracker"
 import { ArrowLeft, CheckCircle, AlertCircle, Shield } from "lucide-react"
 
 interface Step6Data {
@@ -25,6 +26,7 @@ export default function Step6() {
   const [showValidationSummary, setShowValidationSummary] = useState(false)
 
   useEffect(() => {
+    trackEvent("step-view", { step: 6 })
     // Step-6 sits after the review screen. If any prior step is missing,
     // bounce back to the earliest one rather than letting the user submit
     // a half-empty case.
@@ -107,6 +109,8 @@ export default function Step6() {
       return
     }
     localStorage.setItem("step6Data", JSON.stringify(formData))
+    trackEvent("step-complete", { step: 6 })
+    trackEvent("analysis-start", { step: 7 })
     router.push("/analysis")
   }
 

@@ -8,6 +8,7 @@ import {
   type ExtractedSymptomPhoto,
 } from "@/components/symptom-photo-upload"
 import { IntakeBreadcrumb } from "@/components/intake-breadcrumb"
+import { trackEvent } from "@/lib/session-tracker"
 import { ArrowLeft, ArrowRight, CheckCircle, SkipForward, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -21,6 +22,7 @@ export default function Step4() {
   const [autoSaved, setAutoSaved] = useState(false)
 
   useEffect(() => {
+    trackEvent("step-view", { step: 4 })
     const step1 = localStorage.getItem("step1Data")
     const step2 = localStorage.getItem("step2Data")
     const step3 = localStorage.getItem("step3Data")
@@ -68,11 +70,20 @@ export default function Step4() {
 
   const handleContinue = () => {
     localStorage.setItem("step4Data", JSON.stringify(formData))
+    trackEvent("step-complete", {
+      step: 4,
+      form: { photoCount: formData.photos.length },
+    })
     router.push("/step-5")
   }
 
   const handleSkip = () => {
     localStorage.setItem("step4Data", JSON.stringify({ photos: [] }))
+    trackEvent("step-complete", {
+      step: 4,
+      form: { photoCount: 0 },
+      data: { skipped: true },
+    })
     router.push("/step-5")
   }
 

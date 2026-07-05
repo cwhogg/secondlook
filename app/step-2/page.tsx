@@ -6,6 +6,7 @@ import { Layout } from "@/components/layout"
 import { CharacterCounter } from "@/components/character-counter"
 import { DocumentUpload } from "@/components/document-upload"
 import { IntakeBreadcrumb } from "@/components/intake-breadcrumb"
+import { trackEvent } from "@/lib/session-tracker"
 import { TimelineSelector } from "@/components/timeline-selector"
 import { SeveritySlider } from "@/components/severity-slider"
 import { ArrowRight, ArrowLeft, CheckCircle, AlertTriangle } from "lucide-react"
@@ -45,6 +46,7 @@ export default function Step2() {
   >(null)
 
   useEffect(() => {
+    trackEvent("step-view", { step: 2 })
     const step1 = localStorage.getItem("step1Data")
     if (!step1) {
       router.push("/step-1")
@@ -98,6 +100,12 @@ export default function Step2() {
   const handleContinue = () => {
     if (!validateForm()) return
     localStorage.setItem("step2Data", JSON.stringify(formData))
+    trackEvent("step-complete", {
+      step: 2,
+      form: {
+        narrativeChars: (formData.primaryConcern || "").length,
+      },
+    })
     router.push("/step-3")
   }
 

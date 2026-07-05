@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Layout } from "@/components/layout"
 import { IntakeBreadcrumb } from "@/components/intake-breadcrumb"
+import { trackEvent } from "@/lib/session-tracker"
 import { mapSingleSymptom } from "@/lib/symptom-parser"
 import { ArrowLeft, ArrowRight, CheckCircle, Loader2 } from "lucide-react"
 import type { ExtractedSymptomPhoto } from "@/components/symptom-photo-upload"
@@ -49,6 +50,7 @@ export default function Step5() {
   const [labCount, setLabCount] = useState(0)
 
   useEffect(() => {
+    trackEvent("step-view", { step: 5 })
     const step1 = localStorage.getItem("step1Data")
     const step2 = localStorage.getItem("step2Data")
     const step3 = localStorage.getItem("step3Data")
@@ -204,6 +206,16 @@ export default function Step5() {
 
   const handleContinue = () => {
     localStorage.setItem("step5Data", JSON.stringify(formData))
+    trackEvent("step-complete", {
+      step: 5,
+      form: {
+        symptoms: extracted.slice(0, 40).map((s) => ({
+          originalPhrase: s.originalPhrase,
+          medicalTerm: s.medicalTerm || undefined,
+        })),
+        hasClarifications: (formData.clarifications || "").trim().length > 0,
+      },
+    })
     router.push("/step-6")
   }
 

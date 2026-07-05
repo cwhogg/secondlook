@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Layout } from "@/components/layout"
 import { IntakeBreadcrumb } from "@/components/intake-breadcrumb"
+import { trackEvent } from "@/lib/session-tracker"
 import { ArrowRight, CheckCircle, Sparkles, Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -29,6 +30,7 @@ export default function Step1() {
   const [createError, setCreateError] = useState<string | null>(null)
 
   useEffect(() => {
+    trackEvent("step-view", { step: 1 })
     const saved = localStorage.getItem("step1Data")
     if (saved) {
       try {
@@ -83,6 +85,13 @@ export default function Step1() {
   const handleContinue = () => {
     if (!validateForm()) return
     localStorage.setItem("step1Data", JSON.stringify(formData))
+    trackEvent("step-complete", {
+      step: 1,
+      form: {
+        age: formData.age,
+        sex: formData.biologicalSex,
+      },
+    })
     router.push("/step-2")
   }
 

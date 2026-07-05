@@ -6,6 +6,7 @@ import { Layout } from "@/components/layout"
 import { LabUpload } from "@/components/lab-upload"
 import { LabVerification } from "@/components/lab-verification"
 import { IntakeBreadcrumb } from "@/components/intake-breadcrumb"
+import { trackEvent } from "@/lib/session-tracker"
 import { ArrowLeft, ArrowRight, CheckCircle, SkipForward } from "lucide-react"
 import type { LabResult } from "@/lib/types/index"
 import { cn } from "@/lib/utils"
@@ -20,6 +21,7 @@ export default function Step3() {
   const [autoSaved, setAutoSaved] = useState(false)
 
   useEffect(() => {
+    trackEvent("step-view", { step: 3 })
     const step1 = localStorage.getItem("step1Data")
     const step2 = localStorage.getItem("step2Data")
     if (!step1) {
@@ -62,6 +64,10 @@ export default function Step3() {
 
   const handleContinue = () => {
     localStorage.setItem("step3Data", JSON.stringify(formData))
+    trackEvent("step-complete", {
+      step: 3,
+      form: { labResultCount: formData.labResults.length },
+    })
     router.push("/step-4")
   }
 
@@ -69,6 +75,11 @@ export default function Step3() {
     // Persist an empty labResults so /step-4 (which checks step-3 exists)
     // and /analysis don't bounce us back here.
     localStorage.setItem("step3Data", JSON.stringify({ labResults: [] }))
+    trackEvent("step-complete", {
+      step: 3,
+      form: { labResultCount: 0 },
+      data: { skipped: true },
+    })
     router.push("/step-4")
   }
 

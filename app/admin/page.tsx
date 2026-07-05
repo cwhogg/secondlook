@@ -3,6 +3,13 @@ import { ArrowUpRight } from "lucide-react"
 
 const tools = [
   {
+    href: "/admin/sessions",
+    label: "Funnel",
+    title: "Sessions & Usage",
+    description:
+      "Every visitor's step-by-step progression through the intake flow — IP, last step, patient info, symptoms, dropoff. Complete sessions link straight to the analysis run.",
+  },
+  {
     href: "/admin/runs",
     label: "Live",
     title: "Production Runs",

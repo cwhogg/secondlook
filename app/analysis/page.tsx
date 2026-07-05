@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { AnalysisLoading } from "@/components/analysis-loading"
 import { TestUserGroundTruthBanner } from "@/components/test-user-ground-truth-banner"
 import { mapSingleSymptom } from "@/lib/symptom-parser"
+import { trackEvent } from "@/lib/session-tracker"
 import type { PipelineProgress } from "@/lib/types/pipeline"
 
 interface Step1Data {
@@ -103,8 +104,18 @@ function handleAnalysisResult(
   sessionStorage.setItem("analysisMetadata", JSON.stringify(analysisMetadata))
   sessionStorage.setItem("analysisPatientCase", JSON.stringify(analysisPayload))
   // Pending-request markers no longer needed once delivery succeeds.
+  const requestId = sessionStorage.getItem("pendingAnalysisRequestId") || undefined
   sessionStorage.removeItem("pendingAnalysisRequestId")
   sessionStorage.removeItem("pendingAnalysisStartedAt")
+  const top1 = analysisResults.differentialDiagnoses[0]
+  trackEvent("analysis-complete", {
+    step: 8,
+    analysis: {
+      requestId,
+      top1Diagnosis: top1?.diagnosis,
+      top1Confidence: typeof top1?.confidenceScore === "number" ? top1.confidenceScore : undefined,
+    },
+  })
   router.push("/results/analysis")
 }
 

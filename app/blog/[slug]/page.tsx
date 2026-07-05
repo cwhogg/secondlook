@@ -37,7 +37,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 }
 
 function buildJsonLd(piece: { title: string; description: string; date: string; lastModified: string; type: string; slug: string; content: string }) {
-  const siteUrl = "https://secondlook.vercel.app"
+  const siteUrl = "https://www.secondlookdx.com"
   const url = `${siteUrl}/blog/${piece.slug}`
 
   if (piece.type === "faq") {

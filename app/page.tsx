@@ -30,7 +30,7 @@ const jsonLd = {
     {
       "@type": "WebApplication",
       name: "SecondLook",
-      url: "https://secondlook.vercel.app",
+      url: "https://www.secondlookdx.com",
       description:
         "AI-powered symptom analysis tool that helps identify rare and complex medical conditions that general practitioners might overlook.",
       applicationCategory: "HealthApplication",
@@ -44,7 +44,7 @@ const jsonLd = {
     {
       "@type": "MedicalWebPage",
       name: "SecondLook — AI-Powered Rare Disease Diagnosis Tool",
-      url: "https://secondlook.vercel.app",
+      url: "https://www.secondlookdx.com",
       description:
         "Analyze your symptoms against thousands of rare and complex conditions. Get a second opinion powered by AI in minutes.",
       about: {
@@ -59,8 +59,8 @@ const jsonLd = {
     {
       "@type": "Organization",
       name: "SecondLook",
-      url: "https://secondlook.vercel.app",
-      logo: "https://secondlook.vercel.app/icon.svg",
+      url: "https://www.secondlookdx.com",
+      logo: "https://www.secondlookdx.com/icon.svg",
     },
     {
       "@type": "FAQPage",

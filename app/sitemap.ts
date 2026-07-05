@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next"
 import { getAllContent } from "@/lib/content"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = "https://secondlook.vercel.app"
+  const siteUrl = "https://www.secondlookdx.com"
 
   const blogEntries: MetadataRoute.Sitemap = getAllContent().map((piece) => ({
     url: `${siteUrl}/blog/${piece.slug}`,

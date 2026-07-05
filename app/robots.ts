@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/results/", "/expert-results/", "/analysis/", "/step-1", "/step-2", "/step-3", "/step-4", "/step-5", "/step-6", "/admin", "/old"],
       },
     ],
-    sitemap: "https://secondlook.vercel.app/sitemap.xml",
+    sitemap: "https://www.secondlookdx.com/sitemap.xml",
   }
 }

@@ -22,7 +22,7 @@ const instrumentSans = Instrument_Sans({
   variable: "--font-instrument",
 })
 
-const siteUrl = "https://secondlook.vercel.app"
+const siteUrl = "https://www.secondlookdx.com"
 
 export const viewport = {
   width: "device-width",

@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Playfair_Display, Source_Serif_4, Instrument_Sans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { GoogleAnalytics } from "@next/third-parties/google"
 import { SessionTrackingRoot } from "@/components/session-tracking-root"
 import { FeedbackButton } from "@/components/feedback-button"
 import "./globals.css"
@@ -93,6 +94,9 @@ export default function RootLayout({
         <FeedbackButton />
         <Analytics />
         <SpeedInsights />
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
       </body>
     </html>
   )

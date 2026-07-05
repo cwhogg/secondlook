@@ -94,7 +94,7 @@ const jsonLd = {
           name: "Is my health data secure?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. Your health information is processed securely and is never stored on our servers. All patient data remains in your browser's local storage and is never transmitted beyond what is needed for the AI analysis. We use bank-level encryption for all data in transit.",
+            text: "The text you enter is processed by AI models to generate your report and is stored securely for up to 90 days so we can debug errors and improve the pipeline. We do not sell your data, share it for advertising, or make it accessible outside our team. See our privacy policy and FAQ for details.",
           },
         },
         {
@@ -380,9 +380,17 @@ export default function HomePage() {
               <ArrowRight className="h-4 w-4" />
             </Link>
 
-            <p className="mt-3 sm:mt-5 font-sans text-[0.72rem] text-[#999] tracking-[0.02em]">
-              ~10 minutes. No login. No cost.
-            </p>
+            <div className="mt-3 sm:mt-5 flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-4">
+              <span className="font-sans text-[0.72rem] text-[#999] tracking-[0.02em]">
+                ~10 minutes. No login. No cost.
+              </span>
+              <Link
+                href="/faq"
+                className="font-sans text-[0.72rem] text-[#8b2500] tracking-[0.02em] underline underline-offset-2 hover:text-[#6d1d00] transition-colors"
+              >
+                Have questions? Read the FAQ &rarr;
+              </Link>
+            </div>
           </div>
 
           {/* DNA Helix Decoration. Mobile-only: shrunk to 140px max so the
@@ -674,6 +682,9 @@ export default function HomePage() {
 
           {/* Links */}
           <div className="flex flex-wrap gap-7 mt-3">
+            <Link href="/faq" className="font-sans text-[0.7rem] text-[#999] uppercase tracking-[0.04em] hover:text-[#5a5a5a] transition-colors">
+              FAQ
+            </Link>
             <Link href="/legal/privacy" className="font-sans text-[0.7rem] text-[#999] uppercase tracking-[0.04em] hover:text-[#5a5a5a] transition-colors">
               Privacy
             </Link>

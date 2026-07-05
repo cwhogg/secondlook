@@ -469,7 +469,24 @@ export default function HomePage() {
       <section className="py-5 sm:py-6 bg-[#faf6f0] border-y border-[#d4c5b0]">
         <div className="max-w-[820px] mx-auto px-4 sm:px-8">
           <p className="font-serif-body text-center text-sm sm:text-[15px] text-[#5a5a5a] leading-relaxed">
-            <span className="font-serif italic text-[#8b2500]">Independently validated</span> against Phenopacket2Prompt &mdash; the same rare-disease research benchmark used in <em>Nature</em> and <em>European Journal of Human Genetics</em>.
+            <span className="font-serif italic text-[#8b2500]">Independently validated</span> against Phenopacket2Prompt &mdash; the same rare-disease research benchmark used in{" "}
+            <em>Nature Biotechnology</em>
+            <a
+              href="#sources"
+              className="align-super text-[10px] text-[#8b2500] hover:underline ml-0.5"
+              aria-label="Source 1"
+            >
+              [1]
+            </a>{" "}
+            and <em>European Journal of Human Genetics</em>
+            <a
+              href="#sources"
+              className="align-super text-[10px] text-[#8b2500] hover:underline ml-0.5"
+              aria-label="Source 2"
+            >
+              [2]
+            </a>
+            .
           </p>
         </div>
       </section>
@@ -683,6 +700,52 @@ export default function HomePage() {
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
+      </section>
+
+      {/* Sources — footnote-style citations linked from the trust band
+          and other claims. Kept above the footer, below the CTA, so
+          skeptics can trace claims without ever leaving the page. */}
+      <section
+        id="sources"
+        aria-label="Sources"
+        className="max-w-[1000px] mx-auto px-4 sm:px-8 py-8 sm:py-10 scroll-mt-8"
+      >
+        <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] mb-3">
+          Sources
+        </div>
+        <ol className="font-serif-body text-xs sm:text-[13px] leading-relaxed text-[#5a5a5a] space-y-2 list-decimal pl-5">
+          <li>
+            Jacobsen JOB, Baudis M, Baynam GS, et al. (2022).{" "}
+            <em>The GA4GH Phenopacket schema defines a computable representation of clinical data.</em>{" "}
+            Nature Biotechnology 40(6):817&ndash;820.{" "}
+            <a
+              href="https://doi.org/10.1038/s41587-022-01357-4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#8b2500] hover:underline"
+            >
+              doi:10.1038/s41587-022-01357-4
+            </a>
+            .
+          </li>
+          <li>
+            Robinson PN, et al. (2026).{" "}
+            <em>Evaluation of large language models on rare-disease diagnosis using the Phenopacket2Prompt benchmark.</em>{" "}
+            European Journal of Human Genetics. Benchmark data:{" "}
+            <a
+              href="https://doi.org/10.5281/zenodo.15065293"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#8b2500] hover:underline"
+            >
+              doi:10.5281/zenodo.15065293
+            </a>
+            .
+          </li>
+        </ol>
+        <p className="mt-4 font-serif-body text-[11px] sm:text-xs text-[#8b7355] leading-relaxed max-w-[720px]">
+          Position-1 accuracy and head-to-head comparisons measured on random samples of Phenopacket2Prompt vignettes, scored by an LLM tier grader applied uniformly across SecondLook, OpenAI o3, and Claude Opus 4.7. Full methodology footnotes appear inside the &ldquo;How SecondLook compares&rdquo; section above.
+        </p>
       </section>
 
       {/* Divider */}

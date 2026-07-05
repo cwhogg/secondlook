@@ -1,10 +1,24 @@
 import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
-export const alt = "SecondLook — AI-Powered Rare Disease Diagnosis Tool"
+export const alt =
+  "SecondLook — nearly 1 in 2 rare-disease patients get their diagnosis at rank #1"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
+/**
+ * Open Graph card, used by Twitter/X, LinkedIn, iMessage, Slack, and every
+ * other unfurler. Composition, top → bottom:
+ *   - small SL monogram + SECONDLOOK wordmark row
+ *   - serif headline "Find Your Rare Diagnosis"
+ *   - burgundy divider
+ *   - the punch: "Nearly 1 in 2" set huge, with the qualifier under it
+ *   - small credibility line ("Benchmarked against Nature Biotech + EJHG research")
+ *   - subtle burgundy accent bars at top and bottom
+ *
+ * Every element with children carries `display: flex` because @vercel/og's
+ * satori runtime rejects the CSS default (block).
+ */
 export default async function Image() {
   return new ImageResponse(
     (
@@ -20,9 +34,10 @@ export default async function Image() {
           position: "relative",
           overflow: "hidden",
           fontFamily: "Georgia, serif",
+          padding: "56px 80px",
         }}
       >
-        {/* Subtle texture overlay */}
+        {/* Radial warmth so the flat cream doesn't feel dead */}
         <div
           style={{
             position: "absolute",
@@ -31,7 +46,7 @@ export default async function Image() {
             right: 0,
             bottom: 0,
             background:
-              "radial-gradient(ellipse at 30% 20%, rgba(139, 37, 0, 0.04) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(139, 37, 0, 0.03) 0%, transparent 60%)",
+              "radial-gradient(ellipse at 30% 20%, rgba(139, 37, 0, 0.05) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(139, 37, 0, 0.04) 0%, transparent 60%)",
             display: "flex",
           }}
         />
@@ -43,7 +58,7 @@ export default async function Image() {
             top: 0,
             left: 0,
             right: 0,
-            height: "5px",
+            height: "6px",
             background: "#8b2500",
             display: "flex",
           }}
@@ -56,117 +71,146 @@ export default async function Image() {
             bottom: 0,
             left: 0,
             right: 0,
-            height: "5px",
+            height: "6px",
             background: "#8b2500",
             display: "flex",
           }}
         />
 
-        {/* Content */}
+        {/* Top brand row: SL monogram + wordmark. Slightly smaller than the
+            previous solo monogram so the stat below can breathe. */}
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
-            padding: "60px 80px",
+            gap: "16px",
+            marginBottom: "36px",
             position: "relative",
           }}
         >
-          {/* SL Monogram */}
           <div
             style={{
-              width: "72px",
-              height: "72px",
-              borderRadius: "14px",
+              width: "56px",
+              height: "56px",
+              borderRadius: "12px",
               background: "#8b2500",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "36px",
             }}
           >
             <span
               style={{
                 color: "#f5f0eb",
-                fontSize: "40px",
+                fontSize: "30px",
                 fontWeight: 700,
                 fontFamily: "Georgia, serif",
-                letterSpacing: -2,
+                letterSpacing: -1,
                 marginTop: -2,
               }}
             >
               SL
             </span>
           </div>
-
-          {/* Title */}
           <div
             style={{
-              fontSize: "68px",
-              fontWeight: 700,
-              textAlign: "center",
-              lineHeight: 1.1,
-              color: "#1a1a1a",
-              marginBottom: "12px",
+              fontSize: "22px",
+              fontWeight: 400,
+              color: "#8b2500",
+              letterSpacing: 4,
+              textTransform: "uppercase" as const,
               display: "flex",
               fontFamily: "Georgia, serif",
             }}
           >
-            Find Your Rare Diagnosis
+            SecondLook
           </div>
+        </div>
 
-          {/* Decorative divider */}
+        {/* Headline — unchanged from the prior card so brand recall carries */}
+        <div
+          style={{
+            fontSize: "58px",
+            fontWeight: 700,
+            textAlign: "center",
+            lineHeight: 1.1,
+            color: "#1a1a1a",
+            display: "flex",
+            fontFamily: "Georgia, serif",
+            position: "relative",
+          }}
+        >
+          Find Your Rare Diagnosis
+        </div>
+
+        {/* Decorative divider */}
+        <div
+          style={{
+            width: "72px",
+            height: "3px",
+            background: "#8b2500",
+            marginTop: "22px",
+            marginBottom: "36px",
+            display: "flex",
+            position: "relative",
+          }}
+        />
+
+        {/* The punch — the stat that stops the scroll when the card auto-
+            expands on Twitter/X. Two-line stack: enormous number in burgundy
+            on top, supporting sentence beneath in warm gray. */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            position: "relative",
+          }}
+        >
           <div
             style={{
-              width: "80px",
-              height: "3px",
-              background: "#8b2500",
-              marginTop: "8px",
-              marginBottom: "28px",
+              fontSize: "104px",
+              fontWeight: 700,
+              color: "#8b2500",
+              lineHeight: 1,
+              letterSpacing: -2,
               display: "flex",
+              fontFamily: "Georgia, serif",
             }}
-          />
-
-          {/* Subtitle */}
+          >
+            Nearly 1 in 2
+          </div>
           <div
             style={{
-              fontSize: "26px",
+              fontSize: "30px",
               color: "#5c5347",
               textAlign: "center",
-              maxWidth: "800px",
-              lineHeight: 1.5,
+              maxWidth: "900px",
+              lineHeight: 1.4,
+              marginTop: "18px",
               display: "flex",
               fontFamily: "Georgia, serif",
             }}
           >
-            AI-powered symptom analysis against thousands of rare
-            and complex conditions that might be overlooked.
+            patients get the correct rare-disease diagnosis at rank #1.
           </div>
+        </div>
 
-          {/* Bottom branding */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginTop: "44px",
-              gap: "8px",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "22px",
-                fontWeight: 400,
-                color: "#8b2500",
-                display: "flex",
-                fontFamily: "Georgia, serif",
-                letterSpacing: 3,
-                textTransform: "uppercase" as const,
-              }}
-            >
-              SecondLook
-            </div>
-          </div>
+        {/* Credibility cue — very small, all-caps, italic serif, so the
+            claim above is anchored without cluttering the composition. */}
+        <div
+          style={{
+            fontSize: "17px",
+            color: "#8b7355",
+            letterSpacing: 2,
+            textTransform: "uppercase" as const,
+            marginTop: "48px",
+            display: "flex",
+            fontFamily: "Georgia, serif",
+            position: "relative",
+          }}
+        >
+          Benchmarked against Nature Biotech + EJHG research
         </div>
       </div>
     ),

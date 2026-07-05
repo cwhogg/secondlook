@@ -235,3 +235,36 @@ export async function getSession(id: string): Promise<SessionRecord | null> {
   if (!redis) return null;
   return (await redis.get<SessionRecord>(key(id))) || null;
 }
+
+/**
+ * Bulk delete by id list. Removes both the per-session key and the
+ * index entry. Best-effort — returns the count actually removed.
+ */
+export async function deleteSessions(ids: string[]): Promise<number> {
+  const redis = getRedis();
+  if (!redis || ids.length === 0) return 0;
+  const pipe = redis.pipeline();
+  for (const id of ids) {
+    pipe.del(key(id));
+    pipe.zrem(KEY_INDEX, id);
+  }
+  await pipe.exec();
+  return ids.length;
+}
+
+/**
+ * Bulk delete by predicate over IP / user-agent. Loads recent sessions
+ * up to `limit`, filters by the passed match function, and deletes the
+ * matches. Returns the count deleted.
+ */
+export async function deleteSessionsBy(
+  predicate: (r: SessionRecord) => boolean,
+  limit = 500,
+): Promise<{ deleted: number; matchedIds: string[] }> {
+  const { records } = await listSessions(limit, 0);
+  const matches = records.filter(predicate);
+  const ids = matches.map((r) => r.id);
+  if (ids.length === 0) return { deleted: 0, matchedIds: [] };
+  const deleted = await deleteSessions(ids);
+  return { deleted, matchedIds: ids };
+}

@@ -1,11 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Playfair_Display, Source_Serif_4, Instrument_Sans } from "next/font/google"
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { GoogleAnalytics } from "@next/third-parties/google"
-import { SessionTrackingRoot } from "@/components/session-tracking-root"
-import { FeedbackButton } from "@/components/feedback-button"
+import { TrackingBoundary } from "@/components/tracking-boundary"
 import "./globals.css"
 
 const playfair = Playfair_Display({
@@ -90,13 +86,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${playfair.variable} ${sourceSerif.variable} ${instrumentSans.variable} font-serif-body`}>
         {children}
-        <SessionTrackingRoot />
-        <FeedbackButton />
-        <Analytics />
-        <SpeedInsights />
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-        )}
+        <TrackingBoundary gaId={process.env.NEXT_PUBLIC_GA_ID} />
       </body>
     </html>
   )

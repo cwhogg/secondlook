@@ -110,6 +110,13 @@ export function trackEvent(
   opts: TrackEventOpts & { beacon?: boolean } = {},
 ): void {
   if (typeof window === 'undefined') return;
+  // Respect the client-side mute flag so internal users don't pollute
+  // the session corpus. See lib/tracking-mute.ts.
+  try {
+    if (window.localStorage.getItem('sl_no_track') === '1') return;
+  } catch {
+    /* localStorage disabled — proceed */
+  }
   const sessionId = getSessionId();
   const { referrer, utmParams } = stashReferrerAndUtm();
   const body = JSON.stringify({

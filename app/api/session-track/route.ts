@@ -3,6 +3,31 @@ import { z } from 'zod';
 import { recordSessionEvent, type SessionEvent, type StepIndex } from '@/lib/admin/sessions';
 import { extractIp } from '@/lib/admin/prod-runs';
 
+/**
+ * Bot / synthetic-monitor rejection. Vercel's own uptime probes come
+ * from EC2 ranges we don't want to track, and Googlebot + friends
+ * announce themselves via user-agent. Anything matching either is
+ * silently dropped with a 204 so the client doesn't see an error.
+ *
+ * Personal IPs (dev testing) can be added to EXCLUDED_IPS as a
+ * comma-separated env var.
+ */
+const BOT_UA_RE =
+  /bot|crawler|spider|slurp|bingpreview|facebookexternalhit|semrush|ahrefs|pingdom|uptimerobot|monitor|headless|lighthouse|speedcurve|gtmetrix|vercel/i;
+
+function isBotOrExcluded(ip: string | null, ua: string | null): boolean {
+  if (ua && BOT_UA_RE.test(ua)) return true;
+  const excludedRaw = process.env.EXCLUDED_IPS || '';
+  if (excludedRaw && ip) {
+    const excluded = excludedRaw
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (excluded.includes(ip)) return true;
+  }
+  return false;
+}
+
 // The client fires this endpoint from useEffect + visibilitychange +
 // step transitions. Unauthenticated by design — the client can't hold an
 // admin credential. Rate limiting is done at the edge (Vercel) rather
@@ -78,6 +103,14 @@ export async function POST(request: NextRequest) {
 
   const ip = extractIp(request.headers);
   const userAgent = request.headers.get('user-agent');
+
+  // Drop bot / synthetic-monitor / personal-testing traffic before it
+  // hits KV. Silent 204 — the client's fire-and-forget POST doesn't care
+  // about the response, and returning 200 would look identical to a
+  // successful write to the tracker script.
+  if (isBotOrExcluded(ip, userAgent)) {
+    return new NextResponse(null, { status: 204 });
+  }
 
   const evt: SessionEvent = {
     ts: new Date().toISOString(),

@@ -157,13 +157,16 @@ export default function AdminSessionsPage() {
               {total} total sessions · showing {records.length}
             </p>
           </div>
-          <button
-            onClick={() => tryLoad(password)}
-            disabled={loading}
-            className="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:opacity-50"
-          >
-            {loading ? "Refreshing…" : "Refresh"}
-          </button>
+          <div className="flex items-center gap-2">
+            <PurgeBotsButton password={password} onDone={() => tryLoad(password)} />
+            <button
+              onClick={() => tryLoad(password)}
+              disabled={loading}
+              className="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:opacity-50"
+            >
+              {loading ? "Refreshing…" : "Refresh"}
+            </button>
+          </div>
         </div>
 
         {error && (
@@ -182,6 +185,84 @@ export default function AdminSessionsPage() {
         {/* Session table */}
         <SessionTable records={records} />
       </div>
+    </div>
+  )
+}
+
+// ================== purge control ==================
+
+function PurgeBotsButton({
+  password,
+  onDone,
+}: {
+  password: string
+  onDone: () => void
+}) {
+  const [busy, setBusy] = useState(false)
+  const [note, setNote] = useState<string | null>(null)
+
+  const purge = async (opts: { botsOnly?: boolean; ips?: string[] }) => {
+    if (busy) return
+    // eslint-disable-next-line no-alert
+    const promptedIps =
+      !opts.ips && !opts.botsOnly
+        ? window.prompt(
+            "Comma-separated IPs to purge (leave blank to cancel):",
+            "",
+          ) || ""
+        : ""
+    const ips = opts.ips ?? (promptedIps ? promptedIps.split(",").map((s) => s.trim()).filter(Boolean) : [])
+    if (!opts.botsOnly && ips.length === 0) return
+    const label = opts.botsOnly ? "known bot IP ranges" : `${ips.length} IP(s)`
+    // eslint-disable-next-line no-alert
+    if (!window.confirm(`Purge sessions from ${label}?`)) return
+    setBusy(true)
+    setNote(null)
+    try {
+      const res = await fetch("/api/admin/sessions", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          ...(password ? { "x-admin-password": password } : {}),
+        },
+        body: JSON.stringify({ botsOnly: opts.botsOnly === true, ips }),
+      })
+      const data = await res.json().catch(() => null)
+      if (!res.ok) throw new Error(data?.error || `HTTP ${res.status}`)
+      setNote(`Purged ${data?.deleted ?? 0} sessions.`)
+      onDone()
+    } catch (err: any) {
+      setNote(`Failed: ${err?.message || err}`)
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  return (
+    <div className="relative">
+      <div className="flex items-center gap-2">
+        <button
+          onClick={() => purge({ botsOnly: true })}
+          disabled={busy}
+          className="px-4 py-2 bg-white border border-red-300 text-red-800 text-sm font-medium hover:bg-red-50 disabled:opacity-50"
+          title="Delete sessions whose IP matches known Vercel monitor or search-crawler ranges"
+        >
+          {busy ? "Purging…" : "Purge bots"}
+        </button>
+        <button
+          onClick={() => purge({})}
+          disabled={busy}
+          className="px-4 py-2 bg-white border border-red-300 text-red-800 text-sm font-medium hover:bg-red-50 disabled:opacity-50"
+          title="Delete every session with a specific client IP"
+        >
+          Purge IP…
+        </button>
+      </div>
+      {note && (
+        <div className="absolute right-0 top-full mt-1 text-xs text-gray-700 bg-white border border-gray-200 px-2 py-1 whitespace-nowrap">
+          {note}
+        </div>
+      )}
     </div>
   )
 }

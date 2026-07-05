@@ -407,11 +407,21 @@ export default function HomePage() {
 
       {/* Outcome cards — pulled up from the benchmark section so the
           pitch lands before the trust band. Reads as a natural extension
-          of the hero. Kept compact (no section header, small vertical
-          padding) so it doesn't push the trust band or the rest of the
-          page too far down. */}
-      <section className="py-6 sm:py-10">
+          of the hero. */}
+      <section className="py-8 sm:py-12">
         <div className="max-w-[1000px] mx-auto px-4 sm:px-8">
+          {/* Section header — same kicker + h2 pattern used lower down. */}
+          <div className="text-center mb-6 sm:mb-8">
+            <div className="inline-flex items-center gap-1.5 mb-3 px-3 py-1 bg-white border border-[#d4c5b0]">
+              <span className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500]">
+                Outcomes
+              </span>
+            </div>
+            <h2 className="font-serif text-[1.5rem] sm:text-[1.9rem] font-normal text-[#1a1a1a] leading-tight">
+              What SecondLook does for you
+            </h2>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
               <div className="font-serif text-base sm:text-lg text-[#1a1a1a] leading-snug mb-3">
@@ -432,7 +442,7 @@ export default function HomePage() {
                 6 in 10
               </div>
               <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                patients: we name the diagnosis or the single test that would confirm it.
+                patients get the diagnosis, or the single test that would confirm it.
               </div>
             </div>
             <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">

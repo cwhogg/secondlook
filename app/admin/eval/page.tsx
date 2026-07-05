@@ -159,10 +159,12 @@ function synthesizeBaselineResult(
   sourceAgent: string,
   generationMeta: { model: string; tokensUsed: number; durationMs: number },
 ): AnalysisResult {
-  const hypotheses: DiagnosisHypothesis[] = diagnoses.slice(0, 5).map((d, i) => ({
+  const hypotheses: DiagnosisHypothesis[] = diagnoses.slice(0, 10).map((d, i) => ({
     diagnosis: d.diagnosis,
-    confidenceScore: Math.max(20, 95 - i * 15),
-    evidenceScore: Math.max(20, 95 - i * 15),
+    // Confidence step tuned for a 10-entry list. Historical value was
+    // 15 for a 5-entry list; scaled so the last rank still lands ~15%.
+    confidenceScore: Math.max(15, 95 - i * 8),
+    evidenceScore: Math.max(15, 95 - i * 8),
     rareDisease: false,
     supportingEvidence: [],
     contradictoryEvidence: [],

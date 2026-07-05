@@ -731,12 +731,16 @@ async function runBaseline(ppkt_id, caseDescription, model, fetchTimeoutMs = 600
   const generationMeta = data.generationMetadata || { model, tokensUsed: 0, durationMs: 0 };
   const sourceAgent = `${model}-baseline`;
 
-  // Mirror synthesizeBaselineResult in app/eval/page.tsx (lines 156-216) so the
-  // shape stored in Redis matches what /eval would produce.
-  const hypotheses = diagnoses.slice(0, 5).map((d, i) => ({
+  // Mirror synthesizeBaselineResult in app/admin/eval/page.tsx so the shape
+  // stored in Redis matches what /admin/eval would produce. Cap at 10 to
+  // match the Phenopacket2Prompt grading cutoff and the SL differential
+  // depth — historical baselines were capped at 5 which made Top-10
+  // comparisons inflate SL vs baseline artificially.
+  const hypotheses = diagnoses.slice(0, 10).map((d, i) => ({
     diagnosis: d.diagnosis,
-    confidenceScore: Math.max(20, 95 - i * 15),
-    evidenceScore: Math.max(20, 95 - i * 15),
+    // Confidence step tuned for a 10-entry list (was 15 for a 5-entry list).
+    confidenceScore: Math.max(15, 95 - i * 8),
+    evidenceScore: Math.max(15, 95 - i * 8),
     rareDisease: false,
     supportingEvidence: [],
     contradictoryEvidence: [],

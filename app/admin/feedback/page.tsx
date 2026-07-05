@@ -7,7 +7,7 @@ interface FeedbackSummary {
   id: string
   createdAt: string
   ip: string | null
-  mode: "test" | "real"
+  mode: "test" | "real" | "general"
   analysisRequestId: string | null
   payload: any
 }
@@ -154,7 +154,8 @@ export default function AdminFeedbackPage() {
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Feedback</h1>
             <p className="text-sm text-gray-600 mt-1">
-              {total} total responses · {testItems.length} test · {realItems.length} real
+              {total} total responses · {testItems.length} test · {realItems.length} real ·{" "}
+              {items.filter((i) => i.mode === "general").length} general
             </p>
           </div>
           <button
@@ -221,7 +222,9 @@ function FeedbackCard({ item }: { item: FeedbackSummary }) {
             className={`px-2 py-0.5 font-semibold uppercase tracking-wide ${
               item.mode === "test"
                 ? "bg-amber-50 text-amber-800 border border-amber-200"
-                : "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                : item.mode === "real"
+                  ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                  : "bg-sky-50 text-sky-800 border border-sky-200"
             }`}
           >
             {item.mode}
@@ -249,7 +252,7 @@ function FeedbackCard({ item }: { item: FeedbackSummary }) {
             {p.actualTop1 && <Row label="Got">{p.actualTop1}</Row>}
             {p.comments && <Row label="Comments">{p.comments}</Row>}
           </>
-        ) : (
+        ) : item.mode === "real" ? (
           <>
             {typeof p.usefulnessRating === "number" && (
               <Row label="Useful in journey">{ratingDisplay(p.usefulnessRating)}</Row>
@@ -267,6 +270,28 @@ function FeedbackCard({ item }: { item: FeedbackSummary }) {
               </Row>
             )}
             {p.comments && <Row label="Comments">{p.comments}</Row>}
+          </>
+        ) : (
+          // general mode
+          <>
+            {p.page && <Row label="Page">{p.page}</Row>}
+            {p.email && (
+              <Row label="Email">
+                <a href={`mailto:${p.email}`} className="text-[#8b2500] underline">
+                  {p.email}
+                </a>
+              </Row>
+            )}
+            {p.sessionId && (
+              <Row label="Session">
+                <span className="font-mono text-xs">{p.sessionId}</span>
+              </Row>
+            )}
+            {p.message && (
+              <Row label="Message">
+                <span className="whitespace-pre-wrap">{p.message}</span>
+              </Row>
+            )}
           </>
         )}
       </div>

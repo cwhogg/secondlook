@@ -25,8 +25,16 @@ const realSchema = z.object({
   comments: z.string().max(5000).optional(),
 });
 
+const generalSchema = z.object({
+  mode: z.literal('general'),
+  message: z.string().min(1).max(5000),
+  email: z.string().email().max(200).optional().or(z.literal('')),
+  page: z.string().max(500).optional(),
+  sessionId: z.string().max(80).optional(),
+});
+
 const bodySchema = z.object({
-  payload: z.discriminatedUnion('mode', [testSchema, realSchema]),
+  payload: z.discriminatedUnion('mode', [testSchema, realSchema, generalSchema]),
   analysisRequestId: z.string().max(100).nullable().optional(),
 });
 

@@ -27,7 +27,21 @@ function getRedis(): Redis | null {
 
 const fbKey = (id: string) => `${KEY_PREFIX}${id}`;
 
-export type FeedbackMode = 'test' | 'real';
+export type FeedbackMode = 'test' | 'real' | 'general';
+
+/**
+ * General feedback (any-page floating button). Free-form message with
+ * optional email for follow-up. Captures the page pathname it was
+ * submitted from + the session ID so admin can correlate the feedback
+ * with the visitor's journey on /admin/sessions.
+ */
+export interface GeneralFeedback {
+  mode: 'general';
+  message: string;
+  email?: string;
+  page?: string;
+  sessionId?: string;
+}
 
 /**
  * Test-case feedback (3 questions). All optional so the API doesn't
@@ -69,7 +83,7 @@ export interface FeedbackRecord {
   // Lets us correlate feedback against the prod-run record on
   // /admin/runs.
   analysisRequestId: string | null;
-  payload: TestFeedback | RealFeedback;
+  payload: TestFeedback | RealFeedback | GeneralFeedback;
 }
 
 export interface FeedbackSummary {
@@ -78,7 +92,7 @@ export interface FeedbackSummary {
   ip: string | null;
   mode: FeedbackMode;
   analysisRequestId: string | null;
-  payload: TestFeedback | RealFeedback;
+  payload: TestFeedback | RealFeedback | GeneralFeedback;
 }
 
 export async function saveFeedback(record: FeedbackRecord): Promise<boolean> {

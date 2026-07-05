@@ -4,6 +4,7 @@ import { Playfair_Display, Source_Serif_4, Instrument_Sans } from "next/font/goo
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { SessionTrackingRoot } from "@/components/session-tracking-root"
+import { FeedbackButton } from "@/components/feedback-button"
 import "./globals.css"
 
 const playfair = Playfair_Display({
@@ -89,6 +90,7 @@ export default function RootLayout({
       <body className={`${playfair.variable} ${sourceSerif.variable} ${instrumentSans.variable} font-serif-body`}>
         {children}
         <SessionTrackingRoot />
+        <FeedbackButton />
         <Analytics />
         <SpeedInsights />
       </body>

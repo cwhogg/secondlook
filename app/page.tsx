@@ -452,7 +452,7 @@ export default function HomePage() {
             </div>
             <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
               <div className="font-serif text-base sm:text-lg text-[#1a1a1a] leading-snug mb-3">
-                Turn years of searching into a roadmap.
+                Turn years of searching into a clear plan.
               </div>
               <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#8b2500] mb-1">
                 8 in 10

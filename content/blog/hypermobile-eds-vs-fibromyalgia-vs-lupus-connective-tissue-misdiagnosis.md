@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Hypermobile EDS vs Fibromyalgia vs Lupus: The Connective Tissue Misdiagnosis Trap and How to Break Out"
 description: "Cycling between EDS, fibromyalgia, and lupus diagnoses? Learn why doctors confuse these conditions and how to break out of the misdiagnosis trap."
@@ -11,7 +10,6 @@ status: published
 wordCount: 2850
 canonicalUrl: "https://secondlook.vercel.app/blog/hypermobile-eds-vs-fibromyalgia-vs-lupus-connective-tissue-misdiagnosis"
 ---
-```
 
 # Hypermobile EDS vs Fibromyalgia vs Lupus: The Connective Tissue Misdiagnosis Trap and How to Break Out
 

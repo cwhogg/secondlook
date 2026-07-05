@@ -1,4 +1,3 @@
-```yaml
 ---
 title: '"I Tried ACT for My POTS But It Made Me Worse" - What Went Wrong?'
 description: "ACT therapy backfired with your POTS or Long COVID? Learn why acceptance commitment therapy fails some patients and what actually works instead."
@@ -10,7 +9,6 @@ status: published
 wordCount: 2680
 canonicalUrl: "https://secondlook.vercel.app/faq/act-therapy-pots-patients-troubleshooting"
 ---
-```
 
 # "I Tried ACT for My POTS But It Made Me Worse" — What Went Wrong?
 

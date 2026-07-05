@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Nervous System Reset for POTS: Beyond Basic Breathing Techniques"
 description: "Discover POTS-specific nervous system reset techniques that go beyond generic breathing exercises, designed for autonomic instability and orthostatic intolerance."
@@ -11,7 +10,6 @@ status: published
 wordCount: 2487
 canonicalUrl: "https://secondlook.vercel.app/blog/pots-nervous-system-reset-advanced-techniques"
 ---
-```
 
 # Nervous System Reset for POTS: Beyond Basic Breathing Techniques
 

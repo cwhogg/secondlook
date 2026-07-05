@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Systemic Lupus Erythematosus: Why SLE Takes an Average of 6 Years to Diagnose and What Tests Your Doctor May Be Missing"
 description: "SLE takes an average of 6 years to diagnose. Learn why doctors miss lupus, which tests are overlooked, and how to advocate for yourself effectively."
@@ -11,7 +10,6 @@ status: published
 wordCount: 2810
 canonicalUrl: "https://secondlook.vercel.app/blog/systemic-lupus-erythematosus-diagnosis-delay-missed-tests-guide"
 ---
-```
 
 # Systemic Lupus Erythematosus: Why SLE Takes an Average of 6 Years to Diagnose and What Tests Your Doctor May Be Missing
 

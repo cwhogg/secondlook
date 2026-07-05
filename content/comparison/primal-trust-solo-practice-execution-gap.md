@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Primal Trust vs Solo Practice: Why Framework Programs Need a Practice Partner"
 description: "Struggling with Primal Trust not working for you? Learn why nervous system healing for long COVID needs more than a framework — and what changes everything."
@@ -11,7 +10,6 @@ status: published
 wordCount: 2187
 canonicalUrl: "https://secondlook.vercel.app/compare/primal-trust-solo-practice-execution-gap"
 ---
-```
 
 # Primal Trust vs Solo Practice: Why Framework Programs Need a Practice Partner
 

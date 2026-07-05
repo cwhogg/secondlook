@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Mastocytosis vs MCAS vs Chronic Hives: Why Mast Cell Disorders Are Almost Always Misdiagnosed First as Allergies or Anxiety"
 description: "Still getting hives and no answers? Learn why mastocytosis and MCAS are routinely misdiagnosed as allergies or anxiety — and what the real diagnostic criteria look like."
@@ -11,7 +10,6 @@ status: published
 wordCount: 2810
 canonicalUrl: "https://secondlook.vercel.app/blog/mastocytosis-vs-mcas-vs-chronic-hives-mast-cell-misdiagnosis"
 ---
-```
 
 # Mastocytosis vs MCAS vs Chronic Hives: Why Mast Cell Disorders Are Almost Always Misdiagnosed First as Allergies or Anxiety
 

@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "The 2AM Crash: What to Do When Mindset Tools Fail You"
 description: "When a POTS or long COVID crash hits at 2AM and your mindset tools feel impossible, here's what actually helps when your brain can't cooperate."
@@ -11,7 +10,6 @@ status: published
 wordCount: 2487
 canonicalUrl: "https://secondlook.vercel.app/blog/pots-crash-day-mindset-tools-brain-fog"
 ---
-```
 
 # The 2AM Crash: What to Do When Mindset Tools Fail You
 

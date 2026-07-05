@@ -1,6 +1,5 @@
-```yaml
 ---
-title: ""Meditation Makes My POTS Worse" - Modified Practices That Actually Work"
+title: '"Meditation Makes My POTS Worse" - Modified Practices That Actually Work'
 description: "Why standard meditation can trigger POTS flares — and which modified mindfulness practices actually help long COVID, POTS, and ME/CFS patients manage symptoms."
 type: faq
 targetKeywords: ["mindfulness for pots flare management", "meditation making pots worse", "somatic therapy for post viral syndrome"]
@@ -10,7 +9,6 @@ status: published
 wordCount: 2847
 canonicalUrl: "https://secondlook.vercel.app/faq/meditation-pots-patients-modified-techniques"
 ---
-```
 
 # "Meditation Makes My POTS Worse" — Modified Practices That Actually Work
 

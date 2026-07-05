@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "What Questions Should You Ask a Genetic Counselor Before Rare Disease Testing? Complete Patient Preparation Guide"
 description: "Prepare for your genetic counseling appointment with expert questions, rare disease testing guidance, and strategies to maximize every minute with your counselor."
@@ -10,7 +9,6 @@ status: published
 wordCount: 2850
 canonicalUrl: "https://secondlook.vercel.app/faq/what-questions-to-ask-genetic-counselor-before-rare-disease-testing"
 ---
-```
 
 # What Questions Should You Ask a Genetic Counselor Before Rare Disease Testing? Complete Patient Preparation Guide
 

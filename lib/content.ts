@@ -42,12 +42,21 @@ function getContentFromDirectory(dir: string, type: ContentType): ContentPiece[]
       }
     }
 
-    // Extract first non-heading paragraph as description fallback
+    // Extract first non-heading paragraph as description fallback.
+    // Explicitly skip code-fence markers (``` and ```lang) and their
+    // contents — a mangled file that opens with a ```yaml fence used to
+    // surface "yaml" as the visible description on the resources page.
     let description = data.description || ""
     if (!description) {
       const lines = content.split("\n")
+      let inFence = false
       for (const line of lines) {
         const trimmed = line.trim()
+        if (trimmed.startsWith("```")) {
+          inFence = !inFence
+          continue
+        }
+        if (inFence) continue
         if (trimmed && !trimmed.startsWith("#") && !trimmed.startsWith("---")) {
           description = trimmed.replace(/[*_`\[\]()]/g, "").slice(0, 200)
           break

@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Idiopathic Intracranial Hypertension vs Migraine vs Chiari Malformation: Why Chronic Headache Patients Wait Years for the Right Diagnosis"
 description: "IIH, Chiari malformation, and migraine are routinely misdiagnosed as each other. Learn the key differences, red flags, and how to advocate for the right diagnosis."
@@ -11,7 +10,6 @@ status: published
 wordCount: 2780
 canonicalUrl: "https://secondlook.vercel.app/blog/iih-vs-migraine-vs-chiari-malformation-chronic-headache-misdiagnosis"
 ---
-```
 
 # Idiopathic Intracranial Hypertension vs Migraine vs Chiari Malformation: Why Chronic Headache Patients Wait Years for the Right Diagnosis
 

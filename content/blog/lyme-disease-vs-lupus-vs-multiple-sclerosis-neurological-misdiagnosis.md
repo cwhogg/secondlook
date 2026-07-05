@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Lyme Disease vs Lupus vs Multiple Sclerosis: The Neurological Misdiagnosis Maze and How to Break Free"
 description: "Stuck between Lyme, lupus, and MS diagnoses? Learn why doctors confuse these conditions, what distinguishes them, and how to finally get answers."
@@ -11,7 +10,6 @@ status: published
 wordCount: 2841
 canonicalUrl: "https://secondlook.vercel.app/blog/lyme-disease-vs-lupus-vs-multiple-sclerosis-neurological-misdiagnosis"
 ---
-```
 
 # Lyme Disease vs Lupus vs Multiple Sclerosis: The Neurological Misdiagnosis Maze and How to Break Free
 

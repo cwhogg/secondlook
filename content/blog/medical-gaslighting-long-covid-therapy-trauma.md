@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Medical Gaslighting Trauma: Why Standard Therapy Isn't Enough for Long COVID Patients"
 description: "Long COVID patients face a unique trauma from medical dismissal. Learn why standard therapy falls short and what specialized mindset approaches actually help."
@@ -11,7 +10,6 @@ status: published
 wordCount: 2487
 canonicalUrl: "https://secondlook.vercel.app/blog/medical-gaslighting-long-covid-therapy-trauma"
 ---
-```
 
 # Medical Gaslighting Trauma: Why Standard Therapy Isn't Enough for Long COVID Patients
 

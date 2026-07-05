@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Long COVID Depression Feels Different Because It Is Different"
 description: "Long COVID depression isn't ordinary depression. Learn why post-COVID mental health is uniquely complex and find real help that actually understands what you're living through."
@@ -11,7 +10,6 @@ status: published
 wordCount: 2487
 canonicalUrl: "https://secondlook.vercel.app/blog/long-covid-depression-different-symptoms"
 ---
-```
 
 # Long COVID Depression Feels Different Because It Is Different
 

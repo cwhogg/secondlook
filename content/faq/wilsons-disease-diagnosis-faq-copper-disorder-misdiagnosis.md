@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Wilson's Disease FAQ: The Rare Copper Disorder Hiding Behind Psychiatric Symptoms and Liver Disease Misdiagnoses"
 description: "Wilson's disease mimics bipolar disorder, hepatitis, and MS. Learn why it's missed, how Kayser-Fleischer rings confirm diagnosis, and how to advocate for testing."
@@ -10,7 +9,6 @@ status: published
 wordCount: 2780
 canonicalUrl: "https://secondlook.vercel.app/faq/wilsons-disease-diagnosis-faq-copper-disorder-misdiagnosis"
 ---
-```
 
 # Wilson's Disease FAQ: The Rare Copper Disorder Hiding Behind Psychiatric Symptoms and Liver Disease Misdiagnoses
 

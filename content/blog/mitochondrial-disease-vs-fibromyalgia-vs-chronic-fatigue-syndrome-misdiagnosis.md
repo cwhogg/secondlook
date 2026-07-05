@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Mitochondrial Disease vs Fibromyalgia vs Chronic Fatigue Syndrome: Why the Most Disabling Rare Disease Is Almost Always Dismissed as Psychosomatic First"
 description: "Mitochondrial disease, fibromyalgia, and ME/CFS look identical on paper — until they don't. Learn why doctors miss these diagnoses and how to fight back."
@@ -11,7 +10,6 @@ status: published
 wordCount: 2850
 canonicalUrl: "https://secondlook.vercel.app/blog/mitochondrial-disease-vs-fibromyalgia-vs-chronic-fatigue-syndrome-misdiagnosis"
 ---
-```
 
 # Mitochondrial Disease vs Fibromyalgia vs Chronic Fatigue Syndrome: Why the Most Disabling Rare Disease Is Almost Always Dismissed as Psychosomatic First
 

@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Hereditary Hemochromatosis: The Iron Overload Disease Mistaken for Liver Disease, Arthritis, and Diabetes for an Average of 9 Years"
 description: "Hereditary hemochromatosis mimics liver disease, arthritis, and diabetes for nearly a decade. Learn the symptoms checklist, why doctors miss it, and how to get tested."
@@ -11,7 +10,6 @@ status: published
 wordCount: 2780
 canonicalUrl: "https://secondlook.vercel.app/blog/hereditary-hemochromatosis-diagnosis-iron-overload-misdiagnosis-guide"
 ---
-```
 
 # Hereditary Hemochromatosis: The Iron Overload Disease Mistaken for Liver Disease, Arthritis, and Diabetes for an Average of 9 Years
 

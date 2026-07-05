@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Acromegaly: The Slow-Growing Hormone Disorder That Hides in Plain Sight for an Average of 10 Years Before Diagnosis"
 description: "Acromegaly mimics arthritis, sleep apnea, and aging for a decade. Learn the symptom checklist, why doctors miss it, and how to get the right IGF-1 test."
@@ -11,7 +10,6 @@ status: published
 wordCount: 2850
 canonicalUrl: "https://secondlook.vercel.app/blog/acromegaly-diagnosis-growth-hormone-disorder-misdiagnosis-guide"
 ---
-```
 
 # Acromegaly: The Slow-Growing Hormone Disorder That Hides in Plain Sight for an Average of 10 Years Before Diagnosis
 

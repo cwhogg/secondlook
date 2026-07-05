@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "How to Organize Medical Records for a Difficult Diagnosis: The Complete Patient Guide"
 description: "Learn how to organize medical records for a difficult diagnosis — templates, strategies, and tools for undiagnosed patients navigating a diagnostic odyssey."
@@ -10,7 +9,6 @@ status: published
 wordCount: 2850
 canonicalUrl: "https://secondlook.vercel.app/faq/how-to-organize-medical-records-difficult-diagnosis"
 ---
-```
 
 # How to Organize Medical Records for a Difficult Diagnosis: The Complete Patient Guide
 

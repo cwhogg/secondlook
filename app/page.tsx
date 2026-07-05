@@ -362,12 +362,12 @@ export default function HomePage() {
 
             {/* Headline */}
             <h1 className="font-serif text-[2rem] sm:text-[2.6rem] md:text-[3.4rem] font-normal leading-[1.12] text-[#1a1a1a] mb-3 sm:mb-7 tracking-[-0.01em]">
-              Rare disease answers, <em className="text-[#8b2500]">faster.</em>
+              You&rsquo;ve been searching. <em className="text-[#8b2500]">Start here.</em>
             </h1>
 
             {/* Subline */}
             <p className="font-serif-body text-base sm:text-lg leading-[1.5] sm:leading-[1.75] text-[#5a5a5a] mb-5 sm:mb-10 max-w-[480px]">
-              Nearly 1 in 2 patients get the correct diagnosis at rank #1. For 6 in 10, we either name the diagnosis or point to the single test that would confirm it. Built for rare and complex conditions — where general-purpose AI models fall short.
+              SecondLook is built for people navigating undiagnosed illness — the ones who&rsquo;ve been told &ldquo;I don&rsquo;t know&rdquo; or &ldquo;it&rsquo;s probably nothing&rdquo; one too many times. For nearly 1 in 2 patients, we name the diagnosis at position #1, so you can bring it to your doctor and ask &mdash; &ldquo;could this be it?&rdquo;
             </p>
 
             {/* CTA Button */}
@@ -376,12 +376,12 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-white bg-[#8b2500] px-9 py-4 hover:bg-[#6d1d00] transition-colors"
             >
               <Sparkles className="h-4 w-4" />
-              <span>Start My Health Analysis</span>
+              <span>Get Your Analysis &mdash; Free</span>
               <ArrowRight className="h-4 w-4" />
             </Link>
 
             <p className="mt-3 sm:mt-5 font-sans text-[0.72rem] text-[#999] tracking-[0.02em]">
-              Free during early access
+              ~10 minutes. No login. No cost.
             </p>
           </div>
 
@@ -397,19 +397,46 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="py-8">
-        <GoldDivider wide />
-      </div>
-
-      {/* Positioning paragraph (moved here from below to lead before the medical notice) */}
-      <section className="py-6 sm:py-8">
+      {/* Trust-signal band (immediately after the hero — before anything else). */}
+      <section className="py-5 sm:py-6 bg-[#faf6f0] border-y border-[#d4c5b0]">
         <div className="max-w-[820px] mx-auto px-4 sm:px-8">
-          <p className="font-serif-body text-center text-[#5a5a5a] leading-relaxed">
-            Whether you&apos;re searching for a medical second opinion, exploring an AI symptom checker for rare diseases,
-            or looking for help with a complex diagnosis, SecondLook provides the analytical depth that standard tools lack.
-            Our platform is designed for patients navigating a diagnostic odyssey who need more than generic health advice.
+          <p className="font-serif-body text-center text-sm sm:text-[15px] text-[#5a5a5a] leading-relaxed">
+            <span className="font-serif italic text-[#8b2500]">Independently validated</span> against Phenopacket2Prompt &mdash; the same rare-disease research benchmark used in <em>Nature</em> and <em>European Journal of Human Genetics</em>.
           </p>
+        </div>
+      </section>
+
+      {/* Who this is for */}
+      <section className="py-10 sm:py-14">
+        <div className="max-w-[900px] mx-auto px-4 sm:px-8">
+          <div className="text-center mb-8 sm:mb-10">
+            <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500] mb-3">
+              Who SecondLook is for
+            </div>
+            <h2 className="font-serif text-[1.4rem] sm:text-[1.9rem] font-normal text-[#1a1a1a] leading-tight">
+              If any of these sound like you, SecondLook is built for you.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
+              <div className="font-serif text-lg text-[#8b2500] mb-2">Undiagnosed adults</div>
+              <p className="font-serif-body text-sm text-[#5a5a5a] leading-relaxed">
+                You&rsquo;ve seen multiple specialists over months or years and still don&rsquo;t have an answer that fits.
+              </p>
+            </div>
+            <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
+              <div className="font-serif text-lg text-[#8b2500] mb-2">Parents navigating a child&rsquo;s illness</div>
+              <p className="font-serif-body text-sm text-[#5a5a5a] leading-relaxed">
+                Your child has symptoms no one seems to connect. You&rsquo;re looking for a way to think through the possibilities.
+              </p>
+            </div>
+            <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
+              <div className="font-serif text-lg text-[#8b2500] mb-2">A diagnosis that doesn&rsquo;t feel right</div>
+              <p className="font-serif-body text-sm text-[#5a5a5a] leading-relaxed">
+                You have a diagnosis, but symptoms it doesn&rsquo;t explain. You want a second look at the picture.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -438,10 +465,10 @@ export default function HomePage() {
           {/* Section Header */}
           <div className="text-center mb-10 sm:mb-14">
             <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4">
-              How SecondLook Works
+              How SecondLook works
             </h2>
             <p className="font-serif-body text-lg sm:text-xl text-[#5a5a5a] max-w-3xl mx-auto leading-relaxed">
-              SecondLook&apos;s detailed and multi-stage diagnostic pipeline turns your story into a ranked differential and concrete next steps.
+              Here&rsquo;s what happens after you tell us your story: nine steps that turn it into a ranked list of possibilities and the specific tests that could confirm each one.
             </p>
           </div>
 
@@ -479,87 +506,90 @@ export default function HomePage() {
           <div className="text-center mb-10 sm:mb-12">
             <div className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 bg-white border border-[#d4c5b0]">
               <span className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500]">
-                What patients get
+                What SecondLook does for you
               </span>
             </div>
             <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4">
               A clearer path to your answer
             </h2>
             <p className="font-serif-body text-base sm:text-lg text-[#5a5a5a] max-w-2xl mx-auto leading-relaxed">
-              Measured on real published rare-disease cases from the Phenopacket2Prompt research benchmark — the standard used in peer-reviewed diagnostic AI evaluation.
+              Measured on real published rare-disease cases &mdash; the same benchmark used in peer-reviewed research evaluating diagnostic AI.
             </p>
           </div>
 
-          {/* Three Patient-Facing Metric Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 sm:mb-12">
+          {/* Three Patient-Facing Metric Cards — outcome first, number second. */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 sm:mb-10">
             <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
-              <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500] mb-2">
-                Named correctly at #1
+              <div className="font-serif text-base sm:text-lg text-[#1a1a1a] leading-snug mb-3">
+                See the diagnosis your doctors may have missed.
               </div>
-              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#1a1a1a] mb-1">
+              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#8b2500] mb-1">
                 nearly 1 in 2
               </div>
               <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                patients receive the correct diagnosis as our top-ranked candidate.
+                patients get the correct diagnosis as our top suggestion.
               </div>
             </div>
 
             <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
-              <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500] mb-2">
-                One test to the answer
+              <div className="font-serif text-base sm:text-lg text-[#1a1a1a] leading-snug mb-3">
+                Walk into your next appointment with a plan.
               </div>
-              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#1a1a1a] mb-1">
+              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#8b2500] mb-1">
                 6 in 10
               </div>
               <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                patients get the diagnosis named or a single confirmatory test that would settle it.
+                patients: we name the diagnosis or the single test that would confirm it.
               </div>
             </div>
 
             <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
-              <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500] mb-2">
-                Five tests to the answer
+              <div className="font-serif text-base sm:text-lg text-[#1a1a1a] leading-snug mb-3">
+                Turn years of searching into a roadmap.
               </div>
-              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#1a1a1a] mb-1">
+              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#8b2500] mb-1">
                 8 in 10
               </div>
               <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                patients would reach a definitive diagnosis with a panel of our top 5 recommended tests.
+                patients would reach an answer within our top 5 recommended tests.
               </div>
             </div>
           </div>
 
-          {/* Head-to-head vs OpenAI + Claude */}
+          {/* Have you tried ChatGPT / Claude already? — reframed comparison */}
           <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
             <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500] mb-3">
-              Head-to-head vs. leading AI models
+              Already tried ChatGPT or Claude?
             </div>
-            <p className="font-serif text-lg sm:text-xl text-[#1a1a1a] leading-snug mb-4">
-              On the same rare-disease cases, SecondLook is <strong>30–35% more accurate</strong> at position 1 than a single query to OpenAI o3 or Claude Opus 4.7.
+            <p className="font-serif text-lg sm:text-xl text-[#1a1a1a] leading-snug mb-2">
+              We&rsquo;re not a chatbot &mdash; we&rsquo;re a diagnostic pipeline built for rare disease.
             </p>
-            <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4">
+            <p className="font-serif-body text-sm sm:text-[15px] text-[#5a5a5a] leading-relaxed mb-4">
+              Instead of asking one AI for an answer, SecondLook runs your case through 15 specialist perspectives in parallel, grounded in a knowledge base of 9,275 rare-disease profiles, and scores each candidate against formal diagnostic criteria. On the same rare-disease cases, we&rsquo;re <strong>30&ndash;35% more accurate</strong> at position 1 than a single query to OpenAI o3 or Claude Opus 4.7.
+            </p>
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4 pt-4 border-t border-[#e8ddd0]">
               <div>
                 <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] mb-1">
                   SecondLook
                 </div>
                 <div className="font-serif text-2xl sm:text-3xl text-[#8b2500]">42.0%</div>
+                <div className="font-sans text-[10px] text-[#8b7355] mt-1">correct at #1</div>
               </div>
               <div>
                 <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] mb-1">
                   OpenAI o3
                 </div>
                 <div className="font-serif text-2xl sm:text-3xl text-[#5a5a5a]">31.5%</div>
+                <div className="font-sans text-[10px] text-[#8b7355] mt-1">correct at #1</div>
               </div>
               <div>
                 <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] mb-1">
                   Claude Opus 4.7
                 </div>
                 <div className="font-serif text-2xl sm:text-3xl text-[#5a5a5a]">30.9%</div>
+                <div className="font-sans text-[10px] text-[#8b7355] mt-1">correct at #1</div>
               </div>
             </div>
-            <p className="font-serif-body text-xs text-[#8b7355] mt-4 leading-relaxed">
-              Position-1 accuracy on identical rare-disease vignettes, graded by the same LLM tier grader across all three systems.
-            </p>
           </div>
 
           {/* References — abbreviated */}
@@ -600,19 +630,19 @@ export default function HomePage() {
 
       {/* Final CTA Section */}
       <section className="py-12 sm:py-[4.5rem] text-center">
-        <div className="max-w-[480px] mx-auto px-4 sm:px-8">
+        <div className="max-w-[520px] mx-auto px-4 sm:px-8">
           <h2 className="font-serif text-[1.5rem] sm:text-[2rem] font-normal text-[#1a1a1a] mb-4 leading-snug">
-            Ready to explore your health?
+            You&rsquo;ve carried this long enough.
           </h2>
           <p className="font-serif-body text-[1.05rem] text-[#5a5a5a] leading-relaxed mb-9">
-            Get AI-powered diagnostic insights for complex and rare conditions — free during early access.
+            Ten minutes of your time. A ranked list of what might be going on, and the specific tests that could confirm each one. Free while we&rsquo;re in early access.
           </p>
           <Link
             href="/step-1"
             className="inline-flex items-center gap-2 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-white bg-[#8b2500] px-10 py-4 hover:bg-[#6d1d00] transition-colors"
           >
             <Sparkles className="h-4 w-4" />
-            <span>Start My Health Analysis</span>
+            <span>Get Your Analysis &mdash; Free</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

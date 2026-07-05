@@ -405,7 +405,52 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Trust-signal band (immediately after the hero — before anything else). */}
+      {/* Outcome cards — pulled up from the benchmark section so the
+          pitch lands before the trust band. Reads as a natural extension
+          of the hero. Kept compact (no section header, small vertical
+          padding) so it doesn't push the trust band or the rest of the
+          page too far down. */}
+      <section className="py-6 sm:py-10">
+        <div className="max-w-[1000px] mx-auto px-4 sm:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
+              <div className="font-serif text-base sm:text-lg text-[#1a1a1a] leading-snug mb-3">
+                See the diagnosis your doctors may have missed.
+              </div>
+              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#8b2500] mb-1">
+                nearly 1 in 2
+              </div>
+              <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
+                patients get the correct diagnosis as our top suggestion.
+              </div>
+            </div>
+            <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
+              <div className="font-serif text-base sm:text-lg text-[#1a1a1a] leading-snug mb-3">
+                Walk into your next appointment with a plan.
+              </div>
+              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#8b2500] mb-1">
+                6 in 10
+              </div>
+              <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
+                patients: we name the diagnosis or the single test that would confirm it.
+              </div>
+            </div>
+            <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
+              <div className="font-serif text-base sm:text-lg text-[#1a1a1a] leading-snug mb-3">
+                Turn years of searching into a roadmap.
+              </div>
+              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#8b2500] mb-1">
+                8 in 10
+              </div>
+              <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
+                patients would reach an answer within our top 5 recommended tests.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust-signal band (immediately after the outcome cards). */}
       <section className="py-5 sm:py-6 bg-[#faf6f0] border-y border-[#d4c5b0]">
         <div className="max-w-[820px] mx-auto px-4 sm:px-8">
           <p className="font-serif-body text-center text-sm sm:text-[15px] text-[#5a5a5a] leading-relaxed">
@@ -510,58 +555,20 @@ export default function HomePage() {
       {/* Benchmark Performance */}
       <section className="py-12 sm:py-16 bg-[#faf6f0] border-y border-[#d4c5b0]">
         <div className="max-w-[1000px] mx-auto px-4 sm:px-8">
-          {/* Section Header */}
+          {/* Section Header — now leads the head-to-head comparison
+              because the outcome cards moved up above the trust band. */}
           <div className="text-center mb-10 sm:mb-12">
             <div className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 bg-white border border-[#d4c5b0]">
               <span className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500]">
-                What SecondLook does for you
+                How we compare
               </span>
             </div>
             <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4">
-              A clearer path to your answer
+              Measured against the leading AI models
             </h2>
             <p className="font-serif-body text-base sm:text-lg text-[#5a5a5a] max-w-2xl mx-auto leading-relaxed">
-              Measured on real published rare-disease cases &mdash; the same benchmark used in peer-reviewed research evaluating diagnostic AI.
+              On real published rare-disease cases &mdash; the same benchmark used in peer-reviewed research evaluating diagnostic AI.
             </p>
-          </div>
-
-          {/* Three Patient-Facing Metric Cards — outcome first, number second. */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 sm:mb-10">
-            <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
-              <div className="font-serif text-base sm:text-lg text-[#1a1a1a] leading-snug mb-3">
-                See the diagnosis your doctors may have missed.
-              </div>
-              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#8b2500] mb-1">
-                nearly 1 in 2
-              </div>
-              <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                patients get the correct diagnosis as our top suggestion.
-              </div>
-            </div>
-
-            <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
-              <div className="font-serif text-base sm:text-lg text-[#1a1a1a] leading-snug mb-3">
-                Walk into your next appointment with a plan.
-              </div>
-              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#8b2500] mb-1">
-                6 in 10
-              </div>
-              <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                patients: we name the diagnosis or the single test that would confirm it.
-              </div>
-            </div>
-
-            <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
-              <div className="font-serif text-base sm:text-lg text-[#1a1a1a] leading-snug mb-3">
-                Turn years of searching into a roadmap.
-              </div>
-              <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#8b2500] mb-1">
-                8 in 10
-              </div>
-              <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
-                patients would reach an answer within our top 5 recommended tests.
-              </div>
-            </div>
           </div>
 
           {/* Have you tried ChatGPT / Claude already? — reframed comparison */}

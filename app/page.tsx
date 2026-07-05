@@ -362,7 +362,7 @@ export default function HomePage() {
 
             {/* Headline */}
             <h1 className="font-serif text-[2rem] sm:text-[2.6rem] md:text-[3.4rem] font-normal leading-[1.12] text-[#1a1a1a] mb-3 sm:mb-7 tracking-[-0.01em]">
-              You&rsquo;ve been searching. <em className="text-[#8b2500]">Start here.</em>
+              Find Your Rare Diagnosis <em className="text-[#8b2500]">in Minutes.</em>
             </h1>
 
             {/* Subline */}

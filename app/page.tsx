@@ -262,11 +262,16 @@ function ResourcesSection() {
   return (
     <section className="max-w-[1140px] mx-auto px-4 sm:px-8 py-12 sm:py-16">
       <div className="text-center mb-8 sm:mb-10">
-        <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4 sm:mb-6">
-          Health Resources &amp; Rare Disease Guides
+        <div className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 bg-white border border-[#d4c5b0]">
+          <span className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500]">
+            Guides
+          </span>
+        </div>
+        <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4">
+          Health resources &amp; rare-disease guides
         </h2>
-        <p className="font-serif-body text-lg sm:text-xl text-[#5a5a5a] max-w-3xl mx-auto leading-relaxed">
-          Explore our guides on rare disease diagnosis, navigating complex medical cases, and making the most of AI symptom checkers on your health journey.
+        <p className="font-serif-body text-base sm:text-lg text-[#5a5a5a] max-w-2xl mx-auto leading-relaxed">
+          Guides on rare-disease diagnosis, navigating complex medical cases, and making the most of AI symptom checkers on your health journey.
         </p>
       </div>
 
@@ -412,12 +417,12 @@ export default function HomePage() {
         <div className="max-w-[1000px] mx-auto px-4 sm:px-8">
           {/* Section header — same kicker + h2 pattern used lower down. */}
           <div className="text-center mb-6 sm:mb-8">
-            <div className="inline-flex items-center gap-1.5 mb-3 px-3 py-1 bg-white border border-[#d4c5b0]">
+            <div className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 bg-white border border-[#d4c5b0]">
               <span className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500]">
                 Outcomes
               </span>
             </div>
-            <h2 className="font-serif text-[1.5rem] sm:text-[1.9rem] font-normal text-[#1a1a1a] leading-tight">
+            <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight">
               What SecondLook does for you
             </h2>
           </div>
@@ -473,10 +478,12 @@ export default function HomePage() {
       <section className="py-10 sm:py-14">
         <div className="max-w-[900px] mx-auto px-4 sm:px-8">
           <div className="text-center mb-8 sm:mb-10">
-            <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500] mb-3">
-              Who SecondLook is for
+            <div className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 bg-white border border-[#d4c5b0]">
+              <span className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500]">
+                Who it&rsquo;s for
+              </span>
             </div>
-            <h2 className="font-serif text-[1.4rem] sm:text-[1.9rem] font-normal text-[#1a1a1a] leading-tight">
+            <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight">
               If any of these sound like you, SecondLook is built for you.
             </h2>
           </div>
@@ -527,10 +534,15 @@ export default function HomePage() {
         <div className="max-w-[820px] mx-auto px-4 sm:px-8">
           {/* Section Header */}
           <div className="text-center mb-10 sm:mb-14">
+            <div className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 bg-white border border-[#d4c5b0]">
+              <span className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500]">
+                How it works
+              </span>
+            </div>
             <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4">
               How SecondLook works
             </h2>
-            <p className="font-serif-body text-lg sm:text-xl text-[#5a5a5a] max-w-3xl mx-auto leading-relaxed">
+            <p className="font-serif-body text-base sm:text-lg text-[#5a5a5a] max-w-2xl mx-auto leading-relaxed">
               Here&rsquo;s what happens after you tell us your story: nine steps that turn it into a ranked list of possibilities and the specific tests that could confirm each one.
             </p>
           </div>
@@ -570,7 +582,7 @@ export default function HomePage() {
           <div className="text-center mb-10 sm:mb-12">
             <div className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 bg-white border border-[#d4c5b0]">
               <span className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#8b2500]">
-                How we compare
+                How SecondLook compares
               </span>
             </div>
             <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight mb-4">

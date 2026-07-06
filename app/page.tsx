@@ -372,7 +372,7 @@ export default function HomePage() {
 
             {/* Subline */}
             <p className="font-serif-body text-base sm:text-lg leading-[1.5] sm:leading-[1.75] text-[#5a5a5a] mb-5 sm:mb-10 max-w-[480px]">
-              SecondLook is built for people navigating undiagnosed illness — the ones who&rsquo;ve been told &ldquo;I don&rsquo;t know&rdquo; or &ldquo;it&rsquo;s probably nothing&rdquo; one too many times. For nearly 1 in 2 patients, we name the diagnosis at position #1, so you can bring it to your doctor and ask &mdash; &ldquo;could this be it?&rdquo;
+              SecondLook is built for people navigating undiagnosed illness — the ones who&rsquo;ve been told &ldquo;I don&rsquo;t know&rdquo; or &ldquo;it&rsquo;s probably nothing&rdquo; one too many times. For nearly 50% of patients, we name the diagnosis as the #1 match, so you can bring it to your doctor and ask &mdash; &ldquo;could this be it?&rdquo;
             </p>
 
             {/* CTA Button */}
@@ -433,7 +433,7 @@ export default function HomePage() {
                 See the diagnosis your doctors may have missed.
               </div>
               <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#8b2500] mb-1">
-                nearly 1 in 2
+                nearly 50%
               </div>
               <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
                 patients get the correct diagnosis as our top suggestion.
@@ -619,7 +619,7 @@ export default function HomePage() {
               We&rsquo;re not a chatbot &mdash; we&rsquo;re a diagnostic pipeline built for rare disease.
             </p>
             <p className="font-serif-body text-sm sm:text-[15px] text-[#5a5a5a] leading-relaxed mb-4">
-              Instead of asking one AI for an answer, SecondLook runs your case through 15 specialist perspectives in parallel, grounded in a knowledge base of 9,275 rare-disease profiles, and scores each candidate against formal diagnostic criteria. On the same rare-disease cases, we&rsquo;re <strong>30&ndash;35% more accurate</strong> at position 1 than a single query to OpenAI o3 or Claude Opus 4.7.
+              Instead of asking one AI for an answer, SecondLook runs your case through 15 specialist perspectives in parallel, grounded in a knowledge base of 9,275 rare-disease profiles, and scores each candidate against formal diagnostic criteria. On the same rare-disease cases, we&rsquo;re <strong>30&ndash;35% more accurate</strong> at the #1 match than a single query to OpenAI o3 or Claude Opus 4.7.
             </p>
             <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4 pt-4 border-t border-[#e8ddd0]">
               <div>
@@ -653,7 +653,7 @@ export default function HomePage() {
             </div>
             <ol className="font-serif-body text-xs sm:text-[13px] leading-relaxed text-[#777] space-y-1.5 list-decimal pl-5">
               <li>
-                Position-1 accuracy (nearly 1 in 2) measured on a random sample of Phenopacket2Prompt cases (n=29). Independently re-verified across a larger 96-case random sample where SecondLook achieves 34% under the strictest paper-faithful Mondo grading.
+                #1-match accuracy (nearly 50%) measured on a random sample of Phenopacket2Prompt cases (n=29). Independently re-verified across a larger 96-case random sample where SecondLook achieves 34% under the strictest paper-faithful Mondo grading.
               </li>
               <li>
                 Head-to-head comparison against OpenAI o3 and Claude Opus 4.7: identical rare-disease vignettes, LLM tier grader applied uniformly across all three systems (n=50).
@@ -744,7 +744,7 @@ export default function HomePage() {
           </li>
         </ol>
         <p className="mt-4 font-serif-body text-[11px] sm:text-xs text-[#8b7355] leading-relaxed max-w-[720px]">
-          Position-1 accuracy and head-to-head comparisons measured on random samples of Phenopacket2Prompt vignettes, scored by an LLM tier grader applied uniformly across SecondLook, OpenAI o3, and Claude Opus 4.7. Full methodology footnotes appear inside the &ldquo;How SecondLook compares&rdquo; section above.
+          #1-match accuracy and head-to-head comparisons measured on random samples of Phenopacket2Prompt vignettes, scored by an LLM tier grader applied uniformly across SecondLook, OpenAI o3, and Claude Opus 4.7. Full methodology footnotes appear inside the &ldquo;How SecondLook compares&rdquo; section above.
         </p>
       </section>
 

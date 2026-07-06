@@ -619,7 +619,7 @@ export default function HomePage() {
               We&rsquo;re not a chatbot &mdash; we&rsquo;re a diagnostic pipeline built for rare disease.
             </p>
             <p className="font-serif-body text-sm sm:text-[15px] text-[#5a5a5a] leading-relaxed mb-4">
-              Instead of asking one AI for an answer, SecondLook runs your case through 15 specialist perspectives in parallel, grounded in a knowledge base of 9,275 rare-disease profiles, and scores each candidate against formal diagnostic criteria. On the same rare-disease cases, we&rsquo;re <strong>30&ndash;35% more accurate</strong> at the #1 match than a single query to OpenAI o3 or Claude Opus 4.7.
+              Instead of asking one AI for an answer, SecondLook runs your case through the 5 most relevant AI specialists in parallel, grounded in a knowledge base of 9,275 rare-disease profiles, and scores each candidate against formal diagnostic criteria. On the same rare-disease cases, we&rsquo;re <strong>30&ndash;35% more accurate</strong> at the #1 match than a single query to OpenAI o3 or Claude Opus 4.7.
             </p>
             <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4 pt-4 border-t border-[#e8ddd0]">
               <div>

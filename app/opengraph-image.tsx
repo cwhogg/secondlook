@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
 export const alt =
-  "SecondLook — nearly 1 in 2 rare-disease patients get their diagnosis at rank #1"
+  "SecondLook — nearly 50% of patients get the correct rare-disease diagnosis at #1"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -12,8 +12,7 @@ export const contentType = "image/png"
  *   - small SL monogram + SECONDLOOK wordmark row
  *   - serif headline "Find Your Rare Diagnosis"
  *   - burgundy divider
- *   - the punch: "Nearly 1 in 2" set huge, with the qualifier under it
- *   - small credibility line ("Benchmarked against Nature Biotech + EJHG research")
+ *   - the punch: "Nearly 50%" set huge, with the qualifier under it
  *   - subtle burgundy accent bars at top and bottom
  *
  * Every element with children carries `display: flex` because @vercel/og's
@@ -169,48 +168,31 @@ export default async function Image() {
         >
           <div
             style={{
-              fontSize: "104px",
+              fontSize: "116px",
               fontWeight: 700,
               color: "#8b2500",
               lineHeight: 1,
-              letterSpacing: -2,
+              letterSpacing: -3,
               display: "flex",
               fontFamily: "Georgia, serif",
             }}
           >
-            Nearly 1 in 2
+            Nearly 50%
           </div>
           <div
             style={{
-              fontSize: "30px",
+              fontSize: "32px",
               color: "#5c5347",
               textAlign: "center",
               maxWidth: "900px",
               lineHeight: 1.4,
-              marginTop: "18px",
+              marginTop: "22px",
               display: "flex",
               fontFamily: "Georgia, serif",
             }}
           >
-            patients get the correct rare-disease diagnosis at rank #1.
+            of patients get the correct diagnosis at #1.
           </div>
-        </div>
-
-        {/* Credibility cue — very small, all-caps, italic serif, so the
-            claim above is anchored without cluttering the composition. */}
-        <div
-          style={{
-            fontSize: "17px",
-            color: "#8b7355",
-            letterSpacing: 2,
-            textTransform: "uppercase" as const,
-            marginTop: "48px",
-            display: "flex",
-            fontFamily: "Georgia, serif",
-            position: "relative",
-          }}
-        >
-          Benchmarked against Nature Biotech + EJHG research
         </div>
       </div>
     ),

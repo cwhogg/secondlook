@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
 export const alt =
-  "SecondLook — nearly 50% of patients get the correct rare-disease diagnosis at #1"
+  "SecondLook — nearly 50% of patients get the correct rare-disease diagnosis as the #1 match"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -191,7 +191,7 @@ export default async function Image() {
               fontFamily: "Georgia, serif",
             }}
           >
-            of patients get the correct diagnosis at #1.
+            of patients get the correct diagnosis as the #1 match.
           </div>
         </div>
       </div>

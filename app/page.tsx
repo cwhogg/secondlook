@@ -372,7 +372,7 @@ export default function HomePage() {
 
             {/* Subline */}
             <p className="font-serif-body text-base sm:text-lg leading-[1.5] sm:leading-[1.75] text-[#5a5a5a] mb-5 sm:mb-10 max-w-[480px]">
-              SecondLook is built for people navigating undiagnosed illness — the ones who&rsquo;ve been told &ldquo;I don&rsquo;t know&rdquo; or &ldquo;it&rsquo;s probably nothing&rdquo; one too many times. For nearly 50% of patients, we name the diagnosis as the #1 match, so you can bring it to your doctor and ask &mdash; &ldquo;could this be it?&rdquo;
+              SecondLook is built for people navigating undiagnosed illness — the ones who&rsquo;ve been told &ldquo;I don&rsquo;t know&rdquo; or &ldquo;it&rsquo;s probably nothing&rdquo; one too many times. For nearly 50% of cases, we name the correct diagnosis as the #1 match, so you can bring it to your doctor and ask &mdash; &ldquo;could this be it?&rdquo;
             </p>
 
             {/* CTA Button */}

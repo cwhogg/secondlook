@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
 export const alt =
-  "SecondLook — nearly 50% of patients get the correct rare-disease diagnosis as the #1 match"
+  "SecondLook — nearly 1 in 2 patients get the correct rare-disease diagnosis at position #1"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -12,7 +12,7 @@ export const contentType = "image/png"
  *   - small SL monogram + SECONDLOOK wordmark row
  *   - serif headline "Find Your Rare Diagnosis"
  *   - burgundy divider
- *   - the punch: "Nearly 50%" set huge, with the qualifier under it
+ *   - the punch: "Nearly 1 in 2" set huge, with the qualifier under it
  *   - subtle burgundy accent bars at top and bottom
  *
  * Every element with children carries `display: flex` because @vercel/og's
@@ -168,16 +168,16 @@ export default async function Image() {
         >
           <div
             style={{
-              fontSize: "116px",
+              fontSize: "104px",
               fontWeight: 700,
               color: "#8b2500",
               lineHeight: 1,
-              letterSpacing: -3,
+              letterSpacing: -2,
               display: "flex",
               fontFamily: "Georgia, serif",
             }}
           >
-            Nearly 50%
+            Nearly 1 in 2
           </div>
           <div
             style={{
@@ -191,7 +191,7 @@ export default async function Image() {
               fontFamily: "Georgia, serif",
             }}
           >
-            of patients get the correct diagnosis as the #1 match.
+            get the correct diagnosis at position #1.
           </div>
         </div>
       </div>

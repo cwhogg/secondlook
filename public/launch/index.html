@@ -254,15 +254,28 @@
     text-align: center;
     letter-spacing: 0.5px;
   }
-  /* Detailed sources footer — positioned like a journal-article
-     footnote in the bottom-left of the panel. Asterisk marker in the
-     pain-stat above points here. Sizing is 'legible but not easy' —
-     10.5px, tan italic, mirrors the OG-image caveat treatment. */
+  /* Bottom footer row — sources on the left, URL on the right,
+     sitting inside a proper flex row so they can't overlap the
+     diagram-caption above them. Was previously two absolute-
+     positioned elements racing for the same bottom-left corner. */
+  .viz-odyssey .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    gap: 24px;
+    margin-top: 14px;
+  }
+  .viz-odyssey .footer .url {
+    position: static;
+    bottom: auto;
+    right: auto;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
   .viz-odyssey .sources {
-    position: absolute;
-    bottom: 4%;
-    left: 5%;
-    max-width: 46%;
+    flex: 1 1 auto;
+    max-width: 62%;
     font-family: Georgia, serif;
     font-size: 10.5px;
     color: var(--tan);
@@ -309,7 +322,7 @@
   }
   .viz-odyssey .ai-bar .txt {
     font-family: Georgia, serif;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--cream);
     letter-spacing: -0.3px;
@@ -720,7 +733,7 @@
         <div class="diagram">
           <div class="ai-bar">
             <span class="lbl">What&rsquo;s been missing</span>
-            <span class="txt">AI that reads all the notes at once.</span>
+            <span class="txt">A master diagnostician that reads all the notes at once.</span>
           </div>
           <div class="arrows">
             <div class="arrow"></div>
@@ -739,10 +752,12 @@
           <div class="diagram-caption">Each specialist knows one body system. <strong>Most rare diseases cross systems.</strong></div>
         </div>
 
-        <div class="sources">
-          <span class="marker">*</span>Diagnosis-delay averages from EURORDIS, <em>EurodisCare2 patient survey</em> (2009); Shire &amp; Global Genes, <em>Rare Disease Impact Report</em> (2013). Figures vary by condition and cohort; here shown as rounded lower bounds.
+        <div class="footer">
+          <div class="sources">
+            <span class="marker">*</span>Diagnosis-delay averages from EURORDIS, <em>EurodisCare2 patient survey</em> (2009); Shire &amp; Global Genes, <em>Rare Disease Impact Report</em> (2013). Figures vary by condition and cohort; here shown as rounded lower bounds.
+          </div>
+          <div class="url">www.secondlookdx.com</div>
         </div>
-        <div class="url">www.secondlookdx.com</div>
       </div>
 
       <div class="notes">
@@ -751,7 +766,7 @@
         is the argument. The 5+/7+ stats sit underneath as evidence that today's state is broken.
         The visual gets the reader's attention in the feed; the tweet closes with a specific,
         personal payoff ("what I've been building").
-        <span class="alt"><strong>Alt text (for accessibility):</strong> Two-part card. Top: kicker "The Thesis" above a headline "I think AI might solve rare disease diagnosis." Beneath the headline, one line reads "Today, patients see 7+ specialists over 5+ years for a correct rare-disease diagnosis." Detailed sources footer at bottom-left cites EURORDIS EurodisCare2 patient survey (2009) and Shire and Global Genes Rare Disease Impact Report (2013), with a note that figures vary by condition and cohort and are shown as rounded lower bounds. Bottom: a diagram showing five specialist cards in a row — Neurologist ("chronic headaches"), Cardiologist ("racing heartbeat"), Gastro ("chronic nausea"), Rheumatologist ("joints pop out"), Endocrinologist ("irregular periods") — with upward arrows from each into a burgundy ribbon labeled "What's been missing: AI that reads all the notes at once." Caption below the specialists: "Each specialist knows one body system. Most rare diseases cross systems."</span>
+        <span class="alt"><strong>Alt text (for accessibility):</strong> Two-part card. Top: kicker "The Thesis" above a headline "I think AI might solve rare disease diagnosis." Beneath the headline, one line reads "Today, patients see 7+ specialists over 5+ years for a correct rare-disease diagnosis." Detailed sources footer at bottom-left cites EURORDIS EurodisCare2 patient survey (2009) and Shire and Global Genes Rare Disease Impact Report (2013), with a note that figures vary by condition and cohort and are shown as rounded lower bounds. Bottom: a diagram showing five specialist cards in a row — Neurologist ("chronic headaches"), Cardiologist ("racing heartbeat"), Gastro ("chronic nausea"), Rheumatologist ("joints pop out"), Endocrinologist ("irregular periods") — with upward arrows from each into a burgundy ribbon labeled "What's been missing: a master diagnostician that reads all the notes at once." Caption below the specialists: "Each specialist knows one body system. Most rare diseases cross systems."</span>
       </div>
 
     </div>

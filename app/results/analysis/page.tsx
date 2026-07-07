@@ -208,7 +208,7 @@ export default function AnalysisResultsPage() {
           </div>
 
           {/* Metadata Cards */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
             <div className="bg-white/10 backdrop-blur-sm rounded-none sm:rounded-none p-3 sm:p-4 md:p-6">
               <div className="flex items-center space-x-2 sm:space-x-3 mb-2">
                 <Activity className="h-4 w-4 sm:h-5 sm:w-5" />

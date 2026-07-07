@@ -38,7 +38,7 @@ export default function BlogIndexPage() {
           </Link>
           <Link
             href="/step-1"
-            className="bg-[#8b2500] hover:bg-[#6d1d00] text-white px-5 py-2.5 rounded-none text-sm font-semibold hover:shadow-md transition-all"
+            className="bg-[#8b2500] hover:bg-[#6d1d00] text-white px-5 py-3 sm:py-2.5 rounded-none text-sm font-semibold hover:shadow-md transition-all min-h-[44px] inline-flex items-center"
           >
             Start Analysis
           </Link>

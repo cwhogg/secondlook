@@ -442,7 +442,7 @@ export default function HomePage() {
             </div>
             <div className="bg-white border border-[#d4c5b0] p-5 sm:p-6">
               <div className="font-serif text-base sm:text-lg text-[#1a1a1a] leading-snug mb-3">
-                Walk into your next appointment with a plan.
+                Walk into your next appointment with a clear next step.
               </div>
               <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#8b2500] mb-1">
                 6 in 10
@@ -622,7 +622,7 @@ export default function HomePage() {
             <p className="font-serif-body text-sm sm:text-[15px] text-[#5a5a5a] leading-relaxed mb-4">
               Instead of asking one AI for an answer, SecondLook runs your case through the 5 most relevant AI specialists in parallel, grounded in a knowledge base of 9,275 rare-disease profiles, and scores each candidate against formal diagnostic criteria. On the same rare-disease cases, we&rsquo;re <strong>30&ndash;35% more accurate</strong> at the #1 match than a single query to OpenAI o3 or Claude Opus 4.7.
             </p>
-            <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4 pt-4 border-t border-[#e8ddd0]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-4 mt-4 pt-4 border-t border-[#e8ddd0]">
               <div>
                 <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] mb-1">
                   SecondLook
@@ -648,7 +648,7 @@ export default function HomePage() {
           </div>
 
           {/* References — abbreviated */}
-          <div className="mt-6 sm:mt-8 px-1">
+          <div className="mt-6 sm:mt-8">
             <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-[#6d4c30] mb-2">
               Methodology
             </div>

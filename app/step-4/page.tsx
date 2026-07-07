@@ -184,7 +184,7 @@ export default function Step4() {
                 <button
                   onClick={handleContinue}
                   className={cn(
-                    "group px-8 py-4 font-semibold text-lg transition-all duration-300 sm:w-auto min-w-[220px] bg-[#8b2500] text-white",
+                    "group px-8 py-4 font-semibold text-lg transition-all duration-300 w-full sm:w-auto min-w-0 sm:min-w-[220px] bg-[#8b2500] text-white",
                   )}
                 >
                   <span className="flex items-center justify-center space-x-2">

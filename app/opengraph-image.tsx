@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
 export const alt =
-  "SecondLook — over 40% of patients get the correct rare-disease diagnosis as the #1 match"
+  "SecondLook — over 40% of patients get the correct rare-disease diagnosis as the #1 match (from internal evaluations; should probably be discounted)"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -192,6 +192,24 @@ export default async function Image() {
             }}
           >
             of patients get the correct diagnosis as the #1 match.
+          </div>
+          {/* Honesty caveat — deliberately small (15px, tan italic) so it
+              reads as a footnote, not as body copy. Legible on the
+              Twitter-rendered card without competing with the headline. */}
+          <div
+            style={{
+              fontSize: "15px",
+              color: "#8b7355",
+              textAlign: "center",
+              maxWidth: "900px",
+              lineHeight: 1.4,
+              marginTop: "16px",
+              display: "flex",
+              fontFamily: "Georgia, serif",
+              fontStyle: "italic",
+            }}
+          >
+            * From internal evaluations. Should probably be discounted.
           </div>
         </div>
       </div>

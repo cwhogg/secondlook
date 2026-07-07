@@ -502,7 +502,7 @@ export default function HomePage() {
               </span>
             </div>
             <h2 className="font-serif text-[1.6rem] sm:text-[2.2rem] font-normal text-[#1a1a1a] leading-tight">
-              If any of these sound like you, SecondLook is built for you.
+              If any of these sound like you, we hope SecondLook can help.
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

@@ -468,6 +468,17 @@
     padding: 4% 6%; overflow: hidden; border: 1px solid var(--border);
     font-family: Georgia, serif;
   }
+  /* Live-endpoint OG image. Sized to match the styled .og-mini above
+     so we can swap between the two without layout shift. */
+  .og-mini-live {
+    display: block;
+    max-width: 640px;
+    width: 100%;
+    aspect-ratio: 1200 / 630;
+    border: 1px solid var(--border);
+    background: var(--cream);
+    object-fit: contain;
+  }
   .og-mini::before, .og-mini::after {
     content: ""; position: absolute; left: 0; right: 0; height: 4px; background: var(--burgundy);
   }
@@ -608,13 +619,17 @@
       </div>
 
       <div class="visual-label">No custom visual — Twitter shows this OG card</div>
-      <div class="og-mini">
-        <div class="brand-row"><div class="mono">SL</div><div class="wm">SecondLook</div></div>
-        <div class="h">Find Your Rare Diagnosis</div>
-        <div class="div"></div>
-        <div class="stat">Over 40%</div>
-        <div class="q">of patients get the correct diagnosis as the #1 match.</div>
-      </div>
+      <!-- Live OG endpoint. Renders the actual production card so this
+           mockup never drifts from what X/LinkedIn will actually show.
+           Cache-busting query string is intentionally left off — browsers
+           will handle staleness on their own, and Vercel's edge cache
+           refreshes on each deploy of opengraph-image.tsx. -->
+      <img
+        class="og-mini-live"
+        src="https://www.secondlookdx.com/opengraph-image"
+        alt="Live OG card from secondlookdx.com"
+        loading="lazy"
+      />
 
       <div class="notes">
         <strong>What happens on X:</strong> Twitter fetches

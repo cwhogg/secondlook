@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/results/", "/expert-results/", "/analysis/", "/step-1", "/step-2", "/step-3", "/step-4", "/step-5", "/step-6", "/admin", "/mute"],
+        disallow: ["/api/", "/results/", "/expert-results/", "/analysis/", "/step-1", "/step-2", "/step-3", "/step-4", "/step-5", "/step-6", "/admin", "/mute", "/launch"],
       },
     ],
     sitemap: "https://www.secondlookdx.com/sitemap.xml",

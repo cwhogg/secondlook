@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SecondLook launch thread — copy + visuals</title>
+<style>
+  :root {
+    --cream: #f5f0eb;
+    --cream-warm: #faf6f0;
+    --burgundy: #8b2500;
+    --burgundy-dark: #6d1d00;
+    --ink: #1a1a1a;
+    --warm-gray: #5c5347;
+    --tan: #8b7355;
+    --border: #d4c5b0;
+    --border-soft: #e5ddd3;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ede4d6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #2a2a2a;
+  }
+
+  .page { max-width: 1200px; margin: 0 auto; padding: 48px 32px 128px; }
+
+  /* ── Header + how-to ─────────────────────────────────────── */
+  header.hero { margin-bottom: 40px; }
+  header.hero .kicker {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--burgundy); font-weight: 700; margin-bottom: 12px;
+  }
+  header.hero h1 {
+    font-family: Georgia, serif; font-size: 34px; line-height: 1.15;
+    color: var(--ink); margin: 0 0 12px; font-weight: 700;
+  }
+  header.hero p {
+    font-family: Georgia, serif; font-size: 16px; line-height: 1.55;
+    color: #4a4a4a; margin: 0 0 12px; max-width: 900px;
+  }
+
+  .how {
+    background: #fff; border: 1px solid var(--border);
+    padding: 20px 24px; margin: 24px 0 48px; border-radius: 4px;
+    max-width: 900px;
+  }
+  .how h2 {
+    font-family: Georgia, serif; font-size: 15px; letter-spacing: 1.5px;
+    text-transform: uppercase; margin: 0 0 12px; color: var(--burgundy); font-weight: 700;
+  }
+  .how ol { margin: 0; padding-left: 22px; font-size: 14px; line-height: 1.65; color: #3a3a3a; }
+  .how kbd {
+    background: #faf6f0; border: 1px solid var(--border-soft);
+    padding: 1px 6px; border-radius: 3px; font-size: 12px; color: var(--burgundy);
+    font-family: SFMono-Regular, Menlo, monospace;
+  }
+
+  /* ── Tweet block ─────────────────────────────────────────── */
+  .tweet {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 6px; margin-bottom: 56px; overflow: hidden;
+    box-shadow: 0 1px 3px rgba(139, 37, 0, 0.06);
+  }
+
+  .tweet .head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 24px;
+    background: var(--burgundy); color: var(--cream);
+    font-family: Georgia, serif;
+  }
+  .tweet .head .num {
+    font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 700;
+  }
+  .tweet .head .role {
+    font-size: 13px; color: #f2d9b8; font-style: italic;
+  }
+
+  .tweet .body { padding: 24px; }
+
+  /* Copy area styled like a Twitter compose box */
+  .copy {
+    border: 1px solid var(--border-soft); border-radius: 6px;
+    padding: 18px 20px; background: var(--cream-warm);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px; line-height: 1.5; color: var(--ink);
+    white-space: pre-wrap; max-width: 720px;
+  }
+  .copy a { color: #1d9bf0; text-decoration: none; }
+
+  .meta-row {
+    display: flex; gap: 20px; margin-top: 10px;
+    font-size: 12px; color: var(--tan); font-family: Georgia, serif;
+  }
+  .meta-row .charcount strong { color: var(--burgundy); font-weight: 700; }
+
+  .notes {
+    margin-top: 18px; padding: 14px 18px;
+    background: #faf6f0; border-left: 3px solid var(--burgundy);
+    border-radius: 4px;
+    font-family: Georgia, serif; font-size: 13px; line-height: 1.55; color: #4a4a4a;
+    max-width: 900px;
+  }
+  .notes strong { color: var(--burgundy); }
+  .notes .alt {
+    display: block; margin-top: 8px; font-size: 12px; color: #6b5a3f;
+  }
+
+  .visual-label {
+    display: flex; align-items: center; gap: 10px;
+    margin: 22px 0 12px;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--burgundy); font-weight: 700; font-family: Georgia, serif;
+  }
+  .visual-label::before {
+    content: ""; display: block; width: 18px; height: 2px; background: var(--burgundy);
+  }
+
+  /* ── Editable tweet copy ──────────────────────────────────
+     Every .copy box carries contenteditable="true" so you can
+     click in and rewrite the tweet directly. Character count
+     updates live; goes red past 280. Refresh the page to
+     restore the originals — nothing persists to disk. */
+  .copy[contenteditable="true"] {
+    cursor: text;
+    outline: none;
+    transition: box-shadow 0.15s, background 0.15s;
+  }
+  .copy[contenteditable="true"]:hover {
+    box-shadow: inset 0 0 0 1px var(--border);
+  }
+  .copy[contenteditable="true"]:focus {
+    box-shadow: inset 0 0 0 2px var(--burgundy);
+    background: #fff;
+  }
+  .charcount.over strong { color: #c00; }
+  .charcount.over::after {
+    content: " · OVER LIMIT";
+    color: #c00;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-left: 6px;
+  }
+
+  /* ── The visual "cards" the user screenshots ─────────────── */
+  .viz {
+    width: 100%; max-width: 1100px;
+    aspect-ratio: 16 / 9;
+    background: var(--cream); position: relative;
+    font-family: Georgia, serif; color: var(--ink);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 3.5% 5%;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .viz::before, .viz::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 5px; background: var(--burgundy);
+  }
+  .viz::before { top: 0; }
+  .viz::after { bottom: 0; }
+  .viz .warmth {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(139, 37, 0, 0.05) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(139, 37, 0, 0.04) 0%, transparent 60%);
+  }
+
+  .viz .brand {
+    display: flex; align-items: center; gap: 12px;
+    position: absolute; top: 4.5%; left: 5%;
+  }
+  .viz .brand .mono {
+    width: 40px; height: 40px; border-radius: 8px; background: var(--burgundy);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--cream); font-weight: 700; font-size: 21px; letter-spacing: -0.5px;
+  }
+  .viz .brand .wm {
+    font-size: 14px; color: var(--burgundy); letter-spacing: 3px; text-transform: uppercase;
+  }
+
+  .viz .url {
+    position: absolute; bottom: 4.5%; right: 5%;
+    font-size: 13px; color: var(--tan); letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  .viz .title {
+    font-size: 32px; color: var(--ink); font-weight: 700; margin: 0 0 8px;
+    text-align: center; letter-spacing: -0.3px;
+  }
+  .viz .subtitle {
+    font-size: 18px; color: var(--warm-gray); text-align: center;
+    margin: 0 0 32px; font-style: italic;
+  }
+
+  /* ── Viz 1 — The thesis + odyssey stats ──────────────────── */
+  /* Reframed from pure pain stats to lead with the argument: AI is
+     going to solve rare disease diagnosis. The 5+/7+ stats now sit
+     under the thesis as evidence for why current-state is unacceptable. */
+  .viz-odyssey .kicker {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 700; color: var(--burgundy);
+    padding: 4px 12px;
+    background: rgba(139, 37, 0, 0.08);
+    border: 1px solid rgba(139, 37, 0, 0.22);
+    margin-bottom: 18px;
+  }
+  .viz-odyssey .lede {
+    font-size: 52px; line-height: 1.1; font-weight: 700;
+    color: var(--ink); text-align: center;
+    letter-spacing: -0.8px; margin-bottom: 22px;
+  }
+  .viz-odyssey .divider {
+    width: 60px; height: 3px; background: var(--burgundy); margin: 0 0 22px;
+  }
+  .viz-odyssey .context {
+    font-size: 16px; color: var(--warm-gray);
+    font-style: italic; margin-bottom: 18px; text-align: center;
+  }
+  .viz-odyssey .duo {
+    display: flex; gap: 8%; align-items: baseline; margin: 0 0 18px;
+  }
+  .viz-odyssey .stat-block { text-align: center; }
+  .viz-odyssey .stat-block .n {
+    font-size: 76px; line-height: 1; color: var(--burgundy);
+    font-weight: 700; letter-spacing: -2px;
+  }
+  .viz-odyssey .stat-block .l {
+    display: block; margin-top: 6px;
+    font-size: 14px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--warm-gray);
+  }
+  .viz-odyssey .source {
+    font-size: 12px; color: var(--tan); letter-spacing: 1px;
+    text-align: center; font-style: italic; line-height: 1.5;
+  }
+
+  /* ── Viz 3 — Head-to-head bars ───────────────────────────── */
+  .viz-h2h .kicker-line {
+    font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--burgundy); font-weight: 700; margin: 0 0 10px;
+  }
+  .viz-h2h .chart {
+    width: 80%; margin: 12px auto 20px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .viz-h2h .row {
+    display: grid; grid-template-columns: 200px 1fr 80px;
+    align-items: center; gap: 16px;
+  }
+  .viz-h2h .row .name {
+    text-align: right; font-size: 16px; color: var(--ink); font-weight: 700;
+  }
+  .viz-h2h .row.dim .name { color: var(--warm-gray); font-weight: 400; }
+  .viz-h2h .bar-track {
+    height: 26px; background: #eee6da; border-radius: 3px; position: relative;
+  }
+  .viz-h2h .bar-fill {
+    height: 100%; background: var(--burgundy); border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+  .viz-h2h .row.dim .bar-fill { background: #a8927a; }
+  .viz-h2h .row .pct {
+    font-family: Georgia, serif; font-weight: 700;
+    color: var(--ink); font-size: 18px;
+  }
+  .viz-h2h .row.dim .pct { color: var(--warm-gray); font-weight: 400; }
+  .viz-h2h .caption {
+    font-size: 13px; color: var(--tan); text-align: center;
+    font-style: italic; margin-top: 6px;
+  }
+
+  /* ── Viz 4 — Outcomes trio ───────────────────────────────── */
+  .viz-outcomes .cards {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    width: 92%; margin-top: 8px;
+  }
+  .viz-outcomes .card {
+    text-align: center; padding: 4px;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+  }
+  .viz-outcomes .card .n {
+    font-size: 62px; line-height: 1; font-weight: 700; color: var(--burgundy);
+    letter-spacing: -1.5px; margin-bottom: 12px;
+  }
+  /* "Nearly" prefix — small caps above the big number so card 1 keeps
+     visual parity with "6 in 10" and "8 in 10" while still hedging the
+     stat (v27 n=29 is 48.3%, not exactly 50%). */
+  .viz-outcomes .card .n .qual {
+    display: block;
+    font-size: 18px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--tan); font-weight: 700; letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+  .viz-outcomes .card .l {
+    font-size: 15px; color: var(--warm-gray); line-height: 1.45;
+  }
+  .viz-outcomes .footnote {
+    font-size: 12px; color: var(--tan); text-align: center; margin-top: 22px;
+    font-style: italic;
+  }
+  /* Per-card provenance tag — small italic under each label so each
+     stat carries its own sample-size disclosure. Reads independently
+     if someone screenshots just one card. */
+  .viz-outcomes .card .meth {
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--tan);
+    font-style: italic;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+  }
+  /* Shared methodology footer at the bottom of the visual — defines
+     "confirmatory" and flags the pre-publication status. */
+  .viz-outcomes .methodology {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: var(--cream-warm);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--burgundy);
+    max-width: 92%;
+  }
+  .viz-outcomes .methodology .label {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 6px;
+  }
+  .viz-outcomes .methodology .text {
+    font-family: Georgia, serif;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--warm-gray);
+  }
+
+  /* ── Viz 5 — Pipeline 9-step grid ────────────────────────── */
+  /* Override the base 16:9 aspect ratio for this visual. Nine
+     step-cards at readable size need more vertical room than a
+     landscape banner allows; 4:3 gives us a 3×3 grid without
+     cramping. Cell layout mirrors the landing page card design:
+     cream sidebar with STEP N chip + burgundy icon, white body
+     with serif title. */
+  /* padding-bottom: 8% reserves a URL-safe zone below the grid so the
+     bottom-right step doesn't collide with the www.secondlookdx.com
+     stamp. All cells stay uniform white — the earlier "highlight step 4
+     and step 8" treatment was visually loud and made the other seven
+     steps read as scaffolding rather than as first-class pipeline stages. */
+  .viz-pipe { aspect-ratio: 4 / 3; padding-top: 4%; padding-bottom: 8%; justify-content: flex-start; }
+  .viz-pipe .title { font-size: 34px; margin-top: 32px; margin-bottom: 6px; }
+  .viz-pipe .subtitle { font-size: 17px; margin-bottom: 22px; }
+
+  .viz-pipe .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 14px; width: 100%; flex: 1 1 auto;
+  }
+  .viz-pipe .cell {
+    background: #fff; border: 1px solid var(--border);
+    display: flex; overflow: hidden;
+  }
+  .viz-pipe .cell .side {
+    width: 82px; background: var(--cream-warm);
+    border-right: 1px solid var(--border);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 10px; padding: 12px 4px; flex-shrink: 0;
+  }
+  .viz-pipe .cell .chip {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 10.5px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: #6d4c30;
+  }
+  .viz-pipe .cell .icon {
+    width: 26px; height: 26px; color: var(--burgundy);
+    stroke-width: 1.6;
+  }
+  .viz-pipe .cell .body {
+    flex: 1; display: flex; align-items: center;
+    padding: 14px 18px;
+    font-family: Georgia, serif; font-size: 16px;
+    line-height: 1.45; color: var(--ink);
+  }
+
+  /* ── Viz 6 — Three asks + disclaimer ─────────────────────── */
+  .viz-ask .three {
+    display: flex; flex-direction: column; gap: 12px;
+    width: 82%; margin: 8px 0 16px;
+  }
+  .viz-ask .ask {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 14px 18px; border-left: 3px solid var(--burgundy); background: #fff;
+  }
+  .viz-ask .ask .arrow {
+    color: var(--burgundy); font-size: 22px; font-weight: 700; line-height: 1.2;
+  }
+  .viz-ask .ask .txt { font-size: 15px; color: var(--ink); line-height: 1.45; }
+  .viz-ask .ask .txt strong { color: var(--burgundy); font-size: 17px; display: block; margin-bottom: 4px; }
+  /* Disclaimer card — cream-warm background with a burgundy accent bar
+     on the left, a small "NOTE" chip, then the required medical-device
+     disclaimer. Sits below the three asks so anyone screenshot-viewing
+     the visual standalone still gets the "not medical advice" context. */
+  .viz-ask .disclaimer {
+    display: flex; align-items: center; gap: 16px;
+    width: 82%; padding: 14px 18px;
+    background: var(--cream-warm);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--burgundy);
+  }
+  .viz-ask .disclaimer .chip {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--burgundy);
+    flex-shrink: 0;
+  }
+  .viz-ask .disclaimer .txt {
+    font-family: Georgia, serif; font-size: 14px;
+    color: var(--warm-gray); line-height: 1.4;
+  }
+  .viz-ask .footer {
+    font-size: 13px; color: var(--tan); text-align: center;
+    font-style: italic;
+  }
+
+  /* ── Mini OG preview (for tweet 2) ───────────────────────── */
+  .og-mini {
+    max-width: 640px; aspect-ratio: 1200 / 630;
+    background: var(--cream); position: relative;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 4% 6%; overflow: hidden; border: 1px solid var(--border);
+    font-family: Georgia, serif;
+  }
+  .og-mini::before, .og-mini::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 4px; background: var(--burgundy);
+  }
+  .og-mini::before { top: 0; }
+  .og-mini::after { bottom: 0; }
+  .og-mini .brand-row {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+  }
+  .og-mini .brand-row .mono {
+    width: 32px; height: 32px; border-radius: 6px; background: var(--burgundy);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--cream); font-weight: 700; font-size: 17px;
+  }
+  .og-mini .brand-row .wm {
+    font-size: 12px; color: var(--burgundy); letter-spacing: 2.5px; text-transform: uppercase;
+  }
+  .og-mini .h { font-size: 32px; color: var(--ink); font-weight: 700; text-align: center; }
+  .og-mini .div { width: 40px; height: 2px; background: var(--burgundy); margin: 12px 0 18px; }
+  .og-mini .stat { font-size: 62px; color: var(--burgundy); font-weight: 700; letter-spacing: -2px; }
+  .og-mini .q {
+    font-size: 18px; color: var(--warm-gray); text-align: center; margin-top: 10px;
+  }
+
+  .no-viz-note {
+    background: #faf6f0; border: 1px dashed var(--border);
+    padding: 24px; text-align: center; border-radius: 6px;
+    font-family: Georgia, serif; font-size: 15px; color: var(--warm-gray);
+    line-height: 1.55; max-width: 900px;
+  }
+  .no-viz-note strong { color: var(--burgundy); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <div class="kicker">SecondLook · Launch thread draft</div>
+    <h1>Six tweets, five visuals to screenshot.</h1>
+    <p>
+      Copy for each tweet, and — for the five tweets that need a custom image — a designed visual
+      you can capture with a screenshot tool. Tweet 2 doesn't need a custom image; the URL
+      auto-expands to the OG card you just shipped (previewed inline).
+    </p>
+    <p>
+      Every visual is designed at 16:9 (Twitter's optimal aspect) and uses the same brand system as the site.
+    </p>
+  </header>
+
+  <div class="how">
+    <h2>How to edit the tweets</h2>
+    <ol>
+      <li>Click into any tweet copy box below and just start typing. The border turns burgundy while you're editing.</li>
+      <li>Character count updates live as you type. It turns red and says <strong>OVER LIMIT</strong> past 280.</li>
+      <li>Refresh the page to restore the original drafts. Nothing is saved to disk — this is scratch paper.</li>
+      <li>When you're happy with a tweet, triple-click to select the paragraph, then <kbd>Cmd/Ctrl</kbd> + <kbd>C</kbd> to copy.</li>
+    </ol>
+  </div>
+
+  <div class="how">
+    <h2>How to capture each visual</h2>
+    <ol>
+      <li><strong>Mac:</strong> <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>4</kbd>, then drag over the framed visual. The screenshot lands on your Desktop.</li>
+      <li><strong>Windows:</strong> <kbd>Win</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd>, then drag over the visual.</li>
+      <li><strong>Highest-res option (any OS):</strong> open Chrome DevTools (<kbd>F12</kbd>), <kbd>Cmd/Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, type "Capture node screenshot", click the visual's <code>&lt;div class="viz"&gt;</code> in the elements panel first, then run. Saves a PNG at native resolution.</li>
+      <li>Zoom your browser to 125–150% before capturing if you want a sharper image.</li>
+    </ol>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TWEET 1 — HOOK (no URL, custom visual)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="tweet">
+    <div class="head">
+      <span class="num">Tweet 1 of 6</span>
+      <span class="role">The thesis · no URL · custom visual</span>
+    </div>
+    <div class="body">
+
+      <div class="copy" contenteditable="true" spellcheck="true">Rare disease diagnosis is a great problem for LLMs, and I have been working on side project, SecondLook, to see what's possible. I have been working on a lot of rare disease programs with pharma lately and worked in rare earlier in my career. Really important problem. (1/6)</div>
+
+      <div class="meta-row">
+        <span class="charcount"><strong>274</strong> / 280 chars</span>
+        <span>Personal reveal — LLM problem framing + side-project positioning + rare-disease career credentials. No URL.</span>
+      </div>
+
+      <div class="visual-label">Attach this visual</div>
+      <div class="viz viz-odyssey">
+        <div class="warmth"></div>
+        <div class="brand"><div class="mono">SL</div><div class="wm">SecondLook</div></div>
+
+        <div class="kicker">The thesis</div>
+        <div class="lede">AI is going to solve<br/>rare disease diagnosis.</div>
+        <div class="divider"></div>
+        <div class="context">Today, the average patient waits:</div>
+
+        <div class="duo">
+          <div class="stat-block">
+            <div class="n">5+</div>
+            <div class="l">years</div>
+          </div>
+          <div class="stat-block">
+            <div class="n">7+</div>
+            <div class="l">specialists</div>
+          </div>
+        </div>
+
+        <div class="source">to get a correct rare-disease diagnosis.<br/>Global Genes &amp; EURORDIS patient surveys.</div>
+        <div class="url">www.secondlookdx.com</div>
+      </div>
+
+      <div class="notes">
+        <strong>How this visual works with the tweet:</strong> the tweet leads with the thesis,
+        the visual doubles down. The bold headline "AI is going to solve rare disease diagnosis"
+        is the argument. The 5+/7+ stats sit underneath as evidence that today's state is broken.
+        The visual gets the reader's attention in the feed; the tweet closes with a specific,
+        personal payoff ("what I've been building").
+        <span class="alt"><strong>Alt text (for accessibility):</strong> Editorial card titled "AI is going to solve rare disease diagnosis." Beneath: "Today, the average patient waits 5+ years and sees 7+ specialists to get a correct rare-disease diagnosis." Source: Global Genes &amp; EURORDIS patient surveys.</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TWEET 2 — URL REVEAL (OG card auto-expands)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="tweet">
+    <div class="head">
+      <span class="num">Tweet 2 of 6</span>
+      <span class="role">The reveal · URL · OG card auto-expands</span>
+    </div>
+    <div class="body">
+
+      <div class="copy" contenteditable="true" spellcheck="true">Describe what you're experiencing or upload medical history, labs, images. SecondLook runs your case through selected AI specialists and against 9,275 known rare diseases, then gives you a ranked list, and the specific test that could confirm each one. (2/6) www.secondlookdx.com</div>
+
+      <div class="meta-row">
+        <span class="charcount"><strong>280</strong> / 280 chars</span>
+        <span>URL counts as 23 chars. Attaches OG card automatically.</span>
+      </div>
+
+      <div class="visual-label">No custom visual — Twitter shows this OG card</div>
+      <div class="og-mini">
+        <div class="brand-row"><div class="mono">SL</div><div class="wm">SecondLook</div></div>
+        <div class="h">Find Your Rare Diagnosis</div>
+        <div class="div"></div>
+        <div class="stat">Nearly 50%</div>
+        <div class="q">of patients get the correct diagnosis as the #1 match.</div>
+      </div>
+
+      <div class="notes">
+        <strong>What happens on X:</strong> Twitter fetches
+        <code>opengraph-image.tsx</code> from secondlookdx.com, renders that card at ~500-600px wide beneath the tweet, and shows the URL as a small footer.
+        <strong>Don't attach an image</strong> — a manual attachment would replace the OG expand.
+        <span class="alt"><strong>Pre-post:</strong> paste www.secondlookdx.com into <a href="https://cards-dev.twitter.com/validator">cards-dev.twitter.com/validator</a> to force a cache refresh so X picks up the current OG.</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TWEET 3 — PIPELINE DIAGRAM (moved up from tweet 5)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="tweet">
+    <div class="head">
+      <span class="num">Tweet 3 of 6</span>
+      <span class="role">Under the hood · pipeline diagram</span>
+    </div>
+    <div class="body">
+
+      <div class="copy" contenteditable="true" spellcheck="true">SecondLook tries to work the way a specialist panel thinks. SL extracts and maps clinical concepts, then selects the best 5 AI specialists to reason on the case in parallel. An adversarial critic challenges each, then a finalizer selects and ranks the final differential. (3/6)</div>
+
+      <div class="meta-row">
+        <span class="charcount"><strong>278</strong> / 280 chars</span>
+        <span>Under the hood · pipeline described in a single sentence. Credibility for clinician/researcher readers.</span>
+      </div>
+
+      <div class="visual-label">Attach this visual · 4:3 aspect (taller than the others)</div>
+      <div class="viz viz-pipe">
+        <div class="warmth"></div>
+        <div class="brand"><div class="mono">SL</div><div class="wm">SecondLook</div></div>
+
+        <div class="title">How SecondLook thinks.</div>
+        <div class="subtitle">Nine steps from your story to a ranked differential.</div>
+
+        <div class="grid">
+
+          <div class="cell">
+            <div class="side">
+              <div class="chip">Step 1</div>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <div class="body">Tell us your medical story and upload relevant history and data</div>
+          </div>
+
+          <div class="cell">
+            <div class="side">
+              <div class="chip">Step 2</div>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div class="body">SecondLook extracts clinical concepts from your input</div>
+          </div>
+
+          <div class="cell">
+            <div class="side">
+              <div class="chip">Step 3</div>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+            </div>
+            <div class="body">Map symptoms and concepts to candidates in our 9k+ rare-disease knowledge base</div>
+          </div>
+
+          <div class="cell">
+            <div class="side">
+              <div class="chip">Step 4</div>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>
+            </div>
+            <div class="body">Activate 5 most relevant AI specialist agents in parallel to debate and select most likely diagnoses</div>
+          </div>
+
+          <div class="cell">
+            <div class="side">
+              <div class="chip">Step 5</div>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><path d="M4 6h1v4"/><path d="M4 10h2"/><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+            </div>
+            <div class="body">Synthesize and rank a top-10 differential diagnosis list</div>
+          </div>
+
+          <div class="cell">
+            <div class="side">
+              <div class="chip">Step 6</div>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <div class="body">Refine diagnoses with 3–5 targeted patient questions</div>
+          </div>
+
+          <div class="cell">
+            <div class="side">
+              <div class="chip">Step 7</div>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 20 6"/><path d="M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <div class="body">Finalize the top-10 differential and probabilities</div>
+          </div>
+
+          <div class="cell">
+            <div class="side">
+              <div class="chip">Step 8</div>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2v17.5a2.5 2.5 0 0 1-5 0V2"/><path d="M9.5 5.5h5"/><path d="M8 2h8"/></svg>
+            </div>
+            <div class="body">Recommend tests to rule diagnoses in or out</div>
+          </div>
+
+          <div class="cell">
+            <div class="side">
+              <div class="chip">Step 9</div>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>
+            </div>
+            <div class="body">Deliver the final report</div>
+          </div>
+
+        </div>
+
+        <div class="url">www.secondlookdx.com</div>
+      </div>
+
+      <div class="notes">
+        <strong>Full landing-page detail.</strong> All nine steps and their icons come directly
+        from the "How SecondLook works" section, laid out in a 3×3 grid so they all fit
+        without shrinking text. All cells now read as a uniform panel — highlighting only
+        two steps made the other seven feel like scaffolding rather than first-class stages
+        of the pipeline. Tweets 2 and 3 say "5 AI specialists," matching Step 4.
+        <span class="alt"><strong>Alt text:</strong> Nine-step pipeline diagram in a 3×3 grid. Step 1 tell us your medical story and upload history. Step 2 extract clinical concepts. Step 3 map to 9k+ rare-disease knowledge base. Step 4 activate 5 most relevant AI specialist agents in parallel. Step 5 synthesize top-10 differential. Step 6 refine with targeted questions. Step 7 finalize probabilities. Step 8 recommend tests to rule in or out. Step 9 deliver final report.</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TWEET 4 — WHAT PATIENTS ACTUALLY GET
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="tweet">
+    <div class="head">
+      <span class="num">Tweet 4 of 6</span>
+      <span class="role">The reframe · what actually helps a patient</span>
+    </div>
+    <div class="body">
+
+      <div class="copy" contenteditable="true" spellcheck="true">The goal of SecondLook is to help people get to an answer. On a good day, SL gets close to 50% of diagnoses right (#1 guess). For 6 in 10 patients, SecondLook names the diagnosis or the single test that could confirm it. For 8 in 10, the answer is within 5 tests. (4/6)</div>
+
+      <div class="meta-row">
+        <span class="charcount"><strong>269</strong> / 280 chars</span>
+        <span>Plain-English goal statement + all three outcome numbers. "On a good day" softens the 50% claim.</span>
+      </div>
+
+      <div class="visual-label">Attach this visual</div>
+      <div class="viz viz-outcomes">
+        <div class="warmth"></div>
+        <div class="brand"><div class="mono">SL</div><div class="wm">SecondLook</div></div>
+
+        <div class="title">Something concrete to bring to your doctor.</div>
+        <div class="subtitle">Not just an accuracy number — a plan you can act on at your very next appointment.</div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="n"><span class="qual">Nearly</span>50%</div>
+            <div class="l">walk away with their exact rare-disease diagnosis named as SecondLook's #1 match on the ranked list.</div>
+          </div>
+          <div class="card">
+            <div class="n">6 in 10</div>
+            <div class="l">leave with either the exact diagnosis, or the single specific test that would confirm it — one appointment closer to an answer.</div>
+          </div>
+          <div class="card">
+            <div class="n">8 in 10</div>
+            <div class="l">have their answer sitting inside SecondLook's top-5 recommended tests — a short, focused list, not another endless workup.</div>
+          </div>
+        </div>
+
+        <div class="methodology">
+          <div class="label">Methodology</div>
+          <div class="text">Phenopacket2Prompt is a public benchmark of published rare-disease case reports with verified ground-truth diagnoses. A recommended test counts as &ldquo;confirmatory&rdquo; when an independent and blinded LLM reviewer decides its positive result would confirm the diagnosis. Preliminary results from SecondLook&rsquo;s internal evaluation harness; not yet peer-reviewed.</div>
+        </div>
+        <div class="url">www.secondlookdx.com</div>
+      </div>
+
+      <div class="notes">
+        <strong>Why this is the strongest visual in the thread:</strong> the "6 in 10 within one test"
+        outcome is the marketing story the site is built around — it converts a benchmark number
+        into something a patient can hold in their hand. Title "Something to bring to your doctor"
+        echoes the landing page's key emotional beat.
+        <span class="alt"><strong>Alt text:</strong> Three stat cards titled "Something concrete to bring to your doctor." Nearly 50% of patients get their diagnosis as SecondLook's #1 match. 6 in 10 get the diagnosis or the single confirmatory test. 8 in 10 find the answer within top-5 recommended tests. Methodology block: Phenopacket2Prompt is a public benchmark of rare-disease case reports with verified ground-truth diagnoses; a recommended test counts as confirmatory when an independent and blinded LLM reviewer decides its positive result would confirm the diagnosis. Preliminary results from SecondLook's internal evaluation harness, not yet peer-reviewed.</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TWEET 5 — PERFORMANCE (head-to-head visual)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="tweet">
+    <div class="head">
+      <span class="num">Tweet 5 of 6</span>
+      <span class="role">The proof · head-to-head numbers</span>
+    </div>
+    <div class="body">
+
+      <div class="copy" contenteditable="true" spellcheck="true">It is actually pretty hard to beat base foundation models at diagnosis. I now consistently beat them by 30-35%, but I think it is possible to improve on this. Below is an eval of the same 50 Phenopacket2Prompt cases run through SecondLook, OpenAI o3 or Claude Opus 4.7. (5/6)</div>
+
+      <div class="meta-row">
+        <span class="charcount"><strong>275</strong> / 280 chars</span>
+        <span>Candid framing — hard-to-beat baseline + 30-35% lift, room to improve. Sets up the head-to-head chart below.</span>
+      </div>
+
+      <div class="visual-label">Attach this visual</div>
+      <div class="viz viz-h2h">
+        <div class="warmth"></div>
+        <div class="brand"><div class="mono">SL</div><div class="wm">SecondLook</div></div>
+
+        <div class="title">Correct diagnosis selected as the #1 match.</div>
+        <div class="subtitle">Head-to-head results from SecondLook's internal evaluation harness.</div>
+
+        <div class="chart">
+          <div class="row">
+            <div class="name">SecondLook</div>
+            <div class="bar-track"><div class="bar-fill" style="width: 87%"></div></div>
+            <div class="pct">42.0%</div>
+          </div>
+          <div class="row dim">
+            <div class="name">OpenAI o3</div>
+            <div class="bar-track"><div class="bar-fill" style="width: 65%"></div></div>
+            <div class="pct">31.5%</div>
+          </div>
+          <div class="row dim">
+            <div class="name">Claude Opus 4.7</div>
+            <div class="bar-track"><div class="bar-fill" style="width: 64%"></div></div>
+            <div class="pct">30.9%</div>
+          </div>
+        </div>
+
+        <div class="caption">50 rare-disease cases piped through each system with an identical LLM tier grader · preliminary, not yet peer-reviewed.</div>
+        <div class="url">www.secondlookdx.com</div>
+      </div>
+
+      <div class="notes">
+        <strong>Numbers match what's on the landing page</strong> (42.0 / 31.5 / 30.9 from v24 std-50, v3 grader).
+        The "nearly 50%" in the tweet copy is defended by a different cohort (v27 n=29 at 48.3%) — one is a
+        specific head-to-head measurement, the other is the top-1 rate on a wider random draw. If a skeptic asks,
+        point them to <code>secondlookdx.com/#sources</code>.
+        <span class="alt"><strong>Alt text:</strong> Horizontal bar chart titled "Correct diagnosis selected as the #1 match." Head-to-head results from SecondLook's internal evaluation harness. SecondLook 42.0%. OpenAI o3 31.5%. Claude Opus 4.7 30.9%. 50 rare-disease cases piped through each system, identical LLM tier grader. Preliminary results, not yet peer-reviewed.</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TWEET 6 — THE ASK
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="tweet">
+    <div class="head">
+      <span class="num">Tweet 6 of 6</span>
+      <span class="role">The ask · call for testers</span>
+    </div>
+    <div class="body">
+
+      <div class="copy" contenteditable="true" spellcheck="true">I would love your feedback! If you are looking for an answer, previously went through a diagnostic odyssey, or know someone who is, I would really love your feedback. Anyone can test it by creating a Test User on the first screen, so all feedback is welcome! (6/6)</div>
+
+      <div class="meta-row">
+        <span class="charcount"><strong>264</strong> / 280 chars</span>
+        <span>Warm broad ask — patient / past-odyssey / ally — plus the "Test User" fallback for anyone curious.</span>
+      </div>
+
+      <div class="visual-label">Attach this visual</div>
+      <div class="viz viz-ask">
+        <div class="warmth"></div>
+        <div class="brand"><div class="mono">SL</div><div class="wm">SecondLook</div></div>
+
+        <div class="title">Three ways you can help.</div>
+        <div class="subtitle">SecondLook is an early-beta AI diagnostic tool for rare disease. I need feedback.</div>
+
+        <div class="three">
+          <div class="ask">
+            <div class="arrow">→</div>
+            <div class="txt"><strong>Navigating undiagnosed illness?</strong>Try SecondLook on your own case. Tell me what happened in the replies, or as in-app feedback, and tell me what was helpful, or not, and how to make it better.</div>
+          </div>
+          <div class="ask">
+            <div class="arrow">→</div>
+            <div class="txt"><strong>Know someone who's been searching for a diagnosis?</strong>Please share this thread with them. I hope it can help them, or hope to learn how to make it more useful.</div>
+          </div>
+          <div class="ask">
+            <div class="arrow">→</div>
+            <div class="txt"><strong>Just interested?</strong>Create a test user and experience SecondLook. Make the case hard and try to break it. Then give me feedback!</div>
+          </div>
+        </div>
+
+        <div class="disclaimer">
+          <div class="chip">Note</div>
+          <div class="txt">SecondLook is a research demo powered by AI. Not a medical device, and not a substitute for real medical advice from a licensed clinician.</div>
+        </div>
+
+        <div class="url">www.secondlookdx.com</div>
+      </div>
+
+      <div class="notes">
+        <strong>Now stands alone.</strong> Expanded titles + answer text so anyone who screenshots
+        just this image (without reading the tweet) still understands who SecondLook is for,
+        what it is, and what's being asked. Disclaimer card at bottom carries the AI /
+        research-preview / not-medical-advice language required for public health messaging.
+        <br/><br/>
+        <strong>Alternative if you want more personal:</strong> replace this visual with your own photo,
+        or a screenshot of a real (anonymized) analysis. A face in the thread's final tweet dramatically
+        boosts DM/reply engagement — the "there's a human behind this" moment.
+        <span class="alt"><strong>Alt text:</strong> Card titled "Three ways you can help." Subtitle: SecondLook is an early-beta AI diagnostic tool for rare disease. Ask 1 (Navigating undiagnosed illness?): Try SecondLook on your own case and give feedback in replies or in-app on what was helpful and how to make it better. Ask 2 (Know someone who's been searching for a diagnosis?): Please share this thread with them. Ask 3 (Just interested?): Create a test user, make the case hard, try to break it, and give feedback. Disclaimer: SecondLook is a research demo powered by AI, not a medical device, and not a substitute for medical advice from a licensed clinician.</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       Footer — posting checklist
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="how" style="margin-top: 32px;">
+    <h2>Pre-post checklist</h2>
+    <ol>
+      <li>Bust Twitter's OG cache: paste <code>www.secondlookdx.com</code> into <a href="https://cards-dev.twitter.com/validator">cards-dev.twitter.com/validator</a> and confirm "Nearly 50%" shows.</li>
+      <li>Capture the five visuals (tweets 1, 3, 4, 5, 6). Save them with obvious filenames like <code>tw1-odyssey.png</code>.</li>
+      <li>Draft the thread in X's compose UI — X saves drafts, so you can build the full thread then post as one action.</li>
+      <li>Add the alt text on each image (X's "+ ALT" button per image). The alt text is in the "Alt text" line in each notes block above.</li>
+      <li>Post tweet 1 first. Reply from tweet 1 with tweets 2-6 so they thread correctly.</li>
+      <li>Pin the first tweet to your profile for the first week.</li>
+    </ol>
+  </div>
+
+</div>
+
+<script>
+/* Live tweet editor. For every .tweet block, wire the .copy contenteditable
+   to its .charcount so typing updates the count in real time and flips
+   the display red past 280. Innocent of any persistence — refresh restores
+   the original drafts. */
+(function () {
+  document.querySelectorAll('.tweet').forEach(function (tweetEl) {
+    var copy = tweetEl.querySelector('.copy');
+    var countHost = tweetEl.querySelector('.charcount');
+    var countEl = countHost && countHost.querySelector('strong');
+    if (!copy || !countEl) return;
+
+    function measure() {
+      // innerText preserves user-visible line breaks; NBSPs normalize to
+      // regular spaces so the count matches what Twitter will see.
+      return copy.innerText.replace(/ /g, ' ').replace(/\r/g, '');
+    }
+    function update() {
+      var text = measure();
+      countEl.textContent = text.length;
+      if (text.length > 280) countHost.classList.add('over');
+      else countHost.classList.remove('over');
+    }
+    copy.addEventListener('input', update);
+    copy.addEventListener('paste', function (e) {
+      // Force plain-text paste so pasted Google Doc / Notion formatting
+      // doesn't drag styles into the tweet box.
+      e.preventDefault();
+      var text = (e.clipboardData || window.clipboardData).getData('text/plain');
+      document.execCommand('insertText', false, text);
+    });
+    update();
+  });
+})();
+</script>
+
+</body>
+</html>

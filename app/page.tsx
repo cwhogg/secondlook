@@ -372,7 +372,7 @@ export default function HomePage() {
 
             {/* Subline */}
             <p className="font-serif-body text-base sm:text-lg leading-[1.5] sm:leading-[1.75] text-[#5a5a5a] mb-5 sm:mb-10 max-w-[480px]">
-              SecondLook is built for people navigating undiagnosed illness — the ones who&rsquo;ve been told &ldquo;I don&rsquo;t know&rdquo; or &ldquo;it&rsquo;s probably nothing&rdquo; one too many times. For nearly 50% of cases, we name the correct diagnosis as the #1 match, so you can bring it to your doctor and ask &mdash; &ldquo;could this be it?&rdquo;
+              SecondLook is built for people navigating undiagnosed illness — the ones who&rsquo;ve been told &ldquo;I don&rsquo;t know&rdquo; or &ldquo;it&rsquo;s probably nothing&rdquo; one too many times. For over 40% of cases, we name the correct diagnosis as the #1 match, so you can bring it to your doctor and ask &mdash; &ldquo;could this be it?&rdquo;
             </p>
 
             {/* CTA Button */}
@@ -433,7 +433,7 @@ export default function HomePage() {
                 See the diagnosis your doctors may have missed.
               </div>
               <div className="font-serif text-[2rem] sm:text-[2.4rem] leading-none text-[#8b2500] mb-1">
-                nearly 50%
+                over 40%
               </div>
               <div className="font-serif-body text-sm text-[#5a5a5a] leading-snug">
                 patients get the correct diagnosis as our top suggestion.
@@ -653,7 +653,7 @@ export default function HomePage() {
             </div>
             <ol className="font-serif-body text-xs sm:text-[13px] leading-relaxed text-[#777] space-y-1.5 list-decimal pl-5">
               <li>
-                #1-match accuracy (nearly 50%) measured on a random sample of Phenopacket2Prompt cases (n=29). Independently re-verified across a larger 96-case random sample where SecondLook achieves 34% under the strictest paper-faithful Mondo grading.
+                #1-match accuracy (over 40%) measured on a random sample of Phenopacket2Prompt cases (n=29). Independently re-verified across a larger 96-case random sample where SecondLook achieves 34% under the strictest paper-faithful Mondo grading.
               </li>
               <li>
                 Head-to-head comparison against OpenAI o3 and Claude Opus 4.7: identical rare-disease vignettes, LLM tier grader applied uniformly across all three systems (n=50).

@@ -470,7 +470,7 @@ export default function HomePage() {
       <section className="py-5 sm:py-6 bg-[#faf6f0] border-y border-[#d4c5b0]">
         <div className="max-w-[820px] mx-auto px-4 sm:px-8">
           <p className="font-serif-body text-center text-sm sm:text-[15px] text-[#5a5a5a] leading-relaxed">
-            <span className="font-serif italic text-[#8b2500]">Independently validated</span> against Phenopacket2Prompt &mdash; the same rare-disease research benchmark used in{" "}
+            <span className="font-serif italic text-[#8b2500]">Validated</span> against Phenopacket2Prompt &mdash; the same rare-disease research benchmark used in{" "}
             <em>Nature Biotechnology</em>
             <a
               href="#sources"

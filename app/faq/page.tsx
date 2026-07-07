@@ -66,11 +66,11 @@ const SECTIONS: Section[] = [
             without an answer. Parents navigating a child&rsquo;s symptoms no one
             can connect. And anyone with a diagnosis they suspect is incomplete or
             wrong. If you&rsquo;ve been through the diagnostic odyssey and want a
-            fresh, structured look, SecondLook is built for you.
+            fresh, structured look, we hope SecondLook can help.
           </>
         ),
         aPlain:
-          "SecondLook is built for undiagnosed adults who have seen multiple specialists without an answer, parents navigating a child's unexplained symptoms, and anyone with a diagnosis they suspect is incomplete or wrong.",
+          "SecondLook aims to help undiagnosed adults who have seen multiple specialists without an answer, parents navigating a child's unexplained symptoms, and anyone with a diagnosis they suspect is incomplete or wrong.",
       },
       {
         q: "Is SecondLook a doctor?",

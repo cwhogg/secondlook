@@ -237,6 +237,22 @@
     font-size: 12px; color: var(--tan); letter-spacing: 1px;
     text-align: center; font-style: italic; line-height: 1.5;
   }
+  /* Insight paragraph — bridges the pain stats above with the AI
+     thesis in the lede. First two sentences in warm-gray as context;
+     the closing line in ink-bold so the punch lands. */
+  .viz-odyssey .insight {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    color: var(--warm-gray);
+    text-align: center;
+    max-width: 780px;
+    line-height: 1.5;
+    margin: 26px 0 14px;
+  }
+  .viz-odyssey .insight strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
 
   /* ── Viz 3 — Head-to-head bars ───────────────────────────── */
   .viz-h2h .kicker-line {
@@ -572,7 +588,7 @@
         <div class="kicker">The thesis</div>
         <div class="lede">I think AI is going to solve<br/>rare disease diagnosis.</div>
         <div class="divider"></div>
-        <div class="context">Today, the average patient waits:</div>
+        <div class="context">Today, the average patient waits this long for a correct rare-disease diagnosis:</div>
 
         <div class="duo">
           <div class="stat-block">
@@ -585,7 +601,9 @@
           </div>
         </div>
 
-        <div class="source">to get a correct rare-disease diagnosis.<br/>Global Genes &amp; EURORDIS patient surveys.</div>
+        <div class="insight">Each specialist knows one body system. Most rare diseases cross systems. <strong>Nobody is reading all the notes at once — AI can.</strong></div>
+
+        <div class="source">Global Genes &amp; EURORDIS patient surveys.</div>
         <div class="url">www.secondlookdx.com</div>
       </div>
 
@@ -595,7 +613,7 @@
         is the argument. The 5+/7+ stats sit underneath as evidence that today's state is broken.
         The visual gets the reader's attention in the feed; the tweet closes with a specific,
         personal payoff ("what I've been building").
-        <span class="alt"><strong>Alt text (for accessibility):</strong> Editorial card titled "I think AI is going to solve rare disease diagnosis." Beneath: "Today, the average patient waits 5+ years and sees 7+ specialists to get a correct rare-disease diagnosis." Source: Global Genes &amp; EURORDIS patient surveys.</span>
+        <span class="alt"><strong>Alt text (for accessibility):</strong> Editorial card titled "I think AI is going to solve rare disease diagnosis." Beneath: "Today, the average patient waits 5+ years and sees 7+ specialists for a correct rare-disease diagnosis." Followed by an insight paragraph: "Each specialist knows one body system. Most rare diseases cross systems. Nobody is reading all the notes at once — AI can." Source: Global Genes &amp; EURORDIS patient surveys.</span>
       </div>
 
     </div>

@@ -49,6 +49,11 @@ export function FeedbackButton() {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+  // Fades the pill out whenever any element carrying data-primary-cta
+  // (i.e. the "Get Your Analysis" button on the homepage, plus any
+  // future page's primary CTA) is intersecting the viewport. Prevents
+  // the pill from stacking on top of a page's main CTA on mobile.
+  const [ctaVisible, setCtaVisible] = useState(false)
 
   useEffect(() => {
     // Respect a previous "hide for this session" click.
@@ -58,6 +63,32 @@ export function FeedbackButton() {
       )
     }
   }, [])
+
+  // Watch [data-primary-cta] elements. When any is intersecting, hide.
+  // Re-run on pathname change so the observer picks up the new page's CTAs.
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    const nodes = Array.from(document.querySelectorAll("[data-primary-cta]"))
+    if (nodes.length === 0) {
+      setCtaVisible(false)
+      return
+    }
+    const visible = new Set<Element>()
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) visible.add(entry.target)
+          else visible.delete(entry.target)
+        })
+        setCtaVisible(visible.size > 0)
+      },
+      // Trip *before* the CTA touches the pill's own zone; keeps the
+      // hand-off clean on scroll rather than jittering at the exact edge.
+      { rootMargin: "0px 0px -40px 0px", threshold: 0.01 },
+    )
+    nodes.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [pathname])
 
   // Auto-focus the textarea when the modal opens.
   useEffect(() => {
@@ -129,8 +160,19 @@ export function FeedbackButton() {
 
   return (
     <>
-      {/* Floating trigger — bottom-right, respects mobile safe area. */}
-      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 pb-safe">
+      {/* Floating trigger — bottom-right, respects mobile safe area.
+          Fades out when a page's primary CTA is on screen, so the pill
+          never stacks on top of a "Get Your Analysis" button. */}
+      <div
+        className={cn(
+          "fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 pb-safe",
+          "transition-all duration-200",
+          ctaVisible
+            ? "opacity-0 translate-y-2 pointer-events-none"
+            : "opacity-100 translate-y-0",
+        )}
+        aria-hidden={ctaVisible}
+      >
         <div className="relative flex items-center gap-2">
           <button
             type="button"

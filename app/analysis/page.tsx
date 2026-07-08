@@ -42,6 +42,12 @@ interface Step4Data {
 }
 
 interface Step5Data {
+  // Review step's clarifications field. localStorage key stayed
+  // 'step5Data' after the step-5 -> step-4 URL rename to keep in-flight
+  // drafts intact.
+  clarifications?: string
+  // Legacy consent fields — some old drafts landed here before the
+  // consent step was renumbered to step-5 (localStorage key 'step6Data').
   consentAnalysis?: boolean
   consentNotSubstitute?: boolean
   consentAccurate?: boolean
@@ -211,14 +217,20 @@ export default function AnalysisPage() {
         const parsedStep5: Step5Data = JSON.parse(step5Data)
         JSON.parse(step6Data) // validate step6 (consents) is present
 
-        // Combined narrative = the written history (step-2) plus any
-        // symptom-photo descriptions from step-3. parse-symptoms operates
-        // on this combined text so visible findings flow into the symptom
-        // list alongside what the patient wrote.
-        const combinedNarrative = combineNarrativeAndPhotos(
-          parsedStep2.primaryConcern || "",
-          photos,
-        )
+        // Combined narrative = the written history (step-2), any
+        // symptom-photo descriptions from step-3, AND any clarifications
+        // the user added on the review step. Prior to this the review-
+        // step clarifications were silently dropped, so a user who typed
+        // "test" on step-2 and wrote their real story in review got a
+        // 'symptom description too short' failure from parse-symptoms
+        // even though they'd typed hundreds of words in the review box.
+        // (Ellen DaSilva session 2026-07-08T17:26Z surfaced this.)
+        const primaryNarrative = parsedStep2.primaryConcern || ""
+        const clarifications = (parsedStep5.clarifications || "").trim()
+        const withClarifications = clarifications
+          ? `${primaryNarrative}${primaryNarrative.trim() ? "\n\n" : ""}${clarifications}`
+          : primaryNarrative
+        const combinedNarrative = combineNarrativeAndPhotos(withClarifications, photos)
 
         // ===== STAGE 0: SYMPTOM EXTRACTION =====
         setPipelineEvents([{

@@ -345,18 +345,41 @@ export default function PrintReportPage() {
             break-before: auto;
             page-break-before: auto;
           }
-          /* Diagnosis cards (#1 hero + ranks 2-5) need stronger widow
-             control than paragraphs. Without this, the supporting
-             evidence list on the #1 hero card can split with just 1-2
-             bullets stranded at the top of the next page along with the
-             SPECIALIST TO CONSULT line — visually ugly. widows: 4 forces
-             the card to either keep 4+ bullets together at the bottom of
-             a page or push the whole tail block to the next page. */
+          /* Diagnosis cards (#1 hero + ranks 2-N) need stronger widow
+             control than paragraphs. Without this, supporting-evidence
+             lists can split with just 1-2 bullets stranded at the top of
+             the next page next to a SPECIALIST TO CONSULT line — ugly.
+             widows: 5 forces the card to either keep 5+ bullets together
+             at the bottom of a page or push the whole tail block to the
+             next page. Bumped from 4 -> 5 when we started rendering
+             evidence lists on every ranked diagnosis, not just #1. */
           .print-root .print-diagnosis-card,
           .print-root .print-diagnosis-card ul,
           .print-root .print-diagnosis-card li {
-            widows: 4;
-            orphans: 3;
+            widows: 5;
+            orphans: 4;
+          }
+          /* Keep the header row (rank + diagnosis name + confidence)
+             attached to the reasoning that follows — a page break here
+             would strand the score column with no context. */
+          .print-root .print-diagnosis-card > div:first-child {
+            break-after: avoid;
+            page-break-after: avoid;
+          }
+          /* Evidence grid + specialist line should stay together — that
+             tail block always shares an interpretation logic and reads
+             wrong if 'Findings against' ends up on one page and
+             'Specialist to consult' on the next. */
+          .print-root .print-diagnosis-card .grid,
+          .print-root .print-diagnosis-card > div:last-child {
+            break-inside: avoid;
+            page-break-inside: avoid;
+          }
+          /* Every section heading pairs with its first sibling: the
+             heading should never sit alone at the bottom of a page. */
+          .print-root section > h2 + * {
+            break-before: avoid;
+            page-break-before: avoid;
           }
           /* Compact legend padding — recovers ~30px of vertical real
              estate on every legend without losing the visual block
@@ -648,42 +671,104 @@ export default function PrintReportPage() {
               {diagnoses.slice(1).map((d, i) => {
                 const score = pickPrimaryScore(d)
                 const rank = i + 2
+                const support = (d.supportingEvidence || []).slice(0, 6)
+                const against = (d.contradictoryEvidence || []).slice(0, 3)
                 return (
                   <article
                     key={i}
-                    className="avoid-break border border-gray-200 p-3 sm:p-4 flex items-start gap-3 sm:gap-4"
+                    className="print-diagnosis-card border border-gray-200 p-3 sm:p-4"
                   >
-                    <div className="flex-shrink-0 w-10 text-center pt-0.5">
-                      <div className="font-sans text-[10px] uppercase tracking-wider text-gray-500">
-                        Rank
+                    {/* Header row: rank + diagnosis title + confidence */}
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div className="flex-shrink-0 w-10 text-center pt-0.5">
+                        <div className="font-sans text-[10px] uppercase tracking-wider text-gray-500">
+                          Rank
+                        </div>
+                        <div className="font-serif text-lg font-bold text-[#8b2500] leading-none">
+                          #{rank}
+                        </div>
                       </div>
-                      <div className="font-serif text-lg font-bold text-[#8b2500] leading-none">
-                        #{rank}
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-bold text-[#1a1a1a] text-[15px] sm:text-base leading-snug">
+                          {d.diagnosis}
+                        </h3>
+                        <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[11px] text-gray-600 font-sans mt-0.5 mb-1">
+                          {d.icd10Code && <span>ICD-10 {d.icd10Code}</span>}
+                          {d.omimId && <span>OMIM {d.omimId}</span>}
+                          {d.rareDisease && <span className="font-medium">Rare</span>}
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-bold text-[#1a1a1a] text-[15px] sm:text-base leading-snug">
-                        {d.diagnosis}
-                      </h3>
-                      <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[11px] text-gray-600 font-sans mt-0.5 mb-1">
-                        {d.icd10Code && <span>ICD-10 {d.icd10Code}</span>}
-                        {d.omimId && <span>OMIM {d.omimId}</span>}
-                        {d.rareDisease && <span className="font-medium">Rare</span>}
-                      </div>
-                      {d.clinicalReasoning && (
-                        <p className="text-[12px] text-gray-700 leading-snug">
-                          {d.clinicalReasoning}
-                        </p>
-                      )}
-                    </div>
-                    <div className="flex-shrink-0 text-right">
-                      <div className="text-xl font-bold text-[#8b2500] leading-none tabular-nums">
-                        {fmtScore(score)}
-                      </div>
-                      <div className="text-[10px] uppercase tracking-wider text-gray-500 font-sans">
-                        conf
+                      <div className="flex-shrink-0 text-right">
+                        <div className="text-xl font-bold text-[#8b2500] leading-none tabular-nums">
+                          {fmtScore(score)}
+                        </div>
+                        <div className="text-[10px] uppercase tracking-wider text-gray-500 font-sans">
+                          conf
+                        </div>
                       </div>
                     </div>
+
+                    {/* Clinical reasoning — indented under the header row to
+                        keep visual alignment with the evidence lists below. */}
+                    {d.clinicalReasoning && (
+                      <p className="text-[12px] text-gray-700 leading-snug mt-2 sm:ml-[3.25rem]">
+                        {d.clinicalReasoning}
+                      </p>
+                    )}
+
+                    {/* Supporting evidence + findings against — mirrors the
+                        #1 hero card structure, so every ranked diagnosis has
+                        the same evidence transparency. */}
+                    {(support.length > 0 || against.length > 0) && (
+                      <div className="mt-3 sm:ml-[3.25rem] grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5">
+                        {support.length > 0 && (
+                          <div>
+                            <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-gray-500 mb-1">
+                              Supporting evidence
+                            </div>
+                            <ul className="text-[11.5px] text-gray-800 space-y-0.5">
+                              {support.map((e, j) => (
+                                <li key={j} className="flex gap-2 leading-snug">
+                                  <span className="text-[#8b2500] flex-shrink-0">•</span>
+                                  <span>
+                                    {e.finding}
+                                    {e.patientSymptom && e.patientSymptom !== e.finding && (
+                                      <span className="text-gray-500"> ({e.patientSymptom})</span>
+                                    )}
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {against.length > 0 && (
+                          <div>
+                            <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-gray-500 mb-1">
+                              Findings against
+                            </div>
+                            <ul className="text-[11.5px] text-gray-800 space-y-0.5">
+                              {against.map((e, j) => (
+                                <li key={j} className="flex gap-2 leading-snug">
+                                  <span className="text-gray-500 flex-shrink-0">•</span>
+                                  <span>{e.finding}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Specialist to consult — same treatment as the #1
+                        hero card, dimmer border since this is secondary. */}
+                    {d.specialistRequired && (
+                      <div className="mt-2.5 pt-2 sm:ml-[3.25rem] border-t border-gray-200 text-[11.5px] text-gray-700">
+                        <span className="font-semibold font-sans text-[10px] uppercase tracking-wider text-gray-500">
+                          Specialist to consult:
+                        </span>{" "}
+                        {d.specialistRequired}
+                      </div>
+                    )}
                   </article>
                 )
               })}

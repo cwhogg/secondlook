@@ -27,6 +27,8 @@ interface Step2Data {
 
 interface Step3Data {
   labResults?: any[]
+  photos?: Step4SymptomPhoto[]
+  documents?: { fileName: string; extractedText: string }[]
 }
 
 interface Step4SymptomPhoto {
@@ -173,24 +175,23 @@ export default function AnalysisPage() {
       const step1Data = localStorage.getItem("step1Data")
       const step2Data = localStorage.getItem("step2Data")
       const step3Data = localStorage.getItem("step3Data")
+      // step4Data is optional post-consolidation. It used to hold photos;
+      // photos now live in step3Data.photos. We still honor a legacy
+      // step4Data when present (mid-flow users).
       const step4Data = localStorage.getItem("step4Data")
       const step5Data = localStorage.getItem("step5Data")
       const step6Data = localStorage.getItem("step6Data")
 
-      if (!step1Data || !step2Data || !step3Data || !step4Data || !step5Data || !step6Data) {
-        // Send the user back to the earliest missing step rather than always
-        // /step-1 — keeps drafts that got partway through from feeling lost.
+      if (!step1Data || !step2Data || !step3Data || !step5Data || !step6Data) {
         const missing = !step1Data
           ? "/step-1"
           : !step2Data
             ? "/step-2"
             : !step3Data
               ? "/step-3"
-              : !step4Data
-                ? "/step-4"
-                : !step5Data
-                  ? "/step-5"
-                  : "/step-6"
+              : !step5Data
+                ? "/step-5"
+                : "/step-6"
         router.push(missing)
         return
       }
@@ -199,17 +200,20 @@ export default function AnalysisPage() {
         const parsedStep1: Step1Data = JSON.parse(step1Data)
         const parsedStep2: Step2Data = JSON.parse(step2Data)
         const parsedStep3: Step3Data = JSON.parse(step3Data)
-        const parsedStep4: Step4Data = JSON.parse(step4Data)
+        // Photos: prefer step3Data.photos (post-consolidation location),
+        // fall back to legacy step4Data.photos.
+        const legacyStep4: Step4Data | null = step4Data ? JSON.parse(step4Data) : null
+        const photos = parsedStep3.photos ?? legacyStep4?.photos ?? []
         const parsedStep5: Step5Data = JSON.parse(step5Data)
         JSON.parse(step6Data) // validate step6 (consents) is present
 
         // Combined narrative = the written history (step-2) plus any
-        // symptom-photo descriptions (step-4). parse-symptoms operates on
-        // this combined text so visible findings flow into the symptom
+        // symptom-photo descriptions from step-3. parse-symptoms operates
+        // on this combined text so visible findings flow into the symptom
         // list alongside what the patient wrote.
         const combinedNarrative = combineNarrativeAndPhotos(
           parsedStep2.primaryConcern || "",
-          parsedStep4.photos,
+          photos,
         )
 
         // ===== STAGE 0: SYMPTOM EXTRACTION =====

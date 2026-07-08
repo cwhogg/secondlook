@@ -12,11 +12,14 @@ interface StepDef {
   required: boolean
 }
 
+// Step 4 (old "Photos") was folded into step 3 as part of the upload
+// consolidation, so this breadcrumb now shows 5 visible steps. The old
+// /step-4 URL still exists but only as an auto-redirect (see
+// app/step-4/page.tsx) — we hide it from the breadcrumb.
 const STEPS: StepDef[] = [
   { step: 1, label: "Basics", href: "/step-1", required: true },
   { step: 2, label: "Your history", href: "/step-2", required: true },
-  { step: 3, label: "Labs", href: "/step-3", required: false },
-  { step: 4, label: "Photos", href: "/step-4", required: false },
+  { step: 3, label: "Documents", href: "/step-3", required: false },
   { step: 5, label: "Review", href: "/step-5", required: true },
   { step: 6, label: "Submit", href: "/step-6", required: true },
 ]
@@ -41,6 +44,7 @@ function dotClass(step: IntakeStep, current: IntakeStep, size: "sm" | "md") {
 
 export function IntakeBreadcrumb({ current }: IntakeBreadcrumbProps) {
   const currentDef = STEPS.find((s) => s.step === current) ?? STEPS[0]
+  const currentPosition = STEPS.findIndex((s) => s.step === current) + 1 || 1
 
   return (
     <nav aria-label="Intake progress" className="mb-6 sm:mb-8">
@@ -53,7 +57,7 @@ export function IntakeBreadcrumb({ current }: IntakeBreadcrumbProps) {
             const isPast = s.step < current
             const node = (
               <span className={dotClass(s.step, current, "sm")} aria-hidden="true">
-                {s.step}
+                {STEPS.indexOf(s) + 1}
               </span>
             )
             return (
@@ -78,7 +82,7 @@ export function IntakeBreadcrumb({ current }: IntakeBreadcrumbProps) {
           })}
         </ol>
         <div className="mt-2 text-center text-sm text-gray-600">
-          Step <span className="font-semibold text-[#8b2500]">{current}</span> of {STEPS.length}{" "}
+          Step <span className="font-semibold text-[#8b2500]">{currentPosition}</span> of {STEPS.length}{" "}
           <span className="text-gray-400">·</span>{" "}
           <span className="font-semibold text-gray-900">{currentDef.label}</span>
           {!currentDef.required && (
@@ -104,7 +108,7 @@ export function IntakeBreadcrumb({ current }: IntakeBreadcrumbProps) {
           const inner = (
             <span className="inline-flex items-center">
               <span className={dotClass(s.step, current, "md")} aria-hidden="true">
-                {s.step}
+                {STEPS.indexOf(s) + 1}
               </span>
               <span className={labelClass}>
                 {s.label}

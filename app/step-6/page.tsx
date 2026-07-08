@@ -30,11 +30,12 @@ export default function Step6() {
     // Step-6 sits after the review screen. If any prior step is missing,
     // bounce back to the earliest one rather than letting the user submit
     // a half-empty case.
+    // step4Data omitted — the old photos step was folded into /step-3
+    // (Documents) and no longer produces its own storage record.
     const required = [
       ["step1Data", "/step-1"],
       ["step2Data", "/step-2"],
       ["step3Data", "/step-3"],
-      ["step4Data", "/step-4"],
       ["step5Data", "/step-5"],
     ] as const
     for (const [key, path] of required) {

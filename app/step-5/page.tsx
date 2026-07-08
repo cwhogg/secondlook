@@ -54,7 +54,9 @@ export default function Step5() {
     const step1 = localStorage.getItem("step1Data")
     const step2 = localStorage.getItem("step2Data")
     const step3 = localStorage.getItem("step3Data")
-    const step4 = localStorage.getItem("step4Data")
+    // step4Data is no longer required — the photos-only step was
+    // folded into step-3 (Documents). Keep silent forgiveness for
+    // users who lack it.
     if (!step1) {
       router.push("/step-1")
       return
@@ -65,10 +67,6 @@ export default function Step5() {
     }
     if (!step3) {
       router.push("/step-3")
-      return
-    }
-    if (!step4) {
-      router.push("/step-4")
       return
     }
 
@@ -201,7 +199,8 @@ export default function Step5() {
 
   const handleBack = () => {
     localStorage.setItem("step5Data", JSON.stringify(formData))
-    router.push("/step-4")
+    // Skip the old /step-4 (auto-redirect) and go straight back to /step-3.
+    router.push("/step-3")
   }
 
   const handleContinue = () => {

@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
 import { STEP_LABELS, type SessionRecord, type StepIndex } from "@/lib/admin/sessions"
-import { AlertCircle, CheckCircle } from "lucide-react"
+import { AlertCircle, CheckCircle, Trash2 } from "lucide-react"
 
 const PASSWORD_STORAGE_KEY = "adminSessionsPassword"
 
@@ -183,7 +183,11 @@ export default function AdminSessionsPage() {
         <FunnelChart stats={stats} />
 
         {/* Session table */}
-        <SessionTable records={records} />
+        <SessionTable
+          records={records}
+          password={password}
+          onDeleted={(id) => setRecords((prev) => prev.filter((r) => r.id !== id))}
+        />
       </div>
     </div>
   )
@@ -376,7 +380,15 @@ function FunnelChart({ stats }: { stats: Stats }) {
 
 // ================== per-session table ==================
 
-function SessionTable({ records }: { records: SessionRecord[] }) {
+function SessionTable({
+  records,
+  password,
+  onDeleted,
+}: {
+  records: SessionRecord[]
+  password: string
+  onDeleted: (id: string) => void
+}) {
   if (records.length === 0) {
     return (
       <div className="bg-white border border-gray-200 p-8 text-center text-sm text-gray-500">
@@ -398,11 +410,17 @@ function SessionTable({ records }: { records: SessionRecord[] }) {
             <Th>Conf.</Th>
             <Th>Time</Th>
             <Th>Report</Th>
+            <Th>Del</Th>
           </tr>
         </thead>
         <tbody>
           {records.map((r) => (
-            <SessionRow key={r.id} record={r} />
+            <SessionRow
+              key={r.id}
+              record={r}
+              password={password}
+              onDeleted={onDeleted}
+            />
           ))}
         </tbody>
       </table>
@@ -422,13 +440,52 @@ function Td({ children, className = "" }: { children: React.ReactNode; className
   return <td className={`px-2 sm:px-3 py-2 align-top ${className}`}>{children}</td>
 }
 
-function SessionRow({ record }: { record: SessionRecord }) {
+function SessionRow({
+  record,
+  password,
+  onDeleted,
+}: {
+  record: SessionRecord
+  password: string
+  onDeleted: (id: string) => void
+}) {
+  const [deleting, setDeleting] = useState(false)
   const started = new Date(record.createdAt)
   const isCompleted = record.furthestStep >= 8
   const top1 = record.analysis?.top1Diagnosis
   const top1Conf = record.analysis?.top1Confidence
   const requestId = record.analysis?.requestId
   const symptoms = record.form?.symptoms || []
+
+  const handleDelete = async () => {
+    if (deleting) return
+    // Quick sanity confirm — irreversible operation, tied to a specific
+    // session id. Show enough context ('this session from IP X started at Y')
+    // that a mis-click is obvious.
+    const stamp = `${started.toLocaleDateString()} ${started.toLocaleTimeString()}`
+    // eslint-disable-next-line no-alert
+    if (!window.confirm(`Delete session ${record.id.slice(0, 8)}… (IP ${record.ip || '?'}, started ${stamp})?`)) {
+      return
+    }
+    setDeleting(true)
+    try {
+      const res = await fetch("/api/admin/sessions", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          ...(password ? { "x-admin-password": password } : {}),
+        },
+        body: JSON.stringify({ ids: [record.id] }),
+      })
+      const data = await res.json().catch(() => null)
+      if (!res.ok) throw new Error(data?.error || `HTTP ${res.status}`)
+      onDeleted(record.id)
+    } catch (err: any) {
+      // eslint-disable-next-line no-alert
+      window.alert(`Delete failed: ${err?.message || err}`)
+      setDeleting(false)
+    }
+  }
   const symptomText =
     symptoms.length === 0
       ? "—"
@@ -492,6 +549,22 @@ function SessionRow({ record }: { record: SessionRecord }) {
         ) : (
           <span className="text-gray-400 text-xs">—</span>
         )}
+      </Td>
+      <Td>
+        <button
+          type="button"
+          onClick={handleDelete}
+          disabled={deleting}
+          title={`Delete this session (${record.id})`}
+          className="text-gray-400 hover:text-red-600 disabled:opacity-50 disabled:cursor-not-allowed"
+          aria-label="Delete session"
+        >
+          {deleting ? (
+            <span className="text-[10px] tracking-wider">…</span>
+          ) : (
+            <Trash2 className="h-3.5 w-3.5" />
+          )}
+        </button>
       </Td>
     </tr>
   )

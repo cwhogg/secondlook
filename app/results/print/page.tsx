@@ -672,9 +672,7 @@ export default function PrintReportPage() {
                       </div>
                       {d.clinicalReasoning && (
                         <p className="text-[12px] text-gray-700 leading-snug">
-                          {d.clinicalReasoning.length > 240
-                            ? `${d.clinicalReasoning.slice(0, 240).trim()}…`
-                            : d.clinicalReasoning}
+                          {d.clinicalReasoning}
                         </p>
                       )}
                     </div>

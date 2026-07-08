@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Playfair_Display, Source_Serif_4, Instrument_Sans } from "next/font/google"
 import { TrackingBoundary } from "@/components/tracking-boundary"
+import { UpstreamStatusBanner } from "@/components/upstream-status-banner"
 import "./globals.css"
 
 const playfair = Playfair_Display({
@@ -85,6 +86,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${playfair.variable} ${sourceSerif.variable} ${instrumentSans.variable} font-serif-body`}>
+        <UpstreamStatusBanner />
         {children}
         <TrackingBoundary gaId={process.env.NEXT_PUBLIC_GA_ID} />
       </body>

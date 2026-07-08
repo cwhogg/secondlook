@@ -96,9 +96,16 @@ const patientCaseSchema = z.object({
   }),
 });
 
-// Simple in-memory rate limiting (disabled in development for testing)
+// Simple in-memory rate limiting (disabled in development for testing).
+// Note: per-instance state — Vercel spins up fresh instances on cold start,
+// so the effective global limit is more permissive than the per-instance
+// number here. That's fail-safe (too lax > too strict) but worth knowing
+// if you need real global rate limiting later (Upstash Ratelimit is the
+// standard swap-in).
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT_MAX = 3;
+// Bumped from 3 to 5 on 2026-07 for the launch thread: two people on the
+// same household NAT'd IP shouldn't run each other out of quota.
+const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
 
 function checkRateLimit(ip: string): { allowed: boolean; retryAfter?: number } {

@@ -179,6 +179,27 @@ export class DiagnosticPipeline {
       }, 10_000);
 
       try {
+        // Classify an error as retryable — LLM providers throw 429 (rate
+        // limit) and 5xx (overload / transient) codes we can safely retry
+        // once. Anything else (bad prompt, invalid response schema) is not
+        // worth a second attempt.
+        const isRetryable = (err: any): boolean => {
+          const msg = String(err?.message || err || '').toLowerCase();
+          return (
+            msg.includes('429') ||
+            msg.includes('rate limit') ||
+            msg.includes('rate_limit') ||
+            msg.includes('503') ||
+            msg.includes('502') ||
+            msg.includes('504') ||
+            msg.includes('529') ||          // Anthropic overloaded
+            msg.includes('overload') ||
+            msg.includes('etimedout') ||
+            msg.includes('econnreset')
+          );
+        };
+        const RETRY_DELAY_MS = 4000;
+
         const specialistPromises = selectedSpecialties.map(async (specialty) => {
           const agentStart = Date.now();
           const agent = getSpecialistV17Agent(specialty);
@@ -187,7 +208,19 @@ export class DiagnosticPipeline {
             ? []
             : rerankCandidatesForSpecialty(triageResult.candidateDiseases, specialty);
           try {
-            const result = await agent.execute({ patientCase, candidateDiseases: candidates });
+            let result;
+            try {
+              result = await agent.execute({ patientCase, candidateDiseases: candidates });
+            } catch (firstErr: any) {
+              if (!isRetryable(firstErr)) throw firstErr;
+              log("orch.stage.specialist.retry", {
+                specialty,
+                after_ms: Date.now() - agentStart,
+                first_msg: (firstErr?.message || '').slice(0, 120),
+              });
+              await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
+              result = await agent.execute({ patientCase, candidateDiseases: candidates });
+            }
             onProgress?.({
               stage: 'specialist-done',
               stageNumber: 3,

@@ -1,3 +1,5 @@
+import { withSentryConfig } from "@sentry/nextjs"
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -27,4 +29,17 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+// Wrap in withSentryConfig so source maps get uploaded to Sentry on
+// production builds. All Sentry-specific options come from env vars the
+// wizard would set (SENTRY_ORG, SENTRY_PROJECT, SENTRY_AUTH_TOKEN); when
+// they're absent, the wrapper is a no-op passthrough and the build
+// behaves exactly as before.
+const sentryWebpackPluginOptions = {
+  silent: true, // suppresses the "Successfully uploaded source maps" chatter
+  // Only try to upload source maps if the auth token is present. Prevents
+  // build failures on preview deploys where the token isn't wired up.
+  disableServerWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
+  disableClientWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
+}
+
+export default withSentryConfig(nextConfig, sentryWebpackPluginOptions)

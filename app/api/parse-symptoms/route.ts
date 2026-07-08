@@ -45,8 +45,14 @@ export async function POST(request: NextRequest) {
   try {
     const { text, patientAge, patientSex } = await request.json()
 
-    if (!text || text.trim().length < 10) {
-      return NextResponse.json({ error: "Symptom description too short" }, { status: 400 })
+    // 40-char floor matches the client-side validation on step-2. Below
+    // this the model reliably returns 0 symptoms or nonsense, both of
+    // which look like generic pipeline failures downstream.
+    if (!text || text.trim().length < 40) {
+      return NextResponse.json(
+        { error: "Symptom description too short — please add more detail." },
+        { status: 400 },
+      )
     }
 
     const openaiApiKey = process.env.OPENAI_API_KEY

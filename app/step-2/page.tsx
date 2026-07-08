@@ -22,6 +22,13 @@ import { cn } from "@/lib/utils"
 // preprocessing step is the right architecture. See conversation
 // 2026-06-23 for the cost/benefit analysis.
 const PRIMARY_CONCERN_MAX = 100_000
+// Minimum chars in the concern narrative before we let the user continue.
+// parse-symptoms enforces 10 server-side; 40 here matches the shortest
+// meaningful clinical vignette that still gives the model something to
+// work with. Below this the pipeline reliably returns 'too short' or
+// 'no symptoms extracted', both of which look like generic failures to
+// the user by the time analysis fires.
+const MIN_CONCERN_CHARS = 40
 
 interface Step2Data {
   primaryConcern: string
@@ -89,8 +96,16 @@ export default function Step2() {
 
   const validateForm = () => {
     const nextErrors: Record<string, string> = {}
-    if (!formData.primaryConcern.trim())
+    const concern = formData.primaryConcern.trim()
+    if (!concern) {
       nextErrors.primaryConcern = "Please describe your main health concern"
+    } else if (concern.length < MIN_CONCERN_CHARS) {
+      // parse-symptoms rejects text under 10 chars server-side. Ask for
+      // 40 here — enough for the model to actually identify symptoms.
+      // Failing fast in the UI is far kinder than sending the user
+      // through step 3-5 + a 40s pipeline just to hit "too short".
+      nextErrors.primaryConcern = `Please add more detail — at least ${MIN_CONCERN_CHARS} characters (you have ${concern.length}).`
+    }
     if (!formData.mainSymptomStart)
       nextErrors.mainSymptomStart = "Please select when symptoms started"
     setErrors(nextErrors)
@@ -115,7 +130,8 @@ export default function Step2() {
   }
 
   const isFormValid =
-    (formData.primaryConcern || "").trim().length > 0 && !!formData.mainSymptomStart
+    (formData.primaryConcern || "").trim().length >= MIN_CONCERN_CHARS &&
+    !!formData.mainSymptomStart
 
   return (
     <Layout>

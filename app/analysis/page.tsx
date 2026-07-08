@@ -517,6 +517,24 @@ export default function AnalysisPage() {
           }
         }
 
+        // Route the caught error through Sentry so we get visibility on
+        // failures the pipeline handled but the user still bounced off.
+        // Without this, only unhandled throws in API routes surface —
+        // errors caught by the friendly-message translator below stay
+        // invisible until a user complains.
+        try {
+          const sentryErr =
+            err instanceof Error ? err : new Error(String(err ?? "Analysis failed"))
+          const { captureException, withScope } = await import("@sentry/nextjs")
+          withScope((scope) => {
+            scope.setTag("surface", "analysis-page")
+            scope.setLevel("error")
+            captureException(sentryErr)
+          })
+        } catch {
+          // Sentry not available (DSN unset in dev) — silent, no user impact.
+        }
+
         setError(err instanceof Error ? err.message : "Analysis failed")
         setProgress(0)
       }
@@ -567,6 +585,14 @@ export default function AnalysisPage() {
           detail:
             "The symptom-parsing step couldn't identify clinical findings in your description. Click Start Over and try rephrasing with specific symptoms (e.g., \"chronic fatigue, joint pain since 2019\").",
           code: "NO_SYMPTOMS",
+        }
+      }
+      if (m.includes("description too short") || m.includes("symptom description")) {
+        return {
+          headline: "Your description was too short",
+          detail:
+            "We need at least a couple of sentences to identify what to look for. Go back to \"Your history\" and add more detail — what symptoms you have, when they started, how they've changed.",
+          code: "TOO_SHORT",
         }
       }
       if (m.includes("budget") || m.includes("cost")) {

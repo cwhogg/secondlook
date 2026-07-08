@@ -36,6 +36,7 @@ interface TrackEventOpts {
     labResultCount?: number;
     photoCount?: number;
     hasClarifications?: boolean;
+    mode?: 'test' | 'real';
   };
   analysis?: {
     requestId?: string;

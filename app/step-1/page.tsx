@@ -173,6 +173,10 @@ export default function Step1() {
       if (data?.groundTruth) {
         sessionStorage.setItem("testUserGroundTruth", JSON.stringify(data.groundTruth))
       }
+      // Flag this session as a test on the server so /admin/sessions can
+      // distinguish it from an organic patient. Merged into the existing
+      // form snapshot; subsequent step-complete events don't clear it.
+      trackEvent("form-snapshot", { step: 1, form: { mode: "test" } })
       router.push("/step-2")
     } catch (err: any) {
       setCreateError(err?.message || "Failed to create test user")

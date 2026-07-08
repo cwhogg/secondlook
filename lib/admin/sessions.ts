@@ -79,6 +79,11 @@ export interface FormSnapshot {
   labResultCount?: number;
   photoCount?: number;
   hasClarifications?: boolean;
+  // 'test' when the visitor generated a synthetic patient via the Create
+  // Test User button on step-1. Absent (or 'real') for organic patients.
+  // Set exactly once — the first form-snapshot event carrying the flag
+  // pins the session, subsequent snapshots don't overwrite.
+  mode?: 'test' | 'real';
 }
 
 export interface AnalysisOutcome {

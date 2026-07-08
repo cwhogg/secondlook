@@ -403,6 +403,7 @@ function SessionTable({
           <tr className="text-left text-gray-700">
             <Th>Started</Th>
             <Th>IP</Th>
+            <Th>Mode</Th>
             <Th>Furthest step</Th>
             <Th>Age / Sex</Th>
             <Th>Symptoms</Th>
@@ -502,6 +503,17 @@ function SessionRow({
       </Td>
       <Td>
         <div className="font-mono text-[11px] text-gray-700">{record.ip || "—"}</div>
+      </Td>
+      <Td>
+        {record.form?.mode === "test" ? (
+          <span className="inline-flex items-center px-1.5 py-0.5 border border-amber-300 bg-amber-50 text-amber-800 text-[10px] font-semibold uppercase tracking-wider">
+            Test
+          </span>
+        ) : (
+          <span className="inline-flex items-center px-1.5 py-0.5 border border-emerald-200 bg-emerald-50 text-emerald-800 text-[10px] font-semibold uppercase tracking-wider">
+            Real
+          </span>
+        )}
       </Td>
       <Td>
         <div className="flex items-center gap-1.5">

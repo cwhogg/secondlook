@@ -381,6 +381,48 @@ export default function PrintReportPage() {
             break-before: avoid;
             page-break-before: avoid;
           }
+          /* And the first paragraph inside a section (usually the intro
+             line right after the h2) has to pair with what follows it,
+             so a section can't start as "header + intro" stranded at the
+             bottom of a page with the real content pushed alone to the
+             next page. Screen-cap 1 of the user's report: Recommended
+             Next Steps h2 + 'Each test below tells you...' intro landed
+             at page top with ~500px whitespace, then legend + tests on
+             next page. */
+          .print-root section > h2 + p,
+          .print-root section > h2 ~ p:first-of-type {
+            break-after: avoid;
+            page-break-after: avoid;
+          }
+          /* Clinical Presentation's Reported Findings — the header +
+             2-col bullet grid was being split so 2 items sat on one
+             page and the remaining 23 with ~600px whitespace on the
+             next. Wrapped in a keep-together block so it either fits
+             at bottom-of-page or moves whole to the next page. */
+          .print-root .print-findings-block {
+            break-inside: avoid;
+            page-break-inside: avoid;
+          }
+          /* Paragraphs inside a diagnosis card need stronger widow /
+             orphan control than the site-wide default of 2. The #1
+             hero card's clinicalReasoning paragraph was splitting at
+             line 4 of 8 — 4 lines stranded on prior page, 4 on next,
+             with ~200px whitespace between. widows/orphans of 3 forces
+             a cleaner split. */
+          .print-root .print-diagnosis-card p {
+            widows: 3;
+            orphans: 3;
+          }
+          /* The Recommended Next Steps intro block (h2 + explainer +
+             legend) has to stick together. Marking the wrapper as
+             avoid-break-inside so the browser treats them as one unit
+             when deciding where to break. */
+          .print-root .print-tests-intro {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            break-after: avoid;
+            page-break-after: avoid;
+          }
           /* Compact legend padding — recovers ~30px of vertical real
              estate on every legend without losing the visual block
              treatment. */
@@ -511,7 +553,7 @@ export default function PrintReportPage() {
               .filter((v): v is string => !!v)
             if (symptoms.length === 0) return null
             return (
-              <div className="mb-3">
+              <div className="print-findings-block mb-3">
                 <div className="font-sans text-[10px] font-semibold uppercase tracking-wider text-gray-500 mb-1">
                   Reported findings ({symptoms.length})
                 </div>
@@ -792,12 +834,16 @@ export default function PrintReportPage() {
           )
           return (
             <section className="print-tests-section mb-6">
-              <h2 className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b2500] mb-3 pb-1.5 border-b border-[#d4c5b0]">
-                Recommended Next Steps — Testing
-              </h2>
-              <p className="text-[12px] text-gray-600 mb-3 leading-relaxed">
-                Each test below tells you what it will reveal and which diagnoses it helps confirm or rule out. See the legend for how to obtain each type.
-              </p>
+              {/* Intro block: h2 + explainer + legend wrapped so the page
+                  break never strands the header at the bottom of a page
+                  with content pushed alone to the next. */}
+              <div className="print-tests-intro">
+                <h2 className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8b2500] mb-3 pb-1.5 border-b border-[#d4c5b0]">
+                  Recommended Next Steps — Testing
+                </h2>
+                <p className="text-[12px] text-gray-600 mb-3 leading-relaxed">
+                  Each test below tells you what it will reveal and which diagnoses it helps confirm or rule out. See the legend for how to obtain each type.
+                </p>
 
               {/* Shared "how to obtain" legend — populated only with the test
                   categories that appear in this report. Replaces the
@@ -841,6 +887,7 @@ export default function PrintReportPage() {
                   </dl>
                 </div>
               )}
+              </div>
 
               {/* 2-column grid — each test card is slim (3-4 lines) after
                   hoisting the boilerplate into the legend, so two fit

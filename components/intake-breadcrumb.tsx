@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 
-export type IntakeStep = 1 | 2 | 3 | 4 | 5 | 6
+export type IntakeStep = 1 | 2 | 3 | 4 | 5
 
 interface StepDef {
   step: IntakeStep
@@ -12,16 +12,15 @@ interface StepDef {
   required: boolean
 }
 
-// Step 4 (old "Photos") was folded into step 3 as part of the upload
-// consolidation, so this breadcrumb now shows 5 visible steps. The old
-// /step-4 URL still exists but only as an auto-redirect (see
-// app/step-4/page.tsx) — we hide it from the breadcrumb.
+// Renumbered after the intake consolidation: old step-4 (Photos) was
+// folded into step-3 (Documents), and old step-5 (Review) and step-6
+// (Submit) became step-4 and step-5 respectively.
 const STEPS: StepDef[] = [
   { step: 1, label: "Basics", href: "/step-1", required: true },
   { step: 2, label: "Your history", href: "/step-2", required: true },
   { step: 3, label: "Documents", href: "/step-3", required: false },
-  { step: 5, label: "Review", href: "/step-5", required: true },
-  { step: 6, label: "Submit", href: "/step-6", required: true },
+  { step: 4, label: "Review", href: "/step-4", required: true },
+  { step: 5, label: "Submit", href: "/step-5", required: true },
 ]
 
 interface IntakeBreadcrumbProps {

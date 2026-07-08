@@ -132,17 +132,20 @@ async function renderPdfToImages(
     canvas.height = viewport.height
     const ctx = canvas.getContext("2d")
     if (!ctx) throw new Error("Canvas unavailable")
-    await page.render({ canvasContext: ctx, viewport, canvas }).promise
+    await page.render({ canvasContext: ctx, viewport }).promise
     const dataUrl = canvas.toDataURL("image/jpeg", JPEG_QUALITY)
     images.push({ base64: dataUrl.split(",")[1], mimeType: "image/jpeg" })
   }
   return images
 }
 
+/** Classification vocabulary returned by /api/extract-document. */
+type ApiClassification = "medical_document" | "symptom_photo" | "unreadable" | "other"
+
 async function classifyDocument(
   images: { base64: string; mimeType: "image/jpeg" | "image/png" }[],
   fileName: string,
-): Promise<{ classification: DocumentKind; extractedText: string; reason?: string }> {
+): Promise<{ classification: ApiClassification; extractedText: string; reason?: string }> {
   const res = await fetch("/api/extract-document", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -154,7 +157,7 @@ async function classifyDocument(
   }
   const data = await res.json()
   return {
-    classification: (data.classification as DocumentKind) || "other",
+    classification: (data.classification as ApiClassification) || "other",
     extractedText: data.extractedText || "",
     reason: data.reason,
   }

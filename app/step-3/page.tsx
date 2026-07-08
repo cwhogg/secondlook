@@ -114,7 +114,6 @@ export default function Step3() {
       form: {
         labResultCount: formData.labResults.length,
         photoCount: formData.photos.length,
-        documentCount: formData.documents?.length ?? 0,
       },
     })
     router.push("/step-4")
@@ -128,7 +127,7 @@ export default function Step3() {
     localStorage.setItem("step4Data", JSON.stringify({ photos: [] }))
     trackEvent("step-complete", {
       step: 3,
-      form: { labResultCount: 0, photoCount: 0, documentCount: 0 },
+      form: { labResultCount: 0, photoCount: 0 },
       data: { skipped: true },
     })
     router.push("/step-4")

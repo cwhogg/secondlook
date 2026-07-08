@@ -146,14 +146,18 @@ export default function Step1() {
       )
       // Pre-populate the optional intake steps with empty arrays so the
       // operator can click straight through without seeing the "step
-      // missing — sending you back" redirect chain.
-      localStorage.setItem("step3Data", JSON.stringify({ labResults: [] }))
+      // missing — sending you back" redirect chain. step3Data now
+      // includes photos + documents alongside labResults (post-
+      // consolidation); step4Data is retained for backwards-compat.
+      localStorage.setItem(
+        "step3Data",
+        JSON.stringify({ labResults: [], photos: [], documents: [] }),
+      )
       localStorage.setItem("step4Data", JSON.stringify({ photos: [] }))
-      // Step-5 is the symptom-review screen; only field is the optional
-      // clarifications textarea, which we leave blank.
+      // Review step (now /step-4) — key stays step5Data for stability.
       localStorage.setItem("step5Data", JSON.stringify({ clarifications: "" }))
-      // Consents (step-6) are intentionally left unchecked — operator
-      // confirms explicitly.
+      // Consents (now /step-5) — key stays step6Data. Intentionally left
+      // unchecked so the operator confirms explicitly.
       localStorage.setItem(
         "step6Data",
         JSON.stringify({

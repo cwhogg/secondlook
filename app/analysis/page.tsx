@@ -183,6 +183,10 @@ export default function AnalysisPage() {
       const step6Data = localStorage.getItem("step6Data")
 
       if (!step1Data || !step2Data || !step3Data || !step5Data || !step6Data) {
+        // After the intake renumbering: /step-4 hosts what step5Data
+        // saves (review), /step-5 hosts what step6Data saves (consent).
+        // localStorage keys retained for backwards-compat with in-flight
+        // sessions.
         const missing = !step1Data
           ? "/step-1"
           : !step2Data
@@ -190,8 +194,8 @@ export default function AnalysisPage() {
             : !step3Data
               ? "/step-3"
               : !step5Data
-                ? "/step-5"
-                : "/step-6"
+                ? "/step-4"
+                : "/step-5"
         router.push(missing)
         return
       }

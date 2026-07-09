@@ -114,8 +114,11 @@ function buildCritiqueBlock(critique: CritiqueOutput): string {
   }
   const suggestions = critique.suggestions.map((s, i) => {
     const rankPart = s.targetNewRank ? ` (suggest new rank: #${s.targetNewRank})` : '';
+    const mergePart = s.action === 'merge' && s.mergeInto
+      ? `\n    Merge into (use this EXACT surviving label verbatim, do not shorten): "${s.mergeInto}"`
+      : '';
     const evidenceList = s.evidence.length ? `\n    Evidence cited: ${s.evidence.join('; ')}` : '';
-    return `${i + 1}. ${s.action.toUpperCase()} "${s.targetDiagnosis}"${rankPart}
+    return `${i + 1}. ${s.action.toUpperCase()} "${s.targetDiagnosis}"${rankPart}${mergePart}
     Reasoning: ${s.reasoning}${evidenceList}`;
   }).join('\n');
   return `OTHER CLINICIAN'S CRITIQUE (confidence in your ranking: ${critique.confidenceInClaudeRanking}/100):

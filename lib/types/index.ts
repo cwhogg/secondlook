@@ -267,6 +267,11 @@ export interface CritiqueSuggestion {
   targetDiagnosis: string;
   action: 'promote' | 'demote' | 'reorder' | 'merge' | 'flag-gap' | 'add';
   targetNewRank?: number; // 1-10
+  // REQUIRED for action='merge' — the EXACT surviving label the finalizer must
+  // use. Set by the critic to preserve the more clinically informative label
+  // (parentheticals, criteria refs, etiologic qualifiers) rather than defaulting
+  // to whichever entry appeared first.
+  mergeInto?: string;
   evidence: string[]; // specific patient findings supporting the suggestion
   reasoning: string;
   // 0-100. Required and gated for 'add' (only kept if >= ADD_CONFIDENCE_FLOOR);

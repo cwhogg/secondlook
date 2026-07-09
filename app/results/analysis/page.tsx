@@ -6,6 +6,7 @@ import Link from "next/link"
 import { ArrowLeft, ArrowRight, Brain, Activity, AlertTriangle, Sparkles, ChevronDown, ChevronUp } from "lucide-react"
 import { startNewAnalysis } from "@/lib/results/start-new-analysis"
 import { TestUserGroundTruthBanner } from "@/components/test-user-ground-truth-banner"
+import { IntegrativeCTACard } from "@/components/integrative-cta-card"
 
 interface FamilyEnrichmentData {
   familyName: string
@@ -66,6 +67,7 @@ export default function AnalysisResultsPage() {
   // (index 0) is open so the list stays compact but the user sees the most
   // important condition immediately.
   const [expandedIndexes, setExpandedIndexes] = useState<Set<number>>(() => new Set([0]))
+  const [clinicalRequestId, setClinicalRequestId] = useState<string>("")
   const toggleExpanded = (idx: number) => {
     setExpandedIndexes((prev) => {
       const next = new Set(prev)
@@ -77,6 +79,9 @@ export default function AnalysisResultsPage() {
 
   useEffect(() => {
     // Results are stored in sessionStorage by the ExpertAnalysisResults component
+    // Also capture the clinical requestId — needed by the integrative CTA below.
+    const storedRequestId = sessionStorage.getItem("pendingAnalysisRequestId") || ""
+    if (storedRequestId) setClinicalRequestId(storedRequestId)
     const data = sessionStorage.getItem("analysisResults")
     if (data) {
       try {
@@ -424,6 +429,9 @@ export default function AnalysisResultsPage() {
             )
           })}
         </div>
+
+        {/* Integrative-medicine perspective (opt-in, complementary — never gates clinical) */}
+        {clinicalRequestId && <IntegrativeCTACard clinicalRequestId={clinicalRequestId} />}
       </div>
 
       {/* Fixed Bottom Navigation */}

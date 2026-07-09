@@ -91,6 +91,21 @@ function levenshtein(a: string, b: string): number {
 }
 
 function pickCanonicalName(variants: string[]): { canonical: string; chosenBy: 'kb-anchor' | 'specialist-consensus' | 'shortest' } {
+  const baseResult = pickBaseCanonicalName(variants);
+  // Preserve a shared clinical modifier (post-COVID onset, late-onset,
+  // fulfilling ICC criteria, etc.) when ALL parenthetical-carrying variants
+  // agree on it. Divergent parentheticals fall through — umbrella-safety
+  // wins there, consistent with the tier-3 shortest bias. Consensus
+  // parentheticals get preserved because the specialists' shared modifier
+  // carries clinical weight (etiology, timing, criteria).
+  const modifier = extractConsensusModifier(variants);
+  if (modifier && !baseResult.canonical.toLowerCase().includes(modifier.toLowerCase())) {
+    return { canonical: `${baseResult.canonical} (${modifier})`, chosenBy: baseResult.chosenBy };
+  }
+  return baseResult;
+}
+
+function pickBaseCanonicalName(variants: string[]): { canonical: string; chosenBy: 'kb-anchor' | 'specialist-consensus' | 'shortest' } {
   // Tier 1: KB-anchored — first variant that resolves to a KB profile wins.
   for (const v of variants) {
     const profile = findDiseaseByName(v);
@@ -106,6 +121,51 @@ function pickCanonicalName(variants: string[]): { canonical: string; chosenBy: '
   // Tier 3: shortest variant — bias toward umbrella term.
   const shortest = mostCommon.reduce((a, b) => a.length <= b.length ? a : b);
   return { canonical: shortest, chosenBy: 'shortest' };
+}
+
+/**
+ * Extract a shared clinical modifier that ALL parenthetical-carrying variants
+ * agree on. Returns the original casing of the modifier text, or null if the
+ * variants disagree or nothing qualifies.
+ *
+ * Skips pure abbreviations, gene-symbol tokens, and subtype-number markers,
+ * which the tiered canonical logic handles correctly and shouldn't get glued
+ * back on. Everything else (etiology, timing, criteria refs, phenotype
+ * qualifiers) counts as a preservable modifier.
+ */
+function extractConsensusModifier(variants: string[]): string | null {
+  const perVariantMods: string[][] = [];
+  let anyVariantHasParen = false;
+  for (const v of variants) {
+    const mods: string[] = [];
+    const matches = [...v.matchAll(/\(([^)]+)\)/g)];
+    if (matches.length > 0) anyVariantHasParen = true;
+    for (const m of matches) {
+      const content = m[1].trim();
+      // Skip pure abbreviations (FBN1, PKAN, MFM).
+      if (/^[A-Z0-9]{1,6}$/.test(content)) continue;
+      // Skip subtype markers ("type 1", "subtype A").
+      if (/^(?:type|subtype)\s+(?:\d+|[a-z])\s*$/i.test(content)) continue;
+      // Skip very short content — likely noise.
+      if (content.length <= 3) continue;
+      mods.push(content);
+    }
+    perVariantMods.push(mods);
+  }
+  if (!anyVariantHasParen) return null;
+  // A variant without parens counts as "does not disagree" — the modifier is
+  // preserved as long as every variant that HAS a preservable paren agrees.
+  const carrying = perVariantMods.filter((mods) => mods.length > 0);
+  if (carrying.length === 0) return null;
+  // Each carrying variant should offer the SAME single modifier for consensus.
+  const first = carrying[0];
+  if (first.length !== 1) return null;
+  const target = first[0].toLowerCase().trim();
+  for (const mods of carrying) {
+    if (mods.length !== 1) return null;
+    if (mods[0].toLowerCase().trim() !== target) return null;
+  }
+  return first[0];
 }
 
 function mergeEvidenceItems(itemArrs: Array<{ items: EvidenceItem[]; specialty: string }>): EvidenceItem[] {

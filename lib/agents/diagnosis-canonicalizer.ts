@@ -154,14 +154,55 @@ export function canonicalizeName(predictionText: string): { canonical: string; m
   // (Mondo labels are stored lowercased + stopword-stripped during the build).
   const canonical = titleCase(canonicalNorm);
 
+  // Preserve trailing clinical modifiers. Parentheticals in the ORIGINAL text
+  // that did NOT ground to any Mondo id are treated as modifier annotations
+  // ("(post-COVID onset)", "(late-onset)", "(fulfilling ICC criteria)") rather
+  // than disease aliases, and should survive the rewrite. Without this, the
+  // canonicalizer strips clinically load-bearing context — e.g. specialists
+  // saying "ME/CFS (post-COVID onset)" collapse to plain "Chronic Fatigue
+  // Syndrome" because normalizeDiagnosis strips parentheticals before lookup.
+  const preservedModifiers: string[] = [];
+  for (const rawParen of extractRawParentheticals(predictionText)) {
+    const normParen = normalizeDiagnosis(rawParen);
+    if (!normParen) continue;
+    // If this parenthetical grounds to a Mondo id, it's an alias (already
+    // accounted for by the base rewrite) — do not double-append.
+    if (labels.has(normParen)) continue;
+    preservedModifiers.push(rawParen);
+  }
+  const finalCanonical = preservedModifiers.length
+    ? `${canonical} (${preservedModifiers.join('; ')})`
+    : canonical;
+
   // Only rewrite if the canonical form is meaningfully different from input.
   // If the input is already the canonical form (modulo case/punct), skip
   // the rewrite to avoid noise.
-  if (normalize(predictionText) === normalize(canonical)) {
+  if (normalize(predictionText) === normalize(finalCanonical)) {
     return { canonical: predictionText, mondoId, rewritten: false };
   }
 
-  return { canonical, mondoId, rewritten: true };
+  return { canonical: finalCanonical, mondoId, rewritten: true };
+}
+
+/**
+ * Extract each parenthetical's raw (pre-normalization) content, skipping
+ * abbreviation shorthand and stripping conventional prefixes. Mirrors the
+ * skip-rules in extractParentheticalNames, but returns the ORIGINAL casing
+ * and punctuation for use in output (preserved-modifier append).
+ */
+function extractRawParentheticals(text: string): string[] {
+  const out: string[] = [];
+  const re = /\(([^)]+)\)/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    let content = m[1].trim();
+    // Skip pure abbreviations (all caps, <6 chars) — those are alias shorthand.
+    if (/^[A-Z0-9]{1,6}$/.test(content)) continue;
+    content = content.replace(/^e\.?g\.?,?\s*/i, '');
+    content = content.replace(/^(?:formerly|previously|also\s+known\s+as|aka)\s+/i, '');
+    if (content.length > 3) out.push(content);
+  }
+  return out;
 }
 
 /**

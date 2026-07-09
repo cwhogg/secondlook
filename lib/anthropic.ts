@@ -73,6 +73,21 @@ export async function callAnthropic(options: AnthropicCallOptions): Promise<Anth
 
   const tokensUsed = (data.usage?.input_tokens || 0) + (data.usage?.output_tokens || 0);
 
+  // Surface silent max_tokens truncation as a first-class failure. Opus 4.8
+  // occasionally hits the maxTokens ceiling on large synthesis prompts and
+  // returns a mid-object cut. Downstream JSON.parse then throws generic
+  // "got string" errors, hiding the root cause. Log + throw here so the
+  // agent-level error message points at the actual issue.
+  if (data.stop_reason === 'max_tokens') {
+    console.error('[callAnthropic] response truncated by max_tokens', {
+      model: data.model || model,
+      maxTokens,
+      outputTokens: data.usage?.output_tokens,
+      rawTail: rawText.slice(-300),
+    });
+    throw new Error(`Anthropic response truncated: hit max_tokens=${maxTokens} on ${data.model || model} (output_tokens=${data.usage?.output_tokens})`);
+  }
+
   // Extract JSON from response — handles both raw JSON and markdown-fenced
   let content: any;
   try {

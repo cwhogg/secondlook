@@ -101,7 +101,9 @@ export class ClaudeEvaluatorAgent {
     const result = await callAnthropic({
       systemPrompt: buildEvidenceEvaluatorPrompt(),
       userPrompt,
-      maxTokens: 16000,
+      // Opus 4.8 runs more verbose evaluations than 4.7 on rich hypothesis
+      // pools; 16k occasionally truncates mid-object. Opus 4.x supports 32k.
+      maxTokens: 32000,
       model: CLAUDE_EVALUATOR_MODEL,
     });
 

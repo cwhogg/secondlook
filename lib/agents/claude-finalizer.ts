@@ -380,9 +380,9 @@ export class ClaudeFinalizerAgent {
     const result = await callAnthropic({
       systemPrompt: CLAUDE_FINALIZER_SYSTEM_PROMPT,
       userPrompt,
-      // Bumped from 12000: finalizer now ingests Claude's FULL ranking (was
-      // top-10) plus the critique. Output stays at 10, but the input grows.
-      maxTokens: 16000,
+      // Bumped from 12000 for v17 full-ranking ingestion; bumped to 32000 for
+      // Opus 4.8 verbosity headroom (same reason as evaluator + synthesizer).
+      maxTokens: 32000,
       model: CLAUDE_FINALIZER_MODEL,
     });
 

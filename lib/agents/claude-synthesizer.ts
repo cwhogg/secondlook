@@ -101,9 +101,10 @@ export class ClaudeSynthAgent {
     const result = await callAnthropic({
       systemPrompt: buildClaudeSystemPrompt(),
       userPrompt,
-      // Bumped from 12000 to 18000 because v17+ asks Claude to rank ALL
-      // evaluated hypotheses (was top-10 only) — output grows ~80% per case.
-      maxTokens: 18000,
+      // Bumped from 12000 to 18000 for v17 full-ranking; bumped again to 32000
+      // for Opus 4.8, which reasons more verbosely per hypothesis and hit
+      // max_tokens truncation on the 18k ceiling in real prod cases.
+      maxTokens: 32000,
       model: CLAUDE_SYNTH_MODEL,
     });
 

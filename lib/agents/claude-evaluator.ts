@@ -25,7 +25,7 @@ import type { DiseaseMatch, DiseaseProfile } from '../types/knowledge-base';
 import { callAnthropic } from '../anthropic';
 import { setLogContext } from '../pipeline/llm-call-log';
 
-const CLAUDE_EVALUATOR_MODEL = 'claude-opus-4-7';
+const CLAUDE_EVALUATOR_MODEL = 'claude-opus-4-8';
 
 /**
  * Tell Claude what JSON shape to produce. Mirrors the OpenAI tool-call schema

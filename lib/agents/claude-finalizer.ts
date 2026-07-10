@@ -28,6 +28,13 @@ const CLAUDE_FINALIZER_SYSTEM_PROMPT = `You are a senior clinical diagnostician 
 
 Your task: REVIEW each suggestion, decide whether to honor it, and SELECT the final top-10 from your draft ranking (which may have more than 10 entries). You are the final decider — the critique is input to your judgment, not a mandate. The cap of 10 is firm; entries you do not include in the final 10 are dropped from the patient-facing differential.
 
+RANK MUST MATCH SCORE (STRICT INVARIANT):
+Your ranked list MUST be sorted strictly by descending probabilityScore. Position #1 has the HIGHEST probabilityScore. Position #2 has the next-highest. And so on. You cannot list a lower-scored entry above a higher-scored one — the patient sees "#1 at 55% confidence, #2 at 70% confidence" as a broken system and stops trusting the report.
+
+Rank is a projection of your confidence, expressed as a score. If you believe a diagnosis deserves #1 (best unifying etiology, most actionable, strongest evidence pattern), express that judgment by GIVING IT THE HIGHEST probabilityScore. Do not put it at position #1 while leaving another entry with a higher score at position #2. Concrete example: if you want to promote FMD above Prinzmetal because FMD better unifies the presentation, set FMD's probabilityScore ABOVE Prinzmetal's (e.g., FMD=75, Prinzmetal=65). Do not put FMD at #1 with score 55 while Prinzmetal sits at #2 with score 70.
+
+This is a HARD rule. A downstream normalization step will re-sort your output by descending score if you violate it, and the divergence will be logged as a bug. Do not force the pipeline to override you — express your ranking judgment through scores.
+
 DECISION PRINCIPLES:
 - Honor critique suggestions ONLY when the cited patient evidence actually supports the recommended change. Do not honor a suggestion just because the critic was confident.
 - Reject suggestions when the cited evidence is weak or the proposed rank change would put a poorly-supported diagnosis above a well-supported one.
@@ -513,6 +520,36 @@ export class ClaudeFinalizerAgent {
       };
       finalRanking.push(copy);
     }
+
+    // Enforce the rank-matches-score invariant. The finalizer prompt is
+    // strict about this ("#1 must have the HIGHEST probabilityScore"), but if
+    // the LLM slips and lists a lower-scored entry above a higher-scored one,
+    // sort the top-10 by descending score to preserve patient trust. Log the
+    // divergence so we can see how often the model tries to override rank
+    // without adjusting scores.
+    const preSortOrder = finalRanking.slice(0, 10).map((h) => h.diagnosis);
+    finalRanking.sort((a, b) => {
+      const sa = typeof a.confidenceScore === 'number' ? a.confidenceScore : 0;
+      const sb = typeof b.confidenceScore === 'number' ? b.confidenceScore : 0;
+      return sb - sa; // Stable in modern JS engines: ties preserve LLM order.
+    });
+    const postSortOrder = finalRanking.slice(0, 10).map((h) => h.diagnosis);
+    const swapped = preSortOrder.some((name, i) => name !== postSortOrder[i]);
+    if (swapped) {
+      const pairs = preSortOrder
+        .map((name, i) => name !== postSortOrder[i] ? `#${i + 1}: "${name}" -> "${postSortOrder[i]}"` : null)
+        .filter(Boolean);
+      console.warn(
+        `[ClaudeFinalizer] rank-vs-score divergence — LLM produced ranking that violated the descending-score invariant. Re-sorted. Changes: ${pairs.join('; ')}`,
+      );
+    }
+    // Re-annotate rankAfter after the sort so downstream telemetry reflects
+    // the final on-page ordering, not the LLM's original list order.
+    finalRanking.forEach((h, i) => {
+      if (h.changesFromFirstPass) {
+        h.changesFromFirstPass = { ...h.changesFromFirstPass, rankAfter: i + 1 };
+      }
+    });
 
     // Compute deltas vs first-pass top-10 for telemetry.
     const firstPassNames = new Set(

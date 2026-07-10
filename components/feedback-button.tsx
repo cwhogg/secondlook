@@ -165,7 +165,7 @@ export function FeedbackButton() {
           never stacks on top of a "Get Your Analysis" button. */}
       <div
         className={cn(
-          "fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 pb-safe",
+          "fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 pb-safe print:hidden",
           "transition-all duration-200",
           ctaVisible
             ? "opacity-0 translate-y-2 pointer-events-none"

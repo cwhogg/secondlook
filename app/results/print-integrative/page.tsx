@@ -54,26 +54,71 @@ export default function IntegrativePrintPage() {
         }
         @media print {
           html, body { background: white !important; }
+          /* Belt + suspenders: hide any fixed floating UI (feedback pill,
+             toasts, overlays) that might survive into the print DOM. */
+          body [class*="fixed bottom"],
+          body [class*="fixed top"],
+          body [role="dialog"] { display: none !important; }
+
           .print-integrative {
             font-family: Georgia, "Times New Roman", serif;
             color: #1e293b;
             font-size: 10.5pt;
-            line-height: 1.5;
+            line-height: 1.55;
           }
-          .print-integrative h1 { font-size: 20pt; margin: 0 0 6pt; }
-          .print-integrative h2 { font-size: 14pt; margin: 14pt 0 6pt; break-after: avoid; }
-          .print-integrative .header { border-bottom: 2px solid #334155; padding-bottom: 8pt; margin-bottom: 12pt; }
-          .print-integrative .subtag { font-size: 9pt; text-transform: uppercase; letter-spacing: 0.05em; color: #92400e; margin-bottom: 4pt; }
-          .print-integrative .disclaimer { background: #fef3c7; border: 1px solid #fcd34d; padding: 8pt 10pt; margin: 10pt 0; font-size: 9.5pt; break-inside: avoid; }
-          .print-integrative .card { border: 1px solid #cbd5e1; padding: 10pt; margin-bottom: 8pt; break-inside: avoid; }
-          .print-integrative .card .label { font-size: 9pt; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
-          .print-integrative .card .title { font-weight: 600; font-size: 11pt; margin: 2pt 0; }
-          .print-integrative .card .rationale { color: #334155; margin-top: 3pt; }
-          .print-integrative .card .meta { color: #64748b; font-size: 9pt; margin-top: 4pt; }
-          .print-integrative .footer { border-top: 1px solid #cbd5e1; margin-top: 20pt; padding-top: 8pt; font-size: 9pt; color: #64748b; }
-          .print-integrative section { margin-bottom: 12pt; }
-          .print-integrative ul { padding-left: 14pt; margin: 4pt 0; }
-          .print-integrative li { margin: 2pt 0; break-inside: avoid; }
+          .print-integrative h1 { font-size: 22pt; margin: 0 0 6pt; letter-spacing: -0.01em; }
+          .print-integrative h2 { font-size: 15pt; margin: 0 0 10pt; break-after: avoid; letter-spacing: -0.005em; color: #0f172a; }
+          .print-integrative .header { border-bottom: 2px solid #334155; padding-bottom: 10pt; margin-bottom: 14pt; }
+          .print-integrative .subtag { font-size: 9pt; text-transform: uppercase; letter-spacing: 0.06em; color: #92400e; margin-bottom: 5pt; font-weight: 600; }
+          .print-integrative .disclaimer { background: #fef3c7; border: 1px solid #fcd34d; padding: 10pt 12pt; margin: 10pt 0 14pt; font-size: 9.5pt; break-inside: avoid; }
+          .print-integrative .footer { border-top: 1px solid #cbd5e1; margin-top: 20pt; padding-top: 10pt; font-size: 9pt; color: #64748b; break-inside: avoid; }
+
+          /* Each MAJOR section starts on a fresh page except the first (which
+             sits on page 1 under the header + disclaimer). */
+          .print-integrative section { margin: 0; }
+          .print-integrative section + section { break-before: page; page-break-before: always; }
+
+          /* Merged-list item cards (Tests + Interventions on the main sheet) */
+          .print-integrative .list-item {
+            break-inside: avoid;
+            padding: 8pt 10pt 8pt 12pt;
+            border-left: 3pt solid #cbd5e1;
+            margin-bottom: 8pt;
+            background: #f8fafc;
+          }
+          .print-integrative .list-item .item-head { display: flex; align-items: baseline; gap: 6pt; margin-bottom: 2pt; }
+          .print-integrative .list-item .item-title { font-weight: 700; font-size: 11pt; color: #0f172a; }
+          .print-integrative .list-item .item-rationale { font-size: 10pt; color: #334155; margin-top: 3pt; }
+          .print-integrative .list-item .item-meta { font-size: 9pt; color: #64748b; margin-top: 4pt; font-style: italic; }
+          .print-integrative .chip {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            font-size: 8pt;
+            font-weight: 700;
+            padding: 1pt 6pt;
+            border-radius: 8pt;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            vertical-align: middle;
+          }
+
+          /* Practitioner cards — each on its own page for readability. */
+          .print-integrative .practitioner-card {
+            padding: 12pt;
+            border: 1pt solid #cbd5e1;
+            border-left: 4pt solid #8b7355;
+            background: #fafaf7;
+            break-inside: avoid;
+          }
+          .print-integrative section .practitioner-card + .practitioner-card { break-before: page; page-break-before: always; }
+          .print-integrative .practitioner-card .prac-header { font-size: 10pt; color: #78716c; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; margin-bottom: 6pt; }
+          .print-integrative .practitioner-card .prac-hypothesis { font-weight: 600; font-size: 12pt; color: #0f172a; margin-bottom: 6pt; line-height: 1.4; }
+          .print-integrative .practitioner-card .prac-reasoning { font-size: 10pt; color: #334155; margin-bottom: 10pt; }
+          .print-integrative .practitioner-card .sub-label { font-size: 9pt; color: #57534e; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; margin: 8pt 0 5pt; break-after: avoid; }
+          .print-integrative .practitioner-card .sub-item { padding: 5pt 0 5pt 10pt; border-left: 2pt solid #d6d3d1; margin-bottom: 4pt; break-inside: avoid; }
+          .print-integrative .practitioner-card .sub-item-title { font-weight: 600; font-size: 10pt; color: #1c1917; }
+          .print-integrative .practitioner-card .sub-item-rationale { font-size: 9.5pt; color: #57534e; margin-top: 2pt; }
         }
       `}</style>
 
@@ -103,10 +148,12 @@ export default function IntegrativePrintPage() {
           Many of these are ordered outside standard-of-care and may be self-pay. Ask a licensed practitioner in the relevant tradition to interpret results.
         </div>
         {analysis.mergedTests.map((t, i) => (
-          <div key={i} className="card">
-            <div className="title">{t.name}</div>
-            {t.rationale && <div className="rationale">{t.rationale}</div>}
-            {t.practitionerType && <div className="meta">Typically ordered by: {t.practitionerType}</div>}
+          <div key={i} className="list-item">
+            <div className="item-head">
+              <span className="item-title">{t.name}</span>
+            </div>
+            {t.rationale && <div className="item-rationale">{t.rationale}</div>}
+            {t.practitionerType && <div className="item-meta">Typically ordered by: {t.practitionerType}</div>}
           </div>
         ))}
       </section>
@@ -117,11 +164,13 @@ export default function IntegrativePrintPage() {
           These are things to explore with a licensed practitioner. Nothing here should be started without discussing with your physician — especially if you take prescription medications.
         </div>
         {analysis.mergedInterventions.map((v, i) => (
-          <div key={i} className="card">
-            <div className="label">{CATEGORY_LABELS[v.category] || v.category}</div>
-            <div className="title">{v.name}</div>
-            {v.rationale && <div className="rationale">{v.rationale}</div>}
-            {v.toDiscussWith && <div className="meta">Discuss with: {v.toDiscussWith}</div>}
+          <div key={i} className="list-item">
+            <div className="item-head">
+              <span className="chip">{CATEGORY_LABELS[v.category] || v.category}</span>
+              <span className="item-title">{v.name}</span>
+            </div>
+            {v.rationale && <div className="item-rationale">{v.rationale}</div>}
+            {v.toDiscussWith && <div className="item-meta">Discuss with: {v.toDiscussWith}</div>}
           </div>
         ))}
       </section>
@@ -129,30 +178,33 @@ export default function IntegrativePrintPage() {
       <section>
         <h2>Individual practitioner perspectives</h2>
         {ordered.map((s) => (
-          <div key={s.specialty} className="card">
-            <div className="label">{s.displayName}</div>
-            <div className="title" style={{ fontSize: "11.5pt", margin: "3pt 0 4pt" }}>{s.rootCauseHypothesis}</div>
-            {s.reasoning && (
-              <div style={{ fontSize: "10pt", color: "#334155", marginBottom: "4pt" }}>{s.reasoning}</div>
-            )}
+          <div key={s.specialty} className="practitioner-card">
+            <div className="prac-header">{s.displayName}</div>
+            <div className="prac-hypothesis">{s.rootCauseHypothesis}</div>
+            {s.reasoning && <div className="prac-reasoning">{s.reasoning}</div>}
             {s.recommendedTests.length > 0 && (
               <>
-                <div className="label" style={{ marginTop: "4pt" }}>Tests to consider</div>
-                <ul>
-                  {s.recommendedTests.map((t, i) => (
-                    <li key={i}>{t.name}{t.rationale ? ` — ${t.rationale}` : ""}</li>
-                  ))}
-                </ul>
+                <div className="sub-label">Tests to consider</div>
+                {s.recommendedTests.map((t, i) => (
+                  <div key={i} className="sub-item">
+                    <div className="sub-item-title">{t.name}</div>
+                    {t.rationale && <div className="sub-item-rationale">{t.rationale}</div>}
+                  </div>
+                ))}
               </>
             )}
             {s.interventions.length > 0 && (
               <>
-                <div className="label">Interventions to explore</div>
-                <ul>
-                  {s.interventions.map((v, i) => (
-                    <li key={i}>[{CATEGORY_LABELS[v.category] || v.category}] {v.name}{v.rationale ? ` — ${v.rationale}` : ""}</li>
-                  ))}
-                </ul>
+                <div className="sub-label">Interventions to explore</div>
+                {s.interventions.map((v, i) => (
+                  <div key={i} className="sub-item">
+                    <div className="sub-item-title">
+                      <span className="chip" style={{ marginRight: "6pt" }}>{CATEGORY_LABELS[v.category] || v.category}</span>
+                      {v.name}
+                    </div>
+                    {v.rationale && <div className="sub-item-rationale">{v.rationale}</div>}
+                  </div>
+                ))}
               </>
             )}
           </div>

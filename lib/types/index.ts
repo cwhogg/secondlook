@@ -166,6 +166,12 @@ export interface EvidenceScoreBreakdown {
 
 export interface DiagnosisHypothesis {
   diagnosis: string;
+  // Patient-facing display label. Populated at dedup time from the richest
+  // specialist variant that fed into this group. Rendering ONLY — no pipeline
+  // stage reads or acts on this field (evaluator, synth, critic, finalizer
+  // continue to use `diagnosis` for logic and label-matching). Falls back to
+  // `diagnosis` at render time when absent.
+  displayName?: string;
   icd10Code?: string;
   omimId?: string;
   orphanetId?: string;

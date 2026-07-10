@@ -90,6 +90,44 @@ function levenshtein(a: string, b: string): number {
   return dp[n];
 }
 
+/**
+ * Pick the richest patient-facing display label from the specialist variants
+ * that fed this group. Used ONLY for rendering — the pipeline continues to
+ * use the canonical `diagnosis` field for all logic (KB lookup, evaluator,
+ * critic label-matching, benchmark grading). See DiagnosisHypothesis.displayName
+ * in lib/types/index.ts.
+ *
+ * Heuristic: prefer variants with parenthetical modifiers (etiology, subtype,
+ * criteria refs), then dual-naming patterns ("ME / CFS"), then length. Cap at
+ * 130 chars to keep the results-page cards readable.
+ */
+function pickDisplayName(variants: string[]): string | undefined {
+  if (!variants.length) return undefined;
+  const MAX_LEN = 130;
+  const scored = variants.map((v) => {
+    const t = v.trim();
+    const hasParen = /\([^)]{4,}\)/.test(t);
+    const hasDualNaming = /\s\/\s|\swith\s|\sspectrum\b/i.test(t);
+    const hasEtiologyMarker = /post-|onset|-related|-associated|deficiency|criteria|fulfilling/i.test(t);
+    // Bias score toward richer variants but not runaway length.
+    const score =
+      (hasParen ? 3 : 0)
+      + (hasDualNaming ? 2 : 0)
+      + (hasEtiologyMarker ? 1 : 0)
+      + Math.min(t.length, MAX_LEN) / 40;
+    return { text: t, score, length: t.length };
+  });
+  scored.sort((a, b) => {
+    if (a.score !== b.score) return b.score - a.score;
+    return b.length - a.length;
+  });
+  const winner = scored[0].text;
+  if (winner.length <= MAX_LEN) return winner;
+  // Prefer a shorter runner-up over truncating mid-word.
+  const shorterAlt = scored.find((s) => s.length <= MAX_LEN);
+  return shorterAlt ? shorterAlt.text : winner.slice(0, MAX_LEN - 1) + '…';
+}
+
 function pickCanonicalName(variants: string[]): { canonical: string; chosenBy: 'kb-anchor' | 'specialist-consensus' | 'shortest' } {
   const baseResult = pickBaseCanonicalName(variants);
   // Preserve a shared clinical modifier (post-COVID onset, late-onset,
@@ -327,9 +365,18 @@ export function dedupAndNormalizeHypotheses(
 
     const sourceAgents = contributingSpecialists;
 
+    // Patient-facing display label. Rendering ONLY — no downstream stage
+    // depends on this field. Suppress if it would just duplicate the
+    // canonical `diagnosis` (case-insensitive whitespace-normalized match).
+    const displayNamePick = pickDisplayName(variants);
+    const displayName = displayNamePick && normalize(displayNamePick) !== normalize(canonical)
+      ? displayNamePick
+      : undefined;
+
     merged.push({
       ...rep,
       diagnosis: canonical,
+      displayName,
       confidenceScore: Math.max(...g.members.map((m) => m.confidenceScore || 0)),
       evidenceScore: Math.max(...g.members.map((m) => m.evidenceScore || 0)),
       supportingEvidence: supportingMerged,

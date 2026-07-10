@@ -98,7 +98,9 @@ export default function AnalysisResultsPage() {
         // Transform API response format into the shape this page expects
         if (raw.differentialDiagnoses && !raw.conditions) {
           const conditions = (raw.differentialDiagnoses || []).map((d: any) => ({
-            name: d.diagnosis || "Unknown condition",
+            // Prefer the specialist-rich displayName (set at dedup time from
+            // the richest variant); fall back to canonical diagnosis.
+            name: d.displayName || d.diagnosis || "Unknown condition",
             confidence: (d.confidenceScore || 0) / 100,
             severity: d.confidenceScore >= 60 ? "high" : d.confidenceScore >= 30 ? "moderate" : "low",
             icdCode: d.icd10Code || "N/A",

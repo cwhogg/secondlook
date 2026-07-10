@@ -147,7 +147,7 @@ export type PipelineProgress =
       percentage: number;
       detail: string;
       data: {
-        topDiagnoses: Array<{ diagnosis: string; probabilityScore: number }>;
+        topDiagnoses: Array<{ diagnosis: string; displayName?: string; probabilityScore: number }>;
         consensusLevel: string;
       };
     }

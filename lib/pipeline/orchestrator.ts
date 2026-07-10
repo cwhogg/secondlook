@@ -804,7 +804,7 @@ export class DiagnosticPipeline {
         detail: `Final ranking complete — ${finalRanking.length} diagnoses ranked`,
         percentage: 88,
         data: {
-          topDiagnoses: finalRanking.slice(0, 10).map((h) => ({ diagnosis: h.diagnosis, probabilityScore: h.confidenceScore })),
+          topDiagnoses: finalRanking.slice(0, 10).map((h) => ({ diagnosis: h.diagnosis, displayName: h.displayName, probabilityScore: h.confidenceScore })),
           consensusLevel: synthData_.consensusLevel || 'moderate',
         },
       });

@@ -22,6 +22,7 @@ interface EvidenceItem {
 
 interface DiagnosisHypothesis {
   diagnosis: string
+  displayName?: string
   confidenceScore?: number
   evidenceScore?: number
   icd10Code?: string
@@ -633,7 +634,7 @@ export default function PrintReportPage() {
                       )}
                     </div>
                     <h3 className="font-bold text-[#1a1a1a] text-xl sm:text-[1.4rem] leading-tight">
-                      {top.diagnosis}
+                      {top.displayName || top.diagnosis}
                     </h3>
                   </div>
                   <div className="text-right shrink-0">
@@ -732,7 +733,7 @@ export default function PrintReportPage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-bold text-[#1a1a1a] text-[15px] sm:text-base leading-snug">
-                          {d.diagnosis}
+                          {d.displayName || d.diagnosis}
                         </h3>
                         <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[11px] text-gray-600 font-sans mt-0.5 mb-1">
                           {d.icd10Code && <span>ICD-10 {d.icd10Code}</span>}

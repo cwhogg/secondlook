@@ -30,6 +30,7 @@ interface ClarifyingQuestion {
 
 interface DiagnosisLike {
   diagnosis: string
+  displayName?: string
   confidenceScore?: number
   evidenceScore?: number
   icd10Code?: string
@@ -445,7 +446,7 @@ function RefinedDiagnosesView({ analysis }: { analysis: StoredAnalysis }) {
                 <div className="flex-1 min-w-0">
                   <div className="text-xs text-gray-500 font-semibold mb-0.5">#{i + 1}</div>
                   <h3 className="text-base sm:text-lg font-bold text-gray-900 leading-tight">
-                    {d.diagnosis}
+                    {d.displayName || d.diagnosis}
                   </h3>
                   {d.icd10Code && (
                     <div className="text-xs text-gray-500 mt-0.5">ICD-10: {d.icd10Code}</div>

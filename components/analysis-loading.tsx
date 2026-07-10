@@ -367,7 +367,7 @@ function SynthesisData({
                 {i + 1}.
               </span>
               <span className="text-xs text-gray-700 leading-snug line-clamp-2">
-                {d.diagnosis}
+                {d.displayName || d.diagnosis}
               </span>
             </div>
             <div className="pl-4">

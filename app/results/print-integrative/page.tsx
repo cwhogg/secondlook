@@ -131,7 +131,7 @@ export default function IntegrativePrintPage() {
       </div>
 
       <div className="disclaimer">
-        <strong>Please read:</strong> This is a complementary view, not a diagnosis and not medical advice. Bring the clinical differential (from your regular SecondLook report) to your primary care physician first. Discuss any tests or interventions below with a licensed practitioner in the relevant tradition — and with your doctor — before acting on them. <strong>Do not delay, avoid, or stop conventional medical care based on this report.</strong> Botanicals and supplements can interact with prescription medications; disclose everything to your prescriber.
+        <strong>Please read:</strong> This is a complementary view, not a diagnosis and not medical advice. Discuss any tests or interventions below with a licensed practitioner in the relevant tradition — and with your doctor — before acting on them. <strong>Do not delay, avoid, or stop conventional medical care based on this report.</strong> Botanicals and supplements can interact with prescription medications; disclose everything to your prescriber.
       </div>
 
       <section>

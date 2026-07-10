@@ -141,7 +141,7 @@ export default function IntegrativeResultsPage({ params }: { params: { requestId
           <div className="flex items-start gap-3">
             <Info className="h-5 w-5 text-amber-800 shrink-0 mt-0.5" />
             <div className="text-sm text-amber-900 leading-relaxed">
-              <strong>Please read before continuing:</strong> This is a <em>complementary view</em>, not a diagnosis and not medical advice. Bring the clinical differential (from your regular SecondLook report) to your primary care physician first. Discuss any tests or interventions below with a licensed practitioner in the relevant tradition — and with your doctor — before acting on them. <strong>Do not delay, avoid, or stop conventional medical care based on this report.</strong> Botanicals and supplements can interact with prescription medications; disclose everything to your prescriber.
+              <strong>Please read before continuing:</strong> This is a <em>complementary view</em>, not a diagnosis and not medical advice. Discuss any tests or interventions below with a licensed practitioner in the relevant tradition — and with your doctor — before acting on them. <strong>Do not delay, avoid, or stop conventional medical care based on this report.</strong> Botanicals and supplements can interact with prescription medications; disclose everything to your prescriber.
             </div>
           </div>
         </div>

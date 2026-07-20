@@ -119,8 +119,16 @@ export interface SessionRecord {
 const MAX_EVENTS_PER_RECORD = 200;
 
 function recomputeDerived(record: SessionRecord): SessionRecord {
-  let furthest: StepIndex = 0;
-  let last: StepIndex = 0;
+  // furthestStep / lastStep / totalTimeMs are monotonic high-water marks,
+  // NOT pure functions of the current event window. The event log is
+  // trimmed to the last MAX_EVENTS_PER_RECORD entries, and a long-lived
+  // tab emits a heartbeat every 30s — so a multi-hour session evicts every
+  // step-bearing event, leaving a window of pure heartbeats. Recomputing
+  // from that window alone collapses the derived step back to 0 ("Homepage")
+  // even though the visitor completed the flow. Seed each accumulator from
+  // the record's existing value so derived state can only ever advance.
+  let furthest: StepIndex = record.furthestStep ?? 0;
+  let last: StepIndex = record.lastStep ?? 0;
   let firstTs: number | null = null;
   let lastTs: number | null = null;
 
@@ -132,15 +140,22 @@ function recomputeDerived(record: SessionRecord): SessionRecord {
     }
     if (typeof ev.step === 'number') {
       if (ev.step > furthest) furthest = ev.step as StepIndex;
-      last = ev.step as StepIndex;
+      if (ev.step > last) last = ev.step as StepIndex;
     }
     if (ev.type === 'analysis-start' && (last as number) < 7) last = 7;
     if (ev.type === 'analysis-complete') {
-      last = 8;
+      if ((last as number) < 8) last = 8;
       if ((furthest as number) < 8) furthest = 8;
     }
   }
-  const totalTimeMs = firstTs !== null && lastTs !== null ? Math.max(0, lastTs - firstTs) : 0;
+  // Prefer the full lifetime (createdAt → lastActiveAt), which survives log
+  // trimming, over the span of the surviving event window; never regress.
+  const windowSpan = firstTs !== null && lastTs !== null ? Math.max(0, lastTs - firstTs) : 0;
+  const lifetime = Math.max(
+    0,
+    (Date.parse(record.lastActiveAt) || 0) - (Date.parse(record.createdAt) || 0),
+  );
+  const totalTimeMs = Math.max(record.totalTimeMs || 0, windowSpan, lifetime);
   return { ...record, furthestStep: furthest, lastStep: last, totalTimeMs };
 }
 

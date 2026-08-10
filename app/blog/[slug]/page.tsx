@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import { ArrowLeft, ArrowRight, ShieldCheck } from "lucide-react"
 import { getAllContent, getContentBySlug } from "@/lib/content"
 import { markdownToHtml } from "@/lib/markdown"
 
@@ -36,7 +36,20 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   }
 }
 
-function buildJsonLd(piece: { title: string; description: string; date: string; lastModified: string; type: string; slug: string; content: string }) {
+function buildJsonLd(piece: {
+  title: string
+  description: string
+  date: string
+  lastModified: string
+  type: string
+  slug: string
+  content: string
+  author: string
+  authorTitle?: string
+  reviewedBy?: string
+  reviewerTitle?: string
+  reviewedDate?: string
+}) {
   const siteUrl = "https://www.secondlookdx.com"
   const url = `${siteUrl}/blog/${piece.slug}`
 
@@ -85,6 +98,36 @@ function buildJsonLd(piece: { title: string; description: string; date: string; 
     }
   }
 
+  // A named author with a title is modeled as a credited Person (the E-E-A-T
+  // signal Google wants for health content); otherwise org authorship.
+  const authorNode = piece.authorTitle
+    ? { "@type": "Person", name: piece.author, jobTitle: piece.authorTitle }
+    : { "@type": "Organization", name: piece.author, url: siteUrl }
+
+  const publisher = {
+    "@type": "Organization",
+    name: "SecondLook",
+    url: siteUrl,
+    logo: { "@type": "ImageObject", url: `${siteUrl}/apple-icon.png` },
+  }
+
+  // For medical content, a MedicalWebPage node carrying reviewedBy +
+  // lastReviewed is the schema-correct place for the review signal; fall
+  // back to a plain WebPage when the post hasn't been reviewed.
+  const pageNode: Record<string, unknown> = piece.reviewedBy
+    ? {
+        "@type": "MedicalWebPage",
+        "@id": url,
+        url,
+        lastReviewed: piece.reviewedDate || piece.lastModified,
+        reviewedBy: {
+          "@type": "Person",
+          name: piece.reviewedBy,
+          ...(piece.reviewerTitle ? { jobTitle: piece.reviewerTitle } : {}),
+        },
+      }
+    : { "@type": "WebPage", "@id": url, url }
+
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -96,21 +139,11 @@ function buildJsonLd(piece: { title: string; description: string; date: string; 
         image: `${siteUrl}/blog/${piece.slug}/opengraph-image`,
         datePublished: piece.date,
         dateModified: piece.lastModified,
-        author: {
-          "@type": "Organization",
-          name: "SecondLook",
-          url: siteUrl,
-        },
-        publisher: {
-          "@type": "Organization",
-          name: "SecondLook",
-          url: siteUrl,
-        },
-        mainEntityOfPage: {
-          "@type": "WebPage",
-          "@id": url,
-        },
+        author: authorNode,
+        publisher,
+        mainEntityOfPage: { "@id": url },
       },
+      pageNode,
       {
         "@type": "BreadcrumbList",
         itemListElement: [
@@ -202,6 +235,10 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 </time>
               </span>
             )}
+            <span className="text-sm text-gray-500">
+              · By {piece.author}
+              {piece.authorTitle && <span className="text-gray-400">, {piece.authorTitle}</span>}
+            </span>
           </div>
           <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight mb-4">
             <span className="text-[#1a1a1a]">
@@ -210,6 +247,21 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           </h1>
           {piece.description && (
             <p className="text-xl text-gray-600 leading-relaxed">{piece.description}</p>
+          )}
+          {piece.reviewedBy && (
+            <div className="mt-5 flex items-start gap-2.5 border-l-2 border-emerald-500 bg-emerald-50/60 px-4 py-2.5 text-sm text-gray-700">
+              <ShieldCheck className="h-4 w-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+              <span>
+                <span className="font-semibold text-gray-900">Medically reviewed</span> by{" "}
+                {piece.reviewedBy}
+                {piece.reviewerTitle && `, ${piece.reviewerTitle}`}
+                {piece.reviewedDate &&
+                  ` · ${new Date(piece.reviewedDate).toLocaleDateString("en-US", {
+                    month: "long",
+                    year: "numeric",
+                  })}`}
+              </span>
+            </div>
           )}
         </header>
 

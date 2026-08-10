@@ -95,6 +95,18 @@ export default function AdminSessionsPage() {
   // Aggregates
   const stats = useMemo(() => computeStats(records), [records])
 
+  // Display order: newest session first, by the "Started" timestamp shown
+  // in the table. The API returns rows ordered by the sorted-set index
+  // (scored on lastActiveAt), which doesn't match the createdAt column, so
+  // sort explicitly here.
+  const sortedRecords = useMemo(
+    () =>
+      [...records].sort(
+        (a, b) => (Date.parse(b.createdAt) || 0) - (Date.parse(a.createdAt) || 0),
+      ),
+    [records],
+  )
+
   if (!authChecked) {
     return (
       <div className="min-h-screen flex items-center justify-center text-gray-500">
@@ -184,7 +196,7 @@ export default function AdminSessionsPage() {
 
         {/* Session table */}
         <SessionTable
-          records={records}
+          records={sortedRecords}
           password={password}
           onDeleted={(id) => setRecords((prev) => prev.filter((r) => r.id !== id))}
         />

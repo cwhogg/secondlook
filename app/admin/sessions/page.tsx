@@ -369,8 +369,12 @@ function reachedByDay(
     })
 }
 
+const BAR_AREA_PX = 130
+
 function StepByDay({ records, step }: { records: SessionRecord[]; step: StepIndex }) {
-  const rows = useMemo(() => reachedByDay(records, step), [records, step])
+  // reachedByDay returns newest-first; reverse to chronological (oldest →
+  // newest, left → right) so the vertical chart reads as a time trend.
+  const rows = useMemo(() => reachedByDay(records, step).reverse(), [records, step])
   const max = rows.reduce((m, r) => Math.max(m, r.count), 0) || 1
   const total = rows.reduce((s, r) => s + r.count, 0)
   return (
@@ -381,20 +385,22 @@ function StepByDay({ records, step }: { records: SessionRecord[]; step: StepInde
       {rows.length === 0 ? (
         <div className="text-xs text-gray-400">No sessions reached this step.</div>
       ) : (
-        <div className="space-y-1 max-h-64 overflow-y-auto pr-2">
+        <div className="flex items-end gap-1.5 overflow-x-auto pb-1">
           {rows.map((r) => (
-            <div key={r.key} className="flex items-center gap-2">
-              <div className="text-[11px] text-gray-600 w-14 flex-shrink-0 tabular-nums text-right">
-                {r.label}
-              </div>
-              <div className="flex-1 h-4 bg-gray-100 relative">
-                <div
-                  className="h-full bg-[#8b2500]"
-                  style={{ width: `${((r.count / max) * 100).toFixed(1)}%` }}
-                />
-              </div>
-              <div className="text-[11px] text-gray-700 w-8 flex-shrink-0 tabular-nums">
+            <div
+              key={r.key}
+              className="flex flex-col items-center justify-end flex-shrink-0"
+              title={`${r.label}: ${r.count}`}
+            >
+              <div className="text-[10px] text-gray-700 tabular-nums mb-0.5 leading-none">
                 {r.count}
+              </div>
+              <div
+                className="w-6 bg-[#8b2500]"
+                style={{ height: `${Math.max(2, Math.round((r.count / max) * BAR_AREA_PX))}px` }}
+              />
+              <div className="text-[10px] text-gray-500 mt-1 tabular-nums leading-none">
+                {r.label}
               </div>
             </div>
           ))}

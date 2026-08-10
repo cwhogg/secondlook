@@ -192,7 +192,7 @@ export default function AdminSessionsPage() {
         <SummaryCards stats={stats} />
 
         {/* Funnel */}
-        <FunnelChart stats={stats} />
+        <FunnelChart stats={stats} records={records} />
 
         {/* Session table */}
         <SessionTable
@@ -341,7 +341,71 @@ function MetricCard({ label, value }: { label: string; value: string }) {
 
 // ================== funnel visualization ==================
 
-function FunnelChart({ stats }: { stats: Stats }) {
+/**
+ * Count sessions that reached `step` (furthestStep >= step), bucketed by
+ * the local calendar day of createdAt. Returned newest day first. Keyed on
+ * a sortable ISO-ish local date so ordering is locale-independent; the
+ * display label is derived separately.
+ */
+function reachedByDay(
+  records: SessionRecord[],
+  step: StepIndex,
+): Array<{ key: string; label: string; count: number }> {
+  const map = new Map<string, number>()
+  for (const r of records) {
+    if (r.furthestStep < step) continue
+    const d = new Date(r.createdAt)
+    if (isNaN(d.getTime())) continue
+    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(
+      d.getDate(),
+    ).padStart(2, "0")}`
+    map.set(key, (map.get(key) || 0) + 1)
+  }
+  return Array.from(map.entries())
+    .sort((a, b) => (a[0] < b[0] ? 1 : a[0] > b[0] ? -1 : 0))
+    .map(([key, count]) => {
+      const [, m, day] = key.split("-")
+      return { key, label: `${parseInt(m, 10)}/${parseInt(day, 10)}`, count }
+    })
+}
+
+function StepByDay({ records, step }: { records: SessionRecord[]; step: StepIndex }) {
+  const rows = useMemo(() => reachedByDay(records, step), [records, step])
+  const max = rows.reduce((m, r) => Math.max(m, r.count), 0) || 1
+  const total = rows.reduce((s, r) => s + r.count, 0)
+  return (
+    <div className="mt-2 mb-1 ml-40 border-l-2 border-[#8b2500]/30 pl-4">
+      <div className="text-[11px] text-gray-500 mb-2 uppercase tracking-wider">
+        Sessions that reached “{STEP_LABELS[step]}”, by day · {total} total
+      </div>
+      {rows.length === 0 ? (
+        <div className="text-xs text-gray-400">No sessions reached this step.</div>
+      ) : (
+        <div className="space-y-1 max-h-64 overflow-y-auto pr-2">
+          {rows.map((r) => (
+            <div key={r.key} className="flex items-center gap-2">
+              <div className="text-[11px] text-gray-600 w-14 flex-shrink-0 tabular-nums text-right">
+                {r.label}
+              </div>
+              <div className="flex-1 h-4 bg-gray-100 relative">
+                <div
+                  className="h-full bg-[#8b2500]"
+                  style={{ width: `${((r.count / max) * 100).toFixed(1)}%` }}
+                />
+              </div>
+              <div className="text-[11px] text-gray-700 w-8 flex-shrink-0 tabular-nums">
+                {r.count}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function FunnelChart({ stats, records }: { stats: Stats; records: SessionRecord[] }) {
+  const [expandedStep, setExpandedStep] = useState<StepIndex | null>(null)
   const top = stats.stepCounts[0]?.entered || 1
   return (
     <div className="bg-white border border-gray-200 p-4 mb-6">
@@ -349,6 +413,7 @@ function FunnelChart({ stats }: { stats: Stats }) {
         <div className="text-sm font-semibold text-gray-900">Dropoff by step</div>
         <div className="text-xs text-gray-500">
           Bar length = sessions that reached that step. Number below = dropoff at that step.
+          Click a step to see it by day.
         </div>
       </div>
       <div className="space-y-2">
@@ -357,31 +422,42 @@ function FunnelChart({ stats }: { stats: Stats }) {
           const nextStep = stats.stepCounts[i + 1]
           const dropAtStep = nextStep ? sc.entered - nextStep.entered : 0
           const dropPct = sc.entered === 0 ? 0 : (dropAtStep / sc.entered) * 100
+          const isExpanded = expandedStep === sc.step
           return (
-            <div key={sc.step} className="flex items-center gap-3">
-              <div className="text-xs text-gray-700 w-40 flex-shrink-0">
-                {STEP_LABELS[sc.step]}
-              </div>
-              <div className="flex-1 h-6 bg-gray-100 relative">
-                <div
-                  className="h-full bg-[#8b2500]"
-                  style={{ width: `${pct.toFixed(1)}%` }}
-                />
-                <div className="absolute inset-0 flex items-center px-2 text-xs text-gray-800 font-medium">
-                  {sc.entered} ({pct.toFixed(0)}%)
+            <div key={sc.step}>
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setExpandedStep(isExpanded ? null : sc.step)}
+                  className="text-xs text-gray-700 w-40 flex-shrink-0 text-left hover:text-[#8b2500] hover:underline flex items-center gap-1"
+                  aria-expanded={isExpanded}
+                  title="Show this step by day"
+                >
+                  <span className="inline-block w-2 text-[#8b2500]">{isExpanded ? "▾" : "▸"}</span>
+                  {STEP_LABELS[sc.step]}
+                </button>
+                <div className="flex-1 h-6 bg-gray-100 relative">
+                  <div
+                    className="h-full bg-[#8b2500]"
+                    style={{ width: `${pct.toFixed(1)}%` }}
+                  />
+                  <div className="absolute inset-0 flex items-center px-2 text-xs text-white font-medium">
+                    {sc.entered} ({pct.toFixed(0)}%)
+                  </div>
+                </div>
+                <div className="text-xs text-gray-500 w-24 text-right tabular-nums">
+                  {nextStep ? (
+                    dropAtStep > 0 ? (
+                      <span className="text-red-700">−{dropAtStep} ({dropPct.toFixed(0)}%)</span>
+                    ) : (
+                      <span className="text-emerald-700">0 dropoff</span>
+                    )
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
-              <div className="text-xs text-gray-500 w-24 text-right tabular-nums">
-                {nextStep ? (
-                  dropAtStep > 0 ? (
-                    <span className="text-red-700">−{dropAtStep} ({dropPct.toFixed(0)}%)</span>
-                  ) : (
-                    <span className="text-emerald-700">0 dropoff</span>
-                  )
-                ) : (
-                  ""
-                )}
-              </div>
+              {isExpanded && <StepByDay records={records} step={sc.step} />}
             </div>
           )
         })}

@@ -374,7 +374,7 @@ export default function Step4() {
                   </div>
                   <div className="flex-1">
                     <div className="text-xs font-semibold uppercase tracking-wider text-amber-800 mb-1">
-                      Optional · included
+                      Optional · included for free
                     </div>
                     <h2 className="text-lg font-bold text-gray-900 mb-1">
                       Add a whole-person, integrative perspective

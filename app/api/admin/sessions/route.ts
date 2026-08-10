@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { listSessions, getSession, deleteSessions, deleteSessionsBy } from '@/lib/admin/sessions';
 import { requireAdmin } from '@/lib/admin/prod-runs';
+import { updateRollup } from '@/lib/admin/session-rollup';
 
 export async function GET(request: Request) {
   const authFail = requireAdmin(request);
@@ -17,7 +18,18 @@ export async function GET(request: Request) {
   const limit = Math.min(500, Math.max(1, Number(url.searchParams.get('limit') || 100)));
   const offset = Math.max(0, Number(url.searchParams.get('offset') || 0));
   const { records, total } = await listSessions(limit, offset);
-  return NextResponse.json({ records, total, limit, offset });
+
+  // Opportunistically fold the live window into the durable daily rollup so
+  // all-time funnel trends survive the 30-day session TTL, and return the
+  // full rollup for the dashboard's by-day drill-down. Best-effort — a
+  // rollup failure never breaks the sessions list.
+  let rollup = {};
+  try {
+    if (offset === 0) rollup = (await updateRollup(records)).rollup;
+  } catch (err: any) {
+    console.warn('[admin/sessions] rollup update failed:', err?.message);
+  }
+  return NextResponse.json({ records, total, limit, offset, rollup });
 }
 
 /**

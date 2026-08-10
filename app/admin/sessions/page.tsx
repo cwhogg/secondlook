@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
 import { STEP_LABELS, type SessionRecord, type StepIndex } from "@/lib/admin/sessions"
+import type { SessionRollup } from "@/lib/admin/session-rollup"
 import { AlertCircle, CheckCircle, Trash2 } from "lucide-react"
 
 const PASSWORD_STORAGE_KEY = "adminSessionsPassword"
@@ -23,6 +24,7 @@ export default function AdminSessionsPage() {
   const [authChecked, setAuthChecked] = useState(false)
   const [authError, setAuthError] = useState("")
   const [records, setRecords] = useState<SessionRecord[]>([])
+  const [rollup, setRollup] = useState<SessionRollup>({})
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -56,6 +58,7 @@ export default function AdminSessionsPage() {
       }
       const data = await res.json()
       setRecords(Array.isArray(data.records) ? data.records : [])
+      setRollup(data.rollup && typeof data.rollup === "object" ? data.rollup : {})
       setTotal(typeof data.total === "number" ? data.total : 0)
       setNeedsAuth(false)
       if (pw) sessionStorage.setItem(PASSWORD_STORAGE_KEY, pw)
@@ -83,6 +86,7 @@ export default function AdminSessionsPage() {
       }
       const data = await res.json()
       setRecords(data.records || [])
+      setRollup(data.rollup && typeof data.rollup === "object" ? data.rollup : {})
       setTotal(data.total || 0)
       setPassword(pw)
       setNeedsAuth(false)
@@ -192,7 +196,7 @@ export default function AdminSessionsPage() {
         <SummaryCards stats={stats} />
 
         {/* Funnel */}
-        <FunnelChart stats={stats} records={records} />
+        <FunnelChart stats={stats} rollup={rollup} />
 
         {/* Session table */}
         <SessionTable
@@ -342,28 +346,21 @@ function MetricCard({ label, value }: { label: string; value: string }) {
 // ================== funnel visualization ==================
 
 /**
- * Count sessions that reached `step` (furthestStep >= step), bucketed by
- * the local calendar day of createdAt. Returned newest day first. Keyed on
- * a sortable ISO-ish local date so ordering is locale-independent; the
- * display label is derived separately.
+ * Extract per-day "reached step S" counts from the durable rollup, in
+ * chronological order (oldest → newest). The rollup is all-time and
+ * survives the 30-day session TTL, and is refreshed server-side on every
+ * dashboard load so recent days are current. Days where nobody reached this
+ * step are omitted. Rollup day keys are already sortable "YYYY-MM-DD".
  */
-function reachedByDay(
-  records: SessionRecord[],
+function rollupByDay(
+  rollup: SessionRollup,
   step: StepIndex,
 ): Array<{ key: string; label: string; count: number }> {
-  const map = new Map<string, number>()
-  for (const r of records) {
-    if (r.furthestStep < step) continue
-    const d = new Date(r.createdAt)
-    if (isNaN(d.getTime())) continue
-    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(
-      d.getDate(),
-    ).padStart(2, "0")}`
-    map.set(key, (map.get(key) || 0) + 1)
-  }
-  return Array.from(map.entries())
-    .sort((a, b) => (a[0] < b[0] ? 1 : a[0] > b[0] ? -1 : 0))
-    .map(([key, count]) => {
+  return Object.entries(rollup)
+    .map(([key, counts]) => ({ key, count: counts?.[step] || 0 }))
+    .filter((r) => r.count > 0)
+    .sort((a, b) => (a.key < b.key ? -1 : a.key > b.key ? 1 : 0))
+    .map(({ key, count }) => {
       const [, m, day] = key.split("-")
       return { key, label: `${parseInt(m, 10)}/${parseInt(day, 10)}`, count }
     })
@@ -371,16 +368,14 @@ function reachedByDay(
 
 const BAR_AREA_PX = 130
 
-function StepByDay({ records, step }: { records: SessionRecord[]; step: StepIndex }) {
-  // reachedByDay returns newest-first; reverse to chronological (oldest →
-  // newest, left → right) so the vertical chart reads as a time trend.
-  const rows = useMemo(() => reachedByDay(records, step).reverse(), [records, step])
+function StepByDay({ rollup, step }: { rollup: SessionRollup; step: StepIndex }) {
+  const rows = useMemo(() => rollupByDay(rollup, step), [rollup, step])
   const max = rows.reduce((m, r) => Math.max(m, r.count), 0) || 1
   const total = rows.reduce((s, r) => s + r.count, 0)
   return (
     <div className="mt-2 mb-1 ml-40 border-l-2 border-[#8b2500]/30 pl-4">
       <div className="text-[11px] text-gray-500 mb-2 uppercase tracking-wider">
-        Sessions that reached “{STEP_LABELS[step]}”, by day · {total} total
+        Sessions that reached “{STEP_LABELS[step]}”, by day (all-time) · {total} total
       </div>
       {rows.length === 0 ? (
         <div className="text-xs text-gray-400">No sessions reached this step.</div>
@@ -410,7 +405,7 @@ function StepByDay({ records, step }: { records: SessionRecord[]; step: StepInde
   )
 }
 
-function FunnelChart({ stats, records }: { stats: Stats; records: SessionRecord[] }) {
+function FunnelChart({ stats, rollup }: { stats: Stats; rollup: SessionRollup }) {
   const [expandedStep, setExpandedStep] = useState<StepIndex | null>(null)
   const top = stats.stepCounts[0]?.entered || 1
   return (
@@ -463,7 +458,7 @@ function FunnelChart({ stats, records }: { stats: Stats; records: SessionRecord[
                   )}
                 </div>
               </div>
-              {isExpanded && <StepByDay records={records} step={sc.step} />}
+              {isExpanded && <StepByDay rollup={rollup} step={sc.step} />}
             </div>
           )
         })}

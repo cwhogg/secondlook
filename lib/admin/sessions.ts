@@ -246,8 +246,21 @@ export async function listSessions(
   const pipe = redis.pipeline();
   for (const id of ids) pipe.get(key(id));
   const raw = (await pipe.exec()) as unknown as Array<SessionRecord | null>;
-  const records = raw.filter((r): r is SessionRecord => r !== null);
-  return { records, total };
+
+  // Prune dangling index entries: a record whose `sess:<id>` key has
+  // expired (30-day TTL) but whose `sess:index` stub survives. Left
+  // unpruned these tombstones accumulate and inflate `total`. Drop them
+  // from the index (best-effort) and from the total we report.
+  const stale: string[] = [];
+  const records: SessionRecord[] = [];
+  for (let i = 0; i < raw.length; i++) {
+    if (raw[i] === null) stale.push(ids[i]);
+    else records.push(raw[i] as SessionRecord);
+  }
+  if (stale.length > 0) {
+    redis.zrem(KEY_INDEX, ...stale).catch(() => {});
+  }
+  return { records, total: Math.max(records.length, total - stale.length) };
 }
 
 export async function getSession(id: string): Promise<SessionRecord | null> {

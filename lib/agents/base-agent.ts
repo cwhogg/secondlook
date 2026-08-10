@@ -1,4 +1,5 @@
 import { AgentConfig } from './types';
+import { fetchWithResilience } from '../llm-retry';
 
 export type LogCallback = (agent: string, phase: string, message: string) => void;
 
@@ -37,25 +38,22 @@ export abstract class BaseAgent {
     BaseAgent.onLog?.(this.config.name, phase, message);
   }
 
-  /** Fetch with automatic retry on 429 rate limits */
+  /**
+   * Fetch with per-attempt timeout and retry on transient failures (429,
+   * 5xx, overload, and network errors / timeouts). Delegates to the shared
+   * resilience helper so OpenAI and Anthropic calls share one policy.
+   */
   private async fetchWithRetry(url: string, init: RequestInit, maxRetries = 3): Promise<Response> {
-    for (let attempt = 0; attempt <= maxRetries; attempt++) {
-      const response = await fetch(url, init);
-
-      if (response.status === 429 && attempt < maxRetries) {
-        const retryAfter = response.headers.get('retry-after');
-        const delay = retryAfter
-          ? parseInt(retryAfter, 10) * 1000
-          : 2000 * Math.pow(2, attempt);
-        this.log('RETRY', `429 rate limited, retrying in ${delay}ms (attempt ${attempt + 1}/${maxRetries})`);
-        await new Promise((resolve) => setTimeout(resolve, delay));
-        continue;
-      }
-
-      return response;
-    }
-
-    throw new Error(`OpenAI rate limit exceeded after ${maxRetries} retries`);
+    return fetchWithResilience(url, init, {
+      maxRetries,
+      timeoutMs: 150_000, // reasoning models (o3) can run long per call
+      label: `openai:${this.config.model}`,
+      onRetry: (info) =>
+        this.log(
+          'RETRY',
+          `${info.status || info.error} — retrying in ${info.delayMs}ms (attempt ${info.attempt + 1}/${maxRetries})`,
+        ),
+    });
   }
 
   /**

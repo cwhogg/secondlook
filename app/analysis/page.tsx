@@ -246,6 +246,12 @@ export default function AnalysisPage() {
         // Call parse-symptoms API. Uses the combined narrative so any
         // symptom-photo descriptions are part of the same extraction pass
         // as the written history.
+        // Client-side timeout backstop: the server route bounds itself with
+        // per-attempt timeouts + retries, but a dropped connection between
+        // the browser and Vercel could otherwise leave this hanging with the
+        // loading screen spinning and no error. AbortSignal.timeout turns
+        // that into the friendly "timed out" screen instead. 300s matches the
+        // route's maxDuration so we never abort a legitimately-retrying call.
         const parseResponse = await fetch("/api/parse-symptoms", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -254,6 +260,7 @@ export default function AnalysisPage() {
             patientAge: parsedStep1.age,
             patientSex: parsedStep1.biologicalSex,
           }),
+          signal: AbortSignal.timeout(300_000),
         })
 
         const parseData = await parseResponse.json().catch(() => null)
@@ -583,7 +590,7 @@ export default function AnalysisPage() {
           code: "UPSTREAM_OVERLOAD",
         }
       }
-      if (m.includes("timeout") || m.includes("aborted")) {
+      if (m.includes("timeout") || m.includes("timed out") || m.includes("aborted")) {
         return {
           headline: "Analysis timed out",
           detail:

@@ -8,6 +8,7 @@ import { ClaudeSynthAgent } from '../agents/claude-synthesizer';
 import { O3CriticAgent } from '../agents/o3-critic';
 import { ClaudeFinalizerAgent } from '../agents/claude-finalizer';
 import { withLlmCallLog } from './llm-call-log';
+import { isRetryableError } from '../llm-retry';
 import { breakdownHypotheses, rankingLine } from './summary-log';
 import { ReportGenerator } from '../agents/report-generator';
 import { expandFamilyVariants } from './family-expansion';
@@ -502,12 +503,24 @@ export class DiagnosticPipeline {
 
       const claudeEvaluator = new ClaudeEvaluatorAgent();
       let evaluationResult: AgentOutput;
-      try {
-        evaluationResult = await claudeEvaluator.execute({
+      // Retry once on a transient Anthropic failure (429/5xx/529/network) so
+      // a single overload blip doesn't fail the whole run — same policy the
+      // specialist stage already uses.
+      const runEval = () =>
+        claudeEvaluator.execute({
           patientCase,
           previousStageOutput: [evaluatorPool],
           candidateDiseases: triageResult.candidateDiseases,
         });
+      try {
+        try {
+          evaluationResult = await runEval();
+        } catch (firstErr: any) {
+          if (!isRetryableError(firstErr)) throw firstErr;
+          log('orch.stage.evaluation.retry', { first_msg: (firstErr?.message || '').slice(0, 150) });
+          await new Promise((r) => setTimeout(r, 4000));
+          evaluationResult = await runEval();
+        }
       } finally {
         clearInterval(evalHeartbeat);
       }
@@ -578,11 +591,23 @@ export class DiagnosticPipeline {
 
       const claudeSynth = new ClaudeSynthAgent();
       let synthesisResult: AgentOutput;
-      try {
-        synthesisResult = await claudeSynth.execute({
+      // Retry once on a transient Anthropic failure — synth is the ranking
+      // stage with no downstream fallback, so an unretried 529 here fails
+      // the entire analysis.
+      const runSynth = () =>
+        claudeSynth.execute({
           patientCase,
           previousStageOutput: { specialistResults: specialistResultsForSynth, evaluationResult },
         });
+      try {
+        try {
+          synthesisResult = await runSynth();
+        } catch (firstErr: any) {
+          if (!isRetryableError(firstErr)) throw firstErr;
+          log('orch.stage.synthesis.retry', { first_msg: (firstErr?.message || '').slice(0, 150) });
+          await new Promise((r) => setTimeout(r, 4000));
+          synthesisResult = await runSynth();
+        }
       } finally {
         clearInterval(synthHeartbeat);
       }

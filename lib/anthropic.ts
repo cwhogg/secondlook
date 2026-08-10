@@ -1,3 +1,5 @@
+import { fetchWithResilience } from './llm-retry';
+
 export interface AnthropicCallOptions {
   systemPrompt: string;
   userPrompt: string;
@@ -48,15 +50,26 @@ export async function callAnthropic(options: AnthropicCallOptions): Promise<Anth
   };
   if (supportsTemperature) requestBody.temperature = temperature;
 
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'x-api-key': apiKey,
-      'anthropic-version': '2023-06-01',
-      'Content-Type': 'application/json',
+  const response = await fetchWithResilience(
+    'https://api.anthropic.com/v1/messages',
+    {
+      method: 'POST',
+      headers: {
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody),
     },
-    body: JSON.stringify(requestBody),
-  });
+    {
+      label: `anthropic:${model}`,
+      timeoutMs: 150_000, // synth/finalize on Opus can run long; bound each attempt
+      onRetry: (info) =>
+        console.warn(
+          `[callAnthropic] retry ${info.attempt + 1} (${info.status || info.error}) in ${info.delayMs}ms — ${model}`,
+        ),
+    },
+  );
 
   if (!response.ok) {
     const errorText = await response.text();

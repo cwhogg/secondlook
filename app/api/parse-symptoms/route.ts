@@ -1,16 +1,20 @@
 import { type NextRequest, NextResponse } from "next/server"
+import { fetchWithResilience } from "@/lib/llm-retry"
 
 export const maxDuration = 300
 
 const MAX_RETRIES = 3
-const BASE_DELAY_MS = 2000
 
 async function callOpenAIWithRetry(
   openaiApiKey: string,
   messages: Array<{ role: string; content: string }>,
 ): Promise<Response> {
-  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+  // Per-attempt timeout + retry on 429/5xx/network so a hung or overloaded
+  // OpenAI doesn't leave the client's symptom-extraction step spinning with
+  // no error (the stage-0 "stuck after symptom extraction" report).
+  return fetchWithResilience(
+    "https://api.openai.com/v1/chat/completions",
+    {
       method: "POST",
       headers: {
         Authorization: `Bearer ${openaiApiKey}`,
@@ -23,22 +27,17 @@ async function callOpenAIWithRetry(
         max_tokens: 16000,
         response_format: { type: "json_object" },
       }),
-    })
-
-    if (response.status === 429 && attempt < MAX_RETRIES) {
-      const retryAfter = response.headers.get("retry-after")
-      const delay = retryAfter
-        ? parseInt(retryAfter, 10) * 1000
-        : BASE_DELAY_MS * Math.pow(2, attempt)
-      console.log(`[parse-symptoms] Rate limited (429), retrying in ${delay}ms (attempt ${attempt + 1}/${MAX_RETRIES})`)
-      await new Promise((resolve) => setTimeout(resolve, delay))
-      continue
-    }
-
-    return response
-  }
-
-  throw new Error("OpenAI rate limit exceeded after retries")
+    },
+    {
+      maxRetries: MAX_RETRIES,
+      timeoutMs: 90_000,
+      label: "parse-symptoms",
+      onRetry: (info) =>
+        console.log(
+          `[parse-symptoms] retry ${info.attempt + 1}/${MAX_RETRIES} (${info.status || info.error}) in ${info.delayMs}ms`,
+        ),
+    },
+  )
 }
 
 export async function POST(request: NextRequest) {

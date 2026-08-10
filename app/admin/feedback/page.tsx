@@ -251,6 +251,13 @@ function FeedbackCard({ item }: { item: FeedbackSummary }) {
             {p.expectedDiagnosis && <Row label="Expected">{p.expectedDiagnosis}</Row>}
             {p.actualTop1 && <Row label="Got">{p.actualTop1}</Row>}
             {p.comments && <Row label="Comments">{p.comments}</Row>}
+            {p.email && (
+              <Row label="Email">
+                <a href={`mailto:${p.email}`} className="text-[#8b2500] underline">
+                  {p.email}
+                </a>
+              </Row>
+            )}
           </>
         ) : item.mode === "real" ? (
           <>
@@ -270,6 +277,13 @@ function FeedbackCard({ item }: { item: FeedbackSummary }) {
               </Row>
             )}
             {p.comments && <Row label="Comments">{p.comments}</Row>}
+            {p.email && (
+              <Row label="Email">
+                <a href={`mailto:${p.email}`} className="text-[#8b2500] underline">
+                  {p.email}
+                </a>
+              </Row>
+            )}
           </>
         ) : (
           // general mode

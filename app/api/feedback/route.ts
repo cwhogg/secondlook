@@ -6,11 +6,14 @@ import { extractIp } from '@/lib/admin/prod-runs';
 export const runtime = 'nodejs';
 export const maxDuration = 15;
 
+// Email is stored lenient (not RFC-validated) so a typo in the optional
+// follow-up field never rejects an otherwise-complete feedback submission.
 const testSchema = z.object({
   mode: z.literal('test'),
   valueRating: z.number().min(1).max(5).optional(),
   uxRating: z.number().min(1).max(5).optional(),
   comments: z.string().max(5000).optional(),
+  email: z.string().max(200).optional(),
   expectedDiagnosis: z.string().max(500).optional(),
   actualTop1: z.string().max(500).optional(),
 });
@@ -23,6 +26,7 @@ const realSchema = z.object({
   confirmedSomething: z.enum(['yes', 'no']).optional(),
   whatConfirmed: z.string().max(5000).optional(),
   comments: z.string().max(5000).optional(),
+  email: z.string().max(200).optional(),
 });
 
 const generalSchema = z.object({

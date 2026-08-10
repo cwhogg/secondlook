@@ -63,6 +63,9 @@ export function FeedbackModal({
   const [whatConfirmed, setWhatConfirmed] = useState("")
   const [realComments, setRealComments] = useState("")
 
+  // Optional email for follow-up (shown on the final step of both flows).
+  const [email, setEmail] = useState("")
+
   const totalSteps = mode === "test" ? 3 : 4
   const isLast = step === totalSteps
 
@@ -78,6 +81,7 @@ export function FeedbackModal({
               valueRating: valueRating ?? undefined,
               uxRating: uxRating ?? undefined,
               comments: testComments.trim() || undefined,
+              email: email.trim() || undefined,
               expectedDiagnosis,
               actualTop1,
             }
@@ -89,6 +93,7 @@ export function FeedbackModal({
               confirmedSomething: confirmedSomething ?? undefined,
               whatConfirmed: whatConfirmed.trim() || undefined,
               comments: realComments.trim() || undefined,
+              email: email.trim() || undefined,
             }
       const res = await fetch("/api/feedback", {
         method: "POST",
@@ -246,6 +251,30 @@ export function FeedbackModal({
               onChange={setRealComments}
             />
           )}
+
+          {isLast && (
+            <div className="pt-4 mt-1 border-t border-gray-200">
+              <div className="text-xs font-semibold uppercase tracking-wider text-[#8b2500] mb-1.5">
+                A personal ask
+              </div>
+              <p className="text-sm text-gray-700 leading-relaxed mb-2.5">
+                It&rsquo;s just me building SecondLook, and hearing directly from people is
+                what makes it better. If you&rsquo;d be open to sharing a little more about
+                your experience sometime, leave your email and I&rsquo;ll reach out
+                personally &mdash; no newsletter, no spam, just me. Completely optional.
+              </p>
+              <input
+                type="email"
+                inputMode="email"
+                autoComplete="email"
+                maxLength={200}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@example.com (optional)"
+                className="w-full px-3 py-2 border border-gray-300 text-sm focus:outline-none focus:border-[#8b2500] focus:ring-1 focus:ring-[#8b2500]"
+              />
+            </div>
+          )}
         </div>
 
         {/* Footer */}
@@ -255,7 +284,11 @@ export function FeedbackModal({
           </div>
         )}
         <div className="border-t border-gray-200 px-5 py-3 flex items-center justify-between">
-          <span className="text-xs text-gray-500">Your feedback is anonymous.</span>
+          <span className="text-xs text-gray-500">
+            {email.trim()
+              ? "I'll only use your email to follow up personally."
+              : "Your feedback is anonymous."}
+          </span>
           <button
             onClick={advance}
             disabled={submitting}

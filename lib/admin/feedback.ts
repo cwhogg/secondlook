@@ -52,6 +52,8 @@ export interface TestFeedback {
   valueRating?: number; // 1-5 likert
   uxRating?: number; // 1-5 likert
   comments?: string;
+  // Optional email the user leaves for follow-up on the final step.
+  email?: string;
   // The known ground-truth diagnosis from the test-user generation, so
   // we can correlate feedback against the case that produced it.
   expectedDiagnosis?: string;
@@ -72,6 +74,8 @@ export interface RealFeedback {
   confirmedSomething?: 'yes' | 'no';
   whatConfirmed?: string;
   comments?: string;
+  // Optional email the user leaves for follow-up on the final step.
+  email?: string;
 }
 
 export interface FeedbackRecord {

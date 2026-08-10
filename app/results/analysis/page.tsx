@@ -68,6 +68,7 @@ export default function AnalysisResultsPage() {
   // important condition immediately.
   const [expandedIndexes, setExpandedIndexes] = useState<Set<number>>(() => new Set([0]))
   const [clinicalRequestId, setClinicalRequestId] = useState<string>("")
+  const [integrativeOptIn, setIntegrativeOptIn] = useState(false)
   const toggleExpanded = (idx: number) => {
     setExpandedIndexes((prev) => {
       const next = new Set(prev)
@@ -80,8 +81,17 @@ export default function AnalysisResultsPage() {
   useEffect(() => {
     // Results are stored in sessionStorage by the ExpertAnalysisResults component
     // Also capture the clinical requestId — needed by the integrative CTA below.
-    const storedRequestId = sessionStorage.getItem("pendingAnalysisRequestId") || ""
+    const storedRequestId =
+      sessionStorage.getItem("clinicalRequestId") ||
+      sessionStorage.getItem("pendingAnalysisRequestId") ||
+      ""
     if (storedRequestId) setClinicalRequestId(storedRequestId)
+    // Review-step order-bump opt-in → auto-run the integrative panel below.
+    try {
+      setIntegrativeOptIn(localStorage.getItem("integrativeOptIn") === "true")
+    } catch {
+      /* ignore */
+    }
     const data = sessionStorage.getItem("analysisResults")
     if (data) {
       try {
@@ -433,7 +443,9 @@ export default function AnalysisResultsPage() {
         </div>
 
         {/* Integrative-medicine perspective (opt-in, complementary — never gates clinical) */}
-        {clinicalRequestId && <IntegrativeCTACard clinicalRequestId={clinicalRequestId} />}
+        {clinicalRequestId && (
+          <IntegrativeCTACard clinicalRequestId={clinicalRequestId} optedIn={integrativeOptIn} />
+        )}
       </div>
 
       {/* Fixed Bottom Navigation */}

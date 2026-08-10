@@ -113,6 +113,10 @@ function handleAnalysisResult(
   sessionStorage.setItem("analysisPatientCase", JSON.stringify(analysisPayload))
   // Pending-request markers no longer needed once delivery succeeds.
   const requestId = sessionStorage.getItem("pendingAnalysisRequestId") || undefined
+  // Persist the completed run's id under a durable key BEFORE clearing the
+  // pending markers — the results page needs it for the integrative CTA
+  // (both the manual button and the review-step opt-in auto-run).
+  if (requestId) sessionStorage.setItem("clinicalRequestId", requestId)
   sessionStorage.removeItem("pendingAnalysisRequestId")
   sessionStorage.removeItem("pendingAnalysisStartedAt")
   const top1 = analysisResults.differentialDiagnoses[0]

@@ -584,6 +584,21 @@ export default function HomePage() {
             <FlowStep step={8} icon={TestTubes} title="Recommend tests to rule diagnoses in or out" />
             <FlowStep step={9} icon={FileCheck} title="Deliver the final report" isLast />
           </div>
+
+          {/* Optional integrative add-on — pre-sells the review-step opt-in so
+              it doesn't read as a surprise upsell later in the flow. */}
+          <div className="mt-8 sm:mt-10 flex justify-center">
+            <div className="w-full max-w-[620px] border border-amber-200 bg-amber-50/60 px-5 py-4 flex items-start gap-3">
+              <Sparkles className="h-5 w-5 text-amber-700 flex-shrink-0 mt-0.5" strokeWidth={1.8} />
+              <p className="font-serif-body text-sm sm:text-base text-[#5a5a5a] leading-relaxed">
+                <span className="font-medium text-[#1a1a1a]">Optional whole-person view.</span>{" "}
+                Alongside your clinical differential, you can add an integrative-medicine
+                perspective — a panel of functional-medicine, naturopathic, TCM, Ayurvedic, and
+                mind-body practitioners who review your case in their own frameworks.
+                Complementary to your clinical answer, never a replacement.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -7,7 +7,7 @@ import { Layout } from "@/components/layout"
 import { IntakeBreadcrumb } from "@/components/intake-breadcrumb"
 import { trackEvent } from "@/lib/session-tracker"
 import { mapSingleSymptom } from "@/lib/symptom-parser"
-import { ArrowLeft, ArrowRight, CheckCircle, Loader2 } from "lucide-react"
+import { ArrowLeft, ArrowRight, CheckCircle, Loader2, Sparkles } from "lucide-react"
 import type { ExtractedSymptomPhoto } from "@/components/symptom-photo-upload"
 
 interface Step5Data {
@@ -41,6 +41,10 @@ export default function Step4() {
   const router = useRouter()
   const [formData, setFormData] = useState<Step5Data>({ clarifications: "" })
   const [autoSaved, setAutoSaved] = useState(false)
+  // Integrative-panel opt-in (the "order bump"). Persisted to its own
+  // localStorage key so the results page can auto-launch the integrative
+  // panel after the clinical run completes. Default off — explicit opt-in.
+  const [wantsIntegrative, setWantsIntegrative] = useState(false)
 
   const [extracting, setExtracting] = useState(true)
   const [extractError, setExtractError] = useState<string | null>(null)
@@ -81,6 +85,12 @@ export default function Step4() {
       } catch {
         // ignore
       }
+    }
+    // Restore the integrative opt-in if the user set it on a prior visit.
+    try {
+      setWantsIntegrative(localStorage.getItem("integrativeOptIn") === "true")
+    } catch {
+      // ignore
     }
 
     let cancelled = false
@@ -211,6 +221,7 @@ export default function Step4() {
 
   const handleContinue = () => {
     localStorage.setItem("step5Data", JSON.stringify(formData))
+    localStorage.setItem("integrativeOptIn", wantsIntegrative ? "true" : "false")
     trackEvent("step-complete", {
       step: 4,
       form: {
@@ -344,6 +355,48 @@ export default function Step4() {
                   {formData.clarifications.length} / {CLARIFICATIONS_MAX}
                 </div>
               </div>
+            )}
+
+            {!extracting && (
+              <button
+                type="button"
+                onClick={() => setWantsIntegrative((v) => !v)}
+                aria-pressed={wantsIntegrative}
+                className={`w-full text-left rounded-none border-2 p-5 transition-colors ${
+                  wantsIntegrative
+                    ? "border-amber-500 bg-amber-50"
+                    : "border-gray-200 bg-white hover:border-amber-300"
+                }`}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="hidden sm:flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-800 shrink-0">
+                    <Sparkles className="h-5 w-5" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-xs font-semibold uppercase tracking-wider text-amber-800 mb-1">
+                      Optional · included
+                    </div>
+                    <h2 className="text-lg font-bold text-gray-900 mb-1">
+                      Add a whole-person, integrative perspective
+                    </h2>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      Alongside your clinical differential, a separate panel of five
+                      practitioners — Functional Medicine, Naturopath, Acupuncturist (TCM),
+                      Ayurvedic, and mind-body/somatic — reviews your case in their own
+                      frameworks for root-cause hypotheses and interventions to explore with a
+                      licensed practitioner. Complementary to your clinical answer, not a
+                      diagnosis.
+                    </p>
+                  </div>
+                  <div
+                    className={`mt-1 flex h-6 w-11 shrink-0 items-center rounded-full p-0.5 transition-colors ${
+                      wantsIntegrative ? "bg-amber-600 justify-end" : "bg-gray-300 justify-start"
+                    }`}
+                  >
+                    <div className="h-5 w-5 rounded-full bg-white shadow" />
+                  </div>
+                </div>
+              </button>
             )}
 
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-2">

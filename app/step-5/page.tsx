@@ -14,6 +14,10 @@ interface Step6Data {
   consentAccurate: boolean
 }
 
+// Bump when the consent wording changes; stored with each submit so a
+// consent record can be tied to the exact text the user agreed to.
+const CONSENT_VERSION = "2026-08-23"
+
 export default function Step5() {
   const router = useRouter()
   const [formData, setFormData] = useState<Step6Data>({
@@ -24,6 +28,10 @@ export default function Step5() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [autoSaved, setAutoSaved] = useState(false)
   const [showValidationSummary, setShowValidationSummary] = useState(false)
+  const [engaged, setEngaged] = useState(false)
+  // What we already learned, shown back to the user to reinforce progress
+  // and hint at the payoff — a conversion lever at the consent gate.
+  const [summary, setSummary] = useState<{ age?: string; sex?: string; symptomCount?: number }>({})
 
   useEffect(() => {
     trackEvent("step-view", { step: 5 })
@@ -46,6 +54,19 @@ export default function Step5() {
         router.push(path)
         return
       }
+    }
+
+    // Pull what we already know for the value/progress panel.
+    try {
+      const s1 = JSON.parse(localStorage.getItem("step1Data") || "{}")
+      const cnt = parseInt(localStorage.getItem("extractedSymptomCount") || "", 10)
+      setSummary({
+        age: s1.age || undefined,
+        sex: s1.biologicalSex || undefined,
+        symptomCount: Number.isFinite(cnt) ? cnt : undefined,
+      })
+    } catch {
+      /* ignore */
     }
 
     const saved = localStorage.getItem("step6Data")
@@ -81,6 +102,13 @@ export default function Step5() {
     setFormData((prev) => ({ ...prev, [field]: value }))
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: "" }))
     if (showValidationSummary) setShowValidationSummary(false)
+    // Instrumentation: fire once when the user first touches any consent
+    // box, so we can distinguish "reached consent, never engaged" from
+    // "started checking but didn't finish".
+    if (!engaged) {
+      setEngaged(true)
+      trackEvent("form-snapshot", { step: 5, data: { consentEvent: "engaged" } })
+    }
   }
 
   const validate = () => {
@@ -109,12 +137,31 @@ export default function Step5() {
 
   const handleSubmit = () => {
     if (!validate()) {
+      // Feedback instead of a dead button: surface the summary, mark the
+      // unchecked boxes, scroll it into view, and record the blocked attempt
+      // so we can see which consents people balk at.
       setShowValidationSummary(true)
+      trackEvent("form-snapshot", {
+        step: 5,
+        data: {
+          consentEvent: "blocked",
+          checked: { ...formData },
+          missing: missingItems,
+        },
+      })
+      if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" })
       return
     }
     localStorage.setItem("step6Data", JSON.stringify(formData))
     trackEvent("step-complete", { step: 5 })
-    trackEvent("analysis-start", { step: 6 })
+    // Consent record: the session event is stored server-side (KV) with IP +
+    // user-agent + timestamp, so folding the exact consent version + the
+    // agreed flags into analysis-start gives a durable, attributable record
+    // of what the user agreed to and when.
+    trackEvent("analysis-start", {
+      step: 6,
+      data: { consentVersion: CONSENT_VERSION, consent: { ...formData } },
+    })
     router.push("/analysis")
   }
 
@@ -154,10 +201,37 @@ export default function Step5() {
 
           <IntakeBreadcrumb current={5} />
 
-          <div className="text-center mb-10">
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Consent &amp; submit</h1>
+          <div className="text-center mb-8">
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">One last step</h1>
             <p className="text-lg text-gray-600">
-              Review the consent terms and start your analysis.
+              Agree to the terms below and we&rsquo;ll start your analysis.
+            </p>
+          </div>
+
+          {/* Value / progress panel — remind them what they've built and what
+              they'll get, right before the consent ask. */}
+          <div className="max-w-3xl mx-auto mb-6 bg-[#faf6f0] border border-[#d4c5b0] p-5 sm:p-6">
+            <p className="text-sm text-gray-800">
+              {typeof summary.symptomCount === "number" && summary.symptomCount > 0 ? (
+                <>
+                  Your case is ready. We&rsquo;ve organized{" "}
+                  <strong>
+                    {summary.symptomCount} symptom{summary.symptomCount === 1 ? "" : "s"}
+                  </strong>{" "}
+                  from your history
+                  {summary.age && summary.sex ? (
+                    <> for a {summary.age}-year-old {summary.sex}</>
+                  ) : null}
+                  .
+                </>
+              ) : (
+                <>Your case is ready to analyze.</>
+              )}
+            </p>
+            <p className="text-sm text-gray-600 mt-2 leading-relaxed">
+              In about 8&ndash;10 minutes you&rsquo;ll get a ranked list of up to 10 conditions that
+              could explain your symptoms &mdash; including rare ones that are often missed &mdash;
+              and the specific tests that can help confirm or rule out each one.
             </p>
           </div>
 
@@ -238,14 +312,14 @@ export default function Step5() {
                 <span>Back</span>
               </button>
 
+              {/* Always clickable — an incomplete click shows the checklist
+                  instead of a dead, unexplained grey button. Consent is still
+                  required: handleSubmit blocks and gives feedback until all
+                  boxes are checked. */}
               <button
                 onClick={handleSubmit}
-                disabled={!isFormValid}
-                className={`px-8 py-4 font-semibold text-lg transition-all duration-300 w-full sm:w-auto min-w-[260px] ${
-                  isFormValid
-                    ? "bg-[#8b2500] text-white"
-                    : "bg-gray-200 text-gray-500 cursor-not-allowed"
-                }`}
+                aria-disabled={!isFormValid}
+                className="px-8 py-4 font-semibold text-lg transition-all duration-300 w-full sm:w-auto min-w-[260px] bg-[#8b2500] text-white hover:bg-[#6d1d00]"
               >
                 Start my analysis
               </button>

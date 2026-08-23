@@ -222,6 +222,9 @@ export default function Step4() {
   const handleContinue = () => {
     localStorage.setItem("step5Data", JSON.stringify(formData))
     localStorage.setItem("integrativeOptIn", wantsIntegrative ? "true" : "false")
+    // Carry the extracted-symptom count forward so the consent step can show
+    // the user how much we've already organized for them.
+    localStorage.setItem("extractedSymptomCount", String(extracted.length))
     trackEvent("step-complete", {
       step: 4,
       form: {

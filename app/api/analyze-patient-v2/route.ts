@@ -4,6 +4,8 @@ import { DiagnosticPipeline } from '@/lib/pipeline/orchestrator';
 import { BaseAgent } from '@/lib/agents/base-agent';
 import { z } from 'zod';
 import { saveProdRun, summarizeAnalysis, extractIp } from '@/lib/admin/prod-runs';
+import { markRunning, markComplete, markError } from '@/lib/results/run-status';
+import { waitUntil } from '@vercel/functions';
 
 // v5: specialists are o3 reasoning:high (was gpt-4.1) plus the existing o3
 // reasoning:high at evidence-evaluator and synthesizer. With 6-8 specialists
@@ -178,90 +180,113 @@ export async function POST(request: NextRequest) {
 
   console.log(`[${requestId}] Pipeline v2 starting — ${patientCase.symptoms.length} symptoms`);
 
-  // Stream response via SSE
+  // Stream response via SSE. The pipeline runs decoupled from the stream
+  // and is held alive by waitUntil, so if the client disconnects (closes the
+  // tab, mobile suspend) the analysis STILL runs to completion and persists —
+  // a returning visitor can then retrieve it via /api/get-analysis. Enqueues
+  // are best-effort: once the stream is gone we simply stop streaming, we
+  // don't abort the run.
   const encoder = new TextEncoder();
-  const stream = new ReadableStream({
-    async start(controller) {
-      const sendEvent = (data: any) => {
-        controller.enqueue(encoder.encode(`data: ${JSON.stringify(data)}\n\n`));
-      };
+  // Ref-object (not a bare `let`) so closure assignments don't confuse
+  // control-flow narrowing.
+  const ctl: { current: ReadableStreamDefaultController<Uint8Array> | null } = { current: null };
 
-      try {
-        // Wire agent logs to SSE so they appear in the browser console.
-        // RESPONSE_BODY logs dump full LLM response JSON which can be
-        // 50-100KB per call; with v17's 8+ LLM calls per case, this balloons
-        // the SSE stream to 200-400KB and reliably causes the Vercel proxy
-        // to close the connection mid-flight on long cases (silent SSE
-        // close failure mode). Suppress the verbose payloads to SSE; they
-        // remain available in pipelineMetadata.llmCalls and Vercel function
-        // logs.
-        const SSE_VERBOSE_PHASES = new Set(['RESPONSE_BODY', 'USER_PROMPT', 'SYSTEM_PROMPT']);
-        BaseAgent.onLog = (agent, phase, message) => {
-          if (SSE_VERBOSE_PHASES.has(phase)) return;
-          sendEvent({ type: 'log', requestId, agent, phase, message });
-        };
-
-        const pipeline = new DiagnosticPipeline(2500); // $25.00 budget cap (o3 reasoning models)
-
-        const result = await pipeline.execute(patientCase as any, (progress) => {
-          sendEvent({ type: 'progress', requestId, ...progress });
-        });
-
-        console.log(`[${requestId}] Pipeline complete — ${Date.now() - startTime}ms, ${result.pipelineMetadata.totalTokensUsed} tokens, ~$${result.pipelineMetadata.totalCostEstimate.toFixed(3)}`);
-
-        // Persist the full run (patient case + analysis + IP) for the
-        // /admin/runs viewer. AWAITED so Vercel doesn't terminate the
-        // serverless function before the Upstash write completes — a
-        // prior fire-and-forget version silently dropped writes when
-        // the stream closed before the HTTP request to Upstash went
-        // out. Errors are caught + logged so persistence failures still
-        // never break the user's analysis response.
-        const clientIp = extractIp(request.headers);
-        const userAgent = request.headers.get('user-agent');
-        try {
-          const ok = await saveProdRun({
-            id: requestId,
-            createdAt: new Date().toISOString(),
-            ip: clientIp,
-            userAgent,
-            durationMs: Date.now() - startTime,
-            patientCase: patientCase as any,
-            analysisResult: result as any,
-            summary: summarizeAnalysis(patientCase as any, result as any),
-          });
-          if (!ok) {
-            console.warn(`[${requestId}] prod-run persistence returned false (non-fatal)`);
-          }
-        } catch (err: any) {
-          console.warn(
-            `[${requestId}] prod-run persistence threw (non-fatal):`,
-            err?.message,
-          );
-        }
-
-        sendEvent({
-          type: 'result',
-          requestId,
-          success: true,
-          analysis: result,
-          timestamp: new Date().toISOString(),
-          processingTime: Date.now() - startTime,
-        });
-      } catch (error: any) {
-        console.error(`[${requestId}] Pipeline error:`, error.message);
-
-        sendEvent({
-          type: 'error',
-          requestId,
-          error: error.message,
-          processingTime: Date.now() - startTime,
-        });
-      } finally {
-        BaseAgent.onLog = null;
-        controller.close();
-      }
+  const stream = new ReadableStream<Uint8Array>({
+    start(controller) {
+      ctl.current = controller;
+    },
+    cancel() {
+      // Client disconnected — do NOT abort the pipeline; waitUntil keeps it
+      // running so the result is still persisted for retrieval on return.
+      ctl.current = null;
     },
   });
+
+  const safeEnqueue = (data: any) => {
+    if (!ctl.current) return;
+    try {
+      ctl.current.enqueue(encoder.encode(`data: ${JSON.stringify(data)}\n\n`));
+    } catch {
+      ctl.current = null; // stream closed/cancelled — stop streaming
+    }
+  };
+
+  const startedAtIso = new Date().toISOString();
+
+  const runPromise = (async () => {
+    await markRunning(requestId);
+
+    // Suppress verbose LLM payloads to SSE (see prior note): they balloon the
+    // stream and can trip the Vercel proxy to close the connection mid-flight.
+    const SSE_VERBOSE_PHASES = new Set(['RESPONSE_BODY', 'USER_PROMPT', 'SYSTEM_PROMPT']);
+    BaseAgent.onLog = (agent, phase, message) => {
+      if (SSE_VERBOSE_PHASES.has(phase)) return;
+      safeEnqueue({ type: 'log', requestId, agent, phase, message });
+    };
+
+    try {
+      const pipeline = new DiagnosticPipeline(2500); // $25.00 budget cap
+      const result = await pipeline.execute(patientCase as any, (progress) => {
+        safeEnqueue({ type: 'progress', requestId, ...progress });
+      });
+
+      console.log(
+        `[${requestId}] Pipeline complete — ${Date.now() - startTime}ms, ${result.pipelineMetadata.totalTokensUsed} tokens, ~$${result.pipelineMetadata.totalCostEstimate.toFixed(3)}`,
+      );
+
+      // Persist the full run BEFORE marking complete, so a client that polls
+      // get-analysis the instant it sees "complete" always finds the result.
+      try {
+        const ok = await saveProdRun({
+          id: requestId,
+          createdAt: startedAtIso,
+          ip: extractIp(request.headers),
+          userAgent: request.headers.get('user-agent'),
+          durationMs: Date.now() - startTime,
+          patientCase: patientCase as any,
+          analysisResult: result as any,
+          summary: summarizeAnalysis(patientCase as any, result as any),
+        });
+        if (!ok) console.warn(`[${requestId}] prod-run persistence returned false (non-fatal)`);
+      } catch (err: any) {
+        console.warn(`[${requestId}] prod-run persistence threw (non-fatal):`, err?.message);
+      }
+      await markComplete(requestId, startedAtIso);
+
+      safeEnqueue({
+        type: 'result',
+        requestId,
+        success: true,
+        analysis: result,
+        timestamp: new Date().toISOString(),
+        processingTime: Date.now() - startTime,
+      });
+    } catch (error: any) {
+      console.error(`[${requestId}] Pipeline error:`, error.message);
+      await markError(requestId, startedAtIso, error.message);
+      safeEnqueue({
+        type: 'error',
+        requestId,
+        error: error.message,
+        processingTime: Date.now() - startTime,
+      });
+    } finally {
+      BaseAgent.onLog = null;
+      const c = ctl.current;
+      ctl.current = null;
+      if (c) {
+        try {
+          c.close();
+        } catch {
+          /* already closed */
+        }
+      }
+    }
+  })();
+
+  // Keep the serverless function alive until the pipeline finishes, even if
+  // the client has disconnected.
+  waitUntil(runPromise);
 
   return new Response(stream, {
     headers: {

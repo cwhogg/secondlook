@@ -17,6 +17,7 @@
  */
 import { NextResponse } from 'next/server';
 import { getProdRun } from '@/lib/admin/prod-runs';
+import { getRunStatus } from '@/lib/results/run-status';
 
 export const runtime = 'nodejs';
 export const maxDuration = 15;
@@ -31,20 +32,28 @@ export async function GET(
   }
   try {
     const run = await getProdRun(id);
-    if (!run) {
-      // Either the pipeline hasn't finished yet, or it failed before
-      // the persistence step ran. The client should poll for a while
-      // before giving up — the average pipeline is ~7-8 min and the
-      // KV write only happens at the very end.
-      return NextResponse.json({ status: 'pending' }, { status: 404 });
+    if (run) {
+      return NextResponse.json({
+        status: 'complete',
+        analysisResult: run.analysisResult,
+        patientCase: run.patientCase,
+        durationMs: run.durationMs,
+        createdAt: run.createdAt,
+      });
     }
-    return NextResponse.json({
-      status: 'complete',
-      analysisResult: run.analysisResult,
-      patientCase: run.patientCase,
-      durationMs: run.durationMs,
-      createdAt: run.createdAt,
-    });
+    // No completed run yet — consult the run-status marker so the client can
+    // tell "still running" (keep waiting) from "failed" (stop and offer retry)
+    // from "never existed / expired".
+    const rs = await getRunStatus(id);
+    if (rs?.status === 'running') {
+      return NextResponse.json({ status: 'running', startedAt: rs.startedAt }, { status: 202 });
+    }
+    if (rs?.status === 'error') {
+      return NextResponse.json({ status: 'error', error: rs.error }, { status: 200 });
+    }
+    // Unknown id, or it finished-and-marked-complete but the prod-run write
+    // failed. Treat as pending so the client keeps polling for a while.
+    return NextResponse.json({ status: 'pending' }, { status: 404 });
   } catch (err: any) {
     return NextResponse.json(
       { status: 'error', detail: (err?.message || '').slice(0, 200) },

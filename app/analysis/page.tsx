@@ -119,6 +119,7 @@ function handleAnalysisResult(
   if (requestId) sessionStorage.setItem("clinicalRequestId", requestId)
   sessionStorage.removeItem("pendingAnalysisRequestId")
   sessionStorage.removeItem("pendingAnalysisStartedAt")
+  clearPendingRun()
   const top1 = analysisResults.differentialDiagnoses[0]
   trackEvent("analysis-complete", {
     step: 8,
@@ -131,30 +132,62 @@ function handleAnalysisResult(
   router.push("/results/analysis")
 }
 
+// Durable pointer to the in-flight run, in localStorage so it survives a tab
+// close / browser restart (sessionStorage does not). Lets a returning visitor
+// resume instead of starting a duplicate analysis.
+const PENDING_RUN_KEY = "sl_pending_run"
+function writePendingRun(requestId: string, startedAt: number) {
+  try {
+    localStorage.setItem(PENDING_RUN_KEY, JSON.stringify({ requestId, startedAt }))
+  } catch {
+    /* ignore */
+  }
+}
+function readPendingRun(): { requestId: string; startedAt: number } | null {
+  try {
+    const raw = localStorage.getItem(PENDING_RUN_KEY)
+    if (!raw) return null
+    const p = JSON.parse(raw)
+    if (p?.requestId && typeof p.startedAt === "number") return p
+  } catch {
+    /* ignore */
+  }
+  return null
+}
+function clearPendingRun() {
+  try {
+    localStorage.removeItem(PENDING_RUN_KEY)
+  } catch {
+    /* ignore */
+  }
+}
+
 /**
- * Resume polling for the persisted analysisResult by requestId. Polls
- * every 5s for up to 12 min from startedAt (pipeline is ~7-8 min typical
- * + buffer). Aborts on AbortController signal. Returns the run record
- * on success, null on timeout / aborted / repeated failures.
+ * Resume polling for the persisted analysisResult by requestId. Polls every
+ * 5s for up to 12 min from startedAt. Returns the completed run (result +
+ * patient case) on success; null on timeout / abort / server-reported error.
+ * The server keeps the pipeline alive after a disconnect, so this succeeds
+ * even when the original SSE connection died.
  */
 async function tryResumeFromKv(
   requestId: string,
   startedAt: number,
   abortRef: React.RefObject<AbortController | null>,
-): Promise<{ analysisResult: any } | null> {
+): Promise<{ analysisResult: any; patientCase?: any } | null> {
   const MAX_AGE_MS = 12 * 60 * 1000
   const POLL_MS = 5000
   while (Date.now() - startedAt < MAX_AGE_MS) {
     if (abortRef.current?.signal.aborted) return null
     try {
       const res = await fetch(`/api/get-analysis/${encodeURIComponent(requestId)}`)
-      if (res.ok) {
-        const data = await res.json()
-        if (data?.status === "complete" && data?.analysisResult) {
-          return { analysisResult: data.analysisResult }
-        }
+      const data = await res.json().catch(() => null)
+      if (data?.status === "complete" && data?.analysisResult) {
+        return { analysisResult: data.analysisResult, patientCase: data.patientCase }
       }
-      // 404 / pending -> keep polling
+      if (data?.status === "error") {
+        return null // the run failed server-side — stop polling, offer a fresh start
+      }
+      // running (202) / pending (404) -> keep polling
     } catch {
       // network blip, keep polling
     }
@@ -181,6 +214,38 @@ export default function AnalysisPage() {
     const startAnalysis = async () => {
       if (hasStartedRef.current) return
       hasStartedRef.current = true
+
+      // EARLY RESUME (returning visitor / reopened tab): if a recent run is
+      // still pending in localStorage, poll for its result instead of kicking
+      // off a fresh (duplicate, paid) analysis. The server keeps the pipeline
+      // alive after a disconnect, so this recovers the in-flight run.
+      const pending = readPendingRun()
+      if (pending && Date.now() - pending.startedAt < 15 * 60 * 1000) {
+        setPipelineEvents([
+          {
+            stage: "heartbeat",
+            stageNumber: 0,
+            totalStages: 7,
+            percentage: Math.max(5, Math.min(95, Math.round(((Date.now() - pending.startedAt) / (10 * 60_000)) * 100))),
+            detail: "Welcome back — checking on your analysis…",
+            data: null,
+          } as any,
+        ])
+        const resumed = await tryResumeFromKv(pending.requestId, pending.startedAt, abortControllerRef)
+        if (resumed && !abortControllerRef.current?.signal.aborted) {
+          handleAnalysisResult(
+            resumed.analysisResult,
+            pending.startedAt,
+            JSON.parse(localStorage.getItem("step1Data") || "{}"),
+            JSON.parse(localStorage.getItem("step2Data") || "{}"),
+            resumed.patientCase || JSON.parse(sessionStorage.getItem("analysisPatientCase") || "{}"),
+            router,
+          )
+          return
+        }
+        // Resume failed / timed out / errored — clear it and start fresh.
+        clearPendingRun()
+      }
 
       const step1Data = localStorage.getItem("step1Data")
       const step2Data = localStorage.getItem("step2Data")
@@ -466,9 +531,12 @@ export default function AnalysisPage() {
 
             // Every SSE event carries the requestId — capture and persist
             // it the first time we see it so the resume-from-KV path can
-            // poll for the result if the connection later dies.
+            // poll for the result if the connection later dies. Persist to
+            // BOTH sessionStorage (same-tab reconnect) and localStorage (a
+            // reopened tab / new session after a full close).
             if (event.requestId && !sessionStorage.getItem("pendingAnalysisRequestId")) {
               sessionStorage.setItem("pendingAnalysisRequestId", event.requestId)
+              writePendingRun(event.requestId, startTime)
             }
 
             if (event.type === "progress") {
@@ -558,6 +626,7 @@ export default function AnalysisPage() {
           // Sentry not available (DSN unset in dev) — silent, no user impact.
         }
 
+        clearPendingRun()
         setError(err instanceof Error ? err.message : "Analysis failed")
         setProgress(0)
       }
@@ -658,6 +727,11 @@ export default function AnalysisPage() {
     <>
       <TestUserGroundTruthBanner />
       <AnalysisLoading progress={progress} pipelineEvents={pipelineEvents} preTriageSymptoms={preTriageSymptoms} />
+      {/* Reassurance: the run now survives disconnects, so leaving is safe. */}
+      <div className="fixed bottom-0 inset-x-0 z-40 bg-[#faf6f0] border-t border-[#d4c5b0] px-4 py-2.5 text-center text-xs sm:text-sm text-[#6d1d00]">
+        You can safely leave this page — your analysis keeps running and will be here when you come
+        back.
+      </div>
     </>
   )
 }

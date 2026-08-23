@@ -151,6 +151,27 @@ export default function Step5() {
     // the button (clickwrap), on top of the explicit AI-analysis checkbox.
     const agreed = { consentAnalysis: true, consentNotSubstitute: true, consentAccurate: true }
     localStorage.setItem("step6Data", JSON.stringify(agreed))
+
+    // Write an immutable server-side consent record (durable evidence with
+    // IP + UA + timestamp). Fire-and-forget with keepalive so it survives the
+    // navigation to /analysis and never blocks the user.
+    try {
+      const sessionId = localStorage.getItem("sl_session_id")
+      void fetch("/api/consent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        keepalive: true,
+        body: JSON.stringify({
+          consentVersion: CONSENT_VERSION,
+          method: "checkbox+clickwrap",
+          sessionId,
+          agreed,
+        }),
+      }).catch(() => undefined)
+    } catch {
+      /* never block submit on consent-logging */
+    }
+
     trackEvent("step-complete", { step: 5 })
     // Consent record: the session event is stored server-side (KV) with IP +
     // user-agent + timestamp, so folding the exact consent version + method +

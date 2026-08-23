@@ -16,7 +16,7 @@ interface Step6Data {
 
 // Bump when the consent wording changes; stored with each submit so a
 // consent record can be tied to the exact text the user agreed to.
-const CONSENT_VERSION = "2026-08-23"
+const CONSENT_VERSION = "2026-08-23-clickwrap-v2"
 
 export default function Step5() {
   const router = useRouter()
@@ -111,23 +111,18 @@ export default function Step5() {
     }
   }
 
+  // Only the health-data/AI consent is a discrete opt-in checkbox. The
+  // acknowledgments (not-a-substitute; 18+/accurate/authorized) are captured
+  // by the clickwrap statement on the Start button, so clicking = agreeing.
   const validate = () => {
     const next: Record<string, string> = {}
-    if (!formData.consentAnalysis) next.consentAnalysis = "Please consent to AI analysis"
-    if (!formData.consentNotSubstitute)
-      next.consentNotSubstitute = "Please acknowledge this is not medical care"
-    if (!formData.consentAccurate)
-      next.consentAccurate = "Please confirm your information is accurate"
+    if (!formData.consentAnalysis) next.consentAnalysis = "Please check the box to consent to AI analysis"
     setErrors(next)
     return Object.keys(next).length === 0
   }
 
   const missingItems = [
-    !formData.consentAnalysis ? "Consent to AI analysis" : null,
-    !formData.consentNotSubstitute
-      ? "Acknowledgment this is not a substitute for medical care"
-      : null,
-    !formData.consentAccurate ? "Confirmation your information is accurate" : null,
+    !formData.consentAnalysis ? "Consent to AI analysis of your information" : null,
   ].filter(Boolean) as string[]
 
   const handleBack = () => {
@@ -152,21 +147,27 @@ export default function Step5() {
       if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" })
       return
     }
-    localStorage.setItem("step6Data", JSON.stringify(formData))
+    // Clicking Start is affirmative agreement to the acknowledgments shown on
+    // the button (clickwrap), on top of the explicit AI-analysis checkbox.
+    const agreed = { consentAnalysis: true, consentNotSubstitute: true, consentAccurate: true }
+    localStorage.setItem("step6Data", JSON.stringify(agreed))
     trackEvent("step-complete", { step: 5 })
     // Consent record: the session event is stored server-side (KV) with IP +
-    // user-agent + timestamp, so folding the exact consent version + the
+    // user-agent + timestamp, so folding the exact consent version + method +
     // agreed flags into analysis-start gives a durable, attributable record
     // of what the user agreed to and when.
     trackEvent("analysis-start", {
       step: 6,
-      data: { consentVersion: CONSENT_VERSION, consent: { ...formData } },
+      data: {
+        consentVersion: CONSENT_VERSION,
+        consentMethod: "checkbox+clickwrap",
+        consent: agreed,
+      },
     })
     router.push("/analysis")
   }
 
-  const isFormValid =
-    formData.consentAnalysis && formData.consentNotSubstitute && formData.consentAccurate
+  const isFormValid = formData.consentAnalysis
 
   return (
     <Layout>
@@ -241,18 +242,26 @@ export default function Step5() {
                 <Shield className="h-5 w-5 text-[#8b2500]" />
                 Consent
               </h2>
-              <div className="space-y-4 text-sm">
-                <label className="flex items-start gap-3">
+              <div className="space-y-2 text-sm">
+                <label
+                  className={`flex items-start gap-3 p-3 border-2 cursor-pointer transition-colors ${
+                    errors.consentAnalysis
+                      ? "border-red-400 bg-red-50"
+                      : formData.consentAnalysis
+                        ? "border-[#8b2500] bg-[#faf6f0]"
+                        : "border-gray-200 hover:border-gray-300"
+                  }`}
+                >
                   <input
                     type="checkbox"
                     checked={formData.consentAnalysis}
                     onChange={(e) => update("consentAnalysis", e.target.checked)}
-                    className="mt-1"
+                    className="mt-1 h-4 w-4 accent-[#8b2500]"
                   />
-                  <span>
+                  <span className="text-gray-800">
                     I consent to AI analysis of the information I provided. My symptom narrative
-                    will be processed by OpenAI and Anthropic language models and stored for up
-                    to 90 days. See the{" "}
+                    will be processed by OpenAI and Anthropic language models and stored for up to
+                    90 days. See the{" "}
                     <Link href="/legal/privacy" className="text-[#8b2500] underline" target="_blank">
                       Privacy Policy
                     </Link>{" "}
@@ -262,46 +271,30 @@ export default function Step5() {
                 {errors.consentAnalysis && (
                   <p className="text-red-600">{errors.consentAnalysis}</p>
                 )}
-
-                <label className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    checked={formData.consentNotSubstitute}
-                    onChange={(e) => update("consentNotSubstitute", e.target.checked)}
-                    className="mt-1"
-                  />
-                  <span>
-                    I understand SecondLook is a research preview for educational purposes only,
-                    is <strong>not a medical device</strong>, does not establish a
-                    clinician–patient relationship, and{" "}
-                    <strong>
-                      does not replace evaluation, diagnosis, or treatment by a licensed clinician
-                    </strong>
-                    .
-                  </span>
-                </label>
-                {errors.consentNotSubstitute && (
-                  <p className="text-red-600">{errors.consentNotSubstitute}</p>
-                )}
-
-                <label className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    checked={formData.consentAccurate}
-                    onChange={(e) => update("consentAccurate", e.target.checked)}
-                    className="mt-1"
-                  />
-                  <span>
-                    I confirm I am 18 or older, the information I entered is accurate to the best
-                    of my knowledge, and I am submitting it about myself (or about a person I
-                    legally represent with their informed consent).
-                  </span>
-                </label>
-                {errors.consentAccurate && (
-                  <p className="text-red-600">{errors.consentAccurate}</p>
-                )}
               </div>
             </div>
+
+            {/* Clickwrap acknowledgments: the act of clicking Start is
+                affirmative agreement to these, alongside the AI-consent box
+                above. Placed immediately before the button so it's conspicuous
+                at the point of action. */}
+            <p className="text-sm text-gray-600 leading-relaxed border-t border-gray-200 pt-6">
+              By clicking <strong>Start my analysis</strong>, you confirm you are 18 or older, that
+              the information you entered is accurate and that you are authorized to submit it
+              (about yourself, or about someone you legally represent), and you understand that
+              SecondLook is an educational research preview &mdash;{" "}
+              <strong>not a medical device</strong>, not a substitute for evaluation, diagnosis, or
+              treatment by a licensed clinician, and does not create a clinician&ndash;patient
+              relationship. See our{" "}
+              <Link href="/legal/terms" className="text-[#8b2500] underline" target="_blank">
+                Terms of Use
+              </Link>{" "}
+              and{" "}
+              <Link href="/legal/privacy" className="text-[#8b2500] underline" target="_blank">
+                Privacy Policy
+              </Link>
+              .
+            </p>
 
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-2">
               <button
@@ -325,18 +318,7 @@ export default function Step5() {
               </button>
             </div>
             <p className="text-center sm:text-right text-sm text-gray-500">
-              Evaluations take 8–10 mins.
-            </p>
-            <p className="text-center sm:text-right text-xs text-gray-500">
-              By clicking <strong>Start my analysis</strong> you agree to SecondLook&rsquo;s{" "}
-              <Link href="/legal/terms" className="text-[#8b2500] underline" target="_blank">
-                Terms of Use
-              </Link>{" "}
-              and{" "}
-              <Link href="/legal/privacy" className="text-[#8b2500] underline" target="_blank">
-                Privacy Policy
-              </Link>
-              .
+              Evaluations take 8&ndash;10 mins.
             </p>
           </div>
         </div>

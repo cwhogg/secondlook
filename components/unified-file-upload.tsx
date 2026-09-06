@@ -49,6 +49,10 @@ const MAX_FILE_SIZE = 20 * 1024 * 1024
 const MAX_IMAGE_DIMENSION = 2000
 const JPEG_QUALITY = 0.85
 const MAX_PDF_PAGES = 15
+// Vercel serverless functions reject request bodies over ~4.5MB with a bare
+// 413 before the route runs. All rendered pages ship as base64 in one JSON
+// POST, so the combined payload must stay under that limit with headroom.
+const TOTAL_BASE64_BUDGET = 3_500_000
 
 export type DocumentKind = "labs" | "photo" | "document" | "unreadable" | "other"
 
@@ -123,20 +127,45 @@ async function renderPdfToImages(
   const arrayBuffer = await file.arrayBuffer()
   const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise
   const pageCount = Math.min(pdf.numPages, MAX_PDF_PAGES)
-  const images: { base64: string; mimeType: "image/jpeg" }[] = []
-  for (let i = 1; i <= pageCount; i++) {
-    const page = await pdf.getPage(i)
-    const viewport = page.getViewport({ scale: 2 })
-    const canvas = document.createElement("canvas")
-    canvas.width = viewport.width
-    canvas.height = viewport.height
-    const ctx = canvas.getContext("2d")
-    if (!ctx) throw new Error("Canvas unavailable")
-    await page.render({ canvasContext: ctx, viewport }).promise
-    const dataUrl = canvas.toDataURL("image/jpeg", JPEG_QUALITY)
-    images.push({ base64: dataUrl.split(",")[1], mimeType: "image/jpeg" })
+
+  const renderAll = async (maxDim: number, quality: number) => {
+    const images: { base64: string; mimeType: "image/jpeg" }[] = []
+    let totalBase64 = 0
+    for (let i = 1; i <= pageCount; i++) {
+      const page = await pdf.getPage(i)
+      const base = page.getViewport({ scale: 1 })
+      const scale = Math.min(2, maxDim / Math.max(base.width, base.height))
+      const viewport = page.getViewport({ scale })
+      const canvas = document.createElement("canvas")
+      canvas.width = viewport.width
+      canvas.height = viewport.height
+      const ctx = canvas.getContext("2d")
+      if (!ctx) throw new Error("Canvas unavailable")
+      await page.render({ canvasContext: ctx, viewport }).promise
+      const dataUrl = canvas.toDataURL("image/jpeg", quality)
+      const base64 = dataUrl.split(",")[1]
+      totalBase64 += base64.length
+      images.push({ base64, mimeType: "image/jpeg" })
+    }
+    return { images, totalBase64 }
   }
-  return images
+
+  // Try progressively smaller render settings until the combined payload
+  // fits the request budget. Multi-page scanned records at full quality
+  // routinely exceed it.
+  const settingsLadder = [
+    { maxDim: MAX_IMAGE_DIMENSION, quality: JPEG_QUALITY },
+    { maxDim: 1600, quality: 0.75 },
+    { maxDim: 1200, quality: 0.65 },
+    { maxDim: 1000, quality: 0.5 },
+  ]
+  let last: { base64: string; mimeType: "image/jpeg" }[] = []
+  for (const { maxDim, quality } of settingsLadder) {
+    const { images, totalBase64 } = await renderAll(maxDim, quality)
+    last = images
+    if (totalBase64 <= TOTAL_BASE64_BUDGET) return images
+  }
+  return last
 }
 
 /** Classification vocabulary returned by /api/extract-document. */
@@ -153,6 +182,23 @@ async function classifyDocument(
   })
   if (!res.ok) {
     const data = await res.json().catch(() => ({}))
+    if (res.status === 413) {
+      // Platform-level body-size rejection — no JSON error body.
+      throw new Error(
+        "This document is too large to process in one upload. Try splitting it into smaller PDFs.",
+      )
+    }
+    // The endpoint 422s any non-medical_document classification (step-2's
+    // document-upload.tsx depends on that). Here a classification is a
+    // routing signal, not an error — symptom photos go to the photo
+    // extractor, unreadable/other get their own messages downstream.
+    if (res.status === 422 && typeof data.classification === "string") {
+      return {
+        classification: data.classification as ApiClassification,
+        extractedText: data.extractedText || "",
+        reason: data.reason,
+      }
+    }
     throw new Error(data.error || `Document classification failed (${res.status})`)
   }
   const data = await res.json()

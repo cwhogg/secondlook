@@ -22,11 +22,14 @@ import type { ExtractedSymptomPhoto } from "@/components/symptom-photo-upload"
  *
  * Per file:
  *   1. Convert to base64 image(s) — PDF via pdfjs, image via canvas.
- *      Text files pass through as raw content.
- *   2. POST to /api/extract-document → { classification, extractedText }.
+ *      Text files pass through as raw content. Long PDFs are read in
+ *      sections of PDF_BATCH_SIZE pages (a few requests in flight at a
+ *      time) and the results merged.
+ *   2. POST first section to /api/extract-document → { classification, extractedText }.
  *   3. Route:
- *        medical_document → /api/extract-labs (structured rows)
- *          - if 0 rows, keep the extractedText as a plain document entry
+ *        medical_document → /api/extract-labs (structured rows) per section,
+ *          plus per-section text via /api/extract-document; multi-section
+ *          records emit BOTH labs and the merged document text
  *        symptom_photo    → /api/extract-symptom-photo (description + bodyPart)
  *        unreadable/other → error, don't emit
  *   4. Emit to the parent through onLabsExtracted / onPhotoExtracted /
@@ -45,13 +48,21 @@ const ACCEPTED_MIME_TYPES = [
   "text/markdown",
   "text/x-markdown",
 ]
-const MAX_FILE_SIZE = 20 * 1024 * 1024
+const MAX_FILE_SIZE = 50 * 1024 * 1024
 const MAX_IMAGE_DIMENSION = 2000
 const JPEG_QUALITY = 0.85
-const MAX_PDF_PAGES = 15
+// Long PDFs (multi-visit exports can run hundreds of pages) are read in
+// sections of PDF_BATCH_SIZE pages — one request per section, a few in
+// flight at a time — and the results merged.
+const MAX_PDF_PAGES = 300
+const PDF_BATCH_SIZE = 10
+const PDF_BATCH_CONCURRENCY = 3
+// Downstream consumers cap document text (e.g. /api/care/ingest at 200k).
+const MAX_TOTAL_EXTRACTED_CHARS = 200_000
 // Vercel serverless functions reject request bodies over ~4.5MB with a bare
-// 413 before the route runs. All rendered pages ship as base64 in one JSON
-// POST, so the combined payload must stay under that limit with headroom.
+// 413 before the route runs. Each section's rendered pages ship as base64 in
+// one JSON POST, so the per-request payload must stay under that limit with
+// headroom.
 const TOTAL_BASE64_BUDGET = 3_500_000
 
 export type DocumentKind = "labs" | "photo" | "document" | "unreadable" | "other"
@@ -83,6 +94,7 @@ interface UploadItem {
   reclassify?: DocumentKind
   images?: { base64: string; mimeType: "image/jpeg" | "image/png" }[]
   extractedText?: string
+  progress?: string
 }
 
 function formatFileSize(bytes: number): string {
@@ -119,19 +131,27 @@ async function compressImage(
   })
 }
 
-async function renderPdfToImages(
-  file: File,
-): Promise<{ base64: string; mimeType: "image/jpeg" }[]> {
+type PdfDocument = {
+  numPages: number
+  getPage: (n: number) => Promise<any>
+}
+
+async function openPdf(file: File): Promise<PdfDocument> {
   const pdfjsLib = await import("pdfjs-dist")
   pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`
   const arrayBuffer = await file.arrayBuffer()
-  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise
-  const pageCount = Math.min(pdf.numPages, MAX_PDF_PAGES)
+  return pdfjsLib.getDocument({ data: arrayBuffer }).promise
+}
 
+async function renderPdfPageRange(
+  pdf: PdfDocument,
+  firstPage: number,
+  lastPage: number,
+): Promise<{ base64: string; mimeType: "image/jpeg" }[]> {
   const renderAll = async (maxDim: number, quality: number) => {
     const images: { base64: string; mimeType: "image/jpeg" }[] = []
     let totalBase64 = 0
-    for (let i = 1; i <= pageCount; i++) {
+    for (let i = firstPage; i <= lastPage; i++) {
       const page = await pdf.getPage(i)
       const base = page.getViewport({ scale: 1 })
       const scale = Math.min(2, maxDim / Math.max(base.width, base.height))
@@ -150,9 +170,9 @@ async function renderPdfToImages(
     return { images, totalBase64 }
   }
 
-  // Try progressively smaller render settings until the combined payload
-  // fits the request budget. Multi-page scanned records at full quality
-  // routinely exceed it.
+  // Try progressively smaller render settings until the section's payload
+  // fits the request budget. Dense scanned pages at full quality routinely
+  // exceed it.
   const settingsLadder = [
     { maxDim: MAX_IMAGE_DIMENSION, quality: JPEG_QUALITY },
     { maxDim: 1600, quality: 0.75 },
@@ -361,9 +381,16 @@ export function UnifiedFileUpload({
           return
         }
 
+        const isPdf = file.type === "application/pdf" || ext === ".pdf"
+        let pdf: PdfDocument | null = null
+        let totalPages = 0
         let images: { base64: string; mimeType: "image/jpeg" | "image/png" }[]
-        if (file.type === "application/pdf" || ext === ".pdf") {
-          images = await renderPdfToImages(file)
+        if (isPdf) {
+          pdf = await openPdf(file)
+          totalPages = Math.min(pdf.numPages, MAX_PDF_PAGES)
+          // First section only — classification doesn't need the whole
+          // document, and the remaining sections render lazily below.
+          images = await renderPdfPageRange(pdf, 1, Math.min(totalPages, PDF_BATCH_SIZE))
         } else {
           const compressed = await compressImage(file)
           images = [compressed]
@@ -408,17 +435,84 @@ export function UnifiedFileUpload({
           return
         }
 
-        // medical_document
+        // medical_document — read every section (PDF_BATCH_SIZE pages per
+        // request, a few in flight at once), then merge lab rows + text.
         updateItem(id, { state: "extracting", kind: "labs" })
-        const labs = await extractLabsFromImages(images, file.name)
-        if (labs.length > 0) {
-          updateItem(id, { state: "done", kind: "labs", count: labs.length })
-          onLabsExtracted(labs, file.name)
-        } else if (cls.extractedText.trim()) {
-          updateItem(id, { state: "done", kind: "document" })
-          onDocumentExtracted({ fileName: file.name, extractedText: cls.extractedText })
+        const batches: Array<[number, number]> = []
+        if (pdf && totalPages > PDF_BATCH_SIZE) {
+          for (let p = 1; p <= totalPages; p += PDF_BATCH_SIZE) {
+            batches.push([p, Math.min(p + PDF_BATCH_SIZE - 1, totalPages)])
+          }
         } else {
+          batches.push([1, Math.max(totalPages, 1)])
+        }
+
+        const sectionTexts: string[] = new Array(batches.length).fill("")
+        const sectionLabs: LabResult[][] = batches.map(() => [])
+        let failedSections = 0
+        let pagesDone = 0
+        let nextBatch = 0
+
+        const runBatch = async (idx: number) => {
+          const [a, b] = batches[idx]
+          const imgs = idx === 0 ? images : await renderPdfPageRange(pdf!, a, b)
+          const [text, labs] = await Promise.all([
+            idx === 0
+              ? Promise.resolve(cls.extractedText)
+              : classifyDocument(imgs, `${file.name} (pages ${a}-${b})`)
+                  .then((c) => (c.classification === "medical_document" ? c.extractedText : ""))
+                  .catch(() => ""),
+            extractLabsFromImages(imgs, file.name),
+          ])
+          sectionTexts[idx] = text
+          sectionLabs[idx] = labs
+        }
+        const worker = async () => {
+          while (nextBatch < batches.length) {
+            const idx = nextBatch++
+            try {
+              await runBatch(idx)
+            } catch {
+              failedSections++
+            }
+            pagesDone += batches[idx][1] - batches[idx][0] + 1
+            if (batches.length > 1) {
+              updateItem(id, { progress: `${pagesDone} of ${totalPages} pages read` })
+            }
+          }
+        }
+        await Promise.all(
+          Array.from({ length: Math.min(PDF_BATCH_CONCURRENCY, batches.length) }, worker),
+        )
+
+        const labs = sectionLabs.flat()
+        let docText = sectionTexts.filter((t) => t.trim()).join("\n\n")
+        if (pdf && pdf.numPages > MAX_PDF_PAGES) {
+          docText += `\n\n[Note: only the first ${MAX_PDF_PAGES} of ${pdf.numPages} pages were processed.]`
+        }
+        if (failedSections > 0) {
+          docText += `\n\n[Note: ${failedSections} section(s) of up to ${PDF_BATCH_SIZE} pages could not be read.]`
+        }
+        if (docText.length > MAX_TOTAL_EXTRACTED_CHARS) {
+          docText =
+            docText.slice(0, MAX_TOTAL_EXTRACTED_CHARS) +
+            "\n\n[Truncated — document text exceeded the size limit.]"
+        }
+
+        if (labs.length === 0 && !docText.trim()) {
           throw new Error("We couldn't extract anything useful from this file.")
+        }
+        // Single-section docs keep the original either/or semantics (labs win).
+        // Multi-section records usually carry both structured labs AND
+        // narrative that matters — emit both.
+        if (docText.trim() && (batches.length > 1 || labs.length === 0)) {
+          onDocumentExtracted({ fileName: file.name, extractedText: docText })
+        }
+        if (labs.length > 0) {
+          updateItem(id, { state: "done", kind: "labs", count: labs.length, progress: undefined })
+          onLabsExtracted(labs, file.name)
+        } else {
+          updateItem(id, { state: "done", kind: "document", progress: undefined })
         }
       } catch (err: any) {
         console.error("[unified-file-upload] error:", err)
@@ -481,7 +575,8 @@ export function UnifiedFileUpload({
           Drop files here, or click to choose
         </p>
         <p className="text-xs text-gray-500">
-          PDF, JPG, or PNG · up to 20MB per file · up to 15 PDF pages
+          PDF, JPG, or PNG · up to 50MB per file · long PDFs read in sections (up
+          to {MAX_PDF_PAGES} pages)
         </p>
       </div>
 
@@ -516,6 +611,7 @@ export function UnifiedFileUpload({
                 {it.state === "extracting" && (
                   <div className="text-xs text-gray-500 mt-0.5">
                     Extracting {it.kind === "photo" ? "photo details" : "lab values"}…
+                    {it.progress ? ` · ${it.progress}` : ""}
                   </div>
                 )}
                 {it.state === "processing" && (

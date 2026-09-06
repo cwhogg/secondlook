@@ -16,6 +16,7 @@ interface UploadItem {
   fileName: string
   state: ItemState
   error?: string
+  progress?: string
 }
 
 const ACCEPTED_TYPES = [".pdf", ".jpg", ".jpeg", ".png", ".txt", ".md", ".markdown"]
@@ -31,10 +32,19 @@ const ACCEPTED_MIME_TYPES = [
   "text/markdown",
   "text/x-markdown",
 ]
-const MAX_FILE_SIZE = 20 * 1024 * 1024 // 20MB
-const MAX_PDF_PAGES = 10
+const MAX_FILE_SIZE = 50 * 1024 * 1024 // 50MB
 const MAX_IMAGE_DIMENSION = 2000
 const JPEG_QUALITY = 0.8
+// Long PDFs (multi-visit exports run hundreds of pages) are read in
+// sections of PDF_BATCH_SIZE pages — one request per section, a few in
+// flight at a time — and the extracted text merged in page order.
+const MAX_PDF_PAGES = 300
+const PDF_BATCH_SIZE = 10
+const PDF_BATCH_CONCURRENCY = 3
+// Vercel serverless functions reject request bodies over ~4.5MB with a bare
+// 413 before the route runs. Each section's rendered pages ship as base64 in
+// one JSON POST, so the per-request payload must stay under that with headroom.
+const TOTAL_BASE64_BUDGET = 3_500_000
 
 function formatFileSize(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`
@@ -74,37 +84,61 @@ async function compressImage(file: File): Promise<{ base64: string; mimeType: "i
   })
 }
 
-async function renderPdfToImages(
-  file: File
-): Promise<{ base64: string; mimeType: "image/jpeg" }[]> {
+type PdfDocument = {
+  numPages: number
+  getPage: (n: number) => Promise<any>
+}
+
+async function openPdf(file: File): Promise<PdfDocument> {
   // Dynamic import to keep bundle small
   const pdfjsLib = await import("pdfjs-dist")
   pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`
-
   const arrayBuffer = await file.arrayBuffer()
-  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise
-  const pageCount = Math.min(pdf.numPages, MAX_PDF_PAGES)
-  const images: { base64: string; mimeType: "image/jpeg" }[] = []
+  return pdfjsLib.getDocument({ data: arrayBuffer }).promise
+}
 
-  for (let i = 1; i <= pageCount; i++) {
-    const page = await pdf.getPage(i)
-    const scale = 1.5 // ~150 DPI
-    const viewport = page.getViewport({ scale })
-
-    const canvas = document.createElement("canvas")
-    canvas.width = viewport.width
-    canvas.height = viewport.height
-    const ctx = canvas.getContext("2d")
-    if (!ctx) throw new Error("Failed to create canvas context")
-
-    await page.render({ canvasContext: ctx, viewport }).promise
-
-    const dataUrl = canvas.toDataURL("image/jpeg", JPEG_QUALITY)
-    const base64 = dataUrl.split(",")[1]
-    images.push({ base64, mimeType: "image/jpeg" })
+async function renderPdfPageRange(
+  pdf: PdfDocument,
+  firstPage: number,
+  lastPage: number,
+): Promise<{ base64: string; mimeType: "image/jpeg" }[]> {
+  const renderAll = async (maxDim: number, quality: number) => {
+    const images: { base64: string; mimeType: "image/jpeg" }[] = []
+    let totalBase64 = 0
+    for (let i = firstPage; i <= lastPage; i++) {
+      const page = await pdf.getPage(i)
+      const base = page.getViewport({ scale: 1 })
+      const scale = Math.min(2, maxDim / Math.max(base.width, base.height))
+      const viewport = page.getViewport({ scale })
+      const canvas = document.createElement("canvas")
+      canvas.width = viewport.width
+      canvas.height = viewport.height
+      const ctx = canvas.getContext("2d")
+      if (!ctx) throw new Error("Failed to create canvas context")
+      await page.render({ canvasContext: ctx, viewport }).promise
+      const dataUrl = canvas.toDataURL("image/jpeg", quality)
+      const base64 = dataUrl.split(",")[1]
+      totalBase64 += base64.length
+      images.push({ base64, mimeType: "image/jpeg" })
+    }
+    return { images, totalBase64 }
   }
 
-  return images
+  // Try progressively smaller render settings until the section's payload
+  // fits the request budget.
+  const settingsLadder = [
+    { maxDim: MAX_IMAGE_DIMENSION, quality: JPEG_QUALITY },
+    { maxDim: 1600, quality: 0.75 },
+    { maxDim: 1200, quality: 0.65 },
+    { maxDim: 1000, quality: 0.5 },
+  ]
+  let last: { base64: string; mimeType: "image/jpeg" }[] = []
+  for (const { maxDim, quality } of settingsLadder) {
+    const { images, totalBase64 } = await renderAll(maxDim, quality)
+    last = images
+    if (totalBase64 <= TOTAL_BASE64_BUDGET) return images
+  }
+  return last
 }
 
 function friendlyDocumentError(
@@ -135,7 +169,8 @@ function friendlyDocumentError(
 
 async function extractViaApi(
   images: { base64: string; mimeType: "image/jpeg" | "image/png" }[],
-  fileName: string
+  fileName: string,
+  opts?: { tolerate422?: boolean },
 ): Promise<string> {
   const response = await fetch("/api/extract-document", {
     method: "POST",
@@ -144,6 +179,10 @@ async function extractViaApi(
   })
 
   if (!response.ok) {
+    // Mid-document sections of a long record can legitimately classify as
+    // "other" (blank pages, dividers) — callers reading page ranges past
+    // the first section pass tolerate422 to treat that as empty text.
+    if (opts?.tolerate422 && response.status === 422) return ""
     const data = await response.json().catch(() => ({}))
     throw new Error(friendlyDocumentError(response.status, data))
   }
@@ -180,7 +219,7 @@ export function DocumentUpload({ onTextExtracted, disabled }: DocumentUploadProp
       if (file.size > MAX_FILE_SIZE) {
         updateItem(id, {
           state: "error",
-          error: `File too large (${formatFileSize(file.size)}). Maximum 20MB.`,
+          error: `File too large (${formatFileSize(file.size)}). Maximum 50MB.`,
         })
         return
       }
@@ -201,8 +240,52 @@ export function DocumentUpload({ onTextExtracted, disabled }: DocumentUploadProp
           // understands markdown formatting; no need to convert to plain.
           extractedText = await file.text()
         } else if (file.type === "application/pdf" || ext === ".pdf") {
-          const images = await renderPdfToImages(file)
-          extractedText = await extractViaApi(images, file.name)
+          const pdf = await openPdf(file)
+          const totalPages = Math.min(pdf.numPages, MAX_PDF_PAGES)
+          const batches: Array<[number, number]> = []
+          for (let p = 1; p <= totalPages; p += PDF_BATCH_SIZE) {
+            batches.push([p, Math.min(p + PDF_BATCH_SIZE - 1, totalPages)])
+          }
+
+          // First section extracts strictly — a 422 here means the file
+          // isn't a written medical document at all, which is a real
+          // user-facing error. Later sections tolerate failures.
+          const firstImages = await renderPdfPageRange(pdf, batches[0][0], batches[0][1])
+          const sectionTexts: string[] = new Array(batches.length).fill("")
+          sectionTexts[0] = await extractViaApi(firstImages, file.name)
+          let pagesDone = batches[0][1]
+          let failedSections = 0
+          let nextBatch = 1
+          if (batches.length > 1) {
+            updateItem(id, { progress: `${pagesDone} of ${totalPages} pages read` })
+          }
+          const worker = async () => {
+            while (nextBatch < batches.length) {
+              const idx = nextBatch++
+              const [a, b] = batches[idx]
+              try {
+                const imgs = await renderPdfPageRange(pdf, a, b)
+                sectionTexts[idx] = await extractViaApi(imgs, `${file.name} (pages ${a}-${b})`, {
+                  tolerate422: true,
+                })
+              } catch {
+                failedSections++
+              }
+              pagesDone += b - a + 1
+              updateItem(id, { progress: `${pagesDone} of ${totalPages} pages read` })
+            }
+          }
+          await Promise.all(
+            Array.from({ length: Math.min(PDF_BATCH_CONCURRENCY, batches.length - 1) }, worker),
+          )
+
+          extractedText = sectionTexts.filter((t) => t.trim()).join("\n\n")
+          if (pdf.numPages > MAX_PDF_PAGES) {
+            extractedText += `\n\n[Note: only the first ${MAX_PDF_PAGES} of ${pdf.numPages} pages were processed.]`
+          }
+          if (failedSections > 0) {
+            extractedText += `\n\n[Note: ${failedSections} section(s) of up to ${PDF_BATCH_SIZE} pages could not be read.]`
+          }
         } else {
           const compressed = await compressImage(file)
           extractedText = await extractViaApi([compressed], file.name)
@@ -300,6 +383,7 @@ export function DocumentUpload({ onTextExtracted, disabled }: DocumentUploadProp
                   {item.state === "processing" ? (
                     <>
                       Extracting text from <span className="font-medium">{item.fileName}</span>...
+                      {item.progress ? ` · ${item.progress}` : ""}
                     </>
                   ) : item.state === "error" ? (
                     <>

@@ -249,7 +249,11 @@ Process every page in order. Within a single report, the dateDrawn and labName a
           flag: normalizeFlag(r.flag),
           dateDrawn: r.dateDrawn?.trim() || undefined,
           labName: r.labName?.trim() || undefined,
-          loincCode: r.loincCode?.trim() || undefined,
+          // Keep only well-formed LOINC codes ("2345-7") — the model
+          // sometimes emits prose here ("Free T4: 3024-7").
+          loincCode: /^[0-9]{1,7}-[0-9]$/.test(r.loincCode?.trim() || "")
+            ? r.loincCode!.trim()
+            : undefined,
           source: "extracted",
           confidence: typeof r.confidence === "number" ? Math.max(0, Math.min(1, r.confidence)) : 0.5,
           sourceFile: fileName,

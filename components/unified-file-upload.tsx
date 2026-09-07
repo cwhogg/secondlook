@@ -216,6 +216,26 @@ async function renderPdfPageRange(
   return last
 }
 
+/**
+ * Collapse duplicate lab rows. EHR summaries repeat the same panels in
+ * multiple sections (per-encounter results + summary results), so the same
+ * result arrives several times under name variants. Same LOINC (or same
+ * normalized name) + same date + same normalized value = one row.
+ */
+function dedupeLabRows(labs: LabResult[]): LabResult[] {
+  const seen = new Set<string>()
+  const out: LabResult[] = []
+  for (const l of labs) {
+    const test = (l.loincCode || l.testName || "").toLowerCase().replace(/[^a-z0-9]+/g, "")
+    const value = (l.value || "").toLowerCase().replace(/\s+/g, "")
+    const key = `${test}|${value}|${l.dateDrawn || ""}`
+    if (seen.has(key)) continue
+    seen.add(key)
+    out.push(l)
+  }
+  return out
+}
+
 /** Classification vocabulary returned by /api/extract-document. */
 type ApiClassification = "medical_document" | "symptom_photo" | "unreadable" | "other"
 
@@ -453,7 +473,7 @@ export function UnifiedFileUpload({
               Array.from({ length: Math.min(PDF_BATCH_CONCURRENCY, chunks.length) }, textWorker),
             )
 
-            const labs = labsByChunk.flat()
+            const labs = dedupeLabRows(labsByChunk.flat())
             let docText = pageTexts.join("\n\n")
             if (docText.length > MAX_TOTAL_EXTRACTED_CHARS) {
               docText =
@@ -573,7 +593,7 @@ export function UnifiedFileUpload({
           Array.from({ length: Math.min(PDF_BATCH_CONCURRENCY, batches.length) }, worker),
         )
 
-        const labs = sectionLabs.flat()
+        const labs = dedupeLabRows(sectionLabs.flat())
         let docText = sectionTexts.filter((t) => t.trim()).join("\n\n")
         if (pdf && pdf.numPages > MAX_PDF_PAGES) {
           docText += `\n\n[Note: only the first ${MAX_PDF_PAGES} of ${pdf.numPages} pages were processed.]`

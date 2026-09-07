@@ -143,6 +143,34 @@ async function openPdf(file: File): Promise<PdfDocument> {
   return pdfjsLib.getDocument({ data: arrayBuffer }).promise
 }
 
+/**
+ * Extract the embedded text layer per page. Digital PDFs (EHR exports,
+ * "Patient Health Summary" downloads) carry perfect text — using it skips
+ * vision OCR entirely: faster, lossless, and no request-size limits.
+ * Returns null when the PDF is a scan (no meaningful text layer).
+ */
+async function extractPdfTextByPage(
+  pdf: PdfDocument,
+  pageCount: number,
+): Promise<string[] | null> {
+  const texts: string[] = []
+  let totalChars = 0
+  for (let i = 1; i <= pageCount; i++) {
+    const page = await pdf.getPage(i)
+    const content = await page.getTextContent()
+    const text = (content.items as any[])
+      .map((it) => (typeof it.str === "string" ? it.str : ""))
+      .join(" ")
+      .replace(/\s+/g, " ")
+      .trim()
+    texts.push(text)
+    totalChars += text.length
+  }
+  // Scanned pages yield ~0 chars; digital pages yield hundreds+. Average
+  // under 200 chars/page → treat as a scan and use vision rendering.
+  return totalChars / Math.max(pageCount, 1) >= 200 ? texts : null
+}
+
 async function renderPdfPageRange(
   pdf: PdfDocument,
   firstPage: number,
@@ -387,6 +415,66 @@ export function UnifiedFileUpload({
         let images: { base64: string; mimeType: "image/jpeg" | "image/png" }[]
         if (isPdf) {
           pdf = await openPdf(file)
+
+          // Digital PDFs: read the embedded text layer directly — no vision
+          // OCR, no page cap, no request-size limits. Falls through to the
+          // rendered-image flow only for scans.
+          const pageTexts = await extractPdfTextByPage(pdf, pdf.numPages)
+          if (pageTexts) {
+            updateItem(id, { state: "extracting", kind: "labs" })
+            const chunks: string[] = []
+            let cur: string[] = []
+            let curLen = 0
+            for (const t of pageTexts) {
+              cur.push(t)
+              curLen += t.length
+              if (curLen >= 50_000) {
+                chunks.push(cur.join("\n\n"))
+                cur = []
+                curLen = 0
+              }
+            }
+            if (curLen > 0) chunks.push(cur.join("\n\n"))
+
+            const labsByChunk: LabResult[][] = chunks.map(() => [])
+            let chunksDone = 0
+            let nextChunk = 0
+            const textWorker = async () => {
+              while (nextChunk < chunks.length) {
+                const idx = nextChunk++
+                labsByChunk[idx] = await extractLabsFromText(chunks[idx], file.name)
+                chunksDone++
+                if (chunks.length > 1) {
+                  updateItem(id, { progress: `section ${chunksDone} of ${chunks.length} read` })
+                }
+              }
+            }
+            await Promise.all(
+              Array.from({ length: Math.min(PDF_BATCH_CONCURRENCY, chunks.length) }, textWorker),
+            )
+
+            const labs = labsByChunk.flat()
+            let docText = pageTexts.join("\n\n")
+            if (docText.length > MAX_TOTAL_EXTRACTED_CHARS) {
+              docText =
+                docText.slice(0, MAX_TOTAL_EXTRACTED_CHARS - 1_000) +
+                "\n\n[Truncated — document text exceeded the size limit.]"
+            }
+            updateItem(id, { extractedText: docText })
+            if (docText.trim()) {
+              onDocumentExtracted({ fileName: file.name, extractedText: docText })
+            }
+            if (labs.length > 0) {
+              updateItem(id, { state: "done", kind: "labs", count: labs.length, progress: undefined })
+              onLabsExtracted(labs, file.name)
+            } else if (docText.trim()) {
+              updateItem(id, { state: "done", kind: "document", progress: undefined })
+            } else {
+              throw new Error("We couldn't extract anything useful from this file.")
+            }
+            return
+          }
+
           totalPages = Math.min(pdf.numPages, MAX_PDF_PAGES)
           // First section only — classification doesn't need the whole
           // document, and the remaining sections render lazily below.

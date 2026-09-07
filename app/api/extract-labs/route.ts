@@ -135,7 +135,7 @@ export async function POST(request: NextRequest) {
         messages: [
           {
             role: "system",
-            content: `You extract structured laboratory results from medical lab report images. For each lab test on the report, emit one row. Do NOT include free-text interpretive notes, headers, demographics, or footers — only test results. If a row is ambiguous or unreadable, lower the confidence (0.3-0.5); skip entirely only if you cannot identify any test/value pair.
+            content: `You extract structured laboratory results from medical lab report images. For each lab test on the report, emit one row. Do NOT include free-text interpretive notes, headers, demographics, or footers — only test results. Vital signs recorded on the report (blood pressure, heart rate, respiratory rate, temperature, height, weight, BMI, SpO2) DO count as rows. Do NOT include imaging-derived measurements (anatomical dimensions from ultrasound/CT/MRI/X-ray reports, e.g. "endometrial stripe 3 mm", lesion sizes, organ dimensions) — those belong to the imaging report, not the lab table. If a row is ambiguous or unreadable, lower the confidence (0.3-0.5); skip entirely only if you cannot identify any test/value pair.
 
 Rules:
 - testName: the canonical name of the analyte (e.g. "Alanine aminotransferase (ALT)", "Thyroid stimulating hormone (TSH)"). If only an abbreviation is shown, expand it.

@@ -494,8 +494,10 @@ export function UnifiedFileUpload({
           docText += `\n\n[Note: ${failedSections} section(s) of up to ${PDF_BATCH_SIZE} pages could not be read.]`
         }
         if (docText.length > MAX_TOTAL_EXTRACTED_CHARS) {
+          // Slice below the cap so the appended note keeps the total under
+          // the server-side 200k schema limit (over it, ingest 400s).
           docText =
-            docText.slice(0, MAX_TOTAL_EXTRACTED_CHARS) +
+            docText.slice(0, MAX_TOTAL_EXTRACTED_CHARS - 1_000) +
             "\n\n[Truncated — document text exceeded the size limit.]"
         }
 
@@ -610,8 +612,10 @@ export function UnifiedFileUpload({
                 )}
                 {it.state === "extracting" && (
                   <div className="text-xs text-gray-500 mt-0.5">
-                    Extracting {it.kind === "photo" ? "photo details" : "lab values"}…
-                    {it.progress ? ` · ${it.progress}` : ""}
+                    {it.kind === "photo"
+                      ? "Extracting photo details"
+                      : "Reading document — labs, medications, diagnoses, history"}
+                    …{it.progress ? ` · ${it.progress}` : ""}
                   </div>
                 )}
                 {it.state === "processing" && (

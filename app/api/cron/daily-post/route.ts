@@ -1,7 +1,7 @@
 /**
- * Daily cron: generate + publish one KB-disease blog post and post it to X.
+ * Cron (Mon/Wed/Fri): generate + publish one KB-disease blog post and post it to X.
  * Auth: Vercel Cron sends `Authorization: Bearer <CRON_SECRET>`. Registered
- * in vercel.json at 0 14 * * * (daily 14:00 UTC). Pass ?force=1 with a valid
+ * in vercel.json at 0 14 * * 1,3,5 (Mon/Wed/Fri 14:00 UTC — throttled from daily so a young YMYL site isn't flooded with AI posts). Pass ?force=1 with a valid
  * secret to bypass the once-per-day idempotency guard (manual trigger).
  */
 import { runDailyDiseasePost } from "@/lib/blog-gen/pipeline"

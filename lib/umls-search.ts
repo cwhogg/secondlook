@@ -7,6 +7,7 @@ interface UMLSSearchResult {
   concepts: any[];
   confidence: number;
   error: boolean;
+  timedOut?: boolean;
 }
 
 interface UMLSFallbackResult extends UMLSSearchResult {
@@ -88,6 +89,8 @@ function generateSearchVariants(term: string): string[] {
   });
 }
 
+const UMLS_TIMEOUT_MS = 15_000;
+
 /**
  * Call the UMLS search API for a single term.
  */
@@ -97,12 +100,16 @@ export async function searchUMLS(searchTerm: string): Promise<UMLSSearchResult> 
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ searchTerm }),
+      // Bound each lookup: the route makes up to 5 un-timed NLM calls, and a
+      // hanging NLM otherwise stalls the caller until the function times out.
+      signal: AbortSignal.timeout(UMLS_TIMEOUT_MS),
     });
     if (!response.ok) return { concepts: [], confidence: 0, error: true };
     const data = await response.json();
     return { concepts: data.concepts || [], confidence: data.confidence || 0, error: !!data.error };
-  } catch {
-    return { concepts: [], confidence: 0, error: true };
+  } catch (err) {
+    const timedOut = err instanceof DOMException && err.name === 'TimeoutError';
+    return { concepts: [], confidence: 0, error: true, timedOut };
   }
 }
 
@@ -125,7 +132,12 @@ export async function searchUMLSWithFallbacks(
   }
 
   // 1. Try primary medicalTerm
+  // A timeout means UMLS itself is hanging — further fallbacks would each
+  // hang too, freezing the caller for minutes. Give up and return unmapped.
+  const giveUp = (): UMLSFallbackResult => ({ concepts: [], confidence: 0, error: true, searchTermUsed: primaryTerm });
+
   let result = await searchUMLS(primaryTerm);
+  if (result.timedOut) return giveUp();
   if (result.concepts.length > 0 && !result.error) {
     return { ...result, searchTermUsed: primaryTerm };
   }
@@ -133,6 +145,7 @@ export async function searchUMLSWithFallbacks(
   // 2. Try each alternativeSearchTerm
   for (const altTerm of alternativeTerms) {
     result = await searchUMLS(altTerm);
+    if (result.timedOut) return giveUp();
     if (result.concepts.length > 0 && !result.error) {
       return { ...result, searchTermUsed: altTerm };
     }
@@ -141,6 +154,7 @@ export async function searchUMLSWithFallbacks(
   // 3. Try originalPhrase
   if (originalPhrase.toLowerCase() !== primaryTerm.toLowerCase()) {
     result = await searchUMLS(originalPhrase);
+    if (result.timedOut) return giveUp();
     if (result.concepts.length > 0 && !result.error) {
       return { ...result, searchTermUsed: originalPhrase };
     }
@@ -158,6 +172,7 @@ export async function searchUMLSWithFallbacks(
       triedTerms.add(variant.toLowerCase());
 
       result = await searchUMLS(variant);
+      if (result.timedOut) return giveUp();
       if (result.concepts.length > 0 && !result.error) {
         return {
           ...result,

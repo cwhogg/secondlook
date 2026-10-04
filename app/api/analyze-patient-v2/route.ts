@@ -16,7 +16,11 @@ import { waitUntil } from '@vercel/functions';
 // v15 update: parallel Claude-opus-4-7 synth + bounded 3-round reconciliation
 // can push hard cases past 5 minutes. Bumped to 600s — within Vercel Pro plan
 // limits (max 900s) with headroom for the heaviest reconciliation paths.
-export const maxDuration = 600;
+//
+// 2026-10: raised to 800s (Vercel Pro ceiling). Prod runs take 390-593s and
+// lab-heavy cases were landing at 580-593s; a run killed at the cap never
+// reaches markError, so clients poll a dead "running" marker until timeout.
+export const maxDuration = 800;
 
 // Input validation schema
 const demographicsSchema = z.object({

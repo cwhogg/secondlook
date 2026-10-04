@@ -452,19 +452,33 @@ export default function AnalysisPage() {
         // can reuse it if the SSE connection dies (e.g., mobile suspend).
         // The analysisRequestId + startedAt are saved as soon as the first
         // SSE event arrives (every event carries the requestId).
-        sessionStorage.setItem("analysisPatientCase", JSON.stringify(analysisPayload))
-        sessionStorage.setItem("pendingAnalysisStartedAt", String(startTime))
-
         // BEFORE making the request — check if we have a recent pending
         // analysis from a prior tab visit that died mid-flight (mobile
         // suspended, user closed and reopened, etc.). If so, try the
         // resume path instead of starting a duplicate analysis.
+        // Read the prior markers BEFORE overwriting pendingAnalysisStartedAt
+        // below — otherwise a stale requestId always looks fresh and we
+        // silently poll a dead run for 12 minutes.
         const priorRequestId = sessionStorage.getItem("pendingAnalysisRequestId")
         const priorStartedAt = parseInt(
           sessionStorage.getItem("pendingAnalysisStartedAt") || "0",
           10,
         )
+        sessionStorage.setItem("analysisPatientCase", JSON.stringify(analysisPayload))
+        sessionStorage.setItem("pendingAnalysisStartedAt", String(startTime))
+
         if (priorRequestId && priorStartedAt && Date.now() - priorStartedAt < 12 * 60 * 1000) {
+          setPipelineEvents((prev) => [
+            ...prev,
+            {
+              stage: "heartbeat",
+              stageNumber: 0,
+              totalStages: 7,
+              percentage: 10,
+              detail: "Checking on your previous analysis before starting a new one…",
+              data: null,
+            } as any,
+          ])
           const resumed = await tryResumeFromKv(priorRequestId, priorStartedAt, abortControllerRef)
           if (resumed && !abortControllerRef.current?.signal.aborted) {
             handleAnalysisResult(
@@ -509,8 +523,24 @@ export default function AnalysisPage() {
         const decoder = new TextDecoder()
         let buffer = ""
 
+        // Stall watchdog: the server emits events at least every ~90s (the Claude
+        // finalizer is the longest silent stretch, measured at 92s), so
+        // prolonged silence means the connection died without closing (mobile
+        // tab suspend, proxy drop). Without this, reader.read() can hang
+        // forever and the loading screen freezes. Throwing routes us into the
+        // resume-from-KV path below, which picks up the server-side result.
+        const STALL_MS = 180_000
         while (true) {
-          const { done, value } = await reader.read()
+          let stallTimer: ReturnType<typeof setTimeout> | undefined
+          const { done, value } = await Promise.race([
+            reader.read(),
+            new Promise<never>((_, reject) => {
+              stallTimer = setTimeout(() => {
+                reader.cancel().catch(() => undefined)
+                reject(new Error("Analysis connection stalled (timed out waiting for progress)"))
+              }, STALL_MS)
+            }),
+          ]).finally(() => clearTimeout(stallTimer))
           if (done) break
 
           buffer += decoder.decode(value, { stream: true })

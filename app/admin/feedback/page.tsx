@@ -7,6 +7,7 @@ interface FeedbackSummary {
   id: string
   createdAt: string
   ip: string | null
+  userAgent?: string | null
   mode: "test" | "real" | "general"
   analysisRequestId: string | null
   payload: any
@@ -231,6 +232,11 @@ function FeedbackCard({ item }: { item: FeedbackSummary }) {
           </span>
           <span>{when.toLocaleString()}</span>
           {item.ip && <span className="font-mono">{item.ip}</span>}
+          {p.email && (
+            <a href={`mailto:${p.email}`} className="font-semibold text-[#8b2500] underline">
+              {p.email}
+            </a>
+          )}
           {item.analysisRequestId && (
             <Link
               href={`/admin/runs/${encodeURIComponent(item.analysisRequestId)}`}
@@ -264,15 +270,15 @@ function FeedbackCard({ item }: { item: FeedbackSummary }) {
             {typeof p.usefulnessRating === "number" && (
               <Row label="Useful in journey">{ratingDisplay(p.usefulnessRating)}</Row>
             )}
-            {p.learnedSomething && (
+            {(p.learnedSomething || p.whatLearned) && (
               <Row label="Learned new">
-                {p.learnedSomething}
+                {p.learnedSomething || "—"}
                 {p.whatLearned && <span className="text-gray-600"> — {p.whatLearned}</span>}
               </Row>
             )}
-            {p.confirmedSomething && (
+            {(p.confirmedSomething || p.whatConfirmed) && (
               <Row label="Confirmed known">
-                {p.confirmedSomething}
+                {p.confirmedSomething || "—"}
                 {p.whatConfirmed && <span className="text-gray-600"> — {p.whatConfirmed}</span>}
               </Row>
             )}
@@ -308,10 +314,30 @@ function FeedbackCard({ item }: { item: FeedbackSummary }) {
             )}
           </>
         )}
+        {/* Any payload field not rendered above (e.g. one added to the form
+            later) still shows up, so no user-provided info is silently hidden. */}
+        {Object.entries(p)
+          .filter(([k, v]) => !RENDERED_KEYS.has(k) && v !== undefined && v !== null && v !== "")
+          .map(([k, v]) => (
+            <Row key={k} label={k}>
+              <span className="whitespace-pre-wrap">{typeof v === "string" ? v : JSON.stringify(v)}</span>
+            </Row>
+          ))}
+        {item.userAgent && (
+          <Row label="Browser">
+            <span className="font-mono text-xs text-gray-600 break-all">{item.userAgent}</span>
+          </Row>
+        )}
       </div>
     </div>
   )
 }
+
+const RENDERED_KEYS = new Set([
+  "mode", "email", "comments", "valueRating", "uxRating", "expectedDiagnosis", "actualTop1",
+  "usefulnessRating", "learnedSomething", "whatLearned", "confirmedSomething", "whatConfirmed",
+  "page", "sessionId", "message",
+])
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (

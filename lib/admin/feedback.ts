@@ -94,6 +94,7 @@ export interface FeedbackSummary {
   id: string;
   createdAt: string;
   ip: string | null;
+  userAgent: string | null;
   mode: FeedbackMode;
   analysisRequestId: string | null;
   payload: TestFeedback | RealFeedback | GeneralFeedback;
@@ -143,6 +144,7 @@ export async function listFeedback(
         id: parsed.id,
         createdAt: parsed.createdAt,
         ip: parsed.ip,
+        userAgent: parsed.userAgent ?? null,
         mode: parsed.payload.mode,
         analysisRequestId: parsed.analysisRequestId,
         payload: parsed.payload,

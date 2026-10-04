@@ -282,7 +282,7 @@ export function FeedbackButton() {
                       htmlFor="feedback-email"
                       className="block font-sans text-[11px] font-semibold uppercase tracking-wider text-[#6d4c30] mb-1.5"
                     >
-                      Email <span className="font-normal normal-case text-[#8b7355]">(optional &mdash; if you&rsquo;d like a reply)</span>
+                      Your email <span className="font-normal normal-case text-[#8b7355]">(optional)</span>
                     </label>
                     <input
                       id="feedback-email"
@@ -292,6 +292,9 @@ export function FeedbackButton() {
                       placeholder="you@example.com"
                       className="w-full px-3 py-2 border border-[#d4c5b0] focus:ring-2 focus:ring-[#8b2500] focus:border-transparent text-sm font-serif-body"
                     />
+                    <p className="mt-1 font-serif-body text-[11px] text-[#8b7355] leading-snug">
+                      Reporting a problem? Leave your email so we can follow up and help troubleshoot. We&rsquo;ll only use it to reply.
+                    </p>
                   </div>
 
                   {error && (

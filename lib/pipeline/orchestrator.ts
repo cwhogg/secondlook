@@ -76,7 +76,7 @@ export class DiagnosticPipeline {
       const triageResult = await triageAgent.execute({ patientCase });
       log("orch.stage.triage.done", { candidates: triageResult.candidateDiseases.length });
 
-      const triageModel = 'gpt-4.1-nano';
+      const triageModel = 'gpt-4.1-mini';
       this.budgetTracker.addUsage(triageModel, triageResult.tokensUsed);
       stages.push({
         stageName: 'triage',

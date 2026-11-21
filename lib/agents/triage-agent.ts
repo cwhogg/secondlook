@@ -43,7 +43,7 @@ export class TriageAgent extends BaseAgent {
   constructor() {
     super({
       name: 'triage-agent',
-      model: 'gpt-4.1-nano',
+      model: 'gpt-4.1-mini',
       temperature: 0.2,
       maxTokens: 1500,
       systemPrompt: TRIAGE_SYSTEM_PROMPT,

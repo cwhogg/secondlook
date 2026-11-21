@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
 import { randomUUID } from "crypto"
+import { MODELS, openaiLimits } from "@/lib/models"
 
 // Symptom-photo extractor: the user uploads a photo of a visible finding
 // on their own body (rash, lesion, eye redness, swelling, joint deformity,
@@ -71,7 +72,7 @@ export async function POST(request: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-4.1",
+        model: MODELS.documentVision,
         response_format: { type: "json_object" },
         messages: [
           {
@@ -112,8 +113,7 @@ Description guidelines (when classification is "symptom_photo"):
             ],
           },
         ],
-        temperature: 0.1,
-        max_tokens: 600,
+        ...openaiLimits(MODELS.documentVision, 600, 0.1),
       }),
     })
 

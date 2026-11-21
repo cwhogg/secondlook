@@ -24,6 +24,7 @@ import { DiseaseMatch } from '../types/knowledge-base';
 import { getDiseaseCount } from '../knowledge';
 import { SPECIALTY_REFERENCES, renderSpecialtyReference } from './specialty-reference';
 import type { SpecialistV17Hypothesis } from './dedup-normalizer';
+import { MODELS } from '@/lib/models';
 
 export interface SpecialistV17Output {
   agentName: string;
@@ -187,7 +188,7 @@ OUTPUT RULES:
 
     super({
       name: `specialist-v17-${specialistType}`,
-      model: 'o3',
+      model: MODELS.specialist,
       reasoningEffort: 'high',
       temperature: 0,
       // v17: 8000 -> 60000. Specialists now also emit per-hypothesis

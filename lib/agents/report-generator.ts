@@ -2,6 +2,7 @@ import { BaseAgent } from './base-agent';
 import { AgentInput, AgentOutput } from './types';
 import { DiagnosisHypothesis, DataGap, RecommendedTest, NextSteps, PatientCase } from '../types';
 import { findDiseaseByName } from '../knowledge';
+import { MODELS } from '@/lib/models';
 
 /**
  * For each top hypothesis, pull the KB profile's "required-for-diagnosis"
@@ -56,7 +57,7 @@ export class ReportGenerator extends BaseAgent {
   constructor() {
     super({
       name: 'report-generator',
-      model: 'gpt-4.1-mini',
+      model: MODELS.report,
       temperature: 0.2,
       // v17: was 3000, raised to 10000 because v17 differentials have richer
       // per-hypothesis clinicalReasoning (concatenated specialist reasoning

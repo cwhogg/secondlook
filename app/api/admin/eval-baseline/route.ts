@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
 import { callAnthropic } from "@/lib/anthropic"
+import { MODELS } from "@/lib/models"
 
 // o3 reasoning:high and claude-opus-4-7 both take 30-90s on dense vignettes;
 // Vercel's default 10s timeout would kill the request mid-think.
@@ -32,8 +33,8 @@ Exactly 10 entries, ranked most likely first, distinct diseases.
 CLINICAL VIGNETTE:
 `
 
-const OPENAI_MODEL = "o3"
-const CLAUDE_MODEL = "claude-opus-4-7"
+const OPENAI_MODEL = MODELS.baselineOpenAI
+const CLAUDE_MODEL = MODELS.baselineClaude
 
 interface BaselineDiagnosis {
   diagnosis: string

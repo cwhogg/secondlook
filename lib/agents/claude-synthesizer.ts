@@ -26,8 +26,9 @@ import { DiagnosisHypothesis, PatientCase } from '../types';
 import { SynthesisAgent } from './synthesizer';
 import { callAnthropic } from '../anthropic';
 import { getDiseaseCount } from '../knowledge';
+import { MODELS } from '@/lib/models';
 
-const CLAUDE_SYNTH_MODEL = 'claude-opus-4-7';
+const CLAUDE_SYNTH_MODEL = MODELS.claudeSynth;
 
 function buildClaudeSystemPrompt(): string {
   return `You are the senior diagnostician and department chief — the final decision-maker on this case. You have 30+ years of experience in complex diagnostic medicine, specializing in rare and multi-system diseases.

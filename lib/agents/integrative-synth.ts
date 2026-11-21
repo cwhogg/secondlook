@@ -18,8 +18,9 @@ import type {
   Intervention,
 } from '../types/integrative';
 import { callAnthropic } from '../anthropic';
+import { MODELS } from '@/lib/models';
 
-const MODEL = 'claude-opus-4-7';
+const MODEL = MODELS.integrativeSynth;
 
 interface IntegrativeSynthResult {
   consensusRootCause: string;

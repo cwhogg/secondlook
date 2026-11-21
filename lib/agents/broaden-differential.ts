@@ -22,8 +22,9 @@
  */
 import { callAnthropic } from '../anthropic';
 import type { PatientCase, DiagnosisHypothesis } from '../types';
+import { MODELS } from '@/lib/models';
 
-const BROADENER_MODEL = 'claude-sonnet-4-6';
+const BROADENER_MODEL = MODELS.broadener;
 const BROADENER_AGENT_NAME = 'differential-broadener';
 
 const SYSTEM_PROMPT = `You are a senior rare-disease consultant. The patient case has already been reviewed by a panel of domain specialists who proposed a list of candidate diagnoses anchored on a curated knowledge base of about 9,000 rare diseases.

@@ -7,6 +7,14 @@ const MODEL_COSTS: Record<string, { input: number; output: number }> = {
   'gpt-4o-mini': { input: 0.015, output: 0.06 },
   'o3': { input: 1.0, output: 4.0 },
   'o4-mini': { input: 0.11, output: 0.44 },
+  // 2026-11 prices from third-party aggregators (OpenAI/Anthropic pages not
+  // checked directly) — estimates for the budget cap, not billing.
+  'gpt-5.4': { input: 0.25, output: 1.5 },
+  'gpt-5.4-mini': { input: 0.075, output: 0.45 },
+  'gpt-5.5': { input: 0.5, output: 3.0 },
+  'claude-opus-5-5': { input: 0.4, output: 2.0 },
+  'claude-sonnet-5-5': { input: 0.2, output: 1.0 },
+  'claude-haiku-5-5': { input: 0.01, output: 0.05 },
 };
 
 export class BudgetTracker {

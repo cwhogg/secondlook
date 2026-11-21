@@ -1,4 +1,5 @@
 import { fetchWithResilience } from './llm-retry';
+import { MODELS, claudeAcceptsTemperature } from './models';
 
 export interface AnthropicCallOptions {
   systemPrompt: string;
@@ -16,7 +17,7 @@ export interface AnthropicCallResult {
   model: string;
 }
 
-const DEFAULT_MODEL = 'claude-sonnet-4-6';
+const DEFAULT_MODEL = MODELS.harnessDefault;
 
 /**
  * Thin wrapper around the Anthropic Messages API using direct fetch.
@@ -38,9 +39,7 @@ export async function callAnthropic(options: AnthropicCallOptions): Promise<Anth
 
   const startTime = Date.now();
 
-  // Claude Opus 4.x and later reasoning models reject `temperature` —
-  // omit it for those models. Sonnet / Haiku still accept it.
-  const supportsTemperature = !/^claude-opus-4/.test(model);
+  const supportsTemperature = claudeAcceptsTemperature(model);
 
   const requestBody: Record<string, unknown> = {
     model,

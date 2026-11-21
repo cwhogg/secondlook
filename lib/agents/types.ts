@@ -5,7 +5,7 @@ import { DiseaseMatch } from '../types/knowledge-base';
 
 export interface AgentConfig {
   name: string;
-  model: 'gpt-4.1' | 'gpt-4.1-mini' | 'gpt-4.1-nano' | 'gpt-4o' | 'gpt-4o-mini' | 'o3' | 'o4-mini';
+  model: string; // see lib/models.ts
   temperature: number;            // ignored for reasoning models
   maxTokens: number;              // becomes max_completion_tokens for reasoning models
   systemPrompt: string;

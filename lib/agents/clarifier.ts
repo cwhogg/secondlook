@@ -17,6 +17,7 @@
 import { callAnthropic } from '../anthropic';
 import { setLogContext } from '../pipeline/llm-call-log';
 import type { ClarifyingQuestion, DiagnosisHypothesis } from '../types';
+import { MODELS } from '@/lib/models';
 
 export interface ClarifierInput {
   // Top hypotheses from synth, in ranked order. The clarifier considers
@@ -114,7 +115,7 @@ export class ClarifierAgent {
   public readonly name = 'clarifier';
   private readonly model: string;
 
-  constructor(model: string = 'claude-sonnet-4-6') {
+  constructor(model: string = MODELS.clarifier) {
     this.model = model;
   }
 

@@ -2,6 +2,7 @@ import { BaseAgent } from './base-agent';
 import { AgentInput, TriageOutput, SPECIALIST_TYPES, SpecialistType } from './types';
 import { PatientCase } from '../types';
 import { findMatchingDiseases } from '../knowledge/retrieval';
+import { MODELS } from '@/lib/models';
 
 const TRIAGE_SYSTEM_PROMPT = `You are a clinical triage specialist responsible for the initial assessment of complex patient presentations. Your role is to:
 
@@ -43,7 +44,7 @@ export class TriageAgent extends BaseAgent {
   constructor() {
     super({
       name: 'triage-agent',
-      model: 'gpt-4.1-mini',
+      model: MODELS.triage,
       temperature: 0.2,
       maxTokens: 1500,
       systemPrompt: TRIAGE_SYSTEM_PROMPT,

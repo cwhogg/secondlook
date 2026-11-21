@@ -1,5 +1,6 @@
 import { AgentConfig } from './types';
 import { fetchWithResilience } from '../llm-retry';
+import { openaiStyle } from '../models';
 
 export type LogCallback = (agent: string, phase: string, message: string) => void;
 
@@ -20,9 +21,9 @@ export abstract class BaseAgent {
     this.config = config;
   }
 
-  /** Whether this agent uses a reasoning model (o3, o4-mini, etc.) */
+  /** Whether this agent uses a reasoning model (o-series, gpt-5.5). */
   private isReasoningModel(): boolean {
-    return this.config.model.startsWith('o');
+    return openaiStyle(this.config.model).reasoning;
   }
 
   get name(): string {
@@ -86,7 +87,7 @@ export abstract class BaseAgent {
       }
     } else {
       requestBody.temperature = this.config.temperature;
-      requestBody.max_tokens = this.config.maxTokens;
+      requestBody[openaiStyle(this.config.model).tokenParam] = this.config.maxTokens;
     }
 
     this.log('REQUEST', `callWithTools — model: ${this.config.model}${reasoning ? ` (reasoning, effort: ${this.config.reasoningEffort || 'default'})` : ''}`);
@@ -197,7 +198,7 @@ export abstract class BaseAgent {
       }
     } else {
       requestBody.temperature = this.config.temperature;
-      requestBody.max_tokens = this.config.maxTokens;
+      requestBody[openaiStyle(this.config.model).tokenParam] = this.config.maxTokens;
       requestBody.response_format = { type: 'json_object' };
     }
 

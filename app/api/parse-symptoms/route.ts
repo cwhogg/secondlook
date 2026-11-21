@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { fetchWithResilience } from "@/lib/llm-retry"
+import { MODELS, openaiLimits } from "@/lib/models"
 
 export const maxDuration = 300
 
@@ -21,10 +22,9 @@ async function callOpenAIWithRetry(
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-4.1-mini",
+        model: MODELS.parseSymptoms,
         messages,
-        temperature: 0.3,
-        max_tokens: 16000,
+        ...openaiLimits(MODELS.parseSymptoms, 16000, 0.3),
         response_format: { type: "json_object" },
       }),
     },

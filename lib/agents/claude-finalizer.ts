@@ -21,8 +21,9 @@ import type { DiagnosisHypothesis, PatientCase, CritiqueOutput, CritiqueSuggesti
 import { callAnthropic } from '../anthropic';
 import { setLogContext } from '../pipeline/llm-call-log';
 import { loadDiseaseDatabase } from '../knowledge';
+import { MODELS } from '@/lib/models';
 
-const CLAUDE_FINALIZER_MODEL = 'claude-opus-4-7';
+const CLAUDE_FINALIZER_MODEL = MODELS.claudeFinalizer;
 
 const CLAUDE_FINALIZER_SYSTEM_PROMPT = `You are a senior clinical diagnostician finalizing a differential diagnosis ranking. You produced a draft FULL ranking of all evaluated hypotheses, and another senior clinician has reviewed it and provided specific evidence-cited critique suggestions. Your job now is to SELECT the final top-10 — the differential the patient sees — from your full draft ranking, incorporating the critic's input where the cited evidence justifies it.
 

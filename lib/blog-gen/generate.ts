@@ -9,8 +9,9 @@
  */
 import { callAnthropic } from "@/lib/anthropic"
 import type { DiseaseProfile } from "@/lib/types/knowledge-base"
+import { MODELS } from "@/lib/models"
 
-const WRITER_MODEL = process.env.BLOG_WRITER_MODEL || "claude-sonnet-4-6"
+const WRITER_MODEL = process.env.BLOG_WRITER_MODEL || MODELS.blogWriter
 const SITE = "https://www.secondlookdx.com"
 
 export interface GeneratedPost {

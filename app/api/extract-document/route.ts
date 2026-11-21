@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
 import { randomUUID } from "crypto"
+import { MODELS, openaiLimits } from "@/lib/models"
 
 export const maxDuration = 60
 
@@ -55,7 +56,7 @@ export async function POST(request: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-4.1",
+        model: MODELS.documentVision,
         response_format: { type: "json_object" },
         messages: [
           {
@@ -96,8 +97,7 @@ When classification is anything else:
             ],
           },
         ],
-        temperature: 0.1,
-        max_tokens: 4000,
+        ...openaiLimits(MODELS.documentVision, 4000, 0.1),
       }),
     })
 

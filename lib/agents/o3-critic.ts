@@ -22,8 +22,9 @@
  * simpler for this single-output use case).
  */
 import type { PatientCase, DiagnosisHypothesis, CritiqueOutput, CritiqueSuggestion } from '../types';
+import { MODELS } from '@/lib/models';
 
-const O3_CRITIC_MODEL = 'o3';
+const O3_CRITIC_MODEL = MODELS.critic;
 
 // Confidence floor for 'add' suggestions. Below this, the add is dropped before
 // reaching Claude finalize. Tuned high: an add suggestion has to be something

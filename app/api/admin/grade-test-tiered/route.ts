@@ -7,6 +7,7 @@ export const maxDuration = 300;
 import { z } from 'zod';
 import { callAnthropic } from '@/lib/anthropic';
 import type { GraderTier, TieredEntry, TieredGrading } from '@/lib/types/admin';
+import { MODELS } from '@/lib/models';
 
 const inputSchema = z.object({
   groundTruth: z.object({
@@ -172,7 +173,7 @@ shape (no markdown fence, no surrounding prose):
       systemPrompt: GRADER_SYSTEM_PROMPT,
       userPrompt: userPrompt + structureHint,
       maxTokens: 8000,
-      model: 'claude-opus-4-7',
+      model: MODELS.grader,
     });
   } catch (err: any) {
     return NextResponse.json(
@@ -237,7 +238,7 @@ shape (no markdown fence, no surrounding prose):
     rankAtFamily,
     rankAtAny,
     isTop1: rankAtVariant === 1, // headline: Top-1 = EXACT or VARIANT
-    gradingModel: 'claude-opus-4-7',
+    gradingModel: MODELS.grader,
     gradingDurationMs: Date.now() - startTime,
     gradingTokensUsed: claudeResult.tokensUsed,
     graderConfidence: response.graderConfidence,

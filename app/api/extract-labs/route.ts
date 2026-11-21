@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
 import { randomUUID } from "crypto"
 import type { LabResult } from "@/lib/types/index"
+import { MODELS, openaiLimits } from "@/lib/models"
 
 // Mirrors /api/extract-document but returns a structured LabResult[] instead
 // of free-form text. Client pre-processes PDFs to page-images and compresses
@@ -131,7 +132,7 @@ export async function POST(request: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-4.1",
+        model: MODELS.documentVision,
         messages: [
           {
             role: "system",
@@ -156,8 +157,7 @@ Process every page in order. Within a single report, the dateDrawn and labName a
             content: userMessageContent,
           },
         ],
-        temperature: 0.1,
-        max_tokens: 8000,
+        ...openaiLimits(MODELS.documentVision, 8000, 0.1),
         tool_choice: { type: "function", function: { name: "report_lab_results" } },
         tools: [
           {

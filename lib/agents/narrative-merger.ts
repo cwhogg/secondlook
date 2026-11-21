@@ -22,8 +22,9 @@
  */
 import { callAnthropic } from '../anthropic';
 import type { DiagnosisHypothesis } from '../types';
+import { MODELS } from '@/lib/models';
 
-const MERGER_MODEL = 'claude-sonnet-4-6';
+const MERGER_MODEL = MODELS.narrative;
 
 const SYSTEM_PROMPT = `You rewrite multi-specialist diagnostic reasoning into a single coherent clinical narrative — no role labels, no information loss.
 

@@ -12,6 +12,7 @@
  * doc in commit history for the "not co-mingled" design constraint.
  */
 import type { PatientCase } from '../types';
+import { MODELS, openaiLimits } from '@/lib/models';
 import type {
   IntegrativeSpecialistOutput,
   IntegrativeSpecialty,
@@ -50,8 +51,7 @@ async function callOpenAIJson(opts: {
           { role: 'system', content: opts.systemPrompt },
           { role: 'user', content: opts.userPrompt },
         ],
-        temperature: opts.temperature,
-        max_tokens: opts.maxTokens,
+        ...openaiLimits(opts.model, opts.maxTokens, opts.temperature),
         response_format: { type: 'json_object' },
       }),
     });
@@ -210,7 +210,7 @@ export const INTEGRATIVE_SPECIALISTS: IntegrativeSpecialistDef[] = [
 
 // ===== execution =====
 
-const MODEL = 'gpt-4.1';
+const MODEL = MODELS.integrativeSpecialist;
 const TEMPERATURE = 0.5;
 const MAX_TOKENS = 3500;
 

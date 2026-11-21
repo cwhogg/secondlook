@@ -1,5 +1,5 @@
 import { fetchWithResilience } from './llm-retry';
-import { MODELS, claudeAcceptsTemperature } from './models';
+import { MODELS, claudeAcceptsTemperature, claudeThinkingControl } from './models';
 
 export interface AnthropicCallOptions {
   systemPrompt: string;
@@ -41,9 +41,11 @@ export async function callAnthropic(options: AnthropicCallOptions): Promise<Anth
 
   const supportsTemperature = claudeAcceptsTemperature(model);
 
+  const thinking = claudeThinkingControl(model, maxTokens);
   const requestBody: Record<string, unknown> = {
     model,
-    max_tokens: maxTokens,
+    max_tokens: thinking.maxTokens,
+    ...thinking.fields,
     system: systemPrompt,
     messages: [{ role: 'user', content: userPrompt }],
   };
@@ -84,6 +86,11 @@ export async function callAnthropic(options: AnthropicCallOptions): Promise<Anth
     .join('') || '';
 
   const tokensUsed = (data.usage?.input_tokens || 0) + (data.usage?.output_tokens || 0);
+
+  // Claude 4.7+ safety classifiers can decline (HTTP 200, stop_reason 'refusal').
+  if (data.stop_reason === 'refusal') {
+    throw new Error(`Anthropic refusal on ${data.model || model}: ${data.stop_details?.category || 'uncategorized'}`);
+  }
 
   // Surface silent max_tokens truncation as a first-class failure. Opus 4.8
   // occasionally hits the maxTokens ceiling on large synthesis prompts and

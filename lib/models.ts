@@ -88,3 +88,28 @@ export function openaiLimits(model: string, maxTokens: number, temperature?: num
 export function claudeAcceptsTemperature(model: string): boolean {
   return /^claude-(sonnet|haiku)-4/.test(model);
 }
+
+/** Extra output room for Claude models whose thinking can't be turned off. */
+const CLAUDE_THINKING_HEADROOM = 16000;
+
+/**
+ * Claude 5.x thinks by default and thinking tokens count against max_tokens;
+ * the 4.x models these calls were written for did not think. Verified
+ * 2026-11-21: a 350-token recap on Sonnet 5.5 spent 234 tokens thinking and
+ * was cut off at 52 words; with thinking off it finished at 137 words.
+ * - Sonnet 5.5: thinking off via { type: 'between_tools' } (no tools → no thinking).
+ * - Haiku 5.5 / Sonnet 5: thinking off via { type: 'disabled' }.
+ * - Opus 5.x / Fable: thinking can't be disabled — explicit medium effort plus
+ *   headroom so the visible answer keeps the caller's budget.
+ */
+export function claudeThinkingControl(
+  model: string,
+  maxTokens: number,
+): { fields: Record<string, unknown>; maxTokens: number } {
+  if (/^claude-sonnet-5-5/.test(model)) return { fields: { thinking: { type: 'between_tools' } }, maxTokens };
+  if (/^claude-(haiku-5|sonnet-5)/.test(model)) return { fields: { thinking: { type: 'disabled' } }, maxTokens };
+  if (/^claude-(opus-5|fable-5)/.test(model)) {
+    return { fields: { output_config: { effort: 'medium' } }, maxTokens: maxTokens + CLAUDE_THINKING_HEADROOM };
+  }
+  return { fields: {}, maxTokens };
+}

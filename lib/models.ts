@@ -11,9 +11,9 @@
  */
 export const MODELS = {
   // ---- Diagnostic pipeline (BENCHMARK) ----
-  triage: 'gpt-4.1-mini',
-  specialist: 'o3',
-  critic: 'o3',
+  triage: 'gpt-5.4-mini',
+  specialist: 'gpt-5.5',
+  critic: 'gpt-5.5',
   broadener: 'claude-sonnet-4-6',
   claudeEvaluator: 'claude-opus-4-7',
   claudeSynth: 'claude-opus-4-7',

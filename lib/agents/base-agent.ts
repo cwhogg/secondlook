@@ -90,18 +90,25 @@ export abstract class BaseAgent {
       requestBody[openaiStyle(this.config.model).tokenParam] = this.config.maxTokens;
     }
 
+    // gpt-5.5 rejects function tools + reasoning_effort on chat completions;
+    // the same call works on /v1/responses (verified 2026-11-21).
+    const useResponses =
+      reasoning && !!this.config.reasoningEffort && openaiStyle(this.config.model).toolsWithEffortNeedResponsesApi;
+
     this.log('REQUEST', `callWithTools — model: ${this.config.model}${reasoning ? ` (reasoning, effort: ${this.config.reasoningEffort || 'default'})` : ''}`);
     this.log('SYSTEM_PROMPT', this.config.systemPrompt);
     this.log('USER_PROMPT', userPrompt);
     this.log('TOOLS', JSON.stringify(tools.map((t: any) => t.function?.name || t.name || 'unknown')));
 
-    const response = await this.fetchWithRetry('https://api.openai.com/v1/chat/completions', {
+    const response = await this.fetchWithRetry(
+      useResponses ? 'https://api.openai.com/v1/responses' : 'https://api.openai.com/v1/chat/completions',
+      {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(requestBody),
+      body: JSON.stringify(useResponses ? toResponsesRequest(requestBody) : requestBody),
     });
 
     if (!response.ok) {
@@ -110,7 +117,18 @@ export abstract class BaseAgent {
       throw new Error(`OpenAI API error ${response.status}: ${errorText.substring(0, 500)}`);
     }
 
-    const data = await response.json();
+    let raw = await response.json();
+    if (useResponses && !(raw.output || []).some((o: any) => o.type === 'function_call')) {
+      // 'auto' (see toResponsesRequest) occasionally yields a text answer; retry once forcing a tool call.
+      this.log('RETRY', 'no tool call under tool_choice=auto — retrying with required');
+      const retry = await this.fetchWithRetry('https://api.openai.com/v1/responses', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...toResponsesRequest(requestBody), tool_choice: 'required' }),
+      });
+      if (retry.ok) raw = await retry.json();
+    }
+    const data = useResponses ? responsesToChatShape(raw) : raw;
     const durationMs = Date.now() - startTime;
 
     this.log('RESPONSE', `${durationMs}ms, ${data.usage?.total_tokens || '?'} tokens`);
@@ -267,4 +285,50 @@ export abstract class BaseAgent {
       model: data.model || this.config.model,
     };
   }
+}
+
+/** Chat-completions tool request → /v1/responses request (same model, prompt, tools, effort). */
+function toResponsesRequest(body: Record<string, any>): Record<string, any> {
+  const fnChoice = body.tool_choice?.function?.name;
+  return {
+    model: body.model,
+    input: body.messages,
+    // strict:false keeps today's non-strict JSON-schema behavior.
+    tools: (body.tools || []).map((t: any) => ({ type: 'function', ...t.function, strict: false })),
+    // Forcing a named function makes gpt-5.5 skip reasoning entirely (0 reasoning
+    // tokens; 'required' ~100, 'auto' ~500 on the same case, 2026-11-21). With a
+    // single tool, 'auto' keeps full reasoning; callWithTools retries with
+    // 'required' if no tool call comes back.
+    tool_choice: fnChoice ? (body.tools?.length === 1 ? 'auto' : { type: 'function', name: fnChoice }) : body.tool_choice,
+    max_output_tokens: body.max_completion_tokens,
+    reasoning: { effort: body.reasoning_effort },
+  };
+}
+
+/** /v1/responses result → the chat-completions fields callWithTools reads. */
+function responsesToChatShape(r: any): any {
+  const call = (r.output || []).find((o: any) => o.type === 'function_call');
+  const text = (r.output || [])
+    .filter((o: any) => o.type === 'message')
+    .flatMap((o: any) => o.content || [])
+    .map((c: any) => c.text || '')
+    .join('');
+  return {
+    model: r.model,
+    choices: [
+      {
+        message: {
+          content: text || null,
+          tool_calls: call ? [{ type: 'function', function: { name: call.name, arguments: call.arguments } }] : undefined,
+        },
+        finish_reason: r.status === 'incomplete' ? (r.incomplete_details?.reason === 'max_output_tokens' ? 'length' : r.incomplete_details?.reason) : call ? 'tool_calls' : 'stop',
+      },
+    ],
+    usage: {
+      prompt_tokens: r.usage?.input_tokens,
+      completion_tokens: r.usage?.output_tokens,
+      total_tokens: r.usage?.total_tokens,
+      completion_tokens_details: { reasoning_tokens: r.usage?.output_tokens_details?.reasoning_tokens },
+    },
+  };
 }

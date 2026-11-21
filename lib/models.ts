@@ -12,8 +12,11 @@
 export const MODELS = {
   // ---- Diagnostic pipeline (BENCHMARK) ----
   triage: 'gpt-5.4-mini',
-  specialist: 'gpt-5.5',
-  critic: 'gpt-5.5',
+  // o3 stays for the output-heavy OpenAI stages: measured 2026-11-21 at
+  // 188 tok/s vs gpt-5.5's 39 — on gpt-5.5 specialists took 130-150s each
+  // and a full run blew Vercel's 800s limit. Revisit when gpt-5.x is faster.
+  specialist: 'o3',
+  critic: 'o3',
   broadener: 'claude-sonnet-5-5',
   claudeEvaluator: 'claude-opus-5-5',
   claudeSynth: 'claude-opus-5-5',
@@ -26,10 +29,11 @@ export const MODELS = {
 
   // ---- Intake + document reading ----
   parseSymptoms: 'gpt-5.4-mini',
-  documentVision: 'gpt-5.4',
+  // gpt-4.1 (198 tok/s) not gpt-5.4 (50 tok/s): long uploads are output-bound.
+  documentVision: 'gpt-4.1',
 
   // ---- Integrative report ----
-  integrativeSpecialist: 'gpt-5.4',
+  integrativeSpecialist: 'gpt-4.1',
   integrativeSynth: 'claude-opus-5-5',
 
   // ---- Content + test harness (Anthropic) ----

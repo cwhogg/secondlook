@@ -14,10 +14,10 @@ export const MODELS = {
   triage: 'gpt-5.4-mini',
   specialist: 'gpt-5.5',
   critic: 'gpt-5.5',
-  broadener: 'claude-sonnet-4-6',
-  claudeEvaluator: 'claude-opus-4-7',
-  claudeSynth: 'claude-opus-4-7',
-  claudeFinalizer: 'claude-opus-4-7',
+  broadener: 'claude-sonnet-5-5',
+  claudeEvaluator: 'claude-opus-5-5',
+  claudeSynth: 'claude-opus-5-5',
+  claudeFinalizer: 'claude-opus-5-5',
 
   // ---- Pipeline wording / formatting ----
   narrative: 'claude-sonnet-5-5',

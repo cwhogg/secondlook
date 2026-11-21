@@ -20,21 +20,21 @@ export const MODELS = {
   claudeFinalizer: 'claude-opus-4-7',
 
   // ---- Pipeline wording / formatting ----
-  narrative: 'claude-sonnet-4-6',
-  report: 'gpt-4.1-mini',
-  clarifier: 'claude-sonnet-4-6',
+  narrative: 'claude-sonnet-5-5',
+  report: 'gpt-5.4-mini',
+  clarifier: 'claude-sonnet-5-5',
 
   // ---- Intake + document reading ----
-  parseSymptoms: 'gpt-4.1-mini',
-  documentVision: 'gpt-4.1',
+  parseSymptoms: 'gpt-5.4-mini',
+  documentVision: 'gpt-5.4',
 
   // ---- Integrative report ----
-  integrativeSpecialist: 'gpt-4.1',
-  integrativeSynth: 'claude-opus-4-7',
+  integrativeSpecialist: 'gpt-5.4',
+  integrativeSynth: 'claude-opus-5-5',
 
   // ---- Content + test harness (Anthropic) ----
-  harnessDefault: 'claude-sonnet-4-6',
-  blogWriter: 'claude-sonnet-4-6',
+  harnessDefault: 'claude-sonnet-5-5',
+  blogWriter: 'claude-sonnet-5-5',
 
   // ---- PINNED measuring stick ----
   grader: 'claude-opus-4-7',

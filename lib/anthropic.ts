@@ -64,7 +64,9 @@ export async function callAnthropic(options: AnthropicCallOptions): Promise<Anth
     },
     {
       label: `anthropic:${model}`,
-      timeoutMs: 150_000, // synth/finalize on Opus can run long; bound each attempt
+      // Opus 5.x always thinks; a slow-but-successful call (~150-200s on the
+      // evaluator) shouldn't be thrown away and retried from scratch.
+      timeoutMs: 240_000,
       onRetry: (info) =>
         console.warn(
           `[callAnthropic] retry ${info.attempt + 1} (${info.status || info.error}) in ${info.delayMs}ms — ${model}`,

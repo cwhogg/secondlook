@@ -105,8 +105,10 @@ const CLAUDE_THINKING_HEADROOM = 16000;
  * was cut off at 52 words; with thinking off it finished at 137 words.
  * - Sonnet 5.5: thinking off via { type: 'between_tools' } (no tools → no thinking).
  * - Haiku 5.5 / Sonnet 5: thinking off via { type: 'disabled' }.
- * - Opus 5.x / Fable: thinking can't be disabled — explicit medium effort plus
- *   headroom so the visible answer keeps the caller's budget.
+ * - Opus 5.x / Fable: thinking can't be disabled — low effort (closest to the
+ *   no-thinking Opus 4.7 these stages were tuned on, and fast enough: at medium
+ *   an evaluator call ran past 150s twice on 2026-11-22) plus headroom so the
+ *   visible answer keeps the caller's budget.
  */
 export function claudeThinkingControl(
   model: string,
@@ -115,7 +117,7 @@ export function claudeThinkingControl(
   if (/^claude-sonnet-5-5/.test(model)) return { fields: { thinking: { type: 'between_tools' } }, maxTokens };
   if (/^claude-(haiku-5|sonnet-5)/.test(model)) return { fields: { thinking: { type: 'disabled' } }, maxTokens };
   if (/^claude-(opus-5|fable-5)/.test(model)) {
-    return { fields: { output_config: { effort: 'medium' } }, maxTokens: maxTokens + CLAUDE_THINKING_HEADROOM };
+    return { fields: { output_config: { effort: 'low' } }, maxTokens: maxTokens + CLAUDE_THINKING_HEADROOM };
   }
   return { fields: {}, maxTokens };
 }

@@ -507,10 +507,20 @@ export function selectV17Specialists(
   // Kept in the signature so the orchestrator's call site doesn't need to
   // change.
   _bodySystems: string[] = [],
+  // Specialists the caller requires on the panel (e.g. a CareTeam instance
+  // whose real care team centers on endocrinology). Fill after the anchors,
+  // before the triage ranking. Empty for SecondLook's public flow.
+  required: SpecialistType[] = [],
 ): SpecialistType[] {
   const anchors: SpecialistType[] = ['geneticist', 'general-internist'];
   const selected: SpecialistType[] = [...anchors];
   const seen = new Set<SpecialistType>(anchors);
+  for (const s of required) {
+    if (selected.length >= 5) break;
+    if (seen.has(s)) continue;
+    selected.push(s);
+    seen.add(s);
+  }
 
   // v29.1 REVERT: body-system-driven selection (added in v29.0) is removed.
   // Original v29 design forced each body-system-primary specialist into

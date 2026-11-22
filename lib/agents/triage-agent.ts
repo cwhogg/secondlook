@@ -8,7 +8,7 @@ const TRIAGE_SYSTEM_PROMPT = `You are a clinical triage specialist responsible f
 
 1. Identify which body systems are DIRECTLY involved based on the patient's symptoms
 2. Assess clinical acuity (emergent, urgent, or non-urgent)
-3. Rank ALL 15 specialist types by relevance to this patient — most relevant first, least relevant last. Every specialist is consulted regardless, but the ranking controls the display order shown to the user
+3. Rank ALL 15 specialist types by relevance to this patient — most relevant first, least relevant last. The top-ranked specialists are the ones who review the case, so the order matters
 4. Provide brief clinical reasoning for your triage decisions
 
 You are triaging for a rare disease diagnostic service. Consider uncommon and complex presentations, not just obvious diagnoses.
@@ -93,7 +93,7 @@ export class TriageAgent extends BaseAgent {
                   type: 'string',
                   enum: [...SPECIALIST_TYPES],
                 },
-                description: 'All 15 specialist types in order of relevance to this patient — most relevant first, least relevant last. Must include every specialist exactly once. Controls the display order of specialist differentials shown to the user.',
+                description: 'All 15 specialist types in order of relevance to this patient — most relevant first, least relevant last. Must include every specialist exactly once, spelled exactly as in the enum. The top-ranked specialists review the case.',
                 minItems: 15,
                 maxItems: 15,
               },
@@ -106,17 +106,23 @@ export class TriageAgent extends BaseAgent {
 
     const { bodySystems, acuityLevel, triageReasoning } = result.content;
 
-    // Run all 11 specialists for every case — eliminates triage routing failures
-    // as a source of diagnostic misses. Cost increase is negligible (~$0.01)
-    // since specialists run in parallel and use the same model.
-    // Order them by the LLM's relevance ranking when valid; otherwise fall back
-    // to the canonical constant order so consultation still proceeds.
-    const ranking = (result.content.specialistRelevanceRanking ?? []) as SpecialistType[];
-    const rankingIsValid =
-      ranking.length === SPECIALIST_TYPES.length &&
-      new Set(ranking).size === SPECIALIST_TYPES.length &&
-      ranking.every((s) => (SPECIALIST_TYPES as readonly string[]).includes(s));
-    const relevantSpecialties: SpecialistType[] = rankingIsValid ? ranking : [...SPECIALIST_TYPES];
+    // The ranking decides which specialists review the case (top entries after
+    // the anchors — see selectV17Specialists). Repair it rather than discard
+    // it: one malformed entry used to throw the whole ranking away and fall
+    // back to the canonical order (neurologist, rheumatologist, cardiologist),
+    // which happened on 2 of 3 triage runs of a thyroid case (2026-11-22).
+    const rawRanking: unknown[] = Array.isArray(result.content.specialistRelevanceRanking)
+      ? result.content.specialistRelevanceRanking
+      : [];
+    const valid: SpecialistType[] = [];
+    for (const entry of rawRanking) {
+      const s = String(entry).trim().toLowerCase().replace(/[\s_]+/g, '-') as SpecialistType;
+      if ((SPECIALIST_TYPES as readonly string[]).includes(s) && !valid.includes(s)) valid.push(s);
+    }
+    const relevantSpecialties: SpecialistType[] = [...valid, ...SPECIALIST_TYPES.filter((s) => !valid.includes(s))];
+    if (valid.length !== SPECIALIST_TYPES.length) {
+      console.warn(`[triage] specialist ranking repaired: ${valid.length}/${SPECIALIST_TYPES.length} usable entries; raw=${JSON.stringify(rawRanking)}`);
+    }
 
     // Retrieve candidate diseases from knowledge base (async — uses semantic search if embeddings available)
     const candidateDiseases = await findMatchingDiseases(

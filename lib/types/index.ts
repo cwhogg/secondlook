@@ -114,6 +114,9 @@ export interface PatientCase {
   labResults?: LabResult[];
   symptomPatterns: SymptomPatternData | null;
   patientHypothesis: string | null;
+  // Pipeline specialist types (see SPECIALIST_TYPES) that must be on the
+  // review panel regardless of triage ranking. Used by CareTeam instances.
+  requiredSpecialists?: string[];
   medicalHistory: {
     currentMedications: any[];
     pastMedicalHistory: string[];

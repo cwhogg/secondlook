@@ -127,6 +127,7 @@ export class DiagnosticPipeline {
       const selectedSpecialties = selectV17Specialists(
         triageResult.relevantSpecialties as SpecialistType[],
         triageResult.bodySystems || [],
+        (patientCase.requiredSpecialists || []) as SpecialistType[],
       );
       log("orch.stage.specialists.start", { count: selectedSpecialties.length, specialties: selectedSpecialties });
 

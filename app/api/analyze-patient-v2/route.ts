@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 import { randomUUID } from 'crypto';
 import { DiagnosticPipeline } from '@/lib/pipeline/orchestrator';
 import { BaseAgent } from '@/lib/agents/base-agent';
+import { SPECIALIST_TYPES } from '@/lib/agents/types';
 import { z } from 'zod';
 import { saveProdRun, summarizeAnalysis, extractIp } from '@/lib/admin/prod-runs';
 import { markRunning, markComplete, markError } from '@/lib/results/run-status';
@@ -85,6 +86,7 @@ const patientCaseSchema = z.object({
   labResults: z.array(labResultSchema).optional().default([]),
   symptomPatterns: z.any().nullable().optional().default(null),
   patientHypothesis: z.string().nullable().optional().default(null),
+  requiredSpecialists: z.array(z.enum(SPECIALIST_TYPES)).max(3).optional().default([]),
   medicalHistory: z.object({
     currentMedications: z.array(z.any()).optional().default([]),
     pastMedicalHistory: z.array(z.string()).optional().default([]),

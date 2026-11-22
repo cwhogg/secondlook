@@ -3,6 +3,7 @@ import { randomUUID } from 'crypto';
 import { DiagnosticPipeline } from '@/lib/pipeline/orchestrator';
 import { BaseAgent } from '@/lib/agents/base-agent';
 import { SPECIALIST_TYPES } from '@/lib/agents/types';
+import { normalizeLabFlag } from '@/lib/lab-flags';
 import { z } from 'zod';
 import { saveProdRun, summarizeAnalysis, extractIp } from '@/lib/admin/prod-runs';
 import { markRunning, markComplete, markError } from '@/lib/results/run-status';
@@ -26,7 +27,13 @@ export const maxDuration = 800;
 // Input validation schema
 const demographicsSchema = z.object({
   age: z.string().min(1),
-  sex: z.enum(['male', 'female', 'other']),
+  // Callers send 'Female', 'F', etc.; one casing mismatch shouldn't 400 the run.
+  sex: z.string().transform((s): 'male' | 'female' | 'other' => {
+    const v = s.trim().toLowerCase();
+    if (v === 'male' || v === 'm') return 'male';
+    if (v === 'female' || v === 'f') return 'female';
+    return 'other';
+  }),
 });
 
 const chiefComplaintSchema = z.object({
@@ -69,7 +76,8 @@ const labResultSchema = z.object({
     })
     .nullable()
     .optional(),
-  flag: z.enum(['H', 'L', 'HH', 'LL', 'CRIT']).nullable().optional(),
+  // Normalize ("High" → H) rather than reject the whole case on one flag.
+  flag: z.string().nullable().optional().transform((v) => normalizeLabFlag(v)),
   dateDrawn: z.string().nullable().optional(),
   labName: z.string().nullable().optional(),
   loincCode: z.string().nullable().optional(),

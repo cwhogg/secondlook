@@ -33,6 +33,8 @@ export const MODELS = {
   documentVision: 'gpt-4.1',
 
   // ---- Integrative report ----
+  // gpt-4.1 for the same reason as documentVision: integrative specialists are
+  // output-bound, and gpt-5.4/5.5 (50/39 tok/s vs 198) pushed runs past Vercel's limit.
   integrativeSpecialist: 'gpt-4.1',
   integrativeSynth: 'claude-opus-5-5',
 
